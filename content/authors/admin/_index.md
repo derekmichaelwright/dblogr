@@ -21,8 +21,8 @@ interests:
 name: Derek Michael Wright
 organizations:
 - name: University of Saskatchewan
-  url: "usask.ca/"
-role: Reserach Assistant
+  url: "knowpulse.usask.ca/"
+role: Research Assistant
 social:
 - icon: envelope
   icon_pack: fas
@@ -30,9 +30,6 @@ social:
 - icon: twitter
   icon_pack: fab
   link: https://twitter.com/DerekMWright1
-- icon: google-scholar
-  icon_pack: ai
-  link: https://scholar.google.ca
 - icon: github
   icon_pack: fab
   link: https://github.com/derekmichaelwright
