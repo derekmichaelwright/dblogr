@@ -2,15 +2,15 @@
 name = "Forest"
 
 # Is theme light or dark?
-light = true
+light = false
 
 # Primary
-primary = "#4caf50"
+primary = "#2d862d"
 
 # Menu
-menu_primary = "#4caf50"
+menu_primary = "#1E3D2A"
 menu_text = "#fff"
-menu_text_active = "#1b5e20"
+menu_text_active = "#aaa"
 menu_title = "#fff"
 
 # Home sections
