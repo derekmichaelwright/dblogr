@@ -57,4 +57,4 @@ subtitle = ""
 
 [Academic Work](/posts_academic) | [agData Package](/posts_agdata)  | [Blog Posts](/posts_dblogr) 
 
-</center>
+</center> 
