@@ -14,12 +14,12 @@
   weight = 20
 
 [[main]]
-  name = "blog"
+  name = "Blog"
   url = "#posts_dblogr"
   weight = 30
   
 [[main]]
-  name = "galleries"
+  name = "Galleries"
   url = "/graphs"
   weight = 40
 
