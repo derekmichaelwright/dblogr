@@ -1,11 +1,11 @@
 +++
 # A Demo section created with the Blank widget.
-widget = "portfolio"  # See https://sourcethemes.com/academic/docs/page-builder/
+widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 2  # Order that this section will appear.
+weight = 1  # Order that this section will appear.
 
-title = "Welcome To The Personal Blog Of Derek Michael Wright"
+title = ""
 subtitle = ""
 
 [content]
@@ -30,7 +30,7 @@ subtitle = ""
   # gradient_end = "SkyBlue"
   
   # Background image.
-  image = ""  # Name of image in `static/img/`.
+  image = "logo.png"  # Name of image in `static/img/`.
   image_darken = 0  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
   image_size = "contain"  #  Options are `cover` (default), `contain`, or `actual` size.
   image_position = "center"  # Options include `left`, `center` (default), or `right`.
@@ -51,10 +51,4 @@ subtitle = ""
  css_class = ""
 +++
 
-<center>
-
-[Galleries](/graphs)
-
-[Academic Work](/posts_academic) | [agData Package](/posts_agdata)  | [Blog Posts](/posts_dblogr) 
-
-</center> 
+<br><br><br><br><br>
