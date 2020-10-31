@@ -13,6 +13,7 @@ menu_text = "rgb(255, 255, 255)"
 menu_text_active = "rgb(220, 220, 220)"
 menu_title = "rgb(255, 255, 255)"
 
-# Home sections
+# Backgrounds
+background = "rgb(135, 170, 135)"
 home_section_odd = "rgb(135, 170, 135)"
 home_section_even = "rgb(85, 130, 85)"
