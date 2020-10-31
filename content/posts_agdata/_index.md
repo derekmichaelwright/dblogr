@@ -3,5 +3,5 @@ header:
   caption: ""
   image: ""
 title: agData
-view: 4
+view: 2
 ---
