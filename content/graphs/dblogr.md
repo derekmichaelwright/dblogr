@@ -71,4 +71,6 @@ subtitle = ""
 
 [Population Demographics Canada](/graphs_dblogr/population_demographics_canada)
 
+[Saskatchewan Provincial Elections](/graphs_dblogr/saskatchewan_provincial_elections)
+
 [Street Maps](/graphs_dblogr/street_maps)
