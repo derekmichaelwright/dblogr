@@ -53,13 +53,19 @@ subtitle = ""
 
 [2019 Canadian Election Results](/graphs_dblogr/2019_canadian_election_results)
 
+[2020 Saskatchewan Election Results](/graphs_dblogr/2020_saskatchewan_election_results)
+
 [Amazon Fires](/graphs_dblogr/amazon_fires)
 
 [Candian Federal Elections](/graphs_dblogr/candian_federal_elections)
 
 [CBC Finances](/graphs_dblogr/cbc_finances)
 
-[COVID-19](/graphs_dblogr/covid)
+[COVID-19 Canada](/graphs_dblogr/covid_canada)
+
+[COVID-19 USA](/graphs_dblogr/covid_usa)
+
+[COVID-19 World](/graphs_dblogr/covid_world)
 
 [Economics Of Canada](/graphs_dblogr/economics_of_canada)
 
