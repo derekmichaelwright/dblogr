@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 2  # Order that this section will appear.
 
-title = "Welcome To The Personal Blog Of Derek Michael Wright"
+title = "Welcome To The Personal Blog Of\nDerek Michael Wright"
 subtitle = ""
 
 [content]
@@ -50,11 +50,3 @@ subtitle = ""
  # CSS class.
  css_class = ""
 +++
-
-<center>
-
-[Galleries](/graphs)
-
-[Academic Work](/posts_academic) | [agData Package](/posts_agdata)  | [Blog Posts](/posts_dblogr) 
-
-</center> 
