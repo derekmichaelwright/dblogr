@@ -4,5 +4,5 @@ summary = "*Plants, People, Planet*. 2020;00:1-11"
 categories = [ "AGILE" ]
 tags = [ "AGILE", "Literature", "Featured" ]
 external_link = "https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html"
-weight = 2
+weight = 1
 +++
