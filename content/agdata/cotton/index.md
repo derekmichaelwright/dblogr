@@ -17,4 +17,15 @@ tags = [ "agData", "Cotton" ]
 
 https://derekmichaelwright.github.io/htmls/agdata/cotton.html
 
+---
+
 {{< gallery >}}
+
+---
+
+https://derekmichaelwright.github.io/htmls/agdata/cotton.html
+
+<iframe
+  src="https://derekmichaelwright.github.io/htmls/agdata/cotton.html"
+  style="width:100%; height:600px;"
+></iframe>
