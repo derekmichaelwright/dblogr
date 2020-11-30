@@ -1,8 +1,7 @@
 +++
 title = "Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)"
 summary = "*Plants, People, Planet*. 2020;00:1-11"
-categories = [ "AGILE" ]
-tags = [ "AGILE", "Literature", "Featured" ]
+tags = [ "Academic", "AGILE", "Literature", "Featured" ]
 external_link = "https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html"
 weight = 1
 +++
