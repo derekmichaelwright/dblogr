@@ -79,12 +79,16 @@
   {{ if $page.IsNode }}
     {{ $ctnr = "universal-wrapper" }}
   {{end}}
+
 <div class="{{$ctnr}} pt-3">
   <h1>{{ $title }}</h1>
 
   {{ with $page.Params.subtitle }}
   <p class="page-subtitle">{{ . | markdownify | emojify }}</p>
   {{end}}
+{{ partial "share" . }}
+{{ partial "page_author" . }}
+{{ partial "tags" . }}
 
   {{ if not .IsNode }}
     {{ partial "page_metadata" (dict "page" $page "is_list" 0 "share" true) }}
@@ -92,3 +96,4 @@
   {{end}}
 </div>
 {{end}}
+
