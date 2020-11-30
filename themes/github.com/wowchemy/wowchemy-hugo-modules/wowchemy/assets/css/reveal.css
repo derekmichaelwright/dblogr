@@ -20,7 +20,7 @@
   white-space: nowrap;
   float: none;
   direction: ltr;
-  max-width: none;
+  max-width: 100%;
   max-height: none;
   min-width: 0;
   min-height: 0;
