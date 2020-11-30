@@ -5,17 +5,17 @@
 
 [[main]]
   name = "Academic Work"
-  url = "#academic"
+  url = "#posts_academic"
   weight = 10
 
 [[main]]
   name = "agData Package"
-  url = "#agdata"
+  url = "#posts_agdata"
   weight = 20
 
 [[main]]
   name = "Blog Posts"
-  url = "#dblogr"
+  url = "#posts_dblogr"
   weight = 30
 
 # Link to a PDF of your resume/CV from the menu.
