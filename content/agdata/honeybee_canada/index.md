@@ -8,6 +8,9 @@ title = "Canadian Honeybee Production"
 subtitle = "Graphs of honeybee production in Canada using STATCAN data"
 tags =  [ "agData", "Honeybee" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

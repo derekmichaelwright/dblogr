@@ -8,6 +8,9 @@ title = "Crop Production Canada"
 subtitle = "Graphs of crop production in Canada using STATCAN data"
 tags =  [ "agData", "Regions" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

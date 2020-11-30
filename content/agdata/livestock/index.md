@@ -8,6 +8,9 @@ title = "Livestock"
 subtitle = "Graphs of livestock production using FAO data"
 tags =  [ "agData", "Livestock" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

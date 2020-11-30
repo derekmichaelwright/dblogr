@@ -8,6 +8,9 @@ title = "Potato Production"
 subtitle = "Graphs of potato production using FAO data"
 tags =  [ "agData", "Potato" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

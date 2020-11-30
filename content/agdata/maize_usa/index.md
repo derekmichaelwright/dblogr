@@ -8,6 +8,9 @@ title = "USA Maize Production"
 subtitle = "Graphs of maize production in the USA using USDA data"
 tags =  [ "agData", "Maize", "Featured" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

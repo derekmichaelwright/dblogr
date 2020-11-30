@@ -8,6 +8,9 @@ title = "Crop Production Saskatchewan"
 subtitle = "Graphs of crop production in Saskatchewan using STATCAN data"
 tags =  [ "agData", "Regions", "Featured" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

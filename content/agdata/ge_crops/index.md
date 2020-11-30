@@ -8,6 +8,9 @@ title = "GE Crops"
 subtitle = "Graphs of GE crop production using ISAAA data"
 tags =  [ "agData", "GE Crops", "Featured" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

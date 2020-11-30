@@ -8,6 +8,9 @@ title = "Land Use"
 subtitle = "Graphs for land use with FAO data"
 tags =  [ "agData", "Regions" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

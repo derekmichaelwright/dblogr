@@ -8,6 +8,9 @@ title = "Crop Production World"
 subtitle = "Graphs of of world crop production using FAO data"
 tags =  [ "agData", "Regions" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

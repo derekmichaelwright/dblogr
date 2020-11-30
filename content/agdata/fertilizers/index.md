@@ -8,6 +8,9 @@ title = "Fertilizers"
 subtitle = "Graphs of fertilizer use using data from FAO"
 tags =  [ "agData", "Fertilizers" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

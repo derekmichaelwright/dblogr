@@ -8,6 +8,9 @@ title = "People in Agriculture"
 subtitle = "Graphs for people in Ag"
 tags =  [ "agData", "Regions" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

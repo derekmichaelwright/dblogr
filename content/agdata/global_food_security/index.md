@@ -8,6 +8,9 @@ title = "Global Food Security"
 subtitle = "Graphs of of crop production per capita using FAO data"
 tags =  [ "agData", "Regions", "Featured" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

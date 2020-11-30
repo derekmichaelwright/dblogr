@@ -8,6 +8,9 @@ title = "Wheat Production India"
 subtitle = "Graphs of wheat production in India using FAO data"
 tags =  [ "agData", "Wheat" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

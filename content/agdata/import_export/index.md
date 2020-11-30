@@ -8,6 +8,9 @@ title = "Crop Import/Export"
 subtitle = "Graphs of of crop import/export using FAO data"
 tags =  [ "agData", "Regions" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

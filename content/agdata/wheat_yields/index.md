@@ -8,6 +8,9 @@ title = "Wheat Yields"
 subtitle = "Graphs of global wheat yields using FAO data"
 tags =  [ "agData", "Wheat" ]
 
+[image]
+  preview_only = true
+  
 [design]
   columns = "1"
 +++

@@ -8,6 +8,9 @@ title = "Hemp Production"
 subtitle = "Graphs for hempseed production with FAO data"
 tags =  [ "agData", "Hemp" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

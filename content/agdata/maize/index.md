@@ -8,6 +8,9 @@ title = "Maize Production"
 subtitle = "Graphs of maize yields using FAO data"
 tags =  [ "agData", "Maize" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

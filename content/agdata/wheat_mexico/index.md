@@ -8,6 +8,9 @@ title = "Wheat Production Mexico"
 subtitle = "Graphs of wheat production in Mexico using FAO data"
 tags =  [ "agData", "Wheat" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

@@ -8,6 +8,9 @@ title = "Crop Production USA"
 subtitle = "Graphs for crop production in the USA with USDA data"
 tags =  [ "agData", "Regions" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

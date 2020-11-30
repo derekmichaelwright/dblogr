@@ -8,6 +8,9 @@ title = "Soybean Production"
 subtitle = "Graphs of soybean production using FAO data"
 tags =  [ "agData", "Soybean" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

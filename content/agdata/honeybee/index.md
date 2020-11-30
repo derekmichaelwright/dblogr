@@ -8,6 +8,9 @@ title = "Honeybee Production"
 subtitle = "Graphs for honeybee production"
 tags =  [ "agData", "Honeybee" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

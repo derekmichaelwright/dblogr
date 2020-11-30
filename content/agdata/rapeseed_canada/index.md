@@ -8,6 +8,9 @@ title = "Saskatchewan Rapeseed/Canola Production"
 subtitle = "Graphs of canola production in Saskatchewan using STATCAN data"
 tags =  [ "agData", "Rapeseed" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++

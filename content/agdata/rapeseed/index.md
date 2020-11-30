@@ -8,6 +8,9 @@ title = "Rapeseed/Canola Production"
 subtitle = "Graphs for rapeseed production with FAO data"
 tags =  [ "agData", "Rapeseed" ]
 
+[image]
+  preview_only = true
+
 [design]
   columns = "1"
 +++
