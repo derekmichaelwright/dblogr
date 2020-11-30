@@ -5,12 +5,12 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 15  # Order that this section will appear.
 
-title = "[Academic Work](posts_academic)"
+title = "[Academic Work](academic)"
 subtitle = ""
 
 [content]
   # Page type to display. E.g. project.
-  page_type = "posts_academic"
+  page_type = "academic"
   
   # Filter toolbar (optional).
   # Add or remove as many filters (`[[content.filter_button]]` instances) as you like.

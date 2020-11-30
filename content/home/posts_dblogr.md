@@ -5,12 +5,12 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 35  # Order that this section will appear.
 
-title = "[dblogr](posts_dblogr)"
+title = "[dblogr](dblogr)"
 subtitle = "Personal thoughts of a crazy biologist"
 
 [content]
   # Page type to display. E.g. project.
-  page_type = "posts_dblogr"
+  page_type = "dblogr"
   
   # Filter toolbar (optional).
   # Add or remove as many filters (`[[content.filter_button]]` instances) as you like.

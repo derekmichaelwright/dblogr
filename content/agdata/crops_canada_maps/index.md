@@ -1,0 +1,17 @@
++++
+widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
+headless = true  # This file represents a page section.
+active = true  # Activate this widget? true/false
+weight = 4  # Order that this section will appear.
+
+title = "Canadian Crop Production Maps"
+subtitle = "Maps of crop production in Canada using STATCAN data"
+tags =  [ "agData", "Regions" ]
+
+[design]
+  columns = "1"
++++
+
+crops_canada_maps
+
+{{< gallery >}}
