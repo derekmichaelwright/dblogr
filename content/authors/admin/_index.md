@@ -1,5 +1,5 @@
 ---
-bio: Crop Scientist.
+bio: Derek Michael Wright
 education:
   courses:
   - course: Research Assistant
