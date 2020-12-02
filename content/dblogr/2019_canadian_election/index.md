@@ -27,4 +27,10 @@ https://derekmichaelwright.github.io/htmls/dblogr/2019_canadian_election.html
 {{< gallery album="british_columbia" >}}
 
 
+{{< gallery album="prince_edward_island" >}}
+
+{{< gallery album="nunavut" >}}
+
+{{< gallery album="northwest_territories" >}}
+
 {{< gallery album="yukon" >}}
