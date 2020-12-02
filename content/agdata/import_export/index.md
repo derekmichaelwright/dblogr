@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Crop Import/Export"
 subtitle = "Graphs of of crop import/export using FAO data"
-tags =  [ "agData", "Regions" ]
+summary  = "Graphs of of crop import/export using FAO data"
+tags = [ "agData", "Regions" ]
 
 [image]
   preview_only = true

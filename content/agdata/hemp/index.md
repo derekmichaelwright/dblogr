@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Hemp Production"
 subtitle = "Graphs for hempseed production with FAO data"
-tags =  [ "agData", "Hemp" ]
+summary  = "Graphs for hempseed production with FAO data"
+tags = [ "agData", "Hemp" ]
 
 [image]
   preview_only = true

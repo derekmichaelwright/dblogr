@@ -6,7 +6,8 @@ weight = 3  # Order that this section will appear.
 
 title = "Lentil Production"
 subtitle = "Graphs of lentil production using FAO data"
-tags =  [ "agData", "Lentil", "Featured" ]
+summary  = "Graphs of lentil production using FAO data"
+tags = [ "agData", "Lentil", "Featured" ]
 
 [image]
   preview_only = true

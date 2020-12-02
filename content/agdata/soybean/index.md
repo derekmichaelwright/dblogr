@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Soybean Production"
 subtitle = "Graphs of soybean production using FAO data"
-tags =  [ "agData", "Soybean" ]
+summary  = "Graphs of soybean production using FAO data"
+tags = [ "agData", "Soybean" ]
 
 [image]
   preview_only = true

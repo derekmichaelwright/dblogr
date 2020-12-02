@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Wheat Yields"
 subtitle = "Graphs of global wheat yields using FAO data"
-tags =  [ "agData", "Wheat" ]
+summary  = "Graphs of global wheat yields using FAO data"
+tags = [ "agData", "Wheat" ]
 
 [image]
   preview_only = true

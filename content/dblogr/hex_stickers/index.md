@@ -6,7 +6,8 @@ weight = 3  # Order that this section will appear.
 
 title = "Hex Stickers"
 subtitle = "Creation of hex stickers with R"
-tags =  [ "dblogr", "R" ]
+summary  = "Creation of hex stickers with R"
+tags = [ "dblogr", "R" ]
 
 [image]
   preview_only = true

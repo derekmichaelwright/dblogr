@@ -6,7 +6,8 @@ weight = 3  # Order that this section will appear.
 
 title = "Crop Production World"
 subtitle = "Graphs of of world crop production using FAO data"
-tags =  [ "agData", "Regions" ]
+summary  = "Graphs of of world crop production using FAO data"
+tags = [ "agData", "Regions" ]
 
 [image]
   preview_only = true

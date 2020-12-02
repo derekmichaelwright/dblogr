@@ -5,7 +5,8 @@ active = true  # Activate this widget? true/false
 weight = 4  # Order that this section will appear.
 
 title = "Cotton Production"
-summary = "Graphs of cotton production using FAO data"
+subtitle = "Graphs of cotton production using FAO data"
+summary  = "Graphs of cotton production using FAO data"
 tags = [ "agData", "Cotton" ]
 
 [image]

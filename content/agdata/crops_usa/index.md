@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Crop Production USA"
 subtitle = "Graphs for crop production in the USA with USDA data"
-tags =  [ "agData", "Regions" ]
+summary  = "Graphs for crop production in the USA with USDA data"
+tags = [ "agData", "Regions" ]
 
 [image]
   preview_only = true

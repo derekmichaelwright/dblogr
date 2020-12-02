@@ -6,7 +6,8 @@ weight = 3  # Order that this section will appear.
 
 title = "Saskatchewan Provincial Elections"
 subtitle = "A look back at Saskatchewan provincial election results"
-tags =  [ "dblogr", "Politics" ]
+summary  = "A look back at Saskatchewan provincial election results"
+tags = [ "dblogr", "Politics" ]
 
 [image]
   preview_only = true

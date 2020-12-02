@@ -6,7 +6,8 @@ weight = 3  # Order that this section will appear.
 
 title = "GE Crops"
 subtitle = "Graphs of GE crop production using ISAAA data"
-tags =  [ "agData", "GE Crops", "Featured" ]
+summary  = "Graphs of GE crop production using ISAAA data"
+tags = [ "agData", "GE Crops", "Featured" ]
 
 [image]
   preview_only = true

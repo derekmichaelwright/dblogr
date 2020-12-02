@@ -6,7 +6,8 @@ weight = 3  # Order that this section will appear.
 
 title = "Street Maps with R"
 subtitle = "Create street map art with R and road network files"
-tags =  [ "dblogr", "R" ]
+summary  = "Create street map art with R and road network files"
+tags = [ "dblogr", "R" ]
 
 [image]
   preview_only = true

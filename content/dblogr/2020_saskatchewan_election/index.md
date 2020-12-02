@@ -6,7 +6,8 @@ weight = 3  # Order that this section will appear.
 
 title = "2020 Saskatchewan Election Results"
 subtitle = "A regional look at how Saskatchewanians voted"
-tags =  [ "dblogr", "Politics" ]
+summary  = "A regional look at how Saskatchewanians voted"
+tags = [ "dblogr", "Politics" ]
 
 [image]
   preview_only = true

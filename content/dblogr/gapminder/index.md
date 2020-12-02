@@ -6,7 +6,8 @@ weight = 3  # Order that this section will appear.
 
 title = "Gapminder"
 subtitle = "An exploration of gapminder data"
-tags =  [ "dblogr", "Economics" ]
+summary  = "An exploration of gapminder data"
+tags = [ "dblogr", "Economics" ]
 
 [image]
   preview_only = true

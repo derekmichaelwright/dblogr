@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Rapeseed/Canola Production"
 subtitle = "Graphs for rapeseed production with FAO data"
-tags =  [ "agData", "Rapeseed" ]
+summary  = "Graphs for rapeseed production with FAO data"
+tags = [ "agData", "Rapeseed" ]
 
 [image]
   preview_only = true

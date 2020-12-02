@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Land Use"
 subtitle = "Graphs for land use with FAO data"
-tags =  [ "agData", "Regions" ]
+summary  = "Graphs for land use with FAO data"
+tags = [ "agData", "Regions" ]
 
 [image]
   preview_only = true

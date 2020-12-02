@@ -6,7 +6,8 @@ weight = 3  # Order that this section will appear.
 
 title = "COVID-19 World"
 subtitle = "An exploration of COVID-19 data from Our World in Data"
-tags =  [ "dblogr", "SciComm" ]
+summary  = "An exploration of COVID-19 data from Our World in Data"
+tags = [ "dblogr", "SciComm" ]
 
 [image]
   preview_only = true

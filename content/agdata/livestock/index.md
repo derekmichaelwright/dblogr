@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Livestock"
 subtitle = "Graphs of livestock production using FAO data"
-tags =  [ "agData", "Livestock" ]
+summary  = "Graphs of livestock production using FAO data"
+tags = [ "agData", "Livestock" ]
 
 [image]
   preview_only = true

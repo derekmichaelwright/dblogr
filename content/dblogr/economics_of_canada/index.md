@@ -6,7 +6,8 @@ weight = 3  # Order that this section will appear.
 
 title = "Economics of Canada"
 subtitle = "GDP data among Canadian provinces from 2007-2018"
-tags =  [ "dblogr", "Economics" ]
+summary  = "GDP data among Canadian provinces from 2007-2018"
+tags = [ "dblogr", "Economics" ]
 
 [image]
   preview_only = true

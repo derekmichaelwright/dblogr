@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Honeybee Production"
 subtitle = "Graphs for honeybee production"
-tags =  [ "agData", "Honeybee" ]
+summary  = "Graphs for honeybee production"
+tags = [ "agData", "Honeybee" ]
 
 [image]
   preview_only = true

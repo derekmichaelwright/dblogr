@@ -6,7 +6,8 @@ weight = 3  # Order that this section will appear.
 
 title = "Misleading Graphs"
 subtitle = "A guide illustrating how to mislead with graphs"
-tags =  [ "dblogr", "SciComm", "Featured" ]
+summary  = "A guide illustrating how to mislead with graphs"
+tags = [ "dblogr", "SciComm", "Featured" ]
 
 [image]
   preview_only = true

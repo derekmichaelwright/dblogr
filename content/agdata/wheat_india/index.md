@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Wheat Production India"
 subtitle = "Graphs of wheat production in India using FAO data"
-tags =  [ "agData", "Wheat" ]
+summary  = "Graphs of wheat production in India using FAO data"
+tags = [ "agData", "Wheat" ]
 
 [image]
   preview_only = true

@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Saskatchewan Rapeseed/Canola Production"
 subtitle = "Graphs of canola production in Saskatchewan using STATCAN data"
-tags =  [ "agData", "Rapeseed" ]
+summary  = "Graphs of canola production in Saskatchewan using STATCAN data"
+tags = [ "agData", "Rapeseed" ]
 
 [image]
   preview_only = true

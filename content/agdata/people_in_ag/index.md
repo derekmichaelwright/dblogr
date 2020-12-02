@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "People in Agriculture"
 subtitle = "Graphs for people in Ag"
-tags =  [ "agData", "Regions" ]
+summary  = "Graphs for people in Ag"
+tags = [ "agData", "Regions" ]
 
 [image]
   preview_only = true

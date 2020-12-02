@@ -6,7 +6,8 @@ weight = 3  # Order that this section will appear.
 
 title = "Amazon Fires"
 subtitle = "An analysis of science journalism by the CBC"
-tags =  [ "dblogr", "SciComm", "Featured" ]
+summary  = "An analysis of science journalism by the CBC"
+tags = [ "dblogr", "SciComm", "Featured" ]
 
 [image]
   preview_only = true

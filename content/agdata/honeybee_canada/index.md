@@ -6,7 +6,8 @@ weight = 3  # Order that this section will appear.
 
 title = "Canadian Honeybee Production"
 subtitle = "Graphs of honeybee production in Canada using STATCAN data"
-tags =  [ "agData", "Honeybee" ]
+summary  = "Graphs of honeybee production in Canada using STATCAN data"
+tags = [ "agData", "Honeybee" ]
 
 [image]
   preview_only = true

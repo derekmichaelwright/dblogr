@@ -6,7 +6,8 @@ weight = 3  # Order that this section will appear.
 
 title = "Population Demographics In Canada"
 subtitle = "Population Pyramids with R"
-tags =  [ "dblogr", "SciComm" ]
+summary  = "Population Pyramids with R"
+tags = [ "dblogr", "SciComm" ]
 
 [image]
   preview_only = true

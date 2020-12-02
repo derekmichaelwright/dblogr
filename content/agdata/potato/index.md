@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Potato Production"
 subtitle = "Graphs of potato production using FAO data"
-tags =  [ "agData", "Potato" ]
+summary  = "Graphs of potato production using FAO data"
+tags = [ "agData", "Potato" ]
 
 [image]
   preview_only = true

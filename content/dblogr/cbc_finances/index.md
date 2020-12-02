@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "CBC Finances"
 subtitle = "A look at CBC finances - government funding, ad revenue and total profit"
-tags =  [ "dblogr", "Economics", "Politics" ]
+summary  = "A look at CBC finances - government funding, ad revenue and total profit"
+tags = [ "dblogr", "Economics", "Politics" ]
 
 [image]
   preview_only = true

@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Fertilizers"
 subtitle = "Graphs of fertilizer use using data from FAO"
-tags =  [ "agData", "Fertilizers" ]
+summary  = "Graphs of fertilizer use using data from FAO"
+tags = [ "agData", "Fertilizers" ]
 
 [image]
   preview_only = true

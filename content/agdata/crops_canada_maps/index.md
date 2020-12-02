@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Canadian Crop Production Maps"
 subtitle = "Maps of crop production in Canada using STATCAN data"
-tags =  [ "agData", "Regions" ]
+summary  = "Maps of crop production in Canada using STATCAN data"
+tags = [ "agData", "Regions" ]
 
 [image]
   preview_only = true

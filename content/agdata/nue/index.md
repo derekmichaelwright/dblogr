@@ -6,7 +6,8 @@ weight = 4  # Order that this section will appear.
 
 title = "Nitrogen Use Efficiency"
 subtitle = "Graphs of nitrogen use efficiency (NUE) using data from FAO"
-tags =  [ "agData", "Regions", "Fertilizers" ]
+summary  = "Graphs of nitrogen use efficiency (NUE) using data from FAO"
+tags = [ "agData", "Regions", "Fertilizers" ]
 
 [image]
   preview_only = true

@@ -6,6 +6,8 @@ weight = 20  # Order that this section will appear.
 
 title = "Unemployment & Business Closures"
 subtitle = "An exploration of unemployment & business closures from Canada"
+summary  = "An exploration of unemployment & business closures from Canada"
+tags = [ "dblogr", "Economics" ]
 
 [design]
   columns = "1"
