@@ -9,6 +9,9 @@ subtitle = "An exploration of unemployment & business closures from Canada"
 summary  = "An exploration of unemployment & business closures from Canada"
 tags = [ "dblogr", "Economics" ]
 
+[image]
+  preview_only = true
+  
 [design]
   columns = "1"
 +++

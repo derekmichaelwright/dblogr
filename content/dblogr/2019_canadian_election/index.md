@@ -1,6 +1,6 @@
 +++
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
-headless = true  # This file represents a page section.
+headless = false  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 2  # Order that this section will appear.
 
@@ -9,6 +9,9 @@ subtitle = "A regional look at how Canadians voted"
 summary  = "A regional look at how Canadians voted"
 tags = [ "dblogr", "Politics" ]
 
+[image]
+  preview_only = true
+  
 [design]
   columns = "1"
 +++
