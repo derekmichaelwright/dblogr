@@ -16,6 +16,8 @@ tags = [ "dblogr", "SciComm", "Featured" ]
   columns = "1"
 +++
 
+https://derekmichaelwright.github.io/htmls/dblogr/covid_canada.html
+
 {{< gallery album="area" >}}
 
 {{< gallery album="covid" >}}
