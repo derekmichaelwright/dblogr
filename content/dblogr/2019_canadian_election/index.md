@@ -27,4 +27,4 @@ https://derekmichaelwright.github.io/htmls/dblogr/2019_canadian_election.html
 {{< gallery album="british_columbia" >}}
 
 
-
+{{< gallery album="yukon" >}}
