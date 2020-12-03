@@ -43,6 +43,42 @@ https://derekmichaelwright.github.io/htmls/dblogr/2019_canadian_election.html
 
 ---
 
+{{< gallery album="manitoba" >}}
+
+---
+
+{{< gallery album="prairie_ag" >}}
+
+---
+
+{{< gallery album="ontario" >}}
+
+---
+
+{{< gallery album="quebec" >}}
+
+---
+
+{{< gallery album="nova_scotia" >}}
+
+---
+
+{{< gallery album="new_brunswick" >}}
+
+---
+
+{{< gallery album="newfoundland_labrador" >}}
+
+---
+
+{{< gallery album="prince_edward_island" >}}
+
+---
+
+{{< gallery album="nunavut" >}}
+
+---
+
 {{< gallery album="northwest_territories" >}}
 
 ---
