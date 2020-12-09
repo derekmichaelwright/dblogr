@@ -7,7 +7,7 @@ weight = 3  # Order that this section will appear.
 title = "Deaths In Canada"
 subtitle = "An exploration of weekly deaths in Canada"
 summary  = "An exploration of weekly deaths in Canada"
-tags = [ "dblogr", "SciComm" ]
+tags = [ "dblogr", "SciComm", "Featured" ]
 
 [image]
   preview_only = true

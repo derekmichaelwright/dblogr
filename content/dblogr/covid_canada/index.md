@@ -7,7 +7,7 @@ weight = 4  # Order that this section will appear.
 title = "COVID-19 in Canada"
 subtitle = "An exploration of COVID-19 data from Canada"
 summary  = "An exploration of COVID-19 data from Canada"
-tags = [ "dblogr", "SciComm", "Featured" ]
+tags = [ "dblogr", "SciComm" ]
 
 [image]
   preview_only = true
