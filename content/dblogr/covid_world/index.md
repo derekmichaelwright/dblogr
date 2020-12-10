@@ -2,7 +2,7 @@
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = false  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 3  # Order that this section will appear.
+weight = 4  # Order that this section will appear.
 
 title = "COVID-19 World"
 subtitle = "An exploration of COVID-19 data from Our World in Data"
