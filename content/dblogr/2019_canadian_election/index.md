@@ -37,6 +37,10 @@ https://derekmichaelwright.github.io/htmls/dblogr/2019_canadian_election.html
 
 # Provinces
 
-[Alberta](dblogr/2019_canadian_election/alberta/)
+[Alberta](/pages/dblogr/2019_canadian_election)
+
+[testlink](/graphs)
+
+[testlink2](/pages/dblogr/graphs)
 
 ---
