@@ -71,3 +71,5 @@ subtitle = ""
  css_class = ""
 +++
 
+
+[testlink](/pages/dblogr/post1)
