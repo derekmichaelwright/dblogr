@@ -10,7 +10,7 @@ subtitle = "An `R` package containing agricultural data sets"
 
 [content]
   # Page type to display. E.g. project.
-  page_type = "agdata"
+  page_type = "posts_agdata"
   
   # Filter toolbar (optional).
   # Add or remove as many filters (`[[content.filter_button]]` instances) as you like.

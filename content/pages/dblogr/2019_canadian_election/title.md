@@ -9,4 +9,4 @@ title = "post title"
 subtitle = "test"
 +++
 
-[2019 Canadian Election Results](/pages/dblogr/2019_canadian_election)
+[2019 Canadian Election Results](/pages/dblogr/2019_canadian_election_results)

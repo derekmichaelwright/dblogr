@@ -70,6 +70,3 @@ subtitle = ""
  # CSS class.
  css_class = ""
 +++
-
-
-[testlink](/pages/dblogr/post1)
