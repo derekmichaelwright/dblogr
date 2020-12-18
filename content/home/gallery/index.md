@@ -7,6 +7,9 @@ weight = 6  # Order that this section will appear.
 
 title = "Gallery"
 subtitle = ""
+
+[design]
+  columns = "1"
 +++
 
 {{< gallery >}}
