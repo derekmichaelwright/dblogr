@@ -88,7 +88,7 @@
   <p class="page-subtitle">{{ . | markdownify | emojify }}</p>
   {{end}}
 
-{{ partial "tags" . }}
+{{ partial "page_author" . }}
 {{ partial "share" . }}
 
   {{ if not .IsNode }}
