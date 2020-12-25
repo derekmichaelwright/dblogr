@@ -25,8 +25,3 @@ https://derekmichaelwright.github.io/htmls/agdata/cotton.html
 ---
 
 https://derekmichaelwright.github.io/htmls/agdata/cotton.html
-
-<iframe
-  src="https://derekmichaelwright.github.io/htmls/agdata/cotton.html"
-  style="width:100%; height:600px;"
-></iframe>

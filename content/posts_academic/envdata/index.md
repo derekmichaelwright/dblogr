@@ -2,6 +2,6 @@
 title = "Environmental Data Vignette"
 summary = "Environmental data for the agile project"
 tags = [ "Academic", "AGILE", "Tutorial" ]
-external_link = "https://derekmichaelwright.github.io/htmls/academic/envdata.html"
+external_link = "academic/envdata"
 weight = 3
 +++

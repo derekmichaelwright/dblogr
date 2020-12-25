@@ -50,3 +50,5 @@ subtitle = "A regional look at how Canadians voted"
  # CSS class.
  css_class = ""
 +++
+
+https://derekmichaelwright.github.io/htmls/dblogr/2019_canadian_election.html
