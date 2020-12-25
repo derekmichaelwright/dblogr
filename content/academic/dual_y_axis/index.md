@@ -16,3 +16,5 @@ tags = [ "Academic", "Tutorials", "Featured" ]
 +++
 
 https://derekmichaelwright.github.io/htmls/academic/dual_y_axis.html
+
+![](featured.png)

@@ -16,3 +16,5 @@ tags = [ "Academic", "AGILE", "Tutorial" ]
 +++
 
 https://derekmichaelwright.github.io/htmls/academic/envdata.html
+
+![](featured.png)

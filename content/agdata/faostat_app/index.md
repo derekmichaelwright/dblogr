@@ -16,9 +16,9 @@ tags = [ "agData", "Introduction", "Featured" ]
   columns = "1"
 +++
 
-https://https://wrightmderek.shinyapps.io/agData_FAOSTAT/
+https://wrightmderek.shinyapps.io/agData_FAOSTAT/
 
 <iframe
-  src="https://https://wrightmderek.shinyapps.io/agData_FAOSTAT/"
+  src="https://wrightmderek.shinyapps.io/agData_FAOSTAT/"
   style="width:100%; height:600px;"
 ></iframe>

@@ -16,3 +16,5 @@ tags = [ "Academic", "AGILE", "Tutorials", "Featured" ]
 +++
 
 https://derekmichaelwright.github.io/htmls/academic/correlation_coefficients.html
+
+![](featured.png)

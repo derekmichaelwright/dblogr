@@ -16,3 +16,5 @@ tags = [ "Academic", "Tutorials", "Featured" ]
 +++
 
 https://derekmichaelwright.github.io/htmls/academic/r_tutorial.html
+
+![](rstudio.png)

@@ -17,4 +17,4 @@ tags = [ "Academic", "Literature" ]
 
 https://derekmichaelwright.github.io/htmls/academic/canola_nue.html
 
-![featured.jpg]()
+![](featured.jpg)

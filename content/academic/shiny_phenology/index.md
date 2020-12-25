@@ -16,3 +16,8 @@ tags = [ "Academic", "AGILE", "Featured" ]
 +++
 
 https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/
+
+<iframe
+  src="https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/"
+  style="width:100%; height:600px;"
+></iframe>
