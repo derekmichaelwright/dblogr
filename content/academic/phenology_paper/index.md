@@ -15,4 +15,10 @@ tags = [ "Academic", "AGILE", "Literature", "Featured" ]
   columns = "1"
 +++
 
+https://nph.onlinelibrary.wiley.com/doi/10.1002/ppp3.10158
+
 https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html
+
+https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html
+
+https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/
