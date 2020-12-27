@@ -18,6 +18,7 @@ tags = [ "Academic", "AGILE", "Literature", "Featured" ]
 # Publication
 
 Derek Wright, Sandesh Neupane, Taryn Heidecker, Teketel Haile, Clarice Coyne, Sripada Udupa, Eleonora Barilli, Diego Rubiales, Tania Gioia, Reena Mehra, Ashutosh Sarker, Rajeev Dhakal, Babul Anwar, Debashish Sarker, Albert Vandenberg, and Kirstin E. Bett. (2020) **Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**. *Plants, People, Planet*. 00: 1-11.
+
 https://nph.onlinelibrary.wiley.com/doi/10.1002/ppp3.10158
 
 # Societal Impact Statement
