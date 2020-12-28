@@ -16,6 +16,8 @@ tags = [ "dblogr", "R" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/dblogr/street_maps.html
+{{% /alert %}}
 
 {{< gallery >}}

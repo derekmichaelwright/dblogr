@@ -15,6 +15,8 @@ tags = [ "Academic", "Tutorials", "Featured" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/academic/dual_y_axis.html
+{{% /alert %}}
 
 ![](featured.png)

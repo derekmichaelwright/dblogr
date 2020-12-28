@@ -16,6 +16,8 @@ tags = [ "agData", "Wheat" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/agdata/wheat_india.html
+{{% /alert %}}
 
 {{< gallery >}}

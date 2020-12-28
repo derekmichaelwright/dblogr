@@ -16,6 +16,8 @@ tags = [ "agData", "Regions", "Featured" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/agdata/crops_saskatchewan.html
+{{% /alert %}}
 
 {{< gallery >}}

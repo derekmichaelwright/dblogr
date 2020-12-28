@@ -16,7 +16,9 @@ tags = [ "dblogr", "SciComm", "Featured" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/dblogr/deaths_canada.html
+{{% /alert %}}
 
 <iframe
   src="https://dv-vd.shinyapps.io/Health_Canada/"

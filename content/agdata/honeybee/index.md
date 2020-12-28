@@ -16,6 +16,8 @@ tags = [ "agData", "Honeybee" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/agdata/honeybee.html
+{{% /alert %}}
 
 {{< gallery >}}

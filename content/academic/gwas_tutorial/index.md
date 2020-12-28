@@ -17,4 +17,6 @@ tags = [ "Academic", "Tutorials", "Featured" ]
 draft = true
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/academic/gwas_tutorial.html
+{{% /alert %}}

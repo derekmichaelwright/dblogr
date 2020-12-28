@@ -16,6 +16,8 @@ tags = [ "dblogr", "SciComm", "Featured" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/dblogr/misleading_graphs.html
+{{% /alert %}}
 
 {{< gallery >}}

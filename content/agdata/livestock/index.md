@@ -16,6 +16,8 @@ tags = [ "agData", "Livestock" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/agdata/livestock.html
+{{% /alert %}}
 
 {{< gallery >}}

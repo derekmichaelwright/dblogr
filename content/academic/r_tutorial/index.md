@@ -15,6 +15,8 @@ tags = [ "Academic", "Tutorials", "Featured" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/academic/r_tutorial.html
+{{% /alert %}}
 
 ![](rstudio.png)

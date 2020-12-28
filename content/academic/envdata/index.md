@@ -15,6 +15,8 @@ tags = [ "Academic", "AGILE", "Tutorial" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/academic/envdata.html
+{{% /alert %}}
 
 ![](featured.png)

@@ -16,12 +16,11 @@ tags = [ "agData", "Cotton" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/agdata/cotton.html
-
----
+{{% /alert %}}
 
 {{< gallery >}}
 
----
 
-https://derekmichaelwright.github.io/htmls/agdata/cotton.html
+

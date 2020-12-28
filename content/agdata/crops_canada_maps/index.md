@@ -16,6 +16,8 @@ tags = [ "agData", "Regions" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/agdata/crops_canada_maps.html
+{{% /alert %}}
 
 {{< gallery >}}

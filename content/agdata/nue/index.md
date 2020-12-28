@@ -16,6 +16,8 @@ tags = [ "agData", "Regions", "Fertilizers" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/agdata/nue.html
+{{% /alert %}}
 
 {{< gallery >}}

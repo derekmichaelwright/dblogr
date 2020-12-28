@@ -16,6 +16,8 @@ tags = [ "agData", "Hemp" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/agdata/hemp.html
+{{% /alert %}}
 
 {{< gallery >}}

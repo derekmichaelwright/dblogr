@@ -16,6 +16,8 @@ tags = [ "dblogr", "Politics" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/dblogr/saskatchewan_provincial_elections.html
+{{% /alert %}}
 
 {{< gallery >}}

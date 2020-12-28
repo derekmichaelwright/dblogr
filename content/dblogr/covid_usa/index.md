@@ -16,6 +16,8 @@ tags = [ "dblogr", "SciComm" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/dblogr/covid_usa.html
+{{% /alert %}}
 
 {{< gallery >}}

@@ -16,6 +16,8 @@ tags = [ "agData", "Regions", "Featured" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/agdata/global_food_security.html
+{{% /alert %}}
 
 {{< gallery >}}

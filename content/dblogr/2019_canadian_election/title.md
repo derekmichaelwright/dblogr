@@ -51,4 +51,6 @@ subtitle = "A regional look at how Canadians voted"
  css_class = ""
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/dblogr/2019_canadian_election.html
+{{% /alert %}}

@@ -16,7 +16,9 @@ tags = [ "agData", "Introduction", "Featured" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://wrightmderek.shinyapps.io/agData_FAOSTAT/
+{{% /alert %}}
 
 <iframe
   src="https://wrightmderek.shinyapps.io/agData_FAOSTAT/"

@@ -51,4 +51,6 @@ subtitle = "A look back at all Canadian federal election results"
  css_class = ""
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/dblogr/canadian_federal_elections.html
+{{% /alert %}}

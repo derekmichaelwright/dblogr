@@ -16,4 +16,6 @@ tags = [ "agData", "Introduction", "Featured" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/agdata/introduction_to_agdata.html
+{{% /alert %}}

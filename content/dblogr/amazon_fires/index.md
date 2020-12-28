@@ -16,6 +16,8 @@ tags = [ "dblogr", "SciComm", "Featured" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/dblogr/amazon_fires.html
+{{% /alert %}}
 
 {{< gallery >}}

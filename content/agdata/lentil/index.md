@@ -16,6 +16,8 @@ tags = [ "agData", "Lentil", "Featured" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/agdata/lentil.html
+{{% /alert %}}
 
 {{< gallery >}}

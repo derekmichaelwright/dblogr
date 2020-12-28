@@ -16,6 +16,8 @@ tags = [ "agData", "Rapeseed" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/agdata/rapeseed_canada.html
+{{% /alert %}}
 
 {{< gallery >}}

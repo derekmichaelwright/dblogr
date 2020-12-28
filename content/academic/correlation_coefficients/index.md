@@ -15,6 +15,8 @@ tags = [ "Academic", "AGILE", "Tutorials", "Featured" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/academic/correlation_coefficients.html
+{{% /alert %}}
 
 ![](featured.png)

@@ -16,6 +16,8 @@ tags = [ "dblogr", "Economics" ]
   columns = "1"
 +++
 
+{{% alert note %}}
 https://derekmichaelwright.github.io/htmls/dblogr/economics_of_canada.html
+{{% /alert %}}
 
 {{< gallery >}}
