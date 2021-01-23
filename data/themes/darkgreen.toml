@@ -14,6 +14,6 @@ menu_text_active = "rgb(220, 220, 220)"
 menu_title = "rgb(255, 255, 255)"
 
 # Backgrounds
-background = "#77A57E"
+background = "#eee"
 home_section_odd = "#77A57E"
 home_section_even = "#56815C"#719E78"
