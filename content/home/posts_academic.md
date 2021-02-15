@@ -44,6 +44,10 @@ subtitle = ""
   [[content.filter_button]]
     name = "EVOLVES"
     tag = "EVOLVES"
+    
+  [[content.filter_button]]
+    name = "Links"
+    tag = "Links"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.

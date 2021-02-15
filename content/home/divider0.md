@@ -10,7 +10,7 @@ active: true
 headless: true
 
 # Order that this section appears on the page.
-weight: 30
+weight: 1
 
 title: 
 subtitle:
@@ -18,7 +18,7 @@ subtitle:
 design:
   columns: "1"
   background:
-    image: DW-D-16-09-01-037.JPG
+    image: DW-D-18-07-01-029.jpg
     image_darken: 0
     image_parallax: true
     image_position: center
