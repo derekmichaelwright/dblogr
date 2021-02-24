@@ -89,7 +89,6 @@
   {{end}}
 
 {{ partial "page_author" . }}
-{{ partial "share" . }}
 
   {{ if not .IsNode }}
     {{ partial "page_metadata" (dict "page" $page "is_list" 0 "share" true) }}

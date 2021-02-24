@@ -15,5 +15,10 @@ menu_title = "rgb(255, 255, 255)"
 
 # Backgrounds
 background = "#eee"
-home_section_odd = "#eee"##77A57E
-home_section_even = "#56815C"#719E78"
+home_section_odd = "#eee"  
+home_section_even = "#ddd" 
+
+# Other Colors
+#56815C
+#77A57E
+#719E78
