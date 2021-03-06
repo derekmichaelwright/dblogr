@@ -18,7 +18,7 @@ subtitle:
 design:
   columns: "1"
   background:
-    image: DW-D-16-09-01-037.JPG
+    image: DW-D-17-02-01-033.jpg
     image_darken: 0
     image_parallax: true
     image_position: center
