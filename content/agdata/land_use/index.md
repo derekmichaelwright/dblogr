@@ -17,7 +17,7 @@ tags = [ "agData", "Regions" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/agdata/land_use.html
+**< R Script >**: [land_use.html](https://derekmichaelwright.github.io/htmls/agdata/land_use.html)
 {{% /alert %}}
 
 {{< gallery >}}

@@ -17,7 +17,7 @@ tags = [ "agData", "Regions" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/agdata/import_export.html
+**< R Script >**: [import_export.html](https://derekmichaelwright.github.io/htmls/agdata/import_export.html)
 {{% /alert %}}
 
 {{< gallery >}}

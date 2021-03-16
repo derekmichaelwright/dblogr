@@ -8,7 +8,6 @@ title = "CBC Finances"
 subtitle = "A look at CBC finances - government funding, ad revenue and total profit"
 summary  = "A look at CBC finances - government funding, ad revenue and total profit"
 tags = [ "dblogr", "Economics", "Politics" ]
-url_code = "/post"
 
 [image]
   preview_only = true
@@ -18,7 +17,7 @@ url_code = "/post"
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/dblogr/cbc_finances.html
+**https://derekmichaelwright.github.io/htmls/dblogr/cbc_finances.html**
 {{% /alert %}}
 
 {{< gallery >}}

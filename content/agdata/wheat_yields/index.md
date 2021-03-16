@@ -14,10 +14,11 @@ tags = [ "agData", "Wheat" ]
   
 [design]
   columns = "1"
+
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/agdata/wheat_yields.html
+**https://derekmichaelwright.github.io/htmls/agdata/wheat_yields.html**
 {{% /alert %}}
 
 {{< gallery >}}

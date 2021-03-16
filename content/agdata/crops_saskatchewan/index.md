@@ -17,7 +17,7 @@ tags = [ "agData", "Regions", "Featured" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/agdata/crops_saskatchewan.html
+**< R Script >**: [crops_saskatchewan.html](https://derekmichaelwright.github.io/htmls/agdata/crops_saskatchewan.html)
 {{% /alert %}}
 
 {{< gallery >}}

@@ -17,7 +17,7 @@ tags = [ "agData", "Regions", "Featured" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/agdata/global_food_security.html
+**< R Script >**: [global_food_security.html](https://derekmichaelwright.github.io/htmls/agdata/global_food_security.html)
 {{% /alert %}}
 
 {{< gallery >}}

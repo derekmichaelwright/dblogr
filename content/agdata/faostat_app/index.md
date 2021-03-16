@@ -6,7 +6,7 @@ weight = 2  # Order that this section will appear.
 
 title = "FAOSTAT app"
 subtitle = "A shiny app with FAO data"
-summary = "A shiny app with FAO data"
+summary  = "A shiny app with FAO data"
 tags = [ "agData", "Introduction", "Featured" ]
 
 [image]
@@ -17,7 +17,7 @@ tags = [ "agData", "Introduction", "Featured" ]
 +++
 
 {{% alert note %}}
-https://wrightmderek.shinyapps.io/agData_FAOSTAT/
+**< R Script >**: [wrightmderek.shinyapps.io/agData_FAOSTAT/](https://wrightmderek.shinyapps.io/agData_FAOSTAT/)
 {{% /alert %}}
 
 <iframe

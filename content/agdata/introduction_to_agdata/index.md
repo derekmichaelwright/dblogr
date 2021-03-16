@@ -17,5 +17,10 @@ tags = [ "agData", "Introduction", "Featured" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/agdata/introduction_to_agdata.html
+**< R Script >**: [introduction_to_agdata.html](https://derekmichaelwright.github.io/htmls/agdata/introduction_to_agdata.html)
 {{% /alert %}}
+
+<iframe
+  src="https://derekmichaelwright.github.io/htmls/agdata/introduction_to_agdata.html"
+  style="width:100%; height:600px;"
+></iframe>

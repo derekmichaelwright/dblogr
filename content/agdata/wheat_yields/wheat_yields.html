@@ -1,0 +1,107 @@
+---
+title: "Global Wheat Yields"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/wheat_yields/)"
+date: '2020-10-01'
+subtitle: Graphs of global wheat yields using FAO data
+---
+
+
+
+<hr />
+<p>{{&lt; gallery &gt;}}</p>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- agData_FAO_Crops %&gt;% 
+  filter(Crop == &quot;Wheat&quot;, Measurement == &quot;Yield&quot;, 
+         Area %in% agData_FAO_Country_Table$SubRegion) %&gt;%
+  left_join(agData_FAO_Country_Table, by = c(&quot;Area&quot;=&quot;SubRegion&quot;))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value)) + 
+  geom_smooth(aes(color = Region, group = Area), method = &quot;loess&quot;, se = F) +
+  scale_color_manual(values = agData_Colors) + 
+  theme_agData() +
+  labs(title = &quot;A) SubRegions&quot;, y = &quot;Tonnes / Hectare&quot;, x = NULL)
+ggsave(&quot;gallery/wheat_yields_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="gallery/wheat_yields_01.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- agData_FAO_Crops %&gt;% 
+  filter(Crop == &quot;Wheat&quot;, Measurement == &quot;Yield&quot;, 
+         Area %in% agData_FAO_Country_Table$Country) %&gt;%
+  left_join(agData_FAO_Country_Table, by = c(&quot;Area&quot;=&quot;Country&quot;))
+x1 &lt;- xx %&gt;% filter(Region == &quot;Americas&quot;)
+x2 &lt;- xx %&gt;% filter(Region == &quot;Europe&quot;)
+x3 &lt;- xx %&gt;% filter(Region == &quot;Africa&quot;)
+x4 &lt;- xx %&gt;% filter(Region %in% c(&quot;Asia&quot;, &quot;Oceania&quot;))
+# Create plot function
+my_ggplot &lt;- function(x){
+  ggplot(x, aes(x = Year, y = Value, color = SubRegion) ) +
+    geom_line(size = 1) +
+  facet_wrap(Area~., ncol = 6) +
+  theme_agData() +
+  theme(legend.position = &quot;none&quot;,
+        axis.text.x = element_text(angle = 90, vjust = 0.5),
+        plot.caption = element_text(vjust = 1)) +
+  scale_color_manual(values = agData_Colors) +
+  scale_x_continuous(breaks = seq(1965, 2015, by = 10), minor_breaks = NULL) +
+  scale_y_continuous(breaks = c(2, 4, 6, 8, 10)) +
+  coord_cartesian(ylim = c(0,11)) +
+  labs(caption = &quot;\xa9 www.dblogr.com/  |  Data: www.fao.org/faostat/&quot;,
+       y = &quot;Tonnes / Hectare&quot;, x = NULL)
+}
+# Plot
+mp &lt;- my_ggplot(x1) + labs(title = &quot;Wheat Yields - Americas&quot;)
+ggsave(&quot;gallery/wheat_yields_02.png&quot;, mp, width = 10, height = 6)</code></pre>
+<p><img src="gallery/wheat_yields_02.png" /></p>
+<hr />
+<pre class="r"><code># Plot
+mp &lt;- my_ggplot(x2) + labs(title = &quot;Wheat Yields - Europe&quot;)
+ggsave(&quot;gallery/wheat_yields_03.png&quot;, mp, width = 10, height = 10)</code></pre>
+<p><img src="gallery/wheat_yields_03.png" /></p>
+<hr />
+<pre class="r"><code># Plot
+mp &lt;- my_ggplot(x3) + labs(title = &quot;Wheat Yields - Africa&quot;)
+ggsave(&quot;gallery/wheat_yields_04.png&quot;, mp, width = 10, height = 10)</code></pre>
+<p><img src="gallery/wheat_yields_04.png" /></p>
+<hr />
+<pre class="r"><code># Plot
+mp &lt;- my_ggplot(x4) + labs(title = &quot;Wheat Yields - Asia + Oceania&quot;)
+ggsave(&quot;gallery/wheat_yields_05.png&quot;, mp, width = 10, height = 10)</code></pre>
+<p><img src="gallery/wheat_yields_05.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- agData_FAO_Crops %&gt;% 
+  filter(Crop == &quot;Wheat&quot;, Measurement == &quot;Yield&quot;,
+         Area %in% agData_FAO_Country_Table$SubRegion) %&gt;%
+  left_join(agData_FAO_Country_Table, by = c(&quot;Area&quot;=&quot;SubRegion&quot;)) %&gt;%
+  arrange(Region) %&gt;%
+  mutate(Area = factor(Area, levels = unique(Area)))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Region) ) +
+  geom_line() + facet_wrap(Area~., ncol = 6) + theme_agData() +
+  theme(legend.position = &quot;none&quot;,
+        axis.text.x = element_text(angle = 90, vjust = 0.5),
+        plot.caption = element_text(vjust = 1)) +
+  scale_color_manual(values = agData_Colors) +
+  scale_x_continuous(breaks = seq(1965, 2015, by = 10), minor_breaks = NULL) +
+  scale_y_continuous(breaks = c(2, 4, 6, 8)) +
+  labs(title = &quot;Wheat Yields&quot;, y = &quot;Tonnes / Hectare&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: www.fao.org/faostat/&quot;)
+ggsave(&quot;gallery/wheat_yields_06.png&quot;, mp, width = 10, height = 6)</code></pre>
+<p><img src="gallery/wheat_yields_06.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- agData_FAO_Crops %&gt;% 
+  filter(Crop == &quot;Wheat&quot;, Measurement == &quot;Yield&quot;, 
+         Area %in% c(&quot;New Zealand&quot;, &quot;Netherlands&quot;, &quot;Africa&quot;, &quot;Canada&quot;))
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
+  geom_line(size = 1.25) +
+  scale_color_manual(values = agData_Colors[c(1,3,6,4)]) +
+  theme_agData() +
+  labs(title = &quot;Wheat Yields&quot;, x = NULL, y = &quot;tonnes/hectare&quot;)
+ggsave(&quot;gallery/wheat_yields_07.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="gallery/wheat_yields_07.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.netlify.com/">www.dblogr.com/</a></p>
