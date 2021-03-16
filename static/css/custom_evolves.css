@@ -1,0 +1,27 @@
+<style type="text/css">
+
+.title {
+  font-size: 40pt;
+}
+
+.subtitle {
+  font-size: 18pt;
+}
+
+p {
+  font-size: 14pt;
+}
+
+#sidebar h2{
+    background: url("logo_evolves.png");
+    background-size: contain;
+    padding-top: 150px !important;
+    background-repeat: no-repeat;
+    background-color:#1E3D2A;
+}
+
+h1,h2,h3,h4,h5,h6,legend{
+    color:#1E3D2A;
+}
+
+</style>
