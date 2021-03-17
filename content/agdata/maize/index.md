@@ -20,4 +20,6 @@ tags = [ "agData", "Maize" ]
 **< R Script >**: [maize.html](https://derekmichaelwright.github.io/htmls/agdata/maize.html)
 {{% /alert %}}
 
+[**PDF**: Maize production by country.](https://github.com/derekmichaelwright/htmls/raw/master/scripts/agdata/maize/maize_fao.pdf)
+
 {{< gallery >}}

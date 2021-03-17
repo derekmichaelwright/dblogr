@@ -20,4 +20,6 @@ tags = [ "agData", "Regions" ]
 **< R Script >**: [country_treemaps](https://derekmichaelwright.github.io/htmls/agdata/country_treemaps.html)
 {{% /alert %}}
 
+[**PDF**: Crop Treemaps](https://github.com/derekmichaelwright/htmls/raw/master/scripts/agdata/country_treemaps/country_treemaps.pdf)
+
 {{< gallery >}}
