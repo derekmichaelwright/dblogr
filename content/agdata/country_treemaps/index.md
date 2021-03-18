@@ -17,9 +17,11 @@ tags = [ "agData", "Regions" ]
 +++
 
 {{% alert note %}}
-**< R Script >**: [country_treemaps](https://derekmichaelwright.github.io/htmls/agdata/country_treemaps.html)
+**< R Script >**: [country_treemaps.html](https://derekmichaelwright.github.io/htmls/agdata/country_treemaps.html)
 {{% /alert %}}
 
-[**PDF**: Crop Treemaps](https://github.com/derekmichaelwright/htmls/raw/master/scripts/agdata/country_treemaps/country_treemaps.pdf)
+{{% alert note %}}
+**PDF**: [country_treemaps.pdf](https://github.com/derekmichaelwright/htmls/raw/master/scripts/agdata/country_treemaps/country_treemaps.pdf)
+{{% /alert %}}
 
 {{< gallery >}}

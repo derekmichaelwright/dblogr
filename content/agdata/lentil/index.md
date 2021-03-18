@@ -20,6 +20,8 @@ tags = [ "agData", "Lentil", "Featured" ]
 **< R Script >**: [lentil.html](https://derekmichaelwright.github.io/htmls/agdata/lentil.html)
 {{% /alert %}}
 
-[**PDF**: Lentil production by country.](https://github.com/derekmichaelwright/htmls/raw/master/scripts/agdata/lentil/lentil_fao.pdf)
+{{% alert note %}}
+**PDF**: [lentil_fao.pdf](https://github.com/derekmichaelwright/htmls/raw/master/scripts/agdata/lentil/lentil_fao.pdf)
+{{% /alert %}}
 
 {{< gallery >}}
