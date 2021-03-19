@@ -21,7 +21,7 @@ tags = [ "agData", "Regions" ]
 {{% /alert %}}
 
 {{% alert note %}}
-**PDF**: [country_treemaps.pdf](https://github.com/derekmichaelwright/htmls/raw/master/scripts/agdata/country_treemaps/country_treemaps.pdf)
+**PDF**: [country_treemaps_fao.pdf](https://github.com/derekmichaelwright/htmls/raw/master/scripts/agdata/country_treemaps/country_treemaps_fao.pdf)
 {{% /alert %}}
 
 {{< gallery >}}

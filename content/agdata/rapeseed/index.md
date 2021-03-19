@@ -20,4 +20,8 @@ tags = [ "agData", "Rapeseed" ]
 **< R Script >**: [rapeseed.html](https://derekmichaelwright.github.io/htmls/agdata/rapeseed.html)
 {{% /alert %}}
 
+{{% alert note %}}
+**PDF**: [rapeseed_fao.pdf](https://github.com/derekmichaelwright/htmls/raw/master/scripts/agdata/rapeseed/rapeseed_fao.pdf)
+{{% /alert %}}
+
 {{< gallery >}}

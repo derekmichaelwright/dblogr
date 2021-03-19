@@ -17,7 +17,11 @@ tags = [ "agData", "Wheat" ]
 +++
 
 {{% alert note %}}
-**< R Script >**: [wheat_india.html](https://derekmichaelwright.github.io/htmls/agdata/wheat_india.html)
+**< R Script >**: [wheat.html](https://derekmichaelwright.github.io/htmls/agdata/wheat.html)
+{{% /alert %}}
+
+{{% alert note %}}
+**PDF**: [wheat_fao.pdf](https://github.com/derekmichaelwright/htmls/raw/master/scripts/agdata/wheat/wheat_fao.pdf)
 {{% /alert %}}
 
 {{< gallery >}}

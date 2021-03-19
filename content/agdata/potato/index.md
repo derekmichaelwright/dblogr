@@ -20,4 +20,8 @@ tags = [ "agData", "Potato" ]
 **< R Script >**: [potato.html](https://derekmichaelwright.github.io/htmls/agdata/potato.html)
 {{% /alert %}}
 
+{{% alert note %}}
+**PDF**: [potato_fao.pdf](https://github.com/derekmichaelwright/htmls/raw/master/scripts/agdata/potato/potato_fao.pdf)
+{{% /alert %}}
+
 {{< gallery >}}

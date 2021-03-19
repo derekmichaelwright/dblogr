@@ -20,6 +20,10 @@ tags = [ "agData", "Cotton" ]
 **< R Script >**: [cotton.html](https://derekmichaelwright.github.io/htmls/agdata/cotton.html)
 {{% /alert %}}
 
+{{% alert note %}}
+**PDF**: [cotton_fao.pdf](https://github.com/derekmichaelwright/htmls/raw/master/scripts/agdata/cotton/cotton_fao.pdf)
+{{% /alert %}}
+
 {{< gallery >}}
 
 
