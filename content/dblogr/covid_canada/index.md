@@ -17,7 +17,7 @@ tags = [ "dblogr", "SciComm" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/dblogr/covid_canada.html
+**< R Script >**: [covid_canada.html](https://derekmichaelwright.github.io/htmls/dblogr/covid_canada.html)
 {{% /alert %}}
 
 {{< gallery album="area" >}}

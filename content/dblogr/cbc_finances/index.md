@@ -17,7 +17,7 @@ tags = [ "dblogr", "Economics", "Politics" ]
 +++
 
 {{% alert note %}}
-**https://derekmichaelwright.github.io/htmls/dblogr/cbc_finances.html**
+**< R Script >**: [cbc_finances.html](https://derekmichaelwright.github.io/htmls/dblogr/cbc_finances.html)
 {{% /alert %}}
 
 {{< gallery >}}

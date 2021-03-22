@@ -52,5 +52,9 @@ subtitle = "A regional look at how Canadians voted"
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/dblogr/2019_canadian_election.html
+**< R Script >**: [2019_canadian_election.html](https://derekmichaelwright.github.io/htmls/dblogr/2019_canadian_election.html)
 {{% /alert %}}
+
+# Introduction
+
+The [2019 Canadian federal election](https://en.wikipedia.org/wiki/2019_Canadian_federal_election) was won by the [**Liberal Party**](https://en.wikipedia.org/wiki/Liberal_Party_of_Canada) who won 157 seats (-20) and went from a *majority* to a *minority* government, meaning they must rely on support from other political parties to stay in power. Second place went to the [**Conservative Party**](https://en.wikipedia.org/wiki/Conservative_Party_of_Canada) who won 95 seats (+26). Third to the [**Bloc Québécois**](https://en.wikipedia.org/wiki/Bloc_Qu%C3%A9b%C3%A9cois) who won 32 seats (+22) surpassing the [**New Democratic Party**](https://en.wikipedia.org/wiki/New_Democratic_Party) who won only 24 seats (-20). Fifth place went to the [**Green Party**](https://en.wikipedia.org/wiki/Green_Party_of_Canada) who won 3 seats (+1) and last to the newly formed [**People's Party of Canada**](https://en.wikipedia.org/wiki/People%27s_Party_of_Canada) who did not win a seat.

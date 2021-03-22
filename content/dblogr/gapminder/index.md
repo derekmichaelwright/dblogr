@@ -17,7 +17,7 @@ tags = [ "dblogr", "Economics" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/dblogr/gapminder.html
+**< R Script >**: [gapminder.html](https://derekmichaelwright.github.io/htmls/dblogr/gapminder.html)
 {{% /alert %}}
 
 {{< gallery >}}

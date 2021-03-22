@@ -17,7 +17,11 @@ tags = [ "dblogr", "Politics" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/dblogr/2020_saskatchewan_election.html
+**< R Script >**: [2020_saskatchewan_election.html](https://derekmichaelwright.github.io/htmls/dblogr/2020_saskatchewan_election.html)
+{{% /alert %}}
+
+{{% alert note %}}
+**PDF**: [2020_saskatchewan_election.pdf](https://github.com/derekmichaelwright/htmls/raw/master/scripts/dblogr/2020_saskatchewan_election/2020_saskatchewan_election.pdf)
 {{% /alert %}}
 
 {{< gallery >}}

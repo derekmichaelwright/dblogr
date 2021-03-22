@@ -17,7 +17,7 @@ tags = [ "dblogr", "SciComm", "Featured" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/dblogr/population_demographics_canada.html
+**< R Script >**: [population_demographics_canada.html](https://derekmichaelwright.github.io/htmls/dblogr/population_demographics_canada.html)
 {{% /alert %}}
 
 {{< gallery >}}

@@ -17,5 +17,5 @@ tags = [ "dblogr", "R" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/dblogr/calendar_creation.html
+**< R Script >**: [calendar_creation.html](https://derekmichaelwright.github.io/htmls/dblogr/calendar_creation.html)
 {{% /alert %}}

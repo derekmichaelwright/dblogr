@@ -17,7 +17,7 @@ tags = [ "dblogr", "SciComm", "Featured" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/dblogr/misleading_graphs.html
+**< R Script >**: [misleading_graphs.html](https://derekmichaelwright.github.io/htmls/dblogr/misleading_graphs.html)
 {{% /alert %}}
 
 {{< gallery >}}

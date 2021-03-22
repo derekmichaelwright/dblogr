@@ -17,7 +17,7 @@ tags = [ "dblogr", "Economics" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/dblogr/unemployment_canada.html
+**< R Script >**: [unemployment_canada.html](https://derekmichaelwright.github.io/htmls/dblogr/unemployment_canada.html)
 {{% /alert %}}
 
 {{< gallery >}}

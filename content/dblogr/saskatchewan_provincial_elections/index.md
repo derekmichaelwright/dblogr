@@ -17,7 +17,7 @@ tags = [ "dblogr", "Politics" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/dblogr/saskatchewan_provincial_elections.html
+**< HTML >**: [saskatchewan_provincial_elections.html](https://derekmichaelwright.github.io/htmls/dblogr/saskatchewan_provincial_elections.html)
 {{% /alert %}}
 
 {{< gallery >}}

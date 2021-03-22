@@ -17,7 +17,7 @@ tags = [ "dblogr", "R" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/dblogr/hex_stickers.html
+**< R Script >**: [hex_stickers.html](https://derekmichaelwright.github.io/htmls/dblogr/hex_stickers.html)
 {{% /alert %}}
 
 {{< gallery >}}

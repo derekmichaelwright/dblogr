@@ -17,7 +17,7 @@ tags = [ "dblogr", "SciComm", "Featured" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/dblogr/deaths_canada.html
+**< R Script >**: [deaths_canada.html](https://derekmichaelwright.github.io/htmls/dblogr/deaths_canada.html)
 {{% /alert %}}
 
 <iframe

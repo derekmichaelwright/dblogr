@@ -17,7 +17,7 @@ tags = [ "dblogr", "R" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/dblogr/street_maps.html
+**< R Script >**: [street_maps.html](https://derekmichaelwright.github.io/htmls/dblogr/street_maps.html)
 {{% /alert %}}
 
 {{< gallery >}}

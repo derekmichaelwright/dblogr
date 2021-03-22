@@ -17,7 +17,7 @@ tags = [ "dblogr", "SciComm", "Featured" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/dblogr/amazon_fires.html
+**< R Script >**: [amazon_fires.html](https://derekmichaelwright.github.io/htmls/dblogr/amazon_fires.html)
 {{% /alert %}}
 
 {{< gallery >}}
