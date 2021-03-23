@@ -17,7 +17,7 @@ tags = [ "agData", "Soybean" ]
 +++
 
 {{% alert note %}}
-**< R Script >**: [soybean](https://derekmichaelwright.github.io/htmls/agdata/soybean.html)
+**< R Script >**: [soybean.html](https://derekmichaelwright.github.io/htmls/agdata/soybean.html)
 {{% /alert %}}
 
 {{% alert note %}}

@@ -17,7 +17,7 @@ tags = [ "agData", "Introduction", "Featured" ]
 +++
 
 {{% alert note %}}
-**< R Script >**: [wrightmderek.shinyapps.io/agData_FAOSTAT/](https://wrightmderek.shinyapps.io/agData_FAOSTAT/)
+**< Shiny App >**: [wrightmderek.shinyapps.io/agData_FAOSTAT/](https://wrightmderek.shinyapps.io/agData_FAOSTAT/)
 {{% /alert %}}
 
 <iframe
