@@ -8,6 +8,7 @@ title = "Misleading Graphs"
 subtitle = "A guide illustrating how to mislead with graphs"
 summary  = "A guide illustrating how to mislead with graphs"
 tags = [ "dblogr", "SciComm", "Featured" ]
+toc = true
 
 [image]
   preview_only = true

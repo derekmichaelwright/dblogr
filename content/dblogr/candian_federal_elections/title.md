@@ -54,3 +54,5 @@ subtitle = "A look back at all Canadian federal election results"
 {{% alert note %}}
 **< HTML >**: [canadian_federal_elections.html](https://derekmichaelwright.github.io/htmls/dblogr/canadian_federal_elections.html)
 {{% /alert %}}
+
+All images are from [Wikipedia](http://www.wikipedia.org/)

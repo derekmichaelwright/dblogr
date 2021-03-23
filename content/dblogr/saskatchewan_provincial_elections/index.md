@@ -20,4 +20,6 @@ tags = [ "dblogr", "Politics" ]
 **< HTML >**: [saskatchewan_provincial_elections.html](https://derekmichaelwright.github.io/htmls/dblogr/saskatchewan_provincial_elections.html)
 {{% /alert %}}
 
+All images are from [Wikipedia](http://www.wikipedia.org/)
+
 {{< gallery >}}
