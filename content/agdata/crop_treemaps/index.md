@@ -4,7 +4,7 @@ headless = false  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 3  # Order that this section will appear.
 
-title = "Crops Treemaps Production World"
+title = "Crop Treemaps"
 subtitle = "Graphs of countries producing specific crops"
 summary  = "Graphs of countries producing specific crops"
 tags = [ "agData", "Regions" ]

@@ -4,7 +4,7 @@ headless = false  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 4  # Order that this section will appear.
 
-title = "Canadaian Farmland"
+title = "Canadian Farmland"
 subtitle = "Graphs of farmland size using data from STATCAN"
 summary  = "Graphs of farmland size using data from STATCAN"
 tags = [ "agData", "Regions" ]

@@ -4,7 +4,7 @@ headless = false  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 3  # Order that this section will appear.
 
-title = "GE Crops"
+title = "Genetically Engineered Crop Production"
 subtitle = "Graphs of GE crop production using ISAAA data"
 summary  = "Graphs of GE crop production using ISAAA data"
 tags = [ "agData", "GE Crops", "Featured" ]

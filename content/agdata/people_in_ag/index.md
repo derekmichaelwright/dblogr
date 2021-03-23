@@ -5,8 +5,8 @@ active = true  # Activate this widget? true/false
 weight = 4  # Order that this section will appear.
 
 title = "People in Agriculture"
-subtitle = "Graphs for people in Ag"
-summary  = "Graphs for people in Ag"
+subtitle = "Graphs of people in Ag"
+summary  = "Graphs of people in Ag"
 tags = [ "agData", "Regions" ]
 
 [image]

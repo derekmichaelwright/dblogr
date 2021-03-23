@@ -4,7 +4,7 @@ headless = false  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 4  # Order that this section will appear.
 
-title = "Canadian Crop Production Maps"
+title = "Maps of Canadian Crop Production"
 subtitle = "Maps of crop production in Canada using STATCAN data"
 summary  = "Maps of crop production in Canada using STATCAN data"
 tags = [ "agData", "Regions" ]

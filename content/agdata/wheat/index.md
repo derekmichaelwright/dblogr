@@ -4,7 +4,7 @@ headless = false  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 4  # Order that this section will appear.
 
-title = "Wheat Production India"
+title = "Global Wheat Production"
 subtitle = "Graphs of wheat production in India using FAO data"
 summary  = "Graphs of wheat production in India using FAO data"
 tags = [ "agData", "Wheat" ]

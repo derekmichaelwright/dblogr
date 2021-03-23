@@ -4,9 +4,9 @@ headless = false  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 4  # Order that this section will appear.
 
-title = "Hemp Production"
-subtitle = "Graphs for hempseed production with FAO data"
-summary  = "Graphs for hempseed production with FAO data"
+title = "Global Hemp Production"
+subtitle = "Graphs for hemp production with FAO data"
+summary  = "Graphs for hemp production with FAO data"
 tags = [ "agData", "Hemp" ]
 
 [image]

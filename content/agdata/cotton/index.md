@@ -4,7 +4,7 @@ headless = false  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 4  # Order that this section will appear.
 
-title = "Cotton Production"
+title = "Global Cotton Production"
 subtitle = "Graphs of cotton production using FAO data"
 summary  = "Graphs of cotton production using FAO data"
 tags = [ "agData", "Cotton" ]

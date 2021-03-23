@@ -4,9 +4,9 @@ headless = false  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 4  # Order that this section will appear.
 
-title = "Honeybee Production"
-subtitle = "Graphs for honeybee production"
-summary  = "Graphs for honeybee production"
+title = "Global Honeybee Production"
+subtitle = "Graphs of honeybee production using FAO data"
+summary  = "Graphs of honeybee production using FAO data"
 tags = [ "agData", "Honeybee" ]
 
 [image]
