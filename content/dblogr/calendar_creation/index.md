@@ -19,3 +19,17 @@ tags = [ "dblogr", "R" ]
 {{% alert note %}}
 **< R Script >**: [calendar_creation.html](https://derekmichaelwright.github.io/htmls/dblogr/calendar_creation.html)
 {{% /alert %}}
+
+{{% alert note %}}
+**PDF**: [Calendar_Year.pdf](https://github.com/derekmichaelwright/htmls/raw/master/scripts/dblogr/calendar_creation/Calendar_Year.pdf)
+{{% /alert %}}
+
+{{% alert note %}}
+**PDF**: [Calendar_Monthly.pdf](https://github.com/derekmichaelwright/htmls/raw/master/scripts/dblogr/calendar_creation/Calendar_Monthly.pdf)
+{{% /alert %}}
+
+{{% alert note %}}
+**PDF**: [Calendar_Weekly.pdf](https://github.com/derekmichaelwright/htmls/raw/master/scripts/dblogr/calendar_creation/Calendar_Weekly.pdf)
+{{% /alert %}}
+
+{{< gallery >}}
