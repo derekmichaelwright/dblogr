@@ -17,10 +17,8 @@ tags = [ "Academic", "AGILE", "Literature", "Featured" ]
 
 # Publication
 
-Derek Wright, Sandesh Neupane, Taryn Heidecker, Teketel Haile, Clarice Coyne, Sripada Udupa, Eleonora Barilli, Diego Rubiales, Tania Gioia, Reena Mehra, Ashutosh Sarker, Rajeev Dhakal, Babul Anwar, Debashish Sarker, Albert Vandenberg, and Kirstin E. Bett. (2020) **Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**. *Plants, People, Planet*. 00: 1-11.
-
 {{% alert note %}}
-**< Article >**: https://nph.onlinelibrary.wiley.com/doi/10.1002/ppp3.10158
+Derek Wright, Sandesh Neupane, Taryn Heidecker, Teketel Haile, Clarice Coyne, Sripada Udupa, Eleonora Barilli, Diego Rubiales, Tania Gioia, Reena Mehra, Ashutosh Sarker, Rajeev Dhakal, Babul Anwar, Debashish Sarker, Albert Vandenberg, and Kirstin E. Bett. (2020) **Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**. *Plants, People, Planet*. 00: 1-11. https://nph.onlinelibrary.wiley.com/doi/10.1002/ppp3.10158
 {{% /alert %}}
 
 # Societal Impact Statement
@@ -37,25 +35,25 @@ Lentil is a staple in many diets around the world and growing in popularity as a
 # Figures
 
 {{% alert note %}}
-**< Figures >**: https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html
+https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html
 {{% /alert %}}
 
 # Source Code
 
 {{% alert note %}}
-**< R Script >**: https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html
+https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html
 {{% /alert %}}
 
 # Github
 
 {{% alert note %}}
-**< Github >**: https://github.com/derekmichaelwright/AGILE_LDP_Phenology
+https://github.com/derekmichaelwright/AGILE_LDP_Phenology
 {{% /alert %}}
 
 # Shiny App
 
 {{% alert note %}}
-**< Shiny App >**: https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/
+https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/
 {{% /alert %}}
 
 # LDP Origins

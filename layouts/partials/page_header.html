@@ -60,6 +60,8 @@
   <p class="page-subtitle">{{ . | markdownify | emojify }}</p>
   {{end}}
 
+  {{ partial "header_maincodefolding" . }}
+
   {{ partial "page_metadata" (dict "page" $page "is_list" 0 "share" true) }}
   {{ partial "page_links_div.html" $page }}
 </div>
@@ -91,6 +93,7 @@
 {{ partial "page_author" . }}
 
   {{ if not .IsNode }}
+    {{ partial "header_maincodefolding" . }}
     {{ partial "page_metadata" (dict "page" $page "is_list" 0 "share" true) }}
     {{ partial "page_links_div.html" $page }}
   {{end}}
