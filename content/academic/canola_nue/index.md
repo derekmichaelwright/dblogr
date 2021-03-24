@@ -13,6 +13,7 @@ tags = [ "Academic", "Literature" ]
 
 [design]
   columns = "1"
+  
 +++
 
 {{% alert note %}}
