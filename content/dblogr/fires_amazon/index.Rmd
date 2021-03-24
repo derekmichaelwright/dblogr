@@ -10,7 +10,7 @@ image:
   preview_only: true
 links:
   - icon_pack: fas
-    icon: fa-code
+    icon: code
     name: R Script
     url: https://derekmichaelwright.github.io/htmls/dblogr/fires_amazon.html
 ---
