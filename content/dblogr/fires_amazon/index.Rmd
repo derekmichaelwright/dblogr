@@ -4,6 +4,7 @@ subtitle: "An analysis of science journalism by the CBC"
 summary: "An analysis of science journalism by the CBC"
 date: "2020-10-01"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/fires_amazon/)"
+weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
@@ -14,7 +15,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```
 
 {{% alert note %}}
-**< R Script >**: [canola_nue.html](https://derekmichaelwright.github.io/htmls/academic/canola_nue.html)
+**< R Script >**: [fires_amazon.html](https://derekmichaelwright.github.io/htmls/dblogr/fires_amazon.html)
 {{% /alert %}}
 
 ---
@@ -67,13 +68,13 @@ https://www.cbc.ca/news/world/trudeau-more-work-needed-g7-summit-amazon-burns-1.
 
 Ok, lets check out the data ourselves.
 
-Data source: National Institute for Space Reserach (*INPE*)
-
-[http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/](http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/)
-
 ---
 
 # Data
+
+Data source: National Institute for Space Reserach (*INPE*)
+
+http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/
 
 [*Download Data*](https://github.com/derekmichaelwright/htmls/blob/master/dblogr/fires_amazon_data.xlsx?raw=true)
 

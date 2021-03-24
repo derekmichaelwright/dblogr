@@ -4,6 +4,7 @@ subtitle: "An analysis of science journalism by the CBC"
 summary: "An analysis of science journalism by the CBC"
 date: "2020-10-01"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/fires_amazon/)"
+weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
@@ -21,7 +22,7 @@ image:
 
 
 <p>{{% alert note %}}
-<strong>&lt; R Script &gt;</strong>: <a href="https://derekmichaelwright.github.io/htmls/academic/canola_nue.html">canola_nue.html</a>
+<strong>&lt; R Script &gt;</strong>: <a href="https://derekmichaelwright.github.io/htmls/dblogr/fires_amazon.html">fires_amazon.html</a>
 {{% /alert %}}</p>
 <hr />
 <div id="introduction" class="section level1">
@@ -69,12 +70,12 @@ image:
 <p>“According to Brazil’s space research centre, INPE, which has been recording wildfires since 2013, more than 75,000 fires are burning in Brazil, which is a more than 80 per cent increase over the same period of 2018, the agency told Reuters.”</p>
 </blockquote>
 <p>Ok, lets check out the data ourselves.</p>
-<p>Data source: National Institute for Space Reserach (<em>INPE</em>)</p>
-<p><a href="http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/">http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/</a></p>
 <hr />
 </div>
 <div id="data" class="section level1">
 <h1>Data</h1>
+<p>Data source: National Institute for Space Reserach (<em>INPE</em>)</p>
+<p><a href="http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/" class="uri">http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/</a></p>
 <p><a href="https://github.com/derekmichaelwright/htmls/blob/master/dblogr/fires_amazon_data.xlsx?raw=true"><em>Download Data</em></a></p>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
