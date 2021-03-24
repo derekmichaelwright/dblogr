@@ -20,7 +20,7 @@ tags = [ "Academic", "AGILE", "Literature", "Featured" ]
 Derek Wright, Sandesh Neupane, Taryn Heidecker, Teketel Haile, Clarice Coyne, Sripada Udupa, Eleonora Barilli, Diego Rubiales, Tania Gioia, Reena Mehra, Ashutosh Sarker, Rajeev Dhakal, Babul Anwar, Debashish Sarker, Albert Vandenberg, and Kirstin E. Bett. (2020) **Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**. *Plants, People, Planet*. 00: 1-11.
 
 {{% alert note %}}
-https://nph.onlinelibrary.wiley.com/doi/10.1002/ppp3.10158
+**< Article >**: https://nph.onlinelibrary.wiley.com/doi/10.1002/ppp3.10158
 {{% /alert %}}
 
 # Societal Impact Statement
@@ -37,25 +37,25 @@ Lentil is a staple in many diets around the world and growing in popularity as a
 # Figures
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html
+**< Figures >**: https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html
 {{% /alert %}}
 
 # Source Code
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html
+**< R Script >**: https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html
 {{% /alert %}}
 
 # Github
 
 {{% alert note %}}
-https://github.com/derekmichaelwright/AGILE_LDP_Phenology
+**< Github >**: https://github.com/derekmichaelwright/AGILE_LDP_Phenology
 {{% /alert %}}
 
 # Shiny App
 
 {{% alert note %}}
-https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/
+**< Shiny App >**: https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/
 {{% /alert %}}
 
 # LDP Origins
@@ -64,3 +64,5 @@ https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/
   src="https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Additional/Additional_Figure_09.html"
   style="width:100%; height:600px;"
 ></iframe>
+
+{{< gallery >}}

@@ -16,7 +16,7 @@ tags = [ "Academic", "Literature" ]
 +++
 
 {{% alert note %}}
-https://derekmichaelwright.github.io/htmls/academic/canola_nue.html
+**< R Script >**: [canola_nue.html](https://derekmichaelwright.github.io/htmls/academic/canola_nue.html)
 {{% /alert %}}
 
 ![](featured.jpg)

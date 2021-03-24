@@ -20,7 +20,7 @@ tags = [ "Academic", "AGILE", "Literature" ]
 Teketel A. Haile,  Taryn Heidecker,  Derek Wright,  Sandesh Neupane,  Larissa Ramsay,  Albert Vandenberg & Kirstin E. Bett (2020) **Genomic selection for lentil breeding: Empirical evidence**. *The Plant Genome*. 13(e20002): 1-15.
 
 {{% alert note %}}
-https://acsess.onlinelibrary.wiley.com/doi/full/10.1002/tpg2.20002
+**< Article >**: https://acsess.onlinelibrary.wiley.com/doi/full/10.1002/tpg2.20002
 {{% /alert %}}
 
 # Abstract
