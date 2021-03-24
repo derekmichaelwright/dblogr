@@ -19,10 +19,6 @@ links:
 knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```
 
-{{% alert note %}}
-**< R Script >**: [fires_amazon.html](https://derekmichaelwright.github.io/htmls/dblogr/fires_amazon.html)
-{{% /alert %}}
-
 ---
 
 # Introduction
