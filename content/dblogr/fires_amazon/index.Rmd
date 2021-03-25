@@ -13,6 +13,10 @@ links:
     icon: code
     name: R Script
     url: https://derekmichaelwright.github.io/htmls/dblogr/fires_amazon.html
+  - icon_pack: far
+    icon: images
+    name: Gallery
+    url: /gallery
 ---
 
 ```{r setup, include=FALSE}
@@ -107,14 +111,14 @@ mp <- ggplot(xx, aes(x = Year, y = Total / 1000)) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x= NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
-ggsave("fires_amazon_01.png", mp, width = 6, height = 4)
+ggsave("gallery/fires_amazon_01.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F}
 ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
-![Figure 1: Number of detected fires per year from 1999 - 2019.](fires_amazon_01.png)
+![Figure 1: Number of detected fires per year from 1999 - 2019.](gallery/fires_amazon_01.png)
 
 Hmm, looking at *Figure 1* there seems to have been a lot more forest fires prior to 2013. Lets look at just the data CBC claimed was available (since 2013).
 
@@ -129,10 +133,10 @@ mp <- ggplot(xx, aes(x = Year, y = Total / 1000)) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x= NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
-ggsave("fires_amazon_02.png", mp, width = 6, height = 4)
+ggsave("gallery/fires_amazon_02.png", mp, width = 6, height = 4)
 ```
 
-![Figure 2: Number of detected fires per year, from 2013 - 2020.](fires_amazon_02.png)
+![Figure 2: Number of detected fires per year, from 2013 - 2020.](gallery/fires_amazon_02.png)
 
 Even when looking at this subset of the data, it doesn't appear to be some kind of crisis. However, lets look at the data by month and see if it tells a different story:
 
@@ -154,10 +158,10 @@ mp <- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
-ggsave("fires_amazon_03.png", mp, width = 6, height = 4)
+ggsave("gallery/fires_amazon_03.png", mp, width = 6, height = 4)
 ```
 
-![Figure 3: Number of detected fires per month, 2013-2019.](fires_amazon_03.png)
+![Figure 3: Number of detected fires per month, 2013-2019.](gallery/fires_amazon_03.png)
 
 Now it does look like forest fires have increased. And if we compare the data from 2018, there is a significant increase, as the CBC notes:
 
@@ -201,10 +205,10 @@ mp <- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE") 
-ggsave("fires_amazon_04.png", mp, width = 6, height = 4)
+ggsave("gallery/fires_amazon_04.png", mp, width = 6, height = 4)
 ```
 
-![Figure 4: Number of detected fires per month, 1998-2019.](fires_amazon_04.png)
+![Figure 4: Number of detected fires per month, 1998-2019.](gallery/fires_amazon_04.png)
 
 Now a different picture is painted. But why pick 2013 as the starting point?
 
@@ -221,10 +225,10 @@ mp <- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
-ggsave("fires_amazon_05.png", mp, width = 6, height = 4)
+ggsave("gallery/fires_amazon_05.png", mp, width = 6, height = 4)
 ```
 
-![Figure 5: Number of detected fires per month, 2012, 2013 & 2019.](fires_amazon_05.png)
+![Figure 5: Number of detected fires per month, 2012, 2013 & 2019.](gallery/fires_amazon_05.png)
 
 Looks like they just went back to the first year things were worse. However in thier last report, they do note that:
 
@@ -245,10 +249,10 @@ mp <- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
-ggsave("fires_amazon_06.png", mp, width = 6, height = 4)
+ggsave("gallery/fires_amazon_06.png", mp, width = 6, height = 4)
 ```
 
-![Figure 6: Number of detected fires per month, 2010 & 2019.](fires_amazon_06.png)
+![Figure 6: Number of detected fires per month, 2010 & 2019.](gallery/fires_amazon_06.png)
 
 Now lets do our own bias selection of data:
 
@@ -266,10 +270,10 @@ mp <- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
-ggsave("fires_amazon_07.png", mp, width = 6, height = 4)
+ggsave("gallery/fires_amazon_07.png", mp, width = 6, height = 4)
 ```
 
-![Figure 7: Number of detected fires per month for selected years.](fires_amazon_07.png)
+![Figure 7: Number of detected fires per month for selected years.](gallery/fires_amazon_07.png)
 
 Doing this makes it seem like forest fires are decreasing.
 
@@ -292,10 +296,10 @@ mp <- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
-ggsave("fires_amazon_08.png", mp, width = 6, height = 4)
+ggsave("gallery/fires_amazon_08.png", mp, width = 6, height = 4)
 ```
 
-![Figure 8: Cumulative number of detected fires by month, 1998-2019.](fires_amazon_08.png)
+![Figure 8: Cumulative number of detected fires by month, 1998-2019.](gallery/fires_amazon_08.png)
 
 This all raises in interesting question: is the CBC being purposely deceitful? or are they just poor journalists?
 
