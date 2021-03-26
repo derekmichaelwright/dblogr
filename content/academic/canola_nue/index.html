@@ -1,0 +1,278 @@
+---
+title: "MSc Thesis - Canola NUE"
+subtitle: "Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)"
+summary:  "Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)"
+date: "2021-03-26"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/canola_nue)"
+tags: [ "Academic", "Literature", "Featured" ]
+math: true
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/academic/canola_nue.html
+  - icon_pack: fas
+    icon: file-pdf
+    name: Masters Thesis
+    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/academic/canola_nue/MastersThesis.pdf
+---
+
+
+
+<p><img src="featured.jpg" /></p>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>This is a vignette for my Masters thesis titled “Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of <em>Brassica napus</em> (L.)”.</p>
+<p>Department of Agronomy and Plant Breeding I, Justus-Liebig-Universität, Gießen 35392, Germany</p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/raw/master/content/academic/canola_nue/MastersThesis.pdf">Download My Masters Thesis</a></p>
+</div>
+<div id="materials-and-methods" class="section level1">
+<h1>Materials and Methods</h1>
+<div id="experiment" class="section level2">
+<h2>Experiment</h2>
+<p>Thirty <em>Brassica napus</em> cultivars, 20 hybrid and 10 purebred lines, both old and new, were grown in a greenhouse under two fertilizer treatments: no N fertilization (N1) and 200 kg N/ha (N2). For each experimental replicate of genotype and fertilizer treatment, nine plants were grown in containers of 0.16 m2 surface area, filled with 147.5 kg of soil with a dry matter content of 88.2% (130.1 kg dry mass), in the layout described below.</p>
+</div>
+<div id="data-collection-analysis" class="section level2">
+<h2>Data Collection &amp; Analysis</h2>
+<p>Plant root mass, shoot mass, straw mass and seed mass was recorded, along with (NIRS) of seed for oil and protein content. Note: For plant shoots, 2 of the 9 plants were used for another study and not inluded in total mass measurements</p>
+<p><img src="container1.png" width="50%" /><img src="container2.png" width="50%" /></p>
+<p><img src="layout1.png" width="100%" /><img src="layout2.png" width="100%" /></p>
+</div>
+</div>
+<div id="formulas" class="section level1">
+<h1>Formulas</h1>
+<p><span class="math inline">\(NUE=N_{in Seed}/N_{Available}\)</span></p>
+<p>Calculation of N fertilizatio when 1.6g N is added to container:</p>
+<p><span class="math inline">\((1.6gN)*(\frac{1kg}{1000g})*(\frac{1}{0.16m^2})*(\frac{10000m^2}{1ha})=100\frac{kgN}{ha}\)</span></p>
+<p>Calculation of available N in soil (N1)</p>
+<p><span class="math inline">\(N1=\frac{44.65\frac{mgNO_3}{kgsoil}+2.15\frac{mgNH_4}{kgsoil}*(130.1kgsoil)}{9plants}=677\frac{mgN}{perplant}\)</span></p>
+<p>Calculation of available N with fertilization of 200 kg N/ha (N2)</p>
+<p><span class="math inline">\(N2=677\frac{mgN}{perplant}+\frac{2*(1600mgN)}{9plants}=1033\frac{mgN}{perplant}\)</span></p>
+</div>
+<div id="prepare-data" class="section level1">
+<h1>Prepare Data</h1>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/academic/canola_nue_data.xlsx?raw=true">Download Data</a></p>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(readxl) # read_xlsx</code></pre>
+<pre class="r"><code># Cultivar data
+r1 &lt;- read_xlsx(&quot;canola_nue_data.xlsx&quot;, &quot;CultData&quot;) %&gt;%
+  mutate(Hybrid = plyr::mapvalues(Hybrid, c(&quot;H&quot;, &quot;P&quot;), c(&quot;Hybrid&quot;, &quot;Purebred&quot;)),
+         Age = plyr::mapvalues(Age, c(&quot;N&quot;, &quot;O&quot;), c(&quot;New&quot;, &quot;Old&quot;)),
+         Type = factor(paste(Age, Hybrid), 
+           levels = c(&quot;Old Purebred&quot;, &quot;New Purebred&quot;, &quot;Old Hybrid&quot;, &quot;New Hybrid&quot;)))
+# Container data
+r2 &lt;- read_xlsx(&quot;canola_nue_data.xlsx&quot;, &quot;ContData&quot;) %&gt;%
+  mutate(Nlevel = paste0(&quot;N&quot;, Nlevel))
+# Plant data
+r3 &lt;- read_xlsx(&quot;canola_nue_data.xlsx&quot;, &quot;PlantData&quot;)
+# NIRS data main
+r4 &lt;- read_xlsx(&quot;canola_nue_data.xlsx&quot;, &quot;NIRSmainRaw&quot;) %&gt;%
+  mutate(ErucicAcidPercent = ifelse(ErucicAcidPercent &lt; 0, 0, ErucicAcidPercent),
+         DryContent = 100 - WaterPercent) %&gt;%
+  group_by(Container) %&gt;% 
+  summarise_all(funs(mean), na.rm = T)
+colnames(r4) &lt;- paste0(colnames(r4),&quot;_Main&quot;)
+colnames(r4)[1] &lt;- &quot;Container&quot;
+# NIRS data side
+r5 &lt;- read_xlsx(&quot;canola_nue_data.xlsx&quot;, &quot;NIRSsideRaw&quot;)
+r5 &lt;- r5 %&gt;% mutate(DryContent = 100 - WaterPercent) %&gt;%
+  mutate(ErucicAcidPercent = ifelse(ErucicAcidPercent &lt; 0, 0, ErucicAcidPercent),
+         DryContent = 100 - WaterPercent) %&gt;%
+  group_by(Container) %&gt;% 
+  summarise_all(funs(mean), na.rm = T)
+colnames(r5) &lt;- paste0(colnames(r5),&quot;_Side&quot;)
+colnames(r5)[1] &lt;- &quot;Container&quot;</code></pre>
+<ul>
+<li>Note: for straw mass 2 of the 9 plants were removed and used for another project</li>
+<li>StemMass1:</li>
+<li>StemMass2:</li>
+</ul>
+<pre class="r"><code>rr &lt;- left_join(r2, r1, by = c(&quot;Genotype&quot;=&quot;Cultivar&quot;)) %&gt;% 
+  left_join(r3, by = &quot;Container&quot;) %&gt;%
+  left_join(r4, by = &quot;Container&quot;) %&gt;%
+  left_join(r5, by = &quot;Container&quot;) %&gt;%
+  mutate(RootMass = RootMass / 9,
+         StemMass = (StemMass1 + StemMass2) / 7,
+         StrawMass = (StrawMassMain + StrawMassSide) / 7,
+         ShootMass = StemMass + StrawMass,
+         SeedMassMainDry = SeedMassMain * DryContent_Main / 100 / 7,
+         SeedMassSideDry = SeedMassSide * DryContent_Side / 100 / 7,
+         SeedMass = SeedMassMainDry + SeedMassSideDry,
+         HarvestIndex = SeedMass / ShootMass,
+         OilMassMain = OilPercent_Main * SeedMassMainDry / 100,
+         OilMassSide = OilPercent_Side * SeedMassSideDry / 100,
+         OilMass = OilMassMain + OilMassSide,
+         ProteinMassMain = ProteinPercent_Main * SeedMassMainDry / 100,
+         ProteinMassSide = ProteinPercent_Side * SeedMassSideDry / 100,
+         ProteinMass = ProteinMassMain + ProteinMassSide,
+         N_Available = ifelse(Nlevel == 1, 677, 1033),
+         NUE_P = ProteinMass * 0.16 / N_Available * 1000, 
+         NUE_Y = SeedMass           / N_Available * 1000) %&gt;% 
+  select(Container, Nlevel, AvailableN, Rep, Edge,
+         Genotype, CultLabel, CultNumber, Hybrid, Age, Type, Breeder,
+         RootMass, StemMass, StrawMass, ShootMass, SeedMass, 
+         NUE_P, NUE_Y, everything()) %&gt;%
+  filter(Edge == &quot;F&quot;)
+trts &lt;- colnames(rr)[13:ncol(rr)]
+xx &lt;- rr %&gt;% group_by(Nlevel, Genotype, CultLabel, Hybrid, Age, Type, Breeder) %&gt;%
+  summarise_at(vars(trts), funs(mean), na.rm = T) %&gt;% 
+  ungroup()
+xx_sd &lt;- rr %&gt;% group_by(Nlevel, Genotype, CultLabel, Hybrid, Age, Type, Breeder) %&gt;%
+  summarise_at(vars(trts), funs(sd), na.rm = T) %&gt;% 
+  ungroup()</code></pre>
+</div>
+<div id="biomass" class="section level1">
+<h1>Biomass</h1>
+<pre class="r"><code>nlev = &quot;N2&quot;
+gg_PlantMass &lt;- function(nlev) {
+  x1 &lt;- xx %&gt;% 
+    mutate(SeedMass = ifelse(Genotype == &quot;Pacific&quot; &amp; Nlevel == &quot;N2&quot;, 0, SeedMass),
+           StrawMass = ifelse(Genotype == &quot;Pacific&quot; &amp; Nlevel == &quot;N2&quot;, 0, StrawMass),
+           StemMass = ifelse(Genotype == &quot;Pacific&quot; &amp; Nlevel == &quot;N2&quot;, 0, StemMass),
+           RootMass = ifelse(Genotype == &quot;Pacific&quot; &amp; Nlevel == &quot;N2&quot;, 0, RootMass),
+           RootScore = ifelse(Genotype == &quot;Pacific&quot; &amp; Nlevel == &quot;N2&quot;, 0, RootScore))
+  genoOrder &lt;- x1 %&gt;% filter(Nlevel == &quot;N2&quot;) %&gt;%
+    arrange(SeedMass, Type) %&gt;% pull(Genotype)
+  
+  xi &lt;- x1 %&gt;% filter(Nlevel == nlev, !is.na(StemMass), !is.na(StrawMass), 
+                      !is.na(SeedMass), !is.na(RootMass))
+  xs &lt;- xi %&gt;% 
+    select(Genotype, Hybrid, Type, StemMass, StrawMass, SeedMass) %&gt;% 
+    gather(Trait, Value, StemMass, StrawMass, SeedMass) %&gt;%
+    mutate(Genotype = factor(Genotype, levels = genoOrder),
+           Trait = factor(Trait, levels = c(&quot;SeedMass&quot;,&quot;StrawMass&quot;,&quot;StemMass&quot;,&quot;RootMass&quot;)))
+  xr &lt;- xi %&gt;% rename(Value=RootMass) %&gt;% 
+    mutate(Genotype = factor(Genotype, levels = genoOrder),
+           Trait = &quot;RootMass&quot;,
+           Trait = factor(Trait, levels = c(&quot;RootMass&quot;,&quot;StemMass&quot;,&quot;StrawMass&quot;,&quot;SeedMass&quot;)))
+  mp1 &lt;- ggplot(xs, aes(x = Genotype, y = Value, fill = Trait, group = Trait)) + 
+    geom_bar(stat= &quot;identity&quot;) +
+    geom_line(data = xs %&gt;% filter(Trait == &quot;SeedMass&quot;)) +
+    facet_grid(.~Type, scales= &quot;free_x&quot;, space = &quot;free_x&quot;) +
+    scale_y_continuous(limits = c(0,85), expand = c(0,0)) +
+    scale_fill_manual(name = NULL,
+                      values = c(&quot;darkgreen&quot;,&quot;darkorange&quot;,&quot;forestgreen&quot;),
+                      labels = c(&quot;Seed&quot;,&quot;Straw&quot;,&quot;Stem&quot;)) +
+    theme_agData(axis.text.x = element_blank()) +
+    labs(title = nlev, x = NULL, y = &quot;g&quot;)
+  mp2 &lt;- ggplot(xr, aes(x = Genotype, y = Value)) + 
+    geom_bar(stat = &quot;identity&quot;, aes(fill = Trait)) +
+    geom_text(aes(label = RootScore, y = 1), size = 3)  +
+    facet_grid(.~Type, scales= &quot;free_x&quot;, space = &quot;free_x&quot;) +
+    scale_y_reverse(limits = c(11,0), expand = c(0,0)) +
+    scale_fill_manual(name = NULL, values = c(&quot;brown&quot;),
+                      labels = c(&quot;Root&quot;)) +
+    theme_agData(rotx = T, strip.text.x = element_blank()) +
+    labs(y = &quot;g&quot;, x = NULL)
+  ggarrange(mp1, mp2, ncol = 1, align = &quot;v&quot;, heights = c(1.3,1))
+}
+#
+mp1 &lt;- gg_PlantMass(&quot;N2&quot;)
+mp2 &lt;- gg_PlantMass(&quot;N1&quot;)
+mp &lt;- ggarrange(mp1, mp2, ncol = 1)
+ggsave(&quot;Fig_01.png&quot;, mp, width = 10, height = 10)</code></pre>
+<p><img src="Fig_01.png" /></p>
+<hr />
+</div>
+<div id="n1-vs-n2" class="section level1">
+<h1>N1 vs N2</h1>
+<pre class="r"><code>gg_Corr &lt;- function(trait = &quot;NUE_P&quot;, title = NULL) {
+  xi &lt;- xx %&gt;% select(Genotype, Type, Nlevel, Hybrid, Value=trait) %&gt;%
+    spread(Nlevel, Value)
+  mymin &lt;- min(xi$N1, xi$N2, na.rm = T)
+  mymax &lt;- max(xi$N1, xi$N2, na.rm = T)
+  x2 &lt;- bind_rows(xi %&gt;% filter(Type != &quot;Old Purebred&quot;) %&gt;% mutate(Type = &quot;Old Purebred&quot;),
+                  xi %&gt;% filter(Type != &quot;New Purebred&quot;)  %&gt;% mutate(Type = &quot;New Purebred&quot;),
+                  xi %&gt;% filter(Type != &quot;Old Hybrid&quot;)  %&gt;% mutate(Type = &quot;Old Hybrid&quot;),
+                  xi %&gt;% filter(Type != &quot;New Hybrid&quot;)  %&gt;% mutate(Type = &quot;New Hybrid&quot;) )
+  ggplot(xi, aes(x = N1, y = N2)) + 
+    geom_point(aes(shape = Type, fill = Type), size = 3, alpha = 0.7) + 
+    geom_point(data = x2, alpha = 0.2) + geom_abline() + 
+    facet_wrap(Type~., ncol = 2) +
+    scale_fill_manual(values = c(&quot;darkblue&quot;,&quot;darkred&quot;,&quot;darkblue&quot;,&quot;darkred&quot;)) +
+    scale_shape_manual(values = c(22,23,25,24)) +
+    coord_cartesian(xlim = c(mymin, mymax), ylim = c(mymin, mymax)) +
+    theme_agData(legend.position = &quot;none&quot;) +
+    labs(title = trait)
+}
+mp1 &lt;- gg_Corr(&quot;NUE_P&quot;, &quot;NUE Protein&quot;)
+mp2 &lt;- gg_Corr(&quot;NUE_Y&quot;, &quot;NUE Yield&quot;)
+mp3 &lt;- gg_Corr(&quot;ProteinMass&quot;, &quot;Protein Mass&quot;)
+mp4 &lt;- gg_Corr(&quot;OilMass&quot;, &quot;Oil Mass&quot;)
+mp5 &lt;- gg_Corr(&quot;RootMass&quot;, &quot;Root Mass&quot;)
+mp6 &lt;- gg_Corr(&quot;ShootMass&quot;, &quot;Shoot Mass&quot;)
+mp7 &lt;- gg_Corr(&quot;SeedMass&quot;, &quot;Seed Mass&quot;)
+mp8 &lt;- gg_Corr(&quot;RootScore&quot;, &quot;Root Branching Score&quot;)
+mp &lt;- ggarrange(mp1, mp2, mp3, mp4, mp5, mp6, mp7, mp8, ncol = 4, nrow = 2)
+ggsave(&quot;Fig_02.png&quot;, mp, width = 12, height = 8)</code></pre>
+<p><img src="Fig_02.png" /></p>
+<hr />
+<pre class="r"><code># Plotting function
+gg_Diff &lt;- function(trait = &quot;SeedMass&quot;) {
+  xi &lt;- xx %&gt;% 
+    rename(Value = trait) %&gt;%
+    select(Nlevel, Genotype, CultLabel, Hybrid, Age, Type, Value) %&gt;%
+    spread(Nlevel, Value) %&gt;%
+    mutate(Diff = N2 - N1,
+           Diff2 = ifelse(Diff &gt; 0, &quot;Pos&quot;, &quot;Neg&quot;)) %&gt;%
+    gather(Nlevel, Value, N1, N2)
+  #
+  mp &lt;- ggplot(xi, aes(x = Nlevel, y = Value, color = Diff2)) + 
+    geom_line(aes(group = Genotype)) +
+    geom_label(aes(label = CultLabel), size = 2.5,
+               label.padding = unit(0.15, &quot;lines&quot;)) +
+    facet_grid(. ~ Type) +
+    scale_color_manual(values = c(&quot;darkred&quot;,&quot;darkblue&quot;)) +
+    theme_agData(legend.position = &quot;none&quot;)
+  ggsave(paste0(&quot;Diff_&quot;, trait, &quot;.png&quot;), mp, width = 8, height = 4)
+}
+# Plot
+gg_Diff(trait = &quot;StemMass&quot;)
+gg_Diff(trait = &quot;StrawMass&quot;)
+gg_Diff(trait = &quot;ShootMass&quot;)
+gg_Diff(trait = &quot;SeedMass&quot;)
+gg_Diff(trait = &quot;RootMass&quot;)
+gg_Diff(trait = &quot;RootScore&quot;)
+gg_Diff(trait = &quot;NUE_P&quot;)
+gg_Diff(trait = &quot;NUE_Y&quot;)</code></pre>
+<p><img src="Diff_StemMass.png" /></p>
+<p><img src="Diff_StrawMass.png" /></p>
+<p><img src="Diff_ShootMass.png" /></p>
+<p><img src="Diff_SeedMass.png" /></p>
+<p><img src="Diff_RootMass.png" /></p>
+<p><img src="Diff_RootScore.png" /></p>
+<p><img src="Diff_NUE_P.png" /></p>
+<p><img src="Diff_NUE_Y.png" /></p>
+<hr />
+<pre class="r"><code>library(corrplot)
+traits &lt;- c(&quot;RootMass&quot;, &quot;RootScore&quot;, &quot;StemMass&quot;, &quot;ShootMass&quot;, 
+            &quot;StrawMass&quot;, #&quot;StrawMassMain&quot;, &quot;StrawMassSide&quot;,
+            &quot;SeedMass&quot;, &quot;SeedMassMain&quot;, &quot;SeedMassSide&quot;,
+            &quot;NUE_P&quot;, &quot;NUE_Y&quot;, &quot;RootLength&quot;, 
+            &quot;ProteinMass&quot;, &quot;OilMass&quot;, &quot;HarvestIndex&quot;, 
+            &quot;OilPercent_Main&quot;, &quot;OilPercent_Side&quot;,
+            &quot;ProteinPercent_Main&quot;, &quot;ProteinPercent_Side&quot;)
+m1 &lt;- xx %&gt;% filter(Nlevel == &quot;N1&quot;, !is.na(RootMass)) %&gt;% select(traits)
+m2 &lt;- xx %&gt;% filter(Nlevel == &quot;N2&quot;, !is.na(RootMass)) %&gt;% select(traits)
+#
+png(&quot;N1_corrplot.png&quot;, width = 600, height = 600)
+mp1 &lt;- corrplot(cor(m1), order = &quot;hclust&quot;, addrect=2)
+dev.off()</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<pre class="r"><code>#
+png(&quot;N2_corrplot.png&quot;, width = 600, height = 600)
+mp2 &lt;- corrplot(cor(m2), order = &quot;hclust&quot;, addrect=2)
+dev.off()</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<p><img src="N1_corrplot.png" /></p>
+<p><img src="N2_corrplot.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>
