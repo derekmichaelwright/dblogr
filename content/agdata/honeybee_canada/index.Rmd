@@ -40,11 +40,9 @@ xx <- agData_STATCAN_Beehives %>%
          Era   = factor(Era, levels = c("Pre-NeoNic", "Post-NeoNic")))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value)) + 
-  geom_line() + 
-  geom_line(aes(color = Era), size = 1.25) +
+  geom_line(size = 1.25, color = "darkgreen", alpha = 0.8) + 
   facet_grid(Measurement + Unit ~ ., scales = "free", switch = "y",
              labeller = label_wrap_gen(width = 14, multi_line = TRUE)) +
-  scale_colour_manual(name = "Era:", values = c("darkgoldenrod2", "Dark Green")) +
   scale_x_continuous(breaks = seq(1925, 2020, 10), minor_breaks = NULL) + 
   coord_cartesian(xlim = c(min(xx$Year)+4, max(xx$Year)-4)) +
   theme_agData(strip.placement = "outside", legend.position = "bottom") + 
@@ -66,8 +64,7 @@ ggsave("featured.png", mp, width = 6, height = 8)
 ```{r}
 # Plot
 mp <- ggplot(xx %>% filter(Measurement == "Colonies"), aes(x = Year, y = Value)) + 
-  geom_line() + 
-  geom_line(aes(color = Era), size = 1.25) +
+  geom_line(size = 1.25, color = "darkgreen", alpha = 0.8) + 
   scale_colour_manual(name = "Era:", values = c("darkgoldenrod2", "Dark Green")) +
   scale_x_continuous(breaks = seq(1925, 2020, 10), minor_breaks = NULL) + 
   coord_cartesian(xlim = c(min(xx$Year)+4, max(xx$Year)-4)) +
@@ -78,6 +75,24 @@ ggsave("honeybee_canada_02.png", mp, width = 6, height = 4)
 ```
 
 ![](honeybee_canada_02.png)
+
+---
+
+```{r}
+# Plot
+mp <- ggplot(xx %>% filter(Measurement == "Colonies"), aes(x = Year, y = Value)) + 
+  geom_line() + 
+  geom_line(aes(color = Era), size = 1.25) +
+  scale_colour_manual(name = "Era:", values = c("darkgoldenrod2", "Dark Green")) +
+  scale_x_continuous(breaks = seq(1925, 2020, 10), minor_breaks = NULL) + 
+  coord_cartesian(xlim = c(min(xx$Year)+4, max(xx$Year)-4)) +
+  theme_agData(strip.placement = "outside", legend.position = "bottom") + 
+  labs(title = "Canada - Honeybee", y = "Thousand Colonies", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN" )
+ggsave("honeybee_canada_03.png", mp, width = 6, height = 4)
+```
+
+![](honeybee_canada_03.png)
 
 ---
 
@@ -108,10 +123,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   theme_agData(legend.position = "none") +
   labs(title = "Canada - Honeybee", y = "Thousand Colonies", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN" )
-ggsave("honeybee_canada_03.png", mp, width = 10, height = 4)
+ggsave("honeybee_canada_04.png", mp, width = 10, height = 4)
 ```
 
-![](honeybee_canada_03.png)
+![](honeybee_canada_04.png)
 
 ---
 
@@ -130,10 +145,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   theme_agData(legend.position = "none") +
   labs(title = "Canada - Honeybee", y = "Thousand Colonies", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN" )
-ggsave("honeybee_canada_04.png", mp, width = 6, height = 4)
+ggsave("honeybee_canada_05.png", mp, width = 6, height = 4)
 ```
 
-![](honeybee_canada_04.png)
+![](honeybee_canada_05.png)
 
 # Saskatchewan vs. Quebec
 
@@ -150,10 +165,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   theme_agData(legend.position = "none") +
   labs(title = "Canada - Honeybee", y = "Thousand Colonies", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN" )
-ggsave("honeybee_canada_05.png", mp, width = 6, height = 4)
+ggsave("honeybee_canada_06.png", mp, width = 6, height = 4)
 ```
 
-![](honeybee_canada_05.png)
+![](honeybee_canada_06.png)
 
 ---
 
