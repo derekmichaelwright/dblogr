@@ -1,6 +1,7 @@
 ---
 title: "Land Use"
 subtitle: "Graphs for land use with FAO data"
+summary:  "Graphs for land use with FAO data"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/land_use/)"
 tags: [ "agData", "Regions" ]

@@ -1,6 +1,7 @@
 ---
 title: "Global Rapeseed/Canola Production"
 subtitle: "Graphs for rapeseed production with FAO data"
+summary:  "Graphs for rapeseed production with FAO data"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/rapeseed/)"
 tags: [ "agData", "Rapeseed" ]
