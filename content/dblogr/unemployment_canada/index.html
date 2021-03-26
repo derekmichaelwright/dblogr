@@ -1,0 +1,113 @@
+---
+title: "Unemployment & Business Closures"
+subtitle: "An exploration of unemployment & business closures from Canada"
+summary:  "An exploration of unemployment & business closures from Canada"
+date: "2021-03-25"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/unemployment_canada/)"
+tags: [ "dblogr", "Economics" ]
+weight: 4
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/unemployment_canada.html
+---
+
+
+
+<hr />
+<div id="prep-data" class="section level1">
+<h1>Prep Data</h1>
+<p>STATCAN data Tables: 3310027001</p>
+<p><a href="https://www150.statcan.gc.ca/n1/pub/11-626-x/11-626-x2020014-eng.htm" class="uri">https://www150.statcan.gc.ca/n1/pub/11-626-x/11-626-x2020014-eng.htm</a></p>
+<p><a href="https://github.com/derekmichaelwright/htmls/blob/master/scripts/dblogr/economics_of_canada/economics_of_canada_data.xlsx?raw=true"><em>Download Data</em></a></p>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<pre class="r"><code># Prep data
+dd &lt;- read.csv(&quot;3310027001_databaseLoadingData.csv&quot;) %&gt;%
+  rename(Measurement=Business.dynamics.measure) %&gt;%
+  filter(Measurement %in% c(&quot;Opening businesses&quot;,&quot;Closing businesses&quot;),
+         !is.na(VALUE)) %&gt;%
+  mutate(Date = as.Date(paste0(ï..REF_DATE,&quot;-01&quot;), format = &quot;%Y-%m-%d&quot;)) %&gt;%
+  select(Area=GEO, Date, Measurement, VALUE) %&gt;%
+  spread(Measurement, VALUE) %&gt;%
+  mutate(Difference = `Opening businesses` - `Closing businesses`,
+         Area = gsub(&quot;Â&quot;, &quot;&quot;, Area))
+xx &lt;- dd %&gt;% 
+  select(Area, Date, `Opening businesses`, `Closing businesses`) %&gt;%
+  gather(Measurement, Value, `Opening businesses`, `Closing businesses`)</code></pre>
+</div>
+<div id="business-closures" class="section level1">
+<h1>Business Closures</h1>
+<pre class="r"><code># Prep data
+xc &lt;- xx %&gt;% filter(Area == &quot;Canada&quot;)
+# Plot
+mp &lt;- ggplot(xc, aes(x = Date, y = Value, fill = Measurement)) +
+  geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) +
+  scale_fill_manual(name = NULL, values = c(&quot;darkred&quot;, &quot;darkgreen&quot;)) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Canada - Business Openings/Closures&quot;, y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;Unemployment_Canada_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="Unemployment_Canada_01.png" /></p>
+<hr />
+<pre class="r"><code># Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value, fill = Measurement)) +
+  geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) +
+  facet_wrap(Area ~ ., scales = &quot;free_y&quot;) +
+  scale_fill_manual(name = NULL, values = c(&quot;darkred&quot;, &quot;darkgreen&quot;)) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Canada - Business Openings/Closures&quot;, y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;Unemployment_Canada_02.png&quot;, mp, width = 12, height = 8)</code></pre>
+<p><img src="Unemployment_Canada_02.png" /></p>
+<pre class="r"><code># Prep data
+xc &lt;- dd %&gt;% filter(Area == &quot;Canada&quot;) %&gt;% 
+  mutate(Date = as.POSIXct(Date))
+# Plot
+mp &lt;- ggplot(xc, aes(x = Date, y = Difference)) +
+  geom_hline(yintercept = 0) +
+  geom_line(size = 1, color = &quot;darkred&quot;) + 
+  geom_point(alpha = 0.6) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Canada - Net Business Openings/Closures&quot;, y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;Unemployment_Canada_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="Unemployment_Canada_03.png" /></p>
+<hr />
+<pre class="r"><code>sum(dd %&gt;% filter(Area == &quot;Canada&quot;, Date &gt; &quot;2020-01-01&quot;) %&gt;% pull(Difference))</code></pre>
+<pre><code>## [1] -85725</code></pre>
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  separate(Date, c(&quot;Year&quot;,&quot;Month&quot;,&quot;Day&quot;)) %&gt;% 
+  group_by(Area, Year) %&gt;%
+  summarise(Businesses = sum(Difference)) %&gt;%
+  ungroup() %&gt;% 
+  mutate(Pos = ifelse(Businesses &gt; 0, &quot;Yes&quot;, &quot;No&quot;))
+xc &lt;- xx %&gt;% filter(Area == &quot;Canada&quot;)
+# Plot
+mp &lt;- ggplot(xc, aes(x = Year, y = Businesses, fill = Pos)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) + 
+  scale_fill_manual(values = c(&quot;darkred&quot;,&quot;darkgreen&quot;)) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Canada - Net Business Openings/Closures&quot;, y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;Unemployment_Canada_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="Unemployment_Canada_04.png" /></p>
+<hr />
+<pre class="r"><code># Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Businesses, fill = Pos)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) + 
+  facet_wrap(Area ~ ., scales = &quot;free_y&quot;) +
+  scale_fill_manual(values = c(&quot;darkred&quot;,&quot;darkgreen&quot;)) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Canada - Net Business Openings/Closures&quot;, y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;Unemployment_Canada_05.png&quot;, mp, width = 12, height = 8)</code></pre>
+<p><img src="Unemployment_Canada_05.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

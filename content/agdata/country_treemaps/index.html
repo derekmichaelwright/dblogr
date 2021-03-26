@@ -1,0 +1,152 @@
+---
+title: "Country Treemaps"
+subtitle: "Graphs of crops produced by specific countries"
+summary:  "Graphs of crops produced by specific countries"
+date: "2021-03-25"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/country_treemaps/)"
+tags: [ "agData", "Regions" ]
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/agdata/country_treemaps.html
+  - icon_pack: fas
+    icon: file-pdf
+    name: PDF
+    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/country_treemaps/country_treemaps_fao.pdf
+---
+
+
+
+<hr />
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(treemapify)</code></pre>
+<hr />
+<div id="crops-by-area" class="section level1">
+<h1>Crops by Area</h1>
+<pre class="r"><code>gg_treemap &lt;- function(area = &quot;Canada&quot;, measurement = &quot;Area harvested&quot;, year = 2018) {
+  #Prep data
+  xx &lt;- agData_FAO_Crops %&gt;% 
+    filter(Area == area, Year == year, Measurement == measurement) %&gt;%
+    arrange(desc(Value)) %&gt;% 
+    slice(1:25) %&gt;%
+    mutate(Area = factor(Area, levels = unique(Area))) 
+  # Plot
+  ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
+    geom_treemap(color = &quot;black&quot;) +
+    geom_treemap_text(place = &quot;centre&quot;, grow = T, color = &quot;white&quot;) +
+    scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
+    theme_agData(legend.position = &quot;none&quot;) +
+    labs(title = paste(area,&quot;-&quot;,year,&quot;-&quot;,measurement),
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+}</code></pre>
+<hr />
+<div id="world" class="section level2">
+<h2>World</h2>
+<pre class="r"><code>mp &lt;- gg_treemap(area = &quot;World&quot;)
+ggsave(&quot;country_treemaps_01_world.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="country_treemaps_01_world.png" /></p>
+<hr />
+</div>
+<div id="canada" class="section level2">
+<h2>Canada</h2>
+<pre class="r"><code>mp &lt;- gg_treemap(area = &quot;Canada&quot;)
+ggsave(&quot;country_treemaps_02_canada.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="country_treemaps_02_canada.png" /></p>
+<hr />
+</div>
+<div id="usa" class="section level2">
+<h2>USA</h2>
+<pre class="r"><code>mp &lt;- gg_treemap(area = &quot;USA&quot;)
+ggsave(&quot;country_treemaps_03_usa.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="country_treemaps_03_usa.png" /></p>
+<hr />
+</div>
+<div id="mexico" class="section level2">
+<h2>Mexico</h2>
+<pre class="r"><code>mp &lt;- gg_treemap(area = &quot;Mexico&quot;)
+ggsave(&quot;country_treemaps_04_mexico.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="country_treemaps_04_mexico.png" /></p>
+<hr />
+</div>
+<div id="germany" class="section level2">
+<h2>Germany</h2>
+<pre class="r"><code>mp &lt;- gg_treemap(area = &quot;Germany&quot;)
+ggsave(&quot;country_treemaps_05_germany.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="country_treemaps_05_germany.png" /></p>
+<hr />
+</div>
+<div id="russia" class="section level2">
+<h2>Russia</h2>
+<pre class="r"><code>mp &lt;- gg_treemap(area = &quot;Russia&quot;)
+ggsave(&quot;country_treemaps_06_russia.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="country_treemaps_06_russia.png" /></p>
+<hr />
+</div>
+<div id="france" class="section level2">
+<h2>France</h2>
+<pre class="r"><code>mp &lt;- gg_treemap(area = &quot;France&quot;)
+ggsave(&quot;country_treemaps_07_france.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="country_treemaps_07_france.png" /></p>
+<hr />
+</div>
+<div id="spain" class="section level2">
+<h2>Spain</h2>
+<pre class="r"><code>mp &lt;- gg_treemap(area = &quot;Spain&quot;)
+ggsave(&quot;country_treemaps_08_spain.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="country_treemaps_08_spain.png" /></p>
+<hr />
+</div>
+<div id="united-kingdom" class="section level2">
+<h2>United Kingdom</h2>
+<pre class="r"><code>mp &lt;- gg_treemap(area = &quot;UK&quot;)
+ggsave(&quot;country_treemaps_09_uk.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="country_treemaps_09_uk.png" /></p>
+<hr />
+</div>
+<div id="india" class="section level2">
+<h2>India</h2>
+<pre class="r"><code>mp &lt;- gg_treemap(area = &quot;India&quot;)
+ggsave(&quot;country_treemaps_10_india.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="country_treemaps_10_india.png" /></p>
+<hr />
+</div>
+<div id="nepal" class="section level2">
+<h2>Nepal</h2>
+<pre class="r"><code>mp &lt;- gg_treemap(area = &quot;Nepal&quot;)
+ggsave(&quot;country_treemaps_11_nepal.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="country_treemaps_11_nepal.png" /></p>
+<hr />
+</div>
+<div id="china" class="section level2">
+<h2>China</h2>
+<pre class="r"><code>mp &lt;- gg_treemap(area = &quot;China&quot;)
+ggsave(&quot;country_treemaps_12_china.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="country_treemaps_12_china.png" /></p>
+<hr />
+</div>
+</div>
+<div id="all-countries" class="section level1">
+<h1>All Countries</h1>
+<pre class="r"><code># Prep data
+areas &lt;- c(&quot;World&quot;,
+  levels(agData_FAO_Country_Table$Region),
+  levels(agData_FAO_Country_Table$SubRegion),
+  levels(agData_FAO_Country_Table$Country))
+# Plot
+pdf(&quot;country_treemaps_fao.pdf&quot;, width = 6, height = 4)
+for(i in areas) {
+  print(gg_treemap(area = i))
+}
+dev.off()</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/country_treemaps/country_treemaps_fao.pdf">country_treemaps_fao.pdf</a></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

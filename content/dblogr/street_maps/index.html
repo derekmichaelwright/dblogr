@@ -1,0 +1,100 @@
+---
+title: "Street Maps"
+subtitle: "Create street map art with R and road network files"
+summary:  "Create street map art with R and road network files"
+date: "2021-03-25"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/street_maps/)"
+tags: [ "dblogr", "R" ]
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/street_maps.html
+---
+
+
+
+<hr />
+<div id="data" class="section level1">
+<h1>Data</h1>
+<p>STATCAN road network files</p>
+<p><a href="https://www12.statcan.gc.ca/census-recensement/2011/geo/RNF-FRR/index-2011-eng.cfm?year=16" class="uri">https://www12.statcan.gc.ca/census-recensement/2011/geo/RNF-FRR/index-2011-eng.cfm?year=16</a></p>
+<p>Germany rail roads</p>
+<p><a href="https://mapcruzin.com/free-germany-arcgis-maps-shapefiles.htm" class="uri">https://mapcruzin.com/free-germany-arcgis-maps-shapefiles.htm</a></p>
+<pre class="r"><code># Load libraries
+library(tidyverse)
+library(sf)</code></pre>
+<pre class="r"><code># STATCAN file
+roads &lt;- st_read(&quot;lrnf000r16a_e.shp&quot;)
+# Filter cities
+roads_saskatoon &lt;- roads[roads$CSDNAME_L == &quot;Saskatoon&quot;,]
+roads_regina    &lt;- roads[roads$CSDNAME_L == &quot;Regina&quot;,]
+# Save
+st_write(roads_saskatoon, &quot;roads_saskatoon.shp&quot;)
+st_write(roads_regina,    &quot;roads_regina.shp&quot;)
+#
+s_roads &lt;- st_read(&quot;railways.shp&quot;)</code></pre>
+<hr />
+</div>
+<div id="saskatoon" class="section level1">
+<h1>Saskatoon</h1>
+<pre class="r"><code># Read file
+s_roads &lt;- st_read(&quot;roads_saskatoon.shp&quot;, quiet = T) 
+# Crop
+s_roads2 &lt;- st_intersection(s_roads, st_buffer(st_centroid(st_union(s_roads)), 8500))
+# Plot
+mp &lt;- ggplot(s_roads2) +
+  geom_sf(color = &quot;black&quot;) +
+  coord_sf(crs = st_crs(4326)) +
+  theme_void() +
+  theme(panel.grid.major = element_line(&quot;transparent&quot;))
+ggsave(&quot;roads_saskatoon.png&quot;, mp, bg = &quot;transparent&quot;, width = 6, height = 6)</code></pre>
+<p><img src="roads_saskatoon.png" /></p>
+<hr />
+<pre class="r"><code># Crop
+s_roads2 &lt;- st_intersection(s_roads, st_buffer(st_centroid(st_union(s_roads)), 4000))
+# Plot
+mp &lt;- ggplot(s_roads2) +
+  geom_sf(color = &quot;black&quot;) +
+  coord_sf(crs = st_crs(4326)) +
+  theme_void() +
+  theme(panel.grid.major = element_line(&quot;transparent&quot;))
+ggsave(&quot;roads_saskatoon_zoom.png&quot;, mp, bg = &quot;transparent&quot;, width = 6, height = 6)</code></pre>
+<p><img src="roads_saskatoon_zoom.png" /></p>
+<hr />
+</div>
+<div id="regina" class="section level1">
+<h1>Regina</h1>
+<pre class="r"><code># Read file
+r_roads &lt;- st_read(&quot;roads_regina.shp&quot;, quiet = T) 
+# Crop
+r_roads2 &lt;- st_intersection(r_roads, st_buffer(st_centroid(st_union(r_roads)), 8000))
+# Plot
+mp &lt;- ggplot(r_roads) +
+  geom_sf(color = &quot;black&quot;) +
+  coord_sf(crs = st_crs(4326)) +
+  theme_void() +
+  theme(panel.grid.major = element_line(&quot;transparent&quot;))
+ggsave(filename = &quot;roads_regina.png&quot;, mp, bg = &quot;transparent&quot;, width = 6, height = 6)</code></pre>
+<p><img src="roads_regina.png" /></p>
+<hr />
+</div>
+<div id="germany-railroads" class="section level1">
+<h1>Germany Railroads</h1>
+<pre class="r"><code># Read file
+rail_roads &lt;- st_read(&quot;railways.shp&quot;, quiet = T) 
+# Plot
+mp &lt;- ggplot(rail_roads) +
+  geom_sf(color = &quot;black&quot;) +
+  coord_sf(crs = st_crs(4326)) +
+  theme_void() +
+  theme(panel.grid.major = element_line(&quot;transparent&quot;))
+ggsave(&quot;railroads_germany.png&quot;, mp, bg = &quot;transparent&quot;, width = 6, height = 6)</code></pre>
+<p><img src="railroads_germany.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

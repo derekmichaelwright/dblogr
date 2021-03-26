@@ -1,0 +1,240 @@
+---
+title: "Population Demographics In Canada"
+subtitle: "Population Pyramids with R"
+summary:  "Population Pyramids with R"
+date: "2021-03-25"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/population_demographics_canada/)"
+tags: [ "dblogr", "SciComm", "Featured" ]
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/population_demographics_canada.html
+---
+
+
+
+<hr />
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(gganimate)
+library(transformr)</code></pre>
+<hr />
+<pre class="r"><code>xx &lt;- agData_STATCAN_Population %&gt;% filter(Month == 1)
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
+  geom_line() +
+  facet_wrap(Area ~ ., ncol = 4, scales = &quot;free_y&quot;) +
+  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+  labs(y = &quot;Million People&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/ | Data: STATCAN&quot;)
+ggsave(&quot;PopDem_01.png&quot;, mp, width = 10, height = 6)</code></pre>
+<p><img src="PopDem_01.png" /></p>
+<hr />
+</div>
+<div id="create-plotting-functions" class="section level1">
+<h1>Create Plotting Functions</h1>
+<pre class="r"><code>ages &lt;- c(&quot;0 to 4 years&quot;, &quot;5 to 9 years&quot;, &quot;10 to 14 years&quot;, &quot;15 to 19 years&quot;,
+          &quot;20 to 24 years&quot;, &quot;25 to 29 years&quot;, &quot;30 to 34 years&quot;, &quot;35 to 39 years&quot;,
+          &quot;40 to 44 years&quot;, &quot;45 to 49 years&quot;, &quot;50 to 54 years&quot;, &quot;55 to 59 years&quot;,
+          &quot;60 to 64 years&quot;, &quot;65 to 69 years&quot;, &quot;70 to 74 years&quot;, &quot;75 to 79 years&quot;,
+          &quot;80 to 84 years&quot;, &quot;85 to 89 years&quot;, &quot;90 to 94 years&quot;, &quot;95 to 99 years&quot; ,
+          &quot;100 years and over&quot;)
+gg_PopDem_plot &lt;- function(areas = &quot;Saskatchewan&quot;, years = 2019, anim = F) {
+  # Prep data
+  xx &lt;- agData_STATCAN_Population_AgeGender %&gt;%
+    #select(1:25) %&gt;% 
+    #gather(Group, Value, 5:ncol(.)) %&gt;% 
+    filter(Area %in% areas, Year %in% years, Age %in% ages) %&gt;%
+    mutate(Age = factor(Age, levels = ages),
+           Value = Value / 1000)
+  # Plot
+  mp &lt;- ggplot(xx, aes(y = Value, x = Age, fill = Sex)) + 
+    geom_bar(data = xx %&gt;% filter(Sex == &quot;Males&quot;), stat = &quot;identity&quot;) +
+    geom_bar(data = xx %&gt;% filter(Sex == &quot;Females&quot;), 
+             stat = &quot;identity&quot;, aes(y = -Value)) +
+    scale_fill_manual(values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;))
+  if(anim == T) { mp &lt;- mp + facet_grid(. ~ Area) }
+  if(anim == F) { mp &lt;- mp + facet_grid(. ~ Year) + labs(subtitle = paste(areas, collapse = &quot; + &quot;)) }
+  mp + 
+    theme_agData(legend.position = &quot;bottom&quot;, rotx = T) +
+    labs(x = NULL, y = &quot;Thousand People&quot;,
+         caption = &quot;\xa9 www.dblogr.com/ | Data: STATCAN&quot;) +
+    coord_cartesian(ylim = c(-max(xx$Value), max(xx$Value))) +
+    coord_flip()
+}
+gg_PopDem_anim &lt;- function(areas = c(&quot;Saskatchewan&quot;, &quot;Alberta&quot;)) {
+  gg_PopDem_plot(areas = areas, years = 1971:2019, anim = T) +
+    # Here comes the gganimate specific bits
+    labs(title = &#39;{round(frame_time)}&#39;) +
+    transition_time(Year) +
+    ease_aes(&#39;linear&#39;)
+}</code></pre>
+<hr />
+</div>
+<div id="canada" class="section level1">
+<h1>Canada</h1>
+<pre class="r"><code>mp &lt;- gg_PopDem_plot(&quot;Canada&quot;, years = c(1971, 2019))
+ggsave(&quot;PopDem_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="PopDem_02.png" /></p>
+<hr />
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(&quot;Canada&quot;)
+anim_save(&quot;PopDem_gif_02.gif&quot;, mp, width = 600, height = 400)</code></pre>
+<p><img src="PopDem_gif_02.gif" /></p>
+<hr />
+</div>
+<div id="eastern-canada" class="section level1">
+<h1>Eastern Canada</h1>
+<pre class="r"><code>areas &lt;- c(&quot;Ontario&quot;, &quot;Quebec&quot;,&quot;New Brunswick&quot;, &quot;Nova Scotia&quot;,
+           &quot;Prince Edward Island&quot;, &quot;Newfoundland and Labrador&quot;)
+mp &lt;- gg_PopDem_plot(areas, years = c(1971, 2019))
+ggsave(&quot;PopDem_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="PopDem_03.png" /></p>
+<hr />
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas)
+anim_save(paste0(&quot;PopDem_gif_03.gif&quot;), mp, width = 600, height = 400)</code></pre>
+<p><img src="PopDem_gif_03.gif" /></p>
+<hr />
+</div>
+<div id="western-canada" class="section level1">
+<h1>Western Canada</h1>
+<pre class="r"><code>areas &lt;- c(&quot;British Columbia&quot;, &quot;Alberta&quot;,&quot;Saskatchewan&quot;, &quot;Manitoba&quot;,
+           &quot;Yukon&quot;, &quot;Northwest Territories&quot;, &quot;Nunavut&quot;)
+mp &lt;- gg_PopDem_plot(areas, years = c(1975, 2019))
+ggsave(&quot;PopDem_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="PopDem_04.png" /></p>
+<hr />
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas)
+anim_save(paste0(&quot;PopDem_gif_04.gif&quot;), mp, width = 600, height = 400)</code></pre>
+<p><img src="PopDem_gif_04.gif" /></p>
+<hr />
+</div>
+<div id="british-columbia" class="section level1">
+<h1>British Columbia</h1>
+<pre class="r"><code>mp &lt;- gg_PopDem_plot(&quot;British Columbia&quot;, years = c(1971, 2019))
+ggsave(&quot;PopDem_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="PopDem_05.png" /></p>
+<hr />
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(&quot;British Columbia&quot;)
+anim_save(paste0(&quot;PopDem_gif_05.gif&quot;), mp, width = 600, height = 400)</code></pre>
+<p><img src="PopDem_gif_05.gif" /></p>
+<hr />
+</div>
+<div id="alberta" class="section level1">
+<h1>Alberta</h1>
+<pre class="r"><code>mp &lt;- gg_PopDem_plot(&quot;Alberta&quot;, years = c(1971, 2019))
+ggsave(&quot;PopDem_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="PopDem_06.png" /></p>
+<hr />
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(&quot;Alberta&quot;)
+anim_save(paste0(&quot;PopDem_gif_06.gif&quot;), mp, width = 600, height = 400)</code></pre>
+<p><img src="PopDem_gif_06.gif" /></p>
+<hr />
+</div>
+<div id="saskatchewan" class="section level1">
+<h1>Saskatchewan</h1>
+<pre class="r"><code>mp &lt;- gg_PopDem_plot(&quot;Saskatchewan&quot;, years = c(1971, 2019))
+ggsave(&quot;PopDem_07.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="PopDem_07.png" /></p>
+<hr />
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(&quot;Saskatchewan&quot;)
+anim_save(paste0(&quot;PopDem_gif_07.gif&quot;), mp, width = 600, height = 400)</code></pre>
+<p><img src="PopDem_gif_07.gif" /></p>
+<hr />
+</div>
+<div id="ontario" class="section level1">
+<h1>Ontario</h1>
+<pre class="r"><code>mp &lt;- gg_PopDem_plot(&quot;Ontario&quot;, years = c(1971, 2019))
+ggsave(&quot;PopDem_08.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="PopDem_08.png" /></p>
+<hr />
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(&quot;Saskatchewan&quot;)
+anim_save(paste0(&quot;PopDem_gif_08.gif&quot;), mp, width = 600, height = 400)</code></pre>
+<p><img src="PopDem_gif_08.gif" /></p>
+<hr />
+</div>
+<div id="line-graphs" class="section level1">
+<h1>Line Graphs</h1>
+<pre class="r"><code># Prep data
+ages &lt;- c(&quot;0 to 4 years&quot;, &quot;5 to 9 years&quot;, &quot;10 to 14 years&quot;, &quot;15 to 19 years&quot;,
+            &quot;20 to 24 years&quot;, &quot;25 to 29 years&quot;, &quot;30 to 34 years&quot;, &quot;35 to 39 years&quot;,
+            &quot;40 to 44 years&quot;, &quot;45 to 49 years&quot;, &quot;50 to 54 years&quot;, &quot;55 to 59 years&quot;,
+            &quot;60 to 64 years&quot;, &quot;65 to 69 years&quot;, &quot;70 to 74 years&quot;, &quot;75 to 79 years&quot;,
+            &quot;80 to 84 years&quot;, &quot;85 to 89 years&quot;, &quot;90 to 94 years&quot;, &quot;95 to 99 years&quot; ,
+            &quot;100 years and over&quot;)
+xx &lt;- agData_STATCAN_Population_AgeGender %&gt;% 
+  filter(Area == &quot;Canada&quot;, Sex %in% c(&quot;Males&quot;,&quot;Females&quot;), Age %in% ages) %&gt;%
+  mutate(Age = factor(Age, levels = ages))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Sex)) +
+  geom_line(size = 1) +
+  facet_wrap(Age ~ ., scales = &quot;free_y&quot;, ncol = 6) +
+  scale_color_manual(values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;)) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(y = &quot;Million&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/ | Data: STATCAN&quot;)
+ggsave(&quot;PopDem_09.png&quot;, mp, width = 12, height = 6)</code></pre>
+<p><img src="PopDem_09.png" /></p>
+<hr />
+<pre class="r"><code>xx &lt;- agData_STATCAN_Population_AgeGender %&gt;% 
+  filter(Area == &quot;Canada&quot;, Sex %in% c(&quot;Males&quot;,&quot;Females&quot;), Age %in% ages) %&gt;%
+  mutate(Age = factor(Age, levels = ages))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Sex, group = Sex)) +
+  geom_line(size = 1) +
+  scale_color_manual(values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;)) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(y = &quot;Million&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/ | Data: STATCAN&quot;) +
+  # Here comes the gganimate specific bits
+  labs(title = &#39;{closest_state}&#39;) +
+  transition_states(Age, transition_length = 1, state_length = 1) +
+  ease_aes(&#39;linear&#39;)
+anim_save(&quot;PopDem_gif_09.gif&quot;, mp, width = 600, height = 400)</code></pre>
+<p><img src="PopDem_gif_09.gif" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_Population_Dynamics %&gt;% 
+  filter(Measurement %in% c(&quot;Births&quot;, &quot;Deaths&quot;, &quot;Immigrants&quot;, &quot;Emigrants&quot;))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
+  geom_line() +
+  facet_wrap(Area ~., ncol = 5, scales = &quot;free_y&quot;) +
+  theme_agData(legend.position = &quot;bottom&quot;, rotx = T) +
+  labs(y = &quot;Thousand People&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/ | Data: STATCAN&quot;)
+ggsave(&quot;PopDem_10.png&quot;, mp, width = 12, height = 6)</code></pre>
+<p><img src="PopDem_10.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+x1 &lt;- agData_STATCAN_Population %&gt;% 
+  filter(Month ==1) %&gt;%
+  select(Area, Year, Population=Value)
+x2 &lt;- agData_STATCAN_Population_Dynamics %&gt;%
+  filter(Measurement == &quot;Immigrants&quot;) %&gt;%
+  select(Area, Year, Immigrants=Value)
+areas &lt;- c(&quot;Quebec&quot;, &quot;Ontario&quot;, &quot;British Columbia&quot;, &quot;Alberta&quot;, &quot;Saskatchewan&quot;, &quot;Manitoba&quot;)
+xx &lt;- left_join(x1, x2, by = c(&quot;Area&quot;, &quot;Year&quot;)) %&gt;%
+  filter(Area %in% areas, !is.na(Immigrants)) %&gt;%
+  mutate(Value = 1000000 * Immigrants / Population,
+         Wing = plyr::mapvalues(Area, areas, c(&quot;Left&quot;,&quot;Left&quot;,&quot;Left&quot;,&quot;Right&quot;,&quot;Right&quot;,&quot;Right&quot;)))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
+  geom_line(alpha = 0.5) + 
+  geom_smooth(se = F) +
+  facet_grid(. ~ Wing) +
+  scale_x_continuous(breaks = seq(1975, 2015, 10)) +
+  theme_agData() +
+  labs(title = &quot;Immigration Rates&quot;, x = NULL,
+       y = &quot;Immigrants per Million People&quot;,
+       caption = &quot;\xa9 www.dblogr.com/ | Data: STATCAN&quot;)
+ggsave(&quot;PopDem_11.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="PopDem_11.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

@@ -1,0 +1,297 @@
+---
+title: "Deaths In Canada"
+subtitle: "An exploration of weekly deaths in Canada"
+summary:  "An exploration of weekly deaths in Canada"
+date: "2021-03-25"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/deaths_canada/)"
+tags: [ "dblogr", "SciComm", "Featured" ]
+weight: 2
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/deaths_canada.html
+---
+
+
+
+<hr />
+<div id="data" class="section level1">
+<h1>Data</h1>
+<div id="data-sources" class="section level2">
+<h2>Data Sources</h2>
+<p>STATCAN data sources:</p>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301</a></p>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801</a></p>
+<p><a href="https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm" class="uri">https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm</a></p>
+<hr />
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<pre class="r"><code># Prep data
+cutoffDate &lt;- &quot;2020-11-14&quot;
+areas &lt;- c(&quot;Canada&quot;, &quot;Quebec&quot;, &quot;Ontario&quot;, &quot;British Columbia&quot;, 
+           &quot;Alberta&quot;, &quot;Saskatchewan&quot;, &quot;Manitoba&quot;, &quot;Nova Scotia&quot;,
+           &quot;Newfoundland and Labrador&quot;, &quot;New Brunswick&quot;, &quot;Prince Edward Island&quot;, 
+           &quot;Northwest Territories&quot;, &quot;Yukon&quot;, &quot;Nunavut&quot;)
+#
+d1 &lt;- read.csv(&quot;1310078301_databaseLoadingData.csv&quot;) %&gt;% 
+  rename(Date=1, Area=GEO, Value=VALUE) %&gt;%
+  mutate(Date = as.Date(Date),
+         Year = as.factor(substr(Date, 1, 4)),
+         Month = as.factor(substr(Date, 6, 7)),
+         Y2020 = ifelse(Year == &quot;2020&quot;, &quot;2020&quot;, &quot;&lt;2020&quot;),
+         JulianDate = lubridate::yday(Date),
+         Area = gsub(&quot;, place of occurrence&quot;, &quot;&quot;, Area),
+         Area = factor(Area, levels = areas)) %&gt;%
+  filter(Date &lt;= cutoffDate)
+d2 &lt;- read.csv(&quot;1310076801_databaseLoadingData.csv&quot;) %&gt;% 
+  rename(Date=1, Age=Age.at.time.of.death, Value=VALUE, Area=GEO) %&gt;%
+  mutate(Date = as.Date(Date),
+         Age = gsub(&quot;Age at time of death, &quot;, &quot;&quot;, Age),
+         Year = as.factor(substr(Date, 1, 4)),
+         Month = as.factor(substr(Date, 6, 7)),
+         Y2020 = ifelse(Year == &quot;2020&quot;, &quot;2020&quot;, &quot;&lt;2020&quot;),
+         JulianDate = lubridate::yday(Date),
+         Area = gsub(&quot;, place of occurrence&quot;, &quot;&quot;, Area),
+         Area = factor(Area, levels = areas)) %&gt;%
+  filter(Date &lt;= cutoffDate)</code></pre>
+</div>
+</div>
+<div id="deaths" class="section level1">
+<h1>Deaths</h1>
+<pre class="r"><code># Create plotting function
+deathPlot1 &lt;- function(area = &quot;Canada&quot;) {
+  # Prep data
+  vv &lt;- as.Date(c(&quot;2010-01-01&quot;,&quot;2011-01-01&quot;,&quot;2012-01-01&quot;,&quot;2013-01-01&quot;,
+                  &quot;2014-01-01&quot;,&quot;2015-01-01&quot;,&quot;2016-01-01&quot;,&quot;2017-01-01&quot;,
+                  &quot;2018-01-01&quot;,&quot;2019-01-01&quot;,&quot;2020-01-01&quot;))
+  xx &lt;- d1 %&gt;% filter(Area == area)
+  # Plot
+  ggplot(xx, aes(x = Date, y = Value)) +
+    geom_line(color = &quot;darkred&quot;, size = 1) +
+    geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
+    scale_x_date(date_breaks = &quot;1 year&quot;, date_labels = &quot;%Y&quot;, minor_breaks = &quot;1 year&quot;) +
+    theme_agData() +
+    labs(title = area, y = &quot;Deaths&quot;, x = NULL,
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+}</code></pre>
+<div id="canada" class="section level2">
+<h2>Canada</h2>
+<pre class="r"><code>mp &lt;- deathPlot1(&quot;Canada&quot;)
+ggsave(&quot;Deaths_Canada_1_01.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_1_01.png" /></p>
+<hr />
+</div>
+<div id="ontario" class="section level2">
+<h2>Ontario</h2>
+<pre class="r"><code>mp &lt;- deathPlot1(&quot;Ontario&quot;)
+ggsave(&quot;Deaths_Canada_1_02.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_1_02.png" /></p>
+<hr />
+</div>
+<div id="quebec" class="section level2">
+<h2>Quebec</h2>
+<pre class="r"><code>mp &lt;- deathPlot1(&quot;Quebec&quot;)
+ggsave(&quot;Deaths_Canada_1_03.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_1_03.png" /></p>
+<hr />
+</div>
+<div id="british-columbia" class="section level2">
+<h2>British Columbia</h2>
+<pre class="r"><code>mp &lt;- deathPlot1(&quot;British Columbia&quot;)
+ggsave(&quot;Deaths_Canada_1_04.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_1_04.png" /></p>
+<hr />
+</div>
+<div id="alberta" class="section level2">
+<h2>Alberta</h2>
+<pre class="r"><code>mp &lt;- deathPlot1(&quot;Alberta&quot;)
+ggsave(&quot;Deaths_Canada_1_05.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_1_01.png" /></p>
+<hr />
+</div>
+<div id="saskatchewan" class="section level2">
+<h2>Saskatchewan</h2>
+<pre class="r"><code>mp &lt;- deathPlot1(&quot;Saskatchewan&quot;)
+ggsave(&quot;Deaths_Canada_1_06.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_1_06.png" /></p>
+<hr />
+</div>
+<div id="saskatchewan-1" class="section level2">
+<h2>Saskatchewan</h2>
+<pre class="r"><code>mp &lt;- deathPlot1(&quot;Manitoba&quot;)
+ggsave(&quot;Deaths_Canada_1_07.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_1_07.png" /></p>
+<hr />
+</div>
+</div>
+<div id="deaths-vs.-previous-years" class="section level1">
+<h1>Deaths Vs. Previous Years</h1>
+<pre class="r"><code># Create plotting function
+deathPlot2 &lt;- function(areas) {
+  # Prep data
+  xx &lt;- d1 %&gt;% filter(Area %in% areas)
+  # Plot
+  mp1 &lt;- ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = Y2020, alpha = Y2020)) +
+    geom_line() +
+    facet_wrap(Area ~ ., scales = &quot;free_y&quot;, ncol = 5) +
+    scale_color_manual(name = NULL, values = c(&quot;darkgreen&quot;,&quot;darkred&quot;)) +
+    scale_alpha_manual(name = NULL, values = c(0.5,1)) +
+    theme_agData(legend.position = &quot;bottom&quot;) +
+    labs(y = &quot;Deaths Per Week&quot;)
+  # Prep data
+  xx &lt;- d1 %&gt;% mutate(Year = as.numeric(as.character(Year))) %&gt;%
+    select(Date, Year, JulianDate, Y2020, Area, Value) %&gt;%
+    arrange(Area, Date) %&gt;%
+    spread(Area, Value)
+  for(i in 5:ncol(xx)) {
+    for(k in min(xx$Year):max(xx$Year)) {
+      xx[xx$Year == k, i] &lt;- cumsum(xx[xx$Year == k,i])
+    }
+  }
+  xx &lt;- xx %&gt;% gather(Area, Value, 5:ncol(.)) %&gt;%
+    mutate(Area = factor(Area, levels = areas)) %&gt;%
+    filter(Area %in% areas)
+  # Plot
+  mp2 &lt;- ggplot(xx, aes(x = JulianDate, y = Value / 1000, group = Year, color = Y2020, alpha = Y2020)) +
+    geom_line() +
+    facet_wrap(Area ~ ., scales = &quot;free_y&quot;, ncol = 5) +
+    scale_color_manual(name = NULL, values = c(&quot;darkgreen&quot;,&quot;darkred&quot;)) +
+    scale_alpha_manual(name = NULL, values = c(0.5,1)) +
+    theme_agData(legend.position = &quot;bottom&quot;) +
+    labs(y = &quot;Thousand Deaths&quot;,
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+  ggarrange(mp1, mp2, common.legend = T, legend = &quot;bottom&quot;, align = &quot;h&quot;)
+}</code></pre>
+<div id="canada-1" class="section level2">
+<h2>Canada</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(areas = areas)
+ggsave(&quot;Deaths_Canada_2_01.png&quot;, mp, width = 20, height = 8)</code></pre>
+<p><img src="Deaths_Canada_2_01.png" /></p>
+<hr />
+<pre class="r"><code>mp &lt;- deathPlot2(areas = &quot;Canada&quot;)
+ggsave(&quot;Deaths_Canada_2_02.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_2_02.png" /></p>
+<hr />
+</div>
+<div id="ontario-1" class="section level2">
+<h2>Ontario</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(areas = &quot;Ontario&quot;)
+ggsave(&quot;Deaths_Canada_2_03.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_2_03.png" /></p>
+<hr />
+</div>
+<div id="quebec-1" class="section level2">
+<h2>Quebec</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(areas = &quot;Quebec&quot;)
+ggsave(&quot;Deaths_Canada_2_04.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_2_04.png" /></p>
+<hr />
+</div>
+<div id="british-columbia-1" class="section level2">
+<h2>British Columbia</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(areas = &quot;British Columbia&quot;)
+ggsave(&quot;Deaths_Canada_2_05.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_2_05.png" /></p>
+<hr />
+</div>
+<div id="alberta-1" class="section level2">
+<h2>Alberta</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(areas = &quot;Alberta&quot;)
+ggsave(&quot;Deaths_Canada_2_06.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_2_06.png" /></p>
+<hr />
+</div>
+<div id="saskatchewan-2" class="section level2">
+<h2>Saskatchewan</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(areas = &quot;Saskatchewan&quot;)
+ggsave(&quot;Deaths_Canada_2_07.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_2_07.png" /></p>
+<hr />
+</div>
+</div>
+<div id="deaths-by-age-group" class="section level1">
+<h1>Deaths by Age Group</h1>
+<pre class="r"><code># Create plotting function
+deathPlot3 &lt;- function(areas = &quot;Canada&quot;) {
+  # Prep data
+  xx &lt;- d2 %&gt;% filter(Area %in% areas, Sex == &quot;Both sexes&quot;, Age != &quot;all ages&quot;)
+  # Plot
+  ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = Y2020, alpha = Y2020)) +
+    geom_line() +
+    facet_grid(Area ~ Age, scales = &quot;free_y&quot;) +
+    scale_color_manual(name = NULL, values = c(&quot;darkgreen&quot;,&quot;darkred&quot;)) +
+    scale_alpha_manual(name = NULL, values = c(0.3,1)) +
+    theme_agData(legend.position = &quot;bottom&quot;) +
+    labs(y = &quot;Deaths Per Week&quot;,
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+}</code></pre>
+<div id="canada-2" class="section level2">
+<h2>Canada</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(areas = &quot;Canada&quot;)
+ggsave(&quot;Deaths_Canada_3_01.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_3_01.png" /></p>
+<hr />
+</div>
+<div id="eastern-canada" class="section level2">
+<h2>Eastern Canada</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(areas = c(&quot;Ontario&quot;, &quot;Quebec&quot;, &quot;Nova Scotia&quot;,
+                             &quot;Newfoundland and Labrador&quot;, &quot;New Brunswick&quot;))
+ggsave(&quot;Deaths_Canada_3_02.png&quot;, mp, width = 8, height = 8)</code></pre>
+<p><img src="Deaths_Canada_3_02.png" /></p>
+</div>
+<div id="western-canada" class="section level2">
+<h2>Western Canada</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(areas = c(&quot;British Columbia&quot;,&quot;Alberta&quot;,&quot;Saskatchewan&quot;,&quot;Manitoba&quot;))
+ggsave(&quot;Deaths_Canada_3_03.png&quot;, mp, width = 8, height = 8)</code></pre>
+<p><img src="Deaths_Canada_3_03.png" /></p>
+</div>
+<div id="select-provinces" class="section level2">
+<h2>Select Provinces</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(areas = c(&quot;Ontario&quot;, &quot;Quebec&quot;,&quot;Saskatchewan&quot;,&quot;Alberta&quot;, &quot;British Columbia&quot;))
+ggsave(&quot;Deaths_Canada_3_04.png&quot;, mp, width = 8, height = 8)</code></pre>
+<p><img src="Deaths_Canada_3_04.png" /></p>
+</div>
+<div id="saskatchewan-vs.-quebec" class="section level2">
+<h2>Saskatchewan vs. Quebec</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(areas = c(&quot;Canada&quot;,&quot;Quebec&quot;,&quot;Saskatchewan&quot;))
+ggsave(&quot;Deaths_Canada_3_05.png&quot;, mp, width = 8, height = 5)</code></pre>
+<p><img src="Deaths_Canada_3_05.png" /></p>
+<hr />
+</div>
+<div id="alberta-vs.-ontario" class="section level2">
+<h2>Alberta vs. Ontario</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(areas = c(&quot;Canada&quot;,&quot;Ontario&quot;,&quot;Alberta&quot;))
+ggsave(&quot;Deaths_Canada_3_06.png&quot;, mp, width = 8, height = 5)</code></pre>
+<p><img src="Deaths_Canada_3_06.png" /></p>
+<hr />
+</div>
+<div id="saskatchewan-3" class="section level2">
+<h2>Saskatchewan</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(areas = &quot;Saskatchewan&quot;)
+ggsave(&quot;Deaths_Canada_3_07.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_3_07.png" /></p>
+<hr />
+</div>
+</div>
+<div id="by-gender" class="section level1">
+<h1>By Gender</h1>
+<pre class="r"><code># Prep data
+xx &lt;- d2 %&gt;% filter(Area %in% &quot;Canada&quot;, Sex != &quot;Both sexes&quot;, Year == 2020)
+# Plot
+mp &lt;- ggplot(xx, aes(x = JulianDate, y = Value, group = Sex, color = Sex)) +
+  geom_line() +
+  facet_grid(Area ~ Age) +
+  scale_color_manual(name = NULL, values = c(&quot;darkred&quot;,&quot;darkgreen&quot;)) +
+  scale_alpha_manual(name = NULL, values = c(0.5,1)) +
+  theme_agData(legend.position = &quot;top&quot;) +
+  labs(y = &quot;Deaths Per Week&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;Deaths_Canada_4_01.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="Deaths_Canada_4_01.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

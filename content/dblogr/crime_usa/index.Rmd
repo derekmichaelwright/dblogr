@@ -1,0 +1,73 @@
+---
+title: "USA Crime Statistics"
+subtitle: "Graphs for crime statistics from the FBI"
+summary:  "Graphs for crime statistics from the FBI"
+date: "`r Sys.Date()`"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/crime_usa/)"
+tags: [ "dblogr", "Politics" ]
+weight: 5
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/crime_usa.html
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+```
+
+---
+
+# Data
+
+https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/tables/expanded-homicide-data-table-8.xls
+
+[*Download Data*](https://github.com/derekmichaelwright/dblogr/blob/master/content/crime_usa/crime_usa_data.csv?raw=true)
+
+---
+
+# Prepare data
+
+```{r}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+```
+
+```{r}
+# Prep data
+dd <- read.csv("crime_usa_data.csv")
+DT::datatable(dd)
+```
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  gather(Year, Value, 2:ncol(.)) %>%
+  mutate(Weapons = factor(Weapons, levels = rev(unique(Weapons))),
+         Year = as.numeric(substr(Year, 2, 5)),
+         Value = as.numeric(gsub(",", "", Value))) %>%
+  filter(Year == 2019)
+# Plot
+mp <- ggplot(xx, aes(x = Weapons, y = Value / 1000)) +
+  geom_bar(stat = "identity", color = "black", fill = "darkred", alpha = 0.8) +
+  scale_y_continuous(breaks = 1:14) +
+  coord_flip() +
+  theme_agData() +
+  labs(x = NULL, y = "Thousand Murders",
+       caption = "\xa9 www.dblogr.com/  |  Data: FBI")
+ggsave("crime_usa_01.png", width = 6, height = 4)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 6, height = 4)
+```
+
+![](crime_usa_01.png)
+
+---
+
+&copy; Derek Michael Wright 2020 [www.dblogr.com/](https://dblogr.com/)

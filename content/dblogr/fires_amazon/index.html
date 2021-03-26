@@ -1,9 +1,10 @@
 ---
 title: "The Journalism Around Amazon Fires"
 subtitle: "An analysis of science journalism by the CBC"
-summary: "An analysis of science journalism by the CBC"
-date: "2020-10-01"
+summary:  "An analysis of science journalism by the CBC"
+date: "2021-03-26"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/fires_amazon/)"
+tags: [ "dblogr", "SciComm" ]
 weight: 3
 codefolding_show: "hide"
 image:
@@ -72,12 +73,12 @@ links:
 <p>“According to Brazil’s space research centre, INPE, which has been recording wildfires since 2013, more than 75,000 fires are burning in Brazil, which is a more than 80 per cent increase over the same period of 2018, the agency told Reuters.”</p>
 </blockquote>
 <p>Ok, lets check out the data ourselves.</p>
+<p>Data source: National Institute for Space Reserach (<em>INPE</em>)</p>
+<p><a href="http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/">http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/</a></p>
 <hr />
 </div>
 <div id="data" class="section level1">
 <h1>Data</h1>
-<p>Data source: National Institute for Space Reserach (<em>INPE</em>)</p>
-<p><a href="http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/" class="uri">http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/</a></p>
 <p><a href="https://github.com/derekmichaelwright/htmls/blob/master/dblogr/fires_amazon_data.xlsx?raw=true"><em>Download Data</em></a></p>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
@@ -100,9 +101,9 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Total / 1000)) +
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x= NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: INPE&quot;)
-ggsave(&quot;gallery/fires_amazon_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+ggsave(&quot;fires_amazon_01.png&quot;, mp, width = 6, height = 4)</code></pre>
 <div class="figure">
-<img src="gallery/fires_amazon_01.png" alt="" />
+<img src="fires_amazon_01.png" alt="" />
 <p class="caption">Figure 1: Number of detected fires per year from 1999 - 2019.</p>
 </div>
 <p>Hmm, looking at <em>Figure 1</em> there seems to have been a lot more forest fires prior to 2013. Lets look at just the data CBC claimed was available (since 2013).</p>
@@ -116,9 +117,9 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Total / 1000)) +
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x= NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: INPE&quot;)
-ggsave(&quot;gallery/fires_amazon_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+ggsave(&quot;fires_amazon_02.png&quot;, mp, width = 6, height = 4)</code></pre>
 <div class="figure">
-<img src="gallery/fires_amazon_02.png" alt="" />
+<img src="fires_amazon_02.png" alt="" />
 <p class="caption">Figure 2: Number of detected fires per year, from 2013 - 2020.</p>
 </div>
 <p>Even when looking at this subset of the data, it doesn’t appear to be some kind of crisis. However, lets look at the data by month and see if it tells a different story:</p>
@@ -139,9 +140,9 @@ mp &lt;- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: INPE&quot;)
-ggsave(&quot;gallery/fires_amazon_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+ggsave(&quot;fires_amazon_03.png&quot;, mp, width = 6, height = 4)</code></pre>
 <div class="figure">
-<img src="gallery/fires_amazon_03.png" alt="" />
+<img src="fires_amazon_03.png" alt="" />
 <p class="caption">Figure 3: Number of detected fires per month, 2013-2019.</p>
 </div>
 <p>Now it does look like forest fires have increased. And if we compare the data from 2018, there is a significant increase, as the CBC notes:</p>
@@ -182,9 +183,9 @@ mp &lt;- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: INPE&quot;) 
-ggsave(&quot;gallery/fires_amazon_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+ggsave(&quot;fires_amazon_04.png&quot;, mp, width = 6, height = 4)</code></pre>
 <div class="figure">
-<img src="gallery/fires_amazon_04.png" alt="" />
+<img src="fires_amazon_04.png" alt="" />
 <p class="caption">Figure 4: Number of detected fires per month, 1998-2019.</p>
 </div>
 <p>Now a different picture is painted. But why pick 2013 as the starting point?</p>
@@ -200,9 +201,9 @@ mp &lt;- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: INPE&quot;)
-ggsave(&quot;gallery/fires_amazon_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+ggsave(&quot;fires_amazon_05.png&quot;, mp, width = 6, height = 4)</code></pre>
 <div class="figure">
-<img src="gallery/fires_amazon_05.png" alt="" />
+<img src="fires_amazon_05.png" alt="" />
 <p class="caption">Figure 5: Number of detected fires per month, 2012, 2013 &amp; 2019.</p>
 </div>
 <p>Looks like they just went back to the first year things were worse. However in thier last report, they do note that:</p>
@@ -222,9 +223,9 @@ mp &lt;- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: INPE&quot;)
-ggsave(&quot;gallery/fires_amazon_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+ggsave(&quot;fires_amazon_06.png&quot;, mp, width = 6, height = 4)</code></pre>
 <div class="figure">
-<img src="gallery/fires_amazon_06.png" alt="" />
+<img src="fires_amazon_06.png" alt="" />
 <p class="caption">Figure 6: Number of detected fires per month, 2010 &amp; 2019.</p>
 </div>
 <p>Now lets do our own bias selection of data:</p>
@@ -241,9 +242,9 @@ mp &lt;- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: INPE&quot;)
-ggsave(&quot;gallery/fires_amazon_07.png&quot;, mp, width = 6, height = 4)</code></pre>
+ggsave(&quot;fires_amazon_07.png&quot;, mp, width = 6, height = 4)</code></pre>
 <div class="figure">
-<img src="gallery/fires_amazon_07.png" alt="" />
+<img src="fires_amazon_07.png" alt="" />
 <p class="caption">Figure 7: Number of detected fires per month for selected years.</p>
 </div>
 <p>Doing this makes it seem like forest fires are decreasing.</p>
@@ -264,13 +265,13 @@ mp &lt;- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: INPE&quot;)
-ggsave(&quot;gallery/fires_amazon_08.png&quot;, mp, width = 6, height = 4)</code></pre>
+ggsave(&quot;fires_amazon_08.png&quot;, mp, width = 6, height = 4)</code></pre>
 <div class="figure">
-<img src="gallery/fires_amazon_08.png" alt="" />
+<img src="fires_amazon_08.png" alt="" />
 <p class="caption">Figure 8: Cumulative number of detected fires by month, 1998-2019.</p>
 </div>
 <p>This all raises in interesting question: is the CBC being purposely deceitful? or are they just poor journalists?</p>
 <p>You decide…</p>
 <hr />
-<p>© Derek Michael Wright 2020 <a href="https://dblogr.netlify.com/">www.dblogr.com/</a></p>
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

@@ -1,0 +1,182 @@
+---
+title: "Saskatchewan Crop Production"
+subtitle: "Graphs of crop production in Saskatchewan using STATCAN data"
+summary:  "Graphs of crop production in Saskatchewan using STATCAN data"
+date: "2021-03-25"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crops_saskatchewan/)"
+tags: [ "agData", "Regions", "Featured" ]
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/agdata/crops_saskatchewan.html
+---
+
+
+
+<hr />
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(gganimate)
+library(treemapify)</code></pre>
+<hr />
+<div id="crop-production" class="section level1">
+<h1>Crop Production</h1>
+<pre class="r"><code># Create function to determine top crops
+cropList &lt;- function(measurement = &quot;Production&quot;) {
+  # Prep data
+  xx &lt;- agData_STATCAN_Crops %&gt;% 
+    filter(Area == &quot;Saskatchewan&quot;, Year %in% c(1908, 1961, 2017),
+           Measurement == measurement)
+  # Get top 15 crops from each year
+  topcrops &lt;- function(x, year, num) {
+    x &lt;- x %&gt;% filter(Year == year) %&gt;% arrange(desc(Value)) %&gt;% 
+      slice(1:num) %&gt;% pull(Crop) %&gt;% unique() %&gt;% as.character()
+    x
+  }
+  crops1908 &lt;- topcrops(xx, 1908, 15)
+  crops1961 &lt;- topcrops(xx, 1961, 15)
+  crops2017 &lt;- topcrops(xx, 2017, 15)
+  # Order crop list based on 2017 production
+  myCrops &lt;- unique(c(crops1908, crops1961, crops2017))
+  xx %&gt;% filter(Year == 2017, Crop %in% myCrops) %&gt;%
+    arrange(desc(Value)) %&gt;% pull(Crop) %&gt;% as.character()
+}</code></pre>
+<hr />
+<div id="crop-production-1908-1961-2017" class="section level2">
+<h2>Crop Production 1908, 1961, 2017</h2>
+<pre class="r"><code># Prep data
+myCrops &lt;- cropList(measurement = &quot;Production&quot;)
+xx &lt;- agData_STATCAN_Crops %&gt;% 
+  filter(Area == &quot;Saskatchewan&quot;, Year %in% c(1908, 1961, 2017),
+         Measurement == &quot;Production&quot;, Crop %in% myCrops) %&gt;%
+  mutate(Crop = factor(Crop, levels = myCrops) )
+# Plot
+mp &lt;- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) + 
+  geom_bar(stat = &quot;identity&quot;, color = &quot;Black&quot;) + 
+  facet_grid(Year~.) + 
+  scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
+  theme_agData(legend.position = &quot;none&quot;, rotx = T) + 
+  labs(title = &quot;Saskatchewan - Crop Production&quot;, y = &quot;Million Tonnes&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;crops_saskatchewan_01.png&quot;, mp, width = 6, height = 5)</code></pre>
+<p><img src="crops_saskatchewan_01.png" /></p>
+<hr />
+</div>
+<div id="crop-area-1908-1961-2017" class="section level2">
+<h2>Crop Area 1908, 1961, 2017</h2>
+<pre class="r"><code># Prep data
+myCrops &lt;- cropList(measurement = &quot;Seeded area&quot;)
+xx &lt;- agData_STATCAN_Crops %&gt;% 
+  filter(Area == &quot;Saskatchewan&quot;, Year %in% c(1908, 1961, 2017),
+         Measurement == &quot;Seeded area&quot;, Crop %in% myCrops) %&gt;%
+  mutate(Crop = factor(Crop, levels = myCrops) )
+# Plot
+mp &lt;- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) + 
+  geom_bar(stat = &quot;identity&quot;, color = &quot;Black&quot;) + 
+  facet_grid(Year ~ .) + 
+  scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
+  theme_agData(legend.position = &quot;none&quot;, rotx = T) + 
+  labs(title = &quot;Saskatchewan - Area Seeded&quot;, y = &quot;Million Hectares&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;crops_saskatchewan_02.png&quot;, mp, width = 6, height = 5)</code></pre>
+<p><img src="crops_saskatchewan_02.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+myCrops &lt;- cropList(measurement = &quot;Seeded area&quot;)
+xx &lt;- agData_STATCAN_Crops %&gt;% 
+    filter(Area == &quot;Saskatchewan&quot;, 
+           Measurement == &quot;Seeded area&quot;, Crop %in% myCrops) %&gt;%
+  mutate(Crop = factor(Crop, levels = myCrops) )
+# Plot
+mp &lt;- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) + 
+  geom_bar(stat = &quot;identity&quot;, color = &quot;Black&quot;) + 
+  geom_text(aes(label = Year), x = 14, y = 9, size = 15) +
+  scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
+  theme_agData(legend.position = &quot;none&quot;, rotx = T) + 
+  labs(title = &quot;Saskatchewan - Area Seeded&quot;, y = &quot;Million Hectares&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;) +
+  # gganimate
+  transition_states(Year)
+mp &lt;- animate(mp, nframes = 2*(max(xx$Year) - min(xx$Year)), fps = 5, end_pause = 5)
+anim_save(&quot;crops_saskatchewan_gifs_01.gif&quot;, mp, width = 600, height = 400)</code></pre>
+<p><img src="crops_saskatchewan_gifs_01.gif" /></p>
+<hr />
+</div>
+</div>
+<div id="farm-area" class="section level1">
+<h1>Farm Area</h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_FarmLand_Use %&gt;% 
+  filter(Area == &quot;Saskatchewan&quot;, Item == &quot;Total area of farms&quot;, 
+         Unit == &quot;Hectares&quot;, !is.na(Value))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
+  geom_line(color = &quot;darkgreen&quot;, size = 1.25) +
+  scale_x_continuous(breaks = seq(1920, 2020, 10)) +
+  theme_agData() +
+  labs(title = &quot;Total area of farms in Saskatchewan&quot;, y = &quot;Million Hectares&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;crops_saskatchewan_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="crops_saskatchewan_03.png" /></p>
+<hr />
+</div>
+<div id="all-crops" class="section level1">
+<h1>All Crops</h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_Crops %&gt;% 
+  filter(Area == &quot;Saskatchewan&quot;, Measurement == &quot;Seeded area&quot;) 
+myCrops &lt;- unique(c(cropList(measurement = &quot;Seeded area&quot;), as.character(xx$Crop)))
+xx &lt;- xx %&gt;% mutate(Crop = factor(Crop, levels = myCrops))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) + 
+  geom_line() + 
+  facet_wrap(Crop~., ncol = 6) + 
+  scale_color_manual(values = alpha(agData_Colors, 0.75)) +
+  theme_agData(legend.position = &quot;none&quot;, rotx = T) + 
+  labs(title = &quot;Saskatchewan Crops - Area Seeded&quot;, y = &quot;Million Hectares&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;crops_saskatchewan_04.png&quot;, mp, width = 6, height = 5)</code></pre>
+<p><img src="crops_saskatchewan_04.png" /></p>
+<hr />
+</div>
+<div id="summerfallow" class="section level1">
+<h1>Summerfallow</h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_Crops %&gt;% 
+  filter(Area == &quot;Saskatchewan&quot;, Crop == &quot;Summerfallow&quot;, 
+         Measurement == &quot;Seeded area&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
+  geom_line(color = &quot;darkgreen&quot;, size = 1.25) +
+  scale_x_continuous(breaks = seq(1920, 2020, 10)) +
+  theme_agData() +
+  labs(title = &quot;Summerfallow in Saskatchewan&quot;, y = &quot;Million Hectares&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;crops_saskatchewan_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="crops_saskatchewan_05.png" /></p>
+<hr />
+</div>
+<div id="treemap" class="section level1">
+<h1>Treemap</h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_Crops %&gt;% 
+  filter(Area == &quot;Saskatchewan&quot;, Year == 2019, Measurement == &quot;Seeded area&quot;) %&gt;%
+  arrange(desc(Value)) %&gt;% mutate(Crop = factor(Crop, levels = unique(Crop)))
+# Plot
+mp &lt;- ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
+  geom_treemap(color = &quot;black&quot;) +
+  geom_treemap_text(place = &quot;centre&quot;, grow = T, color = &quot;white&quot;) +
+  scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Saskatchewan Cropland by Area&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;crops_saskatchewan_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="crops_saskatchewan_06.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

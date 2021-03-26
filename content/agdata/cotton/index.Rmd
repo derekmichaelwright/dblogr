@@ -1,6 +1,7 @@
 ---
 title: "Global Cotton Production"
 subtitle: "Graphs of cotton production using FAO data"
+summary:  "Graphs of cotton production using FAO data"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/cotton/)"
 tags: [ "agData", "Cotton" ]
@@ -12,11 +13,11 @@ links:
   - icon_pack: fas
     icon: code
     name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/cotton.html
+    url: https://derekmichaelwright.github.io/htmls/agdata/crop_treemaps.html
   - icon_pack: fas
     icon: file-pdf
     name: PDF
-    url: https://github.com/derekmichaelwright/htmls/raw/master/scripts/agdata/cotton/cotton_fao.pdf
+    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/cotton/cotton_fao.pdf
 ---
 
 ```{r setup, include = FALSE}
@@ -130,4 +131,4 @@ ggsave("cotton_02.png", mp, width = 6, height = 4)
 
 ---
 
-&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.netlify.com/)
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

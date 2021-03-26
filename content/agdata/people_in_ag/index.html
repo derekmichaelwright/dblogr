@@ -1,0 +1,103 @@
+---
+title: "People in Agriculture"
+subtitle: "Graphs of people in Agriculture"
+summary:  "Graphs of people in Agriculture"
+date: "2021-03-25"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/people_in_ag/)"
+tags: [ "agData", "Regions" ]
+weight: 4
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/agdata/people_in_ag.html
+---
+
+
+
+<hr />
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- agData_People %&gt;% 
+  filter(Measurement == &quot;Percent&quot;, Area == &quot;World&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value)) + 
+  geom_line(color = &quot;darkgreen&quot;, size = 1.5, alpha = 0.8) +
+  scale_x_continuous(breaks       = seq(1990, 2020, by = 5),
+                     minor_breaks = seq(1990, 2020, by = 1)) +
+  theme_agData() +
+  labs(title = &quot;Percent of Population in Agriculture&quot;, y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/&quot;)
+ggsave(&quot;People_in_Ag_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="People_in_Ag_01.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+areas &lt;- c(&quot;Canada&quot;, &quot;Germany&quot;, &quot;Ukraine&quot;,
+           &quot;Poland&quot;, &quot;China&quot;, &quot;India&quot;, 
+           &quot;Brazil&quot;, &quot;South Africa&quot;, &quot;Nigeria&quot; )
+xx &lt;- agData_FAO_Population %&gt;% 
+  filter(Measurement %in% c(&quot;Rural&quot;,&quot;Urban&quot;),
+         Area %in% areas) %&gt;%
+  mutate(Area = factor(Area, levels = areas))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement)) +
+  geom_line(size = 1.5, alpha = 0.8) + 
+  facet_wrap(. ~ Area, scales = &quot;free&quot;) +
+  scale_color_manual(name = NULL, values = c(&quot;darkred&quot;, &quot;darkgreen&quot;)) +
+  scale_x_continuous(breaks = seq(1960, 2050, 30)) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(y = &quot;Million People&quot;, x = NULL, 
+       caption = &quot;\xa9 www.dblogr.com/&quot;)
+ggsave(&quot;People_in_Ag_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="People_in_Ag_02.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- agData_People %&gt;% 
+  filter(Measurement == &quot;Total&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value/1000000)) + 
+  geom_line(color = &quot;darkgreen&quot;, size = 1.5, alpha = 0.8) + 
+  facet_wrap(Area~., scales = &quot;free_y&quot;, ncol = 5) +
+  scale_x_continuous(breaks       = seq(1850, 2020, by = 50),
+                     minor_breaks = seq(1850, 2020, by = 10)) +
+  theme_agData() +
+  labs(title = &quot;Total Number of People in Agriculture&quot;, 
+       y = &quot;Million People&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/&quot;)
+ggsave(&quot;People_in_Ag_03.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="People_in_Ag_03.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+colors &lt;- c(&quot;darkgreen&quot;, &quot;darkgoldenrod2&quot;, &quot;darkred&quot;, &quot;darkblue&quot;)
+areas &lt;- c(&quot;Canada&quot;, &quot;USA&quot;, &quot;Mexico&quot;, 
+           &quot;Venezuela&quot;, &quot;Brazil&quot;, &quot;Chile&quot;, &quot;Argentina&quot;, &quot;Peru&quot;,
+           &quot;Spain&quot;,&quot;France&quot;,&quot;Germany&quot;, &quot;Denmark&quot;, &quot;Ukraine&quot;, &quot;Russia&quot;,
+           &quot;China&quot;, &quot;India&quot;, &quot;Turkey&quot;, &quot;Syria&quot;,&quot;Iran&quot;,
+           &quot;Ethiopoia&quot;, &quot;South Africa&quot;, &quot;Nigeria&quot;,&quot;Morocco&quot;, &quot;Egypt&quot;)
+xx &lt;- agData_People %&gt;% 
+  filter(Measurement == &quot;Percent&quot;, Year %in% c(1991, 2017), Area %in% areas) %&gt;%
+  addRegionInfo() %&gt;%
+  arrange(Region, Value) %&gt;%
+  mutate(Area = factor(Area, levels = unique(.$Area)))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Area, y = Value, fill = Region, label = round(Value))) + 
+  geom_bar(stat= &quot;identity&quot;, alpha = 0.7, color = &quot;black&quot;) +
+  geom_text(nudge_y = 6) +
+  facet_grid(Year~.) +
+  scale_y_continuous(sec.axis = dup_axis(name = NULL)) +
+  scale_fill_manual(name = NULL, values = agData_Colors) +
+  theme_agData() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
+        legend.position = &quot;bottom&quot;) +
+  labs(y = NULL, x = NULL,
+       title = &quot;Percent of Population in Agriculture&quot;, 
+       caption = &quot;\xa9 www.dblogr.com/&quot;)
+ggsave(&quot;People_in_Ag_04.png&quot;, mp, width = 6, height = 5)</code></pre>
+<p><img src="People_in_Ag_04.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>

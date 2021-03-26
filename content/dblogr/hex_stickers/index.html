@@ -1,0 +1,100 @@
+---
+title: "Hex Stickers"
+subtitle: "Creation of hex stickers with R"
+summary:  "Creation of hex stickers with R"
+date: "2021-03-25"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/hex_stickers/)"
+tags: [ "dblogr", "R" ]
+weight: 5
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/hex_stickers.html
+---
+
+
+
+<hr />
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(hexSticker)</code></pre>
+<hr />
+<div id="dblogr" class="section level1">
+<h1>dblogr</h1>
+<pre class="r"><code>sticker(filename=&quot;hex_dblogr.png&quot;, package=&quot;&quot;,  
+        # Logo
+        &quot;logo_mapleleaf_dblogr.png&quot;, 
+        s_x = 1, s_y = 1, 
+        s_width = 0.8,
+        # Border
+        h_fill = &quot;grey90&quot;, h_color = &quot;darkgreen&quot;, h_size = 1.5,
+        # Url
+        url = &quot;www.dblogr.com/&quot;, u_color = &quot;black&quot;,
+        u_x = 1.1, u_y = 0.15, u_size = 6 )</code></pre>
+<p><img src="hex_dblogr.png" width="350" /></p>
+<p><img src="hex_dblogr.png" width="350" /></p>
+<hr />
+</div>
+<div id="agdata" class="section level1">
+<h1>agData</h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_FAO_Crops %&gt;% 
+  filter(Area        == &quot;Canada&quot;, 
+         Crop        == &quot;Lentils&quot;, 
+         Measurement == &quot;Production&quot;)
+# Create sticker
+mp &lt;- ggplot(xx, aes(x = Year, y = Value) ) + 
+  geom_line(size = 1) + 
+  theme_void() +
+  theme(panel.grid.major = element_line(size = 0.5,  colour = &quot;white&quot;), 
+        panel.grid.minor = element_line(size = 0.25, colour = &quot;white&quot;) ) 
+#
+sticker(filename = &quot;hex_agData.png&quot;,
+        package = &quot;agData&quot;, p_color = &quot;grey10&quot;,
+        p_x = 0.9, p_y = 1.3, p_size = 27,
+        # Logo
+        mp, s_x = 1, s_y = 1, 
+        s_width = 1.5, s_height = 1,
+        # Border 
+        h_fill = &quot;grey90&quot;, h_color = &quot;darkgreen&quot;, h_size = 1.5,#&quot;darkolivegreen&quot;
+        # Url
+        url = &quot;github.com/derekmichaelwright&quot;, u_color = &quot;black&quot;,
+        u_x = 1, u_y = 0.09, u_size = 4.5 )</code></pre>
+<p><img src="hex_agData.png" width="350" /></p>
+<hr />
+</div>
+<div id="green-mapleleaf" class="section level1">
+<h1>Green mapleleaf</h1>
+<pre class="r"><code>sticker(filename=&quot;hex_mapleleaf_green.png&quot;, package=&quot;&quot;,  
+        # Logo
+        &quot;logo_mapleleaf_green.png&quot;, #&quot;logo_dblog.png&quot;, 
+        s_x = 1, s_y = 1, 
+        s_width = 0.8,
+        # Border
+        h_fill = &quot;grey90&quot;, h_color = &quot;darkgreen&quot;, h_size = 1.5,
+        # Url
+        url = &quot;www.dblogr.com/&quot;, u_color = &quot;black&quot;,
+        u_x = 1.1, u_y = 0.15, u_size = 6 )</code></pre>
+<p><img src="hex_mapleleaf_green.png" width="350" /></p>
+<hr />
+</div>
+<div id="red-mapleleaf" class="section level1">
+<h1>Red mapleleaf</h1>
+<pre class="r"><code>sticker(filename=&quot;hex_mapleleaf_red.png&quot;, package=&quot;&quot;,  
+        # Logo
+        &quot;logo_mapleleaf_red.png&quot;, #&quot;logo_dblog.png&quot;, 
+        s_x = 1, s_y = 1, 
+        s_width = 0.8,
+        # Border
+        h_fill = &quot;grey90&quot;, h_color = &quot;darkred&quot;, h_size = 1.5,
+        # Url
+        url = &quot;www.dblogr.com/&quot;, u_color = &quot;black&quot;,
+        u_x = 1.1, u_y = 0.15, u_size = 6 )</code></pre>
+<p><img src="hex_mapleleaf_red.png" width="350" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

@@ -1,0 +1,98 @@
+---
+title: "Saskatchewan Rapeseed/Canola Production"
+subtitle: "Graphs of canola production in Saskatchewan using STATCAN data"
+summary:  "Graphs of canola production in Saskatchewan using STATCAN data"
+date: "2021-03-25"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/rapeseed_canada/)"
+tags: [ "agData", "Rapeseed" ]
+weight: 4
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/agdata/rapeseed_canada.html
+---
+
+
+
+<hr />
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<hr />
+<div id="area" class="section level1">
+<h1>Area</h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_Crops %&gt;% 
+  filter(Crop == &quot;Canola&quot;, Area ==&quot;Saskatchewan&quot;, Measurement == &quot;Seeded area&quot;)
+# Plot
+mp &lt;- ggplot() +
+  geom_rect(aes(xmin = 1975, xmax = 2020, ymin = -Inf, ymax = Inf, 
+                fill = &quot;Commercialization of Canola Varieties&quot;), alpha = 0.1) +
+  geom_line(data = xx, aes(x = Year, y = Value / 1000000), size = 1.25, alpha = 0.8) +
+  geom_line(data = xx %&gt;% filter(Year &gt;= 1975), size = 1.25, alpha = 0.8,
+            aes(x = Year, y = Value / 1000000, color = &quot;Commercialization of Canola Varieties&quot;)) +
+  scale_x_continuous(breaks = seq(1945, 2015, by = 10)) +
+  coord_cartesian(xlim = c(min(xx$Year)+3, max(xx$Year)-3)) +
+  scale_color_manual(name = NULL, values = &quot;darkgoldenrod2&quot;) +
+  scale_fill_manual(values = &quot;darkgoldenrod2&quot;) +
+  guides(fill = F) +
+  theme_agData(legend.position = &quot;bottom&quot;) + 
+  labs(title = &quot;Saskatchewan Canola Area Seeded&quot;, y = &quot;Million Hectares&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;rapeseed_canada_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="rapeseed_canada_01.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_Crops %&gt;% 
+  filter(Crop == &quot;Canola&quot;, Area ==&quot;Saskatchewan&quot;, Measurement == &quot;Seeded area&quot;)
+# Plot
+mp &lt;- ggplot() +
+  geom_rect(aes(xmin = 1996, xmax = 2020, ymin = -Inf, ymax = Inf, 
+                fill = &quot;Commercialization of GE Varieties&quot;), alpha = 0.1) +
+  geom_line(data = xx, aes(x = Year, y = Value / 1000000), size = 1.25, alpha = 0.8) +
+  geom_line(data = xx %&gt;% filter(Year &gt;= 1996), size = 1.25, alpha = 0.8,
+            aes(x = Year, y = Value / 1000000, color = &quot;Commercialization of GE Varieties&quot;)) +
+  scale_x_continuous(breaks = seq(1945, 2015, by = 10)) +
+  coord_cartesian(xlim = c(min(xx$Year)+3, max(xx$Year)-3)) +
+  scale_color_manual(name = NULL, values = &quot;darkgreen&quot;) +
+  scale_fill_manual(values = &quot;darkgreen&quot;) +
+  guides(fill = F) +
+  theme_agData(legend.position = &quot;bottom&quot;) + 
+  labs(title = &quot;Saskatchewan Canola Area Seeded&quot;, y = &quot;Million Hectares&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;rapeseed_canada_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="rapeseed_canada_02.png" /></p>
+<hr />
+</div>
+<div id="yield" class="section level1">
+<h1>Yield</h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_Crops %&gt;% 
+  filter(Crop == &quot;Canola&quot;, Area == &quot;Saskatchewan&quot;, Measurement == &quot;Yield&quot;)
+# Plot
+mp &lt;- ggplot() +
+  geom_rect(aes(xmin = 1996, xmax = 2020, ymin = -Inf, ymax = Inf, 
+                fill = &quot;Commercialization of GE Varieties&quot;), alpha = 0.2) +
+  geom_line(data = xx, aes(x = Year, y = Value), size = 1.25, alpha = 0.6) +
+  geom_line(data = xx %&gt;% filter(Year &gt;= 1996), size = 1.25,
+            aes(x = Year, y = Value, color = &quot;Commercialization of GE Varieties&quot;)) +
+  geom_smooth(data = xx %&gt;% filter(Year &gt;= 1996), color = &quot;black&quot;,
+              aes(x = Year, y = Value), method = &quot;lm&quot;, se = F) +
+  geom_smooth(data = xx %&gt;% filter(Year &lt; 1996),  color = &quot;black&quot;,
+              aes(x = Year, y = Value), method = &quot;lm&quot;, se = F) +
+  scale_x_continuous(breaks = seq(1945, 2015, by = 10)) +
+  coord_cartesian(xlim = c(min(xx$Year)+3, max(xx$Year)-3)) +
+  scale_color_manual(name = NULL, values = &quot;darkgreen&quot;) +
+  scale_fill_manual(values = &quot;darkgreen&quot;) +
+  guides(fill = F) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Saskatchewan Canola Yields&quot;, y = &quot;Tonnes / Hectare&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;rapeseed_canada_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="rapeseed_canada_03.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

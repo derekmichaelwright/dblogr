@@ -1,0 +1,65 @@
+---
+title: "USA Crime Statistics"
+subtitle: "Graphs for crime statistics from the FBI"
+summary:  "Graphs for crime statistics from the FBI"
+date: "2021-03-26"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/crime_usa/)"
+tags: [ "dblogr", "Politics" ]
+weight: 5
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/crime_usa.html
+---
+
+<script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
+<script src="{{< blogdown/postref >}}index_files/jquery/jquery.min.js"></script>
+<link href="{{< blogdown/postref >}}index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/datatables-binding/datatables.js"></script>
+<link href="{{< blogdown/postref >}}index_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="{{< blogdown/postref >}}index_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="{{< blogdown/postref >}}index_files/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/crosstalk/js/crosstalk.min.js"></script>
+
+
+<hr />
+<div id="data" class="section level1">
+<h1>Data</h1>
+<p><a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/tables/expanded-homicide-data-table-8.xls" class="uri">https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/tables/expanded-homicide-data-table-8.xls</a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/crime_usa/crime_usa_data.csv?raw=true"><em>Download Data</em></a></p>
+<hr />
+</div>
+<div id="prepare-data" class="section level1">
+<h1>Prepare data</h1>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<pre class="r"><code># Prep data
+dd &lt;- read.csv(&quot;crime_usa_data.csv&quot;)
+DT::datatable(dd)</code></pre>
+<div id="htmlwidget-1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],["Total","Total firearms:","Handguns","Rifles","Shotguns","Other guns","Firearms, type not stated","Knives or cutting instruments","Blunt objects (clubs, hammers, etc.)","Personal weapons (hands, fists, feet, etc.)1","Poison","Explosives","Fire","Narcotics","Drowning","Strangulation","Asphyxiation","Other weapons or weapons not stated"],["13,847","9,143","6,194","215","248","152","2,334","1,533","438","651","8","1","63","70","12","96","105","1,727"],["15,355","10,398","6,778","300","247","172","2,901","1,562","466","668","12","1","78","119","9","97","93","1,852"],["15,206","11,014","7,052","389","263","178","3,132","1,608","474","715","15","0","93","112","8","90","112","965"],["14,446","10,445","6,683","305","237","164","3,056","1,542","455","712","6","4","76","102","9","75","92","928"],["13,927","10,258","6,368","364","200","45","3,281","1,476","397","600","16","3","81","93","7","64","92","840"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Weapons<\/th>\n      <th>X2015<\/th>\n      <th>X2016<\/th>\n      <th>X2017<\/th>\n      <th>X2018<\/th>\n      <th>X2019<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  gather(Year, Value, 2:ncol(.)) %&gt;%
+  mutate(Weapons = factor(Weapons, levels = rev(unique(Weapons))),
+         Year = as.numeric(substr(Year, 2, 5)),
+         Value = as.numeric(gsub(&quot;,&quot;, &quot;&quot;, Value))) %&gt;%
+  filter(Year == 2019)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Weapons, y = Value / 1000)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, fill = &quot;darkred&quot;, alpha = 0.8) +
+  scale_y_continuous(breaks = 1:14) +
+  coord_flip() +
+  theme_agData() +
+  labs(x = NULL, y = &quot;Thousand Murders&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI&quot;)
+ggsave(&quot;crime_usa_01.png&quot;, width = 6, height = 4)</code></pre>
+<p><img src="crime_usa_01.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

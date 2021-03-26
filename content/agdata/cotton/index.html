@@ -1,7 +1,8 @@
 ---
 title: "Global Cotton Production"
 subtitle: "Graphs of cotton production using FAO data"
-date: "2021-03-24"
+summary:  "Graphs of cotton production using FAO data"
+date: "2021-03-25"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/cotton/)"
 tags: [ "agData", "Cotton" ]
 weight: 3
@@ -12,11 +13,11 @@ links:
   - icon_pack: fas
     icon: code
     name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/cotton.html
+    url: https://derekmichaelwright.github.io/htmls/agdata/crop_treemaps.html
   - icon_pack: fas
     icon: file-pdf
     name: PDF
-    url: https://github.com/derekmichaelwright/htmls/raw/master/scripts/agdata/cotton/cotton_fao.pdf
+    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/cotton/cotton_fao.pdf
 ---
 
 
@@ -103,5 +104,5 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
 ggsave(&quot;cotton_02.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="cotton_02.png" /></p>
 <hr />
-<p>© Derek Michael Wright <a href="https://dblogr.netlify.com/">www.dblogr.com/</a></p>
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

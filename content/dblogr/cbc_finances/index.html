@@ -1,0 +1,112 @@
+---
+title: "CBC Finances"
+subtitle: "A look at CBC finances - government funding, ad revenue and total profit"
+summary:  "A look at CBC finances - government funding, ad revenue and total profit"
+date: "2021-03-25"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/cbc_finances/)"
+tags: [ "dblogr", "Economics", "Politics" ]
+weight: 5
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/cbc_finances.html
+---
+
+
+
+<hr />
+<div id="data" class="section level1">
+<h1>Data</h1>
+<p><a href="https://cbc.radio-canada.ca/en/impact-and-accountability/finances/annual-reports" class="uri">https://cbc.radio-canada.ca/en/impact-and-accountability/finances/annual-reports</a></p>
+<p><a href="https://github.com/derekmichaelwright/htmls/blob/master/scripts/dblogr/cbc_finances/cbc_finances_data.xlsx?raw=true"><em>Download Data</em></a></p>
+<hr />
+</div>
+<div id="prepare-data" class="section level1">
+<h1>Prepare data</h1>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<pre class="r"><code># Prep data
+xx &lt;- read.csv(&quot;cbc_finances_data.csv&quot;) %&gt;% 
+  gather(Source, Value, Revenue, Government.Funding, Expenses) %&gt;%
+  mutate(PlusMinus = ifelse(Source == &quot;Expenses&quot;, &quot;Plus&quot;, &quot;Minus&quot;),
+         Value = Value / 1000000)</code></pre>
+<p>calculate the cost per person per year</p>
+<pre class="r"><code># Prep data
+cost &lt;- read.csv(&quot;cbc_finances_data.csv&quot;) %&gt;% 
+  filter(Year == 2019) %&gt;% 
+  pull(Government.Funding) 
+pop &lt;- agData_STATCAN_Population %&gt;% 
+  filter(Year == 2019, Area == &quot;Canada&quot;) %&gt;% 
+  pull(Value) %&gt;% mean()
+cost / pop</code></pre>
+<pre><code>## [1] 0.03233661</code></pre>
+<hr />
+</div>
+<div id="expenses-vs-revenue-line" class="section level1">
+<h1>Expenses vs Revenue (Line)</h1>
+<pre class="r"><code>mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Source)) + 
+  geom_line(size = 1.5) + 
+  scale_x_continuous(breaks = seq(2000, 2020, 5), limits = c(2000, 2020)) +
+  scale_color_manual(name = NULL, values = c(&quot;darkred&quot; , &quot;darkblue&quot;, &quot;darkgreen&quot;)) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;CBC Finances&quot;, x = NULL, y = &quot;Million Dollars&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
+ggsave(&quot;cbc_1.png&quot;, width = 6, height = 4)</code></pre>
+<p><img src="cbc_1.png" /></p>
+<hr />
+</div>
+<div id="expenses-vs-revenue-bar" class="section level1">
+<h1>Expenses vs Revenue (Bar)</h1>
+<pre class="r"><code>mp &lt;- ggplot(xx, aes(x = PlusMinus, y = Value, fill = Source)) + 
+  geom_bar(stat = &quot;identity&quot;, position = &quot;stack&quot;, color = &quot;black&quot;) +
+  facet_grid(. ~ Year) +
+  scale_fill_manual(name = NULL, values = c(&quot;darkred&quot; , &quot;darkblue&quot;, &quot;darkgreen&quot;)) +
+  theme_agData(legend.position = &quot;bottom&quot;,
+               axis.text.x = element_blank(), axis.ticks.x = element_blank()) +
+  labs(title = &quot;CBC Finances&quot;, x = NULL, y = &quot;Million Dollars&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
+ggsave(&quot;cbc_2.png&quot;, width = 10, height = 4)</code></pre>
+<p><img src="cbc_2.png" /></p>
+<hr />
+</div>
+<div id="net-profit-with-government-funding" class="section level1">
+<h1>Net Profit With Government Funding</h1>
+<pre class="r"><code># Prep data
+xx &lt;- read.csv(&quot;cbc_finances_data.csv&quot;) %&gt;% 
+  mutate(Profit = Revenue + Government.Funding - Expenses,
+         Net = ifelse(Profit &gt; 0, &quot;Profit&quot;, &quot;Loss&quot;) )
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Profit / 1000000, fill = Net)) + 
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
+  scale_fill_manual(values = c(&quot;darkred&quot;,&quot;darkblue&quot;)) +
+  scale_x_continuous(breaks = 2000:2020) +
+  theme_agData(legend.position = &quot;bottom&quot;, rotx = T) +
+  labs(title = &quot;CBC - Net Profit With Government Funding&quot;, y = &quot;Million Dollars&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
+ggsave(&quot;cbc_3.png&quot;, width = 6, height = 4)</code></pre>
+<p><img src="cbc_3.png" /></p>
+<hr />
+</div>
+<div id="net-profit-without-government-funding" class="section level1">
+<h1>Net Profit Without Government Funding</h1>
+<pre class="r"><code># Prep data
+xx &lt;- read.csv(&quot;cbc_finances_data.csv&quot;) %&gt;% 
+  mutate(Profit = Revenue - Expenses,
+         Net = ifelse(Profit &gt; 0, &quot;Profit&quot;, &quot;Loss&quot;))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Profit / 1000000, fill = Net)) + 
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
+  scale_fill_manual(values = c(&quot;darkred&quot;,&quot;darkblue&quot;)) +
+  scale_x_continuous(breaks = 2000:2020) +
+  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+  labs(title = &quot;CBC - Net Profit Without Government Funding&quot;, y = &quot;Million Dollars&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
+ggsave(&quot;cbc_4.png&quot;, width = 6, height = 4)</code></pre>
+<p><img src="cbc_4.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

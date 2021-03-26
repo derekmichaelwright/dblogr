@@ -1,0 +1,63 @@
+---
+title: "Candian Federal Elections"
+subtitle: "A look back at Saskatchewan provincial election results"
+summary:  "A look back at Saskatchewan provincial election results"
+date: "2021-03-25"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canadian_federal_elections/)"
+tags: [ "dblogr", "Politics" ]
+weight: 5
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/saskatchewan_provincial_elections.html
+---
+
+
+
+<hr />
+<p>All images are from <a href="http://www.wikipedia.org/">Wikipedia</a></p>
+<hr />
+<div id="create-an-animation" class="section level1">
+<h1>Create an Animation</h1>
+<pre class="r"><code>library(magick)
+# all images are in a folder called `maps`
+fnames &lt;- list.files(&quot;maps&quot;)
+mp &lt;- image_read(paste(&quot;maps&quot;, fnames, sep = &quot;/&quot;)) %&gt;% image_scale(&quot;x800&quot;)
+image_write(image_animate(mp, fps = 1), &quot;Saskatchewan_Provincial_Elections.gif&quot;)</code></pre>
+<p><img src="Saskatchewan_Provincial_Elections.gif" /></p>
+<hr />
+<div id="section" class="section level2">
+<h2>2016</h2>
+<p><img src="maps/SaskMap_2016.png" /></p>
+</div>
+<div id="section-1" class="section level2">
+<h2>2011</h2>
+<p><img src="maps/SaskMap_2011.png" /></p>
+</div>
+<div id="section-2" class="section level2">
+<h2>2007</h2>
+<p><img src="maps/SaskMap_2007.png" /></p>
+</div>
+<div id="section-3" class="section level2">
+<h2>2003</h2>
+<p><img src="maps/SaskMap_2003.png" /></p>
+</div>
+<div id="section-4" class="section level2">
+<h2>1999</h2>
+<p><img src="maps/SaskMap_1999.png" /></p>
+</div>
+<div id="section-5" class="section level2">
+<h2>1995</h2>
+<p><img src="maps/SaskMap_1995.png" /></p>
+</div>
+<div id="section-6" class="section level2">
+<h2>1991</h2>
+<p><img src="maps/SaskMap_1991.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>
+</div>

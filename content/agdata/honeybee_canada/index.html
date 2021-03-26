@@ -1,0 +1,125 @@
+---
+title: "Canadian Honeybee Production"
+subtitle: "Graphs of honeybee production in Canada using STATCAN data"
+summary:  "Graphs of honeybee production in Canada using STATCAN data"
+date: "2021-03-25"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/honeybee_canada/)"
+tags: [ "agData", "Honeybee" ]
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/agdata/honeybee_canada.html
+---
+
+
+
+<hr />
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(gganimate)</code></pre>
+<hr />
+<div id="all-data" class="section level1">
+<h1>All Data</h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_Beehives %&gt;%
+  filter(Area == &quot;Canada&quot;, Measurement != &quot;Value of honey and wax&quot;) %&gt;%
+  mutate(Era   = ifelse(Year &gt;= 1994, &quot;Post-NeoNic&quot;, &quot;Pre-NeoNic&quot;),
+         Era   = factor(Era, levels = c(&quot;Pre-NeoNic&quot;, &quot;Post-NeoNic&quot;)))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value)) + 
+  geom_line() + 
+  geom_line(aes(color = Era), size = 1.25) +
+  facet_grid(Measurement + Unit ~ ., scales = &quot;free&quot;, switch = &quot;y&quot;,
+             labeller = label_wrap_gen(width = 14, multi_line = TRUE)) +
+  scale_colour_manual(name = &quot;Era:&quot;, values = c(&quot;darkgoldenrod2&quot;, &quot;Dark Green&quot;)) +
+  scale_x_continuous(breaks = seq(1925, 2020, 10), minor_breaks = NULL) + 
+  coord_cartesian(xlim = c(min(xx$Year)+4, max(xx$Year)-4)) +
+  theme_agData(strip.placement = &quot;outside&quot;, legend.position = &quot;bottom&quot;) + 
+  labs(title = &quot;Canada - Honeybee&quot;, y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;honeybee_canada_01.png&quot;, mp, width = 6, height = 8)</code></pre>
+<p><img src="honeybee_canada_01.png" /></p>
+<hr />
+</div>
+<div id="colonies" class="section level1">
+<h1>Colonies</h1>
+<pre class="r"><code># Plot
+mp &lt;- ggplot(xx %&gt;% filter(Measurement == &quot;Colonies&quot;), aes(x = Year, y = Value)) + 
+  geom_line() + 
+  geom_line(aes(color = Era), size = 1.25) +
+  scale_colour_manual(name = &quot;Era:&quot;, values = c(&quot;darkgoldenrod2&quot;, &quot;Dark Green&quot;)) +
+  scale_x_continuous(breaks = seq(1925, 2020, 10), minor_breaks = NULL) + 
+  coord_cartesian(xlim = c(min(xx$Year)+4, max(xx$Year)-4)) +
+  theme_agData(strip.placement = &quot;outside&quot;, legend.position = &quot;bottom&quot;) + 
+  labs(title = &quot;Canada - Honeybee&quot;, y = &quot;Thousand Colonies&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot; )
+ggsave(&quot;honeybee_canada_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="honeybee_canada_02.png" /></p>
+<hr />
+<pre class="r"><code># Plot
+mp &lt;- mp +
+  # gganimate
+  transition_reveal(Year) +
+  ease_aes(&#39;linear&#39;)
+anim_save(&quot;honeybee_canada_gifs_01.gif&quot;, mp, width = 600, height = 400)</code></pre>
+<p><img src="honeybee_canada_gifs_01.gif" /></p>
+<hr />
+</div>
+<div id="provinces" class="section level1">
+<h1>Provinces</h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_Beehives %&gt;%
+  filter(Measurement == &quot;Colonies&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
+  geom_line() +
+  facet_wrap(Area ~ ., scales= &quot;free_y&quot;, ncol = 5) +
+  scale_color_manual(values = agData_Colors) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Canada - Honeybee&quot;, y = &quot;Thousand Colonies&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot; )
+ggsave(&quot;honeybee_canada_03.png&quot;, mp, width = 10, height = 4)</code></pre>
+<p><img src="honeybee_canada_03.png" /></p>
+<hr />
+</div>
+<div id="alberta-vs.-ontario" class="section level1">
+<h1>Alberta vs. Ontario</h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_Beehives %&gt;%
+  filter(Measurement == &quot;Colonies&quot;, 
+         Area %in% c(&quot;Alberta&quot;,&quot;Ontario&quot;))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
+  geom_line(size = 1.5) +
+  facet_wrap(Area ~ ., ncol = 5) +
+  scale_color_manual(values = c(&quot;darkcyan&quot;, &quot;darkred&quot;)) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Canada - Honeybee&quot;, y = &quot;Thousand Colonies&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot; )
+ggsave(&quot;honeybee_canada_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="honeybee_canada_04.png" /></p>
+</div>
+<div id="saskatchewan-vs.-quebec" class="section level1">
+<h1>Saskatchewan vs. Quebec</h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_Beehives %&gt;%
+  filter(Measurement == &quot;Colonies&quot;, 
+         Area %in% c(&quot;Saskatchewan&quot;, &quot;Quebec&quot;))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
+  geom_line(size = 1.5) +
+  facet_wrap(Area ~ ., ncol = 5) +
+  scale_color_manual(values = c(&quot;darkgreen&quot;, &quot;steelblue&quot;)) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Canada - Honeybee&quot;, y = &quot;Thousand Colonies&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot; )
+ggsave(&quot;honeybee_canada_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="honeybee_canada_05.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

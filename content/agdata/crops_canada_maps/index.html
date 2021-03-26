@@ -1,0 +1,149 @@
+---
+title: "Maps of Canadian Crop Production"
+subtitle: "Maps of crop production in Canada using STATCAN data"
+summary:  "Maps of crop production in Canada using STATCAN data"
+date: "2021-03-25"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crops_canada_maps/)"
+tags: [ "agData", "Regions" ]
+weight: 4
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/agdata/crops_canada_maps.html
+  - icon_pack: fas
+    icon: file-pdf
+    name: PDF
+    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/crops_canada_maps/crops_canada_maps.pdf
+---
+
+
+
+<hr />
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(mapcan)</code></pre>
+<hr />
+<div id="pdf" class="section level1">
+<h1>PDF</h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_Crops
+# Plot
+pdf(&quot;crops_canada_maps.pdf&quot;, width = 6, height = 4)
+for(i in unique(xx$Crop)) {
+  xi &lt;- xx %&gt;% filter(Crop == i, Year == max(Year), Measurement == &quot;Production&quot;) 
+  xi &lt;- mapcan(boundaries = province, type = standard) %&gt;% 
+    left_join(xi, by = c(&quot;pr_english&quot;=&quot;Area&quot;))
+  print(ggplot(xi, aes(x = long, y = lat, group = group, fill = Value / 1000000)) +
+          geom_polygon() + 
+          coord_fixed() + 
+          theme_mapcan() +
+          scale_fill_continuous(name = &quot;Million Tonnes&quot;, 
+                                low = &quot;lightgrey&quot;, high = &quot;darkgreen&quot;) +
+          theme(legend.position = &quot;right&quot;) + 
+          labs(title = paste(i, &quot;- Production -&quot;, max(xi$Year)),
+               caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+        ) 
+}
+dev.off()</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/crops_canada_maps/crops_canada_maps.pdf">crops_canada_maps.pdf</a></p>
+<hr />
+</div>
+<div id="plotting-function" class="section level1">
+<h1>Plotting Function</h1>
+<pre class="r"><code>cropMapCan &lt;- function(crop, measurement, year) {
+  xx &lt;- agData_STATCAN_Crops %&gt;% 
+    filter(Crop == crop, Year == year, Measurement == measurement) 
+  xx &lt;- mapcan(boundaries = province, type = standard) %&gt;% 
+    left_join(xx, by = c(&quot;pr_english&quot;=&quot;Area&quot;))
+  # Plot
+  ggplot(xx, aes(x = long, y = lat, group = group, fill = Value)) +
+    geom_polygon() + 
+    coord_fixed() + 
+    theme_mapcan() +
+    scale_fill_continuous(name = unique(xx$Unit[!is.na(xx$Unit)]),
+                          low = &quot;lightgrey&quot;, high = &quot;darkgreen&quot;) +
+    theme(legend.position = &quot;right&quot;) +
+    labs(title = paste(crop, measurement, year, sep = &quot; - &quot;),
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+}</code></pre>
+<hr />
+</div>
+<div id="wheat" class="section level1">
+<h1>Wheat</h1>
+<pre class="r"><code># Plot
+mp &lt;- cropMapCan(&quot;Wheat&quot;, &quot;Production&quot;, max(agData_STATCAN_Crops$Year))
+ggsave(&quot;maps_crops_canada_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="maps_crops_canada_01.png" /></p>
+<hr />
+</div>
+<div id="canola" class="section level1">
+<h1>Canola</h1>
+<pre class="r"><code># Plot
+mp &lt;- cropMapCan(&quot;Canola&quot;, &quot;Production&quot;, max(agData_STATCAN_Crops$Year))
+ggsave(&quot;maps_crops_canada_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="maps_crops_canada_02.png" /></p>
+<hr />
+</div>
+<div id="soybeans" class="section level1">
+<h1>Soybeans</h1>
+<pre class="r"><code># Plot
+mp &lt;- cropMapCan(&quot;Soybeans&quot;, &quot;Production&quot;, max(agData_STATCAN_Crops$Year))
+ggsave(&quot;maps_crops_canada_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="maps_crops_canada_03.png" /></p>
+<hr />
+</div>
+<div id="barley" class="section level1">
+<h1>Barley</h1>
+<pre class="r"><code># Plot
+mp &lt;- cropMapCan(&quot;Barley&quot;, &quot;Production&quot;, max(agData_STATCAN_Crops$Year))
+ggsave(&quot;maps_crops_canada_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="maps_crops_canada_04.png" /></p>
+<hr />
+</div>
+<div id="peas" class="section level1">
+<h1>Peas</h1>
+<pre class="r"><code># Plot
+mp &lt;- cropMapCan(&quot;Peas&quot;, &quot;Production&quot;, max(agData_STATCAN_Crops$Year))
+ggsave(&quot;maps_crops_canada_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="maps_crops_canada_05.png" /></p>
+<hr />
+</div>
+<div id="oats" class="section level1">
+<h1>Oats</h1>
+<pre class="r"><code># Plot
+mp &lt;- cropMapCan(&quot;Oats&quot;, &quot;Production&quot;, max(agData_STATCAN_Crops$Year))
+ggsave(&quot;maps_crops_canada_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="maps_crops_canada_06.png" /></p>
+<hr />
+</div>
+<div id="lentils" class="section level1">
+<h1>Lentils</h1>
+<pre class="r"><code># Plot
+mp &lt;- cropMapCan(&quot;Lentils&quot;, &quot;Production&quot;, max(agData_STATCAN_Crops$Year))
+ggsave(&quot;maps_crops_canada_07.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="maps_crops_canada_07.png" /></p>
+<hr />
+</div>
+<div id="beans" class="section level1">
+<h1>Beans</h1>
+<pre class="r"><code># Plot
+mp &lt;- cropMapCan(&quot;Beans&quot;, &quot;Production&quot;, max(agData_STATCAN_Crops$Year))
+ggsave(&quot;maps_crops_canada_08.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="maps_crops_canada_08.png" /></p>
+<hr />
+</div>
+<div id="chickpeas" class="section level1">
+<h1>Chickpeas</h1>
+<pre class="r"><code># Plot
+mp &lt;- cropMapCan(&quot;Chick peas&quot;, &quot;Production&quot;, max(agData_STATCAN_Crops$Year))
+ggsave(&quot;maps_crops_canada_09.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="maps_crops_canada_09.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

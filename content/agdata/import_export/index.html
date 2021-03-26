@@ -1,0 +1,194 @@
+---
+title: "Crop Import/Export"
+subtitle: "Graphs of of crop import/export using FAO data"
+summary:  "Graphs of of crop import/export using FAO data"
+date: "2021-03-25"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/import_export/)"
+tags: [ "agData", "Regions" ]
+weight: 4
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/agdata/import_export.html
+---
+
+
+
+<hr />
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(gganimate)</code></pre>
+<hr />
+<div id="plotting-function" class="section level1">
+<h1>Plotting Function</h1>
+<pre class="r"><code># Create plotting functions
+netImportExport &lt;- function(crop = &quot;Wheat&quot;, year = 2017) {
+  # Prep data
+  colors &lt;- c(&quot;darkgreen&quot;, &quot;darkblue&quot;, &quot;darkred&quot;, &quot;darkgoldenrod2&quot;, &quot;darkslategrey&quot;)
+  xx &lt;- agData_FAO_Trade %&gt;% 
+    addRegionInfo() %&gt;%
+    filter(Measurement %in% c(&quot;Import Quantity&quot;, &quot;Export Quantity&quot;), 
+           Area %in% unique(agData_FAO_Country_Table$Country),
+           Crop == crop, Year == year) %&gt;%
+    spread(Measurement, Value) %&gt;%
+    mutate(Net = `Export Quantity` - `Import Quantity`) %&gt;%
+    filter(!is.na(Net)) %&gt;% 
+    arrange(Net) %&gt;%
+    mutate(Area = factor(Area, levels = rev(unique(.$Area))))
+  x1 &lt;- top_n(xx, 10, Net) %&gt;% 
+    mutate(Label = &quot;Top 10&quot;)
+  x2 &lt;- top_n(xx %&gt;% mutate(Net = -Net), 10, Net) %&gt;% 
+    mutate(Label = &quot;Bottom 10&quot;, Net = -Net)
+  xx &lt;- bind_rows(x1, x2) %&gt;% 
+    mutate(Label = factor(Label, levels = c(&quot;Top 10&quot;, &quot;Bottom 10&quot;)))
+  # Plot
+  ggplot(xx, aes(x = Area, y = Net / 1000000, fill = Region)) + 
+    geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8) +
+    facet_grid(. ~ Label, scales = &quot;free_x&quot;) +
+    scale_fill_manual(values = colors) +
+    theme_agData(rotx = T) + 
+    labs(title = crop, subtitle = &quot;Export - Import&quot;, y = &quot;Million Tonnes&quot;, x = NULL,
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: FAOSTAT&quot;)
+}
+netImportExport_anim &lt;- function(crop = &quot;Wheat&quot;) {
+  # Prep data
+  colors &lt;- c(&quot;darkgreen&quot;, &quot;darkblue&quot;, &quot;darkred&quot;, &quot;darkgoldenrod2&quot;, &quot;darkslategrey&quot;)
+  xx &lt;- agData_FAO_Trade %&gt;% 
+    addRegionInfo() %&gt;%
+    filter(Measurement %in% c(&quot;Import Quantity&quot;, &quot;Export Quantity&quot;), 
+           Area %in% unique(agData_FAO_Country_Table$Country),
+           Crop == crop) %&gt;%
+    spread(Measurement, Value) %&gt;%
+    mutate(Net = `Export Quantity` - `Import Quantity`) %&gt;%
+    filter(!is.na(Net)) %&gt;% 
+    arrange(Net) %&gt;%
+    mutate(Area = factor(Area, levels = rev(unique(.$Area))))
+  x1 &lt;- xx %&gt;% group_by(Year) %&gt;% top_n(n=5, Net) %&gt;% 
+    mutate(Label = &quot;Top 10&quot;) %&gt;% 
+    arrange(Net) %&gt;% pull(Area) %&gt;% as.character() %&gt;% unique()
+  x2 &lt;- xx %&gt;% group_by(Year) %&gt;% top_n(n=5, -Net) %&gt;% 
+    mutate(Label = &quot;Bottom 10&quot;) %&gt;% 
+    arrange(Net) %&gt;% pull(Area) %&gt;% as.character() %&gt;% unique()
+  x1 &lt;- setdiff(x1, x2)
+  xx &lt;- xx %&gt;% filter(Area %in% c(x1, x2)) %&gt;% 
+    mutate(Label = ifelse(Area %in% x1, &quot;Top&quot;, &quot;Bottom&quot;),
+           Label = factor(Label, levels = c(&quot;Top&quot;, &quot;Bottom&quot;)))
+  # Plot
+  ggplot(xx, aes(x = Area, y = Net / 1000000, fill = Region)) + 
+    geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8) +
+    facet_grid(. ~ Label, scales = &quot;free_x&quot;) +
+    scale_fill_manual(values = colors) +
+    theme_agData(rotx = T) + 
+    labs(title = crop, y = &quot;Million Tonnes&quot;, x = NULL,
+         subtitle = &quot;Export - Import {round(frame_time)}&quot;,
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: FAOSTAT&quot;) +
+  # gganimate specific bits
+  transition_time(Year) +
+  ease_aes(&#39;linear&#39;)
+}</code></pre>
+<hr />
+</div>
+<div id="wheat" class="section level1">
+<h1>Wheat</h1>
+<pre class="r"><code>mp &lt;- netImportExport(crop = &quot;Wheat&quot;, year = 2017)
+ggsave(&quot;import_export_01.png&quot;, mp, width = 6, height = 3.75)</code></pre>
+<p><img src="import_export_01.png" /></p>
+<hr />
+</div>
+<div id="maize" class="section level1">
+<h1>Maize</h1>
+<pre class="r"><code>mp &lt;- netImportExport(crop = &quot;Maize&quot;, year = 2017)
+ggsave(&quot;import_export_02.png&quot;, mp, width = 6, height = 3.75)</code></pre>
+<p><img src="import_export_02.png" /></p>
+<hr />
+</div>
+<div id="rice" class="section level1">
+<h1>Rice</h1>
+<pre class="r"><code>mp &lt;- netImportExport(crop = &quot;Rice&quot;, year = 2017)
+ggsave(&quot;import_export_03.png&quot;, mp, width = 6, height = 3.75)</code></pre>
+<p><img src="import_export_03.png" /></p>
+<hr />
+</div>
+<div id="soybeans" class="section level1">
+<h1>Soybeans</h1>
+<pre class="r"><code>mp &lt;- netImportExport(crop = &quot;Soybeans&quot;, year = 2017)
+ggsave(&quot;import_export_04.png&quot;, mp, width = 6, height = 3.75)</code></pre>
+<p><img src="import_export_04.png" /></p>
+<hr />
+</div>
+<div id="sorghum" class="section level1">
+<h1>Sorghum</h1>
+<pre class="r"><code>mp &lt;- netImportExport(crop = &quot;Sorghum&quot;, year = 2017)
+ggsave(&quot;import_export_05.png&quot;, mp, width = 6, height = 3.75)</code></pre>
+<p><img src="import_export_05.png" /></p>
+<hr />
+</div>
+<div id="beans" class="section level1">
+<h1>Beans</h1>
+<pre class="r"><code>mp &lt;- netImportExport(crop = &quot;Beans, dry&quot;, year = 2017)
+ggsave(&quot;import_export_06.png&quot;, mp, width = 6, height = 3.75)</code></pre>
+<p><img src="import_export_06.png" /></p>
+<hr />
+</div>
+<div id="chickpeas" class="section level1">
+<h1>Chickpeas</h1>
+<pre class="r"><code>mp &lt;- netImportExport(crop = &quot;Chick peas&quot;, year = 2017)
+ggsave(&quot;import_export_07.png&quot;, mp, width = 6, height = 3.75)</code></pre>
+<p><img src="import_export_07.png" /></p>
+<hr />
+</div>
+<div id="lentils" class="section level1">
+<h1>Lentils</h1>
+<pre class="r"><code>mp &lt;- netImportExport(crop = &quot;Lentils&quot;, year = 2017)
+ggsave(&quot;import_export_08.png&quot;, mp, width = 6, height = 3.75)</code></pre>
+<p><img src="import_export_08.png" /></p>
+<hr />
+</div>
+<div id="canada" class="section level1">
+<h1>Canada</h1>
+<pre class="r"><code># Prep data
+crops &lt;- c(&quot;Cereals&quot;,&quot;Oilseeds&quot;,&quot;Pulses&quot;,&quot;Total Meat&quot;)
+colors &lt;- c(&quot;darkgreen&quot;, &quot;darkgoldenrod2&quot;, &quot;darkred&quot;, &quot;darkblue&quot;)
+xx &lt;- agData_FAO_Trade %&gt;%
+  filter(Area == &quot;Canada&quot;, Year == 2017, Crop %in% crops,
+         Measurement %in% c(&quot;Import Quantity&quot;,&quot;Export Quantity&quot;)) %&gt;%
+  mutate(Crop = factor(Crop, levels = crops))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Crop, y = Value / 1000000000, fill = Crop)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.7) +
+  facet_grid(. ~ Measurement) +
+  scale_fill_manual(values = colors) +
+  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+  labs(title = &quot;Canada 2017&quot;, y = &quot;Billion Tonnes&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: FAOSTAT&quot;)
+ggsave(&quot;import_export_09.png&quot;, mp, width = 6, height = 3.75)</code></pre>
+<p><img src="import_export_09.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+crops &lt;- c(&quot;Cereals&quot;,&quot;Oilseeds&quot;,&quot;Pulses&quot;,&quot;Total Meat&quot;)
+colors &lt;- c(&quot;darkgreen&quot;, &quot;darkgoldenrod2&quot;, &quot;darkred&quot;, &quot;darkblue&quot;)
+xx &lt;- agData_FAO_Trade %&gt;%
+  filter(Area == &quot;Canada&quot;, Crop %in% crops,
+         Measurement %in% c(&quot;Import Quantity&quot;,&quot;Export Quantity&quot;)) %&gt;%
+  mutate(Crop = factor(Crop, levels = crops))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Crop, y = Value / 1000000000, fill = Crop)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.7) +
+  facet_grid(. ~ Measurement) +
+  scale_fill_manual(values = colors) +
+  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+  labs(title = &quot;Canada - {round(frame_time)}&quot;,
+       y = &quot;Billion Tonnes&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: FAOSTAT&quot;) +
+  # gganimate specific bits
+  transition_time(Year) +
+  ease_aes(&#39;linear&#39;)
+anim_save(&quot;import_export_01.gif&quot;, mp, width = 600, height = 375)</code></pre>
+<p><img src="import_export_01.gif" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

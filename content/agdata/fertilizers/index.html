@@ -1,0 +1,206 @@
+---
+title: "Fertilizer Use"
+subtitle: "Graphs of fertilizer use using data from FAO"
+summary:  "Graphs of fertilizer use using data from FAO"
+date: "2021-03-25"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/fertilizers/)"
+tags: [ "agData", "Fertilizers" ]
+weight: 4
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/agdata/fertilizers.html
+---
+
+
+
+<hr />
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<hr />
+<div id="nitrogenous-fertilizer" class="section level1">
+<h1>Nitrogenous Fertilizer</h1>
+<div id="world" class="section level2">
+<h2>World</h2>
+<pre class="r"><code># Prep data
+mm &lt;- c(&quot;Agricultural Use&quot;, &quot;Production&quot;, &quot;Import Quantity&quot;, &quot;Export Quantity&quot;)
+xx &lt;- agData_FAO_Fertilizers %&gt;% 
+  filter(Area == &quot;World&quot;, Measurement %in% mm,
+         Item %in% c(&quot;Nitrogenous fertilizers&quot;, &quot;Nutrient nitrogen N (total)&quot;)) %&gt;%
+  mutate(Measurement = factor(Measurement, levels = mm))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
+  geom_line(aes(color = Item), size = 1.25, alpha = 0.8) + 
+  facet_wrap(Measurement~., scales = &quot;free&quot;) +
+  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
+  scale_color_manual(name = NULL, values = c(&quot;steelblue&quot;, &quot;darkblue&quot;)) + 
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Global Nitrogenous Fertilizer Use&quot;,
+       caption = &quot;\xa9 www.dblogr.com/ | Data: FAOSTAT&quot;,
+       y = &quot;Million Tonnes&quot;, x = NULL)
+ggsave(&quot;fertilizers_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="fertilizers_01.png" /></p>
+<hr />
+</div>
+<div id="regions" class="section level2">
+<h2>Regions</h2>
+<pre class="r"><code># Prep data
+mm &lt;- c(&quot;Agricultural Use&quot;, &quot;Production&quot;, &quot;Import Quantity&quot;, &quot;Export Quantity&quot;)
+areas &lt;- c(&quot;Asia&quot;, &quot;Americas&quot;, &quot;Europe&quot;, &quot;Africa&quot;)
+colors &lt;- c(&quot;darkred&quot;, &quot;steelblue&quot;, &quot;darkblue&quot;, &quot;darkgreen&quot;)
+xx &lt;- agData_FAO_Fertilizers %&gt;% 
+  filter(Area %in% areas, Measurement != &quot;Other Uses&quot;,
+         Item %in% c(&quot;Nitrogenous fertilizers&quot;, &quot;Nutrient nitrogen N (total)&quot;)) %&gt;%
+  mutate(Measurement = factor(Measurement, levels = mm),
+         Area = factor(Area, levels = areas))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) + 
+  geom_line(size = 1.25, alpha = 0.8) + 
+  facet_wrap(Measurement~., scales = &quot;free&quot;) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
+  scale_color_manual(values = colors) + 
+  labs(title = &quot;Nitrogenous Fertilizer Use by Region&quot;,
+       caption = &quot;\xa9 www.dblogr.com/ | Data: FAOSTAT&quot;,
+       y = &quot;Million Tonnes&quot;, x = NULL)
+ggsave(&quot;fertilizers_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="fertilizers_02.png" /></p>
+<hr />
+</div>
+<div id="countries" class="section level2">
+<h2>Countries</h2>
+<pre class="r"><code># Create plotting function
+ggFertN &lt;- function(area, color = &quot;darkred&quot;) {
+  # Prep data
+  mm &lt;- c(&quot;Agricultural Use&quot;, &quot;Production&quot;, &quot;Import Quantity&quot;, &quot;Export Quantity&quot;)
+  xx &lt;- agData_FAO_Fertilizers %&gt;% 
+    filter(Area == area, Measurement != &quot;Other Uses&quot;,
+           Item %in% c(&quot;Nitrogenous fertilizers&quot;, &quot;Nutrient nitrogen N (total)&quot;)) %&gt;%
+    mutate(Measurement = factor(Measurement, levels = mm))
+  # Plot
+  ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
+    geom_line(size = 1.25, alpha = 0.8, color = color) + 
+    scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
+    facet_wrap(Measurement ~ ., scales = &quot;free&quot;) +
+    theme_agData() +
+    labs(title = paste(&quot;Nitrogenous Fertilizer Use In&quot;, area),
+         caption = &quot;\xa9 www.dblogr.com/ | Data: FAOSTAT&quot;,
+         y = &quot;Million Tonnes&quot;, x = NULL)
+}</code></pre>
+<hr />
+<div id="canada" class="section level3">
+<h3>Canada</h3>
+<pre class="r"><code># Plot
+mp &lt;- ggFertN(&quot;Canada&quot;, &quot;darkgreen&quot;)
+ggsave(&quot;fertilizers_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="fertilizers_03.png" /></p>
+<hr />
+</div>
+<div id="china" class="section level3">
+<h3>China</h3>
+<pre class="r"><code># Plot
+mp &lt;- ggFertN(&quot;China&quot;, &quot;darkred&quot;)
+ggsave(&quot;fertilizers_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="fertilizers_04.png" /></p>
+<hr />
+</div>
+<div id="usa" class="section level3">
+<h3>USA</h3>
+<pre class="r"><code># Plot
+mp &lt;- ggFertN(&quot;USA&quot;, &quot;darkblue&quot;)
+ggsave(&quot;fertilizers_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="fertilizers_05.png" /></p>
+<hr />
+</div>
+<div id="germany" class="section level3">
+<h3>Germany</h3>
+<pre class="r"><code># Plot
+mp &lt;- ggFertN(&quot;Germany&quot;, &quot;black&quot;)
+ggsave(&quot;fertilizers_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="fertilizers_06.png" /></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="n-ha" class="section level1">
+<h1>N / Ha</h1>
+<pre class="r"><code># Prep data
+y1 &lt;- agData_FAO_Fertilizers %&gt;% 
+  filter(Measurement == &quot;Agricultural Use&quot;,
+         Item == &quot;Nitrogenous fertilizers&quot;, Year &lt; 2002 )
+y2 &lt;- agData_FAO_Fertilizers %&gt;% 
+  filter(Measurement == &quot;Agricultural Use&quot;,
+         Item == &quot;Nutrient nitrogen N (total)&quot;) %&gt;%
+  mutate(Item = &quot;Nitrogenous fertilizers&quot;)
+y3 &lt;- agData_FAO_LandUse %&gt;% 
+  filter(Item == &quot;Agricultural land&quot;)
+yy &lt;- bind_rows(y1, y2, y3) %&gt;% 
+  select(-Measurement, -Unit) %&gt;% 
+  spread(Item, Value) %&gt;%
+  mutate(NPH = `Nitrogenous fertilizers` / `Agricultural land`)</code></pre>
+<hr />
+<div id="world-1" class="section level2">
+<h2>World</h2>
+<pre class="r"><code># Prep data
+xx &lt;- yy %&gt;% filter(Area == &quot;World&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = NPH)) + 
+  geom_line(size = 1.5, color = &quot;darkgreen&quot;) + 
+  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
+  theme_agData() +
+  labs(title = &quot;World Fertilizer Use&quot;, y = &quot;Tonnes N / Hectare&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/ | Data: FAOSTAT&quot;)
+ggsave(&quot;fertilizers_07.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="fertilizers_07.png" /></p>
+<hr />
+</div>
+<div id="regions-1" class="section level2">
+<h2>Regions</h2>
+<pre class="r"><code># Prep data
+areas &lt;- c(&quot;Europe&quot;, &quot;Americas&quot;, &quot;Asia&quot;, &quot;Africa&quot;)
+colors &lt;- c(&quot;darkblue&quot;, &quot;steelblue&quot;, &quot;darkred&quot;, &quot;darkgreen&quot;)
+xx &lt;- yy %&gt;% filter(Area %in% areas) %&gt;%
+  mutate(Area = factor(Area, levels = areas))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = NPH, color = Area)) + 
+  geom_line(size = 1.5, alpha = 0.8) + 
+  scale_color_manual(values = colors) + 
+  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;World Fertilizer Use&quot;, y = &quot;Tonnes N / Hectare&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/ | Data: FAOSTAT&quot;)
+ggsave(&quot;fertilizers_08.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="fertilizers_08.png" /></p>
+<hr />
+</div>
+<div id="countries-1" class="section level2">
+<h2>Countries</h2>
+<pre class="r"><code># Prep data
+colors &lt;- c(&quot;darkgreen&quot;, &quot;darkblue&quot;, &quot;black&quot;,   &quot;darkred&quot;, &quot;darkgoldenrod2&quot;)
+areas  &lt;- c(&quot;Canada&quot;,    &quot;USA&quot;,      &quot;Germany&quot;, &quot;China&quot;,   &quot;India&quot;)
+xx &lt;- yy %&gt;% filter(Area %in% areas) %&gt;%
+  mutate(Area = factor(Area, levels = areas))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = NPH, color = Area)) + 
+  geom_line(size = 1.5, alpha = 0.8) + 
+  scale_color_manual(values = colors) +
+  scale_x_continuous(breaks = seq(1970, 2010, by = 20)) + 
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;World Fertilizer Use&quot;, y = &quot;Tonnes N / Hectare&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/ | Data: FAOSTAT&quot;)
+ggsave(&quot;fertilizers_09.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="fertilizers_09.png" /></p>
+<hr />
+<pre class="r"><code># Plot
+mp &lt;- mp + facet_wrap(Area ~., ncol = 3, scales = &quot;free_y&quot;) +
+  theme(legend.position = &quot;none&quot;)
+ggsave(&quot;fertilizers_10.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="fertilizers_10.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>
+</div>

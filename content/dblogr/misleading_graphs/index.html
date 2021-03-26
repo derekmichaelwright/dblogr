@@ -1,0 +1,144 @@
+---
+title: "Misleading Graphs"
+subtitle: "A guide illustrating how to mislead with graphs"
+summary:  "A guide illustrating how to mislead with graphs"
+date: "2021-03-25"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/misleading_graphs/)"
+tags: [ "dblogr", "SciComm", "Featured" ]
+weight: 2
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/misleading_graphs.html
+---
+
+
+
+<hr />
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(ggpmisc) # stat_poly_eq()</code></pre>
+<hr />
+<div id="truncating-the-y-axis" class="section level1">
+<h1>1. Truncating The y-axis</h1>
+<pre class="r"><code># Prep data
+xx &lt;- data.frame(Answer   = c(&quot;NO&quot;, &quot;YES&quot;),
+                 Percent  = c(5,    95),
+                 Position = c(97.5, 92.5))
+# Plot
+mp1 &lt;- ggplot(xx, aes(x = &quot;&quot;)) + 
+  geom_bar(aes(y = Percent, fill = Answer), stat = &quot;identity&quot;, color = &quot;black&quot;) +
+  scale_fill_manual(values = c(&quot;darkred&quot;,&quot;darkgreen&quot;)) +
+  coord_cartesian(ylim = c(4, 100)) +
+  theme_agData(legend.position = &quot;none&quot;,
+               axis.ticks.x = element_blank()) +
+  labs(subtitle = &quot;B) Correct&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/&quot;)
+mp2 &lt;- mp1 + 
+  geom_label(aes(y = Position, label = Answer), size = 10) + 
+  coord_cartesian(ylim = c(90, 100)) +
+  labs(title = &quot;Is truncating the y-axis misleading?&quot;, 
+       subtitle = &quot;A) Incorrect&quot;, x = NULL, caption = NULL)
+mp &lt;- ggarrange(mp2, mp1, ncol = 2, align = &quot;h&quot;)
+ggsave(&quot;misleading_graphs_01.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="misleading_graphs_01.png" /></p>
+<pre class="r"><code># Prep data
+xx &lt;- data.frame(Company = c(&quot;Website A&quot;, &quot;Website B&quot;, &quot;Website C&quot;),
+                 Views   = c( 2555486,     2527246,     2519643))
+# Plot
+mp1 &lt;- ggplot(xx, aes(x = Company, y = Views / 1000000, fill = Company)) + 
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
+  scale_fill_manual(values = agData_Colors) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(subtitle = &quot;B) Correct&quot;, y = &quot;Million Views&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/&quot;)
+mp2 &lt;- mp1 + 
+  coord_cartesian(ylim = c(2510000, 2556000) / 1000000) +
+  labs(title = &quot;Effect of truncating the y-axis&quot;,
+       subtitle = &quot;A) Incorrect&quot;, y = &quot;Million Views&quot;, x = NULL,
+       caption = NULL)
+mp &lt;- ggarrange(mp2, mp1, ncol = 2, align = &quot;h&quot;)
+ggsave(&quot;misleading_graphs_02.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="misleading_graphs_02.png" /></p>
+<hr />
+</div>
+<div id="dual-y-axis" class="section level1">
+<h1>2. Dual y-axis</h1>
+<p>Data for Canadian autism rates can be found <a href="https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-children-youth-canada-2018.html">here</a>.</p>
+<pre class="r"><code># Prep data
+x1 &lt;- read.csv(&quot;quebec_autism_rates.csv&quot;)
+x2 &lt;- agData_FAO_LandUse %&gt;% 
+  filter(Item == &quot;Agriculture area certified organic&quot;, Area == &quot;Canada&quot;) %&gt;%
+  select(Year, Oranic_Area=Value)
+xx &lt;- left_join(x2, x1, by = &quot;Year&quot;) %&gt;% 
+  filter(!is.na(Rate))
+y1_min &lt;- min(xx$Oranic_Area)
+y1_max &lt;- max(xx$Oranic_Area)
+y2_min &lt;- min(xx$Rate)
+y2_max &lt;- max(xx$Rate)
+xx &lt;- xx %&gt;%
+  mutate(AR_scaled = (Rate - y2_min) * (y1_max - y1_min) / (y2_max - y2_min) + y1_min)
+# Plot
+mp1 &lt;- ggplot(xx, aes(x = Oranic_Area, y = Rate)) + 
+  geom_point(size = 3) + 
+  geom_smooth(method = &quot;lm&quot;, se = F) +
+  stat_poly_eq(formula = y ~ x, aes(label = ..rr.label..), rr.digits = 3, parse = T) +
+  theme_agData() +
+  labs(title = &quot;Correlation does not equal causation&quot;, subtitle = &quot;A)&quot;,
+       x = &quot;Canadian Agricultural Area Certified Organic (1000 Hectares)&quot;, 
+       y = &quot;Autism Rate in Quebec (Per 1000 People)&quot;)
+mp2 &lt;- ggplot(xx, aes(x = Year)) +
+  geom_line(aes(y = Oranic_Area, color = &quot;Area Certified Organic (Canada)&quot;), size = 1.5, alpha = 0.5) + 
+  geom_point(aes(y = Oranic_Area, color = &quot;Area Certified Organic (Canada)&quot;), size = 2) +
+  geom_line(aes(y = AR_scaled, color = &quot;Autism Rates (Quebec)&quot;), size = 1.5, alpha = 0.5) + 
+  geom_point(aes(y = AR_scaled, color = &quot;Autism Rates (Quebec)&quot;), size = 2) +
+  scale_color_manual(name = NULL, values = c(&quot;darkgreen&quot;,&quot;darkred&quot;)) +
+  scale_x_continuous(breaks = seq(2005,2015,2), minor_breaks = 2004:2015) +
+  scale_y_continuous(name = &quot;Thousand Hectares&quot;,  
+                     sec.axis = sec_axis(~ (. - y1_min) * (y2_max - y2_min) / (y1_max - y1_min) + y2_min,
+                     name = &quot;Rate Per 1000 People&quot;)) +
+  theme_agData(legend.position = c(0.30,0.85)) +
+  labs(subtitle = &quot;B)&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN &amp; FAOSTAT&quot;)
+mp &lt;- ggarrange(mp1, mp2, ncol = 2, align = &quot;h&quot;)
+ggsave(&quot;misleading_graphs_03.png&quot;, mp, width = 10, height = 4)</code></pre>
+<p><img src="misleading_graphs_03.png" /></p>
+<hr />
+</div>
+<div id="cherry-picking-data" class="section level1">
+<h1>3. Cherry Picking Data</h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_USDA_Crops %&gt;%
+  filter(Measurement == &quot;Yield&quot;, Crop == &quot;Maize&quot;) %&gt;%
+  mutate(CherryPicked = ifelse(Year &gt; 1994 &amp; Year &lt; 2011, &quot;Yes&quot;, &quot;No&quot;),
+         CherryPicked = factor(CherryPicked, levels = c(&quot;Yes&quot;, &quot;No&quot;)))
+y1 &lt;- xx %&gt;% filter(Year &gt; 1994, Year &lt; 2011)
+y2 &lt;- xx %&gt;% filter(Year &gt; 1950)
+# Plot
+mp1 &lt;- ggplot(y1, aes(x = Year, y = Value, color = CherryPicked)) +
+  geom_smooth(method = &quot;lm&quot;, se = F, color = &quot;black&quot;) +
+  geom_line(size = 1.25) + 
+  geom_point(size = 3) +
+  scale_color_manual(values = agData_Colors) +
+  scale_x_continuous(breaks = seq(1995,2010,5)) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Cherry picking data&quot;, subtitle = &quot;A) Cherry picked&quot;, 
+       y = &quot;Tonnes / Hectare&quot;, x = NULL)
+mp2 &lt;- ggplot(xx, aes(x = Year, y = Value, color = CherryPicked)) + 
+  geom_smooth(data = y2, method = &quot;lm&quot;, se = F, color = &quot;black&quot;) +
+  geom_line(aes(group = 1)) + 
+  geom_point() +
+  scale_color_manual(values = agData_Colors) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(subtitle = &quot;B) Full data set&quot;, y = &quot;Tonnes / Hectare&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: USDA&quot;)
+mp &lt;- ggarrange(mp1, mp2, ncol = 2, align = &quot;h&quot;)
+ggsave(&quot;misleading_graphs_04.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="misleading_graphs_04.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>
