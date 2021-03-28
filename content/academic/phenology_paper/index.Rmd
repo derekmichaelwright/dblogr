@@ -1,7 +1,7 @@
 ---
 title: "Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)"
-subtitle: "*Plants, People, Planet*. 00: 1-11"
-summary:  "*Plants, People, Planet*. 00: 1-11"
+subtitle: "*Plants, People, Planet*. 2020 00: 1-11"
+summary:  "*Plants, People, Planet*. 2020 00: 1-11"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/canola_nue)"
 date: "`r Sys.Date()`"
 categories: [ "AGILE" ]
@@ -12,28 +12,28 @@ image:
 links:
   - icon: newspaper
     icon_pack: far
-    name: bioRxiv
+    name: Plants, People, Planet
     url: https://nph.onlinelibrary.wiley.com/doi/10.1002/ppp3.10158
-  - icon: chart-line
-    icon_pack: fas
-    name: All Graphs
-    url: research_graphs/phenology_paper
   - icon: file-code
     icon_pack: far
     name: Github
     url: https://github.com/derekmichaelwright/AGILE_LDP_Phenology
+  - icon: chart-line
+    icon_pack: fas
+    name: All Graphs
+    url: https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html
   - icon: file-code
     icon_pack: far
     name: Github HTML
     url: https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html
   - icon: file-code
     icon_pack: far
-    name: Source Code HTML
+    name: R Script
     url: https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html
   - icon: file-pdf
     icon_pack: far
-    name: Source Code pdf
-    url: https://github.com/derekmichaelwright/AGILE_LDP_Phenology/blob/master/Phenology_Vignette.pdf
+    name: Figures pdf
+    url: https://github.com/derekmichaelwright/AGILE_LDP_Phenology/blob/master/README.pdf
   - icon: file-code
     icon_pack: far
     name: Shiny App
@@ -162,4 +162,4 @@ https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/
 
 ---
 
-&copy; Derek Michael Wright 2020 [www.dblogr.com/](https://dblogr.com/)
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

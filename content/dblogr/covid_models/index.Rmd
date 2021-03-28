@@ -1,0 +1,84 @@
+---
+title: "Covid Models"
+subtitle: "Graphs for covid models vs actual data"
+summary:  "Graphs for covid models vs actual data"
+date: "`r Sys.Date()`"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/covid_models/)"
+tags: [ "dblogr", "SciComm", "Politics" ]
+weight: 6
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/covid_models.html
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+```
+
+---
+
+# Data
+
+Models
+
+https://github.com/MN-COVID19-Model/Model_v3
+
+[**< Download Model Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/models_minnesota.csv)
+
+Actual data
+
+https://beta.healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/g62h-syeh/data
+
+[**< Download Actual Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/covid_usa.csv)
+
+---
+
+# Prepare data
+
+```{r}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+```
+
+```{r}
+# Prep data
+models <- c("Model 1", "Model 2", "Model 3", "Model 4")
+colors <- c("darkred", "black", "darkgreen", "darkorange", "steelblue")
+x1 <- read.csv("models_minnesota.csv") %>% 
+  rename(Hospitalizations=prevalent_hospitalizations,
+         Data=strategy) %>%
+  mutate(Data = plyr::mapvalues(Data, 1:4, models),
+         Date = as.Date("2020-03-22") + t)
+x2 <- read.csv("covid_usa.csv") %>%
+  filter(state == "MN") %>%
+  rename(Date=date,
+         Hospitalizations=inpatient_bed_covid_utilization_numerator) %>%
+  mutate(Data = "Actual",
+         Date = as.Date(Date))
+xx <- bind_rows(x1, x2)
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Hospitalizations, color = Data, size = Data)) +
+  geom_line(alpha = 0.8) +
+  scale_x_date(breaks = "2 month", limits = as.Date(c("2020-03-01","2021-01-01"))) +
+  scale_size_manual(name = NULL, values = c(1.25,0.75,0.75,0.75,0.75)) +
+  scale_color_manual(name = NULL, values = colors) +
+  theme_agData() +
+  labs(title = "Minnesota - Covid Predictions vs Reality", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: UofM & HHS")
+ggsave("covid_model_01.png", mp, width = 6, height = 4)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 6, height = 4)
+```
+
+![](covid_model_01.png)
+
+---
+
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

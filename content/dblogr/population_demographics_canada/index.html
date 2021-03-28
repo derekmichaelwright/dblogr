@@ -2,7 +2,7 @@
 title: "Population Demographics In Canada"
 subtitle: "Population Pyramids with R"
 summary:  "Population Pyramids with R"
-date: "2021-03-25"
+date: "2021-03-28"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/population_demographics_canada/)"
 tags: [ "dblogr", "SciComm", "Featured" ]
 weight: 3
@@ -21,11 +21,18 @@ links:
 <hr />
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
+<p>STATCAN data Tables: 17-10-0009-01 &amp; 17-10-0005-01 &amp; 17-10-0008-01</p>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901</a></p>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000501" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000501</a></p>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000801</a></p>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(gganimate)
 library(transformr)</code></pre>
 <hr />
+</div>
+<div id="population" class="section level1">
+<h1>Population</h1>
 <pre class="r"><code>xx &lt;- agData_STATCAN_Population %&gt;% filter(Month == 1)
 mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   geom_line() +
@@ -236,5 +243,5 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
 ggsave(&quot;PopDem_11.png&quot;, mp, width = 8, height = 4)</code></pre>
 <p><img src="PopDem_11.png" /></p>
 <hr />
-<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

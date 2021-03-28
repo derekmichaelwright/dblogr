@@ -40,7 +40,7 @@ The [2019 Canadian federal election](https://en.wikipedia.org/wiki/2019_Canadian
 
 https://enr.elections.ca/National.aspx?lang=e
 
-[*Download Data*](https://github.com/derekmichaelwright/htmls/blob/master/scripts/dblogr/2019_canadian_election/2019_canadian_election_data.xlsx?raw=true)
+[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/2019_canadian_election/2019_canadian_election_data.xlsx)
 
 ---
 
@@ -1461,4 +1461,4 @@ mp <- benfordsLaw(party = c("Cons","Libs","NDP","Green","PPC"), "All")
 ggsave("fraud/election_2019_00_fraud.png", mp, width = 6, height = 4)
 ```
 
-&copy; Derek Michael Wright 2020 [www.dblogr.com/](https://dblogr.com/)
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

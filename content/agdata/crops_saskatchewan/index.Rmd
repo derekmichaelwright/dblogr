@@ -25,8 +25,8 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(treemapify) # geom_treemap()
 library(gganimate)
-library(treemapify)
 ```
 
 ---
@@ -108,9 +108,7 @@ ggsave("crops_saskatchewan_02.png", mp, width = 6, height = 5)
 
 ![](crops_saskatchewan_02.png)
 
----
-
-```{r}
+```{r eval = F}
 # Prep data
 myCrops <- cropList(measurement = "Seeded area")
 xx <- agData_STATCAN_Crops %>% 

@@ -2,7 +2,7 @@
 title: "Street Maps"
 subtitle: "Create street map art with R and road network files"
 summary:  "Create street map art with R and road network files"
-date: "2021-03-25"
+date: "2021-03-28"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/street_maps/)"
 tags: [ "dblogr", "R" ]
 weight: 3
@@ -25,6 +25,8 @@ links:
 <p><a href="https://www12.statcan.gc.ca/census-recensement/2011/geo/RNF-FRR/index-2011-eng.cfm?year=16" class="uri">https://www12.statcan.gc.ca/census-recensement/2011/geo/RNF-FRR/index-2011-eng.cfm?year=16</a></p>
 <p>Germany rail roads</p>
 <p><a href="https://mapcruzin.com/free-germany-arcgis-maps-shapefiles.htm" class="uri">https://mapcruzin.com/free-germany-arcgis-maps-shapefiles.htm</a></p>
+<p>My shape files</p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/tree/master/content/dblogr/street_maps" class="uri">https://github.com/derekmichaelwright/dblogr/tree/master/content/dblogr/street_maps</a></p>
 <pre class="r"><code># Load libraries
 library(tidyverse)
 library(sf)</code></pre>
@@ -96,5 +98,5 @@ mp &lt;- ggplot(rail_roads) +
 ggsave(&quot;railroads_germany.png&quot;, mp, bg = &quot;transparent&quot;, width = 6, height = 6)</code></pre>
 <p><img src="railroads_germany.png" /></p>
 <hr />
-<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

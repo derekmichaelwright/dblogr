@@ -32,7 +32,9 @@ https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040001
 
 https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040201
 
-[*Download Data*](https://github.com/derekmichaelwright/htmls/blob/master/scripts/dblogr/economics_of_canada/economics_of_canada_data.xlsx?raw=true)
+[**< Download 36-10-0400-01 >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/economics_of_canada/3610040001_databaseLoadingData.csv)
+
+[**< Download 36-10-0402-01 >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/economics_of_canada/3610040201_databaseLoadingData.csv)
 
 ---
 
@@ -308,4 +310,4 @@ ggsave("economics_of_canada_13.png", mp, width = 8, height = 4)
 
 ---
 
-&copy; Derek Michael Wright 2020 [www.dblogr.com/](https://dblogr.com/)
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

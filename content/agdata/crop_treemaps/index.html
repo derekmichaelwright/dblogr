@@ -2,7 +2,7 @@
 title: "Crop Treemaps"
 subtitle: "Graphs of countries producing specific crops"
 summary:  "Graphs of countries producing specific crops"
-date: "2021-03-25"
+date: "2021-03-28"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crop_treemaps/)"
 tags: [ "agData", "Regions" ]
 weight: 3
@@ -17,7 +17,7 @@ links:
   - icon_pack: fas
     icon: file-pdf
     name: PDF
-    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/crop_treemaps/crop_treemaps_fao.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crop_treemaps/crop_treemaps_fao.pdf
 ---
 
 
@@ -25,7 +25,7 @@ links:
 <hr />
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-library(treemapify)</code></pre>
+library(treemapify) # geom_treemap()</code></pre>
 <hr />
 <div id="crops-by-area" class="section level1">
 <h1>Crops by Area</h1>
@@ -122,7 +122,7 @@ for(i in crops) {
 dev.off()</code></pre>
 <pre><code>## png 
 ##   2</code></pre>
-<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/crop_treemaps/crop_treemaps.pdf">crop_treemaps.pdf</a></p>
+<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crop_treemaps/crop_treemaps_fao.pdf">crop_treemaps.pdf</a></p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

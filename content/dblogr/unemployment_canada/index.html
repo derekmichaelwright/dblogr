@@ -2,7 +2,7 @@
 title: "Unemployment & Business Closures"
 subtitle: "An exploration of unemployment & business closures from Canada"
 summary:  "An exploration of unemployment & business closures from Canada"
-date: "2021-03-25"
+date: "2021-03-28"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/unemployment_canada/)"
 tags: [ "dblogr", "Economics" ]
 weight: 4
@@ -23,7 +23,7 @@ links:
 <h1>Prep Data</h1>
 <p>STATCAN data Tables: 3310027001</p>
 <p><a href="https://www150.statcan.gc.ca/n1/pub/11-626-x/11-626-x2020014-eng.htm" class="uri">https://www150.statcan.gc.ca/n1/pub/11-626-x/11-626-x2020014-eng.htm</a></p>
-<p><a href="https://github.com/derekmichaelwright/htmls/blob/master/scripts/dblogr/economics_of_canada/economics_of_canada_data.xlsx?raw=true"><em>Download Data</em></a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/unemployment_canada/3310027001_databaseLoadingData.csv"><strong>&lt; Download Data &gt;</strong></a></p>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
 <pre class="r"><code># Prep data
@@ -109,5 +109,5 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Businesses, fill = Pos)) +
 ggsave(&quot;Unemployment_Canada_05.png&quot;, mp, width = 12, height = 8)</code></pre>
 <p><img src="Unemployment_Canada_05.png" /></p>
 <hr />
-<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

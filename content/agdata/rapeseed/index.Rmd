@@ -17,7 +17,7 @@ links:
   - icon_pack: fas
     icon: file-pdf
     name: PDF
-    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/rapeseed/rapeseed_fao.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/rapeseed/rapeseed_fao.pdf
 ---
 
 ```{r setup, include = FALSE}
@@ -65,7 +65,7 @@ for(i in areas) {
 dev.off()
 ```
 
-**PDF**: [rapeseed_fao.pdf](https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/rapeseed/rapeseed_fao.pdf)
+**PDF**: [rapeseed_fao.pdf](https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/rapeseed/rapeseed_fao.pdf)
 
 ---
 

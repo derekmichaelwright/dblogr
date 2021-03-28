@@ -17,15 +17,15 @@ links:
   - icon_pack: fas
     icon: file-pdf
     name: PDF (Yearly)
-    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/calendar_creation/Calendar_Year.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Year.pdf
   - icon_pack: fas
     icon: file-pdf
     name: PDF (Monthly)
-    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/calendar_creation/Calendar_Monthly.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Monthly.pdf
   - icon_pack: fas
     icon: file-pdf
     name: PDF (Weekly)
-    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/calendar_creation/Calendar_Weekly.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Weekly.pdf
 ---
 
 ```{r setup, include = FALSE, warning = F, message = F}
@@ -106,7 +106,7 @@ dev.off() #dev.set(dev.next())
 
 ![](img_calendar_year.png)
 
-[*Download PDF: Yearly Calendar.*](https://github.com/derekmichaelwright/dblogr/raw/master/content/calendar_creation/Calendar_Year.pdf)
+[**< Download PDF: Yearly Calendar >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Year.pdf)
 
 ---
 
@@ -154,7 +154,7 @@ dev.off()
 
 ![](img_calendar_month.png)
 
-[*Download PDF: Monthly Calendar.*](https://github.com/derekmichaelwright/dblogr/raw/master/content/calendar_creation/Calendar_Monthly.pdf)
+[**< Download PDF: Monthly Calendar >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Monthly.pdf)
 
 ---
 
@@ -190,8 +190,8 @@ dev.off()
 
 ![](img_calendar_week.png)
 
-[*Download PDF: Weekly Calendar.*](https://github.com/derekmichaelwright/dblogr/raw/master/content/calendar_creation/Calendar_Weekly.pdf)
+[**< Download PDF: Weekly Calendar >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Weekly.pdf)
 
 ---
 
-&copy; Derek Michael Wright 2020 [www.dblogr.com/](https://dblogr.com/)
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

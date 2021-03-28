@@ -2,7 +2,7 @@
 title: "Global Potato Production"
 subtitle: "Graphs of potato production using FAO data"
 summary:  "Graphs of potato production using FAO data"
-date: "2021-03-25"
+date: "2021-03-28"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/potato/)"
 tags: [ "agData", "Potato" ]
 weight: 4
@@ -17,7 +17,7 @@ links:
   - icon_pack: fas
     icon: file-pdf
     name: PDF
-    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/potato/potato_fao.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/potato/potato_fao.pdf
 ---
 
 
@@ -42,7 +42,7 @@ xx &lt;- agData_FAO_Crops %&gt;%
                         c(&quot;Million hectares&quot;,&quot;Million tonnes&quot;)))
 areas &lt;- areas[areas %in% xx$Area]
 # Plot
-pdf(&quot;Potato_fao.pdf&quot;, width = 12, height = 4)
+pdf(&quot;potato_fao.pdf&quot;, width = 12, height = 4)
 for(i in areas) {
   print(ggplot(xx %&gt;% filter(Area == i)) +
     geom_line(aes(x = Year, y = Value, color = Measurement),
@@ -57,7 +57,7 @@ for(i in areas) {
 dev.off()</code></pre>
 <pre><code>## png 
 ##   2</code></pre>
-<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/potato/potato_fao.pdf">Potato_fao.pdf</a></p>
+<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/potato/potato_fao.pdf">Potato_fao.pdf</a></p>
 <hr />
 </div>
 <div id="global-production" class="section level1">

@@ -17,7 +17,7 @@ links:
   - icon_pack: fas
     icon: file-pdf
     name: PDF
-    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/crops_canada_maps/crops_canada_maps.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crops_canada_maps/crops_canada_maps.pdf
 ---
 
 ```{r setup, include = FALSE}
@@ -59,7 +59,7 @@ for(i in unique(xx$Crop)) {
 dev.off()
 ```
 
-**PDF**: [crops_canada_maps.pdf](https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/crops_canada_maps/crops_canada_maps.pdf)
+**PDF**: [crops_canada_maps.pdf](https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crops_canada_maps/crops_canada_maps.pdf)
 
 ---
 

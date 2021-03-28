@@ -32,6 +32,10 @@ Germany rail roads
 
 https://mapcruzin.com/free-germany-arcgis-maps-shapefiles.htm
 
+My shape files
+
+https://github.com/derekmichaelwright/dblogr/tree/master/content/dblogr/street_maps
+
 ```{r}
 # Load libraries
 library(tidyverse)
@@ -131,4 +135,4 @@ ggsave("railroads_germany.png", mp, bg = "transparent", width = 6, height = 6)
 
 ---
 
-&copy; Derek Michael Wright 2020 [www.dblogr.com/](https://dblogr.com/)
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

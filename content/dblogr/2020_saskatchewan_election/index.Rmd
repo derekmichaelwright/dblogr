@@ -38,7 +38,7 @@ The [2020 Saskatchewan provincial election](https://en.wikipedia.org/wiki/2020_S
 
 https://results.elections.sk.ca/
 
-[*Download Data*](https://github.com/derekmichaelwright/htmls/blob/master/scripts/dblogr/2020_saskatchewan_election/2020_saskatchewan_election_data.xlsx?raw=true)
+[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/2020_saskatchewan_election/2020_saskatchewan_election_data.csv)
 
 ---
 
@@ -278,4 +278,4 @@ ggsave("Sask_2020_Election_06.png", mp, width = 6, height = 6)
 
 ---
 
-&copy; Derek Michael Wright 2020 [www.dblogr.com/](https://dblogr.com/)
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

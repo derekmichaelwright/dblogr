@@ -17,7 +17,7 @@ links:
   - icon_pack: fas
     icon: file-pdf
     name: PDF
-    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/country_treemaps/country_treemaps_fao.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/country_treemaps/country_treemaps_fao.pdf
 ---
 
 ```{r setup, include = FALSE}
@@ -29,7 +29,7 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-library(treemapify)
+library(treemapify) # geom_treemap()
 ```
 
 ---
@@ -209,7 +209,7 @@ for(i in areas) {
 dev.off()
 ```
 
-**PDF**: [country_treemaps_fao.pdf](https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/country_treemaps/country_treemaps_fao.pdf)
+**PDF**: [country_treemaps_fao.pdf](https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/country_treemaps/country_treemaps_fao.pdf)
 
 ---
 

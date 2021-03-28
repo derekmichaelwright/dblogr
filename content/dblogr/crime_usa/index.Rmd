@@ -5,7 +5,7 @@ summary:  "Graphs for crime statistics from the FBI"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/crime_usa/)"
 tags: [ "dblogr", "Politics" ]
-weight: 5
+weight: 6
 codefolding_show: "hide"
 image:
   preview_only: true
@@ -26,7 +26,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/tables/expanded-homicide-data-table-8.xls
 
-[*Download Data*](https://github.com/derekmichaelwright/dblogr/blob/master/content/crime_usa/crime_usa_data.csv?raw=true)
+[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/crime_usa/crime_usa_data.csv)
 
 ---
 
@@ -70,4 +70,4 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ---
 
-&copy; Derek Michael Wright 2020 [www.dblogr.com/](https://dblogr.com/)
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

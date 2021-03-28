@@ -17,7 +17,7 @@ links:
   - icon_pack: fas
     icon: file-pdf
     name: PDF
-    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/potato/potato_fao.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/potato/potato_fao.pdf
 ---
 
 ```{r setup, include = FALSE}
@@ -50,7 +50,7 @@ xx <- agData_FAO_Crops %>%
                         c("Million hectares","Million tonnes")))
 areas <- areas[areas %in% xx$Area]
 # Plot
-pdf("Potato_fao.pdf", width = 12, height = 4)
+pdf("potato_fao.pdf", width = 12, height = 4)
 for(i in areas) {
   print(ggplot(xx %>% filter(Area == i)) +
     geom_line(aes(x = Year, y = Value, color = Measurement),
@@ -65,7 +65,7 @@ for(i in areas) {
 dev.off()
 ```
 
-**PDF**: [Potato_fao.pdf](https://github.com/derekmichaelwright/dblogr/raw/master/content/agdata/potato/potato_fao.pdf)
+**PDF**: [Potato_fao.pdf](https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/potato/potato_fao.pdf)
 
 ---
 

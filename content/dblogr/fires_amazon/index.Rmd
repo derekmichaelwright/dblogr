@@ -78,7 +78,7 @@ Data source: National Institute for Space Reserach (*INPE*)
 
 # Data
 
-[*Download Data*](https://github.com/derekmichaelwright/htmls/blob/master/dblogr/fires_amazon_data.xlsx?raw=true)
+[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/fires_amazon/fires_amazon_data.xlsx)
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
@@ -304,4 +304,4 @@ You decide...
 
 ---
 
-&copy; Derek Michael Wright 2020 [www.dblogr.com/](https://dblogr.com/)
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

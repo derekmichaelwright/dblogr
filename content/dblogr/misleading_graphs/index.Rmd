@@ -89,6 +89,8 @@ ggsave("featured.png", mp, width = 8, height = 4)
 
 Data for Canadian autism rates can be found [here](https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-children-youth-canada-2018.html).
 
+[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/misleading_graphs/quebec_autism_rates.csv)
+
 ```{r}
 # Prep data
 x1 <- read.csv("quebec_autism_rates.csv")
@@ -169,4 +171,4 @@ ggsave("misleading_graphs_04.png", mp, width = 8, height = 4)
 
 ---
 
-&copy; Derek Michael Wright 2020 [www.dblogr.com/](https://dblogr.com/)
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

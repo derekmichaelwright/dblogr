@@ -28,7 +28,7 @@ STATCAN data Tables: 3310027001
 
 https://www150.statcan.gc.ca/n1/pub/11-626-x/11-626-x2020014-eng.htm
 
-[*Download Data*](https://github.com/derekmichaelwright/htmls/blob/master/scripts/dblogr/economics_of_canada/economics_of_canada_data.xlsx?raw=true)
+[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/unemployment_canada/3310027001_databaseLoadingData.csv)
 
 
 ```{r}
@@ -151,4 +151,4 @@ ggsave("Unemployment_Canada_05.png", mp, width = 12, height = 8)
 
 ---
 
-&copy; Derek Michael Wright 2020 [www.dblogr.com/](https://dblogr.com/)
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

@@ -2,10 +2,10 @@
 title: "USA Crime Statistics"
 subtitle: "Graphs for crime statistics from the FBI"
 summary:  "Graphs for crime statistics from the FBI"
-date: "2021-03-26"
+date: "2021-03-28"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/crime_usa/)"
 tags: [ "dblogr", "Politics" ]
-weight: 5
+weight: 6
 codefolding_show: "hide"
 image:
   preview_only: true
@@ -31,7 +31,7 @@ links:
 <div id="data" class="section level1">
 <h1>Data</h1>
 <p><a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/tables/expanded-homicide-data-table-8.xls" class="uri">https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/tables/expanded-homicide-data-table-8.xls</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/crime_usa/crime_usa_data.csv?raw=true"><em>Download Data</em></a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/crime_usa/crime_usa_data.csv"><strong>&lt; Download Data &gt;</strong></a></p>
 <hr />
 </div>
 <div id="prepare-data" class="section level1">
@@ -61,5 +61,5 @@ mp &lt;- ggplot(xx, aes(x = Weapons, y = Value / 1000)) +
 ggsave(&quot;crime_usa_01.png&quot;, width = 6, height = 4)</code></pre>
 <p><img src="crime_usa_01.png" /></p>
 <hr />
-<p>© Derek Michael Wright 2020 <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>
