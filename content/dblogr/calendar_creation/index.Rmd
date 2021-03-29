@@ -13,7 +13,7 @@ links:
   - icon_pack: fas
     icon: code
     name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/calendar_creation.html
+    url: https://derekmichaelwright.github.io/htmls/dblogr/calendar_creation.html
   - icon_pack: fas
     icon: file-pdf
     name: PDF (Yearly)
