@@ -14,10 +14,6 @@ links:
     icon: code
     name: R Script
     url: https://derekmichaelwright.github.io/htmls/dblogr/2019_canadian_election.html
-  - icon_pack: fas
-    icon: file-pdf
-    name: PDF
-    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/dblogr/2019_canadian_election/2019_canadian_election.pdf
 ---
 
 ```{r setup, include=FALSE}
