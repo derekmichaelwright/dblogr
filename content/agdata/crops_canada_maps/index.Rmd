@@ -34,7 +34,7 @@ library(mapcan)
 
 ---
 
-# PDF
+# Maps PDF
 
 ```{r}
 # Prep data

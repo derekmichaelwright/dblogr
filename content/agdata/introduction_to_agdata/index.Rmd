@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F, fig.height = 3.5)
 
 ---
 
-<img src="hex_agData.png" align="right" width = "200px" />
+<img src="featured.png" align="right" width = "200px" />
 
 # Data Sources
 

@@ -14,28 +14,24 @@ links:
     icon_pack: far
     name: Plants, People, Planet
     url: https://nph.onlinelibrary.wiley.com/doi/10.1002/ppp3.10158
-  - icon: file-code
-    icon_pack: far
+  - icon: github
+    icon_pack: fab
     name: Github
     url: https://github.com/derekmichaelwright/AGILE_LDP_Phenology
   - icon: chart-line
     icon_pack: fas
     name: All Graphs
     url: https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html
-  - icon: file-code
-    icon_pack: far
-    name: Github HTML
-    url: https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html
-  - icon: file-code
-    icon_pack: far
-    name: R Script
-    url: https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html
   - icon: file-pdf
     icon_pack: far
     name: Figures pdf
     url: https://github.com/derekmichaelwright/AGILE_LDP_Phenology/blob/master/README.pdf
   - icon: file-code
     icon_pack: far
+    name: R Script
+    url: https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html
+  - icon: laptop-code
+    icon_pack: fas
     name: Shiny App
     url: https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/
 ---
@@ -67,7 +63,11 @@ Lentil is a staple in many diets around the world and growing in popularity as a
 
 https://github.com/derekmichaelwright/AGILE_LDP_Phenology
 
+# All Graphs
+
 https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html
+
+https://github.com/derekmichaelwright/AGILE_LDP_Phenology/blob/master/README.pdf
 
 # Source Code
 
