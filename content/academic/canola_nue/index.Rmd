@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/canola_nue)"
 tags: [ "Academic", "Literature", "Featured" ]
 math: true
-weight: 3
+weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true

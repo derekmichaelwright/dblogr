@@ -7,7 +7,7 @@ weight = 2  # Order that this section will appear.
 title = "FAOSTAT app"
 subtitle = "A shiny app with FAO data"
 summary  = "A shiny app with FAO data"
-tags = [ "agData", "Introduction", "Featured" ]
+tags = [ "agData", "Introduction" ]
 
 [image]
   preview_only = true

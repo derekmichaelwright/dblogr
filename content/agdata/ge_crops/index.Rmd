@@ -4,7 +4,7 @@ subtitle: "Graphs of GE crop production using ISAAA data"
 summary:  "Graphs of GE crop production using ISAAA data"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/ge_crops/)"
-tags: [ "agData", "GE Crops", "Featured" ]
+tags: [ "agData", "GE Crops" ]
 weight: 3
 codefolding_show: "hide"
 image:

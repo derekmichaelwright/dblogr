@@ -4,7 +4,7 @@ subtitle: "*Plants, People, Planet*. 2020 00: 1-11"
 summary:  "*Plants, People, Planet*. 2020 00: 1-11"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/canola_nue)"
 date: "`r Sys.Date()`"
-categories: [ "AGILE" ]
+weight: 1
 tags: [ "Academic", "AGILE", "Literature", "Featured" ]
 math: true
 image:
