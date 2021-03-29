@@ -9,16 +9,20 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
-
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/agdata/crops_canada_maps.html
+  - icon_pack: fas
+    icon: file-pdf
+    name: Maps PDF
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crops_canada_maps/crops_canada_maps_statcan.pdf
 ---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
-#links:
-#  - icon_pack: fas
-#    icon: code
-#    name: R Script
-#    url: https://derekmichaelwright.github.io/htmls/agdata/crops_canada_maps.html
+
 ```
 
 ---
@@ -37,7 +41,7 @@ library(mapcan)
 # Prep data
 xx <- agData_STATCAN_Crops
 # Plot
-pdf("crops_canada_maps.pdf", width = 6, height = 4)
+pdf("crops_canada_maps_statcan.pdf", width = 6, height = 4)
 for(i in unique(xx$Crop)) {
   xi <- xx %>% filter(Crop == i, Year == max(Year), Measurement == "Production") 
   xi <- mapcan(boundaries = province, type = standard) %>% 
@@ -56,7 +60,8 @@ for(i in unique(xx$Crop)) {
 dev.off()
 ```
 
-**PDF**: [crops_canada_maps.pdf](https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crops_canada_maps/crops_canada_maps.pdf)
+**PDF**: [crops_canada_maps_statcan.pdf](https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crops_canada_maps/crops_canada_maps_statcan.pdf)
+
 
 ---
 

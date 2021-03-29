@@ -14,6 +14,10 @@ links:
     icon: code
     name: R Script
     url: https://derekmichaelwright.github.io/htmls/dblogr/2020_saskatchewan_election.html
+  - icon_pack: fas
+    icon: file-pdf
+    name: Maps PDF
+    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/dblogr/2020_saskatchewan_election/2020_saskatchewan_election_districts.pdf
 ---
 
 
@@ -94,7 +98,7 @@ mp &lt;- ggplot(xx, aes(x = Party, y = Votes / 1000, fill = Party)) +
        caption = &quot;\xa9 www.dblogr.com/  |  Data: Elections SK&quot;)
 ggsave(&quot;Sask_2020_Election_02.png&quot;, mp, width = 25, height = 12)</code></pre>
 <p><img src="Sask_2020_Election_02.png" /></p>
-<pre class="r"><code>pdf(&quot;2020_saskatchewan_election.pdf&quot;, width = 6, height = 4)
+<pre class="r"><code>pdf(&quot;2020_saskatchewan_election_districts.pdf&quot;, width = 6, height = 4)
 districts &lt;- unique(xx$Constituency)
 i&lt;-districts[1]
 for(i in districts) {
@@ -116,7 +120,7 @@ for(i in districts) {
 dev.off()</code></pre>
 <pre><code>## png 
 ##   2</code></pre>
-<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/raw/master/content/dblogr/2020_saskatchewan_election/2020_saskatchewan_election.pdf">2020_saskatchewan_election.pdf</a></p>
+<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/raw/master/content/dblogr/2020_saskatchewan_election/2020_saskatchewan_election_districts.pdf">2020_saskatchewan_election_districts.pdf</a></p>
 <hr />
 </div>
 <div id="rural-ridings" class="section level1">

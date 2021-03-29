@@ -9,7 +9,15 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
-
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/agdata/crops_canada_maps.html
+  - icon_pack: fas
+    icon: file-pdf
+    name: Maps PDF
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crops_canada_maps/crops_canada_maps_statcan.pdf
 ---
 
 
@@ -24,7 +32,7 @@ library(mapcan)</code></pre>
 <pre class="r"><code># Prep data
 xx &lt;- agData_STATCAN_Crops
 # Plot
-pdf(&quot;crops_canada_maps.pdf&quot;, width = 6, height = 4)
+pdf(&quot;crops_canada_maps_statcan.pdf&quot;, width = 6, height = 4)
 for(i in unique(xx$Crop)) {
   xi &lt;- xx %&gt;% filter(Crop == i, Year == max(Year), Measurement == &quot;Production&quot;) 
   xi &lt;- mapcan(boundaries = province, type = standard) %&gt;% 
@@ -43,7 +51,7 @@ for(i in unique(xx$Crop)) {
 dev.off()</code></pre>
 <pre><code>## png 
 ##   2</code></pre>
-<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crops_canada_maps/crops_canada_maps.pdf">crops_canada_maps.pdf</a></p>
+<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crops_canada_maps/crops_canada_maps_statcan.pdf">crops_canada_maps_statcan.pdf</a></p>
 <hr />
 </div>
 <div id="plotting-function" class="section level1">
