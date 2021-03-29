@@ -322,9 +322,9 @@ mp2 <- corrplot(cor(m2), addrect=2)
 dev.off()
 ```
 
-![](Figure04.png)
-
 ![](Figure05.png)
+
+![](Figure06.png)
 
 ```{r eval = F, echo = F}
 
