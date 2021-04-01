@@ -2,7 +2,7 @@
 title: "Population Demographics In Canada"
 subtitle: "Population Pyramids with R"
 summary:  "Population Pyramids with R"
-date: "2021-03-28"
+date: "2021-03-31"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/population_demographics_canada/)"
 tags: [ "dblogr", "SciComm", "Featured" ]
 weight: 3
@@ -62,9 +62,9 @@ gg_PopDem_plot &lt;- function(areas = &quot;Saskatchewan&quot;, years = 2019, an
            Value = Value / 1000)
   # Plot
   mp &lt;- ggplot(xx, aes(y = Value, x = Age, fill = Sex)) + 
-    geom_bar(data = xx %&gt;% filter(Sex == &quot;Males&quot;), stat = &quot;identity&quot;) +
+    geom_bar(data = xx %&gt;% filter(Sex == &quot;Males&quot;), stat = &quot;identity&quot;, alpha = 0.8) +
     geom_bar(data = xx %&gt;% filter(Sex == &quot;Females&quot;), 
-             stat = &quot;identity&quot;, aes(y = -Value)) +
+             aes(y = -Value), stat = &quot;identity&quot;, alpha = 0.8) +
     scale_fill_manual(values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;))
   if(anim == T) { mp &lt;- mp + facet_grid(. ~ Area) }
   if(anim == F) { mp &lt;- mp + facet_grid(. ~ Year) + labs(subtitle = paste(areas, collapse = &quot; + &quot;)) }
@@ -179,7 +179,7 @@ xx &lt;- agData_STATCAN_Population_AgeGender %&gt;%
   mutate(Age = factor(Age, levels = ages))
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Sex)) +
-  geom_line(size = 1) +
+  geom_line(size = 1, alpha = 0.8) +
   facet_wrap(Age ~ ., scales = &quot;free_y&quot;, ncol = 6) +
   scale_color_manual(values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
@@ -193,7 +193,7 @@ ggsave(&quot;PopDem_09.png&quot;, mp, width = 12, height = 6)</code></pre>
   mutate(Age = factor(Age, levels = ages))
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Sex, group = Sex)) +
-  geom_line(size = 1) +
+  geom_line(size = 1, alpha = 0.8) +
   scale_color_manual(values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(y = &quot;Million&quot;, x = NULL,
@@ -206,12 +206,14 @@ anim_save(&quot;PopDem_gif_09.gif&quot;, mp, width = 600, height = 400)</code></
 <p><img src="PopDem_gif_09.gif" /></p>
 <hr />
 <pre class="r"><code># Prep data
+colors &lt;- c(&quot;darkgreen&quot;,&quot;black&quot;,&quot;darkred&quot;,&quot;darkblue&quot;)
 xx &lt;- agData_STATCAN_Population_Dynamics %&gt;% 
   filter(Measurement %in% c(&quot;Births&quot;, &quot;Deaths&quot;, &quot;Immigrants&quot;, &quot;Emigrants&quot;))
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
-  geom_line() +
+  geom_line(alpha = 0.8) +
   facet_wrap(Area ~., ncol = 5, scales = &quot;free_y&quot;) +
+  scale_color_manual(values = colors) +
   theme_agData(legend.position = &quot;bottom&quot;, rotx = T) +
   labs(y = &quot;Thousand People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/ | Data: STATCAN&quot;)
@@ -219,6 +221,7 @@ ggsave(&quot;PopDem_10.png&quot;, mp, width = 12, height = 6)</code></pre>
 <p><img src="PopDem_10.png" /></p>
 <hr />
 <pre class="r"><code># Prep data
+colors &lt;- c(&quot;darkorange&quot;,&quot;darkblue&quot;,&quot;darkgreen&quot;,&quot;darkred&quot;,&quot;red&quot;,&quot;steelblue&quot;)
 x1 &lt;- agData_STATCAN_Population %&gt;% 
   filter(Month ==1) %&gt;%
   select(Area, Year, Population=Value)
@@ -236,6 +239,7 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   geom_smooth(se = F) +
   facet_grid(. ~ Wing) +
   scale_x_continuous(breaks = seq(1975, 2015, 10)) +
+  scale_color_manual(values = colors) +
   theme_agData() +
   labs(title = &quot;Immigration Rates&quot;, x = NULL,
        y = &quot;Immigrants per Million People&quot;,

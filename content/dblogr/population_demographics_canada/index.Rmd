@@ -77,9 +77,9 @@ gg_PopDem_plot <- function(areas = "Saskatchewan", years = 2019, anim = F) {
            Value = Value / 1000)
   # Plot
   mp <- ggplot(xx, aes(y = Value, x = Age, fill = Sex)) + 
-    geom_bar(data = xx %>% filter(Sex == "Males"), stat = "identity") +
+    geom_bar(data = xx %>% filter(Sex == "Males"), stat = "identity", alpha = 0.8) +
     geom_bar(data = xx %>% filter(Sex == "Females"), 
-             stat = "identity", aes(y = -Value)) +
+             aes(y = -Value), stat = "identity", alpha = 0.8) +
     scale_fill_manual(values = c("deeppink3","darkblue"))
   if(anim == T) { mp <- mp + facet_grid(. ~ Area) }
   if(anim == F) { mp <- mp + facet_grid(. ~ Year) + labs(subtitle = paste(areas, collapse = " + ")) }
@@ -264,7 +264,7 @@ xx <- agData_STATCAN_Population_AgeGender %>%
   mutate(Age = factor(Age, levels = ages))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Sex)) +
-  geom_line(size = 1) +
+  geom_line(size = 1, alpha = 0.8) +
   facet_wrap(Age ~ ., scales = "free_y", ncol = 6) +
   scale_color_manual(values = c("deeppink3","darkblue")) +
   theme_agData(legend.position = "bottom") +
@@ -283,7 +283,7 @@ xx <- agData_STATCAN_Population_AgeGender %>%
   mutate(Age = factor(Age, levels = ages))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Sex, group = Sex)) +
-  geom_line(size = 1) +
+  geom_line(size = 1, alpha = 0.8) +
   scale_color_manual(values = c("deeppink3","darkblue")) +
   theme_agData(legend.position = "bottom") +
   labs(y = "Million", x = NULL,
@@ -301,12 +301,14 @@ anim_save("PopDem_gif_09.gif", mp, width = 600, height = 400)
 
 ```{r}
 # Prep data
+colors <- c("darkgreen","black","darkred","darkblue")
 xx <- agData_STATCAN_Population_Dynamics %>% 
   filter(Measurement %in% c("Births", "Deaths", "Immigrants", "Emigrants"))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
-  geom_line() +
+  geom_line(alpha = 0.8) +
   facet_wrap(Area ~., ncol = 5, scales = "free_y") +
+  scale_color_manual(values = colors) +
   theme_agData(legend.position = "bottom", rotx = T) +
   labs(y = "Thousand People", x = NULL,
        caption = "\xa9 www.dblogr.com/ | Data: STATCAN")
@@ -319,6 +321,7 @@ ggsave("PopDem_10.png", mp, width = 12, height = 6)
 
 ```{r}
 # Prep data
+colors <- c("darkorange","darkblue","darkgreen","darkred","red","steelblue")
 x1 <- agData_STATCAN_Population %>% 
   filter(Month ==1) %>%
   select(Area, Year, Population=Value)
@@ -336,6 +339,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   geom_smooth(se = F) +
   facet_grid(. ~ Wing) +
   scale_x_continuous(breaks = seq(1975, 2015, 10)) +
+  scale_color_manual(values = colors) +
   theme_agData() +
   labs(title = "Immigration Rates", x = NULL,
        y = "Immigrants per Million People",
