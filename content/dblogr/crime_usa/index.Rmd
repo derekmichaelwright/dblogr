@@ -5,6 +5,7 @@ summary:  "Graphs for crime statistics from the FBI"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/crime_usa/)"
 tags: [ "dblogr", "Politics" ]
+draft: true
 weight: 6
 codefolding_show: "hide"
 image:
