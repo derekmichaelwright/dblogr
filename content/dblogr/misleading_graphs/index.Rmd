@@ -66,6 +66,10 @@ mp <- ggarrange(mp2, mp1, ncol = 2, align = "h")
 ggsave("misleading_graphs_01.png", mp, width = 8, height = 4)
 ```
 
+```{r echo = F} 
+ggsave("featured.png", mp, width = 8, height = 4)
+```
+
 ![Figure 1: An illustration of how truncating the y-axis can be misleading.](misleading_graphs_01.png)
 
 ```{r}
@@ -86,10 +90,6 @@ mp2 <- mp1 +
        caption = NULL)
 mp <- ggarrange(mp2, mp1, ncol = 2, align = "h")
 ggsave("misleading_graphs_02.png", mp, width = 8, height = 4)
-```
-
-```{r echo = F} 
-ggsave("featured.png", mp, width = 8, height = 4)
 ```
 
 ![Figure 2: An illustration of how truncating the y-axis can be misleading.](misleading_graphs_02.png)
@@ -119,7 +119,7 @@ Canada's Covid data: https://health-infobase.canada.ca/covid-19/dashboard/about.
 xx <- read.csv("https://health-infobase.canada.ca/src/data/covidLive/covid19-download.csv") %>%
   rename(area=prname) %>%
   filter(area == "Canada") %>%
-  mutate(date = as.Date(date, format = "%Y-%m-%d"))
+  mutate(date = as.POSIXct(date, format = "%Y-%m-%d"))
 y1_min <- min(xx$numtoday)
 y1_max <- max(xx$numtoday)
 y2_min <- min(xx$numdeathstoday)
@@ -136,28 +136,35 @@ mp1 <- ggplot(xx, aes(x = date)) +
   geom_line(aes(y = numtoday, color = "1")) +
   geom_line(aes(y = numdeathstoday, color = "2")) +
   scale_color_manual(name = NULL, values = c("darkorange","darkred"), labels = c("Cases","Deaths")) +
-  scale_y_continuous(breaks = seq(0, 9000, 1000), sec.axis = sec_axis(~ ., name = "Deaths")) +
-  theme_agData() +
-  labs(title = "A) non-scaled", y = "Cases", x = NULL)
+  scale_x_datetime(date_minor_breaks = "1 month") +
+  scale_y_continuous(breaks = seq(0, 9000, 1000), sec.axis = sec_axis(~ ., name = "COVID Deaths")) +
+  theme_agData(axis.text.x = element_text(angle = 20, hjust = 1, vjust = 1.1)) +
+  labs(title = "Manipulating data with a secondary y-axis",
+       subtitle = "A) Non-scaled", y = "COVID Cases", x = NULL)
 mp2 <- ggplot(xx, aes(x = date)) +
   geom_line(aes(y = numtoday, color = "1")) +
   geom_line(aes(y = deaths_scaled1, color = "2")) +
   scale_color_manual(name = NULL, values = c("darkorange", "darkred"), labels = c("Cases", "Deaths")) +
+  scale_x_datetime(date_minor_breaks = "1 month") +
   scale_y_continuous(breaks = seq(0, 9000, 1000),
                      sec.axis = sec_axis(~ (. - y1_min) * (900 - 0) / (y1_max - y1_min) + 0,
-                                         name = "Deaths", breaks = seq(0, 900, 100))) +
-  theme_agData() +
-  labs(title = "B) PHAC scaling", y = "Cases", x = NULL)
+                                         name = "COVID Deaths", breaks = seq(0, 900, 100))) +
+  theme_agData(axis.text.x = element_text(angle = 20, hjust = 1, vjust = 1.1)) +
+  labs(subtitle = "B) PHAC scaling", y = "COVID Cases", x = NULL)
 mp3 <- ggplot(xx, aes(x = date)) +
   geom_line(aes(y = numtoday, color = "1")) +
   geom_line(aes(y = deaths_scaled2, color = "2")) +
   scale_color_manual(name = NULL, values = c("darkorange", "darkred"), labels = c("Cases", "Deaths")) +
+  scale_x_datetime(date_minor_breaks = "1 month") +
   scale_y_continuous(breaks = seq(0, 9000, 1000),
                      sec.axis = sec_axis(~ (. - y1_min) * (y2_max - y2_min) / (y1_max - y1_min) + y2_min, 
-                                         name = "Deaths")) +
-  theme_agData() +
-  labs(title = "C) full scaling", y = "Cases", x = NULL)
-mp <- ggarrange(mp1, mp2, mp3, ncol = 3, common.legend = T, legend = "bottom")
+                                         name = "COVID Deaths")) +
+  theme_agData(axis.text.x = element_text(angle = 20, hjust = 1, vjust = 1.1)) +
+  labs(subtitle = "C) Full scaling", y = "COVID Cases", x = NULL)
+mp <- ggarrange(mp1, mp2, mp3, ncol = 3, align = "hv",
+                common.legend = T, legend = "bottom") %>%
+  annotate_figure(fig.lab = "\xa9 www.dblogr.com/  |  Data: PHAC",
+                  fig.lab.pos = "bottom.right")
 ggsave("misleading_graphs_03.png", mp, width = 12, height = 4)
 ```
 
@@ -223,6 +230,45 @@ ggsave("misleading_graphs_04.png", mp, width = 10, height = 4)
 
 # 4. Cherry Picking Data
 
+The National Interagency Fire Center (NIFC) recently deleted data from their database. Let take a look at the data they deleted and speculate why they deleted it.
+
+https://www.nifc.gov/fire-information/statistics/wildfires
+
+https://web.archive.org/web/20210129125036/https://www.nifc.gov/fireInfo/fireInfo_stats_totalFires.html
+
+[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/misleading_graphs/fires_usa.csv)
+
+```{r}
+# Prep data
+dd <- read.csv("fires_usa.csv") %>%
+  mutate(Group = ifelse(Year < 1983, "Deleted", "Archived"),
+         Group = factor(Group, levels = c("Deleted", "Archived")))
+# Plot
+mp1 <- ggplot(dd %>% filter(Year >= 1983), aes(x = Year, y = Acres / 1000000)) +
+  geom_bar(stat = "identity", fill = "darkgreen", color = "black", alpha = 0.5) +
+  geom_smooth(method = "lm", se = F, size = 2, color = "darkred") +
+  scale_x_continuous(breaks = seq(1985, 2020, 5)) +
+  theme_agData() +
+  labs(title = "Cherry picking data", subtitle = "A) Cherry picked", 
+       y = "Million Acres", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: NIFC")
+mp2 <- ggplot(dd, aes(x = Year, y = Acres / 1000000, fill = Group)) + 
+  geom_bar(stat = "identity", alpha = 0.5, color = "black") +
+  scale_fill_manual(values = c("darkred", "darkgreen")) +
+  scale_x_continuous(breaks = seq(1925, 2015, 10)) +
+  theme_agData() +
+  labs(title = "Cherry picking data", subtitle = "B) Full data set",
+       y = "Million Acres", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: NIFC")
+mp <- ggarrange(mp1, mp2, ncol = 2, align = "hv",
+                common.legend = T, legend = "bottom")
+ggsave("misleading_graphs_05.png", mp, width = 10, height = 4)
+```
+
+![Figure 5: An illustration of how one can cherry pick data to tell a desired story.](misleading_graphs_05.png)
+
+---
+
 In 1994 the first GM maize variety was released in the USA. If we only focus on yield data from 1995-2010, it looks as if the introduction of GE crop varieties greatly increased maize yields. However, when we take a step back and look at all the data, we can see that not only have we avoided the poor yields of 2012, but there also has been a trend of yearly increasing yields from long before the introduction of GE varieties. From this perspective, it would be more appropriate to attribute these yield gains to the more traditional breeding along with changes in production practices.
 
 ```{r}
@@ -252,10 +298,10 @@ mp2 <- ggplot(xx, aes(x = Year, y = Value, color = CherryPicked)) +
   labs(subtitle = "B) Full data set", y = "Tonnes / Hectare", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: USDA")
 mp <- ggarrange(mp1, mp2, ncol = 2, align = "h")
-ggsave("misleading_graphs_05.png", mp, width = 10, height = 4)
+ggsave("misleading_graphs_06.png", mp, width = 10, height = 4)
 ```
 
-![Figure 5: An illustration of how one can cherry pick data to tell a desired story.](misleading_graphs_05.png)
+![Figure 6: An illustration of how one can cherry pick data to tell a desired story.](misleading_graphs_06.png)
 
 ---
 
