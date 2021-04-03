@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Introduction
 
-Using statistics to mislead can be a trivial thing. This vignette will go through some examples of how to one can mislead people with improper graphs. Examples include:
+Using statistics to mislead can be a trivial thing. This vignette will go through some examples of how to one can mislead people with improper graphs.
 
 1. Truncating the y-axis
 2. Using dual y-axes
@@ -70,7 +70,7 @@ ggsave("misleading_graphs_01.png", mp, width = 8, height = 4)
 ggsave("featured.png", mp, width = 8, height = 4)
 ```
 
-![Figure 1: An illustration of how truncating the y-axis can be misleading.](misleading_graphs_01.png)
+![](misleading_graphs_01.png)
 
 ```{r}
 # Prep data
@@ -92,7 +92,7 @@ mp <- ggarrange(mp2, mp1, ncol = 2, align = "h")
 ggsave("misleading_graphs_02.png", mp, width = 8, height = 4)
 ```
 
-![Figure 2: An illustration of how truncating the y-axis can be misleading.](misleading_graphs_02.png)
+![](misleading_graphs_02.png)
 
 ---
 
@@ -106,7 +106,7 @@ To illustrate this, here is a real life example of a graph created by the CBC du
 
 ![Source: Canadian Broadcasting Corporation](examples_02.png)
 
-If you miss the second y-axis on the right, it would appear that there is A LOT more deaths than in reality. In a similar example of covid cases/deaths from the Canadian government, the scaling of the secondary y-axis for deaths allows for the manipulation of the red dashed line. *e.g.*, imagine the graph if scaled from 0-200 instead of 0-900 **OR** 0-9000 like the primary y-axis.
+If you miss the second y-axis on the right, it would appear that there is A LOT more deaths than in reality. In a similar example of covid cases/deaths from the Canadian government, the scaling of the secondary y-axis for deaths allows for the manipulation of the red dashed line. *e.g.*, imagine the graph if scaled from *0-200* instead of *0-900* OR *0-9000* like the primary y-axis.
 
 ![Source: Public Health Agency of Canada](examples_03.png)
 
@@ -168,19 +168,21 @@ mp <- ggarrange(mp1, mp2, mp3, ncol = 3, align = "hv",
 ggsave("misleading_graphs_03.png", mp, width = 12, height = 4)
 ```
 
-![Figure 3: An illustration of how a scaled secondary axis can be used to manipulate the data visualization.](misleading_graphs_03.png)
+![](misleading_graphs_03.png)
 
-In this example, the two data sets are at least related to eachother. However, if they arent, dual y-axes can also lead to spurious correlations.
+In this example, the two data sets are at least related to each other. However, if they aren't, dual y-axes can also lead to spurious correlations.
+
+---
 
 # 3. Spurious Correlations
 
-Spurious correlation occur when two variables appear to have a cause-and-effect relationship, when in reality, there may not be. *e.g.*, between Nicloas Cage films and the number of deaths by drowning.  
+Spurious correlation occur when two variables appear to have a cause-and-effect relationship, when in reality, there may not be. *e.g.*, between Nicolas Cage films and the number of deaths by drowning.  
 
 ![Source: https://www.tylervigen.com/spurious-correlations](examples_04.png)
 
 Now lets make our own by correlating autism rates with the rise of organic agriculture in Canada.
 
-Data for Canadian autism rates can be found [here](https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-children-youth-canada-2018.html).
+Data for Canadian autism rates can be found at https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-children-youth-canada-2018.html.
 
 [**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/misleading_graphs/quebec_autism_rates.csv)
 
@@ -224,13 +226,15 @@ mp <- ggarrange(mp1, mp2, ncol = 2, align = "h")
 ggsave("misleading_graphs_04.png", mp, width = 10, height = 4)
 ```
 
-![Figure 4: An illustration of how correlation does not nessesarily equal causation.](misleading_graphs_04.png)
+![](misleading_graphs_04.png)
+
+Although an *R^2* of 0.956 is an extremely high correlation coefficient, these two data sets are obviously, completely unrelated to each other.
 
 ---
 
 # 4. Cherry Picking Data
 
-The National Interagency Fire Center (NIFC) recently deleted data from their database. Let take a look at the data they deleted and speculate why they deleted it.
+The National Interagency Fire Center (NIFC) recently deleted some data from their database, which can be retrived using internet archives. Let's take a look at the data they deleted and speculate why they deleted it.
 
 https://www.nifc.gov/fire-information/statistics/wildfires
 
@@ -265,7 +269,9 @@ mp <- ggarrange(mp1, mp2, ncol = 2, align = "hv",
 ggsave("misleading_graphs_05.png", mp, width = 10, height = 4)
 ```
 
-![Figure 5: An illustration of how one can cherry pick data to tell a desired story.](misleading_graphs_05.png)
+![](misleading_graphs_05.png)
+
+As one can see, without deleting most of the older data, the recent increases in wild fires seems irrelevant/inconsequential compared to the pre-1955 data.
 
 ---
 
@@ -301,7 +307,7 @@ mp <- ggarrange(mp1, mp2, ncol = 2, align = "h")
 ggsave("misleading_graphs_06.png", mp, width = 10, height = 4)
 ```
 
-![Figure 6: An illustration of how one can cherry pick data to tell a desired story.](misleading_graphs_06.png)
+![](misleading_graphs_06.png)
 
 ---
 
