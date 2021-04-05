@@ -2,7 +2,7 @@
 title: "People in Agriculture"
 subtitle: "Graphs of people in Agriculture"
 summary:  "Graphs of people in Agriculture"
-date: "2021-03-28"
+date: "2021-04-04"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/people_in_ag/)"
 tags: [ "agData", "Regions" ]
 weight: 4
@@ -33,8 +33,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value)) +
   theme_agData() +
   labs(title = &quot;Percent of Population in Agriculture&quot;, y = &quot;Percent&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/&quot;)
-ggsave(&quot;People_in_Ag_01.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="People_in_Ag_01.png" /></p>
+ggsave(&quot;people_in_ag_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="people_in_ag_01.png" /></p>
 <hr />
 <pre class="r"><code># Prep data
 areas &lt;- c(&quot;Canada&quot;, &quot;Germany&quot;, &quot;Ukraine&quot;,
@@ -53,8 +53,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(y = &quot;Million People&quot;, x = NULL, 
        caption = &quot;\xa9 www.dblogr.com/&quot;)
-ggsave(&quot;People_in_Ag_02.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="People_in_Ag_02.png" /></p>
+ggsave(&quot;people_in_ag_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="people_in_ag_02.png" /></p>
 <hr />
 <pre class="r"><code># Prep data
 xx &lt;- agData_People %&gt;% 
@@ -69,8 +69,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value/1000000)) +
   labs(title = &quot;Total Number of People in Agriculture&quot;, 
        y = &quot;Million People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/&quot;)
-ggsave(&quot;People_in_Ag_03.png&quot;, mp, width = 12, height = 4)</code></pre>
-<p><img src="People_in_Ag_03.png" /></p>
+ggsave(&quot;people_in_ag_03.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="people_in_ag_03.png" /></p>
 <hr />
 <pre class="r"><code># Prep data
 colors &lt;- c(&quot;darkgreen&quot;, &quot;darkgoldenrod2&quot;, &quot;darkred&quot;, &quot;darkblue&quot;)
@@ -97,7 +97,7 @@ mp &lt;- ggplot(xx, aes(x = Area, y = Value, fill = Region, label = round(Value)
   labs(y = NULL, x = NULL,
        title = &quot;Percent of Population in Agriculture&quot;, 
        caption = &quot;\xa9 www.dblogr.com/&quot;)
-ggsave(&quot;People_in_Ag_04.png&quot;, mp, width = 6, height = 5)</code></pre>
-<p><img src="People_in_Ag_04.png" /></p>
+ggsave(&quot;people_in_ag_04.png&quot;, mp, width = 6, height = 5)</code></pre>
+<p><img src="people_in_ag_04.png" /></p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>

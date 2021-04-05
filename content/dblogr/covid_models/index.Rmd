@@ -70,14 +70,14 @@ mp <- ggplot(xx, aes(x = Date, y = Hospitalizations, color = Data, size = Data))
   theme_agData() +
   labs(title = "Minnesota - Covid Predictions vs Reality", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: UofM & HHS")
-ggsave("covid_model_01.png", mp, width = 6, height = 4)
+ggsave("covid_models_01.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F}
 ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
-![](covid_model_01.png)
+![](covid_models_01.png)
 
 ---
 

@@ -41,10 +41,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value)) +
   theme_agData() +
   labs(title = "Percent of Population in Agriculture", y = "Percent", x = NULL,
        caption = "\xa9 www.dblogr.com/")
-ggsave("People_in_Ag_01.png", mp, width = 6, height = 4)
+ggsave("people_in_ag_01.png", mp, width = 6, height = 4)
 ```
 
-![](People_in_Ag_01.png)
+![](people_in_ag_01.png)
 
 ---
 
@@ -66,14 +66,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(y = "Million People", x = NULL, 
        caption = "\xa9 www.dblogr.com/")
-ggsave("People_in_Ag_02.png", mp, width = 6, height = 4)
+ggsave("people_in_ag_02.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F}
 ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
-![](People_in_Ag_02.png)
+![](people_in_ag_02.png)
 
 ---
 
@@ -91,10 +91,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value/1000000)) +
   labs(title = "Total Number of People in Agriculture", 
        y = "Million People", x = NULL,
        caption = "\xa9 www.dblogr.com/")
-ggsave("People_in_Ag_03.png", mp, width = 12, height = 4)
+ggsave("people_in_ag_03.png", mp, width = 12, height = 4)
 ```
 
-![](People_in_Ag_03.png)
+![](people_in_ag_03.png)
 
 ---
 
@@ -124,10 +124,10 @@ mp <- ggplot(xx, aes(x = Area, y = Value, fill = Region, label = round(Value))) 
   labs(y = NULL, x = NULL,
        title = "Percent of Population in Agriculture", 
        caption = "\xa9 www.dblogr.com/")
-ggsave("People_in_Ag_04.png", mp, width = 6, height = 5)
+ggsave("people_in_ag_04.png", mp, width = 6, height = 5)
 ```
 
-![](People_in_Ag_04.png)
+![](people_in_ag_04.png)
 
 ---
 

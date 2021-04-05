@@ -2,7 +2,7 @@
 title: "Calendar Creation"
 subtitle: "Create a custom calendar in R"
 summary:  "Create a custom calendar in R"
-date: "2021-03-29"
+date: "2021-04-04"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/calendar_creation)"
 tags: [ "dblogr", "R" ]
 weight: 3
@@ -17,15 +17,15 @@ links:
   - icon_pack: fas
     icon: file-pdf
     name: PDF (Yearly)
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Year.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_year.pdf
   - icon_pack: fas
     icon: file-pdf
     name: PDF (Monthly)
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Monthly.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_monthly.pdf
   - icon_pack: fas
     icon: file-pdf
     name: PDF (Weekly)
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Weekly.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_weekly.pdf
 ---
 
 
@@ -87,18 +87,18 @@ for (i in 1:12) {
 mp &lt;- ggpubr::ggarrange(plotlist = cal, nrow = 3, ncol = 4) +
   annotate(&quot;text&quot;, label = year)
 #
-pdf(file = &quot;Calendar_Year.pdf&quot;, width = 10.5, height = 8)
+pdf(file = &quot;calendar_year.pdf&quot;, width = 10.5, height = 8)
 mp
 dev.off() #dev.set(dev.next())</code></pre>
 <pre><code>## png 
 ##   2</code></pre>
 <p><img src="img_calendar_year.png" /></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Year.pdf"><strong>&lt; Download PDF: Yearly Calendar &gt;</strong></a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_year.pdf"><strong>&lt; Download PDF: Yearly Calendar &gt;</strong></a></p>
 <hr />
 </div>
 <div id="create-monthly-calendar" class="section level1">
 <h1>Create Monthly Calendar</h1>
-<pre class="r"><code>pdf(file = &quot;Calendar_Monthly.pdf&quot;, width = 10.5, height = 8)
+<pre class="r"><code>pdf(file = &quot;calendar_monthly.pdf&quot;, width = 10.5, height = 8)
 par(mar = c(1,1,1,1))
 for (i in 1:12) {
   im &lt;- image_read(paste0(&quot;images/&quot;,list.files(&quot;images/&quot;)[i]))
@@ -138,12 +138,12 @@ dev.off()</code></pre>
 <pre><code>## png 
 ##   2</code></pre>
 <p><img src="img_calendar_month.png" /></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Monthly.pdf"><strong>&lt; Download PDF: Monthly Calendar &gt;</strong></a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_monthly.pdf"><strong>&lt; Download PDF: Monthly Calendar &gt;</strong></a></p>
 <hr />
 </div>
 <div id="create-weekly-calendar" class="section level1">
 <h1>Create Weekly Calendar</h1>
-<pre class="r"><code>pdf(file = &quot;Calendar_Weekly.pdf&quot;, width = 8, height = 10.5)
+<pre class="r"><code>pdf(file = &quot;calendar_weekly.pdf&quot;, width = 8, height = 10.5)
 par(mar = c(1,1,1,1))
 for (i in 1:max(year_cal$week)) {
   tbl_cal &lt;- year_cal %&gt;% filter(week == i)
@@ -171,7 +171,7 @@ dev.off()</code></pre>
 <pre><code>## png 
 ##   2</code></pre>
 <p><img src="img_calendar_week.png" /></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Weekly.pdf"><strong>&lt; Download PDF: Weekly Calendar &gt;</strong></a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_weekly.pdf"><strong>&lt; Download PDF: Weekly Calendar &gt;</strong></a></p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

@@ -1,0 +1,115 @@
+---
+title: "Food Prices in Canada"
+subtitle: "Graphs of food prices using STATCAN data"
+summary:  "Graphs of food prices using STATCAN data"
+date: "`r Sys.Date()`"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_food_prices/)"
+tags: [ "dblogr", "Economics", "Featured" ]
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_food_prices.html
+  - icon_pack: fas
+    icon: file-pdf
+    name: Maps PDF
+    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+```
+
+---
+
+# Data
+
+https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1810000201
+
+[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/1810000201_databaseLoadingData.csv)
+
+---
+
+# Prepare data
+
+```{r}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+```
+
+```{r}
+# Prep data
+dd <- read.csv("1810000201_databaseLoadingData.csv") %>%
+  select(Date=1, Area=GEO, Product=Products, Value=VALUE) %>%
+  mutate(Date = as.Date(paste0(Date, "-01"), format = "%Y-%m-%d"),
+         Product = plyr::mapvalues(Product, 
+            "Regular, unleaded gasoline at self-service stations, cents per litre",
+            "Unleaded gasoline, cents per litre")) %>%
+  arrange(Product)
+unique(dd$Product)
+```
+
+---
+
+```{r}
+# Plot
+mp <- ggplot(dd, aes(x = Date, y = Value)) +
+  geom_vline(xintercept = as.Date("2008-01-01"), lty = 2, alpha = 0.8) +
+  geom_line(color = "darkred", alpha = 0.8) +
+  facet_wrap(Product ~ ., ncol = 8, scales = "free_y") +
+  theme_agData() +
+  labs(title = "Food Prices", x = NULL, y = "Dollars",
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+ggsave("canada_food_prices_01.png", width = 25, height = 10, limitsize = F)
+```
+
+
+---
+
+```{r}
+pdf("canada_food_prices_products.pdf", width = 6, height = 4)
+for(i in unique(dd$Product)) {
+  xi <- dd %>% filter(Product == i)
+  print(ggplot(xi, aes(x = Date, y = Value)) +
+          geom_vline(xintercept = as.Date("2020-01-01"), lty = 2, alpha = 0.8) +
+          geom_line(color = "darkred", alpha = 0.8) +
+          facet_wrap(Product ~ ., ncol = 8, scales = "free_y") +
+          theme_agData() +
+          labs(title = "Food Prices", x = NULL, y = "Dollars",
+               caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+  )
+}
+dev.off()
+```
+
+**PDF**: [canada_food_prices_products.pdf](https://github.com/derekmichaelwright/dblogr/raw/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf)
+
+```{r}
+# Prep data
+xx <- dd %>% filter(Area == "Canada", Product == "Bacon, 500 grams")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value)) +
+  geom_smooth(method = "lm", se = F, alpha = 0.8) +
+  geom_line(color = "darkred", alpha = 0.8, size = 1.5) +
+  facet_grid(. ~ Product) +
+  scale_x_date(date_breaks = "2 year", date_labels = "%Y") +
+  theme_agData() +
+  labs(title = "Food Prices", x = NULL, y = "Dollars",
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+ggsave("canada_food_prices_02.png", width = 6, height = 4)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 6, height = 4)
+```
+
+![](canada_food_prices_02.png)
+
+---
+
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

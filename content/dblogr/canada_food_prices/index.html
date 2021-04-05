@@ -1,0 +1,139 @@
+---
+title: "Food Prices in Canada"
+subtitle: "Graphs of food prices using STATCAN data"
+summary:  "Graphs of food prices using STATCAN data"
+date: "2021-04-04"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_food_prices/)"
+tags: [ "dblogr", "Economics", "Featured" ]
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_food_prices.html
+  - icon_pack: fas
+    icon: file-pdf
+    name: Maps PDF
+    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf
+---
+
+
+
+<hr />
+<div id="data" class="section level1">
+<h1>Data</h1>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1810000201" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1810000201</a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/1810000201_databaseLoadingData.csv"><strong>&lt; Download Data &gt;</strong></a></p>
+<hr />
+</div>
+<div id="prepare-data" class="section level1">
+<h1>Prepare data</h1>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<pre class="r"><code># Prep data
+dd &lt;- read.csv(&quot;1810000201_databaseLoadingData.csv&quot;) %&gt;%
+  select(Date=1, Area=GEO, Product=Products, Value=VALUE) %&gt;%
+  mutate(Date = as.Date(paste0(Date, &quot;-01&quot;), format = &quot;%Y-%m-%d&quot;),
+         Product = plyr::mapvalues(Product, 
+            &quot;Regular, unleaded gasoline at self-service stations, cents per litre&quot;,
+            &quot;Unleaded gasoline, cents per litre&quot;)) %&gt;%
+  arrange(Product)
+unique(dd$Product)</code></pre>
+<pre><code>##  [1] &quot;Apple juice, 1.36 litres&quot;                 
+##  [2] &quot;Apples, 1 kilogram&quot;                       
+##  [3] &quot;Baby food, 128 millilitres&quot;               
+##  [4] &quot;Bacon, 500 grams&quot;                         
+##  [5] &quot;Baked beans, canned, 398 millilitres&quot;     
+##  [6] &quot;Bananas, 1 kilogram&quot;                      
+##  [7] &quot;Bathroom tissue (4 rolls)&quot;                
+##  [8] &quot;Blade roast, 1 kilogram&quot;                  
+##  [9] &quot;Bread, 675 grams&quot;                         
+## [10] &quot;Butter, 454 grams&quot;                        
+## [11] &quot;Canned salmon, 213 grams&quot;                 
+## [12] &quot;Carrots, 1 kilogram&quot;                      
+## [13] &quot;Chicken, 1 kilogram&quot;                      
+## [14] &quot;Cigarettes (200)&quot;                         
+## [15] &quot;Coffee, instant, 200 grams&quot;               
+## [16] &quot;Coffee, roasted, 300 grams&quot;               
+## [17] &quot;Cooking or salad oil, 1 litre&quot;            
+## [18] &quot;Corn flakes, 675 grams&quot;                   
+## [19] &quot;Deodorant, 60 grams&quot;                      
+## [20] &quot;Eggs, 1 dozen&quot;                            
+## [21] &quot;Evaporated milk, 385 millilitres&quot;         
+## [22] &quot;Facial tissue (200 tissues)&quot;              
+## [23] &quot;Flour, 2.5 kilograms&quot;                     
+## [24] &quot;French fried potatoes, frozen, 1 kilogram&quot;
+## [25] &quot;Ground beef, 1 kilogram&quot;                  
+## [26] &quot;Homogenized milk, 4 litres&quot;               
+## [27] &quot;Ketchup, 1 litre&quot;                         
+## [28] &quot;Macaroni, 500 grams&quot;                      
+## [29] &quot;Mushrooms, 1 kilogram&quot;                    
+## [30] &quot;Onions, 1 kilogram&quot;                       
+## [31] &quot;Orange juice, 1 litre&quot;                    
+## [32] &quot;Oranges, 1 kilogram&quot;                      
+## [33] &quot;Paper towels (2 rolls)&quot;                   
+## [34] &quot;Partly skimmed milk, 4 litres&quot;            
+## [35] &quot;Peanut butter, 500 grams&quot;                 
+## [36] &quot;Pork chops, 1 kilogram&quot;                   
+## [37] &quot;Potatoes, 4.54 kilograms&quot;                 
+## [38] &quot;Prime rib roast, 1 kilogram&quot;              
+## [39] &quot;Processed cheese slices, 250 grams&quot;       
+## [40] &quot;Round steak, 1 kilogram&quot;                  
+## [41] &quot;Shampoo, 300 millilitres&quot;                 
+## [42] &quot;Sirloin steak, 1 kilogram&quot;                
+## [43] &quot;Soda crackers, 450 grams&quot;                 
+## [44] &quot;Soup, canned, 284 millilitres&quot;            
+## [45] &quot;Stewing beef, 1 kilogram&quot;                 
+## [46] &quot;Sugar, white, 2 kilograms&quot;                
+## [47] &quot;Tea (72 bags)&quot;                            
+## [48] &quot;Tomato juice, 1.36 litres&quot;                
+## [49] &quot;Tomatoes, canned, 796 millilitres&quot;        
+## [50] &quot;Toothpaste, 100 millilitres&quot;              
+## [51] &quot;Unleaded gasoline, cents per litre&quot;       
+## [52] &quot;Wieners, 450 grams&quot;</code></pre>
+<hr />
+<pre class="r"><code># Plot
+mp &lt;- ggplot(dd, aes(x = Date, y = Value)) +
+  geom_vline(xintercept = as.Date(&quot;2008-01-01&quot;), lty = 2, alpha = 0.8) +
+  geom_line(color = &quot;darkred&quot;, alpha = 0.8) +
+  facet_wrap(Product ~ ., ncol = 8, scales = &quot;free_y&quot;) +
+  theme_agData() +
+  labs(title = &quot;Food Prices&quot;, x = NULL, y = &quot;Dollars&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_food_prices_01.png&quot;, width = 25, height = 10, limitsize = F)</code></pre>
+<hr />
+<pre class="r"><code>pdf(&quot;canada_food_prices_products.pdf&quot;, width = 6, height = 4)
+for(i in unique(dd$Product)) {
+  xi &lt;- dd %&gt;% filter(Product == i)
+  print(ggplot(xi, aes(x = Date, y = Value)) +
+          geom_vline(xintercept = as.Date(&quot;2020-01-01&quot;), lty = 2, alpha = 0.8) +
+          geom_line(color = &quot;darkred&quot;, alpha = 0.8) +
+          facet_wrap(Product ~ ., ncol = 8, scales = &quot;free_y&quot;) +
+          theme_agData() +
+          labs(title = &quot;Food Prices&quot;, x = NULL, y = &quot;Dollars&quot;,
+               caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+  )
+}
+dev.off()</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/raw/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf">canada_food_prices_products.pdf</a></p>
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% filter(Area == &quot;Canada&quot;, Product == &quot;Bacon, 500 grams&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value)) +
+  geom_smooth(method = &quot;lm&quot;, se = F, alpha = 0.8) +
+  geom_line(color = &quot;darkred&quot;, alpha = 0.8, size = 1.5) +
+  facet_grid(. ~ Product) +
+  scale_x_date(date_breaks = &quot;2 year&quot;, date_labels = &quot;%Y&quot;) +
+  theme_agData() +
+  labs(title = &quot;Food Prices&quot;, x = NULL, y = &quot;Dollars&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_food_prices_02.png&quot;, width = 6, height = 4)</code></pre>
+<p><img src="canada_food_prices_02.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

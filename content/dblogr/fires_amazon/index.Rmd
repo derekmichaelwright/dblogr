@@ -99,12 +99,15 @@ First thing we notice, they have been recording data prior to 2013. That's odd, 
 
 ```{r}
 # Prep data
-xx <- dd %>% mutate(Total = rowSums(., na.rm = T))
+xx <- dd %>% 
+  mutate(Total = rowSums(., na.rm = T),
+         Alpha = ifelse(Year < 2013, "Deleted", "Archived"))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Total / 1000)) + 
+mp <- ggplot(xx, aes(x = Year, y = Total / 1000, alpha = Alpha)) + 
   geom_bar(stat = "identity", fill = "Darkred", color = "Black") +
   scale_x_continuous(breaks = c(min(xx$Year):max(xx$Year))) +
-  theme_agData(rotx = T) +
+  scale_alpha_manual(values = c(1, 0.7)) +
+  theme_agData(legend.position = "none", rotx = T) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x= NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")

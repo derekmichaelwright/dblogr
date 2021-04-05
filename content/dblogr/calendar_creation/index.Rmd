@@ -17,15 +17,15 @@ links:
   - icon_pack: fas
     icon: file-pdf
     name: PDF (Yearly)
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Year.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_year.pdf
   - icon_pack: fas
     icon: file-pdf
     name: PDF (Monthly)
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Monthly.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_monthly.pdf
   - icon_pack: fas
     icon: file-pdf
     name: PDF (Weekly)
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Weekly.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_weekly.pdf
 ---
 
 ```{r setup, include = FALSE, warning = F, message = F}
@@ -99,21 +99,21 @@ for (i in 1:12) {
 mp <- ggpubr::ggarrange(plotlist = cal, nrow = 3, ncol = 4) +
   annotate("text", label = year)
 #
-pdf(file = "Calendar_Year.pdf", width = 10.5, height = 8)
+pdf(file = "calendar_year.pdf", width = 10.5, height = 8)
 mp
 dev.off() #dev.set(dev.next())
 ```
 
 ![](img_calendar_year.png)
 
-[**< Download PDF: Yearly Calendar >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Year.pdf)
+[**< Download PDF: Yearly Calendar >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_year.pdf)
 
 ---
 
 # Create Monthly Calendar
 
 ```{r}
-pdf(file = "Calendar_Monthly.pdf", width = 10.5, height = 8)
+pdf(file = "calendar_monthly.pdf", width = 10.5, height = 8)
 par(mar = c(1,1,1,1))
 for (i in 1:12) {
   im <- image_read(paste0("images/",list.files("images/")[i]))
@@ -154,14 +154,14 @@ dev.off()
 
 ![](img_calendar_month.png)
 
-[**< Download PDF: Monthly Calendar >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Monthly.pdf)
+[**< Download PDF: Monthly Calendar >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_monthly.pdf)
 
 ---
 
 # Create Weekly Calendar
 
 ```{r}
-pdf(file = "Calendar_Weekly.pdf", width = 8, height = 10.5)
+pdf(file = "calendar_weekly.pdf", width = 8, height = 10.5)
 par(mar = c(1,1,1,1))
 for (i in 1:max(year_cal$week)) {
   tbl_cal <- year_cal %>% filter(week == i)
@@ -190,7 +190,7 @@ dev.off()
 
 ![](img_calendar_week.png)
 
-[**< Download PDF: Weekly Calendar >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/Calendar_Weekly.pdf)
+[**< Download PDF: Weekly Calendar >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_weekly.pdf)
 
 ---
 
