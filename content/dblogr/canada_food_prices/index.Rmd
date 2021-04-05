@@ -71,7 +71,7 @@ ggsave("canada_food_prices_01.png", width = 25, height = 10, limitsize = F)
 
 ---
 
-```{r}
+```{r eval = F}
 pdf("canada_food_prices_products.pdf", width = 6, height = 4)
 for(i in unique(dd$Product)) {
   xi <- dd %>% filter(Product == i)
