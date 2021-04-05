@@ -309,4 +309,13 @@ ggsave("canada_gdp_13.png", mp, width = 8, height = 4)
 
 ---
 
+```{r}
+mp <- ggGDP_PP(2016, c("Ontario", "Saskatchewan"), c("darkred", "darkorange3"))
+ggsave("canada_gdp_14.png", mp, width = 8, height = 4)
+```
+
+![](canada_gdp_14.png)
+
+---
+
 &copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

@@ -2,7 +2,7 @@
 title: "Food Prices in Canada"
 subtitle: "Graphs of food prices using STATCAN data"
 summary:  "Graphs of food prices using STATCAN data"
-date: "2021-04-04"
+date: "2021-04-05"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_food_prices/)"
 tags: [ "dblogr", "Economics", "Featured" ]
 weight: 3
@@ -17,7 +17,7 @@ links:
   - icon_pack: fas
     icon: file-pdf
     name: Maps PDF
-    url: https://github.com/derekmichaelwright/dblogr/raw/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf
 ---
 
 
@@ -120,7 +120,7 @@ for(i in unique(dd$Product)) {
 dev.off()</code></pre>
 <pre><code>## png 
 ##   2</code></pre>
-<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/raw/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf">canada_food_prices_products.pdf</a></p>
+<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf">canada_food_prices_products.pdf</a></p>
 <pre class="r"><code># Prep data
 xx &lt;- dd %&gt;% filter(Area == &quot;Canada&quot;, Product == &quot;Bacon, 500 grams&quot;)
 # Plot

@@ -184,14 +184,18 @@ deathPlot2 <- function(areas) {
   # Prep data
   xx <- d1 %>% filter(Area %in% areas)
   # Plot
-  mp1 <- ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = Y2020, alpha = Y2020)) +
+  ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = Y2020, alpha = Y2020)) +
     geom_line() +
     facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
     scale_color_manual(name = NULL, values = c("darkgreen","darkred")) +
     scale_alpha_manual(name = NULL, values = c(0.5,1)) +
     theme_agData(legend.position = "bottom") +
     labs(y = "Deaths Per Week")
-  # Prep data
+}
+```
+
+```{r echo = F, eval = F}
+# Prep data
   xx <- d1 %>% mutate(Year = as.numeric(as.character(Year))) %>%
     select(Date, Year, JulianDate, Y2020, Area, Value) %>%
     arrange(Area, Date) %>%
@@ -214,7 +218,6 @@ deathPlot2 <- function(areas) {
     labs(y = "Thousand Deaths",
          caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
   ggarrange(mp1, mp2, common.legend = T, legend = "bottom", align = "h")
-}
 ```
 
 ## Canada

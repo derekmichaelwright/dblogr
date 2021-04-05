@@ -2,7 +2,7 @@
 title: "Deaths In Canada"
 subtitle: "An exploration of weekly deaths in Canada"
 summary:  "An exploration of weekly deaths in Canada"
-date: "2021-04-04"
+date: "2021-04-05"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_deaths/)"
 tags: [ "dblogr", "SciComm", "Featured" ]
 weight: 2
@@ -139,36 +139,13 @@ deathPlot2 &lt;- function(areas) {
   # Prep data
   xx &lt;- d1 %&gt;% filter(Area %in% areas)
   # Plot
-  mp1 &lt;- ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = Y2020, alpha = Y2020)) +
+  ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = Y2020, alpha = Y2020)) +
     geom_line() +
     facet_wrap(Area ~ ., scales = &quot;free_y&quot;, ncol = 5) +
     scale_color_manual(name = NULL, values = c(&quot;darkgreen&quot;,&quot;darkred&quot;)) +
     scale_alpha_manual(name = NULL, values = c(0.5,1)) +
     theme_agData(legend.position = &quot;bottom&quot;) +
     labs(y = &quot;Deaths Per Week&quot;)
-  # Prep data
-  xx &lt;- d1 %&gt;% mutate(Year = as.numeric(as.character(Year))) %&gt;%
-    select(Date, Year, JulianDate, Y2020, Area, Value) %&gt;%
-    arrange(Area, Date) %&gt;%
-    spread(Area, Value)
-  for(i in 5:ncol(xx)) {
-    for(k in min(xx$Year):max(xx$Year)) {
-      xx[xx$Year == k, i] &lt;- cumsum(xx[xx$Year == k,i])
-    }
-  }
-  xx &lt;- xx %&gt;% gather(Area, Value, 5:ncol(.)) %&gt;%
-    mutate(Area = factor(Area, levels = areas)) %&gt;%
-    filter(Area %in% areas)
-  # Plot
-  mp2 &lt;- ggplot(xx, aes(x = JulianDate, y = Value / 1000, group = Year, color = Y2020, alpha = Y2020)) +
-    geom_line() +
-    facet_wrap(Area ~ ., scales = &quot;free_y&quot;, ncol = 5) +
-    scale_color_manual(name = NULL, values = c(&quot;darkgreen&quot;,&quot;darkred&quot;)) +
-    scale_alpha_manual(name = NULL, values = c(0.5,1)) +
-    theme_agData(legend.position = &quot;bottom&quot;) +
-    labs(y = &quot;Thousand Deaths&quot;,
-         caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-  ggarrange(mp1, mp2, common.legend = T, legend = &quot;bottom&quot;, align = &quot;h&quot;)
 }</code></pre>
 <div id="canada-1" class="section level2">
 <h2>Canada</h2>

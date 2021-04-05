@@ -2,7 +2,7 @@
 title: "GDP of Canada"
 subtitle: "GDP data among Canadian provinces from 2007-2018"
 summary:  "GDP data among Canadian provinces from 2007-2018"
-date: "2021-04-04"
+date: "2021-04-05"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_gdp/)"
 tags: [ "dblogr", "Economics" ]
 weight: 2
@@ -222,6 +222,10 @@ ggsave(&quot;canada_gdp_12.png&quot;, mp, width = 8, height = 4)</code></pre>
 <pre class="r"><code>mp &lt;- ggGDP_PP(2016, c(&quot;Alberta&quot;, &quot;Saskatchewan&quot;), c(&quot;darkblue&quot;, &quot;darkorange3&quot;))
 ggsave(&quot;canada_gdp_13.png&quot;, mp, width = 8, height = 4)</code></pre>
 <p><img src="canada_gdp_13.png" /></p>
+<hr />
+<pre class="r"><code>mp &lt;- ggGDP_PP(2016, c(&quot;Ontario&quot;, &quot;Saskatchewan&quot;), c(&quot;darkred&quot;, &quot;darkorange3&quot;))
+ggsave(&quot;canada_gdp_14.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_gdp_14.png" /></p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

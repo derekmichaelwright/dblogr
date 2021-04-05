@@ -3,7 +3,7 @@ title: "USA Crime Statistics"
 subtitle: "Graphs for crime statistics from the FBI"
 summary:  "Graphs for crime statistics from the FBI"
 date: "`r Sys.Date()`"
-author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/crime_usa/)"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/usa_crime/)"
 tags: [ "dblogr", "Politics" ]
 draft: true
 weight: 6
@@ -14,7 +14,7 @@ links:
   - icon_pack: fas
     icon: code
     name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/crime_usa.html
+    url: https://derekmichaelwright.github.io/htmls/dblogr/usa_crime.html
 ---
 
 ```{r setup, include=FALSE}
@@ -25,9 +25,11 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
+https://ucr.fbi.gov/crime-in-the-u.s/2018/crime-in-the-u.s.-2018
+
 https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/tables/expanded-homicide-data-table-8.xls
 
-[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/crime_usa/crime_usa_data.csv)
+[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_crime/usa_crime_data.xlsx)
 
 ---
 
@@ -36,20 +38,15 @@ https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/tab
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(readxl)
 ```
 
 ```{r}
 # Prep data
-dd <- read.csv("crime_usa_data.csv")
-DT::datatable(dd)
-```
-
-```{r}
-# Prep data
-xx <- dd %>% 
+xx <- read_xlsx("usa_crime_data.xlsx", "Murders") %>% 
   gather(Year, Value, 2:ncol(.)) %>%
   mutate(Weapons = factor(Weapons, levels = rev(unique(Weapons))),
-         Year = as.numeric(substr(Year, 2, 5)),
+         #Year = as.numeric(substr(Year, 2, 5)),
          Value = as.numeric(gsub(",", "", Value))) %>%
   filter(Year == 2019)
 # Plot
@@ -60,7 +57,7 @@ mp <- ggplot(xx, aes(x = Weapons, y = Value / 1000)) +
   theme_agData() +
   labs(x = NULL, y = "Thousand Murders",
        caption = "\xa9 www.dblogr.com/  |  Data: FBI")
-ggsave("crime_usa_01.png", width = 6, height = 4)
+ggsave("usa_crime_01.png", width = 6, height = 4)
 ```
 
 ```{r echo = F}
@@ -68,6 +65,57 @@ ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
 ![](crime_usa_01.png)
+
+---
+
+```{r}
+# Prep data 
+colors <- c("grey",  "Black", "darkblue","darkred", "darkorange", "purple" )
+races  <- c("White", "Black", "Hispanic", "Asian",  "Other",      "Multiple")
+yy <- read_xlsx("usa_crime_data.xlsx", "Race2") %>%
+  select(Victim=Race, PopulationPercent)
+xx <- read_xlsx("usa_crime_data.xlsx", "Race1") %>%
+  left_join(yy, by = "Victim") %>%
+  mutate(Offender = factor(Offender, levels = races),
+         Victim   = factor(Victim,   levels = races))
+# Plot
+mp <- ggplot(xx, aes(x = Offender, y = Percent, fill = Offender)) +
+  geom_bar(stat = "identity", color = "black", alpha = 0.8) +
+  geom_text(aes(label = paste(Percent, "%")), vjust = 1.1, size = 1.5, color = "white") +
+  facet_grid(. ~ Victim + paste0("*", PopulationPercent, " %")) +
+  scale_fill_manual(values = colors) +
+  theme_agData(legend.position = "none", rotx = T) +
+  labs(title = "Violant Crimes by Race",
+       caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population")
+ggsave("usa_crime_02.png", mp, width = 6, height = 4)
+```
+
+![](crime_usa_02.png)
+
+```{r}
+# Prep data 
+colors <- c("Black", "darkblue", "darkred")
+races  <- c("White", "Black", "Hispanic", "Asian", "Other")
+xx <- read_xlsx("usa_crime_data.xlsx", "Race2") %>%
+  select(Race, Offender=OffenderPercent, 
+         Victim=VictimPercent, Population=PopulationPercent) %>%
+  gather(Trait, Value, 2:ncol(.)) %>%
+  mutate(Trait = factor(Trait, levels = c("Population", "Victim", "Offender")),
+         Race = factor(Race, levels = races),
+         Value = round(Value, 1))
+# Plot 
+mp <- ggplot(xx, aes(x = Trait, y = Value, fill = Trait)) +
+  geom_bar(stat = "identity", color = "black", alpha = 0.8) +
+  geom_text(aes(label = paste(Value, "%")), vjust = 1.1, size = 1.5, color = "white") +
+  facet_grid(. ~ Race) +
+  scale_fill_manual(values = colors) +
+  theme_agData(legend.position = "none", rotx = T) +
+  labs(title = "Violant Crimes by Race", y = "Percent", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: FBI")
+ggsave("usa_crime_03.png", mp, width = 6, height = 4)
+```
+
+![](crime_usa_03.png)
 
 ---
 
