@@ -132,7 +132,7 @@ mp <- ggplot(xx, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = "none", rotx = T) +
   labs(title = "Violant Crimes by Offender", y = "Thousand Incidents", x = NULL,
-       caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population")
+       caption = "\xa9 www.dblogr.com/  |  Data: FBI")
 ggsave("usa_crime_04.png", mp, width = 6, height = 4)
 ```
 
