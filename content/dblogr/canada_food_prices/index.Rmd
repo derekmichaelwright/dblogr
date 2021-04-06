@@ -68,6 +68,7 @@ mp <- ggplot(dd, aes(x = Date, y = Value)) +
 ggsave("canada_food_prices_01.png", width = 25, height = 10, limitsize = F)
 ```
 
+![](canada_food_prices_01.png)
 
 ---
 
