@@ -53,6 +53,10 @@ mp <- ggplot(dd, aes(x = AD, y = Full.flowering.date..DOY.)) +
 ggsave("cherry_trees_01.png", mp, width = 12, height = 4)
 ```
 
+```{r echo = F}
+ggsave("featured.png", mp, width = 12, height = 4)
+```
+
 ![](cherry_trees_01.png)
 
 ---

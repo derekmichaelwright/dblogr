@@ -2,7 +2,7 @@
 title: "USA Crime Statistics"
 subtitle: "Graphs for crime statistics from the FBI"
 summary:  "Graphs for crime statistics from the FBI"
-date: "2021-04-05"
+date: "2021-04-06"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/usa_crime/)"
 tags: [ "dblogr", "Politics" ]
 draft: true
@@ -75,12 +75,12 @@ ggsave(&quot;usa_crime_02.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_crime_02.png" /></p>
 <pre class="r"><code># Prep data
 y1 &lt;- y1 %&gt;% rename(Offender=Victim)
-xx &lt;- xx %&gt;% filter(Offender %in% races[1:4]) %&gt;%
+x1 &lt;- xx %&gt;% filter(Offender %in% races[1:4]) %&gt;%
   select(-PopulationPercent) %&gt;%
   left_join(y1, by = &quot;Offender&quot;) %&gt;%
   mutate(Offender = factor(Offender, levels = races))
 # Plot
-mp &lt;- ggplot(xx, aes(x = Victim, y = Incidents / 1000, fill = Victim)) +
+mp &lt;- ggplot(x1, aes(x = Victim, y = Incidents / 1000, fill = Victim)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8) +
   facet_grid(. ~ Offender + paste0(&quot;*&quot;, PopulationPercent, &quot; %&quot;)) +
   scale_fill_manual(values = colors) +
@@ -94,19 +94,37 @@ ggsave(&quot;usa_crime_03.png&quot;, mp, width = 6, height = 4)</code></pre>
 crimes &lt;- c(&quot;Black on White&quot;, &quot;White on Black&quot;, 
             &quot;Black on Hispanic&quot;, &quot;Hispanic on Black&quot;, 
             &quot;Hispanic on White&quot;, &quot;White on Hispanic&quot; )
-xx &lt;- xx %&gt;% 
+x2 &lt;- x1 %&gt;% 
   mutate(Crime = paste(Offender,&quot;on&quot;, Victim)) %&gt;%
   filter(Crime %in% crimes) %&gt;%
   mutate(Crime = factor(Crime, levels = crimes))
 # Plot
-mp &lt;- ggplot(xx, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
+mp &lt;- ggplot(x2, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = &quot;none&quot;, rotx = T) +
   labs(title = &quot;Violant Crimes by Offender&quot;, y = &quot;Thousand Incidents&quot;, x = NULL,
-       caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI&quot;)
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI\n*Does not account for population differences&quot;)
 ggsave(&quot;usa_crime_04.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_crime_04.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+crimes &lt;- c(&quot;Black on Asian&quot;, &quot;Asian on Black&quot;, 
+            &quot;White on Asian&quot;, &quot;Asian on White&quot;, 
+            &quot;Hispanic on Asian&quot;, &quot;Asian on Hispanic&quot; )
+x2 &lt;- x1 %&gt;% 
+  mutate(Crime = paste(Offender,&quot;on&quot;, Victim)) %&gt;%
+  filter(Crime %in% crimes) %&gt;%
+  mutate(Crime = factor(Crime, levels = crimes))
+# Plot
+mp &lt;- ggplot(x2, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8) +
+  scale_fill_manual(values = colors) +
+  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+  labs(title = &quot;Violant Crimes by Offender&quot;, y = &quot;Thousand Incidents&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI\n*Does not account for population differences&quot;)
+ggsave(&quot;usa_crime_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_crime_05.png" /></p>
 <hr />
 <pre class="r"><code># Prep data 
 colors &lt;- c(&quot;Black&quot;, &quot;darkblue&quot;, &quot;darkred&quot;)
@@ -127,8 +145,8 @@ mp &lt;- ggplot(xx, aes(x = Trait, y = Value, fill = Trait)) +
   theme_agData(legend.position = &quot;none&quot;, rotx = T) +
   labs(title = &quot;Violant Crimes by Race&quot;, y = &quot;Percent&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI&quot;)
-ggsave(&quot;usa_crime_05.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="usa_crime_05.png" /></p>
+ggsave(&quot;usa_crime_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_crime_06.png" /></p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

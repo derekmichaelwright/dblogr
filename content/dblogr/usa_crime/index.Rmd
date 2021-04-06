@@ -98,12 +98,12 @@ ggsave("usa_crime_02.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 y1 <- y1 %>% rename(Offender=Victim)
-xx <- xx %>% filter(Offender %in% races[1:4]) %>%
+x1 <- xx %>% filter(Offender %in% races[1:4]) %>%
   select(-PopulationPercent) %>%
   left_join(y1, by = "Offender") %>%
   mutate(Offender = factor(Offender, levels = races))
 # Plot
-mp <- ggplot(xx, aes(x = Victim, y = Incidents / 1000, fill = Victim)) +
+mp <- ggplot(x1, aes(x = Victim, y = Incidents / 1000, fill = Victim)) +
   geom_bar(stat = "identity", color = "black", alpha = 0.8) +
   facet_grid(. ~ Offender + paste0("*", PopulationPercent, " %")) +
   scale_fill_manual(values = colors) +
@@ -122,21 +122,44 @@ ggsave("usa_crime_03.png", mp, width = 6, height = 4)
 crimes <- c("Black on White", "White on Black", 
             "Black on Hispanic", "Hispanic on Black", 
             "Hispanic on White", "White on Hispanic" )
-xx <- xx %>% 
+x2 <- x1 %>% 
   mutate(Crime = paste(Offender,"on", Victim)) %>%
   filter(Crime %in% crimes) %>%
   mutate(Crime = factor(Crime, levels = crimes))
 # Plot
-mp <- ggplot(xx, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
+mp <- ggplot(x2, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
   geom_bar(stat = "identity", color = "black", alpha = 0.8) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = "none", rotx = T) +
   labs(title = "Violant Crimes by Offender", y = "Thousand Incidents", x = NULL,
-       caption = "\xa9 www.dblogr.com/  |  Data: FBI")
+       caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Does not account for population differences")
 ggsave("usa_crime_04.png", mp, width = 6, height = 4)
 ```
 
 ![](usa_crime_04.png)
+
+---
+
+```{r}
+# Prep data
+crimes <- c("Black on Asian", "Asian on Black", 
+            "White on Asian", "Asian on White", 
+            "Hispanic on Asian", "Asian on Hispanic" )
+x2 <- x1 %>% 
+  mutate(Crime = paste(Offender,"on", Victim)) %>%
+  filter(Crime %in% crimes) %>%
+  mutate(Crime = factor(Crime, levels = crimes))
+# Plot
+mp <- ggplot(x2, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
+  geom_bar(stat = "identity", color = "black", alpha = 0.8) +
+  scale_fill_manual(values = colors) +
+  theme_agData(legend.position = "none", rotx = T) +
+  labs(title = "Violant Crimes by Offender", y = "Thousand Incidents", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Does not account for population differences")
+ggsave("usa_crime_05.png", mp, width = 6, height = 4)
+```
+
+![](usa_crime_05.png)
 
 ---
 
@@ -160,10 +183,10 @@ mp <- ggplot(xx, aes(x = Trait, y = Value, fill = Trait)) +
   theme_agData(legend.position = "none", rotx = T) +
   labs(title = "Violant Crimes by Race", y = "Percent", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: FBI")
-ggsave("usa_crime_05.png", mp, width = 6, height = 4)
+ggsave("usa_crime_06.png", mp, width = 6, height = 4)
 ```
 
-![](usa_crime_05.png)
+![](usa_crime_06.png)
 
 ---
 
