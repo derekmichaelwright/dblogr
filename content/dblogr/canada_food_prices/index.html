@@ -134,5 +134,21 @@ mp &lt;- ggplot(xx, aes(x = Date, y = Value)) +
 ggsave(&quot;canada_food_prices_02.png&quot;, width = 6, height = 4)</code></pre>
 <p><img src="canada_food_prices_02.png" /></p>
 <hr />
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Area == &quot;Canada&quot;, Product != &quot;Cigarettes (200)&quot;,
+         Date %in% c(min(Date), max(Date))) %&gt;%
+  select(-Area) %&gt;%
+  spread(Date, Value)
+xx$Change &lt;- xx[,3] - xx[,2]
+# Plot
+mp &lt;- ggplot(xx, aes(x = Product, y = Change, fill = Product)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
+  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+  labs(y = &quot;Price Change&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_food_prices_03.png&quot;, width = 6, height = 4)</code></pre>
+<p><img src="canada_food_prices_03.png" /></p>
+<hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

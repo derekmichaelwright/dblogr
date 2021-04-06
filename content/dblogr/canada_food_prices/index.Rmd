@@ -113,4 +113,25 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ---
 
+```{r}
+# Prep data
+xx <- dd %>% 
+  filter(Area == "Canada", Product != "Cigarettes (200)",
+         Date %in% c(min(Date), max(Date))) %>%
+  select(-Area) %>%
+  spread(Date, Value)
+xx$Change <- xx[,3] - xx[,2]
+# Plot
+mp <- ggplot(xx, aes(x = Product, y = Change, fill = Product)) +
+  geom_bar(stat = "identity", color = "black") +
+  theme_agData(legend.position = "none", rotx = T) +
+  labs(y = "Price Change", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+ggsave("canada_food_prices_03.png", width = 6, height = 4)
+```
+
+![](canada_food_prices_03.png)
+
+---
+
 &copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)
