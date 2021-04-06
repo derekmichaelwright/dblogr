@@ -4,7 +4,7 @@ subtitle: "Historical Series of Phenological data for Cherry Tree Flowering at K
 summary:  "Historical Series of Phenological data for Cherry Tree Flowering at Kyoto City"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/cherry_trees/)"
-tags: [ "dblogr", "SciComm", "Featured" ]
+tags: [ "dblogr", "SciComm" ]
 weight: 5
 codefolding_show: "hide"
 image:
@@ -15,7 +15,6 @@ links:
     name: R Script
     url: https://derekmichaelwright.github.io/htmls/dblogr/cherry_trees.html
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = T, message = F, warning = F)

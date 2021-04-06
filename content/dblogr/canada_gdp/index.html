@@ -2,7 +2,7 @@
 title: "GDP of Canada"
 subtitle: "GDP data among Canadian provinces from 2007-2018"
 summary:  "GDP data among Canadian provinces from 2007-2018"
-date: "2021-04-05"
+date: "2021-04-06"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_gdp/)"
 tags: [ "dblogr", "Economics" ]
 weight: 2
@@ -98,7 +98,7 @@ ggsave(&quot;canada_gdp_02.png&quot;, mp, width = 6, height = 4)</code></pre>
 <pre class="r"><code># Plot
 mp &lt;- mp + facet_wrap(Area ~ ., scale = &quot;free_y&quot;, ncol = 5) + 
   scale_y_continuous()
-ggsave(&quot;canada_gdp_03.png&quot;, mp, width = 10, height = 4)</code></pre>
+ggsave(&quot;canada_gdp_03.png&quot;, mp, width = 10, height = 6)</code></pre>
 <p><img src="canada_gdp_03.png" /></p>
 <hr />
 <pre class="r"><code># Prep data
@@ -153,7 +153,7 @@ ggsave(&quot;canada_gdp_06.png&quot;, mp, width = 6, height = 4)</code></pre>
 <hr />
 <pre class="r"><code>mp &lt;- mp + facet_wrap(Area ~ ., ncol = 5) + 
   scale_y_continuous()
-ggsave(&quot;canada_gdp_07.png&quot;, mp, width = 10, height = 4)</code></pre>
+ggsave(&quot;canada_gdp_07.png&quot;, mp, width = 10, height = 6)</code></pre>
 <p><img src="canada_gdp_07.png" /></p>
 <hr />
 <pre class="r"><code># Prep data
@@ -204,27 +204,27 @@ ggsave(&quot;canada_gdp_08.png&quot;, mp, width = 6, height = 4)</code></pre>
 <hr />
 <pre class="r"><code>mp &lt;- ggGDP_PP(year = 2016, areas = c(&quot;Alberta&quot;, &quot;Quebec&quot;),
                colors = c(&quot;darkblue&quot;, &quot;lightblue&quot;))
-ggsave(&quot;canada_gdp_09.png&quot;, mp, width = 8, height = 4)</code></pre>
+ggsave(&quot;canada_gdp_09.png&quot;, mp, width = 8, height = 6)</code></pre>
 <p><img src="canada_gdp_09.png" /></p>
 <hr />
 <pre class="r"><code>mp &lt;- ggGDP_PP(2016, c(&quot;Alberta&quot;, &quot;Ontario&quot;), c(&quot;darkblue&quot;, &quot;darkred&quot;))
-ggsave(&quot;canada_gdp_10.png&quot;, mp, width = 8, height = 4)</code></pre>
+ggsave(&quot;canada_gdp_10.png&quot;, mp, width = 8, height = 6)</code></pre>
 <p><img src="canada_gdp_10.png" /></p>
 <hr />
 <pre class="r"><code>mp &lt;- ggGDP_PP(2016, c(&quot;Alberta&quot;, &quot;British Columbia&quot;), c(&quot;darkblue&quot;, &quot;darkgreen&quot;))
-ggsave(&quot;canada_gdp_11.png&quot;, mp, width = 8, height = 4)</code></pre>
+ggsave(&quot;canada_gdp_11.png&quot;, mp, width = 8, height = 6)</code></pre>
 <p><img src="canada_gdp_11.png" /></p>
 <hr />
 <pre class="r"><code>mp &lt;- ggGDP_PP(2016, c(&quot;Saskatchewan&quot;, &quot;Manitoba&quot;), c(&quot;darkorange3&quot;, &quot;darkmagenta&quot;))
-ggsave(&quot;canada_gdp_12.png&quot;, mp, width = 8, height = 4)</code></pre>
+ggsave(&quot;canada_gdp_12.png&quot;, mp, width = 8, height = 6)</code></pre>
 <p><img src="canada_gdp_12.png" /></p>
 <hr />
 <pre class="r"><code>mp &lt;- ggGDP_PP(2016, c(&quot;Alberta&quot;, &quot;Saskatchewan&quot;), c(&quot;darkblue&quot;, &quot;darkorange3&quot;))
-ggsave(&quot;canada_gdp_13.png&quot;, mp, width = 8, height = 4)</code></pre>
+ggsave(&quot;canada_gdp_13.png&quot;, mp, width = 8, height = 6)</code></pre>
 <p><img src="canada_gdp_13.png" /></p>
 <hr />
 <pre class="r"><code>mp &lt;- ggGDP_PP(2016, c(&quot;Ontario&quot;, &quot;Saskatchewan&quot;), c(&quot;darkred&quot;, &quot;darkorange3&quot;))
-ggsave(&quot;canada_gdp_14.png&quot;, mp, width = 8, height = 4)</code></pre>
+ggsave(&quot;canada_gdp_14.png&quot;, mp, width = 8, height = 6)</code></pre>
 <p><img src="canada_gdp_14.png" /></p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>

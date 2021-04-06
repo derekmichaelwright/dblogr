@@ -95,10 +95,6 @@ mp <- ggplot(xx, aes(x = Area, y = Value, fill = Area)) +
 ggsave("canada_gdp_01.png", mp, width = 6, height = 4)
 ```
 
-```{r echo = F}
-ggsave("featured.png", mp, width = 6, height = 4)
-```
-
 ![](canada_gdp_01.png)
 
 ---
@@ -128,7 +124,7 @@ ggsave("canada_gdp_02.png", mp, width = 6, height = 4)
 # Plot
 mp <- mp + facet_wrap(Area ~ ., scale = "free_y", ncol = 5) + 
   scale_y_continuous()
-ggsave("canada_gdp_03.png", mp, width = 10, height = 4)
+ggsave("canada_gdp_03.png", mp, width = 10, height = 6)
 ```
 
 ![](canada_gdp_03.png)
@@ -202,7 +198,11 @@ ggsave("canada_gdp_06.png", mp, width = 6, height = 4)
 ```{r}
 mp <- mp + facet_wrap(Area ~ ., ncol = 5) + 
   scale_y_continuous()
-ggsave("canada_gdp_07.png", mp, width = 10, height = 4)
+ggsave("canada_gdp_07.png", mp, width = 10, height = 6)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 10, height = 6)
 ```
 
 ![](canada_gdp_07.png)
@@ -266,7 +266,7 @@ ggGDP_PP <- function(year, areas, colors) {
 ```{r}
 mp <- ggGDP_PP(year = 2016, areas = c("Alberta", "Quebec"),
                colors = c("darkblue", "lightblue"))
-ggsave("canada_gdp_09.png", mp, width = 8, height = 4)
+ggsave("canada_gdp_09.png", mp, width = 8, height = 6)
 ```
 
 ![](canada_gdp_09.png)
@@ -275,7 +275,7 @@ ggsave("canada_gdp_09.png", mp, width = 8, height = 4)
 
 ```{r}
 mp <- ggGDP_PP(2016, c("Alberta", "Ontario"), c("darkblue", "darkred"))
-ggsave("canada_gdp_10.png", mp, width = 8, height = 4)
+ggsave("canada_gdp_10.png", mp, width = 8, height = 6)
 ```
 
 ![](canada_gdp_10.png)
@@ -284,7 +284,7 @@ ggsave("canada_gdp_10.png", mp, width = 8, height = 4)
 
 ```{r}
 mp <- ggGDP_PP(2016, c("Alberta", "British Columbia"), c("darkblue", "darkgreen"))
-ggsave("canada_gdp_11.png", mp, width = 8, height = 4)
+ggsave("canada_gdp_11.png", mp, width = 8, height = 6)
 ```
 
 ![](canada_gdp_11.png)
@@ -293,7 +293,7 @@ ggsave("canada_gdp_11.png", mp, width = 8, height = 4)
 
 ```{r}
 mp <- ggGDP_PP(2016, c("Saskatchewan", "Manitoba"), c("darkorange3", "darkmagenta"))
-ggsave("canada_gdp_12.png", mp, width = 8, height = 4)
+ggsave("canada_gdp_12.png", mp, width = 8, height = 6)
 ```
 
 ![](canada_gdp_12.png)
@@ -302,7 +302,7 @@ ggsave("canada_gdp_12.png", mp, width = 8, height = 4)
 
 ```{r}
 mp <- ggGDP_PP(2016, c("Alberta", "Saskatchewan"), c("darkblue", "darkorange3"))
-ggsave("canada_gdp_13.png", mp, width = 8, height = 4)
+ggsave("canada_gdp_13.png", mp, width = 8, height = 6)
 ```
 
 ![](canada_gdp_13.png)
@@ -311,7 +311,7 @@ ggsave("canada_gdp_13.png", mp, width = 8, height = 4)
 
 ```{r}
 mp <- ggGDP_PP(2016, c("Ontario", "Saskatchewan"), c("darkred", "darkorange3"))
-ggsave("canada_gdp_14.png", mp, width = 8, height = 4)
+ggsave("canada_gdp_14.png", mp, width = 8, height = 6)
 ```
 
 ![](canada_gdp_14.png)
