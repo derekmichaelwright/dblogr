@@ -55,8 +55,9 @@ mp <- ggplot(xx, aes(x = Weapons, y = Value / 1000)) +
   scale_y_continuous(breaks = 1:14) +
   coord_flip() +
   theme_agData() +
-  labs(x = NULL, y = "Thousand Murders",
-       caption = "\xa9 www.dblogr.com/  |  Data: FBI")
+  labs(x = NULL, y = "Thousand Murders"#,
+       #caption = "\xa9 www.dblogr.com/  |  Data: FBI"
+       )
 ggsave("usa_crime_01.png", width = 6, height = 4)
 ```
 
@@ -88,8 +89,9 @@ mp <- ggplot(xx, aes(x = Offender, y = Percent, fill = Offender)) +
   facet_grid(. ~ Victim + paste0("*", PopulationPercent, " %")) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = "none", rotx = T) +
-  labs(title = "Violant Crimes by Victim",
-       caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population")
+  labs(title = "Violant Crimes by Victim"#,
+       #caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population"
+       )
 ggsave("usa_crime_02.png", mp, width = 6, height = 4)
 ```
 
@@ -108,8 +110,9 @@ mp <- ggplot(x1, aes(x = Victim, y = Incidents / 1000, fill = Victim)) +
   facet_grid(. ~ Offender + paste0("*", PopulationPercent, " %")) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = "none", rotx = T) +
-  labs(title = "Violant Crimes by Offender", y = "Thousand Incidents",
-       caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population")
+  labs(title = "Violant Crimes by Offender", y = "Thousand Incidents"#,
+       #caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population"
+       )
 ggsave("usa_crime_03.png", mp, width = 6, height = 4)
 ```
 
@@ -132,7 +135,8 @@ mp <- ggplot(x2, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = "none", rotx = T) +
   labs(title = "Violant Crimes by Offender", y = "Thousand Incidents", x = NULL,
-       caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Does not account for population differences")
+       #caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Does not account for population differences"
+       caption = "White: 62.3%\nBlack: 12%\nHispanic: 17.1%\nAsian: 6.3%")
 ggsave("usa_crime_04.png", mp, width = 6, height = 4)
 ```
 
@@ -142,8 +146,8 @@ ggsave("usa_crime_04.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-crimes <- c("Black on Asian", "Asian on Black", 
-            "White on Asian", "Asian on White", 
+crimes <- c("White on Asian", "Asian on White",
+            "Black on Asian", "Asian on Black", 
             "Hispanic on Asian", "Asian on Hispanic" )
 x2 <- x1 %>% 
   mutate(Crime = paste(Offender,"on", Victim)) %>%
@@ -155,7 +159,8 @@ mp <- ggplot(x2, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = "none", rotx = T) +
   labs(title = "Violant Crimes by Offender", y = "Thousand Incidents", x = NULL,
-       caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Does not account for population differences")
+       #caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Does not account for population differences")
+       caption = "White: 62.3%\nBlack: 12%\nHispanic: 17.1%\nAsian: 6.3%")
 ggsave("usa_crime_05.png", mp, width = 6, height = 4)
 ```
 
@@ -181,8 +186,9 @@ mp <- ggplot(xx, aes(x = Trait, y = Value, fill = Trait)) +
   facet_grid(. ~ Race) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = "none", rotx = T) +
-  labs(title = "Violant Crimes by Race", y = "Percent", x = NULL,
-       caption = "\xa9 www.dblogr.com/  |  Data: FBI")
+  labs(title = "Violant Crimes by Race", y = "Percent", x = NULL#,
+       #caption = "\xa9 www.dblogr.com/  |  Data: FBI"
+       )
 ggsave("usa_crime_06.png", mp, width = 6, height = 4)
 ```
 
