@@ -136,7 +136,7 @@ mp <- ggplot(x2, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
   theme_agData(legend.position = "none", rotx = T) +
   labs(title = "Violant Crimes by Offender", y = "Thousand Incidents", x = NULL,
        #caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Does not account for population differences"
-       caption = "White: 62.3%\nBlack: 12%\nHispanic: 17.1%\nAsian: 6.3%")
+       caption = "US Population\nWhite: 62.3%\nHispanic: 17.1%\nBlack: 12%\nAsian: 6.3%")
 ggsave("usa_crime_04.png", mp, width = 6, height = 4)
 ```
 
@@ -160,7 +160,7 @@ mp <- ggplot(x2, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
   theme_agData(legend.position = "none", rotx = T) +
   labs(title = "Violant Crimes by Offender", y = "Thousand Incidents", x = NULL,
        #caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Does not account for population differences")
-       caption = "White: 62.3%\nBlack: 12%\nHispanic: 17.1%\nAsian: 6.3%")
+       caption = "US Population\nWhite: 62.3%\nHispanic: 17.1%\nBlack: 12%\nAsian: 6.3%")
 ggsave("usa_crime_05.png", mp, width = 6, height = 4)
 ```
 
