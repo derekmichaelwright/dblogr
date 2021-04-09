@@ -2,7 +2,7 @@
 title: "People in Agriculture"
 subtitle: "Graphs of people in Agriculture"
 summary:  "Graphs of people in Agriculture"
-date: "2021-04-04"
+date: "2021-04-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/people_in_ag/)"
 tags: [ "agData", "Regions" ]
 weight: 4
@@ -23,7 +23,7 @@ links:
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
 <hr />
 <pre class="r"><code># Prep data
-xx &lt;- agData_People %&gt;% 
+xx &lt;- agData_PeopleInAg %&gt;% 
   filter(Measurement == &quot;Percent&quot;, Area == &quot;World&quot;)
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value)) + 
@@ -57,7 +57,7 @@ ggsave(&quot;people_in_ag_02.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="people_in_ag_02.png" /></p>
 <hr />
 <pre class="r"><code># Prep data
-xx &lt;- agData_People %&gt;% 
+xx &lt;- agData_PeopleInAg %&gt;% 
   filter(Measurement == &quot;Total&quot;)
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value/1000000)) + 
@@ -79,7 +79,7 @@ areas &lt;- c(&quot;Canada&quot;, &quot;USA&quot;, &quot;Mexico&quot;,
            &quot;Spain&quot;,&quot;France&quot;,&quot;Germany&quot;, &quot;Denmark&quot;, &quot;Ukraine&quot;, &quot;Russia&quot;,
            &quot;China&quot;, &quot;India&quot;, &quot;Turkey&quot;, &quot;Syria&quot;,&quot;Iran&quot;,
            &quot;Ethiopoia&quot;, &quot;South Africa&quot;, &quot;Nigeria&quot;,&quot;Morocco&quot;, &quot;Egypt&quot;)
-xx &lt;- agData_People %&gt;% 
+xx &lt;- agData_PeopleInAg %&gt;% 
   filter(Measurement == &quot;Percent&quot;, Year %in% c(1991, 2017), Area %in% areas) %&gt;%
   addRegionInfo() %&gt;%
   arrange(Region, Value) %&gt;%

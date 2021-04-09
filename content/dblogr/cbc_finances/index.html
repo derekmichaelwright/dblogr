@@ -2,7 +2,7 @@
 title: "CBC Finances"
 subtitle: "A look at CBC finances - government funding, ad revenue and total profit"
 summary:  "A look at CBC finances - government funding, ad revenue and total profit"
-date: "2021-03-28"
+date: "2021-04-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/cbc_finances/)"
 tags: [ "dblogr", "Economics", "Politics" ]
 weight: 5
@@ -55,8 +55,8 @@ cost / pop</code></pre>
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(title = &quot;CBC Finances&quot;, x = NULL, y = &quot;Million Dollars&quot;,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
-ggsave(&quot;cbc_1.png&quot;, width = 6, height = 4)</code></pre>
-<p><img src="cbc_1.png" /></p>
+ggsave(&quot;canada_population_demographics1.png&quot;, width = 6, height = 4)</code></pre>
+<p><img src="canada_population_demographics1.png" /></p>
 <hr />
 </div>
 <div id="expenses-vs-revenue-bar" class="section level1">
@@ -69,8 +69,8 @@ ggsave(&quot;cbc_1.png&quot;, width = 6, height = 4)</code></pre>
                axis.text.x = element_blank(), axis.ticks.x = element_blank()) +
   labs(title = &quot;CBC Finances&quot;, x = NULL, y = &quot;Million Dollars&quot;,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
-ggsave(&quot;cbc_2.png&quot;, width = 10, height = 4)</code></pre>
-<p><img src="cbc_2.png" /></p>
+ggsave(&quot;canada_population_demographics2.png&quot;, width = 10, height = 4)</code></pre>
+<p><img src="canada_population_demographics2.png" /></p>
 <hr />
 </div>
 <div id="net-profit-with-government-funding" class="section level1">
@@ -87,8 +87,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Profit / 1000000, fill = Net)) +
   theme_agData(legend.position = &quot;bottom&quot;, rotx = T) +
   labs(title = &quot;CBC - Net Profit With Government Funding&quot;, y = &quot;Million Dollars&quot;,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
-ggsave(&quot;cbc_3.png&quot;, width = 6, height = 4)</code></pre>
-<p><img src="cbc_3.png" /></p>
+ggsave(&quot;canada_population_demographics3.png&quot;, width = 6, height = 4)</code></pre>
+<p><img src="canada_population_demographics3.png" /></p>
 <hr />
 </div>
 <div id="net-profit-without-government-funding" class="section level1">
@@ -105,8 +105,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Profit / 1000000, fill = Net)) +
   theme_agData(legend.position = &quot;none&quot;, rotx = T) +
   labs(title = &quot;CBC - Net Profit Without Government Funding&quot;, y = &quot;Million Dollars&quot;,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
-ggsave(&quot;cbc_4.png&quot;, width = 6, height = 4)</code></pre>
-<p><img src="cbc_4.png" /></p>
+ggsave(&quot;canada_population_demographics4.png&quot;, width = 6, height = 4)</code></pre>
+<p><img src="canada_population_demographics4.png" /></p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

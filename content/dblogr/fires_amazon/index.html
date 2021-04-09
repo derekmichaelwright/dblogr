@@ -2,7 +2,7 @@
 title: "The Journalism Around Amazon Fires"
 subtitle: "An analysis of science journalism by the CBC"
 summary:  "An analysis of science journalism by the CBC"
-date: "2021-03-29"
+date: "2021-04-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/fires_amazon/)"
 tags: [ "dblogr", "SciComm" ]
 weight: 3
@@ -92,12 +92,15 @@ DT::datatable(dd)</code></pre>
 <hr />
 <p>First thing we notice, they have been recording data prior to 2013. That’s odd, why would the CBC say that? Perhaps a look at the data will tell us why.</p>
 <pre class="r"><code># Prep data
-xx &lt;- dd %&gt;% mutate(Total = rowSums(., na.rm = T))
+xx &lt;- dd %&gt;% 
+  mutate(Total = rowSums(., na.rm = T),
+         Alpha = ifelse(Year &lt; 2013, &quot;Deleted&quot;, &quot;Archived&quot;))
 # Plot
-mp &lt;- ggplot(xx, aes(x = Year, y = Total / 1000)) + 
+mp &lt;- ggplot(xx, aes(x = Year, y = Total / 1000, alpha = Alpha)) + 
   geom_bar(stat = &quot;identity&quot;, fill = &quot;Darkred&quot;, color = &quot;Black&quot;) +
   scale_x_continuous(breaks = c(min(xx$Year):max(xx$Year))) +
-  theme_agData(rotx = T) +
+  scale_alpha_manual(values = c(1, 0.7)) +
+  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x= NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: INPE&quot;)

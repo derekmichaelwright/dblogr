@@ -31,7 +31,7 @@ library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 
 ```{r}
 # Prep data
-xx <- agData_People %>% 
+xx <- agData_PeopleInAg %>% 
   filter(Measurement == "Percent", Area == "World")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value)) + 
@@ -79,7 +79,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- agData_People %>% 
+xx <- agData_PeopleInAg %>% 
   filter(Measurement == "Total")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value/1000000)) + 
@@ -106,7 +106,7 @@ areas <- c("Canada", "USA", "Mexico",
            "Spain","France","Germany", "Denmark", "Ukraine", "Russia",
            "China", "India", "Turkey", "Syria","Iran",
            "Ethiopoia", "South Africa", "Nigeria","Morocco", "Egypt")
-xx <- agData_People %>% 
+xx <- agData_PeopleInAg %>% 
   filter(Measurement == "Percent", Year %in% c(1991, 2017), Area %in% areas) %>%
   addRegionInfo() %>%
   arrange(Region, Value) %>%

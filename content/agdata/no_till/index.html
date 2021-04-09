@@ -1,0 +1,156 @@
+---
+title: "No-Till Agriculture in Canada"
+subtitle: "Graphs on the adoption of no-till agricultrue in Canada using STATCAN data"
+summary:  "Graphs on the adoption of no-till agricultrue in Canada using STATCAN data"
+date: "2021-04-08"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/no_till/)"
+tags: [ "agData", "Regions" ]
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/agdata/no_till.html
+---
+
+
+
+<hr />
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(gganimate)
+library(treemapify)</code></pre>
+<hr />
+<div id="no-till-adoption" class="section level1">
+<h1>No-Till Adoption</h1>
+<div id="canada" class="section level2">
+<h2>Canada</h2>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_FarmLand_NoTill %&gt;% 
+  filter(Area == &quot;Canada&quot;, Unit == &quot;Hectares&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
+  geom_line(size = 1.5, alpha = 0.8) +
+  facet_grid(.~ Area) +
+  scale_color_manual(name = NULL, values = agData_Colors) +
+  scale_x_continuous(breaks = seq(1990, 2016, 2)) + 
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Adoption of No-Till Agriculture&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;,
+       x = NULL, y = &quot;Million Hectares&quot;)
+ggsave(&quot;no_till_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="no_till_01.png" /></p>
+<hr />
+</div>
+<div id="provinces" class="section level2">
+<h2>Provinces</h2>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_FarmLand_NoTill %&gt;% 
+  filter(Area != &quot;Canada&quot;, Unit == &quot;Hectares&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
+  geom_line(size = 1.5, alpha = 0.8) +
+  facet_wrap(Area ~ ., scales = &quot;free_y&quot;, ncol = 5) +
+  scale_color_manual(values = agData_Colors) +
+  scale_x_continuous(breaks = seq(1990, 2016, 6)) + 
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Adoption of No-Till Agriculture&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;,
+       x = NULL, y = &quot;Million Hectares&quot;)
+ggsave(&quot;no_till_02.png&quot;, mp, width = 12, height = 6)</code></pre>
+<p><img src="no_till_02.png" /></p>
+<hr />
+</div>
+</div>
+<div id="percent" class="section level1">
+<h1>Percent</h1>
+<div id="canada-1" class="section level2">
+<h2>Canada</h2>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_FarmLand_NoTill %&gt;% 
+  filter(Area == &quot;Canada&quot;, Unit == &quot;Hectares&quot;) %&gt;%
+  spread(Item, Value) %&gt;%
+  mutate(Percent = 100* `No-till seeding or zero-till seeding` / `Total land prepared for seeding`)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Percent)) +
+  geom_line(color = &quot;darkgreen&quot;, size = 1.5, alpha = 0.8) +
+  facet_grid(.~ Area) +
+  scale_fill_manual(values = agData_Colors) +
+  scale_x_continuous(breaks = seq(1990, 2016, 2)) + 
+  scale_y_continuous(breaks = seq(0, 60, 10), limits = c(0, 60)) +
+  theme_agData() +
+  labs(title = &quot;Adoption of No-Till Agriculture&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;no_till_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="no_till_03.png" /></p>
+<hr />
+</div>
+<div id="provinces-1" class="section level2">
+<h2>Provinces</h2>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_FarmLand_NoTill %&gt;% 
+  filter(Area != &quot;Canada&quot;, Unit == &quot;Hectares&quot;) %&gt;%
+  spread(Item, Value) %&gt;%
+  mutate(Percent = 100* `No-till seeding or zero-till seeding` / `Total land prepared for seeding`)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Percent)) +
+  geom_line(color = &quot;darkgreen&quot;, size = 1.5, alpha = 0.8) +
+  facet_wrap(Area ~ ., ncol = 5) +
+  scale_fill_manual(values = agData_Colors) +
+  scale_x_continuous(breaks = seq(1990, 2016, 6)) + 
+  scale_y_continuous(breaks = seq(0, 80, 10), limits = c(0, 80)) +
+  theme_agData() +
+  labs(title = &quot;Adoption of No-Till Agriculture&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;no_till_04.png&quot;, mp, width = 12, height = 6)</code></pre>
+<p><img src="no_till_04.png" /></p>
+<hr />
+</div>
+<div id="east-vs-west" class="section level2">
+<h2>East vs West</h2>
+<pre class="r"><code># Prep data
+areas &lt;- c(&quot;Saskatchewan&quot;, &quot;Alberta&quot;, &quot;Ontario&quot;, &quot;Quebec&quot;)
+colors &lt;- c(&quot;darkgreen&quot;, &quot;darkred&quot;, &quot;darkblue&quot;, &quot;steelblue&quot;)
+xx &lt;- xx %&gt;% 
+  filter(Area %in% areas) %&gt;%
+  mutate(Area = factor(Area, levels = areas))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Percent, color = Area)) +
+  geom_line(size = 1.5, alpha = 0.8) +
+  #facet_grid(. ~ Region) +
+  scale_color_manual(name = NULL, values = colors) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Adoption of No-Till Agriculture&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;no_till_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="no_till_05.png" /></p>
+<hr />
+</div>
+</div>
+<div id="saskatchewan" class="section level1">
+<h1>Saskatchewan</h1>
+<pre class="r"><code># Prep data
+x1 &lt;- agData_STATCAN_FarmLand_NoTill %&gt;% 
+  filter(Area == &quot;Saskatchewan&quot;, Unit == &quot;Hectares&quot;,
+         Item == &quot;No-till seeding or zero-till seeding&quot;)
+x2 &lt;- agData_STATCAN_Crops %&gt;% 
+  filter(Area == &quot;Saskatchewan&quot;, Crop == &quot;Summerfallow&quot;, 
+         Measurement == &quot;Seeded area&quot;, Year &gt; 1990) %&gt;%
+  rename(Item=Crop)
+xx &lt;- bind_rows(x1, x2)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Item)) +
+  geom_line(size = 1.5, alpha = 0.8) +
+  facet_grid(. ~ Area) +
+  scale_color_manual(name = NULL, values = agData_Colors) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Adoption of No-Till Agriculture&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;no_till_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="no_till_06.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>
