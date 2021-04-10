@@ -17,7 +17,7 @@ links:
 ---
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
 ```
 
 ---

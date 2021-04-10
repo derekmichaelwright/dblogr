@@ -1,0 +1,198 @@
+---
+title: "Memes With R"
+subtitle: "My memes, created in R"
+summary:  "My memes, created in R"
+date: "2021-04-09"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/memes/)"
+tags: [ "dblogr", "R", "Featured" ]
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+url_custom: 
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/memes.html
+---
+
+
+
+<hr />
+<pre class="r"><code>library(agData)
+library(memer)
+library(magick)</code></pre>
+<div id="pyramid-pie-chart" class="section level1">
+<h1>Pyramid Pie Chart</h1>
+<pre class="r"><code>png(&quot;memes_01.png&quot;)
+par(mar = c(0, 0, 2, 0))
+pie(
+  x      = c(280, 60, 20),
+  col    = c(&#39;#0292D8&#39;, &#39;#F7EA39&#39;, &#39;#C4B632&#39;),
+  labels = c(&#39;No&#39;, &#39;Nope&#39;, &#39;Nein&#39;),
+  main = &quot;Are GE Crops Hazardous To Your Health?&quot;,
+  init.angle = -50, border = NA
+)
+invisible(dev.off())</code></pre>
+<p><img src="memes_01.png" /></p>
+<hr />
+</div>
+<div id="outlier-meme" class="section level1">
+<h1>Outlier Meme</h1>
+<pre class="r"><code># Prep Data
+d1 &lt;- data.frame(
+  x = c(jitter(1:100, 10), 45),
+  y = c(jitter(1:100, 10), 88),
+  z = factor(c(rep(&quot;General Trend&quot;, 100), &quot;Outlier&quot;), 
+             levels = c(&quot;Outlier&quot;, &quot;General Trend&quot;)))
+d2 &lt;- d1 %&gt;% 
+  mutate(z = plyr::mapvalues(z, 
+    c(&quot;Outlier&quot;,                &quot;General Trend&quot;), 
+    c(&quot;100% irrefutable proof&quot;, &quot;Paid studies with an agenda&quot;)))
+# Plot Function
+outlierPlot &lt;- function(d) {
+  ggplot(d, aes(x = x, y = y^3, color = z)) + geom_point() +
+    scale_x_continuous(breaks = seq(0, 100, by = 20)) +
+    scale_color_manual(name = NULL, values = c(&quot;Red&quot;, &quot;Black&quot;)) +
+    theme_agData(legend.position = &quot;top&quot;, 
+                 axis.text.x = element_blank(),
+                 axis.text.y = element_blank(),
+                 axis.ticks = element_blank(),
+                 axis.title.x = element_blank(),
+                 axis.title.y = element_blank())
+}
+# Plot
+mp &lt;- ggarrange(outlierPlot(d1), outlierPlot(d2), ncol = 2, nrow = 1) 
+ggsave(&quot;memes_02.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="memes_02.png" /></p>
+<hr />
+</div>
+<div id="environmentalists" class="section level1">
+<h1>Environmentalists</h1>
+<pre class="r"><code>mm &lt;- meme_get(&quot;DistractedBf&quot;) %&gt;% 
+  meme_text_distbf(&quot;      virtue\n  signalling&quot;, 
+                   &quot;environmentalists&quot;, 
+                   &quot;protecting the\nenvironemnt&quot;,
+                   size = 30)
+image_write(mm, &quot;memes_03.png&quot;)</code></pre>
+<p><img src="memes_03.png" /></p>
+<hr />
+</div>
+<div id="ancient-aliens" class="section level1">
+<h1>Ancient Aliens</h1>
+<pre class="r"><code>mm &lt;- meme_get(&quot;AncientAliens&quot;) %&gt;%
+  meme_text_bottom(&quot;GMOs&quot;, size = 80)
+image_write(mm, &quot;memes_04.png&quot;)</code></pre>
+<p><img src="memes_04.png" /></p>
+<hr />
+</div>
+<div id="ggplot2" class="section level1">
+<h1>ggplot2</h1>
+<pre class="r"><code>mm &lt;- meme_get(&quot;PicardFacePalm&quot;) %&gt;%
+  meme_text_top(&quot;When you see the ugly&quot;) %&gt;%
+  meme_text_bottom(&quot;ggplot2 default colors&quot;)
+image_write(mm, &quot;memes_05.png&quot;)</code></pre>
+<p><img src="memes_05.png" /></p>
+<hr />
+</div>
+<div id="nongmo-project" class="section level1">
+<h1>NonGMO Project</h1>
+<pre class="r"><code>mm &lt;- meme_get(&quot;ThinkAboutIt&quot;) %&gt;%
+  meme_text_top(&quot;Not deceptive marketing&quot;, size = 35) %&gt;%
+  meme_text_bottom(&quot;If you bribe the Non-GMO project&quot;, size = 35)
+image_write(mm, &quot;memes_06.png&quot;)</code></pre>
+<p><img src="memes_06.png" /></p>
+<hr />
+</div>
+<div id="darwin" class="section level1">
+<h1>Darwin</h1>
+<pre class="r"><code>mm &lt;- image_read(&quot;input/darwin.jpg&quot;) %&gt;%
+  meme_text_top(&quot;First person to document heterosis&quot;) %&gt;%
+  meme_text_bottom(&quot;Married his cousin&quot;)
+image_write(mm, &quot;memes_07.png&quot;)</code></pre>
+<p><img src="memes_07.png" /></p>
+<hr />
+</div>
+<div id="montoya-meme" class="section level1">
+<h1>Montoya Meme</h1>
+<pre class="r"><code>mm &lt;- image_read(&quot;input/montoya_meme.jpg&quot;) %&gt;%
+  meme_text_top(&quot;Science&quot;) %&gt;%
+  meme_text_bottom(&quot;I dont think you\nknow what it means&quot;)
+image_write(mm, &quot;memes_08.png&quot;)</code></pre>
+<p><img src="memes_08.png" /></p>
+<hr />
+</div>
+<div id="sunset-meme" class="section level1">
+<h1>Sunset Meme</h1>
+<pre class="r"><code>mm &lt;- image_read(&quot;input/sunset.jpg&quot;) %&gt;%
+  meme_text_top(&quot;if god doesn&#39;t exist,&quot;) %&gt;%
+  meme_text_bottom(&quot;who the fuck painted this?&quot;)
+image_write(mm, &quot;memes_09.png&quot;)</code></pre>
+<p><img src="memes_09.png" /></p>
+<hr />
+</div>
+<div id="vavilov-memes" class="section level1">
+<h1>Vavilov Memes</h1>
+<pre class="r"><code>mm &lt;- image_read(&quot;input/vavilov2.jpg&quot;) %&gt;%
+  meme_text_top(&quot;Established the world&#39;s largest seedbank\nto help combat global food insecurity&quot;) %&gt;%
+  meme_text_bottom(&quot;Died of starvation in a Siberian gulag&quot;)
+image_write(mm, &quot;memes_10.png&quot;)</code></pre>
+<p><img src="memes_10.png" /></p>
+<hr />
+<pre class="r"><code>m1 &lt;- image_read(&quot;input/vavilov1.jpg&quot;) %&gt;%
+  meme_text_top(&quot;Vavilov&quot;) %&gt;%
+  meme_text_bottom(&quot;Willing to die for his\nscientific beleifs&quot;)
+m2 &lt;- image_read(&quot;input/lysenko1.jpg&quot;) %&gt;%
+  meme_text_top(&quot;Lysenko&quot;) %&gt;%
+  meme_text_bottom(&quot;Willing to murder for his\nscientific beleifs&quot;)
+image_write(m1, &quot;input/memes_11_1.png&quot;) 
+image_write(m2, &quot;input/memes_11_2.png&quot;) 
+mm &lt;- image_append(c(
+  image_read(&quot;input/memes_11_1.png&quot;),
+  image_read(&quot;input/memes_11_2.png&quot;)) )
+image_write(mm, &quot;memes_11.png&quot;)</code></pre>
+<p><img src="memes_11.png" /></p>
+</div>
+<div id="borlaug-memes" class="section level1">
+<h1>Borlaug Memes</h1>
+<pre class="r"><code>mm &lt;- image_read(&quot;input/borlaug.jpg&quot;) %&gt;%
+  meme_text_top(&quot;  \n\n\n\n\n\nBelieve in science\nEven if it means feeding everyone&quot;) %&gt;%
+  meme_text_bottom(&quot;just cross it&quot;)
+image_write(mm, &quot;memes_12.png&quot;)</code></pre>
+<p><img src="memes_12.png" /></p>
+<hr />
+<pre class="r"><code>m1 &lt;- image_read(&quot;input/malthus.jpg&quot;) %&gt;%
+  meme_text_top(&quot;Malthus&quot;) %&gt;%
+  meme_text_bottom(&quot;Worried population growth\nwould limit progress\ntowards utopia&quot;)
+m2 &lt;- image_read(&quot;input/borlaug_cropped.png&quot;) %&gt;%
+  meme_text_top(&quot;Borlaug&quot;) %&gt;%
+  meme_text_bottom(&quot;Worried about people\nstarving to death&quot;)
+image_write(m1, &quot;input/memes_13_1.png&quot;)
+image_write(m2, &quot;input/memes_13_2.png&quot;)
+mm &lt;- image_append(c(
+  image_read(&quot;input/memes_13_1.png&quot;),
+  image_read(&quot;input/memes_13_2.png&quot;)) )
+image_write(mm, &quot;memes_13.png&quot;)</code></pre>
+<p><img src="memes_13.png" /></p>
+<hr />
+<pre class="r"><code>mm &lt;- image_read(&quot;input/borlaug2.png&quot;) %&gt;%
+  meme_text_top(&quot;paperwork!!!&quot;) %&gt;%
+  meme_text_bottom(&quot;bureaucracy!!!&quot;)
+image_write(mm, &quot;memes_14.png&quot;)</code></pre>
+<p><img src="memes_14.png" /></p>
+<hr />
+</div>
+<div id="red-army-activists" class="section level1">
+<h1>Red Army Activists</h1>
+<pre class="r"><code>mm &lt;- image_append(c(
+  image_scale(image_read(&quot;input/redarmy1.jpg&quot;), &quot;x600&quot;),
+  image_read(&quot;input/redarmy2.jpg&quot;)))
+image_write(mm, &quot;input/redarmy.jpg&quot;)
+mm &lt;- image_read(&quot;input/redarmy.jpg&quot;) %&gt;%
+  meme_text_top(&quot;when the activists find out&quot;) %&gt;%
+  meme_text_bottom(&quot;you&#39;ve been growing GMOs&quot;)
+image_write(mm, &quot;memes_15.png&quot;)</code></pre>
+<p><img src="memes_15.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

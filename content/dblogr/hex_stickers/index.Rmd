@@ -16,7 +16,7 @@ links:
     url: https://derekmichaelwright.github.io/htmls/dblogr/hex_stickers.html
 ---
 
-```{r setup, include = FALSE, warning = F, message = F}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = T, message = F, warning = F, fig.align="center")
 ```
 

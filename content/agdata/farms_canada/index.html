@@ -2,7 +2,7 @@
 title: "Canadian Farmland"
 subtitle: "Graphs of crop production in Saskatchewan using STATCAN data"
 summary:  "Graphs of crop production in Saskatchewan using STATCAN data"
-date: "2021-04-08"
+date: "2021-04-09"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/farms_canada/)"
 tags: [ "agData", "Regions" ]
 weight: 4
@@ -36,8 +36,9 @@ xx &lt;- agData_STATCAN_FarmLand_Farms %&gt;%
 mp &lt;- ggplot(xx %&gt;% filter(Area == &quot;Canada&quot;), aes(y = Size, x = Year)) + 
   geom_line(color = &quot;darkgreen&quot;, size = 1.5, alpha = 0.8) +
   scale_x_continuous(breaks = seq(1920, 2020, 10)) +
+  facet_grid(. ~ Area) +
   theme_agData() +
-  labs(title = &quot;Farm Size - Canada&quot;, y = &quot;Hectares / Farm&quot;, x = NULL,
+  labs(title = &quot;Average Farm Size&quot;, y = &quot;Hectares / Farm&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;farms_canada_01.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="farms_canada_01.png" /></p>
@@ -51,7 +52,7 @@ mp &lt;- ggplot(xx %&gt;% filter(Area != &quot;Canada&quot;), aes(y = Size, x = 
   facet_wrap(Area ~ ., ncol = 5) +
   scale_x_continuous(breaks = seq(1925, 2005, 20)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
-  labs(title = &quot;Farm Size - Canada&quot;, y = &quot;Hectares / Farm&quot;, x = NULL,
+  labs(title = &quot;Average Farm Size&quot;, y = &quot;Hectares / Farm&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;farms_canada_02.png&quot;, mp, width = 12, height = 5)</code></pre>
 <p><img src="farms_canada_02.png" /></p>
@@ -75,7 +76,7 @@ mp &lt;- ggplot(xx, aes(y = Value, x = Year, color = Unit)) +
   scale_color_manual(name = NULL, values = c(&quot;darkorange&quot;, &quot;darkgreen&quot;)) +
   scale_x_continuous(breaks = seq(1920, 2020, 10)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
-  labs(title = &quot;Farm Size - Canada&quot;, y = NULL, x = NULL,
+  labs(title = &quot;Average Farm Size&quot;, y = NULL, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;farms_canada_03.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="farms_canada_03.png" /></p>
@@ -95,7 +96,7 @@ mp &lt;- ggplot(xx, aes(y = Value, x = Year, color = Unit)) +
   scale_color_manual(name = NULL, values = c(&quot;darkorange&quot;, &quot;darkgreen&quot;)) +
   scale_x_continuous(breaks = seq(1925, 2005, 20)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
-  labs(title = &quot;Farm Size - Canada&quot;, y = NULL, x = NULL,
+  labs(title = &quot;Average Farm Size&quot;, y = NULL, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;farms_canada_04.png&quot;, mp, width = 12, height = 5)</code></pre>
 <p><img src="farms_canada_04.png" /></p>
@@ -114,7 +115,7 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value)) +
   geom_line(color = &quot;darkgreen&quot;, size = 1.5, alpha = 0.8) + 
   facet_wrap(Measurement ~ ., ncol = 7) +
   theme_agData() +
-  labs(title = &quot;Farm Size - Canada&quot;, y = &quot;Number&quot;, x = NULL,
+  labs(title = &quot;Average Farm Size&quot;, y = &quot;Number&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;farms_canada_05.png&quot;, mp, width = 14, height = 5)</code></pre>
 <p><img src="farms_canada_05.png" /></p>
@@ -123,7 +124,7 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value)) +
   geom_line(color = &quot;darkgreen&quot;, size = 1.5, alpha = 0.8) + 
   facet_wrap(Measurement ~ ., scales = &quot;free_y&quot;, ncol = 7) +
   theme_agData() +
-  labs(title = &quot;Farm Size - Canada&quot;, y = &quot;Number&quot;, x = NULL,
+  labs(title = &quot;Average Farm Size&quot;, y = &quot;Number&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;farms_canada_06.png&quot;, mp, width = 14, height = 5)</code></pre>
 <p><img src="farms_canada_06.png" /></p>
@@ -135,7 +136,7 @@ mp &lt;- ggplot(xx, aes(y = Value, x = Measurement, fill = as.factor(Year))) +
   geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;, color = &quot;black&quot;) +
   scale_fill_manual(name = NULL, values = cols) +
   theme_agData(rotx = T) +
-  labs(title = &quot;Farm Size - Canada&quot;, y = &quot;Number&quot;, x = NULL,
+  labs(title = &quot;Average Farm Size&quot;, y = &quot;Number&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;farms_canada_07.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="farms_canada_07.png" /></p>
@@ -151,7 +152,7 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value)) +
   geom_line(color = &quot;darkgreen&quot;, size = 1.5, alpha = 0.8) + 
   facet_wrap(Measurement ~ ., ncol = 7) +
   theme_agData() +
-  labs(title = &quot;Farm Size - Saskatchewan&quot;, y = &quot;Number&quot;, x = NULL,
+  labs(title = &quot;Average Farm Size - Saskatchewan&quot;, y = &quot;Number&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;farms_canada_08.png&quot;, mp, width = 14, height = 5)</code></pre>
 <p><img src="farms_canada_08.png" /></p>
@@ -171,8 +172,9 @@ ggsave(&quot;farms_canada_09.png&quot;, mp, width = 14, height = 5)</code></pre>
 mp &lt;- ggplot(xx, aes(y = Value, x = Measurement, fill = as.factor(Year))) + 
   geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;, color = &quot;black&quot;) +
   scale_fill_manual(name = NULL, values = cols) +
+  facet_grid(. ~ Area) +
   theme_agData(rotx = T) +
-  labs(title = &quot;Farm Size - Saskatchewan&quot;, y = &quot;Number&quot;, x = NULL,
+  labs(title = &quot;Farm Size&quot;, y = &quot;Number&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;farms_canada_10.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="farms_canada_10.png" /></p>
