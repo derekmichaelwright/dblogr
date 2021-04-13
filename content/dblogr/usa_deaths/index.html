@@ -1,0 +1,120 @@
+---
+title: "Deaths In USA"
+subtitle: "An exploration of weekly deaths in the USA"
+summary:  "An exploration of weekly deaths in the USA"
+date: "2021-04-13"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/usa_deaths/)"
+tags: [ "dblogr", "SciComm", "Featured" ]
+weight: 2
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/usa_deaths.html
+---
+
+
+
+<hr />
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p><a href="https://www.cdc.gov/nchs/nvss/vsrr/covid19/excess_deaths.htm#dashboard" class="uri">https://www.cdc.gov/nchs/nvss/vsrr/covid19/excess_deaths.htm#dashboard</a></p>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<hr />
+</div>
+<div id="prepare-data" class="section level1">
+<h1>Prepare Data</h1>
+<pre class="r"><code># Prep data
+ages &lt;- c(&quot;Under 25 years&quot;, &quot;25-44 years&quot;, &quot;45-64 years&quot;, &quot;65-74 years&quot;, &quot;75-84 years&quot;, &quot;85 years and older&quot;)
+dd &lt;- read.csv(&quot;https://data.cdc.gov/api/views/y5bj-9g5w/rows.csv?accessType=DOWNLOAD&amp;bom=true&amp;format=true%20target=&quot;) %&gt;%
+  rename(Area=1, Date=Week.Ending.Date) %&gt;%
+  mutate(Date = as.Date(Date, format = &quot;%m/%d/%Y&quot;),
+         JulianDate = lubridate::yday(Date),
+         Age.Group = factor(Age.Group, levels = ages),
+         Year = as.numeric(substr(Date, 1, 4))
+         )</code></pre>
+<pre class="r"><code># Plotting function
+deathPlot &lt;- function(area) {
+  xx &lt;- dd %&gt;% 
+    filter(Type == &quot;Unweighted&quot;, Area == area) %&gt;%
+    mutate(YearGroup = ifelse(Year&lt;2020, &quot;pre-2020&quot;, Year),
+           YearGroup = factor(YearGroup, levels = c(&quot;pre-2020&quot;, &quot;2020&quot;, &quot;2021&quot;)))
+  # Plot
+  ggplot(xx, aes(x = JulianDate, y = Number.of.Deaths / 1000)) +
+    geom_line(aes(group = Year, color = YearGroup)) +
+    facet_grid(Area ~ Age.Group) +
+    scale_color_manual(values = c(&quot;darkgreen&quot;, &quot;darkorange&quot;, &quot;darkred&quot;)) +
+    theme_agData() +
+    labs(x = &quot;Julian Day&quot;, y = &quot;Thousand Deaths&quot;, 
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
+}</code></pre>
+<hr />
+</div>
+<div id="united-states" class="section level1">
+<h1>United States</h1>
+<pre class="r"><code>mp &lt;- deathPlot(area = &quot;United States&quot;)
+ggsave(&quot;usa_deaths_01.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_01.png" /></p>
+<hr />
+</div>
+<div id="new-york" class="section level1">
+<h1>New York</h1>
+<pre class="r"><code>mp &lt;- deathPlot(area = &quot;New York&quot;)
+ggsave(&quot;usa_deaths_02.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_02.png" /></p>
+<hr />
+</div>
+<div id="california" class="section level1">
+<h1>California</h1>
+<pre class="r"><code>mp &lt;- deathPlot(area = &quot;California&quot;)
+ggsave(&quot;usa_deaths_03.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_03.png" /></p>
+<hr />
+</div>
+<div id="texas" class="section level1">
+<h1>Texas</h1>
+<pre class="r"><code>mp &lt;- deathPlot(area = &quot;Texas&quot;)
+ggsave(&quot;usa_deaths_04.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_04.png" /></p>
+<hr />
+</div>
+<div id="florida" class="section level1">
+<h1>Florida</h1>
+<pre class="r"><code>mp &lt;- deathPlot(area = &quot;Florida&quot;)
+ggsave(&quot;usa_deaths_05.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_05.png" /></p>
+<hr />
+</div>
+<div id="washington" class="section level1">
+<h1>Washington</h1>
+<pre class="r"><code>mp &lt;- deathPlot(area = &quot;Washington&quot;)
+ggsave(&quot;usa_deaths_06.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_06.png" /></p>
+<hr />
+</div>
+<div id="montana" class="section level1">
+<h1>Montana</h1>
+<pre class="r"><code>mp &lt;- deathPlot(area = &quot;Montana&quot;)
+ggsave(&quot;usa_deaths_07.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_07.png" /></p>
+<hr />
+</div>
+<div id="north-dakota" class="section level1">
+<h1>North Dakota</h1>
+<pre class="r"><code>mp &lt;- deathPlot(area = &quot;North Dakota&quot;)
+ggsave(&quot;usa_deaths_08.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_08.png" /></p>
+<hr />
+</div>
+<div id="south-dakota" class="section level1">
+<h1>South Dakota</h1>
+<pre class="r"><code>mp &lt;- deathPlot(area = &quot;South Dakota&quot;)
+ggsave(&quot;usa_deaths_09.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_09.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.netlify.com/">www.dblogr.com/</a></p>
+</div>
