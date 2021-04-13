@@ -2,7 +2,7 @@
 title: "GDP of Canada"
 subtitle: "GDP data among Canadian provinces from 2007-2018"
 summary:  "GDP data among Canadian provinces from 2007-2018"
-date: "2021-04-09"
+date: "2021-04-12"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_gdp/)"
 tags: [ "dblogr", "Economics" ]
 weight: 2
@@ -86,7 +86,7 @@ xx &lt;- d1 %&gt;%
 x2 &lt;- xx %&gt;% filter(Year == max(Year), Value &gt; 200)
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Area)) + 
-  geom_line() +
+  geom_line(size = 1) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-1)) +
   scale_y_continuous(sec.axis = sec_axis(~ ., breaks = x2$Value, labels = x2$Area)) +
   theme_agData(legend.position = &quot;none&quot;) +
@@ -142,7 +142,7 @@ ggsave(&quot;canada_gdp_05.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="canada_gdp_05.png" /></p>
 <hr />
 <pre class="r"><code>mp &lt;- ggplot(xx, aes(x = Year, y = GDP_PP, color = Area)) + 
-  geom_line() +
+  geom_line(size = 1) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-1)) +
   scale_y_continuous(sec.axis = sec_axis(~ ., breaks = x2$GDP_PP, labels = x2$Area)) +
   theme_agData(legend.position = &quot;none&quot;) +

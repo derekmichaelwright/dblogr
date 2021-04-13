@@ -2,7 +2,7 @@
 title: "USA Crime Statistics"
 subtitle: "Graphs for crime statistics from the FBI"
 summary:  "Graphs for crime statistics from the FBI"
-date: "2021-04-10"
+date: "2021-04-12"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/usa_crime/)"
 tags: [ "dblogr", "Politics" ]
 draft: true
@@ -45,9 +45,8 @@ mp &lt;- ggplot(xx, aes(x = Weapons, y = Value / 1000)) +
   scale_y_continuous(breaks = 1:14) +
   coord_flip() +
   theme_agData() +
-  labs(x = NULL, y = &quot;Thousand Murders&quot;#,
-       #caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI&quot;
-       )
+  labs(x = NULL, y = &quot;Thousand Murders&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI&quot;)
 ggsave(&quot;usa_crime_01.png&quot;, width = 6, height = 4)</code></pre>
 <p><img src="usa_crime_01.png" /></p>
 <hr />
@@ -70,9 +69,8 @@ mp &lt;- ggplot(xx, aes(x = Offender, y = Percent, fill = Offender)) +
   facet_grid(. ~ Victim + paste0(&quot;*&quot;, PopulationPercent, &quot; %&quot;)) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = &quot;none&quot;, rotx = T) +
-  labs(title = &quot;Violant Crimes by Victim&quot;#,
-       #caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population&quot;
-       )
+  labs(title = &quot;Violant Crimes by Victim&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population&quot;)
 ggsave(&quot;usa_crime_02.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_crime_02.png" /></p>
 <pre class="r"><code># Prep data
@@ -87,9 +85,8 @@ mp &lt;- ggplot(x1, aes(x = Victim, y = Incidents / 1000, fill = Victim)) +
   facet_grid(. ~ Offender + paste0(&quot;*&quot;, PopulationPercent, &quot; %&quot;)) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = &quot;none&quot;, rotx = T) +
-  labs(title = &quot;Violant Crimes by Offender&quot;, y = &quot;Thousand Incidents&quot;#,
-       #caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population&quot;
-       )
+  labs(title = &quot;Violant Crimes by Offender&quot;, y = &quot;Thousand Incidents&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population&quot;)
 ggsave(&quot;usa_crime_03.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_crime_03.png" /></p>
 <hr />
@@ -107,8 +104,7 @@ mp &lt;- ggplot(x2, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = &quot;none&quot;, rotx = T) +
   labs(title = &quot;Violant Crimes by Offender&quot;, y = &quot;Thousand Incidents&quot;, x = NULL,
-       #caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI\n*Does not account for population differences&quot;
-       caption = &quot;US Population\nWhite: 62.3%\nHispanic: 17.1%\nBlack: 12%\nAsian: 6.3%&quot;)
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI\nUS Population\nWhite: 62.3%\nHispanic: 17.1%\nBlack: 12%\nAsian: 6.3%&quot;)
 ggsave(&quot;usa_crime_04.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_crime_04.png" /></p>
 <hr />
@@ -126,8 +122,7 @@ mp &lt;- ggplot(x2, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = &quot;none&quot;, rotx = T) +
   labs(title = &quot;Violant Crimes by Offender&quot;, y = &quot;Thousand Incidents&quot;, x = NULL,
-       #caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI\n*Does not account for population differences&quot;)
-       caption = &quot;US Population\nWhite: 62.3%\nHispanic: 17.1%\nBlack: 12%\nAsian: 6.3%&quot;)
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI\nUS Population\nWhite: 62.3%\nHispanic: 17.1%\nBlack: 12%\nAsian: 6.3%&quot;)
 ggsave(&quot;usa_crime_05.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_crime_05.png" /></p>
 <hr />
@@ -148,11 +143,40 @@ mp &lt;- ggplot(xx, aes(x = Trait, y = Value, fill = Trait)) +
   facet_grid(. ~ Race) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = &quot;none&quot;, rotx = T) +
-  labs(title = &quot;Violant Crimes by Race&quot;, y = &quot;Percent&quot;, x = NULL#,
-       #caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI&quot;
-       )
+  labs(title = &quot;Violant Crimes by Race&quot;, y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI&quot;)
 ggsave(&quot;usa_crime_06.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_crime_06.png" /></p>
 <hr />
+<pre class="r"><code># Prep data 
+colors &lt;- c(&quot;grey&quot;,  &quot;Black&quot;, &quot;darkblue&quot;, &quot;darkred&quot;, &quot;darkorange&quot;, &quot;purple&quot; )
+races  &lt;- c(&quot;White&quot;, &quot;Black&quot;, &quot;Hispanic&quot;, &quot;Asian&quot;,  &quot;Other&quot;,      &quot;Multiple&quot;)
+xx &lt;- read_xlsx(&quot;usa_crime_data.xlsx&quot;, &quot;Race2&quot;) %&gt;%
+  mutate(Race = factor(Race, levels = races),
+         OffenderPercent = round(OffenderPercent, 1))
+# Plot 
+mp1 &lt;- ggplot(xx, aes(x = &quot;&quot;, y = PopulationPercent, fill = Race)) +
+  geom_bar(stat = &quot;identity&quot;, position = &quot;stack&quot;, color = &quot;black&quot;, alpha = 0.8) +
+  geom_text(aes(label = PopulationPercent), color = &quot;white&quot;,
+            position = position_stack(vjust = 0.5)) +
+  scale_fill_manual(values = colors) +
+  theme_void() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  coord_polar(&quot;y&quot;) +
+  labs(title = &quot;A) Percent of Population&quot;, y = NULL, x = NULL)
+mp2 &lt;- ggplot(xx, aes(x = &quot;&quot;, y = OffenderPercent, fill = Race)) +
+  geom_bar(stat = &quot;identity&quot;, position = &quot;stack&quot;, color = &quot;black&quot;, alpha = 0.8) + 
+  geom_text(aes(label = OffenderPercent), color = &quot;white&quot;,
+            position = position_stack(vjust = 0.5)) +
+  scale_fill_manual(values = colors) +
+  theme_void() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  coord_polar(&quot;y&quot;) +
+  labs(title = &quot;B) Percent of Violant Crimes&quot;, y = NULL, x = NULL#,
+       #caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI&quot;
+       )
+mp &lt;- ggarrange(mp1, mp2, common.legend = T, legend = &quot;bottom&quot;)
+ggsave(&quot;usa_crime_07.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_crime_07.png" /></p>
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

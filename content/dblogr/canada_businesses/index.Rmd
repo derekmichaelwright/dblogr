@@ -149,6 +149,25 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
+xx <- dd %>% filter(Area == "Saskatchewan")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Difference)) +
+  geom_hline(yintercept = 0) +
+  geom_line(size = 1, color = "darkred") + 
+  geom_point(alpha = 0.6) +
+  facet_grid(. ~ Area) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Net Business Openings/Closures", y = NULL, x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+ggsave("canada_businesses_05.png", mp, width = 6, height = 4)
+```
+
+![](canada_businesses_05.png)
+
+---
+
+```{r}
+# Prep data
 xx <- dd %>% 
   separate(Date, c("Year","Month","Day")) %>% 
   group_by(Area, Year) %>%
@@ -164,10 +183,10 @@ mp <- ggplot(xc, aes(x = Year, y = Businesses, fill = Pos)) +
   theme_agData(legend.position = "none") +
   labs(title = "Net Business Openings/Closures", y = NULL, x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
-ggsave("canada_businesses_05.png", mp, width = 6, height = 4)
+ggsave("canada_businesses_06.png", mp, width = 6, height = 4)
 ```
 
-![](canada_businesses_05.png)
+![](canada_businesses_06.png)
 
 ---
 
@@ -182,10 +201,10 @@ mp <- ggplot(xx, aes(x = Year, y = Businesses, fill = Pos)) +
   theme_agData(legend.position = "none") +
   labs(title = "Net Business Openings/Closures", y = NULL, x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
-ggsave("canada_businesses_06.png", mp, width = 12, height = 8)
+ggsave("canada_businesses_07.png", mp, width = 12, height = 8)
 ```
 
-![](canada_businesses_06.png)
+![](canada_businesses_07.png)
 
 ---
 
@@ -205,10 +224,10 @@ mp <- ggplot(x1, aes(x = Date, y = Value, fill = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Business Openings/Closures", y = NULL, x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
-ggsave("canada_businesses_07.png", mp, width = 6, height = 4)
+ggsave("canada_businesses_08.png", mp, width = 6, height = 4)
 ```
 
-![](canada_businesses_07.png)
+![](canada_businesses_08.png)
 
 ---
 
@@ -221,10 +240,10 @@ mp <- ggplot(xx, aes(x = Date, y = Value, fill = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Business Openings/Closures", y = NULL, x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
-ggsave("canada_businesses_08.png", mp, width = 12, height = 8)
+ggsave("canada_businesses_09.png", mp, width = 12, height = 8)
 ```
 
-![](canada_businesses_08.png)
+![](canada_businesses_09.png)
 
 ---
 

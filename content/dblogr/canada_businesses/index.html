@@ -2,7 +2,7 @@
 title: "Canada Business Openings and Closures"
 subtitle: "An exploration of business openings and closures in Canada"
 summary:  "An exploration of business openings and closures in Canada"
-date: "2021-04-09"
+date: "2021-04-12"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_businesses/)"
 tags: [ "dblogr", "Economics" ]
 weight: 4
@@ -112,6 +112,20 @@ ggsave(&quot;canada_businesses_04.png&quot;, mp, width = 6, height = 4)</code></
 <p><img src="canada_businesses_04.png" /></p>
 <hr />
 <pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% filter(Area == &quot;Saskatchewan&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Difference)) +
+  geom_hline(yintercept = 0) +
+  geom_line(size = 1, color = &quot;darkred&quot;) + 
+  geom_point(alpha = 0.6) +
+  facet_grid(. ~ Area) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Net Business Openings/Closures&quot;, y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_businesses_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_businesses_05.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
 xx &lt;- dd %&gt;% 
   separate(Date, c(&quot;Year&quot;,&quot;Month&quot;,&quot;Day&quot;)) %&gt;% 
   group_by(Area, Year) %&gt;%
@@ -127,8 +141,8 @@ mp &lt;- ggplot(xc, aes(x = Year, y = Businesses, fill = Pos)) +
   theme_agData(legend.position = &quot;none&quot;) +
   labs(title = &quot;Net Business Openings/Closures&quot;, y = NULL, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;canada_businesses_05.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="canada_businesses_05.png" /></p>
+ggsave(&quot;canada_businesses_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_businesses_06.png" /></p>
 <hr />
 <pre class="r"><code># Prep data
 xx &lt;- xx %&gt;% filter(!Area %in% c(&quot;Canada&quot;, &quot;Nunavut&quot;))
@@ -140,8 +154,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Businesses, fill = Pos)) +
   theme_agData(legend.position = &quot;none&quot;) +
   labs(title = &quot;Net Business Openings/Closures&quot;, y = NULL, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;canada_businesses_06.png&quot;, mp, width = 12, height = 8)</code></pre>
-<p><img src="canada_businesses_06.png" /></p>
+ggsave(&quot;canada_businesses_07.png&quot;, mp, width = 12, height = 8)</code></pre>
+<p><img src="canada_businesses_07.png" /></p>
 <hr />
 </div>
 <div id="openings-vs-closings" class="section level1">
@@ -159,8 +173,8 @@ mp &lt;- ggplot(x1, aes(x = Date, y = Value, fill = Measurement)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(title = &quot;Business Openings/Closures&quot;, y = NULL, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;canada_businesses_07.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="canada_businesses_07.png" /></p>
+ggsave(&quot;canada_businesses_08.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_businesses_08.png" /></p>
 <hr />
 <pre class="r"><code># Plot
 mp &lt;- ggplot(xx, aes(x = Date, y = Value, fill = Measurement)) +
@@ -170,8 +184,8 @@ mp &lt;- ggplot(xx, aes(x = Date, y = Value, fill = Measurement)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(title = &quot;Business Openings/Closures&quot;, y = NULL, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;canada_businesses_08.png&quot;, mp, width = 12, height = 8)</code></pre>
-<p><img src="canada_businesses_08.png" /></p>
+ggsave(&quot;canada_businesses_09.png&quot;, mp, width = 12, height = 8)</code></pre>
+<p><img src="canada_businesses_09.png" /></p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

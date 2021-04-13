@@ -107,7 +107,7 @@ xx <- d1 %>%
 x2 <- xx %>% filter(Year == max(Year), Value > 200)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) + 
-  geom_line() +
+  geom_line(size = 1) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-1)) +
   scale_y_continuous(sec.axis = sec_axis(~ ., breaks = x2$Value, labels = x2$Area)) +
   theme_agData(legend.position = "none") +
@@ -182,7 +182,7 @@ ggsave("canada_gdp_05.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- ggplot(xx, aes(x = Year, y = GDP_PP, color = Area)) + 
-  geom_line() +
+  geom_line(size = 1) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-1)) +
   scale_y_continuous(sec.axis = sec_axis(~ ., breaks = x2$GDP_PP, labels = x2$Area)) +
   theme_agData(legend.position = "none") +

@@ -165,7 +165,7 @@ ggsave("canada_deaths_1_06.png", mp, width = 8, height = 4)
 
 ---
 
-## Saskatchewan
+## Manitoba
 
 ```{r}
 mp <- deathPlot1("Manitoba")

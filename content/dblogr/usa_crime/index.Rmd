@@ -55,9 +55,8 @@ mp <- ggplot(xx, aes(x = Weapons, y = Value / 1000)) +
   scale_y_continuous(breaks = 1:14) +
   coord_flip() +
   theme_agData() +
-  labs(x = NULL, y = "Thousand Murders"#,
-       #caption = "\xa9 www.dblogr.com/  |  Data: FBI"
-       )
+  labs(x = NULL, y = "Thousand Murders",
+       caption = "\xa9 www.dblogr.com/  |  Data: FBI")
 ggsave("usa_crime_01.png", width = 6, height = 4)
 ```
 
@@ -89,9 +88,8 @@ mp <- ggplot(xx, aes(x = Offender, y = Percent, fill = Offender)) +
   facet_grid(. ~ Victim + paste0("*", PopulationPercent, " %")) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = "none", rotx = T) +
-  labs(title = "Violant Crimes by Victim"#,
-       #caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population"
-       )
+  labs(title = "Violant Crimes by Victim",
+       caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population")
 ggsave("usa_crime_02.png", mp, width = 6, height = 4)
 ```
 
@@ -110,9 +108,8 @@ mp <- ggplot(x1, aes(x = Victim, y = Incidents / 1000, fill = Victim)) +
   facet_grid(. ~ Offender + paste0("*", PopulationPercent, " %")) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = "none", rotx = T) +
-  labs(title = "Violant Crimes by Offender", y = "Thousand Incidents"#,
-       #caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population"
-       )
+  labs(title = "Violant Crimes by Offender", y = "Thousand Incidents",
+       caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population")
 ggsave("usa_crime_03.png", mp, width = 6, height = 4)
 ```
 
@@ -135,8 +132,7 @@ mp <- ggplot(x2, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = "none", rotx = T) +
   labs(title = "Violant Crimes by Offender", y = "Thousand Incidents", x = NULL,
-       #caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Does not account for population differences"
-       caption = "US Population\nWhite: 62.3%\nHispanic: 17.1%\nBlack: 12%\nAsian: 6.3%")
+       caption = "\xa9 www.dblogr.com/  |  Data: FBI\nUS Population\nWhite: 62.3%\nHispanic: 17.1%\nBlack: 12%\nAsian: 6.3%")
 ggsave("usa_crime_04.png", mp, width = 6, height = 4)
 ```
 
@@ -159,8 +155,7 @@ mp <- ggplot(x2, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = "none", rotx = T) +
   labs(title = "Violant Crimes by Offender", y = "Thousand Incidents", x = NULL,
-       #caption = "\xa9 www.dblogr.com/  |  Data: FBI\n*Does not account for population differences")
-       caption = "US Population\nWhite: 62.3%\nHispanic: 17.1%\nBlack: 12%\nAsian: 6.3%")
+       caption = "\xa9 www.dblogr.com/  |  Data: FBI\nUS Population\nWhite: 62.3%\nHispanic: 17.1%\nBlack: 12%\nAsian: 6.3%")
 ggsave("usa_crime_05.png", mp, width = 6, height = 4)
 ```
 
@@ -186,14 +181,47 @@ mp <- ggplot(xx, aes(x = Trait, y = Value, fill = Trait)) +
   facet_grid(. ~ Race) +
   scale_fill_manual(values = colors) +
   theme_agData(legend.position = "none", rotx = T) +
-  labs(title = "Violant Crimes by Race", y = "Percent", x = NULL#,
-       #caption = "\xa9 www.dblogr.com/  |  Data: FBI"
-       )
+  labs(title = "Violant Crimes by Race", y = "Percent", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: FBI")
 ggsave("usa_crime_06.png", mp, width = 6, height = 4)
 ```
 
 ![](usa_crime_06.png)
 
 ---
+
+```{r}
+# Prep data 
+colors <- c("grey",  "Black", "darkblue", "darkred", "darkorange", "purple" )
+races  <- c("White", "Black", "Hispanic", "Asian",  "Other",      "Multiple")
+xx <- read_xlsx("usa_crime_data.xlsx", "Race2") %>%
+  mutate(Race = factor(Race, levels = races),
+         OffenderPercent = round(OffenderPercent, 1))
+# Plot 
+mp1 <- ggplot(xx, aes(x = "", y = PopulationPercent, fill = Race)) +
+  geom_bar(stat = "identity", position = "stack", color = "black", alpha = 0.8) +
+  geom_text(aes(label = PopulationPercent), color = "white",
+            position = position_stack(vjust = 0.5)) +
+  scale_fill_manual(values = colors) +
+  theme_void() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  coord_polar("y") +
+  labs(title = "A) Percent of Population", y = NULL, x = NULL)
+mp2 <- ggplot(xx, aes(x = "", y = OffenderPercent, fill = Race)) +
+  geom_bar(stat = "identity", position = "stack", color = "black", alpha = 0.8) + 
+  geom_text(aes(label = OffenderPercent), color = "white",
+            position = position_stack(vjust = 0.5)) +
+  scale_fill_manual(values = colors) +
+  theme_void() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  coord_polar("y") +
+  labs(title = "B) Percent of Violant Crimes", y = NULL, x = NULL#,
+       #caption = "\xa9 www.dblogr.com/  |  Data: FBI"
+       )
+mp <- ggarrange(mp1, mp2, common.legend = T, legend = "bottom")
+ggsave("usa_crime_07.png", mp, width = 6, height = 4)
+```
+
+![](usa_crime_07.png)
 
 &copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)
