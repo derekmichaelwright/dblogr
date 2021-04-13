@@ -55,12 +55,12 @@ deathPlot <- function(area) {
     mutate(YearGroup = ifelse(Year<2020, "pre-2020", Year),
            YearGroup = factor(YearGroup, levels = c("pre-2020", "2020", "2021")))
   # Plot
-  ggplot(xx, aes(x = JulianDate, y = Number.of.Deaths / 1000)) +
+  ggplot(xx, aes(x = JulianDate, y = Number.of.Deaths)) +
     geom_line(aes(group = Year, color = YearGroup)) +
     facet_grid(Area ~ Age.Group) +
-    scale_color_manual(values = c("darkgreen", "darkorange", "darkred")) +
+    scale_color_manual(values = c("darkgreen", "darkred", "darkorange")) +
     theme_agData() +
-    labs(x = "Julian Day", y = "Thousand Deaths", 
+    labs(x = "Julian Day", y = "Weekly Deaths", 
          caption = "\xa9 www.dblogr.com/  |  Data: CDC")
 }
 ```
@@ -72,6 +72,10 @@ deathPlot <- function(area) {
 ```{r}
 mp <- deathPlot(area = "United States")
 ggsave("usa_deaths_01.png", mp, width = 12, height = 4)
+```
+
+```{r}
+ggsave("featured.png", mp, width = 12, height = 4)
 ```
 
 ![](usa_deaths_01.png)

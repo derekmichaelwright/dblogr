@@ -94,7 +94,7 @@ deathPlot1 <- function(area = "Canada") {
     geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
     scale_x_date(date_breaks = "1 year", date_labels = "%Y", minor_breaks = "1 year") +
     theme_agData() +
-    labs(title = area, y = "Deaths", x = NULL,
+    labs(title = area, y = "Weekly Deaths", x = NULL,
          caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
 }
 ```

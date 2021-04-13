@@ -44,12 +44,12 @@ deathPlot &lt;- function(area) {
     mutate(YearGroup = ifelse(Year&lt;2020, &quot;pre-2020&quot;, Year),
            YearGroup = factor(YearGroup, levels = c(&quot;pre-2020&quot;, &quot;2020&quot;, &quot;2021&quot;)))
   # Plot
-  ggplot(xx, aes(x = JulianDate, y = Number.of.Deaths / 1000)) +
+  ggplot(xx, aes(x = JulianDate, y = Number.of.Deaths)) +
     geom_line(aes(group = Year, color = YearGroup)) +
     facet_grid(Area ~ Age.Group) +
-    scale_color_manual(values = c(&quot;darkgreen&quot;, &quot;darkorange&quot;, &quot;darkred&quot;)) +
+    scale_color_manual(values = c(&quot;darkgreen&quot;, &quot;darkred&quot;, &quot;darkorange&quot;)) +
     theme_agData() +
-    labs(x = &quot;Julian Day&quot;, y = &quot;Thousand Deaths&quot;, 
+    labs(x = &quot;Julian Day&quot;, y = &quot;Weekly Deaths&quot;, 
          caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
 }</code></pre>
 <hr />
@@ -58,6 +58,7 @@ deathPlot &lt;- function(area) {
 <h1>United States</h1>
 <pre class="r"><code>mp &lt;- deathPlot(area = &quot;United States&quot;)
 ggsave(&quot;usa_deaths_01.png&quot;, mp, width = 12, height = 4)</code></pre>
+<pre class="r"><code>ggsave(&quot;featured.png&quot;, mp, width = 12, height = 4)</code></pre>
 <p><img src="usa_deaths_01.png" /></p>
 <hr />
 </div>
