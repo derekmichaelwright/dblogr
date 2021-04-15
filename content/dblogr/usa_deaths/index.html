@@ -2,7 +2,7 @@
 title: "Deaths In USA"
 subtitle: "An exploration of weekly deaths in the USA"
 summary:  "An exploration of weekly deaths in the USA"
-date: "2021-04-13"
+date: "2021-04-14"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/usa_deaths/)"
 tags: [ "dblogr", "SciComm", "Featured" ]
 weight: 2
@@ -35,87 +35,202 @@ dd &lt;- read.csv(&quot;https://data.cdc.gov/api/views/y5bj-9g5w/rows.csv?access
   mutate(Date = as.Date(Date, format = &quot;%m/%d/%Y&quot;),
          JulianDate = lubridate::yday(Date),
          Age.Group = factor(Age.Group, levels = ages),
-         Year = as.numeric(substr(Date, 1, 4))
-         )</code></pre>
+         Year = as.numeric(substr(Date, 1, 4)),
+         YearGroup = ifelse(Year&lt;2020, &quot;pre-2020&quot;, Year),
+         YearGroup = factor(YearGroup, levels = c(&quot;pre-2020&quot;, &quot;2020&quot;, &quot;2021&quot;)))</code></pre>
+<hr />
+</div>
+<div id="deaths" class="section level1">
+<h1>Deaths</h1>
+<pre class="r"><code># Create plotting function
+deathPlot1 &lt;- function(area = &quot;United States&quot;) {
+  # Prep data
+  vv &lt;- as.Date(c(&quot;2015-01-01&quot;,&quot;2016-01-01&quot;,&quot;2017-01-01&quot;,
+                  &quot;2018-01-01&quot;,&quot;2019-01-01&quot;,&quot;2020-01-01&quot;,&quot;2021-01-01&quot;))
+  xx &lt;- dd %&gt;% filter(Area == area) %&gt;% 
+    group_by(Date) %&gt;% 
+    summarise(Value = sum(Number.of.Deaths))
+  # Plot
+  ggplot(xx, aes(x = Date, y = Value)) +
+    geom_line(color = &quot;darkred&quot;, size = 1) +
+    geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
+    scale_x_date(date_breaks = &quot;1 year&quot;, date_labels = &quot;%Y&quot;, minor_breaks = &quot;1 year&quot;) +
+    theme_agData() +
+    labs(title = area, y = &quot;Weekly Deaths&quot;, x = NULL,
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC\n*Recent data may be incomplete&quot;)
+}</code></pre>
+<hr />
+<div id="united-states" class="section level2">
+<h2>United States</h2>
+<pre class="r"><code>mp &lt;- deathPlot1(area = &quot;United States&quot;)
+ggsave(&quot;usa_deaths_1_01.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="usa_deaths_1_01.png" /></p>
+<hr />
+</div>
+</div>
+<div id="deaths-vs.-previous-years" class="section level1">
+<h1>Deaths Vs. Previous Years</h1>
+<pre class="r"><code># Create plotting function
+deathPlot2 &lt;- function(areas = &quot;United States&quot;) {
+  # Prep data
+  xx &lt;- dd %&gt;% filter(Area %in% areas) %&gt;%
+    group_by(Area, Year, YearGroup, Date, JulianDate) %&gt;% 
+    summarise(Value = sum(Number.of.Deaths))
+  # Plot
+  ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = YearGroup, alpha = YearGroup)) +
+    geom_line() +
+    facet_wrap(Area ~ ., scales = &quot;free_y&quot;, ncol = 5) +
+    scale_color_manual(name = NULL, values = c(&quot;darkgreen&quot;,&quot;darkred&quot;, &quot;darkorange&quot;)) +
+    scale_alpha_manual(name = NULL, values = c(0.5,1,1)) +
+    theme_agData(legend.position = &quot;bottom&quot;) +
+    labs(y = &quot;Deaths Per Week&quot;,
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+}</code></pre>
+<hr />
+<div id="united-states-1" class="section level2">
+<h2>United States</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(area = &quot;United States&quot;)
+ggsave(&quot;usa_deaths_2_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<pre class="r"><code>ggsave(&quot;featured.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_2_01.png" /></p>
+<hr />
+</div>
+<div id="new-york" class="section level2">
+<h2>New York</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(area = &quot;New York&quot;)
+ggsave(&quot;usa_deaths_2_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_2_02.png" /></p>
+<hr />
+</div>
+<div id="california" class="section level2">
+<h2>California</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(area = &quot;California&quot;)
+ggsave(&quot;usa_deaths_2_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_2_03.png" /></p>
+<hr />
+</div>
+<div id="texas" class="section level2">
+<h2>Texas</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(area = &quot;Texas&quot;)
+ggsave(&quot;usa_deaths_2_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_2_04.png" /></p>
+<hr />
+</div>
+<div id="florida" class="section level2">
+<h2>Florida</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(area = &quot;Florida&quot;)
+ggsave(&quot;usa_deaths_2_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_2_05.png" /></p>
+<hr />
+</div>
+<div id="washington" class="section level2">
+<h2>Washington</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(area = &quot;Washington&quot;)
+ggsave(&quot;usa_deaths_2_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_2_06.png" /></p>
+<hr />
+</div>
+<div id="montana" class="section level2">
+<h2>Montana</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(area = &quot;Montana&quot;)
+ggsave(&quot;usa_deaths_2_07.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_2_07.png" /></p>
+<hr />
+</div>
+<div id="north-dakota" class="section level2">
+<h2>North Dakota</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(area = &quot;North Dakota&quot;)
+ggsave(&quot;usa_deaths_2_08.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_2_08.png" /></p>
+<hr />
+</div>
+<div id="south-dakota" class="section level2">
+<h2>South Dakota</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(area = &quot;South Dakota&quot;)
+ggsave(&quot;usa_deaths_2_09.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_2_09.png" /></p>
+<hr />
+</div>
+</div>
+<div id="deaths-by-age-group" class="section level1">
+<h1>Deaths by Age Group</h1>
 <pre class="r"><code># Plotting function
-deathPlot &lt;- function(area) {
+deathPlot3 &lt;- function(area) {
   xx &lt;- dd %&gt;% 
-    filter(Type == &quot;Unweighted&quot;, Area == area) %&gt;%
-    mutate(YearGroup = ifelse(Year&lt;2020, &quot;pre-2020&quot;, Year),
-           YearGroup = factor(YearGroup, levels = c(&quot;pre-2020&quot;, &quot;2020&quot;, &quot;2021&quot;)))
+    filter(Type == &quot;Unweighted&quot;, Area == area)
   # Plot
   ggplot(xx, aes(x = JulianDate, y = Number.of.Deaths)) +
     geom_line(aes(group = Year, color = YearGroup)) +
     facet_grid(Area ~ Age.Group) +
     scale_color_manual(values = c(&quot;darkgreen&quot;, &quot;darkred&quot;, &quot;darkorange&quot;)) +
-    theme_agData() +
+    theme_agData(legend.position = &quot;bottom&quot;) +
     labs(x = &quot;Julian Day&quot;, y = &quot;Weekly Deaths&quot;, 
          caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
 }</code></pre>
 <hr />
-</div>
-<div id="united-states" class="section level1">
-<h1>United States</h1>
-<pre class="r"><code>mp &lt;- deathPlot(area = &quot;United States&quot;)
-ggsave(&quot;usa_deaths_01.png&quot;, mp, width = 12, height = 4)</code></pre>
+<div id="united-states-2" class="section level2">
+<h2>United States</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(area = &quot;United States&quot;)
+ggsave(&quot;usa_deaths_3_01.png&quot;, mp, width = 12, height = 4)</code></pre>
 <pre class="r"><code>ggsave(&quot;featured.png&quot;, mp, width = 12, height = 4)</code></pre>
-<p><img src="usa_deaths_01.png" /></p>
+<p><img src="usa_deaths_3_01.png" /></p>
 <hr />
 </div>
-<div id="new-york" class="section level1">
-<h1>New York</h1>
-<pre class="r"><code>mp &lt;- deathPlot(area = &quot;New York&quot;)
-ggsave(&quot;usa_deaths_02.png&quot;, mp, width = 12, height = 4)</code></pre>
-<p><img src="usa_deaths_02.png" /></p>
+<div id="new-york-1" class="section level2">
+<h2>New York</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(area = &quot;New York&quot;)
+ggsave(&quot;usa_deaths_3_02.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_3_02.png" /></p>
 <hr />
 </div>
-<div id="california" class="section level1">
-<h1>California</h1>
-<pre class="r"><code>mp &lt;- deathPlot(area = &quot;California&quot;)
-ggsave(&quot;usa_deaths_03.png&quot;, mp, width = 12, height = 4)</code></pre>
-<p><img src="usa_deaths_03.png" /></p>
+<div id="california-1" class="section level2">
+<h2>California</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(area = &quot;California&quot;)
+ggsave(&quot;usa_deaths_3_03.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_3_03.png" /></p>
 <hr />
 </div>
-<div id="texas" class="section level1">
-<h1>Texas</h1>
-<pre class="r"><code>mp &lt;- deathPlot(area = &quot;Texas&quot;)
-ggsave(&quot;usa_deaths_04.png&quot;, mp, width = 12, height = 4)</code></pre>
-<p><img src="usa_deaths_04.png" /></p>
+<div id="texas-1" class="section level2">
+<h2>Texas</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(area = &quot;Texas&quot;)
+ggsave(&quot;usa_deaths_3_04.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_3_04.png" /></p>
 <hr />
 </div>
-<div id="florida" class="section level1">
-<h1>Florida</h1>
-<pre class="r"><code>mp &lt;- deathPlot(area = &quot;Florida&quot;)
-ggsave(&quot;usa_deaths_05.png&quot;, mp, width = 12, height = 4)</code></pre>
-<p><img src="usa_deaths_05.png" /></p>
+<div id="florida-1" class="section level2">
+<h2>Florida</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(area = &quot;Florida&quot;)
+ggsave(&quot;usa_deaths_3_05.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_3_05.png" /></p>
 <hr />
 </div>
-<div id="washington" class="section level1">
-<h1>Washington</h1>
-<pre class="r"><code>mp &lt;- deathPlot(area = &quot;Washington&quot;)
-ggsave(&quot;usa_deaths_06.png&quot;, mp, width = 12, height = 4)</code></pre>
-<p><img src="usa_deaths_06.png" /></p>
+<div id="washington-1" class="section level2">
+<h2>Washington</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(area = &quot;Washington&quot;)
+ggsave(&quot;usa_deaths_3_06.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_3_06.png" /></p>
 <hr />
 </div>
-<div id="montana" class="section level1">
-<h1>Montana</h1>
-<pre class="r"><code>mp &lt;- deathPlot(area = &quot;Montana&quot;)
-ggsave(&quot;usa_deaths_07.png&quot;, mp, width = 12, height = 4)</code></pre>
-<p><img src="usa_deaths_07.png" /></p>
+<div id="montana-1" class="section level2">
+<h2>Montana</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(area = &quot;Montana&quot;)
+ggsave(&quot;usa_deaths_3_07.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_3_07.png" /></p>
 <hr />
 </div>
-<div id="north-dakota" class="section level1">
-<h1>North Dakota</h1>
-<pre class="r"><code>mp &lt;- deathPlot(area = &quot;North Dakota&quot;)
-ggsave(&quot;usa_deaths_08.png&quot;, mp, width = 12, height = 4)</code></pre>
-<p><img src="usa_deaths_08.png" /></p>
+<div id="north-dakota-1" class="section level2">
+<h2>North Dakota</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(area = &quot;North Dakota&quot;)
+ggsave(&quot;usa_deaths_3_08.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_3_08.png" /></p>
 <hr />
 </div>
-<div id="south-dakota" class="section level1">
-<h1>South Dakota</h1>
-<pre class="r"><code>mp &lt;- deathPlot(area = &quot;South Dakota&quot;)
-ggsave(&quot;usa_deaths_09.png&quot;, mp, width = 12, height = 4)</code></pre>
-<p><img src="usa_deaths_09.png" /></p>
+<div id="south-dakota-1" class="section level2">
+<h2>South Dakota</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(area = &quot;South Dakota&quot;)
+ggsave(&quot;usa_deaths_3_09.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_3_09.png" /></p>
 <hr />
 <p>© Derek Michael Wright 2020 <a href="https://dblogr.netlify.com/">www.dblogr.com/</a></p>
+</div>
 </div>

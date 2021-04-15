@@ -40,6 +40,8 @@ https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm
 
 ---
 
+# Prepare Data
+
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
@@ -47,20 +49,23 @@ library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 
 ```{r}
 # Prep data
-cutoffName <- "Nov14"
-cutoffDate <- "2020-11-14"
-cutoffJD <- lubridate::yday(cutoffDate)
 areas <- c("Canada", "Quebec", "Ontario", "British Columbia", 
            "Alberta", "Saskatchewan", "Manitoba", "Nova Scotia",
            "Newfoundland and Labrador", "New Brunswick", "Prince Edward Island", 
            "Northwest Territories", "Yukon", "Nunavut")
 #
+# Recent data is incomplete
+cutoffName <- "Nov14"
+cutoffDate <- "2020-11-14"
+cutoffJD <- lubridate::yday(cutoffDate)
+#
 d1 <- read.csv("1310078301_databaseLoadingData.csv") %>% 
   rename(Date=1, Area=GEO, Value=VALUE) %>%
   mutate(Date = as.Date(Date),
-         Year = as.factor(substr(Date, 1, 4)),
+         Year = as.numeric(substr(Date, 1, 4)),
          Month = as.factor(substr(Date, 6, 7)),
-         Y2020 = ifelse(Year == "2020", "2020", "<2020"),
+         YearGroup = ifelse(Year < "2020", "pre-2020", Year),
+         YearGroup = factor(YearGroup, levels = c("pre-2020", "2020")),
          JulianDate = lubridate::yday(Date),
          Area = gsub(", place of occurrence", "", Area),
          Area = factor(Area, levels = areas)) %>%
@@ -69,14 +74,17 @@ d2 <- read.csv("1310076801_databaseLoadingData.csv") %>%
   rename(Date=1, Age=Age.at.time.of.death, Value=VALUE, Area=GEO) %>%
   mutate(Date = as.Date(Date),
          Age = gsub("Age at time of death, ", "", Age),
-         Year = as.factor(substr(Date, 1, 4)),
+         Year = as.numeric(substr(Date, 1, 4)),
          Month = as.factor(substr(Date, 6, 7)),
-         Y2020 = ifelse(Year == "2020", "2020", "<2020"),
+         YearGroup = ifelse(Year < "2020", "pre-2020", Year),
+         YearGroup = factor(YearGroup, levels = c("pre-2020", "2020")),
          JulianDate = lubridate::yday(Date),
          Area = gsub(", place of occurrence", "", Area),
          Area = factor(Area, levels = areas)) %>%
   filter(Date <= cutoffDate)
 ```
+
+---
 
 # Deaths
 
@@ -86,7 +94,7 @@ deathPlot1 <- function(area = "Canada") {
   # Prep data
   vv <- as.Date(c("2010-01-01","2011-01-01","2012-01-01","2013-01-01",
                   "2014-01-01","2015-01-01","2016-01-01","2017-01-01",
-                  "2018-01-01","2019-01-01","2020-01-01"))
+                  "2018-01-01","2019-01-01","2020-01-01","2021-01-01"))
   xx <- d1 %>% filter(Area == area)
   # Plot
   ggplot(xx, aes(x = Date, y = Value)) +
@@ -98,6 +106,8 @@ deathPlot1 <- function(area = "Canada") {
          caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
 }
 ```
+
+---
 
 ## Canada
 
@@ -184,20 +194,21 @@ deathPlot2 <- function(areas) {
   # Prep data
   xx <- d1 %>% filter(Area %in% areas)
   # Plot
-  ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = Y2020, alpha = Y2020)) +
+  ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = YearGroup, alpha = YearGroup)) +
     geom_line() +
     facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
     scale_color_manual(name = NULL, values = c("darkgreen","darkred")) +
     scale_alpha_manual(name = NULL, values = c(0.5,1)) +
     theme_agData(legend.position = "bottom") +
-    labs(y = "Deaths Per Week")
+    labs(y = "Deaths Per Week",
+         caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
 }
 ```
 
 ```{r echo = F, eval = F}
 # Prep data
   xx <- d1 %>% mutate(Year = as.numeric(as.character(Year))) %>%
-    select(Date, Year, JulianDate, Y2020, Area, Value) %>%
+    select(Date, Year, JulianDate, YearGroup, Area, Value) %>%
     arrange(Area, Date) %>%
     spread(Area, Value)
   for(i in 5:ncol(xx)) {
@@ -209,7 +220,7 @@ deathPlot2 <- function(areas) {
     mutate(Area = factor(Area, levels = areas)) %>%
     filter(Area %in% areas)
   # Plot
-  mp2 <- ggplot(xx, aes(x = JulianDate, y = Value / 1000, group = Year, color = Y2020, alpha = Y2020)) +
+  mp2 <- ggplot(xx, aes(x = JulianDate, y = Value / 1000, group = Year, color = YearGroup, alpha = YearGroup)) +
     geom_line() +
     facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
     scale_color_manual(name = NULL, values = c("darkgreen","darkred")) +
@@ -219,6 +230,8 @@ deathPlot2 <- function(areas) {
          caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
   ggarrange(mp1, mp2, common.legend = T, legend = "bottom", align = "h")
 ```
+
+---
 
 ## Canada
 
@@ -234,10 +247,6 @@ ggsave("canada_deaths_2_01.png", mp, width = 20, height = 8)
 ```{r}
 mp <- deathPlot2(areas = "Canada")
 ggsave("canada_deaths_2_02.png", mp, width = 6, height = 4)
-```
-
-```{r echo = F}
-ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
 ![](canada_deaths_2_02.png)
@@ -307,7 +316,7 @@ deathPlot3 <- function(areas = "Canada") {
   # Prep data
   xx <- d2 %>% filter(Area %in% areas, Sex == "Both sexes", Age != "all ages")
   # Plot
-  ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = Y2020, alpha = Y2020)) +
+  ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = YearGroup, alpha = YearGroup)) +
     geom_line() +
     facet_grid(Area ~ Age, scales = "free_y") +
     scale_color_manual(name = NULL, values = c("darkgreen","darkred")) +
@@ -318,11 +327,17 @@ deathPlot3 <- function(areas = "Canada") {
 }
 ```
 
+---
+
 ## Canada
 
 ```{r}
 mp <- deathPlot3(areas = "Canada")
 ggsave("canada_deaths_3_01.png", mp, width = 8, height = 4)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 8, height = 4)
 ```
 
 ![](canada_deaths_3_01.png)
@@ -340,6 +355,8 @@ ggsave("canada_deaths_3_02.png", mp, width = 8, height = 8)
 
 ![](canada_deaths_3_02.png)
 
+---
+
 ## Western Canada
 
 ```{r}
@@ -349,6 +366,8 @@ ggsave("canada_deaths_3_03.png", mp, width = 8, height = 8)
 ```
 
 ![](canada_deaths_3_03.png)
+
+---
 
 ## Select Provinces
 
@@ -360,6 +379,8 @@ ggsave("canada_deaths_3_04.png", mp, width = 8, height = 8)
 ```
 
 ![](canada_deaths_3_04.png)
+
+---
 
 ## Saskatchewan vs. Quebec
 
@@ -396,6 +417,29 @@ ggsave("canada_deaths_3_07.png", mp, width = 8, height = 4)
 
 ---
 
+# Deaths By Gender
+
+## Canada
+
+```{r}
+# Prep data
+xx <- d2 %>% filter(Area %in% "Canada", Sex != "Both sexes", Year == 2020)
+# Plot
+mp <- ggplot(xx, aes(x = JulianDate, y = Value, group = Sex, color = Sex)) +
+  geom_line() +
+  facet_grid(Area ~ Age) +
+  scale_color_manual(name = NULL, values = c("darkred","darkgreen")) +
+  scale_alpha_manual(name = NULL, values = c(0.5,1)) +
+  theme_agData(legend.position = "top") +
+  labs(y = "Deaths Per Week",
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+ggsave("canada_deaths_4_01.png", mp, width = 8, height = 4)
+```
+
+![](canada_deaths_4_01.png)
+
+---
+
 # 2019 vs 2020
 
 ```{r}
@@ -424,14 +468,16 @@ deathPlot4 <- function(areas = "Canada", title = areas) {
 }
 ```
 
+---
+
 ## Canada
 
 ```{r}
 mp <- deathPlot4(areas = "Canada")
-ggsave("canada_deaths_4_01.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_5_01.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_4_01.png)
+![](canada_deaths_5_01.png)
 
 ---
 
@@ -441,10 +487,12 @@ ggsave("canada_deaths_4_01.png", mp, width = 6, height = 4)
 areas <- c("Ontario", "Quebec", "Nova Scotia", "Prince Edward Island",
            "Newfoundland and Labrador", "New Brunswick")
 mp <- deathPlot4(areas = areas, title = "Eastern Canada")
-ggsave("canada_deaths_4_02.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_5_02.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_4_02.png)
+![](canada_deaths_5_02.png)
+
+---
 
 ## Western Canada
 
@@ -452,10 +500,10 @@ ggsave("canada_deaths_4_02.png", mp, width = 6, height = 4)
 areas <- c("British Columbia", "Alberta", "Saskatchewan", "Manitoba",
            "Northwest Territories", "Nunavut ") #"Yukon"
 mp <- deathPlot4(areas = areas, title = "Western Canada")
-ggsave("canada_deaths_4_03.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_5_03.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_4_03.png)
+![](canada_deaths_5_03.png)
 
 ---
 
@@ -463,10 +511,10 @@ ggsave("canada_deaths_4_03.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- deathPlot4(areas = "Ontario")
-ggsave("canada_deaths_4_04.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_5_04.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_4_04.png)
+![](canada_deaths_5_04.png)
 
 ---
 
@@ -474,10 +522,10 @@ ggsave("canada_deaths_4_04.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- deathPlot4(areas = "Quebec")
-ggsave("canada_deaths_4_05.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_5_05.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_4_05.png)
+![](canada_deaths_5_05.png)
 
 ---
 
@@ -485,10 +533,10 @@ ggsave("canada_deaths_4_05.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- deathPlot4(areas = "British Columbia")
-ggsave("canada_deaths_4_06.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_5_06.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_4_06.png)
+![](canada_deaths_5_06.png)
 
 ---
 
@@ -496,10 +544,10 @@ ggsave("canada_deaths_4_06.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- deathPlot4(areas = "Alberta")
-ggsave("canada_deaths_4_07.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_5_07.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_4_07.png)
+![](canada_deaths_5_07.png)
 
 ---
 
@@ -507,10 +555,10 @@ ggsave("canada_deaths_4_07.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- deathPlot4(areas = "Saskatchewan")
-ggsave("canada_deaths_4_08.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_5_08.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_4_08.png)
+![](canada_deaths_5_08.png)
 
 ---
 
@@ -542,14 +590,16 @@ deathPlot5 <- function(areas = "Canada", title = areas) {
 }
 ```
 
+---
+
 ## Canada
 
 ```{r}
 mp <- deathPlot5(areas = "Canada")
-ggsave("canada_deaths_5_01.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_6_01.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_5_01.png)
+![](canada_deaths_6_01.png)
 
 ---
 
@@ -557,10 +607,10 @@ ggsave("canada_deaths_5_01.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- deathPlot5(areas = "Ontario")
-ggsave("canada_deaths_5_02.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_6_02.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_5_02.png)
+![](canada_deaths_6_02.png)
 
 ---
 
@@ -568,10 +618,10 @@ ggsave("canada_deaths_5_02.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- deathPlot5(areas = "Quebec")
-ggsave("canada_deaths_5_03.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_6_03.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_5_03.png)
+![](canada_deaths_6_03.png)
 
 ---
 
@@ -579,10 +629,10 @@ ggsave("canada_deaths_5_03.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- deathPlot5(areas = "British Columbia")
-ggsave("canada_deaths_5_04.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_6_04.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_5_04.png)
+![](canada_deaths_6_04.png)
 
 ---
 
@@ -590,10 +640,10 @@ ggsave("canada_deaths_5_04.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- deathPlot5(areas = "Alberta")
-ggsave("canada_deaths_5_05.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_6_05.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_5_05.png)
+![](canada_deaths_6_05.png)
 
 ---
 
@@ -601,31 +651,10 @@ ggsave("canada_deaths_5_05.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- deathPlot5(areas = "Saskatchewan")
-ggsave("canada_deaths_5_06.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_6_06.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_5_06.png)
-
----
-
-# By Gender
-
-```{r}
-# Prep data
-xx <- d2 %>% filter(Area %in% "Canada", Sex != "Both sexes", Year == 2020)
-# Plot
-mp <- ggplot(xx, aes(x = JulianDate, y = Value, group = Sex, color = Sex)) +
-  geom_line() +
-  facet_grid(Area ~ Age) +
-  scale_color_manual(name = NULL, values = c("darkred","darkgreen")) +
-  scale_alpha_manual(name = NULL, values = c(0.5,1)) +
-  theme_agData(legend.position = "top") +
-  labs(y = "Deaths Per Week",
-       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
-ggsave("canada_deaths_6_01.png", mp, width = 8, height = 4)
-```
-
-![](canada_deaths_6_01.png)
+![](canada_deaths_6_06.png)
 
 ---
 

@@ -43,23 +43,187 @@ dd <- read.csv("https://data.cdc.gov/api/views/y5bj-9g5w/rows.csv?accessType=DOW
   mutate(Date = as.Date(Date, format = "%m/%d/%Y"),
          JulianDate = lubridate::yday(Date),
          Age.Group = factor(Age.Group, levels = ages),
-         Year = as.numeric(substr(Date, 1, 4))
-         )
+         Year = as.numeric(substr(Date, 1, 4)),
+         YearGroup = ifelse(Year<2020, "pre-2020", Year),
+         YearGroup = factor(YearGroup, levels = c("pre-2020", "2020", "2021")))
+```
+
+---
+
+# Deaths
+
+```{r}
+# Create plotting function
+deathPlot1 <- function(area = "United States") {
+  # Prep data
+  vv <- as.Date(c("2015-01-01","2016-01-01","2017-01-01",
+                  "2018-01-01","2019-01-01","2020-01-01","2021-01-01"))
+  xx <- dd %>% filter(Area == area) %>% 
+    group_by(Date) %>% 
+    summarise(Value = sum(Number.of.Deaths))
+  # Plot
+  ggplot(xx, aes(x = Date, y = Value)) +
+    geom_line(color = "darkred", size = 1) +
+    geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
+    scale_x_date(date_breaks = "1 year", date_labels = "%Y", minor_breaks = "1 year") +
+    theme_agData() +
+    labs(title = area, y = "Weekly Deaths", x = NULL,
+         caption = "\xa9 www.dblogr.com/  |  Data: CDC\n*Recent data may be incomplete")
+}
+```
+
+---
+
+## United States
+
+```{r}
+mp <- deathPlot1(area = "United States")
+ggsave("usa_deaths_1_01.png", mp, width = 8, height = 4)
+```
+
+![](usa_deaths_1_01.png)
+
+---
+
+# Deaths Vs. Previous Years
+
+```{r}
+# Create plotting function
+deathPlot2 <- function(areas = "United States") {
+  # Prep data
+  xx <- dd %>% filter(Area %in% areas) %>%
+    group_by(Area, Year, YearGroup, Date, JulianDate) %>% 
+    summarise(Value = sum(Number.of.Deaths))
+  # Plot
+  ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = YearGroup, alpha = YearGroup)) +
+    geom_line() +
+    facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+    scale_color_manual(name = NULL, values = c("darkgreen","darkred", "darkorange")) +
+    scale_alpha_manual(name = NULL, values = c(0.5,1,1)) +
+    theme_agData(legend.position = "bottom") +
+    labs(y = "Deaths Per Week",
+         caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+}
+```
+
+---
+
+## United States
+
+```{r}
+mp <- deathPlot2(area = "United States")
+ggsave("usa_deaths_2_01.png", mp, width = 6, height = 4)
 ```
 
 ```{r}
+ggsave("featured.png", mp, width = 6, height = 4)
+```
+
+![](usa_deaths_2_01.png)
+
+---
+
+## New York
+
+```{r}
+mp <- deathPlot2(area = "New York")
+ggsave("usa_deaths_2_02.png", mp, width = 6, height = 4)
+```
+
+![](usa_deaths_2_02.png)
+
+---
+
+## California
+
+```{r}
+mp <- deathPlot2(area = "California")
+ggsave("usa_deaths_2_03.png", mp, width = 6, height = 4)
+```
+
+![](usa_deaths_2_03.png)
+
+---
+
+## Texas
+
+```{r}
+mp <- deathPlot2(area = "Texas")
+ggsave("usa_deaths_2_04.png", mp, width = 6, height = 4)
+```
+
+![](usa_deaths_2_04.png)
+
+---
+
+## Florida
+
+```{r}
+mp <- deathPlot2(area = "Florida")
+ggsave("usa_deaths_2_05.png", mp, width = 6, height = 4)
+```
+
+![](usa_deaths_2_05.png)
+
+---
+
+## Washington
+
+```{r}
+mp <- deathPlot2(area = "Washington")
+ggsave("usa_deaths_2_06.png", mp, width = 6, height = 4)
+```
+
+![](usa_deaths_2_06.png)
+
+---
+
+## Montana
+
+```{r}
+mp <- deathPlot2(area = "Montana")
+ggsave("usa_deaths_2_07.png", mp, width = 6, height = 4)
+```
+
+![](usa_deaths_2_07.png)
+
+---
+
+## North Dakota
+
+```{r}
+mp <- deathPlot2(area = "North Dakota")
+ggsave("usa_deaths_2_08.png", mp, width = 6, height = 4)
+```
+
+![](usa_deaths_2_08.png)
+
+---
+
+## South Dakota
+
+```{r}
+mp <- deathPlot2(area = "South Dakota")
+ggsave("usa_deaths_2_09.png", mp, width = 6, height = 4)
+```
+
+![](usa_deaths_2_09.png)
+
+---
+
+# Deaths by Age Group
+
+```{r}
 # Plotting function
-deathPlot <- function(area) {
+deathPlot3 <- function(area) {
   xx <- dd %>% 
-    filter(Type == "Unweighted", Area == area) %>%
-    mutate(YearGroup = ifelse(Year<2020, "pre-2020", Year),
-           YearGroup = factor(YearGroup, levels = c("pre-2020", "2020", "2021")))
+    filter(Type == "Unweighted", Area == area)
   # Plot
   ggplot(xx, aes(x = JulianDate, y = Number.of.Deaths)) +
     geom_line(aes(group = Year, color = YearGroup)) +
     facet_grid(Area ~ Age.Group) +
     scale_color_manual(values = c("darkgreen", "darkred", "darkorange")) +
-    theme_agData() +
+    theme_agData(legend.position = "bottom") +
     labs(x = "Julian Day", y = "Weekly Deaths", 
          caption = "\xa9 www.dblogr.com/  |  Data: CDC")
 }
@@ -67,106 +231,106 @@ deathPlot <- function(area) {
 
 ---
 
-# United States
+## United States
 
 ```{r}
-mp <- deathPlot(area = "United States")
-ggsave("usa_deaths_01.png", mp, width = 12, height = 4)
+mp <- deathPlot3(area = "United States")
+ggsave("usa_deaths_3_01.png", mp, width = 12, height = 4)
 ```
 
 ```{r}
 ggsave("featured.png", mp, width = 12, height = 4)
 ```
 
-![](usa_deaths_01.png)
+![](usa_deaths_3_01.png)
 
 ---
 
-# New York
+## New York
 
 ```{r}
-mp <- deathPlot(area = "New York")
-ggsave("usa_deaths_02.png", mp, width = 12, height = 4)
+mp <- deathPlot3(area = "New York")
+ggsave("usa_deaths_3_02.png", mp, width = 12, height = 4)
 ```
 
-![](usa_deaths_02.png)
+![](usa_deaths_3_02.png)
 
 ---
 
-# California
+## California
 
 ```{r}
-mp <- deathPlot(area = "California")
-ggsave("usa_deaths_03.png", mp, width = 12, height = 4)
+mp <- deathPlot3(area = "California")
+ggsave("usa_deaths_3_03.png", mp, width = 12, height = 4)
 ```
 
-![](usa_deaths_03.png)
+![](usa_deaths_3_03.png)
 
 ---
 
-# Texas
+## Texas
 
 ```{r}
-mp <- deathPlot(area = "Texas")
-ggsave("usa_deaths_04.png", mp, width = 12, height = 4)
+mp <- deathPlot3(area = "Texas")
+ggsave("usa_deaths_3_04.png", mp, width = 12, height = 4)
 ```
 
-![](usa_deaths_04.png)
+![](usa_deaths_3_04.png)
 
 ---
 
-# Florida
+## Florida
 
 ```{r}
-mp <- deathPlot(area = "Florida")
-ggsave("usa_deaths_05.png", mp, width = 12, height = 4)
+mp <- deathPlot3(area = "Florida")
+ggsave("usa_deaths_3_05.png", mp, width = 12, height = 4)
 ```
 
-![](usa_deaths_05.png)
+![](usa_deaths_3_05.png)
 
 ---
 
-# Washington
+## Washington
 
 ```{r}
-mp <- deathPlot(area = "Washington")
-ggsave("usa_deaths_06.png", mp, width = 12, height = 4)
+mp <- deathPlot3(area = "Washington")
+ggsave("usa_deaths_3_06.png", mp, width = 12, height = 4)
 ```
 
-![](usa_deaths_06.png)
+![](usa_deaths_3_06.png)
 
 ---
 
-# Montana
+## Montana
 
 ```{r}
-mp <- deathPlot(area = "Montana")
-ggsave("usa_deaths_07.png", mp, width = 12, height = 4)
+mp <- deathPlot3(area = "Montana")
+ggsave("usa_deaths_3_07.png", mp, width = 12, height = 4)
 ```
 
-![](usa_deaths_07.png)
+![](usa_deaths_3_07.png)
 
 ---
 
-# North Dakota
+## North Dakota
 
 ```{r}
-mp <- deathPlot(area = "North Dakota")
-ggsave("usa_deaths_08.png", mp, width = 12, height = 4)
+mp <- deathPlot3(area = "North Dakota")
+ggsave("usa_deaths_3_08.png", mp, width = 12, height = 4)
 ```
 
-![](usa_deaths_08.png)
+![](usa_deaths_3_08.png)
 
 ---
 
-# South Dakota
+## South Dakota
 
 ```{r}
-mp <- deathPlot(area = "South Dakota")
-ggsave("usa_deaths_09.png", mp, width = 12, height = 4)
+mp <- deathPlot3(area = "South Dakota")
+ggsave("usa_deaths_3_09.png", mp, width = 12, height = 4)
 ```
 
-![](usa_deaths_09.png)
+![](usa_deaths_3_09.png)
 
 ---
 
