@@ -14,6 +14,10 @@ links:
     icon: code
     name: R Script
     url: https://derekmichaelwright.github.io/htmls/dblogr/canada_2019_election.html
+  - icon_pack: fas
+    icon: table
+    name: Data Set
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_2019_election/canada_2019_election_data.xlsx
 ---
 
 ```{r setup, include=FALSE}

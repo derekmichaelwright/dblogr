@@ -18,6 +18,10 @@ links:
     icon: file-pdf
     name: Maps PDF
     url: https://github.com/derekmichaelwright/dblogr/raw/master/content/dblogr/saskatchewan_2020_election/saskatchewan_2020_election_districts.pdf
+  - icon_pack: fas
+    icon: table
+    name: Data Set
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/saskatchewan_2020_election/saskatchewan_2020_election_data.csv
 ---
 
 ```{r setup, include=FALSE}

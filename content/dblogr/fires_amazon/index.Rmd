@@ -14,6 +14,10 @@ links:
     icon: code
     name: R Script
     url: https://derekmichaelwright.github.io/htmls/dblogr/fires_amazon.html
+  - icon_pack: fas
+    icon: table
+    name: Data Set
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/fires_amazon/fires_amazon_data.xlsx
 ---
 
 ```{r setup, include=FALSE}

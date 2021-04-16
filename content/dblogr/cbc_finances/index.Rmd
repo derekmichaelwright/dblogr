@@ -14,6 +14,10 @@ links:
     icon: code
     name: R Script
     url: https://derekmichaelwright.github.io/htmls/dblogr/cbc_finances.html
+  - icon_pack: fas
+    icon: table
+    name: Data Set
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/cbc_finances/cbc_finances_data.csv
 ---
 
 ```{r setup, include=FALSE}

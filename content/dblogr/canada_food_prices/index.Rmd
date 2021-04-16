@@ -18,6 +18,10 @@ links:
     icon: file-pdf
     name: Maps PDF
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf
+  - icon_pack: fas
+    icon: table
+    name: Data Set
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/1810000201_databaseLoadingData.csv
 ---
 
 

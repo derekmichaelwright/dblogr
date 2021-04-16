@@ -15,6 +15,10 @@ links:
     icon: code
     name: R Script
     url: https://derekmichaelwright.github.io/htmls/dblogr/usa_crime.html
+  - icon_pack: fas
+    icon: table
+    name: Data Set
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_crime/usa_crime_data.xlsx
 ---
 
 ```{r setup, include=FALSE}

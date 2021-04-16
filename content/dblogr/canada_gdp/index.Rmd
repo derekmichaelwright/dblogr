@@ -14,6 +14,14 @@ links:
     icon: code
     name: R Script
     url: https://derekmichaelwright.github.io/htmls/dblogr/canada_gdp.html
+  - icon_pack: fas
+    icon: table
+    name: Data Set #1
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/3610040001_databaseLoadingData.csv
+  - icon_pack: fas
+    icon: table
+    name: Data Set #2
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/3610040201_databaseLoadingData.csv
 ---
 
 ```{r setup, include=FALSE}
