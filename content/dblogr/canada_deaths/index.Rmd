@@ -16,11 +16,11 @@ links:
     url: https://derekmichaelwright.github.io/htmls/dblogr/canada_deaths.html
   - icon_pack: fas
     icon: table
-    name: Data Set #1
+    name: Data Set 13-10-0783-01
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310078301_databaseLoadingData.csv
   - icon_pack: fas
     icon: table
-    name: Data Set #2
+    name: Data Set 13-10-0768-01
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310076801_databaseLoadingData.csv
 ---
 

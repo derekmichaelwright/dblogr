@@ -92,6 +92,7 @@ ggsave("usa_deaths_1_01.png", mp, width = 8, height = 4)
 deathPlot2 <- function(areas = "United States") {
   # Prep data
   xx <- dd %>% filter(Area %in% areas) %>%
+    mutate(Area = factor(Area, levels = areas)) %>%
     group_by(Area, Year, YearGroup, Date, JulianDate) %>% 
     summarise(Value = sum(Number.of.Deaths))
   # Plot
@@ -111,7 +112,7 @@ deathPlot2 <- function(areas = "United States") {
 ## United States
 
 ```{r}
-mp <- deathPlot2(area = "United States")
+mp <- deathPlot2(areas = "United States")
 ggsave("usa_deaths_2_01.png", mp, width = 6, height = 4)
 ```
 
@@ -126,7 +127,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 ## New York
 
 ```{r}
-mp <- deathPlot2(area = "New York")
+mp <- deathPlot2(areas = "New York")
 ggsave("usa_deaths_2_02.png", mp, width = 6, height = 4)
 ```
 
@@ -137,7 +138,7 @@ ggsave("usa_deaths_2_02.png", mp, width = 6, height = 4)
 ## California
 
 ```{r}
-mp <- deathPlot2(area = "California")
+mp <- deathPlot2(areas = "California")
 ggsave("usa_deaths_2_03.png", mp, width = 6, height = 4)
 ```
 
@@ -148,7 +149,7 @@ ggsave("usa_deaths_2_03.png", mp, width = 6, height = 4)
 ## Texas
 
 ```{r}
-mp <- deathPlot2(area = "Texas")
+mp <- deathPlot2(areas = "Texas")
 ggsave("usa_deaths_2_04.png", mp, width = 6, height = 4)
 ```
 
@@ -159,7 +160,7 @@ ggsave("usa_deaths_2_04.png", mp, width = 6, height = 4)
 ## Florida
 
 ```{r}
-mp <- deathPlot2(area = "Florida")
+mp <- deathPlot2(areas = "Florida")
 ggsave("usa_deaths_2_05.png", mp, width = 6, height = 4)
 ```
 
@@ -170,7 +171,7 @@ ggsave("usa_deaths_2_05.png", mp, width = 6, height = 4)
 ## Washington
 
 ```{r}
-mp <- deathPlot2(area = "Washington")
+mp <- deathPlot2(areas = "Washington")
 ggsave("usa_deaths_2_06.png", mp, width = 6, height = 4)
 ```
 
@@ -181,7 +182,7 @@ ggsave("usa_deaths_2_06.png", mp, width = 6, height = 4)
 ## Montana
 
 ```{r}
-mp <- deathPlot2(area = "Montana")
+mp <- deathPlot2(areas = "Montana")
 ggsave("usa_deaths_2_07.png", mp, width = 6, height = 4)
 ```
 
@@ -192,7 +193,7 @@ ggsave("usa_deaths_2_07.png", mp, width = 6, height = 4)
 ## North Dakota
 
 ```{r}
-mp <- deathPlot2(area = "North Dakota")
+mp <- deathPlot2(areas = "North Dakota")
 ggsave("usa_deaths_2_08.png", mp, width = 6, height = 4)
 ```
 
@@ -203,11 +204,22 @@ ggsave("usa_deaths_2_08.png", mp, width = 6, height = 4)
 ## South Dakota
 
 ```{r}
-mp <- deathPlot2(area = "South Dakota")
+mp <- deathPlot2(areas = "South Dakota")
 ggsave("usa_deaths_2_09.png", mp, width = 6, height = 4)
 ```
 
 ![](usa_deaths_2_09.png)
+
+---
+
+## Selected States
+
+```{r}
+mp <- deathPlot2(areas = c("New York", "Texas", "Montana"))
+ggsave("usa_deaths_2_10.png", mp, width = 12, height = 4)
+```
+
+![](usa_deaths_2_10.png)
 
 ---
 

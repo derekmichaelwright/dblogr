@@ -2,7 +2,7 @@
 title: "Global Lentil Production"
 subtitle: "Graphs of lentil production using FAO data"
 summary:  "Graphs of lentil production using FAO data"
-date: "2021-04-09"
+date: "2021-04-16"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/lentil/)"
 tags: [ "agData", "Lentil", "Featured" ]
 weight: 3
@@ -268,8 +268,8 @@ ggsave(&quot;lentil_08.png&quot;, mp, width = 6, height = 4)</code></pre>
 <pre class="r"><code>blank_theme &lt;- theme_minimal() +
     theme(
       axis.title   = element_blank(),
-      axis.ticks.y   = element_blank(),
-      axis.text.y    = element_blank(),
+      axis.ticks.y = element_blank(),
+      axis.text.y  = element_blank(),
       panel.border = element_blank(),
       panel.grid   = element_blank(),
       plot.title   = element_text(size = 14, face = &quot;bold&quot;)
@@ -354,8 +354,8 @@ ggsave(&quot;lentil_09.png&quot;, mp, width = 6, height = 4)</code></pre>
 <h2>1961</h2>
 <pre class="r"><code># Plot
 mp &lt;- ggPie(crop = &quot;Lentils&quot;, measurement = &quot;Production&quot;, year = 1961, other = 0.02)
-ggsave(&quot;lentil_08.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="lentil_08.png" /></p>
+ggsave(&quot;lentil_10.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="lentil_10.png" /></p>
 <hr />
 <pre class="r"><code># Plot function
 mp &lt;- ggPie_anim(crop = &quot;Lentils&quot;)
@@ -386,8 +386,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Area, fill = Value)) +
         ylab(&quot;&quot;) + xlab(&quot;&quot;) +  
         theme(legend.position = &quot;bottom&quot;, text = element_text(size = 8)) +
   labs(caption = &quot;\xa9 www.dblogr.com/  |  Data: FAOSTAT&quot;)
-ggsave(&quot;lentil_10.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="lentil_10.png" /></p>
+ggsave(&quot;lentil_11.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="lentil_11.png" /></p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

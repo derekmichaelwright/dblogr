@@ -331,8 +331,8 @@ ggsave("lentil_08.png", mp, width = 6, height = 4)
 blank_theme <- theme_minimal() +
     theme(
       axis.title   = element_blank(),
-      axis.ticks.y   = element_blank(),
-      axis.text.y    = element_blank(),
+      axis.ticks.y = element_blank(),
+      axis.text.y  = element_blank(),
       panel.border = element_blank(),
       panel.grid   = element_blank(),
       plot.title   = element_text(size = 14, face = "bold")
@@ -429,10 +429,10 @@ ggsave("featured.png", mp, width = 6, height = 4)
 ```{r}
 # Plot
 mp <- ggPie(crop = "Lentils", measurement = "Production", year = 1961, other = 0.02)
-ggsave("lentil_08.png", mp, width = 6, height = 4)
+ggsave("lentil_10.png", mp, width = 6, height = 4)
 ```
 
-![](lentil_08.png)
+![](lentil_10.png)
 
 ---
 
@@ -469,10 +469,10 @@ mp <- ggplot(xx, aes(x = Year, y = Area, fill = Value)) +
         ylab("") + xlab("") +  
         theme(legend.position = "bottom", text = element_text(size = 8)) +
   labs(caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
-ggsave("lentil_10.png", mp, width = 6, height = 4)
+ggsave("lentil_11.png", mp, width = 6, height = 4)
 ```
 
-![](lentil_10.png)
+![](lentil_11.png)
 
 ---
 
