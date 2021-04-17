@@ -89,6 +89,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Sector)) +
 ggsave("canada_ghg_02.png", mp, width = 10, height = 4)
 ```
 
+```{r echo = F}
+ggsave("featured.png", mp, bg = "transparent", width = 10, height = 4)
+```
+
 ![](canada_ghg_02.png)
 
 ---
