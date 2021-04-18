@@ -23,31 +23,35 @@ subtitle = "Personal thoughts of a crazy biologist"
   
   [[content.filter_button]]
     name = "All"
-    tag = "*"
+    tag  = "*"
     
   [[content.filter_button]]
     name = "Featured"
-    tag = "Featured"
+    tag  = "Featured"
     
   [[content.filter_button]]
     name = "SciComm"
-    tag = "SciComm"
+    tag  = "SciComm"
+    
+  [[content.filter_button]]
+    name = "Demographics"
+    tag  = "Demographics"
     
   [[content.filter_button]]
     name = "Politics"
-    tag = "Politics"
+    tag  = "Politics"
     
   [[content.filter_button]]
     name = "Economics"
-    tag = "Economics"
+    tag  = "Economics"
   
   [[content.filter_button]]
     name = "Personal"
-    tag = "Personal"
+    tag  = "Personal"
     
   [[content.filter_button]]
     name = "R"
-    tag = "R"
+    tag  = "R"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.

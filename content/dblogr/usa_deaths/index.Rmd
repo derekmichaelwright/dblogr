@@ -4,7 +4,7 @@ subtitle: "An exploration of weekly deaths in the USA"
 summary:  "An exploration of weekly deaths in the USA"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/usa_deaths/)"
-tags: [ "dblogr", "SciComm", "Featured" ]
+tags: [ "dblogr", "Demographics", "Featured" ]
 weight: 2
 codefolding_show: "hide"
 image:

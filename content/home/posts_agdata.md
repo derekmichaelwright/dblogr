@@ -23,67 +23,67 @@ subtitle = "An `R` package containing agricultural data sets"
   
   [[content.filter_button]]
     name = "All"
-    tag = "*"
+    tag  = "*"
     
   [[content.filter_button]]
     name = "Featured"
-    tag = "Featured"
+    tag  = "Featured"
   
   [[content.filter_button]]
     name = "Introduction"
-    tag = "Introduction"
+    tag  = "Introduction"
     
   [[content.filter_button]]
     name = "Regions"
-    tag = "Regions"
+    tag  = "Regions"
     
   [[content.filter_button]]
     name = "GE Crops"
-    tag = "GE Crops"
+    tag  = "GE Crops"
     
   [[content.filter_button]]
     name = "Fertilizers"
-    tag = "Fertilizers"
+    tag  = "Fertilizers"
     
   [[content.filter_button]]
     name = "Cotton"
-    tag = "Cotton"
+    tag  = "Cotton"
   
   [[content.filter_button]]
     name = "Hemp"
-    tag = "Hemp"
+    tag  = "Hemp"
     
   [[content.filter_button]]
     name = "Honeybee"
-    tag = "Honeybee"
+    tag  = "Honeybee"
     
   [[content.filter_button]]
     name = "Lentil"
-    tag = "Lentil"
+    tag  = "Lentil"
     
   [[content.filter_button]]
     name = "Livestock"
-    tag = "Livestock"
+    tag  = "Livestock"
   
   [[content.filter_button]]
     name = "Maize"
-    tag = "Maize"
+    tag  = "Maize"
     
   [[content.filter_button]]
     name = "Potato"
-    tag = "Potato"
+    tag  = "Potato"
     
   [[content.filter_button]]
     name = "Rapeseed"
-    tag = "Rapeseed"
+    tag  = "Rapeseed"
     
   [[content.filter_button]]
     name = "Soybean"
-    tag = "Soybean"
+    tag  = "Soybean"
     
   [[content.filter_button]]
     name = "Wheat"
-    tag = "Wheat"
+    tag  = "Wheat"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.

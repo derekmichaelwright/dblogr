@@ -2,9 +2,9 @@
 title: "USA Crime Statistics"
 subtitle: "Graphs for crime statistics from the FBI"
 summary:  "Graphs for crime statistics from the FBI"
-date: "2021-04-15"
+date: "2021-04-17"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/usa_crime/)"
-tags: [ "dblogr", "Politics" ]
+tags: [ "dblogr", "Demographics", "Politics" ]
 draft: true
 weight: 6
 codefolding_show: "hide"
@@ -29,13 +29,13 @@ links:
 <p><a href="https://ucr.fbi.gov/crime-in-the-u.s/2018/crime-in-the-u.s.-2018" class="uri">https://ucr.fbi.gov/crime-in-the-u.s/2018/crime-in-the-u.s.-2018</a></p>
 <p><a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/tables/expanded-homicide-data-table-8.xls" class="uri">https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/tables/expanded-homicide-data-table-8.xls</a></p>
 <p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_crime/usa_crime_data.xlsx"><strong>&lt; Download Data &gt;</strong></a></p>
-<hr />
-</div>
-<div id="prepare-data" class="section level1">
-<h1>Prepare data</h1>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(readxl)</code></pre>
+<hr />
+</div>
+<div id="murders" class="section level1">
+<h1>Murders</h1>
 <pre class="r"><code># Prep data
 xx &lt;- read_xlsx(&quot;usa_crime_data.xlsx&quot;, &quot;Murders&quot;) %&gt;% 
   gather(Year, Value, 2:ncol(.)) %&gt;%
@@ -54,6 +54,9 @@ mp &lt;- ggplot(xx, aes(x = Weapons, y = Value / 1000)) +
 ggsave(&quot;usa_crime_01.png&quot;, width = 6, height = 4)</code></pre>
 <p><img src="usa_crime_01.png" /></p>
 <hr />
+</div>
+<div id="violant-crimes-by-victim" class="section level1">
+<h1>Violant Crimes by Victim</h1>
 <pre class="r"><code># Prep data 
 colors &lt;- c(&quot;grey&quot;,  &quot;Black&quot;, &quot;darkblue&quot;, &quot;darkred&quot;, &quot;darkorange&quot;, &quot;purple&quot; )
 races  &lt;- c(&quot;White&quot;, &quot;Black&quot;, &quot;Hispanic&quot;, &quot;Asian&quot;,  &quot;Other&quot;,      &quot;Multiple&quot;)
@@ -77,6 +80,10 @@ mp &lt;- ggplot(xx, aes(x = Offender, y = Percent, fill = Offender)) +
        caption = &quot;\xa9 www.dblogr.com/  |  Data: FBI\n*Percent of population&quot;)
 ggsave(&quot;usa_crime_02.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_crime_02.png" /></p>
+<hr />
+</div>
+<div id="violant-crimes-by-offender" class="section level1">
+<h1>Violant Crimes by Offender</h1>
 <pre class="r"><code># Prep data
 y1 &lt;- y1 %&gt;% rename(Offender=Victim)
 x1 &lt;- xx %&gt;% filter(Offender %in% races[1:4]) %&gt;%
@@ -94,6 +101,9 @@ mp &lt;- ggplot(x1, aes(x = Victim, y = Incidents / 1000, fill = Victim)) +
 ggsave(&quot;usa_crime_03.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_crime_03.png" /></p>
 <hr />
+</div>
+<div id="black-white-hispanic" class="section level1">
+<h1>Black, White, Hispanic</h1>
 <pre class="r"><code># Prep data
 crimes &lt;- c(&quot;Black on White&quot;, &quot;White on Black&quot;, 
             &quot;Black on Hispanic&quot;, &quot;Hispanic on Black&quot;, 
@@ -112,6 +122,9 @@ mp &lt;- ggplot(x2, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
 ggsave(&quot;usa_crime_04.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_crime_04.png" /></p>
 <hr />
+</div>
+<div id="asian" class="section level1">
+<h1>Asian</h1>
 <pre class="r"><code># Prep data
 crimes &lt;- c(&quot;White on Asian&quot;, &quot;Asian on White&quot;,
             &quot;Black on Asian&quot;, &quot;Asian on Black&quot;, 
@@ -130,6 +143,9 @@ mp &lt;- ggplot(x2, aes(x = Crime, y = Incidents / 1000, fill = Offender)) +
 ggsave(&quot;usa_crime_05.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_crime_05.png" /></p>
 <hr />
+</div>
+<div id="by-population" class="section level1">
+<h1>By Population</h1>
 <pre class="r"><code># Prep data 
 colors &lt;- c(&quot;Black&quot;, &quot;darkblue&quot;, &quot;darkred&quot;)
 races  &lt;- c(&quot;White&quot;, &quot;Black&quot;, &quot;Hispanic&quot;, &quot;Asian&quot;, &quot;Other&quot;)
@@ -152,6 +168,9 @@ mp &lt;- ggplot(xx, aes(x = Trait, y = Value, fill = Trait)) +
 ggsave(&quot;usa_crime_06.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_crime_06.png" /></p>
 <hr />
+</div>
+<div id="pies" class="section level1">
+<h1>Pies</h1>
 <pre class="r"><code># Prep data 
 colors &lt;- c(&quot;grey&quot;,  &quot;Black&quot;, &quot;darkblue&quot;, &quot;darkred&quot;, &quot;darkorange&quot;, &quot;purple&quot; )
 races  &lt;- c(&quot;White&quot;, &quot;Black&quot;, &quot;Hispanic&quot;, &quot;Asian&quot;,  &quot;Other&quot;,      &quot;Multiple&quot;)

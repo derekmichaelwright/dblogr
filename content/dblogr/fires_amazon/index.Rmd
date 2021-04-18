@@ -4,7 +4,7 @@ subtitle: "An analysis of science journalism by the CBC"
 summary:  "An analysis of science journalism by the CBC"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/fires_amazon/)"
-tags: [ "dblogr", "SciComm" ]
+tags: [ "dblogr", "SciComm", "Politics" ]
 weight: 3
 codefolding_show: "hide"
 image:

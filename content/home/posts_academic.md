@@ -23,31 +23,31 @@ subtitle = ""
   
   [[content.filter_button]]
     name = "All"
-    tag = "*"
+    tag  = "*"
     
   [[content.filter_button]]
     name = "Featured"
-    tag = "Featured"
+    tag  = "Featured"
     
   [[content.filter_button]]
     name = "Literature"
-    tag = "Literature"
+    tag  = "Literature"
     
   [[content.filter_button]]
     name = "Tutorials"
-    tag = "Tutorials"
+    tag  = "Tutorials"
     
   [[content.filter_button]]
     name = "AGILE"
-    tag = "AGILE"
+    tag  = "AGILE"
     
   [[content.filter_button]]
     name = "EVOLVES"
-    tag = "EVOLVES"
+    tag  = "EVOLVES"
     
   [[content.filter_button]]
     name = "Links"
-    tag = "Links"
+    tag  = "Links"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.

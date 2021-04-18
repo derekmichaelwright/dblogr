@@ -4,7 +4,7 @@ subtitle: "Graphs for crime statistics from the FBI"
 summary:  "Graphs for crime statistics from the FBI"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/usa_crime/)"
-tags: [ "dblogr", "Politics" ]
+tags: [ "dblogr", "Demographics", "Politics" ]
 draft: true
 weight: 6
 codefolding_show: "hide"
@@ -35,15 +35,15 @@ https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/tab
 
 [**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_crime/usa_crime_data.xlsx)
 
----
-
-# Prepare data
-
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(readxl)
 ```
+
+---
+
+# Murders
 
 ```{r}
 # Prep data
@@ -72,6 +72,8 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ---
 
+# Violant Crimes by Victim
+
 ```{r}
 # Prep data 
 colors <- c("grey",  "Black", "darkblue", "darkred", "darkorange", "purple" )
@@ -99,6 +101,10 @@ ggsave("usa_crime_02.png", mp, width = 6, height = 4)
 
 ![](usa_crime_02.png)
 
+---
+
+# Violant Crimes by Offender
+
 ```{r}
 # Prep data
 y1 <- y1 %>% rename(Offender=Victim)
@@ -120,6 +126,8 @@ ggsave("usa_crime_03.png", mp, width = 6, height = 4)
 ![](usa_crime_03.png)
 
 ---
+
+# Black, White, Hispanic
 
 ```{r}
 # Prep data
@@ -144,6 +152,8 @@ ggsave("usa_crime_04.png", mp, width = 6, height = 4)
 
 ---
 
+# Asian
+
 ```{r}
 # Prep data
 crimes <- c("White on Asian", "Asian on White",
@@ -166,6 +176,8 @@ ggsave("usa_crime_05.png", mp, width = 6, height = 4)
 ![](usa_crime_05.png)
 
 ---
+
+# By Population
 
 ```{r}
 # Prep data 
@@ -193,6 +205,8 @@ ggsave("usa_crime_06.png", mp, width = 6, height = 4)
 ![](usa_crime_06.png)
 
 ---
+
+# Pies
 
 ```{r}
 # Prep data 

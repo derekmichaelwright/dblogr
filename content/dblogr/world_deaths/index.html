@@ -1,0 +1,77 @@
+---
+title: "World Death Rates"
+subtitle: "An exploration of historical death rates"
+summary:  "An exploration of historical death rates"
+date: "2021-04-17"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/world_deaths/)"
+tags: [ "dblogr", "Demographics" ]
+weight: 2
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/world_deaths.html
+  - icon_pack: fas
+    icon: table
+    name: Data Set World
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_world_data.csv
+  - icon_pack: fas
+    icon: table
+    name: Data Set UK
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deahts_uk_data.csv
+---
+
+
+
+<hr />
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p><a href="https://www.macrotrends.net/countries/WLD/world/death-rate" class="uri">https://www.macrotrends.net/countries/WLD/world/death-rate</a></p>
+<p><a href="https://www.bmj.com/content/373/bmj.n896" class="uri">https://www.bmj.com/content/373/bmj.n896</a></p>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<hr />
+</div>
+<div id="prepare-data" class="section level1">
+<h1>Prepare Data</h1>
+<pre class="r"><code># Prep data
+xx &lt;- read.csv(&quot;deaths_world_data.csv&quot;)
+yy &lt;- xx %&gt;% filter(Year == 2020) %&gt;% pull(Death.Rate)
+xx &lt;- xx %&gt;% mutate(Group = ifelse(Death.Rate &gt;= yy, &quot;higher&quot;, &quot;Lower&quot;))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Death.Rate, fill = Group)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
+  scale_fill_manual(values = c(&quot;darkgreen&quot;, alpha(&quot;darkgreen&quot;,0.5))) +
+  scale_x_continuous(breaks = c(seq(1950, 2010, 10), 2015, 2020)) +
+  coord_cartesian(expand = 0, ylim = c(0,21), xlim = c(1948,2023)) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Global Death Rate&quot;,
+       y = &quot;Deaths per 1000 people&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: UN&quot;)
+ggsave(&quot;world_deaths_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="world_deaths_01.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- read.csv(&quot;deaths_uk_data.csv&quot;) %&gt;%
+  rename(Death.Rate = Crude.mortaity.rate..per.100.000.population.) %&gt;%
+  mutate(Death.Rate = as.numeric(gsub(&quot;,&quot;, &quot;&quot;, Death.Rate)))
+yy &lt;- xx %&gt;% filter(Year == 2020) %&gt;% pull(Death.Rate)
+xx &lt;- xx %&gt;% mutate(Group = ifelse(Death.Rate &gt;= yy, &quot;higher&quot;, &quot;Lower&quot;))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Death.Rate, fill = Group)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, size = 0.1) +
+  scale_fill_manual(values = c(&quot;darkgreen&quot;, alpha(&quot;darkgreen&quot;,0.5))) +
+  scale_x_continuous(breaks = c(seq(1840, 1980, 20), 2003, 2020)) +
+  coord_cartesian(expand = 0, ylim = c(0,2600), xlim = c(1835,2023)) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;UK Death Rate&quot;, y = &quot;Deaths per 100,000&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: BMJ&quot;)
+ggsave(&quot;world_deaths_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<pre class="r"><code>ggsave(&quot;featured.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="world_deaths_02.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.netlify.com/">www.dblogr.com/</a></p>
+</div>
