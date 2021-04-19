@@ -17,7 +17,7 @@ links:
   - icon_pack: fas
     icon: table
     name: Download Data
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/canada_ghg_data.xlsx
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_ghg/canada_ghg_data.xlsx
 ---
 
 ```{r setup, include=FALSE}
@@ -30,7 +30,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F, out.width = "100%")
 
 https://www.canada.ca/en/environment-climate-change/services/climate-change/greenhouse-gas-emissions/sources-sinks-executive-summary-2021.html#figure-es-1
 
-[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/canada_ghg_data.xlsx)
+[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_ghg/canada_ghg_data.xlsx)
 
 ---
 

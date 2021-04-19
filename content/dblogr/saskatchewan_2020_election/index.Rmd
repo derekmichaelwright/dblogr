@@ -55,7 +55,7 @@ library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 # Prep data
 parties <- c("SP", "NDP", "BP", "SGP", "PC", "LIB", "IND")
 cols <- c("darkgreen", "darkorange", "burlywood4", "green", "darkblue", "darkred", "darkgrey")
-dd <- read.csv("2020_saskatchewan_election_data.csv") %>% 
+dd <- read.csv("saskatchewan_2020_election_data.csv") %>% 
   mutate(IND = ifelse(is.na(IND), 0 , IND),
          Total = SP + NDP + BP + SGP + PC + LIB + IND)
 ```
@@ -124,7 +124,7 @@ ggsave("saskatchewan_2020_election_02.png", mp, width = 25, height = 12)
 ![](saskatchewan_2020_election_02.png)
 
 ```{r}
-pdf("2020_saskatchewan_election_districts.pdf", width = 6, height = 4)
+pdf("saskatchewan_2020_election_districts.pdf", width = 6, height = 4)
 districts <- unique(xx$Constituency)
 for(i in districts) {
   xi <- xx %>% filter(Constituency == i)

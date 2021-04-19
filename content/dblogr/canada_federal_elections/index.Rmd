@@ -36,7 +36,7 @@ mp <- image_read(paste("maps", fnames, sep = "/")) %>% image_scale("x967")
 image_write(image_animate(mp, fps = 2.5), "canadian_federal_elections.gif")
 ```
 
-![](candian_federal_elections.gif)
+![](canadian_federal_elections.gif)
 
 ---
 

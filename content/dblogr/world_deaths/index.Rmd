@@ -21,7 +21,7 @@ links:
   - icon_pack: fas
     icon: table
     name: Data Set UK
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deahts_uk_data.csv
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_uk_data.csv
   - icon_pack: fas
     icon: table
     name: Data Set Countries

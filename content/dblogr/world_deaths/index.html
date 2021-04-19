@@ -1,0 +1,156 @@
+---
+title: "World Death Rates"
+subtitle: "An exploration of historical death rates"
+summary:  "An exploration of historical death rates"
+date: "2021-04-18"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/world_deaths/)"
+tags: [ "dblogr", "Demographics" ]
+weight: 2
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/world_deaths.html
+  - icon_pack: fas
+    icon: table
+    name: Data Set World
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_world_data.csv
+  - icon_pack: fas
+    icon: table
+    name: Data Set UK
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_uk_data.csv
+  - icon_pack: fas
+    icon: table
+    name: Data Set Countries
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/world_mortality.csv
+---
+
+
+
+<hr />
+<div id="data-sources" class="section level1">
+<h1>Data Sources</h1>
+<p><a href="https://www.macrotrends.net/countries/WLD/world/death-rate" class="uri">https://www.macrotrends.net/countries/WLD/world/death-rate</a></p>
+<p><a href="https://www.bmj.com/content/373/bmj.n896" class="uri">https://www.bmj.com/content/373/bmj.n896</a></p>
+<p><a href="https://ourworldindata.org/excess-mortality-covid" class="uri">https://ourworldindata.org/excess-mortality-covid</a></p>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<hr />
+</div>
+<div id="world" class="section level1">
+<h1>World</h1>
+<pre class="r"><code># Prep data
+xx &lt;- read.csv(&quot;deaths_world_data.csv&quot;)
+yy &lt;- xx %&gt;% filter(Year == 2020) %&gt;% pull(Death.Rate)
+xx &lt;- xx %&gt;% mutate(Group = ifelse(Death.Rate &gt;= yy, &quot;higher&quot;, &quot;Lower&quot;))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Death.Rate, fill = Group)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
+  scale_fill_manual(values = c(&quot;darkgreen&quot;, alpha(&quot;darkgreen&quot;,0.5))) +
+  scale_x_continuous(breaks = c(seq(1950, 2010, 10), 2015, 2020)) +
+  coord_cartesian(expand = 0, ylim = c(0,21), xlim = c(1948,2023)) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Global Death Rate&quot;,
+       y = &quot;Deaths per 1000 people&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: UN&quot;)
+ggsave(&quot;world_deaths_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="world_deaths_01.png" /></p>
+<hr />
+</div>
+<div id="uk" class="section level1">
+<h1>UK</h1>
+<pre class="r"><code># Prep data
+xx &lt;- read.csv(&quot;deaths_uk_data.csv&quot;) %&gt;%
+  rename(Death.Rate = Crude.mortaity.rate..per.100.000.population.) %&gt;%
+  mutate(Death.Rate = as.numeric(gsub(&quot;,&quot;, &quot;&quot;, Death.Rate)))
+yy &lt;- xx %&gt;% filter(Year == 2020) %&gt;% pull(Death.Rate)
+xx &lt;- xx %&gt;% mutate(Group = ifelse(Death.Rate &gt;= yy, &quot;higher&quot;, &quot;Lower&quot;))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Death.Rate, fill = Group)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, size = 0.1) +
+  scale_fill_manual(values = c(&quot;darkgreen&quot;, alpha(&quot;darkgreen&quot;,0.5))) +
+  scale_x_continuous(breaks = c(seq(1840, 1980, 20), 2003, 2020)) +
+  coord_cartesian(expand = 0, ylim = c(0,2600), xlim = c(1835,2023)) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;UK Death Rate&quot;, y = &quot;Deaths per 100,000&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: BMJ&quot;)
+ggsave(&quot;world_deaths_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<pre class="r"><code>ggsave(&quot;featured.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="world_deaths_02.png" /></p>
+<hr />
+</div>
+<div id="weekly-deaths" class="section level1">
+<h1>Weekly Deaths</h1>
+<pre class="r"><code># Prep data
+dd &lt;- read.csv(&quot;world_mortality.csv&quot;) %&gt;%
+  rename(area=1) %&gt;% filter(year != 0) %&gt;%
+  mutate(group = ifelse(year &lt; 2020, &quot;pre-2020&quot;, year),
+         group = factor(group, levels = c(&quot;pre-2020&quot;,&quot;2020&quot;,&quot;2021&quot;)),
+         year = factor(year))
+# Create plotting function
+deathPlot &lt;- function(Area = &quot;Germany&quot;) {
+  # Prep data
+  xi &lt;- dd %&gt;% filter(area == Area)
+  # Plot
+  ggplot(xi, aes(x = time, y = deaths, group = year, color = group)) +
+    geom_line(size = 1.25, alpha = 0.8) +
+    facet_wrap(area ~ .) +
+    scale_color_manual(values = c(&quot;darkgreen&quot;, &quot;darkred&quot;, &quot;darkorange&quot;)) +
+    theme_agData(legend.position = &quot;bottom&quot;) +
+    labs(y = &quot;Deaths&quot;, x = &quot;Week/Month&quot;,
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: OurWorldInData&quot;)
+}</code></pre>
+<div id="uk-1" class="section level2">
+<h2>UK</h2>
+<pre class="r"><code>mp &lt;- deathPlot(Area = &quot;United Kingdom&quot;)
+ggsave(&quot;world_deaths_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="world_deaths_03.png" /></p>
+<hr />
+</div>
+<div id="germany" class="section level2">
+<h2>Germany</h2>
+<pre class="r"><code>mp &lt;- deathPlot(Area = &quot;Germany&quot;)
+ggsave(&quot;world_deaths_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="world_deaths_04.png" /></p>
+<hr />
+</div>
+<div id="sweden" class="section level2">
+<h2>Sweden</h2>
+<pre class="r"><code>mp &lt;- deathPlot(Area = &quot;Sweden&quot;)
+ggsave(&quot;world_deaths_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="world_deaths_05.png" /></p>
+<hr />
+</div>
+<div id="norway" class="section level2">
+<h2>Norway</h2>
+<pre class="r"><code>mp &lt;- deathPlot(Area = &quot;Norway&quot;)
+ggsave(&quot;world_deaths_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="world_deaths_06.png" /></p>
+<hr />
+</div>
+<div id="italy" class="section level2">
+<h2>Italy</h2>
+<pre class="r"><code>mp &lt;- deathPlot(Area = &quot;Italy&quot;)
+ggsave(&quot;world_deaths_07.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="world_deaths_07.png" /></p>
+<hr />
+</div>
+<div id="france" class="section level2">
+<h2>France</h2>
+<pre class="r"><code>mp &lt;- deathPlot(Area = &quot;France&quot;)
+ggsave(&quot;world_deaths_08.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="world_deaths_08.png" /></p>
+<hr />
+</div>
+<div id="brazil" class="section level2">
+<h2>Brazil</h2>
+<pre class="r"><code>mp &lt;- deathPlot(Area = &quot;Brazil&quot;)
+ggsave(&quot;world_deaths_09.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="world_deaths_09.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.netlify.com/">www.dblogr.com/</a></p>
+</div>
+</div>
