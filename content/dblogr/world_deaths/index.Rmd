@@ -22,6 +22,10 @@ links:
     icon: table
     name: Data Set UK
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deahts_uk_data.csv
+  - icon_pack: fas
+    icon: table
+    name: Data Set Countries
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/world_mortality.csv
 ---
 
 ```{r setup, include=FALSE}
@@ -30,21 +34,27 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 ---
 
-# Introduction
+# Data Sources
 
 https://www.macrotrends.net/countries/WLD/world/death-rate
 
 https://www.bmj.com/content/373/bmj.n896
 
+https://ourworldindata.org/excess-mortality-covid
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 ```
 
+```{r echo = F}
+xx <- read.csv("https://raw.githubusercontent.com/akarlinsky/world_mortality/main/world_mortality.csv")
+write.csv(xx, "world_mortality.csv", row.names = F)
+```
+
 ---
 
-# Prepare Data
+# World
 
 ```{r}
 # Prep data
@@ -67,6 +77,8 @@ ggsave("world_deaths_01.png", mp, width = 6, height = 4)
 ![](world_deaths_01.png)
 
 ---
+
+# UK
 
 ```{r}
 # Prep data
@@ -92,6 +104,107 @@ ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
 ![](world_deaths_02.png)
+
+---
+
+# Weekly Deaths
+
+```{r}
+# Prep data
+dd <- read.csv("world_mortality.csv") %>%
+  rename(area=1) %>% filter(year != 0) %>%
+  mutate(group = ifelse(year < 2020, "pre-2020", year),
+         group = factor(group, levels = c("pre-2020","2020","2021")),
+         year = factor(year))
+# Create plotting function
+deathPlot <- function(Area = "Germany") {
+  # Prep data
+  xi <- dd %>% filter(area == Area)
+  # Plot
+  ggplot(xi, aes(x = time, y = deaths, group = year, color = group)) +
+    geom_line(size = 1.25, alpha = 0.8) +
+    facet_wrap(area ~ .) +
+    scale_color_manual(values = c("darkgreen", "darkred", "darkorange")) +
+    theme_agData(legend.position = "bottom") +
+    labs(y = "Deaths", x = "Week/Month",
+         caption = "\xa9 www.dblogr.com/  |  Data: OurWorldInData")
+}
+```
+
+## UK
+
+```{r}
+mp <- deathPlot(Area = "United Kingdom")
+ggsave("world_deaths_03.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_03.png)
+
+---
+
+## Germany
+
+```{r}
+mp <- deathPlot(Area = "Germany")
+ggsave("world_deaths_04.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_04.png)
+
+---
+
+## Sweden
+
+```{r}
+mp <- deathPlot(Area = "Sweden")
+ggsave("world_deaths_05.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_05.png)
+
+---
+
+## Norway
+
+```{r}
+mp <- deathPlot(Area = "Norway")
+ggsave("world_deaths_06.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_06.png)
+
+---
+
+## Italy
+
+```{r}
+mp <- deathPlot(Area = "Italy")
+ggsave("world_deaths_07.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_07.png)
+
+---
+
+## France
+
+```{r}
+mp <- deathPlot(Area = "France")
+ggsave("world_deaths_08.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_08.png)
+
+---
+
+## Brazil
+
+```{r}
+mp <- deathPlot(Area = "Brazil")
+ggsave("world_deaths_09.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_09.png)
 
 ---
 

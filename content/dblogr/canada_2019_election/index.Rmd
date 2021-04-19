@@ -16,7 +16,7 @@ links:
     url: https://derekmichaelwright.github.io/htmls/dblogr/canada_2019_election.html
   - icon_pack: fas
     icon: table
-    name: Data Set
+    name: Download Data
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_2019_election/canada_2019_election_data.xlsx
 ---
 
@@ -34,9 +34,7 @@ The [2019 Canadian federal election](https://en.wikipedia.org/wiki/2019_Canadian
 
 ---
 
-# Data
-
-## Data Source
+# Data Source
 
 https://enr.elections.ca/National.aspx?lang=e
 
@@ -44,7 +42,7 @@ https://enr.elections.ca/National.aspx?lang=e
 
 ---
 
-## Prep Data
+# Prepare Data
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")

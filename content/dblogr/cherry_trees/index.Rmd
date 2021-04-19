@@ -16,8 +16,8 @@ links:
     url: https://derekmichaelwright.github.io/htmls/dblogr/cherry_trees.html
   - icon_pack: fas
     icon: table
-    name: Data Set
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/ccherry_trees/1810000201_databaseLoadingData.csv
+    name: Download Data
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/cherry_trees/KyotoFullFlower7.csv
 ---
 
 ```{r setup, include=FALSE}
@@ -30,7 +30,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 http://atmenv.envi.osakafu-u.ac.jp/aono/kyophenotemp4/
 
-[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/ccherry_trees/1810000201_databaseLoadingData.csv)
+[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/cherry_trees/KyotoFullFlower7.csv)
 
 ---
 

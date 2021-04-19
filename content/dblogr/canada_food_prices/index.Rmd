@@ -20,7 +20,7 @@ links:
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf
   - icon_pack: fas
     icon: table
-    name: Data Set
+    name: Download Table 18-10-0002-01
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/1810000201_databaseLoadingData.csv
 ---
 
@@ -31,11 +31,13 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Data Source
 
-https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1810000201
+STATCAN data Tables: 18-10-0002-01
 
-[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/1810000201_databaseLoadingData.csv)
+https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=
+
+[**< Download Table 18-10-0002-01 >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/1810000201_databaseLoadingData.csv)
 
 ---
 

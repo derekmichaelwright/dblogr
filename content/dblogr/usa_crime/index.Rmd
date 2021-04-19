@@ -17,7 +17,7 @@ links:
     url: https://derekmichaelwright.github.io/htmls/dblogr/usa_crime.html
   - icon_pack: fas
     icon: table
-    name: Data Set
+    name: Download Data
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_crime/usa_crime_data.xlsx
 ---
 

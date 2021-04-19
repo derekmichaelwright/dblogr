@@ -2,7 +2,7 @@
 title: "2019 Canadian Election Results"
 subtitle: "A regional look at how Canadians voted"
 summary:  "A regional look at how Canadians voted"
-date: "2021-04-17"
+date: "2021-04-18"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_2019_election/)"
 tags: [ "dblogr", "Politics" ]
 weight: 2
@@ -16,7 +16,7 @@ links:
     url: https://derekmichaelwright.github.io/htmls/dblogr/canada_2019_election.html
   - icon_pack: fas
     icon: table
-    name: Data Set
+    name: Download Data
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_2019_election/canada_2019_election_data.xlsx
 ---
 
@@ -38,16 +38,14 @@ links:
 <p><img src="canada/election_2019_00_map.png" /></p>
 <hr />
 </div>
-<div id="data" class="section level1">
-<h1>Data</h1>
-<div id="data-source" class="section level2">
-<h2>Data Source</h2>
+<div id="data-source" class="section level1">
+<h1>Data Source</h1>
 <p><a href="https://enr.elections.ca/National.aspx?lang=e" class="uri">https://enr.elections.ca/National.aspx?lang=e</a></p>
 <p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_2019_election/canada_2019_election_data.xlsx"><strong>&lt; Download Data &gt;</strong></a></p>
 <hr />
 </div>
-<div id="prep-data" class="section level2">
-<h2>Prep Data</h2>
+<div id="prepare-data" class="section level1">
+<h1>Prepare Data</h1>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(mapcan) # mapcan()
@@ -145,7 +143,6 @@ summariseResults &lt;- function(x, myParties = parties, myWings = wings) {
             Party_Short = factor(Party_Short, levels = parties))
 }</code></pre>
 <hr />
-</div>
 </div>
 <div id="provincial-results" class="section level1">
 <h1>Provincial Results</h1>

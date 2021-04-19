@@ -2,7 +2,7 @@
 title: "Deaths In USA"
 subtitle: "An exploration of weekly deaths in the USA"
 summary:  "An exploration of weekly deaths in the USA"
-date: "2021-04-17"
+date: "2021-04-18"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/usa_deaths/)"
 tags: [ "dblogr", "Demographics", "Featured" ]
 weight: 2
@@ -14,23 +14,28 @@ links:
     icon: code
     name: R Script
     url: https://derekmichaelwright.github.io/htmls/dblogr/usa_deaths.html
+  - icon_pack: fas
+    icon: table
+    name: Download Data
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_deaths_data.csv
 ---
 
 
 
 <hr />
-<div id="introduction" class="section level1">
-<h1>Introduction</h1>
+<div id="data-source" class="section level1">
+<h1>Data Source</h1>
 <p><a href="https://www.cdc.gov/nchs/nvss/vsrr/covid19/excess_deaths.htm#dashboard" class="uri">https://www.cdc.gov/nchs/nvss/vsrr/covid19/excess_deaths.htm#dashboard</a></p>
-<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
-library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_deaths_data.csv"><strong>&lt; Download Data &gt;</strong></a></p>
 <hr />
 </div>
 <div id="prepare-data" class="section level1">
 <h1>Prepare Data</h1>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
 <pre class="r"><code># Prep data
 ages &lt;- c(&quot;Under 25 years&quot;, &quot;25-44 years&quot;, &quot;45-64 years&quot;, &quot;65-74 years&quot;, &quot;75-84 years&quot;, &quot;85 years and older&quot;)
-dd &lt;- read.csv(&quot;https://data.cdc.gov/api/views/y5bj-9g5w/rows.csv?accessType=DOWNLOAD&amp;bom=true&amp;format=true%20target=&quot;) %&gt;%
+dd &lt;- read.csv(&quot;usa_deaths_data.csv&quot;) %&gt;%
   rename(Area=1, Date=Week.Ending.Date) %&gt;%
   mutate(Date = as.Date(Date, format = &quot;%m/%d/%Y&quot;),
          JulianDate = lubridate::yday(Date),

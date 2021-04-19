@@ -2,7 +2,7 @@
 title: "Canada Business Openings and Closures"
 subtitle: "An exploration of business openings and closures in Canada"
 summary:  "An exploration of business openings and closures in Canada"
-date: "2021-04-17"
+date: "2021-04-18"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_businesses/)"
 tags: [ "dblogr", "Economics" ]
 weight: 4
@@ -16,18 +16,22 @@ links:
     url: https://derekmichaelwright.github.io/htmls/dblogr/canada_businesses.html
   - icon_pack: fas
     icon: table
-    name: Data Set
+    name: Download Table 33-10-0270-01
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_businesses/3310027001_databaseLoadingData.csv
 ---
 
 
 
 <hr />
-<div id="prep-data" class="section level1">
-<h1>Prep Data</h1>
-<p>STATCAN data Tables: 3310027001</p>
+<div id="data-source" class="section level1">
+<h1>Data Source</h1>
+<p>STATCAN data Tables: 33-10-0270-01</p>
 <p><a href="https://www150.statcan.gc.ca/n1/pub/11-626-x/11-626-x2020014-eng.htm" class="uri">https://www150.statcan.gc.ca/n1/pub/11-626-x/11-626-x2020014-eng.htm</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_businesses/3310027001_databaseLoadingData.csv"><strong>&lt; Download Data &gt;</strong></a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_businesses/3310027001_databaseLoadingData.csv"><strong>&lt; Download Table 33-10-0270-01 &gt;</strong></a></p>
+<hr />
+</div>
+<div id="prepare-data" class="section level1">
+<h1>Prepare Data</h1>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
 <pre class="r"><code># Prep data

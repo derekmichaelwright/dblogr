@@ -20,7 +20,7 @@ links:
     url: https://github.com/derekmichaelwright/dblogr/raw/master/content/dblogr/saskatchewan_2020_election/saskatchewan_2020_election_districts.pdf
   - icon_pack: fas
     icon: table
-    name: Data Set
+    name: Download Data
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/saskatchewan_2020_election/saskatchewan_2020_election_data.csv
 ---
 
@@ -36,9 +36,7 @@ The [2020 Saskatchewan provincial election](https://en.wikipedia.org/wiki/2020_S
 
 ---
 
-# Data
-
-## Data Source
+# Data Source
 
 https://results.elections.sk.ca/
 
@@ -46,7 +44,7 @@ https://results.elections.sk.ca/
 
 ---
 
-## Prep data
+# Prep data
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")

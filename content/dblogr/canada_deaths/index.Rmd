@@ -16,15 +16,15 @@ links:
     url: https://derekmichaelwright.github.io/htmls/dblogr/canada_deaths.html
   - icon_pack: fas
     icon: table
-    name: Data Set 13-10-0783-01
+    name: Download Table 13-10-0783-01
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310078301_databaseLoadingData.csv
   - icon_pack: fas
     icon: table
-    name: Data Set 13-10-0768-01
+    name: Download Table 13-10-0768-01
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310076801_databaseLoadingData.csv
   - icon_pack: fas
     icon: table
-    name: Data Set 13-10-0703-01
+    name: Download Table 13-10-0703-01
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310070801_databaseLoadingData.csv
 ---
 
@@ -34,9 +34,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
-
-## Data Sources
+# Data Sources
 
 STATCAN data sources: 13-10-0783-01 & 13-10-0768-01
 
@@ -48,9 +46,11 @@ https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801
 
 https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm
 
-[**< Download 13-10-0783-01 >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310078301_databaseLoadingData.csv)
+[**< Download Table 13-10-0783-01 >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310078301_databaseLoadingData.csv)
 
-[**< Download 13-10-0768-01 >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310076801_databaseLoadingData.csv)
+[**< Download Table 13-10-0768-01 >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310076801_databaseLoadingData.csv)
+
+[**< Download Table 13-10-0708-01 >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310070801_databaseLoadingData.csv)
 
 ---
 
@@ -510,6 +510,7 @@ ggsave("canada_deaths_5_02.png", mp, width = 10, height = 6)
 ```
 
 ![](canada_deaths_5_02.png)
+
 ---
 
 ## 2019
@@ -572,10 +573,10 @@ mp <- ggplot(xx, aes(x = Area, y = Value, fill = Trait)) +
   labs(title = "Death Rate Change (1991-2019)", 
        y = "Deaths Per Thousand People", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
-ggsave("canada_deaths_5_04.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_5_05.png", mp, width = 6, height = 4)
 ```
 
-![](canada_deaths_5_04.png)
+![](canada_deaths_5_05.png)
 
 ---
 

@@ -14,6 +14,10 @@ links:
     icon: code
     name: R Script
     url: https://derekmichaelwright.github.io/htmls/dblogr/usa_deaths.html
+  - icon_pack: fas
+    icon: table
+    name: Download Data
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_deaths_data.csv
 ---
 
 ```{r setup, include=FALSE}
@@ -22,23 +26,30 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 ---
 
-# Introduction
+# Data Source
 
 https://www.cdc.gov/nchs/nvss/vsrr/covid19/excess_deaths.htm#dashboard
 
-```{r}
-# devtools::install_github("derekmichaelwright/agData")
-library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-```
+[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_deaths_data.csv)
 
 ---
 
 # Prepare Data
 
 ```{r}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+```
+
+```{r echo = F}
+dd <- read.csv("https://data.cdc.gov/api/views/y5bj-9g5w/rows.csv?accessType=DOWNLOAD&bom=true&format=true%20target=")
+write.csv(dd, "usa_deaths_data.csv", row.names = F)
+```
+
+```{r}
 # Prep data
 ages <- c("Under 25 years", "25-44 years", "45-64 years", "65-74 years", "75-84 years", "85 years and older")
-dd <- read.csv("https://data.cdc.gov/api/views/y5bj-9g5w/rows.csv?accessType=DOWNLOAD&bom=true&format=true%20target=") %>%
+dd <- read.csv("usa_deaths_data.csv") %>%
   rename(Area=1, Date=Week.Ending.Date) %>%
   mutate(Date = as.Date(Date, format = "%m/%d/%Y"),
          JulianDate = lubridate::yday(Date),

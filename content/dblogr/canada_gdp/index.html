@@ -2,7 +2,7 @@
 title: "GDP of Canada"
 subtitle: "GDP data among Canadian provinces from 2007-2018"
 summary:  "GDP data among Canadian provinces from 2007-2018"
-date: "2021-04-17"
+date: "2021-04-18"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_gdp/)"
 tags: [ "dblogr", "Economics" ]
 weight: 2
@@ -16,25 +16,30 @@ links:
     url: https://derekmichaelwright.github.io/htmls/dblogr/canada_gdp.html
   - icon_pack: fas
     icon: table
-    name: Data Set 36-10-0400-01
+    name: Download Table 36-10-0400-01
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/3610040001_databaseLoadingData.csv
   - icon_pack: fas
     icon: table
-    name: Data Set 36-10-0402-01
+    name: Download Table 36-10-0402-01
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/3610040201_databaseLoadingData.csv
+  - icon_pack: fas
+    icon: table
+    name: Download Table 17-10-0009-01
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/1710000901_Data.csv
+
 ---
 
 
 
 <hr />
-<div id="introduction" class="section level1">
-<h1>Introduction</h1>
-<p>The purpose of this vignette is to explore some economic GDP data available from STATCAN.</p>
+<div id="data-sources" class="section level1">
+<h1>Data Sources</h1>
 <p>STATCAN data Tables: 36-10-0400-01, 36-10-0402-01, 17-10-0009-01</p>
 <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040001" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040001</a></p>
 <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040201" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040201</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/3610040001_databaseLoadingData.csv"><strong>&lt; Download 36-10-0400-01 &gt;</strong></a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/3610040201_databaseLoadingData.csv"><strong>&lt; Download 36-10-0402-01 &gt;</strong></a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/3610040001_databaseLoadingData.csv"><strong>&lt; Download Table 36-10-0400-01 &gt;</strong></a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/3610040201_databaseLoadingData.csv"><strong>&lt; Download Table 36-10-0402-01 &gt;</strong></a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/1710000901_Data.csv"><strong>&lt; Download Table 17-10-0009-01 &gt;</strong></a></p>
 <hr />
 </div>
 <div id="prepare-data" class="section level1">
@@ -63,7 +68,7 @@ d2 &lt;- read.csv(&quot;3610040001_databaseLoadingData.csv&quot;) %&gt;%
          Area_Short = plyr::mapvalues(Area, provinces, provShort)) %&gt;%
   select(Area, Area_Short, Year, Industry, Value) 
 # Population by province
-d3 &lt;- agData_STATCAN_Population %&gt;% filter(Month == 1) %&gt;%
+d3 &lt;- read.csv(&quot;1710000901_Data.csv&quot;) %&gt;% filter(Month == 1) %&gt;%
   rename(Number = Value)</code></pre>
 <hr />
 </div>

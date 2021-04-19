@@ -16,11 +16,11 @@ links:
     url: https://derekmichaelwright.github.io/htmls/dblogr/covid_models.html
   - icon_pack: fas
     icon: table
-    name: Modeling Data Set
+    name: Download Modeling Data
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/models_minnesota.csv
   - icon_pack: fas
     icon: table
-    name: Covid Data Set
+    name: Download Covid Data
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/covid_usa.csv
 ---
 
@@ -36,13 +36,13 @@ Models
 
 https://github.com/MN-COVID19-Model/Model_v3
 
-[**< Download Model Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/models_minnesota.csv)
+[**< Download Modeling Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/models_minnesota.csv)
 
 Actual data
 
 https://beta.healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/g62h-syeh/data
 
-[**< Download Actual Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/covid_usa.csv)
+[**< Download Covid Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/covid_usa.csv)
 
 ---
 

@@ -2,7 +2,7 @@
 title: "2020 Saskatchewan Election Results"
 subtitle: "A regional look at how Saskatchewanians voted"
 summary:  "A regional look at how Saskatchewanians voted"
-date: "2021-04-17"
+date: "2021-04-18"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/saskatchewan_2020_election/)"
 tags: [ "dblogr", "Politics" ]
 weight: 3
@@ -20,7 +20,7 @@ links:
     url: https://github.com/derekmichaelwright/dblogr/raw/master/content/dblogr/saskatchewan_2020_election/saskatchewan_2020_election_districts.pdf
   - icon_pack: fas
     icon: table
-    name: Data Set
+    name: Download Data
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/saskatchewan_2020_election/saskatchewan_2020_election_data.csv
 ---
 
@@ -32,16 +32,14 @@ links:
 <p>The <a href="https://en.wikipedia.org/wiki/2020_Saskatchewan_general_election">2020 Saskatchewan provincial election</a> was won by the <a href="https://en.wikipedia.org/wiki/Saskatchewan_Party"><strong>Saskatchewan Party</strong></a> who won 48 (+2) of the 61 seats. Second place went to the <a href="https://en.wikipedia.org/wiki/Saskatchewan_New_Democratic_Party"><strong>NDP</strong></a> who won 13 seats. Surpringly, third place went to the newly formed <a href="https://en.wikipedia.org/wiki/Buffalo_Party_of_Saskatchewan"><strong>Buffalo Party</strong></a> who beat out the <a href="https://en.wikipedia.org/wiki/Green_Party_of_Saskatchewan"><strong>Green Party</strong></a> despite only running candidates in 17 ridings and even came in second in 4 rural ridings, beating out the NDP. Hilariously, the <a href="https://en.wikipedia.org/wiki/Saskatchewan_Liberal_Party"><strong>Liberal Party</strong></a> only ran 3 candidates and only received a total of 355 votes throughout the province.</p>
 <hr />
 </div>
-<div id="data" class="section level1">
-<h1>Data</h1>
-<div id="data-source" class="section level2">
-<h2>Data Source</h2>
+<div id="data-source" class="section level1">
+<h1>Data Source</h1>
 <p><a href="https://results.elections.sk.ca/" class="uri">https://results.elections.sk.ca/</a></p>
 <p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/saskatchewan_2020_election/saskatchewan_2020_election_data.csv"><strong>&lt; Download Data &gt;</strong></a></p>
 <hr />
 </div>
-<div id="prep-data" class="section level2">
-<h2>Prep data</h2>
+<div id="prep-data" class="section level1">
+<h1>Prep data</h1>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
 <pre class="r"><code># Prep data
@@ -51,7 +49,6 @@ dd &lt;- read.csv(&quot;2020_saskatchewan_election_data.csv&quot;) %&gt;%
   mutate(IND = ifelse(is.na(IND), 0 , IND),
          Total = SP + NDP + BP + SGP + PC + LIB + IND)</code></pre>
 <hr />
-</div>
 </div>
 <div id="total-votes" class="section level1">
 <h1>Total Votes</h1>

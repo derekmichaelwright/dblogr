@@ -2,7 +2,7 @@
 title: "Deaths In Canada"
 subtitle: "An exploration of weekly deaths in Canada"
 summary:  "An exploration of weekly deaths in Canada"
-date: "2021-04-17"
+date: "2021-04-18"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_deaths/)"
 tags: [ "dblogr", "Demographics", "Featured" ]
 weight: 2
@@ -16,34 +16,32 @@ links:
     url: https://derekmichaelwright.github.io/htmls/dblogr/canada_deaths.html
   - icon_pack: fas
     icon: table
-    name: Data Set 13-10-0783-01
+    name: Download Table 13-10-0783-01
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310078301_databaseLoadingData.csv
   - icon_pack: fas
     icon: table
-    name: Data Set 13-10-0768-01
+    name: Download Table 13-10-0768-01
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310076801_databaseLoadingData.csv
   - icon_pack: fas
     icon: table
-    name: Data Set 13-10-0703-01
+    name: Download Table 13-10-0703-01
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310070801_databaseLoadingData.csv
 ---
 
 
 
 <hr />
-<div id="data" class="section level1">
-<h1>Data</h1>
-<div id="data-sources" class="section level2">
-<h2>Data Sources</h2>
+<div id="data-sources" class="section level1">
+<h1>Data Sources</h1>
 <p>STATCAN data sources: 13-10-0783-01 &amp; 13-10-0768-01</p>
 <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301</a></p>
 <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801</a></p>
 <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801</a></p>
 <p><a href="https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm" class="uri">https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310078301_databaseLoadingData.csv"><strong>&lt; Download 13-10-0783-01 &gt;</strong></a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310076801_databaseLoadingData.csv"><strong>&lt; Download 13-10-0768-01 &gt;</strong></a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310078301_databaseLoadingData.csv"><strong>&lt; Download Table 13-10-0783-01 &gt;</strong></a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310076801_databaseLoadingData.csv"><strong>&lt; Download Table 13-10-0768-01 &gt;</strong></a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310070801_databaseLoadingData.csv"><strong>&lt; Download Table 13-10-0708-01 &gt;</strong></a></p>
 <hr />
-</div>
 </div>
 <div id="prepare-data" class="section level1">
 <h1>Prepare Data</h1>
@@ -360,11 +358,10 @@ mp &lt;- ggplot(d3, aes(x = Year, y = Death.Rate, fill = Group)) +
   labs(title = &quot;Death Rate - Canada&quot;, y = &quot;Deaths Per Thousand People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN\n*2020 data may be incomplete&quot;)
 ggsave(&quot;canada_deaths_5_02.png&quot;, mp, width = 10, height = 6)</code></pre>
+<p><img src="canada_deaths_5_02.png" /></p>
+<hr />
 </div>
 <div id="section" class="section level2">
-<h2><img src="canada_deaths_5_02.png" /></h2>
-</div>
-<div id="section-1" class="section level2">
 <h2>2019</h2>
 <pre class="r"><code># Prep data
 xx &lt;- d3 %&gt;% filter(Year == 2019)
@@ -414,8 +411,8 @@ mp &lt;- ggplot(xx, aes(x = Area, y = Value, fill = Trait)) +
   labs(title = &quot;Death Rate Change (1991-2019)&quot;, 
        y = &quot;Deaths Per Thousand People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;canada_deaths_5_04.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="canada_deaths_5_04.png" /></p>
+ggsave(&quot;canada_deaths_5_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_deaths_5_05.png" /></p>
 <hr />
 </div>
 </div>

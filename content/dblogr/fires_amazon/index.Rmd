@@ -16,7 +16,7 @@ links:
     url: https://derekmichaelwright.github.io/htmls/dblogr/fires_amazon.html
   - icon_pack: fas
     icon: table
-    name: Data Set
+    name: Download Data
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/fires_amazon/fires_amazon_data.xlsx
 ---
 
@@ -74,15 +74,17 @@ https://www.cbc.ca/news/world/trudeau-more-work-needed-g7-summit-amazon-burns-1.
 
 Ok, lets check out the data ourselves.
 
-Data source: National Institute for Space Reserach (*INPE*)
+# Data source
 
-[http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/](http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/)
+National Institute for Space Reserach (*INPE*)
+
+http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/
+
+[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/fires_amazon/fires_amazon_data.xlsx)
 
 ---
 
-# Data
-
-[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/fires_amazon/fires_amazon_data.xlsx)
+# Prepare Data
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
@@ -97,9 +99,11 @@ dd <- read_xlsx("fires_amazon_data.xlsx", "INPE") %>%
 DT::datatable(dd)
 ```
 
+First thing we notice, they have been recording data prior to 2013. That's odd, why would the CBC say that? Perhaps a look at the data will tell us why.
+
 ---
 
-First thing we notice, they have been recording data prior to 2013. That's odd, why would the CBC say that? Perhaps a look at the data will tell us why.
+# Data visualization
 
 ```{r}
 # Prep data
@@ -189,8 +193,6 @@ We can see there is indeed a 68% increase from the same time last year.
 However, what happens when we look at all the data?
 
 ---
-
-# Data visualization
 
 ```{r}
 # Prep data
