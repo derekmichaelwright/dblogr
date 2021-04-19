@@ -394,7 +394,7 @@ ggsave("usa_deaths_4_01.png", mp, width = 12, height = 12)
 
 ---
 
-# North vs South Dakota
+## North vs South Dakota
 
 ```{r}
 # Prep data
@@ -413,7 +413,7 @@ ggsave("usa_deaths_4_02.png", mp, width = 6, height = 4)
 
 ---
 
-# California vs Texas
+## California vs Texas
 
 ```{r}
 # Prep data
@@ -432,7 +432,7 @@ ggsave("usa_deaths_4_03.png", mp, width = 6, height = 4)
 
 ---
 
-# New York vs Florida
+## New York vs Florida
 
 ```{r}
 # Prep data

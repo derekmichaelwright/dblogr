@@ -276,9 +276,8 @@ mp &lt;- ggplot(xx, aes(x = Date, y = Death.Rate)) +
 ggsave(&quot;usa_deaths_4_01.png&quot;, mp, width = 12, height = 12)</code></pre>
 <p><img src="usa_deaths_4_01.png" /></p>
 <hr />
-</div>
-<div id="north-vs-south-dakota" class="section level1">
-<h1>North vs South Dakota</h1>
+<div id="north-vs-south-dakota" class="section level2">
+<h2>North vs South Dakota</h2>
 <pre class="r"><code># Prep data
 x1 &lt;- xx %&gt;% filter(State.Abbreviation %in% c(&quot;SD&quot;,&quot;ND&quot;))
 # Plot
@@ -292,8 +291,8 @@ ggsave(&quot;usa_deaths_4_02.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_deaths_4_02.png" /></p>
 <hr />
 </div>
-<div id="california-vs-texas" class="section level1">
-<h1>California vs Texas</h1>
+<div id="california-vs-texas" class="section level2">
+<h2>California vs Texas</h2>
 <pre class="r"><code># Prep data
 x1 &lt;- xx %&gt;% filter(State.Abbreviation %in% c(&quot;CA&quot;,&quot;TX&quot;))
 # Plot
@@ -307,8 +306,8 @@ ggsave(&quot;usa_deaths_4_03.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_deaths_4_03.png" /></p>
 <hr />
 </div>
-<div id="new-york-vs-florida" class="section level1">
-<h1>New York vs Florida</h1>
+<div id="new-york-vs-florida" class="section level2">
+<h2>New York vs Florida</h2>
 <pre class="r"><code># Prep data
 x1 &lt;- xx %&gt;% filter(State.Abbreviation %in% c(&quot;FL&quot;,&quot;NY&quot;))
 # Plot
@@ -322,4 +321,5 @@ ggsave(&quot;usa_deaths_4_04.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="usa_deaths_4_04.png" /></p>
 <hr />
 <p>© Derek Michael Wright 2020 <a href="https://dblogr.netlify.com/">www.dblogr.com/</a></p>
+</div>
 </div>
