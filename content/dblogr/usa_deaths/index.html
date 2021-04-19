@@ -2,7 +2,7 @@
 title: "Deaths In USA"
 subtitle: "An exploration of weekly deaths in the USA"
 summary:  "An exploration of weekly deaths in the USA"
-date: "2021-04-18"
+date: "2021-04-19"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/usa_deaths/)"
 tags: [ "dblogr", "Demographics", "Featured" ]
 weight: 2
@@ -18,6 +18,10 @@ links:
     icon: table
     name: Download Data
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_deaths_data.csv
+  - icon_pack: fas
+    icon: table
+    name: Download Data
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_deaths_data.csv
 ---
 
 
@@ -26,7 +30,9 @@ links:
 <div id="data-source" class="section level1">
 <h1>Data Source</h1>
 <p><a href="https://www.cdc.gov/nchs/nvss/vsrr/covid19/excess_deaths.htm#dashboard" class="uri">https://www.cdc.gov/nchs/nvss/vsrr/covid19/excess_deaths.htm#dashboard</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_deaths_data.csv"><strong>&lt; Download Data &gt;</strong></a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_deaths_data.csv"><strong>&lt; Download Deaths Data &gt;</strong></a></p>
+<p><a href="https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html" class="uri">https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html</a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_population.csv"><strong>&lt; Download Population Data &gt;</strong></a></p>
 <hr />
 </div>
 <div id="prepare-data" class="section level1">
@@ -35,6 +41,9 @@ links:
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
 <pre class="r"><code># Prep data
 ages &lt;- c(&quot;Under 25 years&quot;, &quot;25-44 years&quot;, &quot;45-64 years&quot;, &quot;65-74 years&quot;, &quot;75-84 years&quot;, &quot;85 years and older&quot;)
+pp &lt;- read.csv(&quot;usa_population.csv&quot;) %&gt;% 
+  select(Area, Population=X2019) %&gt;%
+  mutate(Population = as.numeric(gsub(&quot;,&quot;,&quot;&quot;,Population)))
 dd &lt;- read.csv(&quot;usa_deaths_data.csv&quot;) %&gt;%
   rename(Area=1, Date=Week.Ending.Date) %&gt;%
   mutate(Date = as.Date(Date, format = &quot;%m/%d/%Y&quot;),
@@ -244,6 +253,73 @@ ggsave(&quot;usa_deaths_3_08.png&quot;, mp, width = 12, height = 4)</code></pre>
 ggsave(&quot;usa_deaths_3_09.png&quot;, mp, width = 12, height = 4)</code></pre>
 <p><img src="usa_deaths_3_09.png" /></p>
 <hr />
-<p>© Derek Michael Wright 2020 <a href="https://dblogr.netlify.com/">www.dblogr.com/</a></p>
 </div>
+</div>
+<div id="death-rates" class="section level1">
+<h1>Death Rates</h1>
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Year &gt; 2019, Type == &quot;Unweighted&quot;) %&gt;%
+  group_by(Area, State.Abbreviation, Date) %&gt;%
+  summarise(Number.of.Deaths = sum(Number.of.Deaths, na.rm = T)) %&gt;%
+  ungroup() %&gt;% 
+  left_join(pp, by = &quot;Area&quot;) %&gt;%
+  mutate(Death.Rate = 1000000 * Number.of.Deaths / Population)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Death.Rate)) +
+  geom_line(color = &quot;darkred&quot;, alpha = 0.8) +
+  facet_wrap(Area ~ .) +
+  scale_color_manual(values = agData_Colors) +
+  theme_agData() +
+  labs(x = NULL, y = &quot;Deaths per million people per week&quot;, 
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
+ggsave(&quot;usa_deaths_4_01.png&quot;, mp, width = 12, height = 12)</code></pre>
+<p><img src="usa_deaths_4_01.png" /></p>
+<hr />
+</div>
+<div id="north-vs-south-dakota" class="section level1">
+<h1>North vs South Dakota</h1>
+<pre class="r"><code># Prep data
+x1 &lt;- xx %&gt;% filter(State.Abbreviation %in% c(&quot;SD&quot;,&quot;ND&quot;))
+# Plot
+mp &lt;- ggplot(x1, aes(x = Date, y = Death.Rate, color = Area)) +
+  geom_line() +
+  scale_color_manual(values = c(&quot;darkblue&quot;,&quot;steelblue&quot;)) +
+  theme_agData() +
+  labs(x = NULL, y = &quot;Deaths per million people per week&quot;, 
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
+ggsave(&quot;usa_deaths_4_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_4_02.png" /></p>
+<hr />
+</div>
+<div id="california-vs-texas" class="section level1">
+<h1>California vs Texas</h1>
+<pre class="r"><code># Prep data
+x1 &lt;- xx %&gt;% filter(State.Abbreviation %in% c(&quot;CA&quot;,&quot;TX&quot;))
+# Plot
+mp &lt;- ggplot(x1, aes(x = Date, y = Death.Rate, color = Area)) +
+  geom_line() +
+  scale_color_manual(values = c(&quot;darkred&quot;,&quot;darkblue&quot;)) +
+  theme_agData() +
+  labs(x = NULL, y = &quot;Deaths per million people per week&quot;, 
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
+ggsave(&quot;usa_deaths_4_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_4_03.png" /></p>
+<hr />
+</div>
+<div id="new-york-vs-florida" class="section level1">
+<h1>New York vs Florida</h1>
+<pre class="r"><code># Prep data
+x1 &lt;- xx %&gt;% filter(State.Abbreviation %in% c(&quot;FL&quot;,&quot;NY&quot;))
+# Plot
+mp &lt;- ggplot(x1, aes(x = Date, y = Death.Rate, color = Area)) +
+  geom_line() +
+  scale_color_manual(values = c(&quot;darkred&quot;,&quot;darkorange&quot;)) +
+  theme_agData() +
+  labs(x = NULL, y = &quot;Deaths per million people per week&quot;, 
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
+ggsave(&quot;usa_deaths_4_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_4_04.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.netlify.com/">www.dblogr.com/</a></p>
 </div>

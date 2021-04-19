@@ -82,7 +82,7 @@ d1 <- read.csv("1310078301_databaseLoadingData.csv") %>%
          Month = as.factor(substr(Date, 6, 7)),
          YearGroup = ifelse(Year < "2020", "pre-2020", Year),
          YearGroup = factor(YearGroup, levels = c("pre-2020", "2020")),
-         JulianDate = lubridate::yday(Date),
+         JulianDay = lubridate::yday(Date),
          Area = gsub(", place of occurrence", "", Area),
          Area = factor(Area, levels = areas)) 
 d2 <- read.csv("1310076801_databaseLoadingData.csv") %>% 
@@ -93,7 +93,7 @@ d2 <- read.csv("1310076801_databaseLoadingData.csv") %>%
          Month = as.factor(substr(Date, 6, 7)),
          YearGroup = ifelse(Year < "2020", "pre-2020", Year),
          YearGroup = factor(YearGroup, levels = c("pre-2020", "2020")),
-         JulianDate = lubridate::yday(Date),
+         JulianDay = lubridate::yday(Date),
          Area = gsub(", place of occurrence", "", Area),
          Area = factor(Area, levels = areas)) %>%
   filter(Date <= cutoffDate)
@@ -193,7 +193,7 @@ mp <- deathPlot1("Alberta")
 ggsave("canada_deaths_1_05.png", mp, width = 8, height = 4)
 ```
 
-![](canada_deaths_1_01.png)
+![](canada_deaths_1_05.png)
 
 ---
 
@@ -227,7 +227,7 @@ deathPlot2 <- function(areas) {
   # Prep data
   xx <- d1 %>% filter(Area %in% areas)
   # Plot
-  ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = YearGroup, alpha = YearGroup)) +
+  ggplot(xx, aes(x = JulianDay, y = Value, group = Year, color = YearGroup, alpha = YearGroup)) +
     geom_line() +
     facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
     scale_color_manual(name = NULL, values = c("darkgreen","darkred")) +
@@ -241,7 +241,7 @@ deathPlot2 <- function(areas) {
 ```{r echo = F, eval = F}
 # Prep data
   xx <- d1 %>% mutate(Year = as.numeric(as.character(Year))) %>%
-    select(Date, Year, JulianDate, YearGroup, Area, Value) %>%
+    select(Date, Year, JulianDay, YearGroup, Area, Value) %>%
     arrange(Area, Date) %>%
     spread(Area, Value)
   for(i in 5:ncol(xx)) {
@@ -253,13 +253,13 @@ deathPlot2 <- function(areas) {
     mutate(Area = factor(Area, levels = areas)) %>%
     filter(Area %in% areas)
   # Plot
-  mp2 <- ggplot(xx, aes(x = JulianDate, y = Value / 1000, group = Year, color = YearGroup, alpha = YearGroup)) +
+  mp2 <- ggplot(xx, aes(x = JulianDay, y = Value / 1000, group = Year, color = YearGroup, alpha = YearGroup)) +
     geom_line() +
     facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
     scale_color_manual(name = NULL, values = c("darkgreen","darkred")) +
     scale_alpha_manual(name = NULL, values = c(0.5,1)) +
     theme_agData(legend.position = "bottom") +
-    labs(y = "Thousand Deaths",
+    labs(y = "Thousand Deaths", x = "Julian Day",
          caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
   ggarrange(mp1, mp2, common.legend = T, legend = "bottom", align = "h")
 ```
@@ -349,13 +349,13 @@ deathPlot3 <- function(areas = "Canada") {
   # Prep data
   xx <- d2 %>% filter(Area %in% areas, Sex == "Both sexes", Age != "all ages")
   # Plot
-  ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = YearGroup, alpha = YearGroup)) +
+  ggplot(xx, aes(x = JulianDay, y = Value, group = Year, color = YearGroup, alpha = YearGroup)) +
     geom_line() +
     facet_grid(Area ~ Age, scales = "free_y") +
     scale_color_manual(name = NULL, values = c("darkgreen","darkred")) +
     scale_alpha_manual(name = NULL, values = c(0.3,1)) +
     theme_agData(legend.position = "bottom") +
-    labs(y = "Deaths Per Week",
+    labs(y = "Deaths Per Week", x = "Julian Day",
          caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
 }
 ```
@@ -458,13 +458,13 @@ ggsave("canada_deaths_3_07.png", mp, width = 8, height = 4)
 # Prep data
 xx <- d2 %>% filter(Area %in% "Canada", Sex != "Both sexes", Year == 2020)
 # Plot
-mp <- ggplot(xx, aes(x = JulianDate, y = Value, group = Sex, color = Sex)) +
+mp <- ggplot(xx, aes(x = JulianDay, y = Value, group = Sex, color = Sex)) +
   geom_line() +
   facet_grid(Area ~ Age) +
   scale_color_manual(name = NULL, values = c("darkred","darkgreen")) +
   scale_alpha_manual(name = NULL, values = c(0.5,1)) +
   theme_agData(legend.position = "top") +
-  labs(y = "Deaths Per Week",
+  labs(y = "Deaths Per Week", x = "Julian Day",
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
 ggsave("canada_deaths_4_01.png", mp, width = 8, height = 4)
 ```
@@ -580,6 +580,34 @@ ggsave("canada_deaths_5_05.png", mp, width = 6, height = 4)
 
 ---
 
+## Select Provinces 
+
+```{r}
+# Prep data
+areas <- c("Ontario", "Quebec", "British Columbia", "Alberta")
+colors <- c("darkblue", "steelblue", "darkorange", "darkred")
+p1 <- pp %>% filter(Year == 2020)
+xx <- d1 %>% 
+  filter(Year == 2020, Area %in% areas) %>%
+  left_join(p1 %>% select(-Year), by = "Area") %>%
+  mutate(Death.Rate = 1000 * Value / Population,
+         Area = factor(Area, levels = areas))
+# Plot
+mp <- ggplot(xx, aes(x = JulianDay, y = Death.Rate, color = Area)) +
+  geom_line() +
+  scale_color_manual(values = colors) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Death Rate", 
+       y = "Deaths per 1000 people per week", x = "Julian Day",
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+ggsave("canada_deaths_5_06.png", mp, width = 6, height = 4)
+```
+
+![](canada_deaths_5_06.png)
+
+
+---
+
 # 2019 vs 2020
 
 ```{r}
@@ -589,7 +617,7 @@ deathPlot4 <- function(areas = "Canada", title = areas) {
   xx <- d2 %>% 
     filter(Area %in% areas, Year %in% 2019:2020, 
            Sex == "Both sexes", Age != "all ages",
-           !is.na(Value), JulianDate < cutoffJD) %>%
+           !is.na(Value), JulianDay < cutoffJD) %>%
     group_by(Age, Year) %>% 
     summarise(Value = sum(Value)) %>%
     ungroup() %>%
@@ -711,7 +739,7 @@ deathPlot5 <- function(areas = "Canada", title = areas) {
   xx <- d2 %>% 
     filter(Area %in% areas, Year %in% 2019:2020, 
            Sex == "Both sexes", Age != "all ages",
-           !is.na(Value), JulianDate < cutoffJD) %>%
+           !is.na(Value), JulianDay < cutoffJD) %>%
     group_by(Age, Year) %>% 
     summarise(Value = sum(Value)) %>%
     ungroup() %>%
