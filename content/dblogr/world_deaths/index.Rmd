@@ -38,9 +38,15 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 https://www.macrotrends.net/countries/WLD/world/death-rate
 
+[**< Data Set World >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_world_data.csv)
+
 https://www.bmj.com/content/373/bmj.n896
 
+[**< Data Set UK >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_uk_data.csv)
+
 https://ourworldindata.org/excess-mortality-covid
+
+[**< Data Set Countries >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/world_mortality.csv)
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")

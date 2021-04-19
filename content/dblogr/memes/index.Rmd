@@ -9,7 +9,7 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-url_custom: 
+links: 
   - icon_pack: fas
     icon: code
     name: R Script
