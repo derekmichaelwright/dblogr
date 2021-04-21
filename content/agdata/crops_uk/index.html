@@ -1,0 +1,43 @@
+---
+title: "UK Crop Production"
+subtitle: "Graphs for crop production in the UK"
+summary:  "Graphs for crop production in the UK"
+date: "2021-04-20"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crops_uk/)"
+tags: [ "agData", "Regions", "Wheat" ]
+weight: 4
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/agdata/crops_uk.html
+---
+
+
+
+<hr />
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<hr />
+<div id="section" class="section level1">
+<h1></h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_UK_Yields
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
+  geom_line(alpha = 0.1) +
+  geom_smooth(method = &quot;loess&quot;, se = F) +
+  scale_x_continuous(breaks = seq(1300, 2000, by = 100)) +
+  scale_color_manual(values = agData_Colors) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Long Term Grain Yield in the UK&quot;, 
+       y = &quot;Tonnes / Hectare&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/&quot;)
+ggsave(&quot;crops_uk_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="crops_uk_01.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

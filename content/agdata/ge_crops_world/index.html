@@ -2,8 +2,8 @@
 title: "Genetically Engineered Crop Production"
 subtitle: "Graphs of GE crop production using ISAAA data"
 summary:  "Graphs of GE crop production using ISAAA data"
-date: "2021-04-09"
-author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/ge_crops/)"
+date: "2021-04-20"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/ge_crops_world/)"
 tags: [ "agData", "GE Crops" ]
 weight: 3
 codefolding_show: "hide"
@@ -13,7 +13,7 @@ links:
   - icon_pack: fas
     icon: code
     name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/ge_crops.html
+    url: https://derekmichaelwright.github.io/htmls/agdata/ge_crops_world.html
 ---
 
 
@@ -38,8 +38,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
   labs(title = &quot;Global Area of GE Crops&quot;, 
        y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
-ggsave(&quot;ge_crops_01.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="ge_crops_01.png" /></p>
+ggsave(&quot;ge_crops_world_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="ge_crops_world_01.png" /></p>
 <hr />
 </div>
 <div id="year-to-year-change" class="section level2">
@@ -62,8 +62,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value)) +
   labs(title = &quot;Global Area of GE Crops&quot;, 
        y = NULL, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
-ggsave(&quot;ge_crops_02.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="ge_crops_02.png" /></p>
+ggsave(&quot;ge_crops_world_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="ge_crops_world_02.png" /></p>
 <hr />
 </div>
 </div>
@@ -83,8 +83,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   labs(title = &quot;Global Area of GE Crops&quot;, 
        y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA/&quot;)
-ggsave(&quot;ge_crops_03.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="ge_crops_03.png" /></p>
+ggsave(&quot;ge_crops_world_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="ge_crops_world_03.png" /></p>
 <hr />
 </div>
 <div id="percentage" class="section level2">
@@ -101,8 +101,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   labs(title = &quot;Global Area of GE Crops&quot;, 
        y = &quot;Percent&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
-ggsave(&quot;ge_crops_04.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="ge_crops_04.png" /></p>
+ggsave(&quot;ge_crops_world_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="ge_crops_world_04.png" /></p>
 <hr />
 </div>
 </div>
@@ -127,8 +127,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
   labs(title = &quot;Global Area of GE Crops&quot;, 
        y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
-ggsave(&quot;ge_crops_05.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="ge_crops_05.png" /></p>
+ggsave(&quot;ge_crops_world_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="ge_crops_world_05.png" /></p>
 <hr />
 </div>
 <div id="percentage-1" class="section level2">
@@ -149,8 +149,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(title = &quot;Percent of GE Area&quot;, y = &quot;Percent&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
-ggsave(&quot;ge_crops_06.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="ge_crops_06.png" /></p>
+ggsave(&quot;ge_crops_world_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="ge_crops_world_06.png" /></p>
 <hr />
 </div>
 <div id="year-to-year-change-1" class="section level2">
@@ -173,8 +173,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Crop)) +
   labs(title = &quot;Year to Year Change in GE Crop Hectares&quot;, 
        y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
-ggsave(&quot;ge_crops_07.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="ge_crops_07.png" /></p>
+ggsave(&quot;ge_crops_world_07.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="ge_crops_world_07.png" /></p>
 <hr />
 </div>
 <div id="year-to-year-percentage-change" class="section level2">
@@ -197,8 +197,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value, fill = Crop)) +
   labs(title = &quot;Percent change of GE Crops Year to Year&quot;, 
        y = &quot;Percent&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
-ggsave(&quot;ge_crops_08.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="ge_crops_08.png" /></p>
+ggsave(&quot;ge_crops_world_08.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="ge_crops_world_08.png" /></p>
 <hr />
 </div>
 </div>
@@ -222,8 +222,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(title = &quot;Adoption of GE Crops&quot;, y = &quot;Percent&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
-ggsave(&quot;ge_crops_09.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="ge_crops_09.png" /></p>
+ggsave(&quot;ge_crops_world_09.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="ge_crops_world_09.png" /></p>
 <hr />
 </div>
 <div id="area-2" class="section level2">
@@ -242,8 +242,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(title = &quot;Adoption of GE Crops&quot;, y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
-ggsave(&quot;ge_crops_10.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="ge_crops_10.png" /></p>
+ggsave(&quot;ge_crops_world_10.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="ge_crops_world_10.png" /></p>
 <hr />
 </div>
 <div id="top-countries" class="section level2">
@@ -270,8 +270,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   theme_agData() +
   labs(title = &quot;Area of GE Crops&quot;, y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
-ggsave(&quot;ge_crops_11.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="ge_crops_11.png" /></p>
+ggsave(&quot;ge_crops_world_11.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="ge_crops_world_11.png" /></p>
 <hr />
 </div>
 <div id="all-countries" class="section level2">
@@ -289,8 +289,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;Area of GE Crop by Country&quot;, y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
-ggsave(&quot;ge_crops_12.png&quot;, mp, width = 20, height = 8)</code></pre>
-<p><img src="ge_crops_12.png" /></p>
+ggsave(&quot;ge_crops_world_12.png&quot;, mp, width = 20, height = 8)</code></pre>
+<p><img src="ge_crops_world_12.png" /></p>
 <hr />
 </div>
 </div>
@@ -306,8 +306,8 @@ mp &lt;- ggplot(agData_ISAAA_Value, aes(x = Year, y = Value)) +
   theme_agData() +
   labs(title = &quot;Value of GE Seed&quot;, y = &quot;Billion USD&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
-ggsave(&quot;ge_crops_13.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="ge_crops_13.png" /></p>
+ggsave(&quot;ge_crops_world_13.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="ge_crops_world_13.png" /></p>
 <hr />
 </div>
 <div id="regulations-of-new-breeding-technologies" class="section level1">

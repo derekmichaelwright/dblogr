@@ -3,7 +3,7 @@ title: "Genetically Engineered Crop Production"
 subtitle: "Graphs of GE crop production using ISAAA data"
 summary:  "Graphs of GE crop production using ISAAA data"
 date: "`r Sys.Date()`"
-author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/ge_crops/)"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/ge_crops_world/)"
 tags: [ "agData", "GE Crops" ]
 weight: 3
 codefolding_show: "hide"
@@ -13,7 +13,7 @@ links:
   - icon_pack: fas
     icon: code
     name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/ge_crops.html
+    url: https://derekmichaelwright.github.io/htmls/agdata/ge_crops_world.html
 ---
 
 ```{r setup, include = FALSE}
@@ -46,10 +46,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
   labs(title = "Global Area of GE Crops", 
        y = "Million Hectares", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
-ggsave("ge_crops_01.png", mp, width = 6, height = 4)
+ggsave("ge_crops_world_01.png", mp, width = 6, height = 4)
 ```
 
-![](ge_crops_01.png)
+![](ge_crops_world_01.png)
 
 ---
 
@@ -74,10 +74,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value)) +
   labs(title = "Global Area of GE Crops", 
        y = NULL, x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
-ggsave("ge_crops_02.png", mp, width = 6, height = 4)
+ggsave("ge_crops_world_02.png", mp, width = 6, height = 4)
 ```
 
-![](ge_crops_02.png)
+![](ge_crops_world_02.png)
 
 ---
 
@@ -98,14 +98,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   labs(title = "Global Area of GE Crops", 
        y = "Million Hectares", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA/")
-ggsave("ge_crops_03.png", mp, width = 6, height = 4)
+ggsave("ge_crops_world_03.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F}
 ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
-![](ge_crops_03.png)
+![](ge_crops_world_03.png)
 
 ---
 
@@ -124,10 +124,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   labs(title = "Global Area of GE Crops", 
        y = "Percent", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
-ggsave("ge_crops_04.png", mp, width = 6, height = 4)
+ggsave("ge_crops_world_04.png", mp, width = 6, height = 4)
 ```
 
-![](ge_crops_04.png)
+![](ge_crops_world_04.png)
 
 ---
 
@@ -153,10 +153,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
   labs(title = "Global Area of GE Crops", 
        y = "Million Hectares", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
-ggsave("ge_crops_05.png", mp, width = 6, height = 4)
+ggsave("ge_crops_world_05.png", mp, width = 6, height = 4)
 ```
 
-![](ge_crops_05.png)
+![](ge_crops_world_05.png)
 
 ---
 
@@ -179,10 +179,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Percent of GE Area", y = "Percent", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
-ggsave("ge_crops_06.png", mp, width = 6, height = 4)
+ggsave("ge_crops_world_06.png", mp, width = 6, height = 4)
 ```
 
-![](ge_crops_06.png)
+![](ge_crops_world_06.png)
 
 ---
 
@@ -207,10 +207,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Crop)) +
   labs(title = "Year to Year Change in GE Crop Hectares", 
        y = "Million Hectares", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
-ggsave("ge_crops_07.png", mp, width = 6, height = 4)
+ggsave("ge_crops_world_07.png", mp, width = 6, height = 4)
 ```
 
-![](ge_crops_07.png)
+![](ge_crops_world_07.png)
 
 ---
 
@@ -235,10 +235,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Crop)) +
   labs(title = "Percent change of GE Crops Year to Year", 
        y = "Percent", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
-ggsave("ge_crops_08.png", mp, width = 6, height = 4)
+ggsave("ge_crops_world_08.png", mp, width = 6, height = 4)
 ```
 
-![](ge_crops_08.png)
+![](ge_crops_world_08.png)
 
 ---
 
@@ -263,10 +263,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Adoption of GE Crops", y = "Percent", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
-ggsave("ge_crops_09.png", mp, width = 6, height = 4)
+ggsave("ge_crops_world_09.png", mp, width = 6, height = 4)
 ```
 
-![](ge_crops_09.png)
+![](ge_crops_world_09.png)
 
 ---
 
@@ -287,10 +287,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Adoption of GE Crops", y = "Million Hectares", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
-ggsave("ge_crops_10.png", mp, width = 6, height = 4)
+ggsave("ge_crops_world_10.png", mp, width = 6, height = 4)
 ```
 
-![](ge_crops_10.png)
+![](ge_crops_world_10.png)
 
 ---
 
@@ -319,10 +319,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   theme_agData() +
   labs(title = "Area of GE Crops", y = "Million Hectares", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
-ggsave("ge_crops_11.png", mp, width = 6, height = 4)
+ggsave("ge_crops_world_11.png", mp, width = 6, height = 4)
 ```
 
-![](ge_crops_11.png)
+![](ge_crops_world_11.png)
 
 ---
 
@@ -342,10 +342,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Area of GE Crop by Country", y = "Million Hectares", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
-ggsave("ge_crops_12.png", mp, width = 20, height = 8)
+ggsave("ge_crops_world_12.png", mp, width = 20, height = 8)
 ```
 
-![](ge_crops_12.png)
+![](ge_crops_world_12.png)
 
 ---
 
@@ -362,10 +362,10 @@ mp <- ggplot(agData_ISAAA_Value, aes(x = Year, y = Value)) +
   theme_agData() +
   labs(title = "Value of GE Seed", y = "Billion USD", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
-ggsave("ge_crops_13.png", mp, width = 6, height = 4)
+ggsave("ge_crops_world_13.png", mp, width = 6, height = 4)
 ```
 
-![](ge_crops_13.png)
+![](ge_crops_world_13.png)
 
 ---
 
@@ -389,7 +389,7 @@ mp <- ggplot(xx, aes(x = Limiting.Factor, y = Percent, label = PercentLabel)) +
   coord_flip() +
   labs(title = "Regulatory Barriers for NBTs", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ?") 
-ggsave("ge_crops_14.png", mp, width = 6, height = 4)
+ggsave("ge_crops_world_14.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F, eval = F}
