@@ -34,8 +34,8 @@ subtitle = ""
     tag  = "Literature"
     
   [[content.filter_button]]
-    name = "Tutorials"
-    tag  = "Tutorials"
+    name = "Tutorial"
+    tag  = "Tutorial"
     
   [[content.filter_button]]
     name = "AGILE"
