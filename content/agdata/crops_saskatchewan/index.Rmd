@@ -220,4 +220,33 @@ ggsave("crops_saskatchewan_06.png", mp, width = 6, height = 4)
 
 ---
 
+```{r}
+# Prep data
+x1 <- agData_STATCAN_Crops %>% 
+  filter(Area == "Saskatchewan", Measurement == "Production",
+         Crop %in% c("Lentils","Peas","Beans","Chickpeas")) %>%
+  group_by(Year) %>% 
+  summarise(Value = sum(Value)) %>%
+  mutate(Crop = "Fake Meat Protein")
+x2 <- agData_STATCAN_Crops %>% 
+  filter(Area == "Saskatchewan", Measurement == "Production",
+         Crop == "Canola") %>%
+  mutate(Crop = "Evil Oilseeds")
+xx <- bind_rows(x1, x2)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
+  geom_line(size = 1.5, alpha = 0.8) +
+  facet_wrap("Saskatchewan" ~ .) +
+  scale_color_manual(name = NULL, values = c("darkgoldenrod2","darkgreen")) +
+  scale_x_continuous(breaks = seq(1910,2020,10)) +
+  theme_agData(legend.position = "bottom") +
+  labs(y = "Million Tonnes", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+ggsave("crops_saskatchewan_07.png", mp, width = 6, height = 4)
+```
+
+![](crops_saskatchewan_07.png)
+
+---
+
 &copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

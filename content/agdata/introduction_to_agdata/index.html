@@ -2,7 +2,7 @@
 title: "Introduction to agData"
 subtitle: "An R package with FAO, USDA, STATCAN and ISAAA data"
 summary:  "An R package with FAO, USDA, STATCAN and ISAAA data"
-date: "2021-04-09"
+date: "2021-04-25"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agData/introduction_to_agdata/)"
 tags: [ "agData", "Introduction", "Featured" ]
 weight: 1
@@ -589,18 +589,18 @@ ggsave(&quot;Intro_agData_STATCAN_Beehives.png&quot;, mp, width = 6, height = 4)
 xx &lt;- agData_STATCAN_Crops %&gt;% as_tibble()
 xx</code></pre>
 <pre><code>## # A tibble: 58,105 x 6
-##    Area    Year Crop            Measurement Unit    Value
-##    &lt;fct&gt;  &lt;int&gt; &lt;chr&gt;           &lt;fct&gt;       &lt;chr&gt;   &lt;dbl&gt;
-##  1 Canada  1908 Barley          Seeded area ha     707100
-##  2 Canada  1908 Beans           Seeded area ha      24200
-##  3 Canada  1908 Buckwheat       Seeded area ha     117950
-##  4 Canada  1908 Corn for grain  Seeded area ha     147600
-##  5 Canada  1908 Corn for silage Seeded area ha     105100
-##  6 Canada  1908 Flaxseed        Seeded area ha      56000
-##  7 Canada  1908 Mixed grains    Seeded area ha     235550
-##  8 Canada  1908 Oats            Seeded area ha    3200550
-##  9 Canada  1908 Peas            Seeded area ha     167050
-## 10 Canada  1908 Rye             Seeded area ha      41281
+##    Area                  Year Crop   Measurement Unit     Value
+##    &lt;fct&gt;                &lt;int&gt; &lt;chr&gt;  &lt;fct&gt;       &lt;chr&gt;    &lt;dbl&gt;
+##  1 Canada                1908 Barley Seeded area ha      707100
+##  2 Canada                1908 Barley Yield       kg/ha     1440
+##  3 Canada                1908 Barley Production  tonnes 1016850
+##  4 Maritime provinces    1908 Barley Seeded area ha        7700
+##  5 Maritime provinces    1908 Barley Yield       kg/ha     1525
+##  6 Maritime provinces    1908 Barley Production  tonnes   11750
+##  7 Prince Edward Island  1908 Barley Seeded area ha        2400
+##  8 Prince Edward Island  1908 Barley Yield       kg/ha     1665
+##  9 Prince Edward Island  1908 Barley Production  tonnes    4000
+## 10 Nova Scotia           1908 Barley Seeded area ha        3900
 ## # ... with 58,095 more rows</code></pre>
 <pre class="r"><code># List Measurements
 xx %&gt;% distinct(Measurement, Unit)</code></pre>
@@ -610,23 +610,23 @@ xx %&gt;% distinct(Measurement, Unit)</code></pre>
 ## 1 Seeded area        ha               
 ## 2 Yield              kg/ha            
 ## 3 Production         tonnes           
-## 4 Average farm price dollars per tonne
-## 5 Harvested area     ha</code></pre>
+## 4 Harvested area     ha               
+## 5 Average farm price dollars per tonne</code></pre>
 <pre class="r"><code># List Crops
 xx %&gt;% distinct(Crop)</code></pre>
 <pre><code>## # A tibble: 28 x 1
-##    Crop           
-##    &lt;chr&gt;          
-##  1 Barley         
-##  2 Beans          
-##  3 Buckwheat      
-##  4 Corn for grain 
-##  5 Corn for silage
-##  6 Flaxseed       
-##  7 Mixed grains   
-##  8 Oats           
-##  9 Peas           
-## 10 Rye            
+##    Crop          
+##    &lt;chr&gt;         
+##  1 Barley        
+##  2 Beans         
+##  3 Borage seed   
+##  4 Buckwheat     
+##  5 Canary seed   
+##  6 Canola        
+##  7 Caraway seed  
+##  8 Chick peas    
+##  9 Coriander seed
+## 10 Corn for grain
 ## # ... with 18 more rows</code></pre>
 <pre class="r"><code># Prep data for an example plot
 xx &lt;- xx %&gt;% filter(Area == &quot;Saskatchewan&quot;, Crop == &quot;Canola&quot;, Measurement == &quot;Production&quot;)
@@ -1160,7 +1160,7 @@ ggsave(&quot;Intro_agData_ISAAA_Area.png&quot;, mp, width = 6, height = 4)</code
 <pre class="r"><code># Get Data
 xx &lt;- agData_ISAAA_Country %&gt;% as_tibble()
 xx</code></pre>
-<pre><code>## # A tibble: 1,758 x 5
+<pre><code>## # A tibble: 1,787 x 5
 ##    Area       Year Measurement Unit       Value
 ##    &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;dbl&gt;
 ##  1 USA        1996 Area        Hectares 1500000
@@ -1173,10 +1173,10 @@ xx</code></pre>
 ##  8 Argentina  1997 Area        Hectares 1400000
 ##  9 Canada     1997 Area        Hectares 1300000
 ## 10 Australia  1997 Area        Hectares  100000
-## # ... with 1,748 more rows</code></pre>
+## # ... with 1,777 more rows</code></pre>
 <pre class="r"><code># List Area
 xx %&gt;% distinct(Area)</code></pre>
-<pre><code>## # A tibble: 39 x 1
+<pre><code>## # A tibble: 43 x 1
 ##    Area        
 ##    &lt;chr&gt;       
 ##  1 USA         
@@ -1189,7 +1189,7 @@ xx %&gt;% distinct(Area)</code></pre>
 ##  8 France      
 ##  9 South Africa
 ## 10 Portugal    
-## # ... with 29 more rows</code></pre>
+## # ... with 33 more rows</code></pre>
 <pre class="r"><code># Prep data for an example plot
 xx &lt;- xx %&gt;% filter(Area == &quot;Canada&quot;, Measurement == &quot;Area&quot;)
 # Plot
