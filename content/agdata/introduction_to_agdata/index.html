@@ -2,7 +2,7 @@
 title: "Introduction to agData"
 subtitle: "An R package with FAO, USDA, STATCAN and ISAAA data"
 summary:  "An R package with FAO, USDA, STATCAN and ISAAA data"
-date: "2021-04-25"
+date: "2021-05-04"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agData/introduction_to_agdata/)"
 tags: [ "agData", "Introduction", "Featured" ]
 weight: 1
@@ -68,9 +68,8 @@ links:
 <li><a href="#agdata_statcan_farmland_use">agData_STATCAN_FarmLand_Use</a></li>
 <li><a href="#agdata_statcan_livestock">agData_STATCAN_Livestock</a></li>
 <li><a href="#agdata_statcan_population">agData_STATCAN_Population</a></li>
-<li><a href="#agdata_statcan_population_AgeGender">agData_STATCAN_Population_AgeGender</a></li>
-<li><a href="#agdata_statcan_population_Dynamics">agData_STATCAN_Population_Dynamics</a></li>
 <li><a href="#agdata_usda_crops">agData_USDA_Crops</a></li>
+<li><a href="#agdata_usda_ge_crops">agData_USDA_GE_Crops</a></li>
 <li><a href="#agdata_usda_tfp">agData_USDA_TFP</a></li>
 <li><a href="#agdata_isaaa_area">agData_ISAAA_Area</a></li>
 <li><a href="#agdata_isaaa_country">agData_ISAAA_Country</a></li>
@@ -78,6 +77,7 @@ links:
 <li><a href="#agdata_isaaa_croppercent">agData_ISAAA_CropPercent</a></li>
 <li><a href="#agdata_isaaa_dvddvg">agData_ISAAA_DVDDVG</a></li>
 <li><a href="#agdata_isaaa_value">agData_ISAAA_Value</a></li>
+<li><a href="#agdata_uk_yields">agData_UK_Yields</a></li>
 <li><a href="#agdata_maizecontest">agData_MaizeContest</a></li>
 <li><a href="#agdata_peopleinag">agData_PeopleInAg</a></li>
 <li><a href="#agdata_popfert">agData_PopFert</a></li>
@@ -927,84 +927,6 @@ ggsave(&quot;Intro_agData_agData_STATCAN_Population.png&quot;, mp, width = 6, he
 <p><img src="Intro_agData_agData_STATCAN_Population.png" /></p>
 <hr />
 </div>
-<div id="agdata_statcan_population_agegender" class="section level1">
-<h1>agData_STATCAN_Population_AgeGender</h1>
-<pre class="r"><code># Get Data
-xx &lt;- agData_STATCAN_Population_AgeGender %&gt;% as_tibble()
-xx</code></pre>
-<pre><code>## # A tibble: 265,860 x 6
-##    Area    Year Sex        Age          Unit       Value
-##    &lt;fct&gt;  &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt;
-##  1 Canada  1971 Both sexes All ages     Persons 21962032
-##  2 Canada  1971 Both sexes 0 to 4 years Persons  1836149
-##  3 Canada  1971 Both sexes 0 years      Persons   360077
-##  4 Canada  1971 Both sexes 1 year       Persons   364890
-##  5 Canada  1971 Both sexes 2 years      Persons   359388
-##  6 Canada  1971 Both sexes 3 years      Persons   363410
-##  7 Canada  1971 Both sexes 4 years      Persons   388384
-##  8 Canada  1971 Both sexes 5 to 9 years Persons  2267794
-##  9 Canada  1971 Both sexes 5 years      Persons   413863
-## 10 Canada  1971 Both sexes 6 years      Persons   447784
-## # ... with 265,850 more rows</code></pre>
-<pre class="r"><code># Prep data for an example plot
-xx &lt;- xx %&gt;% 
-  filter(Area == &quot;Saskatchewan&quot;, Sex %in% c(&quot;Males&quot;,&quot;Females&quot;),
-         Age == &quot;0 to 17 years&quot;)
-# Plot
-mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000, color = Sex)) + 
-  geom_line() + 
-  theme_agData() +
-  labs(title = &quot;Population under 18 in Saskatchewan, Canada&quot;, 
-       y = &quot;Thousand People&quot;, x = NULL)
-ggsave(&quot;Intro_agData_STATCAN_Population_AgeGender.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="Intro_agData_STATCAN_Population_AgeGender.png" /></p>
-<hr />
-</div>
-<div id="agdata_statcan_population_dynamics" class="section level1">
-<h1>agData_STATCAN_Population_Dynamics</h1>
-<pre class="r"><code># Get Data
-xx &lt;- agData_STATCAN_Population_Dynamics %&gt;% as_tibble()
-xx</code></pre>
-<pre><code>## # A tibble: 5,665 x 6
-##    Area                    Year Year2     Measurement              Unit    Value
-##    &lt;fct&gt;                  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;                    &lt;chr&gt;   &lt;int&gt;
-##  1 Canada                  1971 1971/1972 Births                   Perso~ 351256
-##  2 Canada                  1971 1971/1972 Deaths                   Perso~ 159533
-##  3 Canada                  1971 1971/1972 Immigrants               Perso~ 117036
-##  4 Canada                  1971 1971/1972 Emigrants                Perso~  66034
-##  5 Canada                  1971 1971/1972 Returning emigrants      Perso~  39457
-##  6 Canada                  1971 1971/1972 Net non-permanent resid~ Perso~   2997
-##  7 Canada                  1971 1971/1972 Residual deviation       Perso~  28748
-##  8 Newfoundland and Labr~  1971 1971/1972 Births                   Perso~  12746
-##  9 Newfoundland and Labr~  1971 1971/1972 Deaths                   Perso~   3269
-## 10 Newfoundland and Labr~  1971 1971/1972 Immigrants               Perso~    729
-## # ... with 5,655 more rows</code></pre>
-<pre class="r"><code># List Measurements
-xx %&gt;% distinct(Measurement)</code></pre>
-<pre><code>## # A tibble: 9 x 1
-##   Measurement                  
-##   &lt;chr&gt;                        
-## 1 Births                       
-## 2 Deaths                       
-## 3 Immigrants                   
-## 4 Emigrants                    
-## 5 Returning emigrants          
-## 6 Net non-permanent residents  
-## 7 Residual deviation           
-## 8 Net interprovincial migration
-## 9 Net temporary emigrants</code></pre>
-<pre class="r"><code># Prep data for an example plot
-xx &lt;- xx %&gt;% filter(Area == &quot;Saskatchewan&quot;, Measurement %in% c(&quot;Births&quot;,&quot;Deaths&quot;))
-# Plot
-mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement)) + 
-  geom_line() + 
-  theme_agData() +
-  labs(title = &quot;Population Dynamics in Saskatchewan, Canada&quot;, 
-       y = &quot;Million People&quot;, x = NULL)
-ggsave(&quot;Intro_agData_STATCAN_Population_Dynamics.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="Intro_agData_STATCAN_Population_Dynamics.png" /></p>
-<hr />
-</div>
 <div id="agdata_usda_crops" class="section level1">
 <h1>agData_USDA_Crops</h1>
 <pre class="r"><code># Get Data
@@ -1075,6 +997,93 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Area)) +
        y = &quot;Million Tonnes&quot;, x = NULL)
 ggsave(&quot;Intro_agData_USDA_Crops.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="Intro_agData_USDA_Crops.png" /></p>
+<hr />
+</div>
+<div id="agdata_usda_ge_crops" class="section level1">
+<h1>agData_USDA_GE_Crops</h1>
+<pre class="r"><code># Get Data
+xx &lt;- agData_USDA_GE_Crops %&gt;% as_tibble()
+xx</code></pre>
+<pre><code>## # A tibble: 2,832 x 6
+##    Area       Year Crop                   Measurement        Unit          Value
+##    &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;                  &lt;chr&gt;              &lt;chr&gt;         &lt;dbl&gt;
+##  1 Illinois   2000 Genetically engineere~ Insect-resistant ~ Percent of c~    13
+##  2 Indiana    2000 Genetically engineere~ Insect-resistant ~ Percent of c~     7
+##  3 Iowa       2000 Genetically engineere~ Insect-resistant ~ Percent of c~    23
+##  4 Kansas     2000 Genetically engineere~ Insect-resistant ~ Percent of c~    25
+##  5 Michigan   2000 Genetically engineere~ Insect-resistant ~ Percent of c~     8
+##  6 Minnesota  2000 Genetically engineere~ Insect-resistant ~ Percent of c~    28
+##  7 Missouri   2000 Genetically engineere~ Insect-resistant ~ Percent of c~    20
+##  8 Nebraska   2000 Genetically engineere~ Insect-resistant ~ Percent of c~    24
+##  9 Ohio       2000 Genetically engineere~ Insect-resistant ~ Percent of c~     6
+## 10 South Da~  2000 Genetically engineere~ Insect-resistant ~ Percent of c~    35
+## # ... with 2,822 more rows</code></pre>
+<pre class="r"><code># List Measurements
+xx %&gt;% distinct(Measurement, Unit)</code></pre>
+<pre><code>## # A tibble: 10 x 2
+##    Measurement                Unit                            
+##    &lt;chr&gt;                      &lt;chr&gt;                           
+##  1 Insect-resistant (Bt) only Percent of corn planted         
+##  2 Herbicide-tolerant only    Percent of corn planted         
+##  3 Stacked gene varieties     Percent of corn planted         
+##  4 All GE varieties           Percent of corn planted         
+##  5 Insect-resistant (Bt) only Percent of upland cotton planted
+##  6 Herbicide-tolerant only    Percent of upland cotton planted
+##  7 Stacked gene varieties     Percent of upland cotton planted
+##  8 All GE varieties           Percent of upland cotton planted
+##  9 Herbicide-tolerant only    Percent of all soybeans planted 
+## 10 All GE varieties           Percent of all soybeans planted</code></pre>
+<pre class="r"><code># List Area
+xx %&gt;% distinct(Area)</code></pre>
+<pre><code>## # A tibble: 23 x 1
+##    Area        
+##    &lt;chr&gt;       
+##  1 Illinois    
+##  2 Indiana     
+##  3 Iowa        
+##  4 Kansas      
+##  5 Michigan    
+##  6 Minnesota   
+##  7 Missouri    
+##  8 Nebraska    
+##  9 Ohio        
+## 10 South Dakota
+## # ... with 13 more rows</code></pre>
+<pre class="r"><code># List Crops
+xx %&gt;% distinct(Crop)</code></pre>
+<pre><code>## # A tibble: 3 x 1
+##   Crop                                               
+##   &lt;chr&gt;                                              
+## 1 Genetically engineered (GE) corn varieties         
+## 2 Genetically engineered (GE) upland cotton varieties
+## 3 Genetically engineered (GE) soybean varieties</code></pre>
+<pre class="r"><code># Spread data to wide format
+xx %&gt;% select(-Unit) %&gt;% spread(Measurement, Value) %&gt;% arrange(Year)</code></pre>
+<pre><code>## # A tibble: 878 x 7
+##    Area    Year Crop        `All GE varieti~ `Herbicide-toler~ `Insect-resistan~
+##    &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;                  &lt;dbl&gt;             &lt;dbl&gt;             &lt;dbl&gt;
+##  1 Arkan~  2000 Geneticall~               43                43                NA
+##  2 Arkan~  2000 Geneticall~               70                23                33
+##  3 Calif~  2000 Geneticall~               24                17                 3
+##  4 Georg~  2000 Geneticall~               82                32                18
+##  5 Illin~  2000 Geneticall~               17                 3                13
+##  6 Illin~  2000 Geneticall~               44                44                NA
+##  7 India~  2000 Geneticall~               11                 4                 7
+##  8 India~  2000 Geneticall~               63                63                NA
+##  9 Iowa    2000 Geneticall~               30                 5                23
+## 10 Iowa    2000 Geneticall~               59                59                NA
+## # ... with 868 more rows, and 1 more variable: Stacked gene varieties &lt;dbl&gt;</code></pre>
+<pre class="r"><code># Prep data for an example plot
+xx &lt;- xx %&gt;% filter(Crop == &quot;Genetically engineered (GE) corn varieties&quot;,
+                    Area == &quot;U.S.&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = &quot;Adoption of GE Maize&quot;, 
+       y = &quot;Percent&quot;, x = NULL)
+ggsave(&quot;Intro_agData_USDA_GE_Crops.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="Intro_agData_USDA_GE_Crops.png" /></p>
 <hr />
 </div>
 <div id="agdata_usda_tfp" class="section level1">
@@ -1352,6 +1361,37 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value)) +
        y = &quot;Billion USD&quot;, x = NULL)
 ggsave(&quot;Intro_agData_ISAAA_Value.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="Intro_agData_ISAAA_Value.png" /></p>
+<hr />
+</div>
+<div id="agdata_uk_yields" class="section level1">
+<h1>agData_UK_Yields</h1>
+<pre class="r"><code># Get Data
+xx &lt;- agData_UK_Yields %&gt;% as_tibble()
+xx</code></pre>
+<pre><code>## # A tibble: 1,818 x 6
+##    Area           Crop   Year Measurement Unit      Value
+##    &lt;chr&gt;          &lt;fct&gt; &lt;int&gt; &lt;fct&gt;       &lt;fct&gt;     &lt;dbl&gt;
+##  1 United Kingdom Wheat  1270 Yield       tonnes/ha 0.522
+##  2 United Kingdom Wheat  1271 Yield       tonnes/ha 0.471
+##  3 United Kingdom Wheat  1272 Yield       tonnes/ha 0.685
+##  4 United Kingdom Wheat  1273 Yield       tonnes/ha 0.483
+##  5 United Kingdom Wheat  1274 Yield       tonnes/ha 0.443
+##  6 United Kingdom Wheat  1275 Yield       tonnes/ha 0.788
+##  7 United Kingdom Wheat  1276 Yield       tonnes/ha 0.482
+##  8 United Kingdom Wheat  1277 Yield       tonnes/ha 0.669
+##  9 United Kingdom Wheat  1278 Yield       tonnes/ha 0.845
+## 10 United Kingdom Wheat  1279 Yield       tonnes/ha 0.482
+## # ... with 1,808 more rows</code></pre>
+<pre class="r"><code># Prep data
+xx &lt;- xx %&gt;% filter(Crop == &quot;Wheat&quot;, !is.na(Value))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = &quot;Value of Genetically Engineered Seed&quot;, 
+       y = &quot;Billion USD&quot;, x = NULL)
+ggsave(&quot;Intro_agData_UK_Yields.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="Intro_agData_UK_Yields.png" /></p>
 <hr />
 </div>
 <div id="agdata_maizecontest" class="section level1">

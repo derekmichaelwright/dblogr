@@ -2,7 +2,7 @@
 title: "Memes With R"
 subtitle: "My memes, created in R"
 summary:  "My memes, created in R"
-date: "2021-04-25"
+date: "2021-05-04"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/memes/)"
 tags: [ "dblogr", "R", "Featured" ]
 weight: 3
@@ -24,6 +24,15 @@ library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(memer) # devtools::install_github(&quot;sctyner/memer&quot;)
 library(magick)</code></pre>
 <hr />
+<div id="cowbell" class="section level1">
+<h1>Cowbell</h1>
+<pre class="r"><code>mm &lt;- image_read(&quot;input/cowbell.jpg&quot;) %&gt;%
+  meme_text_top(&quot;Needs More&quot;) %&gt;%
+  meme_text_bottom(&quot;GMO&quot;)
+image_write(mm, &quot;memes_cowbell.png&quot;)</code></pre>
+<p><img src="memes_cowbell.png" /></p>
+<hr />
+</div>
 <div id="montoya-meme" class="section level1">
 <h1>Montoya Meme</h1>
 <pre class="r"><code>mm &lt;- image_read(&quot;input/montoya.jpg&quot;) %&gt;%

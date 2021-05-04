@@ -68,9 +68,8 @@ This will also the load the following packages: `tidyverse`, `ggpubr`, `ggbeeswa
 - [agData_STATCAN_FarmLand_Use](#agdata_statcan_farmland_use)
 - [agData_STATCAN_Livestock](#agdata_statcan_livestock)
 - [agData_STATCAN_Population](#agdata_statcan_population)
-- [agData_STATCAN_Population_AgeGender](#agdata_statcan_population_AgeGender)
-- [agData_STATCAN_Population_Dynamics](#agdata_statcan_population_Dynamics)
 - [agData_USDA_Crops](#agdata_usda_crops)
+- [agData_USDA_GE_Crops](#agdata_usda_ge_crops)
 - [agData_USDA_TFP](#agdata_usda_tfp)
 - [agData_ISAAA_Area](#agdata_isaaa_area)
 - [agData_ISAAA_Country](#agdata_isaaa_country)
@@ -78,6 +77,7 @@ This will also the load the following packages: `tidyverse`, `ggpubr`, `ggbeeswa
 - [agData_ISAAA_CropPercent](#agdata_isaaa_croppercent)
 - [agData_ISAAA_DVDDVG](#agdata_isaaa_dvddvg)
 - [agData_ISAAA_Value](#agdata_isaaa_value)
+- [agData_UK_Yields](#agdata_uk_yields)
 - [agData_MaizeContest](#agdata_maizecontest)
 - [agData_PeopleInAg](#agdata_peopleinag)
 - [agData_PopFert](#agdata_popfert)
@@ -548,58 +548,6 @@ ggsave("Intro_agData_agData_STATCAN_Population.png", mp, width = 6, height = 4)
 
 ---
 
-# agData_STATCAN_Population_AgeGender
-
-```{r}
-# Get Data
-xx <- agData_STATCAN_Population_AgeGender %>% as_tibble()
-xx
-```
-
-```{r}
-# Prep data for an example plot
-xx <- xx %>% 
-  filter(Area == "Saskatchewan", Sex %in% c("Males","Females"),
-         Age == "0 to 17 years")
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Sex)) + 
-  geom_line() + 
-  theme_agData() +
-  labs(title = "Population under 18 in Saskatchewan, Canada", 
-       y = "Thousand People", x = NULL)
-ggsave("Intro_agData_STATCAN_Population_AgeGender.png", mp, width = 6, height = 4)
-```
-
-![](Intro_agData_STATCAN_Population_AgeGender.png)
-
----
-
-# agData_STATCAN_Population_Dynamics
-
-```{r}
-# Get Data
-xx <- agData_STATCAN_Population_Dynamics %>% as_tibble()
-xx
-# List Measurements
-xx %>% distinct(Measurement)
-```
-
-```{r}
-# Prep data for an example plot
-xx <- xx %>% filter(Area == "Saskatchewan", Measurement %in% c("Births","Deaths"))
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement)) + 
-  geom_line() + 
-  theme_agData() +
-  labs(title = "Population Dynamics in Saskatchewan, Canada", 
-       y = "Million People", x = NULL)
-ggsave("Intro_agData_STATCAN_Population_Dynamics.png", mp, width = 6, height = 4)
-```
-
-![](Intro_agData_STATCAN_Population_Dynamics.png)
-
----
-
 # agData_USDA_Crops
   
 ```{r}
@@ -629,6 +577,39 @@ ggsave("Intro_agData_USDA_Crops.png", mp, width = 6, height = 4)
 ```
 
 ![](Intro_agData_USDA_Crops.png)
+
+---
+
+# agData_USDA_GE_Crops
+  
+```{r}
+# Get Data
+xx <- agData_USDA_GE_Crops %>% as_tibble()
+xx
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+# List Area
+xx %>% distinct(Area)
+# List Crops
+xx %>% distinct(Crop)
+# Spread data to wide format
+xx %>% select(-Unit) %>% spread(Measurement, Value) %>% arrange(Year)
+```
+
+```{r}
+# Prep data for an example plot
+xx <- xx %>% filter(Crop == "Genetically engineered (GE) corn varieties",
+                    Area == "U.S.")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Adoption of GE Maize", 
+       y = "Percent", x = NULL)
+ggsave("Intro_agData_USDA_GE_Crops.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_USDA_GE_Crops.png)
 
 ---
 
@@ -804,6 +785,30 @@ ggsave("Intro_agData_ISAAA_Value.png", mp, width = 6, height = 4)
 ```
 
 ![](Intro_agData_ISAAA_Value.png)
+
+---
+
+# agData_UK_Yields
+
+```{r}
+# Get Data
+xx <- agData_UK_Yields %>% as_tibble()
+xx
+```
+
+```{r}
+# Prep data
+xx <- xx %>% filter(Crop == "Wheat", !is.na(Value))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Value of Genetically Engineered Seed", 
+       y = "Billion USD", x = NULL)
+ggsave("Intro_agData_UK_Yields.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_UK_Yields.png)
 
 ---
 

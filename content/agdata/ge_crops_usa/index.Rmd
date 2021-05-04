@@ -4,7 +4,7 @@ subtitle: "Graphs of GE crop production using USDA data"
 summary:  "Graphs of GE crop production using USDA data"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/ge_crops_usa/)"
-tags: [ "agData", "GE Crops" ]
+tags: [ "agData", "GE Crops", "Maize", "Soybean", "Cotton" ]
 weight: 3
 codefolding_show: "hide"
 image:

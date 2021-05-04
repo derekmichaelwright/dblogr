@@ -31,6 +31,19 @@ library(magick)
 
 ---
 
+# Cowbell
+
+```{r}
+mm <- image_read("input/cowbell.jpg") %>%
+  meme_text_top("Needs More") %>%
+  meme_text_bottom("GMO")
+image_write(mm, "memes_cowbell.png")
+```
+
+![](memes_cowbell.png)
+
+---
+
 # Montoya Meme
 
 ```{r}
