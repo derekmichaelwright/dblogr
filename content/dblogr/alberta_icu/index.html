@@ -1,0 +1,181 @@
+---
+title: "Alberta ICU Usage"
+subtitle: "Data on ICU utilization from a FOIA request by The Justice Centre for Consitutional Freedoms"
+summary:  "Data on ICU utilization from a FOIA request by The Justice Centre for Consitutional Freedoms"
+date: "2021-05-06"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/alberta_icu/)"
+tags: [ "dblogr", "Demographics", "Politics", "Featured" ]
+weight: 2
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon_pack: fas
+    icon: code
+    name: R Script
+    url: https://derekmichaelwright.github.io/htmls/dblogr/alberta_icu.html
+  - icon_pack: fas
+    icon: table
+    name: Download Table 13-10-0783-01
+    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/alberta_icu/2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx
+---
+
+
+
+<hr />
+<div id="data-sources" class="section level1">
+<h1>Data Sources</h1>
+<p><a href="https://www.jccf.ca/alberta-governments-own-data-shows-hospital-bed-and-icu-utilization-at-five-year-low/" class="uri">https://www.jccf.ca/alberta-governments-own-data-shows-hospital-bed-and-icu-utilization-at-five-year-low/</a></p>
+<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/alberta_icu/2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx"><strong>&lt; Download Data &gt;</strong></a></p>
+<hr />
+</div>
+<div id="prepare-data" class="section level1">
+<h1>Prepare Data</h1>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(readxl) # read_xlsx()</code></pre>
+</div>
+<div id="prepare-the-data" class="section level1">
+<h1>Prepare the Data</h1>
+<pre class="r"><code># Hospital bed capacity
+d1 &lt;- read_xlsx(&quot;2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx&quot;, 
+                &quot;AcuteCare_P2_Occupancy&quot;, range = &quot;D70:J82&quot;) %&gt;%
+  gather(Year, Value, 2:ncol(.)) %&gt;%
+  filter(!is.na(Value)) %&gt;%
+  mutate(Date = as.Date(paste(Year, Month, &quot;15&quot;, sep = &quot;-&quot;), format = &quot;%Y-%b-%d&quot;))
+d2 &lt;- read_xlsx(&quot;2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx&quot;, 
+                &quot;AcuteCare_P2_Occupancy&quot;, range = &quot;A2:BN50&quot;) %&gt;%
+  rename(Measurement=Column1) %&gt;%
+  mutate(Zone = fill_NA(Zone),
+         Facility = fill_NA(Facility)) %&gt;%
+  gather(Month, Value, 4:ncol(.)) %&gt;%
+  mutate(Year = c(rep(2016:2020, each = (12*48)), rep(2021, (3*48))),
+         Month = substr(Month, 1, 3),
+         Date = as.Date(paste(Year, Month, &quot;15&quot;, sep = &quot;-&quot;), format = &quot;%Y-%b-%d&quot;))
+# ICU capacity
+d3 &lt;- read_xlsx(&quot;2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx&quot;, 
+                &quot;ICU_P2_CapacityUtilization&quot;, range = &quot;A2142:F2154&quot;) %&gt;%
+  rename(Month=1) %&gt;%
+  gather(Year, Value, 2:ncol(.)) %&gt;%
+  mutate(Date = as.Date(paste(Year, Month, &quot;15&quot;, sep = &quot;-&quot;), format = &quot;%Y-%b-%d&quot;))
+d4 &lt;- read_xlsx(&quot;2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx&quot;, 
+                &quot;ICU_P2_CapacityUtilization&quot;, range = &quot;A2124:P2136&quot;) %&gt;%
+  rename(Month=1) %&gt;%
+  gather(Measurement, Value, 2:ncol(.)) %&gt;%
+  mutate(Year = rep(2016:2020, each = (12*3)),
+         Date = as.Date(paste(Year, Month, &quot;15&quot;, sep = &quot;-&quot;), format = &quot;%Y-%b-%d&quot;),
+         Measurement = ifelse(grepl(&quot;Funded Beds&quot;, Measurement), &quot;Funded Beds&quot;, Measurement),
+         Measurement = ifelse(grepl(&quot;Avg Occupancy&quot;, Measurement), &quot;Avg Occupancy&quot;, Measurement),
+         Measurement = ifelse(grepl(&quot;Utilization&quot;, Measurement), &quot;Utilization&quot;, Measurement))
+d5 &lt;- read_xlsx(&quot;2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx&quot;, 
+                &quot;ICU_P2_CapacityUtilization&quot;, range = &quot;A2:Q2109&quot;) %&gt;%
+  rename(Date=1) %&gt;%
+  mutate(Date = as.Date(Date))</code></pre>
+<hr />
+</div>
+<div id="hospital-bed-capacity" class="section level1">
+<h1>Hospital Bed Capacity</h1>
+<div id="alberta" class="section level2">
+<h2>Alberta</h2>
+<pre class="r"><code># Plot
+mp &lt;- ggplot(d1, aes(x = Date, y = Value)) +
+  geom_line(size = 1.5, alpha = 0.8, color = &quot;darkgreen&quot;) +
+  scale_x_date(date_breaks = &quot;year&quot;, date_labels = &quot;%Y&quot;) +
+  theme_agData() +
+  labs(title = &quot;Alberta Hospital Bed Utilization&quot;, 
+       y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: JCCF&quot;)
+ggsave(&quot;alberta_icu_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="alberta_icu_01.png" /></p>
+<hr />
+</div>
+<div id="region" class="section level2">
+<h2>Region</h2>
+<pre class="r"><code># Prep data
+xx &lt;- d2 %&gt;% filter(Measurement == &quot;Occupancy&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value)) +
+  geom_hline(yintercept = 1, alpha = 0.6) +
+  geom_vline(xintercept = as.Date(&quot;2020-03-01&quot;), alpha = 0.3) +
+  geom_line(size = 1.25, alpha = 0.8, color = &quot;darkgreen&quot;) +
+  scale_x_date(date_breaks = &quot;year&quot;, date_labels = &quot;%Y&quot;) +
+  facet_wrap(Zone + Facility ~ .) +
+  theme_agData() +
+  labs(title = &quot;Alberta Hospital Bed Utilization&quot;, y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: JCCF&quot;)
+ggsave(&quot;alberta_icu_02.png&quot;, mp, width = 12, height = 8)</code></pre>
+<p><img src="alberta_icu_02.png" /></p>
+</div>
+<div id="amount" class="section level2">
+<h2>Amount</h2>
+<pre class="r"><code># Prep data
+xx &lt;- d2 %&gt;% filter(Measurement == &quot;Beds available&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value, group = Facility)) +
+  geom_vline(xintercept = as.Date(&quot;2020-03-01&quot;), alpha = 0.3) +
+  geom_line(size = 0.75, alpha = 0.5, color = &quot;darkgreen&quot;) +
+  scale_x_date(date_breaks = &quot;year&quot;, date_labels = &quot;%Y&quot;) +
+  theme_agData() +
+  labs(title = &quot;Alberta - Available Hospital Beds&quot;, 
+       y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: JCCF&quot;)
+ggsave(&quot;alberta_icu_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="alberta_icu_03.png" /></p>
+<hr />
+</div>
+</div>
+<div id="icu-utilization" class="section level1">
+<h1>ICU Utilization</h1>
+<pre class="r"><code># Plot
+mp &lt;- ggplot(d3, aes(x = Date, y = Value)) +
+  geom_vline(xintercept = as.Date(&quot;2020-03-01&quot;), alpha = 0.3) +
+  geom_line(size = 1.5, alpha = 0.8, color = &quot;darkgreen&quot;) +
+  scale_x_date(date_breaks = &quot;year&quot;, date_labels = &quot;%Y&quot;) +
+  theme_agData() +
+  labs(title = &quot;Alberta ICU Utilization&quot;, 
+       y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: JCCF&quot;)
+ggsave(&quot;alberta_icu_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="alberta_icu_03.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- d4 %&gt;% filter(Measurement != &quot;Utilization&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value, color = Measurement)) +
+  geom_vline(xintercept = as.Date(&quot;2020-03-01&quot;), alpha = 0.3) +
+  geom_line(size = 1.5, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = c(&quot;darkgreen&quot;, &quot;darkred&quot;)) +
+  scale_x_date(date_breaks = &quot;year&quot;, date_labels = &quot;%Y&quot;) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Alberta ICU Utilization&quot;, y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: JCCF&quot;)
+ggsave(&quot;alberta_icu_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="alberta_icu_04.png" /></p>
+<hr />
+<pre class="r"><code># Plot
+mp &lt;- ggplot(d5, aes(x = Date, y = AVG_OCC_PCT)) +
+  geom_hline(yintercept = 1, alpha = 0.6) +
+  geom_vline(xintercept = as.Date(&quot;2020-03-01&quot;), alpha = 0.3) +
+  geom_line(size = 1.25, alpha = 0.8, color = &quot;darkgreen&quot;) +
+  facet_wrap(REPORTS_SITE_NAME ~ .) +
+  scale_x_date(date_breaks = &quot;year&quot;, date_labels = &quot;%Y&quot;) +
+  theme_agData(rotx = T) +
+  labs(title = &quot;Alberta ICU Utilization&quot;, y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: JCCF&quot;)
+ggsave(&quot;alberta_icu_05.png&quot;, mp, width = 12, height = 8)</code></pre>
+<p><img src="alberta_icu_05.png" /></p>
+<hr />
+<pre class="r"><code># Plot
+mp &lt;- ggplot(d5, aes(x = Date, y = AVG_FUNDED_BEDS, group = REPORTS_SITE_NAME)) +
+  geom_hline(yintercept = 1, alpha = 0.6) +
+  geom_vline(xintercept = as.Date(&quot;2020-03-01&quot;), alpha = 0.3) +
+  geom_line(size = 1.25, alpha = 0.8, color = &quot;darkgreen&quot;) +
+  scale_x_date(date_breaks = &quot;year&quot;, date_labels = &quot;%Y&quot;) +
+  theme_agData(rotx = T) +
+  labs(title = &quot;Alberta - Number of Funded ICU beds&quot;, y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: JCCF&quot;)
+ggsave(&quot;alberta_icu_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="alberta_icu_06.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>
