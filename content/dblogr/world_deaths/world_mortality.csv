@@ -215,8 +215,9 @@
 "Armenia",2020,10,"monthly",3632
 "Armenia",2020,11,"monthly",6060
 "Armenia",2020,12,"monthly",4395
-"Armenia",2021,1,"monthly",3295
-"Armenia",2021,2,"monthly",2665
+"Armenia",2021,1,"monthly",3089
+"Armenia",2021,2,"monthly",2418
+"Armenia",2021,3,"monthly",2836
 "Australia",2015,1,"weekly",2471
 "Australia",2015,2,"weekly",2327
 "Australia",2015,3,"weekly",2374
@@ -851,11 +852,11 @@
 "Austria",2021,6,"weekly",1759
 "Austria",2021,7,"weekly",1722
 "Austria",2021,8,"weekly",1667
-"Austria",2021,9,"weekly",1585
+"Austria",2021,9,"weekly",1586
 "Austria",2021,10,"weekly",1750
-"Austria",2021,11,"weekly",1690
-"Austria",2021,12,"weekly",1651
-"Austria",2021,13,"weekly",1764
+"Austria",2021,11,"weekly",1692
+"Austria",2021,12,"weekly",1654
+"Austria",2021,13,"weekly",1768
 "Austria",2021,14,"weekly",1662
 "Austria",2021,15,"weekly",1707
 "Azerbaijan",2015,1,"monthly",5146
@@ -930,6 +931,8 @@
 "Azerbaijan",2020,10,"monthly",5774
 "Azerbaijan",2020,11,"monthly",8378
 "Azerbaijan",2020,12,"monthly",14500
+"Azerbaijan",2021,1,"monthly",6423
+"Azerbaijan",2021,2,"monthly",6616
 "Belarus",2015,1,"monthly",11366
 "Belarus",2015,2,"monthly",10005
 "Belarus",2015,3,"monthly",11148
@@ -1272,12 +1275,12 @@
 "Belgium",2020,13,"weekly",3218
 "Belgium",2020,14,"weekly",4044
 "Belgium",2020,15,"weekly",4311
-"Belgium",2020,16,"weekly",3722
-"Belgium",2020,17,"weekly",3057
+"Belgium",2020,16,"weekly",3723
+"Belgium",2020,17,"weekly",3058
 "Belgium",2020,18,"weekly",2435
 "Belgium",2020,19,"weekly",2397
 "Belgium",2020,20,"weekly",2050
-"Belgium",2020,21,"weekly",2091
+"Belgium",2020,21,"weekly",2092
 "Belgium",2020,22,"weekly",1992
 "Belgium",2020,23,"weekly",1812
 "Belgium",2020,24,"weekly",1906
@@ -1298,33 +1301,34 @@
 "Belgium",2020,39,"weekly",1935
 "Belgium",2020,40,"weekly",1932
 "Belgium",2020,41,"weekly",2075
-"Belgium",2020,42,"weekly",2162
-"Belgium",2020,43,"weekly",2632
+"Belgium",2020,42,"weekly",2164
+"Belgium",2020,43,"weekly",2634
 "Belgium",2020,44,"weekly",3295
 "Belgium",2020,45,"weekly",3704
 "Belgium",2020,46,"weekly",3445
 "Belgium",2020,47,"weekly",3191
 "Belgium",2020,48,"weekly",2904
 "Belgium",2020,49,"weekly",2708
-"Belgium",2020,50,"weekly",2787
+"Belgium",2020,50,"weekly",2788
 "Belgium",2020,51,"weekly",2751
 "Belgium",2020,52,"weekly",2622
 "Belgium",2020,53,"weekly",2455
 "Belgium",2021,1,"weekly",2469
 "Belgium",2021,2,"weekly",2401
 "Belgium",2021,3,"weekly",2435
-"Belgium",2021,4,"weekly",2436
+"Belgium",2021,4,"weekly",2439
 "Belgium",2021,5,"weekly",2275
 "Belgium",2021,6,"weekly",2226
-"Belgium",2021,7,"weekly",2310
+"Belgium",2021,7,"weekly",2313
 "Belgium",2021,8,"weekly",2143
-"Belgium",2021,9,"weekly",2006
-"Belgium",2021,10,"weekly",2151
+"Belgium",2021,9,"weekly",2008
+"Belgium",2021,10,"weekly",2152
 "Belgium",2021,11,"weekly",2097
-"Belgium",2021,12,"weekly",2100
-"Belgium",2021,13,"weekly",2204
-"Belgium",2021,14,"weekly",2185
-"Belgium",2021,15,"weekly",2115
+"Belgium",2021,12,"weekly",2102
+"Belgium",2021,13,"weekly",2212
+"Belgium",2021,14,"weekly",2192
+"Belgium",2021,15,"weekly",2141
+"Belgium",2021,16,"weekly",2163
 "Bolivia",2015,1,"monthly",4096
 "Bolivia",2015,2,"monthly",3584
 "Bolivia",2015,3,"monthly",4086
@@ -1541,12 +1545,12 @@
 "Brazil",2020,8,"monthly",142756
 "Brazil",2020,9,"monthly",127773
 "Brazil",2020,10,"monthly",128250
-"Brazil",2020,11,"monthly",122949
-"Brazil",2020,12,"monthly",139288
-"Brazil",2021,1,"monthly",144962
-"Brazil",2021,2,"monthly",133134
-"Brazil",2021,3,"monthly",200031
-"Brazil",2021,4,"monthly",185897
+"Brazil",2020,11,"monthly",122959
+"Brazil",2020,12,"monthly",139302
+"Brazil",2021,1,"monthly",145021
+"Brazil",2021,2,"monthly",133230
+"Brazil",2021,3,"monthly",200848
+"Brazil",2021,4,"monthly",195567
 "Bulgaria",2015,1,"weekly",2502
 "Bulgaria",2015,2,"weekly",2512
 "Bulgaria",2015,3,"weekly",2423
@@ -2797,7 +2801,7 @@
 "Costa Rica",2015,1,"monthly",1926
 "Costa Rica",2015,2,"monthly",1544
 "Costa Rica",2015,3,"monthly",1764
-"Costa Rica",2015,4,"monthly",1670
+"Costa Rica",2015,4,"monthly",1669
 "Costa Rica",2015,5,"monthly",1711
 "Costa Rica",2015,6,"monthly",1680
 "Costa Rica",2015,7,"monthly",1694
@@ -2807,7 +2811,7 @@
 "Costa Rica",2015,11,"monthly",1791
 "Costa Rica",2015,12,"monthly",2077
 "Costa Rica",2016,1,"monthly",1977
-"Costa Rica",2016,2,"monthly",1720
+"Costa Rica",2016,2,"monthly",1718
 "Costa Rica",2016,3,"monthly",1818
 "Costa Rica",2016,4,"monthly",1813
 "Costa Rica",2016,5,"monthly",1851
@@ -2820,52 +2824,52 @@
 "Costa Rica",2016,12,"monthly",2259
 "Costa Rica",2017,1,"monthly",2147
 "Costa Rica",2017,2,"monthly",1639
-"Costa Rica",2017,3,"monthly",1886
+"Costa Rica",2017,3,"monthly",1884
 "Costa Rica",2017,4,"monthly",1827
-"Costa Rica",2017,5,"monthly",1869
-"Costa Rica",2017,6,"monthly",1818
+"Costa Rica",2017,5,"monthly",1868
+"Costa Rica",2017,6,"monthly",1817
 "Costa Rica",2017,7,"monthly",1961
 "Costa Rica",2017,8,"monthly",1965
 "Costa Rica",2017,9,"monthly",1980
-"Costa Rica",2017,10,"monthly",2042
+"Costa Rica",2017,10,"monthly",2041
 "Costa Rica",2017,11,"monthly",2037
 "Costa Rica",2017,12,"monthly",2080
 "Costa Rica",2018,1,"monthly",1973
-"Costa Rica",2018,2,"monthly",1773
+"Costa Rica",2018,2,"monthly",1774
 "Costa Rica",2018,3,"monthly",1956
 "Costa Rica",2018,4,"monthly",1870
 "Costa Rica",2018,5,"monthly",2061
 "Costa Rica",2018,6,"monthly",2013
-"Costa Rica",2018,7,"monthly",1936
-"Costa Rica",2018,8,"monthly",2017
+"Costa Rica",2018,7,"monthly",1938
+"Costa Rica",2018,8,"monthly",2016
 "Costa Rica",2018,9,"monthly",2027
 "Costa Rica",2018,10,"monthly",1971
-"Costa Rica",2018,11,"monthly",1933
-"Costa Rica",2018,12,"monthly",2256
-"Costa Rica",2019,1,"monthly",2088
+"Costa Rica",2018,11,"monthly",1942
+"Costa Rica",2018,12,"monthly",2221
+"Costa Rica",2019,1,"monthly",2090
 "Costa Rica",2019,2,"monthly",1754
 "Costa Rica",2019,3,"monthly",1947
-"Costa Rica",2019,4,"monthly",1990
+"Costa Rica",2019,4,"monthly",1991
 "Costa Rica",2019,5,"monthly",2042
 "Costa Rica",2019,6,"monthly",2275
-"Costa Rica",2019,7,"monthly",2024
-"Costa Rica",2019,8,"monthly",2003
-"Costa Rica",2019,9,"monthly",1999
-"Costa Rica",2019,10,"monthly",2067
-"Costa Rica",2019,11,"monthly",1967
-"Costa Rica",2019,12,"monthly",2081
-"Costa Rica",2020,1,"monthly",2160
-"Costa Rica",2020,2,"monthly",1914
-"Costa Rica",2020,3,"monthly",2003
-"Costa Rica",2020,4,"monthly",1881
-"Costa Rica",2020,5,"monthly",1862
-"Costa Rica",2020,6,"monthly",1857
-"Costa Rica",2020,7,"monthly",2059
-"Costa Rica",2020,8,"monthly",2273
-"Costa Rica",2020,9,"monthly",2536
-"Costa Rica",2020,10,"monthly",2467
-"Costa Rica",2020,11,"monthly",2300
-"Costa Rica",2020,12,"monthly",2897
+"Costa Rica",2019,7,"monthly",2036
+"Costa Rica",2019,8,"monthly",2006
+"Costa Rica",2019,9,"monthly",1996
+"Costa Rica",2019,10,"monthly",2074
+"Costa Rica",2019,11,"monthly",1983
+"Costa Rica",2019,12,"monthly",2098
+"Costa Rica",2020,1,"monthly",2089
+"Costa Rica",2020,2,"monthly",1959
+"Costa Rica",2020,3,"monthly",2063
+"Costa Rica",2020,4,"monthly",1815
+"Costa Rica",2020,5,"monthly",1871
+"Costa Rica",2020,6,"monthly",1856
+"Costa Rica",2020,7,"monthly",2046
+"Costa Rica",2020,8,"monthly",2297
+"Costa Rica",2020,9,"monthly",2500
+"Costa Rica",2020,10,"monthly",2493
+"Costa Rica",2020,11,"monthly",2399
+"Costa Rica",2020,12,"monthly",2821
 "Croatia",2015,1,"weekly",1177
 "Croatia",2015,2,"weekly",1254
 "Croatia",2015,3,"weekly",1276
@@ -3134,10 +3138,10 @@
 "Croatia",2020,5,"weekly",1094
 "Croatia",2020,6,"weekly",1060
 "Croatia",2020,7,"weekly",1090
-"Croatia",2020,8,"weekly",1045
+"Croatia",2020,8,"weekly",1046
 "Croatia",2020,9,"weekly",1023
 "Croatia",2020,10,"weekly",1057
-"Croatia",2020,11,"weekly",1082
+"Croatia",2020,11,"weekly",1083
 "Croatia",2020,12,"weekly",1096
 "Croatia",2020,13,"weekly",1121
 "Croatia",2020,14,"weekly",1012
@@ -3149,13 +3153,13 @@
 "Croatia",2020,20,"weekly",909
 "Croatia",2020,21,"weekly",903
 "Croatia",2020,22,"weekly",848
-"Croatia",2020,23,"weekly",972
+"Croatia",2020,23,"weekly",974
 "Croatia",2020,24,"weekly",979
 "Croatia",2020,25,"weekly",889
 "Croatia",2020,26,"weekly",927
 "Croatia",2020,27,"weekly",969
 "Croatia",2020,28,"weekly",919
-"Croatia",2020,29,"weekly",886
+"Croatia",2020,29,"weekly",887
 "Croatia",2020,30,"weekly",974
 "Croatia",2020,31,"weekly",1061
 "Croatia",2020,32,"weekly",954
@@ -3171,23 +3175,99 @@
 "Croatia",2020,42,"weekly",1099
 "Croatia",2020,43,"weekly",1136
 "Croatia",2020,44,"weekly",1158
-"Croatia",2020,45,"weekly",1286
+"Croatia",2020,45,"weekly",1287
 "Croatia",2020,46,"weekly",1361
-"Croatia",2020,47,"weekly",1485
-"Croatia",2020,48,"weekly",1484
-"Croatia",2020,49,"weekly",1709
-"Croatia",2020,50,"weekly",1757
-"Croatia",2020,51,"weekly",1786
-"Croatia",2020,52,"weekly",1681
-"Croatia",2020,53,"weekly",1515
-"Croatia",2021,1,"weekly",1334
-"Croatia",2021,2,"weekly",1352
-"Croatia",2021,3,"weekly",1300
-"Croatia",2021,4,"weekly",1239
-"Croatia",2021,5,"weekly",1192
-"Croatia",2021,6,"weekly",1145
-"Croatia",2021,7,"weekly",1089
-"Croatia",2021,8,"weekly",1036
+"Croatia",2020,47,"weekly",1486
+"Croatia",2020,48,"weekly",1485
+"Croatia",2020,49,"weekly",1713
+"Croatia",2020,50,"weekly",1758
+"Croatia",2020,51,"weekly",1788
+"Croatia",2020,52,"weekly",1682
+"Croatia",2020,53,"weekly",1517
+"Croatia",2021,1,"weekly",1336
+"Croatia",2021,2,"weekly",1354
+"Croatia",2021,3,"weekly",1303
+"Croatia",2021,4,"weekly",1243
+"Croatia",2021,5,"weekly",1198
+"Croatia",2021,6,"weekly",1152
+"Croatia",2021,7,"weekly",1108
+"Croatia",2021,8,"weekly",1086
+"Croatia",2021,9,"weekly",1024
+"Croatia",2021,10,"weekly",1067
+"Croatia",2021,11,"weekly",975
+"Croatia",2021,12,"weekly",1048
+"Cuba",2015,1,"monthly",8543
+"Cuba",2015,2,"monthly",8692
+"Cuba",2015,3,"monthly",7986
+"Cuba",2015,4,"monthly",8019
+"Cuba",2015,5,"monthly",7953
+"Cuba",2015,6,"monthly",7821
+"Cuba",2015,7,"monthly",8631
+"Cuba",2015,8,"monthly",8312
+"Cuba",2015,9,"monthly",7946
+"Cuba",2015,10,"monthly",8717
+"Cuba",2015,11,"monthly",8277
+"Cuba",2015,12,"monthly",8794
+"Cuba",2016,1,"monthly",9045
+"Cuba",2016,2,"monthly",8574
+"Cuba",2016,3,"monthly",8596
+"Cuba",2016,4,"monthly",7648
+"Cuba",2016,5,"monthly",7962
+"Cuba",2016,6,"monthly",7790
+"Cuba",2016,7,"monthly",8473
+"Cuba",2016,8,"monthly",8390
+"Cuba",2016,9,"monthly",7985
+"Cuba",2016,10,"monthly",8220
+"Cuba",2016,11,"monthly",8644
+"Cuba",2016,12,"monthly",8061
+"Cuba",2017,1,"monthly",9009
+"Cuba",2017,2,"monthly",7825
+"Cuba",2017,3,"monthly",8362
+"Cuba",2017,4,"monthly",8164
+"Cuba",2017,5,"monthly",8321
+"Cuba",2017,6,"monthly",8723
+"Cuba",2017,7,"monthly",10302
+"Cuba",2017,8,"monthly",9748
+"Cuba",2017,9,"monthly",8771
+"Cuba",2017,10,"monthly",8919
+"Cuba",2017,11,"monthly",8956
+"Cuba",2017,12,"monthly",9849
+"Cuba",2018,1,"monthly",10745
+"Cuba",2018,2,"monthly",8762
+"Cuba",2018,3,"monthly",9387
+"Cuba",2018,4,"monthly",8357
+"Cuba",2018,5,"monthly",8503
+"Cuba",2018,6,"monthly",8874
+"Cuba",2018,7,"monthly",9278
+"Cuba",2018,8,"monthly",8454
+"Cuba",2018,9,"monthly",7849
+"Cuba",2018,10,"monthly",8281
+"Cuba",2018,11,"monthly",8369
+"Cuba",2018,12,"monthly",9337
+"Cuba",2019,1,"monthly",9249
+"Cuba",2019,2,"monthly",8502
+"Cuba",2019,3,"monthly",8806
+"Cuba",2019,4,"monthly",8560
+"Cuba",2019,5,"monthly",9092
+"Cuba",2019,6,"monthly",9504
+"Cuba",2019,7,"monthly",9503
+"Cuba",2019,8,"monthly",9419
+"Cuba",2019,9,"monthly",9008
+"Cuba",2019,10,"monthly",9057
+"Cuba",2019,11,"monthly",8899
+"Cuba",2019,12,"monthly",9481
+"Cuba",2020,1,"monthly",9896
+"Cuba",2020,2,"monthly",9097
+"Cuba",2020,3,"monthly",10039
+"Cuba",2020,4,"monthly",9330
+"Cuba",2020,5,"monthly",8546
+"Cuba",2020,6,"monthly",8744
+"Cuba",2020,7,"monthly",9313
+"Cuba",2020,8,"monthly",9419
+"Cuba",2020,9,"monthly",8377
+"Cuba",2020,10,"monthly",9057
+"Cuba",2020,11,"monthly",9433
+"Cuba",2020,12,"monthly",11188
 "Cyprus",2015,1,"weekly",126
 "Cyprus",2015,2,"weekly",137
 "Cyprus",2015,3,"weekly",155
@@ -3827,18 +3907,19 @@
 "Czechia",2020,50,"weekly",3104
 "Czechia",2020,51,"weekly",3242
 "Czechia",2020,52,"weekly",3214
-"Czechia",2020,53,"weekly",3498
-"Czechia",2021,1,"weekly",3791
-"Czechia",2021,2,"weekly",3714
+"Czechia",2020,53,"weekly",3505
+"Czechia",2021,1,"weekly",3792
+"Czechia",2021,2,"weekly",3719
 "Czechia",2021,3,"weekly",3556
-"Czechia",2021,4,"weekly",3385
-"Czechia",2021,5,"weekly",3247
-"Czechia",2021,6,"weekly",3387
+"Czechia",2021,4,"weekly",3388
+"Czechia",2021,5,"weekly",3250
+"Czechia",2021,6,"weekly",3391
 "Czechia",2021,7,"weekly",3450
-"Czechia",2021,8,"weekly",3578
-"Czechia",2021,9,"weekly",3867
-"Czechia",2021,10,"weekly",3910
-"Czechia",2021,11,"weekly",3635
+"Czechia",2021,8,"weekly",3580
+"Czechia",2021,9,"weekly",3895
+"Czechia",2021,10,"weekly",3967
+"Czechia",2021,11,"weekly",3757
+"Czechia",2021,12,"weekly",3356
 "Denmark",2015,1,"weekly",1127
 "Denmark",2015,2,"weekly",1108
 "Denmark",2015,3,"weekly",1093
@@ -4429,74 +4510,75 @@
 "Ecuador",2019,50,"weekly",1479
 "Ecuador",2019,51,"weekly",1359
 "Ecuador",2019,52,"weekly",1127
-"Ecuador",2020,1,"weekly",1364
-"Ecuador",2020,2,"weekly",1559
-"Ecuador",2020,3,"weekly",1510
+"Ecuador",2020,1,"weekly",1366
+"Ecuador",2020,2,"weekly",1561
+"Ecuador",2020,3,"weekly",1512
 "Ecuador",2020,4,"weekly",1458
 "Ecuador",2020,5,"weekly",1358
 "Ecuador",2020,6,"weekly",1421
-"Ecuador",2020,7,"weekly",1497
-"Ecuador",2020,8,"weekly",1466
-"Ecuador",2020,9,"weekly",1530
-"Ecuador",2020,10,"weekly",1431
-"Ecuador",2020,11,"weekly",1462
+"Ecuador",2020,7,"weekly",1500
+"Ecuador",2020,8,"weekly",1473
+"Ecuador",2020,9,"weekly",1532
+"Ecuador",2020,10,"weekly",1433
+"Ecuador",2020,11,"weekly",1463
 "Ecuador",2020,12,"weekly",1494
 "Ecuador",2020,13,"weekly",3716
 "Ecuador",2020,14,"weekly",7150
-"Ecuador",2020,15,"weekly",6329
-"Ecuador",2020,16,"weekly",4407
-"Ecuador",2020,17,"weekly",3424
-"Ecuador",2020,18,"weekly",2779
-"Ecuador",2020,19,"weekly",2564
+"Ecuador",2020,15,"weekly",6331
+"Ecuador",2020,16,"weekly",4409
+"Ecuador",2020,17,"weekly",3425
+"Ecuador",2020,18,"weekly",2784
+"Ecuador",2020,19,"weekly",2565
 "Ecuador",2020,20,"weekly",2285
 "Ecuador",2020,21,"weekly",2118
 "Ecuador",2020,22,"weekly",2088
-"Ecuador",2020,23,"weekly",2059
-"Ecuador",2020,24,"weekly",2156
+"Ecuador",2020,23,"weekly",2060
+"Ecuador",2020,24,"weekly",2158
 "Ecuador",2020,25,"weekly",2113
 "Ecuador",2020,26,"weekly",2122
 "Ecuador",2020,27,"weekly",2221
 "Ecuador",2020,28,"weekly",2414
-"Ecuador",2020,29,"weekly",2522
+"Ecuador",2020,29,"weekly",2521
 "Ecuador",2020,30,"weekly",2542
 "Ecuador",2020,31,"weekly",2529
 "Ecuador",2020,32,"weekly",2458
 "Ecuador",2020,33,"weekly",2361
-"Ecuador",2020,34,"weekly",2181
-"Ecuador",2020,35,"weekly",2063
+"Ecuador",2020,34,"weekly",2182
+"Ecuador",2020,35,"weekly",2064
 "Ecuador",2020,36,"weekly",2051
-"Ecuador",2020,37,"weekly",1928
-"Ecuador",2020,38,"weekly",1864
+"Ecuador",2020,37,"weekly",1929
+"Ecuador",2020,38,"weekly",1866
 "Ecuador",2020,39,"weekly",1762
 "Ecuador",2020,40,"weekly",1684
-"Ecuador",2020,41,"weekly",1803
+"Ecuador",2020,41,"weekly",1804
 "Ecuador",2020,42,"weekly",1700
 "Ecuador",2020,43,"weekly",1747
-"Ecuador",2020,44,"weekly",1668
+"Ecuador",2020,44,"weekly",1669
 "Ecuador",2020,45,"weekly",1658
 "Ecuador",2020,46,"weekly",1746
 "Ecuador",2020,47,"weekly",1799
 "Ecuador",2020,48,"weekly",1698
-"Ecuador",2020,49,"weekly",1776
-"Ecuador",2020,50,"weekly",1647
+"Ecuador",2020,49,"weekly",1777
+"Ecuador",2020,50,"weekly",1648
 "Ecuador",2020,51,"weekly",1764
 "Ecuador",2020,52,"weekly",1764
 "Ecuador",2020,53,"weekly",1894
-"Ecuador",2021,1,"weekly",1984
+"Ecuador",2021,1,"weekly",1986
 "Ecuador",2021,2,"weekly",2177
 "Ecuador",2021,3,"weekly",2315
-"Ecuador",2021,4,"weekly",2168
-"Ecuador",2021,5,"weekly",2198
-"Ecuador",2021,6,"weekly",2183
+"Ecuador",2021,4,"weekly",2170
+"Ecuador",2021,5,"weekly",2200
+"Ecuador",2021,6,"weekly",2184
 "Ecuador",2021,7,"weekly",2215
-"Ecuador",2021,8,"weekly",2246
-"Ecuador",2021,9,"weekly",2185
-"Ecuador",2021,10,"weekly",2364
-"Ecuador",2021,11,"weekly",2574
-"Ecuador",2021,12,"weekly",2636
-"Ecuador",2021,13,"weekly",2759
-"Ecuador",2021,14,"weekly",2921
-"Ecuador",2021,15,"weekly",2941
+"Ecuador",2021,8,"weekly",2247
+"Ecuador",2021,9,"weekly",2188
+"Ecuador",2021,10,"weekly",2371
+"Ecuador",2021,11,"weekly",2578
+"Ecuador",2021,12,"weekly",2642
+"Ecuador",2021,13,"weekly",2772
+"Ecuador",2021,14,"weekly",2939
+"Ecuador",2021,15,"weekly",3006
+"Ecuador",2021,16,"weekly",3024
 "Egypt",2015,1,"monthly",59713
 "Egypt",2015,2,"monthly",47678
 "Egypt",2015,3,"monthly",46524
@@ -4899,7 +4981,7 @@
 "Estonia",2020,15,"weekly",317
 "Estonia",2020,16,"weekly",313
 "Estonia",2020,17,"weekly",326
-"Estonia",2020,18,"weekly",308
+"Estonia",2020,18,"weekly",309
 "Estonia",2020,19,"weekly",316
 "Estonia",2020,20,"weekly",292
 "Estonia",2020,21,"weekly",278
@@ -4931,26 +5013,27 @@
 "Estonia",2020,47,"weekly",319
 "Estonia",2020,48,"weekly",339
 "Estonia",2020,49,"weekly",343
-"Estonia",2020,50,"weekly",348
+"Estonia",2020,50,"weekly",349
 "Estonia",2020,51,"weekly",343
 "Estonia",2020,52,"weekly",359
 "Estonia",2020,53,"weekly",371
-"Estonia",2021,1,"weekly",378
+"Estonia",2021,1,"weekly",379
 "Estonia",2021,2,"weekly",393
 "Estonia",2021,3,"weekly",404
 "Estonia",2021,4,"weekly",352
 "Estonia",2021,5,"weekly",350
-"Estonia",2021,6,"weekly",375
+"Estonia",2021,6,"weekly",376
 "Estonia",2021,7,"weekly",345
-"Estonia",2021,8,"weekly",402
+"Estonia",2021,8,"weekly",403
 "Estonia",2021,9,"weekly",418
 "Estonia",2021,10,"weekly",419
 "Estonia",2021,11,"weekly",421
 "Estonia",2021,12,"weekly",397
-"Estonia",2021,13,"weekly",410
+"Estonia",2021,13,"weekly",411
 "Estonia",2021,14,"weekly",393
 "Estonia",2021,15,"weekly",380
-"Estonia",2021,16,"weekly",350
+"Estonia",2021,16,"weekly",354
+"Estonia",2021,17,"weekly",308
 "Finland",2015,1,"weekly",1084
 "Finland",2015,2,"weekly",1159
 "Finland",2015,3,"weekly",1151
@@ -5265,20 +5348,21 @@
 "Finland",2020,51,"weekly",1148
 "Finland",2020,52,"weekly",1129
 "Finland",2020,53,"weekly",1174
-"Finland",2021,1,"weekly",1099
+"Finland",2021,1,"weekly",1101
 "Finland",2021,2,"weekly",1121
 "Finland",2021,3,"weekly",1203
-"Finland",2021,4,"weekly",1152
+"Finland",2021,4,"weekly",1155
 "Finland",2021,5,"weekly",1097
 "Finland",2021,6,"weekly",1055
-"Finland",2021,7,"weekly",1153
-"Finland",2021,8,"weekly",1121
-"Finland",2021,9,"weekly",1075
-"Finland",2021,10,"weekly",1032
-"Finland",2021,11,"weekly",1069
-"Finland",2021,12,"weekly",1002
-"Finland",2021,13,"weekly",1018
-"Finland",2021,14,"weekly",982
+"Finland",2021,7,"weekly",1158
+"Finland",2021,8,"weekly",1122
+"Finland",2021,9,"weekly",1078
+"Finland",2021,10,"weekly",1036
+"Finland",2021,11,"weekly",1076
+"Finland",2021,12,"weekly",1008
+"Finland",2021,13,"weekly",1031
+"Finland",2021,14,"weekly",1017
+"Finland",2021,15,"weekly",964
 "France",2015,1,"weekly",12986
 "France",2015,2,"weekly",13364
 "France",2015,3,"weekly",13006
@@ -5493,7 +5577,7 @@
 "France",2019,3,"weekly",13497
 "France",2019,4,"weekly",13931
 "France",2019,5,"weekly",14199
-"France",2019,6,"weekly",14313
+"France",2019,6,"weekly",14314
 "France",2019,7,"weekly",13843
 "France",2019,8,"weekly",13735
 "France",2019,9,"weekly",13363
@@ -5503,7 +5587,7 @@
 "France",2019,13,"weekly",11580
 "France",2019,14,"weekly",11725
 "France",2019,15,"weekly",11254
-"France",2019,16,"weekly",11548
+"France",2019,16,"weekly",11549
 "France",2019,17,"weekly",11500
 "France",2019,18,"weekly",11096
 "France",2019,19,"weekly",11269
@@ -5523,8 +5607,8 @@
 "France",2019,33,"weekly",10237
 "France",2019,34,"weekly",10607
 "France",2019,35,"weekly",11073
-"France",2019,36,"weekly",10363
-"France",2019,37,"weekly",10796
+"France",2019,36,"weekly",10365
+"France",2019,37,"weekly",10797
 "France",2019,38,"weekly",11144
 "France",2019,39,"weekly",10779
 "France",2019,40,"weekly",11191
@@ -5532,7 +5616,7 @@
 "France",2019,42,"weekly",11419
 "France",2019,43,"weekly",11452
 "France",2019,44,"weekly",11648
-"France",2019,45,"weekly",11819
+"France",2019,45,"weekly",11820
 "France",2019,46,"weekly",11992
 "France",2019,47,"weekly",12372
 "France",2019,48,"weekly",12253
@@ -5547,7 +5631,7 @@
 "France",2020,5,"weekly",12784
 "France",2020,6,"weekly",12659
 "France",2020,7,"weekly",12509
-"France",2020,8,"weekly",12100
+"France",2020,8,"weekly",12103
 "France",2020,9,"weekly",12279
 "France",2020,10,"weekly",12408
 "France",2020,11,"weekly",12807
@@ -5557,26 +5641,26 @@
 "France",2020,15,"weekly",17783
 "France",2020,16,"weekly",15656
 "France",2020,17,"weekly",13040
-"France",2020,18,"weekly",11530
+"France",2020,18,"weekly",11531
 "France",2020,19,"weekly",11304
 "France",2020,20,"weekly",11007
 "France",2020,21,"weekly",11371
 "France",2020,22,"weekly",10694
 "France",2020,23,"weekly",10640
-"France",2020,24,"weekly",10650
+"France",2020,24,"weekly",10651
 "France",2020,25,"weekly",10705
-"France",2020,26,"weekly",11379
-"France",2020,27,"weekly",10280
+"France",2020,26,"weekly",11380
+"France",2020,27,"weekly",10282
 "France",2020,28,"weekly",10587
-"France",2020,29,"weekly",10391
-"France",2020,30,"weekly",10819
+"France",2020,29,"weekly",10392
+"France",2020,30,"weekly",10820
 "France",2020,31,"weekly",11148
 "France",2020,32,"weekly",11009
-"France",2020,33,"weekly",12079
-"France",2020,34,"weekly",10766
+"France",2020,33,"weekly",12080
+"France",2020,34,"weekly",10767
 "France",2020,35,"weekly",10802
 "France",2020,36,"weekly",10907
-"France",2020,37,"weekly",11487
+"France",2020,37,"weekly",11488
 "France",2020,38,"weekly",12123
 "France",2020,39,"weekly",11161
 "France",2020,40,"weekly",12157
@@ -5584,29 +5668,30 @@
 "France",2020,42,"weekly",12448
 "France",2020,43,"weekly",13955
 "France",2020,44,"weekly",14880
-"France",2020,45,"weekly",15875
-"France",2020,46,"weekly",15731
-"France",2020,47,"weekly",15264
+"France",2020,45,"weekly",15876
+"France",2020,46,"weekly",15732
+"France",2020,47,"weekly",15265
 "France",2020,48,"weekly",14966
-"France",2020,49,"weekly",14808
-"France",2020,50,"weekly",14773
-"France",2020,51,"weekly",14360
-"France",2020,52,"weekly",14098
-"France",2020,53,"weekly",14655
-"France",2021,1,"weekly",14946
-"France",2021,2,"weekly",14911
-"France",2021,3,"weekly",15396
-"France",2021,4,"weekly",15001
-"France",2021,5,"weekly",14687
-"France",2021,6,"weekly",14414
-"France",2021,7,"weekly",14370
-"France",2021,8,"weekly",13580
-"France",2021,9,"weekly",13164
-"France",2021,10,"weekly",13023
-"France",2021,11,"weekly",13133
-"France",2021,12,"weekly",12797
-"France",2021,13,"weekly",13086
-"France",2021,14,"weekly",12365
+"France",2020,49,"weekly",14809
+"France",2020,50,"weekly",14775
+"France",2020,51,"weekly",14361
+"France",2020,52,"weekly",14101
+"France",2020,53,"weekly",14657
+"France",2021,1,"weekly",14949
+"France",2021,2,"weekly",14912
+"France",2021,3,"weekly",15397
+"France",2021,4,"weekly",15003
+"France",2021,5,"weekly",14689
+"France",2021,6,"weekly",14419
+"France",2021,7,"weekly",14381
+"France",2021,8,"weekly",13597
+"France",2021,9,"weekly",13182
+"France",2021,10,"weekly",13044
+"France",2021,11,"weekly",13172
+"France",2021,12,"weekly",12879
+"France",2021,13,"weekly",13251
+"France",2021,14,"weekly",12949
+"France",2021,15,"weekly",12451
 "Georgia",2015,1,"monthly",4575
 "Georgia",2015,2,"monthly",4177
 "Georgia",2015,3,"monthly",4725
@@ -5940,14 +6025,14 @@
 "Germany",2020,51,"weekly",24726
 "Germany",2020,52,"weekly",25499
 "Germany",2020,53,"weekly",25398
-"Germany",2021,1,"weekly",24729
-"Germany",2021,2,"weekly",24369
-"Germany",2021,3,"weekly",23974
-"Germany",2021,4,"weekly",22508
-"Germany",2021,5,"weekly",21559
-"Germany",2021,6,"weekly",20781
-"Germany",2021,7,"weekly",20269
-"Germany",2021,8,"weekly",18766
+"Germany",2021,1,"weekly",24738
+"Germany",2021,2,"weekly",24382
+"Germany",2021,3,"weekly",23984
+"Germany",2021,4,"weekly",22526
+"Germany",2021,5,"weekly",21586
+"Germany",2021,6,"weekly",20794
+"Germany",2021,7,"weekly",20296
+"Germany",2021,8,"weekly",18772
 "Germany",2021,9,"weekly",18260
 "Germany",2021,10,"weekly",18458
 "Germany",2021,11,"weekly",18165
@@ -5955,6 +6040,7 @@
 "Germany",2021,13,"weekly",18447
 "Germany",2021,14,"weekly",18838
 "Germany",2021,15,"weekly",19341
+"Germany",2021,16,"weekly",19387
 "Gibraltar",2015,1,"monthly",25
 "Gibraltar",2015,2,"monthly",26
 "Gibraltar",2015,3,"monthly",22
@@ -6344,12 +6430,17 @@
 "Greece",2020,53,"weekly",2678
 "Greece",2021,1,"weekly",2645
 "Greece",2021,2,"weekly",2488
-"Greece",2021,3,"weekly",2645
-"Greece",2021,4,"weekly",2619
+"Greece",2021,3,"weekly",2646
+"Greece",2021,4,"weekly",2620
 "Greece",2021,5,"weekly",2494
-"Greece",2021,6,"weekly",2458
-"Greece",2021,7,"weekly",2525
-"Greece",2021,8,"weekly",2664
+"Greece",2021,6,"weekly",2461
+"Greece",2021,7,"weekly",2526
+"Greece",2021,8,"weekly",2665
+"Greece",2021,9,"weekly",2721
+"Greece",2021,10,"weekly",2653
+"Greece",2021,11,"weekly",2781
+"Greece",2021,12,"weekly",2755
+"Greece",2021,13,"weekly",2921
 "Greenland",2015,1,"monthly",44
 "Greenland",2015,2,"monthly",33
 "Greenland",2015,3,"monthly",45
@@ -7828,7 +7919,7 @@
 "Israel",2020,6,"weekly",944
 "Israel",2020,7,"weekly",965
 "Israel",2020,8,"weekly",989
-"Israel",2020,9,"weekly",903
+"Israel",2020,9,"weekly",904
 "Israel",2020,10,"weekly",930
 "Israel",2020,11,"weekly",965
 "Israel",2020,12,"weekly",893
@@ -7870,22 +7961,23 @@
 "Israel",2020,48,"weekly",931
 "Israel",2020,49,"weekly",926
 "Israel",2020,50,"weekly",967
-"Israel",2020,51,"weekly",1001
-"Israel",2020,52,"weekly",1010
+"Israel",2020,51,"weekly",1003
+"Israel",2020,52,"weekly",1013
 "Israel",2020,53,"weekly",1136
-"Israel",2021,1,"weekly",1207
-"Israel",2021,2,"weekly",1247
+"Israel",2021,1,"weekly",1208
+"Israel",2021,2,"weekly",1249
 "Israel",2021,3,"weekly",1273
-"Israel",2021,4,"weekly",1290
-"Israel",2021,5,"weekly",1245
-"Israel",2021,6,"weekly",1173
-"Israel",2021,7,"weekly",1078
-"Israel",2021,8,"weekly",1001
-"Israel",2021,9,"weekly",974
-"Israel",2021,10,"weekly",1032
-"Israel",2021,11,"weekly",1032
-"Israel",2021,12,"weekly",972
-"Israel",2021,13,"weekly",886
+"Israel",2021,4,"weekly",1295
+"Israel",2021,5,"weekly",1247
+"Israel",2021,6,"weekly",1177
+"Israel",2021,7,"weekly",1079
+"Israel",2021,8,"weekly",1003
+"Israel",2021,9,"weekly",976
+"Israel",2021,10,"weekly",1035
+"Israel",2021,11,"weekly",1047
+"Israel",2021,12,"weekly",982
+"Israel",2021,13,"weekly",902
+"Israel",2021,14,"weekly",954
 "Italy",2015,1,"weekly",15178
 "Italy",2015,2,"weekly",15811
 "Italy",2015,3,"weekly",15480
@@ -8574,6 +8666,7 @@
 "Kyrgyzstan",2020,11,"monthly",4154
 "Kyrgyzstan",2020,12,"monthly",4259
 "Kyrgyzstan",2021,1,"monthly",2988
+"Kyrgyzstan",2021,2,"monthly",2621
 "Latvia",2015,1,"weekly",617
 "Latvia",2015,2,"weekly",608
 "Latvia",2015,3,"weekly",622
@@ -8902,6 +8995,7 @@
 "Latvia",2021,12,"weekly",578
 "Latvia",2021,13,"weekly",594
 "Latvia",2021,14,"weekly",547
+"Latvia",2021,15,"weekly",586
 "Liechtenstein",2015,1,"monthly",25
 "Liechtenstein",2015,2,"monthly",22
 "Liechtenstein",2015,3,"monthly",30
@@ -9306,6 +9400,7 @@
 "Lithuania",2021,13,"weekly",761
 "Lithuania",2021,14,"weekly",883
 "Lithuania",2021,15,"weekly",834
+"Lithuania",2021,16,"weekly",859
 "Luxembourg",2015,1,"weekly",81
 "Luxembourg",2015,2,"weekly",87
 "Luxembourg",2015,3,"weekly",80
@@ -9630,6 +9725,9 @@
 "Luxembourg",2021,8,"weekly",86
 "Luxembourg",2021,9,"weekly",89
 "Luxembourg",2021,10,"weekly",114
+"Luxembourg",2021,11,"weekly",115
+"Luxembourg",2021,12,"weekly",78
+"Luxembourg",2021,13,"weekly",77
 "Macao",2015,1,"monthly",193
 "Macao",2015,2,"monthly",163
 "Macao",2015,3,"monthly",186
@@ -9702,8 +9800,9 @@
 "Macao",2020,10,"monthly",184
 "Macao",2020,11,"monthly",192
 "Macao",2020,12,"monthly",190
-"Macao",2021,1,"monthly",210
-"Macao",2021,2,"monthly",189
+"Macao",2021,1,"monthly",211
+"Macao",2021,2,"monthly",191
+"Macao",2021,3,"monthly",184
 "Malaysia",2015,1,"monthly",14073
 "Malaysia",2015,2,"monthly",12247
 "Malaysia",2015,3,"monthly",13397
@@ -10434,68 +10533,71 @@
 "Mexico",2019,50,"weekly",13926
 "Mexico",2019,51,"weekly",13545
 "Mexico",2019,52,"weekly",13307
-"Mexico",2020,1,"weekly",13885
-"Mexico",2020,2,"weekly",16627
-"Mexico",2020,3,"weekly",16111
-"Mexico",2020,4,"weekly",15537
-"Mexico",2020,5,"weekly",15166
-"Mexico",2020,6,"weekly",15625
-"Mexico",2020,7,"weekly",14807
-"Mexico",2020,8,"weekly",14484
-"Mexico",2020,9,"weekly",13931
-"Mexico",2020,10,"weekly",14023
-"Mexico",2020,11,"weekly",13841
-"Mexico",2020,12,"weekly",13162
-"Mexico",2020,13,"weekly",13689
-"Mexico",2020,14,"weekly",13499
-"Mexico",2020,15,"weekly",13946
-"Mexico",2020,16,"weekly",14918
-"Mexico",2020,17,"weekly",16949
-"Mexico",2020,18,"weekly",18769
-"Mexico",2020,19,"weekly",20557
-"Mexico",2020,20,"weekly",22207
-"Mexico",2020,21,"weekly",23083
-"Mexico",2020,22,"weekly",23010
-"Mexico",2020,23,"weekly",23942
-"Mexico",2020,24,"weekly",24460
-"Mexico",2020,25,"weekly",24678
-"Mexico",2020,26,"weekly",24292
-"Mexico",2020,27,"weekly",25220
-"Mexico",2020,28,"weekly",26227
-"Mexico",2020,29,"weekly",26145
-"Mexico",2020,30,"weekly",25527
-"Mexico",2020,31,"weekly",24668
-"Mexico",2020,32,"weekly",23691
-"Mexico",2020,33,"weekly",22561
-"Mexico",2020,34,"weekly",21591
-"Mexico",2020,35,"weekly",20736
-"Mexico",2020,36,"weekly",20042
-"Mexico",2020,37,"weekly",19296
-"Mexico",2020,38,"weekly",18620
-"Mexico",2020,39,"weekly",18723
-"Mexico",2020,40,"weekly",18245
-"Mexico",2020,41,"weekly",18457
-"Mexico",2020,42,"weekly",18474
-"Mexico",2020,43,"weekly",19198
-"Mexico",2020,44,"weekly",19855
-"Mexico",2020,45,"weekly",20825
-"Mexico",2020,46,"weekly",21091
-"Mexico",2020,47,"weekly",21800
-"Mexico",2020,48,"weekly",22034
-"Mexico",2020,49,"weekly",22931
-"Mexico",2020,50,"weekly",24781
-"Mexico",2020,51,"weekly",25937
-"Mexico",2020,52,"weekly",28882
-"Mexico",2020,53,"weekly",31885
-"Mexico",2021,1,"weekly",35394
-"Mexico",2021,2,"weekly",42338
-"Mexico",2021,3,"weekly",43417
-"Mexico",2021,4,"weekly",35012
-"Mexico",2021,5,"weekly",29514
-"Mexico",2021,6,"weekly",24441
-"Mexico",2021,7,"weekly",22784
-"Mexico",2021,8,"weekly",21334
-"Mexico",2021,9,"weekly",18071
+"Mexico",2020,1,"weekly",13898
+"Mexico",2020,2,"weekly",16638
+"Mexico",2020,3,"weekly",16119
+"Mexico",2020,4,"weekly",15545
+"Mexico",2020,5,"weekly",15178
+"Mexico",2020,6,"weekly",15636
+"Mexico",2020,7,"weekly",14812
+"Mexico",2020,8,"weekly",14496
+"Mexico",2020,9,"weekly",13941
+"Mexico",2020,10,"weekly",14033
+"Mexico",2020,11,"weekly",13846
+"Mexico",2020,12,"weekly",13170
+"Mexico",2020,13,"weekly",13703
+"Mexico",2020,14,"weekly",13520
+"Mexico",2020,15,"weekly",13974
+"Mexico",2020,16,"weekly",14953
+"Mexico",2020,17,"weekly",16974
+"Mexico",2020,18,"weekly",18798
+"Mexico",2020,19,"weekly",20581
+"Mexico",2020,20,"weekly",22229
+"Mexico",2020,21,"weekly",23110
+"Mexico",2020,22,"weekly",23030
+"Mexico",2020,23,"weekly",23972
+"Mexico",2020,24,"weekly",24493
+"Mexico",2020,25,"weekly",24710
+"Mexico",2020,26,"weekly",24332
+"Mexico",2020,27,"weekly",25255
+"Mexico",2020,28,"weekly",26273
+"Mexico",2020,29,"weekly",26182
+"Mexico",2020,30,"weekly",25573
+"Mexico",2020,31,"weekly",24698
+"Mexico",2020,32,"weekly",23711
+"Mexico",2020,33,"weekly",22586
+"Mexico",2020,34,"weekly",21618
+"Mexico",2020,35,"weekly",20766
+"Mexico",2020,36,"weekly",20096
+"Mexico",2020,37,"weekly",19345
+"Mexico",2020,38,"weekly",18667
+"Mexico",2020,39,"weekly",18789
+"Mexico",2020,40,"weekly",18303
+"Mexico",2020,41,"weekly",18545
+"Mexico",2020,42,"weekly",18539
+"Mexico",2020,43,"weekly",19278
+"Mexico",2020,44,"weekly",19952
+"Mexico",2020,45,"weekly",20924
+"Mexico",2020,46,"weekly",21200
+"Mexico",2020,47,"weekly",21902
+"Mexico",2020,48,"weekly",22150
+"Mexico",2020,49,"weekly",23069
+"Mexico",2020,50,"weekly",24919
+"Mexico",2020,51,"weekly",26081
+"Mexico",2020,52,"weekly",29049
+"Mexico",2020,53,"weekly",32037
+"Mexico",2021,1,"weekly",35566
+"Mexico",2021,2,"weekly",42534
+"Mexico",2021,3,"weekly",43652
+"Mexico",2021,4,"weekly",35389
+"Mexico",2021,5,"weekly",30188
+"Mexico",2021,6,"weekly",25010
+"Mexico",2021,7,"weekly",23450
+"Mexico",2021,8,"weekly",21973
+"Mexico",2021,9,"weekly",18174
+"Mexico",2021,10,"weekly",17346
+"Mexico",2021,11,"weekly",16101
+"Mexico",2021,12,"weekly",15298
 "Moldova",2015,1,"monthly",4013
 "Moldova",2015,2,"monthly",3476
 "Moldova",2015,3,"monthly",3681
@@ -10568,6 +10670,81 @@
 "Moldova",2020,10,"monthly",3829
 "Moldova",2020,11,"monthly",3736
 "Moldova",2020,12,"monthly",4754
+"Monaco",2015,1,"monthly",60
+"Monaco",2015,2,"monthly",70
+"Monaco",2015,3,"monthly",50
+"Monaco",2015,4,"monthly",42
+"Monaco",2015,5,"monthly",38
+"Monaco",2015,6,"monthly",45
+"Monaco",2015,7,"monthly",54
+"Monaco",2015,8,"monthly",38
+"Monaco",2015,9,"monthly",48
+"Monaco",2015,10,"monthly",43
+"Monaco",2015,11,"monthly",66
+"Monaco",2015,12,"monthly",38
+"Monaco",2016,1,"monthly",48
+"Monaco",2016,2,"monthly",37
+"Monaco",2016,3,"monthly",39
+"Monaco",2016,4,"monthly",44
+"Monaco",2016,5,"monthly",40
+"Monaco",2016,6,"monthly",42
+"Monaco",2016,7,"monthly",43
+"Monaco",2016,8,"monthly",38
+"Monaco",2016,9,"monthly",35
+"Monaco",2016,10,"monthly",56
+"Monaco",2016,11,"monthly",39
+"Monaco",2016,12,"monthly",42
+"Monaco",2017,1,"monthly",43
+"Monaco",2017,2,"monthly",47
+"Monaco",2017,3,"monthly",40
+"Monaco",2017,4,"monthly",33
+"Monaco",2017,5,"monthly",43
+"Monaco",2017,6,"monthly",38
+"Monaco",2017,7,"monthly",37
+"Monaco",2017,8,"monthly",36
+"Monaco",2017,9,"monthly",35
+"Monaco",2017,10,"monthly",40
+"Monaco",2017,11,"monthly",56
+"Monaco",2017,12,"monthly",46
+"Monaco",2018,1,"monthly",72
+"Monaco",2018,2,"monthly",37
+"Monaco",2018,3,"monthly",45
+"Monaco",2018,4,"monthly",47
+"Monaco",2018,5,"monthly",38
+"Monaco",2018,6,"monthly",31
+"Monaco",2018,7,"monthly",32
+"Monaco",2018,8,"monthly",45
+"Monaco",2018,9,"monthly",45
+"Monaco",2018,10,"monthly",39
+"Monaco",2018,11,"monthly",50
+"Monaco",2018,12,"monthly",41
+"Monaco",2019,1,"monthly",41
+"Monaco",2019,2,"monthly",39
+"Monaco",2019,3,"monthly",49
+"Monaco",2019,4,"monthly",47
+"Monaco",2019,5,"monthly",41
+"Monaco",2019,6,"monthly",37
+"Monaco",2019,7,"monthly",48
+"Monaco",2019,8,"monthly",37
+"Monaco",2019,9,"monthly",42
+"Monaco",2019,10,"monthly",47
+"Monaco",2019,11,"monthly",50
+"Monaco",2019,12,"monthly",50
+"Monaco",2020,1,"monthly",46
+"Monaco",2020,2,"monthly",36
+"Monaco",2020,3,"monthly",53
+"Monaco",2020,4,"monthly",45
+"Monaco",2020,5,"monthly",38
+"Monaco",2020,6,"monthly",39
+"Monaco",2020,7,"monthly",37
+"Monaco",2020,8,"monthly",43
+"Monaco",2020,9,"monthly",44
+"Monaco",2020,10,"monthly",47
+"Monaco",2020,11,"monthly",42
+"Monaco",2020,12,"monthly",51
+"Monaco",2021,1,"monthly",58
+"Monaco",2021,2,"monthly",70
+"Monaco",2021,3,"monthly",66
 "Mongolia",2015,1,"monthly",1340
 "Mongolia",2015,2,"monthly",1292
 "Mongolia",2015,3,"monthly",1445
@@ -12012,7 +12189,7 @@
 "Norway",2019,41,"weekly",788
 "Norway",2019,42,"weekly",784
 "Norway",2019,43,"weekly",794
-"Norway",2019,44,"weekly",775
+"Norway",2019,44,"weekly",776
 "Norway",2019,45,"weekly",786
 "Norway",2019,46,"weekly",846
 "Norway",2019,47,"weekly",784
@@ -12052,16 +12229,16 @@
 "Norway",2020,29,"weekly",754
 "Norway",2020,30,"weekly",730
 "Norway",2020,31,"weekly",745
-"Norway",2020,32,"weekly",738
+"Norway",2020,32,"weekly",737
 "Norway",2020,33,"weekly",734
 "Norway",2020,34,"weekly",746
 "Norway",2020,35,"weekly",699
 "Norway",2020,36,"weekly",711
 "Norway",2020,37,"weekly",785
 "Norway",2020,38,"weekly",772
-"Norway",2020,39,"weekly",740
+"Norway",2020,39,"weekly",741
 "Norway",2020,40,"weekly",786
-"Norway",2020,41,"weekly",742
+"Norway",2020,41,"weekly",743
 "Norway",2020,42,"weekly",713
 "Norway",2020,43,"weekly",797
 "Norway",2020,44,"weekly",789
@@ -12501,23 +12678,24 @@
 "Peru",2020,50,"weekly",2963
 "Peru",2020,51,"weekly",3148
 "Peru",2020,52,"weekly",3252
-"Peru",2020,53,"weekly",3502
+"Peru",2020,53,"weekly",3499
 "Peru",2021,1,"weekly",3971
-"Peru",2021,2,"weekly",4623
-"Peru",2021,3,"weekly",5688
-"Peru",2021,4,"weekly",6692
-"Peru",2021,5,"weekly",7012
-"Peru",2021,6,"weekly",7681
-"Peru",2021,7,"weekly",7705
-"Peru",2021,8,"weekly",7388
-"Peru",2021,9,"weekly",7483
-"Peru",2021,10,"weekly",7366
-"Peru",2021,11,"weekly",7411
-"Peru",2021,12,"weekly",7547
-"Peru",2021,13,"weekly",7761
-"Peru",2021,14,"weekly",8212
-"Peru",2021,15,"weekly",8187
-"Peru",2021,16,"weekly",7980
+"Peru",2021,2,"weekly",4625
+"Peru",2021,3,"weekly",5692
+"Peru",2021,4,"weekly",6691
+"Peru",2021,5,"weekly",7020
+"Peru",2021,6,"weekly",7682
+"Peru",2021,7,"weekly",7711
+"Peru",2021,8,"weekly",7389
+"Peru",2021,9,"weekly",7492
+"Peru",2021,10,"weekly",7372
+"Peru",2021,11,"weekly",7419
+"Peru",2021,12,"weekly",7554
+"Peru",2021,13,"weekly",7792
+"Peru",2021,14,"weekly",8230
+"Peru",2021,15,"weekly",8206
+"Peru",2021,16,"weekly",8019
+"Peru",2021,17,"weekly",7436
 "Philippines",2015,1,"monthly",50381
 "Philippines",2015,2,"monthly",44540
 "Philippines",2015,3,"monthly",46452
@@ -13244,7 +13422,8 @@
 "Portugal",2021,11,"weekly",2110
 "Portugal",2021,12,"weekly",2053
 "Portugal",2021,13,"weekly",2123
-"Portugal",2021,14,"weekly",1985
+"Portugal",2021,14,"weekly",1990
+"Portugal",2021,15,"weekly",1945
 "Qatar",2015,1,"monthly",210
 "Qatar",2015,2,"monthly",196
 "Qatar",2015,3,"monthly",191
@@ -13641,7 +13820,6 @@
 "Romania",2021,5,"weekly",6081
 "Romania",2021,6,"weekly",5731
 "Romania",2021,7,"weekly",5737
-"Romania",2021,8,"weekly",4156
 "Russia",2015,1,"monthly",174723
 "Russia",2015,2,"monthly",156737
 "Russia",2015,3,"monthly",175810
@@ -13867,6 +14045,78 @@
 "Serbia",2021,1,"monthly",10417
 "Serbia",2021,2,"monthly",10166
 "Serbia",2021,3,"monthly",12952
+"Seychelles",2015,1,"monthly",52
+"Seychelles",2015,2,"monthly",50
+"Seychelles",2015,3,"monthly",69
+"Seychelles",2015,4,"monthly",63
+"Seychelles",2015,5,"monthly",46
+"Seychelles",2015,6,"monthly",78
+"Seychelles",2015,7,"monthly",59
+"Seychelles",2015,8,"monthly",60
+"Seychelles",2015,9,"monthly",51
+"Seychelles",2015,10,"monthly",55
+"Seychelles",2015,11,"monthly",61
+"Seychelles",2015,12,"monthly",59
+"Seychelles",2016,1,"monthly",52
+"Seychelles",2016,2,"monthly",56
+"Seychelles",2016,3,"monthly",68
+"Seychelles",2016,4,"monthly",72
+"Seychelles",2016,5,"monthly",54
+"Seychelles",2016,6,"monthly",53
+"Seychelles",2016,7,"monthly",68
+"Seychelles",2016,8,"monthly",60
+"Seychelles",2016,9,"monthly",64
+"Seychelles",2016,10,"monthly",71
+"Seychelles",2016,11,"monthly",67
+"Seychelles",2016,12,"monthly",62
+"Seychelles",2017,1,"monthly",61
+"Seychelles",2017,2,"monthly",65
+"Seychelles",2017,3,"monthly",53
+"Seychelles",2017,4,"monthly",52
+"Seychelles",2017,5,"monthly",81
+"Seychelles",2017,6,"monthly",61
+"Seychelles",2017,7,"monthly",63
+"Seychelles",2017,8,"monthly",78
+"Seychelles",2017,9,"monthly",49
+"Seychelles",2017,10,"monthly",71
+"Seychelles",2017,11,"monthly",61
+"Seychelles",2017,12,"monthly",53
+"Seychelles",2018,1,"monthly",64
+"Seychelles",2018,2,"monthly",58
+"Seychelles",2018,3,"monthly",57
+"Seychelles",2018,4,"monthly",77
+"Seychelles",2018,5,"monthly",70
+"Seychelles",2018,6,"monthly",72
+"Seychelles",2018,7,"monthly",65
+"Seychelles",2018,8,"monthly",61
+"Seychelles",2018,9,"monthly",59
+"Seychelles",2018,10,"monthly",90
+"Seychelles",2018,11,"monthly",76
+"Seychelles",2018,12,"monthly",69
+"Seychelles",2019,1,"monthly",80
+"Seychelles",2019,2,"monthly",67
+"Seychelles",2019,3,"monthly",67
+"Seychelles",2019,4,"monthly",67
+"Seychelles",2019,5,"monthly",67
+"Seychelles",2019,6,"monthly",55
+"Seychelles",2019,7,"monthly",66
+"Seychelles",2019,8,"monthly",47
+"Seychelles",2019,9,"monthly",71
+"Seychelles",2019,10,"monthly",63
+"Seychelles",2019,11,"monthly",69
+"Seychelles",2019,12,"monthly",76
+"Seychelles",2020,1,"monthly",64
+"Seychelles",2020,2,"monthly",60
+"Seychelles",2020,3,"monthly",59
+"Seychelles",2020,4,"monthly",53
+"Seychelles",2020,5,"monthly",41
+"Seychelles",2020,6,"monthly",52
+"Seychelles",2020,7,"monthly",56
+"Seychelles",2020,8,"monthly",50
+"Seychelles",2020,9,"monthly",54
+"Seychelles",2020,10,"monthly",43
+"Seychelles",2020,11,"monthly",66
+"Seychelles",2020,12,"monthly",64
 "Singapore",2015,1,"monthly",1701
 "Singapore",2015,2,"monthly",1481
 "Singapore",2015,3,"monthly",1680
@@ -14253,14 +14503,18 @@
 "Slovakia",2020,51,"weekly",1616
 "Slovakia",2020,52,"weekly",1793
 "Slovakia",2020,53,"weekly",2062
-"Slovakia",2021,1,"weekly",2067
-"Slovakia",2021,2,"weekly",2095
-"Slovakia",2021,3,"weekly",1963
-"Slovakia",2021,4,"weekly",1943
-"Slovakia",2021,5,"weekly",1926
-"Slovakia",2021,6,"weekly",2020
-"Slovakia",2021,7,"weekly",1884
-"Slovakia",2021,8,"weekly",1725
+"Slovakia",2021,1,"weekly",2072
+"Slovakia",2021,2,"weekly",2100
+"Slovakia",2021,3,"weekly",1973
+"Slovakia",2021,4,"weekly",1948
+"Slovakia",2021,5,"weekly",1965
+"Slovakia",2021,6,"weekly",2056
+"Slovakia",2021,7,"weekly",1983
+"Slovakia",2021,8,"weekly",1931
+"Slovakia",2021,9,"weekly",1813
+"Slovakia",2021,10,"weekly",1732
+"Slovakia",2021,11,"weekly",1614
+"Slovakia",2021,12,"weekly",1490
 "Slovenia",2015,1,"weekly",408
 "Slovenia",2015,2,"weekly",407
 "Slovenia",2015,3,"weekly",453
@@ -14644,7 +14898,7 @@
 "South Africa",2020,3,"weekly",8678
 "South Africa",2020,4,"weekly",8179
 "South Africa",2020,5,"weekly",8811
-"South Africa",2020,6,"weekly",9314
+"South Africa",2020,6,"weekly",9315
 "South Africa",2020,7,"weekly",8614
 "South Africa",2020,8,"weekly",8659
 "South Africa",2020,9,"weekly",8366
@@ -14661,17 +14915,17 @@
 "South Africa",2020,20,"weekly",8658
 "South Africa",2020,21,"weekly",8879
 "South Africa",2020,22,"weekly",9448
-"South Africa",2020,23,"weekly",10157
+"South Africa",2020,23,"weekly",10158
 "South Africa",2020,24,"weekly",10634
 "South Africa",2020,25,"weekly",11980
 "South Africa",2020,26,"weekly",12539
 "South Africa",2020,27,"weekly",13520
 "South Africa",2020,28,"weekly",14771
-"South Africa",2020,29,"weekly",16247
+"South Africa",2020,29,"weekly",16249
 "South Africa",2020,30,"weekly",16200
 "South Africa",2020,31,"weekly",15262
 "South Africa",2020,32,"weekly",13713
-"South Africa",2020,33,"weekly",12386
+"South Africa",2020,33,"weekly",12389
 "South Africa",2020,34,"weekly",11957
 "South Africa",2020,35,"weekly",11155
 "South Africa",2020,36,"weekly",10925
@@ -14679,35 +14933,36 @@
 "South Africa",2020,38,"weekly",9567
 "South Africa",2020,39,"weekly",9861
 "South Africa",2020,40,"weekly",9498
-"South Africa",2020,41,"weekly",10065
-"South Africa",2020,42,"weekly",10119
+"South Africa",2020,41,"weekly",10067
+"South Africa",2020,42,"weekly",10124
 "South Africa",2020,43,"weekly",9940
 "South Africa",2020,44,"weekly",9812
-"South Africa",2020,45,"weekly",9958
+"South Africa",2020,45,"weekly",9961
 "South Africa",2020,46,"weekly",10292
-"South Africa",2020,47,"weekly",10280
-"South Africa",2020,48,"weekly",10102
-"South Africa",2020,49,"weekly",11348
+"South Africa",2020,47,"weekly",10286
+"South Africa",2020,48,"weekly",10106
+"South Africa",2020,49,"weekly",11349
 "South Africa",2020,50,"weekly",12305
-"South Africa",2020,51,"weekly",13666
-"South Africa",2020,52,"weekly",16988
-"South Africa",2020,53,"weekly",19762
-"South Africa",2021,1,"weekly",22910
-"South Africa",2021,2,"weekly",24355
-"South Africa",2021,3,"weekly",21157
-"South Africa",2021,4,"weekly",15304
-"South Africa",2021,5,"weekly",13284
-"South Africa",2021,6,"weekly",11633
-"South Africa",2021,7,"weekly",10901
+"South Africa",2020,51,"weekly",13668
+"South Africa",2020,52,"weekly",16991
+"South Africa",2020,53,"weekly",19833
+"South Africa",2021,1,"weekly",22913
+"South Africa",2021,2,"weekly",24357
+"South Africa",2021,3,"weekly",21161
+"South Africa",2021,4,"weekly",15306
+"South Africa",2021,5,"weekly",13285
+"South Africa",2021,6,"weekly",11634
+"South Africa",2021,7,"weekly",10906
 "South Africa",2021,8,"weekly",10031
 "South Africa",2021,9,"weekly",10360
-"South Africa",2021,10,"weekly",10268
-"South Africa",2021,11,"weekly",9543
-"South Africa",2021,12,"weekly",9435
-"South Africa",2021,13,"weekly",9955
-"South Africa",2021,14,"weekly",10148
-"South Africa",2021,15,"weekly",9936
-"South Africa",2021,16,"weekly",10177
+"South Africa",2021,10,"weekly",10275
+"South Africa",2021,11,"weekly",9548
+"South Africa",2021,12,"weekly",9442
+"South Africa",2021,13,"weekly",9980
+"South Africa",2021,14,"weekly",10175
+"South Africa",2021,15,"weekly",10030
+"South Africa",2021,16,"weekly",9728
+"South Africa",2021,17,"weekly",10754
 "South Korea",2015,1,"weekly",5699
 "South Korea",2015,2,"weekly",5622
 "South Korea",2015,3,"weekly",5551
@@ -15672,15 +15927,22 @@
 "Sweden",2020,50,"weekly",2173.5
 "Sweden",2020,51,"weekly",2355.5
 "Sweden",2020,52,"weekly",2372.5
-"Sweden",2020,53,"weekly",2428.3
-"Sweden",2021,1,"weekly",2354.4
-"Sweden",2021,2,"weekly",2332.4
-"Sweden",2021,3,"weekly",2290.4
-"Sweden",2021,4,"weekly",2113.4
-"Sweden",2021,5,"weekly",1896.4
-"Sweden",2021,6,"weekly",1910.4
-"Sweden",2021,7,"weekly",1882.4
-"Sweden",2021,8,"weekly",1847.4
+"Sweden",2020,53,"weekly",2428.2
+"Sweden",2021,1,"weekly",2354.1
+"Sweden",2021,2,"weekly",2332.1
+"Sweden",2021,3,"weekly",2290.1
+"Sweden",2021,4,"weekly",2113.1
+"Sweden",2021,5,"weekly",1896.1
+"Sweden",2021,6,"weekly",1910.1
+"Sweden",2021,7,"weekly",1882.1
+"Sweden",2021,8,"weekly",1848.1
+"Sweden",2021,9,"weekly",1702.1
+"Sweden",2021,10,"weekly",1846.1
+"Sweden",2021,11,"weekly",1723.1
+"Sweden",2021,12,"weekly",1752.1
+"Sweden",2021,13,"weekly",1701.1
+"Sweden",2021,14,"weekly",1713.1
+"Sweden",2021,15,"weekly",1638.1
 "Switzerland",2015,1,"weekly",1423
 "Switzerland",2015,2,"weekly",1494
 "Switzerland",2015,3,"weekly",1524
@@ -16184,6 +16446,7 @@
 "Thailand",2021,1,"monthly",46685
 "Thailand",2021,2,"monthly",38228
 "Thailand",2021,3,"monthly",46748
+"Thailand",2021,4,"monthly",42435
 "Transnistria",2016,7,"monthly",479
 "Transnistria",2016,8,"monthly",572
 "Transnistria",2016,9,"monthly",474
@@ -17066,328 +17329,298 @@
 "United States",2016,51,"weekly",56809
 "United States",2016,52,"weekly",57782
 "United States",2017,1,"weekly",59890
-"United States",2017,2,"weekly",61114
+"United States",2017,2,"weekly",61124
 "United States",2017,3,"weekly",59444
-"United States",2017,4,"weekly",58186
+"United States",2017,4,"weekly",58176
 "United States",2017,5,"weekly",58537
-"United States",2017,6,"weekly",59162
-"United States",2017,7,"weekly",58604
+"United States",2017,6,"weekly",59175
+"United States",2017,7,"weekly",58591
 "United States",2017,8,"weekly",58385
 "United States",2017,9,"weekly",57359
-"United States",2017,10,"weekly",57607
-"United States",2017,11,"weekly",56780
-"United States",2017,12,"weekly",57162
+"United States",2017,10,"weekly",57597
+"United States",2017,11,"weekly",56789
+"United States",2017,12,"weekly",57163
 "United States",2017,13,"weekly",55827
-"United States",2017,14,"weekly",55267
+"United States",2017,14,"weekly",55274
 "United States",2017,15,"weekly",54969
 "United States",2017,16,"weekly",53168
 "United States",2017,17,"weekly",53404
-"United States",2017,18,"weekly",52760
-"United States",2017,19,"weekly",52083
-"United States",2017,20,"weekly",52574
+"United States",2017,18,"weekly",52753
+"United States",2017,19,"weekly",52078
+"United States",2017,20,"weekly",52580
 "United States",2017,21,"weekly",51100
-"United States",2017,22,"weekly",51370
-"United States",2017,23,"weekly",51525
+"United States",2017,22,"weekly",51369
+"United States",2017,23,"weekly",51534
 "United States",2017,24,"weekly",50933
-"United States",2017,25,"weekly",51326
+"United States",2017,25,"weekly",51317
 "United States",2017,26,"weekly",50742
-"United States",2017,27,"weekly",51090
-"United States",2017,28,"weekly",50123
-"United States",2017,29,"weekly",50241
+"United States",2017,27,"weekly",51092
+"United States",2017,28,"weekly",50122
+"United States",2017,29,"weekly",50240
 "United States",2017,30,"weekly",49493
 "United States",2017,31,"weekly",50210
 "United States",2017,32,"weekly",50364
-"United States",2017,33,"weekly",50296
+"United States",2017,33,"weekly",50303
 "United States",2017,34,"weekly",49659
-"United States",2017,35,"weekly",50967
-"United States",2017,36,"weekly",51116
+"United States",2017,35,"weekly",50960
+"United States",2017,36,"weekly",51111
 "United States",2017,37,"weekly",51820
-"United States",2017,38,"weekly",51353
+"United States",2017,38,"weekly",51358
 "United States",2017,39,"weekly",51462
 "United States",2017,40,"weekly",52235
-"United States",2017,41,"weekly",51703
+"United States",2017,41,"weekly",51718
 "United States",2017,42,"weekly",52357
-"United States",2017,43,"weekly",52687
-"United States",2017,44,"weekly",53832
-"United States",2017,45,"weekly",53384
-"United States",2017,46,"weekly",53909
+"United States",2017,43,"weekly",52672
+"United States",2017,44,"weekly",53822
+"United States",2017,45,"weekly",53385
+"United States",2017,46,"weekly",53919
 "United States",2017,47,"weekly",54225
-"United States",2017,48,"weekly",54904
-"United States",2017,49,"weekly",55747
-"United States",2017,50,"weekly",57537
-"United States",2017,51,"weekly",59681
-"United States",2017,52,"weekly",61254
+"United States",2017,48,"weekly",54913
+"United States",2017,49,"weekly",55746
+"United States",2017,50,"weekly",57540
+"United States",2017,51,"weekly",59672
+"United States",2017,52,"weekly",61251
 "United States",2018,1,"weekly",66317
-"United States",2018,2,"weekly",67686
+"United States",2018,2,"weekly",67664
 "United States",2018,3,"weekly",64820
-"United States",2018,4,"weekly",62922
+"United States",2018,4,"weekly",62944
 "United States",2018,5,"weekly",61124
-"United States",2018,6,"weekly",61263
-"United States",2018,7,"weekly",59932
-"United States",2018,8,"weekly",57934
+"United States",2018,6,"weekly",61244
+"United States",2018,7,"weekly",59931
+"United States",2018,8,"weekly",57954
 "United States",2018,9,"weekly",56829
 "United States",2018,10,"weekly",57226
-"United States",2018,11,"weekly",56462
+"United States",2018,11,"weekly",56480
 "United States",2018,12,"weekly",55912
-"United States",2018,13,"weekly",55063
+"United States",2018,13,"weekly",55045
 "United States",2018,14,"weekly",55420
-"United States",2018,15,"weekly",55354
-"United States",2018,16,"weekly",54153
-"United States",2018,17,"weekly",53853
+"United States",2018,15,"weekly",55360
+"United States",2018,16,"weekly",54152
+"United States",2018,17,"weekly",53848
 "United States",2018,18,"weekly",53874
 "United States",2018,19,"weekly",52215
-"United States",2018,20,"weekly",50739
-"United States",2018,21,"weekly",51055
-"United States",2018,22,"weekly",51174
+"United States",2018,20,"weekly",50750
+"United States",2018,21,"weekly",51056
+"United States",2018,22,"weekly",51162
 "United States",2018,23,"weekly",52123
 "United States",2018,24,"weekly",51514
 "United States",2018,25,"weekly",51230
 "United States",2018,26,"weekly",50995
-"United States",2018,27,"weekly",51812
-"United States",2018,28,"weekly",51348
+"United States",2018,27,"weekly",51813
+"United States",2018,28,"weekly",51337
 "United States",2018,29,"weekly",50730
-"United States",2018,30,"weekly",50422
-"United States",2018,31,"weekly",50799
+"United States",2018,30,"weekly",50432
+"United States",2018,31,"weekly",50811
 "United States",2018,32,"weekly",51130
 "United States",2018,33,"weekly",50423
 "United States",2018,34,"weekly",50577
-"United States",2018,35,"weekly",50757
+"United States",2018,35,"weekly",50745
 "United States",2018,36,"weekly",50429
-"United States",2018,37,"weekly",51215
+"United States",2018,37,"weekly",51222
 "United States",2018,38,"weekly",51713
 "United States",2018,39,"weekly",51098
-"United States",2018,40,"weekly",52504
+"United States",2018,40,"weekly",52486
 "United States",2018,41,"weekly",51972
 "United States",2018,42,"weekly",53113
 "United States",2018,43,"weekly",53881
-"United States",2018,44,"weekly",53767
-"United States",2018,45,"weekly",53709
+"United States",2018,44,"weekly",53778
+"United States",2018,45,"weekly",53692
 "United States",2018,46,"weekly",54820
 "United States",2018,47,"weekly",54981
-"United States",2018,48,"weekly",55210
+"United States",2018,48,"weekly",55227
 "United States",2018,49,"weekly",56112
 "United States",2018,50,"weekly",56530
 "United States",2018,51,"weekly",56671
 "United States",2018,52,"weekly",56164
-"United States",2019,1,"weekly",58463
+"United States",2019,1,"weekly",58474
 "United States",2019,2,"weekly",58514
 "United States",2019,3,"weekly",58365
-"United States",2019,4,"weekly",58045
+"United States",2019,4,"weekly",58034
 "United States",2019,5,"weekly",58278
-"United States",2019,6,"weekly",58663
-"United States",2019,7,"weekly",58121
-"United States",2019,8,"weekly",58144
+"United States",2019,6,"weekly",58654
+"United States",2019,7,"weekly",58140
+"United States",2019,8,"weekly",58134
 "United States",2019,9,"weekly",58075
-"United States",2019,10,"weekly",58683
-"United States",2019,11,"weekly",58023
-"United States",2019,12,"weekly",57235
-"United States",2019,13,"weekly",56777
+"United States",2019,10,"weekly",58684
+"United States",2019,11,"weekly",58037
+"United States",2019,12,"weekly",57221
+"United States",2019,13,"weekly",56776
 "United States",2019,14,"weekly",56713
-"United States",2019,15,"weekly",55652
-"United States",2019,16,"weekly",54590
+"United States",2019,15,"weekly",55636
+"United States",2019,16,"weekly",54606
 "United States",2019,17,"weekly",53786
-"United States",2019,18,"weekly",54129
+"United States",2019,18,"weekly",54118
 "United States",2019,19,"weekly",53613
 "United States",2019,20,"weekly",53685
-"United States",2019,21,"weekly",53829
+"United States",2019,21,"weekly",53840
 "United States",2019,22,"weekly",52858
 "United States",2019,23,"weekly",53305
-"United States",2019,24,"weekly",52797
-"United States",2019,25,"weekly",52425
+"United States",2019,24,"weekly",52794
+"United States",2019,25,"weekly",52428
 "United States",2019,26,"weekly",52325
-"United States",2019,27,"weekly",52529
+"United States",2019,27,"weekly",52505
 "United States",2019,28,"weekly",52078
 "United States",2019,29,"weekly",51796
-"United States",2019,30,"weekly",51803
+"United States",2019,30,"weekly",51827
 "United States",2019,31,"weekly",51549
-"United States",2019,32,"weekly",51865
+"United States",2019,32,"weekly",51858
 "United States",2019,33,"weekly",51132
-"United States",2019,34,"weekly",51151
-"United States",2019,35,"weekly",51303
-"United States",2019,36,"weekly",51959
-"United States",2019,37,"weekly",51768
-"United States",2019,38,"weekly",51911
-"United States",2019,39,"weekly",52876
-"United States",2019,40,"weekly",52683
+"United States",2019,34,"weekly",51163
+"United States",2019,35,"weekly",51298
+"United States",2019,36,"weekly",51969
+"United States",2019,37,"weekly",51750
+"United States",2019,38,"weekly",51910
+"United States",2019,39,"weekly",52885
+"United States",2019,40,"weekly",52686
 "United States",2019,41,"weekly",53223
 "United States",2019,42,"weekly",54437
-"United States",2019,43,"weekly",54161
-"United States",2019,44,"weekly",54214
+"United States",2019,43,"weekly",54157
+"United States",2019,44,"weekly",54215
 "United States",2019,45,"weekly",55817
-"United States",2019,46,"weekly",56037
+"United States",2019,46,"weekly",56036
 "United States",2019,47,"weekly",56318
-"United States",2019,48,"weekly",55615
-"United States",2019,49,"weekly",57435
-"United States",2019,50,"weekly",57793
-"United States",2019,51,"weekly",57583
+"United States",2019,48,"weekly",55616
+"United States",2019,49,"weekly",57437
+"United States",2019,50,"weekly",57776
+"United States",2019,51,"weekly",57598
 "United States",2019,52,"weekly",58618
-"United States",2020,1,"weekly",60170
-"United States",2020,2,"weekly",60726
-"United States",2020,3,"weekly",59367
+"United States",2020,1,"weekly",60171
+"United States",2020,2,"weekly",60736
+"United States",2020,3,"weekly",59356
 "United States",2020,4,"weekly",59166
 "United States",2020,5,"weekly",58823
-"United States",2020,6,"weekly",59471
-"United States",2020,7,"weekly",58802
-"United States",2020,8,"weekly",58893
-"United States",2020,9,"weekly",59325
-"United States",2020,10,"weekly",59707
-"United States",2020,11,"weekly",58668
-"United States",2020,12,"weekly",59228
+"United States",2020,6,"weekly",59470
+"United States",2020,7,"weekly",58812
+"United States",2020,8,"weekly",58894
+"United States",2020,9,"weekly",59327
+"United States",2020,10,"weekly",59685
+"United States",2020,11,"weekly",58669
+"United States",2020,12,"weekly",59230
 "United States",2020,13,"weekly",63010
 "United States",2020,14,"weekly",72288
-"United States",2020,15,"weekly",79095
-"United States",2020,16,"weekly",76796
-"United States",2020,17,"weekly",73924
-"United States",2020,18,"weekly",69294
-"United States",2020,19,"weekly",66815
-"United States",2020,20,"weekly",64464
+"United States",2020,15,"weekly",79114
+"United States",2020,16,"weekly",76815
+"United States",2020,17,"weekly",73906
+"United States",2020,18,"weekly",69306
+"United States",2020,19,"weekly",66819
+"United States",2020,20,"weekly",64466
 "United States",2020,21,"weekly",61618
-"United States",2020,22,"weekly",59677
-"United States",2020,23,"weekly",58889
-"United States",2020,24,"weekly",58015
-"United States",2020,25,"weekly",57985
-"United States",2020,26,"weekly",58490
-"United States",2020,27,"weekly",59805
-"United States",2020,28,"weekly",61914
-"United States",2020,29,"weekly",63164
-"United States",2020,30,"weekly",64222
-"United States",2020,31,"weekly",64219
-"United States",2020,32,"weekly",63709
-"United States",2020,33,"weekly",63621
-"United States",2020,34,"weekly",62534
-"United States",2020,35,"weekly",61092
-"United States",2020,36,"weekly",60218
-"United States",2020,37,"weekly",59636
-"United States",2020,38,"weekly",59701
-"United States",2020,39,"weekly",60588
-"United States",2020,40,"weekly",59704
-"United States",2020,41,"weekly",61581
-"United States",2020,42,"weekly",60224
-"United States",2020,43,"weekly",61740
-"United States",2020,44,"weekly",63035
-"United States",2020,45,"weekly",67737
-"United States",2020,46,"weekly",68943
-"United States",2020,47,"weekly",71861
-"United States",2020,48,"weekly",73427
-"United States",2020,49,"weekly",76846
-"United States",2020,50,"weekly",81263
-"United States",2020,51,"weekly",82162
-"United States",2020,52,"weekly",83472
-"United States",2020,53,"weekly",85655
-"United States",2021,1,"weekly",84680
-"United States",2021,2,"weekly",85071
-"United States",2021,3,"weekly",81475
-"United States",2021,4,"weekly",76656
-"United States",2021,5,"weekly",74206
-"United States",2021,6,"weekly",69285
-"United States",2021,7,"weekly",67396
-"United States",2021,8,"weekly",64792
-"Uruguay",0,1,"weekly",571
-"Uruguay",0,2,"weekly",612
-"Uruguay",0,3,"weekly",554
-"Uruguay",0,4,"weekly",568
-"Uruguay",0,5,"weekly",583
-"Uruguay",0,6,"weekly",571
-"Uruguay",0,7,"weekly",560
-"Uruguay",0,8,"weekly",586
-"Uruguay",0,9,"weekly",562
-"Uruguay",0,10,"weekly",565
-"Uruguay",0,11,"weekly",592
-"Uruguay",0,12,"weekly",583
-"Uruguay",0,13,"weekly",595
-"Uruguay",0,14,"weekly",584
-"Uruguay",0,15,"weekly",595
-"Uruguay",0,16,"weekly",581
-"Uruguay",0,17,"weekly",554
-"Uruguay",0,18,"weekly",633
-"Uruguay",0,19,"weekly",630
-"Uruguay",0,20,"weekly",624
-"Uruguay",0,21,"weekly",685
-"Uruguay",0,22,"weekly",677
-"Uruguay",0,23,"weekly",718
-"Uruguay",0,24,"weekly",733
-"Uruguay",0,25,"weekly",782
-"Uruguay",0,26,"weekly",773
-"Uruguay",0,27,"weekly",774
-"Uruguay",0,28,"weekly",800
-"Uruguay",0,29,"weekly",771
-"Uruguay",0,30,"weekly",773
-"Uruguay",0,31,"weekly",NA
-"Uruguay",0,32,"weekly",NA
-"Uruguay",0,33,"weekly",NA
-"Uruguay",0,34,"weekly",NA
-"Uruguay",0,35,"weekly",NA
-"Uruguay",0,36,"weekly",NA
-"Uruguay",0,37,"weekly",NA
-"Uruguay",0,38,"weekly",NA
-"Uruguay",0,39,"weekly",NA
-"Uruguay",0,40,"weekly",NA
-"Uruguay",0,41,"weekly",NA
-"Uruguay",0,42,"weekly",NA
-"Uruguay",0,43,"weekly",NA
-"Uruguay",0,44,"weekly",NA
-"Uruguay",0,45,"weekly",NA
-"Uruguay",0,46,"weekly",NA
-"Uruguay",0,47,"weekly",NA
-"Uruguay",0,48,"weekly",NA
-"Uruguay",0,49,"weekly",NA
-"Uruguay",0,50,"weekly",NA
-"Uruguay",0,51,"weekly",NA
-"Uruguay",0,52,"weekly",NA
-"Uruguay",0,53,"weekly",NA
-"Uruguay",2020,1,"weekly",590
-"Uruguay",2020,2,"weekly",619
-"Uruguay",2020,3,"weekly",562
-"Uruguay",2020,4,"weekly",578
-"Uruguay",2020,5,"weekly",519
-"Uruguay",2020,6,"weekly",630
-"Uruguay",2020,7,"weekly",557
-"Uruguay",2020,8,"weekly",592
-"Uruguay",2020,9,"weekly",551
-"Uruguay",2020,10,"weekly",590
-"Uruguay",2020,11,"weekly",560
-"Uruguay",2020,12,"weekly",600
-"Uruguay",2020,13,"weekly",584
-"Uruguay",2020,14,"weekly",557
-"Uruguay",2020,15,"weekly",568
-"Uruguay",2020,16,"weekly",586
-"Uruguay",2020,17,"weekly",627
-"Uruguay",2020,18,"weekly",542
-"Uruguay",2020,19,"weekly",552
-"Uruguay",2020,20,"weekly",606
-"Uruguay",2020,21,"weekly",659
-"Uruguay",2020,22,"weekly",644
-"Uruguay",2020,23,"weekly",666
-"Uruguay",2020,24,"weekly",619
-"Uruguay",2020,25,"weekly",606
-"Uruguay",2020,26,"weekly",589
-"Uruguay",2020,27,"weekly",638
-"Uruguay",2020,28,"weekly",735
-"Uruguay",2020,29,"weekly",733
-"Uruguay",2020,30,"weekly",716
-"Uruguay",2020,31,"weekly",NA
-"Uruguay",2020,32,"weekly",NA
-"Uruguay",2020,33,"weekly",NA
-"Uruguay",2020,34,"weekly",NA
-"Uruguay",2020,35,"weekly",NA
-"Uruguay",2020,36,"weekly",NA
-"Uruguay",2020,37,"weekly",NA
-"Uruguay",2020,38,"weekly",NA
-"Uruguay",2020,39,"weekly",NA
-"Uruguay",2020,40,"weekly",NA
-"Uruguay",2020,41,"weekly",NA
-"Uruguay",2020,42,"weekly",NA
-"Uruguay",2020,43,"weekly",NA
-"Uruguay",2020,44,"weekly",NA
-"Uruguay",2020,45,"weekly",NA
-"Uruguay",2020,46,"weekly",NA
-"Uruguay",2020,47,"weekly",NA
-"Uruguay",2020,48,"weekly",NA
-"Uruguay",2020,49,"weekly",NA
-"Uruguay",2020,50,"weekly",NA
-"Uruguay",2020,51,"weekly",NA
-"Uruguay",2020,52,"weekly",NA
-"Uruguay",2020,53,"weekly",NA
+"United States",2020,22,"weekly",59668
+"United States",2020,23,"weekly",58881
+"United States",2020,24,"weekly",58029
+"United States",2020,25,"weekly",57975
+"United States",2020,26,"weekly",58510
+"United States",2020,27,"weekly",59823
+"United States",2020,28,"weekly",61918
+"United States",2020,29,"weekly",63153
+"United States",2020,30,"weekly",64247
+"United States",2020,31,"weekly",64204
+"United States",2020,32,"weekly",63715
+"United States",2020,33,"weekly",63624
+"United States",2020,34,"weekly",62536
+"United States",2020,35,"weekly",61095
+"United States",2020,36,"weekly",60223
+"United States",2020,37,"weekly",59632
+"United States",2020,38,"weekly",59703
+"United States",2020,39,"weekly",60604
+"United States",2020,40,"weekly",59765
+"United States",2020,41,"weekly",61734
+"United States",2020,42,"weekly",60606
+"United States",2020,43,"weekly",62139
+"United States",2020,44,"weekly",63375
+"United States",2020,45,"weekly",67442
+"United States",2020,46,"weekly",69129
+"United States",2020,47,"weekly",72026
+"United States",2020,48,"weekly",73536
+"United States",2020,49,"weekly",77564
+"United States",2020,50,"weekly",82184
+"United States",2020,51,"weekly",83053
+"United States",2020,52,"weekly",84422
+"United States",2020,53,"weekly",86386
+"United States",2021,1,"weekly",84889
+"United States",2021,2,"weekly",85304
+"United States",2021,3,"weekly",81790
+"United States",2021,4,"weekly",77001
+"United States",2021,5,"weekly",74295
+"United States",2021,6,"weekly",69325
+"United States",2021,7,"weekly",67465
+"United States",2021,8,"weekly",64836
+"United States",2021,9,"weekly",61722
+"United States",2021,10,"weekly",59939
+"United States",2021,11,"weekly",58394
+"United States",2021,12,"weekly",58301
+"Uruguay",2015,1,"monthly",2514
+"Uruguay",2015,2,"monthly",2219
+"Uruguay",2015,3,"monthly",2474
+"Uruguay",2015,4,"monthly",2485
+"Uruguay",2015,5,"monthly",2736
+"Uruguay",2015,6,"monthly",2948
+"Uruguay",2015,7,"monthly",3545
+"Uruguay",2015,8,"monthly",3100
+"Uruguay",2015,9,"monthly",2940
+"Uruguay",2015,10,"monthly",2804
+"Uruguay",2015,11,"monthly",2544
+"Uruguay",2015,12,"monthly",2658
+"Uruguay",2016,1,"monthly",2576
+"Uruguay",2016,2,"monthly",2403
+"Uruguay",2016,3,"monthly",2558
+"Uruguay",2016,4,"monthly",2444
+"Uruguay",2016,5,"monthly",3351
+"Uruguay",2016,6,"monthly",3577
+"Uruguay",2016,7,"monthly",3358
+"Uruguay",2016,8,"monthly",3187
+"Uruguay",2016,9,"monthly",2956
+"Uruguay",2016,10,"monthly",2702
+"Uruguay",2016,11,"monthly",2555
+"Uruguay",2016,12,"monthly",2606
+"Uruguay",2017,1,"monthly",2565
+"Uruguay",2017,2,"monthly",2265
+"Uruguay",2017,3,"monthly",2624
+"Uruguay",2017,4,"monthly",2507
+"Uruguay",2017,5,"monthly",2732
+"Uruguay",2017,6,"monthly",3403
+"Uruguay",2017,7,"monthly",3415
+"Uruguay",2017,8,"monthly",3048
+"Uruguay",2017,9,"monthly",2833
+"Uruguay",2017,10,"monthly",2678
+"Uruguay",2017,11,"monthly",2458
+"Uruguay",2017,12,"monthly",2645
+"Uruguay",2018,1,"monthly",2525
+"Uruguay",2018,2,"monthly",2231
+"Uruguay",2018,3,"monthly",2518
+"Uruguay",2018,4,"monthly",2458
+"Uruguay",2018,5,"monthly",2746
+"Uruguay",2018,6,"monthly",3210
+"Uruguay",2018,7,"monthly",3392
+"Uruguay",2018,8,"monthly",3721
+"Uruguay",2018,9,"monthly",3282
+"Uruguay",2018,10,"monthly",2885
+"Uruguay",2018,11,"monthly",2652
+"Uruguay",2018,12,"monthly",2508
+"Uruguay",2019,1,"monthly",2720
+"Uruguay",2019,2,"monthly",2318
+"Uruguay",2019,3,"monthly",2641
+"Uruguay",2019,4,"monthly",2580
+"Uruguay",2019,5,"monthly",2904
+"Uruguay",2019,6,"monthly",3005
+"Uruguay",2019,7,"monthly",3720
+"Uruguay",2019,8,"monthly",3515
+"Uruguay",2019,9,"monthly",3206
+"Uruguay",2019,10,"monthly",2916
+"Uruguay",2019,11,"monthly",2659
+"Uruguay",2019,12,"monthly",2623
+"Uruguay",2020,1,"monthly",2557
+"Uruguay",2020,2,"monthly",2434
+"Uruguay",2020,3,"monthly",2588
+"Uruguay",2020,4,"monthly",2503
+"Uruguay",2020,5,"monthly",2730
+"Uruguay",2020,6,"monthly",2704
+"Uruguay",2020,7,"monthly",3162
+"Uruguay",2020,8,"monthly",2953
+"Uruguay",2020,9,"monthly",2853
+"Uruguay",2020,10,"monthly",2712
+"Uruguay",2020,11,"monthly",2579
+"Uruguay",2020,12,"monthly",2859
 "Uzbekistan",2015,1,"monthly",9402
 "Uzbekistan",2015,2,"monthly",13028
 "Uzbekistan",2015,3,"monthly",12873

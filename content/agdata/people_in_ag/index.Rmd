@@ -108,7 +108,7 @@ areas <- c("Canada", "USA", "Mexico",
            "Ethiopoia", "South Africa", "Nigeria","Morocco", "Egypt")
 xx <- agData_PeopleInAg %>% 
   filter(Measurement == "Percent", Year %in% c(1991, 2017), Area %in% areas) %>%
-  addRegionInfo() %>%
+  region_Info() %>%
   arrange(Region, Value) %>%
   mutate(Area = factor(Area, levels = unique(.$Area)))
 # Plot

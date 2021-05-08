@@ -794,6 +794,10 @@ ggsave("Intro_agData_ISAAA_Value.png", mp, width = 6, height = 4)
 # Get Data
 xx <- agData_UK_Yields %>% as_tibble()
 xx
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+# List Crops
+xx %>% distinct(Crop)
 ```
 
 ```{r}

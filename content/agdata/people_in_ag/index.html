@@ -2,7 +2,7 @@
 title: "People in Agriculture"
 subtitle: "Graphs of people in Agriculture"
 summary:  "Graphs of people in Agriculture"
-date: "2021-05-04"
+date: "2021-05-07"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/people_in_ag/)"
 tags: [ "agData", "Regions" ]
 weight: 4
@@ -81,7 +81,7 @@ areas &lt;- c(&quot;Canada&quot;, &quot;USA&quot;, &quot;Mexico&quot;,
            &quot;Ethiopoia&quot;, &quot;South Africa&quot;, &quot;Nigeria&quot;,&quot;Morocco&quot;, &quot;Egypt&quot;)
 xx &lt;- agData_PeopleInAg %&gt;% 
   filter(Measurement == &quot;Percent&quot;, Year %in% c(1991, 2017), Area %in% areas) %&gt;%
-  addRegionInfo() %&gt;%
+  region_Info() %&gt;%
   arrange(Region, Value) %&gt;%
   mutate(Area = factor(Area, levels = unique(.$Area)))
 # Plot

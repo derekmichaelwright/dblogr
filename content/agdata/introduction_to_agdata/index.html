@@ -2,7 +2,7 @@
 title: "Introduction to agData"
 subtitle: "An R package with FAO, USDA, STATCAN and ISAAA data"
 summary:  "An R package with FAO, USDA, STATCAN and ISAAA data"
-date: "2021-05-04"
+date: "2021-05-07"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agData/introduction_to_agdata/)"
 tags: [ "agData", "Introduction", "Featured" ]
 weight: 1
@@ -1382,6 +1382,20 @@ xx</code></pre>
 ##  9 United Kingdom Wheat  1278 Yield       tonnes/ha 0.845
 ## 10 United Kingdom Wheat  1279 Yield       tonnes/ha 0.482
 ## # ... with 1,808 more rows</code></pre>
+<pre class="r"><code># List Measurements
+xx %&gt;% distinct(Measurement, Unit)</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##   Measurement Unit     
+##   &lt;fct&gt;       &lt;fct&gt;    
+## 1 Yield       tonnes/ha</code></pre>
+<pre class="r"><code># List Crops
+xx %&gt;% distinct(Crop)</code></pre>
+<pre><code>## # A tibble: 3 x 1
+##   Crop  
+##   &lt;fct&gt; 
+## 1 Wheat 
+## 2 Barley
+## 3 Oats</code></pre>
 <pre class="r"><code># Prep data
 xx &lt;- xx %&gt;% filter(Crop == &quot;Wheat&quot;, !is.na(Value))
 # Plot

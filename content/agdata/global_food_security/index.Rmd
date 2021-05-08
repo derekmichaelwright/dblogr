@@ -273,7 +273,7 @@ ggsave("global_food_security_07.png", mp, width = 10, height = 6)
 colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "darkslategrey")
 crops <- c("Wheat", "Maize", "Rice", "Sorghum")
 xx <- agData_FAO_Trade %>%
-  addRegionInfo() %>%
+  region_Info() %>%
   filter(Measurement %in% c("Import Quantity", "Export Quantity"),
          Crop %in% crops, Area %in% agData_FAO_Country_Table$Region) %>%
   mutate(Area = factor(Area, levels = levels(.$Region)))
@@ -301,7 +301,7 @@ ggsave("global_food_security_08.png", mp, width = 6, height = 6)
 colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "darkslategrey")
 crops <- c("Soybeans", "Beans, dry", "Chick peas", "Lentils")
 xx <- agData_FAO_Trade %>%
-  addRegionInfo() %>%
+  region_Info() %>%
   filter(Measurement %in% c("Import Quantity", "Export Quantity"),
          Crop %in% crops, Area %in% agData_FAO_Country_Table$Region) %>%
   mutate(Area = factor(Area, levels = levels(.$Region)))

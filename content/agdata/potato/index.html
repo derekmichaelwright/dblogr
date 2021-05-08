@@ -2,7 +2,7 @@
 title: "Global Potato Production"
 subtitle: "Graphs of potato production using FAO data"
 summary:  "Graphs of potato production using FAO data"
-date: "2021-05-04"
+date: "2021-05-07"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/potato/)"
 tags: [ "agData", "Potato" ]
 weight: 4
@@ -108,7 +108,7 @@ areas &lt;- agData_FAO_Crops %&gt;%
   filter(Year %in% c(1961,2017), Area %in% agData_FAO_Country_Table$Country,
          Measurement == &quot;Production&quot;, Crop == &quot;Potatoes&quot;) %&gt;% 
   arrange(desc(Value)) %&gt;% slice(1:9) %&gt;% pull(Area) %&gt;% unique()
-xx &lt;- agData_FAO_Crops %&gt;% addRegionInfo() %&gt;%
+xx &lt;- agData_FAO_Crops %&gt;% region_Info() %&gt;%
   filter(Area %in% areas, Measurement == &quot;Production&quot;, Crop == &quot;Potatoes&quot;)
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Region)) + 

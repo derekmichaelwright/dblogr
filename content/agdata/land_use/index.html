@@ -2,7 +2,7 @@
 title: "Land Use"
 subtitle: "Graphs for land use with FAO data"
 summary:  "Graphs for land use with FAO data"
-date: "2021-05-04"
+date: "2021-05-07"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/land_use/)"
 tags: [ "agData", "Regions" ]
 weight: 4
@@ -29,7 +29,7 @@ colors &lt;- c(&quot;darkgreen&quot;, &quot;darkblue&quot;, &quot;darkred&quot;,
 xx &lt;- agData_FAO_LandUse %&gt;% 
   filter(Item == &quot;Agricultural land&quot;,
          Year == 2015) %&gt;%
-  addRegionInfo() %&gt;%
+  region_Info() %&gt;%
   filter(Area %in% agData_FAO_Country_Table$Country) %&gt;%
   arrange(desc(Value)) %&gt;%
   slice(1:20) %&gt;%
@@ -55,7 +55,7 @@ colors &lt;- c(&quot;darkgreen&quot;, &quot;darkblue&quot;, &quot;darkred&quot;,
 xx &lt;- agData_FAO_LandUse %&gt;% 
   filter(Item == &quot;Agriculture area certified organic&quot;,
          Year == 2015) %&gt;%
-  addRegionInfo() %&gt;%
+  region_Info() %&gt;%
   filter(Area %in% agData_FAO_Country_Table$Country) %&gt;%
   arrange(desc(Value)) %&gt;%
   slice(1:20) %&gt;%
@@ -84,7 +84,7 @@ xx &lt;- agData_FAO_LandUse %&gt;%
   select(-Measurement, -Unit) %&gt;%
   spread(Item, Value) %&gt;%
   mutate(Value = 100 * `Agriculture area certified organic` / `Agricultural land`) %&gt;%
-  addRegionInfo() %&gt;%
+  region_Info() %&gt;%
   filter(Area %in% agData_FAO_Country_Table$Country) %&gt;%
   arrange(desc(Value)) %&gt;%
   slice(1:20) %&gt;%

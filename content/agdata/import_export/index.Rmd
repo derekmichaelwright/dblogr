@@ -38,7 +38,7 @@ netImportExport <- function(crop = "Wheat", year = 2017) {
   # Prep data
   colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "darkslategrey")
   xx <- agData_FAO_Trade %>% 
-    addRegionInfo() %>%
+    region_Info() %>%
     filter(Measurement %in% c("Import Quantity", "Export Quantity"), 
            Area %in% unique(agData_FAO_Country_Table$Country),
            Crop == crop, Year == year) %>%
@@ -66,7 +66,7 @@ netImportExport_anim <- function(crop = "Wheat") {
   # Prep data
   colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "darkslategrey")
   xx <- agData_FAO_Trade %>% 
-    addRegionInfo() %>%
+    region_Info() %>%
     filter(Measurement %in% c("Import Quantity", "Export Quantity"), 
            Area %in% unique(agData_FAO_Country_Table$Country),
            Crop == crop) %>%

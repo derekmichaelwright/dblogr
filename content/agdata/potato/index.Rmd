@@ -127,7 +127,7 @@ areas <- agData_FAO_Crops %>%
   filter(Year %in% c(1961,2017), Area %in% agData_FAO_Country_Table$Country,
          Measurement == "Production", Crop == "Potatoes") %>% 
   arrange(desc(Value)) %>% slice(1:9) %>% pull(Area) %>% unique()
-xx <- agData_FAO_Crops %>% addRegionInfo() %>%
+xx <- agData_FAO_Crops %>% region_Info() %>%
   filter(Area %in% areas, Measurement == "Production", Crop == "Potatoes")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Region)) + 

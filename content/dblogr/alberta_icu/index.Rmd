@@ -178,6 +178,10 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Measurement)) +
 ggsave("alberta_icu_04.png", mp, width = 6, height = 4)
 ```
 
+```{r echo = F}
+ggsave("featured.png", mp, width = 6, height = 4)
+```
+
 ![](alberta_icu_04.png)
 
 ---

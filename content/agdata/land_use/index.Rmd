@@ -37,7 +37,7 @@ colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "antiquewhite4
 xx <- agData_FAO_LandUse %>% 
   filter(Item == "Agricultural land",
          Year == 2015) %>%
-  addRegionInfo() %>%
+  region_Info() %>%
   filter(Area %in% agData_FAO_Country_Table$Country) %>%
   arrange(desc(Value)) %>%
   slice(1:20) %>%
@@ -71,7 +71,7 @@ colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "antiquewhite4
 xx <- agData_FAO_LandUse %>% 
   filter(Item == "Agriculture area certified organic",
          Year == 2015) %>%
-  addRegionInfo() %>%
+  region_Info() %>%
   filter(Area %in% agData_FAO_Country_Table$Country) %>%
   arrange(desc(Value)) %>%
   slice(1:20) %>%
@@ -104,7 +104,7 @@ xx <- agData_FAO_LandUse %>%
   select(-Measurement, -Unit) %>%
   spread(Item, Value) %>%
   mutate(Value = 100 * `Agriculture area certified organic` / `Agricultural land`) %>%
-  addRegionInfo() %>%
+  region_Info() %>%
   filter(Area %in% agData_FAO_Country_Table$Country) %>%
   arrange(desc(Value)) %>%
   slice(1:20) %>%

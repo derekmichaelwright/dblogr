@@ -99,7 +99,7 @@ ggsave("featured.png", mp, width = 8, height = 8)
 
 ```{r}
 # Prep data
-xx <- agData_FAO_Crops %>% addRegionInfo() %>%
+xx <- agData_FAO_Crops %>% region_Info() %>%
   filter(Crop == "Soybeans", Measurement == "Production",
          SubRegion %in% c("South America", "Northern America")) 
 # Plot

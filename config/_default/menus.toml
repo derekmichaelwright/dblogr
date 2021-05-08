@@ -4,8 +4,8 @@
 #   The weight parameter defines the order that the links will appear in.
 
 [[main]]
-  name = "Academic Work"
-  url = "#posts_academic"
+  name = "Blog"
+  url = "#posts_dblogr"
   weight = 1
 
 [[main]]
@@ -14,8 +14,8 @@
   weight = 2
 
 [[main]]
-  name = "Blog Posts"
-  url = "#posts_dblogr"
+  name = "Academic Work"
+  url = "#posts_academic"
   weight = 3
 
 # Link to a PDF of your resume/CV from the menu.

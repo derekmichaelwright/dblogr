@@ -100,7 +100,7 @@ ggsave("lentil_01.png", width = 7, height = 4)
 ```{r}
 # Prep data
 colors <- c("darkgreen", "darkblue", "darkgoldenrod2", "darkslategrey")
-xx <- agData_FAO_Crops %>% addRegionInfo() %>%
+xx <- agData_FAO_Crops %>% region_Info() %>%
   filter(Area %in% agData_FAO_Country_Table$Country,
          Year == max(Year), Crop == "Lentils", Measurement == "Production") %>%
   arrange(desc(Value)) %>% 
@@ -124,13 +124,13 @@ ggsave("lentil_02.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "darkslategrey")
-areas <- agData_FAO_Crops %>% addRegionInfo() %>%
+areas <- agData_FAO_Crops %>% region_Info() %>%
   filter(Area %in% agData_FAO_Country_Table$Country,
          Year == max(Year), Crop == "Lentils", Measurement == "Production") %>%
   arrange(desc(Value)) %>% 
   slice(1:10) %>% 
   pull(Area)
-xx <- agData_FAO_Crops %>% addRegionInfo() %>%
+xx <- agData_FAO_Crops %>% region_Info() %>%
   filter(Area %in% agData_FAO_Country_Table$Country,
          Crop == "Lentils", Measurement == "Production") %>%
   arrange(desc(Value)) %>% 
@@ -159,7 +159,7 @@ for(i in min(agData_FAO_Crops$Year):max(agData_FAO_Crops$Year)) {
            Year == i, Area %in% agData_FAO_Country_Table$Country) %>%
     arrange(desc(Value)) %>% 
     slice(1:10) %>% 
-    addRegionInfo()
+    region_Info()
   xx <- bind_rows(xx, xi) 
 }
 bar_chart_race(xx, Area, Value, Year)
@@ -182,7 +182,7 @@ xx <- agData_FAO_Crops %>%
          Year > max(Year)-5, Area %in% x1$Area) %>% 
   group_by(Area) %>%
   summarise(Value = mean(Value)) %>% 
-  addRegionInfo() %>%
+  region_Info() %>%
   arrange(desc(Value)) %>%
   mutate(Area = factor(Area, levels = Area))
 # Plot
@@ -305,7 +305,7 @@ ggsave("lentil_07.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 xx <- agData_FAO_Trade %>%
-  addRegionInfo() %>%
+  region_Info() %>%
   filter(Measurement %in% c("Import Quantity", "Export Quantity"),
          Crop == "Lentils", Area %in% agData_FAO_Country_Table$Region)
 # Plot
@@ -339,7 +339,7 @@ blank_theme <- theme_minimal() +
   )
 # Plot function
 ggPie <- function(crop, measurement = "Production", year = 2018, other = 0.01) {
-  xx <- agData_FAO_Crops %>% addRegionInfo() %>%
+  xx <- agData_FAO_Crops %>% region_Info() %>%
     filter(Crop == crop, Year == year, Measurement == measurement,
            Area %in% agData_FAO_Country_Table$Country)
   total <- agData_FAO_Crops %>% 
@@ -373,7 +373,7 @@ ggPie <- function(crop, measurement = "Production", year = 2018, other = 0.01) {
 }
 #
 ggPie_anim <- function(crop, measurement = "Production", other = 0.01) {
-  xx <- agData_FAO_Crops %>% addRegionInfo() %>%
+  xx <- agData_FAO_Crops %>% region_Info() %>%
     filter(Crop == crop, Measurement == measurement,
            Area %in% agData_FAO_Country_Table$Country)
   total <- agData_FAO_Crops %>% 

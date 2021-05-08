@@ -2,7 +2,7 @@
 title: "Crop Import/Export"
 subtitle: "Graphs of of crop import/export using FAO data"
 summary:  "Graphs of of crop import/export using FAO data"
-date: "2021-05-04"
+date: "2021-05-07"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/import_export/)"
 tags: [ "agData", "Regions" ]
 weight: 4
@@ -30,7 +30,7 @@ netImportExport &lt;- function(crop = &quot;Wheat&quot;, year = 2017) {
   # Prep data
   colors &lt;- c(&quot;darkgreen&quot;, &quot;darkblue&quot;, &quot;darkred&quot;, &quot;darkgoldenrod2&quot;, &quot;darkslategrey&quot;)
   xx &lt;- agData_FAO_Trade %&gt;% 
-    addRegionInfo() %&gt;%
+    region_Info() %&gt;%
     filter(Measurement %in% c(&quot;Import Quantity&quot;, &quot;Export Quantity&quot;), 
            Area %in% unique(agData_FAO_Country_Table$Country),
            Crop == crop, Year == year) %&gt;%
@@ -58,7 +58,7 @@ netImportExport_anim &lt;- function(crop = &quot;Wheat&quot;) {
   # Prep data
   colors &lt;- c(&quot;darkgreen&quot;, &quot;darkblue&quot;, &quot;darkred&quot;, &quot;darkgoldenrod2&quot;, &quot;darkslategrey&quot;)
   xx &lt;- agData_FAO_Trade %&gt;% 
-    addRegionInfo() %&gt;%
+    region_Info() %&gt;%
     filter(Measurement %in% c(&quot;Import Quantity&quot;, &quot;Export Quantity&quot;), 
            Area %in% unique(agData_FAO_Country_Table$Country),
            Crop == crop) %&gt;%
