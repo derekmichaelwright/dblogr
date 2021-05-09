@@ -12,7 +12,7 @@ image:
 links:
   - icon_pack: fas
     icon: code
-    name: R Script
+    name: HTML < R Script Vignette >
     url: https://derekmichaelwright.github.io/htmls/dblogr/canada_federal_elections.html
 ---
 

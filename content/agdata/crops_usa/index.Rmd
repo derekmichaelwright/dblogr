@@ -1,5 +1,5 @@
 ---
-title: "[USA Crop Production](https://derekmichaelwright.github.io/htmls/agdata/crops_usa.html)"
+title: "USA Crop Production"
 subtitle: "Graphs for crop production in the USA with USDA data"
 summary:  "Graphs for crop production in the USA with USDA data"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/agdata/crops_usa.html
 ---
 
 ```{r setup, include = FALSE}

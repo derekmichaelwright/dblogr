@@ -1,5 +1,5 @@
 ---
-title: "[GDP of Canada](https://derekmichaelwright.github.io/htmls/dblogr/canada_gdp.html)"
+title: "GDP of Canada"
 subtitle: "GDP data among Canadian provinces from 2007-2018"
 summary:  "GDP data among Canadian provinces from 2007-2018"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_gdp.html
 ---
 
 ```{r setup, include=FALSE}

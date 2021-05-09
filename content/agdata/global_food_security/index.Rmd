@@ -1,5 +1,5 @@
 ---
-title: "[Global Food Security](https://derekmichaelwright.github.io/htmls/agdata/global_food_security.html)"
+title: "Global Food Security"
 subtitle: "Graphs of of crop production per capita using FAO data"
 summary:  "Graphs of of crop production per capita using FAO data"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/agdata/global_food_security.html
 ---
 
 ```{r setup, include = FALSE}

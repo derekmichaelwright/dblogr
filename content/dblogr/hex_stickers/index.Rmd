@@ -1,5 +1,5 @@
 ---
-title: "[Hex Stickers](https://derekmichaelwright.github.io/htmls/dblogr/hex_stickers.html)"
+title: "Hex Stickers"
 subtitle: "Creation of hex stickers with R"
 summary:  "Creation of hex stickers with R"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 5
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/hex_stickers.html
 ---
 
 ```{r setup, include = FALSE}

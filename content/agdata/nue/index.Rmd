@@ -1,5 +1,5 @@
 ---
-title: "[Nitrogen Use Efficiency]https://derekmichaelwright.github.io/htmls/agdata/nue.html()"
+title: "Nitrogen Use Efficiency"
 subtitle: "Graphs of nitrogen use efficiency (NUE) using data from FAO"
 summary:  "Graphs of nitrogen use efficiency (NUE) using data from FAO"
 date: "`r Sys.Date()`"
@@ -10,6 +10,11 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/agdata/nue.html
 ---
 
 ```{r setup, include = FALSE}

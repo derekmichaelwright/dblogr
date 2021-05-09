@@ -1,5 +1,5 @@
 ---
-title: "[MSc Thesis - Canola NUE](https://derekmichaelwright.github.io/htmls/academic/canola_nue.html)"
+title: "MSc Thesis - Canola NUE"
 subtitle: "Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)"
 summary:  "Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)"
 date: "`r Sys.Date()`"
@@ -10,6 +10,11 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/academic/canola_nue.html
 ---
 
 ```{r setup, include=FALSE}

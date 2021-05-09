@@ -1,5 +1,5 @@
 ---
-title: "[Alberta ICU Usage](https://derekmichaelwright.github.io/htmls/dblogr/alberta_icu.html)"
+title: "Alberta ICU Usage"
 subtitle: "Data on ICU utilization from a FOIA request by The Justice Centre for Consitutional Freedoms"
 summary:  "Data on ICU utilization from a FOIA request by The Justice Centre for Consitutional Freedoms"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/alberta_icu.html
 ---
 
 ```{r setup, include=FALSE}

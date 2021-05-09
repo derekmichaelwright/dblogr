@@ -1,5 +1,5 @@
 ---
-title: "[Principal component analysis](https://derekmichaelwright.github.io/htmls/academic/pca.html)"
+title: "Principal component analysis"
 subtitle: "Principal component analysis with R and the Iris data set"
 summary:  "Principal component analysis with R and the Iris data set"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 4
 codefolding_show: "show"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/academic/pca.html
 ---
 
 ```{r setup, include=FALSE}

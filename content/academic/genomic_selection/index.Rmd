@@ -9,6 +9,11 @@ math: true
 weight: 2
 image:
   preview_only: yes
+links:
+  - icon: newspaper
+    icon_pack: far
+    name: Plants, People, Planet
+    url: https://acsess.onlinelibrary.wiley.com/doi/full/10.1002/tpg2.20002
 ---
 
 ```{r setup, include=FALSE}

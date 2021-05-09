@@ -1,5 +1,5 @@
 ---
-title: "[Introduction to agData](https://derekmichaelwright.github.io/htmls/agdata/introduction_to_agdata.html"
+title: "[Introduction to agData]("
 subtitle: "An R package with FAO, USDA, STATCAN and ISAAA data"
 summary:  "An R package with FAO, USDA, STATCAN and ISAAA data"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 1
 codefolding_show: "show"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/agdata/introduction_to_agdata.html
 ---
 
 ```{r setup, include = FALSE}

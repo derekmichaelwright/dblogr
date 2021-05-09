@@ -1,5 +1,5 @@
 ---
-title: "[USA Maize Production](https://derekmichaelwright.github.io/htmls/agdata/maize_usa.html)"
+title: "USA Maize Production"
 subtitle: "Graphs of maize production in the USA using USDA data"
 summary:  "Graphs of maize production in the USA using USDA data"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/agdata/maize_usa.html
 ---
 
 ```{r setup, include = FALSE}

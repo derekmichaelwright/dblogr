@@ -1,5 +1,5 @@
 ---
-title: "[Food Prices in Canada](https://derekmichaelwright.github.io/htmls/dblogr/canada_food_prices.html)"
+title: "Food Prices in Canada"
 subtitle: "Graphs of food prices using STATCAN data"
 summary:  "Graphs of food prices using STATCAN data"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_food_prices.html
 ---
 
 ```{r setup, include=FALSE}

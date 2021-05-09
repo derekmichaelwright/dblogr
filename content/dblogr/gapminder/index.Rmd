@@ -1,5 +1,5 @@
 ---
-title: "[Gapminder](https://derekmichaelwright.github.io/htmls/dblogr/gapminder.html)"
+title: "Gapminder"
 subtitle: "An exploration of gapminder data"
 summary:  "An exploration of gapminder data"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 5
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/gapminder.html
 ---
 
 ```{r setup, include=FALSE}

@@ -1,5 +1,5 @@
 ---
-title: "[Global Livestock Production](https://derekmichaelwright.github.io/htmls/agdata/livestock.html)"
+title: "Global Livestock Production"
 subtitle: "Graphs of livestock production using FAO data"
 summary:  "Graphs of livestock production using FAO data"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/agdata/livestock.html
 ---
 
 ```{r setup, include = FALSE}

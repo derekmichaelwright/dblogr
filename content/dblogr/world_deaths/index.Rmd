@@ -1,5 +1,5 @@
 ---
-title: "[World Death Rates](https://derekmichaelwright.github.io/htmls/dblogr/world_deaths.html)"
+title: "World Death Rates"
 subtitle: "An exploration of historical death rates"
 summary:  "An exploration of historical death rates"
 date: "`r Sys.Date()`"
@@ -12,20 +12,8 @@ image:
 links:
   - icon_pack: fas
     icon: code
-    name: R Script
-    url: 
-  - icon_pack: fas
-    icon: table
-    name: Data Set World
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_world_data.csv
-  - icon_pack: fas
-    icon: table
-    name: Data Set UK
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_uk_data.csv
-  - icon_pack: fas
-    icon: table
-    name: Data Set Countries
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/world_mortality.csv
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/world_deaths.html
 ---
 
 ```{r setup, include=FALSE}

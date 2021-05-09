@@ -1,5 +1,5 @@
 ---
-title: "[Calendar Creation](https://derekmichaelwright.github.io/htmls/dblogr/calendar_creation.html)"
+title: "Calendar Creation"
 subtitle: "Create a custom calendar in R"
 summary:  "Create a custom calendar in R"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/calendar_creation.html
 ---
 
 ```{r setup, include = FALSE}

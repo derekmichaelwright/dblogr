@@ -1,5 +1,5 @@
 ---
-title: "[Long Term Maize Experiment](https://derekmichaelwright.github.io/htmls/agdata/maize_long_term.html)"
+title: "Long Term Maize Experiment"
 subtitle: "Graphs made with data from a long term maize experiment"
 summary:  "Graphs made with data from a long term maize experiment"
 date: "`r Sys.Date()`"
@@ -10,6 +10,11 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/agdata/maize_long_term.html
 ---
 
 ```{r setup, include = FALSE}

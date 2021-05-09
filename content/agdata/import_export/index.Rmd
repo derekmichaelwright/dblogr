@@ -1,5 +1,5 @@
 ---
-title: "[Crop Import/Export](https://derekmichaelwright.github.io/htmls/agdata/import_export.html)"
+title: "Crop Import/Export"
 subtitle: "Graphs of of crop import/export using FAO data"
 summary:  "Graphs of of crop import/export using FAO data"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/agdata/import_export.html
 ---
 
 ```{r setup, include = FALSE}

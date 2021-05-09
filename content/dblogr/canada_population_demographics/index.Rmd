@@ -1,5 +1,5 @@
 ---
-title: "[Population Demographics In Canada](https://derekmichaelwright.github.io/htmls/dblogr/canada_population_demographics.html)"
+title: "Population Demographics In Canada"
 subtitle: "Population Pyramids with R"
 summary:  "Population Pyramids with R"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_population_demographics.html
 ---
 
 ```{r setup, include=FALSE}

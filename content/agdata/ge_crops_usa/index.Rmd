@@ -1,5 +1,5 @@
 ---
-title: "[USA Genetically Engineered Crop Production](https://derekmichaelwright.github.io/htmls/agdata/ge_crops_usa.html)"
+title: "USA Genetically Engineered Crop Production"
 subtitle: "Graphs of GE crop production using USDA data"
 summary:  "Graphs of GE crop production using USDA data"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/agdata/ge_crops_usa.html
 ---
 
 ```{r setup, include = FALSE}

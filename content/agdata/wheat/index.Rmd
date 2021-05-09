@@ -1,5 +1,5 @@
 ---
-title: "[Global Wheat Production](https://derekmichaelwright.github.io/htmls/agdata/wheat.html)"
+title: "Global Wheat Production"
 subtitle: "Graphs of wheat production using FAO data"
 summary:  "Graphs of wheat production using FAO data"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/agdata/wheat.html
 ---
 
 ```{r setup, include = FALSE}

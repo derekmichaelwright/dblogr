@@ -1,5 +1,5 @@
 ---
-title: "[Cherry Tree Flowering Date](https://derekmichaelwright.github.io/htmls/dblogr/cherry_trees.html)"
+title: "Cherry Tree Flowering Date"
 subtitle: "Historical Series of Phenological data for Cherry Tree Flowering at Kyoto City"
 summary:  "Historical Series of Phenological data for Cherry Tree Flowering at Kyoto City"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 10
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/cherry_trees.html
 ---
 
 ```{r setup, include=FALSE}

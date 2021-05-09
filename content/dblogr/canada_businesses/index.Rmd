@@ -1,5 +1,5 @@
 ---
-title: "[Canada Business Openings and Closures](https://derekmichaelwright.github.io/htmls/dblogr/canada_businesses.html)"
+title: "Canada Business Openings and Closures"
 subtitle: "An exploration of business openings and closures in Canada"
 summary:  "An exploration of business openings and closures in Canada"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_businesses.html
 ---
 
 ```{r setup, include=FALSE}

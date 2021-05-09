@@ -1,5 +1,5 @@
 ---
-title: "[The Journalism Around Amazon Fires](https://derekmichaelwright.github.io/htmls/dblogr/fires_amazon.html)"
+title: "The Journalism Around Amazon Fires"
 subtitle: "An analysis of science journalism by the CBC"
 summary:  "An analysis of science journalism by the CBC"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/fires_amazon.html
 ---
 
 ```{r setup, include=FALSE}

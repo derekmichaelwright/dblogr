@@ -1,5 +1,5 @@
 ---
-title: "[Memes With R](https://derekmichaelwright.github.io/htmls/dblogr/memes.html)"
+title: "Memes With R"
 subtitle: "My memes, created in R"
 summary:  "My memes, created in R"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/memes.html
 ---
 
 ```{r setup, include = FALSE}

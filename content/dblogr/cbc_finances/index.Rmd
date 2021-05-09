@@ -1,5 +1,5 @@
 ---
-title: "[CBC Finances](https://derekmichaelwright.github.io/htmls/dblogr/cbc_finances.html)"
+title: "CBC Finances"
 subtitle: "A look at CBC finances - government funding, ad revenue and total profit"
 summary:  "A look at CBC finances - government funding, ad revenue and total profit"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 5
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/cbc_finances.html
 ---
 
 ```{r setup, include=FALSE}

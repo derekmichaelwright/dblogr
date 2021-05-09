@@ -1,5 +1,5 @@
 ---
-title: "[2020 Saskatchewan Election Results](https://derekmichaelwright.github.io/htmls/dblogr/saskatchewan_2020_election.html)"
+title: "2020 Saskatchewan Election Results"
 subtitle: "A regional look at how Saskatchewanians voted"
 summary:  "A regional look at how Saskatchewanians voted"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/saskatchewan_2020_election.html
 ---
 
 ```{r setup, include=FALSE}

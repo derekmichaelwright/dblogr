@@ -1,5 +1,5 @@
 ---
-title: "[Greenhouse Gas Emissions in Canada](https://derekmichaelwright.github.io/htmls/dblogr/canada_ghg.html)"
+title: "Greenhouse Gas Emissions in Canada"
 subtitle: "Data for greenhouse gas emissions in Canada"
 summary:  "Data for greenhouse gas emissions in Canada"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_ghg.html
 ---
 
 ```{r setup, include=FALSE}

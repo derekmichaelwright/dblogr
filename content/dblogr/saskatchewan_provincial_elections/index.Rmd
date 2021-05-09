@@ -1,5 +1,5 @@
 ---
-title: "[Saskatchewan Provincial Elections](https://derekmichaelwright.github.io/htmls/dblogr/saskatchewan_provincial_elections.html)"
+title: "Saskatchewan Provincial Elections"
 subtitle: "A look back at Saskatchewan provincial election results"
 summary:  "A look back at Saskatchewan provincial election results"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 5
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/saskatchewan_provincial_elections.html
 ---
 
 ```{r setup, include=FALSE}

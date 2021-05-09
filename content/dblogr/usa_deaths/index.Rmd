@@ -1,5 +1,5 @@
 ---
-title: "[Deaths In USA](https://derekmichaelwright.github.io/htmls/dblogr/usa_deaths.html)"
+title: "Deaths In USA"
 subtitle: "An exploration of weekly deaths in the USA"
 summary:  "An exploration of weekly deaths in the USA"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/dblogr/usa_deaths.html
 ---
 
 ```{r setup, include=FALSE}

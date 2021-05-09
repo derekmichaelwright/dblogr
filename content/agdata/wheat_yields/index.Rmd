@@ -1,5 +1,5 @@
 ---
-title: "[Global Wheat Yields](https://derekmichaelwright.github.io/htmls/agdata/wheat_yields.html)"
+title: "Global Wheat Yields"
 subtitle: "Graphs of global wheat yields using FAO data"
 summary:  "Graphs of global wheat yields using FAO data"
 date: "`r Sys.Date()`"
@@ -9,6 +9,11 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/agdata/wheat_yields.html
 ---
 
 ```{r setup, include = FALSE}
