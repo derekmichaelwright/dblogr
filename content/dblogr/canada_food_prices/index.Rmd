@@ -1,5 +1,5 @@
 ---
-title: "Food Prices in Canada"
+title: "[Food Prices in Canada](https://derekmichaelwright.github.io/htmls/dblogr/canada_food_prices.html)"
 subtitle: "Graphs of food prices using STATCAN data"
 summary:  "Graphs of food prices using STATCAN data"
 date: "`r Sys.Date()`"
@@ -9,21 +9,7 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_food_prices.html
-  - icon_pack: fas
-    icon: file-pdf
-    name: Maps PDF
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf
-  - icon_pack: fas
-    icon: table
-    name: Download Table 18-10-0002-01
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/1810000201_databaseLoadingData.csv
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = T, message = F, warning = F)
@@ -33,11 +19,18 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data Source
 
-STATCAN data Tables: 18-10-0002-01
-
 https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=
 
-[**< Download Table 18-10-0002-01 >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/1810000201_databaseLoadingData.csv)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/1810000201_databaseLoadingData.csv",
+  button_label = "STATCAN Table 18-10-0002-01",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 ---
 
@@ -94,7 +87,16 @@ for(i in unique(dd$Product)) {
 dev.off()
 ```
 
-**PDF**: [canada_food_prices_products.pdf](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf",
+  button_label = "canada_food_prices_products.pdf",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-file-pdf",
+  self_contained = FALSE
+)
+```
 
 ```{r}
 # Prep data
@@ -130,7 +132,8 @@ xx$Change <- xx[,3] - xx[,2]
 # Plot
 mp <- ggplot(xx, aes(x = Product, y = Change, fill = Product)) +
   geom_bar(stat = "identity", color = "black") +
-  theme_agData(legend.position = "none", rotx = T) +
+  theme_agData(legend.position = "none", 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.4)) +
   labs(y = "Price Change", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
 ggsave("canada_food_prices_03.png", width = 6, height = 4)

@@ -1,5 +1,5 @@
 ---
-title: "Introduction to agData"
+title: "[Introduction to agData](https://derekmichaelwright.github.io/htmls/agdata/introduction_to_agdata.html"
 subtitle: "An R package with FAO, USDA, STATCAN and ISAAA data"
 summary:  "An R package with FAO, USDA, STATCAN and ISAAA data"
 date: "`r Sys.Date()`"
@@ -9,11 +9,6 @@ weight: 1
 codefolding_show: "show"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/introduction_to_agdata.html
 ---
 
 ```{r setup, include = FALSE}
@@ -93,10 +88,11 @@ mp <- ggplot(xx, aes(x = x, y = y, color = color)) +
 mp
 mp + theme_agData()
 mp + theme_agData(legend.position = "none")
-mp + theme_agData(linesize = 1.5, rotx = T,
+mp + theme_agData(linesize = 1.5, 
                   bgFill = alpha("darkgreen",0.2), 
                   stripFill = alpha("darkred",0.2),
-                  lineColor = "darkorange")
+                  lineColor = "darkorange",
+                  axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
 ```
 
 ---
@@ -456,7 +452,7 @@ xx <- xx %>%
 mp <- ggplot(xx, aes(x = Measurement, y = Value, group = Area)) + 
   geom_bar(stat = "identity") + 
   facet_grid(. ~ Year) + 
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Size of Farms in Saskatchewan", 
        y = "Number of Farms", x = NULL)
 ggsave("Intro_agData_STATCAN_FarmLand_Size.png", mp, width = 6, height = 4)

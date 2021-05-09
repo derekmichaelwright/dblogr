@@ -9,11 +9,6 @@ math: true
 weight: 2
 image:
   preview_only: yes
-links:
-  - icon: newspaper
-    icon_pack: far
-    name: The Plant Genome
-    url: https://acsess.onlinelibrary.wiley.com/doi/full/10.1002/tpg2.20002
 ---
 
 ```{r setup, include=FALSE}
@@ -33,8 +28,6 @@ Genomic selection (GS) is a marker-based selection initially suggested for lives
 ![Figure 1](Figure01.jpg)
 
 ![Figure 2](Figure02.jpg)
-
-
 
 ---
 

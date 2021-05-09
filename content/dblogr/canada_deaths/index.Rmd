@@ -1,5 +1,5 @@
 ---
-title: "Deaths In Canada"
+title: "[Deaths In Canada](https://derekmichaelwright.github.io/htmls/dblogr/canada_deaths.html)"
 subtitle: "An exploration of weekly deaths in Canada"
 summary:  "An exploration of weekly deaths in Canada"
 date: "`r Sys.Date()`"
@@ -9,23 +9,6 @@ weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_deaths.html
-  - icon_pack: fas
-    icon: table
-    name: Download Table 13-10-0783-01
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310078301_databaseLoadingData.csv
-  - icon_pack: fas
-    icon: table
-    name: Download Table 13-10-0768-01
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310076801_databaseLoadingData.csv
-  - icon_pack: fas
-    icon: table
-    name: Download Table 13-10-0703-01
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310070801_databaseLoadingData.csv
 ---
 
 ```{r setup, include=FALSE}
@@ -36,21 +19,46 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data Sources
 
-STATCAN data sources: 13-10-0783-01 & 13-10-0768-01
+https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm
 
 https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301
 
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310078301_databaseLoadingData.csv",
+  button_label = "STATCAN Table 13-10-0783-01",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
+
 https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801
+
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310076801_databaseLoadingData.csv",
+  button_label = "STATCAN Table 13-10-0768-01",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801
 
-https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm
-
-[**< Download Table 13-10-0783-01 >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310078301_databaseLoadingData.csv)
-
-[**< Download Table 13-10-0768-01 >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310076801_databaseLoadingData.csv)
-
-[**< Download Table 13-10-0708-01 >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310070801_databaseLoadingData.csv)
+```{r echo = F}
+downloadthis::download_link(
+  link = "(https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310070801_databaseLoadingData.csv",
+  button_label = "STATCAN Table 13-10-0708-01",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 ---
 
@@ -521,7 +529,7 @@ xx <- d3 %>% filter(Year == 2019)
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Death.Rate)) +
   geom_bar(stat = "identity", color = "black", fill = "darkred", alpha = 0.8) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Death Rate - Canada 2019", y = "Deaths Per Thousand People", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN\n*2020 data may be incomplete")
 ggsave("canada_deaths_5_03.png", mp, width = 6, height = 4)
@@ -543,7 +551,7 @@ xx <- d3 %>% filter(Year %in% c(1991, 2019)) %>%
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Change)) +
   geom_bar(stat = "identity", color = "black", fill = "darkred", alpha = 0.8) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Death Rate Change (1991-2019)", 
        y = "Deaths Per Thousand People", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
@@ -569,7 +577,7 @@ mp <- ggplot(xx, aes(x = Area, y = Value, fill = Trait)) +
   geom_bar(stat = "identity", position = "dodge", color = "black") +
   scale_fill_manual(values = c("darkred", alpha("darkred",0.5)),
                     labels = c("2019 - 1991", "2020 - 2019")) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Death Rate Change (1991-2019)", 
        y = "Deaths Per Thousand People", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")

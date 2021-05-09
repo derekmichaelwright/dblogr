@@ -1,5 +1,5 @@
 ---
-title: "The Journalism Around Amazon Fires"
+title: "[The Journalism Around Amazon Fires](https://derekmichaelwright.github.io/htmls/dblogr/fires_amazon.html)"
 subtitle: "An analysis of science journalism by the CBC"
 summary:  "An analysis of science journalism by the CBC"
 date: "`r Sys.Date()`"
@@ -9,15 +9,6 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/fires_amazon.html
-  - icon_pack: fas
-    icon: table
-    name: Download Data
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/fires_amazon/fires_amazon_data.xlsx
 ---
 
 ```{r setup, include=FALSE}
@@ -80,7 +71,16 @@ National Institute for Space Reserach (*INPE*)
 
 http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/
 
-[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/fires_amazon/fires_amazon_data.xlsx)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/fires_amazon/fires_amazon_data.xlsx",
+  button_label = "fires_amazon_data.xlsx",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 ---
 
@@ -115,7 +115,8 @@ mp <- ggplot(xx, aes(x = Year, y = Total / 1000, alpha = Alpha)) +
   geom_bar(stat = "identity", fill = "Darkred", color = "Black") +
   scale_x_continuous(breaks = c(min(xx$Year):max(xx$Year))) +
   scale_alpha_manual(values = c(1, 0.7)) +
-  theme_agData(legend.position = "none", rotx = T) +
+  theme_agData(legend.position = "none", 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x= NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
@@ -161,7 +162,7 @@ mp <- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)) +
   scale_size_manual(values = c(2, 1)) +
   scale_alpha_manual(values = c(1, 0.7), guide = F) +
   scale_color_gradientn(colors = c("darkblue", "darkorange3", "darkred")) +
-  theme_agData(rotx = T) + 
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
   guides(size = F) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x = NULL,
@@ -206,7 +207,7 @@ mp <- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)) +
   scale_size_manual(values = c(2, 1)) +
   scale_alpha_manual(values = c(1, 0.6), guide = F) +
   scale_color_gradientn(colors = c("darkblue", "darkorange3", "darkred")) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   guides(size = F) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x = NULL,
@@ -227,7 +228,7 @@ mp <- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)) +
   geom_line(size = 2, alpha = 0.5) + 
   geom_point(size = 2) +
   scale_color_manual(values = c("darkblue", "darkorange3", "darkred")) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
@@ -251,7 +252,7 @@ mp <- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)) +
   geom_line(size = 2, alpha = 0.5) + 
   geom_point(size = 2) + 
   scale_color_manual(values = c("darkblue", "darkred")) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
@@ -271,7 +272,7 @@ mp <- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)) +
   scale_size_manual(values = c(2, 1)) +
   scale_alpha_manual(values = c(1, 0.6), guide = F) +
   scale_color_gradientn(colors = c("darkblue", "darkorange3", "darkred")) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   guides(size = F) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x = NULL,
@@ -297,7 +298,7 @@ mp <- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)) +
   scale_size_manual(values = c(2, 1)) +
   scale_alpha_manual(values = c(1, 0.6), guide = F) +
   scale_color_gradientn(colors = c("darkblue", "darkorange3", "darkred")) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   guides(size = F) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x = NULL,

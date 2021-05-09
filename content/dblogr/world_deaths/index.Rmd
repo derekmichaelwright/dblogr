@@ -1,5 +1,5 @@
 ---
-title: "World Death Rates"
+title: "[World Death Rates](https://derekmichaelwright.github.io/htmls/dblogr/world_deaths.html)"
 subtitle: "An exploration of historical death rates"
 summary:  "An exploration of historical death rates"
 date: "`r Sys.Date()`"
@@ -13,7 +13,7 @@ links:
   - icon_pack: fas
     icon: code
     name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/world_deaths.html
+    url: 
   - icon_pack: fas
     icon: table
     name: Data Set World
@@ -38,15 +38,42 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 https://www.macrotrends.net/countries/WLD/world/death-rate
 
-[**< Data Set World >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_world_data.csv)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_world_data.csv",
+  button_label = "deaths_world_data.csv",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 https://www.bmj.com/content/373/bmj.n896
 
-[**< Data Set UK >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_uk_data.csv)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_uk_data.csv",
+  button_label = "deaths_uk_data.csv",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 https://ourworldindata.org/excess-mortality-covid
 
-[**< Data Set Countries >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/world_mortality.csv)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/world_mortality.csv",
+  button_label = "world_mortality.csv",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")

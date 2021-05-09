@@ -1,5 +1,5 @@
 ---
-title: "No-Till Agriculture in Canada"
+title: "[No-Till Agriculture in Canada](https://derekmichaelwright.github.io/htmls/agdata/no_till.html)"
 subtitle: "Graphs on the adoption of no-till agricultrue in Canada using STATCAN data"
 summary:  "Graphs on the adoption of no-till agricultrue in Canada using STATCAN data"
 date: "`r Sys.Date()`"
@@ -9,11 +9,6 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/no_till.html
 ---
 
 ```{r setup, include = FALSE}

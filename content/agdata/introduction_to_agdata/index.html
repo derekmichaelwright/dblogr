@@ -1,19 +1,14 @@
 ---
-title: "Introduction to agData"
+title: "[Introduction to agData](https://derekmichaelwright.github.io/htmls/agdata/introduction_to_agdata.html"
 subtitle: "An R package with FAO, USDA, STATCAN and ISAAA data"
 summary:  "An R package with FAO, USDA, STATCAN and ISAAA data"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agData/introduction_to_agdata/)"
 tags: [ "agData", "Introduction", "Featured" ]
 weight: 1
 codefolding_show: "show"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/introduction_to_agdata.html
 ---
 
 <script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
@@ -95,10 +90,11 @@ mp</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
 <pre class="r"><code>mp + theme_agData(legend.position = &quot;none&quot;)</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
-<pre class="r"><code>mp + theme_agData(linesize = 1.5, rotx = T,
+<pre class="r"><code>mp + theme_agData(linesize = 1.5, 
                   bgFill = alpha(&quot;darkgreen&quot;,0.2), 
                   stripFill = alpha(&quot;darkred&quot;,0.2),
-                  lineColor = &quot;darkorange&quot;)</code></pre>
+                  lineColor = &quot;darkorange&quot;,
+                  axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-4.png" width="672" /></p>
 <hr />
 </div>
@@ -784,7 +780,7 @@ xx &lt;- xx %&gt;%
 mp &lt;- ggplot(xx, aes(x = Measurement, y = Value, group = Area)) + 
   geom_bar(stat = &quot;identity&quot;) + 
   facet_grid(. ~ Year) + 
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;Size of Farms in Saskatchewan&quot;, 
        y = &quot;Number of Farms&quot;, x = NULL)
 ggsave(&quot;Intro_agData_STATCAN_FarmLand_Size.png&quot;, mp, width = 6, height = 4)</code></pre>

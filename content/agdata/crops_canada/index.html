@@ -1,19 +1,14 @@
 ---
-title: "Canadian Crop Production"
+title: "[Canadian Crop Production](https://derekmichaelwright.github.io/htmls/agdata/crops_canada.html)"
 subtitle: "Graphs of crop production in Canada using STATCAN data"
 summary:  "Graphs of crop production in Canada using STATCAN data"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crops_canada/)"
 tags: [ "agData", "Regions" ]
 weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/crops_canada.html
 ---
 
 
@@ -46,7 +41,8 @@ mp &lt;- ggplot(xx, aes(x = Area_Short, y = Value / 1000000)) +
   geom_bar(aes(fill = Area), stat = &quot;identity&quot;, color = &quot;black&quot;) +
   geom_label(aes(label = paste(Percent, &quot;%&quot;)), nudge_y = 1.1, size = 3) +
   scale_fill_manual(values = agData_Colors) +
-  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;Canadian Farmland (2016)&quot;,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;,
        x = NULL, y = &quot;Million Hectares&quot;)
@@ -124,7 +120,8 @@ mp &lt;- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;Black&quot;) + 
   facet_grid(Year~.) + 
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
-  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;Canada - Crop Production&quot;, y = &quot;Million Tonnes&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;crops_canada_04.png&quot;, mp, width = 6, height = 5)</code></pre>
@@ -145,7 +142,8 @@ mp &lt;- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;Black&quot;) + 
   facet_grid(Year~.) + 
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
-  theme_agData(legend.position = &quot;none&quot;, rotx = T) + 
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
   labs(title = &quot;Canada - Area Seeded&quot;, y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;crops_canada_05.png&quot;, mp, width = 6, height = 5)</code></pre>
@@ -163,7 +161,8 @@ mp &lt;- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;Black&quot;) + 
   geom_text(aes(label = Year), x = 17, y = 14, size = 15) +
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
-  theme_agData(legend.position = &quot;none&quot;, rotx = T) + 
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
   labs(title = &quot;Canada - Area Seeded&quot;, y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;) +
   # gganimate

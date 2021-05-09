@@ -1,5 +1,5 @@
 ---
-title: "Global Hemp Production"
+title: "[Global Hemp Production](https://derekmichaelwright.github.io/htmls/agdata/hemp.html)"
 subtitle: "Graphs for hemp production with FAO data"
 summary:  "Graphs for hemp production with FAO data"
 date: "`r Sys.Date()`"
@@ -9,11 +9,6 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/hemp.html
 ---
 
 ```{r setup, include = FALSE}

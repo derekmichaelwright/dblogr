@@ -1,25 +1,17 @@
 ---
-title: "2019 Canadian Election Results"
+title: "[2019 Canadian Election Results](https://derekmichaelwright.github.io/htmls/dblogr/canada_2019_election.html)"
 subtitle: "A regional look at how Canadians voted"
 summary:  "A regional look at how Canadians voted"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_2019_election/)"
 tags: [ "dblogr", "Politics" ]
 weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_2019_election.html
-  - icon_pack: fas
-    icon: table
-    name: Download Data
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_2019_election/canada_2019_election_data.xlsx
 ---
 
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 <script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
 <script src="{{< blogdown/postref >}}index_files/jquery/jquery.min.js"></script>
 <link href="{{< blogdown/postref >}}index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
@@ -41,7 +33,9 @@ links:
 <div id="data-source" class="section level1">
 <h1>Data Source</h1>
 <p><a href="https://enr.elections.ca/National.aspx?lang=e" class="uri">https://enr.elections.ca/National.aspx?lang=e</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_2019_election/canada_2019_election_data.xlsx"><strong>&lt; Download Data &gt;</strong></a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_2019_election/canada_2019_election_data.xlsx">
+<button class="btn btn-success"><i class="fa fa-save"></i> canada_2019_election_data.xlsx</button>
+</a>
 <hr />
 </div>
 <div id="prepare-data" class="section level1">
@@ -177,8 +171,7 @@ xx &lt;- d2 %&gt;% group_by(District) %&gt;% top_n(1, Votes) %&gt;% ungroup() %&
 mp &lt;- ggplot(xx, aes(x = Area_Short, fill = Party_Short)) + 
   geom_bar(position = &quot;stack&quot;, color = &quot;black&quot;) +
   scale_fill_manual(name = NULL, values = colors[c(7,5:1)]) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
-  theme_agData() +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;2019 Federal Election Results&quot;, 
        caption = &quot;\xa9 www.dblogr.com/  |  Data: Elections Canada&quot;,
        y = &quot;Districts&quot;, x = NULL)
@@ -193,8 +186,7 @@ xx &lt;- d2a %&gt;% group_by(Area_Short, Party_Short) %&gt;%
 mp &lt;- ggplot(xx, aes(x = Area_Short, y = Votes / 1000000, fill = Party_Short)) + 
   geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) +
   scale_fill_manual(name = NULL, values = colors) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
-  theme_agData() +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;2019 Federal Election Results&quot;, 
        caption = &quot;\xa9 www.dblogr.com/  |  Data: Elections Canada&quot;,
        y = &quot;Million Votes&quot;, x = NULL)
@@ -222,7 +214,8 @@ mp &lt;- ggplot(xx, aes(x = Party_Short, y = Votes / 1000000)) +
   facet_grid(. ~ SubRegion + paste(&quot;Million Votes =&quot;, Total)) +
   scale_fill_manual(values = colors) +
   scale_y_continuous(limits = c(0, 5.2)) +
-  theme_agData(rotx = T, legend.position = &quot;none&quot;) +
+  theme_agData(legend.position = &quot;none&quot;,
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;2019 Canadian Federal Election Results&quot;,
        y = &quot;Million Votes&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: Elections Canada&quot;)
@@ -248,7 +241,8 @@ mp &lt;- ggplot(xx, aes(x = Party_Short, y = n)) +
   facet_grid(.~SubRegion + paste(&quot;Total Districts =&quot;, Total)) +
   scale_fill_manual(values = colors[-6]) + 
   scale_y_continuous(limits = c(0, 148)) +
-  theme_agData(rotx = T, legend.position = &quot;none&quot;) +
+  theme_agData(legend.position = &quot;none&quot;,
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;2019 Canadian Federal Election Results&quot;,
        y = &quot;Districts&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: Elections Canada&quot;)
@@ -267,7 +261,8 @@ gg_Votes &lt;- function(x, title = NULL, ymax = 15) {
     geom_label(aes(label = paste0(Votes, &quot;\n&quot;, `Percent of Votes`, &quot;%&quot;), vjust = -0.1)) +
     scale_fill_manual(values = colors) +
     coord_cartesian(ylim = c(0, ymax)) +
-    theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+    theme_agData(legend.position = &quot;none&quot;, 
+                 axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
     labs(title = title, y = &quot;Votes (x 100,000)&quot;, x = NULL,
          subtitle = &quot;2019 Federal Election Results&quot;,
          caption = &quot;\xa9 www.dblogr.com/  |  Data: Elections Canada&quot;)
@@ -489,7 +484,7 @@ gg_LeftRight &lt;- function(x, title = NULL) {
     geom_text(x = 3, y = sum(x$Votes[x$Wing == &quot;Other&quot;]) / 100000, 
             label = paste(xO, &quot;%&quot;), vjust = -0.5, color = &quot;black&quot;) +
     scale_fill_manual(values = colors) +
-    theme_agData(rotx = T) +
+    theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
     labs(title = title, y = &quot;Votes (x 100,000)&quot;, x = NULL,
          subtitle = &quot;2019 Federal Election Results&quot;,
          caption = &quot;\xa9 www.dblogr.com/  |  Data: Elections Canada&quot;)
@@ -703,7 +698,8 @@ gg_Districts &lt;- function(x, title = NULL, ymax = 15) {
                    vjust = -0.1) +
     scale_fill_manual(values = colors) +
     coord_cartesian(ylim = c(0, ymax)) +
-    theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+    theme_agData(legend.position = &quot;none&quot;, 
+                 axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
     labs(title = title, y = &quot;Districts&quot;, x = NULL,
          subtitle = &quot;2019 Federal Election Results&quot;,
          caption = &quot;\xa9 www.dblogr.com/  |  Data: Elections Canada&quot;)
@@ -888,7 +884,8 @@ gg_ByDistrict &lt;- function(x, title = NULL, ncol = 6) {
                aes(label = paste(`Percent of Votes`, &quot;%&quot;))) +
     facet_wrap(District ~ ., scales = &quot;free_y&quot;, ncol = ncol) +
     scale_fill_manual(values = colors) +
-    theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+    theme_agData(legend.position = &quot;none&quot;, 
+                 axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
     labs(title = title, x = NULL,
          subtitle = &quot;2019 Federal Election Results&quot;,
          caption = &quot;\xa9 www.dblogr.com/  |  Data: Elections Canada&quot;)
@@ -918,9 +915,8 @@ mp &lt;- ggplot(xx, aes(x = Party_Short, y = Votes, fill = Party_Short)) +
              aes(label = paste(`Percent of Votes`, &quot;%&quot;))) +
   facet_wrap(Locality+District ~ ., scales = &quot;free_y&quot;, ncol = 6) +
   scale_fill_manual(values = colors) +
-  theme(legend.position = &quot;none&quot;,
+  theme_agData(legend.position = &quot;none&quot;,
         axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
-  theme_agData() +
   labs(title = &quot;2019 Federal Election Results in Agricultural Prairie Districts&quot;, 
        x = NULL, caption = &quot;\xa9 www.dblogr.com/  |  Data: Elections Canada&quot;)
 ggsave(&quot;prairie_ag/election_2019_04_ag.png&quot;, mp, width = 16, height = 8)</code></pre>
@@ -1096,9 +1092,8 @@ ggsave(&quot;newfoundland_Labrador/election_2019_04_nl.png&quot;, mp, width = 10
 <h1>Other Parties</h1>
 <pre class="r"><code>mp &lt;- ggplot(d3, aes(x = Party, y = Votes, fill = Party)) + 
   geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) + 
-  theme(legend.position = &quot;none&quot;,
+  theme_agData(legend.position = &quot;none&quot;,
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
-  theme_agData() +
   labs(title = &quot;2019 Federal Election Results for \&quot;other\&quot; parties&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: Elections Canada&quot;)
 ggsave(&quot;canada/election_2019_00_Other.png&quot;, mp, width = 6, height = 4)</code></pre>

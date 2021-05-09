@@ -1,38 +1,42 @@
 ---
-title: "Population Demographics In Canada"
+title: "[Population Demographics In Canada](https://derekmichaelwright.github.io/htmls/dblogr/canada_population_demographics.html)"
 subtitle: "Population Pyramids with R"
 summary:  "Population Pyramids with R"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/population_demographics_canada/)"
 tags: [ "dblogr", "Demographics", "Featured" ]
 weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_population_demographics.html
 ---
 
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
 
 <hr />
-<div id="introduction" class="section level1">
-<h1>Introduction</h1>
-<p>STATCAN data Tables: 17-10-0009-01 &amp; 17-10-0005-01 &amp; 17-10-0008-01</p>
+<div id="data-sources" class="section level1">
+<h1>Data Sources</h1>
 <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901</a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_population_demographics/1710000901_databaseLoadingData.csv">
+<button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 17-10-0009-01</button>
+</a>
 <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000501" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000501</a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_population_demographics/1710000501_databaseLoadingData.csv">
+<button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 17-10-0005-01</button>
+</a>
 <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000801</a></p>
-<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
-library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-library(gganimate)
-library(transformr)</code></pre>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_population_demographics/1710000801_databaseLoadingData.csv">
+<button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 17-10-0008-01</button>
+</a>
 <hr />
 </div>
 <div id="prep-data" class="section level1">
 <h1>Prep data</h1>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(gganimate)
+library(transformr)</code></pre>
 <pre class="r"><code>#
 d1 &lt;- read.csv(&quot;1710000901_databaseLoadingData.csv&quot;) %&gt;%
   select(Year=1, Area=GEO, Unit=UOM, Value=VALUE) %&gt;%
@@ -57,7 +61,8 @@ d3 &lt;- read.csv(&quot;1710000801_databaseLoadingData.csv&quot;) %&gt;%
 mp &lt;- ggplot(d1, aes(x = Year, y = Value / 1000000, color = Area)) +
   geom_line(size = 1) +
   facet_wrap(Area ~ ., ncol = 4, scales = &quot;free_y&quot;) +
-  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(y = &quot;Million People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/ | Data: STATCAN&quot;)
 ggsave(&quot;canada_population_demographics_1_01.png&quot;, mp, width = 10, height = 6)</code></pre>
@@ -89,7 +94,8 @@ ggsave(&quot;canada_population_demographics_1_01.png&quot;, mp, width = 10, heig
   if(anim == T) { mp &lt;- mp + facet_grid(. ~ Area) }
   if(anim == F) { mp &lt;- mp + facet_grid(. ~ Year) + labs(subtitle = paste(areas, collapse = &quot; + &quot;)) }
   mp + 
-    theme_agData(legend.position = &quot;bottom&quot;, rotx = T) +
+    theme_agData(legend.position = &quot;bottom&quot;, 
+                 axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
     labs(x = NULL, y = &quot;Thousand People&quot;,
          caption = &quot;\xa9 www.dblogr.com/ | Data: STATCAN&quot;) +
     coord_cartesian(ylim = c(-max(xx$Value), max(xx$Value))) +
@@ -238,7 +244,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   geom_line(size = 1, alpha = 0.8) +
   facet_wrap(Area ~ ., ncol = 5, scales = &quot;free_y&quot;) +
   scale_color_manual(values = colors) +
-  theme_agData(legend.position = &quot;bottom&quot;, rotx = T) +
+  theme_agData(legend.position = &quot;bottom&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(y = &quot;Thousand People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/ | Data: STATCAN&quot;)
 ggsave(&quot;canada_population_demographics_4_01.png&quot;, mp, width = 12, height = 6)</code></pre>

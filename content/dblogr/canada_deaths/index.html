@@ -1,46 +1,35 @@
 ---
-title: "Deaths In Canada"
+title: "[Deaths In Canada](https://derekmichaelwright.github.io/htmls/dblogr/canada_deaths.html)"
 subtitle: "An exploration of weekly deaths in Canada"
 summary:  "An exploration of weekly deaths in Canada"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_deaths/)"
 tags: [ "dblogr", "Demographics", "Featured" ]
 weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_deaths.html
-  - icon_pack: fas
-    icon: table
-    name: Download Table 13-10-0783-01
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310078301_databaseLoadingData.csv
-  - icon_pack: fas
-    icon: table
-    name: Download Table 13-10-0768-01
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310076801_databaseLoadingData.csv
-  - icon_pack: fas
-    icon: table
-    name: Download Table 13-10-0703-01
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310070801_databaseLoadingData.csv
 ---
 
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
 
 <hr />
 <div id="data-sources" class="section level1">
 <h1>Data Sources</h1>
-<p>STATCAN data sources: 13-10-0783-01 &amp; 13-10-0768-01</p>
-<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301</a></p>
-<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801</a></p>
-<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801</a></p>
 <p><a href="https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm" class="uri">https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310078301_databaseLoadingData.csv"><strong>&lt; Download Table 13-10-0783-01 &gt;</strong></a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310076801_databaseLoadingData.csv"><strong>&lt; Download Table 13-10-0768-01 &gt;</strong></a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310070801_databaseLoadingData.csv"><strong>&lt; Download Table 13-10-0708-01 &gt;</strong></a></p>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301</a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310078301_databaseLoadingData.csv">
+<button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 13-10-0783-01</button>
+</a>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801</a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310076801_databaseLoadingData.csv">
+<button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 13-10-0768-01</button>
+</a>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801</a></p>
+<a href="(https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310070801_databaseLoadingData.csv">
+<button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 13-10-0708-01</button>
+</a>
 <hr />
 </div>
 <div id="prepare-data" class="section level1">
@@ -368,7 +357,7 @@ xx &lt;- d3 %&gt;% filter(Year == 2019)
 # Plot
 mp &lt;- ggplot(xx, aes(x = Area, y = Death.Rate)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, fill = &quot;darkred&quot;, alpha = 0.8) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;Death Rate - Canada 2019&quot;, y = &quot;Deaths Per Thousand People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN\n*2020 data may be incomplete&quot;)
 ggsave(&quot;canada_deaths_5_03.png&quot;, mp, width = 6, height = 4)</code></pre>
@@ -386,7 +375,7 @@ xx &lt;- d3 %&gt;% filter(Year %in% c(1991, 2019)) %&gt;%
 # Plot
 mp &lt;- ggplot(xx, aes(x = Area, y = Change)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, fill = &quot;darkred&quot;, alpha = 0.8) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;Death Rate Change (1991-2019)&quot;, 
        y = &quot;Deaths Per Thousand People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
@@ -407,7 +396,7 @@ mp &lt;- ggplot(xx, aes(x = Area, y = Value, fill = Trait)) +
   geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;, color = &quot;black&quot;) +
   scale_fill_manual(values = c(&quot;darkred&quot;, alpha(&quot;darkred&quot;,0.5)),
                     labels = c(&quot;2019 - 1991&quot;, &quot;2020 - 2019&quot;)) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;Death Rate Change (1991-2019)&quot;, 
        y = &quot;Deaths Per Thousand People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)

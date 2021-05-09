@@ -1,5 +1,5 @@
 ---
-title: "Global Cotton Production"
+title: "[Global Cotton Production](https://derekmichaelwright.github.io/htmls/agdata/crop_treemaps.html)"
 subtitle: "Graphs of cotton production using FAO data"
 summary:  "Graphs of cotton production using FAO data"
 date: "`r Sys.Date()`"
@@ -9,15 +9,6 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/crop_treemaps.html
-  - icon_pack: fas
-    icon: file-pdf
-    name: PDF
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/cotton/cotton_fao.pdf
 ---
 
 ```{r setup, include = FALSE}
@@ -66,7 +57,16 @@ for(i in areas) {
 dev.off()
 ```
 
-**PDF**: [cotton_fao.pdf](https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/cotton/cotton_fao.pdf)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/cotton/cotton_fao.pdf",
+  button_label = "cotton_fao.pdf",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-file-pdf",
+  self_contained = FALSE
+)
+```
 
 ---
 

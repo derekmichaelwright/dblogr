@@ -1,0 +1,272 @@
+---
+title: "[Employment in Canada](https://derekmichaelwright.github.io/htmls/dblogr/canada_employment.html)"
+subtitle: "An exploration of Employment data in Canada"
+summary:  "An exploration of Employment data in Canada"
+date: "2021-05-08"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_employment/)"
+tags: [ "dblogr", "Economics" ]
+weight: 4
+codefolding_show: "hide"
+image:
+  preview_only: true
+---
+
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
+<script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
+<script src="{{< blogdown/postref >}}index_files/jquery/jquery.min.js"></script>
+<link href="{{< blogdown/postref >}}index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/datatables-binding/datatables.js"></script>
+<link href="{{< blogdown/postref >}}index_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="{{< blogdown/postref >}}index_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="{{< blogdown/postref >}}index_files/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/crosstalk/js/crosstalk.min.js"></script>
+
+
+<hr />
+<div id="data-source" class="section level1">
+<h1>Data Source</h1>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410001701" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410001701</a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_employment/1410001701_databaseLoadingData.csv">
+<button class="btn btn-success"><i class="fa fa-save"></i> Download STATCAN Table 14-10-0017-01</button>
+</a>
+<hr />
+</div>
+<div id="prepare-data" class="section level1">
+<h1>Prepare Data</h1>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<pre class="r"><code># Prep data
+areas &lt;- c(&quot;Canada&quot;, &quot;Quebec&quot;, &quot;Ontario&quot;, &quot;British Columbia&quot;, 
+           &quot;Alberta&quot;, &quot;Saskatchewan&quot;, &quot;Manitoba&quot;, &quot;Nova Scotia&quot;,
+           &quot;Newfoundland and Labrador&quot;, &quot;New Brunswick&quot;, &quot;Prince Edward Island&quot;, 
+           &quot;Northwest Territories&quot;, &quot;Yukon&quot;, &quot;Nunavut&quot;) 
+a_ord &lt;- c(1,6,7,11, 10,9,8,4, 2,5,3, 13,12,14) # unique(dd$GEO)
+dd &lt;- read.csv(&quot;1410001701_databaseLoadingData.csv&quot;) %&gt;%
+  select(Area=GEO, Date=1, Measurement=Labour.force.characteristics, 
+         Sex, Unit=SCALAR_FACTOR, Value=VALUE) %&gt;%
+  #filter(!is.na(Value)) %&gt;%
+  mutate(Area = factor(Area, levels = areas),
+         Date = as.Date(paste0(Date, &quot;-15&quot;), format = &quot;%Y-%m-%d&quot;))</code></pre>
+</div>
+<div id="unemployment" class="section level1">
+<h1>Unemployment</h1>
+<div id="canada" class="section level2">
+<h2>Canada</h2>
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Area == &quot;Canada&quot;, Sex == &quot;Both sexes&quot;,
+         Measurement == &quot;Unemployment rate&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value)) +
+  geom_line(size = 0.75, alpha = 0.6, color = &quot;darkgreen&quot;) +
+  scale_y_continuous(breaks = 5:15, minor_breaks = 5:15) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Canadian Unemployment Rate&quot;, y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_employment_1_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_employment_1_01.png" /></p>
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Area == &quot;Canada&quot;, Sex != &quot;Both sexes&quot;,
+         Measurement == &quot;Unemployment rate&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value, color = Sex)) +
+  geom_line(size = 0.75, alpha = 0.6) +
+  scale_color_manual(name = NULL, values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;)) +
+  scale_y_continuous(breaks = 5:15, minor_breaks = 5:15) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Canadian Unemployment Rate&quot;, y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_employment_1_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_employment_1_02.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Area == &quot;Canada&quot;, Sex != &quot;Both sexes&quot;,
+         Measurement == &quot;Unemployment rate&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value, color = Sex)) +
+  geom_line(size = 0.75, alpha = 0.2) +
+  geom_smooth(method = &quot;loess&quot;, se = F, size = 1, alpha = 0.6) +
+  scale_color_manual(name = NULL, values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;)) +
+  scale_y_continuous(breaks = 5:15, minor_breaks = 5:15) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Canadian Unemployment Rate&quot;, y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_employment_1_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_employment_1_03.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Area == &quot;Canada&quot;, Measurement == &quot;Unemployment rate&quot;, 
+         Sex != &quot;Both sexes&quot;, Date &gt; &quot;2010-01-01&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value, color = Sex)) +
+  geom_line(size = 1, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;)) +
+  scale_y_continuous(breaks = 5:15, minor_breaks = 5:15) +
+  scale_x_date(date_breaks = &quot;year&quot;, date_minor_breaks = &quot;year&quot;, date_labels = &quot;%Y&quot;) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Canadian Unemployment Rate&quot;, y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_employment_1_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_employment_1_04.png" /></p>
+<hr />
+</div>
+<div id="provinces" class="section level2">
+<h2>Provinces</h2>
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Area != &quot;Canada&quot;, Sex == &quot;Both sexes&quot;,
+         Measurement == &quot;Unemployment rate&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value, color = Area)) +
+  geom_line(size = 0.5, alpha = 0.8) +
+  facet_wrap(Area ~ ., ncol = 5) +
+  scale_y_continuous(breaks = seq(5, 25, 5), minor_breaks = seq(5, 25, 5)) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Canadian Unemployment Rate&quot;, y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_employment_1_05.png&quot;, mp, width = 10, height = 4)</code></pre>
+<p><img src="canada_employment_1_05.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Area != &quot;Canada&quot;, Measurement == &quot;Unemployment rate&quot;,
+         Sex == &quot;Both sexes&quot;, Date &gt; &quot;2010-01-01&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value, color = Area)) +
+  geom_line(size = 0.5, alpha = 0.8) +
+  facet_wrap(Area ~ ., ncol = 5) +
+  scale_y_continuous(breaks = seq(5, 25, 5), minor_breaks = seq(5, 25, 5)) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Canadian Unemployment Rate&quot;, y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_employment_1_06.png&quot;, mp, width = 10, height = 4)</code></pre>
+<p><img src="canada_employment_1_06.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Area != &quot;Canada&quot;, Sex != &quot;Both sexes&quot;,
+         Measurement == &quot;Unemployment rate&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value, color = Sex)) +
+  geom_line(size = 0.5, alpha = 0.8) +
+  facet_wrap(Area ~ ., ncol = 5) +
+  scale_color_manual(name = NULL, values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;)) +
+  scale_y_continuous(breaks = seq(5, 25, 5), minor_breaks = seq(5, 25, 5)) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Canadian Unemployment Rate&quot;, y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_employment_1_07.png&quot;, mp, width = 10, height = 4)</code></pre>
+<p><img src="canada_employment_1_07.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Area != &quot;Canada&quot;, Measurement == &quot;Unemployment rate&quot;, 
+         Sex != &quot;Both sexes&quot;, Date &gt; &quot;2010-01-01&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value, color = Sex)) +
+  geom_line(size = 1, alpha = 0.8) +
+  facet_wrap(Area ~ ., ncol = 5) +
+  scale_color_manual(name = NULL, values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;)) +
+  scale_y_continuous(breaks = seq(5, 25, 5), minor_breaks = seq(5, 25, 5)) +
+  #scale_x_date(date_breaks = &quot;year&quot;, date_minor_breaks = &quot;year&quot;, date_labels = &quot;%Y&quot;) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Canadian Unemployment Rate&quot;, y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_employment_1_08.png&quot;, mp, width = 10, height = 4)</code></pre>
+<p><img src="canada_employment_1_08.png" /></p>
+<hr />
+</div>
+</div>
+<div id="full-time-vs.-part-time" class="section level1">
+<h1>Full Time vs. Part Time</h1>
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Area == &quot;Canada&quot;, Sex != &quot;Both sexes&quot;,
+         Measurement != &quot;Unemployment rate&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
+  geom_line(size = 0.5, alpha = 0.8) +
+  facet_wrap(Measurement ~ ., ncol = 2, scales = &quot;free_y&quot;) +
+  scale_color_manual(name = NULL, values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;)) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Canada&quot;, y = &quot;Million&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_employment_2_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_employment_2_01.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Area == &quot;Canada&quot;, Measurement != &quot;Unemployment rate&quot;,
+         Sex != &quot;Both sexes&quot;, Date &gt; &quot;2010-01-01&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
+  geom_line(size = 0.75, alpha = 0.8) +
+  facet_wrap(Measurement ~ ., ncol = 2, scales = &quot;free_y&quot;) +
+  scale_color_manual(name = NULL, values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;)) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Canada&quot;, y = &quot;Million&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_employment_2_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_employment_2_02.png" /></p>
+<hr />
+</div>
+<div id="job-losses" class="section level1">
+<h1>Job Losses</h1>
+<pre class="r"><code># Prep data
+x1 &lt;- dd %&gt;% 
+  filter(Area == &quot;Canada&quot;, Date &gt; &quot;2019-03-15&quot;, Date &lt; &quot;2020-03-15&quot;, 
+         Sex == &quot;Both sexes&quot;, Measurement != &quot;Unemployment rate&quot;) %&gt;%
+  group_by(Measurement) %&gt;%
+  summarise(Value = mean(Value))
+xx &lt;- dd %&gt;% 
+  filter(Area == &quot;Canada&quot;, Date &gt; &quot;2020-02-15&quot;, Sex == &quot;Both sexes&quot;,
+         Measurement != &quot;Unemployment rate&quot;) %&gt;%
+  mutate(PanDiff = ifelse(Measurement == &quot;Full-time employment&quot;, 
+                       Value - x1$Value[x1$Measurement == &quot;Full-time employment&quot;],
+                       Value - x1$Value[x1$Measurement != &quot;Full-time employment&quot;]))
+x1 &lt;- dd %&gt;% 
+  filter(Area == &quot;Canada&quot;, Date == &quot;2020-02-15&quot;, 
+         Sex == &quot;Both sexes&quot;, Measurement != &quot;Unemployment rate&quot;)
+for(i in unique(xx$Date)) {
+  xx$MonthDiff[xx$Date == i &amp; xx$Measurement == &quot;Full-time employment&quot;] &lt;- xx$Value - x1$Value[x1$Measurement == &quot;Full-time employment&quot;]
+  xx$MonthDiff[xx$Date == i &amp; xx$Measurement != &quot;Full-time employment&quot;] &lt;- xx$Value - x1$Value[x1$Measurement != &quot;Full-time employment&quot;]
+  x1 &lt;- dd %&gt;% 
+  filter(Area == &quot;Canada&quot;, Date == i, 
+         Measurement != &quot;Unemployment rate&quot;, Sex == &quot;Both sexes&quot;)
+}
+DT::datatable(xx %&gt;% 
+  filter(Date &gt; &quot;2020-02-15&quot;) %&gt;% 
+  select(Date, Measurement, PanDiff, MonthDiff) %&gt;%
+  mutate(PanDiff = round(PanDiff * 1000),
+         MonthDiff = round(MonthDiff * 1000)) %&gt;%
+    arrange(desc(Date)))</code></pre>
+<div id="htmlwidget-1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"],["2021-04-15","2021-04-15","2021-03-15","2021-03-15","2021-02-15","2021-02-15","2021-01-15","2021-01-15","2020-12-15","2020-12-15","2020-11-15","2020-11-15","2020-10-15","2020-10-15","2020-09-15","2020-09-15","2020-08-15","2020-08-15","2020-07-15","2020-07-15","2020-06-15","2020-06-15","2020-05-15","2020-05-15","2020-04-15","2020-04-15","2020-03-15","2020-03-15"],["Full-time employment","Part-time employment","Full-time employment","Part-time employment","Full-time employment","Part-time employment","Full-time employment","Part-time employment","Full-time employment","Part-time employment","Full-time employment","Part-time employment","Full-time employment","Part-time employment","Full-time employment","Part-time employment","Full-time employment","Part-time employment","Full-time employment","Part-time employment","Full-time employment","Part-time employment","Full-time employment","Part-time employment","Full-time employment","Part-time employment","Full-time employment","Part-time employment"],[-474818,-170355,-507318,-64155,-674318,-146255,-775018,-354955,-554718,-85155,-509818,-22555,-498918,-17155,-473718,-122855,-317618,-536355,-526318,-507555,-652218,-677855,-1453418,-1015555,-2091218,-1012255,-814118,-462255],[-306800,11127200,-139800,11209300,-39100,11418000,-259400,11148200,-304300,11085600,-315200,11080200,-340400,11185900,-496500,11599400,-287800,11570600,-161900,11740900,639300,12078600,1277100,12075300,0,11525300,-455300,10926600]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Date<\/th>\n      <th>Measurement<\/th>\n      <th>PanDiff<\/th>\n      <th>MonthDiff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code># Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = PanDiff)) + 
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, fill = &quot;darkred&quot;, alpha = 0.8) +
+  facet_wrap(Measurement ~ ., scales = &quot;free_y&quot;) +
+  theme_agData() +
+  labs(title = &quot;Compared to 2019 Average&quot;, y = &quot;Thousand&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_employment_2_03.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_employment_2_03.png" /></p>
+<hr />
+<pre class="r"><code>xx &lt;- xx %&gt;% mutate(PosNeg = ifelse(MonthDiff &gt; 0, &quot;Pos&quot;, &quot;Neg&quot;))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = MonthDiff, fill = PosNeg)) + 
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8) +
+  facet_wrap(Measurement ~ ., scales = &quot;free_y&quot;) +
+  scale_fill_manual(values = c(&quot;darkred&quot;,&quot;darkgreen&quot;)) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Change each month since the start of the pandemic&quot;, y = &quot;Thousand&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_employment_2_04.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_employment_2_04.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

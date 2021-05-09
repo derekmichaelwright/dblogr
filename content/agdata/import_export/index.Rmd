@@ -1,5 +1,5 @@
 ---
-title: "Crop Import/Export"
+title: "[Crop Import/Export](https://derekmichaelwright.github.io/htmls/agdata/import_export.html)"
 subtitle: "Graphs of of crop import/export using FAO data"
 summary:  "Graphs of of crop import/export using FAO data"
 date: "`r Sys.Date()`"
@@ -9,11 +9,6 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/import_export.html
 ---
 
 ```{r setup, include = FALSE}
@@ -58,7 +53,7 @@ netImportExport <- function(crop = "Wheat", year = 2017) {
     geom_bar(stat = "identity", color = "black", alpha = 0.8) +
     facet_grid(. ~ Label, scales = "free_x") +
     scale_fill_manual(values = colors) +
-    theme_agData(rotx = T) + 
+    theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
     labs(title = crop, subtitle = "Export - Import", y = "Million Tonnes", x = NULL,
          caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
 }
@@ -90,7 +85,7 @@ netImportExport_anim <- function(crop = "Wheat") {
     geom_bar(stat = "identity", color = "black", alpha = 0.8) +
     facet_grid(. ~ Label, scales = "free_x") +
     scale_fill_manual(values = colors) +
-    theme_agData(rotx = T) + 
+    theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
     labs(title = crop, y = "Million Tonnes", x = NULL,
          subtitle = "Export - Import {round(frame_time)}",
          caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT") +
@@ -209,7 +204,8 @@ mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000000, fill = Crop)) +
   geom_bar(stat = "identity", color = "black", alpha = 0.7) +
   facet_grid(. ~ Measurement) +
   scale_fill_manual(values = colors) +
-  theme_agData(legend.position = "none", rotx = T) +
+  theme_agData(legend.position = "none", 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Canada 2017", y = "Billion Tonnes", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
 ggsave("import_export_09.png", mp, width = 6, height = 3.75)
@@ -232,7 +228,8 @@ mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000000, fill = Crop)) +
   geom_bar(stat = "identity", color = "black", alpha = 0.7) +
   facet_grid(. ~ Measurement) +
   scale_fill_manual(values = colors) +
-  theme_agData(legend.position = "none", rotx = T) +
+  theme_agData(legend.position = "none", 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Canada - {round(frame_time)}",
        y = "Billion Tonnes", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT") +

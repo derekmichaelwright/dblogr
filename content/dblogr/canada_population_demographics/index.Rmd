@@ -1,5 +1,5 @@
 ---
-title: "Population Demographics In Canada"
+title: "[Population Demographics In Canada](https://derekmichaelwright.github.io/htmls/dblogr/canada_population_demographics.html)"
 subtitle: "Population Pyramids with R"
 summary:  "Population Pyramids with R"
 date: "`r Sys.Date()`"
@@ -9,11 +9,6 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_population_demographics.html
 ---
 
 ```{r setup, include=FALSE}
@@ -22,15 +17,50 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Introduction
-
-STATCAN data Tables: 17-10-0009-01 & 17-10-0005-01 & 17-10-0008-01
+# Data Sources
 
 https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901
 
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_population_demographics/1710000901_databaseLoadingData.csv",
+  button_label = "STATCAN Table 17-10-0009-01",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
+
 https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000501
 
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_population_demographics/1710000501_databaseLoadingData.csv",
+  button_label = "STATCAN Table 17-10-0005-01",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
+
 https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000801
+
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_population_demographics/1710000801_databaseLoadingData.csv",
+  button_label = "STATCAN Table 17-10-0008-01",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
+
+---
+
+# Prep data
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
@@ -38,10 +68,6 @@ library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(gganimate)
 library(transformr)
 ```
-
----
-
-# Prep data
 
 ```{r}
 #
@@ -70,7 +96,8 @@ d3 <- read.csv("1710000801_databaseLoadingData.csv") %>%
 mp <- ggplot(d1, aes(x = Year, y = Value / 1000000, color = Area)) +
   geom_line(size = 1) +
   facet_wrap(Area ~ ., ncol = 4, scales = "free_y") +
-  theme_agData(legend.position = "none", rotx = T) +
+  theme_agData(legend.position = "none", 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(y = "Million People", x = NULL,
        caption = "\xa9 www.dblogr.com/ | Data: STATCAN")
 ggsave("canada_population_demographics_1_01.png", mp, width = 10, height = 6)
@@ -106,7 +133,8 @@ gg_PopDem_plot <- function(areas = "Saskatchewan", years = 2019, anim = F) {
   if(anim == T) { mp <- mp + facet_grid(. ~ Area) }
   if(anim == F) { mp <- mp + facet_grid(. ~ Year) + labs(subtitle = paste(areas, collapse = " + ")) }
   mp + 
-    theme_agData(legend.position = "bottom", rotx = T) +
+    theme_agData(legend.position = "bottom", 
+                 axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
     labs(x = NULL, y = "Thousand People",
          caption = "\xa9 www.dblogr.com/ | Data: STATCAN") +
     coord_cartesian(ylim = c(-max(xx$Value), max(xx$Value))) +
@@ -333,7 +361,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   geom_line(size = 1, alpha = 0.8) +
   facet_wrap(Area ~ ., ncol = 5, scales = "free_y") +
   scale_color_manual(values = colors) +
-  theme_agData(legend.position = "bottom", rotx = T) +
+  theme_agData(legend.position = "bottom", 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(y = "Thousand People", x = NULL,
        caption = "\xa9 www.dblogr.com/ | Data: STATCAN")
 ggsave("canada_population_demographics_4_01.png", mp, width = 12, height = 6)

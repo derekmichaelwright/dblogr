@@ -1,5 +1,5 @@
 ---
-title: "Canadian Honeybee Production"
+title: "[Canadian Honeybee Production](https://derekmichaelwright.github.io/htmls/agdata/honeybee_canada.html)"
 subtitle: "Graphs of honeybee production in Canada using STATCAN data"
 summary:  "Graphs of honeybee production in Canada using STATCAN data"
 date: "`r Sys.Date()`"
@@ -9,11 +9,6 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/honeybee_canada.html
 ---
 
 ```{r setup, include = FALSE}

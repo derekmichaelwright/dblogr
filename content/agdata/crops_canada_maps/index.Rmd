@@ -1,5 +1,5 @@
 ---
-title: "Maps of Canadian Crop Production"
+title: "[Maps of Canadian Crop Production](https://derekmichaelwright.github.io/htmls/agdata/crops_canada_maps.html)"
 subtitle: "Maps of crop production in Canada using STATCAN data"
 summary:  "Maps of crop production in Canada using STATCAN data"
 date: "`r Sys.Date()`"
@@ -9,15 +9,6 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/crops_canada_maps.html
-  - icon_pack: fas
-    icon: file-pdf
-    name: Maps PDF
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crops_canada_maps/crops_canada_maps_statcan.pdf
 ---
 
 ```{r setup, include = FALSE}
@@ -59,8 +50,16 @@ for(i in unique(xx$Crop)) {
 dev.off()
 ```
 
-**PDF**: [crops_canada_maps_statcan.pdf](https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crops_canada_maps/crops_canada_maps_statcan.pdf)
-
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crops_canada_maps/crops_canada_maps_statcan.pdf",
+  button_label = "crops_canada_maps_statcan.pdf",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-file-pdf",
+  self_contained = FALSE
+)
+```
 
 ---
 

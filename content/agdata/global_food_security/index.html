@@ -1,19 +1,14 @@
 ---
-title: "Global Food Security"
+title: "[Global Food Security](https://derekmichaelwright.github.io/htmls/agdata/global_food_security.html)"
 subtitle: "Graphs of of crop production per capita using FAO data"
 summary:  "Graphs of of crop production per capita using FAO data"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/global_food_security/)"
 tags: [ "agData", "Regions" ]
 weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/global_food_security.html
 ---
 
 
@@ -97,7 +92,7 @@ mp &lt;- ggplot(xx, aes(x = Year)) +
   scale_x_continuous(breaks = seq(1960, 2020, by = 10)) +
   scale_color_manual(name = NULL, values = colors,
                      breaks = c(&quot;Population&quot;,&quot;Production&quot;, &quot;Yield&quot;, &quot;Area&quot;)) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;Relative to 1961&quot;, y = &quot;Percent Change&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: FAOSTAT&quot;)
 ggsave(&quot;global_food_security_02.png&quot;, mp, width = 8, height = 4)</code></pre>
@@ -141,7 +136,8 @@ mp &lt;- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Region)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8) +
   facet_grid(Crop ~ Region, scales = &quot;free&quot;, space = &quot;free_x&quot;) +
   scale_fill_manual(values = colors) +
-  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = paste(&quot;Food Security -&quot;, max(xx$Year)), 
        y = &quot;Tonnes Per Person&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: FAOSTAT&quot;)
@@ -156,7 +152,8 @@ mp &lt;- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Region)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
   facet_grid(Crop ~ Region, scales = &quot;free&quot;) +
   scale_fill_manual(values = agData_Colors[c(1,4,3,2,7)]) +
-  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;Food Security - {round(frame_time)}&quot;, 
        y = &quot;Tonnes Per Person&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: FAOSTAT&quot;) +
@@ -176,7 +173,7 @@ mp &lt;- ggplot(xx, aes(x = Cereals, y = Pulses)) +
   geom_point(aes(size = Tubers, color = Region), alpha = 0.75) + 
   geom_text_repel(aes(label = Area), size = 2, alpha = 0.3) +
   scale_color_manual(values = agData_Colors[c(1,4,3,2,7)]) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = paste(&quot;Tonnes Per Person -&quot;, max(dd$Year)),
        caption = &quot;\xa9 www.dblogr.com/  |  Data: FAOSTAT&quot;)
 ggsave(&quot;global_food_security_05.png&quot;, mp, width = 6, height = 4)</code></pre>

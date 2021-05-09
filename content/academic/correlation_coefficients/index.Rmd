@@ -1,5 +1,5 @@
 ---
-title: "Explaining Correlation Coefficients"
+title: "[Explaining Correlation Coefficients](https://derekmichaelwright.github.io/htmls/academic/correlation_coefficients.html)"
 subtitle: "A quick explanation of how to properly use correlation coefficients when evaluating models"
 summary:  "A quick explanation of how to properly use correlation coefficients when evaluating models"
 date: "`r Sys.Date()`"
@@ -10,19 +10,6 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/academic/correlation_coefficients.html
-  - icon_pack: fas
-    icon: table
-    name: Data Set #1
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/academic/correlation_coefficients/correlation_coefficients_data_1.csv
-  - icon_pack: fas
-    icon: table
-    name: Data Set #2
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/academic/correlation_coefficients/correlation_coefficients_data_2.csv
 ---
 
 ```{r setup, include=FALSE}
@@ -35,10 +22,6 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 The correlation coefficient (*R^2^*), which indicates the proportion of variation explained by an independent variable or model, can be calculated in more than one way. The goal of this vignette is to help clear up this confusion, with a few different examples.
 
-[Download Data set 1](https://github.com/derekmichaelwright/dblogr/blob/master/content/academic/correlation_coefficients/correlation_coefficients_data_2.csv)
-
-[Download Data set 2](https://github.com/derekmichaelwright/dblogr/blob/master/content/academic/correlation_coefficients/correlation_coefficients_data_2.csv)
-
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)  # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
@@ -49,7 +32,16 @@ library(ggpmisc) # stat_poly_eq()
 
 # Load Dataset 1 
 
-`d1`
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/academic/correlation_coefficients/correlation_coefficients_data_2.csv",
+  button_label = "correlation_coefficients_data_2.csv",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 - `Entry`: 1 Lentil Genotype
 - `Expt`: 18 Site-years
@@ -348,7 +340,16 @@ However, the more common mistake happens when the *Pearson's* formula is used fo
 
 # Load Dataset 2 
 
-`d2`
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/academic/correlation_coefficients/correlation_coefficients_data_2.csv",
+  button_label = "correlation_coefficients_data_2.csv",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 - `Entry`: 324 Genotypes
 - `Expt`: 3 Site-years

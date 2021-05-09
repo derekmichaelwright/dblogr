@@ -1,5 +1,5 @@
 ---
-title: "Gapminder"
+title: "[Gapminder](https://derekmichaelwright.github.io/htmls/dblogr/gapminder.html)"
 subtitle: "An exploration of gapminder data"
 summary:  "An exploration of gapminder data"
 date: "`r Sys.Date()`"
@@ -9,11 +9,6 @@ weight: 5
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/gapminder.html
 ---
 
 ```{r setup, include=FALSE}
@@ -68,7 +63,8 @@ mp <- ggplot(gapminder, aes(x = year, y = lifeExp, colour = country)) +
   scale_x_continuous(breaks = seq(1950, 2010, 20)) +
   coord_cartesian(xlim = c(1950, 2010)) +
   facet_wrap(. ~ continent, ncol = 5) +
-  theme_agData(legend.position = "none", rotx = T) +
+  theme_agData(legend.position = "none", 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(x = NULL, y = "Life Expectancy",
        caption = "\xa9 www.dblogr.com/  |  Data: gapminder")
 ggsave("gapminder_02.png", mp, width = 10, height = 5)
@@ -86,7 +82,8 @@ mp <- ggplot(gapminder, aes(x = year, y = gdpPercap / 1000, colour = country)) +
   scale_y_log10() +
   coord_cartesian(xlim = c(1950, 2010)) +
   facet_wrap(. ~ continent, ncol = 5) +
-  theme_agData(legend.position = "none", rotx = T) +
+  theme_agData(legend.position = "none", 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(x = NULL, y = "GDP Per Capita ($1000)",
        caption = "\xa9 www.dblogr.com/  |  Data: gapminder")
 ggsave("gapminder_03.png", mp, width = 10, height = 5)

@@ -1,32 +1,26 @@
 ---
-title: "Greenhouse Gas Emissions in Canada"
+title: "[Greenhouse Gas Emissions in Canada](https://derekmichaelwright.github.io/htmls/dblogr/canada_ghg.html)"
 subtitle: "Data for greenhouse gas emissions in Canada"
 summary:  "Data for greenhouse gas emissions in Canada"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_ghg/)"
 tags: [ "dblogr", "Economics", "Politics" ]
 weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_ghg.html
-  - icon_pack: fas
-    icon: table
-    name: Download Data
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_ghg/canada_ghg_data.xlsx
 ---
 
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
 
 <hr />
 <div id="data-source" class="section level1">
 <h1>Data Source</h1>
 <p><a href="https://www.canada.ca/en/environment-climate-change/services/climate-change/greenhouse-gas-emissions/sources-sinks-executive-summary-2021.html#figure-es-1" class="uri">https://www.canada.ca/en/environment-climate-change/services/climate-change/greenhouse-gas-emissions/sources-sinks-executive-summary-2021.html#figure-es-1</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_ghg/canada_ghg_data.xlsx"><strong>&lt; Download Data &gt;</strong></a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_ghg/canada_ghg_data.xlsx">
+<button class="btn btn-success"><i class="fa fa-save"></i> canada_ghg_data.xlsx</button>
+</a>
 <hr />
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel

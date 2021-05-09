@@ -1,5 +1,5 @@
 ---
-title: "Calendar Creation"
+title: "[Calendar Creation](https://derekmichaelwright.github.io/htmls/dblogr/calendar_creation.html)"
 subtitle: "Create a custom calendar in R"
 summary:  "Create a custom calendar in R"
 date: "`r Sys.Date()`"
@@ -9,23 +9,6 @@ weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/calendar_creation.html
-  - icon_pack: fas
-    icon: file-pdf
-    name: PDF (Yearly)
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_year.pdf
-  - icon_pack: fas
-    icon: file-pdf
-    name: PDF (Monthly)
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_monthly.pdf
-  - icon_pack: fas
-    icon: file-pdf
-    name: PDF (Weekly)
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_weekly.pdf
 ---
 
 ```{r setup, include = FALSE}
@@ -106,7 +89,16 @@ dev.off() #dev.set(dev.next())
 
 ![](img_calendar_year.png)
 
-[**< Download PDF: Yearly Calendar >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_year.pdf)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_year.pdf",
+  button_label = "calendar_year.pdf",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-file-pdf",
+  self_contained = FALSE
+)
+```
 
 ---
 
@@ -154,7 +146,16 @@ dev.off()
 
 ![](img_calendar_month.png)
 
-[**< Download PDF: Monthly Calendar >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_monthly.pdf)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_monthly.pdf",
+  button_label = "calendar_monthly.pdf",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-file-pdf",
+  self_contained = FALSE
+)
+```
 
 ---
 
@@ -190,7 +191,16 @@ dev.off()
 
 ![](img_calendar_week.png)
 
-[**< Download PDF: Weekly Calendar >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_weekly.pdf)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_weekly.pdf",
+  button_label = "calendar_weekly.pdf",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-file-pdf",
+  self_contained = FALSE
+)
+```
 
 ---
 

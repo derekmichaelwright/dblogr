@@ -1,5 +1,5 @@
 ---
-title: "Global Soybean Production"
+title: "[Global Soybean Production](https://derekmichaelwright.github.io/htmls/agdata/soybean.html)"
 subtitle: "Graphs of soybean production using FAO data"
 summary:  "Graphs of soybean production using FAO data"
 date: "`r Sys.Date()`"
@@ -9,15 +9,6 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/soybean.html
-  - icon_pack: fas
-    icon: file-pdf
-    name: PDF
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/soybean/soybean_fao.pdf
 ---
 
 ```{r setup, include = FALSE}
@@ -56,7 +47,8 @@ for(i in areas) {
     geom_line(aes(x = Year, y = Value, color = Measurement),
               size = 1.5, alpha = 0.8) +
     facet_wrap(. ~ Measurement + Unit, ncol = 3, scales = "free_y") +
-    theme_agData(legend.position = "none", rotx = T) +
+    theme_agData(legend.position = "none", 
+                 axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
     scale_color_manual(values = colors) +
     scale_x_continuous(breaks = seq(1960, 2020, by = 5) ) +
     labs(title = i, y = NULL, x = NULL,
@@ -65,7 +57,16 @@ for(i in areas) {
 dev.off()
 ```
 
-**PDF**: [soybean_fao.pdf](https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/soybean/soybean_fao.pdf)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/soybean/soybean_fao.pdf",
+  button_label = "soybean_fao.pdf",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-file-pdf",
+  self_contained = FALSE
+)
+```
 
 ---
 

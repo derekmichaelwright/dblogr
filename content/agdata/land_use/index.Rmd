@@ -1,5 +1,5 @@
 ---
-title: "Land Use"
+title: "[Land Use](https://derekmichaelwright.github.io/htmls/agdata/land_use.html)"
 subtitle: "Graphs for land use with FAO data"
 summary:  "Graphs for land use with FAO data"
 date: "`r Sys.Date()`"
@@ -9,11 +9,6 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/land_use.html
 ---
 
 ```{r setup, include = FALSE}

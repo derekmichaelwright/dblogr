@@ -1,5 +1,5 @@
 ---
-title: "Global Honeybee Production"
+title: "[Global Honeybee Production](https://derekmichaelwright.github.io/htmls/agdata/honeybee.html)"
 subtitle: "Graphs of honeybee production using FAO data"
 summary:  "Graphs of honeybee production using FAO data"
 date: "`r Sys.Date()`"
@@ -9,11 +9,6 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/honeybee.html
 ---
 
 ```{r setup, include = FALSE}

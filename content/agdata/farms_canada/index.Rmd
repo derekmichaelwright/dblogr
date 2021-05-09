@@ -1,5 +1,5 @@
 ---
-title: "Canadian Farmland"
+title: "[Canadian Farmland](https://derekmichaelwright.github.io/htmls/agdata/farms_canada.html)"
 subtitle: "Graphs of crop production in Saskatchewan using STATCAN data"
 summary:  "Graphs of crop production in Saskatchewan using STATCAN data"
 date: "`r Sys.Date()`"
@@ -9,11 +9,6 @@ weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/farms_canada.html
 ---
 
 ```{r setup, include = FALSE}
@@ -168,7 +163,7 @@ cols <- c(alpha("darkgreen",0.2), alpha("darkgreen",0.3), alpha("darkgreen",0.4)
 mp <- ggplot(xx, aes(y = Value, x = Measurement, fill = as.factor(Year))) + 
   geom_bar(stat = "identity", position = "dodge", color = "black") +
   scale_fill_manual(name = NULL, values = cols) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Average Farm Size", y = "Number", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
 ggsave("farms_canada_07.png", mp, width = 6, height = 4)
@@ -218,7 +213,7 @@ mp <- ggplot(xx, aes(y = Value, x = Measurement, fill = as.factor(Year))) +
   geom_bar(stat = "identity", position = "dodge", color = "black") +
   scale_fill_manual(name = NULL, values = cols) +
   facet_grid(. ~ Area) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Farm Size", y = "Number", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
 ggsave("farms_canada_10.png", mp, width = 6, height = 4)
@@ -244,7 +239,7 @@ mp <- ggplot(xx, aes(y = Value, x = Measurement, fill = as.factor(Year))) +
   geom_bar(stat = "identity", position = "dodge", color = "black") +
   facet_grid(Area ~ .) +
   scale_fill_manual(name = NULL, values = cols) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Farm Size - Canada", y = "Number", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
 ggsave("farms_canada_11.png", mp, width = 6, height = 8)

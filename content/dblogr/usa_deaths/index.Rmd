@@ -1,5 +1,5 @@
 ---
-title: "Deaths In USA"
+title: "[Deaths In USA](https://derekmichaelwright.github.io/htmls/dblogr/usa_deaths.html)"
 subtitle: "An exploration of weekly deaths in the USA"
 summary:  "An exploration of weekly deaths in the USA"
 date: "`r Sys.Date()`"
@@ -9,19 +9,6 @@ weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/usa_deaths.html
-  - icon_pack: fas
-    icon: table
-    name: Download Data
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_deaths_data.csv
-  - icon_pack: fas
-    icon: table
-    name: Download Data
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_deaths_data.csv
 ---
 
 ```{r setup, include=FALSE}
@@ -34,11 +21,29 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 https://www.cdc.gov/nchs/nvss/vsrr/covid19/excess_deaths.htm#dashboard
 
-[**< Download Deaths Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_deaths_data.csv)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_deaths_data.csv",
+  button_label = "usa_deaths_data.csv",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html
 
-[**< Download Population Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_population.csv)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_population.csv",
+  button_label = "usa_population.csv",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 ---
 

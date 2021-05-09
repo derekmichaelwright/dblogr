@@ -1,5 +1,5 @@
 ---
-title: "Covid Models"
+title: "[Covid Models](https://derekmichaelwright.github.io/htmls/dblogr/covid_models.html)"
 subtitle: "Graphs for covid models vs actual data"
 summary:  "Graphs for covid models vs actual data"
 date: "`r Sys.Date()`"
@@ -13,7 +13,7 @@ links:
   - icon_pack: fas
     icon: code
     name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/covid_models.html
+    url: 
   - icon_pack: fas
     icon: table
     name: Download Modeling Data
@@ -30,19 +30,46 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
-
-Models
-
-https://github.com/MN-COVID19-Model/Model_v3
-
-[**< Download Modeling Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/models_minnesota.csv)
-
-Actual data
+# Data Sources
 
 https://beta.healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/g62h-syeh/data
 
-[**< Download Covid Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/covid_usa.csv)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/covid_usa.csv",
+  button_label = "covid_usa.csv",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
+
+https://github.com/MN-COVID19-Model/Model_v3
+
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/models_minnesota.csv",
+  button_label = "models_minnesota.csv",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
+
+Imperial Models
+
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/models_imperial.csv",
+  button_label = "models_imperial.csv",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 ---
 
@@ -68,9 +95,25 @@ x2 <- read.csv("covid_usa.csv") %>%
          Hospitalizations=inpatient_bed_covid_utilization_numerator) %>%
   mutate(Data = "Actual",
          Date = as.Date(Date))
-xx <- bind_rows(x1, x2)
+d1 <- bind_rows(x1, x2)
+# 
+x1 <- read.csv("models_imperial.csv") %>%
+  select(Area=1, `Projected (with lockdowns)`=2, `Projected (without lockdowns)`=3, Actual=4) %>%
+  gather(Trait, Value, 2:4) %>%
+  mutate(Value = as.numeric(gsub(",", "", Value)))
+x2 <- read.csv("models_imperial.csv") %>%
+  select(Area=1, `Projected (with lockdowns)`=7, `Projected (without lockdowns)`=8) %>%
+  gather(Trait, OverEstimate, 2:3)
+d2 <- left_join(x1, x2, by = c("Area","Trait"))
+```
+
+---
+
+# Minnesota Models
+
+```{r}
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Hospitalizations, color = Data, size = Data)) +
+mp <- ggplot(d1, aes(x = Date, y = Hospitalizations, color = Data, size = Data)) +
   geom_line(alpha = 0.8) +
   scale_x_date(breaks = "2 month", limits = as.Date(c("2020-03-01","2021-01-01"))) +
   scale_size_manual(name = NULL, values = c(1.25,0.75,0.75,0.75,0.75)) +
@@ -89,18 +132,11 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ---
 
+# Imperial Models
+
 ```{r}
-# Prep data
-x1 <- read.csv("models_imperial.csv") %>%
-  select(Area=1, `Projected (with lockdowns)`=2, `Projected (without lockdowns)`=3, Actual=4) %>%
-  gather(Trait, Value, 2:4) %>%
-  mutate(Value = as.numeric(gsub(",", "", Value)))
-x2 <- read.csv("models_imperial.csv") %>%
-  select(Area=1, `Projected (with lockdowns)`=7, `Projected (without lockdowns)`=8) %>%
-  gather(Trait, OverEstimate, 2:3)
-xx <- left_join(x1, x2, by = c("Area","Trait"))
 # Plot
-mp <- ggplot(xx, aes(x = Trait, y = Value / 1000000, fill = Trait)) +
+mp <- ggplot(d2, aes(x = Trait, y = Value / 1000000, fill = Trait)) +
   geom_bar(stat = "identity", color = "black", alpha = 0.8) +
   geom_text(aes(label = OverEstimate), size = 2, vjust = -0.5) +
   facet_wrap(Area ~ ., ncol = 5, scales = "free_y") +

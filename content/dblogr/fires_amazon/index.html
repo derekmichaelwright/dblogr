@@ -1,25 +1,17 @@
 ---
-title: "The Journalism Around Amazon Fires"
+title: "[The Journalism Around Amazon Fires](https://derekmichaelwright.github.io/htmls/dblogr/fires_amazon.html)"
 subtitle: "An analysis of science journalism by the CBC"
 summary:  "An analysis of science journalism by the CBC"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/fires_amazon/)"
 tags: [ "dblogr", "SciComm", "Politics" ]
 weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/fires_amazon.html
-  - icon_pack: fas
-    icon: table
-    name: Download Data
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/fires_amazon/fires_amazon_data.xlsx
 ---
 
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 <script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
 <script src="{{< blogdown/postref >}}index_files/jquery/jquery.min.js"></script>
 <link href="{{< blogdown/postref >}}index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
@@ -82,7 +74,9 @@ links:
 <h1>Data source</h1>
 <p>National Institute for Space Reserach (<em>INPE</em>)</p>
 <p><a href="http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/" class="uri">http://queimadas.dgi.inpe.br/queimadas/portal-static/estatisticas_paises/</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/fires_amazon/fires_amazon_data.xlsx"><strong>&lt; Download Data &gt;</strong></a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/fires_amazon/fires_amazon_data.xlsx">
+<button class="btn btn-success"><i class="fa fa-save"></i> fires_amazon_data.xlsx</button>
+</a>
 <hr />
 </div>
 <div id="prepare-data" class="section level1">
@@ -110,7 +104,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Total / 1000, alpha = Alpha)) +
   geom_bar(stat = &quot;identity&quot;, fill = &quot;Darkred&quot;, color = &quot;Black&quot;) +
   scale_x_continuous(breaks = c(min(xx$Year):max(xx$Year))) +
   scale_alpha_manual(values = c(1, 0.7)) +
-  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x= NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: INPE&quot;)
@@ -148,7 +143,7 @@ mp &lt;- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)
   scale_size_manual(values = c(2, 1)) +
   scale_alpha_manual(values = c(1, 0.7), guide = F) +
   scale_color_gradientn(colors = c(&quot;darkblue&quot;, &quot;darkorange3&quot;, &quot;darkred&quot;)) +
-  theme_agData(rotx = T) + 
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
   guides(size = F) +
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x = NULL,
@@ -188,7 +183,7 @@ mp &lt;- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)
   scale_size_manual(values = c(2, 1)) +
   scale_alpha_manual(values = c(1, 0.6), guide = F) +
   scale_color_gradientn(colors = c(&quot;darkblue&quot;, &quot;darkorange3&quot;, &quot;darkred&quot;)) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   guides(size = F) +
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x = NULL,
@@ -207,7 +202,7 @@ mp &lt;- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)
   geom_line(size = 2, alpha = 0.5) + 
   geom_point(size = 2) +
   scale_color_manual(values = c(&quot;darkblue&quot;, &quot;darkorange3&quot;, &quot;darkred&quot;)) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: INPE&quot;)
@@ -229,7 +224,7 @@ mp &lt;- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)
   geom_line(size = 2, alpha = 0.5) + 
   geom_point(size = 2) + 
   scale_color_manual(values = c(&quot;darkblue&quot;, &quot;darkred&quot;)) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: INPE&quot;)
@@ -247,7 +242,7 @@ mp &lt;- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)
   scale_size_manual(values = c(2, 1)) +
   scale_alpha_manual(values = c(1, 0.6), guide = F) +
   scale_color_gradientn(colors = c(&quot;darkblue&quot;, &quot;darkorange3&quot;, &quot;darkred&quot;)) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   guides(size = F) +
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x = NULL,
@@ -270,7 +265,7 @@ mp &lt;- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)
   scale_size_manual(values = c(2, 1)) +
   scale_alpha_manual(values = c(1, 0.6), guide = F) +
   scale_color_gradientn(colors = c(&quot;darkblue&quot;, &quot;darkorange3&quot;, &quot;darkred&quot;)) +
-  theme_agData(rotx = T) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   guides(size = F) +
   labs(title = &quot;Fires detected by the INPE&quot;,
        y = &quot;Fires (x1000)&quot;, x = NULL,

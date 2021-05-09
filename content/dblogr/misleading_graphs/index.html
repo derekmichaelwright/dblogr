@@ -1,8 +1,8 @@
 ---
-title: "Misleading Graphs"
+title: "[Misleading Graphs](https://derekmichaelwright.github.io/htmls/dblogr/misleading_graphs.html)"
 subtitle: "A guide illustrating how to mislead with graphs"
 summary:  "A guide illustrating how to mislead with graphs"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/misleading_graphs/)"
 tags: [ "dblogr", "SciComm", "Featured" ]
 toc: true
@@ -10,11 +10,6 @@ weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/misleading_graphs.html
 ---
 
 
@@ -164,7 +159,6 @@ ggsave(&quot;misleading_graphs_03.png&quot;, mp, width = 12, height = 4)</code><
 </div>
 <p>Now lets make our own by correlating autism rates with the rise of organic agriculture in Canada.</p>
 <p>Data for Canadian autism rates can be found at <a href="https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-children-youth-canada-2018.html" class="uri">https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-children-youth-canada-2018.html</a>.</p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/misleading_graphs/quebec_autism_rates.csv"><strong>&lt; Download Data &gt;</strong></a></p>
 <pre class="r"><code># Prep data
 x1 &lt;- read.csv(&quot;quebec_autism_rates.csv&quot;)
 x2 &lt;- agData_FAO_LandUse %&gt;% 
@@ -211,7 +205,6 @@ ggsave(&quot;misleading_graphs_04.png&quot;, mp, width = 10, height = 4)</code><
 <p>The National Interagency Fire Center (NIFC) recently deleted some data from their database, which can be retrived using internet archives. Let’s take a look at the data they deleted and speculate why they deleted it.</p>
 <p><a href="https://www.nifc.gov/fire-information/statistics/wildfires" class="uri">https://www.nifc.gov/fire-information/statistics/wildfires</a></p>
 <p><a href="https://web.archive.org/web/20210129125036/https://www.nifc.gov/fireInfo/fireInfo_stats_totalFires.html" class="uri">https://web.archive.org/web/20210129125036/https://www.nifc.gov/fireInfo/fireInfo_stats_totalFires.html</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/misleading_graphs/fires_usa.csv"><strong>&lt; Download Data &gt;</strong></a></p>
 <pre class="r"><code># Prep data
 dd &lt;- read.csv(&quot;fires_usa.csv&quot;) %&gt;%
   mutate(Group = ifelse(Year &lt; 1983, &quot;Deleted&quot;, &quot;Archived&quot;),

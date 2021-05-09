@@ -1,37 +1,26 @@
 ---
-title: "Food Prices in Canada"
+title: "[Food Prices in Canada](https://derekmichaelwright.github.io/htmls/dblogr/canada_food_prices.html)"
 subtitle: "Graphs of food prices using STATCAN data"
 summary:  "Graphs of food prices using STATCAN data"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_food_prices/)"
 tags: [ "dblogr", "Economics", "Featured" ]
 weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_food_prices.html
-  - icon_pack: fas
-    icon: file-pdf
-    name: Maps PDF
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf
-  - icon_pack: fas
-    icon: table
-    name: Download Table 18-10-0002-01
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/1810000201_databaseLoadingData.csv
 ---
 
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
 
 <hr />
 <div id="data-source" class="section level1">
 <h1>Data Source</h1>
-<p>STATCAN data Tables: 18-10-0002-01</p>
 <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/1810000201_databaseLoadingData.csv"><strong>&lt; Download Table 18-10-0002-01 &gt;</strong></a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/1810000201_databaseLoadingData.csv">
+<button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 18-10-0002-01</button>
+</a>
 <hr />
 </div>
 <div id="prepare-data" class="section level1">
@@ -124,7 +113,9 @@ for(i in unique(dd$Product)) {
   )
 }
 dev.off()</code></pre>
-<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf">canada_food_prices_products.pdf</a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_food_prices/canada_food_prices_products.pdf">
+<button class="btn btn-success"><i class="fa fa-file-pdf"></i> canada_food_prices_products.pdf</button>
+</a>
 <pre class="r"><code># Prep data
 xx &lt;- dd %&gt;% filter(Area == &quot;Canada&quot;, Product == &quot;Bacon, 500 grams&quot;)
 # Plot
@@ -149,7 +140,8 @@ xx$Change &lt;- xx[,3] - xx[,2]
 # Plot
 mp &lt;- ggplot(xx, aes(x = Product, y = Change, fill = Product)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
-  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.4)) +
   labs(y = &quot;Price Change&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;canada_food_prices_03.png&quot;, width = 6, height = 4)</code></pre>

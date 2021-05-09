@@ -1,5 +1,5 @@
 ---
-title: "2019 Canadian Election Results"
+title: "[2019 Canadian Election Results](https://derekmichaelwright.github.io/htmls/dblogr/canada_2019_election.html)"
 subtitle: "A regional look at how Canadians voted"
 summary:  "A regional look at how Canadians voted"
 date: "`r Sys.Date()`"
@@ -9,15 +9,6 @@ weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_2019_election.html
-  - icon_pack: fas
-    icon: table
-    name: Download Data
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_2019_election/canada_2019_election_data.xlsx
 ---
 
 ```{r setup, include=FALSE}
@@ -38,7 +29,16 @@ The [2019 Canadian federal election](https://en.wikipedia.org/wiki/2019_Canadian
 
 https://enr.elections.ca/National.aspx?lang=e
 
-[**< Download Data >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_2019_election/canada_2019_election_data.xlsx)
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_2019_election/canada_2019_election_data.xlsx",
+  button_label = "canada_2019_election_data.xlsx",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 ---
 
@@ -194,8 +194,7 @@ xx <- d2 %>% group_by(District) %>% top_n(1, Votes) %>% ungroup() %>%
 mp <- ggplot(xx, aes(x = Area_Short, fill = Party_Short)) + 
   geom_bar(position = "stack", color = "black") +
   scale_fill_manual(name = NULL, values = colors[c(7,5:1)]) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
-  theme_agData() +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "2019 Federal Election Results", 
        caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada",
        y = "Districts", x = NULL)
@@ -215,8 +214,7 @@ xx <- d2a %>% group_by(Area_Short, Party_Short) %>%
 mp <- ggplot(xx, aes(x = Area_Short, y = Votes / 1000000, fill = Party_Short)) + 
   geom_bar(stat = "identity", position = "dodge") +
   scale_fill_manual(name = NULL, values = colors) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
-  theme_agData() +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "2019 Federal Election Results", 
        caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada",
        y = "Million Votes", x = NULL)
@@ -248,7 +246,8 @@ mp <- ggplot(xx, aes(x = Party_Short, y = Votes / 1000000)) +
   facet_grid(. ~ SubRegion + paste("Million Votes =", Total)) +
   scale_fill_manual(values = colors) +
   scale_y_continuous(limits = c(0, 5.2)) +
-  theme_agData(rotx = T, legend.position = "none") +
+  theme_agData(legend.position = "none",
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "2019 Canadian Federal Election Results",
        y = "Million Votes", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
@@ -278,7 +277,8 @@ mp <- ggplot(xx, aes(x = Party_Short, y = n)) +
   facet_grid(.~SubRegion + paste("Total Districts =", Total)) +
   scale_fill_manual(values = colors[-6]) + 
   scale_y_continuous(limits = c(0, 148)) +
-  theme_agData(rotx = T, legend.position = "none") +
+  theme_agData(legend.position = "none",
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "2019 Canadian Federal Election Results",
        y = "Districts", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
@@ -299,7 +299,8 @@ gg_Votes <- function(x, title = NULL, ymax = 15) {
     geom_label(aes(label = paste0(Votes, "\n", `Percent of Votes`, "%"), vjust = -0.1)) +
     scale_fill_manual(values = colors) +
     coord_cartesian(ylim = c(0, ymax)) +
-    theme_agData(legend.position = "none", rotx = T) +
+    theme_agData(legend.position = "none", 
+                 axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
     labs(title = title, y = "Votes (x 100,000)", x = NULL,
          subtitle = "2019 Federal Election Results",
          caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
@@ -592,7 +593,7 @@ gg_LeftRight <- function(x, title = NULL) {
     geom_text(x = 3, y = sum(x$Votes[x$Wing == "Other"]) / 100000, 
             label = paste(xO, "%"), vjust = -0.5, color = "black") +
     scale_fill_manual(values = colors) +
-    theme_agData(rotx = T) +
+    theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
     labs(title = title, y = "Votes (x 100,000)", x = NULL,
          subtitle = "2019 Federal Election Results",
          caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
@@ -877,7 +878,8 @@ gg_Districts <- function(x, title = NULL, ymax = 15) {
                    vjust = -0.1) +
     scale_fill_manual(values = colors) +
     coord_cartesian(ylim = c(0, ymax)) +
-    theme_agData(legend.position = "none", rotx = T) +
+    theme_agData(legend.position = "none", 
+                 axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
     labs(title = title, y = "Districts", x = NULL,
          subtitle = "2019 Federal Election Results",
          caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
@@ -1121,7 +1123,8 @@ gg_ByDistrict <- function(x, title = NULL, ncol = 6) {
                aes(label = paste(`Percent of Votes`, "%"))) +
     facet_wrap(District ~ ., scales = "free_y", ncol = ncol) +
     scale_fill_manual(values = colors) +
-    theme_agData(legend.position = "none", rotx = T) +
+    theme_agData(legend.position = "none", 
+                 axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
     labs(title = title, x = NULL,
          subtitle = "2019 Federal Election Results",
          caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
@@ -1155,9 +1158,8 @@ mp <- ggplot(xx, aes(x = Party_Short, y = Votes, fill = Party_Short)) +
              aes(label = paste(`Percent of Votes`, "%"))) +
   facet_wrap(Locality+District ~ ., scales = "free_y", ncol = 6) +
   scale_fill_manual(values = colors) +
-  theme(legend.position = "none",
+  theme_agData(legend.position = "none",
         axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
-  theme_agData() +
   labs(title = "2019 Federal Election Results in Agricultural Prairie Districts", 
        x = NULL, caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
 ggsave("prairie_ag/election_2019_04_ag.png", mp, width = 16, height = 8)
@@ -1421,9 +1423,8 @@ ggsave("newfoundland_Labrador/election_2019_04_nl.png", mp, width = 10, height =
 ```{r}
 mp <- ggplot(d3, aes(x = Party, y = Votes, fill = Party)) + 
   geom_bar(stat = "identity", color = "black") + 
-  theme(legend.position = "none",
+  theme_agData(legend.position = "none",
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
-  theme_agData() +
   labs(title = "2019 Federal Election Results for \"other\" parties", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
 ggsave("canada/election_2019_00_Other.png", mp, width = 6, height = 4)

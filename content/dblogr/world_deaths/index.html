@@ -1,8 +1,8 @@
 ---
-title: "World Death Rates"
+title: "[World Death Rates](https://derekmichaelwright.github.io/htmls/dblogr/world_deaths.html)"
 subtitle: "An exploration of historical death rates"
 summary:  "An exploration of historical death rates"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/world_deaths/)"
 tags: [ "dblogr", "Demographics" ]
 weight: 2
@@ -13,7 +13,7 @@ links:
   - icon_pack: fas
     icon: code
     name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/world_deaths.html
+    url: 
   - icon_pack: fas
     icon: table
     name: Data Set World
@@ -28,17 +28,24 @@ links:
     url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/world_mortality.csv
 ---
 
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
 
 <hr />
 <div id="data-sources" class="section level1">
 <h1>Data Sources</h1>
 <p><a href="https://www.macrotrends.net/countries/WLD/world/death-rate" class="uri">https://www.macrotrends.net/countries/WLD/world/death-rate</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_world_data.csv"><strong>&lt; Data Set World &gt;</strong></a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_world_data.csv">
+<button class="btn btn-success"><i class="fa fa-save"></i> deaths_world_data.csv</button>
+</a>
 <p><a href="https://www.bmj.com/content/373/bmj.n896" class="uri">https://www.bmj.com/content/373/bmj.n896</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_uk_data.csv"><strong>&lt; Data Set UK &gt;</strong></a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_uk_data.csv">
+<button class="btn btn-success"><i class="fa fa-save"></i> deaths_uk_data.csv</button>
+</a>
 <p><a href="https://ourworldindata.org/excess-mortality-covid" class="uri">https://ourworldindata.org/excess-mortality-covid</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/world_mortality.csv"><strong>&lt; Data Set Countries &gt;</strong></a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/world_mortality.csv">
+<button class="btn btn-success"><i class="fa fa-save"></i> world_mortality.csv</button>
+</a>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
 <hr />

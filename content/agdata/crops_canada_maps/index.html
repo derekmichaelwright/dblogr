@@ -1,25 +1,17 @@
 ---
-title: "Maps of Canadian Crop Production"
+title: "[Maps of Canadian Crop Production](https://derekmichaelwright.github.io/htmls/agdata/crops_canada_maps.html)"
 subtitle: "Maps of crop production in Canada using STATCAN data"
 summary:  "Maps of crop production in Canada using STATCAN data"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crops_canada_maps/)"
 tags: [ "agData", "Regions" ]
 weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/crops_canada_maps.html
-  - icon_pack: fas
-    icon: file-pdf
-    name: Maps PDF
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crops_canada_maps/crops_canada_maps_statcan.pdf
 ---
 
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
 
 <hr />
@@ -51,7 +43,9 @@ for(i in unique(xx$Crop)) {
 dev.off()</code></pre>
 <pre><code>## png 
 ##   2</code></pre>
-<p><strong>PDF</strong>: <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crops_canada_maps/crops_canada_maps_statcan.pdf">crops_canada_maps_statcan.pdf</a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crops_canada_maps/crops_canada_maps_statcan.pdf">
+<button class="btn btn-success"><i class="fa fa-file-pdf"></i> crops_canada_maps_statcan.pdf</button>
+</a>
 <hr />
 </div>
 <div id="plotting-function" class="section level1">

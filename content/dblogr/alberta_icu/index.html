@@ -1,32 +1,26 @@
 ---
-title: "Alberta ICU Usage"
+title: "[Alberta ICU Usage](https://derekmichaelwright.github.io/htmls/dblogr/alberta_icu.html)"
 subtitle: "Data on ICU utilization from a FOIA request by The Justice Centre for Consitutional Freedoms"
 summary:  "Data on ICU utilization from a FOIA request by The Justice Centre for Consitutional Freedoms"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/alberta_icu/)"
 tags: [ "dblogr", "Demographics", "Politics", "Featured" ]
 weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/alberta_icu.html
-  - icon_pack: fas
-    icon: table
-    name: Download Table 13-10-0783-01
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/alberta_icu/2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx
 ---
 
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
 
 <hr />
 <div id="data-sources" class="section level1">
 <h1>Data Sources</h1>
 <p><a href="https://www.jccf.ca/alberta-governments-own-data-shows-hospital-bed-and-icu-utilization-at-five-year-low/" class="uri">https://www.jccf.ca/alberta-governments-own-data-shows-hospital-bed-and-icu-utilization-at-five-year-low/</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/alberta_icu/2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx"><strong>&lt; Download Data &gt;</strong></a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/alberta_icu/2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx">
+<button class="btn btn-success"><i class="fa fa-save"></i> 2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx</button>
+</a>
 <hr />
 </div>
 <div id="prepare-data" class="section level1">
@@ -158,8 +152,7 @@ mp &lt;- ggplot(d5, aes(x = Date, y = AVG_OCC_PCT)) +
   geom_vline(xintercept = as.Date(&quot;2020-03-01&quot;), alpha = 0.3) +
   geom_line(size = 1.25, alpha = 0.8, color = &quot;darkgreen&quot;) +
   facet_wrap(REPORTS_SITE_NAME ~ .) +
-  scale_x_date(date_breaks = &quot;year&quot;, date_labels = &quot;%Y&quot;) +
-  theme_agData(rotx = T) +
+  theme_agData() +
   labs(title = &quot;Alberta ICU Utilization&quot;, y = NULL, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: JCCF&quot;)
 ggsave(&quot;alberta_icu_05.png&quot;, mp, width = 12, height = 8)</code></pre>
@@ -171,7 +164,7 @@ mp &lt;- ggplot(d5, aes(x = Date, y = AVG_FUNDED_BEDS, group = REPORTS_SITE_NAME
   geom_vline(xintercept = as.Date(&quot;2020-03-01&quot;), alpha = 0.3) +
   geom_line(size = 1.25, alpha = 0.8, color = &quot;darkgreen&quot;) +
   scale_x_date(date_breaks = &quot;year&quot;, date_labels = &quot;%Y&quot;) +
-  theme_agData(rotx = T) +
+  theme_agData() +
   labs(title = &quot;Alberta - Number of Funded ICU beds&quot;, y = &quot;Percent&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: JCCF&quot;)
 ggsave(&quot;alberta_icu_06.png&quot;, mp, width = 6, height = 4)</code></pre>

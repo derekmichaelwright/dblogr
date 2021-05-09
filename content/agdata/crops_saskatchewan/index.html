@@ -1,19 +1,14 @@
 ---
-title: "Saskatchewan Crop Production"
+title: "[Saskatchewan Crop Production](https://derekmichaelwright.github.io/htmls/agdata/crops_saskatchewan.html)"
 subtitle: "Graphs of crop production in Saskatchewan using STATCAN data"
 summary:  "Graphs of crop production in Saskatchewan using STATCAN data"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crops_saskatchewan/)"
 tags: [ "agData", "Regions", "Featured" ]
 weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/agdata/crops_saskatchewan.html
 ---
 
 
@@ -60,7 +55,8 @@ mp &lt;- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;Black&quot;) + 
   facet_grid(Year~.) + 
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
-  theme_agData(legend.position = &quot;none&quot;, rotx = T) + 
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
   labs(title = &quot;Saskatchewan - Crop Production&quot;, y = &quot;Million Tonnes&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;crops_saskatchewan_01.png&quot;, mp, width = 6, height = 5)</code></pre>
@@ -80,7 +76,8 @@ mp &lt;- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;Black&quot;) + 
   facet_grid(Year ~ .) + 
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
-  theme_agData(legend.position = &quot;none&quot;, rotx = T) + 
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
   labs(title = &quot;Saskatchewan - Area Seeded&quot;, y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;crops_saskatchewan_02.png&quot;, mp, width = 6, height = 5)</code></pre>
@@ -96,7 +93,8 @@ mp &lt;- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;Black&quot;) + 
   geom_text(aes(label = Year), x = 14, y = 9, size = 15) +
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
-  theme_agData(legend.position = &quot;none&quot;, rotx = T) + 
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
   labs(title = &quot;Saskatchewan - Area Seeded&quot;, y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;) +
   # gganimate
@@ -136,7 +134,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
   geom_line() + 
   facet_wrap(Crop~., ncol = 6) + 
   scale_color_manual(values = alpha(agData_Colors, 0.75)) +
-  theme_agData(legend.position = &quot;none&quot;, rotx = T) + 
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
   labs(title = &quot;Saskatchewan Crops - Area Seeded&quot;, y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;crops_saskatchewan_04.png&quot;, mp, width = 6, height = 5)</code></pre>

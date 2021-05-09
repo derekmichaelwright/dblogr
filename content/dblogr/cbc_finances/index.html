@@ -1,32 +1,26 @@
 ---
-title: "CBC Finances"
+title: "[CBC Finances](https://derekmichaelwright.github.io/htmls/dblogr/cbc_finances.html)"
 subtitle: "A look at CBC finances - government funding, ad revenue and total profit"
 summary:  "A look at CBC finances - government funding, ad revenue and total profit"
-date: "2021-05-07"
+date: "2021-05-08"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/cbc_finances/)"
 tags: [ "dblogr", "Economics", "Politics" ]
 weight: 5
 codefolding_show: "hide"
 image:
   preview_only: true
-links:
-  - icon_pack: fas
-    icon: code
-    name: R Script
-    url: https://derekmichaelwright.github.io/htmls/dblogr/cbc_finances.html
-  - icon_pack: fas
-    icon: table
-    name: Download Data
-    url: https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/cbc_finances/cbc_finances_data.csv
 ---
 
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
 
 <hr />
 <div id="data-source" class="section level1">
 <h1>Data Source</h1>
 <p><a href="https://cbc.radio-canada.ca/en/impact-and-accountability/finances/annual-reports" class="uri">https://cbc.radio-canada.ca/en/impact-and-accountability/finances/annual-reports</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/cbc_finances/cbc_finances_data.csv"><strong>&lt; Download Data &gt;</strong></a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/cbc_finances/cbc_finances_data.csv">
+<button class="btn btn-success"><i class="fa fa-save"></i> cbc_finances_data.csv</button>
+</a>
 <hr />
 </div>
 <div id="prepare-data" class="section level1">
@@ -70,7 +64,8 @@ ggsave(&quot;canada_population_demographics1.png&quot;, width = 6, height = 4)</
   facet_grid(. ~ Year) +
   scale_fill_manual(name = NULL, values = c(&quot;darkred&quot; , &quot;darkblue&quot;, &quot;darkgreen&quot;)) +
   theme_agData(legend.position = &quot;bottom&quot;,
-               axis.text.x = element_blank(), axis.ticks.x = element_blank()) +
+               axis.text.x = element_blank(), 
+               axis.ticks.x = element_blank()) +
   labs(title = &quot;CBC Finances&quot;, x = NULL, y = &quot;Million Dollars&quot;,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
 ggsave(&quot;canada_population_demographics2.png&quot;, width = 10, height = 4)</code></pre>
@@ -88,7 +83,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Profit / 1000000, fill = Net)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
   scale_fill_manual(values = c(&quot;darkred&quot;,&quot;darkblue&quot;)) +
   scale_x_continuous(breaks = 2000:2020) +
-  theme_agData(legend.position = &quot;bottom&quot;, rotx = T) +
+  theme_agData(legend.position = &quot;bottom&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;CBC - Net Profit With Government Funding&quot;, y = &quot;Million Dollars&quot;,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
 ggsave(&quot;canada_population_demographics3.png&quot;, width = 6, height = 4)</code></pre>
@@ -106,7 +102,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Profit / 1000000, fill = Net)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
   scale_fill_manual(values = c(&quot;darkred&quot;,&quot;darkblue&quot;)) +
   scale_x_continuous(breaks = 2000:2020) +
-  theme_agData(legend.position = &quot;none&quot;, rotx = T) +
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = &quot;CBC - Net Profit Without Government Funding&quot;, y = &quot;Million Dollars&quot;,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
 ggsave(&quot;canada_population_demographics4.png&quot;, width = 6, height = 4)</code></pre>
