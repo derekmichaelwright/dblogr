@@ -80,6 +80,10 @@ mp <- ggplot(xx, aes(x = Date, y = Value)) +
 ggsave("canada_employment_1_01.png", mp, width = 6, height = 4)
 ```
 
+```{r echo = F}
+ggsave("featured.png", mp, width = 6, height = 4)
+```
+
 ![](canada_employment_1_01.png)
 
 ```{r}
