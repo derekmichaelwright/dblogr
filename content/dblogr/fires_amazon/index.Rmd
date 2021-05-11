@@ -70,6 +70,8 @@ https://www.cbc.ca/news/world/trudeau-more-work-needed-g7-summit-amazon-burns-1.
 
 Ok, lets check out the data ourselves.
 
+---
+
 # Data source
 
 National Institute for Space Reserach (*INPE*)
@@ -95,9 +97,6 @@ downloadthis::download_link(
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(readxl) # read_xlsx()
-```
-
-```{r}
 # Prep data
 dd <- read_xlsx("fires_amazon_data.xlsx", "INPE") %>%
   filter(Year < 2020)

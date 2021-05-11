@@ -44,12 +44,16 @@ downloadthis::download_link(
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-```
-
-```{r}
 # Prep data
 dd <- read.csv("KyotoFullFlower7.csv") %>%
   filter(!is.na(Full.flowering.date..DOY.))
+```
+
+---
+
+# All Data
+
+```{r}
 # Plot
 mp <- ggplot(dd, aes(x = AD, y = Full.flowering.date..DOY.)) +
   geom_smooth(method = "loess", se = F, color = "black") +
@@ -68,6 +72,8 @@ ggsave("featured.png", mp, width = 12, height = 4)
 ![](cherry_trees_01.png)
 
 ---
+
+# Last 100 Years
 
 ```{r}
 # Prep data

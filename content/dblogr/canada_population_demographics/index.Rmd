@@ -26,6 +26,10 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901
 
+https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000501
+
+https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000801
+
 ```{r echo = F}
 downloadthis::download_link(
   link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_population_demographics/1710000901_databaseLoadingData.csv",
@@ -35,11 +39,6 @@ downloadthis::download_link(
   icon = "fa fa-save",
   self_contained = FALSE
 )
-```
-
-https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000501
-
-```{r echo = F}
 downloadthis::download_link(
   link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_population_demographics/1710000501_databaseLoadingData.csv",
   button_label = "STATCAN Table 17-10-0005-01",
@@ -48,11 +47,6 @@ downloadthis::download_link(
   icon = "fa fa-save",
   self_contained = FALSE
 )
-```
-
-https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000801
-
-```{r echo = F}
 downloadthis::download_link(
   link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_population_demographics/1710000801_databaseLoadingData.csv",
   button_label = "STATCAN Table 17-10-0008-01",
@@ -72,10 +66,7 @@ downloadthis::download_link(
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(gganimate)
 library(transformr)
-```
-
-```{r}
-#
+# Prep data
 d1 <- read.csv("1710000901_databaseLoadingData.csv") %>%
   select(Year=1, Area=GEO, Unit=UOM, Value=VALUE) %>%
   mutate(Month = substr(Year, 6, 8),

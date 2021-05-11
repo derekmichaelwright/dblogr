@@ -44,9 +44,6 @@ downloadthis::download_link(
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-```
-
-```{r}
 # Prep data
 areas <- c("Canada", "Quebec", "Ontario", "British Columbia", 
            "Alberta", "Saskatchewan", "Manitoba", "Nova Scotia",
@@ -56,10 +53,11 @@ a_ord <- c(1,6,7,11, 10,9,8,4, 2,5,3, 13,12,14) # unique(dd$GEO)
 dd <- read.csv("1410001701_databaseLoadingData.csv") %>%
   select(Area=GEO, Date=1, Measurement=Labour.force.characteristics, 
          Sex, Unit=SCALAR_FACTOR, Value=VALUE) %>%
-  #filter(!is.na(Value)) %>%
   mutate(Area = factor(Area, levels = areas),
          Date = as.Date(paste0(Date, "-15"), format = "%Y-%m-%d"))
 ```
+
+---
 
 # Unemployment
 
@@ -85,6 +83,8 @@ ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
 ![](canada_employment_1_01.png)
+
+---
 
 ```{r}
 # Prep data

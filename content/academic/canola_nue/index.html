@@ -2,7 +2,7 @@
 title: "MSc Thesis - Canola NUE"
 subtitle: "Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)"
 summary:  "Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)"
-date: "2021-05-09"
+date: "2021-05-11"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/canola_nue)"
 tags: [ "Academic", "Literature", "Featured" ]
 math: true
@@ -61,8 +61,8 @@ links:
 <h1>Prepare Data</h1>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-library(readxl) # read_xlsx</code></pre>
-<pre class="r"><code># Cultivar data
+library(readxl) # read_xlsx
+# Cultivar data
 cultivarTypes &lt;- c(&quot;Old Purebred&quot;, &quot;New Purebred&quot;, &quot;Old Hybrid&quot;, &quot;New Hybrid&quot;)
 r1 &lt;- read_xlsx(&quot;canola_nue_data.xlsx&quot;, &quot;CultData&quot;) %&gt;%
   mutate(Hybrid = plyr::mapvalues(Hybrid, c(&quot;H&quot;, &quot;P&quot;), c(&quot;Hybrid&quot;, &quot;Purebred&quot;)),

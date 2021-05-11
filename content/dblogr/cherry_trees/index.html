@@ -2,7 +2,7 @@
 title: "Cherry Tree Flowering Date"
 subtitle: "Historical Series of Phenological data for Cherry Tree Flowering at Kyoto City"
 summary:  "Historical Series of Phenological data for Cherry Tree Flowering at Kyoto City"
-date: "2021-05-09"
+date: "2021-05-11"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/cherry_trees/)"
 tags: [ "dblogr", "SciComm" ]
 weight: 10
@@ -31,11 +31,15 @@ links:
 <div id="prepare-data" class="section level1">
 <h1>Prepare data</h1>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
-library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
-<pre class="r"><code># Prep data
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+# Prep data
 dd &lt;- read.csv(&quot;KyotoFullFlower7.csv&quot;) %&gt;%
-  filter(!is.na(Full.flowering.date..DOY.))
-# Plot
+  filter(!is.na(Full.flowering.date..DOY.))</code></pre>
+<hr />
+</div>
+<div id="all-data" class="section level1">
+<h1>All Data</h1>
+<pre class="r"><code># Plot
 mp &lt;- ggplot(dd, aes(x = AD, y = Full.flowering.date..DOY.)) +
   geom_smooth(method = &quot;loess&quot;, se = F, color = &quot;black&quot;) +
   geom_line(alpha = 0.8, color = &quot;darkgreen&quot;) +
@@ -46,6 +50,9 @@ mp &lt;- ggplot(dd, aes(x = AD, y = Full.flowering.date..DOY.)) +
 ggsave(&quot;cherry_trees_01.png&quot;, mp, width = 12, height = 4)</code></pre>
 <p><img src="cherry_trees_01.png" /></p>
 <hr />
+</div>
+<div id="last-100-years" class="section level1">
+<h1>Last 100 Years</h1>
 <pre class="r"><code># Prep data
 xx &lt;- dd %&gt;% filter(AD &gt; 1900)
 # Plot

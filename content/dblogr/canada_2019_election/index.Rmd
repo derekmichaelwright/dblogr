@@ -52,12 +52,9 @@ downloadthis::download_link(
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-library(mapcan) # mapcan()
 library(readxl) # read_xlsx()
-```
-
-```{r}
-# Factor levels
+library(mapcan) # mapcan()
+# Prep data
 parties <- c("Liberal", "Conservative", "Bloc Québécois", "New Democratic Party", 
              "Green Party", "People's Party", "Independent", "Animal Protection Party", 
              "Canada's Fourth Front", "Christian Heritage Party", "Communist", "Libertarian", 
@@ -76,12 +73,12 @@ provinces <- c("British Columbia",  "Alberta", "Saskatchewan", "Manitoba", "Onta
 provShort <- c("BC","AB","SK","MB","ON","QC","NB","PE","NS","NL","YT","NT","NU")
 wprovs <- c("British Columbia", "Alberta"," Saskatchewan", "Manitoba",
              "Yukon", "Northwest Territories", "Nunavut")
-# Prep data 1 - by party
+# d1 = By party
 d1 <- read_xlsx("canada_2019_election_data.xlsx", "Party") %>%
   mutate(Party_Short = plyr::mapvalues(Party, parties, p_short)) %>%
   select(Party, Party_Short, everything())
 DT::datatable(d1)
-# Prep data 2 - by district
+# d2 = By district
 d2 <- read_xlsx("canada_2019_election_data.xlsx", "District") %>%
   filter(`Type of Results` == "validated") %>%
   mutate(Area = factor(Area, levels = provinces),
@@ -92,12 +89,6 @@ d2 <- read_xlsx("canada_2019_election_data.xlsx", "District") %>%
          SubRegion = factor(SubRegion, levels=c("Western Canada","Eastern Canada"))) %>%
   select(SubRegion, Area, Area_Short, Locality, `District Number`, District, 
          Surname, `Given Name`, Party, Party_Short, everything())
-DT::datatable(d2)
-```
-
----
-
-```{r}
 # Summarise "Other" parties
 parties <- c("Libs", "Cons", "NDP", "Bloc", "Green", "PPC", "Other")
 wings   <- c("Left", "Right", "Left", "Other", "Left", "Right", "Other")

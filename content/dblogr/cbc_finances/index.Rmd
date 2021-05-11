@@ -44,9 +44,6 @@ downloadthis::download_link(
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-```
-
-```{r}
 # Prep data
 xx <- read.csv("cbc_finances_data.csv") %>% 
   gather(Source, Value, Revenue, Government.Funding, Expenses) %>%

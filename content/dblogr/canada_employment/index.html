@@ -2,7 +2,7 @@
 title: "Employment in Canada"
 subtitle: "An exploration of Employment data in Canada"
 summary:  "An exploration of Employment data in Canada"
-date: "2021-05-09"
+date: "2021-05-11"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_employment/)"
 tags: [ "dblogr", "Economics" ]
 weight: 4
@@ -40,8 +40,8 @@ links:
 <div id="prepare-data" class="section level1">
 <h1>Prepare Data</h1>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
-library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
-<pre class="r"><code># Prep data
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+# Prep data
 areas &lt;- c(&quot;Canada&quot;, &quot;Quebec&quot;, &quot;Ontario&quot;, &quot;British Columbia&quot;, 
            &quot;Alberta&quot;, &quot;Saskatchewan&quot;, &quot;Manitoba&quot;, &quot;Nova Scotia&quot;,
            &quot;Newfoundland and Labrador&quot;, &quot;New Brunswick&quot;, &quot;Prince Edward Island&quot;, 
@@ -50,9 +50,9 @@ a_ord &lt;- c(1,6,7,11, 10,9,8,4, 2,5,3, 13,12,14) # unique(dd$GEO)
 dd &lt;- read.csv(&quot;1410001701_databaseLoadingData.csv&quot;) %&gt;%
   select(Area=GEO, Date=1, Measurement=Labour.force.characteristics, 
          Sex, Unit=SCALAR_FACTOR, Value=VALUE) %&gt;%
-  #filter(!is.na(Value)) %&gt;%
   mutate(Area = factor(Area, levels = areas),
          Date = as.Date(paste0(Date, &quot;-15&quot;), format = &quot;%Y-%m-%d&quot;))</code></pre>
+<hr />
 </div>
 <div id="unemployment" class="section level1">
 <h1>Unemployment</h1>
@@ -71,6 +71,7 @@ mp &lt;- ggplot(xx, aes(x = Date, y = Value)) +
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;canada_employment_1_01.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="canada_employment_1_01.png" /></p>
+<hr />
 <pre class="r"><code># Prep data
 xx &lt;- dd %&gt;% 
   filter(Area == &quot;Canada&quot;, Sex != &quot;Both sexes&quot;,

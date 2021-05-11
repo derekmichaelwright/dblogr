@@ -2,7 +2,7 @@
 title: "Greenhouse Gas Emissions in Canada"
 subtitle: "Data for greenhouse gas emissions in Canada"
 summary:  "Data for greenhouse gas emissions in Canada"
-date: "2021-05-09"
+date: "2021-05-11"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_ghg/)"
 tags: [ "dblogr", "Economics", "Politics" ]
 weight: 2
@@ -29,7 +29,20 @@ links:
 <hr />
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-library(readxl) # read_xlsx()</code></pre>
+library(readxl) # read_xlsx()
+# Prep data
+d1 &lt;- read_xlsx(&quot;canada_ghg_data.xlsx&quot;, &quot;Table1&quot;)
+d2 &lt;- read_xlsx(&quot;canada_ghg_data.xlsx&quot;, &quot;Table2&quot;) %&gt;%
+  gather(Sector, Value, 2:ncol(.))
+d3 &lt;- read_xlsx(&quot;canada_ghg_data.xlsx&quot;, &quot;Table3&quot;) %&gt;%
+  slice(-1) %&gt;%
+  gather(Year, Value, 2:ncol(.))
+x1 &lt;- read_xlsx(&quot;canada_ghg_data.xlsx&quot;, &quot;Table4&quot;) %&gt;%
+  gather(Trait, Value, 2:3)
+x2 &lt;- read_xlsx(&quot;canada_ghg_data.xlsx&quot;, &quot;Table5&quot;) %&gt;% 
+  gather(Trait, Value, 2)
+d4 &lt;- bind_rows(x1, x2) %&gt;%
+  mutate(Trait = factor(Trait, levels = unique(Trait)))</code></pre>
 <hr />
 </div>
 <div id="emissions" class="section level1">
@@ -44,9 +57,8 @@ blank_theme &lt;- theme_minimal() +
       panel.grid   = element_blank(),
       plot.title   = element_text(size = 14, face = &quot;bold&quot;)
   )
-xx &lt;- read_xlsx(&quot;canada_ghg_data.xlsx&quot;, &quot;Table1&quot;)
 # Plot
-mp &lt;- ggplot(xx, aes(x = &quot;&quot;, y = `Mt CO2 eq`, fill = Sector)) +
+mp &lt;- ggplot(d1, aes(x = &quot;&quot;, y = `Mt CO2 eq`, fill = Sector)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
   coord_polar(&quot;y&quot;, start = 0) +
   scale_fill_manual(values = agData_Colors) +
@@ -60,11 +72,8 @@ ggsave(&quot;canada_ghg_01.png&quot;, mp, width = 6, height = 4)</code></pre>
 </div>
 <div id="emissions-by-sector" class="section level1">
 <h1>Emissions by Sector</h1>
-<pre class="r"><code># Prep data
-xx &lt;- read_xlsx(&quot;canada_ghg_data.xlsx&quot;, &quot;Table2&quot;) %&gt;%
-  gather(Sector, Value, 2:ncol(.))
-# Plot
-mp &lt;- ggplot(xx, aes(x = Year, y = Value, fill = Sector)) +
+<pre class="r"><code># Plot
+mp &lt;- ggplot(d2, aes(x = Year, y = Value, fill = Sector)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
   scale_fill_manual(values = agData_Colors) +
   theme_agData() +
@@ -74,12 +83,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value, fill = Sector)) +
 ggsave(&quot;canada_ghg_02.png&quot;, mp, width = 10, height = 4)</code></pre>
 <p><img src="canada_ghg_02.png" /></p>
 <hr />
-<pre class="r"><code># Prep data
-xx &lt;- read_xlsx(&quot;canada_ghg_data.xlsx&quot;, &quot;Table3&quot;) %&gt;%
-  slice(-1) %&gt;%
-  gather(Year, Value, 2:ncol(.))
-# Plot
-mp &lt;- ggplot(xx, aes(x = Year, y = Value, fill = Sector)) +
+<pre class="r"><code># Plot
+mp &lt;- ggplot(d3, aes(x = Year, y = Value, fill = Sector)) +
   geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
   scale_fill_manual(values = agData_Colors) +
   theme_agData() +
@@ -92,15 +97,8 @@ ggsave(&quot;canada_ghg_03.png&quot;, mp, width = 6, height = 4)</code></pre>
 </div>
 <div id="total-emissions" class="section level1">
 <h1>Total Emissions</h1>
-<pre class="r"><code># Prep data
-x1 &lt;- read_xlsx(&quot;canada_ghg_data.xlsx&quot;, &quot;Table4&quot;) %&gt;%
-  gather(Trait, Value, 2:3)
-x2 &lt;- read_xlsx(&quot;canada_ghg_data.xlsx&quot;, &quot;Table5&quot;) %&gt;% 
-  gather(Trait, Value, 2)
-xx &lt;- bind_rows(x1, x2) %&gt;%
-  mutate(Trait = factor(Trait, levels = unique(Trait)))
-# Plot
-mp &lt;- ggplot(xx, aes(x = Year, y = Value)) +
+<pre class="r"><code># Plot
+mp &lt;- ggplot(d4, aes(x = Year, y = Value)) +
   geom_line(color = &quot;darkgreen&quot;, alpha = 0.8, size = 1.5) +
   facet_wrap(Trait ~ . , scales = &quot;free_y&quot;) +
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +

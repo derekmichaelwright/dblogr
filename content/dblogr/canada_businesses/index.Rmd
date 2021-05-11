@@ -24,11 +24,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data Source
 
-STATCAN data Tables: 33-10-0270-01
-
 https://www150.statcan.gc.ca/n1/pub/11-626-x/11-626-x2020014-eng.htm
-
-[**< Download Table 33-10-0270-01 >**](https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_businesses/3310027001_databaseLoadingData.csv)
 
 ```{r echo = F}
 downloadthis::download_link(
@@ -48,15 +44,12 @@ downloadthis::download_link(
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-```
-
-```{r}
 # Prep data
 areas <- c("Canada", "Quebec", "Ontario", "British Columbia", 
            "Alberta", "Saskatchewan", "Manitoba", "Nova Scotia",
            "Newfoundland and Labrador", "New Brunswick", "Prince Edward Island", 
            "Northwest Territories", "Yukon", "Nunavut") 
-a_ord <- c(1,6,7,11, 10,9,8,4, 2,5,3, 13,12,14) # unique(dd$GEO)
+a_ord <- c(1,6,7,11, 10,9,8,4, 2,5,3, 13,12,14)
 dd <- read.csv("3310027001_databaseLoadingData.csv") %>%
   select(Area=GEO, Date=1, Measurement=Business.dynamics.measure, Value=VALUE) %>%
   filter(!is.na(Value)) %>%

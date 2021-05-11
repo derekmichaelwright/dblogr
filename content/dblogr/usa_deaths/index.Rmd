@@ -26,6 +26,8 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 https://www.cdc.gov/nchs/nvss/vsrr/covid19/excess_deaths.htm#dashboard
 
+https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html
+
 ```{r echo = F}
 downloadthis::download_link(
   link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_deaths_data.csv",
@@ -35,11 +37,6 @@ downloadthis::download_link(
   icon = "fa fa-save",
   self_contained = FALSE
 )
-```
-
-https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html
-
-```{r echo = F}
 downloadthis::download_link(
   link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_population.csv",
   button_label = "usa_population.csv",
@@ -54,17 +51,14 @@ downloadthis::download_link(
 
 # Prepare Data
 
-```{r}
-# devtools::install_github("derekmichaelwright/agData")
-library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-```
-
 ```{r echo = F}
 dd <- read.csv("https://data.cdc.gov/api/views/y5bj-9g5w/rows.csv?accessType=DOWNLOAD&bom=true&format=true%20target=")
 write.csv(dd, "usa_deaths_data.csv", row.names = F)
 ```
 
 ```{r}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 # Prep data
 ages <- c("Under 25 years", "25-44 years", "45-64 years", "65-74 years", "75-84 years", "85 years and older")
 pp <- read.csv("usa_population.csv") %>% 

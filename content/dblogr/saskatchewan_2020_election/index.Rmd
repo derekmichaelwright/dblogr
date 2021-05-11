@@ -50,9 +50,6 @@ downloadthis::download_link(
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-```
-
-```{r}
 # Prep data
 parties <- c("SP", "NDP", "BP", "SGP", "PC", "LIB", "IND")
 cols <- c("darkgreen", "darkorange", "burlywood4", "green", "darkblue", "darkred", "darkgrey")

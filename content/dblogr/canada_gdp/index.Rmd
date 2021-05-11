@@ -26,7 +26,12 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F, out.width = "100%")
 
 https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040001
 
+https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040201
+
+https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901
+
 ```{r echo = F}
+write.csv(agData::agData_STATCAN_Population, "1710000901_Data.csv", row.names = F)
 downloadthis::download_link(
   link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/3610040001_databaseLoadingData.csv",
   button_label = "STATCAN Table 36-10-0400-01",
@@ -35,11 +40,6 @@ downloadthis::download_link(
   icon = "fa fa-save",
   self_contained = FALSE
 )
-```
-
-https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040201
-
-```{r echo = F}
 downloadthis::download_link(
   link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/3610040201_databaseLoadingData.csv",
   button_label = "STATCAN Table 36-10-0402-01",
@@ -48,11 +48,6 @@ downloadthis::download_link(
   icon = "fa fa-save",
   self_contained = FALSE
 )
-```
-
-https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901
-
-```{r echo = F}
 downloadthis::download_link(
   link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/1710000901_Data.csv",
   button_label = "STATCAN Table 17-10-0009-01",
@@ -70,13 +65,6 @@ downloadthis::download_link(
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-```
-
-```{r echo = F}
-write.csv(agData_STATCAN_Population, "1710000901_Data.csv", row.names = F)
-```
-
-```{r}
 # Factor levels
 provinces <- c("British Columbia",  "Alberta", "Saskatchewan", "Manitoba", "Ontario", "Quebec", 
                "New Brunswick", "Prince Edward Island", "Nova Scotia", "Newfoundland and Labrador",  

@@ -47,8 +47,6 @@ library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(readxl) # read_xlsx()
 ```
 
-# Prepare the Data
-
 ```{r}
 # Hospital bed capacity
 d1 <- read_xlsx("2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx", 
@@ -108,7 +106,7 @@ ggsave("alberta_icu_01.png", mp, width = 6, height = 4)
 
 ---
 
-## Region
+## By Region
 
 ```{r}
 # Prep data
@@ -128,7 +126,7 @@ ggsave("alberta_icu_02.png", mp, width = 12, height = 8)
 
 ![](alberta_icu_02.png)
 
-## Amount
+## Available Beds
 
 ```{r}
 # Prep data
@@ -151,6 +149,8 @@ ggsave("alberta_icu_03.png", mp, width = 6, height = 4)
 
 # ICU Utilization
 
+## Alberta
+
 ```{r}
 # Plot
 mp <- ggplot(d3, aes(x = Date, y = Value)) +
@@ -167,6 +167,8 @@ ggsave("alberta_icu_03.png", mp, width = 6, height = 4)
 ![](alberta_icu_03.png)
 
 ---
+
+## Funded vs. Used 
 
 ```{r}
 # Prep data
@@ -191,6 +193,8 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ---
 
+## By Region
+
 ```{r}
 # Plot
 mp <- ggplot(d5, aes(x = Date, y = AVG_OCC_PCT)) +
@@ -207,6 +211,8 @@ ggsave("alberta_icu_05.png", mp, width = 12, height = 8)
 ![](alberta_icu_05.png)
 
 ---
+
+## Funded Beds
 
 ```{r}
 # Plot

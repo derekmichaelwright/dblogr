@@ -2,7 +2,7 @@
 title: "Deaths In Canada"
 subtitle: "An exploration of weekly deaths in Canada"
 summary:  "An exploration of weekly deaths in Canada"
-date: "2021-05-09"
+date: "2021-05-11"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_deaths/)"
 tags: [ "dblogr", "Demographics", "Featured" ]
 weight: 2
@@ -22,26 +22,26 @@ links:
 <hr />
 <div id="data-sources" class="section level1">
 <h1>Data Sources</h1>
-<p><a href="https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm" class="uri">https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm</a></p>
 <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301</a></p>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801</a></p>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801</a></p>
 <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310078301_databaseLoadingData.csv">
 <button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 13-10-0783-01</button>
 </a>
-<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801</a></p>
 <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310076801_databaseLoadingData.csv">
 <button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 13-10-0768-01</button>
 </a>
-<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801</a></p>
 <a href="(https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310070801_databaseLoadingData.csv">
 <button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 13-10-0708-01</button>
 </a>
+<p><a href="https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm" class="uri">https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm</a></p>
 <hr />
 </div>
 <div id="prepare-data" class="section level1">
 <h1>Prepare Data</h1>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
-library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
-<pre class="r"><code># Prep data
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+# Prep data
 areas &lt;- c(&quot;Canada&quot;, &quot;Quebec&quot;, &quot;Ontario&quot;, &quot;British Columbia&quot;, 
            &quot;Alberta&quot;, &quot;Saskatchewan&quot;, &quot;Manitoba&quot;, &quot;Nova Scotia&quot;,
            &quot;Newfoundland and Labrador&quot;, &quot;New Brunswick&quot;, &quot;Prince Edward Island&quot;, 
@@ -54,6 +54,7 @@ cutoffJD &lt;- lubridate::yday(cutoffDate)
 #
 pp &lt;- agData_STATCAN_Population %&gt;% 
   filter(Month ==1) %&gt;% select(Area, Year, Population=Value)
+# d1 = Deaths per Week
 d1 &lt;- read.csv(&quot;1310078301_databaseLoadingData.csv&quot;) %&gt;% 
   rename(Date=1, Area=GEO, Value=VALUE) %&gt;%
   mutate(Date = as.Date(Date),
@@ -64,6 +65,7 @@ d1 &lt;- read.csv(&quot;1310078301_databaseLoadingData.csv&quot;) %&gt;%
          JulianDay = lubridate::yday(Date),
          Area = gsub(&quot;, place of occurrence&quot;, &quot;&quot;, Area),
          Area = factor(Area, levels = areas)) 
+# d2 = Deaths per Week, by gender and age
 d2 &lt;- read.csv(&quot;1310076801_databaseLoadingData.csv&quot;) %&gt;% 
   rename(Date=1, Age=Age.at.time.of.death, Value=VALUE, Area=GEO) %&gt;%
   mutate(Date = as.Date(Date),
@@ -74,8 +76,8 @@ d2 &lt;- read.csv(&quot;1310076801_databaseLoadingData.csv&quot;) %&gt;%
          YearGroup = factor(YearGroup, levels = c(&quot;pre-2020&quot;, &quot;2020&quot;)),
          JulianDay = lubridate::yday(Date),
          Area = gsub(&quot;, place of occurrence&quot;, &quot;&quot;, Area),
-         Area = factor(Area, levels = areas)) %&gt;%
-  filter(Date &lt;= cutoffDate)
+         Area = factor(Area, levels = areas))
+# d3 = Yearly death rate
 d3 &lt;- d1 %&gt;% filter(Year == 2020) %&gt;% 
   group_by(Area, Year) %&gt;%
   summarise(Value = sum(Value)) %&gt;%
@@ -89,11 +91,11 @@ d3 &lt;- read.csv(&quot;1310070801_databaseLoadingData.csv&quot;) %&gt;%
   bind_rows(d3) %&gt;%
   left_join(pp, by = c(&quot;Area&quot;, &quot;Year&quot;)) %&gt;%
   mutate(Death.Rate = 1000 * Value / Population) %&gt;%
-  filter(!is.na(Death.Rate))
-d4 &lt;- d3 %&gt;% filter(Month.of.death != &quot;Total&quot;)
-d3 &lt;- d3 %&gt;% filter(Month.of.death == &quot;Total&quot;) %&gt;%
+  filter(!is.na(Death.Rate), Month.of.death == &quot;Total&quot;) %&gt;%
   mutate(Group = ifelse(Year &lt; 2020, &quot;pre-2020&quot;, &quot;post-2020&quot;))
-d1 &lt;- d1 %&gt;% filter(Date &lt;= cutoffDate)</code></pre>
+#
+d1 &lt;- d1 %&gt;% filter(Date &lt;= cutoffDate)
+d2 &lt;- d2 %&gt;% filter(Date &lt;= cutoffDate)</code></pre>
 <hr />
 </div>
 <div id="deaths" class="section level1">

@@ -22,16 +22,13 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Prepare Data
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(gapminder)
 library(gganimate)
-```
-
-```{r}
 DT::datatable(gapminder %>% arrange(year))
 ```
 

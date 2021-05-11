@@ -37,11 +37,14 @@ Anderson, Edgar (1935) **The irises of the Gaspe Peninsula**. *Bulletin of the A
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(GGally) # ggpairs() 
 library(FactoMineR) # PCA() & HCPC()
+DT::datatable(iris)
 ```
 
+---
+
+# Correlations
+
 ```{r}
-# Prep data
-DT::datatable(iris)
 # Plot
 mp <- ggpairs(iris, columns = 1:4, aes(color = Species)) +
   scale_color_manual(values = alpha(agData_Colors,0.7)) +
@@ -59,6 +62,8 @@ ggsave("featured.png", mp, width = 6, height = 4)
 ![](pca_01.png)
 
 ---
+
+# PCA
 
 ```{r}
 # PCA

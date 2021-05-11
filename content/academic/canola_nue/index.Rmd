@@ -38,9 +38,6 @@ downloadthis::download_link(
   icon = "fa fa-file-pdf",
   self_contained = FALSE
 )
-```
-
-```{r echo = F}
 downloadthis::download_link(
   link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/academic/canola_nue/canola_nue_data.xlsx",
   button_label = "canola_nue_data.xlsx",
@@ -92,9 +89,6 @@ $N2=677\frac{mgN}{perplant}+\frac{2*(1600mgN)}{9plants}=1033\frac{mgN}{perplant}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(readxl) # read_xlsx
-```
-
-```{r}
 # Cultivar data
 cultivarTypes <- c("Old Purebred", "New Purebred", "Old Hybrid", "New Hybrid")
 r1 <- read_xlsx("canola_nue_data.xlsx", "CultData") %>%

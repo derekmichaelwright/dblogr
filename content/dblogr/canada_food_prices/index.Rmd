@@ -44,9 +44,6 @@ downloadthis::download_link(
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-```
-
-```{r}
 # Prep data
 dd <- read.csv("1810000201_databaseLoadingData.csv") %>%
   select(Date=1, Area=GEO, Product=Products, Value=VALUE) %>%
@@ -60,21 +57,7 @@ unique(dd$Product)
 
 ---
 
-```{r}
-# Plot
-mp <- ggplot(dd, aes(x = Date, y = Value)) +
-  geom_vline(xintercept = as.Date("2008-01-01"), lty = 2, alpha = 0.8) +
-  geom_line(color = "darkred", alpha = 0.8) +
-  facet_wrap(Product ~ ., ncol = 8, scales = "free_y") +
-  theme_agData() +
-  labs(title = "Food Prices", x = NULL, y = "Dollars",
-       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
-ggsave("canada_food_prices_01.png", width = 25, height = 10, limitsize = F)
-```
-
-![](canada_food_prices_01.png)
-
----
+# All Items
 
 ```{r eval = F}
 pdf("canada_food_prices_products.pdf", width = 6, height = 4)
@@ -103,6 +86,26 @@ downloadthis::download_link(
 )
 ```
 
+---
+
+```{r}
+# Plot
+mp <- ggplot(dd, aes(x = Date, y = Value)) +
+  geom_vline(xintercept = as.Date("2008-01-01"), lty = 2, alpha = 0.8) +
+  geom_line(color = "darkred", alpha = 0.8) +
+  facet_wrap(Product ~ ., ncol = 8, scales = "free_y") +
+  theme_agData() +
+  labs(title = "Food Prices", x = NULL, y = "Dollars",
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+ggsave("canada_food_prices_01.png", width = 25, height = 10, limitsize = F)
+```
+
+![](canada_food_prices_01.png)
+
+---
+
+# Bacon
+
 ```{r}
 # Prep data
 xx <- dd %>% filter(Area == "Canada", Product == "Bacon, 500 grams")
@@ -125,6 +128,8 @@ ggsave("featured.png", mp, width = 6, height = 4)
 ![](canada_food_prices_02.png)
 
 ---
+
+# Change
 
 ```{r}
 # Prep data

@@ -2,7 +2,7 @@
 title: "Canada Business Openings and Closures"
 subtitle: "An exploration of business openings and closures in Canada"
 summary:  "An exploration of business openings and closures in Canada"
-date: "2021-05-09"
+date: "2021-05-11"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_businesses/)"
 tags: [ "dblogr", "Economics" ]
 weight: 4
@@ -22,9 +22,7 @@ links:
 <hr />
 <div id="data-source" class="section level1">
 <h1>Data Source</h1>
-<p>STATCAN data Tables: 33-10-0270-01</p>
 <p><a href="https://www150.statcan.gc.ca/n1/pub/11-626-x/11-626-x2020014-eng.htm" class="uri">https://www150.statcan.gc.ca/n1/pub/11-626-x/11-626-x2020014-eng.htm</a></p>
-<p><a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_businesses/3310027001_databaseLoadingData.csv"><strong>&lt; Download Table 33-10-0270-01 &gt;</strong></a></p>
 <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_businesses/3310027001_databaseLoadingData.csv">
 <button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 33-10-0270-01</button>
 </a>
@@ -33,13 +31,13 @@ links:
 <div id="prepare-data" class="section level1">
 <h1>Prepare Data</h1>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
-library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
-<pre class="r"><code># Prep data
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+# Prep data
 areas &lt;- c(&quot;Canada&quot;, &quot;Quebec&quot;, &quot;Ontario&quot;, &quot;British Columbia&quot;, 
            &quot;Alberta&quot;, &quot;Saskatchewan&quot;, &quot;Manitoba&quot;, &quot;Nova Scotia&quot;,
            &quot;Newfoundland and Labrador&quot;, &quot;New Brunswick&quot;, &quot;Prince Edward Island&quot;, 
            &quot;Northwest Territories&quot;, &quot;Yukon&quot;, &quot;Nunavut&quot;) 
-a_ord &lt;- c(1,6,7,11, 10,9,8,4, 2,5,3, 13,12,14) # unique(dd$GEO)
+a_ord &lt;- c(1,6,7,11, 10,9,8,4, 2,5,3, 13,12,14)
 dd &lt;- read.csv(&quot;3310027001_databaseLoadingData.csv&quot;) %&gt;%
   select(Area=GEO, Date=1, Measurement=Business.dynamics.measure, Value=VALUE) %&gt;%
   filter(!is.na(Value)) %&gt;%

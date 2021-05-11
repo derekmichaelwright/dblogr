@@ -2,7 +2,7 @@
 title: "Deaths In USA"
 subtitle: "An exploration of weekly deaths in the USA"
 summary:  "An exploration of weekly deaths in the USA"
-date: "2021-05-09"
+date: "2021-05-11"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/usa_deaths/)"
 tags: [ "dblogr", "Demographics", "Featured" ]
 weight: 2
@@ -23,10 +23,10 @@ links:
 <div id="data-source" class="section level1">
 <h1>Data Source</h1>
 <p><a href="https://www.cdc.gov/nchs/nvss/vsrr/covid19/excess_deaths.htm#dashboard" class="uri">https://www.cdc.gov/nchs/nvss/vsrr/covid19/excess_deaths.htm#dashboard</a></p>
+<p><a href="https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html" class="uri">https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html</a></p>
 <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_deaths_data.csv">
 <button class="btn btn-success"><i class="fa fa-save"></i> usa_deaths_data.csv</button>
 </a>
-<p><a href="https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html" class="uri">https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html</a></p>
 <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/usa_deaths/usa_population.csv">
 <button class="btn btn-success"><i class="fa fa-save"></i> usa_population.csv</button>
 </a>
@@ -35,8 +35,8 @@ links:
 <div id="prepare-data" class="section level1">
 <h1>Prepare Data</h1>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
-library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
-<pre class="r"><code># Prep data
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+# Prep data
 ages &lt;- c(&quot;Under 25 years&quot;, &quot;25-44 years&quot;, &quot;45-64 years&quot;, &quot;65-74 years&quot;, &quot;75-84 years&quot;, &quot;85 years and older&quot;)
 pp &lt;- read.csv(&quot;usa_population.csv&quot;) %&gt;% 
   select(Area, Population=X2019) %&gt;%

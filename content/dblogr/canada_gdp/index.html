@@ -2,7 +2,7 @@
 title: "GDP of Canada"
 subtitle: "GDP data among Canadian provinces from 2007-2018"
 summary:  "GDP data among Canadian provinces from 2007-2018"
-date: "2021-05-09"
+date: "2021-05-11"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_gdp/)"
 tags: [ "dblogr", "Economics" ]
 weight: 2
@@ -23,14 +23,14 @@ links:
 <div id="data-sources" class="section level1">
 <h1>Data Sources</h1>
 <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040001" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040001</a></p>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040201" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040201</a></p>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901</a></p>
 <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/3610040001_databaseLoadingData.csv">
 <button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 36-10-0400-01</button>
 </a>
-<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040201" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040201</a></p>
 <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/3610040201_databaseLoadingData.csv">
 <button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 36-10-0402-01</button>
 </a>
-<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901</a></p>
 <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_gdp/1710000901_Data.csv">
 <button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 17-10-0009-01</button>
 </a>
@@ -39,8 +39,8 @@ links:
 <div id="prepare-data" class="section level1">
 <h1>Prepare Data</h1>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
-library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
-<pre class="r"><code># Factor levels
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+# Factor levels
 provinces &lt;- c(&quot;British Columbia&quot;,  &quot;Alberta&quot;, &quot;Saskatchewan&quot;, &quot;Manitoba&quot;, &quot;Ontario&quot;, &quot;Quebec&quot;, 
                &quot;New Brunswick&quot;, &quot;Prince Edward Island&quot;, &quot;Nova Scotia&quot;, &quot;Newfoundland and Labrador&quot;,  
                &quot;Yukon&quot;, &quot;Northwest Territories&quot;, &quot;Nunavut&quot;)

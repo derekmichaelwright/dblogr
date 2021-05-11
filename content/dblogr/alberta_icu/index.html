@@ -2,7 +2,7 @@
 title: "Alberta ICU Usage"
 subtitle: "Data on ICU utilization from a FOIA request by The Justice Centre for Consitutional Freedoms"
 summary:  "Data on ICU utilization from a FOIA request by The Justice Centre for Consitutional Freedoms"
-date: "2021-05-09"
+date: "2021-05-11"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/alberta_icu/)"
 tags: [ "dblogr", "Demographics", "Politics", "Featured" ]
 weight: 2
@@ -33,9 +33,6 @@ links:
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(readxl) # read_xlsx()</code></pre>
-</div>
-<div id="prepare-the-data" class="section level1">
-<h1>Prepare the Data</h1>
 <pre class="r"><code># Hospital bed capacity
 d1 &lt;- read_xlsx(&quot;2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx&quot;, 
                 &quot;AcuteCare_P2_Occupancy&quot;, range = &quot;D70:J82&quot;) %&gt;%
@@ -88,8 +85,8 @@ ggsave(&quot;alberta_icu_01.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="alberta_icu_01.png" /></p>
 <hr />
 </div>
-<div id="region" class="section level2">
-<h2>Region</h2>
+<div id="by-region" class="section level2">
+<h2>By Region</h2>
 <pre class="r"><code># Prep data
 xx &lt;- d2 %&gt;% filter(Measurement == &quot;Occupancy&quot;)
 # Plot
@@ -105,8 +102,8 @@ mp &lt;- ggplot(xx, aes(x = Date, y = Value)) +
 ggsave(&quot;alberta_icu_02.png&quot;, mp, width = 12, height = 8)</code></pre>
 <p><img src="alberta_icu_02.png" /></p>
 </div>
-<div id="amount" class="section level2">
-<h2>Amount</h2>
+<div id="available-beds" class="section level2">
+<h2>Available Beds</h2>
 <pre class="r"><code># Prep data
 xx &lt;- d2 %&gt;% filter(Measurement == &quot;Beds available&quot;)
 # Plot
@@ -125,6 +122,8 @@ ggsave(&quot;alberta_icu_03.png&quot;, mp, width = 6, height = 4)</code></pre>
 </div>
 <div id="icu-utilization" class="section level1">
 <h1>ICU Utilization</h1>
+<div id="alberta-1" class="section level2">
+<h2>Alberta</h2>
 <pre class="r"><code># Plot
 mp &lt;- ggplot(d3, aes(x = Date, y = Value)) +
   geom_vline(xintercept = as.Date(&quot;2020-03-01&quot;), alpha = 0.3) +
@@ -137,6 +136,9 @@ mp &lt;- ggplot(d3, aes(x = Date, y = Value)) +
 ggsave(&quot;alberta_icu_03.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="alberta_icu_03.png" /></p>
 <hr />
+</div>
+<div id="funded-vs.-used" class="section level2">
+<h2>Funded vs. Used</h2>
 <pre class="r"><code># Prep data
 xx &lt;- d4 %&gt;% filter(Measurement != &quot;Utilization&quot;)
 # Plot
@@ -151,6 +153,9 @@ mp &lt;- ggplot(xx, aes(x = Date, y = Value, color = Measurement)) +
 ggsave(&quot;alberta_icu_04.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="alberta_icu_04.png" /></p>
 <hr />
+</div>
+<div id="by-region-1" class="section level2">
+<h2>By Region</h2>
 <pre class="r"><code># Plot
 mp &lt;- ggplot(d5, aes(x = Date, y = AVG_OCC_PCT)) +
   geom_hline(yintercept = 1, alpha = 0.6) +
@@ -163,6 +168,9 @@ mp &lt;- ggplot(d5, aes(x = Date, y = AVG_OCC_PCT)) +
 ggsave(&quot;alberta_icu_05.png&quot;, mp, width = 12, height = 8)</code></pre>
 <p><img src="alberta_icu_05.png" /></p>
 <hr />
+</div>
+<div id="funded-beds" class="section level2">
+<h2>Funded Beds</h2>
 <pre class="r"><code># Plot
 mp &lt;- ggplot(d5, aes(x = Date, y = AVG_FUNDED_BEDS, group = REPORTS_SITE_NAME)) +
   geom_hline(yintercept = 1, alpha = 0.6) +
@@ -176,4 +184,5 @@ ggsave(&quot;alberta_icu_06.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="alberta_icu_06.png" /></p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>
 </div>

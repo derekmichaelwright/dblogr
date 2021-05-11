@@ -26,6 +26,10 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 https://www.macrotrends.net/countries/WLD/world/death-rate
 
+https://www.bmj.com/content/373/bmj.n896
+
+https://ourworldindata.org/excess-mortality-covid
+
 ```{r echo = F}
 downloadthis::download_link(
   link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_world_data.csv",
@@ -35,11 +39,6 @@ downloadthis::download_link(
   icon = "fa fa-save",
   self_contained = FALSE
 )
-```
-
-https://www.bmj.com/content/373/bmj.n896
-
-```{r echo = F}
 downloadthis::download_link(
   link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/deaths_uk_data.csv",
   button_label = "deaths_uk_data.csv",
@@ -48,11 +47,6 @@ downloadthis::download_link(
   icon = "fa fa-save",
   self_contained = FALSE
 )
-```
-
-https://ourworldindata.org/excess-mortality-covid
-
-```{r echo = F}
 downloadthis::download_link(
   link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/world_deaths/world_mortality.csv",
   button_label = "world_mortality.csv",
@@ -63,14 +57,34 @@ downloadthis::download_link(
 )
 ```
 
-```{r}
-# devtools::install_github("derekmichaelwright/agData")
-library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-```
+---
+
+# Perpare Data
 
 ```{r echo = F}
 xx <- read.csv("https://raw.githubusercontent.com/akarlinsky/world_mortality/main/world_mortality.csv")
 write.csv(xx, "world_mortality.csv", row.names = F)
+```
+
+```{r}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+# d1 = World
+d1 <- read.csv("deaths_world_data.csv")
+xx <- d1 %>% filter(Year == 2020) %>% pull(Death.Rate)
+d1 <- d1 %>% mutate(Group = ifelse(Death.Rate >= xx, "higher", "Lower"))
+# d2 = UK
+d2 <- read.csv("deaths_uk_data.csv") %>%
+  rename(Death.Rate = Crude.mortaity.rate..per.100.000.population.) %>%
+  mutate(Death.Rate = as.numeric(gsub(",", "", Death.Rate)))
+xx <- d2 %>% filter(Year == 2020) %>% pull(Death.Rate)
+d2 <- d2 %>% mutate(Group = ifelse(Death.Rate >= xx, "higher", "Lower"))
+# d3 = Weekly deaths
+d3 <- read.csv("world_mortality.csv") %>%
+  rename(area=1) %>% filter(year != 0) %>%
+  mutate(group = ifelse(year < 2020, "pre-2020", year),
+         group = factor(group, levels = c("pre-2020","2020","2021")),
+         year = factor(year))
 ```
 
 ---
@@ -78,12 +92,8 @@ write.csv(xx, "world_mortality.csv", row.names = F)
 # World
 
 ```{r}
-# Prep data
-xx <- read.csv("deaths_world_data.csv")
-yy <- xx %>% filter(Year == 2020) %>% pull(Death.Rate)
-xx <- xx %>% mutate(Group = ifelse(Death.Rate >= yy, "higher", "Lower"))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Death.Rate, fill = Group)) +
+mp <- ggplot(d1, aes(x = Year, y = Death.Rate, fill = Group)) +
   geom_bar(stat = "identity", color = "black") +
   scale_fill_manual(values = c("darkgreen", alpha("darkgreen",0.5))) +
   scale_x_continuous(breaks = c(seq(1950, 2010, 10), 2015, 2020)) +
@@ -102,14 +112,8 @@ ggsave("world_deaths_01.png", mp, width = 6, height = 4)
 # UK
 
 ```{r}
-# Prep data
-xx <- read.csv("deaths_uk_data.csv") %>%
-  rename(Death.Rate = Crude.mortaity.rate..per.100.000.population.) %>%
-  mutate(Death.Rate = as.numeric(gsub(",", "", Death.Rate)))
-yy <- xx %>% filter(Year == 2020) %>% pull(Death.Rate)
-xx <- xx %>% mutate(Group = ifelse(Death.Rate >= yy, "higher", "Lower"))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Death.Rate, fill = Group)) +
+mp <- ggplot(d2, aes(x = Year, y = Death.Rate, fill = Group)) +
   geom_bar(stat = "identity", color = "black", size = 0.1) +
   scale_fill_manual(values = c("darkgreen", alpha("darkgreen",0.5))) +
   scale_x_continuous(breaks = c(seq(1840, 1980, 20), 2003, 2020)) +
@@ -131,16 +135,10 @@ ggsave("featured.png", mp, width = 6, height = 4)
 # Weekly Deaths
 
 ```{r}
-# Prep data
-dd <- read.csv("world_mortality.csv") %>%
-  rename(area=1) %>% filter(year != 0) %>%
-  mutate(group = ifelse(year < 2020, "pre-2020", year),
-         group = factor(group, levels = c("pre-2020","2020","2021")),
-         year = factor(year))
 # Create plotting function
 deathPlot <- function(Area = "Germany") {
   # Prep data
-  xi <- dd %>% filter(area == Area)
+  xi <- d3 %>% filter(area == Area)
   # Plot
   ggplot(xi, aes(x = time, y = deaths, group = year, color = group)) +
     geom_line(size = 1.25, alpha = 0.8) +
@@ -226,6 +224,17 @@ ggsave("world_deaths_09.png", mp, width = 6, height = 4)
 ```
 
 ![](world_deaths_09.png)
+
+---
+
+## Russia
+
+```{r}
+mp <- deathPlot(Area = "Russia")
+ggsave("world_deaths_10.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_10.png)
 
 ---
 

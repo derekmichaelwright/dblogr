@@ -24,7 +24,21 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data Sources
 
+USA Covid Data
+
 https://beta.healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/g62h-syeh/data
+
+Minnesota Models
+
+https://github.com/MN-COVID19-Model/Model_v3
+
+Imperial Models
+
+https://www.aier.org/article/the-failure-of-imperial-college-modeling-is-far-worse-than-we-knew/
+
+https://www.aier.org/article/imperial-college-predicted-catastrophe-in-every-country-on-earth-then-the-models-failed/
+
+https://github.com/mrc-ide/covid-sim
 
 ```{r echo = F}
 downloadthis::download_link(
@@ -35,11 +49,6 @@ downloadthis::download_link(
   icon = "fa fa-save",
   self_contained = FALSE
 )
-```
-
-https://github.com/MN-COVID19-Model/Model_v3
-
-```{r echo = F}
 downloadthis::download_link(
   link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/models_minnesota.csv",
   button_label = "models_minnesota.csv",
@@ -48,11 +57,6 @@ downloadthis::download_link(
   icon = "fa fa-save",
   self_contained = FALSE
 )
-```
-
-Imperial Models
-
-```{r echo = F}
 downloadthis::download_link(
   link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/models_imperial.csv",
   button_label = "models_imperial.csv",
@@ -70,9 +74,6 @@ downloadthis::download_link(
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-```
-
-```{r}
 # Prep data
 models <- c("Model 1", "Model 2", "Model 3", "Model 4")
 colors <- c("darkred", "black", "darkgreen", "darkorange", "steelblue")

@@ -2,7 +2,7 @@
 title: "Covid Models"
 subtitle: "Graphs for covid models vs actual data"
 summary:  "Graphs for covid models vs actual data"
-date: "2021-05-09"
+date: "2021-05-11"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/covid_models/)"
 tags: [ "dblogr", "Demographics", "Politics" ]
 weight: 6
@@ -22,15 +22,20 @@ links:
 <hr />
 <div id="data-sources" class="section level1">
 <h1>Data Sources</h1>
+<p>USA Covid Data</p>
 <p><a href="https://beta.healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/g62h-syeh/data" class="uri">https://beta.healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/g62h-syeh/data</a></p>
+<p>Minnesota Models</p>
+<p><a href="https://github.com/MN-COVID19-Model/Model_v3" class="uri">https://github.com/MN-COVID19-Model/Model_v3</a></p>
+<p>Imperial Models</p>
+<p><a href="https://www.aier.org/article/the-failure-of-imperial-college-modeling-is-far-worse-than-we-knew/" class="uri">https://www.aier.org/article/the-failure-of-imperial-college-modeling-is-far-worse-than-we-knew/</a></p>
+<p><a href="https://www.aier.org/article/imperial-college-predicted-catastrophe-in-every-country-on-earth-then-the-models-failed/" class="uri">https://www.aier.org/article/imperial-college-predicted-catastrophe-in-every-country-on-earth-then-the-models-failed/</a></p>
+<p><a href="https://github.com/mrc-ide/covid-sim" class="uri">https://github.com/mrc-ide/covid-sim</a></p>
 <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/covid_usa.csv">
 <button class="btn btn-success"><i class="fa fa-save"></i> covid_usa.csv</button>
 </a>
-<p><a href="https://github.com/MN-COVID19-Model/Model_v3" class="uri">https://github.com/MN-COVID19-Model/Model_v3</a></p>
 <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/models_minnesota.csv">
 <button class="btn btn-success"><i class="fa fa-save"></i> models_minnesota.csv</button>
 </a>
-<p>Imperial Models</p>
 <a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/covid_models/models_imperial.csv">
 <button class="btn btn-success"><i class="fa fa-save"></i> models_imperial.csv</button>
 </a>
@@ -39,8 +44,8 @@ links:
 <div id="prepare-data" class="section level1">
 <h1>Prepare data</h1>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
-library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
-<pre class="r"><code># Prep data
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+# Prep data
 models &lt;- c(&quot;Model 1&quot;, &quot;Model 2&quot;, &quot;Model 3&quot;, &quot;Model 4&quot;)
 colors &lt;- c(&quot;darkred&quot;, &quot;black&quot;, &quot;darkgreen&quot;, &quot;darkorange&quot;, &quot;steelblue&quot;)
 x1 &lt;- read.csv(&quot;models_minnesota.csv&quot;) %&gt;% 
