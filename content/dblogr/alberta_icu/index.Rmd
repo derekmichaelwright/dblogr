@@ -45,9 +45,6 @@ downloadthis::download_link(
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(readxl) # read_xlsx()
-```
-
-```{r}
 # Hospital bed capacity
 d1 <- read_xlsx("2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx", 
                 "AcuteCare_P2_Occupancy", range = "D70:J82") %>%
