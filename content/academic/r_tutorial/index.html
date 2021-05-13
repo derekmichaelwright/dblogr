@@ -1,0 +1,814 @@
+---
+title: "R Tutorial Vignette"
+subtitle: "An introduction to R"
+summary:  "An introduction to R"
+date: "2021-05-13"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/r_tutorial)"
+tags: [ "Academic", "AGILE", "Tutorial", "Featured" ]
+weight: 1
+codefolding_show: "show"
+image:
+  preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/academic/r_tutorial.html
+---
+
+<script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
+<script src="{{< blogdown/postref >}}index_files/jquery/jquery.min.js"></script>
+<link href="{{< blogdown/postref >}}index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/datatables-binding/datatables.js"></script>
+<link href="{{< blogdown/postref >}}index_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="{{< blogdown/postref >}}index_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="{{< blogdown/postref >}}index_files/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/crosstalk/js/crosstalk.min.js"></script>
+
+
+<hr />
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>This vignette will introduce the reader to <code>R</code>, a free, open-source statistical computing environment and <code>RStudio</code>, a integrated development environment for <code>R</code>.</p>
+<p><img src="logo_r.png" style="width:25.0%" /></p>
+<hr />
+</div>
+<div id="download-r" class="section level1">
+<h1>Download R</h1>
+<p><a href="https://www.r-project.org/">Download R</a></p>
+<p><a href="https://rstudio.com/products/rstudio/download/">Download RStudio</a></p>
+<p><img src="rstudio.png" /></p>
+<p><a href="http://r-statistics.co/R-Tutorial.html" class="uri">http://r-statistics.co/R-Tutorial.html</a></p>
+<p><a href="https://bookdown.org/rdpeng/exdata/getting-started-with-r.html#installation" class="uri">https://bookdown.org/rdpeng/exdata/getting-started-with-r.html#installation</a></p>
+<hr />
+</div>
+<div id="calculator" class="section level1">
+<h1>Calculator</h1>
+<p>R can be used as a super awesome calculator</p>
+<pre class="r"><code># 5 + 3 = 8
+5 + 3 </code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="r"><code># 24 / (1 + 2) = 8
+24 / (1 + 2) </code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="r"><code># 2 * 2 * 2 = 8
+2^3 </code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="r"><code># 8 * 8 = 64
+sqrt(64) </code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="r"><code># -log10(0.05 / 5000000) = 8
+-log10(0.05 / 5000000) </code></pre>
+<pre><code>## [1] 8</code></pre>
+<hr />
+</div>
+<div id="functions" class="section level1">
+<h1>Functions</h1>
+<p>R has many useful built in functions</p>
+<pre class="r"><code>1:10</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="r"><code>as.character(1:10)</code></pre>
+<pre><code>##  [1] &quot;1&quot;  &quot;2&quot;  &quot;3&quot;  &quot;4&quot;  &quot;5&quot;  &quot;6&quot;  &quot;7&quot;  &quot;8&quot;  &quot;9&quot;  &quot;10&quot;</code></pre>
+<pre class="r"><code>rep(1:2, times = 5)</code></pre>
+<pre><code>##  [1] 1 2 1 2 1 2 1 2 1 2</code></pre>
+<pre class="r"><code>rep(1:5, times = 2)</code></pre>
+<pre><code>##  [1] 1 2 3 4 5 1 2 3 4 5</code></pre>
+<pre class="r"><code>rep(1:5, each = 2)</code></pre>
+<pre><code>##  [1] 1 1 2 2 3 3 4 4 5 5</code></pre>
+<pre class="r"><code>rep(1:5, length.out = 7)</code></pre>
+<pre><code>## [1] 1 2 3 4 5 1 2</code></pre>
+<pre class="r"><code>help(rep)
+seq(5, 50, by = 5)</code></pre>
+<pre><code>##  [1]  5 10 15 20 25 30 35 40 45 50</code></pre>
+<pre class="r"><code>seq(5, 50, length.out = 5)</code></pre>
+<pre><code>## [1]  5.00 16.25 27.50 38.75 50.00</code></pre>
+<pre class="r"><code>paste(1:10, 20:30, sep = &quot;-&quot;)</code></pre>
+<pre><code>##  [1] &quot;1-20&quot;  &quot;2-21&quot;  &quot;3-22&quot;  &quot;4-23&quot;  &quot;5-24&quot;  &quot;6-25&quot;  &quot;7-26&quot;  &quot;8-27&quot;  &quot;9-28&quot; 
+## [10] &quot;10-29&quot; &quot;1-30&quot;</code></pre>
+<pre class="r"><code>paste(1:10, collapse = &quot;-&quot;)</code></pre>
+<pre><code>## [1] &quot;1-2-3-4-5-6-7-8-9-10&quot;</code></pre>
+<pre class="r"><code>paste0(&quot;x&quot;, 1:10)</code></pre>
+<pre><code>##  [1] &quot;x1&quot;  &quot;x2&quot;  &quot;x3&quot;  &quot;x4&quot;  &quot;x5&quot;  &quot;x6&quot;  &quot;x7&quot;  &quot;x8&quot;  &quot;x9&quot;  &quot;x10&quot;</code></pre>
+<pre class="r"><code>min(1:10)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>max(1:10)</code></pre>
+<pre><code>## [1] 10</code></pre>
+<pre class="r"><code>range(1:10)</code></pre>
+<pre><code>## [1]  1 10</code></pre>
+<pre class="r"><code>mean(1:10)</code></pre>
+<pre><code>## [1] 5.5</code></pre>
+<pre class="r"><code>sd(1:10)</code></pre>
+<pre><code>## [1] 3.02765</code></pre>
+<p>Users can also create their own functions</p>
+<pre class="r"><code>customFunction1 &lt;- function(x, y) {
+  z &lt;- 100 * x / (x + y)
+  paste(z, &quot;%&quot;)
+}
+customFunction1(x = 10, y = 90)</code></pre>
+<pre><code>## [1] &quot;10 %&quot;</code></pre>
+<pre class="r"><code>customFunction2 &lt;- function(x) {
+  mymin &lt;- mean(x - sd(x))
+  mymax &lt;- mean(x) + sd(x)
+  print(paste(&quot;Min =&quot;, mymin))
+  print(paste(&quot;Max =&quot;, mymax))
+}
+customFunction2(x = 1:10)</code></pre>
+<pre><code>## [1] &quot;Min = 2.47234964590251&quot;
+## [1] &quot;Max = 8.52765035409749&quot;</code></pre>
+<p><code>for</code> loops and <code>if</code> <code>else</code> statements</p>
+<pre class="r"><code>xx &lt;- NULL #creates and empty object
+for(i in 1:10) {
+  xx[i] &lt;- i*3
+}
+xx</code></pre>
+<pre><code>##  [1]  3  6  9 12 15 18 21 24 27 30</code></pre>
+<pre class="r"><code>xx %% 2 #gives the remainder when divided by 2</code></pre>
+<pre><code>##  [1] 1 0 1 0 1 0 1 0 1 0</code></pre>
+<pre class="r"><code>for(i in 1:length(xx)) {
+  if((xx[i] %% 2) == 0) {
+    print(paste(xx[i],&quot;is Even&quot;))
+  } else { 
+      print(paste(xx[i],&quot;is Odd&quot;)) 
+    }
+}</code></pre>
+<pre><code>## [1] &quot;3 is Odd&quot;
+## [1] &quot;6 is Even&quot;
+## [1] &quot;9 is Odd&quot;
+## [1] &quot;12 is Even&quot;
+## [1] &quot;15 is Odd&quot;
+## [1] &quot;18 is Even&quot;
+## [1] &quot;21 is Odd&quot;
+## [1] &quot;24 is Even&quot;
+## [1] &quot;27 is Odd&quot;
+## [1] &quot;30 is Even&quot;</code></pre>
+<pre class="r"><code># or
+ifelse(xx %% 2 == 0, &quot;Even&quot;, &quot;Odd&quot;)</code></pre>
+<pre><code>##  [1] &quot;Odd&quot;  &quot;Even&quot; &quot;Odd&quot;  &quot;Even&quot; &quot;Odd&quot;  &quot;Even&quot; &quot;Odd&quot;  &quot;Even&quot; &quot;Odd&quot;  &quot;Even&quot;</code></pre>
+<pre class="r"><code>paste(xx, ifelse(xx %% 2 == 0, &quot;is Even&quot;, &quot;is Odd&quot;))</code></pre>
+<pre><code>##  [1] &quot;3 is Odd&quot;   &quot;6 is Even&quot;  &quot;9 is Odd&quot;   &quot;12 is Even&quot; &quot;15 is Odd&quot; 
+##  [6] &quot;18 is Even&quot; &quot;21 is Odd&quot;  &quot;24 is Even&quot; &quot;27 is Odd&quot;  &quot;30 is Even&quot;</code></pre>
+<hr />
+</div>
+<div id="objects" class="section level1">
+<h1>Objects</h1>
+<p>Information can be stored in user defined objects, in multiple forms:</p>
+<ul>
+<li><code>c()</code>: a string of values</li>
+<li><code>matrix()</code>: a two dimensional matrix in one format</li>
+<li><code>data.frame()</code>: a two dimensional matrix where each column can be a different format</li>
+<li><code>list()</code>:</li>
+</ul>
+<p>A string…</p>
+<pre class="r"><code>xc &lt;- 1:10
+xc</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="r"><code>xc &lt;- c(1,2,3,4,5,6,7,8,9,10)
+xc</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<p>A matrix…</p>
+<pre class="r"><code>xm &lt;- matrix(1:100, nrow = 10, ncol = 10, byrow = T)
+xm</code></pre>
+<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+##  [1,]    1    2    3    4    5    6    7    8    9    10
+##  [2,]   11   12   13   14   15   16   17   18   19    20
+##  [3,]   21   22   23   24   25   26   27   28   29    30
+##  [4,]   31   32   33   34   35   36   37   38   39    40
+##  [5,]   41   42   43   44   45   46   47   48   49    50
+##  [6,]   51   52   53   54   55   56   57   58   59    60
+##  [7,]   61   62   63   64   65   66   67   68   69    70
+##  [8,]   71   72   73   74   75   76   77   78   79    80
+##  [9,]   81   82   83   84   85   86   87   88   89    90
+## [10,]   91   92   93   94   95   96   97   98   99   100</code></pre>
+<pre class="r"><code>xm &lt;- matrix(1:100, nrow = 10, ncol = 10, byrow = F)
+xm</code></pre>
+<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+##  [1,]    1   11   21   31   41   51   61   71   81    91
+##  [2,]    2   12   22   32   42   52   62   72   82    92
+##  [3,]    3   13   23   33   43   53   63   73   83    93
+##  [4,]    4   14   24   34   44   54   64   74   84    94
+##  [5,]    5   15   25   35   45   55   65   75   85    95
+##  [6,]    6   16   26   36   46   56   66   76   86    96
+##  [7,]    7   17   27   37   47   57   67   77   87    97
+##  [8,]    8   18   28   38   48   58   68   78   88    98
+##  [9,]    9   19   29   39   49   59   69   79   89    99
+## [10,]   10   20   30   40   50   60   70   80   90   100</code></pre>
+<p>A data frame…</p>
+<pre class="r"><code>xd &lt;- data.frame(
+  x1 = c(&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot;dd&quot;,&quot;ee&quot;,
+         &quot;ff&quot;,&quot;gg&quot;,&quot;hh&quot;,&quot;ii&quot;,&quot;jj&quot;),
+  x2 = 1:10,
+  x3 = c(1,1,1,1,1,2,2,2,3,3),
+  x4 = rep(c(1,2), times = 5),
+  x5 = rep(1:5, times = 2),
+  x6 = rep(1:5, each = 2),
+  x7 = seq(5, 50, by = 5),
+  x8 = log10(1:10),
+  x9 = (1:10)^3,
+  x10 = c(T,T,T,F,F,T,T,F,F,F)
+)
+xd</code></pre>
+<pre><code>##    x1 x2 x3 x4 x5 x6 x7        x8   x9   x10
+## 1  aa  1  1  1  1  1  5 0.0000000    1  TRUE
+## 2  bb  2  1  2  2  1 10 0.3010300    8  TRUE
+## 3  cc  3  1  1  3  2 15 0.4771213   27  TRUE
+## 4  dd  4  1  2  4  2 20 0.6020600   64 FALSE
+## 5  ee  5  1  1  5  3 25 0.6989700  125 FALSE
+## 6  ff  6  2  2  1  3 30 0.7781513  216  TRUE
+## 7  gg  7  2  1  2  4 35 0.8450980  343  TRUE
+## 8  hh  8  2  2  3  4 40 0.9030900  512 FALSE
+## 9  ii  9  3  1  4  5 45 0.9542425  729 FALSE
+## 10 jj 10  3  2  5  5 50 1.0000000 1000 FALSE</code></pre>
+<p>A list…</p>
+<pre class="r"><code>xl &lt;- list(xc, xm, xd)
+xl[[1]]</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre class="r"><code>xl[[2]]</code></pre>
+<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+##  [1,]    1   11   21   31   41   51   61   71   81    91
+##  [2,]    2   12   22   32   42   52   62   72   82    92
+##  [3,]    3   13   23   33   43   53   63   73   83    93
+##  [4,]    4   14   24   34   44   54   64   74   84    94
+##  [5,]    5   15   25   35   45   55   65   75   85    95
+##  [6,]    6   16   26   36   46   56   66   76   86    96
+##  [7,]    7   17   27   37   47   57   67   77   87    97
+##  [8,]    8   18   28   38   48   58   68   78   88    98
+##  [9,]    9   19   29   39   49   59   69   79   89    99
+## [10,]   10   20   30   40   50   60   70   80   90   100</code></pre>
+<pre class="r"><code>xl[[3]]</code></pre>
+<pre><code>##    x1 x2 x3 x4 x5 x6 x7        x8   x9   x10
+## 1  aa  1  1  1  1  1  5 0.0000000    1  TRUE
+## 2  bb  2  1  2  2  1 10 0.3010300    8  TRUE
+## 3  cc  3  1  1  3  2 15 0.4771213   27  TRUE
+## 4  dd  4  1  2  4  2 20 0.6020600   64 FALSE
+## 5  ee  5  1  1  5  3 25 0.6989700  125 FALSE
+## 6  ff  6  2  2  1  3 30 0.7781513  216  TRUE
+## 7  gg  7  2  1  2  4 35 0.8450980  343  TRUE
+## 8  hh  8  2  2  3  4 40 0.9030900  512 FALSE
+## 9  ii  9  3  1  4  5 45 0.9542425  729 FALSE
+## 10 jj 10  3  2  5  5 50 1.0000000 1000 FALSE</code></pre>
+<p>Selecting data…</p>
+<pre class="r"><code>xc[5] # 5th element in xc</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>xd$x3[5] # 5th element in col &quot;x3&quot;</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>xd[5,&quot;x3&quot;] # row 5, col &quot;x3&quot;</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>xd$x3 # all of col &quot;x3&quot;</code></pre>
+<pre><code>##  [1] 1 1 1 1 1 2 2 2 3 3</code></pre>
+<pre class="r"><code>xd[,&quot;x3&quot;] # all rows, col &quot;x3&quot;</code></pre>
+<pre><code>##  [1] 1 1 1 1 1 2 2 2 3 3</code></pre>
+<pre class="r"><code>xd[3,] # row 3, all cols</code></pre>
+<pre><code>##   x1 x2 x3 x4 x5 x6 x7        x8 x9  x10
+## 3 cc  3  1  1  3  2 15 0.4771213 27 TRUE</code></pre>
+<pre class="r"><code>xd[c(2,4),c(&quot;x4&quot;,&quot;x5&quot;)] # rows 2 &amp; 4, cols &quot;x4&quot; &amp; &quot;x5&quot;</code></pre>
+<pre><code>##   x4 x5
+## 2  2  2
+## 4  2  4</code></pre>
+<pre class="r"><code>xl[[3]]$x1 # 3rd object in the list, col &quot;x1</code></pre>
+<pre><code>##  [1] &quot;aa&quot; &quot;bb&quot; &quot;cc&quot; &quot;dd&quot; &quot;ee&quot; &quot;ff&quot; &quot;gg&quot; &quot;hh&quot; &quot;ii&quot; &quot;jj&quot;</code></pre>
+<hr />
+</div>
+<div id="data-formats" class="section level1">
+<h1>Data Formats</h1>
+<p>Data can also be saved in many formats:</p>
+<ul>
+<li>numeric</li>
+<li>integer</li>
+<li>character</li>
+<li>factor</li>
+<li>logical</li>
+</ul>
+<pre class="r"><code>xd$x3 &lt;- as.character(xd$x3)
+xd$x3</code></pre>
+<pre><code>##  [1] &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;3&quot; &quot;3&quot;</code></pre>
+<pre class="r"><code>xd$x3 &lt;- as.numeric(xd$x3)
+xd$x3</code></pre>
+<pre><code>##  [1] 1 1 1 1 1 2 2 2 3 3</code></pre>
+<pre class="r"><code>xd$x3 &lt;- as.factor(xd$x3)
+xd$x3</code></pre>
+<pre><code>##  [1] 1 1 1 1 1 2 2 2 3 3
+## Levels: 1 2 3</code></pre>
+<pre class="r"><code>xd$x3 &lt;- factor(xd$x3, levels = c(&quot;3&quot;,&quot;2&quot;,&quot;1&quot;))
+xd$x3</code></pre>
+<pre><code>##  [1] 1 1 1 1 1 2 2 2 3 3
+## Levels: 3 2 1</code></pre>
+<pre class="r"><code>xd$x10</code></pre>
+<pre><code>##  [1]  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE</code></pre>
+<pre class="r"><code>as.numeric(xd$x10) # TRUE = 1, FALSE = 0</code></pre>
+<pre><code>##  [1] 1 1 1 0 0 1 1 0 0 0</code></pre>
+<pre class="r"><code>sum(xd$x10)</code></pre>
+<pre><code>## [1] 5</code></pre>
+<p>Internal structure of an object can be checked with <code>str()</code></p>
+<pre class="r"><code>str(xc) # c()</code></pre>
+<pre><code>##  num [1:10] 1 2 3 4 5 6 7 8 9 10</code></pre>
+<pre class="r"><code>str(xm) # matrix()</code></pre>
+<pre><code>##  int [1:10, 1:10] 1 2 3 4 5 6 7 8 9 10 ...</code></pre>
+<pre class="r"><code>str(xd) # data.frame()</code></pre>
+<pre><code>## &#39;data.frame&#39;:    10 obs. of  10 variables:
+##  $ x1 : chr  &quot;aa&quot; &quot;bb&quot; &quot;cc&quot; &quot;dd&quot; ...
+##  $ x2 : int  1 2 3 4 5 6 7 8 9 10
+##  $ x3 : Factor w/ 3 levels &quot;3&quot;,&quot;2&quot;,&quot;1&quot;: 3 3 3 3 3 2 2 2 1 1
+##  $ x4 : num  1 2 1 2 1 2 1 2 1 2
+##  $ x5 : int  1 2 3 4 5 1 2 3 4 5
+##  $ x6 : int  1 1 2 2 3 3 4 4 5 5
+##  $ x7 : num  5 10 15 20 25 30 35 40 45 50
+##  $ x8 : num  0 0.301 0.477 0.602 0.699 ...
+##  $ x9 : num  1 8 27 64 125 216 343 512 729 1000
+##  $ x10: logi  TRUE TRUE TRUE FALSE FALSE TRUE ...</code></pre>
+<pre class="r"><code>str(xl) # list()</code></pre>
+<pre><code>## List of 3
+##  $ : num [1:10] 1 2 3 4 5 6 7 8 9 10
+##  $ : int [1:10, 1:10] 1 2 3 4 5 6 7 8 9 10 ...
+##  $ :&#39;data.frame&#39;:    10 obs. of  10 variables:
+##   ..$ x1 : chr [1:10] &quot;aa&quot; &quot;bb&quot; &quot;cc&quot; &quot;dd&quot; ...
+##   ..$ x2 : int [1:10] 1 2 3 4 5 6 7 8 9 10
+##   ..$ x3 : num [1:10] 1 1 1 1 1 2 2 2 3 3
+##   ..$ x4 : num [1:10] 1 2 1 2 1 2 1 2 1 2
+##   ..$ x5 : int [1:10] 1 2 3 4 5 1 2 3 4 5
+##   ..$ x6 : int [1:10] 1 1 2 2 3 3 4 4 5 5
+##   ..$ x7 : num [1:10] 5 10 15 20 25 30 35 40 45 50
+##   ..$ x8 : num [1:10] 0 0.301 0.477 0.602 0.699 ...
+##   ..$ x9 : num [1:10] 1 8 27 64 125 216 343 512 729 1000
+##   ..$ x10: logi [1:10] TRUE TRUE TRUE FALSE FALSE TRUE ...</code></pre>
+<hr />
+</div>
+<div id="packages" class="section level1">
+<h1>Packages</h1>
+<p>Additional libraries can be installed and loaded for use.</p>
+<pre class="r"><code>install.packages(&quot;scales&quot;)</code></pre>
+<pre class="r"><code>library(scales)
+xx &lt;- data.frame(Values = 1:10)
+xx$Rescaled &lt;- rescale(x = xx$Values, to = c(1,30))
+xx</code></pre>
+<pre><code>##    Values  Rescaled
+## 1       1  1.000000
+## 2       2  4.222222
+## 3       3  7.444444
+## 4       4 10.666667
+## 5       5 13.888889
+## 6       6 17.111111
+## 7       7 20.333333
+## 8       8 23.555556
+## 9       9 26.777778
+## 10     10 30.000000</code></pre>
+<hr />
+</div>
+<div id="data-wrangling" class="section level1">
+<h1>Data Wrangling</h1>
+<p><a href="https://r4ds.had.co.nz/">R for Data Science</a></p>
+<pre class="r"><code>xx &lt;- data.frame(Group = c(&quot;X&quot;,&quot;X&quot;,&quot;Y&quot;,&quot;Y&quot;,&quot;Y&quot;,&quot;X&quot;,&quot;X&quot;,&quot;X&quot;,&quot;Y&quot;,&quot;Y&quot;),
+                 Data1 = 1:10, 
+                 Data2 = seq(10, 100, by = 10))
+xx$NewData1 &lt;- xx$Data1 + xx$Data2
+xx$NewData2 &lt;- xx$Data1 * 1000
+xx</code></pre>
+<pre><code>##    Group Data1 Data2 NewData1 NewData2
+## 1      X     1    10       11     1000
+## 2      X     2    20       22     2000
+## 3      Y     3    30       33     3000
+## 4      Y     4    40       44     4000
+## 5      Y     5    50       55     5000
+## 6      X     6    60       66     6000
+## 7      X     7    70       77     7000
+## 8      X     8    80       88     8000
+## 9      Y     9    90       99     9000
+## 10     Y    10   100      110    10000</code></pre>
+<pre class="r"><code>xx$Data1 &lt; 5 # which are less than 5</code></pre>
+<pre><code>##  [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<pre class="r"><code>xx[xx$Data1 &lt; 5,]</code></pre>
+<pre><code>##   Group Data1 Data2 NewData1 NewData2
+## 1     X     1    10       11     1000
+## 2     X     2    20       22     2000
+## 3     Y     3    30       33     3000
+## 4     Y     4    40       44     4000</code></pre>
+<pre class="r"><code>xx[xx$Group == &quot;X&quot;, c(&quot;Group&quot;,&quot;Data2&quot;,&quot;NewData1&quot;)]</code></pre>
+<pre><code>##   Group Data2 NewData1
+## 1     X    10       11
+## 2     X    20       22
+## 6     X    60       66
+## 7     X    70       77
+## 8     X    80       88</code></pre>
+<p>Data wrangling with <code>tidyverse</code> and pipes (<code>%&gt;%</code>)</p>
+<pre class="r"><code>library(tidyverse) # install.packages(&quot;tidyverse&quot;)
+xx &lt;- data.frame(Group = c(&quot;X&quot;,&quot;X&quot;,&quot;Y&quot;,&quot;Y&quot;,&quot;Y&quot;,&quot;Y&quot;,&quot;Y&quot;,&quot;X&quot;,&quot;X&quot;,&quot;X&quot;)) %&gt;%
+  mutate(Data1 = 1:10, 
+         Data2 = seq(10, 100, by = 10),
+         NewData1 = Data1 + Data2,
+         NewData2 = Data1 * 1000)
+xx</code></pre>
+<pre><code>##    Group Data1 Data2 NewData1 NewData2
+## 1      X     1    10       11     1000
+## 2      X     2    20       22     2000
+## 3      Y     3    30       33     3000
+## 4      Y     4    40       44     4000
+## 5      Y     5    50       55     5000
+## 6      Y     6    60       66     6000
+## 7      Y     7    70       77     7000
+## 8      X     8    80       88     8000
+## 9      X     9    90       99     9000
+## 10     X    10   100      110    10000</code></pre>
+<pre class="r"><code>filter(xx, Data1 &lt; 5)</code></pre>
+<pre><code>##   Group Data1 Data2 NewData1 NewData2
+## 1     X     1    10       11     1000
+## 2     X     2    20       22     2000
+## 3     Y     3    30       33     3000
+## 4     Y     4    40       44     4000</code></pre>
+<pre class="r"><code>xx %&gt;% filter(Data1 &lt; 5)</code></pre>
+<pre><code>##   Group Data1 Data2 NewData1 NewData2
+## 1     X     1    10       11     1000
+## 2     X     2    20       22     2000
+## 3     Y     3    30       33     3000
+## 4     Y     4    40       44     4000</code></pre>
+<pre class="r"><code>xx %&gt;% filter(Group == &quot;X&quot;) %&gt;% 
+  select(Group, NewColName=Data2, NewData1)</code></pre>
+<pre><code>##   Group NewColName NewData1
+## 1     X         10       11
+## 2     X         20       22
+## 3     X         80       88
+## 4     X         90       99
+## 5     X        100      110</code></pre>
+<pre class="r"><code>xs &lt;- xx %&gt;% 
+  group_by(Group) %&gt;% 
+  summarise(Data2_mean = mean(Data2),
+            Data2_sd = sd(Data2),
+            NewData2_mean = mean(NewData2),
+            NewData2_sd = sd(NewData2))
+xs</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   Group Data2_mean Data2_sd NewData2_mean NewData2_sd
+##   &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;
+## 1 X             60     41.8          6000       4183.
+## 2 Y             50     15.8          5000       1581.</code></pre>
+<pre class="r"><code>xx %&gt;% left_join(xs, by = &quot;Group&quot;)</code></pre>
+<pre><code>##    Group Data1 Data2 NewData1 NewData2 Data2_mean Data2_sd NewData2_mean
+## 1      X     1    10       11     1000         60 41.83300          6000
+## 2      X     2    20       22     2000         60 41.83300          6000
+## 3      Y     3    30       33     3000         50 15.81139          5000
+## 4      Y     4    40       44     4000         50 15.81139          5000
+## 5      Y     5    50       55     5000         50 15.81139          5000
+## 6      Y     6    60       66     6000         50 15.81139          5000
+## 7      Y     7    70       77     7000         50 15.81139          5000
+## 8      X     8    80       88     8000         60 41.83300          6000
+## 9      X     9    90       99     9000         60 41.83300          6000
+## 10     X    10   100      110    10000         60 41.83300          6000
+##    NewData2_sd
+## 1     4183.300
+## 2     4183.300
+## 3     1581.139
+## 4     1581.139
+## 5     1581.139
+## 6     1581.139
+## 7     1581.139
+## 8     4183.300
+## 9     4183.300
+## 10    4183.300</code></pre>
+</div>
+<div id="readwrite-data" class="section level1">
+<h1>Read/Write data</h1>
+<pre class="r"><code>xx &lt;- read.csv(&quot;Data.csv&quot;)
+write.csv(xx, &quot;Data.csv&quot;, row.names = F)</code></pre>
+<p>For excel sheets, the package <code>readxl</code> can be used to read in sheets of data.</p>
+<pre class="r"><code>library(readxl) # install.packages(&quot;readxl&quot;)
+xx &lt;- read_xlsx(&quot;Data.xlsx&quot;, sheet = &quot;Data&quot;)</code></pre>
+<div id="htmlwidget-1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54"],["CDC Maxim AGL","ILL 618 AGL","Laird AGL","CDC Maxim AGL","Laird AGL","ILL 618 AGL","CDC Maxim AGL","Laird AGL","ILL 618 AGL","Laird AGL","CDC Maxim AGL","Laird AGL","ILL 618 AGL","ILL 618 AGL","CDC Maxim AGL","ILL 618 AGL","Laird AGL","CDC Maxim AGL","ILL 618 AGL","CDC Maxim AGL","ILL 618 AGL","ILL 618 AGL","CDC Maxim AGL","ILL 618 AGL","ILL 618 AGL","ILL 618 AGL","CDC Maxim AGL","Laird AGL","ILL 618 AGL","Laird AGL","ILL 618 AGL","CDC Maxim AGL","Laird AGL","CDC Maxim AGL","ILL 618 AGL","CDC Maxim AGL","ILL 618 AGL","Laird AGL","ILL 618 AGL","Laird AGL","CDC Maxim AGL","Laird AGL","CDC Maxim AGL","ILL 618 AGL","Laird AGL","CDC Maxim AGL","Laird AGL","Laird AGL","CDC Maxim AGL","Laird AGL","CDC Maxim AGL","Laird AGL","CDC Maxim AGL","Laird AGL"],["Metaponto, Italy","Metaponto, Italy","Metaponto, Italy","Metaponto, Italy","Metaponto, Italy","Metaponto, Italy","Metaponto, Italy","Metaponto, Italy","Metaponto, Italy","Saskatoon, Canada","Saskatoon, Canada","Saskatoon, Canada","Saskatoon, Canada","Saskatoon, Canada","Saskatoon, Canada","Saskatoon, Canada","Saskatoon, Canada","Saskatoon, Canada","Saskatoon, Canada","Saskatoon, Canada","Saskatoon, Canada","Saskatoon, Canada","Saskatoon, Canada","Jessore, Bangladesh","Jessore, Bangladesh","Jessore, Bangladesh","Metaponto, Italy","Metaponto, Italy","Metaponto, Italy","Metaponto, Italy","Metaponto, Italy","Metaponto, Italy","Metaponto, Italy","Metaponto, Italy","Metaponto, Italy","Jessore, Bangladesh","Jessore, Bangladesh","Jessore, Bangladesh","Jessore, Bangladesh","Jessore, Bangladesh","Jessore, Bangladesh","Jessore, Bangladesh","Jessore, Bangladesh","Jessore, Bangladesh","Saskatoon, Canada","Saskatoon, Canada","Saskatoon, Canada","Saskatoon, Canada","Jessore, Bangladesh","Jessore, Bangladesh","Jessore, Bangladesh","Jessore, Bangladesh","Jessore, Bangladesh","Jessore, Bangladesh"],[2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017,2016,2016,2016,2016,2016,2016,2016,2016,2016,2017,2017,2017,2017,2017,2017,2017,2017,2017,2017],[1,1,1,2,2,2,3,3,3,2,1,1,1,2,2,3,3,3,1,1,2,3,3,1,2,3,1,1,1,2,2,2,3,3,3,1,1,1,2,2,2,3,3,3,1,2,2,3,1,1,2,2,3,3],[128,135,133,133,135,135,128,130,135,56,50,56,47,48,51,47,56,51,48,55,46,46,53,84,82,80,139,139,139,146,142,139,138,138,141,84,76,73,77,74,83,74,85,77,60,55,57,56,88,78,90,78,90,84]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Name<\/th>\n      <th>Location<\/th>\n      <th>Year<\/th>\n      <th>Rep<\/th>\n      <th>DTF<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="tidy-data" class="section level1">
+<h1>Tidy Data</h1>
+<p><a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html" class="uri">https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html</a></p>
+<p><a href="https://r4ds.had.co.nz/tidy-data.html" class="uri">https://r4ds.had.co.nz/tidy-data.html</a></p>
+<pre class="r"><code>yy &lt;- xx %&gt;%
+  group_by(Name, Location) %&gt;%
+  summarise(Mean_DTF = round(mean(DTF),1)) %&gt;% 
+  arrange(Location)
+yy</code></pre>
+<pre><code>## # A tibble: 9 x 3
+## # Groups:   Name [3]
+##   Name          Location            Mean_DTF
+##   &lt;chr&gt;         &lt;chr&gt;                  &lt;dbl&gt;
+## 1 CDC Maxim AGL Jessore, Bangladesh     86.7
+## 2 ILL 618 AGL   Jessore, Bangladesh     79.3
+## 3 Laird AGL     Jessore, Bangladesh     76.8
+## 4 CDC Maxim AGL Metaponto, Italy       134. 
+## 5 ILL 618 AGL   Metaponto, Italy       138. 
+## 6 Laird AGL     Metaponto, Italy       137. 
+## 7 CDC Maxim AGL Saskatoon, Canada       52.5
+## 8 ILL 618 AGL   Saskatoon, Canada       47  
+## 9 Laird AGL     Saskatoon, Canada       56.8</code></pre>
+<pre class="r"><code>yy &lt;- yy %&gt;% spread(key = Location, value = Mean_DTF)
+yy</code></pre>
+<pre><code>## # A tibble: 3 x 4
+## # Groups:   Name [3]
+##   Name          `Jessore, Bangladesh` `Metaponto, Italy` `Saskatoon, Canada`
+##   &lt;chr&gt;                         &lt;dbl&gt;              &lt;dbl&gt;               &lt;dbl&gt;
+## 1 CDC Maxim AGL                  86.7               134.                52.5
+## 2 ILL 618 AGL                    79.3               138.                47  
+## 3 Laird AGL                      76.8               137.                56.8</code></pre>
+<pre class="r"><code>yy &lt;- yy %&gt;% gather(key = TraitName, value = Value, 2:4)
+yy</code></pre>
+<pre><code>## # A tibble: 9 x 3
+## # Groups:   Name [3]
+##   Name          TraitName           Value
+##   &lt;chr&gt;         &lt;chr&gt;               &lt;dbl&gt;
+## 1 CDC Maxim AGL Jessore, Bangladesh  86.7
+## 2 ILL 618 AGL   Jessore, Bangladesh  79.3
+## 3 Laird AGL     Jessore, Bangladesh  76.8
+## 4 CDC Maxim AGL Metaponto, Italy    134. 
+## 5 ILL 618 AGL   Metaponto, Italy    138. 
+## 6 Laird AGL     Metaponto, Italy    137. 
+## 7 CDC Maxim AGL Saskatoon, Canada    52.5
+## 8 ILL 618 AGL   Saskatoon, Canada    47  
+## 9 Laird AGL     Saskatoon, Canada    56.8</code></pre>
+<pre class="r"><code>yy &lt;- yy %&gt;% spread(key = Name, value = Value)
+yy</code></pre>
+<pre><code>## # A tibble: 3 x 4
+##   TraitName           `CDC Maxim AGL` `ILL 618 AGL` `Laird AGL`
+##   &lt;chr&gt;                         &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;
+## 1 Jessore, Bangladesh            86.7          79.3        76.8
+## 2 Metaponto, Italy              134.          138.        137. 
+## 3 Saskatoon, Canada              52.5          47          56.8</code></pre>
+<hr />
+</div>
+<div id="base-plotting" class="section level1">
+<h1>Base Plotting</h1>
+<p>We will start with some basic plotting using the base function <code>plot()</code></p>
+<p><a href="http://www.sthda.com/english/wiki/r-base-graphs" class="uri">http://www.sthda.com/english/wiki/r-base-graphs</a></p>
+<p><a href="https://bookdown.org/rdpeng/exdata/the-base-plotting-system-1.html" class="uri">https://bookdown.org/rdpeng/exdata/the-base-plotting-system-1.html</a></p>
+<pre class="r"><code># A basic scatter plot
+plot(x = xd$x8, y = xd$x9)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<pre class="r"><code># Adjust color and shape of the points
+plot(x = xd$x8, y = xd$x9, col = &quot;darkred&quot;, pch = 0)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-20-2.png" width="672" /></p>
+<pre class="r"><code>plot(x = xd$x8, y = xd$x9, col = xd$x4, pch = xd$x4)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-20-3.png" width="672" /></p>
+<pre class="r"><code># Adjust plot type 
+plot(x = xd$x8, y = xd$x9, type = &quot;line&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-20-4.png" width="672" /></p>
+<pre class="r"><code># Adjust linetype
+plot(x = xd$x8, y = xd$x9, type = &quot;line&quot;, lty = 2)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-20-5.png" width="672" /></p>
+<pre class="r"><code># Plot lines and points
+plot(x = xd$x8, y = xd$x9, type = &quot;both&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-20-6.png" width="672" /></p>
+<p>Now lets create some random and normally distributed data to make some more complicated plots</p>
+<pre class="r"><code># 100 random uniformly distributed numbers ranging from 0 - 100
+ru &lt;- runif(100, min = 0, max = 100)
+ru</code></pre>
+<pre><code>##   [1] 83.891562 68.980517 80.270394 13.648705 46.987064  6.798935 76.706358
+##   [8] 94.155227 89.001043 45.290666  5.977492 15.613604  2.177311 16.279262
+##  [15] 20.927481 95.607753 54.728933 34.528073 70.399490 65.895939 27.336178
+##  [22] 79.620528 70.750839 65.215430 58.882415 12.915741 14.798518 72.051696
+##  [29] 64.662075 44.118717 52.224604 71.447125 19.403895 57.515400 64.583763
+##  [36] 16.442843 60.078234 66.413803 81.157366 74.432990 88.216500  3.160918
+##  [43]  6.830163  6.478562 52.345608 79.072231 18.640484 30.561823  1.201698
+##  [50] 93.052907 79.868338 95.477315 18.143208 28.224300 10.298643 42.954007
+##  [57] 59.777550 44.898452 87.575941 74.092858 53.034628 70.366224 43.977970
+##  [64] 74.531568 47.332851  7.009877 72.206294 77.885907 84.908024 11.635868
+##  [71] 79.298686 10.551137 17.209770 20.853544  6.639423 60.251238 31.933548
+##  [78] 85.779942 15.922595 18.732141 70.029070 84.765268 42.009128 46.405197
+##  [85] 44.588574 33.913904 24.337263 54.631397 15.345368 43.092995 34.898762
+##  [92] 89.972311 94.979790 89.844301 16.011474 61.030687 16.298307  2.575535
+##  [99] 76.219754 55.930401</code></pre>
+<pre class="r"><code>plot(x = ru)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<pre class="r"><code>order(ru)</code></pre>
+<pre><code>##   [1]  49  13  98  42  11  44  75   6  43  66  55  72  70  26   4  27  89  12
+##  [19]  79  95  14  97  36  73  53  47  80  33  74  15  87  21  54  48  77  86
+##  [37]  18  91  83  56  90  63  30  85  58  10  84   5  65  31  45  61  88  17
+##  [55] 100  34  25  57  37  76  96  35  29  24  20  38   2  81  62  19  23  32
+##  [73]  28  67  60  40  64  99   7  68  46  71  22  51   3  39   1  82  69  78
+##  [91]  59  41   9  94  92  50   8  93  52  16</code></pre>
+<pre class="r"><code>ru&lt;- ru[order(ru)]
+ru</code></pre>
+<pre><code>##   [1]  1.201698  2.177311  2.575535  3.160918  5.977492  6.478562  6.639423
+##   [8]  6.798935  6.830163  7.009877 10.298643 10.551137 11.635868 12.915741
+##  [15] 13.648705 14.798518 15.345368 15.613604 15.922595 16.011474 16.279262
+##  [22] 16.298307 16.442843 17.209770 18.143208 18.640484 18.732141 19.403895
+##  [29] 20.853544 20.927481 24.337263 27.336178 28.224300 30.561823 31.933548
+##  [36] 33.913904 34.528073 34.898762 42.009128 42.954007 43.092995 43.977970
+##  [43] 44.118717 44.588574 44.898452 45.290666 46.405197 46.987064 47.332851
+##  [50] 52.224604 52.345608 53.034628 54.631397 54.728933 55.930401 57.515400
+##  [57] 58.882415 59.777550 60.078234 60.251238 61.030687 64.583763 64.662075
+##  [64] 65.215430 65.895939 66.413803 68.980517 70.029070 70.366224 70.399490
+##  [71] 70.750839 71.447125 72.051696 72.206294 74.092858 74.432990 74.531568
+##  [78] 76.219754 76.706358 77.885907 79.072231 79.298686 79.620528 79.868338
+##  [85] 80.270394 81.157366 83.891562 84.765268 84.908024 85.779942 87.575941
+##  [92] 88.216500 89.001043 89.844301 89.972311 93.052907 94.155227 94.979790
+##  [99] 95.477315 95.607753</code></pre>
+<pre class="r"><code>plot(x = ru)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-21-2.png" width="672" /></p>
+<pre class="r"><code># 100 normally distributed numbers with a mean of 50 and sd of 10
+nd &lt;- rnorm(100, mean = 50, sd = 10)
+nd</code></pre>
+<pre><code>##   [1] 52.50094 49.64095 62.99526 57.85352 50.66115 37.59572 65.79164 46.01831
+##   [9] 46.81205 44.30640 61.25069 45.42602 59.57143 48.01722 43.01841 49.87166
+##  [17] 50.15529 52.12165 61.12637 39.90269 54.77467 54.95550 46.52219 62.61083
+##  [25] 43.68784 53.02382 68.87222 49.31090 57.26395 44.25380 55.41770 47.04508
+##  [33] 59.62686 53.47518 49.16045 39.76283 43.28042 55.39927 44.38535 68.30905
+##  [41] 45.29613 45.87887 54.89547 64.17388 50.18862 38.07789 79.38792 32.74920
+##  [49] 56.18758 51.71977 57.97161 55.74901 37.99853 58.79228 45.60481 35.83799
+##  [57] 43.54472 41.46085 49.20127 51.46905 25.80943 61.60787 54.83546 49.28597
+##  [65] 55.25823 53.41372 61.49525 43.66364 58.40037 63.96497 51.55283 57.47687
+##  [73] 60.25354 47.28037 62.86055 52.87601 52.59731 43.08736 69.23647 50.63097
+##  [81] 55.23242 74.11386 48.96870 46.04692 37.43499 55.55442 52.75503 43.56086
+##  [89] 39.66179 52.89411 47.97239 50.75399 42.95548 61.81635 46.05816 65.14553
+##  [97] 50.79548 58.09140 42.37260 52.39668</code></pre>
+<pre class="r"><code>nd &lt;- nd[order(nd)]
+nd</code></pre>
+<pre><code>##   [1] 25.80943 32.74920 35.83799 37.43499 37.59572 37.99853 38.07789 39.66179
+##   [9] 39.76283 39.90269 41.46085 42.37260 42.95548 43.01841 43.08736 43.28042
+##  [17] 43.54472 43.56086 43.66364 43.68784 44.25380 44.30640 44.38535 45.29613
+##  [25] 45.42602 45.60481 45.87887 46.01831 46.04692 46.05816 46.52219 46.81205
+##  [33] 47.04508 47.28037 47.97239 48.01722 48.96870 49.16045 49.20127 49.28597
+##  [41] 49.31090 49.64095 49.87166 50.15529 50.18862 50.63097 50.66115 50.75399
+##  [49] 50.79548 51.46905 51.55283 51.71977 52.12165 52.39668 52.50094 52.59731
+##  [57] 52.75503 52.87601 52.89411 53.02382 53.41372 53.47518 54.77467 54.83546
+##  [65] 54.89547 54.95550 55.23242 55.25823 55.39927 55.41770 55.55442 55.74901
+##  [73] 56.18758 57.26395 57.47687 57.85352 57.97161 58.09140 58.40037 58.79228
+##  [81] 59.57143 59.62686 60.25354 61.12637 61.25069 61.49525 61.60787 61.81635
+##  [89] 62.61083 62.86055 62.99526 63.96497 64.17388 65.14553 65.79164 68.30905
+##  [97] 68.87222 69.23647 74.11386 79.38792</code></pre>
+<pre class="r"><code>plot(x = nd)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-21-3.png" width="672" /></p>
+<pre class="r"><code>hist(x = nd)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-21-4.png" width="672" /></p>
+<pre class="r"><code>hist(nd, breaks = 20, col = &quot;darkgreen&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-21-5.png" width="672" /></p>
+<pre class="r"><code>plot(x = density(nd))</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-21-6.png" width="672" /></p>
+<pre class="r"><code>boxplot(x = nd)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-21-7.png" width="672" /></p>
+<pre class="r"><code>boxplot(x = nd, horizontal = T)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-21-8.png" width="672" /></p>
+</div>
+<div id="ggplot2" class="section level1">
+<h1>ggplot2</h1>
+<p>Lets be honest, the base plots are ugly! The <code>ggplot2</code> package gives the user to create a better, more visually appealing plots. Additional packages such as <code>ggbeeswarm</code> and <code>ggrepel</code> also contain useful functions to add to the functionality of <code>ggplot2</code>.</p>
+<p><a href="https://ggplot2.tidyverse.org/" class="uri">https://ggplot2.tidyverse.org/</a></p>
+<p><a href="https://www.r-graph-gallery.com/ggplot2-package.html" class="uri">https://www.r-graph-gallery.com/ggplot2-package.html</a></p>
+<p><a href="http://r-statistics.co/ggplot2-Tutorial-With-R.html" class="uri">http://r-statistics.co/ggplot2-Tutorial-With-R.html</a></p>
+<p><a href="https://www.statsandr.com/blog/graphics-in-r-with-ggplot2/" class="uri">https://www.statsandr.com/blog/graphics-in-r-with-ggplot2/</a></p>
+<pre class="r"><code>library(ggplot2)
+mp &lt;- ggplot(xd, aes(x = x8, y = x9))
+mp + geom_point()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<pre class="r"><code>mp + geom_point(aes(color = x3, shape = x3), size = 4)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-2.png" width="672" /></p>
+<pre class="r"><code>mp + geom_line(size = 2)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-3.png" width="672" /></p>
+<pre class="r"><code>mp + geom_line(aes(color = x3), size = 2)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-4.png" width="672" /></p>
+<pre class="r"><code>mp + geom_smooth(method = &quot;loess&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-5.png" width="672" /></p>
+<pre class="r"><code>mp + geom_smooth(method = &quot;lm&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-6.png" width="672" /></p>
+<pre class="r"><code>xx &lt;- data.frame(data = c(rnorm(50, mean = 40, sd = 10),
+                          rnorm(50, mean = 60, sd = 5)),
+                 group = factor(rep(1:2, each = 50)),
+                 label = c(&quot;Label1&quot;, rep(NA, 49), &quot;Label2&quot;, rep(NA, 49)))
+mp &lt;- ggplot(xx, aes(x = data, fill = group))
+mp + geom_histogram(color = &quot;black&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-7.png" width="672" /></p>
+<pre class="r"><code>mp + geom_histogram(color = &quot;black&quot;, position = &quot;dodge&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-8.png" width="672" /></p>
+<pre class="r"><code>mp1 &lt;- mp + geom_histogram(color = &quot;black&quot;) + facet_grid(group~.)
+mp1</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-9.png" width="672" /></p>
+<pre class="r"><code>mp + geom_density(alpha = 0.5)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-10.png" width="672" /></p>
+<pre class="r"><code>mp &lt;- ggplot(xx, aes(x = group, y = data, fill = group))
+mp + geom_boxplot(color = &quot;black&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-11.png" width="672" /></p>
+<pre class="r"><code>mp + geom_boxplot() + geom_point()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-12.png" width="672" /></p>
+<pre class="r"><code>mp + geom_violin() + geom_boxplot(width = 0.1, fill = &quot;white&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-13.png" width="672" /></p>
+<pre class="r"><code>library(ggbeeswarm)
+mp + geom_quasirandom()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-14.png" width="672" /></p>
+<pre class="r"><code>mp + geom_quasirandom(aes(shape = group))</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-15.png" width="672" /></p>
+<pre class="r"><code>mp2 &lt;- mp + geom_violin() + 
+  geom_boxplot(width = 0.1, fill = &quot;white&quot;) +
+  geom_beeswarm(alpha = 0.5)
+library(ggrepel)
+mp2 + geom_text_repel(aes(label = label), nudge_x = 0.4)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-16.png" width="672" /></p>
+<pre class="r"><code>library(ggpubr)
+ggarrange(mp1, mp2, ncol = 2, widths = c(2,1),
+          common.legend = T, legend = &quot;bottom&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-17.png" width="672" /></p>
+<hr />
+</div>
+<div id="statistics" class="section level1">
+<h1>Statistics</h1>
+<p><a href="http://biostathandbook.com/" class="uri">http://biostathandbook.com/</a></p>
+<p><a href="https://rcompanion.org/rcompanion/a_02.html" class="uri">https://rcompanion.org/rcompanion/a_02.html</a></p>
+<pre class="r"><code># Prep data
+lev_Loc  &lt;- c(&quot;Saskatoon, Canada&quot;, &quot;Jessore, Bangladesh&quot;, &quot;Metaponto, Italy&quot;)
+lev_Name &lt;- c(&quot;ILL 618 AGL&quot;, &quot;CDC Maxim AGL&quot;, &quot;Laird AGL&quot;)
+dd &lt;- read_xlsx(&quot;Data.xlsx&quot;, sheet = &quot;Data&quot;) %&gt;%
+  mutate(Location = factor(Location, levels = lev_Loc),
+         Name = factor(Name, levels = lev_Name))
+xx &lt;- dd %&gt;%
+  group_by(Name, Location) %&gt;%
+  summarise(Mean_DTF = mean(DTF))
+xx %&gt;% spread(Location, Mean_DTF)</code></pre>
+<pre><code>## # A tibble: 3 x 4
+## # Groups:   Name [3]
+##   Name          `Saskatoon, Canada` `Jessore, Bangladesh` `Metaponto, Italy`
+##   &lt;fct&gt;                       &lt;dbl&gt;                 &lt;dbl&gt;              &lt;dbl&gt;
+## 1 ILL 618 AGL                  47                    79.3               138.
+## 2 CDC Maxim AGL                52.5                  86.7               134.
+## 3 Laird AGL                    56.8                  76.8               137.</code></pre>
+<pre class="r"><code># Plot
+mp1 &lt;- ggplot(dd, aes(x = Location, y = DTF, color = Name, shape = Name)) +
+  geom_point(size = 2, alpha = 0.7, position = position_dodge(width=0.5))
+mp2 &lt;- ggplot(xx, aes(x = Location, y = Mean_DTF, color = Name, group = Name, shape = Name)) +
+  geom_point(size = 2.5, alpha = 0.7) + 
+  geom_line(size = 1, alpha = 0.7) +
+  theme(legend.position = &quot;top&quot;)
+ggarrange(mp1, mp2, ncol = 2, common.legend = T, legend = &quot;top&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p>From first glace, it is clear there are differences between genotypes, locations, and genotype x environment (GxE) interactions. Now let’s do a few statistical tests.</p>
+<pre class="r"><code>summary(aov(DTF ~ Name * Location, data = dd))</code></pre>
+<pre><code>##               Df Sum Sq Mean Sq  F value   Pr(&gt;F)    
+## Name           2     88      44    3.476   0.0395 *  
+## Location       2  65863   32932 2598.336  &lt; 2e-16 ***
+## Name:Location  4    560     140   11.044 2.52e-06 ***
+## Residuals     45    570      13                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>As expected, an ANOVA shows statistical significance for genotype (p-value = 0.0395), Location (p-value &lt; 2e-16) and GxE interactions (p-value &lt; 2.52e-06). However, all this tells us is that one genotype is different from the rest, one location is different from the others and that there is GxE interactions. If we want to be more specific, we can filter the data and perform say a <em>t-test</em> to compare two groups.</p>
+<pre class="r"><code>xx &lt;- dd %&gt;% 
+  filter(Location %in% c(&quot;Saskatoon, Canada&quot;, &quot;Jessore, Bangladesh&quot;)) %&gt;%
+  spread(Location, DTF)
+t.test(x = xx$`Saskatoon, Canada`, y = xx$`Jessore, Bangladesh`)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  xx$`Saskatoon, Canada` and xx$`Jessore, Bangladesh`
+## t = -17.521, df = 32.701, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -32.18265 -25.48402
+## sample estimates:
+## mean of x mean of y 
+##  52.11111  80.94444</code></pre>
+<p>DTF in Saskatoon, Canada is significantly different (p-value &lt; 2.2e-16) from DTF in Jessore, Bangladesh.</p>
+<pre class="r"><code>xx &lt;- dd %&gt;% 
+  filter(Name %in% c(&quot;ILL 618 AGL&quot;, &quot;Laird AGL&quot;),
+         Location == &quot;Metaponto, Italy&quot;) %&gt;%
+  spread(Name, DTF)
+t.test(x = xx$`ILL 618 AGL`, y = xx$`Laird AGL`)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  xx$`ILL 618 AGL` and xx$`Laird AGL`
+## t = 0.38008, df = 8.0564, p-value = 0.7137
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -5.059739  7.059739
+## sample estimates:
+## mean of x mean of y 
+##  137.8333  136.8333</code></pre>
+<p>DTF between ILL 618 AGL and Laird AGL are not significantly different (p-value = 0.7137) in Metaponto, Italy.</p>
+<hr />
+</div>
+<div id="pch-plot" class="section level1">
+<h1>pch Plot</h1>
+<pre class="r"><code>xx &lt;- data.frame(x = rep(1:6, times = 5, length.out = 26),
+                 y = rep(5:1, each = 6, length.out = 26),
+                 pch = 0:25)
+mp &lt;- ggplot(xx, aes(x = x, y = y, shape = as.factor(pch))) +
+  geom_point(color = &quot;darkred&quot;, fill = &quot;darkblue&quot;, size = 5) +
+  geom_text(aes(label = pch), nudge_x = -0.25) +
+  scale_shape_manual(values = xx$pch) +
+  scale_x_continuous(breaks = 6:1) +
+  scale_y_continuous(breaks = 6:1) +
+  theme_void() +
+  theme(legend.position = &quot;none&quot;,
+        plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        axis.text = element_blank(),
+        axis.ticks = element_blank()) +
+  labs(title = &quot;Plot symbols in R (pch)&quot;,
+       subtitle = &quot;color = \&quot;darkred\&quot;, fill = \&quot;darkblue\&quot;&quot;,
+       x = NULL, y = NULL)
+ggsave(&quot;pch.png&quot;, mp, width = 4.5, height = 3)</code></pre>
+<p><img src="pch.png" /></p>
+<hr />
+</div>
+<div id="r-markdown" class="section level1">
+<h1>R Markdown</h1>
+<p>Tutorials on how to create an R markdown document like this one can be found here:</p>
+<ul>
+<li><a href="https://rmarkdown.rstudio.com/articles_intro.html" class="uri">https://rmarkdown.rstudio.com/articles_intro.html</a></li>
+<li><a href="https://rmarkdown.rstudio.com/lesson-1.html" class="uri">https://rmarkdown.rstudio.com/lesson-1.html</a></li>
+<li><a href="https://alexd106.github.io/intro2R/Rmarkdown_intro.html" class="uri">https://alexd106.github.io/intro2R/Rmarkdown_intro.html</a></li>
+</ul>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.netlify.com/">www.dblogr.com/</a></p>
+</div>

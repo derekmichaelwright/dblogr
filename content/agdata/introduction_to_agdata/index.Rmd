@@ -1,5 +1,5 @@
 ---
-title: "[Introduction to agData]("
+title: "Introduction to agData"
 subtitle: "An R package with FAO, USDA, STATCAN and ISAAA data"
 summary:  "An R package with FAO, USDA, STATCAN and ISAAA data"
 date: "`r Sys.Date()`"
