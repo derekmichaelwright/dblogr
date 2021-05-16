@@ -2,7 +2,7 @@
 title: "Saskatchewan Crop Production"
 subtitle: "Graphs of crop production in Saskatchewan using STATCAN data"
 summary:  "Graphs of crop production in Saskatchewan using STATCAN data"
-date: "2021-05-11"
+date: "2021-05-15"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crops_saskatchewan/)"
 tags: [ "agData", "Regions", "Featured" ]
 weight: 3
@@ -27,10 +27,11 @@ library(gganimate)</code></pre>
 <div id="crop-production" class="section level1">
 <h1>Crop Production</h1>
 <pre class="r"><code># Create function to determine top crops
-cropList &lt;- function(measurement = &quot;Production&quot;) {
+cropList &lt;- function(measurement = &quot;Production&quot;, years = c(1908, 1961, 2017)) {
   # Prep data
   xx &lt;- agData_STATCAN_Crops %&gt;% 
-    filter(Area == &quot;Saskatchewan&quot;, Year %in% c(1908, 1961, 2017),
+    filter(Area == &quot;Saskatchewan&quot;, 
+           Year %in% years,
            Measurement == measurement)
   # Get top 15 crops from each year
   topcrops &lt;- function(x, year, num) {
@@ -38,6 +39,8 @@ cropList &lt;- function(measurement = &quot;Production&quot;) {
       slice(1:num) %&gt;% pull(Crop) %&gt;% unique() %&gt;% as.character()
     x
   }
+  myCrops &lt;- NULL
+  for(i in years) {  }
   crops1908 &lt;- topcrops(xx, 1908, 15)
   crops1961 &lt;- topcrops(xx, 1961, 15)
   crops2017 &lt;- topcrops(xx, 2017, 15)
@@ -87,6 +90,7 @@ mp &lt;- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) +
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;crops_saskatchewan_02.png&quot;, mp, width = 6, height = 5)</code></pre>
 <p><img src="crops_saskatchewan_02.png" /></p>
+<hr />
 <pre class="r"><code># Prep data
 myCrops &lt;- cropList(measurement = &quot;Seeded area&quot;)
 xx &lt;- agData_STATCAN_Crops %&gt;% 
@@ -109,6 +113,33 @@ anim_save(&quot;crops_saskatchewan_gifs_01.gif&quot;, mp, width = 600, height = 
 <p><img src="crops_saskatchewan_gifs_01.gif" /></p>
 <hr />
 </div>
+<div id="per-person" class="section level2">
+<h2>Per Person</h2>
+<pre class="r"><code># Prep data
+pp &lt;- agData_STATCAN_Population %&gt;% 
+  filter(Month == 1, Area == &quot;Saskatchewan&quot;, Year == 2017) %&gt;%
+  pull(Value)
+myCrops &lt;- cropList(measurement = &quot;Production&quot;, years = 2017)
+xx &lt;- agData_STATCAN_Crops %&gt;% 
+  filter(Area == &quot;Saskatchewan&quot;, Year %in% 2017,
+         Measurement == &quot;Production&quot;, Crop %in% myCrops) %&gt;%
+  mutate(Crop = factor(Crop, levels = myCrops),
+         PerPerson = Value / pp)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Crop, y = PerPerson, fill = Crop)) + 
+  geom_bar(stat = &quot;identity&quot;, color = &quot;Black&quot;) + 
+  geom_label(aes(label = round(PerPerson,1)), vjust = -0.1, fill = &quot;White&quot;) +
+  facet_grid(Year~.) + 
+  scale_y_continuous(limits = c(0,12.75), expand = c(0,0)) +
+  scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
+  labs(title = &quot;Saskatchewan - Crop Production Per Person&quot;, y = &quot;1000 Tonnes&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;crops_saskatchewan_03.png&quot;, mp, width = 6, height = 5)</code></pre>
+<p><img src="crops_saskatchewan_03.png" /></p>
+<hr />
+</div>
 </div>
 <div id="farm-area" class="section level1">
 <h1>Farm Area</h1>
@@ -123,8 +154,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
   theme_agData() +
   labs(title = &quot;Total area of farms in Saskatchewan&quot;, y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;crops_saskatchewan_03.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="crops_saskatchewan_03.png" /></p>
+ggsave(&quot;crops_saskatchewan_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="crops_saskatchewan_04.png" /></p>
 <hr />
 </div>
 <div id="all-crops" class="section level1">
@@ -143,8 +174,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
                axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
   labs(title = &quot;Saskatchewan Crops - Area Seeded&quot;, y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;crops_saskatchewan_04.png&quot;, mp, width = 6, height = 5)</code></pre>
-<p><img src="crops_saskatchewan_04.png" /></p>
+ggsave(&quot;crops_saskatchewan_05.png&quot;, mp, width = 6, height = 5)</code></pre>
+<p><img src="crops_saskatchewan_05.png" /></p>
 <hr />
 </div>
 <div id="summerfallow" class="section level1">
@@ -160,8 +191,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
   theme_agData() +
   labs(title = &quot;Summerfallow in Saskatchewan&quot;, y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;crops_saskatchewan_05.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="crops_saskatchewan_05.png" /></p>
+ggsave(&quot;crops_saskatchewan_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="crops_saskatchewan_06.png" /></p>
 <hr />
 </div>
 <div id="treemap" class="section level1">
@@ -178,8 +209,8 @@ mp &lt;- ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
   theme_agData(legend.position = &quot;none&quot;) +
   labs(title = &quot;Saskatchewan Cropland by Area&quot;,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;crops_saskatchewan_06.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="crops_saskatchewan_06.png" /></p>
+ggsave(&quot;crops_saskatchewan_07.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="crops_saskatchewan_07.png" /></p>
 <hr />
 <pre class="r"><code># Prep data
 x1 &lt;- agData_STATCAN_Crops %&gt;% 
@@ -190,20 +221,20 @@ x1 &lt;- agData_STATCAN_Crops %&gt;%
   mutate(Crop = &quot;Fake Meat Protein&quot;)
 x2 &lt;- agData_STATCAN_Crops %&gt;% 
   filter(Area == &quot;Saskatchewan&quot;, Measurement == &quot;Production&quot;,
-         Crop == &quot;Canola&quot;) %&gt;%
-  mutate(Crop = &quot;Evil Oilseeds&quot;)
+         Crop %in% c(&quot;Canola&quot;,&quot;Wheat&quot;)) %&gt;%
+  mutate(Crop = plyr::mapvalues(Crop, c(&quot;Canola&quot;,&quot;Wheat&quot;), c(&quot;Toxic Oilseeds&quot;,&quot;Evil Gluten&quot;)))
 xx &lt;- bind_rows(x1, x2)
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
   geom_line(size = 1.5, alpha = 0.8) +
   facet_wrap(&quot;Saskatchewan&quot; ~ .) +
-  scale_color_manual(name = NULL, values = c(&quot;darkgoldenrod2&quot;,&quot;darkgreen&quot;)) +
+  scale_color_manual(name = NULL, values = c(&quot;darkgoldenrod2&quot;,&quot;darkgreen&quot;,&quot;darkred&quot;)) +
   scale_x_continuous(breaks = seq(1910,2020,10)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(y = &quot;Million Tonnes&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;crops_saskatchewan_07.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="crops_saskatchewan_07.png" /></p>
+ggsave(&quot;crops_saskatchewan_08.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="crops_saskatchewan_08.png" /></p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

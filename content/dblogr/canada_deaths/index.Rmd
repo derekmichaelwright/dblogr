@@ -137,7 +137,7 @@ deathPlot1 <- function(area = "Canada") {
   xx <- d1 %>% filter(Area == area)
   # Plot
   ggplot(xx, aes(x = Date, y = Value)) +
-    geom_line(color = "darkred", size = 1) +
+    geom_line(size = 1, color = "darkred", alpha = 0.8) +
     geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
     scale_x_date(date_breaks = "1 year", date_labels = "%Y", minor_breaks = "1 year") +
     theme_agData() +
@@ -357,7 +357,8 @@ deathPlot3 <- function(areas = "Canada") {
   # Plot
   ggplot(xx, aes(x = JulianDay, y = Value, group = Year, color = YearGroup, alpha = YearGroup)) +
     geom_line() +
-    facet_grid(Area ~ Age, scales = "free_y") +
+    facet_grid(Area ~ Age, scales = "free_y",
+               labeller = label_wrap_gen(width = 10)) +
     scale_color_manual(name = NULL, values = c("darkgreen","darkred")) +
     scale_alpha_manual(name = NULL, values = c(0.3,1)) +
     theme_agData(legend.position = "bottom") +
@@ -383,16 +384,27 @@ ggsave("featured.png", mp, width = 8, height = 4)
 
 ---
 
+## Saskatchewan
+
+```{r}
+mp <- deathPlot3(areas = "Saskatchewan")
+ggsave("canada_deaths_3_02.png", mp, width = 8, height = 4)
+```
+
+![](canada_deaths_3_02.png)
+
+---
+
 ## Eastern Canada
 
 ```{r}
 areas <- c("Ontario", "Quebec", "Nova Scotia", 
            "Newfoundland and Labrador", "New Brunswick")
 mp <- deathPlot3(areas = areas)
-ggsave("canada_deaths_3_02.png", mp, width = 8, height = 8)
+ggsave("canada_deaths_3_03.png", mp, width = 8, height = 8)
 ```
 
-![](canada_deaths_3_02.png)
+![](canada_deaths_3_03.png)
 
 ---
 
@@ -401,10 +413,10 @@ ggsave("canada_deaths_3_02.png", mp, width = 8, height = 8)
 ```{r}
 areas <- c("British Columbia", "Alberta", "Saskatchewan", "Manitoba")
 mp <- deathPlot3(areas = areas)
-ggsave("canada_deaths_3_03.png", mp, width = 8, height = 8)
+ggsave("canada_deaths_3_04.png", mp, width = 8, height = 8)
 ```
 
-![](canada_deaths_3_03.png)
+![](canada_deaths_3_04.png)
 
 ---
 
@@ -414,29 +426,17 @@ ggsave("canada_deaths_3_03.png", mp, width = 8, height = 8)
 areas <- c("Ontario", "Quebec", "Saskatchewan",
            "Alberta", "British Columbia")
 mp <- deathPlot3(areas = areas)
-ggsave("canada_deaths_3_04.png", mp, width = 8, height = 8)
-```
-
-![](canada_deaths_3_04.png)
-
----
-
-## Saskatchewan vs. Quebec
-
-```{r}
-areas <- c("Canada", "Quebec", "Saskatchewan")
-mp <- deathPlot3(areas = areas)
-ggsave("canada_deaths_3_05.png", mp, width = 8, height = 5)
+ggsave("canada_deaths_3_05.png", mp, width = 8, height = 8)
 ```
 
 ![](canada_deaths_3_05.png)
 
 ---
 
-## Alberta vs. Ontario
+## Saskatchewan vs. Quebec and Ontario
 
 ```{r}
-areas <- c("Canada", "Ontario", "Alberta")
+areas <- c("Quebec", "Ontario", "Saskatchewan")
 mp <- deathPlot3(areas = areas)
 ggsave("canada_deaths_3_06.png", mp, width = 8, height = 5)
 ```
@@ -445,11 +445,12 @@ ggsave("canada_deaths_3_06.png", mp, width = 8, height = 5)
 
 ---
 
-## Saskatchewan
+## Alberta vs. Ontario
 
 ```{r}
-mp <- deathPlot3(areas = "Saskatchewan")
-ggsave("canada_deaths_3_07.png", mp, width = 8, height = 4)
+areas <- c("Ontario", "Alberta")
+mp <- deathPlot3(areas = areas)
+ggsave("canada_deaths_3_07.png", mp, width = 8, height = 5)
 ```
 
 ![](canada_deaths_3_07.png)
@@ -574,7 +575,7 @@ xx <- d3 %>% filter(Year %in% c(1991, 2019, 2020)) %>%
 mp <- ggplot(xx, aes(x = Area, y = Value, fill = Trait)) +
   geom_bar(stat = "identity", position = "dodge", color = "black") +
   scale_fill_manual(values = c("darkred", alpha("darkred",0.5)),
-                    labels = c("2019 - 1991", "2020 - 2019")) +
+                    labels = c("1991 - 2019", "2019 - 2020")) +
   theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Death Rate Change (1991-2019)", 
        y = "Deaths Per Thousand People", x = NULL,
@@ -603,7 +604,7 @@ mp <- ggplot(xx, aes(x = JulianDay, y = Death.Rate, color = Area)) +
   geom_line() +
   scale_color_manual(values = colors) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "Death Rate", 
+  labs(title = "Death Rate 2020", 
        y = "Deaths per 1000 people per week", x = "Julian Day",
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
 ggsave("canada_deaths_5_06.png", mp, width = 6, height = 4)
