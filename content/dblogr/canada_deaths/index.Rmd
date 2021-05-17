@@ -24,6 +24,8 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data Sources
 
+https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm
+
 https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301
 
 https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801
@@ -56,8 +58,6 @@ downloadthis::download_link(
   self_contained = FALSE
 )
 ```
-
-https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm
 
 ---
 
@@ -103,7 +103,7 @@ d2 <- read.csv("1310076801_databaseLoadingData.csv") %>%
          Area = gsub(", place of occurrence", "", Area),
          Area = factor(Area, levels = areas))
 # d3 = Yearly death rate
-d3 <- d1 %>% filter(Year == 2020) %>% 
+xx <- d1 %>% filter(Year == 2020) %>% 
   group_by(Area, Year) %>%
   summarise(Value = sum(Value)) %>%
   mutate(Month.of.death = "Total")
@@ -113,7 +113,7 @@ d3 <- read.csv("1310070801_databaseLoadingData.csv") %>%
          Area = gsub(", place of residence", "", Area),
          Area = factor(Area, levels = areas)) %>%
   filter(Unit == "Number") %>%
-  bind_rows(d3) %>%
+  bind_rows(xx) %>%
   left_join(pp, by = c("Area", "Year")) %>%
   mutate(Death.Rate = 1000 * Value / Population) %>%
   filter(!is.na(Death.Rate), Month.of.death == "Total") %>%

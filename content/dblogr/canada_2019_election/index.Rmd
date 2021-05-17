@@ -77,7 +77,6 @@ wprovs <- c("British Columbia", "Alberta"," Saskatchewan", "Manitoba",
 d1 <- read_xlsx("canada_2019_election_data.xlsx", "Party") %>%
   mutate(Party_Short = plyr::mapvalues(Party, parties, p_short)) %>%
   select(Party, Party_Short, everything())
-DT::datatable(d1)
 # d2 = By district
 d2 <- read_xlsx("canada_2019_election_data.xlsx", "District") %>%
   filter(`Type of Results` == "validated") %>%
@@ -188,7 +187,7 @@ xx <- d2 %>% group_by(District) %>% top_n(1, Votes) %>% ungroup() %>%
   mutate(Party_Short = factor(Party_Short, levels = rev(c(parties[1:5], "Ind"))))
 # Plot
 mp <- ggplot(xx, aes(x = Area_Short, fill = Party_Short)) + 
-  geom_bar(position = "stack", color = "black") +
+  geom_bar(position = "stack", color = "black", alpha = 0.8) +
   scale_fill_manual(name = NULL, values = colors[c(7,5:1)]) +
   theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "2019 Federal Election Results", 
@@ -208,7 +207,7 @@ xx <- d2a %>% group_by(Area_Short, Party_Short) %>%
   mutate(Party_Short = factor(Party_Short, levels = parties))
 # Plot
 mp <- ggplot(xx, aes(x = Area_Short, y = Votes / 1000000, fill = Party_Short)) + 
-  geom_bar(stat = "identity", position = "dodge") +
+  geom_bar(stat = "identity", position = "dodge", alpha = 0.8) +
   scale_fill_manual(name = NULL, values = colors) +
   theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "2019 Federal Election Results", 
@@ -236,7 +235,7 @@ xx <- d2a %>% group_by(SubRegion, Party_Short) %>%
          Total = round(Total / 1000000, 1))
 # Plot
 mp <- ggplot(xx, aes(x = Party_Short, y = Votes / 1000000)) +
-  geom_bar(stat = "identity", color = "black", aes(fill = Party_Short),
+  geom_bar(stat = "identity", color = "black", alpha = 0.8, aes(fill = Party_Short),
            position = position_dodge(preserve = "single")) +
   geom_label(aes(label = round(Votes / 1000000, 1)), vjust = -0.1) +
   facet_grid(. ~ SubRegion + paste("Million Votes =", Total)) +
@@ -267,7 +266,7 @@ xx <- xx %>%
            sum(.$n[.$SubRegion == "Eastern Canada"])))
 # Plot
 mp <- ggplot(xx, aes(x = Party_Short, y = n)) +
-  geom_bar(stat = "identity", color = "black", aes(fill = Party_Short),
+  geom_bar(stat = "identity", color = "black", alpha = 0.8, aes(fill = Party_Short),
            position = position_dodge(preserve = "single")) +
   geom_label(aes(label = n), vjust = -0.1) +
   facet_grid(.~SubRegion + paste("Total Districts =", Total)) +

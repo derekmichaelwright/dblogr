@@ -50,7 +50,7 @@ xx <- xx %>% filter(Area != "Canada") %>%
 sum(xx$Value)
 # Plot
 mp <- ggplot(xx, aes(x = Area_Short, y = Value / 1000000)) +
-  geom_bar(aes(fill = Area), stat = "identity", color = "black") +
+  geom_bar(aes(fill = Area), stat = "identity", color = "black", alpha = 0.8) +
   geom_label(aes(label = paste(Percent, "%")), nudge_y = 1.1, size = 3) +
   scale_fill_manual(values = agData_Colors) +
   theme_agData(legend.position = "none", 
@@ -72,7 +72,7 @@ xx <- agData_STATCAN_FarmLand_Farms %>%
   filter(Measurement == "Total area of farms",
          Area != "Canada")
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
-  geom_line(color = "darkgreen", size = 1.25) +
+  geom_line(color = "darkgreen", size = 1.25, alpha = 0.8) +
   facet_wrap(. ~ Area, scales = "free_y", ncol = 5) +
   theme_agData() +
   labs(title = "Canadian Farmland",
@@ -94,7 +94,7 @@ xx <- agData_STATCAN_Crops %>%
   arrange(desc(Value)) %>% mutate(Crop = factor(Crop, levels = unique(Crop)))
 # Plot
 mp <- ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
-  geom_treemap(color = "black") +
+  geom_treemap(color = "black", alpha = 0.8) +
   geom_treemap_text(place = "centre", grow = T, color = "white") +
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
   theme_agData(legend.position = "none") +
@@ -144,7 +144,7 @@ xx <- agData_STATCAN_Crops %>%
          Crop = recode(Crop, "Beans, all dry (white and coloured)" = "Beans, all dry") )
 # Plot
 mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) + 
-  geom_bar(stat = "identity", color = "Black") + 
+  geom_bar(stat = "identity", color = "Black", alpha = 0.8) + 
   facet_grid(Year~.) + 
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
   theme_agData(legend.position = "none", 
@@ -170,7 +170,7 @@ xx <- agData_STATCAN_Crops %>%
          Crop = recode(Crop, "Beans, all dry (white and coloured)" = "Beans, all dry") )
 # Plot
 mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) + 
-  geom_bar(stat = "identity", color = "Black") + 
+  geom_bar(stat = "identity", color = "Black", alpha = 0.8) + 
   facet_grid(Year~.) + 
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
   theme_agData(legend.position = "none", 
@@ -198,7 +198,7 @@ xx <- agData_STATCAN_Crops %>%
          Crop = recode(Crop, "Beans, all dry (white and coloured)" = "Beans, all dry") )
 # Plot
 mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) + 
-  geom_bar(stat = "identity", color = "Black") + 
+  geom_bar(stat = "identity", color = "Black", alpha = 0.8) + 
   geom_text(aes(label = Year), x = 17, y = 14, size = 15) +
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
   theme_agData(legend.position = "none", 

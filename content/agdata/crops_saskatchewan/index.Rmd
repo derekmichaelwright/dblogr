@@ -72,8 +72,8 @@ xx <- agData_STATCAN_Crops %>%
   mutate(Crop = factor(Crop, levels = myCrops) )
 # Plot
 mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) + 
-  geom_bar(stat = "identity", color = "Black") + 
-  facet_grid(Year~.) + 
+  geom_bar(stat = "identity", color = "Black", alpha = 0.8) + 
+  facet_grid(Year ~ .) + 
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
@@ -101,7 +101,7 @@ xx <- agData_STATCAN_Crops %>%
   mutate(Crop = factor(Crop, levels = myCrops) )
 # Plot
 mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) + 
-  geom_bar(stat = "identity", color = "Black") + 
+  geom_bar(stat = "identity", color = "Black", alpha = 0.8) + 
   facet_grid(Year ~ .) + 
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
   theme_agData(legend.position = "none", 
@@ -124,7 +124,7 @@ xx <- agData_STATCAN_Crops %>%
   mutate(Crop = factor(Crop, levels = myCrops) )
 # Plot
 mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) + 
-  geom_bar(stat = "identity", color = "Black") + 
+  geom_bar(stat = "identity", color = "Black", alpha = 0.8) + 
   geom_text(aes(label = Year), x = 14, y = 9, size = 15) +
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
   theme_agData(legend.position = "none", 
@@ -156,7 +156,7 @@ xx <- agData_STATCAN_Crops %>%
          PerPerson = Value / pp)
 # Plot
 mp <- ggplot(xx, aes(x = Crop, y = PerPerson, fill = Crop)) + 
-  geom_bar(stat = "identity", color = "Black") + 
+  geom_bar(stat = "identity", color = "Black", alpha = 0.8) + 
   geom_label(aes(label = round(PerPerson,1)), vjust = -0.1, fill = "White") +
   facet_grid(Year~.) + 
   scale_y_continuous(limits = c(0,12.75), expand = c(0,0)) +
@@ -181,7 +181,7 @@ xx <- agData_STATCAN_FarmLand_Use %>%
          Unit == "Hectares", !is.na(Value))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
-  geom_line(color = "darkgreen", size = 1.25) +
+  geom_line(color = "darkgreen", size = 1.25, alpha = 0.8) +
   scale_x_continuous(breaks = seq(1920, 2020, 10)) +
   theme_agData() +
   labs(title = "Total area of farms in Saskatchewan", y = "Million Hectares", x = NULL,
@@ -203,8 +203,8 @@ myCrops <- unique(c(cropList(measurement = "Seeded area"), as.character(xx$Crop)
 xx <- xx %>% mutate(Crop = factor(Crop, levels = myCrops))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) + 
-  geom_line() + 
-  facet_wrap(Crop~., ncol = 6) + 
+  geom_line(alpha = 0.8) + 
+  facet_wrap(Crop ~ ., ncol = 6) + 
   scale_color_manual(values = alpha(agData_Colors, 0.75)) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
@@ -226,7 +226,7 @@ xx <- agData_STATCAN_Crops %>%
          Measurement == "Seeded area")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
-  geom_line(color = "darkgreen", size = 1.25) +
+  geom_line(color = "darkgreen", size = 1.25, alpha = 0.8) +
   scale_x_continuous(breaks = seq(1920, 2020, 10)) +
   theme_agData() +
   labs(title = "Summerfallow in Saskatchewan", y = "Million Hectares", x = NULL,
@@ -247,7 +247,7 @@ xx <- agData_STATCAN_Crops %>%
   arrange(desc(Value)) %>% mutate(Crop = factor(Crop, levels = unique(Crop)))
 # Plot
 mp <- ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
-  geom_treemap(color = "black") +
+  geom_treemap(color = "black", alpha = 0.8) +
   geom_treemap_text(place = "centre", grow = T, color = "white") +
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
   theme_agData(legend.position = "none") +

@@ -2,7 +2,7 @@
 title: "Deaths In USA"
 subtitle: "An exploration of weekly deaths in the USA"
 summary:  "An exploration of weekly deaths in the USA"
-date: "2021-05-15"
+date: "2021-05-16"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/usa_deaths/)"
 tags: [ "dblogr", "Demographics", "Featured" ]
 weight: 2
@@ -281,7 +281,7 @@ x1 &lt;- xx %&gt;% filter(State.Abbreviation %in% c(&quot;SD&quot;,&quot;ND&quot
 mp &lt;- ggplot(x1, aes(x = Date, y = Death.Rate, color = Area)) +
   geom_line() +
   scale_color_manual(values = c(&quot;darkblue&quot;,&quot;steelblue&quot;)) +
-  theme_agData() +
+  theme_agData(legend.position = &quot;bottom&quot;) +
   labs(x = NULL, y = &quot;Deaths per million people per week&quot;, 
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
 ggsave(&quot;usa_deaths_4_02.png&quot;, mp, width = 6, height = 4)</code></pre>
@@ -296,7 +296,7 @@ x1 &lt;- xx %&gt;% filter(State.Abbreviation %in% c(&quot;CA&quot;,&quot;TX&quot
 mp &lt;- ggplot(x1, aes(x = Date, y = Death.Rate, color = Area)) +
   geom_line() +
   scale_color_manual(values = c(&quot;darkred&quot;,&quot;darkblue&quot;)) +
-  theme_agData() +
+  theme_agData(legend.position = &quot;bottom&quot;) +
   labs(x = NULL, y = &quot;Deaths per million people per week&quot;, 
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
 ggsave(&quot;usa_deaths_4_03.png&quot;, mp, width = 6, height = 4)</code></pre>
@@ -311,7 +311,7 @@ x1 &lt;- xx %&gt;% filter(State.Abbreviation %in% c(&quot;FL&quot;,&quot;NY&quot
 mp &lt;- ggplot(x1, aes(x = Date, y = Death.Rate, color = Area)) +
   geom_line() +
   scale_color_manual(values = c(&quot;darkred&quot;,&quot;darkorange&quot;)) +
-  theme_agData() +
+  theme_agData(legend.position = &quot;bottom&quot;) +
   labs(x = NULL, y = &quot;Deaths per million people per week&quot;, 
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
 ggsave(&quot;usa_deaths_4_04.png&quot;, mp, width = 6, height = 4)</code></pre>

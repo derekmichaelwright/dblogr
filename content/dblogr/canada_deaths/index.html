@@ -2,7 +2,7 @@
 title: "Deaths In Canada"
 subtitle: "An exploration of weekly deaths in Canada"
 summary:  "An exploration of weekly deaths in Canada"
-date: "2021-05-15"
+date: "2021-05-16"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_deaths/)"
 tags: [ "dblogr", "Demographics", "Featured" ]
 weight: 2
@@ -22,6 +22,7 @@ links:
 <hr />
 <div id="data-sources" class="section level1">
 <h1>Data Sources</h1>
+<p><a href="https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm" class="uri">https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm</a></p>
 <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301</a></p>
 <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801</a></p>
 <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801</a></p>
@@ -34,7 +35,6 @@ links:
 <a href="(https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_deaths/1310070801_databaseLoadingData.csv">
 <button class="btn btn-success"><i class="fa fa-save"></i> STATCAN Table 13-10-0708-01</button>
 </a>
-<p><a href="https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm" class="uri">https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm</a></p>
 <hr />
 </div>
 <div id="prepare-data" class="section level1">
@@ -78,7 +78,7 @@ d2 &lt;- read.csv(&quot;1310076801_databaseLoadingData.csv&quot;) %&gt;%
          Area = gsub(&quot;, place of occurrence&quot;, &quot;&quot;, Area),
          Area = factor(Area, levels = areas))
 # d3 = Yearly death rate
-d3 &lt;- d1 %&gt;% filter(Year == 2020) %&gt;% 
+xx &lt;- d1 %&gt;% filter(Year == 2020) %&gt;% 
   group_by(Area, Year) %&gt;%
   summarise(Value = sum(Value)) %&gt;%
   mutate(Month.of.death = &quot;Total&quot;)
@@ -88,7 +88,7 @@ d3 &lt;- read.csv(&quot;1310070801_databaseLoadingData.csv&quot;) %&gt;%
          Area = gsub(&quot;, place of residence&quot;, &quot;&quot;, Area),
          Area = factor(Area, levels = areas)) %&gt;%
   filter(Unit == &quot;Number&quot;) %&gt;%
-  bind_rows(d3) %&gt;%
+  bind_rows(xx) %&gt;%
   left_join(pp, by = c(&quot;Area&quot;, &quot;Year&quot;)) %&gt;%
   mutate(Death.Rate = 1000 * Value / Population) %&gt;%
   filter(!is.na(Death.Rate), Month.of.death == &quot;Total&quot;) %&gt;%

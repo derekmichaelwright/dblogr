@@ -407,7 +407,7 @@ x1 <- xx %>% filter(State.Abbreviation %in% c("SD","ND"))
 mp <- ggplot(x1, aes(x = Date, y = Death.Rate, color = Area)) +
   geom_line() +
   scale_color_manual(values = c("darkblue","steelblue")) +
-  theme_agData() +
+  theme_agData(legend.position = "bottom") +
   labs(x = NULL, y = "Deaths per million people per week", 
        caption = "\xa9 www.dblogr.com/  |  Data: CDC")
 ggsave("usa_deaths_4_02.png", mp, width = 6, height = 4)
@@ -426,7 +426,7 @@ x1 <- xx %>% filter(State.Abbreviation %in% c("CA","TX"))
 mp <- ggplot(x1, aes(x = Date, y = Death.Rate, color = Area)) +
   geom_line() +
   scale_color_manual(values = c("darkred","darkblue")) +
-  theme_agData() +
+  theme_agData(legend.position = "bottom") +
   labs(x = NULL, y = "Deaths per million people per week", 
        caption = "\xa9 www.dblogr.com/  |  Data: CDC")
 ggsave("usa_deaths_4_03.png", mp, width = 6, height = 4)
@@ -445,7 +445,7 @@ x1 <- xx %>% filter(State.Abbreviation %in% c("FL","NY"))
 mp <- ggplot(x1, aes(x = Date, y = Death.Rate, color = Area)) +
   geom_line() +
   scale_color_manual(values = c("darkred","darkorange")) +
-  theme_agData() +
+  theme_agData(legend.position = "bottom") +
   labs(x = NULL, y = "Deaths per million people per week", 
        caption = "\xa9 www.dblogr.com/  |  Data: CDC")
 ggsave("usa_deaths_4_04.png", mp, width = 6, height = 4)
