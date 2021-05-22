@@ -5,7 +5,7 @@ summary:  "Population Pyramids with R"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/population_demographics_canada/)"
 tags: [ "dblogr", "Demographics", "Featured" ]
-weight: 3
+weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true

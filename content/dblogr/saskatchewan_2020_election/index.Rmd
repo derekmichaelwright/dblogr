@@ -5,7 +5,7 @@ summary:  "A regional look at how Saskatchewanians voted"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/saskatchewan_2020_election/)"
 tags: [ "dblogr", "Politics" ]
-weight: 3
+weight: 2
 codefolding_show: "hide"
 image:
   preview_only: true
