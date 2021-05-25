@@ -4,7 +4,7 @@ subtitle: "Influence of heterozygosity on nitrogen use efficiency in hybrid and 
 summary:  "Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/canola_nue)"
-tags: [ "Academic", "Literature", "Featured" ]
+tags: [ "Academic", "Literature" ]
 math: true
 weight: 3
 codefolding_show: "hide"

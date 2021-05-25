@@ -21,8 +21,8 @@ interests:
 name: Derek Michael Wright
 organizations:
 - name: University of Saskatchewan
-  url: "knowpulse.usask.ca/"
-role: Research Assistant
+  url: "https://knowpulse.usask.ca/"
+role: Research Biologist
 social:
 - icon: envelope
   icon_pack: fas
@@ -39,4 +39,4 @@ user_groups:
 - Visitors
 ---
 
-I was born in Regina, Saskatchewan and graduated with a BSc in Biology from the [University of Regina](https://www.uregina.ca/) in 2012, followed by a MSc in Agrobiotechnology from [Justus-Liebig-Universität Gießen](https://www.uni-giessen.de/) (University of Giessen, Germany) in 2015. I now work with the Pulse Crop Research Group in the Plant Sciences department at the [University of Saskatchewan](https://www.usask.ca/) and have been involved in two major lentil (*Lens culinaris*) research projects [**AGILE**](https://knowpulse.usask.ca/study/2675314) & [**EVOLVES**](https://knowpulse.usask.ca/study/2691111). 
+I was born in Regina, Saskatchewan and graduated with a BSc in Biology from the [University of Regina](https://www.uregina.ca/) in 2012, followed by a MSc in Agrobiotechnology from [Justus-Liebig-Universität Gießen](https://www.uni-giessen.de/) (University of Giessen, Germany) in 2015. I now work in the Plant Sciences department at the [University of Saskatchewan](https://www.usask.ca/) and have been involved in two major lentil (*Lens culinaris*) research projects [**AGILE**](https://knowpulse.usask.ca/study/2675314) & [**EVOLVES**](https://knowpulse.usask.ca/study/2691111). 

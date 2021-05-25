@@ -1,5 +1,5 @@
 ---
-title: "Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)"
+title: "Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (Lens culinaris Medik.)"
 subtitle: "*Plants, People, Planet*. 2020 00: 1-11"
 summary:  "*Plants, People, Planet*. 2020 00: 1-11"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/canola_nue)"
@@ -44,6 +44,8 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 Derek Wright, Sandesh Neupane, Taryn Heidecker, Teketel Haile, Clarice Coyne, Sripada Udupa, Eleonora Barilli, Diego Rubiales, Tania Gioia, Reena Mehra, Ashutosh Sarker, Rajeev Dhakal, Babul Anwar, Debashish Sarker, Albert Vandenberg, and Kirstin E. Bett. (2020) **Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**. *Plants, People, Planet*. 00: 1-11. https://nph.onlinelibrary.wiley.com/doi/10.1002/ppp3.10158
 
+![](Figures/Figure_03.png)
+
 ---
 
 # Societal Impact Statement
@@ -65,13 +67,39 @@ https://github.com/derekmichaelwright/AGILE_LDP_Phenology
 
 # All Graphs
 
-https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html
-
-https://github.com/derekmichaelwright/AGILE_LDP_Phenology/blob/master/README.pdf
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html",
+  button_label = "All Graphs (HTML)",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/AGILE_LDP_Phenology/blob/master/README.pdf",
+  button_label = "All Graphs (PDF)",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa-file-pdf",
+  self_contained = FALSE
+)
+```
 
 # Source Code
 
-https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html",
+  button_label = "Vignette (HTML)",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "far file-code",
+  self_contained = FALSE
+)
+```
+
+
 
 # Shiny App
 

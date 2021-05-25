@@ -3,15 +3,15 @@
 #     desired widget in your `content/home/` folder.
 #   The weight parameter defines the order that the links will appear in.
 
-[[main]]
-  name = "CV"
-  url = "#about"
-  weight = 1
+#[[main]]
+#  name = "CV"
+#  url = "#about"
+#  weight = 1
   
 [[main]]
   name = "Blog Posts"
   url = "#posts_dblogr"
-  weight = 2
+  weight = 4
 
 [[main]]
   name = "agData Package"
@@ -21,7 +21,7 @@
 [[main]]
   name = "Academic Work"
   url = "#posts_academic"
-  weight = 4
+  weight = 2
   
   [[main]]
   name = "Contact"
