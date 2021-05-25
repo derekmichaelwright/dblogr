@@ -4,7 +4,7 @@ subtitle: "Graphs of lentil production using FAO data"
 summary:  "Graphs of lentil production using FAO data"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/lentil/)"
-tags: [ "agData", "Lentil", "Featured" ]
+tags: [ "agData", "Lentil" ]
 weight: 3
 codefolding_show: "hide"
 image:

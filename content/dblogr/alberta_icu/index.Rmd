@@ -4,7 +4,7 @@ subtitle: "Data on ICU utilization from a FOIA request by The Justice Centre for
 summary:  "Data on ICU utilization from a FOIA request by The Justice Centre for Consitutional Freedoms"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/alberta_icu/)"
-tags: [ "dblogr", "Demographics", "Politics", "Featured" ]
+tags: [ "dblogr", "Demographics" ]
 weight: 2
 codefolding_show: "hide"
 image:
