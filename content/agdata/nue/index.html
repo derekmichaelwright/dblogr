@@ -2,7 +2,7 @@
 title: "Nitrogen Use Efficiency"
 subtitle: "Graphs of nitrogen use efficiency (NUE) using data from FAO"
 summary:  "Graphs of nitrogen use efficiency (NUE) using data from FAO"
-date: "2021-05-16"
+date: "2021-05-27"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/nue/)"
 tags: [ "agData", "Regions", "Fertilizers" ]
 math : true
@@ -32,7 +32,7 @@ library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
          Measurement == &quot;Agricultural Use&quot;) %&gt;% 
   select(Area, Year, TonnesN = Value)
 x2 &lt;- agData_FAO_Crops2 %&gt;% 
-  filter(Crop == &quot;Cereals, Total&quot;, Measurement != &quot;Production&quot;) %&gt;%
+  filter(Crop == &quot;Cereals&quot;, Measurement != &quot;Production&quot;) %&gt;%
   select(-Unit) %&gt;% spread(Measurement, Value) %&gt;%
   select(Area, Year, Yield, `Area harvested`)
 x3 &lt;- agData_FAO_LandUse %&gt;% 

@@ -42,7 +42,7 @@ x1 <- agData_FAO_Fertilizers %>%
          Measurement == "Agricultural Use") %>% 
   select(Area, Year, TonnesN = Value)
 x2 <- agData_FAO_Crops2 %>% 
-  filter(Crop == "Cereals, Total", Measurement != "Production") %>%
+  filter(Crop == "Cereals", Measurement != "Production") %>%
   select(-Unit) %>% spread(Measurement, Value) %>%
   select(Area, Year, Yield, `Area harvested`)
 x3 <- agData_FAO_LandUse %>% 

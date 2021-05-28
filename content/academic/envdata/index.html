@@ -2,7 +2,7 @@
 title: "Environmental Data Vignette"
 subtitle: "Environmental data for the agile project"
 summary:  "Environmental data for the agile project"
-date: "2021-05-16"
+date: "2021-05-27"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/envdata/)"
 tags: [ "Academic", "AGILE", "Tutorial" ]
 weight: 5
@@ -139,7 +139,7 @@ dd %&gt;% filter(Location == &quot;Sutherland, Canada&quot;, Year == 2016) %&gt;
   summarise_at(vars(Value), funs(min, mean, max)) %&gt;%
   ungroup()
 str(xx)</code></pre>
-<pre><code>## tibble[,7] [18,795 x 7] (S3: tbl_df/tbl/data.frame)
+<pre><code>## tibble [18,795 x 7] (S3: tbl_df/tbl/data.frame)
 ##  $ Location   : Factor w/ 9 levels &quot;Rosthern, Canada&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ Year       : int [1:18795] 2016 2016 2016 2016 2016 2016 2016 2016 2016 2016 ...
 ##  $ Date       : Date[1:18795], format: &quot;2016-05-06&quot; &quot;2016-05-06&quot; ...
@@ -203,7 +203,7 @@ ggsave(&quot;envdata_03.png&quot;, mp, width = 7, height = 5)</code></pre>
   spread(LoggerID, Value) %&gt;% 
   mutate(Temp_Mean = rowMeans(select(.,-Date), na.rm = T))
 str(yy)</code></pre>
-<pre><code>## tibble[,7] [115 x 7] (S3: tbl_df/tbl/data.frame)
+<pre><code>## tibble [115 x 7] (S3: tbl_df/tbl/data.frame)
 ##  $ Date                  : Date[1:115], format: &quot;2016-04-27&quot; &quot;2016-04-28&quot; ...
 ##  $ Weather Station       : num [1:115] NA NA NA NA NA NA NA NA NA NA ...
 ##  $ IButton2              : num [1:115] NA NA 18.3 16.7 16.8 ...
@@ -218,13 +218,13 @@ str(yy)</code></pre>
   summarise_at(vars(Value), funs(min, mean, max), na.rm = T) %&gt;%
   rename(Temp_min = min, Temp_mean = mean, Temp_max = max)
 str(yy)</code></pre>
-<pre><code>## grouped_df[,5] [113 x 5] (S3: grouped_df/tbl_df/tbl/data.frame)
+<pre><code>## grouped_df [113 x 5] (S3: grouped_df/tbl_df/tbl/data.frame)
 ##  $ Location : Factor w/ 9 levels &quot;Rosthern, Canada&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
 ##  $ Date     : Date[1:113], format: &quot;2016-04-29&quot; &quot;2016-04-30&quot; ...
 ##  $ Temp_min : num [1:113] 8.04 2.52 3.02 7.03 4.53 ...
 ##  $ Temp_mean: num [1:113] 17.5 16.7 16.9 22.2 21.8 ...
 ##  $ Temp_max : num [1:113] 27.1 35.5 35 41 46.5 ...
-##  - attr(*, &quot;groups&quot;)= tibble[,2] [1 x 2] (S3: tbl_df/tbl/data.frame)
+##  - attr(*, &quot;groups&quot;)= tibble [1 x 2] (S3: tbl_df/tbl/data.frame)
 ##   ..$ Location: Factor w/ 9 levels &quot;Rosthern, Canada&quot;,..: 2
 ##   ..$ .rows   : list&lt;int&gt; [1:1] 
 ##   .. ..$ : int [1:113] 1 2 3 4 5 6 7 8 9 10 ...
@@ -340,7 +340,7 @@ xx &lt;- dd %&gt;%
   mutate(DayLen_Rescaled = scales::rescale(DayLen_mean, to = c(0, 45)))
 # Print
 str(xx)</code></pre>
-<pre><code>## tibble[,7] [450 x 7] (S3: tbl_df/tbl/data.frame)
+<pre><code>## tibble [450 x 7] (S3: tbl_df/tbl/data.frame)
 ##  $ Expt           : chr [1:450] &quot;Bhopal, India 2017&quot; &quot;Bhopal, India 2017&quot; &quot;Bhopal, India 2017&quot; &quot;Bhopal, India 2017&quot; ...
 ##  $ Date           : Date[1:450], format: &quot;2017-11-09&quot; &quot;2017-11-10&quot; ...
 ##  $ DayLen_mean    : num [1:450] 11 11 11 10.9 10.9 ...

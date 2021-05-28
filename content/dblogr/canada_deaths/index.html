@@ -2,7 +2,7 @@
 title: "Deaths In Canada"
 subtitle: "An exploration of weekly deaths in Canada"
 summary:  "An exploration of weekly deaths in Canada"
-date: "2021-05-25"
+date: "2021-05-27"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_deaths/)"
 tags: [ "dblogr", "Demographics" ]
 weight: 2
@@ -590,6 +590,23 @@ ggsave(&quot;canada_deaths_7_05.png&quot;, mp, width = 6, height = 4)</code></pr
 ggsave(&quot;canada_deaths_7_06.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="canada_deaths_7_06.png" /></p>
 <hr />
-<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>
+</div>
+<div id="present" class="section level1">
+<h1>1900 - Present</h1>
+<pre class="r"><code>d4 &lt;- read.csv(&quot;canada_deaths_data.csv&quot;) %&gt;%
+  gather(Trait, Value, 2:ncol(.)) %&gt;%
+  mutate(Value =gsub(&quot;,&quot;, &quot;&quot;, Value),
+         Value = as.numeric(Value))
+xx &lt;- d4 %&gt;% filter(Trait == &quot;Death.rate..per.1.000.&quot;)
+mp &lt;- ggplot(xx, aes(x = Year, y = Value)) +
+  geom_bar(stat = &quot;identity&quot;, alpha = 0.8, fill = &quot;darkred&quot;, color = &quot;black&quot;) +
+  scale_x_continuous(breaks = seq(1900, 2020, 20)) +
+  theme_agData() +
+  labs(title = &quot;Death Rate in Canada&quot;, y = &quot;Deaths per 1000 people&quot;, x = NULL,
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: Wikipedia&quot;)
+ggsave(&quot;canada_deaths_8_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_deaths_8_01.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

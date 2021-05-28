@@ -833,6 +833,27 @@ ggsave("canada_deaths_7_06.png", mp, width = 6, height = 4)
 
 ---
 
+# 1900 - Present
+
+```{r}
+d4 <- read.csv("canada_deaths_data.csv") %>%
+  gather(Trait, Value, 2:ncol(.)) %>%
+  mutate(Value =gsub(",", "", Value),
+         Value = as.numeric(Value))
+xx <- d4 %>% filter(Trait == "Death.rate..per.1.000.")
+mp <- ggplot(xx, aes(x = Year, y = Value)) +
+  geom_bar(stat = "identity", alpha = 0.8, fill = "darkred", color = "black") +
+  scale_x_continuous(breaks = seq(1900, 2020, 20)) +
+  theme_agData() +
+  labs(title = "Death Rate in Canada", y = "Deaths per 1000 people", x = NULL,
+         caption = "\xa9 www.dblogr.com/  |  Data: Wikipedia")
+ggsave("canada_deaths_8_01.png", mp, width = 6, height = 4)
+```
+
+![](canada_deaths_8_01.png)
+
+---
+
 ```{r echo = F, eval = F}
 x1 <- d2 %>% filter(Year == 2020, Sex == "Both sexes") %>%
   group_by(Area, Month, Age) %>% 

@@ -35,7 +35,7 @@ library(gganimate)
 ```{r}
 # Prep Data
 areas <- c("World", agData_FAO_Country_Table %>% pull(SubRegion) %>% unique() %>% as.character())
-crops <- c("Cereals, Total", "Pulses, Total", "Roots and Tubers, Total")
+crops <- c("Cereals", "Pulses", "Roots and Tubers")
 colors <- c("darkgoldenrod2", "darkgreen", "darkred", "darkblue")
 dd <- agData_FAO_Crops2 %>% select(-Unit) %>%
   filter(Area %in% areas, Crop %in% crops) %>%
@@ -190,11 +190,11 @@ mp <- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Region)) +
   scale_fill_manual(values = agData_Colors[c(1,4,3,2,7)]) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
-  labs(title = "Food Security - {round(frame_time)}", 
+  labs(title = "Food Security - {round(frame_time)}",
        y = "Tonnes Per Person", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT") +
   # gganimate specific bits
-  transition_time(Year) +
+  transition_reveal(Year) +
   ease_aes('linear')
 anim_save("global_food_security_gifs_01.gif", mp, width = 600, height = 400)
 ```

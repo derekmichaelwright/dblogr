@@ -162,7 +162,7 @@ xx %>% select(-Unit) %>% spread(Measurement, Value) %>% arrange(Year)
 
 ```{r}
 # Prep data for an example plot
-xx <- xx %>% filter(Area == "World", Crop == "Cereals, Total", Measurement == "Yield")
+xx <- xx %>% filter(Area == "World", Crop == "Cereals", Measurement == "Yield")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, group = Area)) + 
   geom_line() + 
