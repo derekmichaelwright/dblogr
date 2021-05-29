@@ -2,9 +2,9 @@
 title: "USA Crop Production"
 subtitle: "Graphs for crop production in the USA with USDA data"
 summary:  "Graphs for crop production in the USA with USDA data"
-date: "2021-05-27"
+date: "2021-05-28"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crops_usa/)"
-tags: [ "agData", "Regions" ]
+tags: [ "agData", "Regions", "Maize", "Wheat" ]
 weight: 4
 codefolding_show: "hide"
 image:
@@ -76,9 +76,10 @@ anim_save(&quot;crops_usa_gifs_01.gif&quot;, mp, width = 600, height = 400)</cod
 <h1>Major Crops</h1>
 <pre class="r"><code># Prep data
 colors &lt;- c(&quot;antiquewhite4&quot;, &quot;darkgoldenrod2&quot;, &quot;darkblue&quot;, &quot;darkred&quot;, &quot;darkgreen&quot;)
+crops &lt;- c(&quot;Oats&quot;, &quot;Wheat&quot;, &quot;Barley&quot;, &quot;Sorghum&quot;, &quot;Maize&quot;)
 xx &lt;- agData_USDA_Crops %&gt;% 
   filter(Measurement == &quot;Yield&quot;) %&gt;% 
-  mutate(Crop = factor(Crop, levels = c(&quot;Oats&quot;,&quot;Wheat&quot;,&quot;Barley&quot;,&quot;Sorghum&quot;,&quot;Maize&quot;)))
+  mutate(Crop = factor(Crop, levels = crops))
 x1 &lt;- xx %&gt;% 
   filter(Year %in% c(min(Year), max(Year), 1929)) %&gt;%
   select(Crop, Year, Value) %&gt;% 
@@ -105,6 +106,40 @@ ggsave(&quot;crops_usa_02.png&quot;, mp, width = 6, height = 4)</code></pre>
 anim_save(&quot;crops_usa_gifs_02.gif&quot;, mp, width = 600, height = 400)</code></pre>
 <p><img src="crops_usa_gifs_02.gif" /></p>
 <hr />
+<pre class="r"><code># Prep data
+colors &lt;- c(&quot;antiquewhite4&quot;, &quot;darkgoldenrod2&quot;, &quot;darkblue&quot;, &quot;darkred&quot;, &quot;darkgreen&quot;)
+crops &lt;- c(&quot;Oats&quot;, &quot;Wheat&quot;, &quot;Barley&quot;, &quot;Sorghum&quot;, &quot;Maize&quot;)
+xx &lt;- agData_USDA_Crops %&gt;% 
+  filter(Measurement == &quot;Production&quot;) %&gt;% 
+  mutate(Crop = factor(Crop, levels = crops))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
+  geom_line(size = 1.25) +
+  scale_x_continuous(breaks = seq(1865, 2015, 10)) +
+  scale_color_manual(values = colors) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;USA Crop Production&quot;, y = &quot;Million Tonnes&quot;, x = NULL, 
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: USDA&quot;)
+ggsave(&quot;crops_usa_03.png&quot;, mp, width = 6, height = 6)</code></pre>
+<p><img src="crops_usa_03.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+colors &lt;- c(&quot;antiquewhite4&quot;, &quot;darkgoldenrod2&quot;, &quot;darkblue&quot;, &quot;darkred&quot;, &quot;darkgreen&quot;)
+crops &lt;- c(&quot;Oats&quot;, &quot;Wheat&quot;, &quot;Barley&quot;, &quot;Sorghum&quot;, &quot;Maize&quot;)
+xx &lt;- agData_USDA_Crops %&gt;% 
+  filter(Measurement == &quot;Area harvested&quot;) %&gt;% 
+  mutate(Crop = factor(Crop, levels = crops))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
+  geom_line(size = 1.25) +
+  scale_x_continuous(breaks = seq(1865, 2015, 10)) +
+  scale_color_manual(values = colors) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;USA Crop Production&quot;, y = &quot;Million Tonnes&quot;, x = NULL, 
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: USDA&quot;)
+ggsave(&quot;crops_usa_04.png&quot;, mp, width = 6, height = 6)</code></pre>
+<p><img src="crops_usa_04.png" /></p>
+<hr />
 </div>
 <div id="agricultural-total-factor-productivity" class="section level1">
 <h1>Agricultural total factor productivity</h1>
@@ -121,8 +156,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   scale_color_manual(values = colors) +
   theme_agData(legend.position = &quot;none&quot;) +
   labs(x = NULL, caption = &quot;\xa9 www.dblogr.com/  |  Data: USDA&quot;)
-ggsave(&quot;crops_usa_03.png&quot;, mp, width = 6, height = 6)</code></pre>
-<p><img src="crops_usa_03.png" /></p>
+ggsave(&quot;crops_usa_05.png&quot;, mp, width = 6, height = 6)</code></pre>
+<p><img src="crops_usa_05.png" /></p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

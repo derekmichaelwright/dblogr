@@ -111,10 +111,10 @@ ggsave("crops_canada_03.png", mp, width = 6, height = 4)
 
 ```{r}
 # Create function to determine top crops
-cropList <- function(measurement) {
+cropList <- function(measurement, years = c(1908, 1961, 2017)) {
   # Prep data
   xx <- agData_STATCAN_Crops %>% 
-    filter(Area == "Canada", Measurement == measurement, Year %in% c(1908, 1961, 2017)) 
+    filter(Area == "Canada", Measurement == measurement, Year %in% years) 
   # Get top 15 crops from each year
   topcrops <- function(x, year) {
     x <- x %>% filter(Year == year) %>% arrange(desc(Value)) %>% 
@@ -136,7 +136,7 @@ cropList <- function(measurement) {
 
 ```{r}
 # Prep data
-myCrops <- cropList(measurement = "Production")
+myCrops <- cropList(measurement = "Production", years = c(1908, 1961, 2017))
 xx <- agData_STATCAN_Crops %>% 
     filter(Area == "Canada", Year %in% c(1908, 1961, 2017),
            Measurement == "Production", Crop %in% myCrops) %>%
@@ -215,6 +215,37 @@ anim_save("crops_canada_gifs_01.gif", mp, width = 600, height = 400)
 
 ---
 
+## Per Person
+
+```{r}
+# Prep data
+pp <- agData_STATCAN_Population %>% 
+  filter(Month == 1, Area == "Canada", Year == 2017) %>%
+  pull(Value)
+myCrops <- cropList(measurement = "Production", years = 2017)
+xx <- agData_STATCAN_Crops %>% 
+  filter(Area == "Canada", Year %in% 2017,
+         Measurement == "Production", Crop %in% myCrops) %>%
+  mutate(Crop = factor(Crop, levels = myCrops),
+         PerPerson = Value / pp)
+# Plot
+mp <- ggplot(xx, aes(x = Crop, y = PerPerson, fill = Crop)) + 
+  geom_bar(stat = "identity", color = "Black", alpha = 0.8) + 
+  geom_label(aes(label = round(PerPerson,1)), vjust = -0.1, fill = "White") +
+  facet_grid(Year~.) + 
+  scale_y_continuous(limits = c(0,12.75), expand = c(0,0)) +
+  scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
+  theme_agData(legend.position = "none", 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
+  labs(title = "Saskatchewan - Crop Production Per Person", y = "1000 Tonnes", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+ggsave("crops_canada_06.png", mp, width = 6, height = 5)
+```
+
+![](crops_canada_06.png)
+
+---
+
 # Wheat
 
 ```{r}
@@ -234,10 +265,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   labs(title = "Wheat Yields", 
        y = "Tonnes / Hectare", x = NULL,
        caption = "Data: STATCAN")
-ggsave("crops_canada_06.png", mp, width = 6, height = 4)
+ggsave("crops_canada_07.png", mp, width = 6, height = 4)
 ```
 
-![](crops_canada_06.png)
+![](crops_canada_07.png)
 
 ---
 

@@ -37,6 +37,7 @@ Anderson, Edgar (1935) **The irises of the Gaspe Peninsula**. *Bulletin of the A
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(GGally) # ggpairs() 
 library(FactoMineR) # PCA() & HCPC()
+library(plotly) # plot_ly()
 DT::datatable(iris)
 ```
 
@@ -52,7 +53,7 @@ mp <- ggpairs(iris, columns = 1:4, aes(color = Species)) +
   theme_agData() +
   labs(title = "Iris Data Set",
        caption = "\xa9 www.dblogr.com/  |  Data: Anderson (1935)")
-ggsave("pca_01.png", mp, width = 6, height = 4)
+ggsave("pca_01.png", mp, width = 8, height = 6)
 ```
 
 ```{r echo = F}
@@ -90,6 +91,18 @@ ggsave("pca_02.png", mp,  width = 6, height = 4)
 ```
 
 ![](pca_02.png)
+
+---
+
+```{r}
+mp <- plot_ly(xx, x = ~Dim.1, y = ~Dim.2, z = ~Dim.3, text = ~Species,
+              color = ~Cluster, colors = colors, 
+              symbol = ~Species, symbols = shapes) %>% 
+  add_markers()
+htmlwidgets::saveWidget(mp, file=normalizePath("iris_pca.html"),
+           knitrOptions = list(fig.width = 4, fig.height = 6))
+mp
+```
 
 ---
 

@@ -808,8 +808,7 @@ xx <- xx %>% filter(Crop == "Wheat", !is.na(Value))
 mp <- ggplot(xx, aes(x = Year, y = Value)) + 
   geom_line() + 
   theme_agData() +
-  labs(title = "Value of Genetically Engineered Seed", 
-       y = "Billion USD", x = NULL)
+  labs(title = "UK Wheat Yields", y = "Tonnes / Hectare", x = NULL)
 ggsave("Intro_agData_UK_Yields.png", mp, width = 6, height = 4)
 ```
 

@@ -2,7 +2,7 @@
 title: "Introduction to agData"
 subtitle: "An R package with FAO, USDA, STATCAN and ISAAA data"
 summary:  "An R package with FAO, USDA, STATCAN and ISAAA data"
-date: "2021-05-27"
+date: "2021-05-28"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agData/introduction_to_agdata/)"
 tags: [ "agData", "Introduction", "Featured" ]
 weight: 1
@@ -1403,8 +1403,7 @@ xx &lt;- xx %&gt;% filter(Crop == &quot;Wheat&quot;, !is.na(Value))
 mp &lt;- ggplot(xx, aes(x = Year, y = Value)) + 
   geom_line() + 
   theme_agData() +
-  labs(title = &quot;Value of Genetically Engineered Seed&quot;, 
-       y = &quot;Billion USD&quot;, x = NULL)
+  labs(title = &quot;UK Wheat Yields&quot;, y = &quot;Tonnes / Hectare&quot;, x = NULL)
 ggsave(&quot;Intro_agData_UK_Yields.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="Intro_agData_UK_Yields.png" /></p>
 <hr />

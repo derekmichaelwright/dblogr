@@ -2,7 +2,7 @@
 title: "Canadian Crop Production"
 subtitle: "Graphs of crop production in Canada using STATCAN data"
 summary:  "Graphs of crop production in Canada using STATCAN data"
-date: "2021-05-27"
+date: "2021-05-28"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crops_canada/)"
 tags: [ "agData", "Regions" ]
 weight: 3
@@ -93,10 +93,10 @@ ggsave(&quot;crops_canada_03.png&quot;, mp, width = 6, height = 4)</code></pre>
 <div id="crop-production" class="section level1">
 <h1>Crop Production</h1>
 <pre class="r"><code># Create function to determine top crops
-cropList &lt;- function(measurement) {
+cropList &lt;- function(measurement, years = c(1908, 1961, 2017)) {
   # Prep data
   xx &lt;- agData_STATCAN_Crops %&gt;% 
-    filter(Area == &quot;Canada&quot;, Measurement == measurement, Year %in% c(1908, 1961, 2017)) 
+    filter(Area == &quot;Canada&quot;, Measurement == measurement, Year %in% years) 
   # Get top 15 crops from each year
   topcrops &lt;- function(x, year) {
     x &lt;- x %&gt;% filter(Year == year) %&gt;% arrange(desc(Value)) %&gt;% 
@@ -114,7 +114,7 @@ cropList &lt;- function(measurement) {
 <div id="crop-production-1908-1961-2017" class="section level2">
 <h2>Crop Production 1908, 1961, 2017</h2>
 <pre class="r"><code># Prep data
-myCrops &lt;- cropList(measurement = &quot;Production&quot;)
+myCrops &lt;- cropList(measurement = &quot;Production&quot;, years = c(1908, 1961, 2017))
 xx &lt;- agData_STATCAN_Crops %&gt;% 
     filter(Area == &quot;Canada&quot;, Year %in% c(1908, 1961, 2017),
            Measurement == &quot;Production&quot;, Crop %in% myCrops) %&gt;%
@@ -177,6 +177,33 @@ anim_save(&quot;crops_canada_gifs_01.gif&quot;, mp, width = 600, height = 400)</
 <p><img src="crops_canada_gifs_01.gif" /></p>
 <hr />
 </div>
+<div id="per-person" class="section level2">
+<h2>Per Person</h2>
+<pre class="r"><code># Prep data
+pp &lt;- agData_STATCAN_Population %&gt;% 
+  filter(Month == 1, Area == &quot;Canada&quot;, Year == 2017) %&gt;%
+  pull(Value)
+myCrops &lt;- cropList(measurement = &quot;Production&quot;, years = 2017)
+xx &lt;- agData_STATCAN_Crops %&gt;% 
+  filter(Area == &quot;Canada&quot;, Year %in% 2017,
+         Measurement == &quot;Production&quot;, Crop %in% myCrops) %&gt;%
+  mutate(Crop = factor(Crop, levels = myCrops),
+         PerPerson = Value / pp)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Crop, y = PerPerson, fill = Crop)) + 
+  geom_bar(stat = &quot;identity&quot;, color = &quot;Black&quot;, alpha = 0.8) + 
+  geom_label(aes(label = round(PerPerson,1)), vjust = -0.1, fill = &quot;White&quot;) +
+  facet_grid(Year~.) + 
+  scale_y_continuous(limits = c(0,12.75), expand = c(0,0)) +
+  scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
+  labs(title = &quot;Saskatchewan - Crop Production Per Person&quot;, y = &quot;1000 Tonnes&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;crops_canada_06.png&quot;, mp, width = 6, height = 5)</code></pre>
+<p><img src="crops_canada_06.png" /></p>
+<hr />
+</div>
 </div>
 <div id="wheat" class="section level1">
 <h1>Wheat</h1>
@@ -196,8 +223,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   labs(title = &quot;Wheat Yields&quot;, 
        y = &quot;Tonnes / Hectare&quot;, x = NULL,
        caption = &quot;Data: STATCAN&quot;)
-ggsave(&quot;crops_canada_06.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="crops_canada_06.png" /></p>
+ggsave(&quot;crops_canada_07.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="crops_canada_07.png" /></p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

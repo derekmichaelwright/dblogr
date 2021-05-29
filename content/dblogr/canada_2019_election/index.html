@@ -2,7 +2,7 @@
 title: "2019 Canadian Election Results"
 subtitle: "A regional look at how Canadians voted"
 summary:  "A regional look at how Canadians voted"
-date: "2021-05-27"
+date: "2021-05-28"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_2019_election/)"
 tags: [ "dblogr", "Politics" ]
 weight: 2
@@ -140,7 +140,7 @@ xx &lt;- mapcan(boundaries = ridings, type = standard) %&gt;%
   full_join(xx, by = c(&quot;riding_code&quot;=&quot;District Number&quot;))
 # Plot
 mp &lt;- ggplot(xx, aes(x = long, y = lat, group = group, fill = Party_Short)) +
-  geom_polygon(color = &quot;white&quot;, size = 0.1) + 
+  geom_polygon(color = &quot;white&quot;, size = 0.1, alpha = 0.8) + 
   coord_fixed() + 
   theme_mapcan() +
   theme(legend.position = &quot;none&quot;) +
