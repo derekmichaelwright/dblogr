@@ -47,7 +47,7 @@ for(i in crops) {
     scale_color_manual(values = colors) +
     scale_x_continuous(breaks = seq(1960, 2020, by = 5) ) +
     theme_agData(legend.position = "none", 
-                 axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+                 axis.text.x = element_text(angle = 45, hjust = 1)) +
     labs(title = i, y = NULL, x = NULL,
          caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT") )
 }
@@ -67,40 +67,13 @@ downloadthis::download_link(
 
 ---
 
-```{r}
-# Prep data
-xx <- agData_FAO_Crops %>% 
-  filter(Area %in% c("Germany", "Europe"), Crop %in% c("Maize", "Wheat"),
-         Measurement == "Yield") %>%
-  mutate(Area = factor(Area, levels = c("Germany", "Europe")))
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
-  geom_line(alpha = 0.8, size = 1.5) +
-  facet_grid(.~Crop, scales = "free_y") + 
-  scale_color_manual(values = c("darkgreen", "darkblue")) +
-  scale_x_continuous(breaks = seq(1960, 2020, 10), minor_breaks = NULL) +
-  theme_agData() + theme(legend.position = "bottom") +
-  labs(title = "Wheat and Maize Yields in Germany and Europe",
-       caption = "\xa9 www.dblogr.com/  |  Data: www.fao.org/faostat/",
-       x = NULL, y = "tonnes / hectare")
-ggsave("crops_germany_01.png", mp, width = 8, height = 4)
-```
-
-```{r echo = F}
-ggsave("featured.png", mp, width = 8, height = 4)
-```
-
-![](crops_germany_01.png)
-
----
-
 ```{r }
 # Prep data
 xx <- agData_FAO_Crops %>% 
   filter(Area == "Germany", Measurement == "Production")
 # Plot
 ggcropplot <- function(x) {
-  ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
+  ggplot(xx, aes(x = Year, y = Value / 100000)) + 
   geom_line() + 
   scale_x_continuous(limits       =   c(1960, 2020),
                      breaks       = seq(1960, 2020, 20), 
@@ -108,7 +81,7 @@ ggcropplot <- function(x) {
   theme_agData() +
   theme(legend.position = "none") +
   labs(caption = "\xa9 www.dblogr.com/  |  Data: www.fao.org/faostat/",
-       y = "Million Tonnes", x = NULL)
+       y = "Tonnes (x 100,000)", x = NULL)
 }
 ```
 
@@ -126,17 +99,46 @@ mp3 <- ggcropplot(xx) +
 mp4 <- ggcropplot(xx) + 
   facet_wrap_paginate(Crop~., scales = "free_y", ncol = 3, nrow= 5, page = 4) +
   labs(title = "Crop Production - Germany (4/4)")
-ggsave("crops_germany_02.png", mp1, width = 7, height = 8)
-ggsave("crops_germany_03.png", mp2, width = 7, height = 8)
-ggsave("crops_germany_04.png", mp3, width = 7, height = 8)
-ggsave("crops_germany_05.png", mp4, width = 7, height = 8)
+ggsave("crops_germany_01.png", mp1, width = 7, height = 8)
+ggsave("crops_germany_02.png", mp2, width = 7, height = 8)
+ggsave("crops_germany_03.png", mp3, width = 7, height = 8)
+ggsave("crops_germany_04.png", mp4, width = 7, height = 8)
 ```
+
+![](crops_germany_01.png)
 
 ![](crops_germany_02.png)
 
 ![](crops_germany_03.png)
 
 ![](crops_germany_04.png)
+
+---
+
+# Germany vs Europe
+
+```{r}
+# Prep data
+xx <- agData_FAO_Crops %>% 
+  filter(Area %in% c("Germany", "Europe"), Crop %in% c("Maize", "Wheat"),
+         Measurement == "Yield") %>%
+  mutate(Area = factor(Area, levels = c("Germany", "Europe")))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
+  geom_line(alpha = 0.8, size = 1.5) +
+  facet_grid(.~Crop, scales = "free_y") + 
+  scale_color_manual(values = c("darkgreen", "darkblue")) +
+  scale_x_continuous(breaks = seq(1960, 2020, 10), minor_breaks = NULL) +
+  theme_agData() + theme(legend.position = "bottom") +
+  labs(title = "Wheat and Maize Yields in Germany and Europe",
+       caption = "\xa9 www.dblogr.com/  |  Data: www.fao.org/faostat/",
+       x = NULL, y = "tonnes / hectare")
+ggsave("crops_germany_05.png", mp, width = 8, height = 4)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 8, height = 4)
+```
 
 ![](crops_germany_05.png)
 

@@ -30,7 +30,7 @@ library(treemapify) # geom_treemap()
 
 ---
 
-# Crops by Area
+# Plotting Function
 
 ```{r}
 gg_treemap <- function(area = "Canada", measurement = "Area harvested", year = 2018) {
@@ -42,7 +42,7 @@ gg_treemap <- function(area = "Canada", measurement = "Area harvested", year = 2
     mutate(Area = factor(Area, levels = unique(Area))) 
   # Plot
   ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
-    geom_treemap(color = "black") +
+    geom_treemap(color = "black", size = 1.5, alpha = 0.8) +
     geom_treemap_text(place = "centre", grow = T, color = "white") +
     scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
     theme_agData(legend.position = "none") +
@@ -50,6 +50,37 @@ gg_treemap <- function(area = "Canada", measurement = "Area harvested", year = 2
          caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
 }
 ```
+
+---
+
+# All Countries
+
+```{r}
+# Prep data
+areas <- c("World",
+  levels(agData_FAO_Country_Table$Region),
+  levels(agData_FAO_Country_Table$SubRegion),
+  levels(agData_FAO_Country_Table$Country))
+# Plot
+pdf("country_treemaps_fao.pdf", width = 6, height = 4)
+for(i in areas) {
+  print(gg_treemap(area = i))
+}
+dev.off()
+```
+
+```{r echo = F}
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/country_treemaps/country_treemaps_fao.pdf",
+  button_label = "country_treemaps_fao.pdf",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-file-pdf",
+  self_contained = FALSE
+)
+```
+
+---
 
 ---
 
@@ -186,35 +217,6 @@ ggsave("country_treemaps_12_china.png", mp, width = 6, height = 4)
 ```
 
 ![](country_treemaps_12_china.png)
-
----
-
-# All Countries
-
-```{r}
-# Prep data
-areas <- c("World",
-  levels(agData_FAO_Country_Table$Region),
-  levels(agData_FAO_Country_Table$SubRegion),
-  levels(agData_FAO_Country_Table$Country))
-# Plot
-pdf("country_treemaps_fao.pdf", width = 6, height = 4)
-for(i in areas) {
-  print(gg_treemap(area = i))
-}
-dev.off()
-```
-
-```{r echo = F}
-downloadthis::download_link(
-  link = "https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/country_treemaps/country_treemaps_fao.pdf",
-  button_label = "country_treemaps_fao.pdf",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-file-pdf",
-  self_contained = FALSE
-)
-```
 
 ---
 

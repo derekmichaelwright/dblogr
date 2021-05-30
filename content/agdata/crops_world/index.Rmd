@@ -31,21 +31,18 @@ library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 
 ```{r}
 # Create function to determine top crops
-cropList <- function(measurement) {
+cropList <- function(measurement, years) {
   # Prep data
   xx <- agData_FAO_Crops %>% 
-    filter(Area == "World", Measurement == measurement, Year %in% c(1961, 2018))
+    filter(Area == "World", Measurement == measurement, Year %in% years) 
   # Get top 15 crops from each year
-  topcrops <- function(x, year, num) {
+  topcrops <- function(x, year) {
     x <- x %>% filter(Year == year) %>% arrange(desc(Value)) %>% 
-      slice(1:num) %>% pull(Crop) %>% unique() %>% as.character()
+      pull(Crop) %>% unique() %>% as.character()
   }
-  crops1961 <- topcrops(xx, 1961, 15)
-  crops2018 <- topcrops(xx, 2018, 15)
-  # Order crop list based on 2018 production
-  myCrops <- unique(c(crops1961, crops2018))
-  xx %>% filter(Year == 2018, Crop %in% myCrops) %>%
-    arrange(desc(Value)) %>% pull(Crop) %>% as.character()
+  myCrops <- NULL
+  for(i in years) { myCrops <- c(myCrops, topcrops(xx, i)) }
+  unique(myCrops)
 }
 ```
 
@@ -55,9 +52,9 @@ cropList <- function(measurement) {
 
 ```{r}
 # Prep data
-myCrops <- cropList(measurement = "Production")
+myCrops <- cropList(measurement = "Production", years = c(2018, 1961))[1:18]
 xx <- agData_FAO_Crops %>% 
-    filter(Area == "World", Year %in% c(1961, 2018),
+    filter(Area == "World", Year %in% c(2018, 1961),
            Measurement == "Production", Crop %in% myCrops) %>% 
   mutate(Text = ifelse(Crop == "Sugar cane" & Year == 2018, 
                        paste0("~", round(Value / 1000000), " Tonnes"), NA),
@@ -71,7 +68,7 @@ mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) +
   scale_y_continuous(breaks = seq(0, 1000, by = 200)) +
   coord_cartesian(ylim = c(0,1100)) +
   theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "World - Crop Production", y = "Million Tonnes", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
 ggsave("crops_world_01.png", mp, width = 6, height = 4)
@@ -89,9 +86,9 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myCrops <- cropList(measurement = "Area harvested")
+myCrops <- cropList(measurement = "Area harvested", years = c(2018, 1961))[1:20]
 xx <- agData_FAO_Crops %>% 
-    filter(Area == "World", Year %in% c(1961, 2018),
+    filter(Area == "World", Year %in% c(2018, 1961),
            Measurement == "Area harvested", Crop %in% myCrops) %>% 
   mutate(Crop = factor(Crop, levels = myCrops),
          Crop = plyr::mapvalues(Crop, "Groundnuts, with shell", "Groundnuts"))
@@ -101,7 +98,7 @@ mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) +
   facet_grid(Year ~ .) + 
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
   theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "World - Area Harvested", y = "Million Tonnes", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
 ggsave("crops_world_02.png", mp, width = 6, height = 4)
@@ -127,7 +124,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value)) +
   facet_wrap(Crop ~ ., scale = "free_y", ncol = 4) + 
   scale_x_continuous(breaks = seq(1965, 2015, by = 10)) +
   coord_cartesian(xlim = c(min(xx$Year)+2, max(xx$Year)-2)) +
-  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Global Crop Yields", y = "Million Tonnes", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
 ggsave("crops_world_03.png", mp, width = 6, height = 4)

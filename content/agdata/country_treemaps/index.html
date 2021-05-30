@@ -2,7 +2,7 @@
 title: "Country Treemaps"
 subtitle: "Graphs of crops produced by specific countries"
 summary:  "Graphs of crops produced by specific countries"
-date: "2021-05-27"
+date: "2021-05-29"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/country_treemaps/)"
 tags: [ "agData", "Regions" ]
 weight: 3
@@ -24,8 +24,8 @@ links:
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(treemapify) # geom_treemap()</code></pre>
 <hr />
-<div id="crops-by-area" class="section level1">
-<h1>Crops by Area</h1>
+<div id="plotting-function" class="section level1">
+<h1>Plotting Function</h1>
 <pre class="r"><code>gg_treemap &lt;- function(area = &quot;Canada&quot;, measurement = &quot;Area harvested&quot;, year = 2018) {
   #Prep data
   xx &lt;- agData_FAO_Crops %&gt;% 
@@ -35,13 +35,34 @@ library(treemapify) # geom_treemap()</code></pre>
     mutate(Area = factor(Area, levels = unique(Area))) 
   # Plot
   ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
-    geom_treemap(color = &quot;black&quot;) +
+    geom_treemap(color = &quot;black&quot;, size = 1.5, alpha = 0.8) +
     geom_treemap_text(place = &quot;centre&quot;, grow = T, color = &quot;white&quot;) +
     scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
     theme_agData(legend.position = &quot;none&quot;) +
     labs(title = paste(area,&quot;-&quot;,year,&quot;-&quot;,measurement),
          caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 }</code></pre>
+<hr />
+</div>
+<div id="all-countries" class="section level1">
+<h1>All Countries</h1>
+<pre class="r"><code># Prep data
+areas &lt;- c(&quot;World&quot;,
+  levels(agData_FAO_Country_Table$Region),
+  levels(agData_FAO_Country_Table$SubRegion),
+  levels(agData_FAO_Country_Table$Country))
+# Plot
+pdf(&quot;country_treemaps_fao.pdf&quot;, width = 6, height = 4)
+for(i in areas) {
+  print(gg_treemap(area = i))
+}
+dev.off()</code></pre>
+<pre><code>## png 
+##   2</code></pre>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/country_treemaps/country_treemaps_fao.pdf">
+<button class="btn btn-success"><i class="fa fa-file-pdf"></i> country_treemaps_fao.pdf</button>
+</a>
+<hr />
 <hr />
 <div id="world" class="section level2">
 <h2>World</h2>
@@ -126,26 +147,6 @@ ggsave(&quot;country_treemaps_11_nepal.png&quot;, mp, width = 6, height = 4)</co
 ggsave(&quot;country_treemaps_12_china.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="country_treemaps_12_china.png" /></p>
 <hr />
-</div>
-</div>
-<div id="all-countries" class="section level1">
-<h1>All Countries</h1>
-<pre class="r"><code># Prep data
-areas &lt;- c(&quot;World&quot;,
-  levels(agData_FAO_Country_Table$Region),
-  levels(agData_FAO_Country_Table$SubRegion),
-  levels(agData_FAO_Country_Table$Country))
-# Plot
-pdf(&quot;country_treemaps_fao.pdf&quot;, width = 6, height = 4)
-for(i in areas) {
-  print(gg_treemap(area = i))
-}
-dev.off()</code></pre>
-<pre><code>## png 
-##   2</code></pre>
-<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/country_treemaps/country_treemaps_fao.pdf">
-<button class="btn btn-success"><i class="fa fa-file-pdf"></i> country_treemaps_fao.pdf</button>
-</a>
-<hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>
 </div>

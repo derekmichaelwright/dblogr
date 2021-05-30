@@ -2,7 +2,7 @@
 title: "Deaths In Canada"
 subtitle: "An exploration of weekly deaths in Canada"
 summary:  "An exploration of weekly deaths in Canada"
-date: "2021-05-27"
+date: "2021-05-30"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_deaths/)"
 tags: [ "dblogr", "Demographics" ]
 weight: 2
@@ -538,11 +538,12 @@ deathPlot5 &lt;- function(areas = &quot;Canada&quot;, title = areas) {
     mutate(Year = factor(Year, levels = c(&quot;2020&quot;,&quot;2019&quot;)),
            Age = factor(Age, levels = rev(unique(Age)))) %&gt;%
     spread(Year, Value) %&gt;%
-    mutate(Excess = `2020` - `2019`)
+    mutate(Excess = `2020` - `2019`,
+           Percent = 100 * `2020` - `2019` / `2020`)
   # Plot
   ggplot(xx, aes(x = Age, y = Excess)) +
     geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, fill = &quot;darkred&quot;, alpha = 0.7) +
-    geom_label(aes(label = Excess), hjust = 1) +
+    geom_label(aes(label = Percent), hjust = 1) +
     coord_flip() +
     theme_agData() +
     labs(title = title, y = &quot;Excess Deaths&quot;, x = NULL,

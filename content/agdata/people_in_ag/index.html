@@ -2,7 +2,7 @@
 title: "People in Agriculture"
 subtitle: "Graphs of people in Agriculture"
 summary:  "Graphs of people in Agriculture"
-date: "2021-05-27"
+date: "2021-05-29"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/people_in_ag/)"
 tags: [ "agData", "Regions" ]
 weight: 4
@@ -92,7 +92,7 @@ mp &lt;- ggplot(xx, aes(x = Area, y = Value, fill = Region, label = round(Value)
   scale_y_continuous(sec.axis = dup_axis(name = NULL)) +
   scale_fill_manual(name = NULL, values = agData_Colors) +
   theme_agData() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
         legend.position = &quot;bottom&quot;) +
   labs(y = NULL, x = NULL,
        title = &quot;Percent of Population in Agriculture&quot;, 

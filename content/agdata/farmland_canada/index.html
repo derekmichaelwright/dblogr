@@ -1,0 +1,297 @@
+---
+title: "Canadian Farmland"
+subtitle: "Graphs about Canadian farmland using STATCAN data"
+summary:  "Graphs about Canadian farmland using STATCAN data"
+date: "2021-05-29"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/farmland_canada/)"
+tags: [ "agData", "Regions" ]
+weight: 4
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon: file-code
+    icon_pack: far
+    name: HTML < R Script Vignette >
+    url: https://derekmichaelwright.github.io/htmls/agdata/farmland_canada.html
+---
+
+
+
+<hr />
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<hr />
+<div id="farmland-by-province" class="section level1">
+<h1>Farmland by Province</h1>
+<div id="section" class="section level2">
+<h2>2016</h2>
+<pre class="r"><code># Prep data
+yy &lt;- agData_STATCAN_Region_Table
+xx &lt;- agData_STATCAN_FarmLand_Use %&gt;% 
+  filter(Year == 2016, Item == &quot;Total area of farms&quot;, Unit == &quot;Hectares&quot;)
+x1 &lt;- xx %&gt;% filter(Area == &quot;Canada&quot;)
+xx &lt;- xx %&gt;% filter(Area != &quot;Canada&quot;) %&gt;% 
+  mutate(Percent = round(100 * Value / x1$Value, 1)) %&gt;% 
+  arrange(Percent) %&gt;%
+  mutate(Area = factor(Area, levels  = rev(Area)),
+         Area_Short = plyr::mapvalues(Area, yy$Area, yy$Area_Short))
+# What is the total amount of farmland in Canada?
+sum(xx$Value)</code></pre>
+<pre><code>## [1] 64232948</code></pre>
+<pre class="r"><code># Plot
+mp &lt;- ggplot(xx, aes(x = Area_Short, y = Value / 1000000)) +
+  geom_bar(aes(fill = Area), stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8) +
+  geom_label(aes(label = paste(Percent, &quot;%&quot;)), nudge_y = 1.1, size = 3) +
+  scale_fill_manual(values = agData_Colors) +
+  theme_agData(legend.position = &quot;none&quot;, 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(title = &quot;Canadian Farmland (2016)&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;,
+       x = NULL, y = &quot;Million Hectares&quot;)
+ggsave(&quot;farmland_canada_1_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="farmland_canada_1_01.png" /></p>
+<hr />
+</div>
+<div id="provinces" class="section level2">
+<h2>Provinces</h2>
+<pre class="r"><code>xx &lt;- agData_STATCAN_FarmLand_Farms %&gt;%
+  filter(Measurement == &quot;Total area of farms&quot;,
+         Area != &quot;Canada&quot;)
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
+  geom_line(color = &quot;darkgreen&quot;, size = 1.25, alpha = 0.8) +
+  facet_wrap(. ~ Area, scales = &quot;free_y&quot;, ncol = 5) +
+  scale_x_continuous(breaks = seq(1925, 2015, 20), expand = c(0.01,0)) +
+  theme_agData() +
+  labs(title = &quot;Canadian Farmland&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;,
+       x = NULL, y = &quot;Million Hectares&quot;)
+ggsave(&quot;farmland_canada_1_02.png&quot;, mp, width = 12, height = 5)</code></pre>
+<p><img src="farmland_canada_1_02.png" /></p>
+<hr />
+</div>
+<div id="ontario-quebec" class="section level2">
+<h2>Ontario &amp; Quebec</h2>
+<pre class="r"><code>xx &lt;- agData_STATCAN_FarmLand_Farms %&gt;%
+  filter(Measurement == &quot;Total area of farms&quot;,
+         Area %in% c(&quot;Ontario&quot;, &quot;Quebec&quot;))
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
+  geom_line(size = 1.25, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = c(&quot;darkblue&quot;, &quot;steelblue&quot;)) +
+  scale_x_continuous(breaks = seq(1925, 2015, 10), expand = c(0.01,0)) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Farmland&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;,
+       x = NULL, y = &quot;Million Hectares&quot;)
+ggsave(&quot;farmland_canada_1_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="farmland_canada_1_03.png" /></p>
+<hr />
+</div>
+</div>
+<div id="average-farm-size" class="section level1">
+<h1>Average Farm Size</h1>
+<div id="canada" class="section level2">
+<h2>Canada</h2>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_FarmLand_Farms %&gt;% 
+  filter(Measurement %in% c(&quot;Total area of farms&quot;, &quot;Total number of farms&quot;)) %&gt;%
+  select(-Measurement, -Unit) %&gt;% 
+  spread(Item, Value) %&gt;%
+  mutate(Size = Hectares / Number)
+# Plot
+mp &lt;- ggplot(xx %&gt;% filter(Area == &quot;Canada&quot;), aes(y = Size, x = Year)) + 
+  geom_line(color = &quot;darkgreen&quot;, size = 1.5, alpha = 0.8) +
+  scale_x_continuous(breaks = seq(1925, 2015, 10), expand = c(0.01,0)) +
+  facet_grid(. ~ Area) +
+  theme_agData() +
+  labs(title = &quot;Average Farm Size&quot;, y = &quot;Hectares / Farm&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;farmland_canada_2_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="farmland_canada_2_01.png" /></p>
+<hr />
+</div>
+<div id="provinces-1" class="section level2">
+<h2>Provinces</h2>
+<pre class="r"><code># Plot
+mp &lt;- ggplot(xx %&gt;% filter(Area != &quot;Canada&quot;), aes(y = Size, x = Year)) + 
+  geom_line(color = &quot;darkgreen&quot;, size = 1.5, alpha = 0.8) +
+  facet_wrap(Area ~ ., ncol = 5) +
+  scale_x_continuous(breaks = seq(1925, 2005, 20)) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Average Farm Size&quot;, y = &quot;Hectares / Farm&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;farmland_canada_2_02.png&quot;, mp, width = 12, height = 5)</code></pre>
+<p><img src="farmland_canada_2_02.png" /></p>
+<hr />
+</div>
+</div>
+<div id="number-vs.-area" class="section level1">
+<h1>Number vs. Area</h1>
+<div id="canada-1" class="section level2">
+<h2>Canada</h2>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_FarmLand_Farms %&gt;% 
+  filter(Area == &quot;Canada&quot;,
+         Measurement %in% c(&quot;Total area of farms&quot;, &quot;Total number of farms&quot;)) %&gt;%
+  mutate(Value = ifelse(Unit == &quot;Hectares&quot;, Value / 100000, Value / 1000),
+         Unit = plyr::mapvalues(Unit, c(&quot;Hectares&quot;, &quot;Number of farms reporting&quot;), 
+                                c(&quot;Total area of farms (100,000 hectares)&quot;,&quot;Number of farms (x1000)&quot;)))
+# Plot
+mp &lt;- ggplot(xx, aes(y = Value, x = Year, color = Unit)) + 
+  geom_line(size = 1.5, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = c(&quot;darkorange&quot;, &quot;darkgreen&quot;)) +
+  scale_x_continuous(breaks = seq(1925, 2015, 10), expand = c(0.01,0)) +
+  facet_wrap(Area ~ .) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Average Farm Size&quot;, y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;farmland_canada_2_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="farmland_canada_2_03.png" /></p>
+<hr />
+</div>
+<div id="provinces-2" class="section level2">
+<h2>Provinces</h2>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_FarmLand_Farms %&gt;% 
+  filter(Area != &quot;Canada&quot;,
+         Measurement %in% c(&quot;Total area of farms&quot;, &quot;Total number of farms&quot;)) %&gt;%
+  mutate(Value = ifelse(Unit == &quot;Hectares&quot;, Value / 100000, Value / 1000),
+         Unit = plyr::mapvalues(Unit, c(&quot;Hectares&quot;, &quot;Number of farms reporting&quot;), 
+                                c(&quot;Total area of farms (100,000 hectares)&quot;,&quot;Number of farms (x1000)&quot;)))
+# Plot
+mp &lt;- ggplot(xx, aes(y = Value, x = Year, color = Unit)) + 
+  geom_line(size = 2, alpha = 0.8) +
+  facet_wrap(Area ~ ., scales = &quot;free_y&quot;, ncol = 5) +
+  scale_color_manual(name = NULL, values = c(&quot;darkorange&quot;, &quot;darkgreen&quot;)) +
+  scale_x_continuous(breaks = seq(1925, 2005, 20)) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;Average Farm Size&quot;, y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;farmland_canada_2_04.png&quot;, mp, width = 12, height = 5)</code></pre>
+<p><img src="farmland_canada_2_04.png" /></p>
+<hr />
+</div>
+</div>
+<div id="farm-size" class="section level1">
+<h1>Farm Size</h1>
+<div id="canada-2" class="section level2">
+<h2>Canada</h2>
+<div id="unscaled" class="section level3">
+<h3>Unscaled</h3>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_FarmLand_Size %&gt;% 
+  filter(Area == &quot;Canada&quot;, Measurement != &quot;Total number of farms&quot;) 
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000)) + 
+  geom_line(color = &quot;darkgreen&quot;, size = 1.5, alpha = 0.8) + 
+  facet_wrap(Measurement ~ ., ncol = 7) +
+  theme_agData() +
+  labs(title = &quot;Canada - Farm Size&quot;, y = &quot;Thousand Farms&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;farmland_canada_2_05.png&quot;, mp, width = 14, height = 5)</code></pre>
+<p><img src="farmland_canada_2_05.png" /></p>
+<hr />
+</div>
+<div id="scaled" class="section level3">
+<h3>Scaled</h3>
+<pre class="r"><code># Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000)) + 
+  geom_line(color = &quot;darkgreen&quot;, size = 1.5, alpha = 0.8) + 
+  facet_wrap(Measurement ~ ., scales = &quot;free_y&quot;, ncol = 7) +
+  theme_agData() +
+  labs(title = &quot;Canada - Farm Size&quot;, y = &quot;Thousand Farms&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;farmland_canada_2_06.png&quot;, mp, width = 14, height = 5)</code></pre>
+<p><img src="farmland_canada_2_06.png" /></p>
+<hr />
+</div>
+<div id="bar-charts" class="section level3">
+<h3>Bar Charts</h3>
+<pre class="r"><code>cols &lt;- c(alpha(&quot;darkgreen&quot;,0.2), alpha(&quot;darkgreen&quot;,0.3), alpha(&quot;darkgreen&quot;,0.4),
+          alpha(&quot;darkgreen&quot;,0.5), alpha(&quot;darkgreen&quot;,0.6), alpha(&quot;darkgreen&quot;,0.7),
+          alpha(&quot;darkgreen&quot;,0.8), alpha(&quot;darkgreen&quot;,0.9), &quot;darkgreen&quot;)
+#
+mp &lt;- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = as.factor(Year))) + 
+  geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;, color = &quot;black&quot;) +
+  scale_fill_manual(name = NULL, values = cols) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(title = &quot;Canada - Farm Size&quot;, y = &quot;Thousand Farms&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;farmland_canada_2_07.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="farmland_canada_2_07.png" /></p>
+<hr />
+</div>
+</div>
+<div id="saskatchewan" class="section level2">
+<h2>Saskatchewan</h2>
+<div id="unscaled-1" class="section level3">
+<h3>Unscaled</h3>
+<pre class="r"><code># Prep data
+xx &lt;- agData_STATCAN_FarmLand_Size %&gt;% 
+  filter(Area == &quot;Saskatchewan&quot;, Measurement != &quot;Total number of farms&quot;) 
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000)) + 
+  geom_line(color = &quot;darkgreen&quot;, size = 1.5, alpha = 0.8) + 
+  facet_wrap(Measurement ~ ., ncol = 7) +
+  theme_agData() +
+  labs(title = &quot;Saskatchewan - Farm Size&quot;, y = &quot;Thousand Farms&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;farmland_canada_2_08.png&quot;, mp, width = 14, height = 5)</code></pre>
+<p><img src="farmland_canada_2_08.png" /></p>
+<hr />
+</div>
+<div id="scaled-1" class="section level3">
+<h3>Scaled</h3>
+<pre class="r"><code># Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000)) + 
+  geom_line(color = &quot;darkgreen&quot;, size = 1.5, alpha = 0.8) + 
+  facet_wrap(Measurement ~ ., scales = &quot;free_y&quot;, ncol = 7) +
+  theme_agData() +
+  labs(title = &quot;Farm Size - Saskatchewan&quot;, y = &quot;Thousand Farms&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;farmland_canada_2_09.png&quot;, mp, width = 14, height = 5)</code></pre>
+<p><img src="farmland_canada_2_09.png" /></p>
+<hr />
+</div>
+<div id="bar-charts-1" class="section level3">
+<h3>Bar Charts</h3>
+<pre class="r"><code>cols &lt;- c(alpha(&quot;darkgreen&quot;,0.2), alpha(&quot;darkgreen&quot;,0.3), alpha(&quot;darkgreen&quot;,0.4),
+          alpha(&quot;darkgreen&quot;,0.5), alpha(&quot;darkgreen&quot;,0.6), alpha(&quot;darkgreen&quot;,0.7),
+          alpha(&quot;darkgreen&quot;,0.8), alpha(&quot;darkgreen&quot;,0.9), &quot;darkgreen&quot;)
+#
+mp &lt;- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = as.factor(Year))) + 
+  geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;, color = &quot;black&quot;) +
+  scale_fill_manual(name = NULL, values = cols) +
+  facet_grid(. ~ Area) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(title = &quot;Farm Size&quot;, y = &quot;Thousand Farms&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;farmland_canada_2_10.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="farmland_canada_2_10.png" /></p>
+<hr />
+</div>
+</div>
+<div id="provinces-3" class="section level2">
+<h2>Provinces</h2>
+<pre class="r"><code># Prep data
+areas &lt;- c(&quot;British Columbia&quot;, &quot;Alberta&quot;, &quot;Saskatchewan&quot;,
+           &quot;Manitoba&quot;, &quot;Ontario&quot;, &quot;Quebec&quot;)
+xx &lt;- agData_STATCAN_FarmLand_Size %&gt;% 
+  filter(Area %in% areas, Measurement != &quot;Total number of farms&quot;) 
+cols &lt;- c(alpha(&quot;darkgreen&quot;,0.2), alpha(&quot;darkgreen&quot;,0.3), alpha(&quot;darkgreen&quot;,0.4),
+          alpha(&quot;darkgreen&quot;,0.5), alpha(&quot;darkgreen&quot;,0.6), alpha(&quot;darkgreen&quot;,0.7),
+          alpha(&quot;darkgreen&quot;,0.8), alpha(&quot;darkgreen&quot;,0.9), &quot;darkgreen&quot;)
+#
+mp &lt;- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = as.factor(Year))) + 
+  geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;, color = &quot;black&quot;) +
+  facet_grid(Area ~ .) +
+  scale_fill_manual(name = NULL, values = cols) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(title = &quot;Farm Size - Canada&quot;, y = &quot;Thousand Farms&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;farmland_canada_2_11.png&quot;, mp, width = 6, height = 8)</code></pre>
+<p><img src="farmland_canada_2_11.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>
+</div>

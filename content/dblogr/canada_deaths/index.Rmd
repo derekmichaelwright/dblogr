@@ -753,11 +753,12 @@ deathPlot5 <- function(areas = "Canada", title = areas) {
     mutate(Year = factor(Year, levels = c("2020","2019")),
            Age = factor(Age, levels = rev(unique(Age)))) %>%
     spread(Year, Value) %>%
-    mutate(Excess = `2020` - `2019`)
+    mutate(Excess = `2020` - `2019`,
+           Percent = 100 * `2020` - `2019` / `2020`)
   # Plot
   ggplot(xx, aes(x = Age, y = Excess)) +
     geom_bar(stat = "identity", color = "black", fill = "darkred", alpha = 0.7) +
-    geom_label(aes(label = Excess), hjust = 1) +
+    geom_label(aes(label = Percent), hjust = 1) +
     coord_flip() +
     theme_agData() +
     labs(title = title, y = "Excess Deaths", x = NULL,
