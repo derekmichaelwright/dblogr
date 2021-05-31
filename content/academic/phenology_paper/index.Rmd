@@ -1,37 +1,37 @@
 ---
-title: "Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (Lens culinaris Medik.)"
-subtitle: "*Plants, People, Planet*. 2020 00: 1-11"
-summary:  "*Plants, People, Planet*. 2020 00: 1-11"
+title: "Plants, People, Planet. 2020 00: 1-11"
+subtitle: "Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)"
+summary:  "Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/canola_nue)"
 date: "`r Sys.Date()`"
 weight: 1
 tags: [ "Academic", "AGILE", "Literature", "Featured" ]
 math: true
 links:
-  - icon: newspaper
-    icon_pack: far
-    name: Plants, People, Planet
-    url: https://nph.onlinelibrary.wiley.com/doi/10.1002/ppp3.10158
-  - icon: github
-    icon_pack: fab
-    name: Github
-    url: https://github.com/derekmichaelwright/AGILE_LDP_Phenology
-  - icon: chart-line
-    icon_pack: fas
-    name: All Graphs
-    url: https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html
-  - icon: file-pdf
-    icon_pack: far
-    name: Figures pdf
-    url: https://github.com/derekmichaelwright/AGILE_LDP_Phenology/blob/master/README.pdf
-  - icon: file-code
-    icon_pack: far
-    name: R Script
-    url: https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html
-  - icon: laptop-code
-    icon_pack: fas
-    name: Shiny App
-    url: https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/
+  - icon: "newspaper"
+    icon_pack: "far"
+    name: "Plants, People, Planet. 00: 1-11"
+    url: "https://nph.onlinelibrary.wiley.com/doi/10.1002/ppp3.10158"
+  - icon: "github"
+    icon_pack: "fab"
+    name: "Github Repository"
+    url: "https://github.com/derekmichaelwright/AGILE_LDP_Phenology"
+  - icon: "chart-line"
+    icon_pack: "fas"
+    name: "All Figures (HTML)"
+    url: "https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html"
+  - icon: "file-pdf"
+    icon_pack: "far"
+    name: "All Figures (pdf)"
+    url: "https://github.com/derekmichaelwright/AGILE_LDP_Phenology/blob/master/README.pdf"
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "R Script (HTML)"
+    url: "https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html"
+  - icon: "laptop-code"
+    icon_pack: "fas"
+    name: "Shiny App"
+    url: "https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/"
 ---
 
 ```{r setup, include=FALSE}
@@ -39,6 +39,8 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```
 
 ---
+
+# Citation
 
 Derek Wright, Sandesh Neupane, Taryn Heidecker, Teketel Haile, Clarice Coyne, Sripada Udupa, Eleonora Barilli, Diego Rubiales, Tania Gioia, Reena Mehra, Ashutosh Sarker, Rajeev Dhakal, Babul Anwar, Debashish Sarker, Albert Vandenberg, and Kirstin E. Bett. (2020) **Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**. *Plants, People, Planet*. 00: 1-11. https://nph.onlinelibrary.wiley.com/doi/10.1002/ppp3.10158
 
@@ -59,14 +61,24 @@ Lentil is a staple in many diets around the world and growing in popularity as a
 
 ```{r echo = F}
 downloadthis::download_link(
-  link = "https://github.com/derekmichaelwright/AGILE_LDP_Phenology",
-  button_label = "github",
+  link = "https://nph.onlinelibrary.wiley.com/doi/10.1002/ppp3.10158",
+  button_label = "Plants, People, Planet. 00: 1-11",
   button_type = "success",
   has_icon = TRUE,
-  icon = "far file-code",
+  icon = "far fa-newspaper",
+  self_contained = FALSE
+)
+downloadthis::download_link(
+  link = "https://github.com/derekmichaelwright/AGILE_LDP_Phenology",
+  button_label = "Github Repository",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fab fa-github",
   self_contained = FALSE
 )
 ```
+
+<br>
 
 ```{r echo = F}
 downloadthis::download_link(
@@ -74,7 +86,7 @@ downloadthis::download_link(
   button_label = "All Graphs (HTML)",
   button_type = "success",
   has_icon = TRUE,
-  icon = "fa fa-save",
+  icon = "fas fa-chart-line",
   self_contained = FALSE
 )
 downloadthis::download_link(
@@ -82,29 +94,28 @@ downloadthis::download_link(
   button_label = "All Graphs (PDF)",
   button_type = "success",
   has_icon = TRUE,
-  icon = "fa-file-pdf",
+  icon = "far fa-file-pdf",
   self_contained = FALSE
 )
 ```
 
+<br>
+
 ```{r echo = F}
 downloadthis::download_link(
   link = "https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html",
-  button_label = "Vignette (HTML)",
+  button_label = "R Script (HTML)",
   button_type = "success",
   has_icon = TRUE,
   icon = "far file-code",
   self_contained = FALSE
 )
-```
-
-```{r echo = F}
 downloadthis::download_link(
   link = "https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/",
   button_label = "Shiny App",
   button_type = "success",
   has_icon = TRUE,
-  icon = "far file-code",
+  icon = "fas laptop-code",
   self_contained = FALSE
 )
 ```
@@ -115,7 +126,7 @@ downloadthis::download_link(
 
 <iframe
   src="https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Additional/Additional_Figure_09.html"
-  style="width:80%; height:600px;"
+  style="width:100%; height:600px; align:center;"
 ></iframe>
 
 ---

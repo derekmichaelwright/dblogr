@@ -1,7 +1,7 @@
 ---
-title: "Genomic selection for lentil breeding: Empirical evidence"
-subtitle: "*The Plant Genome*. 2020 13(e20002): 1-15."
-summary:  "*The Plant Genome*. 2020 13(e20002): 1-15."
+title: "*The Plant Genome*. 2020 13(e20002): 1-15."
+subtitle: "Genomic selection for lentil breeding: Empirical evidence"
+summary:  "Genomic selection for lentil breeding: Empirical evidence"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/genomic_selection)"
 date: "`r Sys.Date()`"
 tags: [ "Academic", "AGILE", "Literature" ]
@@ -21,6 +21,8 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```
 
 ---
+
+# Citation
 
 Teketel A. Haile,  Taryn Heidecker,  Derek Wright,  Sandesh Neupane,  Larissa Ramsay,  Albert Vandenberg & Kirstin E. Bett (2020) **Genomic selection for lentil breeding: Empirical evidence**. *The Plant Genome*. 13(e20002): 1-15. https://acsess.onlinelibrary.wiley.com/doi/full/10.1002/tpg2.20002
 
