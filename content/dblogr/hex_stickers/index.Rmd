@@ -117,6 +117,42 @@ sticker(filename="hex_mapleleaf_red.png", package="",
 
 ![](hex_mapleleaf_red.png)
 
+---
+
+# buffalo
+
+```{r}
+sticker(filename="hex_buffalo_green.png", package="",  
+        # Logo
+        "logo_buffalo_green.png", 
+        s_x = 1, s_y = 1.1, 
+        s_width = 0.9,
+        # Border
+        h_fill = "grey90", h_color = "darkgreen", h_size = 1.5,
+        # Url
+        url = "www.dblogr.com/", u_color = "black",
+        u_x = 1.1, u_y = 0.15, u_size = 6 )
+```
+
+![](hex_buffalo_green.png)
+
+```{r}
+sticker(filename="hex_buffalo_black.png", package="",  
+        # Logo
+        "logo_buffalo_black.png", 
+        s_x = 1, s_y = 1, 
+        s_width = 0.9,
+        # Border
+        h_fill = "grey90", h_color = "darkgreen", h_size = 1.5,
+        # Url
+        url = "www.dblogr.com/", u_color = "black",
+        u_x = 1.1, u_y = 0.15, u_size = 6 )
+```
+
+![](hex_buffalo_black.png)
+
+---
+
 ```{r echo = F, eval = F}
 # Copy to gallery
 #file.copy(from = "hex_dblogr.png", 
