@@ -10,10 +10,10 @@ codefolding_show: "hide"
 image:
   preview_only: true
 links:
-  - icon: file-code
-    icon_pack: far
-    name: HTML < R Script Vignette >
-    url: https://derekmichaelwright.github.io/htmls/agdata/people_in_ag.html
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/agdata/people_in_ag.html"
 ---
 
 ```{r setup, include = FALSE}

@@ -10,10 +10,10 @@ codefolding_show: "hide"
 image:
   preview_only: true
 links:
-  - icon: file-code
-    icon_pack: far
-    name: HTML < R Script Vignette >
-    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_deaths.html
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/dblogr/canada_deaths.html"
 ---
 
 ```{r setup, include=FALSE}
@@ -652,5 +652,26 @@ ggsave("canada_deaths_6_01.png", mp, width = 6, height = 4)
 ![](canada_deaths_6_01.png)
 
 ---
+
+```{r eval = F}
+# https://www.bloomberg.com/news/articles/2021-06-01/trudeau-s-covid-19-spending-was-tilted-to-high-earning-canadians?sref=7iNjhqyV
+quantiles <- c("Lowest", "Second", "Third", "Forth", "Highest")
+traits1 <- c("Percent", "Value", "PercentIncome")
+traits2 <- c("Percent of Releif", "Average Value Per Household", "Percent of Income")
+xx <- read.csv("covid_releif.csv") %>%
+  gather(Trait, Value, 2:4) %>%
+  mutate(Quantile = factor(Quantile, levels = quantiles),
+         Trait = plyr::mapvalues(Trait, traits1, traits2),
+         Trait = factor(Trait, levels = traits2))
+mp <- ggplot(xx, aes(x = Quantile, y = Value, fill = Quantile)) +
+  geom_bar(stat = "identity", color = "black", alpha = 0.8) +
+  facet_wrap(Trait ~ ., ncol = 3, scale = "free_y") +
+  scale_fill_manual(values = agData_Colors) +
+  theme_agData(legend.position = "none",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Distribution of COVID Releif in Canada", y = NULL, x = NULL,
+         caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+ggsave("covid_releif.png", mp, width = 8, height = 4)
+```
 
 &copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

@@ -2,7 +2,7 @@
 title: "Deaths In Canada"
 subtitle: "An exploration of weekly deaths in Canada"
 summary:  "An exploration of weekly deaths in Canada"
-date: "2021-05-30"
+date: "2021-06-01"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_deaths/)"
 tags: [ "dblogr", "Demographics" ]
 weight: 2
@@ -10,10 +10,10 @@ codefolding_show: "hide"
 image:
   preview_only: true
 links:
-  - icon: file-code
-    icon_pack: far
-    name: HTML < R Script Vignette >
-    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_deaths.html
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/dblogr/canada_deaths.html"
 ---
 
 <script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
@@ -471,5 +471,9 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value, alpha = Covid)) +
 ggsave(&quot;canada_deaths_6_01.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="canada_deaths_6_01.png" /></p>
 <hr />
+<pre class="r"><code># https://www.bloomberg.com/news/articles/2021-06-01/trudeau-s-covid-19-spending-was-tilted-to-high-earning-canadians?sref=7iNjhqyV
+xx &lt;- read.csv(&quot;covid_releif.csv&quot;) %&gt;%
+  gather(Trait, Value, 2:4)
+ggplot(xx)</code></pre>
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>
