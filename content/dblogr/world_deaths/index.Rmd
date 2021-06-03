@@ -102,10 +102,10 @@ mp <- ggplot(d1, aes(x = Year, y = Death.Rate, fill = Group)) +
   labs(title = "Global Death Rate",
        y = "Deaths per 1000 people", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: UN")
-ggsave("world_deaths_01.png", mp, width = 6, height = 4)
+ggsave("world_deaths_1_01.png", mp, width = 6, height = 4)
 ```
 
-![](world_deaths_01.png)
+![](world_deaths_1_01.png)
 
 ---
 
@@ -121,14 +121,14 @@ mp <- ggplot(d2, aes(x = Year, y = Death.Rate, fill = Group)) +
   theme_agData(legend.position = "none") +
   labs(title = "UK Death Rate", y = "Deaths per 100,000", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: BMJ")
-ggsave("world_deaths_02.png", mp, width = 6, height = 4)
+ggsave("world_deaths_1_02.png", mp, width = 6, height = 4)
 ```
 
 ```{r}
 ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
-![](world_deaths_02.png)
+![](world_deaths_1_02.png)
 
 ---
 
@@ -136,7 +136,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ```{r}
 # Create plotting function
-deathPlot <- function(Area = "Germany") {
+deathPlot_Weekly <- function(Area = "Germany") {
   # Prep data
   xi <- d3 %>% filter(area == Area)
   # Plot
@@ -150,91 +150,214 @@ deathPlot <- function(Area = "Germany") {
 }
 ```
 
-## UK
-
-```{r}
-mp <- deathPlot(Area = "United Kingdom")
-ggsave("world_deaths_03.png", mp, width = 6, height = 4)
-```
-
-![](world_deaths_03.png)
-
 ---
 
 ## Germany
 
 ```{r}
-mp <- deathPlot(Area = "Germany")
-ggsave("world_deaths_04.png", mp, width = 6, height = 4)
+mp <- deathPlot_Weekly(Area = "Germany")
+ggsave("world_deaths_2_01.png", mp, width = 6, height = 4)
 ```
 
-![](world_deaths_04.png)
+![](world_deaths_2_01.png)
 
 ---
 
 ## Sweden
 
 ```{r}
-mp <- deathPlot(Area = "Sweden")
-ggsave("world_deaths_05.png", mp, width = 6, height = 4)
+mp <- deathPlot_Weekly(Area = "Sweden")
+ggsave("world_deaths_2_02.png", mp, width = 6, height = 4)
 ```
 
-![](world_deaths_05.png)
+![](world_deaths_2_02.png)
 
 ---
 
 ## Norway
 
 ```{r}
-mp <- deathPlot(Area = "Norway")
-ggsave("world_deaths_06.png", mp, width = 6, height = 4)
+mp <- deathPlot_Weekly(Area = "Norway")
+ggsave("world_deaths_2_03.png", mp, width = 6, height = 4)
 ```
 
-![](world_deaths_06.png)
+![](world_deaths_2_03.png)
 
 ---
 
 ## Italy
 
 ```{r}
-mp <- deathPlot(Area = "Italy")
-ggsave("world_deaths_07.png", mp, width = 6, height = 4)
+mp <- deathPlot_Weekly(Area = "Italy")
+ggsave("world_deaths_2_04.png", mp, width = 6, height = 4)
 ```
 
-![](world_deaths_07.png)
+![](world_deaths_2_04.png)
 
 ---
 
 ## France
 
 ```{r}
-mp <- deathPlot(Area = "France")
-ggsave("world_deaths_08.png", mp, width = 6, height = 4)
+mp <- deathPlot_Weekly(Area = "France")
+ggsave("world_deaths_2_05.png", mp, width = 6, height = 4)
 ```
 
-![](world_deaths_08.png)
+![](world_deaths_2_05.png)
 
 ---
 
 ## Brazil
 
 ```{r}
-mp <- deathPlot(Area = "Brazil")
-ggsave("world_deaths_09.png", mp, width = 6, height = 4)
+mp <- deathPlot_Weekly(Area = "Brazil")
+ggsave("world_deaths_2_06.png", mp, width = 6, height = 4)
 ```
 
-![](world_deaths_09.png)
+![](world_deaths_2_06.png)
 
 ---
 
 ## Russia
 
 ```{r}
-mp <- deathPlot(Area = "Russia")
-ggsave("world_deaths_10.png", mp, width = 6, height = 4)
+mp <- deathPlot_Weekly(Area = "Russia")
+ggsave("world_deaths_2_07.png", mp, width = 6, height = 4)
 ```
 
-![](world_deaths_10.png)
+![](world_deaths_2_07.png)
+
+---
+
+## UK
+
+```{r}
+mp <- deathPlot_Weekly(Area = "United Kingdom")
+ggsave("world_deaths_2_08.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_2_08.png)
+
+---
+
+## Egypt
+
+```{r}
+mp <- deathPlot_Weekly(Area = "Egypt")
+ggsave("world_deaths_2_09.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_2_09.png)
+
+---
+
+# Yearly Deaths
+
+```{r}
+# Create plotting function
+deathPlot_Yearly <- function(Area = "Germany") {
+  # Prep data
+  xi <- d3 %>% filter(area == Area, year != "2021") %>% 
+    group_by(area, year, group) %>%
+    summarise(deaths = sum(deaths, na.rm = T))
+  # Plot
+  ggplot(xi, aes(x = year, y = deaths / 1000, group = year, fill = group)) +
+    geom_bar(stat = "identity", size = 1.25, alpha = 0.8, color = "black") +
+    facet_wrap(area ~ .) +
+    scale_fill_manual(values = c("darkgreen", "darkred", "darkorange")) +
+    theme_agData(legend.position = "none") +
+    labs(y = "Thousand Deaths", x = NULL,
+         caption = "\xa9 www.dblogr.com/  |  Data: OurWorldInData")
+}
+```
+
+---
+
+## Germany
+
+```{r}
+mp <- deathPlot_Yearly(Area = "Germany")
+ggsave("world_deaths_3_01.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_3_01.png)
+
+---
+
+## Sweden
+
+```{r}
+mp <- deathPlot_Yearly(Area = "Sweden")
+ggsave("world_deaths_3_02.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_3_02.png)
+
+---
+
+## Norway
+
+```{r}
+mp <- deathPlot_Yearly(Area = "Norway")
+ggsave("world_deaths_3_03.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_3_03.png)
+
+---
+
+## Italy
+
+```{r}
+mp <- deathPlot_Yearly(Area = "Italy")
+ggsave("world_deaths_3_04.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_3_04.png)
+
+---
+
+## France
+
+```{r}
+mp <- deathPlot_Yearly(Area = "France")
+ggsave("world_deaths_3_05.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_3_05.png)
+
+---
+
+## Brazil
+
+```{r}
+mp <- deathPlot_Yearly(Area = "Brazil")
+ggsave("world_deaths_3_06.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_3_06.png)
+
+---
+
+## Russia
+
+```{r}
+mp <- deathPlot_Yearly(Area = "Russia")
+ggsave("world_deaths_3_07.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_3_07.png)
+
+---
+
+## Egypt
+
+```{r}
+mp <- deathPlot_Yearly(Area = "Egypt")
+ggsave("world_deaths_3_08.png", mp, width = 6, height = 4)
+```
+
+![](world_deaths_3_08.png)
 
 ---
 

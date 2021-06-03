@@ -40,3 +40,10 @@ user_groups:
 ---
 
 I was born in Regina, Saskatchewan and graduated with a BSc in Biology from the [University of Regina](https://www.uregina.ca/) in 2012, followed by a MSc in Agrobiotechnology from [Justus-Liebig-Universität Gießen](https://www.uni-giessen.de/) (University of Giessen, Germany) in 2015. I now work in the Plant Sciences department at the [University of Saskatchewan](https://www.usask.ca/) and have been involved in two major lentil (*Lens culinaris*) research projects [**AGILE**](https://knowpulse.usask.ca/study/2675314) & [**EVOLVES**](https://knowpulse.usask.ca/study/2691111). 
+
+<form action="https://www.paypal.com/donate" method="post" target="_top">
+<input type="hidden" name="business" value="wrightmderek@gmail.com" />
+<input type="hidden" name="currency_code" value="CAD" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" height="1" />
+</form>

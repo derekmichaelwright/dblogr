@@ -27,10 +27,10 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 Using statistics to mislead can be a trivial thing. This vignette will go through some examples of how to one can mislead people with improper graphs.
 
-1. Truncating the y-axis
-2. Using dual y-axes
-3. Spurious Correlations
-4. Cherry picking data
+1. [Truncating The y-axis](#1._truncating_the_y-axis)
+2. [Dual y-axes](#2._dual_y-axis)
+3. [Spurious Correlations](#3._spurious_correlations)
+4. [Cherry Picking Data](#4._cherry_picking_data)
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")

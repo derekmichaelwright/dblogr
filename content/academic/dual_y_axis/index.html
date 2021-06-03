@@ -2,7 +2,7 @@
 title: "Dual y-Axis"
 subtitle: "How to create a plot with dual y-axes in R"
 summary:  "How to create a plot with dual y-axes in R"
-date: "2021-06-01"
+date: "2021-06-02"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/academic/dual_y_axis)"
 tags: [ "dblogr", "R" ]
 weight: 3
@@ -57,7 +57,7 @@ DT::datatable(xx)</code></pre>
 <h1>Single y-axis</h1>
 <p>First lets create a plot of Air Temperature.</p>
 <pre class="r"><code>mp1 &lt;- ggplot(xx, aes(x = Date)) +
-  geom_line(aes(y = Air.Temperature, color = &quot;1&quot;)) +
+  geom_line(aes(y = Air.Temperature, color = &quot;1&quot;), size = 1.25) +
   scale_color_manual(name = NULL, values = &quot;darkred&quot;, labels = &quot;Air Temp&quot;) +
   scale_x_date(date_labels = &quot;%b&quot; , date_breaks = &quot;1 month&quot;) +
   labs(title = &quot;Environmental Data&quot;, y = &quot;Temperature (\u00B0C)&quot;, x = NULL) +
@@ -67,14 +67,14 @@ mp1</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Now lets add a second set of data (Soil Temperature), in this case it uses the same unit as the first (°C).</p>
 <pre class="r"><code>mp2 &lt;- mp1 + 
-  geom_line(aes(y = Soil.Temperature, color = &quot;2&quot;)) +
+  geom_line(aes(y = Soil.Temperature, color = &quot;2&quot;), size = 1.25) +
   scale_color_manual(name = NULL, values = c(&quot;darkred&quot;,&quot;red&quot;), 
                      labels = c(&quot;Air Temp&quot;,&quot;Soil Temp&quot;))
 mp2</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>But when we add another data set (Day Length) using different units (hours), problems arise.</p>
 <pre class="r"><code>mp3 &lt;- mp2 + 
-  geom_line(aes(y = Day.Length, color = &quot;3&quot;)) +
+  geom_line(aes(y = Day.Length, color = &quot;3&quot;), size = 1.25) +
   scale_color_manual(name = NULL, values = c(&quot;darkred&quot;,&quot;red&quot;,&quot;steelblue&quot;), 
                      labels = c(&quot;Air Temp&quot;,&quot;Soil Temp&quot;,&quot;DayLength&quot;))
 mp3</code></pre>
@@ -113,7 +113,7 @@ xx &lt;- xx %&gt;%
 <pre class="r"><code>xx &lt;- xx %&gt;% 
   mutate(Day.Length_scaled = scales::rescale(Day.Length, to = c(y1_min, y1_max)))</code></pre>
 <pre class="r"><code>mp4 &lt;- mp3 + 
-  geom_line(data = xx, aes(y = Day.Length_scaled, color = &quot;4&quot;)) +
+  geom_line(data = xx, aes(y = Day.Length_scaled, color = &quot;4&quot;), size = 1.25) +
   scale_color_manual(name = NULL, values = c(&quot;darkred&quot;,&quot;red&quot;,&quot;steelblue&quot;,&quot;darkblue&quot;), 
                      labels = c(&quot;Air Temp&quot;,&quot;Soil Temp&quot;,&quot;Day Length&quot;,&quot;Day Length*&quot;))
 mp4</code></pre>
@@ -125,7 +125,7 @@ mp4</code></pre>
 <div id="double-y-axis" class="section level1">
 <h1>Double y-axis</h1>
 <pre class="r"><code>mp5 &lt;- mp2 +
-  geom_line(data = xx, aes(y = Day.Length_scaled, color = &quot;4&quot;)) +
+  geom_line(data = xx, aes(y = Day.Length_scaled, color = &quot;4&quot;), size = 1.25) +
   scale_color_manual(name = NULL, values = c(&quot;darkred&quot;,&quot;red&quot;,&quot;darkblue&quot;), 
                      labels = c(&quot;Air Temp&quot;,&quot;Soil Temp&quot;,&quot;Day Length&quot;)) +
   scale_y_continuous(sec.axis = sec_axis(~ (. - y1_min) * (y2_max - y2_min) / 

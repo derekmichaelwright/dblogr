@@ -2,7 +2,7 @@
 title: "Deaths In Canada"
 subtitle: "An exploration of weekly deaths in Canada"
 summary:  "An exploration of weekly deaths in Canada"
-date: "2021-06-01"
+date: "2021-06-02"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_deaths/)"
 tags: [ "dblogr", "Demographics" ]
 weight: 2
@@ -472,8 +472,22 @@ ggsave(&quot;canada_deaths_6_01.png&quot;, mp, width = 6, height = 4)</code></pr
 <p><img src="canada_deaths_6_01.png" /></p>
 <hr />
 <pre class="r"><code># https://www.bloomberg.com/news/articles/2021-06-01/trudeau-s-covid-19-spending-was-tilted-to-high-earning-canadians?sref=7iNjhqyV
+quantiles &lt;- c(&quot;Lowest&quot;, &quot;Second&quot;, &quot;Third&quot;, &quot;Forth&quot;, &quot;Highest&quot;)
+traits1 &lt;- c(&quot;Percent&quot;, &quot;Value&quot;, &quot;PercentIncome&quot;)
+traits2 &lt;- c(&quot;Percent of Releif&quot;, &quot;Average Value Per Household&quot;, &quot;Percent of Income&quot;)
 xx &lt;- read.csv(&quot;covid_releif.csv&quot;) %&gt;%
-  gather(Trait, Value, 2:4)
-ggplot(xx)</code></pre>
+  gather(Trait, Value, 2:4) %&gt;%
+  mutate(Quantile = factor(Quantile, levels = quantiles),
+         Trait = plyr::mapvalues(Trait, traits1, traits2),
+         Trait = factor(Trait, levels = traits2))
+mp &lt;- ggplot(xx, aes(x = Quantile, y = Value, fill = Quantile)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8) +
+  facet_wrap(Trait ~ ., ncol = 3, scale = &quot;free_y&quot;) +
+  scale_fill_manual(values = agData_Colors) +
+  theme_agData(legend.position = &quot;none&quot;,
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = &quot;Distribution of COVID Releif in Canada&quot;, y = NULL, x = NULL,
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;covid_releif.png&quot;, mp, width = 8, height = 4)</code></pre>
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

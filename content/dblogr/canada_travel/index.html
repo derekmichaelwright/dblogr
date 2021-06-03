@@ -1,0 +1,98 @@
+---
+title: "International Travel in Canada"
+subtitle: "Data for international travel in Canada with STATCAN data"
+summary:  "Data for international travel in Canada with STATCAN data"
+date: "2021-06-03"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_travel/)"
+tags: [ "dblogr", "Economics" ]
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/dblogr/canada_travel.html"
+---
+
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
+
+
+<hr />
+<div id="data-source" class="section level1">
+<h1>Data Source</h1>
+<p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2410004101" class="uri">https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2410004101</a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_travel/2410004101_databaseLoadingData.csv">
+<button class="btn btn-success"><i class="fa fa-save"></i> 2410004101_databaseLoadingData.csv</button>
+</a>
+<hr />
+</div>
+<div id="prepare-data" class="section level1">
+<h1>Prepare Data</h1>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+# Prep data
+d1 &lt;- read.csv(&quot;2410004101_databaseLoadingData.csv&quot;) %&gt;%
+  select(Date=1, Area=GEO, Unit=UOM, Value=VALUE,
+         Measurement=Traveller.characteristics) %&gt;%
+  mutate(Year = as.numeric(substr(Date, 1, 4)),
+         Month = as.numeric(substr(Date, 6, 8)),
+         Date = as.Date(paste0(Date,&quot;-15&quot;), format = &quot;%Y-%m-%d&quot;))</code></pre>
+<hr />
+</div>
+<div id="yearly" class="section level1">
+<h1>Yearly</h1>
+<pre class="r"><code># Prep data
+colors &lt;- c(&quot;darkgreen&quot;, &quot;darkred&quot;, &quot;darkorange&quot;)
+xx &lt;- d1 %&gt;% 
+  filter(Measurement != &quot;Total international travellers&quot;) %&gt;%
+  group_by(Year, Measurement) %&gt;%
+  summarise(Value = sum(Value))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement)) +
+  geom_line(size = 1.5, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = colors) +
+  scale_x_continuous(minor_breaks = 1970:2021) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;International Travellers in Canada&quot;,
+       y = &quot;Million People&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_travel_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_travel_01.png" /></p>
+<hr />
+</div>
+<div id="monthly" class="section level1">
+<h1>Monthly</h1>
+<pre class="r"><code># Prep data
+xx &lt;- d1 %&gt;% filter(Measurement != &quot;Total international travellers&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
+  geom_line(size = 1, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = colors) +
+  scale_x_date(date_breaks = &quot;10 years&quot;, date_labels = &quot;%Y&quot;, date_minor_breaks = &quot;1 year&quot;) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;International Travellers in Canada&quot;,
+       y = &quot;Million People&quot;, x = NULL,
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_travel_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_travel_02.png" /></p>
+<hr />
+<p>2019 vs 2020</p>
+<pre class="r"><code># Prep data
+xx &lt;- d1 %&gt;% 
+  filter(Year &gt; 2018, Measurement != &quot;Total international travellers&quot;)
+# Plot
+mp &lt;- ggplot(xx, aes(x = Date, y = Value / 1000000, fill = Measurement)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8) + 
+  scale_fill_manual(name = NULL, values = colors) +
+  #scale_x_date(date_breaks = &quot;1 Month&quot;, date_labels = &quot;%Y-%m&quot;) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(title = &quot;International Travellers in Canada&quot;,
+       y = &quot;Million People&quot;, x = NULL,
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_travel_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_travel_03.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>

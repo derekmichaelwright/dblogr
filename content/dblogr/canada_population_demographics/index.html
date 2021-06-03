@@ -2,7 +2,7 @@
 title: "Population Demographics In Canada"
 subtitle: "Population Pyramids with R"
 summary:  "Population Pyramids with R"
-date: "2021-06-01"
+date: "2021-06-03"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/population_demographics_canada/)"
 tags: [ "dblogr", "Demographics" ]
 weight: 2
@@ -62,12 +62,20 @@ d3 &lt;- read.csv(&quot;1710000801_databaseLoadingData.csv&quot;) %&gt;%
 </div>
 <div id="population" class="section level1">
 <h1>Population</h1>
-<pre class="r"><code># Plot
-mp &lt;- ggplot(d1, aes(x = Year, y = Value / 1000000, color = Area)) +
+<pre class="r"><code># Prep data
+areas &lt;- c(&quot;Canada&quot;, &quot;Ontario&quot;, &quot;Quebec&quot;, &quot;New Brunswick&quot;, &quot;Nova Scotia&quot;,
+           &quot;Prince Edward Island&quot;, &quot;Newfoundland and Labrador&quot;,
+           &quot;British Columbia&quot;, &quot;Alberta&quot;,&quot;Saskatchewan&quot;, &quot;Manitoba&quot;,
+           &quot;Yukon&quot;, &quot;Northwest Territories including Nunavut&quot;, 
+           &quot;Northwest Territories&quot;, &quot;Nunavut&quot;)
+xx &lt;- d1 %&gt;% filter(Area %in% areas) %&gt;%
+  mutate(Area = factor(Area, levels = areas))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   geom_line(size = 1) +
   facet_wrap(Area ~ ., ncol = 4, scales = &quot;free_y&quot;) +
   theme_agData(legend.position = &quot;none&quot;, 
-               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(y = &quot;Million People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/ | Data: STATCAN&quot;)
 ggsave(&quot;canada_population_demographics_1_01.png&quot;, mp, width = 10, height = 6)</code></pre>
@@ -78,7 +86,7 @@ ggsave(&quot;canada_population_demographics_1_01.png&quot;, mp, width = 10, heig
 <h1>Population Pyramids</h1>
 <div id="create-plotting-functions" class="section level2">
 <h2>Create Plotting Functions</h2>
-<pre class="r"><code>gg_PopDem_plot &lt;- function(areas = &quot;Saskatchewan&quot;, years = 2019, anim = F) {
+<pre class="r"><code>gg_PopDem_plot &lt;- function(areas = &quot;Saskatchewan&quot;, title = areas, years = 2019, anim = F) {
   # Prep data
   ages &lt;- c(&quot;0 to 4 years&quot;, &quot;5 to 9 years&quot;, &quot;10 to 14 years&quot;, &quot;15 to 19 years&quot;,
           &quot;20 to 24 years&quot;, &quot;25 to 29 years&quot;, &quot;30 to 34 years&quot;, &quot;35 to 39 years&quot;,
@@ -97,10 +105,10 @@ ggsave(&quot;canada_population_demographics_1_01.png&quot;, mp, width = 10, heig
              aes(y = -Value), stat = &quot;identity&quot;, alpha = 0.8) +
     scale_fill_manual(values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;))
   if(anim == T) { mp &lt;- mp + facet_grid(. ~ Area) }
-  if(anim == F) { mp &lt;- mp + facet_grid(. ~ Year) + labs(subtitle = paste(areas, collapse = &quot; + &quot;)) }
+  if(anim == F) { mp &lt;- mp + facet_grid(. ~ Year) + labs(title = title) }
   mp + 
     theme_agData(legend.position = &quot;bottom&quot;, 
-                 axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+                 axis.text.x = element_text(angle = 45, hjust = 1)) +
     labs(x = NULL, y = &quot;Thousand People&quot;,
          caption = &quot;\xa9 www.dblogr.com/ | Data: STATCAN&quot;) +
     coord_cartesian(ylim = c(-max(xx$Value), max(xx$Value))) +
@@ -117,11 +125,11 @@ gg_PopDem_anim &lt;- function(areas = c(&quot;Saskatchewan&quot;, &quot;Alberta&
 </div>
 <div id="canada" class="section level2">
 <h2>Canada</h2>
-<pre class="r"><code>mp &lt;- gg_PopDem_plot(&quot;Canada&quot;, years = c(1971, 2019))
-ggsave(&quot;canada_population_demographics_2_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<pre class="r"><code>mp &lt;- gg_PopDem_plot(areas = &quot;Canada&quot;, years = c(1971, 1980, 1990, 2000, 2020))
+ggsave(&quot;canada_population_demographics_2_01.png&quot;, mp, width = 10, height = 4)</code></pre>
 <p><img src="canada_population_demographics_2_01.png" /></p>
 <hr />
-<pre class="r"><code>mp &lt;- gg_PopDem_anim(&quot;Canada&quot;)
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas = &quot;Canada&quot;)
 anim_save(&quot;canada_population_demographics_gif_2_01.gif&quot;, mp, width = 600, height = 400)</code></pre>
 <p><img src="canada_population_demographics_gif_2_01.gif" /></p>
 <hr />
@@ -130,11 +138,12 @@ anim_save(&quot;canada_population_demographics_gif_2_01.gif&quot;, mp, width = 6
 <h2>Eastern Canada</h2>
 <pre class="r"><code>areas &lt;- c(&quot;Ontario&quot;, &quot;Quebec&quot;,&quot;New Brunswick&quot;, &quot;Nova Scotia&quot;,
            &quot;Prince Edward Island&quot;, &quot;Newfoundland and Labrador&quot;)
-mp &lt;- gg_PopDem_plot(areas, years = c(1971, 2019))
-ggsave(&quot;canada_population_demographics_2_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+mp &lt;- gg_PopDem_plot(areas = areas, title = &quot;Eastern Canada&quot;,
+                     years = c(1971, 1980, 1990, 2000, 2020))
+ggsave(&quot;canada_population_demographics_2_02.png&quot;, mp, width = 10, height = 4)</code></pre>
 <p><img src="canada_population_demographics_2_02.png" /></p>
 <hr />
-<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas)
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas = areas)
 anim_save(paste0(&quot;canada_population_demographics_gif_2_02.gif&quot;), mp, width = 600, height = 400)</code></pre>
 <p><img src="canada_population_demographics_gif_2_02.gif" /></p>
 <hr />
@@ -143,55 +152,56 @@ anim_save(paste0(&quot;canada_population_demographics_gif_2_02.gif&quot;), mp, w
 <h2>Western Canada</h2>
 <pre class="r"><code>areas &lt;- c(&quot;British Columbia&quot;, &quot;Alberta&quot;,&quot;Saskatchewan&quot;, &quot;Manitoba&quot;,
            &quot;Yukon&quot;, &quot;Northwest Territories&quot;, &quot;Nunavut&quot;)
-mp &lt;- gg_PopDem_plot(areas, years = c(1975, 2019))
-ggsave(&quot;canada_population_demographics_2_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+mp &lt;- gg_PopDem_plot(areas = areas, title = &quot;Western Canada&quot;,
+                     years = c(1971, 1980, 1990, 2000, 2020))
+ggsave(&quot;canada_population_demographics_2_03.png&quot;, mp, width = 10, height = 4)</code></pre>
 <p><img src="canada_population_demographics_2_03.png" /></p>
 <hr />
-<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas)
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas = areas)
 anim_save(paste0(&quot;canada_population_demographics_gif_2_03.gif&quot;), mp, width = 600, height = 400)</code></pre>
 <p><img src="canada_population_demographics_gif_2_03.gif" /></p>
 <hr />
 </div>
 <div id="british-columbia" class="section level2">
 <h2>British Columbia</h2>
-<pre class="r"><code>mp &lt;- gg_PopDem_plot(&quot;British Columbia&quot;, years = c(1971, 2019))
-ggsave(&quot;canada_population_demographics_2_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<pre class="r"><code>mp &lt;- gg_PopDem_plot(areas = &quot;British Columbia&quot;, years = c(1971, 1980, 1990, 2000, 2020))
+ggsave(&quot;canada_population_demographics_2_04.png&quot;, mp, width = 10, height = 4)</code></pre>
 <p><img src="canada_population_demographics_2_04.png" /></p>
 <hr />
-<pre class="r"><code>mp &lt;- gg_PopDem_anim(&quot;British Columbia&quot;)
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas = &quot;British Columbia&quot;)
 anim_save(paste0(&quot;canada_population_demographics_gif_2_04.gif&quot;), mp, width = 600, height = 400)</code></pre>
 <p><img src="canada_population_demographics_gif_2_04.gif" /></p>
 <hr />
 </div>
 <div id="alberta" class="section level2">
 <h2>Alberta</h2>
-<pre class="r"><code>mp &lt;- gg_PopDem_plot(&quot;Alberta&quot;, years = c(1971, 2019))
-ggsave(&quot;canada_population_demographics_2_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<pre class="r"><code>mp &lt;- gg_PopDem_plot(areas = &quot;Alberta&quot;, years = c(1971, 1980, 1990, 2000, 2020))
+ggsave(&quot;canada_population_demographics_2_05.png&quot;, mp, width = 10, height = 4)</code></pre>
 <p><img src="canada_population_demographics_2_05.png" /></p>
 <hr />
-<pre class="r"><code>mp &lt;- gg_PopDem_anim(&quot;Alberta&quot;)
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas = &quot;Alberta&quot;)
 anim_save(paste0(&quot;canada_population_demographics_gif_2_05.gif&quot;), mp, width = 600, height = 400)</code></pre>
 <p><img src="canada_population_demographics_gif_2_05.gif" /></p>
 <hr />
 </div>
 <div id="saskatchewan" class="section level2">
 <h2>Saskatchewan</h2>
-<pre class="r"><code>mp &lt;- gg_PopDem_plot(&quot;Saskatchewan&quot;, years = c(1971, 2019))
-ggsave(&quot;canada_population_demographics_2_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<pre class="r"><code>mp &lt;- gg_PopDem_plot(areas = &quot;Saskatchewan&quot;, years = c(1971, 1980, 1990, 2000, 2020))
+ggsave(&quot;canada_population_demographics_2_06.png&quot;, mp, width = 10, height = 4)</code></pre>
 <p><img src="canada_population_demographics_2_06.png" /></p>
 <hr />
-<pre class="r"><code>mp &lt;- gg_PopDem_anim(&quot;Saskatchewan&quot;)
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas = &quot;Saskatchewan&quot;)
 anim_save(paste0(&quot;canada_population_demographics_gif_2_06.gif&quot;), mp, width = 600, height = 400)</code></pre>
 <p><img src="canada_population_demographics_gif_2_06.gif" /></p>
 <hr />
 </div>
 <div id="ontario" class="section level2">
 <h2>Ontario</h2>
-<pre class="r"><code>mp &lt;- gg_PopDem_plot(&quot;Ontario&quot;, years = c(1971, 2019))
-ggsave(&quot;canada_population_demographics_2_07.png&quot;, mp, width = 6, height = 4)</code></pre>
+<pre class="r"><code>mp &lt;- gg_PopDem_plot(areas = &quot;Ontario&quot;, years = c(1971, 1980, 1990, 2000, 2020))
+ggsave(&quot;canada_population_demographics_2_07.png&quot;, mp, width = 10, height = 4)</code></pre>
 <p><img src="canada_population_demographics_2_07.png" /></p>
 <hr />
-<pre class="r"><code>mp &lt;- gg_PopDem_anim(&quot;Saskatchewan&quot;)
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas = &quot;Saskatchewan&quot;)
 anim_save(paste0(&quot;canada_population_demographics_gif_2_07.gif&quot;), mp, width = 600, height = 400)</code></pre>
 <p><img src="canada_population_demographics_gif_2_07.gif" /></p>
 <hr />
@@ -214,7 +224,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Sex)) +
   geom_line(size = 1, alpha = 0.8) +
   facet_wrap(Age ~ ., scales = &quot;free_y&quot;, ncol = 6) +
   scale_color_manual(values = c(&quot;deeppink3&quot;,&quot;darkblue&quot;)) +
-  theme_agData(legend.position = &quot;bottom&quot;) +
+  theme_agData(legend.position = &quot;bottom&quot;,
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(y = &quot;Million&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/ | Data: STATCAN&quot;)
 ggsave(&quot;canada_population_demographics_3_01.png&quot;, mp, width = 12, height = 6)</code></pre>
@@ -241,16 +252,22 @@ anim_save(&quot;canada_population_demographics_gif_3_01.gif&quot;, mp, width = 6
 <div id="immigration" class="section level1">
 <h1>Immigration</h1>
 <pre class="r"><code># Prep data
+areas &lt;- c(&quot;Canada&quot;, &quot;Ontario&quot;, &quot;Quebec&quot;, &quot;New Brunswick&quot;, &quot;Nova Scotia&quot;,
+           &quot;Prince Edward Island&quot;, &quot;Newfoundland and Labrador&quot;,
+           &quot;British Columbia&quot;, &quot;Alberta&quot;,&quot;Saskatchewan&quot;, &quot;Manitoba&quot;,
+           &quot;Yukon&quot;, &quot;Northwest Territories including Nunavut&quot;, 
+           &quot;Northwest Territories&quot;, &quot;Nunavut&quot;)
 colors &lt;- c(&quot;darkgreen&quot;,&quot;black&quot;,&quot;darkred&quot;,&quot;darkblue&quot;)
 measures &lt;- c(&quot;Births&quot;, &quot;Deaths&quot;, &quot;Immigrants&quot;, &quot;Emigrants&quot;)
-xx &lt;- d3 %&gt;% filter(Measurement %in% measures)
+xx &lt;- d3 %&gt;% filter(Measurement %in% measures) %&gt;%
+  mutate(Area = factor(Area, levels = areas))
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   geom_line(size = 1, alpha = 0.8) +
   facet_wrap(Area ~ ., ncol = 5, scales = &quot;free_y&quot;) +
   scale_color_manual(values = colors) +
   theme_agData(legend.position = &quot;bottom&quot;, 
-               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(y = &quot;Thousand People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/ | Data: STATCAN&quot;)
 ggsave(&quot;canada_population_demographics_4_01.png&quot;, mp, width = 12, height = 6)</code></pre>
