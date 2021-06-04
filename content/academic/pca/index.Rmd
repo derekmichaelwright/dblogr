@@ -6,9 +6,9 @@ date: "`r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/pca)"
 tags: [ "Academic", "Tutorial", "R" ]
 weight: 4
-codefolding_show: "show"
 image:
   preview_only: true
+codefolding_show: "show"
 links:
   - icon: "file-code"
     icon_pack: "far"
