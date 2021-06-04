@@ -89,7 +89,7 @@ deathPlot1 <- function(area = "United States") {
     summarise(Value = sum(Number.of.Deaths))
   # Plot
   ggplot(xx, aes(x = Date, y = Value)) +
-    geom_line(color = "darkred", size = 1) +
+    geom_line(color = "darkred", size = 1, alpha = 0.8) +
     geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
     scale_x_date(date_breaks = "1 year", date_labels = "%Y", minor_breaks = "1 year") +
     theme_agData() +
@@ -123,7 +123,7 @@ deathPlot2 <- function(areas = "United States") {
     summarise(Value = sum(Number.of.Deaths))
   # Plot
   ggplot(xx, aes(x = JulianDate, y = Value, group = Year, color = YearGroup, alpha = YearGroup)) +
-    geom_line() +
+    geom_line(size = 1, alpha = 0.8) +
     facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
     scale_color_manual(name = NULL, values = c("darkgreen","darkred", "darkorange")) +
     scale_alpha_manual(name = NULL, values = c(0.5,1,1)) +
@@ -161,10 +161,10 @@ ggsave("usa_deaths_2_02.png", mp, width = 6, height = 4)
 
 ---
 
-## California
+## New Jersey
 
 ```{r}
-mp <- deathPlot2(areas = "California")
+mp <- deathPlot2(areas = "New Jersey")
 ggsave("usa_deaths_2_03.png", mp, width = 6, height = 4)
 ```
 
@@ -172,10 +172,10 @@ ggsave("usa_deaths_2_03.png", mp, width = 6, height = 4)
 
 ---
 
-## Texas
+## California
 
 ```{r}
-mp <- deathPlot2(areas = "Texas")
+mp <- deathPlot2(areas = "California")
 ggsave("usa_deaths_2_04.png", mp, width = 6, height = 4)
 ```
 
@@ -183,10 +183,10 @@ ggsave("usa_deaths_2_04.png", mp, width = 6, height = 4)
 
 ---
 
-## Florida
+## Texas
 
 ```{r}
-mp <- deathPlot2(areas = "Florida")
+mp <- deathPlot2(areas = "Texas")
 ggsave("usa_deaths_2_05.png", mp, width = 6, height = 4)
 ```
 
@@ -194,10 +194,10 @@ ggsave("usa_deaths_2_05.png", mp, width = 6, height = 4)
 
 ---
 
-## Washington
+## Florida
 
 ```{r}
-mp <- deathPlot2(areas = "Washington")
+mp <- deathPlot2(areas = "Florida")
 ggsave("usa_deaths_2_06.png", mp, width = 6, height = 4)
 ```
 
@@ -205,10 +205,10 @@ ggsave("usa_deaths_2_06.png", mp, width = 6, height = 4)
 
 ---
 
-## Montana
+## Washington
 
 ```{r}
-mp <- deathPlot2(areas = "Montana")
+mp <- deathPlot2(areas = "Washington")
 ggsave("usa_deaths_2_07.png", mp, width = 6, height = 4)
 ```
 
@@ -216,10 +216,10 @@ ggsave("usa_deaths_2_07.png", mp, width = 6, height = 4)
 
 ---
 
-## North Dakota
+## Montana
 
 ```{r}
-mp <- deathPlot2(areas = "North Dakota")
+mp <- deathPlot2(areas = "Montana")
 ggsave("usa_deaths_2_08.png", mp, width = 6, height = 4)
 ```
 
@@ -227,10 +227,10 @@ ggsave("usa_deaths_2_08.png", mp, width = 6, height = 4)
 
 ---
 
-## South Dakota
+## North Dakota
 
 ```{r}
-mp <- deathPlot2(areas = "South Dakota")
+mp <- deathPlot2(areas = "North Dakota")
 ggsave("usa_deaths_2_09.png", mp, width = 6, height = 4)
 ```
 
@@ -238,14 +238,25 @@ ggsave("usa_deaths_2_09.png", mp, width = 6, height = 4)
 
 ---
 
+## South Dakota
+
+```{r}
+mp <- deathPlot2(areas = "South Dakota")
+ggsave("usa_deaths_2_10.png", mp, width = 6, height = 4)
+```
+
+![](usa_deaths_2_10.png)
+
+---
+
 ## Selected States
 
 ```{r}
 mp <- deathPlot2(areas = c("New York", "Texas", "Montana"))
-ggsave("usa_deaths_2_10.png", mp, width = 12, height = 4)
+ggsave("usa_deaths_2_11.png", mp, width = 12, height = 4)
 ```
 
-![](usa_deaths_2_10.png)
+![](usa_deaths_2_11.png)
 
 ---
 
@@ -258,7 +269,7 @@ deathPlot3 <- function(area) {
     filter(Type == "Unweighted", Area == area)
   # Plot
   ggplot(xx, aes(x = JulianDate, y = Number.of.Deaths)) +
-    geom_line(aes(group = Year, color = YearGroup)) +
+    geom_line(aes(group = Year, color = YearGroup), alpha = 0.8) +
     facet_grid(Area ~ Age.Group) +
     scale_color_manual(values = c("darkgreen", "darkred", "darkorange")) +
     theme_agData(legend.position = "bottom") +
@@ -295,10 +306,10 @@ ggsave("usa_deaths_3_02.png", mp, width = 12, height = 4)
 
 ---
 
-## California
+## New Jersey
 
 ```{r}
-mp <- deathPlot3(area = "California")
+mp <- deathPlot3(area = "New Jersey")
 ggsave("usa_deaths_3_03.png", mp, width = 12, height = 4)
 ```
 
@@ -306,10 +317,10 @@ ggsave("usa_deaths_3_03.png", mp, width = 12, height = 4)
 
 ---
 
-## Texas
+## California
 
 ```{r}
-mp <- deathPlot3(area = "Texas")
+mp <- deathPlot3(area = "California")
 ggsave("usa_deaths_3_04.png", mp, width = 12, height = 4)
 ```
 
@@ -317,10 +328,10 @@ ggsave("usa_deaths_3_04.png", mp, width = 12, height = 4)
 
 ---
 
-## Florida
+## Texas
 
 ```{r}
-mp <- deathPlot3(area = "Florida")
+mp <- deathPlot3(area = "Texas")
 ggsave("usa_deaths_3_05.png", mp, width = 12, height = 4)
 ```
 
@@ -328,10 +339,10 @@ ggsave("usa_deaths_3_05.png", mp, width = 12, height = 4)
 
 ---
 
-## Washington
+## Florida
 
 ```{r}
-mp <- deathPlot3(area = "Washington")
+mp <- deathPlot3(area = "Florida")
 ggsave("usa_deaths_3_06.png", mp, width = 12, height = 4)
 ```
 
@@ -339,10 +350,10 @@ ggsave("usa_deaths_3_06.png", mp, width = 12, height = 4)
 
 ---
 
-## Montana
+## Washington
 
 ```{r}
-mp <- deathPlot3(area = "Montana")
+mp <- deathPlot3(area = "Washington")
 ggsave("usa_deaths_3_07.png", mp, width = 12, height = 4)
 ```
 
@@ -350,10 +361,10 @@ ggsave("usa_deaths_3_07.png", mp, width = 12, height = 4)
 
 ---
 
-## North Dakota
+## Montana
 
 ```{r}
-mp <- deathPlot3(area = "North Dakota")
+mp <- deathPlot3(area = "Montana")
 ggsave("usa_deaths_3_08.png", mp, width = 12, height = 4)
 ```
 
@@ -361,14 +372,25 @@ ggsave("usa_deaths_3_08.png", mp, width = 12, height = 4)
 
 ---
 
-## South Dakota
+## North Dakota
 
 ```{r}
-mp <- deathPlot3(area = "South Dakota")
+mp <- deathPlot3(area = "North Dakota")
 ggsave("usa_deaths_3_09.png", mp, width = 12, height = 4)
 ```
 
 ![](usa_deaths_3_09.png)
+
+---
+
+## South Dakota
+
+```{r}
+mp <- deathPlot3(area = "South Dakota")
+ggsave("usa_deaths_3_10.png", mp, width = 12, height = 4)
+```
+
+![](usa_deaths_3_10.png)
 
 ---
 
@@ -436,15 +458,16 @@ ggsave("usa_deaths_4_03.png", mp, width = 6, height = 4)
 
 ---
 
-## New York vs Florida
+## New York vs New Jersey vs Florida
 
 ```{r}
 # Prep data
-x1 <- xx %>% filter(State.Abbreviation %in% c("FL","NY"))
+colors <- c("darkred", "darkblue", "steelblue")
+x1 <- xx %>% filter(State.Abbreviation %in% c("FL","NY","NJ"))
 # Plot
 mp <- ggplot(x1, aes(x = Date, y = Death.Rate, color = Area)) +
   geom_line() +
-  scale_color_manual(values = c("darkred","darkorange")) +
+  scale_color_manual(values = colors) +
   theme_agData(legend.position = "bottom") +
   labs(x = NULL, y = "Deaths per million people per week", 
        caption = "\xa9 www.dblogr.com/  |  Data: CDC")
@@ -452,6 +475,55 @@ ggsave("usa_deaths_4_04.png", mp, width = 6, height = 4)
 ```
 
 ![](usa_deaths_4_04.png)
+
+---
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  filter(Type == "Unweighted",
+         State.Abbreviation %in% c("FL","NY","NJ")) %>%
+  group_by(Area, State.Abbreviation, Date) %>%
+  summarise(Number.of.Deaths = sum(Number.of.Deaths, na.rm = T)) %>%
+  ungroup() %>% 
+  left_join(pp, by = "Area") %>%
+  mutate(Death.Rate = 1000000 * Number.of.Deaths / Population)
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Death.Rate, color = Area)) +
+  geom_line() +
+  scale_color_manual(values = colors) +
+  theme_agData(legend.position = "bottom") +
+  labs(x = NULL, y = "Deaths per million people per week", 
+       caption = "\xa9 www.dblogr.com/  |  Data: CDC")
+ggsave("usa_deaths_4_05.png", mp, width = 6, height = 4)
+```
+
+![](usa_deaths_4_05.png)
+
+---
+
+# All States
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  filter(Type == "Unweighted") %>%
+  group_by(Area, State.Abbreviation, Date) %>%
+  summarise(Number.of.Deaths = sum(Number.of.Deaths, na.rm = T)) %>%
+  ungroup() %>% 
+  left_join(pp, by = "Area") %>%
+  mutate(Death.Rate = 1000000 * Number.of.Deaths / Population)
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Death.Rate, group = Area)) +
+  geom_line(color = "darkred", alpha = 0.4, size = 0.5) +
+  scale_color_manual(values = colors) +
+  theme_agData(legend.position = "bottom") +
+  labs(x = NULL, y = "Deaths per million people per week", 
+       caption = "\xa9 www.dblogr.com/  |  Data: CDC")
+ggsave("usa_deaths_4_06.png", mp, width = 6, height = 4)
+```
+
+![](usa_deaths_4_06.png)
 
 ---
 

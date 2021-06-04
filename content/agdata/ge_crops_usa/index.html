@@ -2,7 +2,7 @@
 title: "USA Genetically Engineered Crop Production"
 subtitle: "Graphs of GE crop production using USDA data"
 summary:  "Graphs of GE crop production using USDA data"
-date: "2021-06-02"
+date: "2021-06-04"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/ge_crops_usa/)"
 tags: [ "agData", "GE Crops", "Maize", "Soybean", "Cotton" ]
 weight: 3
@@ -28,10 +28,14 @@ library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
 xx &lt;- agData_USDA_GE_Crops %&gt;% 
   filter(Area == &quot;U.S.&quot;, Measurement == &quot;All GE varieties&quot;) %&gt;%
   mutate(Crop = gsub(&quot;Genetically engineered \\(GE\\)&quot;, &quot;GE&quot;, Crop))
+xE &lt;- xx %&gt;% top_n(1, Year) %&gt;% pull(Value)
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
   geom_line(size = 1.5, alpha = 0.8) +
   scale_color_manual(name = NULL, values = agData_Colors[c(2,1,3)]) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE[c(1,2)])) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.8)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(title = &quot;USA GE Crop Adoption&quot;, 
        y = &quot;Percent&quot;, x = NULL,
@@ -40,22 +44,46 @@ ggsave(&quot;ge_crops_01.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="ge_crops_01.png" /></p>
 <hr />
 </div>
+<div id="states" class="section level1">
+<h1>States</h1>
+<pre class="r"><code># Prep data
+xx &lt;- agData_USDA_GE_Crops %&gt;% 
+  filter(Area != &quot;U.S.&quot;, Measurement == &quot;All GE varieties&quot;) %&gt;%
+  mutate(Crop = gsub(&quot;Genetically engineered \\(GE\\)&quot;, &quot;GE&quot;, Crop))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
+  geom_line(size = 1.5, alpha = 0.8) +
+  facet_wrap(Area ~ ., ncol = 6) +
+  scale_color_manual(name = NULL, values = agData_Colors[c(2,1,3)]) +
+  theme_agData(legend.position = &quot;bottom&quot;,
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = &quot;USA GE Crop Adoption&quot;, 
+       y = &quot;Percent&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: USDA&quot;)
+ggsave(&quot;ge_crops_02.png&quot;, mp, width = 10, height = 8)</code></pre>
+<p><img src="ge_crops_02.png" /></p>
+<hr />
+</div>
 <div id="maize" class="section level1">
 <h1>Maize</h1>
 <pre class="r"><code># Prep data
 xx &lt;- agData_USDA_GE_Crops %&gt;% 
   filter(Area == &quot;U.S.&quot;, Crop == &quot;Genetically engineered (GE) corn varieties&quot;)
+xE &lt;- xx %&gt;% top_n(1, Year) %&gt;% pull(Value)
 # Plot
-mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Measurement, group = Measurement)) +
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   geom_line(size = 1.5, alpha = 0.8) +
-  facet_grid(Area ~ Crop) +
   scale_color_manual(name = NULL, values = agData_Colors) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.8)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
-  labs(title = &quot;GE Crop Adoption&quot;, 
+  labs(title = &quot;US GE Trait Adoption&quot;, 
+       subtitle = &quot;Genetically engineered (GE) corn varieties&quot;,
        y = &quot;Percent&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: USDA&quot;)
-ggsave(&quot;ge_crops_02.png&quot;, mp, width = 7, height = 4)</code></pre>
-<p><img src="ge_crops_02.png" /></p>
+ggsave(&quot;ge_crops_03.png&quot;, mp, width = 7, height = 4)</code></pre>
+<p><img src="ge_crops_03.png" /></p>
 <hr />
 </div>
 <div id="cotton" class="section level1">
@@ -63,17 +91,21 @@ ggsave(&quot;ge_crops_02.png&quot;, mp, width = 7, height = 4)</code></pre>
 <pre class="r"><code># Prep data
 xx &lt;- agData_USDA_GE_Crops %&gt;% 
   filter(Area == &quot;U.S.&quot;, Crop == &quot;Genetically engineered (GE) upland cotton varieties&quot;)
+xE &lt;- xx %&gt;% top_n(1, Year) %&gt;% pull(Value)
 # Plot
-mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Measurement, group = Measurement)) +
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   geom_line(size = 1.5, alpha = 0.8) +
-  facet_grid(Area ~ Crop) +
   scale_color_manual(name = NULL, values = agData_Colors) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.8)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
-  labs(title = &quot;GE Crop Adoption&quot;, 
+  labs(title = &quot;US GE Trait Adoption&quot;, 
+       subtitle = &quot;Genetically engineered (GE) upland cotton varieties&quot;,
        y = &quot;Percent&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: USDA&quot;)
-ggsave(&quot;ge_crops_03.png&quot;, mp, width = 7, height = 4)</code></pre>
-<p><img src="ge_crops_03.png" /></p>
+ggsave(&quot;ge_crops_04.png&quot;, mp, width = 7, height = 4)</code></pre>
+<p><img src="ge_crops_04.png" /></p>
 <hr />
 </div>
 <div id="soybeans" class="section level1">
@@ -81,17 +113,22 @@ ggsave(&quot;ge_crops_03.png&quot;, mp, width = 7, height = 4)</code></pre>
 <pre class="r"><code># Prep data
 xx &lt;- agData_USDA_GE_Crops %&gt;% 
   filter(Area == &quot;U.S.&quot;, Crop == &quot;Genetically engineered (GE) soybean varieties&quot;)
+xE &lt;- xx %&gt;% top_n(1, Year) %&gt;% pull(Value)
 # Plot
-mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Measurement, group = Measurement)) +
-  geom_line(size = 1.5, alpha = 0.8) +
-  facet_grid(Area ~ Crop) +
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Measurement, size = Measurement)) +
+  geom_line(alpha = 0.8) +
   scale_color_manual(name = NULL, values = agData_Colors) +
+  scale_size_manual(values = c(2,1), guide = F) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.8)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
-  labs(title = &quot;GE Crop Adoption&quot;, 
+  labs(title = &quot;US GE Trait Adoption&quot;, 
+       subtitle = &quot;Genetically engineered (GE) soybean varieties&quot;,
        y = &quot;Percent&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: USDA&quot;)
-ggsave(&quot;ge_crops_04.png&quot;, mp, width = 7, height = 4)</code></pre>
-<p><img src="ge_crops_04.png" /></p>
+ggsave(&quot;ge_crops_05.png&quot;, mp, width = 7, height = 4)</code></pre>
+<p><img src="ge_crops_05.png" /></p>
 <hr />
 </div>
 <div id="georgia" class="section level1">
@@ -99,16 +136,20 @@ ggsave(&quot;ge_crops_04.png&quot;, mp, width = 7, height = 4)</code></pre>
 <pre class="r"><code># Prep data
 xx &lt;- agData_USDA_GE_Crops %&gt;% 
   filter(Area == &quot;Georgia&quot;, Crop == &quot;Genetically engineered (GE) upland cotton varieties&quot;)
+xE &lt;- xx %&gt;% top_n(1, Year) %&gt;% pull(Value)
 # Plot
-mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Measurement, group = Measurement)) +
+mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   geom_line(size = 1.5, alpha = 0.8) +
-  facet_grid(Area ~ Crop) +
   scale_color_manual(name = NULL, values = agData_Colors) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.8)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
-  labs(title = &quot;GE Crop Adoption&quot;, 
+  labs(title = &quot;Georgia GE Trait Adoption&quot;, 
+       subtitle = &quot;Genetically engineered (GE) upland cotton varieties&quot;,
        y = &quot;Percent&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: USDA&quot;)
-ggsave(&quot;ge_crops_05.png&quot;, mp, width = 7, height = 4)</code></pre>
-<p><img src="ge_crops_05.png" /></p>
+ggsave(&quot;ge_crops_06.png&quot;, mp, width = 7, height = 4)</code></pre>
+<p><img src="ge_crops_06.png" /></p>
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

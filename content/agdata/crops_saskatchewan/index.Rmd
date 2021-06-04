@@ -125,7 +125,7 @@ mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) +
   # gganimate
   transition_states(Year)
 mp <- animate(mp, nframes = 2*(max(xx$Year) - min(xx$Year)), fps = 10, end_pause = 20)
-anim_save("crops_saskatchewan_gifs_01.gif", mp, width = 600, height = 400)
+anim_save("crops_saskatchewan_gifs_01.gif", mp, width = 800, height = 400)
 ```
 
 ![](crops_saskatchewan_gifs_01.gif)
@@ -164,27 +164,6 @@ ggsave("crops_saskatchewan_03.png", mp, width = 6, height = 4)
 
 ---
 
-# Farm Area
-
-```{r}
-# Prep data
-xx <- agData_STATCAN_FarmLand_Use %>% 
-  filter(Area == "Saskatchewan", Item == "Total area of farms", 
-         Unit == "Hectares", !is.na(Value))
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
-  geom_line(color = "darkgreen", size = 1.25, alpha = 0.8) +
-  scale_x_continuous(breaks = seq(1920, 2020, 10)) +
-  theme_agData() +
-  labs(title = "Total area of farms in Saskatchewan", y = "Million Hectares", x = NULL,
-       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
-ggsave("crops_saskatchewan_04.png", mp, width = 6, height = 4)
-```
-
-![](crops_saskatchewan_04.png)
-
----
-
 # All Crops
 
 ```{r}
@@ -202,31 +181,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan Crops - Area Seeded", y = "Million Hectares", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
-ggsave("crops_saskatchewan_05.png", mp, width = 6, height = 5)
+ggsave("crops_saskatchewan_04.png", mp, width = 6, height = 5)
 ```
 
-![](crops_saskatchewan_05.png)
-
----
-
-# Summerfallow
-
-```{r}
-# Prep data
-xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Crop == "Summerfallow", 
-         Measurement == "Seeded area")
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
-  geom_line(color = "darkgreen", size = 1.25, alpha = 0.8) +
-  scale_x_continuous(breaks = seq(1920, 2020, 10)) +
-  theme_agData() +
-  labs(title = "Summerfallow in Saskatchewan", y = "Million Hectares", x = NULL,
-       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
-ggsave("crops_saskatchewan_06.png", mp, width = 6, height = 4)
-```
-
-![](crops_saskatchewan_06.png)
+![](crops_saskatchewan_04.png)
 
 ---
 
@@ -244,6 +202,69 @@ mp <- ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
   theme_agData(legend.position = "none") +
   labs(title = "Saskatchewan Cropland by Area",
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+ggsave("crops_saskatchewan_05.png", mp, width = 6, height = 4)
+```
+
+![](crops_saskatchewan_05.png)
+
+```{r}
+# Prep data
+xx <- agData_STATCAN_Crops %>% 
+  filter(Area == "Saskatchewan", Measurement == "Seeded area") %>%
+  arrange(desc(Value)) %>% mutate(Crop = factor(Crop, levels = unique(Crop)))
+# Plot
+mp <- ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
+  geom_treemap(color = "black", alpha = 0.8, size = 1.5) +
+  geom_treemap_text(place = "centre", grow = T, color = "white") +
+  scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
+  theme_agData(legend.position = "none") +
+  labs(title = "Saskatchewan Cropland by Area",
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN") +
+# gganimate
+  transition_states(Year)
+mp <- animate(mp, nframes = 2*(max(xx$Year) - min(xx$Year)), fps = 10, end_pause = 20)
+anim_save("crops_saskatchewan_gifs_02.gif", mp, width = 800, height = 400)
+```
+
+![](crops_saskatchewan_gifs_02.gif)
+
+---
+
+# Farm Area
+
+```{r}
+# Prep data
+xx <- agData_STATCAN_FarmLand_Use %>% 
+  filter(Area == "Saskatchewan", Item == "Total area of farms", 
+         Unit == "Hectares", !is.na(Value))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
+  geom_line(color = "darkgreen", size = 1.25, alpha = 0.8) +
+  scale_x_continuous(breaks = seq(1920, 2020, 10)) +
+  theme_agData() +
+  labs(title = "Total area of farms in Saskatchewan", y = "Million Hectares", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+ggsave("crops_saskatchewan_06.png", mp, width = 6, height = 4)
+```
+
+![](crops_saskatchewan_06.png)
+
+---
+
+# Summerfallow
+
+```{r}
+# Prep data
+xx <- agData_STATCAN_Crops %>% 
+  filter(Area == "Saskatchewan", Crop == "Summerfallow", 
+         Measurement == "Seeded area")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
+  geom_line(color = "darkgreen", size = 1.25, alpha = 0.8) +
+  scale_x_continuous(breaks = seq(1920, 2020, 10)) +
+  theme_agData() +
+  labs(title = "Summerfallow in Saskatchewan", y = "Million Hectares", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
 ggsave("crops_saskatchewan_07.png", mp, width = 6, height = 4)
 ```

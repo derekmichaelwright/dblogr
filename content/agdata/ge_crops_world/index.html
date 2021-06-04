@@ -2,7 +2,7 @@
 title: "Genetically Engineered Crop Production"
 subtitle: "Graphs of GE crop production using ISAAA data"
 summary:  "Graphs of GE crop production using ISAAA data"
-date: "2021-06-02"
+date: "2021-06-04"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/ge_crops_world/)"
 tags: [ "agData", "GE Crops", "Maize", "Soybean", "Cotton", "Canola", "Featured" ]
 weight: 3
@@ -73,12 +73,16 @@ ggsave(&quot;ge_crops_world_02.png&quot;, mp, width = 6, height = 4)</code></pre
 <h2>Area</h2>
 <pre class="r"><code># Prep data
 xx &lt;- agData_ISAAA_DVDDVG %&gt;% filter(Unit == &quot;Hectares&quot;)
+xE &lt;- xx %&gt;% top_n(1, Year) %&gt;% pull(Value) / 1000000
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) + 
   geom_line(size = 1.5, alpha = 0.8) + 
   scale_color_manual(values = c(&quot;darkgreen&quot;, &quot;darkred&quot;)) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE)) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.9)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(title = &quot;Global Area of GE Crops&quot;, 
        y = &quot;Million Hectares&quot;, x = NULL,
@@ -116,13 +120,16 @@ colors &lt;- c(&quot;darkblue&quot;, &quot;darkgreen&quot;, &quot;darkred&quot;,
 xx &lt;- agData_ISAAA_Crop %&gt;% 
   filter(Measurement == &quot;Area&quot;, Crop %in% crops) %&gt;%
   mutate(Crop = factor(Crop, levels = crops))
+xE &lt;- xx %&gt;% top_n(1, Year) %&gt;% pull(Value) / 1000000
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
   geom_line(size = 1.5, alpha = 0.8) +
   scale_color_manual(values = colors) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE)) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
-  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.5)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.9)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(title = &quot;Global Area of GE Crops&quot;, 
        y = &quot;Million Hectares&quot;, x = NULL,
@@ -139,13 +146,16 @@ colors &lt;- c(&quot;darkblue&quot;, &quot;darkgreen&quot;, &quot;darkred&quot;,
 xx &lt;- agData_ISAAA_Crop %&gt;% 
   filter(Measurement == &quot;Percent of GE Area&quot;, Crop %in% crops) %&gt;%
   mutate(Crop = factor(Crop, levels = crops))
+xE &lt;- xx %&gt;% top_n(1, Year) %&gt;% pull(Value)
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
   geom_line(size = 1.5, alpha = 0.8) +
   scale_color_manual(values = colors) +
+  scale_y_continuous(breaks = seq(0, 60, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE, labels = paste(xE,&quot;%&quot;))) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
-  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.5)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.9)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(title = &quot;Percent of GE Area&quot;, y = &quot;Percent&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
@@ -212,15 +222,20 @@ colors &lt;- c(&quot;darkblue&quot;, &quot;darkgreen&quot;, &quot;darkred&quot;,
 xx &lt;- agData_ISAAA_CropPercent %&gt;% 
   filter(Measurement == &quot;Percent&quot;, Crop != &quot;Others&quot;) %&gt;%
   mutate(Crop = factor(Crop, levels = crops))
+xE &lt;- xx %&gt;% top_n(1, Year) %&gt;% pull(Value)
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
   geom_line(size = 1.5, alpha = 0.8) +
   scale_color_manual(values = colors) +
+  scale_y_continuous(breaks = seq(0, 80, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE, labels = paste(xE,&quot;%&quot;))) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
-  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.5)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.7)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
-  labs(title = &quot;Adoption of GE Crops&quot;, y = &quot;Percent&quot;, x = NULL,
+  labs(title = &quot;Adoption of GE Crops&quot;, 
+       subtitle = &quot;Percent of global cropland planted with GE varieties&quot;,
+       y = &quot;Percent&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
 ggsave(&quot;ge_crops_world_09.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="ge_crops_world_09.png" /></p>
@@ -257,16 +272,16 @@ xx &lt;- xx %&gt;% filter(Area %in% yy) %&gt;%
   arrange(desc(Value)) %&gt;%
   mutate(Area = factor(Area, levels = unique(.$Area)),
          Value = Value / 1000000)
-xE &lt;- xx %&gt;% top_n(1, Year) %&gt;% pull(Value) %&gt;% round(1)
+xE &lt;- xx %&gt;% top_n(1, Year) %&gt;% pull(Value)
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Area)) + 
   geom_line(size = 1.5, alpha = 0.8) + 
   scale_color_manual(values = colors) +
   scale_y_continuous(breaks = seq(0, 80, by = 10), 
-                     sec.axis = sec_axis(~ ., breaks = xE[1:6])) +
+                     sec.axis = sec_axis(~ ., breaks = xE[c(1:4,6)])) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
-  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-1)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.9)) +
   theme_agData() +
   labs(title = &quot;Area of GE Crops&quot;, y = &quot;Million Hectares&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
@@ -302,17 +317,11 @@ mp &lt;- ggplot(agData_ISAAA_Value, aes(x = Year, y = Value)) +
   geom_line(color = &quot;darkgreen&quot;, size = 1.5) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
-  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.5)) +
   theme_agData() +
   labs(title = &quot;Value of GE Seed&quot;, y = &quot;Billion USD&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: ISAAA&quot;)
 ggsave(&quot;ge_crops_world_13.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="ge_crops_world_13.png" /></p>
-<hr />
-</div>
-<div id="regulations-of-new-breeding-technologies" class="section level1">
-<h1>Regulations of New Breeding Technologies</h1>
-<p>under construction…</p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

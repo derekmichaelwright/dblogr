@@ -88,12 +88,16 @@ ggsave("ge_crops_world_02.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 xx <- agData_ISAAA_DVDDVG %>% filter(Unit == "Hectares")
+xE <- xx %>% top_n(1, Year) %>% pull(Value) / 1000000
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) + 
   geom_line(size = 1.5, alpha = 0.8) + 
   scale_color_manual(values = c("darkgreen", "darkred")) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE)) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.9)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Global Area of GE Crops", 
        y = "Million Hectares", x = NULL,
@@ -142,13 +146,16 @@ colors <- c("darkblue", "darkgreen", "darkred", "darkgoldenrod2")
 xx <- agData_ISAAA_Crop %>% 
   filter(Measurement == "Area", Crop %in% crops) %>%
   mutate(Crop = factor(Crop, levels = crops))
+xE <- xx %>% top_n(1, Year) %>% pull(Value) / 1000000
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
   geom_line(size = 1.5, alpha = 0.8) +
   scale_color_manual(values = colors) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE)) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
-  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.5)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.9)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Global Area of GE Crops", 
        y = "Million Hectares", x = NULL,
@@ -169,13 +176,16 @@ colors <- c("darkblue", "darkgreen", "darkred", "darkgoldenrod2")
 xx <- agData_ISAAA_Crop %>% 
   filter(Measurement == "Percent of GE Area", Crop %in% crops) %>%
   mutate(Crop = factor(Crop, levels = crops))
+xE <- xx %>% top_n(1, Year) %>% pull(Value)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
   geom_line(size = 1.5, alpha = 0.8) +
   scale_color_manual(values = colors) +
+  scale_y_continuous(breaks = seq(0, 60, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE, labels = paste(xE,"%"))) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
-  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.5)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.9)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Percent of GE Area", y = "Percent", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
@@ -253,15 +263,20 @@ colors <- c("darkblue", "darkgreen", "darkred", "darkgoldenrod2")
 xx <- agData_ISAAA_CropPercent %>% 
   filter(Measurement == "Percent", Crop != "Others") %>%
   mutate(Crop = factor(Crop, levels = crops))
+xE <- xx %>% top_n(1, Year) %>% pull(Value)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
   geom_line(size = 1.5, alpha = 0.8) +
   scale_color_manual(values = colors) +
+  scale_y_continuous(breaks = seq(0, 80, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE, labels = paste(xE,"%"))) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
-  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.5)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.7)) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "Adoption of GE Crops", y = "Percent", x = NULL,
+  labs(title = "Adoption of GE Crops", 
+       subtitle = "Percent of global cropland planted with GE varieties",
+       y = "Percent", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
 ggsave("ge_crops_world_09.png", mp, width = 6, height = 4)
 ```
@@ -306,16 +321,16 @@ xx <- xx %>% filter(Area %in% yy) %>%
   arrange(desc(Value)) %>%
   mutate(Area = factor(Area, levels = unique(.$Area)),
          Value = Value / 1000000)
-xE <- xx %>% top_n(1, Year) %>% pull(Value) %>% round(1)
+xE <- xx %>% top_n(1, Year) %>% pull(Value)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) + 
   geom_line(size = 1.5, alpha = 0.8) + 
   scale_color_manual(values = colors) +
   scale_y_continuous(breaks = seq(0, 80, by = 10), 
-                     sec.axis = sec_axis(~ ., breaks = xE[1:6])) +
+                     sec.axis = sec_axis(~ ., breaks = xE[c(1:4,6)])) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
-  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-1)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.9)) +
   theme_agData() +
   labs(title = "Area of GE Crops", y = "Million Hectares", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
@@ -358,7 +373,6 @@ mp <- ggplot(agData_ISAAA_Value, aes(x = Year, y = Value)) +
   geom_line(color = "darkgreen", size = 1.5) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
-  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.5)) +
   theme_agData() +
   labs(title = "Value of GE Seed", y = "Billion USD", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: ISAAA")
@@ -369,11 +383,9 @@ ggsave("ge_crops_world_13.png", mp, width = 6, height = 4)
 
 ---
 
-# Regulations of New Breeding Technologies
-
-under construction...
-
 ```{r eval = F, echo = F}
+# Regulations of New Breeding Technologies
+# under construction...
 # Prep data
 xx <- agData_NBT_Limits %>% 
   mutate(Limiting.Factor = as.character(Limiting.Factor),
@@ -400,7 +412,5 @@ ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
   theme_agData() +
   scale_color_manual(values = agData_Colors)
 ```
-
----
 
 &copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)
