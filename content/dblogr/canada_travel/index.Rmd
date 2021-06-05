@@ -119,6 +119,10 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, fill = Measurement)) +
 ggsave("canada_travel_03.png", mp, width = 6, height = 4)
 ```
 
+```{r echo = F}
+ggsave("featured.png", mp, width = 6, height = 4)
+```
+
 ![](canada_travel_03.png)
 
 ---

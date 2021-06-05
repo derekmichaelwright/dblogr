@@ -1,12 +1,11 @@
 ---
-title: "Suicide Canada"
+title: "Suicide Rates in Canada"
 subtitle: ""
 summary:  ""
 date: "2021-06-04"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_suicide/)"
-tags: [ "dblogr", "Economics", "Politics" ]
+tags: [ "dblogr", "Economics", "Demographics" ]
 weight: 5
-draft: true
 codefolding_show: "hide"
 image:
   preview_only: true
@@ -17,98 +16,152 @@ links:
     url: "https://derekmichaelwright.github.io/htmls/dblogr/canada_suicide.html"
 ---
 
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
 
 <hr />
 <div id="data-source" class="section level1">
 <h1>Data Source</h1>
 <p><a href="https://www150.statcan.gc.ca/n1/pub/99-011-x/99-011-x2019001-eng.htm" class="uri">https://www150.statcan.gc.ca/n1/pub/99-011-x/99-011-x2019001-eng.htm</a></p>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_suicide/canada_suicide_data.xlsx">
+<button class="btn btn-success"><i class="fa fa-save"></i> canada_suicide_data.xlsx</button>
+</a>
 <hr />
 </div>
 <div id="prepare-data" class="section level1">
 <h1>Prepare data</h1>
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(readxl)
 # Prep data
-xx &lt;- read.csv(&quot;cbc_finances_data.csv&quot;) %&gt;% 
-  gather(Source, Value, Revenue, Government.Funding, Expenses) %&gt;%
-  mutate(PlusMinus = ifelse(Source == &quot;Expenses&quot;, &quot;Plus&quot;, &quot;Minus&quot;),
-         Value = Value / 1000000)</code></pre>
-<p>calculate the cost per person per year</p>
-<pre class="r"><code># Prep data
-cost &lt;- read.csv(&quot;cbc_finances_data.csv&quot;) %&gt;% 
-  filter(Year == 2019) %&gt;% 
-  pull(Government.Funding) 
-pop &lt;- agData_STATCAN_Population %&gt;% 
-  filter(Year == 2019, Area == &quot;Canada&quot;) %&gt;% 
-  pull(Value) %&gt;% mean()
-cost / pop</code></pre>
+d1 &lt;- read_xlsx(&quot;canada_suicide_data.xlsx&quot;, &quot;Table 1&quot;) %&gt;% spread(Unit, Value)
+d2 &lt;- read_xlsx(&quot;canada_suicide_data.xlsx&quot;, &quot;Table 2&quot;) %&gt;% spread(Unit, Value)
+d3 &lt;- read_xlsx(&quot;canada_suicide_data.xlsx&quot;, &quot;Table A5&quot;) %&gt;% spread(Unit, Value)
+d4 &lt;- read_xlsx(&quot;canada_suicide_data.xlsx&quot;, &quot;Table A6&quot;) %&gt;%
+  mutate(`Age group` = factor(`Age group`, levels = unique(`Age group`)))</code></pre>
 <hr />
 </div>
-<div id="expenses-vs-revenue-line" class="section level1">
-<h1>Expenses vs Revenue (Line)</h1>
-<pre class="r"><code>mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Source)) + 
-  geom_line(size = 1.5, alpha = 0.8) + 
-  scale_x_continuous(breaks = seq(2000, 2020, 5), limits = c(2000, 2020)) +
-  scale_color_manual(name = NULL, values = c(&quot;darkred&quot; , &quot;darkblue&quot;, &quot;darkgreen&quot;)) +
-  theme_agData(legend.position = &quot;bottom&quot;) +
-  labs(title = &quot;CBC Finances&quot;, x = NULL, y = &quot;Million Dollars&quot;,
-       caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
-ggsave(&quot;canada_population_demographics1.png&quot;, width = 6, height = 4)</code></pre>
-<p><img src="canada_population_demographics1.png" /></p>
-<hr />
-</div>
-<div id="expenses-vs-revenue-bar" class="section level1">
-<h1>Expenses vs Revenue (Bar)</h1>
-<pre class="r"><code>mp &lt;- ggplot(xx, aes(x = PlusMinus, y = Value, fill = Source)) + 
-  geom_bar(stat = &quot;identity&quot;, position = &quot;stack&quot;, color = &quot;black&quot;, alpha = 0.8) +
-  facet_grid(. ~ Year) +
-  scale_fill_manual(name = NULL, values = c(&quot;darkred&quot; , &quot;darkblue&quot;, &quot;darkgreen&quot;)) +
+<div id="suicides" class="section level1">
+<h1>Suicides</h1>
+<pre class="r"><code># Plot
+mp &lt;- ggplot(d1, aes(x = Race, y = ASMR, fill = Race)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8, size = 0.75) +
+  geom_errorbar(width = 0.25, size = 1,
+                aes(ymin = `Lower 95% confidence interval`, 
+                    ymax = `Upper 95% confidence interval`)) +
+  facet_grid(. ~ Sex) +
+  scale_fill_manual(name = NULL, values = c(&quot;darkred&quot;, &quot;steelblue&quot;)) +
   theme_agData(legend.position = &quot;bottom&quot;,
-               axis.text.x = element_blank(), 
+               axis.text.x = element_blank(),
                axis.ticks.x = element_blank()) +
-  labs(title = &quot;CBC Finances&quot;, x = NULL, y = &quot;Million Dollars&quot;,
-       caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
-ggsave(&quot;canada_population_demographics2.png&quot;, width = 10, height = 4)</code></pre>
-<p><img src="canada_population_demographics2.png" /></p>
+  labs(title = &quot;Suicide Rates&quot;, y = &quot;Age standardized suicide rate&quot;, x = NULL,
+       subtitle = &quot;number of deaths by suicide per 100,000 person-years at risk&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_suicide_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_suicide_01.png" /></p>
 <hr />
 </div>
-<div id="net-profit-with-government-funding" class="section level1">
-<h1>Net Profit With Government Funding</h1>
-<pre class="r"><code># Prep data
-xx &lt;- read.csv(&quot;cbc_finances_data.csv&quot;) %&gt;% 
-  mutate(Profit = Revenue + Government.Funding - Expenses,
-         Net = ifelse(Profit &gt; 0, &quot;Profit&quot;, &quot;Loss&quot;) )
-# Plot
-mp &lt;- ggplot(xx, aes(x = Year, y = Profit / 1000000, fill = Net)) + 
-  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8) +
-  scale_fill_manual(values = c(&quot;darkred&quot;,&quot;darkblue&quot;)) +
-  scale_x_continuous(breaks = 2000:2020) +
-  theme_agData(legend.position = &quot;bottom&quot;, 
-               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
-  labs(title = &quot;CBC - Net Profit With Government Funding&quot;, y = &quot;Million Dollars&quot;,
-       caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
-ggsave(&quot;canada_population_demographics3.png&quot;, width = 6, height = 4)</code></pre>
-<p><img src="canada_population_demographics3.png" /></p>
+<div id="males-by-age" class="section level1">
+<h1>Males by Age</h1>
+<pre class="r"><code># Plot
+mp &lt;- ggplot(d2, aes(x = Race, y = ASMR, fill = Race)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8, size = 0.75) +
+  geom_errorbar(width = 0.25, size = 1,
+                aes(ymin = `Lower 95% confidence interval`, 
+                    ymax = `Upper 95% confidence interval`)) +
+  facet_grid(. ~ `Age group`) +
+  scale_fill_manual(name = NULL, values = c(&quot;darkred&quot;, &quot;steelblue&quot;)) +
+  theme_agData(legend.position = &quot;bottom&quot;,
+               axis.text.x = element_blank(),
+               axis.ticks.x = element_blank()) +
+  labs(title = &quot;Male Suicide Rates&quot;, y = &quot;Age standardized suicide rate&quot;, x = NULL,
+       subtitle = &quot;number of deaths by suicide per 100,000 person-years at risk&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_suicide_02.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_suicide_02.png" /></p>
 <hr />
 </div>
-<div id="net-profit-without-government-funding" class="section level1">
-<h1>Net Profit Without Government Funding</h1>
+<div id="household-income" class="section level1">
+<h1>Household Income</h1>
 <pre class="r"><code># Prep data
-xx &lt;- read.csv(&quot;cbc_finances_data.csv&quot;) %&gt;% 
-  mutate(Profit = Revenue - Expenses,
-         Net = ifelse(Profit &gt; 0, &quot;Profit&quot;, &quot;Loss&quot;))
+colors &lt;- c(&quot;darkred&quot;, &quot;darkblue&quot;, &quot;darkorange&quot;, &quot;steelblue&quot; )
+xx &lt;- d3 %&gt;% filter(Trait == &quot;Household income&quot;)
 # Plot
-mp &lt;- ggplot(xx, aes(x = Year, y = Profit / 1000000, fill = Net)) + 
-  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8) +
-  scale_fill_manual(values = c(&quot;darkred&quot;,&quot;darkblue&quot;)) +
-  scale_x_continuous(breaks = 2000:2020) +
-  theme_agData(legend.position = &quot;none&quot;, 
-               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
-  labs(title = &quot;CBC - Net Profit Without Government Funding&quot;, y = &quot;Million Dollars&quot;,
-       caption = &quot;\xa9 www.dblogr.com/  |  Data: CBC&quot;)
-ggsave(&quot;canada_population_demographics4.png&quot;, width = 6, height = 4)</code></pre>
-<p><img src="canada_population_demographics4.png" /></p>
+mp &lt;- ggplot(xx, aes(x = Race, y = Percent, fill = Race)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8, size = 0.75) +
+  geom_errorbar(width = 0.25, size = 1,
+                aes(ymin = `Lower 95% confidence interval`, 
+                    ymax = `Upper 95% confidence interval`)) +
+  facet_grid(. ~ Measurement) +
+  scale_fill_manual(name = NULL, values = colors) +
+  theme_agData(legend.position = &quot;bottom&quot;,
+               axis.text.x = element_blank(),
+               axis.ticks.x = element_blank()) +
+  labs(title = &quot;Household Income&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_suicide_03.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_suicide_03.png" /></p>
+<hr />
+</div>
+<div id="labour-force-status" class="section level1">
+<h1>Labour Force Status</h1>
+<pre class="r"><code># Prep data
+measures &lt;- c(&quot;Employed&quot;, &quot;Unemployed&quot;, &quot;Out of the labour force&quot;)
+xx &lt;- d3 %&gt;% filter(Trait == &quot;Labour force status&quot;) %&gt;%
+  mutate(Measurement = factor(Measurement, levels = measures))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Race, y = Percent, fill = Race)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8, size = 0.75) +
+  geom_errorbar(width = 0.25, size = 1,
+                aes(ymin = `Lower 95% confidence interval`, 
+                    ymax = `Upper 95% confidence interval`)) +
+  facet_grid(. ~ Measurement) +
+  scale_fill_manual(name = NULL, values = colors) +
+  theme_agData(legend.position = &quot;bottom&quot;,
+               axis.text.x = element_blank(),
+               axis.ticks.x = element_blank()) +
+  labs(title = &quot;Household income&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_suicide_04.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_suicide_04.png" /></p>
+<hr />
+</div>
+<div id="highest-level-of-education" class="section level1">
+<h1>Highest Level of Education</h1>
+<pre class="r"><code># Prep data
+measures &lt;- c(&quot;Less than high school&quot;, &quot;High school&quot;,
+              &quot;Post-secondary education below bachelor&#39;s level&quot;, 
+              &quot;University or higher&quot;)
+xx &lt;- d3 %&gt;% filter(Trait == &quot;Highest level of education&quot;) %&gt;%
+  mutate(Measurement = factor(Measurement, levels = measures))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Race, y = Percent, fill = Race)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, alpha = 0.8, size = 0.75) +
+  geom_errorbar(width = 0.25, size = 1,
+                aes(ymin = `Lower 95% confidence interval`, 
+                    ymax = `Upper 95% confidence interval`)) +
+  facet_grid(. ~ Measurement, labeller = label_wrap_gen(width = 30)) +
+  scale_fill_manual(name = NULL, values = colors) +
+  theme_agData(legend.position = &quot;bottom&quot;,
+               axis.text.x = element_blank(),
+               axis.ticks.x = element_blank()) +
+  labs(title = &quot;Highest Level of Education&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_suicide_05.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_suicide_05.png" /></p>
+<hr />
+</div>
+<div id="population-pyramid" class="section level1">
+<h1>Population Pyramid</h1>
+<pre class="r"><code># Plot
+mp &lt;- ggplot(d4, aes(x = `Age group`, y = Percent)) +
+  geom_bar(stat = &quot;identity&quot;, fill = &quot;darkred&quot;, color = &quot;black&quot;, alpha = 0.8) +
+  coord_flip() +
+  theme_agData() +
+  labs(title = &quot;Indigenous Population&quot;, y = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_suicide_06.png&quot;, mp, width = 4, height = 6)</code></pre>
+<p><img src="canada_suicide_06.png" /></p>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>
