@@ -1,0 +1,54 @@
+---
+title: "Long Term Maize Experiment"
+subtitle: "Graphs made with data from a long term maize experiment"
+summary:  "Graphs made with data from a long term maize experiment"
+date: "2021-06-05"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/maize_long_term/)"
+tags: [ "agData", "Maize" ]
+draft: true
+weight: 4
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/agdata/maize_long_term.html"
+---
+
+
+
+---
+
+
+```r
+# devtools::install_github("derekmichaelwright/agData")
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+```
+
+---
+
+# All Data - PDF
+
+
+```r
+# Prep data
+xx <- agData_LongTermMaize %>% 
+  group_by(Year, GEN) %>% 
+  summarise(IHP = mean(IHP, na.rm = T))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = IHP)) +
+  geom_line() +
+  theme_agData() +
+  labs(caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
+ggsave("maize_long_term_01.png", mp, width = 6, height = 4)
+```
+
+
+
+![](maize_long_term_01.png)
+
+---
+
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

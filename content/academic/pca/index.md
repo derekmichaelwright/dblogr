@@ -17,81 +17,108 @@ links:
 ---
 
 <script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
+
 <script src="{{< blogdown/postref >}}index_files/jquery/jquery.min.js"></script>
+
 <link href="{{< blogdown/postref >}}index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+
 <script src="{{< blogdown/postref >}}index_files/datatables-binding/datatables.js"></script>
+
 <link href="{{< blogdown/postref >}}index_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="{{< blogdown/postref >}}index_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+
 <script src="{{< blogdown/postref >}}index_files/dt-core/js/jquery.dataTables.min.js"></script>
+
 <link href="{{< blogdown/postref >}}index_files/crosstalk/css/crosstalk.css" rel="stylesheet" />
+
 <script src="{{< blogdown/postref >}}index_files/crosstalk/js/crosstalk.min.js"></script>
 
+# Introduction
 
-<div id="introduction" class="section level1">
-<h1>Introduction</h1>
-<p>Principal component analysis (PCA) is the process of computing the principal components and using them to perform a change of basis on the data, sometimes using only the first few principal components and ignoring the rest.</p>
-<p>It is commonly used for dimensionality reduction by projecting each data point onto only the first few principal components to obtain lower-dimensional data while preserving as much of the data’s variation as possible. The first principal component can equivalently be defined as a direction that maximizes the variance of the projected data.</p>
-</div>
-<div id="data" class="section level1">
-<h1>Data</h1>
-<p>Fisher, R. A. (1936) <strong>The use of multiple measurements in taxonomic problems</strong>. <em>Annals of Eugenics</em>. 7(II): 179–188.</p>
-<p>Anderson, Edgar (1935) <strong>The irises of the Gaspe Peninsula</strong>. <em>Bulletin of the American Iris Society</em>. 59: 2–5.</p>
-<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+Principal component analysis (PCA) is the process of computing the principal components and using them to perform a change of basis on the data, sometimes using only the first few principal components and ignoring the rest.
+
+It is commonly used for dimensionality reduction by projecting each data point onto only the first few principal components to obtain lower-dimensional data while preserving as much of the data’s variation as possible. The first principal component can equivalently be defined as a direction that maximizes the variance of the projected data.
+
+# Data
+
+Fisher, R. A. (1936) **The use of multiple measurements in taxonomic problems**. *Annals of Eugenics*. 7(II): 179–188.
+
+Anderson, Edgar (1935) **The irises of the Gaspe Peninsula**. *Bulletin of the American Iris Society*. 59: 2–5.
+
+``` r
+# devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(GGally) # ggpairs() 
-library(FactoMineR) # PCA() &amp; HCPC()
+library(FactoMineR) # PCA() & HCPC()
 library(plotly) # plot_ly()
-DT::datatable(iris)</code></pre>
+DT::datatable(iris)
+```
+
 <div id="htmlwidget-1" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-1">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
-<hr />
-</div>
-<div id="correlations" class="section level1">
-<h1>Correlations</h1>
-<pre class="r"><code># Plot
-mp &lt;- ggpairs(iris, columns = 1:4, aes(color = Species)) +
+
+-----
+
+# Correlations
+
+``` r
+# Plot
+mp <- ggpairs(iris, columns = 1:4, aes(color = Species)) +
   scale_color_manual(values = alpha(agData_Colors,0.7)) +
   scale_fill_manual(values = alpha(agData_Colors,0.7)) +
   theme_agData() +
-  labs(title = &quot;Iris Data Set&quot;,
-       caption = &quot;\xa9 www.dblogr.com/  |  Data: Anderson (1935)&quot;)
-ggsave(&quot;pca_01.png&quot;, mp, width = 8, height = 6)</code></pre>
-<p><img src="pca_01.png" /></p>
-<hr />
-</div>
-<div id="pca" class="section level1">
-<h1>PCA</h1>
-<pre class="r"><code># PCA
-mypca &lt;- PCA(iris[,1:4], graph = F)
+  labs(title = "Iris Data Set",
+       caption = "\xa9 www.dblogr.com/  |  Data: Anderson (1935)")
+ggsave("pca_01.png", mp, width = 8, height = 6)
+```
+
+![](pca_01.png)
+
+-----
+
+# PCA
+
+``` r
+# PCA
+mypca <- PCA(iris[,1:4], graph = F)
 # HPCA
-myhpca &lt;- HCPC(mypca, nb.clust = 3, graph = F)
+myhpca <- HCPC(mypca, nb.clust = 3, graph = F)
 #
-pcs &lt;- mypca[[3]]$coord %&gt;% as.data.frame()
-xx &lt;- iris %&gt;% 
-  mutate(Cluster = myhpca[[1]]$clust) %&gt;%
+pcs <- mypca[[3]]$coord %>% as.data.frame()
+xx <- iris %>% 
+  mutate(Cluster = myhpca[[1]]$clust) %>%
   bind_cols(pcs)
 #
-colors &lt;- c(&quot;darkslategrey&quot;, &quot;darkred&quot;, &quot;darkgreen&quot;)
-shapes &lt;- c(16, 13, 15)
+colors <- c("darkslategrey", "darkred", "darkgreen")
+shapes <- c(16, 13, 15)
 # Plot 
-mp &lt;- ggplot(xx, aes(x = Dim.1, y = Dim.2, color = Cluster, pch = Species)) +
+mp <- ggplot(xx, aes(x = Dim.1, y = Dim.2, color = Cluster, pch = Species)) +
   geom_point(size = 2, alpha = 0.8) +
   scale_color_manual(values = colors) +
   scale_shape_manual(values = shapes) +
   theme_agData() +
-  labs(title = &quot;Iris Data Set&quot;, x = &quot;PC 1&quot;, y = &quot;PC 2&quot;,
-       caption = &quot;\xa9 www.dblogr.com/  |  Data: Anderson (1935)&quot;)
-ggsave(&quot;pca_02.png&quot;, mp,  width = 6, height = 4)</code></pre>
-<p><img src="pca_02.png" /></p>
-<hr />
-<pre class="r"><code>mp &lt;- plot_ly(xx, x = ~Dim.1, y = ~Dim.2, z = ~Dim.3, text = ~Species,
+  labs(title = "Iris Data Set", x = "PC 1", y = "PC 2",
+       caption = "\xa9 www.dblogr.com/  |  Data: Anderson (1935)")
+ggsave("pca_02.png", mp,  width = 6, height = 4)
+```
+
+![](pca_02.png)
+
+-----
+
+``` r
+mp <- plot_ly(xx, x = ~Dim.1, y = ~Dim.2, z = ~Dim.3, text = ~Species,
               color = ~Cluster, colors = colors, 
-              symbol = ~Species, symbols = shapes) %&gt;% 
+              symbol = ~Species, symbols = shapes) %>% 
   add_markers()
-htmlwidgets::saveWidget(mp, file=normalizePath(&quot;iris_pca.html&quot;),
-           knitrOptions = list(fig.width = 4, fig.height = 6))</code></pre>
+htmlwidgets::saveWidget(mp, file=normalizePath("iris_pca.html"),
+           knitrOptions = list(fig.width = 4, fig.height = 6))
+```
+
 <iframe src="https://derekmichaelwright.github.io/dblogr/content/academic/pca/iris_pca.html" style="width:100%; height:600px; align:center;">
+
 </iframe>
-<hr />
-<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
-</div>
+
+-----
+
+© Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

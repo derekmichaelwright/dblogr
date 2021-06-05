@@ -1,0 +1,213 @@
+---
+title: "Country Treemaps"
+subtitle: "Graphs of crops produced by specific countries"
+summary:  "Graphs of crops produced by specific countries"
+date: "2021-06-05"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/country_treemaps/)"
+tags: [ "agData", "Regions" ]
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/agdata/country_treemaps.html"
+---
+
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
+
+-----
+
+``` r
+# devtools::install_github("derekmichaelwright/agData")
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(treemapify) # geom_treemap()
+```
+
+-----
+
+# Plotting Function
+
+``` r
+gg_treemap <- function(area = "Canada", measurement = "Area harvested", year = 2018) {
+  #Prep data
+  xx <- agData_FAO_Crops %>% 
+    filter(Area == area, Year == year, Measurement == measurement) %>%
+    arrange(desc(Value)) %>% 
+    slice(1:25) %>%
+    mutate(Area = factor(Area, levels = unique(Area))) 
+  # Plot
+  ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
+    geom_treemap(color = "black", size = 1.5, alpha = 0.8) +
+    geom_treemap_text(place = "centre", grow = T, color = "white") +
+    scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
+    theme_agData(legend.position = "none") +
+    labs(title = paste(area,"-",year,"-",measurement),
+         caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+}
+```
+
+-----
+
+# All Countries
+
+``` r
+# Prep data
+areas <- c("World",
+  levels(agData_FAO_Country_Table$Region),
+  levels(agData_FAO_Country_Table$SubRegion),
+  levels(agData_FAO_Country_Table$Country))
+# Plot
+pdf("country_treemaps_fao.pdf", width = 6, height = 4)
+for(i in areas) {
+  print(gg_treemap(area = i))
+}
+dev.off()
+```
+
+    ## png 
+    ##   2
+
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/country_treemaps/country_treemaps_fao.pdf">
+<button class="btn btn-success"><i class="fa fa-file-pdf"></i> country_treemaps_fao.pdf</button>
+</a>
+
+-----
+
+-----
+
+## World
+
+``` r
+mp <- gg_treemap(area = "World")
+ggsave("country_treemaps_01_world.png", mp, width = 6, height = 4)
+```
+
+![](country_treemaps_01_world.png)
+
+-----
+
+## Canada
+
+``` r
+mp <- gg_treemap(area = "Canada")
+ggsave("country_treemaps_02_canada.png", mp, width = 6, height = 4)
+```
+
+![](country_treemaps_02_canada.png)
+
+-----
+
+## USA
+
+``` r
+mp <- gg_treemap(area = "USA")
+ggsave("country_treemaps_03_usa.png", mp, width = 6, height = 4)
+```
+
+![](country_treemaps_03_usa.png)
+
+-----
+
+## Mexico
+
+``` r
+mp <- gg_treemap(area = "Mexico")
+ggsave("country_treemaps_04_mexico.png", mp, width = 6, height = 4)
+```
+
+![](country_treemaps_04_mexico.png)
+
+-----
+
+## Germany
+
+``` r
+mp <- gg_treemap(area = "Germany")
+ggsave("country_treemaps_05_germany.png", mp, width = 6, height = 4)
+```
+
+![](country_treemaps_05_germany.png)
+
+-----
+
+## Russia
+
+``` r
+mp <- gg_treemap(area = "Russia")
+ggsave("country_treemaps_06_russia.png", mp, width = 6, height = 4)
+```
+
+![](country_treemaps_06_russia.png)
+
+-----
+
+## France
+
+``` r
+mp <- gg_treemap(area = "France")
+ggsave("country_treemaps_07_france.png", mp, width = 6, height = 4)
+```
+
+![](country_treemaps_07_france.png)
+
+-----
+
+## Spain
+
+``` r
+mp <- gg_treemap(area = "Spain")
+ggsave("country_treemaps_08_spain.png", mp, width = 6, height = 4)
+```
+
+![](country_treemaps_08_spain.png)
+
+-----
+
+## United Kingdom
+
+``` r
+mp <- gg_treemap(area = "UK")
+ggsave("country_treemaps_09_uk.png", mp, width = 6, height = 4)
+```
+
+![](country_treemaps_09_uk.png)
+
+-----
+
+## India
+
+``` r
+mp <- gg_treemap(area = "India")
+ggsave("country_treemaps_10_india.png", mp, width = 6, height = 4)
+```
+
+![](country_treemaps_10_india.png)
+
+-----
+
+## Nepal
+
+``` r
+mp <- gg_treemap(area = "Nepal")
+ggsave("country_treemaps_11_nepal.png", mp, width = 6, height = 4)
+```
+
+![](country_treemaps_11_nepal.png)
+
+-----
+
+## China
+
+``` r
+mp <- gg_treemap(area = "China")
+ggsave("country_treemaps_12_china.png", mp, width = 6, height = 4)
+```
+
+![](country_treemaps_12_china.png)
+
+-----
+
+© Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

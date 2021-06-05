@@ -1,0 +1,176 @@
+---
+title: "Crop Treemaps"
+subtitle: "Graphs of countries producing specific crops"
+summary:  "Graphs of countries producing specific crops"
+date: "2021-06-05"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crop_treemaps/)"
+tags: [ "agData", "Regions" ]
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/agdata/crop_treemaps.html"
+---
+
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
+
+-----
+
+``` r
+# devtools::install_github("derekmichaelwright/agData")
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(treemapify) # geom_treemap()
+```
+
+-----
+
+# Plotting Function
+
+``` r
+gg_treemap <- function(crop = "Wheat", measurement = "Area harvested", year = 2018) {
+  #Prep data
+  xx <- agData_FAO_Crops %>% 
+    filter(Crop == crop, Year == year, Measurement == measurement,
+           Area %in% agData_FAO_Country_Table$Country) %>%
+    arrange(desc(Value)) %>% 
+    slice(1:25) %>%
+    mutate(Area = factor(Area, levels = unique(Area))) 
+  # Plot
+  ggplot(xx, aes(area = Value, fill = Area, label = Area)) +
+    geom_treemap(color = "black", size = 1.5, alpha = 0.8) +
+    geom_treemap_text(place = "centre", grow = T, color = "white") +
+    scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
+    theme_agData(legend.position = "none") +
+    labs(title = paste(crop,"-",year,"-",measurement),
+         caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+}
+```
+
+-----
+
+# All Countries
+
+``` r
+# Prep data
+crops <- unique(agData_FAO_Crops$Crop)
+# Plot
+pdf("crop_treemaps_fao.pdf", width = 6, height = 4)
+for(i in crops) {
+  print(gg_treemap(crop = i))
+}
+dev.off()
+```
+
+    ## png 
+    ##   2
+
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/agdata/crop_treemaps/crop_treemaps_fao.pdf">
+<button class="btn btn-success"><i class="fa fa-file-pdf"></i> crop_treemaps_fao.pdf</button>
+</a>
+
+-----
+
+## Wheat
+
+``` r
+mp <- gg_treemap(crop = "Wheat")
+ggsave("crop_treemaps_wheat.png", mp, width = 6, height = 4)
+```
+
+![](crop_treemaps_wheat.png)
+
+-----
+
+## Maize
+
+``` r
+mp <- gg_treemap(crop = "Maize")
+ggsave("crop_treemaps_maize.png", mp, width = 6, height = 4)
+```
+
+![](crop_treemaps_maize.png)
+
+-----
+
+## Rice
+
+``` r
+mp <- gg_treemap(crop = "Rice")
+ggsave("crop_treemaps_rice.png", mp, width = 6, height = 4)
+```
+
+![](crop_treemaps_rice.png)
+
+-----
+
+## Soybeans
+
+``` r
+mp <- gg_treemap(crop = "Soybeans")
+ggsave("crop_treemaps_soybeans.png", mp, width = 6, height = 4)
+```
+
+![](crop_treemaps_soybeans.png)
+
+-----
+
+## Rapeseed
+
+``` r
+mp <- gg_treemap(crop = "Rapeseed")
+ggsave("crop_treemaps_rapeseed.png", mp, width = 6, height = 4)
+```
+
+![](crop_treemaps_rapeseed.png)
+
+-----
+
+## Sorghum
+
+``` r
+mp <- gg_treemap(crop = "Sorghum")
+ggsave("crop_treemaps_sorghum.png", mp, width = 6, height = 4)
+```
+
+![](crop_treemaps_sorghum.png)
+
+-----
+
+## Lentils
+
+``` r
+mp <- gg_treemap(crop = "Lentils")
+ggsave("crop_treemaps_lentils.png", mp, width = 6, height = 4)
+```
+
+![](crop_treemaps_lentils.png)
+
+-----
+
+## Beans
+
+``` r
+mp <- gg_treemap(crop = "Beans, dry")
+ggsave("crop_treemaps_beans.png", mp, width = 6, height = 4)
+```
+
+![](crop_treemaps_beans.png)
+
+-----
+
+## Chickpeas
+
+``` r
+mp <- gg_treemap(crop = "Chick peas")
+ggsave("crop_treemaps_chickpeas.png", mp, width = 6, height = 4)
+```
+
+![](crop_treemaps_chickpeas.png)
+
+-----
+
+© Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

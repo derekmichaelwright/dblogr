@@ -1,0 +1,192 @@
+---
+title: "USA Genetically Engineered Crop Production"
+subtitle: "Graphs of GE crop production using USDA data"
+summary:  "Graphs of GE crop production using USDA data"
+date: "2021-06-05"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/ge_crops_usa/)"
+tags: [ "agData", "GE Crops", "Maize", "Soybean", "Cotton" ]
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/agdata/ge_crops_usa.html"
+---
+
+
+
+---
+
+
+```r
+# devtools::install_github("derekmichaelwright/agData")
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+```
+
+---
+
+# All
+
+
+```r
+# Prep data
+xx <- agData_USDA_GE_Crops %>% 
+  filter(Area == "U.S.", Measurement == "All GE varieties") %>%
+  mutate(Crop = gsub("Genetically engineered \\(GE\\)", "GE", Crop))
+xE <- xx %>% top_n(1, Year) %>% pull(Value)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
+  geom_line(size = 1.5, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = agData_Colors[c(2,1,3)]) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE[c(1,2)])) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.8)) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "USA GE Crop Adoption", 
+       y = "Percent", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: USDA")
+ggsave("ge_crops_01.png", mp, width = 6, height = 4)
+```
+
+
+
+![](ge_crops_01.png)
+
+---
+
+# States
+
+
+```r
+# Prep data
+xx <- agData_USDA_GE_Crops %>% 
+  filter(Area != "U.S.", Measurement == "All GE varieties") %>%
+  mutate(Crop = gsub("Genetically engineered \\(GE\\)", "GE", Crop))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
+  geom_line(size = 1.5, alpha = 0.8) +
+  facet_wrap(Area ~ ., ncol = 6) +
+  scale_color_manual(name = NULL, values = agData_Colors[c(2,1,3)]) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "USA GE Crop Adoption", 
+       y = "Percent", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: USDA")
+ggsave("ge_crops_02.png", mp, width = 10, height = 8)
+```
+
+![](ge_crops_02.png)
+
+---
+
+# Maize
+
+
+```r
+# Prep data
+xx <- agData_USDA_GE_Crops %>% 
+  filter(Area == "U.S.", Crop == "Genetically engineered (GE) corn varieties")
+xE <- xx %>% top_n(1, Year) %>% pull(Value)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
+  geom_line(size = 1.5, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = agData_Colors) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.8)) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "US GE Trait Adoption", 
+       subtitle = "Genetically engineered (GE) corn varieties",
+       y = "Percent", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: USDA")
+ggsave("ge_crops_03.png", mp, width = 7, height = 4)
+```
+
+![](ge_crops_03.png)
+
+---
+
+# Cotton
+
+
+```r
+# Prep data
+xx <- agData_USDA_GE_Crops %>% 
+  filter(Area == "U.S.", Crop == "Genetically engineered (GE) upland cotton varieties")
+xE <- xx %>% top_n(1, Year) %>% pull(Value)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
+  geom_line(size = 1.5, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = agData_Colors) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.8)) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "US GE Trait Adoption", 
+       subtitle = "Genetically engineered (GE) upland cotton varieties",
+       y = "Percent", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: USDA")
+ggsave("ge_crops_04.png", mp, width = 7, height = 4)
+```
+
+![](ge_crops_04.png)
+
+---
+
+# Soybeans
+
+
+```r
+# Prep data
+xx <- agData_USDA_GE_Crops %>% 
+  filter(Area == "U.S.", Crop == "Genetically engineered (GE) soybean varieties")
+xE <- xx %>% top_n(1, Year) %>% pull(Value)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement, size = Measurement)) +
+  geom_line(alpha = 0.8) +
+  scale_color_manual(name = NULL, values = agData_Colors) +
+  scale_size_manual(values = c(2,1), guide = F) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.8)) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "US GE Trait Adoption", 
+       subtitle = "Genetically engineered (GE) soybean varieties",
+       y = "Percent", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: USDA")
+ggsave("ge_crops_05.png", mp, width = 7, height = 4)
+```
+
+![](ge_crops_05.png)
+
+---
+
+# Georgia
+
+
+```r
+# Prep data
+xx <- agData_USDA_GE_Crops %>% 
+  filter(Area == "Georgia", Crop == "Genetically engineered (GE) upland cotton varieties")
+xE <- xx %>% top_n(1, Year) %>% pull(Value)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
+  geom_line(size = 1.5, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = agData_Colors) +
+  scale_y_continuous(breaks = seq(0, 100, by = 10), 
+                     sec.axis = sec_axis(~ ., breaks = xE)) +
+  coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.8)) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Georgia GE Trait Adoption", 
+       subtitle = "Genetically engineered (GE) upland cotton varieties",
+       y = "Percent", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: USDA")
+ggsave("ge_crops_06.png", mp, width = 7, height = 4)
+```
+
+![](ge_crops_06.png)
+
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

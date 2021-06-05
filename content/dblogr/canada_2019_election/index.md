@@ -1,0 +1,1419 @@
+---
+title: "2019 Canadian Election Results"
+subtitle: "A regional look at how Canadians voted"
+summary:  "A regional look at how Canadians voted"
+date: "2021-06-05"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_2019_election/)"
+tags: [ "dblogr", "Politics" ]
+weight: 2
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/dblogr/canada_2019_election.html"
+---
+
+<script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
+
+-----
+
+# Introduction
+
+The [2019 Canadian federal election](https://en.wikipedia.org/wiki/2019_Canadian_federal_election) was won by the [**Liberal Party**](https://en.wikipedia.org/wiki/Liberal_Party_of_Canada) who won 157 seats (-20) and went from a *majority* to a *minority* government, meaning they must rely on support from other political parties to stay in power. Second place went to the [**Conservative Party**](https://en.wikipedia.org/wiki/Conservative_Party_of_Canada) who won 95 seats (+26). Third to the [**Bloc Québécois**](https://en.wikipedia.org/wiki/Bloc_Qu%C3%A9b%C3%A9cois) who won 32 seats (+22) surpassing the [**New Democratic Party**](https://en.wikipedia.org/wiki/New_Democratic_Party) who won only 24 seats (-20). Fifth place went to the [**Green Party**](https://en.wikipedia.org/wiki/Green_Party_of_Canada) who won 3 seats (+1) and last to the newly formed [**People’s Party of Canada**](https://en.wikipedia.org/wiki/People%27s_Party_of_Canada) who did not win a seat.
+
+![](canada/election_2019_00_map.png)
+
+-----
+
+# Data Source
+
+https://enr.elections.ca/National.aspx?lang=e
+
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/canada_2019_election/canada_2019_election_data.xlsx">
+<button class="btn btn-success"><i class="fa fa-save"></i> canada_2019_election_data.xlsx</button>
+</a>
+
+-----
+
+# Prepare Data
+
+``` r
+# devtools::install_github("derekmichaelwright/agData")
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(readxl) # read_xlsx()
+library(mapcan) # mapcan()
+# Prep data
+parties <- c("Liberal", "Conservative", "Bloc Québécois", "New Democratic Party", 
+             "Green Party", "People's Party", "Independent", "Animal Protection Party", 
+             "Canada's Fourth Front", "Christian Heritage Party", "Communist", "Libertarian", 
+             "ML", "National Citizens Alliance", "Nationalist", "No Affiliation",
+             "Parti Rhinocéros Party", "PC Party", "Pour l'Indépendance du Québec", 
+             "Radical Marijuana", "Stop Climate Change", "UPC", "VCP")
+p_short <- c("Libs", "Cons", "Bloc", "NDP", 
+             "Green", "PPC", "Ind", "APP", 
+             "CFF", "CHP", "Comm", "Libert", 
+             "ML", "NCA", "Nat", "None",
+             "PRP", "PCP", "Pl", 
+             "RM", "SCC", "UPC", "VCP")
+provinces <- c("British Columbia",  "Alberta", "Saskatchewan", "Manitoba", "Ontario", "Quebec", 
+               "New Brunswick", "Prince Edward Island", "Nova Scotia", "Newfoundland and Labrador",  
+               "Yukon", "Northwest Territories", "Nunavut")
+provShort <- c("BC","AB","SK","MB","ON","QC","NB","PE","NS","NL","YT","NT","NU")
+wprovs <- c("British Columbia", "Alberta"," Saskatchewan", "Manitoba",
+             "Yukon", "Northwest Territories", "Nunavut")
+# d1 = By party
+d1 <- read_xlsx("canada_2019_election_data.xlsx", "Party") %>%
+  mutate(Party_Short = plyr::mapvalues(Party, parties, p_short)) %>%
+  select(Party, Party_Short, everything())
+# d2 = By district
+d2 <- read_xlsx("canada_2019_election_data.xlsx", "District") %>%
+  filter(`Type of Results` == "validated") %>%
+  mutate(Area = factor(Area, levels = provinces),
+         Area_Short = plyr::mapvalues(Area, provinces, provShort),
+         Party_Short = plyr::mapvalues(Party, parties, p_short),
+         `Percent of Votes` = round(Percent),
+         SubRegion = ifelse(Area %in% wprovs, "Western Canada", "Eastern Canada"),
+         SubRegion = factor(SubRegion, levels=c("Western Canada","Eastern Canada"))) %>%
+  select(SubRegion, Area, Area_Short, Locality, `District Number`, District, 
+         Surname, `Given Name`, Party, Party_Short, everything())
+# Summarise "Other" parties
+parties <- c("Libs", "Cons", "NDP", "Bloc", "Green", "PPC", "Other")
+wings   <- c("Left", "Right", "Left", "Other", "Left", "Right", "Other")
+colors  <- c("darkred", "darkblue", "orange", "lightblue", "darkgreen", "purple", "grey")
+# d1a = Summarise "Other" parties for d1
+xx <- d1 %>% filter(!Party_Short %in% parties) %>% 
+  mutate(Party = "Other", Party_Short = "Other") %>% 
+  group_by(Party, Party_Short) %>%
+  summarise_all(funs(sum))
+d1a <- d1 %>% filter(Party_Short %in% parties) %>% bind_rows(xx) %>% 
+  mutate(`Percent of Districts` = 100 * `Percent of Districts`,
+         `Percent of Votes` = 100 * `Percent of Votes`,
+          Party_Short = factor(Party_Short, levels = parties),
+          Wing = plyr::mapvalues(Party_Short, parties, wings),
+          Wing = factor(Wing, levels = c("Left", "Right", "Other")))
+# d2a = Summarise "Other" parties for d2
+other_parties <- d2 %>% filter(!Party_Short %in% parties) %>% 
+  group_by(Party) %>% summarise(Votes = sum(Votes)) %>% 
+  arrange(Votes) %>% pull(Party) %>% unique() %>% rev()
+xx <- d2 %>% filter(Party %in% other_parties) %>% 
+  group_by(SubRegion, Area, Area_Short, Locality, `District Number`, District) %>%
+  summarise(Votes = sum(Votes), `Percent of Votes` = sum(`Percent of Votes`), 
+            `Total Votes` = max(`Total Votes`)) %>%
+  mutate(Party = "Other", Party_Short = "Other")
+d2a <- d2 %>% filter(Party_Short %in% parties) %>% bind_rows(xx)
+# d3 = Results for "Other" parties
+d3 <- d2 %>% filter(Party %in% other_parties) %>% group_by(Party) %>%
+  summarise(Votes = sum(Votes)) %>%
+  mutate(Party = factor(Party, levels = other_parties))
+```
+
+-----
+
+``` r
+# Create functions
+reFactor <- function(x, orderParty = "Conservative", myParties = parties) {
+  district_order <- x %>% filter(Party == orderParty) %>% 
+  arrange(Votes) %>% pull(District) %>% rev()
+  x %>% mutate(Party_Short = factor(Party_Short, levels = myParties),
+               District = factor(District, levels = district_order))
+}
+summariseResults <- function(x, myParties = parties, myWings = wings) {
+  y <- x %>% group_by(District) %>% top_n(1, Votes) %>% ungroup() %>%
+    group_by(Party) %>% count()
+  x <- x %>% group_by(Party, Party_Short) %>% summarise(Votes = sum(Votes)) %>% 
+    left_join(y, by = "Party") %>% 
+    rename(Districts = n) %>%
+    mutate(Districts = ifelse(is.na(Districts), 0, Districts))
+  x <- x %>%
+    mutate(`Percent of Districts` = round(100 * Districts / sum(x$Districts), 1),
+           `Percent of Votes` = round(100 * Votes / sum(x$Votes), 1),
+            Wing = plyr::mapvalues(Party_Short, myParties, myWings),
+            Wing = factor(Wing, levels = c("Left", "Right", "Other")),
+            Party_Short = factor(Party_Short, levels = parties))
+}
+```
+
+-----
+
+# Provincial Results
+
+## Electoral Map
+
+``` r
+# Prep data
+xx <- d2 %>% group_by(District) %>% 
+  top_n(1, Votes) %>%
+  ungroup() %>% 
+  mutate(Party_Short = factor(Party_Short, levels = c(parties[1:5], "Ind")))
+xx <- mapcan(boundaries = ridings, type = standard) %>%
+  full_join(xx, by = c("riding_code"="District Number"))
+# Plot
+mp <- ggplot(xx, aes(x = long, y = lat, group = group, fill = Party_Short)) +
+  geom_polygon(color = "white", size = 0.1, alpha = 0.8) + 
+  coord_fixed() + 
+  theme_mapcan() +
+  theme(legend.position = "none") +
+  scale_fill_manual(name = "Party", values = colors) +
+  labs(title = "2019 Canadian Federal Election Results",
+       caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
+ggsave("canada/election_2019_00_map.png", mp, width = 6, height = 4)
+```
+
+![](canada/election_2019_00_map.png)
+
+-----
+
+## Districts
+
+``` r
+# Prep data
+xx <- d2 %>% group_by(District) %>% top_n(1, Votes) %>% ungroup() %>% 
+  mutate(Party_Short = factor(Party_Short, levels = rev(c(parties[1:5], "Ind"))))
+# Plot
+mp <- ggplot(xx, aes(x = Area_Short, fill = Party_Short)) + 
+  geom_bar(position = "stack", color = "black", alpha = 0.8) +
+  scale_fill_manual(name = NULL, values = colors[c(7,5:1)]) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(title = "2019 Federal Election Results", 
+       caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada",
+       y = "Districts", x = NULL)
+ggsave("canada/election_2019_00_provinces.png", mp, width = 6, height = 4)
+```
+
+![](canada/election_2019_00_provinces.png)
+
+-----
+
+``` r
+# Prep data
+xx <- d2a %>% group_by(Area_Short, Party_Short) %>% 
+  summarise(Votes = sum(Votes)) %>% ungroup() %>% 
+  mutate(Party_Short = factor(Party_Short, levels = parties))
+# Plot
+mp <- ggplot(xx, aes(x = Area_Short, y = Votes / 1000000, fill = Party_Short)) + 
+  geom_bar(stat = "identity", position = "dodge", alpha = 0.8) +
+  scale_fill_manual(name = NULL, values = colors) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(title = "2019 Federal Election Results", 
+       caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada",
+       y = "Million Votes", x = NULL)
+ggsave("canada/election_2019_00_provinces_votes.png", mp, width = 6, height = 4)
+```
+
+![](canada/election_2019_00_provinces_votes.png)
+
+-----
+
+## West vs East
+
+### Votes
+
+``` r
+# Prep data
+xx <- d2a %>% group_by(SubRegion, Party_Short) %>% 
+  summarise(Votes = sum(Votes, na.rm = T)) %>%
+  mutate(Party_Short = factor(Party_Short, levels = parties),
+         Total = ifelse(SubRegion == "Western Canada", 
+           sum(.$Votes[.$SubRegion == "Western Canada"]),
+           sum(.$Votes[.$SubRegion == "Eastern Canada"])),
+         Total = round(Total / 1000000, 1))
+# Plot
+mp <- ggplot(xx, aes(x = Party_Short, y = Votes / 1000000)) +
+  geom_bar(stat = "identity", color = "black", alpha = 0.8, aes(fill = Party_Short),
+           position = position_dodge(preserve = "single")) +
+  geom_label(aes(label = round(Votes / 1000000, 1)), vjust = -0.1) +
+  facet_grid(. ~ SubRegion + paste("Million Votes =", Total)) +
+  scale_fill_manual(values = colors) +
+  scale_y_continuous(limits = c(0, 5.2)) +
+  theme_agData(legend.position = "none",
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(title = "2019 Canadian Federal Election Results",
+       y = "Million Votes", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
+ggsave("canada/election_2019_00_west_east_votes.png", mp, width = 6, height = 4)
+```
+
+![](canada/election_2019_00_west_east_votes.png)
+
+-----
+
+### Districts
+
+``` r
+# Prep data
+xx <- d2a %>% group_by(SubRegion, District) %>% top_n(1, Votes) %>% ungroup() %>%
+    group_by(SubRegion, Party_Short) %>% count() %>% ungroup()
+xx <- xx %>%
+  mutate(Party_Short = factor(Party_Short, levels = parties),
+         Total = ifelse(SubRegion == "Western Canada", 
+           sum(.$n[.$SubRegion == "Western Canada"]),
+           sum(.$n[.$SubRegion == "Eastern Canada"])))
+# Plot
+mp <- ggplot(xx, aes(x = Party_Short, y = n)) +
+  geom_bar(stat = "identity", color = "black", alpha = 0.8, aes(fill = Party_Short),
+           position = position_dodge(preserve = "single")) +
+  geom_label(aes(label = n), vjust = -0.1) +
+  facet_grid(.~SubRegion + paste("Total Districts =", Total)) +
+  scale_fill_manual(values = colors[-6]) + 
+  scale_y_continuous(limits = c(0, 148)) +
+  theme_agData(legend.position = "none",
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(title = "2019 Canadian Federal Election Results",
+       y = "Districts", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
+ggsave("canada/election_2019_00_west_east_districts.png", mp, width = 6, height = 4)
+```
+
+![](canada/election_2019_00_west_east_districts.png)
+
+-----
+
+# Votes
+
+``` r
+# Plot votes by party
+gg_Votes <- function(x, title = NULL, ymax = 15) {
+  ggplot(x, aes(x = Party_Short, y = Votes / 100000)) + 
+    geom_bar(aes(fill = Party_Short), stat = "identity", color = "black", alpha = 0.8) +
+    geom_label(aes(label = paste0(Votes, "\n", `Percent of Votes`, "%"), vjust = -0.1)) +
+    scale_fill_manual(values = colors) +
+    coord_cartesian(ylim = c(0, ymax)) +
+    theme_agData(legend.position = "none", 
+                 axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+    labs(title = title, y = "Votes (x 100,000)", x = NULL,
+         subtitle = "2019 Federal Election Results",
+         caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
+}
+```
+
+-----
+
+## Canada
+
+``` r
+# Plot
+mp <- gg_Votes(d1a, ymax = 74)
+ggsave("canada/election_2019_01_ca.png", mp, width = 6, height = 4)
+```
+
+![](canada/election_2019_01_ca.png)
+
+-----
+
+## Eastern Canada
+
+``` r
+# Prep data
+xx <- d2a %>% filter(SubRegion == "Eastern Canada") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "Eastern Canada", ymax = 61)
+ggsave("eastern_canada/election_2019_01_ce.png", mp, width = 6, height = 4)
+```
+
+![](eastern_canada/election_2019_01_ce.png)
+
+-----
+
+## Western Canada
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(SubRegion == "Western Canada") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "Western Canada", ymax = 31)
+ggsave("western_canada/election_2019_01_cw.png", mp, width = 6, height = 4)
+```
+
+![](western_canada/election_2019_01_cw.png)
+
+-----
+
+## Prairie Agricultureal Districts
+
+``` r
+# Prep data
+areas <- c("Rural Alberta", "Rural Saskatchewan", "Rural Manitoba")
+nonag <- c("Banff--Airdrie", "Foothills", "Yellowhead", 
+           "Fort McMurray--Cold Lak", "Grande Prairie--Mackenzie", 
+           "Desnethé--Missinippi--Churchill River", 
+           "Churchill--Keewatinook Aski")
+xx <- d2a %>% 
+  filter(Locality %in% areas) %>%
+  mutate(Locality = factor(Locality, levels = areas)) %>%
+  filter(!District %in% nonag) %>% 
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "Agricultural Prairie Districts", ymax = 10.75)
+ggsave("prairie_ag/election_2019_01_ag.png", mp, width = 6, height = 4)
+```
+
+![](prairie_ag/election_2019_01_ag.png)
+
+-----
+
+## British Columbia
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "British Columbia") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "British Columbia", ymax = 10)
+ggsave("british_columbia/election_2019_01_bc.png", mp, width = 6, height = 4)
+```
+
+![](british_columbia/election_2019_01_bc.png)
+
+-----
+
+## Alberta
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Alberta") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "Alberta", ymax = 17.6)
+ggsave("alberta/election_2019_01_ab.png", mp, width = 6, height = 4)
+```
+
+![](alberta/election_2019_01_ab.png)
+
+-----
+
+## Saskatchewan
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Saskatchewan") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "Saskatchewan", ymax = 4.5)
+ggsave("saskatchewan/election_2019_01_sk.png", mp, width = 6, height = 4)
+```
+
+![](saskatchewan/election_2019_01_sk.png)
+
+-----
+
+## Manitoba
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Manitoba") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "Manitoba", ymax = 3.3)
+ggsave("manitoba/election_2019_01_mb.png", mp, width = 6, height = 4)
+```
+
+![](manitoba/election_2019_01_mb.png)
+
+-----
+
+## Ontario
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Ontario") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "Ontario", ymax = 35)
+ggsave("ontario/election_2019_01_on.png", mp, width = 6, height = 4)
+```
+
+![](ontario/election_2019_01_on.png)
+
+-----
+
+## Quebec
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "lightblue", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(Area == "Quebec") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "Quebec", ymax = 18)
+ggsave("quebec/election_2019_01_qc.png", mp, width = 6, height = 4)
+```
+
+![](quebec/election_2019_01_qc.png)
+
+-----
+
+## New Brunswick
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(Area == "New Brunswick") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "New Brunswick", ymax = 2.05)
+ggsave("new_brunswick/election_2019_01_nb.png", mp, width = 6, height = 4)
+```
+
+![](new_brunswick/election_2019_01_nb.png)
+
+-----
+
+## Nova Scotia
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Nova Scotia") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "Nova Scotia", ymax = 2.7)
+ggsave("nova_scotia/election_2019_01_ns.png", mp, width = 6, height = 4)
+```
+
+![](nova_scotia/election_2019_01_ns.png)
+
+-----
+
+## Prince Edward Island
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "grey")
+xx <- d2a %>% filter(Area == "Prince Edward Island") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "Prince Edward Island", ymax = 0.46)
+ggsave("prince_edward_island/election_2019_01_pe.png", mp, width = 6, height = 4)
+```
+
+![](prince_edward_island/election_2019_01_pe.png)
+
+-----
+
+## Newfoundland and Labrador
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(Area == "Newfoundland and Labrador") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "Newfoundland and Labrador", ymax = 1.35)
+ggsave("Newfoundland_Labrador/election_2019_01_nl.png", mp, width = 6, height = 4)
+```
+
+![](newfoundland_Labrador/election_2019_01_nl.png)
+
+-----
+
+## Yukon
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Yukon") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "Yukon", ymax = 0.086)
+ggsave("yukon/election_2019_01_yt.png", mp, width = 6, height = 4)
+```
+
+![](yukon/election_2019_01_yt.png)
+
+-----
+
+## Northwest Territories
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Northwest Territories") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "Northwest Territories", ymax = 0.079)
+ggsave("northwest_territories/election_2019_01_nt.png", mp, width = 6, height = 4)
+```
+
+![](northwest_territories/election_2019_01_nt.png)
+
+-----
+
+## Nunavut
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Nunavut") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Votes(xx, "Nunavut", ymax = 0.047)
+ggsave("nunavut/election_2019_01_nu.png", mp, width = 6, height = 4)
+```
+
+![](nunavut/election_2019_01_nu.png)
+
+-----
+
+# Left vs Right
+
+``` r
+# Plot votes by wing (left vs right)
+gg_LeftRight <- function(x, title = NULL) {
+  # Caclculate percents
+  xL <- round(100 * sum(x$Votes[x$Wing == "Left"] / sum(x$Votes)), 1)
+  xR <- round(100 * sum(x$Votes[x$Wing == "Right"] / sum(x$Votes)), 1)
+  xO <- round(100 * sum(x$Votes[x$Wing == "Other"] / sum(x$Votes)), 1)
+  # Plot
+  ggplot(x, aes(x = Wing, y = Votes / 100000, fill = Party_Short)) + 
+    geom_bar(stat = "identity", color = "black", alpha = 0.8) +
+    geom_text(x = 1, y = sum(x$Votes[x$Wing == "Left"]) / 100000, 
+              label = paste(xL, "%"), vjust = 1.5, color = "white") +
+    geom_text(x = 2, y = sum(x$Votes[x$Wing == "Right"]) / 100000, 
+              label = paste(xR, "%"), vjust = 1.5, color = "white") +
+    geom_text(x = 3, y = sum(x$Votes[x$Wing == "Other"]) / 100000, 
+            label = paste(xO, "%"), vjust = -0.5, color = "black") +
+    scale_fill_manual(values = colors) +
+    theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+    labs(title = title, y = "Votes (x 100,000)", x = NULL,
+         subtitle = "2019 Federal Election Results",
+         caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
+}
+```
+
+-----
+
+## Canada
+
+``` r
+# Plot
+colors <- c("darkred", "darkblue", "orange", "lightblue", "darkgreen", "purple", "grey")
+mp <- gg_LeftRight(d1a)
+ggsave("canada/election_2019_02_ca.png", mp, width = 6, height = 4)
+```
+
+![](canada/election_2019_02_ca.png)
+
+-----
+
+## Eastern Canada
+
+``` r
+# Prep data
+xx <- d2a %>% filter(SubRegion == "Eastern Canada") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "Eastern Canada")
+ggsave("eastern_canada/election_2019_02_ce.png", mp, width = 6, height = 4)
+```
+
+![](eastern_canada/election_2019_02_ce.png)
+
+-----
+
+## Western Canada
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(SubRegion == "Western Canada") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "Western Canada")
+ggsave("western_canada/election_2019_02_cw.png", mp, width = 6, height = 4)
+```
+
+![](western_canada/election_2019_02_cw.png)
+
+-----
+
+## Prairie Agricultureal Districts
+
+``` r
+# Prep data
+areas <- c("Rural Alberta", "Rural Saskatchewan", "Rural Manitoba")
+nonag <- c("Banff--Airdrie", "Foothills", "Yellowhead", 
+           "Fort McMurray--Cold Lak", "Grande Prairie--Mackenzie", 
+           "Desnethé--Missinippi--Churchill River", 
+           "Churchill--Keewatinook Aski")
+xx <- d2a %>% 
+  filter(Locality %in% areas) %>%
+  mutate(Locality = factor(Locality, levels = areas)) %>%
+  filter(!District %in% nonag) %>% 
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "Agricultural Prairie Districts")
+ggsave("prairie_ag/election_2019_02_ag.png", mp, width = 6, height = 4)
+```
+
+![](prairie_ag/election_2019_02_ag.png)
+
+-----
+
+## British Columbia
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "British Columbia") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "British Columbia")
+ggsave("british_columbia/election_2019_02_bc.png", mp, width = 6, height = 4)
+```
+
+![](british_columbia/election_2019_02_bc.png)
+
+-----
+
+## Alberta
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Alberta") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "2019 Federal Election Results in Alberta")
+ggsave("alberta/election_2019_02_ab.png", mp, width = 6, height = 4)
+```
+
+![](alberta/election_2019_02_ab.png)
+
+-----
+
+## Saskatchewan
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Saskatchewan") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "Saskatchewan")
+ggsave("saskatchewan/election_2019_02_sk.png", mp, width = 6, height = 4)
+```
+
+![](saskatchewan/election_2019_02_sk.png)
+
+-----
+
+## Manitoba
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Manitoba") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "Manitoba")
+ggsave("manitoba/election_2019_02_mb.png", mp, width = 6, height = 4)
+```
+
+![](manitoba/election_2019_02_mb.png)
+
+-----
+
+## Ontario
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Ontario") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "Ontario")
+ggsave("ontario/election_2019_02_on.png", mp, width = 6, height = 4)
+```
+
+![](ontario/election_2019_02_on.png)
+
+-----
+
+## Quebec
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "lightblue", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(Area == "Quebec") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "Quebec")
+ggsave("quebec/election_2019_02_qc.png", mp, width = 6, height = 4)
+```
+
+![](quebec/election_2019_02_qc.png)
+
+-----
+
+## New Brunswick
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(Area == "New Brunswick") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "New Brunswick")
+ggsave("new_brunswick/election_2019_02_nb.png", mp, width = 6, height = 4)
+```
+
+![](new_brunswick/election_2019_02_nb.png)
+
+-----
+
+## Nova Scotia
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Nova Scotia") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "Nova Scotia")
+ggsave("nova_scotia/election_2019_02_ns.png", mp, width = 6, height = 4)
+```
+
+![](nova_scotia/election_2019_02_ns.png)
+
+-----
+
+## Prince Edward Island
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "grey")
+xx <- d2a %>% filter(Area == "Prince Edward Island") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "Prince Edward Island")
+ggsave("prince_edward_island/election_2019_02_pe.png", mp, width = 6, height = 4)
+```
+
+![](prince_edward_island/election_2019_02_pe.png)
+
+-----
+
+## Newfoundland and Labrador
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(Area == "Newfoundland and Labrador") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "Newfoundland and Labrador")
+ggsave("newfoundland_Labrador/election_2019_02_nl.png", mp, width = 6, height = 4)
+```
+
+![](newfoundland_Labrador/election_2019_02_nl.png)
+
+-----
+
+## Yukon
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Yukon") %>%
+  reFactor() %>% summariseResults()
+mp <- gg_LeftRight(xx, "Yukon")
+ggsave("yukon/election_2019_02_yt.png", mp, width = 6, height = 4)
+```
+
+![](yukon/election_2019_02_yt.png)
+
+-----
+
+## Northwest Territories
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Northwest Territories") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "Northwest Territories")
+ggsave("northwest_territories/election_2019_02_nt.png", mp, width = 6, height = 4)
+```
+
+![](northwest_territories/election_2019_02_nt.png)
+
+-----
+
+## Nunavut
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Nunavut") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_LeftRight(xx, "Nunavut")
+ggsave("nunavut/election_2019_02_nu.png", mp, width = 6, height = 4)
+```
+
+![](nunavut/election_2019_02_nu.png)
+
+-----
+
+# Districts
+
+``` r
+# Plot Distrcits by party
+gg_Districts <- function(x, title = NULL, ymax = 15) {
+  ggplot(x, aes(x = Party_Short, y = Districts)) + 
+    geom_bar(aes(fill = Party_Short), stat = "identity", color = "black", alpha = 0.8) +
+    geom_label(aes(label = paste0(Districts, "\n", `Percent of Districts`, "%")), 
+                   vjust = -0.1) +
+    scale_fill_manual(values = colors) +
+    coord_cartesian(ylim = c(0, ymax)) +
+    theme_agData(legend.position = "none", 
+                 axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+    labs(title = title, y = "Districts", x = NULL,
+         subtitle = "2019 Federal Election Results",
+         caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
+}
+```
+
+-----
+
+## Canada
+
+``` r
+colors  <- c("darkred", "darkblue", "orange", "lightblue", "darkgreen", "purple", "grey")
+mp <- gg_Districts(d1a, ymax = 186)
+ggsave("canada/election_2019_03_ca.png", mp, width = 6, height = 4)
+```
+
+![](canada/election_2019_03_ca.png)
+
+-----
+
+## Eastern Canada
+
+``` r
+# Prep data
+xx <- d2a %>% filter(SubRegion == "Eastern Canada") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Districts(xx, "Eastern Canada", ymax = 171)
+ggsave("eastern_canada/election_2019_40_03_ce.png", mp, width = 6, height = 4)
+```
+
+![](eastern_canada/election_2019_40_03_ce.png)
+
+-----
+
+## Western Canada
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(SubRegion == "Western Canada") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Districts(xx, "Western Canada", ymax = 70)
+ggsave("western_canada/election_2019_03_cw.png", mp, width = 6, height = 4)
+```
+
+![](western_canada/election_2019_03_cw.png)
+
+-----
+
+## Prairie Agricultureal Districts
+
+``` r
+# Prep data
+areas <- c("Rural Alberta", "Rural Saskatchewan", "Rural Manitoba")
+nonag <- c("Banff--Airdrie", "Foothills", "Yellowhead", 
+           "Fort McMurray--Cold Lak", "Grande Prairie--Mackenzie", 
+           "Desnethé--Missinippi--Churchill River", 
+           "Churchill--Keewatinook Aski")
+xx <- d2a %>% 
+  filter(Locality %in% areas) %>%
+  mutate(Locality = factor(Locality, levels = areas)) %>%
+  filter(!District %in% nonag) %>% 
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Districts(xx, "Agricultural Prairie Districts", ymax = 27.5)
+ggsave("prairie_ag/election_2019_03_ag.png", mp, width = 6, height = 4)
+```
+
+![](prairie_ag/election_2019_03_ag.png)
+
+-----
+
+## British Columbia
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "British Columbia") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Districts(xx, "British Columbia", ymax = 20.5)
+ggsave("british_columbia/election_2019_03_bc.png", mp, width = 6, height = 4)
+```
+
+![](british_columbia/election_2019_03_bc.png)
+
+-----
+
+## Alberta
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Alberta") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Districts(xx, "Alberta", ymax = 39.5)
+ggsave("alberta/election_2019_03_ab.png", mp, width = 6, height = 4)
+```
+
+![](alberta/election_2019_03_ab.png)
+
+-----
+
+## Saskatchewan
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Saskatchewan") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Districts(xx, "Saskatchewan", ymax = 17)
+ggsave("saskatchewan/election_2019_03_sk.png", mp, width = 6, height = 4)
+```
+
+![](saskatchewan/election_2019_03_sk.png)
+
+-----
+
+## Manitoba
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Manitoba") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Districts(xx, "Manitoba", ymax = 8.5)
+ggsave("manitoba/election_2019_03_mb.png", mp, width = 6, height = 4)
+```
+
+![](manitoba/election_2019_03_mb.png)
+
+-----
+
+## Ontario
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Ontario") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Districts(xx, "Ontario", ymax = 94)
+ggsave("ontario/election_2019_03_on.png", mp, width = 6, height = 4)
+```
+
+![](ontario/election_2019_03_on.png)
+
+-----
+
+## Quebec
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "lightblue", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(Area == "Quebec") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Districts(xx, "Quebec", ymax = 42)
+ggsave("quebec/election_2019_03_qc.png", mp, width = 6, height = 4)
+```
+
+![](quebec/election_2019_03_qc.png)
+
+-----
+
+## New Brunswick
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(Area == "New Brunswick") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Districts(xx, "New Brunswick", ymax = 7.2)
+ggsave("new_brunswick/election_2019_03_nb.png", mp, width = 6, height = 4)
+```
+
+![](new_brunswick/election_2019_03_nb.png)
+
+-----
+
+## Nova Scotia
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Nova Scotia") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Districts(xx, "Nova Scotia", ymax = 12)
+ggsave("nova_scotia/election_2019_03_ns.png", mp, width = 6, height = 4)
+```
+
+![](nova_scotia/election_2019_03_ns.png)
+
+-----
+
+## Prince Edward Island
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "grey")
+xx <- d2a %>% filter(Area == "Prince Edward Island") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Districts(xx, "Prince Edward Island", ymax = 5)
+ggsave("prince_edward_island/election_2019_03_pe.png", mp, width = 6, height = 4)
+```
+
+![](prince_edward_island/election_2019_03_pe.png)
+
+-----
+
+## Newfoundland and Labrador
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(Area == "Newfoundland and Labrador") %>%
+  reFactor() %>% summariseResults()
+# Plot
+mp <- gg_Districts(xx, "Newfoundland and Labrador", ymax = 7.2)
+ggsave("newfoundland_Labrador/election_2019_03_nl.png", mp, width = 6, height = 4)
+```
+
+![](newfoundland_Labrador/election_2019_03_nl.png)
+
+-----
+
+# By Districts
+
+``` r
+# Plot votes by district
+gg_ByDistrict <- function(x, title = NULL, ncol = 6) {
+  x1 <- x %>% group_by(District) %>% top_n(1, Votes)
+  ggplot(x, aes(x = Party_Short, y = Votes, fill = Party_Short)) + 
+    geom_bar(stat = "identity", alpha = 0.8) +
+    geom_text(data = x %>% filter(`Percent of Votes` > 10), 
+              aes(label = paste(`Percent of Votes`, "%")), 
+              vjust = 1.2, size = 2, color = "white") +
+    geom_label(data = x1, x = 5.5, hjust = 1, vjust = 1, alpha = 0.3, size = 5,
+               aes(label = paste(`Percent of Votes`, "%"))) +
+    facet_wrap(District ~ ., scales = "free_y", ncol = ncol) +
+    scale_fill_manual(values = colors) +
+    theme_agData(legend.position = "none", 
+                 axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+    labs(title = title, x = NULL,
+         subtitle = "2019 Federal Election Results",
+         caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
+}
+```
+
+-----
+
+## Prairie Agricultureal Districts
+
+``` r
+# Prep data
+areas <- c("Rural Alberta", "Rural Saskatchewan", "Rural Manitoba")
+nonag <- c("Banff--Airdrie", "Foothills", "Yellowhead", 
+           "Fort McMurray--Cold Lak", "Grande Prairie--Mackenzie", 
+           "Desnethé--Missinippi--Churchill River", 
+           "Churchill--Keewatinook Aski")
+xx <- d2a %>% 
+  filter(Locality %in% areas) %>%
+  mutate(Locality = factor(Locality, levels = areas)) %>%
+  filter(!District %in% nonag) %>% 
+  reFactor()
+x1 <- xx %>% group_by(District) %>% top_n(1, Votes)
+#
+mp <- ggplot(xx, aes(x = Party_Short, y = Votes, fill = Party_Short)) + 
+  geom_bar(stat = "identity", alpha = 0.8) +
+  geom_text(data = xx %>% filter(`Percent of Votes` > 10), 
+            aes(label = paste(`Percent of Votes`, "%")), 
+            vjust = 1.2, size = 2, color = "white") +
+  geom_label(data = x1, x = 6, hjust = 1, vjust = 1, alpha = 0.3, size = 5,
+             aes(label = paste(`Percent of Votes`, "%"))) +
+  facet_wrap(Locality+District ~ ., scales = "free_y", ncol = 6) +
+  scale_fill_manual(values = colors) +
+  theme_agData(legend.position = "none",
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  labs(title = "2019 Federal Election Results in Agricultural Prairie Districts", 
+       x = NULL, caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
+ggsave("prairie_ag/election_2019_04_ag.png", mp, width = 16, height = 8)
+```
+
+![](prairie_ag/election_2019_04_ag.png)
+
+-----
+
+## British Columbia
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "British Columbia") %>%
+  reFactor()
+# Plot
+mp <- gg_ByDistrict(xx, "British Columbia", ncol = 6)
+ggsave("british_columbia/election_2019_04_bc.png", mp, width = 15, height = 10.5)
+```
+
+![](british_columbia/election_2019_04_bc.png)
+
+-----
+
+``` r
+x1 <- xx %>% filter(Locality == "Urban BC")
+mp <- gg_ByDistrict(x1, "Urban BC", ncol = 7)
+ggsave("british_columbia/election_2019_04_bc_urban.png", mp, width = 17.5, height = 6)
+```
+
+![](british_columbia/election_2019_04_bc_urban.png)
+
+-----
+
+``` r
+x1 <- xx %>% filter(Locality == "Rural BC")
+mp <- gg_ByDistrict(x1, "Rural BC", ncol = 5)
+ggsave("british_columbia/election_2019_04_bc_rural.png", mp, width = 12.5, height = 5)
+```
+
+![](british_columbia/election_2019_04_bc_rural.png)
+
+-----
+
+## Alberta
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Alberta") %>%
+  reFactor()
+# Plot
+mp <- gg_ByDistrict(xx, "Alberta", ncol = 7)
+ggsave("alberta/election_2019_04_ab.png", mp, width = 17.5, height = 7.5)
+```
+
+![](alberta/election_2019_04_ab.png)
+
+-----
+
+``` r
+x1 <- xx %>% filter(Locality == "Calgary")
+mp <- gg_ByDistrict(x1, "Calgary", ncol = 5)
+ggsave("alberta/election_2019_04_ab_calgary.png", mp, width = 12.5, height = 4)
+```
+
+![](alberta/election_2019_04_ab_calgary.png)
+
+-----
+
+``` r
+x1 <- xx %>% filter(Locality == "Edmonton")
+mp <- gg_ByDistrict(x1, "Edmonton", ncol = 5)
+ggsave("alberta/election_2019_04_ab_edmonton.png", mp, width = 12.5, height = 4)
+```
+
+![](alberta/election_2019_04_ab_edmonton.png)
+
+-----
+
+``` r
+x1 <- xx %>% filter(Locality == "Rural Alberta")
+mp <- gg_ByDistrict(x1, "Rural Alberta", ncol = 5)
+ggsave("alberta/election_2019_04_ab_rural.png", mp, width = 12.5, height = 5)
+```
+
+![](alberta/election_2019_04_ab_rural.png)
+
+-----
+
+## Saskatchewan
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Saskatchewan") %>%
+  reFactor()
+# Plot
+mp <- gg_ByDistrict(xx, "Saskatchewan", ncol = 4)
+ggsave("saskatchewan/election_2019_04_sk.png", mp, width = 10, height = 6)
+```
+
+![](saskatchewan/election_2019_04_sk.png)
+
+-----
+
+``` r
+x1 <- xx %>% filter(Locality == "Rural Saskatchewan")
+mp <- gg_ByDistrict(x1, "Rural Saskatchewan", ncol = 4)
+ggsave("saskatchewan/election_2019_04_sk_rural.png", mp, width = 10, height = 4)
+```
+
+![](saskatchewan/election_2019_04_sk_rural.png)
+
+-----
+
+``` r
+x1 <- xx %>% filter(Locality == "Urban Saskatchewan")
+mp <- gg_ByDistrict(x1, "Urban Saskatchewan", ncol = 3)
+ggsave("saskatchewan/election_2019_04_sk_urban.png", mp, width = 8, height = 4)
+```
+
+![](saskatchewan/election_2019_04_sk_urban.png)
+
+-----
+
+## Manitoba
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Manitoba") %>%
+  reFactor()
+# Plot
+mp <- gg_ByDistrict(xx, "Manitoba", ncol = 4)
+ggsave("manitoba/election_2019_04_mb.png", mp, width = 10, height = 6)
+```
+
+![](manitoba/election_2019_04_mb.png)
+
+-----
+
+``` r
+# Plot
+x1 <- xx %>% filter(Locality == "Rural Manitoba")
+mp <- gg_ByDistrict(x1, "Rural Manitoba", ncol = 3)
+ggsave("manitoba/election_2019_05_mb_rural.png", mp, width = 8, height = 4)
+```
+
+![](manitoba/election_2019_05_mb_rural.png)
+
+-----
+
+``` r
+x1 <- xx %>% filter(Locality == "Winnipeg")
+mp <- gg_ByDistrict(x1, "Winnipeg", ncol = 4)
+ggsave("manitoba/election_2019_06_mb_winnipeg.png", mp, width = 10, height = 4)
+```
+
+![](manitoba/election_2019_06_mb_winnipeg.png)
+
+-----
+
+## Ontario
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Ontario") %>%
+  reFactor()
+# Plot
+mp <- gg_ByDistrict(xx, "Ontario", ncol = 11)
+ggsave("ontario/election_2019_04_on.png", mp, width = 27.5, height = 16.5)
+```
+
+![](ontario/election_2019_04_on.png)
+
+-----
+
+## Quebec
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "lightblue", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(Area == "Quebec") %>%
+  reFactor()
+# Plot
+mp <- gg_ByDistrict(xx, "Quebec", ncol = 10)
+ggsave("quebec/election_2019_04_qc.png", mp, width = 25, height = 12)
+```
+
+![](quebec/election_2019_04_qc.png)
+
+-----
+
+## New Brunswick
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(Area == "New Brunswick") %>%
+  reFactor()
+# Plot
+mp <- gg_ByDistrict(xx, "New Brunswick", ncol = 5)
+ggsave("new_brunswick/election_2019_04_nb.png", mp, width = 12.5, height = 4)
+```
+
+![](new_brunswick/election_2019_04_nb.png)
+
+-----
+
+## Nova Scotia
+
+``` r
+# Prep data
+xx <- d2a %>% filter(Area == "Nova Scotia") %>%
+  reFactor()
+# Plot
+mp <- gg_ByDistrict(xx, "Nova Scotia", ncol = 6)
+ggsave("nova_scotia/election_2019_04_ns.png", mp, width = 15, height = 4)
+```
+
+![](nova_scotia/election_2019_04_ns.png)
+
+-----
+
+## Prince Edward Island
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "grey")
+xx <- d2a %>% filter(Area == "Prince Edward Island") %>%
+  reFactor()
+# Plot
+mp <- gg_ByDistrict(xx, "Prince Edward Island", ncol = 4)
+ggsave("prince_edward_island/election_2019_04_pe.png", mp, width = 10, height = 3)
+```
+
+![](prince_edward_island/election_2019_04_pe.png)
+
+-----
+
+## Newfoundland and Labrador
+
+``` r
+# Prep data
+colors <- c("darkred", "darkblue", "orange", "darkgreen", "purple", "grey")
+xx <- d2a %>% filter(Area == "Newfoundland and Labrador") %>%
+  reFactor()
+# Plot
+mp <- gg_ByDistrict(x1, "Newfoundland and Labrador", ncol = 4)
+ggsave("newfoundland_Labrador/election_2019_04_nl.png", mp, width = 10, height = 4)
+```
+
+![](newfoundland_Labrador/election_2019_04_nl.png)
+
+-----
+
+## Northern Canada
+
+-----
+
+# Other Parties
+
+``` r
+mp <- ggplot(d3, aes(x = Party, y = Votes, fill = Party)) + 
+  geom_bar(stat = "identity", color = "black") + 
+  theme_agData(legend.position = "none",
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(title = "2019 Federal Election Results for \"other\" parties", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: Elections Canada")
+ggsave("canada/election_2019_00_Other.png", mp, width = 6, height = 4)
+```
+
+![](canada/election_2019_00_Other.png)
+
+-----
+
+© Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

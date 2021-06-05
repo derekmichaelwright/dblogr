@@ -1,0 +1,1970 @@
+---
+title: "Introduction to agData"
+subtitle: "An R package with FAO, USDA, STATCAN and ISAAA data"
+summary:  "An R package with FAO, USDA, STATCAN and ISAAA data"
+date: "2021-06-05"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agData/introduction_to_agdata/)"
+tags: [ "agData", "Introduction", "Featured" ]
+weight: 1
+codefolding_show: "show"
+image:
+  preview_only: true
+links:
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/agdata/introduction_to_agdata.html"
+---
+
+<script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
+
+<script src="{{< blogdown/postref >}}index_files/jquery/jquery.min.js"></script>
+
+<link href="{{< blogdown/postref >}}index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+
+<script src="{{< blogdown/postref >}}index_files/datatables-binding/datatables.js"></script>
+
+<link href="{{< blogdown/postref >}}index_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="{{< blogdown/postref >}}index_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+
+<script src="{{< blogdown/postref >}}index_files/dt-core/js/jquery.dataTables.min.js"></script>
+
+<link href="{{< blogdown/postref >}}index_files/crosstalk/css/crosstalk.css" rel="stylesheet" />
+
+<script src="{{< blogdown/postref >}}index_files/crosstalk/js/crosstalk.min.js"></script>
+
+<script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
+
+<script src="{{< blogdown/postref >}}index_files/jquery/jquery.min.js"></script>
+
+<link href="{{< blogdown/postref >}}index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+
+<script src="{{< blogdown/postref >}}index_files/datatables-binding/datatables.js"></script>
+
+<link href="{{< blogdown/postref >}}index_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="{{< blogdown/postref >}}index_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+
+<script src="{{< blogdown/postref >}}index_files/dt-core/js/jquery.dataTables.min.js"></script>
+
+<link href="{{< blogdown/postref >}}index_files/crosstalk/css/crosstalk.css" rel="stylesheet" />
+
+<script src="{{< blogdown/postref >}}index_files/crosstalk/js/crosstalk.min.js"></script>
+
+<script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
+
+<script src="{{< blogdown/postref >}}index_files/jquery/jquery.min.js"></script>
+
+<link href="{{< blogdown/postref >}}index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+
+<script src="{{< blogdown/postref >}}index_files/datatables-binding/datatables.js"></script>
+
+<link href="{{< blogdown/postref >}}index_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="{{< blogdown/postref >}}index_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+
+<script src="{{< blogdown/postref >}}index_files/dt-core/js/jquery.dataTables.min.js"></script>
+
+<link href="{{< blogdown/postref >}}index_files/crosstalk/css/crosstalk.css" rel="stylesheet" />
+
+<script src="{{< blogdown/postref >}}index_files/crosstalk/js/crosstalk.min.js"></script>
+
+-----
+
+<img src="featured.png" align="right" width = "200px" />
+
+# Data Sources
+
+  - `FAO` Food and Agriculture Organization of the United Nations [fao.org/faostat/](http://fao.org/faostat/)
+  - `STATCAN` Statistics Canada [statcan.gc.ca/](http://statcan.gc.ca/)
+  - `USDA` United States Department of Agriculture [usda.gov/](http://usda.gov/)
+  - `ISAAA` International Service for the Acquisition of Agri-biotech Applications [isaaa.org/](http://isaaa.org/)
+
+-----
+
+# Instalation
+
+``` r
+devtools::install_github("derekmichaelwright/agData")
+```
+
+``` r
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+```
+
+This will also the load the following packages: `tidyverse`, `ggpubr`, `ggbeeswarm` & `ggrepel`.
+
+-----
+
+# Data Sets & Functions
+
+  - [theme\_agData()](#theme_agdata)
+  - [agData\_FAO\_Country\_Table](#agdata_fao_country_table)
+  - [agData\_FAO\_Region\_Table](#agdata_fao_region_table)
+  - [agData\_FAO\_Crops](#agdata_fao_crops)
+  - [agData\_FAO\_Crops2](#agdata_fao_crops2)
+  - [agData\_FAO\_Fertilizers](#agdata_fao_fertilizers)
+  - [agData\_FAO\_LandUse](#agdata_fao_landuse)
+  - [agData\_FAO\_Livestock](#agdata_fao_livestock)
+  - [agData\_FAO\_Population](#agdata_fao_population)
+  - [agData\_FAO\_Trade](#agdata_fao_trade)
+  - [agData\_STATCAN\_Region\_Table](#agdata_statcan_region_table)
+  - [agData\_STATCAN\_Beehives](#agdata_statcan_beehives)
+  - [agData\_STATCAN\_Crops](#agdata_statcan_crops)
+  - [agData\_STATCAN\_FarmLand\_Crops](#agdata_statcan_farmland_crops)
+  - [agData\_STATCAN\_FarmLand\_NoTill](#agdata_statcan_farmland_notill)
+  - [agData\_STATCAN\_FarmLand\_Size](#agdata_statcan_farmland_size)
+  - [agData\_STATCAN\_FarmLand\_Use](#agdata_statcan_farmland_use)
+  - [agData\_STATCAN\_Livestock](#agdata_statcan_livestock)
+  - [agData\_STATCAN\_Population](#agdata_statcan_population)
+  - [agData\_USDA\_Crops](#agdata_usda_crops)
+  - [agData\_USDA\_GE\_Crops](#agdata_usda_ge_crops)
+  - [agData\_USDA\_TFP](#agdata_usda_tfp)
+  - [agData\_ISAAA\_Area](#agdata_isaaa_area)
+  - [agData\_ISAAA\_Country](#agdata_isaaa_country)
+  - [agData\_ISAAA\_Crop](#agdata_isaaa_crop)
+  - [agData\_ISAAA\_CropPercent](#agdata_isaaa_croppercent)
+  - [agData\_ISAAA\_DVDDVG](#agdata_isaaa_dvddvg)
+  - [agData\_ISAAA\_Value](#agdata_isaaa_value)
+  - [agData\_UK\_Yields](#agdata_uk_yields)
+  - [agData\_MaizeContest](#agdata_maizecontest)
+  - [agData\_PeopleInAg](#agdata_peopleinag)
+  - [agData\_PopFert](#agdata_popfert)
+
+-----
+
+# theme\_agData
+
+``` r
+xx <- data.frame(x = 1:10, y = 1:10, color = rep(c("1","2"), times = 5, each = 2))
+mp <- ggplot(xx, aes(x = x, y = y, color = color)) + 
+  geom_point(size = 4) + facet_grid(.~color)
+mp
+```
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+
+``` r
+mp + theme_agData()
+```
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-2.png" width="672" />
+
+``` r
+mp + theme_agData(legend.position = "none")
+```
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-3.png" width="672" />
+
+``` r
+mp + theme_agData(linesize = 1.5, 
+                  bgFill = alpha("darkgreen",0.2), 
+                  stripFill = alpha("darkred",0.2),
+                  lineColor = "darkorange",
+                  axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-4.png" width="672" />
+
+-----
+
+# agData\_FAO\_Country\_Table
+
+``` r
+DT::datatable(agData_FAO_Country_Table)
+```
+
+<div id="htmlwidget-1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200","201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","249","250","251","252","253"],["Afghanistan","Åland Islands","Albania","Algeria","American Samoa","Andorra","Angola","Anguilla","Antigua and Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belgium-Luxembourg","Belize","Benin","Bermuda","Bhutan","Bolivia (Plurinational State of)","Bonaire, Sint Eustatius and Saba","Bosnia and Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei Darussalam","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada","Cayman Islands","Central African Republic","Chad","Chile","China, mainland","Colombia","Comoros","Congo","Cook Islands","Costa Rica","Côte d'Ivoire","Croatia","Cuba","Curaçao","Cyprus","Czechia","Czechoslovakia","Democratic Yemen","Denmark","Djibouti","Dominica","Dominican Republic","Democratic Republic of the Congo","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Ethiopia PDR","Falkland Islands (Malvinas)","Faroe Islands","Fiji","Finland","France","French Guiana","French Polynesia","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guadeloupe","Guam","Guatemala","Guernsey","Guinea","Guinea-Bissau","Guyana","Haiti","Holy See","Honduras","China, Hong Kong SAR","Hungary","Iceland","India","Indonesia","Iran (Islamic Republic of)","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan","Lao People's Democratic Republic","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","China, Macao SAR","The former Yugoslav Republic of Macedonia","Republic of Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Martinique","Mauritania","Mauritius","Mayotte","Mexico","Micronesia (Federated States of)","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Niue","Norfolk Island","Democratic People's Republic of Korea","Northern Mariana Islands","Norway","Occupied Palestinian Territory","Oman","Pacific Islands, Trust Territory of","Pakistan","Palau","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Pitcairn Islands","Poland","Portugal","Puerto Rico","Qatar","Republic of Korea","Republic of Moldova","Réunion","Romania","Russian Federation","Rwanda","Saint-Martin (French Part)","Saint Barthélemy","Saint Helena, Ascension and Tristan da Cunha","Saint Kitts and Nevis","Saint Lucia","Saint Pierre and Miquelon","Saint Vincent and Grenadines","Samoa","San Marino","Sao Tome and Principe","Sark","Saudi Arabia","Senegal","Serbia","Serbia and Montenegro","Seychelles","Sierra Leone","Singapore","Sint Maarten (Dutch Part)","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Sudan","Spain","Sri Lanka","Sudan","Sudan (former)","Suriname","Svalbard and Jan Mayen Islands","Swaziland","Sweden","Switzerland","Syrian Arab Republic","China, Taiwan Province of","Tajikistan","United Republic of Tanzania","Thailand","Timor-Leste","Togo","Tokelau","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Turks and Caicos Islands","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States Virgin Islands","Uruguay","United States of America","USSR","Uzbekistan","Vanuatu","Venezuela (Bolivarian Republic of)","Vietnam","Wallis and Futuna Islands","Western Sahara","Yemen","Yemen (old)","Yugoslav SFR","Zambia","Zimbabwe"],["Afghanistan","Åland Islands","Albania","Algeria","American Samoa","Andorra","Angola","Anguilla","Antigua and Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belgium-Luxembourg","Belize","Benin","Bermuda","Bhutan","Bolivia","Bonaire, Sint Eustatius and Saba","Bosnia and Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei Darussalam","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada","Cayman Islands","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo","Cook Islands","Costa Rica","Côte d'Ivoire","Croatia","Cuba","Curaçao","Cyprus","Czech Republic","Czechoslovakia","Democratic Yemen","Denmark","Djibouti","Dominica","Dominican Republic","DR Congo","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Ethiopia","Falkland Islands (Malvinas)","Faroe Islands","Fiji","Finland","France","French Guiana","French Polynesia","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guadeloupe","Guam","Guatemala","Guernsey","Guinea","Guinea-Bissau","Guyana","Haiti","Holy See","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macao","Macedonia","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Martinique","Mauritania","Mauritius","Mayotte","Mexico","Micronesia (Federated States of)","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Niue","Norfolk Island","North Korea","Northern Mariana Islands","Norway","Occupied Palestinian Territory","Oman","Pacific Islands","Pakistan","Palau","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Pitcairn Islands","Poland","Portugal","Puerto Rico","Qatar","Republic of Korea","Republic of Moldova","Réunion","Romania","Russia","Rwanda","Saint-Martin (French Part)","Saint Barthélemy","Saint Helena, Ascension and Tristan da Cunha","Saint Kitts and Nevis","Saint Lucia","Saint Pierre and Miquelon","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Sark","Saudi Arabia","Senegal","Serbia","Serbia and Montenegro","Seychelles","Sierra Leone","Singapore","Sint Maarten (Dutch Part)","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Sudan","Spain","Sri Lanka","Sudan","Sudan","Suriname","Svalbard and Jan Mayen Islands","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tokelau","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Turks and Caicos Islands","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States Virgin Islands","Uruguay","USA","USSR","Uzbekistan","Vanuatu","Venezuela","Vietnam","Wallis and Futuna Islands","Western Sahara","Yemen","Yemen (old)","Yugoslav SFR","Zambia","Zimbabwe"],["AF","AX","AL","DZ","AS","AD","AO","AI","AG","AR","AM","AW","AU","AT","AZ","BS","BH","BD","BB","BY","BE","BE","BZ","BJ","BM","BT","BO","BQ","BA","BW","BR","VG","BN","BG","BF","BI","CV","KH","CM","CA","KY","CF","TD","CL","CN","CO","KM","CG","CK","CR","CI","HR","CU","CW","CY","CZ","CZ","YE","DK","DJ","DM","DO","CD","EC","EG","SV","GQ","ER","EE","ET","ET","FK","FO","FJ","FI","FR","GF","PF","GA","GM","GE","DE","GH","GI","GR","GL","GD","GP","GU","GT","GG","GN","GW","GY","HT","VA","HN","HK","HU","IS","IN","ID","IR","IQ","IE","IM","IL","IT","JM","JP","JE","JO","KZ","KE","KI","KW","KG","LA","LV","LB","LS","LR","LY","LI","LT","LU","MO","MK","MK","MG","MW","MY","MV","ML","MT","MH","MQ","MR","MU","YT","MX","FM","MC","MN","ME","MS","MA","MZ","MM","NA","NR","NP","NL","AN","NC","NZ","NI","NE","NG","NU","NF","KP","MP","NO","PS","OM","PC","PK","PW","PA","PG","PY","PE","PH","PN","PL","PT","PR","QA","KR","MD","RE","RO","RU","RW","MF","BL","SH","KN","LC","PM","VC","WS","SM","ST",null,"SA","SN","RS","CS","SC","SL","SG","SX","SK","SI","SB","SO","ZA","SS","ES","LK","SD","SD","SR","SJ","SZ","SE","CH","SY","TW","TJ","TZ","TH","TL","TG","TK","TO","TT","TN","TR","TM","TC","TV","UG","UA","AE","GB","VI","UY","US","RU","UZ","VU","VE","VN","WF","EH","YE","YE","MK","ZM","ZW"],["AFG","ALA","ALB","DZA","ASM","AND","AGO","AIA","ATG","ARG","ARM","ABW","AUS","AUT","AZE","BHS","BHR","BGD","BRB","BLR","BEL","BEL","BLZ","BEN","BMU","BTN","BOL","BES","BIH","BWA","BRA","VGB","BRN","BGR","BFA","BDI","CPV","KHM","CMR","CAN","CYM","CAF","TCD","CHL","CHN","COL","COM","COG","COK","CRI","CIV","HRV","CUB","CUW","CYP","CZE","CZE","YEM","DNK","DJI","DMA","DOM","COD","ECU","EGY","SLV","GNQ","ERI","EST","ETH","ETH","FLK","FRO","FJI","FIN","FRA","GUF","PYF","GAB","GMB","GEO","DEU","GHA","GIB","GRC","GRL","GRD","GLP","GUM","GTM","GCY","GIN","GNB","GUY","HTI","VAT","HND","HKG","HUN","ISL","IND","IDN","IRN","IRQ","IRL","IMN","ISR","ITA","JAM","JPN","JEY","JOR","KAZ","KEN","KIR","KWT","KGZ","LAO","LVA","LBN","LSO","LBR","LBY","LIE","LTU","LUX","MAC","MKD","MKD","MDG","MWI","MYS","MDV","MLI","MLT","MHL","MTQ","MRT","MUS","MYT","MEX","FSM","MCO","MNG","MNE","MSR","MAR","MOZ","MMR","NAM","NRU","NPL","NLD","ANT","NCL","NZL","NIC","NER","NGA","NIU","NFK","PRK","MNP","NOR","PSE","OMN","PCI","PAK","PLW","PAN","PNG","PRY","PER","PHL","PCN","POL","PRT","PRI","QAT","KOR","MDA","REU","ROU","RUS","RWA","MAF","BLM","SHN","KNA","LCA","SPM","VCT","WSM","SMR","STP",null,"SAU","SEN","SRB","SCG","SYC","SLE","SGP","SXM","SVK","SVN","SLB","SOM","ZAF","SSD","ESP","LKA","SDN","SDN","SUR","SJM","SWZ","SWE","CHE","SYR","TWN","TJK","TZA","THA","TLS","TGO","TKL","TON","TTO","TUN","TUR","TKM","TCA","TUV","UGA","UKR","ARE","GBR","VIR","URY","USA","RUS","UZB","VUT","VEN","VNM","WLF","ESH","YEM","YEM","MKD","ZMB","ZWE"],[33.83523216,null,41.14245128,28.15893844,-14.30448922,42.54229174,-12.29336112,18.22396692,17.27754256,-35.38135347,40.28952206,12.52088881,-25.73288736,47.58549847,40.28827674,24.59,26.04200845,23.86730412,13.18145371,53.53131155,50.63981435,49.95,17.20027475,9.6417533,32.31368594,27.4110619,-16.35,null,44.17449912,-22.18402031,-10.78777567,18.52593375,4.44,42.76889988,12.26953681,-3.35939257,16.74,12.72004932,5.69110296,52.137,19.42896455,6.56823003,15.33333336,-37.73069754,33.5,3.91383156,-11.87777573,-3.22,-21.21926813,9.9763424,7.85,45.08047284,21.62290023,null,34.91666932,49.69,49.3,15.57,55.98126391,11.74872052,15.43947211,18.8943308,-2.87746013,-1.42381949,26.49593108,13.73944008,1.70554042,15.36186881,58.67192416,8.62278417,9.41,null,62.05386227,-17.4285609,64.49884844,46.18700581,3.92595718,-14.72228068,-0.58660329,13.44965377,42.16855944,51.10697903,7.95345124,null,39.07466973,74.71051369,12.1172555,16.21,13.4416655,15.69404158,49.46809855,10.43621595,12.04,4.79378052,18.93500961,null,14.82688225,22.41,47.16277712,64.99575263,22.88578035,-2.21505018,32.41,33.03970511,53.1754426,54.2241965,31.4611019,42.79663568,18.15695476,37.59230065,49.21837488,31.24579389,48.15687954,0.5998746,0.86052252,29.33431677,41.46221785,19.61,56.85085306,33.92306993,-29.5800467,6.45278273,27.03094247,47.13665447,55.32611078,49.76724687,22.2,43.56,41.64,-19.37189599,-13.2180697,3.78987255,3.72854733,17.34581461,35.92151315,7.00352799,14.68,20.25736926,-20.2777156,null,23.94753932,6.87,43.75276115,46.82681435,42.7889115,16.73941361,29.83762793,-17.27381898,21.18566514,-22.13030791,-0.51914199,28.24891362,52.10080804,null,-21.29990206,-41.81112825,12.84709633,17.41912605,9.59411807,-19.0494623,-29.05143845,39.7,15.82873009,68.75014407,32.13,20.60515412,null,29.94975221,7.28760993,8.5175119,-6.46416276,-23.22823896,-9.15280281,11.77539737,-24.36498595,52.12759537,39.59550247,18.22812711,25.30600936,38.14,47.32,null,45.85242939,58.9,-1.99033199,null,null,-15.97,17.26458594,13.8947837,46.91919986,null,-13.75327339,43.94186939,0.44390851,null,24.12245467,14.36624381,43.95,43.26,-4.66097821,8.56329069,1.35877066,null,48.70547175,46.11555444,-8.92175696,4.75065195,-29.0003377,7.30877585,40.24448626,7.61266309,15.99035431,15.08,4.13055377,null,-26.55842734,62.79232016,46.79785296,35.24,23.75,38.53045125,-6.27565815,15.11816347,-8.83,8.52529798,null,-20.42814141,10.45735757,34.11956663,39.06160342,39.11554017,21.83047424,-7.76005828,1.27469024,48.99656784,23.90527175,54.12387156,17.95501398,-32.79951982,39,51.84,41.75554081,-16.22630588,8.34,16.64601451,null,24.22956358,15.90927655,15.57,43.62,-13.45824537,-19.00420587],[66.00473115,null,20.04983034,2.61732102,-170.7180186,1.56053368,17.53736149,-63.06498464,-61.7946956,-65.17980881,44.9299343,-69.98267466,134.49099877,14.12647809,47.54599646,-77.96,50.54197759,90.23812793,-59.55980198,28.03208711,4.64064572,5.46,-88.71010228,2.32784527,-64.75454185,90.401895,-64.57,null,17.76876588,23.7985373,-53.09783199,-64.47140241,114.6,25.21552327,-1.7545684,29.8751201,-22.93,104.90694312,12.73964266,-106.622,-80.91213058,20.46826364,18.64493211,-71.38255879,102.1,-73.08114936,43.68238096,24.99,-159.7872415,-84.19208786,-5.5,16.40413079,-79.01606913,null,33.00600358,15.6,17.36,47.39,10.02799418,42.56067681,-61.35773122,-70.50569086,23.64395637,-78.75203573,29.8618993,-88.87164456,10.34138898,38.84615444,25.54248555,39.6008014,39.53,null,-6.88096322,165.45055475,26.27467024,2.53618475,-53.2484462,-144.90488761,11.78863005,-15.39601809,43.50778995,10.38577693,-1.21676901,null,22.95556207,-41.34191035,-61.68219415,-61.69,144.76792243,-90.36482288,-2.57240158,-10.94066379,-14.8,-58.98202596,-72.68527364,null,-86.61516846,114.15,19.39559381,-18.57397086,79.61197355,117.24009764,54.41,43.74353204,-8.13793167,-4.53873822,35.00444995,12.07000946,-77.31482556,138.03089212,-2.12687655,36.77137251,67.29149657,37.79594437,-45.6220913,47.58699362,74.54165548,102.89,24.9123704,35.88016327,28.22722773,-9.32207781,18.00865782,9.53573593,23.88720035,6.07182681,113.55,21.71,21.72,46.70473751,34.2893585,109.69761552,73.45711081,-3.54268794,14.40522042,170.33963635,-61.01,-10.3477974,57.57120758,null,-102.52345042,158.23,7.40628055,103.05299651,19.2388382,-62.18519807,-8.45616045,35.53367351,96.48843207,17.20962769,166.93258517,83.9158367,5.2814735,null,165.68492075,171.48495391,-85.03052894,9.38546454,8.08944243,-169.8699537,167.94920199,126.42,145.61961878,15.34832968,35.24,56.09165967,null,69.33958027,134.40822154,-80.11915152,145.20744918,-58.40014084,-74.38242889,122.88392153,-128.31704094,19.39011841,-8.50105506,-66.47307314,51.18478512,127.13,28.58,null,24.97293286,51.31,29.91989113,null,null,-5.71,-62.68754242,-60.96969329,-56.30319339,null,-172.16481475,12.45923029,6.72429635,null,44.53687041,-14.47348904,20.83,19.67,55.47601997,-11.79271209,103.8172532,null,19.47905212,14.8044464,159.63284711,45.70716243,25.08388384,30.24790056,-3.64754874,80.70107795,29.94047226,28.56,-55.91234833,null,31.48193159,16.74371219,8.20866006,38.59,120.89,71.01363312,34.81310214,101.00288352,125.77,0.96232118,null,-174.80975436,-61.26565805,9.55288287,35.16895529,59.37099935,-71.97385725,178.51989487,32.36907536,31.38325794,54.30015737,-2.86563362,-64.80300497,-56.01806795,-101.5,43.65,63.14001799,167.68636735,-66.15,106.29913857,null,-12.2198297,47.58676005,47.39,18.69,27.77475082,29.85145031],["Asia","Europe","Europe","Africa","Oceania","Europe","Africa","Americas","Americas","Americas","Asia","Americas","Oceania","Europe","Asia","Americas","Asia","Asia","Americas","Europe","Europe","Europe","Americas","Africa","Americas","Asia","Americas","Americas","Europe","Africa","Americas","Americas","Asia","Europe","Africa","Africa","Africa","Asia","Africa","Americas","Americas","Africa","Africa","Americas","Asia","Americas","Africa","Africa","Oceania","Americas","Africa","Europe","Americas","Americas","Asia","Europe","Europe","Asia","Europe","Africa","Americas","Americas","Africa","Americas","Africa","Americas","Africa","Africa","Europe","Africa","Africa","Americas","Europe","Oceania","Europe","Europe","Americas","Oceania","Africa","Africa","Asia","Europe","Africa","Europe","Europe","Americas","Americas","Americas","Oceania","Americas","Europe","Africa","Africa","Americas","Americas","Europe","Americas","Asia","Europe","Europe","Asia","Asia","Asia","Asia","Europe","Europe","Asia","Europe","Americas","Asia","Europe","Asia","Asia","Africa","Oceania","Asia","Asia","Asia","Europe","Asia","Africa","Africa","Africa","Europe","Europe","Europe","Asia","Europe","Europe","Africa","Africa","Asia","Asia","Africa","Europe","Oceania","Americas","Africa","Africa","Africa","Americas","Oceania","Europe","Asia","Europe","Americas","Africa","Africa","Asia","Africa","Oceania","Asia","Europe","Americas","Oceania","Oceania","Americas","Africa","Africa","Oceania","Oceania","Asia","Oceania","Europe","Asia","Asia","Oceania","Asia","Oceania","Americas","Oceania","Americas","Americas","Asia","Oceania","Europe","Europe","Americas","Asia","Asia","Europe","Africa","Europe","Europe","Africa","Americas","Americas","Africa","Americas","Americas","Americas","Americas","Oceania","Europe","Africa","Europe","Asia","Africa","Europe","Europe","Africa","Africa","Asia","Americas","Europe","Europe","Oceania","Africa","Africa","Africa","Europe","Asia","Africa","Africa","Americas","Europe","Africa","Europe","Europe","Asia","Asia","Asia","Africa","Asia","Asia","Africa","Oceania","Oceania","Americas","Africa","Asia","Asia","Americas","Oceania","Africa","Europe","Asia","Europe","Americas","Americas","Americas","Europe","Asia","Oceania","Americas","Asia","Oceania","Africa","Asia","Asia","Europe","Africa","Africa"],["Southern Asia","Northern Europe","Southern Europe","Northern Africa","Polynesia","Southern Europe","Middle Africa","Caribbean","Caribbean","South America","Western Asia","Caribbean","Australia and New Zealand","Western Europe","Western Asia","Caribbean","Western Asia","Southern Asia","Caribbean","Eastern Europe","Western Europe","Western Europe","Central America","Western Africa","Northern America","Southern Asia","South America","Caribbean","Southern Europe","Southern Africa","South America","Caribbean","South-Eastern Asia","Eastern Europe","Western Africa","Eastern Africa","Western Africa","South-Eastern Asia","Middle Africa","Northern America","Caribbean","Middle Africa","Middle Africa","South America","Eastern Asia","South America","Eastern Africa","Middle Africa","Polynesia","Central America","Western Africa","Southern Europe","Caribbean","Caribbean","Western Asia","Eastern Europe","Eastern Europe","Western Asia","Northern Europe","Eastern Africa","Caribbean","Caribbean","Middle Africa","South America","Northern Africa","Central America","Middle Africa","Eastern Africa","Northern Europe","Eastern Africa","Eastern Africa","South America","Northern Europe","Melanesia","Northern Europe","Western Europe","South America","Polynesia","Middle Africa","Western Africa","Western Asia","Western Europe","Western Africa","Southern Europe","Southern Europe","Northern America","Caribbean","Caribbean","Micronesia","Central America","Northern Europe","Western Africa","Western Africa","South America","Caribbean","Southern Europe","Central America",null,"Eastern Europe","Northern Europe","Southern Asia","South-Eastern Asia","Southern Asia","Western Asia","Northern Europe","Northern Europe","Western Asia","Southern Europe","Caribbean","Eastern Asia","Northern Europe","Western Asia","Central Asia","Eastern Africa","Micronesia","Western Asia","Central Asia","South-Eastern Asia","Northern Europe","Western Asia","Southern Africa","Western Africa","Northern Africa","Western Europe","Northern Europe","Western Europe",null,"Southern Europe",null,"Eastern Africa","Eastern Africa","South-Eastern Asia","Southern Asia","Western Africa","Southern Europe","Micronesia","Caribbean","Western Africa","Eastern Africa","Eastern Africa","Central America","Micronesia","Western Europe","Eastern Asia","Southern Europe","Caribbean","Northern Africa","Eastern Africa","South-Eastern Asia","Southern Africa","Micronesia","Southern Asia","Western Europe","Caribbean","Melanesia","Australia and New Zealand","Central America","Western Africa","Western Africa","Polynesia","Australia and New Zealand","Eastern Asia","Micronesia","Northern Europe","Western Asia","Western Asia","Micronesia","Southern Asia","Micronesia","Central America","Melanesia","South America","South America","South-Eastern Asia","Polynesia","Eastern Europe","Southern Europe","Caribbean","Western Asia","Eastern Asia","Eastern Europe","Eastern Africa","Eastern Europe","Eastern Europe","Eastern Africa","Caribbean","Caribbean","Western Africa","Caribbean","Caribbean","Northern America","Caribbean","Polynesia","Southern Europe","Middle Africa","Northern Europe","Western Asia","Western Africa","Southern Europe","Southern Europe","Eastern Africa","Western Africa","South-Eastern Asia","Caribbean","Eastern Europe","Southern Europe","Melanesia","Eastern Africa","Southern Africa","Eastern Africa","Southern Europe","Southern Asia","Northern Africa","Northern Africa","South America","Northern Europe","Southern Africa","Northern Europe","Western Europe","Western Asia","Eastern Asia","Central Asia","Eastern Africa","South-Eastern Asia","South-Eastern Asia","Western Africa","Polynesia","Polynesia","Caribbean","Northern Africa","Western Asia","Central Asia","Caribbean","Polynesia","Eastern Africa","Eastern Europe","Western Asia","Northern Europe","Caribbean","South America","Northern America","Eastern Europe","Central Asia","Melanesia","South America","South-Eastern Asia","Polynesia","Northern Africa","Western Asia","Western Asia","Southern Europe","Eastern Africa","Eastern Africa"],["Developing","Developed","Developed","Developing","Developing","Developed","Developing","Developing","Developing","Developing","Developing","Developing","Developed","Developed","Developing","Developing","Developing","Developing","Developing","Developed","Developed","Developed","Developing","Developing","Developed","Developing","Developing","Developing","Developed","Developing","Developing","Developing","Developing","Developed","Developing","Developing","Developing","Developing","Developing","Developed","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developed","Developing","Developing","Developing","Developed","Developed","Developing","Developed","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developed","Developing","Developing","Developing","Developed","Developing","Developed","Developed","Developing","Developing","Developing","Developing","Developing","Developed","Developing","Developed","Developed","Developed","Developing","Developing","Developing","Developing","Developed","Developing","Developing","Developing","Developing","Developed","Developing","Developing","Developed","Developed","Developing","Developing","Developing","Developing","Developed","Developed","Developing","Developed","Developing","Developed","Developed","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developed","Developing","Developing","Developing","Developing","Developed","Developed","Developed","Developing","Developed","Developed","Developing","Developing","Developing","Developing","Developing","Developed","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developed","Developing","Developed","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developed","Developing","Developing","Developed","Developing","Developing","Developing","Developing","Developed","Developing","Developing","Developed","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developed","Developed","Developing","Developing","Developing","Developed","Developing","Developed","Developed","Developing","Developing","Developing","Developing","Developing","Developing","Developed","Developing","Developing","Developed","Developing","Developed","Developing","Developing","Developed","Developed","Developing","Developing","Developing","Developing","Developed","Developed","Developing","Developing","Developing","Developing","Developed","Developing","Developing","Developing","Developing","Developed","Developing","Developed","Developed","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developed","Developing","Developed","Developing","Developing","Developed","Developed","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developed","Developing","Developing"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>FAO_TABLE_NAME<\/th>\n      <th>Country<\/th>\n      <th>ISO2<\/th>\n      <th>ISO3<\/th>\n      <th>Lat<\/th>\n      <th>Lon<\/th>\n      <th>Region<\/th>\n      <th>SubRegion<\/th>\n      <th>DVDDVG<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[5,6]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+
+-----
+
+# agData\_FAO\_Region\_Table
+
+``` r
+DT::datatable(agData_FAO_Region_Table)
+```
+
+<div id="htmlwidget-2" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29"],["South America","Central America","Caribbean","Northern America","Western Europe","Southern Europe","Northern Europe","Eastern Europe","Western Africa","Northern Africa","Middle Africa","Southern Africa","Eastern Africa","Western Asia","Central Asia","Southern Asia","South-Eastern Asia","Eastern Asia","Polynesia","Australia and New Zealand","Melanesia","Micronesia","Asia","Europe","Africa","Oceania","Americas","Unknown","World"],["South America","Central America","Caribbean","Northern America","Western Europe","Southern Europe","Northern Europe","Eastern Europe","Western Africa","Northern Africa","Middle Africa","Southern Africa","Eastern Africa","Western Asia","Central Asia","Southern Asia","South-Eastern Asia","Eastern Asia","Polynesia","Australia and New Zealand","Melanesia","Micronesia",null,null,null,null,null,null,null],["Americas","Americas","Americas","Americas","Europe","Europe","Europe","Europe","Africa","Africa","Africa","Africa","Africa","Asia","Asia","Asia","Asia","Asia","Oceania","Oceania","Oceania","Oceania","Asia","Europe","Africa","Oceania","Americas",null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>FAO_TABLE_NAME<\/th>\n      <th>SubRegion<\/th>\n      <th>Region<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
+
+-----
+
+# agData\_FAO\_Crops
+
+``` r
+# Get Data
+xx <- agData_FAO_Crops %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 1,673,790 x 6
+    ##    Area       Year Crop                Measurement    Unit         Value
+    ##    <fct>     <dbl> <chr>               <fct>          <chr>        <dbl>
+    ##  1 Algeria    1961 Almonds, with shell Area harvested hectares 13300    
+    ##  2 Algeria    1961 Almonds, with shell Yield          t/ha         0.451
+    ##  3 Algeria    1961 Almonds, with shell Production     tonnes    6000    
+    ##  4 Argentina  1961 Almonds, with shell Production     tonnes      80    
+    ##  5 Bulgaria   1961 Almonds, with shell Production     tonnes    2097    
+    ##  6 China      1961 Almonds, with shell Production     tonnes    5000    
+    ##  7 Cyprus     1961 Almonds, with shell Area harvested hectares  5800    
+    ##  8 Cyprus     1961 Almonds, with shell Yield          t/ha         0.420
+    ##  9 Cyprus     1961 Almonds, with shell Production     tonnes    2438    
+    ## 10 France     1961 Almonds, with shell Production     tonnes    3680    
+    ## # ... with 1,673,780 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 3 x 2
+    ##   Measurement    Unit    
+    ##   <fct>          <chr>   
+    ## 1 Area harvested hectares
+    ## 2 Yield          t/ha    
+    ## 3 Production     tonnes
+
+``` r
+# List Crops
+xx %>% distinct(Crop)
+```
+
+    ## # A tibble: 149 x 1
+    ##    Crop                            
+    ##    <chr>                           
+    ##  1 Almonds, with shell             
+    ##  2 Anise, badian, fennel, coriander
+    ##  3 Apples                          
+    ##  4 Apricots                        
+    ##  5 Areca nuts                      
+    ##  6 Artichokes                      
+    ##  7 Asparagus                       
+    ##  8 Avocados                        
+    ##  9 Bambara beans                   
+    ## 10 Bananas                         
+    ## # ... with 139 more rows
+
+``` r
+# Spread data to wide format
+xx %>% select(-Unit) %>% spread(Measurement, Value) %>% arrange(Year)
+```
+
+    ## # A tibble: 588,252 x 6
+    ##    Area        Year Crop                      `Area harvested` Production  Yield
+    ##    <fct>      <dbl> <chr>                                <dbl>      <dbl>  <dbl>
+    ##  1 Afghanist~  1961 Apples                                2220      15100  6.80 
+    ##  2 Afghanist~  1961 Apricots                              4820      32000  6.64 
+    ##  3 Afghanist~  1961 Barley                              350000     378000  1.08 
+    ##  4 Afghanist~  1961 Cotton lint                             NA      17000 NA    
+    ##  5 Afghanist~  1961 Cottonseed                              NA      34000 NA    
+    ##  6 Afghanist~  1961 Figs                                  3200       8000  2.5  
+    ##  7 Afghanist~  1961 Grapes                               50000     225000  4.5  
+    ##  8 Afghanist~  1961 Linseed                              46800      17000  0.363
+    ##  9 Afghanist~  1961 Maize                               500000     700000  1.4  
+    ## 10 Afghanist~  1961 Melons, other (inc.canta~             3300      15700  4.76 
+    ## # ... with 588,242 more rows
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Area == "World", Crop == "Lentils", Measurement == "Production")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Area)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Global Lentil Production", 
+       y = "Million Tonnes", x = NULL)
+ggsave("Intro_agData_FAO_Crops.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_FAO_Crops.png)
+
+# agData\_FAO\_Crops2
+
+``` r
+# Get Data
+xx <- agData_FAO_Crops2 %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 623,051 x 6
+    ##    Area         Year Crop             Measurement    Unit        Value
+    ##    <fct>       <dbl> <chr>            <fct>          <chr>       <dbl>
+    ##  1 Colombia     1961 Agave fibres nes Area harvested hectares 13500   
+    ##  2 Colombia     1961 Agave fibres nes Yield          t/ha         1.26
+    ##  3 Colombia     1961 Agave fibres nes Production     tonnes   17000   
+    ##  4 Cuba         1961 Agave fibres nes Area harvested hectares 10000   
+    ##  5 Cuba         1961 Agave fibres nes Yield          t/ha         1.11
+    ##  6 Cuba         1961 Agave fibres nes Production     tonnes   11100   
+    ##  7 El Salvador  1961 Agave fibres nes Area harvested hectares  5000   
+    ##  8 El Salvador  1961 Agave fibres nes Yield          t/ha         0.68
+    ##  9 El Salvador  1961 Agave fibres nes Production     tonnes    3400   
+    ## 10 Guatemala    1961 Agave fibres nes Area harvested hectares   500   
+    ## # ... with 623,041 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 3 x 2
+    ##   Measurement    Unit    
+    ##   <fct>          <chr>   
+    ## 1 Area harvested hectares
+    ## 2 Yield          t/ha    
+    ## 3 Production     tonnes
+
+``` r
+# List Crops
+xx %>% distinct(Crop)
+```
+
+    ## # A tibble: 32 x 1
+    ##    Crop                     
+    ##    <chr>                    
+    ##  1 Agave fibres nes         
+    ##  2 Bastfibres, other        
+    ##  3 Berries nes              
+    ##  4 Cereals (Rice Milled Eqv)
+    ##  5 Cereals nes              
+    ##  6 Cereals                  
+    ##  7 Citrus Fruit             
+    ##  8 Coarse Grain             
+    ##  9 Fibre crops nes          
+    ## 10 Fibre Crops Primary      
+    ## # ... with 22 more rows
+
+``` r
+# Spread data to wide format
+xx %>% select(-Unit) %>% spread(Measurement, Value) %>% arrange(Year)
+```
+
+    ## # A tibble: 231,045 x 6
+    ##    Area         Year Crop                      `Area harvested` Production Yield
+    ##    <fct>       <dbl> <chr>                                <dbl>      <dbl> <dbl>
+    ##  1 Afghanistan  1961 Berries nes                           6800      60000 8.82 
+    ##  2 Afghanistan  1961 Cereals                            3313500    3695000 1.12 
+    ##  3 Afghanistan  1961 Cereals (Rice Milled Eqv)          3313500    3588773 1.08 
+    ##  4 Afghanistan  1961 Citrus Fruit                          2160      15000 6.94 
+    ##  5 Afghanistan  1961 Coarse Grain                        873500    1097000 1.26 
+    ##  6 Afghanistan  1961 Fibre Crops Primary                  76892      17000 0.221
+    ##  7 Afghanistan  1961 Fruit Primary                       108699     567200 5.22 
+    ##  8 Afghanistan  1961 Fruit, citrus nes                      730       4900 6.71 
+    ##  9 Afghanistan  1961 Fruit, fresh nes                     13919      71200 5.12 
+    ## 10 Afghanistan  1961 Fruit, stone nes                      2850      18100 6.35 
+    ## # ... with 231,035 more rows
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Area == "World", Crop == "Cereals", Measurement == "Yield")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, group = Area)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Global Cereal Yields", 
+       y = "Tonnes / Hectare", x = NULL)
+ggsave("Intro_agData_FAO_Crops2.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_FAO_Crops2.png)
+
+-----
+
+# agData\_FAO\_Fertilizers
+
+``` r
+# Get Data
+xx <- agData_FAO_Fertilizers %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 438,316 x 6
+    ##    Area         Year Item                    Measurement      Unit   Value
+    ##    <fct>       <dbl> <chr>                   <chr>            <chr>  <dbl>
+    ##  1 Afghanistan  1961 Nitrogenous fertilizers Import Quantity  tonnes  1000
+    ##  2 Afghanistan  1961 Nitrogenous fertilizers Agricultural Use tonnes  1000
+    ##  3 Afghanistan  1961 Phosphate fertilizers   Import Quantity  tonnes   100
+    ##  4 Afghanistan  1961 Phosphate fertilizers   Agricultural Use tonnes   100
+    ##  5 Afghanistan  1961 Total Fertilizers       Import Quantity  tonnes  1100
+    ##  6 Afghanistan  1961 Total Fertilizers       Agricultural Use tonnes  1100
+    ##  7 Albania      1961 Ammonium nitrate (AN)   Import Quantity  tonnes  3187
+    ##  8 Albania      1961 Ammonium nitrate (AN)   Agricultural Use tonnes  3187
+    ##  9 Albania      1961 Nitrogenous fertilizers Import Quantity  tonnes  3187
+    ## 10 Albania      1961 Nitrogenous fertilizers Agricultural Use tonnes  3187
+    ## # ... with 438,306 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 6 x 2
+    ##   Measurement      Unit    
+    ##   <chr>            <chr>   
+    ## 1 Import Quantity  tonnes  
+    ## 2 Agricultural Use tonnes  
+    ## 3 Production       tonnes  
+    ## 4 Export Quantity  tonnes  
+    ## 5 Import Value     1000 US$
+    ## 6 Export Value     1000 US$
+
+``` r
+# List Crops
+xx %>% distinct(Item)
+```
+
+    ## # A tibble: 50 x 1
+    ##    Item                    
+    ##    <chr>                   
+    ##  1 Nitrogenous fertilizers 
+    ##  2 Phosphate fertilizers   
+    ##  3 Total Fertilizers       
+    ##  4 Ammonium nitrate (AN)   
+    ##  5 Potash fertilizers      
+    ##  6 Single Superphosphate   
+    ##  7 Ammonium Phosphate (N)  
+    ##  8 Ammonium sulphate       
+    ##  9 Ammonium SulphateNitrate
+    ## 10 Basic Slag              
+    ## # ... with 40 more rows
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Area == "China", 
+                    Item == "Nitrogenous fertilizers", 
+                    Measurement == "Agricultural Use")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Measurement)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Nitrogenous fertilizer use in China", 
+       y = "Million Tonnes", x = NULL)
+ggsave("Intro_agData_FAO_Fertilizers.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_FAO_Fertilizers.png)
+
+-----
+
+# agData\_FAO\_LandUse
+
+``` r
+# Get Data
+xx <- agData_FAO_LandUse %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 187,464 x 6
+    ##    Area        Year Item                           Measurement Unit        Value
+    ##    <fct>      <dbl> <chr>                          <chr>       <chr>       <dbl>
+    ##  1 Afghanist~  1961 Country area                   Area        1000 hecta~ 65286
+    ##  2 Afghanist~  1961 Land area                      Area        1000 hecta~ 65286
+    ##  3 Afghanist~  1961 Agriculture                    Area        1000 hecta~ 37700
+    ##  4 Afghanist~  1961 Agricultural land              Area        1000 hecta~ 37700
+    ##  5 Afghanist~  1961 Cropland                       Area        1000 hecta~  7700
+    ##  6 Afghanist~  1961 Arable land                    Area        1000 hecta~  7650
+    ##  7 Afghanist~  1961 Land under permanent crops     Area        1000 hecta~    50
+    ##  8 Afghanist~  1961 Land under perm. meadows and ~ Area        1000 hecta~ 30000
+    ##  9 Afghanist~  1961 Land area equipped for irriga~ Area        1000 hecta~  2380
+    ## 10 Albania     1961 Country area                   Area        1000 hecta~  2875
+    ## # ... with 187,454 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 2 x 2
+    ##   Measurement                    Unit          
+    ##   <chr>                          <chr>         
+    ## 1 Area                           1000 hectares 
+    ## 2 Carbon stock in living biomass million tonnes
+
+``` r
+# List Crops
+xx %>% distinct(Item)
+```
+
+    ## # A tibble: 45 x 1
+    ##    Item                                 
+    ##    <chr>                                
+    ##  1 Country area                         
+    ##  2 Land area                            
+    ##  3 Agriculture                          
+    ##  4 Agricultural land                    
+    ##  5 Cropland                             
+    ##  6 Arable land                          
+    ##  7 Land under permanent crops           
+    ##  8 Land under perm. meadows and pastures
+    ##  9 Land area equipped for irrigation    
+    ## 10 Inland waters                        
+    ## # ... with 35 more rows
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Area == "World", Item == "Agricultural land")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Area)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Global Agricultural Area", 
+       y = "Billion Hectares", x = NULL)
+ggsave("Intro_agData_FAO_LandUse.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_FAO_LandUse.png)
+
+-----
+
+# agData\_FAO\_Livestock
+
+``` r
+# Get Data
+xx <- agData_FAO_Livestock %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 1,419,110 x 6
+    ##    Area         Year Animal               Measurement Unit      Value
+    ##    <fct>       <dbl> <chr>                <chr>       <chr>     <dbl>
+    ##  1 Afghanistan  1961 Asses                Stocks      number  1300000
+    ##  2 Afghanistan  1961 Camels               Stocks      number   250000
+    ##  3 Afghanistan  1961 Cattle               Stocks      number  2900000
+    ##  4 Afghanistan  1961 Chickens             Stocks      number  4700000
+    ##  5 Afghanistan  1961 Goats                Stocks      number  4200000
+    ##  6 Afghanistan  1961 Horses               Stocks      number   276841
+    ##  7 Afghanistan  1961 Mules                Stocks      number    20000
+    ##  8 Afghanistan  1961 Sheep                Stocks      number 18000000
+    ##  9 Afghanistan  1961 Cattle and Buffaloes Stocks      number  2900000
+    ## 10 Afghanistan  1961 Poultry Birds        Stocks      number  4700000
+    ## # ... with 1,419,100 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 13 x 2
+    ##    Measurement                   Unit    
+    ##    <chr>                         <chr>   
+    ##  1 Stocks                        number  
+    ##  2 Laying                        number  
+    ##  3 Yield                         100mg/An
+    ##  4 Production                    tonnes  
+    ##  5 Production                    1000 No 
+    ##  6 Producing Animals/Slaughtered number  
+    ##  7 Yield                         hg/An   
+    ##  8 Production                    number  
+    ##  9 Yield/Carcass Weight          hg/An   
+    ## 10 Yield/Carcass Weight          0.1g/An 
+    ## 11 Milk Animals                  number  
+    ## 12 Prod Popultn                  number  
+    ## 13 Yield                         hg
+
+``` r
+# List Crops
+xx %>% distinct(Animal)
+```
+
+    ## # A tibble: 97 x 1
+    ##    Animal              
+    ##    <chr>               
+    ##  1 Asses               
+    ##  2 Camels              
+    ##  3 Cattle              
+    ##  4 Chickens            
+    ##  5 Goats               
+    ##  6 Horses              
+    ##  7 Mules               
+    ##  8 Sheep               
+    ##  9 Cattle and Buffaloes
+    ## 10 Poultry Birds       
+    ## # ... with 87 more rows
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Area == "Canada", Animal == "Chickens")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Area)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Chicken Production in Canada", 
+       y = "Million Animals", x = NULL)
+ggsave("Intro_agData_FAO_Livestock.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_FAO_Livestock.png)
+
+-----
+
+# agData\_FAO\_Population
+
+``` r
+# Get Data
+xx <- agData_FAO_Population %>% as_tibble()
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 5 x 2
+    ##   Measurement Unit  
+    ##   <chr>       <chr> 
+    ## 1 Total       People
+    ## 2 Male        People
+    ## 3 Female      People
+    ## 4 Rural       People
+    ## 5 Urban       People
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Area == "World", Measurement == "Total")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000000, group = Measurement)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "World Population", 
+       y = "Billion", x = NULL)
+ggsave("Intro_agData_FAO_Population.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_FAO_Population.png)
+
+-----
+
+# agData\_FAO\_Trade
+
+``` r
+# Get Data
+xx <- agData_FAO_Trade %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 9,255,812 x 6
+    ##    Area         Year Crop                   Measurement     Unit     Value
+    ##    <fct>       <dbl> <chr>                  <chr>           <chr>    <dbl>
+    ##  1 Afghanistan  1961 Butter, cow milk       Import Quantity tonnes      23
+    ##  2 Afghanistan  1961 Butter, cow milk       Import Value    USD      16000
+    ##  3 Afghanistan  1961 Cheese, whole cow milk Import Quantity tonnes       3
+    ##  4 Afghanistan  1961 Cheese, whole cow milk Import Value    USD       2000
+    ##  5 Afghanistan  1961 Cigarettes             Import Quantity tonnes     150
+    ##  6 Afghanistan  1961 Cigarettes             Import Value    USD     526000
+    ##  7 Afghanistan  1961 Cotton lint            Export Quantity tonnes   11480
+    ##  8 Afghanistan  1961 Cotton lint            Export Value    USD    8320000
+    ##  9 Afghanistan  1961 Cottonseed             Export Quantity tonnes    3050
+    ## 10 Afghanistan  1961 Cottonseed             Export Value    USD     227000
+    ## # ... with 9,255,802 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 4 x 2
+    ##   Measurement     Unit  
+    ##   <chr>           <chr> 
+    ## 1 Import Quantity tonnes
+    ## 2 Import Value    USD   
+    ## 3 Export Quantity tonnes
+    ## 4 Export Value    USD
+
+``` r
+# List Crops
+xx %>% distinct(Crop)
+```
+
+    ## # A tibble: 469 x 1
+    ##    Crop                     
+    ##    <chr>                    
+    ##  1 Butter, cow milk         
+    ##  2 Cheese, whole cow milk   
+    ##  3 Cigarettes               
+    ##  4 Cotton lint              
+    ##  5 Cottonseed               
+    ##  6 Fruit, fresh nes         
+    ##  7 Grapes                   
+    ##  8 Hides, cattle, wet salted
+    ##  9 Linseed                  
+    ## 10 Milk, skimmed dried      
+    ## # ... with 459 more rows
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Area == "India", Crop == "Lentils", Measurement == "Import Quantity")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Measurement)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Lentil Imports in India", 
+       y = "Million Tonnes", x = NULL)
+ggsave("Intro_agData_FAO_Trade.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_FAO_Trade.png)
+
+-----
+
+# agData\_STATCAN\_Region\_Table
+
+``` r
+DT::datatable(agData_STATCAN_Region_Table)
+```
+
+<div id="htmlwidget-3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],["Canada","British Columbia","Alberta","Saskatchewan","Manitoba","Ontario","Quebec","New Brunswick","Prince Edward Island","Nova Scotia","Newfoundland and Labrador","Nunavut","Northwest Territories","Yukon"],["CA","BC","AB","SK","MB","ON","QC","NB","PE","NS","NL","NU","NT","YT"],[54.27,51.66,53.4,51.52,50.2,48.25,48.22,46.7,46.35,44.56,48.78,63.13,62.31,62.91],[-101.79,-121.5,-113.51,-105.7,-99,-82.64,-72.9,-66.15,-63.19,-64.71,-56.17,-97.63,-113.46,-134.84]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Area<\/th>\n      <th>Area_Short<\/th>\n      <th>Lat<\/th>\n      <th>Lon<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+
+-----
+
+# agData\_STATCAN\_Beehives
+
+``` r
+# Get Data
+xx <- agData_STATCAN_Beehives %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 7,460 x 5
+    ##    Area                  Year Measurement  Value Unit    
+    ##    <fct>                <int> <fct>        <dbl> <fct>   
+    ##  1 Alberta               1924 Beekeepers   0.16  Thousand
+    ##  2 British Columbia      1924 Beekeepers   2.41  Thousand
+    ##  3 Canada                1924 Beekeepers  22.2   Thousand
+    ##  4 Manitoba              1924 Beekeepers   1.26  Thousand
+    ##  5 New Brunswick         1924 Beekeepers   0.36  Thousand
+    ##  6 Nova Scotia           1924 Beekeepers   0.2   Thousand
+    ##  7 Ontario               1924 Beekeepers  10     Thousand
+    ##  8 Prince Edward Island  1924 Beekeepers   0.005 Thousand
+    ##  9 Quebec                1924 Beekeepers   7.4   Thousand
+    ## 10 Saskatchewan          1924 Beekeepers   0.41  Thousand
+    ## # ... with 7,450 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 8 x 2
+    ##   Measurement            Unit          
+    ##   <fct>                  <fct>         
+    ## 1 Beekeepers             Thousand      
+    ## 2 Colonies               Thousand      
+    ## 3 Production             Million kg    
+    ## 4 Value of honey and wax Million CAD   
+    ## 5 Value of honey         Million CAD   
+    ## 6 Colonies per beekeeper Number        
+    ## 7 Yield                  kg per colony 
+    ## 8 Value per colony       CAD per colony
+
+``` r
+# Spread data to wide format
+yy <- xx %>% select(-Unit) %>% spread(Measurement, Value) %>% arrange(Year)
+str(yy)
+```
+
+    ## tibble [960 x 10] (S3: tbl_df/tbl/data.frame)
+    ##  $ Area                  : Factor w/ 10 levels "Canada","British Columbia",..: 1 2 3 4 5 6 7 8 9 10 ...
+    ##  $ Year                  : int [1:960] 1924 1924 1924 1924 1924 1924 1924 1924 1924 1924 ...
+    ##  $ Beekeepers            : num [1:960] 22.2 2.41 0.16 0.41 1.26 ...
+    ##  $ Colonies              : num [1:960] 280 14.6 0 1.2 10.8 ...
+    ##  $ Colonies per beekeeper: num [1:960] 13 6 0 3 9 16 12 6 6 18 ...
+    ##  $ Production            : num [1:960] 16.84 0.679 0.055 0.079 0.651 ...
+    ##  $ Yield                 : num [1:960] 27.3 21.1 Inf 29.9 27.2 ...
+    ##  $ Value per colony      : num [1:960] 7.45 10.21 Inf 15 9.04 ...
+    ##  $ Value of honey        : num [1:960] 2.085 0.149 0.014 0.018 0.098 ...
+    ##  $ Value of honey and wax: num [1:960] 2.183 0.156 0.014 0.019 0.102 ...
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Area == "Saskatchewan", Measurement == "Colonies")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, group = Area)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Honeybee Colonies in Saskatchewan, Canada", 
+       y = "Thousand Colonies", x = NULL)
+ggsave("Intro_agData_STATCAN_Beehives.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_STATCAN_Beehives.png)
+
+-----
+
+# agData\_STATCAN\_Crops
+
+``` r
+# Get Data
+xx <- agData_STATCAN_Crops %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 58,105 x 6
+    ##    Area                  Year Crop   Measurement Unit     Value
+    ##    <fct>                <int> <chr>  <fct>       <chr>    <dbl>
+    ##  1 Canada                1908 Barley Seeded area ha      707100
+    ##  2 Canada                1908 Barley Yield       kg/ha     1440
+    ##  3 Canada                1908 Barley Production  tonnes 1016850
+    ##  4 Maritime provinces    1908 Barley Seeded area ha        7700
+    ##  5 Maritime provinces    1908 Barley Yield       kg/ha     1525
+    ##  6 Maritime provinces    1908 Barley Production  tonnes   11750
+    ##  7 Prince Edward Island  1908 Barley Seeded area ha        2400
+    ##  8 Prince Edward Island  1908 Barley Yield       kg/ha     1665
+    ##  9 Prince Edward Island  1908 Barley Production  tonnes    4000
+    ## 10 Nova Scotia           1908 Barley Seeded area ha        3900
+    ## # ... with 58,095 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 5 x 2
+    ##   Measurement        Unit             
+    ##   <fct>              <chr>            
+    ## 1 Seeded area        ha               
+    ## 2 Yield              kg/ha            
+    ## 3 Production         tonnes           
+    ## 4 Harvested area     ha               
+    ## 5 Average farm price dollars per tonne
+
+``` r
+# List Crops
+xx %>% distinct(Crop)
+```
+
+    ## # A tibble: 28 x 1
+    ##    Crop          
+    ##    <chr>         
+    ##  1 Barley        
+    ##  2 Beans         
+    ##  3 Borage seed   
+    ##  4 Buckwheat     
+    ##  5 Canary seed   
+    ##  6 Canola        
+    ##  7 Caraway seed  
+    ##  8 Chick peas    
+    ##  9 Coriander seed
+    ## 10 Corn for grain
+    ## # ... with 18 more rows
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Area == "Saskatchewan", Crop == "Canola", Measurement == "Production")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Area)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Canola Production in Saskatchewan, Canada", 
+       y = "Million Tonnes", x = NULL)
+ggsave("Intro_agData_STATCAN_Crops.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_STATCAN_Crops.png)
+
+-----
+
+# agData\_STATCAN\_FarmLand\_Crops
+
+``` r
+# Get Data
+xx <- agData_STATCAN_FarmLand_Crops %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 6,442 x 6
+    ##    Area    Year Crop           Measurement               Unit       Value
+    ##    <fct>  <int> <chr>          <chr>                     <chr>      <int>
+    ##  1 Canada  1921 Total wheat    Number of farms reporting Number    381293
+    ##  2 Canada  1921 Total wheat    Hectares                  Hectares 8205434
+    ##  3 Canada  1921 Oats           Number of farms reporting Number    572034
+    ##  4 Canada  1921 Oats           Hectares                  Hectares 5757969
+    ##  5 Canada  1921 Barley         Number of farms reporting Number    217047
+    ##  6 Canada  1921 Barley         Hectares                  Hectares  878971
+    ##  7 Canada  1921 Corn for grain Hectares                  Hectares   93628
+    ##  8 Canada  1921 Flaxseed       Hectares                  Hectares  187612
+    ##  9 Canada  1921 Potatoes       Number of farms reporting Number    524272
+    ## 10 Canada  1921 Potatoes       Hectares                  Hectares  224718
+    ## # ... with 6,432 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 2 x 2
+    ##   Measurement               Unit    
+    ##   <chr>                     <chr>   
+    ## 1 Number of farms reporting Number  
+    ## 2 Hectares                  Hectares
+
+``` r
+# List Crops
+xx %>% distinct(Crop)
+```
+
+    ## # A tibble: 27 x 1
+    ##    Crop                                              
+    ##    <chr>                                             
+    ##  1 Total wheat                                       
+    ##  2 Oats                                              
+    ##  3 Barley                                            
+    ##  4 Corn for grain                                    
+    ##  5 Flaxseed                                          
+    ##  6 Potatoes                                          
+    ##  7 Total tree fruits                                 
+    ##  8 Total vegetables (excluding greenhouse vegetables)
+    ##  9 Spring wheat (excluding durum)                    
+    ## 10 Durum wheat                                       
+    ## # ... with 17 more rows
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% 
+  filter(Area == "Saskatchewan", Crop == "Total wheat", 
+         Measurement == "Number of farms reporting") %>%
+  filter(!is.na(Value))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, group = Area)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Number of Farms Growing Wheat in Saskatchewan, Canada", 
+       y = "Million Tonnes", x = NULL)
+ggsave("Intro_agData_STATCAN_FarmLand_Crops.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_STATCAN_FarmLand_Crops.png)
+
+-----
+
+# agData\_STATCAN\_FarmLand\_NoTill
+
+``` r
+# Get Data
+xx <- agData_STATCAN_FarmLand_NoTill %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 264 x 6
+    ##    Area             Year Item                  Measurement        Unit     Value
+    ##    <fct>           <int> <chr>                 <chr>              <chr>    <int>
+    ##  1 Canada           1991 Total land prepared ~ Number of farms r~ Number  2.10e5
+    ##  2 Canada           1991 Total land prepared ~ Hectares           Hecta~  2.90e7
+    ##  3 Canada           1991 No-till seeding or z~ Number of farms r~ Number  1.76e4
+    ##  4 Canada           1991 No-till seeding or z~ Hectares           Hecta~  1.95e6
+    ##  5 Newfoundland a~  1991 Total land prepared ~ Number of farms r~ Number  3.29e2
+    ##  6 Newfoundland a~  1991 Total land prepared ~ Hectares           Hecta~  2.05e3
+    ##  7 Newfoundland a~  1991 No-till seeding or z~ Number of farms r~ Number  2.8 e1
+    ##  8 Newfoundland a~  1991 No-till seeding or z~ Hectares           Hecta~  1.69e2
+    ##  9 Prince Edward ~  1991 Total land prepared ~ Number of farms r~ Number  1.87e3
+    ## 10 Prince Edward ~  1991 Total land prepared ~ Hectares           Hecta~  1.12e5
+    ## # ... with 254 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 2 x 2
+    ##   Measurement               Unit    
+    ##   <chr>                     <chr>   
+    ## 1 Number of farms reporting Number  
+    ## 2 Hectares                  Hectares
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% 
+  filter(Area == "Saskatchewan", 
+         Unit == "Hectares") %>%
+  filter(!is.na(Value))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) + 
+  geom_line() + 
+  theme_agData(legend.position = "none") +
+  labs(title = "Adoption of No-Till in Saskatchewan", 
+       y = "Million Hectares", x = NULL)
+ggsave("Intro_agData_STATCAN_FarmLand_Crops.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_STATCAN_FarmLand_Crops.png)
+
+# agData\_STATCAN\_FarmLand\_Size
+
+``` r
+# Get Data
+xx <- agData_STATCAN_FarmLand_Size %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 1,485 x 5
+    ##    Area    Year Measurement           Unit    Value
+    ##    <fct>  <int> <fct>                 <chr>   <int>
+    ##  1 Canada  1976 Total number of farms Number 338552
+    ##  2 Canada  1976 Under 10 acres        Number  14095
+    ##  3 Canada  1976 10 to 69 acres        Number  40573
+    ##  4 Canada  1976 70 to 129 acres       Number  44010
+    ##  5 Canada  1976 130 to 179 acres      Number  40693
+    ##  6 Canada  1976 180 to 239 acres      Number  24262
+    ##  7 Canada  1976 240 to 399 acres      Number  52859
+    ##  8 Canada  1976 400 to 559 acres      Number  31571
+    ##  9 Canada  1976 560 to 759 acres      Number  26616
+    ## 10 Canada  1976 760 to 1,119 acres    Number  29513
+    ## # ... with 1,475 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement)
+```
+
+    ## # A tibble: 15 x 1
+    ##    Measurement          
+    ##    <fct>                
+    ##  1 Total number of farms
+    ##  2 Under 10 acres       
+    ##  3 10 to 69 acres       
+    ##  4 70 to 129 acres      
+    ##  5 130 to 179 acres     
+    ##  6 180 to 239 acres     
+    ##  7 240 to 399 acres     
+    ##  8 400 to 559 acres     
+    ##  9 560 to 759 acres     
+    ## 10 760 to 1,119 acres   
+    ## 11 1,120 to 1,599 acres 
+    ## 12 1,600 to 2,239 acres 
+    ## 13 2,240 to 2,879 acres 
+    ## 14 2,880 to 3,519 acres 
+    ## 15 3,520 acres and above
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% 
+  filter(Area == "Saskatchewan", Year %in% c(1976, 2016),
+         Measurement != "Total number of farms")
+# Plot
+mp <- ggplot(xx, aes(x = Measurement, y = Value, group = Area)) + 
+  geom_bar(stat = "identity") + 
+  facet_grid(. ~ Year) + 
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(title = "Size of Farms in Saskatchewan", 
+       y = "Number of Farms", x = NULL)
+ggsave("Intro_agData_STATCAN_FarmLand_Size.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_STATCAN_FarmLand_Size.png)
+
+-----
+
+# agData\_STATCAN\_FarmLand\_Use
+
+``` r
+# Get Data
+xx <- agData_STATCAN_FarmLand_Use %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 1,289 x 6
+    ##    Area              Year Item             Measurement           Unit      Value
+    ##    <fct>            <int> <chr>            <chr>                 <chr>     <int>
+    ##  1 Canada            1921 Total area of f~ Number of farms repo~ Number   7.11e5
+    ##  2 Canada            1921 Total area of f~ Hectares              Hectar~  5.70e7
+    ##  3 Canada            1921 Land in crops    Hectares              Hectar~  2.02e7
+    ##  4 Prince Edward I~  1921 Total area of f~ Number of farms repo~ Number   1.37e4
+    ##  5 Prince Edward I~  1921 Total area of f~ Hectares              Hectar~  4.92e5
+    ##  6 Prince Edward I~  1921 Land in crops    Hectares              Hectar~  1.87e5
+    ##  7 Nova Scotia       1921 Total area of f~ Number of farms repo~ Number   4.74e4
+    ##  8 Nova Scotia       1921 Total area of f~ Hectares              Hectar~  1.91e6
+    ##  9 Nova Scotia       1921 Land in crops    Hectares              Hectar~  2.78e5
+    ## 10 New Brunswick     1921 Total area of f~ Number of farms repo~ Number   3.67e4
+    ## # ... with 1,279 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 2 x 2
+    ##   Measurement               Unit    
+    ##   <chr>                     <chr>   
+    ## 1 Number of farms reporting Number  
+    ## 2 Hectares                  Hectares
+
+``` r
+# List Items
+xx %>% distinct(Item)
+```
+
+    ## # A tibble: 5 x 1
+    ##   Item                  
+    ##   <chr>                 
+    ## 1 Total area of farms   
+    ## 2 Land in crops         
+    ## 3 Summerfallow land     
+    ## 4 Tame or seeded pasture
+    ## 5 All other land
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Area == "Saskatchewan", Item == "Summerfallow land", Unit == "Hectares")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Area)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Summerfallow land in Saskatchewan, Canada", 
+       y = "Million Hectares", x = NULL)
+ggsave("Intro_agData_STATCAN_FarmLand_Use.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_STATCAN_FarmLand_Use.png)
+
+-----
+
+# agData\_STATCAN\_Livestock
+
+``` r
+# Get Data
+xx <- agData_STATCAN_Livestock %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 7,545 x 6
+    ##    Area    Year Animal                  Measurement               Unit     Value
+    ##    <fct>  <int> <chr>                   <chr>                     <chr>    <int>
+    ##  1 Canada  1921 Total cattle and calves Number of animals         Number 8369489
+    ##  2 Canada  1921 Total pigs              Number of farms reporting Number  452935
+    ##  3 Canada  1921 Total pigs              Number of animals         Number 3324291
+    ##  4 Canada  1921 Total pigs              Average number of animals Number       7
+    ##  5 Canada  1921 Total sheep and lambs   Number of farms reporting Number  161838
+    ##  6 Canada  1921 Total sheep and lambs   Number of animals         Number 3200467
+    ##  7 Canada  1921 Total sheep and lambs   Average number of animals Number      20
+    ##  8 Canada  1921 Horses and ponies       Number of farms reporting Number  608272
+    ##  9 Canada  1921 Horses and ponies       Number of animals         Number 3451752
+    ## 10 Canada  1921 Horses and ponies       Average number of animals Number       6
+    ## # ... with 7,535 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 3 x 2
+    ##   Measurement               Unit  
+    ##   <chr>                     <chr> 
+    ## 1 Number of animals         Number
+    ## 2 Number of farms reporting Number
+    ## 3 Average number of animals Number
+
+``` r
+# List Crops
+xx %>% distinct(Animal)
+```
+
+    ## # A tibble: 26 x 1
+    ##    Animal                         
+    ##    <chr>                          
+    ##  1 Total cattle and calves        
+    ##  2 Total pigs                     
+    ##  3 Total sheep and lambs          
+    ##  4 Horses and ponies              
+    ##  5 Total hens and chickens (birds)
+    ##  6 Dairy cows                     
+    ##  7 Beef cows                      
+    ##  8 Total heifers                  
+    ##  9 Bulls, 1 year and over         
+    ## 10 Steers, 1 year and over        
+    ## # ... with 16 more rows
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Area == "Saskatchewan", 
+                    Measurement == "Number of animals",
+                    Animal == "Total hens and chickens (birds)")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Chicken Production in Saskatchewan", 
+       y = "Million Animals", x = NULL)
+ggsave("Intro_agData_STATCAN_Livestock.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_STATCAN_Livestock.png)
+
+-----
+
+# agData\_STATCAN\_Population
+
+``` r
+# Get Data
+xx <- agData_STATCAN_Population %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 3,580 x 5
+    ##    Area    Year Month Unit       Value
+    ##    <fct>  <dbl> <dbl> <chr>      <int>
+    ##  1 Canada  1946     1 Persons 12188000
+    ##  2 Canada  1946     4 Persons 12241000
+    ##  3 Canada  1946     7 Persons 12316000
+    ##  4 Canada  1946    10 Persons 12393000
+    ##  5 Canada  1947     1 Persons 12450000
+    ##  6 Canada  1947     4 Persons 12507000
+    ##  7 Canada  1947     7 Persons 12576000
+    ##  8 Canada  1947    10 Persons 12646000
+    ##  9 Canada  1948     1 Persons 12710000
+    ## 10 Canada  1948     4 Persons 12773000
+    ## # ... with 3,570 more rows
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Area == "Saskatchewan", Month == 1)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Population in Saskatchewan, Canada", 
+       y = "Million People", x = NULL)
+ggsave("Intro_agData_agData_STATCAN_Population.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_agData_STATCAN_Population.png)
+
+-----
+
+# agData\_USDA\_Crops
+
+``` r
+# Get Data
+xx <- agData_USDA_Crops %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 2,555 x 6
+    ##    Area   Year Crop   Measurement    Unit           Value
+    ##    <fct> <dbl> <fct>  <fct>          <fct>          <dbl>
+    ##  1 USA    1866 Wheat  Area harvested hectares  6235402.  
+    ##  2 USA    1866 Wheat  Yield          t/ha            0.74
+    ##  3 USA    1866 Wheat  Production     tonnes    4618555.  
+    ##  4 USA    1866 Maize  Area harvested hectares 12147460.  
+    ##  5 USA    1866 Maize  Yield          t/ha            1.52
+    ##  6 USA    1866 Maize  Production     tonnes   18563517.  
+    ##  7 USA    1866 Barley Area harvested hectares   305133.  
+    ##  8 USA    1866 Barley Yield          t/ha            1.29
+    ##  9 USA    1866 Barley Production     tonnes     393972.  
+    ## 10 USA    1866 Oats   Area harvested hectares  3211183.  
+    ## # ... with 2,545 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 4 x 2
+    ##   Measurement    Unit    
+    ##   <fct>          <fct>   
+    ## 1 Area harvested hectares
+    ## 2 Yield          t/ha    
+    ## 3 Production     tonnes  
+    ## 4 Area seeded    hectares
+
+``` r
+# List Area
+xx %>% distinct(Area)
+```
+
+    ## # A tibble: 1 x 1
+    ##   Area 
+    ##   <fct>
+    ## 1 USA
+
+``` r
+# List Crops
+xx %>% distinct(Crop)
+```
+
+    ## # A tibble: 5 x 1
+    ##   Crop   
+    ##   <fct>  
+    ## 1 Wheat  
+    ## 2 Maize  
+    ## 3 Barley 
+    ## 4 Oats   
+    ## 5 Sorghum
+
+``` r
+# Spread data to wide format
+xx %>% select(-Unit) %>% spread(Measurement, Value) %>% arrange(Year)
+```
+
+    ## # A tibble: 697 x 7
+    ##    Area   Year Crop   `Area harvested` `Area seeded` Production Yield
+    ##    <fct> <dbl> <fct>             <dbl>         <dbl>      <dbl> <dbl>
+    ##  1 USA    1866 Barley          305133.            NA    393972. 1.29 
+    ##  2 USA    1866 Maize         12147460.            NA  18563517. 1.52 
+    ##  3 USA    1866 Oats           3211183.            NA   3583486. 1.12 
+    ##  4 USA    1866 Wheat          6235402.            NA   4618555. 0.74 
+    ##  5 USA    1867 Barley          428158.            NA    519272. 1.21 
+    ##  6 USA    1867 Maize         12996896.            NA  20166102. 1.55 
+    ##  7 USA    1867 Oats           3308713.            NA   3433043. 1.04 
+    ##  8 USA    1867 Wheat          6773634.            NA   5739154. 0.847
+    ##  9 USA    1868 Barley          430586.            NA    505120. 1.17 
+    ## 10 USA    1868 Maize         14210954.            NA  23358645. 1.64 
+    ## # ... with 687 more rows
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Crop == "Wheat", Measurement == "Production")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Area)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Wheat Production in the United States of America", 
+       y = "Million Tonnes", x = NULL)
+ggsave("Intro_agData_USDA_Crops.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_USDA_Crops.png)
+
+-----
+
+# agData\_USDA\_GE\_Crops
+
+``` r
+# Get Data
+xx <- agData_USDA_GE_Crops %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 2,832 x 6
+    ##    Area       Year Crop                   Measurement        Unit          Value
+    ##    <chr>     <int> <chr>                  <chr>              <chr>         <dbl>
+    ##  1 Illinois   2000 Genetically engineere~ Insect-resistant ~ Percent of c~    13
+    ##  2 Indiana    2000 Genetically engineere~ Insect-resistant ~ Percent of c~     7
+    ##  3 Iowa       2000 Genetically engineere~ Insect-resistant ~ Percent of c~    23
+    ##  4 Kansas     2000 Genetically engineere~ Insect-resistant ~ Percent of c~    25
+    ##  5 Michigan   2000 Genetically engineere~ Insect-resistant ~ Percent of c~     8
+    ##  6 Minnesota  2000 Genetically engineere~ Insect-resistant ~ Percent of c~    28
+    ##  7 Missouri   2000 Genetically engineere~ Insect-resistant ~ Percent of c~    20
+    ##  8 Nebraska   2000 Genetically engineere~ Insect-resistant ~ Percent of c~    24
+    ##  9 Ohio       2000 Genetically engineere~ Insect-resistant ~ Percent of c~     6
+    ## 10 South Da~  2000 Genetically engineere~ Insect-resistant ~ Percent of c~    35
+    ## # ... with 2,822 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 10 x 2
+    ##    Measurement                Unit                            
+    ##    <chr>                      <chr>                           
+    ##  1 Insect-resistant (Bt) only Percent of corn planted         
+    ##  2 Herbicide-tolerant only    Percent of corn planted         
+    ##  3 Stacked gene varieties     Percent of corn planted         
+    ##  4 All GE varieties           Percent of corn planted         
+    ##  5 Insect-resistant (Bt) only Percent of upland cotton planted
+    ##  6 Herbicide-tolerant only    Percent of upland cotton planted
+    ##  7 Stacked gene varieties     Percent of upland cotton planted
+    ##  8 All GE varieties           Percent of upland cotton planted
+    ##  9 Herbicide-tolerant only    Percent of all soybeans planted 
+    ## 10 All GE varieties           Percent of all soybeans planted
+
+``` r
+# List Area
+xx %>% distinct(Area)
+```
+
+    ## # A tibble: 23 x 1
+    ##    Area        
+    ##    <chr>       
+    ##  1 Illinois    
+    ##  2 Indiana     
+    ##  3 Iowa        
+    ##  4 Kansas      
+    ##  5 Michigan    
+    ##  6 Minnesota   
+    ##  7 Missouri    
+    ##  8 Nebraska    
+    ##  9 Ohio        
+    ## 10 South Dakota
+    ## # ... with 13 more rows
+
+``` r
+# List Crops
+xx %>% distinct(Crop)
+```
+
+    ## # A tibble: 3 x 1
+    ##   Crop                                               
+    ##   <chr>                                              
+    ## 1 Genetically engineered (GE) corn varieties         
+    ## 2 Genetically engineered (GE) upland cotton varieties
+    ## 3 Genetically engineered (GE) soybean varieties
+
+``` r
+# Spread data to wide format
+xx %>% select(-Unit) %>% spread(Measurement, Value) %>% arrange(Year)
+```
+
+    ## # A tibble: 878 x 7
+    ##    Area    Year Crop        `All GE varieti~ `Herbicide-toler~ `Insect-resistan~
+    ##    <chr>  <int> <chr>                  <dbl>             <dbl>             <dbl>
+    ##  1 Arkan~  2000 Geneticall~               43                43                NA
+    ##  2 Arkan~  2000 Geneticall~               70                23                33
+    ##  3 Calif~  2000 Geneticall~               24                17                 3
+    ##  4 Georg~  2000 Geneticall~               82                32                18
+    ##  5 Illin~  2000 Geneticall~               17                 3                13
+    ##  6 Illin~  2000 Geneticall~               44                44                NA
+    ##  7 India~  2000 Geneticall~               11                 4                 7
+    ##  8 India~  2000 Geneticall~               63                63                NA
+    ##  9 Iowa    2000 Geneticall~               30                 5                23
+    ## 10 Iowa    2000 Geneticall~               59                59                NA
+    ## # ... with 868 more rows, and 1 more variable: Stacked gene varieties <dbl>
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Crop == "Genetically engineered (GE) corn varieties",
+                    Area == "U.S.")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Adoption of GE Maize", 
+       y = "Percent", x = NULL)
+ggsave("Intro_agData_USDA_GE_Crops.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_USDA_GE_Crops.png)
+
+-----
+
+# agData\_USDA\_TFP
+
+``` r
+# Get Data
+xx <- agData_USDA_TFP %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 120,602 x 4
+    ##    Area                      Year Measurement Value
+    ##    <chr>                    <dbl> <chr>       <dbl>
+    ##  1 South Africa              1961 Ag TFP       52.9
+    ##  2 Cameroon                  1961 Ag TFP       74.7
+    ##  3 Central African Republic  1961 Ag TFP      100. 
+    ##  4 Congo, DR                 1961 Ag TFP      128. 
+    ##  5 Congo, Republic           1961 Ag TFP      117. 
+    ##  6 Equatorial Guinea         1961 Ag TFP      187. 
+    ##  7 Gabon                     1961 Ag TFP      127. 
+    ##  8 Sao Tome and Principe     1961 Ag TFP      125. 
+    ##  9 Burundi                   1961 Ag TFP      116. 
+    ## 10 Kenya                     1961 Ag TFP       66.7
+    ## # ... with 120,592 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement)
+```
+
+    ## # A tibble: 12 x 1
+    ##    Measurement
+    ##    <chr>      
+    ##  1 Ag TFP     
+    ##  2 Inputs     
+    ##  3 Output     
+    ##  4 Ag Land    
+    ##  5 Cropand    
+    ##  6 Irrig      
+    ##  7 Pasture    
+    ##  8 Labor      
+    ##  9 Livestock  
+    ## 10 Machinery  
+    ## 11 Fertilizer 
+    ## 12 Feed
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Area == "World", Measurement == "Ag TFP")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "World Total Factor Productivity", 
+       y = "Ag TFP", x = NULL)
+ggsave("Intro_agData_USDA_TFP.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_USDA_TFP.png)
+
+-----
+
+# agData\_ISAAA\_Area
+
+``` r
+# Get Data
+xx <- agData_ISAAA_Area %>% filter(Measurement == "Area") %>% 
+  as_tibble()
+xx
+```
+
+    ## # A tibble: 23 x 5
+    ##    Area   Year Measurement Unit        Value
+    ##    <chr> <dbl> <chr>       <chr>       <dbl>
+    ##  1 World  1996 Area        Hectares  2800000
+    ##  2 World  1997 Area        Hectares 12800000
+    ##  3 World  1998 Area        Hectares 27800000
+    ##  4 World  1999 Area        Hectares 39900000
+    ##  5 World  2000 Area        Hectares 44200000
+    ##  6 World  2001 Area        Hectares 52600000
+    ##  7 World  2002 Area        Hectares 58700000
+    ##  8 World  2003 Area        Hectares 67700000
+    ##  9 World  2004 Area        Hectares 81000000
+    ## 10 World  2005 Area        Hectares 90000000
+    ## # ... with 13 more rows
+
+``` r
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Global Area of Genetically Engineered Crops", 
+       y = "Million Hectares", x = NULL)
+ggsave("Intro_agData_ISAAA_Area.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_ISAAA_Area.png)
+
+-----
+
+# agData\_ISAAA\_Country
+
+``` r
+# Get Data
+xx <- agData_ISAAA_Country %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 1,787 x 5
+    ##    Area       Year Measurement Unit       Value
+    ##    <chr>     <dbl> <chr>       <chr>      <dbl>
+    ##  1 USA        1996 Area        Hectares 1500000
+    ##  2 China      1996 Area        Hectares 1100000
+    ##  3 Argentina  1996 Area        Hectares  100000
+    ##  4 Canada     1996 Area        Hectares  100000
+    ##  5 Australia  1996 Area        Hectares  100000
+    ##  6 Mexico     1996 Area        Hectares  100000
+    ##  7 USA        1997 Area        Hectares 8100000
+    ##  8 Argentina  1997 Area        Hectares 1400000
+    ##  9 Canada     1997 Area        Hectares 1300000
+    ## 10 Australia  1997 Area        Hectares  100000
+    ## # ... with 1,777 more rows
+
+``` r
+# List Area
+xx %>% distinct(Area)
+```
+
+    ## # A tibble: 43 x 1
+    ##    Area        
+    ##    <chr>       
+    ##  1 USA         
+    ##  2 China       
+    ##  3 Argentina   
+    ##  4 Canada      
+    ##  5 Australia   
+    ##  6 Mexico      
+    ##  7 Spain       
+    ##  8 France      
+    ##  9 South Africa
+    ## 10 Portugal    
+    ## # ... with 33 more rows
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Area == "Canada", Measurement == "Area")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Area of Genetically Engineered in Canada", 
+       y = "Million Hectares", x = NULL)
+ggsave("Intro_agData_ISAAA_Country.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_ISAAA_Country.png)
+
+-----
+
+# agData\_ISAAA\_Crop
+
+``` r
+# Get Data
+xx <- agData_ISAAA_Crop %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 614 x 5
+    ##     Year Crop    Measurement Unit       Value
+    ##    <dbl> <chr>   <chr>       <chr>      <dbl>
+    ##  1  1996 Soybean Area        Hectares  500000
+    ##  2  1996 Maize   Area        Hectares  300000
+    ##  3  1996 Tabacco Area        Hectares 1000000
+    ##  4  1996 Cotton  Area        Hectares  800000
+    ##  5  1996 Canola  Area        Hectares  100000
+    ##  6  1996 Tomato  Area        Hectares  100000
+    ##  7  1996 Potato  Area        Hectares  100000
+    ##  8  1997 Soybean Area        Hectares 5100000
+    ##  9  1997 Maize   Area        Hectares 3200000
+    ## 10  1997 Tabacco Area        Hectares 1600000
+    ## # ... with 604 more rows
+
+``` r
+# List Crops
+xx %>% distinct(Crop)
+```
+
+    ## # A tibble: 13 x 1
+    ##    Crop      
+    ##    <chr>     
+    ##  1 Soybean   
+    ##  2 Maize     
+    ##  3 Tabacco   
+    ##  4 Cotton    
+    ##  5 Canola    
+    ##  6 Tomato    
+    ##  7 Potato    
+    ##  8 Squash    
+    ##  9 Papaya    
+    ## 10 Rice      
+    ## 11 Others    
+    ## 12 Alfalfa   
+    ## 13 Sugar beet
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Crop %in% c("Soybean","Maize"),
+                    Measurement == "Area")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Area of Genetically Engineered Maize and Soybean", 
+       y = "Million Hectares", x = NULL)
+ggsave("Intro_agData_ISAAA_Crop.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_ISAAA_Crop.png)
+
+-----
+
+# agData\_ISAAA\_CropPercent
+
+``` r
+# Get Data
+xx <- agData_ISAAA_CropPercent %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 213 x 5
+    ##     Year Crop    Measurement Unit         Value
+    ##    <dbl> <chr>   <chr>       <chr>        <dbl>
+    ##  1  1999 Soybean Area        Hectares  72000000
+    ##  2  1999 Canola  Area        Hectares  25000000
+    ##  3  1999 Cotton  Area        Hectares  34000000
+    ##  4  1999 Maize   Area        Hectares 140000000
+    ##  5  2000 Soybean Area        Hectares  72000000
+    ##  6  2000 Cotton  Area        Hectares  34000000
+    ##  7  2000 Canola  Area        Hectares  25000000
+    ##  8  2000 Maize   Area        Hectares 140000000
+    ##  9  2001 Soybean Area        Hectares  72000000
+    ## 10  2001 Cotton  Area        Hectares  34000000
+    ## # ... with 203 more rows
+
+``` r
+# List Crops
+xx %>% distinct(Crop)
+```
+
+    ## # A tibble: 5 x 1
+    ##   Crop   
+    ##   <chr>  
+    ## 1 Soybean
+    ## 2 Canola 
+    ## 3 Cotton 
+    ## 4 Maize  
+    ## 5 Others
+
+``` r
+# Prep data for an example plot
+xx <- xx %>% filter(Crop %in% c("Soybean","Maize"),
+                    Measurement == "Percent")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Crop)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Percent of Global Crop Area Dedicated to GE Varieties", 
+       y = "%", x = NULL)
+ggsave("Intro_agData_ISAAA_CropPercent.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_ISAAA_CropPercent.png)
+
+-----
+
+# agData\_ISAAA\_DVDDVG
+
+``` r
+# Get Data
+xx <- agData_ISAAA_DVDDVG %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 88 x 5
+    ##    Area                      Year Measurement Unit        Value
+    ##    <chr>                    <dbl> <chr>       <chr>       <dbl>
+    ##  1 Industrialized countries  1996 Area        Hectares  1600000
+    ##  2 Developing countries      1996 Area        Hectares  1200000
+    ##  3 Industrialized countries  1997 Area        Hectares  9500000
+    ##  4 Developing countries      1997 Area        Hectares  3300000
+    ##  5 Industrialized countries  1998 Area        Hectares 23400000
+    ##  6 Developing countries      1998 Area        Hectares  4400000
+    ##  7 Industrialized countries  1999 Area        Hectares 32800000
+    ##  8 Developing countries      1999 Area        Hectares  7100000
+    ##  9 Industrialized countries  2000 Area        Hectares 33500000
+    ## 10 Developing countries      2000 Area        Hectares 10700000
+    ## # ... with 78 more rows
+
+``` r
+# Prep data
+xx <- xx %>% filter(Unit == "Percent")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Percentage of Genetically Engineered Crops", 
+       y = "%", x = NULL)
+ggsave("Intro_agData_ISAAA_DVDDVG.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_ISAAA_DVDDVG.png)
+
+-----
+
+# agData\_ISAAA\_Value
+
+``` r
+# Get Data
+xx <- agData_ISAAA_Value %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 22 x 3
+    ##     Year Unit        Value
+    ##    <dbl> <chr>       <dbl>
+    ##  1  1996 Billion USD 0.093
+    ##  2  1997 Billion USD 0.591
+    ##  3  1998 Billion USD 1.56 
+    ##  4  1999 Billion USD 2.35 
+    ##  5  2000 Billion USD 2.43 
+    ##  6  2001 Billion USD 2.93 
+    ##  7  2002 Billion USD 3.47 
+    ##  8  2003 Billion USD 4.05 
+    ##  9  2004 Billion USD 5.09 
+    ## 10  2005 Billion USD 5.71 
+    ## # ... with 12 more rows
+
+``` r
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Value of Genetically Engineered Seed", 
+       y = "Billion USD", x = NULL)
+ggsave("Intro_agData_ISAAA_Value.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_ISAAA_Value.png)
+
+-----
+
+# agData\_UK\_Yields
+
+``` r
+# Get Data
+xx <- agData_UK_Yields %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 1,818 x 6
+    ##    Area           Crop   Year Measurement Unit      Value
+    ##    <chr>          <fct> <int> <fct>       <fct>     <dbl>
+    ##  1 United Kingdom Wheat  1270 Yield       tonnes/ha 0.522
+    ##  2 United Kingdom Wheat  1271 Yield       tonnes/ha 0.471
+    ##  3 United Kingdom Wheat  1272 Yield       tonnes/ha 0.685
+    ##  4 United Kingdom Wheat  1273 Yield       tonnes/ha 0.483
+    ##  5 United Kingdom Wheat  1274 Yield       tonnes/ha 0.443
+    ##  6 United Kingdom Wheat  1275 Yield       tonnes/ha 0.788
+    ##  7 United Kingdom Wheat  1276 Yield       tonnes/ha 0.482
+    ##  8 United Kingdom Wheat  1277 Yield       tonnes/ha 0.669
+    ##  9 United Kingdom Wheat  1278 Yield       tonnes/ha 0.845
+    ## 10 United Kingdom Wheat  1279 Yield       tonnes/ha 0.482
+    ## # ... with 1,808 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement, Unit)
+```
+
+    ## # A tibble: 1 x 2
+    ##   Measurement Unit     
+    ##   <fct>       <fct>    
+    ## 1 Yield       tonnes/ha
+
+``` r
+# List Crops
+xx %>% distinct(Crop)
+```
+
+    ## # A tibble: 3 x 1
+    ##   Crop  
+    ##   <fct> 
+    ## 1 Wheat 
+    ## 2 Barley
+    ## 3 Oats
+
+``` r
+# Prep data
+xx <- xx %>% filter(Crop == "Wheat", !is.na(Value))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "UK Wheat Yields", y = "Tonnes / Hectare", x = NULL)
+ggsave("Intro_agData_UK_Yields.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_UK_Yields.png)
+
+-----
+
+# agData\_MaizeContest
+
+``` r
+# Get Data
+xx <- agData_MaizeContest %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 108 x 5
+    ##     Year Crop  Measurement                         Unit         Value
+    ##    <dbl> <chr> <chr>                               <chr>        <dbl>
+    ##  1  2010 Maize A Non-Irrigated                     Bushels/Acre  306.
+    ##  2  2010 Maize AA Non-Irrigated                    Bushels/Acre  300.
+    ##  3  2010 Maize A No-Till/Strip-Till Non-Irrigated  Bushels/Acre  294.
+    ##  4  2010 Maize AA No-Till/Strip-Till Non-Irrigated Bushels/Acre  300.
+    ##  5  2010 Maize No-Till/Strip-Till Irrigated        Bushels/Acre  368.
+    ##  6  2010 Maize Irrigated                           Bushels/Acre  341 
+    ##  7  2011 Maize A Non-Irrigated                     Bushels/Acre  288.
+    ##  8  2011 Maize AA Non-Irrigated                    Bushels/Acre  322.
+    ##  9  2011 Maize A No-Till/Strip-Till Non-Irrigated  Bushels/Acre  294.
+    ## 10  2011 Maize AA No-Till/Strip-Till Non-Irrigated Bushels/Acre  298.
+    ## # ... with 98 more rows
+
+``` r
+# Prep Data
+xx <- xx %>% filter(Unit == "Tonnes/Hectare")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "USA Maize Yield Contests", 
+       y = "Tonnes / Hectare", x = NULL)
+ggsave("Intro_agData_MaizeContest.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_MaizeContest.png)
+
+-----
+
+# agData\_PeopleInAg
+
+``` r
+# Get Data
+xx <- agData_PeopleInAg %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 7,009 x 5
+    ##    Area     Year Measurement Unit    Value
+    ##    <chr>   <int> <chr>       <chr>   <dbl>
+    ##  1 Belgium  1856 Total       Number 712000
+    ##  2 Belgium  1866 Total       Number 705000
+    ##  3 Belgium  1880 Total       Number 674000
+    ##  4 Belgium  1890 Total       Number 640000
+    ##  5 Belgium  1900 Total       Number 616000
+    ##  6 Belgium  1910 Total       Number 585000
+    ##  7 Belgium  1920 Total       Number 525000
+    ##  8 Belgium  1930 Total       Number 505000
+    ##  9 Belgium  1947 Total       Number 364000
+    ## 10 Belgium  1961 Total       Number 213000
+    ## # ... with 6,999 more rows
+
+``` r
+# Prep Data
+xx <- xx %>% filter(Area == "Germany")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(title = "Percent of Population in Agriculture", 
+       y = NULL, x = NULL)
+ggsave("Intro_agData_People.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_People.png)
+
+-----
+
+# agData\_PopFert
+
+``` r
+# Get Data
+xx <- agData_PopFert %>% as_tibble()
+xx
+```
+
+    ## # A tibble: 158 x 4
+    ##    Area   Year Measurement      Value
+    ##    <chr> <int> <chr>            <dbl>
+    ##  1 World  1900 Actual      1650000000
+    ##  2 World  1901 Actual      1659947572
+    ##  3 World  1902 Actual      1669996608
+    ##  4 World  1903 Actual      1680114897
+    ##  5 World  1904 Actual      1690269397
+    ##  6 World  1905 Actual      1700426220
+    ##  7 World  1906 Actual      1710550627
+    ##  8 World  1907 Actual      1720607035
+    ##  9 World  1908 Actual      1730559024
+    ## 10 World  1909 Actual      1740369356
+    ## # ... with 148 more rows
+
+``` r
+# List Measurements
+xx %>% distinct(Measurement)
+```
+
+    ## # A tibble: 3 x 1
+    ##   Measurement        
+    ##   <chr>              
+    ## 1 Actual             
+    ## 2 Without Fertilizers
+    ## 3 Fed by Fertilizers
+
+``` r
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) + 
+  geom_line() + 
+  theme_agData() +
+  labs(y = NULL, x = NULL)
+ggsave("Intro_agData_PopFert.png", mp, width = 6, height = 4)
+```
+
+![](Intro_agData_PopFert.png)
+
+-----
+
+© Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)
