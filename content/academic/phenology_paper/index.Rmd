@@ -6,6 +6,7 @@ author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://
 date: "`r Sys.Date()`"
 weight: 1
 tags: [ "Academic", "AGILE", "Literature", "Featured" ]
+toc: true
 math: true
 links:
   - icon: "newspaper"

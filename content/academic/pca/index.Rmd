@@ -101,8 +101,12 @@ mp <- plot_ly(xx, x = ~Dim.1, y = ~Dim.2, z = ~Dim.3, text = ~Species,
   add_markers()
 htmlwidgets::saveWidget(mp, file=normalizePath("iris_pca.html"),
            knitrOptions = list(fig.width = 4, fig.height = 6))
-mp
 ```
+
+<iframe
+  src="https://derekmichaelwright.github.io/dblogr/content/academic/pca/iris_pca.html"
+  style="width:100%; height:600px; align:center;"
+></iframe>
 
 ---
 
