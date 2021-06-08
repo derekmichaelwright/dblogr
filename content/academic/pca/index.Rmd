@@ -6,6 +6,7 @@ date: "`r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/pca)"
 tags: [ "Academic", "Tutorial", "R" ]
 weight: 4
+toc: true
 image:
   preview_only: true
 codefolding_show: "show"
@@ -38,7 +39,7 @@ library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(GGally) # ggpairs() 
 library(FactoMineR) # PCA() & HCPC()
 library(plotly) # plot_ly()
-DT::datatable(iris)
+as_tibble(iris)
 ```
 
 ---
@@ -99,12 +100,13 @@ mp <- plot_ly(xx, x = ~Dim.1, y = ~Dim.2, z = ~Dim.3, text = ~Species,
               color = ~Cluster, colors = colors, 
               symbol = ~Species, symbols = shapes) %>% 
   add_markers()
-htmlwidgets::saveWidget(mp, file=normalizePath("iris_pca.html"),
+htmlwidgets::saveWidget(mp, file=normalizePath("C:/gitfolder/htmls/academic/pca_iris.html"),
            knitrOptions = list(fig.width = 4, fig.height = 6))
+mp
 ```
 
 <iframe
-  src="https://derekmichaelwright.github.io/dblogr/content/academic/pca/iris_pca.html"
+  src="https://derekmichaelwright.github.io/htmls/academic/pca_iris.html"
   style="width:100%; height:600px; align:center;"
 ></iframe>
 
