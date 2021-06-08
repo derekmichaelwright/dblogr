@@ -10,10 +10,10 @@ codefolding_show: "hide"
 image:
   preview_only: true
 links:
-  - icon: file-code
-    icon_pack: far
-    name: HTML < R Script Vignette >
-    url: https://derekmichaelwright.github.io/htmls/agdata/import_export.html
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/agdata/import_export.html"
 ---
 
 ```{r setup, include = FALSE}
@@ -245,7 +245,8 @@ mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000000, fill = Crop)) +
   # gganimate specific bits
   transition_time(Year) +
   ease_aes('linear')
-anim_save("import_export_01.gif", mp, width = 600, height = 375)
+mp <- animate(mp, end_pause = 20, width = 600, height = 400)
+anim_save("import_export_01.gif", mp)
 ```
 
 ![](import_export_01.gif)

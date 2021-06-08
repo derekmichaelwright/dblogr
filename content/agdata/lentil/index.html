@@ -2,7 +2,7 @@
 title: "Global Lentil Production"
 subtitle: "Graphs of lentil production using FAO data"
 summary:  "Graphs of lentil production using FAO data"
-date: "2021-06-02"
+date: "2021-06-07"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/lentil/)"
 tags: [ "agData", "Lentil" ]
 weight: 3
@@ -125,7 +125,8 @@ mp &lt;- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) +
        caption = &quot;\xa9 www.dblogr.com/  |  Data: FAOSTAT&quot;) +
   # gganimate
   transition_states(Year)
-anim_save(&quot;lentil_gifs_01.gif&quot;, mp, width = 600, height = 400)</code></pre>
+mp &lt;- animate(mp, end_pause = 20, width = 600, height = 400)
+anim_save(&quot;lentil_gifs_01.gif&quot;, mp)</code></pre>
 <p><img src="lentil_gifs_01.gif" /></p>
 <hr />
 </div>
@@ -360,7 +361,8 @@ ggsave(&quot;lentil_10.png&quot;, mp, width = 6, height = 4)</code></pre>
 <hr />
 <pre class="r"><code># Plot function
 mp &lt;- ggPie_anim(crop = &quot;Lentils&quot;)
-anim_save(&quot;lentil_gifs_02.gif&quot;, mp, width = 600, height = 400)</code></pre>
+mp &lt;- animate(mp, end_pause = 20, width = 600, height = 400)
+anim_save(&quot;lentil_gifs_02.gif&quot;, mp)</code></pre>
 <p><img src="lentil_gifs_02.gif" /></p>
 <hr />
 </div>

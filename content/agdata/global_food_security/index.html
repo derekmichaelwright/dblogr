@@ -2,7 +2,7 @@
 title: "Global Food Security"
 subtitle: "Graphs of of crop production per capita using FAO data"
 summary:  "Graphs of of crop production per capita using FAO data"
-date: "2021-06-02"
+date: "2021-06-07"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/global_food_security/)"
 tags: [ "agData", "Regions" ]
 weight: 3
@@ -149,25 +149,6 @@ mp &lt;- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Region)) +
 ggsave(&quot;global_food_security_04.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="global_food_security_04.png" /></p>
 <hr />
-<pre class="r"><code># Prep data
-colors &lt;- c(&quot;darkgreen&quot;, &quot;darkblue&quot;, &quot;darkred&quot;, &quot;darkgoldenrod2&quot;, &quot;darkslategrey&quot;)
-xx &lt;- dd %&gt;% filter(Area != &quot;World&quot;)
-# Plot
-mp &lt;- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Region)) + 
-  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
-  facet_grid(Crop ~ Region, scales = &quot;free&quot;) +
-  scale_fill_manual(values = agData_Colors[c(1,4,3,2,7)]) +
-  theme_agData(legend.position = &quot;none&quot;, 
-               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
-  labs(title = &quot;Food Security - {round(frame_time)}&quot;,
-       y = &quot;Tonnes Per Person&quot;, x = NULL,
-       caption = &quot;\xa9 www.dblogr.com/  |  Data: FAOSTAT&quot;) +
-  # gganimate specific bits
-  transition_reveal(Year) +
-  ease_aes(&#39;linear&#39;)
-anim_save(&quot;global_food_security_gifs_01.gif&quot;, mp, width = 600, height = 400)</code></pre>
-<p><img src="global_food_security_gifs_01.gif" /></p>
-<hr />
 <pre class="r"><code># Prep Data
 colors &lt;- c(&quot;darkgreen&quot;, &quot;darkblue&quot;, &quot;darkred&quot;, &quot;darkgoldenrod2&quot;, &quot;darkslategrey&quot;)
 xx &lt;- dd %&gt;% filter(Year == max(Year), Area != &quot;World&quot;) %&gt;%
@@ -225,12 +206,12 @@ ggsave(&quot;global_food_security_07.png&quot;, mp, width = 10, height = 6)</cod
 <h2>Grains</h2>
 <pre class="r"><code># Prep data
 colors &lt;- c(&quot;darkgreen&quot;, &quot;darkblue&quot;, &quot;darkred&quot;, &quot;darkgoldenrod2&quot;, &quot;darkslategrey&quot;)
+areas &lt;- c(&quot;Americas&quot;, &quot;Europe&quot;, &quot;Africa&quot;, &quot;Asia&quot;, &quot;Oceania&quot;)
 crops &lt;- c(&quot;Wheat&quot;, &quot;Maize&quot;, &quot;Rice&quot;, &quot;Sorghum&quot;)
 xx &lt;- agData_FAO_Trade %&gt;%
-  region_Info() %&gt;%
   filter(Measurement %in% c(&quot;Import Quantity&quot;, &quot;Export Quantity&quot;),
-         Crop %in% crops, Area %in% agData_FAO_Country_Table$Region) %&gt;%
-  mutate(Area = factor(Area, levels = levels(.$Region)))
+         Crop %in% crops, Area %in% areas) %&gt;%
+  mutate(Area = factor(Area, levels = areas))
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Area, color = Area)) + 
   geom_line(size = 1, alpha = 0.8) + 
@@ -249,12 +230,12 @@ ggsave(&quot;global_food_security_08.png&quot;, mp, width = 6, height = 6)</code
 <h2>Legumes</h2>
 <pre class="r"><code># Prep data
 colors &lt;- c(&quot;darkgreen&quot;, &quot;darkblue&quot;, &quot;darkred&quot;, &quot;darkgoldenrod2&quot;, &quot;darkslategrey&quot;)
+areas &lt;- c(&quot;Americas&quot;, &quot;Europe&quot;, &quot;Africa&quot;, &quot;Asia&quot;, &quot;Oceania&quot;)
 crops &lt;- c(&quot;Soybeans&quot;, &quot;Beans, dry&quot;, &quot;Chick peas&quot;, &quot;Lentils&quot;)
 xx &lt;- agData_FAO_Trade %&gt;%
-  region_Info() %&gt;%
   filter(Measurement %in% c(&quot;Import Quantity&quot;, &quot;Export Quantity&quot;),
-         Crop %in% crops, Area %in% agData_FAO_Country_Table$Region) %&gt;%
-  mutate(Area = factor(Area, levels = levels(.$Region)))
+         Crop %in% crops, Area %in% areas) %&gt;%
+  mutate(Area = factor(Area, levels = areas))
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Area, color = Area)) + 
   geom_line(size = 1, alpha = 0.8) + 

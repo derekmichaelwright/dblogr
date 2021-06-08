@@ -108,6 +108,50 @@ ggsave("crops_world_02.png", mp, width = 6, height = 4)
 
 ---
 
+# Race Chart
+
+```{r eval = F}
+# Prep data
+xx <- agData_FAO_Crops %>% 
+    filter(Area == "World", 
+           Measurement == "Area harvested") %>% 
+  group_by(Year) %>%
+  arrange(Year, -Value) %>%
+  mutate(Rank = 1:n()) %>%
+  filter(Rank < 15) %>% 
+  arrange(desc(Year)) %>%
+  mutate(Crop = factor(Crop, levels = unique(.$Crop)))
+# Plot
+mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000, 
+                     ymin = Rank - 0.45, ymax = Rank + 0.45, y = Rank, 
+                     fill = Crop)) + 
+  geom_rect(alpha = 0.8, color = "black") + 
+  scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
+  scale_x_continuous(limits = c(-2.5,250), breaks = c(0,50,100,150,200,250)) +
+  geom_text(col = "black", hjust = "right", aes(label = Crop), x = -0.1) +
+  scale_y_reverse() +
+  theme_agData(legend.position = "none",
+               axis.text.y = element_blank(), 
+               axis.ticks.x = element_blank()) + 
+  labs(title = "Canada - Area Seeded", 
+       subtitle = "Year: {frame_time}",
+       x = "Million Hectares", y = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN") +
+  # gganimate
+  facet_null() +
+  geom_text(x = 6, y = -8,
+            aes(label = as.character(Year)),
+            size = 30, col = "black") +
+  transition_time(Year)
+mp <- animate(mp, nframes = 2*(max(xx$Year) - min(xx$Year)), fps = 5, 
+              end_pause = 20, width = 600, height = 400)
+anim_save("crops_world_gifs_01.gif", mp)
+```
+
+![](crops_world_gifs_01.gif)
+
+---
+
 # Crop Yields
 
 ```{r}

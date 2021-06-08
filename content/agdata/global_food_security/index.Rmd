@@ -177,9 +177,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ![](global_food_security_04.png)
 
----
-
-```{r}
+```{r eval = F, echo = F}
 # Prep data
 colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "darkslategrey")
 xx <- dd %>% filter(Area != "World")
@@ -196,10 +194,10 @@ mp <- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Region)) +
   # gganimate specific bits
   transition_reveal(Year) +
   ease_aes('linear')
-anim_save("global_food_security_gifs_01.gif", mp, width = 600, height = 400)
+mp <- animate(mp, end_pause = 20, width = 600, height = 400)
+anim_save("global_food_security_gifs_01.gif", mp)
+#![](global_food_security_gifs_01.gif)
 ```
-
-![](global_food_security_gifs_01.gif)
 
 ---
 
@@ -273,12 +271,12 @@ ggsave("global_food_security_07.png", mp, width = 10, height = 6)
 ```{r}
 # Prep data
 colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "darkslategrey")
+areas <- c("Americas", "Europe", "Africa", "Asia", "Oceania")
 crops <- c("Wheat", "Maize", "Rice", "Sorghum")
 xx <- agData_FAO_Trade %>%
-  region_Info() %>%
   filter(Measurement %in% c("Import Quantity", "Export Quantity"),
-         Crop %in% crops, Area %in% agData_FAO_Country_Table$Region) %>%
-  mutate(Area = factor(Area, levels = levels(.$Region)))
+         Crop %in% crops, Area %in% areas) %>%
+  mutate(Area = factor(Area, levels = areas))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Area, color = Area)) + 
   geom_line(size = 1, alpha = 0.8) + 
@@ -301,12 +299,12 @@ ggsave("global_food_security_08.png", mp, width = 6, height = 6)
 ```{r}
 # Prep data
 colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "darkslategrey")
+areas <- c("Americas", "Europe", "Africa", "Asia", "Oceania")
 crops <- c("Soybeans", "Beans, dry", "Chick peas", "Lentils")
 xx <- agData_FAO_Trade %>%
-  region_Info() %>%
   filter(Measurement %in% c("Import Quantity", "Export Quantity"),
-         Crop %in% crops, Area %in% agData_FAO_Country_Table$Region) %>%
-  mutate(Area = factor(Area, levels = levels(.$Region)))
+         Crop %in% crops, Area %in% areas) %>%
+  mutate(Area = factor(Area, levels = areas))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Area, color = Area)) + 
   geom_line(size = 1, alpha = 0.8) + 

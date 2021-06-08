@@ -52,13 +52,13 @@ cropList <- function(measurement, years) {
 
 ---
 
-## Crop Production 1908, 1961, 2017
+## Crop Production 1908, 1961, 2020
 
 ```{r}
 # Prep data
-myCrops <- cropList(measurement = "Production", years = c(2017, 1961, 1908))
+myCrops <- cropList(measurement = "Production", years = c(2020, 1961, 1908))
 xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Year %in% c(2017, 1961, 1908),
+  filter(Area == "Saskatchewan", Year %in% c(2020, 1961, 1908),
          Measurement == "Production", Crop %in% myCrops) %>%
   mutate(Crop = factor(Crop, levels = myCrops) )
 # Plot
@@ -81,13 +81,13 @@ ggsave("featured.png", mp, width = 6, height = 5)
 
 ---
 
-## Crop Area 1908, 1961, 2017
+## Crop Area 1908, 1961, 2020
 
 ```{r}
 # Prep data
-myCrops <- cropList(measurement = "Seeded area", years = c(2017, 1961, 1908))
+myCrops <- cropList(measurement = "Seeded area", years = c(2020, 1961, 1908))
 xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Year %in% c(2017, 1961, 1908),
+  filter(Area == "Saskatchewan", Year %in% c(2020, 1961, 1908),
          Measurement == "Seeded area", Crop %in% myCrops) %>%
   mutate(Crop = factor(Crop, levels = myCrops) )
 # Plot
@@ -106,9 +106,12 @@ ggsave("crops_saskatchewan_02.png", mp, width = 6, height = 5)
 
 ---
 
-```{r eval = F}
+# Race Chart
+
+```{r  echo = F, eval = F}
+# Old Code
 # Prep data
-myCrops <- cropList(measurement = "Seeded area", years = 2017)
+myCrops <- cropList(measurement = "Seeded area", years = 2020)
 xx <- agData_STATCAN_Crops %>% 
     filter(Area == "Saskatchewan", 
            Measurement == "Seeded area", Crop %in% myCrops) %>%
@@ -124,8 +127,47 @@ mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) +
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN") +
   # gganimate
   transition_states(Year)
-mp <- animate(mp, nframes = 2*(max(xx$Year) - min(xx$Year)), fps = 10, end_pause = 20)
-anim_save("crops_saskatchewan_gifs_01.gif", mp, width = 800, height = 400)
+mp <- animate(mp, nframes = 2*(max(xx$Year) - min(xx$Year)), fps = 20, 
+              end_pause = 20, width = 600, height = 400)
+anim_save("crops_saskatchewan_gifs_01.gif", mp)
+```
+
+```{r eval = F}
+# Prep data
+xx <- agData_STATCAN_Crops %>% 
+    filter(Area == "Saskatchewan", 
+           Measurement == "Seeded area") %>% 
+  group_by(Year) %>%
+  arrange(Year, -Value) %>%
+  mutate(Rank = 1:n()) %>%
+  filter(Rank < 10) %>% 
+  arrange(desc(Year)) %>%
+  mutate(Crop = factor(Crop, levels = unique(.$Crop)))
+# Plot
+mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000, 
+                     ymin = Rank - 0.45, ymax = Rank + 0.45, y = Rank, 
+                     fill = Crop)) + 
+  geom_rect(alpha = 0.8, color = "black") + 
+  scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
+  scale_x_continuous(limits = c(-2.5,10), breaks = c(0,2,4,6,8,10)) +
+  geom_text(col = "black", hjust = "right", aes(label = Crop), x = -0.1) +
+  scale_y_reverse() +
+  theme_agData(legend.position = "none",
+               axis.text.y = element_blank(), 
+               axis.ticks.x = element_blank()) + 
+  labs(title = "Saskatchewan - Area Seeded", 
+       subtitle = "Year: {frame_time}",
+       x = "Million Hectares", y = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN") +
+  # gganimate
+  facet_null() +
+  geom_text(x = 6, y = -8,
+            aes(label = as.character(Year)),
+            size = 30, col = "black") +
+  transition_time(Year)
+mp <- animate(mp, nframes = 2*(max(xx$Year) - min(xx$Year)), fps = 5, 
+              end_pause = 20, width = 600, height = 400)
+anim_save("crops_saskatchewan_gifs_01.gif", mp)
 ```
 
 ![](crops_saskatchewan_gifs_01.gif)
@@ -137,11 +179,11 @@ anim_save("crops_saskatchewan_gifs_01.gif", mp, width = 800, height = 400)
 ```{r}
 # Prep data
 pp <- agData_STATCAN_Population %>% 
-  filter(Month == 1, Area == "Saskatchewan", Year == 2017) %>%
+  filter(Month == 1, Area == "Saskatchewan", Year == 2020) %>%
   pull(Value)
-myCrops <- cropList(measurement = "Production", years = 2017)
+myCrops <- cropList(measurement = "Production", years = 2020)
 xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Year %in% 2017,
+  filter(Area == "Saskatchewan", Year %in% 2020,
          Measurement == "Production", Crop %in% myCrops) %>%
   mutate(Crop = factor(Crop, levels = myCrops),
          PerPerson = Value / pp)
@@ -151,7 +193,7 @@ mp <- ggplot(xx, aes(x = Crop, y = PerPerson, fill = Crop)) +
   geom_label(aes(label = round(PerPerson,1)), vjust = -0.1, fill = "White",
              size = 2.5, label.padding = unit(0.15, "lines")) +
   facet_grid(Year~.) + 
-  scale_y_continuous(limits = c(0,12.75), expand = c(0,0)) +
+  scale_y_continuous(limits = c(0,14), expand = c(0,0)) +
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
@@ -193,38 +235,42 @@ ggsave("crops_saskatchewan_04.png", mp, width = 6, height = 5)
 ```{r}
 # Prep data
 xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Year == 2019, Measurement == "Seeded area") %>%
-  arrange(desc(Value)) %>% mutate(Crop = factor(Crop, levels = unique(Crop)))
+  filter(Area == "Saskatchewan", Year == 2020, Measurement == "Seeded area") %>%
+  arrange(desc(Value)) %>%
+  mutate(Crop = factor(Crop, levels = unique(.$Crop)))
 # Plot
 mp <- ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
   geom_treemap(color = "black", alpha = 0.8, size = 1.5) +
   geom_treemap_text(place = "centre", grow = T, color = "white") +
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
   theme_agData(legend.position = "none") +
-  labs(title = "Saskatchewan Cropland by Area",
+  labs(title = "Saskatchewan Cropland", subtitle = "Seeded Area 2020",
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
 ggsave("crops_saskatchewan_05.png", mp, width = 6, height = 4)
 ```
 
 ![](crops_saskatchewan_05.png)
 
-```{r}
+```{r eval = F}
 # Prep data
 xx <- agData_STATCAN_Crops %>% 
   filter(Area == "Saskatchewan", Measurement == "Seeded area") %>%
-  arrange(desc(Value)) %>% mutate(Crop = factor(Crop, levels = unique(Crop)))
+  arrange(desc(Year), desc(Value)) %>% 
+  mutate(Crop = factor(Crop, levels = unique(.$Crop)))
 # Plot
 mp <- ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
-  geom_treemap(color = "black", alpha = 0.8, size = 1.5) +
-  geom_treemap_text(place = "centre", grow = T, color = "white") +
+  geom_treemap(layout = "fixed", color = "black", alpha = 0.8, size = 1.5) +
+  geom_treemap_text(layout = "fixed", place = "centre", grow = T, color = "white") +
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
   theme_agData(legend.position = "none") +
-  labs(title = "Saskatchewan Cropland by Area",
+  labs(title = "Saskatchewan Cropland - Seeded Area",
+       subtitle = "Year: {frame_time}",
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN") +
 # gganimate
-  transition_states(Year)
-mp <- animate(mp, nframes = 2*(max(xx$Year) - min(xx$Year)), fps = 10, end_pause = 20)
-anim_save("crops_saskatchewan_gifs_02.gif", mp, width = 800, height = 400)
+  transition_time(Year)
+mp <- animate(mp, nframes = 2*(max(xx$Year) - min(xx$Year)), fps = 10,
+              end_pause = 20, width = 600, height = 400)
+anim_save("crops_saskatchewan_gifs_02.gif", mp)
 ```
 
 ![](crops_saskatchewan_gifs_02.gif)

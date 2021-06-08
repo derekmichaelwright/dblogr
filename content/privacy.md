@@ -1,7 +1,7 @@
 ---
 commentable: false
-date: "2018-06-28T00:00:00+01:00"
-draft: true
+date: "2021-01-01"
+draft: false
 editable: false
 header:
   caption: ""
@@ -11,3 +11,7 @@ title: Privacy Policy
 ---
 
 I dont have any of your data.
+
+However, if I did, I would gladly sell it to the highest bidder!
+
+:)

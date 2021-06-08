@@ -106,7 +106,8 @@ mp <- mp +
   # gganimate
   transition_reveal(Year) +
   ease_aes('linear')
-anim_save("cotton_gifs_01.gif", mp, width = 600, height = 400)
+mp <- animate(mp, end_pause = 20, width = 600, height = 400)
+anim_save("cotton_gifs_01.gif", mp)
 ```
 
 ![](cotton_gifs_01.gif)

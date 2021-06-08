@@ -85,7 +85,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
   # gganimate
   transition_reveal(Year) +
   ease_aes('linear')
-anim_save("crops_usa_gifs_01.gif", mp, width = 600, height = 400)
+mp <- animate(mp, end_pause = 20, width = 600, height = 400)
+anim_save("crops_usa_gifs_01.gif", mp)
 ```
 
 ![](crops_usa_gifs_01.gif)
@@ -129,7 +130,8 @@ mp <- mp +
   # gganimate
   transition_reveal(Year) +
   ease_aes('linear')
-anim_save("crops_usa_gifs_02.gif", mp, width = 600, height = 400)
+mp <- animate(mp, end_pause = 20, width = 600, height = 400)
+anim_save("crops_usa_gifs_02.gif", mp)
 ```
 
 ![](crops_usa_gifs_02.gif)

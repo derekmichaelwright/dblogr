@@ -108,27 +108,44 @@ ggsave("featured.png", mp, width = 6, height = 5)
 
 ---
 
+# Race Chart
+
 ```{r eval = F}
 # Prep data
-myCrops <- cropList(measurement = "Seeded area", years = 2017)
 xx <- agData_STATCAN_Crops %>% 
     filter(Area == "Canada", 
-           Measurement == "Seeded area", Crop %in% myCrops) %>%
-  mutate(Crop = factor(Crop, levels = myCrops),
-         Crop = recode(Crop, "Beans, all dry (white and coloured)" = "Beans, all dry") )
+           Measurement == "Seeded area") %>% 
+  group_by(Year) %>%
+  arrange(Year, -Value) %>%
+  mutate(Rank = 1:n()) %>%
+  filter(Rank < 15) %>% 
+  arrange(desc(Year)) %>%
+  mutate(Crop = factor(Crop, levels = unique(.$Crop)))
 # Plot
-mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) + 
-  geom_bar(stat = "identity", color = "Black", alpha = 0.8) + 
-  geom_text(aes(label = Year), x = 17, y = 14, size = 15) +
+mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000, 
+                     ymin = Rank - 0.45, ymax = Rank + 0.45, y = Rank, 
+                     fill = Crop)) + 
+  geom_rect(alpha = 0.8, color = "black") + 
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
-  theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 45, hjust = 1)) + 
-  labs(title = "Canada - Area Seeded", y = "Million Hectares", x = NULL,
+  scale_x_continuous(limits = c(-2.5,15), breaks = c(0,2,4,6,8,10,12,14)) +
+  geom_text(col = "black", hjust = "right", aes(label = Crop), x = -0.1) +
+  scale_y_reverse() +
+  theme_agData(legend.position = "none",
+               axis.text.y = element_blank(), 
+               axis.ticks.x = element_blank()) + 
+  labs(title = "Canada - Area Seeded", 
+       subtitle = "Year: {frame_time}",
+       x = "Million Hectares", y = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN") +
   # gganimate
-  transition_states(Year)
-mp <- animate(mp, nframes = 2*(max(xx$Year) - min(xx$Year)), fps = 10, end_pause = 20)
-anim_save("crops_canada_gifs_01.gif", mp, width = 600, height = 400)
+  facet_null() +
+  geom_text(x = 6, y = -8,
+            aes(label = as.character(Year)),
+            size = 30, col = "black") +
+  transition_time(Year)
+mp <- animate(mp, nframes = 2*(max(xx$Year) - min(xx$Year)), fps = 5, 
+              end_pause = 20, width = 600, height = 400)
+anim_save("crops_canada_gifs_01.gif", mp)
 ```
 
 ![](crops_canada_gifs_01.gif)

@@ -51,7 +51,7 @@ downloadthis::download_link(
 
 # Prepare Data
 
-```{r echo = F}
+```{r echo = F, eval = F}
 dd <- read.csv("https://data.cdc.gov/api/views/y5bj-9g5w/rows.csv?accessType=DOWNLOAD&bom=true&format=true%20target=")
 write.csv(dd, "usa_deaths_data.csv", row.names = F)
 ```

@@ -10,10 +10,10 @@ codefolding_show: "hide"
 image:
   preview_only: true
 links:
-  - icon_pack: fas
-    icon: code
-    name: HTML < R Script Vignette >
-    url: https://derekmichaelwright.github.io/htmls/dblogr/canada_federal_elections.html
+  - icon_pack: "fas"
+    icon: "code"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/dblogr/canada_federal_elections.html"
 ---
 
 ```{r setup, include=FALSE}

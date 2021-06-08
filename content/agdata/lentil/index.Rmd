@@ -151,7 +151,8 @@ mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) +
        caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT") +
   # gganimate
   transition_states(Year)
-anim_save("lentil_gifs_01.gif", mp, width = 600, height = 400)
+mp <- animate(mp, end_pause = 20, width = 600, height = 400)
+anim_save("lentil_gifs_01.gif", mp)
 ```
 
 ![](lentil_gifs_01.gif)
@@ -446,7 +447,8 @@ ggsave("lentil_10.png", mp, width = 6, height = 4)
 ```{r}
 # Plot function
 mp <- ggPie_anim(crop = "Lentils")
-anim_save("lentil_gifs_02.gif", mp, width = 600, height = 400)
+mp <- animate(mp, end_pause = 20, width = 600, height = 400)
+anim_save("lentil_gifs_02.gif", mp)
 ```
 
 ![](lentil_gifs_02.gif)

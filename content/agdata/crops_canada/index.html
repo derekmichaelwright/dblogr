@@ -2,7 +2,7 @@
 title: "Canadian Crop Production"
 subtitle: "Graphs of crop production in Canada using STATCAN data"
 summary:  "Graphs of crop production in Canada using STATCAN data"
-date: "2021-06-02"
+date: "2021-06-07"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crops_canada/)"
 tags: [ "agData", "Regions" ]
 weight: 3
@@ -84,29 +84,47 @@ mp &lt;- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) +
 ggsave(&quot;crops_canada_02.png&quot;, mp, width = 6, height = 5)</code></pre>
 <p><img src="crops_canada_02.png" /></p>
 <hr />
+</div>
+</div>
+<div id="race-chart" class="section level1">
+<h1>Race Chart</h1>
 <pre class="r"><code># Prep data
-myCrops &lt;- cropList(measurement = &quot;Seeded area&quot;, years = 2017)
 xx &lt;- agData_STATCAN_Crops %&gt;% 
     filter(Area == &quot;Canada&quot;, 
-           Measurement == &quot;Seeded area&quot;, Crop %in% myCrops) %&gt;%
-  mutate(Crop = factor(Crop, levels = myCrops),
-         Crop = recode(Crop, &quot;Beans, all dry (white and coloured)&quot; = &quot;Beans, all dry&quot;) )
+           Measurement == &quot;Seeded area&quot;) %&gt;% 
+  group_by(Year) %&gt;%
+  arrange(Year, -Value) %&gt;%
+  mutate(Rank = 1:n()) %&gt;%
+  filter(Rank &lt; 15) %&gt;% 
+  arrange(desc(Year)) %&gt;%
+  mutate(Crop = factor(Crop, levels = unique(.$Crop)))
 # Plot
-mp &lt;- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) + 
-  geom_bar(stat = &quot;identity&quot;, color = &quot;Black&quot;, alpha = 0.8) + 
-  geom_text(aes(label = Year), x = 17, y = 14, size = 15) +
+mp &lt;- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000, 
+                     ymin = Rank - 0.45, ymax = Rank + 0.45, y = Rank, 
+                     fill = Crop)) + 
+  geom_rect(alpha = 0.8, color = &quot;black&quot;) + 
   scale_fill_manual(values = alpha(agData_Colors, 0.75)) +
-  theme_agData(legend.position = &quot;none&quot;, 
-               axis.text.x = element_text(angle = 45, hjust = 1)) + 
-  labs(title = &quot;Canada - Area Seeded&quot;, y = &quot;Million Hectares&quot;, x = NULL,
+  scale_x_continuous(limits = c(-2.5,15), breaks = c(0,2,4,6,8,10,12,14)) +
+  geom_text(col = &quot;black&quot;, hjust = &quot;right&quot;, aes(label = Crop), x = -0.1) +
+  scale_y_reverse() +
+  theme_agData(legend.position = &quot;none&quot;,
+               axis.text.y = element_blank(), 
+               axis.ticks.x = element_blank()) + 
+  labs(title = &quot;Canada - Area Seeded&quot;, 
+       subtitle = &quot;Year: {frame_time}&quot;,
+       x = &quot;Million Hectares&quot;, y = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;) +
   # gganimate
-  transition_states(Year)
-mp &lt;- animate(mp, nframes = 2*(max(xx$Year) - min(xx$Year)), fps = 10, end_pause = 20)
-anim_save(&quot;crops_canada_gifs_01.gif&quot;, mp, width = 600, height = 400)</code></pre>
+  facet_null() +
+  geom_text(x = 6, y = -8,
+            aes(label = as.character(Year)),
+            size = 30, col = &quot;black&quot;) +
+  transition_time(Year)
+mp &lt;- animate(mp, nframes = 2*(max(xx$Year) - min(xx$Year)), fps = 5, 
+              end_pause = 20, width = 600, height = 400)
+anim_save(&quot;crops_canada_gifs_01.gif&quot;, mp)</code></pre>
 <p><img src="crops_canada_gifs_01.gif" /></p>
 <hr />
-</div>
 <div id="per-person" class="section level2">
 <h2>Per Person</h2>
 <pre class="r"><code># Prep data
