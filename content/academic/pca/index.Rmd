@@ -6,7 +6,6 @@ date: "`r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/pca)"
 tags: [ "Academic", "Tutorial", "R" ]
 weight: 4
-toc: true
 image:
   preview_only: true
 codefolding_show: "show"
@@ -15,6 +14,9 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/academic/pca.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
@@ -53,7 +55,7 @@ mp <- ggpairs(iris, columns = 1:4, aes(color = Species)) +
   scale_fill_manual(values = alpha(agData_Colors,0.7)) +
   theme_agData() +
   labs(title = "Iris Data Set",
-       caption = "\xa9 www.dblogr.com/  |  Data: Anderson (1935)")
+       caption = "\xa9 www.dblogr.com/  |  Data: Anderson (1935) & Fisher (1936)")
 ggsave("pca_01.png", mp, width = 8, height = 6)
 ```
 
