@@ -104,7 +104,6 @@ mp <- plot_ly(xx, x = ~Dim.1, y = ~Dim.2, z = ~Dim.3, text = ~Species,
   add_markers()
 htmlwidgets::saveWidget(mp, file=normalizePath("C:/gitfolder/htmls/academic/pca_iris.html"),
            knitrOptions = list(fig.width = 4, fig.height = 6))
-mp
 ```
 
 <iframe

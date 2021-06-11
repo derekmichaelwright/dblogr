@@ -30,10 +30,19 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 In August of 2019, fires in the Amazon made international news after the story became viral on social media. Notably, the story was tweeted out by the French President [Emmanuel Macron](https://twitter.com/EmmanuelMacron/status/1164617008962527232), and retweeted by the Canadian Prime Minister [Justin Trudeau](https://twitter.com/JustinTrudeau/status/1164703456453681153). These two tweets got > 70,000 retweets and > 200,000 likes combined, and serve as an example of how misleading information can quickly be spread online.
 
 ![](tweet_trudeau.png)
+A few quick questions for these world leaders:
 
-- **Does the Amazon produce 20% of our planet's oxygen? Is that a photo of the fires in question? Is the Amazon on fire?** 
+1. **Does the Amazon produce 20% of our planet's oxygen?**
 
-> *No*, phytoplankton in the ocean our are planet's "lungs". *No*, its over 20 years old. *Yes/No*, it is important to distinguish between *forest fires* (such as the one pictured in the tweet) and *controlled burning of dry scrub and felled trees as a strategy to gain ownership of land* (the type of fires in question).
+> **No**, phytoplankton in the ocean our are planet's "lungs".
+
+2. **Is that a photo of the fires in question?**
+
+> **No**, its over 20 years old.
+
+3. **Is the Amazon even on fire?** 
+
+> **Yes/No**, it is important to distinguish between *forest fires* (such as the one pictured in the tweet) and *controlled burning of dry scrub and felled trees as a strategy to gain ownership of land* (the type of fires in question).
 
 For a good explanation, refer to this article by Machael Shellenberger: [**Click Here**](https://www.forbes.com/sites/michaelshellenberger/2019/08/26/why-everything-they-say-about-the-amazon-including-that-its-the-lungs-of-the-world-is-wrong/#546e8bd75bde) 
 
@@ -41,27 +50,27 @@ For a good explanation, refer to this article by Machael Shellenberger: [**Click
 
 In Canada, the story made national news for a week straight on the CBC:
 
-[The National Aug 21 starting around 19:30](https://www.youtube.com/watch?v=oN4Wa-7eKyA)
+[The National Aug 21 (~19:30)](https://www.youtube.com/watch?v=oN4Wa-7eKyA)
 
 > "Record number of wildfires burning in the amazon rain forest. Brazil's space reserach centre has said its detected more than 74,000 fires this year. That's 83% more than last year"
 
-[The National Aug 22 starting around  5:58](https://www.youtube.com/watch?v=ZKEj45YaymI&t=417s)
+[The National Aug 22 (~5:58)](https://www.youtube.com/watch?v=ZKEj45YaymI&t=417s)
 
 > "Continues to burn at a record pace"
 
-[The National Aug 23 starting around  3:33](https://www.youtube.com/watch?v=jCfPm2Qu58U&t=2403s) 
+[The National Aug 23 (~3:33)](https://www.youtube.com/watch?v=jCfPm2Qu58U&t=2403s) 
 
 > "The numbers show just how dire the situation is"
 
-[The National Aug 25 starting around 6:55](https://www.youtube.com/watch?v=quMeStA20yk)
+[The National Aug 25 (~6:55)](https://www.youtube.com/watch?v=quMeStA20yk)
 
 > "At least 41,000 wildfires have sparked in the world largest rain forest this year"
 
-[The National Aug 26 starting around 4:05](https://www.youtube.com/watch?v=RQw251jYjj4)
+[The National Aug 26 (~4:05)](https://www.youtube.com/watch?v=RQw251jYjj4)
 
 > "Nearly 80,000 wildfires have been recorded this year"
 
-[The National Aug 27 starting around 3:43](https://www.youtube.com/watch?v=3CmbJnJ9aWk) 
+[The National Aug 27 (~3:43)](https://www.youtube.com/watch?v=3CmbJnJ9aWk) 
 
 > "The rain forrest is being consumed at a rate not seen in 9 years"
 
@@ -103,7 +112,7 @@ library(readxl) # read_xlsx()
 # Prep data
 dd <- read_xlsx("fires_amazon_data.xlsx", "INPE") %>%
   filter(Year < 2020)
-DT::datatable(dd)
+knitr::kable(dd)
 ```
 
 First thing we notice, they have been recording data prior to 2013. That's odd, why would the CBC say that? Perhaps a look at the data will tell us why.
@@ -116,16 +125,16 @@ First thing we notice, they have been recording data prior to 2013. That's odd, 
 # Prep data
 xx <- dd %>% 
   mutate(Total = rowSums(., na.rm = T),
-         Alpha = ifelse(Year < 2013, "Deleted", "Archived"))
+         Alpha = ifelse(Year < 2013, "Ignored by the CBC", "Not Ignored"))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Total / 1000, alpha = Alpha)) + 
+mp <- ggplot(xx, aes(x = Year, y = Total / 100000, alpha = Alpha)) + 
   geom_bar(stat = "identity", fill = "Darkred", color = "Black") +
   scale_x_continuous(breaks = c(min(xx$Year):max(xx$Year))) +
-  scale_alpha_manual(values = c(1, 0.7)) +
-  theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  scale_alpha_manual(name = NULL, values = c(0.7, 1)) +
+  theme_agData(legend.position = "bottom", 
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Fires detected by the INPE",
-       y = "Fires (x1000)", x= NULL,
+       y = "Fires (x100000)", x= NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
 ggsave("fires_amazon_01.png", mp, width = 6, height = 4)
 ```
@@ -142,12 +151,13 @@ Hmm, looking at *Figure 1* there seems to have been a lot more forest fires prio
 # Prep data
 xx <- xx %>% filter(Year > 2012)
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Total / 1000)) + 
+mp <- ggplot(xx, aes(x = Year, y = Total / 100000)) + 
   geom_bar(stat = "identity", fill = "Darkred", color = "Black") +
   scale_x_continuous(breaks = c(min(xx$Year):max(xx$Year))) +
+  scale_y_continuous(breaks = c(0,1,2)) +
   theme_agData() +
   labs(title = "Fires detected by the INPE",
-       y = "Fires (x1000)", x= NULL,
+       y = "Fires (x100000)", x= NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
 ggsave("fires_amazon_02.png", mp, width = 6, height = 4)
 ```
@@ -164,31 +174,31 @@ xx <- dd %>% filter(Year > 2012) %>%
          Value = as.numeric(Value),
          Highlight = ifelse(Year == 2019, "1", "2"))
 # Plot
-mp <- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)) + 
+mp <- ggplot(xx, aes(x = Month, y = Value / 10000, color = Year, group = Year)) + 
   geom_line(aes(size = Highlight, alpha = Highlight)) + 
   scale_size_manual(values = c(2, 1)) +
   scale_alpha_manual(values = c(1, 0.7), guide = F) +
   scale_color_gradientn(colors = c("darkblue", "darkorange3", "darkred")) +
-  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + 
+  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) + 
   guides(size = F) +
   labs(title = "Fires detected by the INPE",
-       y = "Fires (x1000)", x = NULL,
+       y = "Fires (x10000)", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
 ggsave("fires_amazon_03.png", mp, width = 6, height = 4)
 ```
 
 ![Figure 3: Number of detected fires per month, 2013-2019.](fires_amazon_03.png)
 
-Now it does look like forest fires have increased. And if we compare the data from 2018, there is a significant increase, as the CBC notes:
+Even now, it still doesn't look like forest fires have increased. However, as the CBC notes:
 
 > "Record number of wildfires burning in the amazon rain forest. Brazil's space reserach centre has said its detected more than 74,000 fire this year. That's 83% more than last year"
 
-However, this calculation was done when the story broke, so we will recalculate it with the end of month values.
+Lets recalculate this it with the end of month values from when the story broke.
 
 ```{r}
-xx <- dd %>% select(-Dec, -Nov, -Oct, -Sept) %>%
-  mutate(Total = rowSums(., na.rm = T),
-         Highlight = ifelse(Year == 2019, "2", "1"))
+xx <- dd %>% 
+  select(-Dec, -Nov, -Oct, -Sept) %>%
+  mutate(Total = rowSums(., na.rm = T))
 x2018 <- xx$Total[xx$Year == 2018]
 x2018 # 54944 forest fires from Jan 01 - Aug 31 2018
 x2019 <- xx$Total[xx$Year == 2019]
@@ -200,44 +210,47 @@ We can see there is indeed a 68% increase from the same time last year.
 
 However, what happens when we look at all the data?
 
----
-
 ```{r}
 # Prep data
-xx <- dd %>% gather(Month, Value, 2:ncol(.)) %>%
+xx <- dd %>% 
+  gather(Month, Value, 2:ncol(.)) %>%
   mutate(Month = factor(Month, levels = unique(Month)),
          Value = as.numeric(Value),
-         Highlight = ifelse(Year == 2019, "1", "2"))
+         Highlight = ifelse(Year == 2019, "1", "2"),
+         Color = ifelse(Year < 2013, "Ignored by the CBC", "Not Ignored"))
 # Plot
-mp <- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)) + 
+mp <- ggplot(xx, aes(x = Month, y = Value / 10000, color = Color, group = Year)) + 
   geom_line(aes(size = Highlight, alpha = Highlight)) + 
   scale_size_manual(values = c(2, 1)) +
   scale_alpha_manual(values = c(1, 0.6), guide = F) +
-  scale_color_gradientn(colors = c("darkblue", "darkorange3", "darkred")) +
-  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  scale_color_manual(name = NULL, values = c("darkorange3", "darkred")) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
   guides(size = F) +
   labs(title = "Fires detected by the INPE",
-       y = "Fires (x1000)", x = NULL,
+       y = "Fires (x10000)", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE") 
 ggsave("fires_amazon_04.png", mp, width = 6, height = 4)
 ```
 
 ![Figure 4: Number of detected fires per month, 1998-2019.](fires_amazon_04.png)
 
-Now a different picture is painted. But why pick 2013 as the starting point?
+Now a different picture is painted. But why did the CBC pick 2013 as the starting point?
 
 ```{r}
 # Prep data
+colors <- c("darkblue", "darkorange3", "darkred")
 x1 <- xx %>% filter(Year %in% c(2020, 2019, 2012, 2013)) %>%
   mutate(Year = factor(Year))
 # Plot
-mp <- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)) + 
+mp <- ggplot(x1, aes(x = Month, y = Value / 10000, color = Year, group = Year)) + 
   geom_line(size = 2, alpha = 0.5) + 
   geom_point(size = 2) +
-  scale_color_manual(values = c("darkblue", "darkorange3", "darkred")) +
-  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  scale_color_manual(name = NULL, values = colors) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Fires detected by the INPE",
-       y = "Fires (x1000)", x = NULL,
+       y = "Fires (x10000)", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
 ggsave("fires_amazon_05.png", mp, width = 6, height = 4)
 ```
@@ -255,13 +268,14 @@ so what happened in 2010 (9 years ago)
 x1 <- xx %>% filter(Year %in% c(2019, 2010)) %>%
   mutate(Year = factor(Year))
 # Plot
-mp <- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)) + 
+mp <- ggplot(x1, aes(x = Month, y = Value / 10000, color = Year, group = Year)) + 
   geom_line(size = 2, alpha = 0.5) + 
   geom_point(size = 2) + 
-  scale_color_manual(values = c("darkblue", "darkred")) +
-  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  scale_color_manual(name = NULL, values = c("darkblue", "darkred")) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Fires detected by the INPE",
-       y = "Fires (x1000)", x = NULL,
+       y = "Fires (x10000)", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: INPE")
 ggsave("fires_amazon_06.png", mp, width = 6, height = 4)
 ```
@@ -272,14 +286,16 @@ Now lets do our own bias selection of data:
 
 ```{r}
 # Prep data
-x1 <- xx %>% filter(Year %in% c(2019, 2010, 2007, 2005, 2004, 2003, 2002))
+x1 <- xx %>% 
+  filter(Year %in% c(2019, 2010, 2007, 2005, 2004, 2003, 2002)) %>%
+  mutate(Year = as.factor(Year))
 # Plot
 mp <- ggplot(x1, aes(x = Month, y = Value / 1000, color = Year, group = Year)) + 
   geom_line(aes(size = Highlight, alpha = Highlight)) + 
   scale_size_manual(values = c(2, 1)) +
   scale_alpha_manual(values = c(1, 0.6), guide = F) +
-  scale_color_gradientn(colors = c("darkblue", "darkorange3", "darkred")) +
-  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  scale_color_manual(values = agData_Colors[c(1,2,4:7,3)]) +
+  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   guides(size = F) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x = NULL,
@@ -305,7 +321,7 @@ mp <- ggplot(xx, aes(x = Month, y = Value / 1000, color = Year, group = Year)) +
   scale_size_manual(values = c(2, 1)) +
   scale_alpha_manual(values = c(1, 0.6), guide = F) +
   scale_color_gradientn(colors = c("darkblue", "darkorange3", "darkred")) +
-  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   guides(size = F) +
   labs(title = "Fires detected by the INPE",
        y = "Fires (x1000)", x = NULL,
