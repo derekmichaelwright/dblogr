@@ -2,7 +2,7 @@
 title: "USA Genetically Engineered Crop Production"
 subtitle: "Graphs of GE crop production using USDA data"
 summary:  "Graphs of GE crop production using USDA data"
-date: "2021-06-07"
+date: "2021-06-10"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/ge_crops_usa/)"
 tags: [ "agData", "GE Crops", "Maize", "Soybean", "Cotton" ]
 weight: 3
@@ -14,9 +14,22 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/agdata/ge_crops_usa.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#all">All</a></li>
+<li><a href="#states">States</a></li>
+<li><a href="#maize">Maize</a></li>
+<li><a href="#cotton">Cotton</a></li>
+<li><a href="#soybeans">Soybeans</a></li>
+<li><a href="#georgia">Georgia</a></li>
+</ul>
+</div>
 
 <hr />
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)

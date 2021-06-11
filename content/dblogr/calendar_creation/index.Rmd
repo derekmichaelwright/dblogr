@@ -26,6 +26,9 @@ links:
     icon_pack: "far"
     name: "Weekly Calendar"
     url: "https://github.com/derekmichaelwright/dblogr/blob/master/content/dblogr/calendar_creation/calendar_weekly.pdf"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 ```{r setup, include = FALSE}

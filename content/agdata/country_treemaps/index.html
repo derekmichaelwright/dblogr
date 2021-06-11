@@ -2,7 +2,7 @@
 title: "Country Treemaps"
 subtitle: "Graphs of crops produced by specific countries"
 summary:  "Graphs of crops produced by specific countries"
-date: "2021-06-07"
+date: "2021-06-10"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/country_treemaps/)"
 tags: [ "agData", "Regions" ]
 weight: 3
@@ -14,10 +14,32 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/agdata/country_treemaps.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 <script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
+<div id="TOC">
+<ul>
+<li><a href="#plotting-function">Plotting Function</a></li>
+<li><a href="#all-countries">All Countries</a><ul>
+<li><a href="#world">World</a></li>
+<li><a href="#canada">Canada</a></li>
+<li><a href="#usa">USA</a></li>
+<li><a href="#mexico">Mexico</a></li>
+<li><a href="#germany">Germany</a></li>
+<li><a href="#russia">Russia</a></li>
+<li><a href="#france">France</a></li>
+<li><a href="#spain">Spain</a></li>
+<li><a href="#united-kingdom">United Kingdom</a></li>
+<li><a href="#india">India</a></li>
+<li><a href="#nepal">Nepal</a></li>
+<li><a href="#china">China</a></li>
+</ul></li>
+</ul>
+</div>
 
 <hr />
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)

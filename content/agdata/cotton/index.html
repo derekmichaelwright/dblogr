@@ -2,7 +2,7 @@
 title: "Global Cotton Production"
 subtitle: "Graphs of cotton production using FAO data"
 summary:  "Graphs of cotton production using FAO data"
-date: "2021-06-07"
+date: "2021-06-10"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/cotton/)"
 tags: [ "agData", "Cotton" ]
 weight: 3
@@ -14,10 +14,20 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/agdata/crop_treemaps.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 <script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
+<div id="TOC">
+<ul>
+<li><a href="#all-data---pdf">All Data - PDF</a></li>
+<li><a href="#india-vs-pakistan">India vs Pakistan</a></li>
+<li><a href="#burkina-faso">Burkina Faso</a></li>
+</ul>
+</div>
 
 <hr />
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)

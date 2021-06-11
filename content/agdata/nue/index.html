@@ -2,7 +2,7 @@
 title: "Nitrogen Use Efficiency"
 subtitle: "Graphs of nitrogen use efficiency (NUE) using data from FAO"
 summary:  "Graphs of nitrogen use efficiency (NUE) using data from FAO"
-date: "2021-06-07"
+date: "2021-06-10"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/nue/)"
 tags: [ "agData", "Regions", "Fertilizers" ]
 math : true
@@ -15,9 +15,26 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/agdata/nue.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#prepare-data">Prepare data</a></li>
+<li><a href="#global-nue">Global NUE</a></li>
+<li><a href="#countries">Countries</a></li>
+<li><a href="#plotting-function">Plotting function</a></li>
+<li><a href="#australia">Australia</a></li>
+<li><a href="#canada">Canada</a></li>
+<li><a href="#china">China</a></li>
+<li><a href="#germany">Germany</a></li>
+<li><a href="#india">India</a></li>
+<li><a href="#france">France</a></li>
+</ul>
+</div>
 
 <hr />
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)

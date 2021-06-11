@@ -2,7 +2,7 @@
 title: "CBC Finances"
 subtitle: "A look at CBC finances - government funding, ad revenue and total profit"
 summary:  "A look at CBC finances - government funding, ad revenue and total profit"
-date: "2021-06-07"
+date: "2021-06-10"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/cbc_finances/)"
 tags: [ "dblogr", "Economics", "Politics" ]
 weight: 5
@@ -14,10 +14,23 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/dblogr/cbc_finances.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 <script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
+<div id="TOC">
+<ul>
+<li><a href="#data-source">Data Source</a></li>
+<li><a href="#prepare-data">Prepare data</a></li>
+<li><a href="#expenses-vs-revenue-line">Expenses vs Revenue (Line)</a></li>
+<li><a href="#expenses-vs-revenue-bar">Expenses vs Revenue (Bar)</a></li>
+<li><a href="#net-profit-with-government-funding">Net Profit With Government Funding</a></li>
+<li><a href="#net-profit-without-government-funding">Net Profit Without Government Funding</a></li>
+</ul>
+</div>
 
 <hr />
 <div id="data-source" class="section level1">

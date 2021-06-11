@@ -33,6 +33,9 @@ links:
     icon_pack: "fas"
     name: "Shiny App"
     url: "https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}

@@ -2,7 +2,7 @@
 title: "Crop Treemaps"
 subtitle: "Graphs of countries producing specific crops"
 summary:  "Graphs of countries producing specific crops"
-date: "2021-06-07"
+date: "2021-06-10"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crop_treemaps/)"
 tags: [ "agData", "Regions" ]
 weight: 3
@@ -14,10 +14,29 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/agdata/crop_treemaps.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 <script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
+<div id="TOC">
+<ul>
+<li><a href="#plotting-function">Plotting Function</a></li>
+<li><a href="#all-countries">All Countries</a><ul>
+<li><a href="#wheat">Wheat</a></li>
+<li><a href="#maize">Maize</a></li>
+<li><a href="#rice">Rice</a></li>
+<li><a href="#soybeans">Soybeans</a></li>
+<li><a href="#rapeseed">Rapeseed</a></li>
+<li><a href="#sorghum">Sorghum</a></li>
+<li><a href="#lentils">Lentils</a></li>
+<li><a href="#beans">Beans</a></li>
+<li><a href="#chickpeas">Chickpeas</a></li>
+</ul></li>
+</ul>
+</div>
 
 <hr />
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)

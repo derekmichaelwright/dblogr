@@ -2,7 +2,7 @@
 title: "USA Crop Production"
 subtitle: "Graphs for crop production in the USA with USDA data"
 summary:  "Graphs for crop production in the USA with USDA data"
-date: "2021-06-07"
+date: "2021-06-10"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crops_usa/)"
 tags: [ "agData", "Regions", "Maize", "Wheat" ]
 weight: 4
@@ -14,9 +14,19 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/agdata/crops_usa.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#maize-vs-wheat-yields">Maize vs Wheat Yields</a></li>
+<li><a href="#major-crops">Major Crops</a></li>
+<li><a href="#agricultural-total-factor-productivity">Agricultural total factor productivity</a></li>
+</ul>
+</div>
 
 <hr />
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)

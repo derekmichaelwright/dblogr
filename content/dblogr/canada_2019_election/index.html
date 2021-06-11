@@ -14,10 +14,97 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/dblogr/canada_2019_election.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 <script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#data-source">Data Source</a></li>
+<li><a href="#prepare-data">Prepare Data</a></li>
+<li><a href="#provincial-results">Provincial Results</a><ul>
+<li><a href="#electoral-map">Electoral Map</a></li>
+<li><a href="#districts">Districts</a></li>
+<li><a href="#west-vs-east">West vs East</a><ul>
+<li><a href="#votes">Votes</a></li>
+<li><a href="#districts-1">Districts</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#votes-1">Votes</a><ul>
+<li><a href="#canada">Canada</a></li>
+<li><a href="#eastern-canada">Eastern Canada</a></li>
+<li><a href="#western-canada">Western Canada</a></li>
+<li><a href="#prairie-agricultureal-districts">Prairie Agricultureal Districts</a></li>
+<li><a href="#british-columbia">British Columbia</a></li>
+<li><a href="#alberta">Alberta</a></li>
+<li><a href="#saskatchewan">Saskatchewan</a></li>
+<li><a href="#manitoba">Manitoba</a></li>
+<li><a href="#ontario">Ontario</a></li>
+<li><a href="#quebec">Quebec</a></li>
+<li><a href="#new-brunswick">New Brunswick</a></li>
+<li><a href="#nova-scotia">Nova Scotia</a></li>
+<li><a href="#prince-edward-island">Prince Edward Island</a></li>
+<li><a href="#newfoundland-and-labrador">Newfoundland and Labrador</a></li>
+<li><a href="#yukon">Yukon</a></li>
+<li><a href="#northwest-territories">Northwest Territories</a></li>
+<li><a href="#nunavut">Nunavut</a></li>
+</ul></li>
+<li><a href="#left-vs-right">Left vs Right</a><ul>
+<li><a href="#canada-1">Canada</a></li>
+<li><a href="#eastern-canada-1">Eastern Canada</a></li>
+<li><a href="#western-canada-1">Western Canada</a></li>
+<li><a href="#prairie-agricultureal-districts-1">Prairie Agricultureal Districts</a></li>
+<li><a href="#british-columbia-1">British Columbia</a></li>
+<li><a href="#alberta-1">Alberta</a></li>
+<li><a href="#saskatchewan-1">Saskatchewan</a></li>
+<li><a href="#manitoba-1">Manitoba</a></li>
+<li><a href="#ontario-1">Ontario</a></li>
+<li><a href="#quebec-1">Quebec</a></li>
+<li><a href="#new-brunswick-1">New Brunswick</a></li>
+<li><a href="#nova-scotia-1">Nova Scotia</a></li>
+<li><a href="#prince-edward-island-1">Prince Edward Island</a></li>
+<li><a href="#newfoundland-and-labrador-1">Newfoundland and Labrador</a></li>
+<li><a href="#yukon-1">Yukon</a></li>
+<li><a href="#northwest-territories-1">Northwest Territories</a></li>
+<li><a href="#nunavut-1">Nunavut</a></li>
+</ul></li>
+<li><a href="#districts-2">Districts</a><ul>
+<li><a href="#canada-2">Canada</a></li>
+<li><a href="#eastern-canada-2">Eastern Canada</a></li>
+<li><a href="#western-canada-2">Western Canada</a></li>
+<li><a href="#prairie-agricultureal-districts-2">Prairie Agricultureal Districts</a></li>
+<li><a href="#british-columbia-2">British Columbia</a></li>
+<li><a href="#alberta-2">Alberta</a></li>
+<li><a href="#saskatchewan-2">Saskatchewan</a></li>
+<li><a href="#manitoba-2">Manitoba</a></li>
+<li><a href="#ontario-2">Ontario</a></li>
+<li><a href="#quebec-2">Quebec</a></li>
+<li><a href="#new-brunswick-2">New Brunswick</a></li>
+<li><a href="#nova-scotia-2">Nova Scotia</a></li>
+<li><a href="#prince-edward-island-2">Prince Edward Island</a></li>
+<li><a href="#newfoundland-and-labrador-2">Newfoundland and Labrador</a></li>
+</ul></li>
+<li><a href="#by-districts">By Districts</a><ul>
+<li><a href="#prairie-agricultureal-districts-3">Prairie Agricultureal Districts</a></li>
+<li><a href="#british-columbia-3">British Columbia</a></li>
+<li><a href="#alberta-3">Alberta</a></li>
+<li><a href="#saskatchewan-3">Saskatchewan</a></li>
+<li><a href="#manitoba-3">Manitoba</a></li>
+<li><a href="#ontario-3">Ontario</a></li>
+<li><a href="#quebec-3">Quebec</a></li>
+<li><a href="#new-brunswick-3">New Brunswick</a></li>
+<li><a href="#nova-scotia-3">Nova Scotia</a></li>
+<li><a href="#prince-edward-island-3">Prince Edward Island</a></li>
+<li><a href="#newfoundland-and-labrador-3">Newfoundland and Labrador</a></li>
+<li><a href="#northern-canada">Northern Canada</a></li>
+</ul></li>
+<li><a href="#other-parties">Other Parties</a></li>
+</ul>
+</div>
 
 <hr />
 <div id="introduction" class="section level1">

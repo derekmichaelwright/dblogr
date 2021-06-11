@@ -2,7 +2,7 @@
 title: "Introduction to agData"
 subtitle: "An R package with FAO, USDA, STATCAN and ISAAA data"
 summary:  "An R package with FAO, USDA, STATCAN and ISAAA data"
-date: "2021-06-07"
+date: "2021-06-10"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agData/introduction_to_agdata/)"
 tags: [ "agData", "Introduction", "Featured" ]
 weight: 1
@@ -14,6 +14,9 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/agdata/introduction_to_agdata.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 <script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
@@ -26,6 +29,45 @@ links:
 <link href="{{< blogdown/postref >}}index_files/crosstalk/css/crosstalk.css" rel="stylesheet" />
 <script src="{{< blogdown/postref >}}index_files/crosstalk/js/crosstalk.min.js"></script>
 
+<div id="TOC">
+<ul>
+<li><a href="#data-sources">Data Sources</a></li>
+<li><a href="#instalation">Instalation</a></li>
+<li><a href="#data-sets-functions">Data Sets &amp; Functions</a></li>
+<li><a href="#theme_agdata">theme_agData</a></li>
+<li><a href="#agdata_fao_country_table">agData_FAO_Country_Table</a></li>
+<li><a href="#agdata_fao_region_table">agData_FAO_Region_Table</a></li>
+<li><a href="#agdata_fao_crops">agData_FAO_Crops</a></li>
+<li><a href="#agdata_fao_crops2">agData_FAO_Crops2</a></li>
+<li><a href="#agdata_fao_fertilizers">agData_FAO_Fertilizers</a></li>
+<li><a href="#agdata_fao_landuse">agData_FAO_LandUse</a></li>
+<li><a href="#agdata_fao_livestock">agData_FAO_Livestock</a></li>
+<li><a href="#agdata_fao_population">agData_FAO_Population</a></li>
+<li><a href="#agdata_fao_trade">agData_FAO_Trade</a></li>
+<li><a href="#agdata_statcan_region_table">agData_STATCAN_Region_Table</a></li>
+<li><a href="#agdata_statcan_beehives">agData_STATCAN_Beehives</a></li>
+<li><a href="#agdata_statcan_crops">agData_STATCAN_Crops</a></li>
+<li><a href="#agdata_statcan_farmland_crops">agData_STATCAN_FarmLand_Crops</a></li>
+<li><a href="#agdata_statcan_farmland_notill">agData_STATCAN_FarmLand_NoTill</a></li>
+<li><a href="#agdata_statcan_farmland_size">agData_STATCAN_FarmLand_Size</a></li>
+<li><a href="#agdata_statcan_farmland_use">agData_STATCAN_FarmLand_Use</a></li>
+<li><a href="#agdata_statcan_livestock">agData_STATCAN_Livestock</a></li>
+<li><a href="#agdata_statcan_population">agData_STATCAN_Population</a></li>
+<li><a href="#agdata_usda_crops">agData_USDA_Crops</a></li>
+<li><a href="#agdata_usda_ge_crops">agData_USDA_GE_Crops</a></li>
+<li><a href="#agdata_usda_tfp">agData_USDA_TFP</a></li>
+<li><a href="#agdata_isaaa_area">agData_ISAAA_Area</a></li>
+<li><a href="#agdata_isaaa_country">agData_ISAAA_Country</a></li>
+<li><a href="#agdata_isaaa_crop">agData_ISAAA_Crop</a></li>
+<li><a href="#agdata_isaaa_croppercent">agData_ISAAA_CropPercent</a></li>
+<li><a href="#agdata_isaaa_dvddvg">agData_ISAAA_DVDDVG</a></li>
+<li><a href="#agdata_isaaa_value">agData_ISAAA_Value</a></li>
+<li><a href="#agdata_uk_yields">agData_UK_Yields</a></li>
+<li><a href="#agdata_maizecontest">agData_MaizeContest</a></li>
+<li><a href="#agdata_peopleinag">agData_PeopleInAg</a></li>
+<li><a href="#agdata_popfert">agData_PopFert</a></li>
+</ul>
+</div>
 
 <hr />
 <p><img src="featured.png" align="right" width = "200px" /></p>

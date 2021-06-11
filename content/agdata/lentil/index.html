@@ -2,7 +2,7 @@
 title: "Global Lentil Production"
 subtitle: "Graphs of lentil production using FAO data"
 summary:  "Graphs of lentil production using FAO data"
-date: "2021-06-07"
+date: "2021-06-10"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/lentil/)"
 tags: [ "agData", "Lentil" ]
 weight: 3
@@ -14,10 +14,30 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/agdata/lentil.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 <script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
+<div id="TOC">
+<ul>
+<li><a href="#all-data---pdf">All Data - PDF</a></li>
+<li><a href="#production">Production</a></li>
+<li><a href="#yields">Yields</a></li>
+<li><a href="#canadas-global-contribution">Canada’s Global Contribution</a></li>
+<li><a href="#importexport">Import/Export</a><ul>
+<li><a href="#canada-vs-india">Canada vs India</a></li>
+<li><a href="#regions">Regions</a></li>
+</ul></li>
+<li><a href="#production-pie-charts">Production Pie Charts</a><ul>
+<li><a href="#section">2017</a></li>
+<li><a href="#section-1">1961</a></li>
+</ul></li>
+<li><a href="#heatmap">Heatmap</a></li>
+</ul>
+</div>
 
 <hr />
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)

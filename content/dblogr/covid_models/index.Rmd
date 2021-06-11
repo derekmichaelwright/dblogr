@@ -15,6 +15,9 @@ links:
     icon: "code"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/dblogr/covid_models.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}

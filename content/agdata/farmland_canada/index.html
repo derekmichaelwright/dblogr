@@ -2,7 +2,7 @@
 title: "Canadian Farmland"
 subtitle: "Graphs about Canadian farmland using STATCAN data"
 summary:  "Graphs about Canadian farmland using STATCAN data"
-date: "2021-06-07"
+date: "2021-06-10"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/farmland_canada/)"
 tags: [ "agData", "Regions" ]
 weight: 4
@@ -14,9 +14,42 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/agdata/farmland_canada.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#farmland-by-province">Farmland by Province</a><ul>
+<li><a href="#section">2016</a></li>
+<li><a href="#provinces">Provinces</a></li>
+<li><a href="#ontario-quebec">Ontario &amp; Quebec</a></li>
+</ul></li>
+<li><a href="#average-farm-size">Average Farm Size</a><ul>
+<li><a href="#canada">Canada</a></li>
+<li><a href="#provinces-1">Provinces</a></li>
+</ul></li>
+<li><a href="#number-vs.-area">Number vs. Area</a><ul>
+<li><a href="#canada-1">Canada</a></li>
+<li><a href="#provinces-2">Provinces</a></li>
+</ul></li>
+<li><a href="#farm-size">Farm Size</a><ul>
+<li><a href="#canada-2">Canada</a><ul>
+<li><a href="#unscaled">Unscaled</a></li>
+<li><a href="#scaled">Scaled</a></li>
+<li><a href="#bar-charts">Bar Charts</a></li>
+</ul></li>
+<li><a href="#saskatchewan">Saskatchewan</a><ul>
+<li><a href="#unscaled-1">Unscaled</a></li>
+<li><a href="#scaled-1">Scaled</a></li>
+<li><a href="#bar-charts-1">Bar Charts</a></li>
+</ul></li>
+<li><a href="#provinces-3">Provinces</a></li>
+</ul></li>
+</ul>
+</div>
 
 <hr />
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)

@@ -15,6 +15,9 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/academic/correlation_coefficients.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 <script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
@@ -28,6 +31,23 @@ links:
 <link href="{{< blogdown/postref >}}index_files/crosstalk/css/crosstalk.css" rel="stylesheet" />
 <script src="{{< blogdown/postref >}}index_files/crosstalk/js/crosstalk.min.js"></script>
 
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#load-dataset-1">Load Dataset 1</a></li>
+<li><a href="#correlation-between-two-traits">Correlation Between Two Traits</a></li>
+<li><a href="#calculating-r2">Calculating <em>R<sup>2</sup></em></a><ul>
+<li><a href="#pearsons-r2"><em>Pearson’s R<sup>2</sup></em></a></li>
+<li><a href="#sum-of-squares-r2"><em>Sum of Squares R<sup>2</sup></em></a></li>
+</ul></li>
+<li><a href="#load-dataset-2">Load Dataset 2</a></li>
+<li><a href="#negative-r2-values">Negative <em>R<sup>2</sup></em> values</a></li>
+<li><a href="#effect-of-range">Effect of Range</a></li>
+<li><a href="#rmse">RMSE</a></li>
+<li><a href="#final-plots">Final Plots</a></li>
+<li><a href="#model-evaluation">Model Evaluation</a></li>
+</ul>
+</div>
 
 <hr />
 <div id="introduction" class="section level1">

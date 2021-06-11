@@ -2,7 +2,7 @@
 title: "Global Maize Production"
 subtitle: "Graphs of maize yields using FAO data"
 summary:  "Graphs of maize yields using FAO data"
-date: "2021-06-07"
+date: "2021-06-10"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/maize/)"
 tags: [ "agData", "Maize" ]
 weight: 4
@@ -14,10 +14,22 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/agdata/maize.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 <script src="{{< blogdown/postref >}}index_files/font-awesome/js/script.js"></script>
 
+<div id="TOC">
+<ul>
+<li><a href="#all-data---pdf">All Data - PDF</a></li>
+<li><a href="#yields">Yields</a></li>
+<li><a href="#yields-by-country">Yields by Country</a></li>
+<li><a href="#usa-germany-mexico-and-africa">USA, Germany, Mexico and Africa</a></li>
+<li><a href="#south-africa-nigeria-and-zimbabwe">South Africa, Nigeria and Zimbabwe</a></li>
+</ul>
+</div>
 
 <hr />
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)

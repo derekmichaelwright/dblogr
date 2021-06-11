@@ -14,6 +14,9 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/agdata/fertilizers.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 ```{r setup, include = FALSE}

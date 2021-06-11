@@ -2,7 +2,7 @@
 title: "USA Maize Production"
 subtitle: "Graphs of maize production in the USA using USDA data"
 summary:  "Graphs of maize production in the USA using USDA data"
-date: "2021-06-07"
+date: "2021-06-10"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/maize_usa/)"
 tags: [ "agData", "Maize" ]
 weight: 4
@@ -14,9 +14,24 @@ links:
     icon_pack: "far"
     name: "HTML < R Script Vignette >"
     url: "https://derekmichaelwright.github.io/htmls/agdata/maize_usa.html"
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 
+<div id="TOC">
+<ul>
+<li><a href="#heterosis">Heterosis</a></li>
+<li><a href="#maize-potential">Maize Potential</a></li>
+<li><a href="#area-vs-production">Area vs Production</a></li>
+<li><a href="#developed-vs-developing-countries">Developed vs Developing Countries</a></li>
+<li><a href="#maize-contest">Maize Contest</a></li>
+<li><a href="#average-vs-max-yield">Average vs Max Yield</a></li>
+<li><a href="#hectares-per-tonne">Hectares per tonne</a></li>
+<li><a href="#yield-gains">Yield Gains</a></li>
+</ul>
+</div>
 
 <hr />
 <pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
