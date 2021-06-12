@@ -93,8 +93,13 @@ d5 <- read_xlsx("2021-05-05-FOIP-Request-with-JCCF-calculations.xlsx",
 ```{r}
 # Plot
 mp <- ggplot(d1, aes(x = Date, y = Value)) +
+  geom_vline(xintercept = as.Date("2020-03-01"), alpha = 0.6) +
+  geom_hline(yintercept = 1, size = 1.5, color = "darkred", alpha = 0.8) +
+  geom_smooth(method = "loess", se = F, size = 0.5, color = "black") +
   geom_line(size = 1.5, alpha = 0.8, color = "darkgreen") +
+  geom_point(alpha = 0.8) + 
   scale_x_date(date_breaks = "year", date_labels = "%Y") +
+  ylim(c(0,1)) +
   theme_agData() +
   labs(title = "Alberta Hospital Bed Utilization", 
        y = "Percent", x = NULL,
@@ -110,40 +115,21 @@ ggsave("alberta_icu_01.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- d2 %>% filter(Measurement == "Occupancy")
+xx <- d2 %>% filter(Measurement != "Occupancy")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value)) +
-  geom_hline(yintercept = 1, alpha = 0.6) +
-  geom_vline(xintercept = as.Date("2020-03-01"), alpha = 0.3) +
-  geom_line(size = 1.25, alpha = 0.8, color = "darkgreen") +
+mp <- ggplot(xx, aes(x = Date, y = Value, color = Measurement)) +
+  geom_vline(xintercept = as.Date("2020-03-01"), alpha = 0.6) +
+  geom_line(size = 1.25, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = c("darkgreen", "darkred")) +
   scale_x_date(date_breaks = "year", date_labels = "%Y") +
-  facet_wrap(Zone + Facility ~ .) +
-  theme_agData() +
+  facet_wrap(Zone + Facility ~ ., scales = "free_y") +
+  theme_agData(legend.position = "bottom") +
   labs(title = "Alberta Hospital Bed Utilization", y = NULL, x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: JCCF")
 ggsave("alberta_icu_02.png", mp, width = 12, height = 8)
 ```
 
 ![](alberta_icu_02.png)
-
-## Available Beds
-
-```{r}
-# Prep data
-xx <- d2 %>% filter(Measurement == "Beds available")
-# Plot
-mp <- ggplot(xx, aes(x = Date, y = Value, group = Facility)) +
-  geom_vline(xintercept = as.Date("2020-03-01"), alpha = 0.3) +
-  geom_line(size = 0.75, alpha = 0.5, color = "darkgreen") +
-  scale_x_date(date_breaks = "year", date_labels = "%Y") +
-  theme_agData() +
-  labs(title = "Alberta - Available Hospital Beds", 
-       y = "Percent", x = NULL,
-       caption = "\xa9 www.dblogr.com/  |  Data: JCCF")
-ggsave("alberta_icu_03.png", mp, width = 6, height = 4)
-```
-
-![](alberta_icu_03.png)
 
 ---
 
@@ -154,9 +140,13 @@ ggsave("alberta_icu_03.png", mp, width = 6, height = 4)
 ```{r}
 # Plot
 mp <- ggplot(d3, aes(x = Date, y = Value)) +
-  geom_vline(xintercept = as.Date("2020-03-01"), alpha = 0.3) +
+  geom_vline(xintercept = as.Date("2020-03-01"), alpha = 0.6) +
+  geom_hline(yintercept = 1, size = 1.5, color = "darkred", alpha = 0.8) +
+  geom_smooth(method = "loess", se = F, size = 0.5, color = "black") +
   geom_line(size = 1.5, alpha = 0.8, color = "darkgreen") +
+  geom_point(alpha = 0.8) +
   scale_x_date(date_breaks = "year", date_labels = "%Y") +
+  ylim(c(0,1)) + 
   theme_agData() +
   labs(title = "Alberta ICU Utilization", 
        y = "Percent", x = NULL,
@@ -175,12 +165,12 @@ ggsave("alberta_icu_03.png", mp, width = 6, height = 4)
 xx <- d4 %>% filter(Measurement != "Utilization")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value, color = Measurement)) +
-  geom_vline(xintercept = as.Date("2020-03-01"), alpha = 0.3) +
+  geom_vline(xintercept = as.Date("2020-03-01"), alpha = 0.6) +
   geom_line(size = 1.5, alpha = 0.8) +
   scale_color_manual(name = NULL, values = c("darkgreen", "darkred")) +
   scale_x_date(date_breaks = "year", date_labels = "%Y") +
   theme_agData(legend.position = "bottom") +
-  labs(title = "Alberta ICU Utilization", y = NULL, x = NULL,
+  labs(title = "Alberta ICU Utilization", y = "ICU Beds", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: JCCF")
 ggsave("alberta_icu_04.png", mp, width = 6, height = 4)
 ```
@@ -198,10 +188,11 @@ ggsave("featured.png", mp, width = 6, height = 4)
 ```{r}
 # Plot
 mp <- ggplot(d5, aes(x = Date, y = AVG_OCC_PCT)) +
-  geom_hline(yintercept = 1, alpha = 0.6) +
   geom_vline(xintercept = as.Date("2020-03-01"), alpha = 0.3) +
-  geom_line(size = 1.25, alpha = 0.8, color = "darkgreen") +
-  facet_wrap(REPORTS_SITE_NAME ~ .) +
+  geom_hline(yintercept = 1, alpha = 0.6) +
+  geom_smooth(method = "loess", se = F, size = 0.5, color = "black") +
+  geom_line(size = 1, alpha = 0.8, color = "darkgreen") +
+  facet_wrap(ZONE + SITE ~ .) +
   theme_agData() +
   labs(title = "Alberta ICU Utilization", y = NULL, x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: JCCF")
@@ -212,6 +203,30 @@ ggsave("alberta_icu_05.png", mp, width = 12, height = 8)
 
 ---
 
+```{r}
+xx <- d5 %>% 
+  select(Date, ZONE, SITE, AVG_FUNDED_BEDS, AVG_OCC) %>%
+  gather(Trait, Value, 4:5) %>%
+  mutate(Trait = plyr::mapvalues(Trait, c("AVG_FUNDED_BEDS", "AVG_OCC"),
+                                 c("Funded Beds", "Avg Occupancy")))
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value, color = Trait)) +
+  geom_vline(xintercept = as.Date("2020-03-01"), alpha = 0.3) +
+  geom_smooth(data = xx %>% filter(Trait == "Avg Occupancy"),
+              method = "loess", se = F, size = 0.5, color = "black") +
+  geom_line(size = 1, alpha = 0.8) +
+  facet_wrap(ZONE + SITE ~ ., scale = "free_y") +
+  scale_color_manual(values = c("darkgreen", "darkred")) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Alberta ICU Utilization", y = NULL, x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: JCCF")
+ggsave("alberta_icu_06.png", mp, width = 12, height = 8)
+```
+
+![](alberta_icu_06.png)
+
+---
+
 ## Funded Beds
 
 ```{r}
@@ -219,15 +234,15 @@ ggsave("alberta_icu_05.png", mp, width = 12, height = 8)
 mp <- ggplot(d5, aes(x = Date, y = AVG_FUNDED_BEDS, group = REPORTS_SITE_NAME)) +
   geom_hline(yintercept = 1, alpha = 0.6) +
   geom_vline(xintercept = as.Date("2020-03-01"), alpha = 0.3) +
-  geom_line(size = 1.25, alpha = 0.8, color = "darkgreen") +
+  geom_line(size = 1.25, alpha = 0.8, color = "darkred") +
   scale_x_date(date_breaks = "year", date_labels = "%Y") +
   theme_agData() +
   labs(title = "Alberta - Number of Funded ICU beds", y = "Percent", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: JCCF")
-ggsave("alberta_icu_06.png", mp, width = 6, height = 4)
+ggsave("alberta_icu_07.png", mp, width = 6, height = 4)
 ```
 
-![](alberta_icu_06.png)
+![](alberta_icu_07.png)
 
 ---
 
@@ -247,10 +262,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Group)) +
   theme_agData(legend.position = "none") +
   labs(title = "Ontario ICU data", y = "x 1000", 
        caption = "\xa9 www.dblogr.com/  |  Data: FOIA")
-ggsave("alberta_icu_07.png", mp, width = 6, height = 4)
+ggsave("alberta_icu_08.png", mp, width = 6, height = 4)
 ```
 
-![](alberta_icu_07.png)
+![](alberta_icu_08.png)
 
 ---
 
