@@ -143,7 +143,7 @@ sticker(filename="hex_buffalo_green.png", package="",
 sticker(filename="hex_buffalo_black.png", package="",  
         # Logo
         "logo_buffalo_black.png", 
-        s_x = 1, s_y = 1, 
+        s_x = 1, s_y = 1.1, 
         s_width = 0.9,
         # Border
         h_fill = "grey90", h_color = "darkgreen", h_size = 1.5,
@@ -168,6 +168,7 @@ sticker(filename="hex_buffalo_black.png", package="",
 #          to = "C:/gitfolder/dblogr/content/dblogr/hex_stickers/gallery/hex_mapleleaf_red.png", overwrite = T)
 # Copy for feature.png
 file.copy(from = "hex_dblogr.png", to = "featured.png", overwrite = T)
+file.copy(from = "hex_dblogr.png", to = "C:/gitfolder/dblogr/assets/images/logo.png", overwrite = T)
 # Copy for agData package
 file.copy(from = "hex_agData.png", 
           to = "C:/gitfolder/agData/hex_agData.png", overwrite = T)
@@ -209,8 +210,8 @@ image_write(im, "C:/gitfolder/dblogr/assets/images/icon.png")
 #magick::image_write(im,  "C:/gitfolder/personalblog/static/img/logo.png")
 #
 im <- image_append(c(im1,im3,im2))
-image_write(im, "C:/gitfolder/dblogr/assets/images/logo.png")
-image_write(im, "C:/gitfolder/dblogr/static/media/logo.png")
+#image_write(im, "C:/gitfolder/dblogr/assets/images/logo.png")
+image_write(im, "C:/gitfolder/dblogr/static/media/logo_banner.png")
 image_write(im, "C:/gitfolder/htmls/css/logo_dblogr.png")
 #image_write(im, "C:/gitfolder/dblogr/static/img/logo.png")
 ```
