@@ -5,6 +5,7 @@ summary:  "Environmental data for the agile project"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/envdata/)"
 tags: [ "Academic", "AGILE", "Tutorial" ]
+math: true
 weight: 5
 codefolding_show: "show"
 image:

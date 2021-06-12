@@ -7,7 +7,7 @@ author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https:/
 tags: [ "dblogr", "R" ]
 weight: 3
 math: true
-codefolding_show: "hide"
+codefolding_show: "show"
 image:
   preview_only: true
 links:

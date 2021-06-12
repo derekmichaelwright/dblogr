@@ -67,7 +67,7 @@ downloadthis::download_link(
 d1 <- read.csv("correlation_coefficients_data_1.csv") %>% 
   mutate(RDTF = 1 / DTF) # Rate of progress towards flowering
 # Preview data
-DT::datatable(d1)
+d1
 ```
 
 ---
@@ -370,7 +370,7 @@ downloadthis::download_link(
 d2 <- read.csv("correlation_coefficients_data_2.csv") %>%
   mutate(Expt = factor(Expt, levels = c("Ca16", "Ne16", "It16")))
 # Preview data
-DT::datatable(d2)
+d2
 ```
 
 ```{r}
