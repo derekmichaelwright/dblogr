@@ -1,0 +1,25 @@
+Year,Age,Measurement,Value
+2015,Adult,ICU Admissions,143858
+2016,Adult,ICU Admissions,144812
+2017,Adult,ICU Admissions,144864
+2018,Adult,ICU Admissions,141626
+2019,Adult,ICU Admissions,142543
+2020,Adult,ICU Admissions,131580
+2015,Adult,ICU Total Patient Days,583725
+2016,Adult,ICU Total Patient Days,589863
+2017,Adult,ICU Total Patient Days,599563
+2018,Adult,ICU Total Patient Days,603654
+2019,Adult,ICU Total Patient Days,609974
+2020,Adult,ICU Total Patient Days,576542
+2015,Paediatric,ICU Admissions,4580
+2016,Paediatric,ICU Admissions,4985
+2017,Paediatric,ICU Admissions,5066
+2018,Paediatric,ICU Admissions,5410
+2019,Paediatric,ICU Admissions,5498
+2020,Paediatric,ICU Admissions,4310
+2015,Paediatric,ICU Total Patient Days,22464
+2016,Paediatric,ICU Total Patient Days,24079
+2017,Paediatric,ICU Total Patient Days,22876
+2018,Paediatric,ICU Total Patient Days,22694
+2019,Paediatric,ICU Total Patient Days,25232
+2020,Paediatric,ICU Total Patient Days,20341

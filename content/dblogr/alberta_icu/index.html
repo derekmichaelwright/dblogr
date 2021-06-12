@@ -2,7 +2,7 @@
 title: "Alberta ICU Usage"
 subtitle: "Data on ICU utilization from a FOIA request by The Justice Centre for Consitutional Freedoms"
 summary:  "Data on ICU utilization from a FOIA request by The Justice Centre for Consitutional Freedoms"
-date: "2021-06-10"
+date: "2021-06-11"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/alberta_icu/)"
 tags: [ "dblogr", "Demographics" ]
 weight: 2
@@ -36,6 +36,7 @@ output:
 <li><a href="#by-region-1">By Region</a></li>
 <li><a href="#funded-beds">Funded Beds</a></li>
 </ul></li>
+<li><a href="#ontario">Ontario</a></li>
 </ul>
 </div>
 
@@ -203,6 +204,24 @@ mp &lt;- ggplot(d5, aes(x = Date, y = AVG_FUNDED_BEDS, group = REPORTS_SITE_NAME
 ggsave(&quot;alberta_icu_06.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="alberta_icu_06.png" /></p>
 <hr />
-<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>
+</div>
+<div id="ontario" class="section level1">
+<h1>Ontario</h1>
+<p>This data comes from a FOIA request done by a business owner in Ontario.</p>
+<pre class="r"><code># Prep data
+xx &lt;- read.csv(&quot;ontario_icu.csv&quot;) %&gt;%
+  mutate(Group = ifelse(Year == 2020, &quot;2020&quot;, &quot;pre-2020&quot;))
+# Plot
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Group)) +
+  geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;) +
+  facet_wrap(Measurement ~ Age, scale = &quot;free_y&quot;) +
+  scale_fill_manual(values = c(alpha(&quot;darkred&quot;, 0.5), alpha(&quot;darkred&quot;, 0.8))) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Ontario ICU data&quot;, y = &quot;x 1000&quot;, 
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: FOIA&quot;)
+ggsave(&quot;alberta_icu_07.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="alberta_icu_07.png" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
 </div>

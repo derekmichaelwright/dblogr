@@ -231,4 +231,27 @@ ggsave("alberta_icu_06.png", mp, width = 6, height = 4)
 
 ---
 
+# Ontario
+
+This data comes from a FOIA request done by a business owner in Ontario.
+
+```{r}
+# Prep data
+xx <- read.csv("ontario_icu.csv") %>%
+  mutate(Group = ifelse(Year == 2020, "2020", "pre-2020"))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Group)) +
+  geom_bar(stat = "identity", color = "black") +
+  facet_wrap(Measurement ~ Age, scale = "free_y") +
+  scale_fill_manual(values = c(alpha("darkred", 0.5), alpha("darkred", 0.8))) +
+  theme_agData(legend.position = "none") +
+  labs(title = "Ontario ICU data", y = "x 1000", 
+       caption = "\xa9 www.dblogr.com/  |  Data: FOIA")
+ggsave("alberta_icu_07.png", mp, width = 6, height = 4)
+```
+
+![](alberta_icu_07.png)
+
+---
+
 &copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)
