@@ -98,13 +98,21 @@ mp &lt;- ggplot(xx, aes(x = Dim.1, y = Dim.2, color = Cluster, pch = Species)) +
 ggsave(&quot;pca_02.png&quot;, mp,  width = 6, height = 4)</code></pre>
 <p><img src="pca_02.png" /></p>
 <hr />
+<pre class="r"><code>mp &lt;- plot_ly(iris, x = ~Sepal.Length, y = ~Sepal.Width, z = ~Petal.Length, text = ~Species,
+              color = ~Species, colors = colors, 
+              symbol = ~Species, symbols = shapes) %&gt;% 
+  add_markers()
+htmlwidgets::saveWidget(mp, file=normalizePath(&quot;C:/gitfolder/htmls/academic/pca_iris_1.html&quot;),
+           knitrOptions = list(fig.width = 4, fig.height = 6))</code></pre>
+<iframe src="https://derekmichaelwright.github.io/htmls/academic/pca_iris_1.html" style="width:100%; height:600px; align:center;">
+</iframe>
 <pre class="r"><code>mp &lt;- plot_ly(xx, x = ~Dim.1, y = ~Dim.2, z = ~Dim.3, text = ~Species,
               color = ~Cluster, colors = colors, 
               symbol = ~Species, symbols = shapes) %&gt;% 
   add_markers()
-htmlwidgets::saveWidget(mp, file=normalizePath(&quot;C:/gitfolder/htmls/academic/pca_iris.html&quot;),
+htmlwidgets::saveWidget(mp, file=normalizePath(&quot;C:/gitfolder/htmls/academic/pca_iris_2.html&quot;),
            knitrOptions = list(fig.width = 4, fig.height = 6))</code></pre>
-<iframe src="https://derekmichaelwright.github.io/htmls/academic/pca_iris.html" style="width:100%; height:600px; align:center;">
+<iframe src="https://derekmichaelwright.github.io/htmls/academic/pca_iris_2.html" style="width:100%; height:600px; align:center;">
 </iframe>
 <hr />
 <p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>

@@ -57,7 +57,7 @@ library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 # Prep data
 xx <- read.csv("dual_y_axis_data.csv") %>% 
   mutate(Date = as.Date(Date))
-DT::datatable(xx)
+as_tibble(xx)
 ```
 
 ---
