@@ -168,7 +168,7 @@ sticker(filename="hex_buffalo_black.png", package="",
 #          to = "C:/gitfolder/dblogr/content/dblogr/hex_stickers/gallery/hex_mapleleaf_red.png", overwrite = T)
 # Copy for feature.png
 file.copy(from = "hex_dblogr.png", to = "featured.png", overwrite = T)
-file.copy(from = "hex_dblogr.png", to = "C:/gitfolder/dblogr/assets/images/logo.png", overwrite = T)
+file.copy(from = "hex_dblogr.png", to = "C:/gitfolder/dblogr/assets/images/hex_dblogr.png", overwrite = T)
 # Copy for agData package
 file.copy(from = "hex_agData.png", 
           to = "C:/gitfolder/agData/hex_agData.png", overwrite = T)
