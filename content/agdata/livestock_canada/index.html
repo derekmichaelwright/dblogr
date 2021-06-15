@@ -2,7 +2,7 @@
 title: "Livestock Production in Canada"
 subtitle: "Graphs of livestock production using STATCAN data"
 summary:  "Graphs of livestock production using STATCAN data"
-date: "2021-06-10"
+date: "2021-06-14"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/livestock_canada/)"
 tags: [ "agData", "Livestock" ]
 weight: 4
@@ -37,13 +37,13 @@ library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
 xx &lt;- agData_STATCAN_Livestock %&gt;% 
   filter(Area == &quot;Canada&quot;, Measurement == &quot;Number of animals&quot;)
 # Plot Data
-mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Animal)) + 
-  geom_line(size = 1.5, alpha = 0.8) +
+mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
+  geom_line(size = 1.5, alpha = 0.8, color = &quot;darkgreen&quot;) +
   facet_wrap(Animal ~ ., scales = &quot;free_y&quot;, ncol = 7,
              labeller = label_wrap_gen(width = 25)) +
   scale_x_continuous(breaks = seq(1920, 2020, 20), minor_breaks = NULL) +
   theme_agData(legend.position = &quot;none&quot;) +
-  labs(title = &quot;Livestock Production &quot;, y = &quot;Million Animals&quot;, x = NULL,
+  labs(title = &quot;Livestock Production&quot;, y = &quot;Million Animals&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/ | Data: FAOSTAT&quot;)
 ggsave(&quot;livestock_canada_01.png&quot;, mp, width = 14, height = 8)</code></pre>
 <p><img src="livestock_canada_01.png" /></p>
@@ -64,7 +64,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Animal)) +
   geom_line(size = 2, alpha = 0.8) + 
   scale_color_manual(name = NULL, values = colors) +
   theme_agData(legend.position = &quot;bottom&quot;) +
-  labs(y = &quot;Million Animals&quot;, x = NULL, title = &quot;Global Meadows and Pastures&quot;,
+  labs(title = &quot;Livestock Production&quot;,
+       y = &quot;Million Animals&quot;, x = NULL, 
        caption = &quot;\xa9 www.dblogr.com/ | Data: FAOSTAT&quot;)
 ggsave(&quot;livestock_canada_02.png&quot;, mp, width = 7, height = 4)</code></pre>
 <p><img src="livestock_canada_02.png" /></p>
@@ -84,7 +85,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Animal)) +
   scale_color_manual(values = colors) +
   theme_agData(legend.position = &quot;bottom&quot;,
                axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(y = &quot;Million Animals&quot;, x = NULL, title = &quot;Global Meadows and Pastures&quot;,
+  labs(title = &quot;Livestock Production&quot;,
+       y = &quot;Million Animals&quot;, x = NULL, 
        caption = &quot;\xa9 www.dblogr.com/ | Data: FAOSTAT&quot;)
 ggsave(&quot;livestock_canada_03.png&quot;, mp, width = 12, height = 6)</code></pre>
 <p><img src="livestock_canada_03.png" /></p>
