@@ -545,7 +545,8 @@ mp <- ggplot(xx, aes(x = Year, y = Death.Rate, fill = factor(Year))) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_blank(),
                axis.ticks.x = element_blank()) +
-  labs(title = "Death Rate - Canada 2019", y = "Deaths Per Thousand People", x = NULL,
+  labs(title = "Death Rate in Canada",  subtitle = "2019 and 2020",
+       y = "Deaths Per Thousand People", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
 ggsave("canada_deaths_5_03.png", mp, width = 13, height = 4)
 ```
@@ -595,7 +596,7 @@ mp <- ggplot(xx, aes(x = Area, y = Value, fill = Trait)) +
                     labels = c("1991  to 2019", "2019 to 2020")) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Death Rate Change (1991 to 2019)", 
+  labs(title = "Death Rate Change", 
        subtitle = "Deaths per thousand people",
        y = "Change", x = NULL,
        caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
@@ -640,7 +641,7 @@ d4 <- read.csv("canada_deaths_data.csv") %>%
   gather(Trait, Value, 2:ncol(.)) %>%
   mutate(Value =gsub(",", "", Value),
          Value = as.numeric(Value),
-         Covid = ifelse(Year > 2019, "Covid", "Pre-Covid"))
+         Covid = ifelse(Year %in% c(1918, 2020, 2021), "Pandemic", "Normal"))
 xx <- d4 %>% filter(Trait == "Death.rate..per.1.000.")
 mp <- ggplot(xx, aes(x = Year, y = Value, alpha = Covid)) +
   geom_bar(stat = "identity", fill = "darkred", color = "black", size = 0.3) +

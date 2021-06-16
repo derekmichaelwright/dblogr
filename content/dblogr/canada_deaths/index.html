@@ -2,7 +2,7 @@
 title: "Deaths In Canada"
 subtitle: "An exploration of weekly deaths in Canada"
 summary:  "An exploration of weekly deaths in Canada"
-date: "2021-06-10"
+date: "2021-06-16"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_deaths/)"
 tags: [ "dblogr", "Demographics" ]
 weight: 2
@@ -427,7 +427,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Death.Rate, fill = factor(Year))) +
   theme_agData(legend.position = &quot;bottom&quot;,
                axis.text.x = element_blank(),
                axis.ticks.x = element_blank()) +
-  labs(title = &quot;Death Rate - Canada 2019&quot;, y = &quot;Deaths Per Thousand People&quot;, x = NULL,
+  labs(title = &quot;Death Rate in Canada&quot;,  subtitle = &quot;2019 and 2020&quot;,
+       y = &quot;Deaths Per Thousand People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
 ggsave(&quot;canada_deaths_5_03.png&quot;, mp, width = 13, height = 4)</code></pre>
 <p><img src="canada_deaths_5_03.png" /></p>
@@ -468,7 +469,7 @@ mp &lt;- ggplot(xx, aes(x = Area, y = Value, fill = Trait)) +
                     labels = c(&quot;1991  to 2019&quot;, &quot;2019 to 2020&quot;)) +
   theme_agData(legend.position = &quot;bottom&quot;,
                axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = &quot;Death Rate Change (1991 to 2019)&quot;, 
+  labs(title = &quot;Death Rate Change&quot;, 
        subtitle = &quot;Deaths per thousand people&quot;,
        y = &quot;Change&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
@@ -506,7 +507,7 @@ ggsave(&quot;canada_deaths_5_06.png&quot;, mp, width = 6, height = 4)</code></pr
   gather(Trait, Value, 2:ncol(.)) %&gt;%
   mutate(Value =gsub(&quot;,&quot;, &quot;&quot;, Value),
          Value = as.numeric(Value),
-         Covid = ifelse(Year &gt; 2019, &quot;Covid&quot;, &quot;Pre-Covid&quot;))
+         Covid = ifelse(Year %in% c(1918, 2020, 2021), &quot;Pandemic&quot;, &quot;Normal&quot;))
 xx &lt;- d4 %&gt;% filter(Trait == &quot;Death.rate..per.1.000.&quot;)
 mp &lt;- ggplot(xx, aes(x = Year, y = Value, alpha = Covid)) +
   geom_bar(stat = &quot;identity&quot;, fill = &quot;darkred&quot;, color = &quot;black&quot;, size = 0.3) +

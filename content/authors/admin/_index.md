@@ -15,6 +15,7 @@ email: ""
 interests:
 - <i class="fa fa-code" aria-hidden="true"></i> &nbsp; R
 - <i class="fa fa-table" aria-hidden="true"></i> &nbsp; Data analytics
+- <i class="fa fa-chart-line" aria-hidden="true"></i> &nbsp; Data visualization
 - <i class="fa fa-flask" aria-hidden="true"></i> &nbsp; Science
 - <i class="fa fa-leaf" aria-hidden="true"></i> &nbsp; Botany
 - <i class="fa fa-camera" aria-hidden="true"></i> &nbsp; Photography
