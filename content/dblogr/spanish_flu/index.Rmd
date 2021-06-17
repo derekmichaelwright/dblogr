@@ -4,8 +4,8 @@ subtitle: "An exploration of excess deaths during the 1918 pandemic"
 summary:  "An exploration of excess deaths during the 1918 pandemic"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/spanish_slu/)"
-tags: [ "dblogr", "Demographics", "Featured" ]
-weight: 2
+tags: [ "dblogr", "Demographics" ]
+weight: 3
 codefolding_show: "hide"
 image:
   preview_only: true
