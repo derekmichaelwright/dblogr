@@ -75,7 +75,7 @@ ggsave(&quot;canada_crime_01.png&quot;, mp, width = 6, height = 4)</code></pre>
 <h1>Youth Crime Severity Index</h1>
 <pre class="r"><code># Prep data
 colors &lt;- c(&quot;darkorange&quot;, &quot;darkgreen&quot;, &quot;darkred&quot;)
-xx &lt;- d1 %&gt;% filter(Area == &quot;Canada&quot;)
+xx &lt;- d2 %&gt;% filter(Area == &quot;Canada&quot;)
 # Plot
 mp &lt;- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) + 
   geom_line(size = 1.5, alpha = 0.8) +

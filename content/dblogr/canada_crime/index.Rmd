@@ -73,6 +73,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
 ggsave("canada_crime_01.png", mp, width = 6, height = 4)
 ```
 
+```{r echo = F}
+ggsave("featured.png", mp, width = 6, height = 4)
+```
+
 ![](canada_crime_01.png)
 
 ---
@@ -82,7 +86,7 @@ ggsave("canada_crime_01.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 colors <- c("darkorange", "darkgreen", "darkred")
-xx <- d1 %>% filter(Area == "Canada")
+xx <- d2 %>% filter(Area == "Canada")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) + 
   geom_line(size = 1.5, alpha = 0.8) +
