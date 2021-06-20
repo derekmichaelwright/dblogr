@@ -5,7 +5,7 @@ summary:  "My memes, created in R"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/memes/)"
 tags: [ "dblogr", "R", "Featured" ]
-weight: 3
+weight: 7
 codefolding_show: "hide"
 image:
   preview_only: true

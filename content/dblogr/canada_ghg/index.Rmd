@@ -4,8 +4,8 @@ subtitle: "Data for greenhouse gas emissions in Canada"
 summary:  "Data for greenhouse gas emissions in Canada"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_ghg/)"
-tags: [ "dblogr", "Economics", "Politics" ]
-weight: 3
+tags: [ "dblogr", "Economics" ]
+weight: 5
 codefolding_show: "hide"
 image:
   preview_only: true

@@ -2,10 +2,10 @@
 title: "Population Demographics In Canada"
 subtitle: "Population Pyramids with R"
 summary:  "Population Pyramids with R"
-date: "2021-06-10"
+date: "2021-06-19"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/population_demographics_canada/)"
 tags: [ "dblogr", "Demographics" ]
-weight: 2
+weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
@@ -166,10 +166,6 @@ mp &lt;- gg_PopDem_plot(areas = areas, title = &quot;Eastern Canada&quot;,
 ggsave(&quot;canada_population_demographics_2_02.png&quot;, mp, width = 10, height = 4)</code></pre>
 <p><img src="canada_population_demographics_2_02.png" /></p>
 <hr />
-<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas = areas)
-anim_save(paste0(&quot;canada_population_demographics_gif_2_02.gif&quot;), mp, width = 600, height = 400)</code></pre>
-<p><img src="canada_population_demographics_gif_2_02.gif" /></p>
-<hr />
 </div>
 <div id="western-canada" class="section level2">
 <h2>Western Canada</h2>
@@ -179,10 +175,6 @@ mp &lt;- gg_PopDem_plot(areas = areas, title = &quot;Western Canada&quot;,
                      years = c(1971, 1980, 1990, 2000, 2020))
 ggsave(&quot;canada_population_demographics_2_03.png&quot;, mp, width = 10, height = 4)</code></pre>
 <p><img src="canada_population_demographics_2_03.png" /></p>
-<hr />
-<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas = areas)
-anim_save(paste0(&quot;canada_population_demographics_gif_2_03.gif&quot;), mp, width = 600, height = 400)</code></pre>
-<p><img src="canada_population_demographics_gif_2_03.gif" /></p>
 <hr />
 </div>
 <div id="british-columbia" class="section level2">
@@ -224,7 +216,7 @@ anim_save(paste0(&quot;canada_population_demographics_gif_2_06.gif&quot;), mp, w
 ggsave(&quot;canada_population_demographics_2_07.png&quot;, mp, width = 10, height = 4)</code></pre>
 <p><img src="canada_population_demographics_2_07.png" /></p>
 <hr />
-<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas = &quot;Saskatchewan&quot;)
+<pre class="r"><code>mp &lt;- gg_PopDem_anim(areas = &quot;Ontario&quot;)
 anim_save(paste0(&quot;canada_population_demographics_gif_2_07.gif&quot;), mp, width = 600, height = 400)</code></pre>
 <p><img src="canada_population_demographics_gif_2_07.gif" /></p>
 <hr />

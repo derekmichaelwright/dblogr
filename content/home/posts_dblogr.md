@@ -38,20 +38,20 @@ subtitle = "Personal thoughts of a crazy biologist"
     tag  = "Demographics"
     
   [[content.filter_button]]
+    name = "Economics"
+    tag  = "Economics"
+    
+  [[content.filter_button]]
     name = "Politics"
     tag  = "Politics"
     
   [[content.filter_button]]
-    name = "Economics"
-    tag  = "Economics"
-  
+    name = "R"
+    tag  = "R"
+    
   [[content.filter_button]]
     name = "Personal"
     tag  = "Personal"
-    
-  [[content.filter_button]]
-    name = "R"
-    tag  = "R"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.

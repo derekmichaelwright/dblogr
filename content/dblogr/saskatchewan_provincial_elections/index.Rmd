@@ -5,7 +5,7 @@ summary:  "A look back at Saskatchewan provincial election results"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/saskatchewan_provincial_elections/)"
 tags: [ "dblogr", "Politics" ]
-weight: 5
+weight: 6
 codefolding_show: "hide"
 image:
   preview_only: true

@@ -2,10 +2,10 @@
 title: "Deaths In USA"
 subtitle: "An exploration of weekly deaths in the USA"
 summary:  "An exploration of weekly deaths in the USA"
-date: "2021-06-16"
+date: "2021-06-20"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/usa_deaths/)"
 tags: [ "dblogr", "Demographics", "Featured" ]
-weight: 2
+weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
@@ -44,7 +44,7 @@ output:
 <li><a href="#south-dakota">South Dakota</a></li>
 <li><a href="#selected-states">Selected States</a></li>
 </ul></li>
-<li><a href="#deaths-by-age-group">Deaths by Age Group</a><ul>
+<li><a href="#weekly-deaths-by-age-group">Weekly Deaths by Age Group</a><ul>
 <li><a href="#united-states-3">United States</a></li>
 <li><a href="#new-york-1">New York</a></li>
 <li><a href="#new-jersey-1">New Jersey</a></li>
@@ -55,6 +55,18 @@ output:
 <li><a href="#montana-1">Montana</a></li>
 <li><a href="#north-dakota-1">North Dakota</a></li>
 <li><a href="#south-dakota-1">South Dakota</a></li>
+</ul></li>
+<li><a href="#yearly-deaths-by-age-group">Yearly Deaths by Age Group</a><ul>
+<li><a href="#united-states-4">United States</a></li>
+<li><a href="#new-york-2">New York</a></li>
+<li><a href="#new-jersey-2">New Jersey</a></li>
+<li><a href="#california-2">California</a></li>
+<li><a href="#texas-2">Texas</a></li>
+<li><a href="#florida-2">Florida</a></li>
+<li><a href="#washington-2">Washington</a></li>
+<li><a href="#montana-2">Montana</a></li>
+<li><a href="#north-dakota-2">North Dakota</a></li>
+<li><a href="#south-dakota-2">South Dakota</a></li>
 </ul></li>
 <li><a href="#death-rates">Death Rates</a><ul>
 <li><a href="#north-vs-south-dakota">North vs South Dakota</a></li>
@@ -254,8 +266,8 @@ ggsave(&quot;usa_deaths_3_11.png&quot;, mp, width = 12, height = 4)</code></pre>
 <hr />
 </div>
 </div>
-<div id="deaths-by-age-group" class="section level1">
-<h1>Deaths by Age Group</h1>
+<div id="weekly-deaths-by-age-group" class="section level1">
+<h1>Weekly Deaths by Age Group</h1>
 <pre class="r"><code># Plotting function
 deathPlot4 &lt;- function(area) {
   xx &lt;- dd %&gt;% 
@@ -342,6 +354,97 @@ ggsave(&quot;usa_deaths_4_10.png&quot;, mp, width = 12, height = 4)</code></pre>
 <hr />
 </div>
 </div>
+<div id="yearly-deaths-by-age-group" class="section level1">
+<h1>Yearly Deaths by Age Group</h1>
+<pre class="r"><code># Plotting function
+deathPlot5 &lt;- function(area) {
+  xx &lt;- dd %&gt;% 
+    filter(Type == &quot;Unweighted&quot;, Area == area, Year != 2021) %&gt;%
+    group_by(Year, Age.Group, YearGroup) %&gt;%
+    summarise(Number.of.Deaths = sum(Number.of.Deaths, na.rm = T))
+  # Plot
+  ggplot(xx, aes(x = Year, y = Number.of.Deaths / 1000, alpha = YearGroup)) +
+    geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, fill = &quot;darkred&quot;) + 
+    facet_grid(. ~ Age.Group) +
+    scale_alpha_manual(values = c(0.7,1)) +
+    scale_x_continuous(breaks = c(2016, 2018, 2020)) +
+    theme_agData(legend.position = &quot;none&quot;,
+                 axis.text.x = element_text(angle = 45, hjust = 1)) +
+    labs(title = area, x = NULL, y = &quot;Thousand Deaths&quot;, 
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
+}</code></pre>
+<hr />
+<div id="united-states-4" class="section level2">
+<h2>United States</h2>
+<pre class="r"><code>mp &lt;- deathPlot5(area = &quot;United States&quot;)
+ggsave(&quot;usa_deaths_5_01.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_5_01.png" /></p>
+<hr />
+</div>
+<div id="new-york-2" class="section level2">
+<h2>New York</h2>
+<pre class="r"><code>mp &lt;- deathPlot5(area = &quot;New York&quot;)
+ggsave(&quot;usa_deaths_5_02.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_5_02.png" /></p>
+<hr />
+</div>
+<div id="new-jersey-2" class="section level2">
+<h2>New Jersey</h2>
+<pre class="r"><code>mp &lt;- deathPlot5(area = &quot;New Jersey&quot;)
+ggsave(&quot;usa_deaths_5_03.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_5_03.png" /></p>
+<hr />
+</div>
+<div id="california-2" class="section level2">
+<h2>California</h2>
+<pre class="r"><code>mp &lt;- deathPlot5(area = &quot;California&quot;)
+ggsave(&quot;usa_deaths_5_04.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_5_04.png" /></p>
+<hr />
+</div>
+<div id="texas-2" class="section level2">
+<h2>Texas</h2>
+<pre class="r"><code>mp &lt;- deathPlot5(area = &quot;Texas&quot;)
+ggsave(&quot;usa_deaths_5_05.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_5_05.png" /></p>
+<hr />
+</div>
+<div id="florida-2" class="section level2">
+<h2>Florida</h2>
+<pre class="r"><code>mp &lt;- deathPlot5(area = &quot;Florida&quot;)
+ggsave(&quot;usa_deaths_5_06.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_5_06.png" /></p>
+<hr />
+</div>
+<div id="washington-2" class="section level2">
+<h2>Washington</h2>
+<pre class="r"><code>mp &lt;- deathPlot5(area = &quot;Washington&quot;)
+ggsave(&quot;usa_deaths_5_07.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_5_07.png" /></p>
+<hr />
+</div>
+<div id="montana-2" class="section level2">
+<h2>Montana</h2>
+<pre class="r"><code>mp &lt;- deathPlot5(area = &quot;Montana&quot;)
+ggsave(&quot;usa_deaths_5_08.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_5_08.png" /></p>
+<hr />
+</div>
+<div id="north-dakota-2" class="section level2">
+<h2>North Dakota</h2>
+<pre class="r"><code>mp &lt;- deathPlot5(area = &quot;North Dakota&quot;)
+ggsave(&quot;usa_deaths_5_09.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_5_09.png" /></p>
+<hr />
+</div>
+<div id="south-dakota-2" class="section level2">
+<h2>South Dakota</h2>
+<pre class="r"><code>mp &lt;- deathPlot5(area = &quot;South Dakota&quot;)
+ggsave(&quot;usa_deaths_5_10.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="usa_deaths_5_10.png" /></p>
+<hr />
+</div>
+</div>
 <div id="death-rates" class="section level1">
 <h1>Death Rates</h1>
 <pre class="r"><code># Prep data
@@ -360,8 +463,8 @@ mp &lt;- ggplot(xx, aes(x = Date, y = Death.Rate)) +
   theme_agData() +
   labs(x = NULL, y = &quot;Deaths per million people per week&quot;, 
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
-ggsave(&quot;usa_deaths_5_01.png&quot;, mp, width = 12, height = 12)</code></pre>
-<p><img src="usa_deaths_5_01.png" /></p>
+ggsave(&quot;usa_deaths_6_01.png&quot;, mp, width = 12, height = 12)</code></pre>
+<p><img src="usa_deaths_6_01.png" /></p>
 <hr />
 <div id="north-vs-south-dakota" class="section level2">
 <h2>North vs South Dakota</h2>
@@ -374,8 +477,8 @@ mp &lt;- ggplot(x1, aes(x = Date, y = Death.Rate, color = Area)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(x = NULL, y = &quot;Deaths per million people per week&quot;, 
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
-ggsave(&quot;usa_deaths_5_02.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="usa_deaths_5_02.png" /></p>
+ggsave(&quot;usa_deaths_6_02.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_6_02.png" /></p>
 <hr />
 </div>
 <div id="california-vs-texas" class="section level2">
@@ -389,8 +492,8 @@ mp &lt;- ggplot(x1, aes(x = Date, y = Death.Rate, color = Area)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(x = NULL, y = &quot;Deaths per million people per week&quot;, 
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
-ggsave(&quot;usa_deaths_5_03.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="usa_deaths_5_03.png" /></p>
+ggsave(&quot;usa_deaths_6_03.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_6_03.png" /></p>
 <hr />
 </div>
 <div id="new-york-vs-new-jersey-vs-florida" class="section level2">
@@ -405,8 +508,8 @@ mp &lt;- ggplot(x1, aes(x = Date, y = Death.Rate, color = Area)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(x = NULL, y = &quot;Deaths per million people per week&quot;, 
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
-ggsave(&quot;usa_deaths_5_04.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="usa_deaths_5_04.png" /></p>
+ggsave(&quot;usa_deaths_6_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_6_04.png" /></p>
 <hr />
 <pre class="r"><code># Prep data
 xx &lt;- dd %&gt;% 
@@ -424,8 +527,8 @@ mp &lt;- ggplot(xx, aes(x = Date, y = Death.Rate, color = Area)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(x = NULL, y = &quot;Deaths per million people per week&quot;, 
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
-ggsave(&quot;usa_deaths_5_05.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="usa_deaths_5_05.png" /></p>
+ggsave(&quot;usa_deaths_6_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_6_05.png" /></p>
 <hr />
 </div>
 </div>
@@ -446,8 +549,8 @@ mp &lt;- ggplot(xx, aes(x = Date, y = Death.Rate, group = Area)) +
   theme_agData(legend.position = &quot;bottom&quot;) +
   labs(x = NULL, y = &quot;Deaths per million people per week&quot;, 
        caption = &quot;\xa9 www.dblogr.com/  |  Data: CDC&quot;)
-ggsave(&quot;usa_deaths_5_06.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="usa_deaths_5_06.png" /></p>
+ggsave(&quot;usa_deaths_6_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="usa_deaths_6_06.png" /></p>
 <hr />
 <p>© Derek Michael Wright 2020 <a href="https://dblogr.netlify.com/">www.dblogr.com/</a></p>
 </div>

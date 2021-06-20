@@ -5,7 +5,7 @@ summary:  "A look back at all Canadian federal election results"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_federal_elections/)"
 tags: [ "dblogr", "Politics" ]
-weight: 3
+weight: 6
 codefolding_show: "hide"
 image:
   preview_only: true

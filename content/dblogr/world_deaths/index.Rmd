@@ -5,7 +5,7 @@ summary:  "An exploration of historical death rates"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/world_deaths/)"
 tags: [ "dblogr", "Demographics" ]
-weight: 2
+weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true

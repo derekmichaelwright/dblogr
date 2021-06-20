@@ -5,7 +5,7 @@ summary:  "An exploration of Employment data in Canada"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_employment/)"
 tags: [ "dblogr", "Economics" ]
-weight: 4
+weight: 5
 codefolding_show: "hide"
 image:
   preview_only: true

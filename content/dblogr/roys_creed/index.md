@@ -2,7 +2,7 @@
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = false  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 6  # Order that this section will appear.
+weight = 8  # Order that this section will appear.
 
 title = "Roy's Creed"
 subtitle = "A tribute to my grandfather Roy Wright and the words he lived by"

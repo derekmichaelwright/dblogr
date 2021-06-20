@@ -5,7 +5,7 @@ summary:  "Create street map art with R and road network files"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/street_maps/)"
 tags: [ "dblogr", "R" ]
-weight: 3
+weight: 7
 codefolding_show: "hide"
 image:
   preview_only: true

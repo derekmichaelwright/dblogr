@@ -5,7 +5,7 @@ summary:  "Population Pyramids with R"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/population_demographics_canada/)"
 tags: [ "dblogr", "Demographics" ]
-weight: 2
+weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
@@ -196,15 +196,6 @@ ggsave("canada_population_demographics_2_02.png", mp, width = 10, height = 4)
 
 ---
 
-```{r}
-mp <- gg_PopDem_anim(areas = areas)
-anim_save(paste0("canada_population_demographics_gif_2_02.gif"), mp, width = 600, height = 400)
-```
-
-![](canada_population_demographics_gif_2_02.gif)
-
----
-
 ## Western Canada
 
 ```{r}
@@ -216,15 +207,6 @@ ggsave("canada_population_demographics_2_03.png", mp, width = 10, height = 4)
 ```
 
 ![](canada_population_demographics_2_03.png)
-
----
-
-```{r}
-mp <- gg_PopDem_anim(areas = areas)
-anim_save(paste0("canada_population_demographics_gif_2_03.gif"), mp, width = 600, height = 400)
-```
-
-![](canada_population_demographics_gif_2_03.gif)
 
 ---
 
@@ -300,7 +282,7 @@ ggsave("canada_population_demographics_2_07.png", mp, width = 10, height = 4)
 ---
 
 ```{r}
-mp <- gg_PopDem_anim(areas = "Saskatchewan")
+mp <- gg_PopDem_anim(areas = "Ontario")
 anim_save(paste0("canada_population_demographics_gif_2_07.gif"), mp, width = 600, height = 400)
 ```
 

@@ -2,10 +2,10 @@
 title: "Deaths In Canada"
 subtitle: "An exploration of weekly deaths in Canada"
 summary:  "An exploration of weekly deaths in Canada"
-date: "2021-06-16"
+date: "2021-06-20"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_deaths/)"
 tags: [ "dblogr", "Demographics" ]
-weight: 2
+weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
@@ -42,9 +42,14 @@ output:
 <li><a href="#british-columbia-1">British Columbia</a></li>
 <li><a href="#alberta-1">Alberta</a></li>
 <li><a href="#saskatchewan-1">Saskatchewan</a></li>
+<li><a href="#manitoba-1">Manitoba</a></li>
 </ul></li>
-<li><a href="#deaths-by-age-group">Deaths by Age Group</a><ul>
+<li><a href="#weekly-deaths-by-age-group">Weekly Deaths by Age Group</a><ul>
 <li><a href="#canada-2">Canada</a></li>
+<li><a href="#ontario-2">Ontario</a></li>
+<li><a href="#quebec-2">Quebec</a></li>
+<li><a href="#british-columbia-2">British Columbia</a></li>
+<li><a href="#alberta-2">Alberta</a></li>
 <li><a href="#saskatchewan-2">Saskatchewan</a></li>
 <li><a href="#eastern-canada">Eastern Canada</a></li>
 <li><a href="#western-canada">Western Canada</a></li>
@@ -52,11 +57,20 @@ output:
 <li><a href="#saskatchewan-vs.-quebec-and-ontario">Saskatchewan vs. Quebec and Ontario</a></li>
 <li><a href="#alberta-vs.-ontario">Alberta vs. Ontario</a></li>
 </ul></li>
-<li><a href="#deaths-by-gender">Deaths By Gender</a><ul>
+<li><a href="#yearly-deaths-by-age-group">Yearly Deaths by Age Group</a><ul>
 <li><a href="#canada-3">Canada</a></li>
+<li><a href="#ontario-3">Ontario</a></li>
+<li><a href="#quebec-3">Quebec</a></li>
+<li><a href="#british-columbia-3">British Columbia</a></li>
+<li><a href="#alberta-3">Alberta</a></li>
+<li><a href="#saskatchewan-3">Saskatchewan</a></li>
+<li><a href="#manitoba-2">Manitoba</a></li>
+</ul></li>
+<li><a href="#deaths-by-gender">Deaths By Gender</a><ul>
+<li><a href="#canada-4">Canada</a></li>
 </ul></li>
 <li><a href="#death-rate">Death Rate</a><ul>
-<li><a href="#canada-4">Canada</a></li>
+<li><a href="#canada-5">Canada</a></li>
 <li><a href="#provinces">Provinces</a></li>
 <li><a href="#vs-2020">2019 vs 2020</a></li>
 <li><a href="#change">Change</a></li>
@@ -280,9 +294,16 @@ ggsave(&quot;canada_deaths_2_07.png&quot;, mp, width = 6, height = 4)</code></pr
 <p><img src="canada_deaths_2_07.png" /></p>
 <hr />
 </div>
+<div id="manitoba-1" class="section level2">
+<h2>Manitoba</h2>
+<pre class="r"><code>mp &lt;- deathPlot2(areas = &quot;Manitoba&quot;)
+ggsave(&quot;canada_deaths_2_08.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_deaths_2_08.png" /></p>
+<hr />
 </div>
-<div id="deaths-by-age-group" class="section level1">
-<h1>Deaths by Age Group</h1>
+</div>
+<div id="weekly-deaths-by-age-group" class="section level1">
+<h1>Weekly Deaths by Age Group</h1>
 <pre class="r"><code># Create plotting function
 deathPlot3 &lt;- function(areas = &quot;Canada&quot;) {
   # Prep data
@@ -306,11 +327,39 @@ ggsave(&quot;canada_deaths_3_01.png&quot;, mp, width = 8, height = 4)</code></pr
 <p><img src="canada_deaths_3_01.png" /></p>
 <hr />
 </div>
+<div id="ontario-2" class="section level2">
+<h2>Ontario</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(areas = &quot;Ontario&quot;)
+ggsave(&quot;canada_deaths_3_02.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_deaths_3_02.png" /></p>
+<hr />
+</div>
+<div id="quebec-2" class="section level2">
+<h2>Quebec</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(areas = &quot;Quebec&quot;)
+ggsave(&quot;canada_deaths_3_03.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_deaths_3_03.png" /></p>
+<hr />
+</div>
+<div id="british-columbia-2" class="section level2">
+<h2>British Columbia</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(areas = &quot;British Columbia&quot;)
+ggsave(&quot;canada_deaths_3_04.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_deaths_3_04.png" /></p>
+<hr />
+</div>
+<div id="alberta-2" class="section level2">
+<h2>Alberta</h2>
+<pre class="r"><code>mp &lt;- deathPlot3(areas = &quot;Alberta&quot;)
+ggsave(&quot;canada_deaths_3_05.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_deaths_3_05.png" /></p>
+<hr />
+</div>
 <div id="saskatchewan-2" class="section level2">
 <h2>Saskatchewan</h2>
 <pre class="r"><code>mp &lt;- deathPlot3(areas = &quot;Saskatchewan&quot;)
-ggsave(&quot;canada_deaths_3_02.png&quot;, mp, width = 8, height = 4)</code></pre>
-<p><img src="canada_deaths_3_02.png" /></p>
+ggsave(&quot;canada_deaths_3_06.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_deaths_3_06.png" /></p>
 <hr />
 </div>
 <div id="eastern-canada" class="section level2">
@@ -318,16 +367,16 @@ ggsave(&quot;canada_deaths_3_02.png&quot;, mp, width = 8, height = 4)</code></pr
 <pre class="r"><code>areas &lt;- c(&quot;Ontario&quot;, &quot;Quebec&quot;, &quot;Nova Scotia&quot;, 
            &quot;Newfoundland and Labrador&quot;, &quot;New Brunswick&quot;)
 mp &lt;- deathPlot3(areas = areas)
-ggsave(&quot;canada_deaths_3_03.png&quot;, mp, width = 8, height = 8)</code></pre>
-<p><img src="canada_deaths_3_03.png" /></p>
+ggsave(&quot;canada_deaths_3_07.png&quot;, mp, width = 8, height = 8)</code></pre>
+<p><img src="canada_deaths_3_07.png" /></p>
 <hr />
 </div>
 <div id="western-canada" class="section level2">
 <h2>Western Canada</h2>
 <pre class="r"><code>areas &lt;- c(&quot;British Columbia&quot;, &quot;Alberta&quot;, &quot;Saskatchewan&quot;, &quot;Manitoba&quot;)
 mp &lt;- deathPlot3(areas = areas)
-ggsave(&quot;canada_deaths_3_04.png&quot;, mp, width = 8, height = 8)</code></pre>
-<p><img src="canada_deaths_3_04.png" /></p>
+ggsave(&quot;canada_deaths_3_08.png&quot;, mp, width = 8, height = 8)</code></pre>
+<p><img src="canada_deaths_3_08.png" /></p>
 <hr />
 </div>
 <div id="select-provinces" class="section level2">
@@ -335,30 +384,103 @@ ggsave(&quot;canada_deaths_3_04.png&quot;, mp, width = 8, height = 8)</code></pr
 <pre class="r"><code>areas &lt;- c(&quot;Ontario&quot;, &quot;Quebec&quot;, &quot;Saskatchewan&quot;,
            &quot;Alberta&quot;, &quot;British Columbia&quot;)
 mp &lt;- deathPlot3(areas = areas)
-ggsave(&quot;canada_deaths_3_05.png&quot;, mp, width = 8, height = 8)</code></pre>
-<p><img src="canada_deaths_3_05.png" /></p>
+ggsave(&quot;canada_deaths_3_09.png&quot;, mp, width = 8, height = 8)</code></pre>
+<p><img src="canada_deaths_3_09.png" /></p>
 <hr />
 </div>
 <div id="saskatchewan-vs.-quebec-and-ontario" class="section level2">
 <h2>Saskatchewan vs. Quebec and Ontario</h2>
 <pre class="r"><code>areas &lt;- c(&quot;Quebec&quot;, &quot;Ontario&quot;, &quot;Saskatchewan&quot;)
 mp &lt;- deathPlot3(areas = areas)
-ggsave(&quot;canada_deaths_3_06.png&quot;, mp, width = 8, height = 5)</code></pre>
-<p><img src="canada_deaths_3_06.png" /></p>
+ggsave(&quot;canada_deaths_3_10.png&quot;, mp, width = 8, height = 5)</code></pre>
+<p><img src="canada_deaths_3_10.png" /></p>
 <hr />
 </div>
 <div id="alberta-vs.-ontario" class="section level2">
 <h2>Alberta vs. Ontario</h2>
 <pre class="r"><code>areas &lt;- c(&quot;Ontario&quot;, &quot;Alberta&quot;)
 mp &lt;- deathPlot3(areas = areas)
-ggsave(&quot;canada_deaths_3_07.png&quot;, mp, width = 8, height = 5)</code></pre>
-<p><img src="canada_deaths_3_07.png" /></p>
+ggsave(&quot;canada_deaths_3_11.png&quot;, mp, width = 8, height = 5)</code></pre>
+<p><img src="canada_deaths_3_11.png" /></p>
+<hr />
+</div>
+</div>
+<div id="yearly-deaths-by-age-group" class="section level1">
+<h1>Yearly Deaths by Age Group</h1>
+<pre class="r"><code># Create plotting function
+deathPlot4 &lt;- function(areas = &quot;Canada&quot;, title = paste(areas, collapse = &quot;, &quot;)) {
+  # Prep data
+  colors &lt;- c(alpha(rep(&quot;darkred&quot;,3),0.7),&quot;darkred&quot;)
+  xx &lt;- d2 %&gt;% 
+    filter(Area %in% areas, #Year != 2021,
+           Sex == &quot;Both sexes&quot;, Age != &quot;all ages&quot;) %&gt;%
+    group_by(Age, Year) %&gt;%
+    summarise(Value = sum(Value, na.rm = T))
+  # Plot
+  ggplot(xx, aes(x = Year, y = Value / 1000, alpha = as.factor(Year), group = Year)) +
+    geom_bar(stat = &quot;identity&quot;, color = &quot;black&quot;, fill = &quot;darkred&quot;) +
+    facet_grid(. ~ Age) +
+    scale_alpha_manual(name = NULL, values = c(rep(0.7,10),1)) +
+    scale_x_continuous(breaks = seq(2010, 2020, 2)) +
+    theme_agData(legend.position = &quot;none&quot;,
+                 axis.text.x = element_text(angle = 45, hjust = 1)) +
+    labs(title = title, y = &quot;Thousand Deaths&quot;, x = NULL,
+         caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+}</code></pre>
+<hr />
+<div id="canada-3" class="section level2">
+<h2>Canada</h2>
+<pre class="r"><code>mp &lt;- deathPlot4(areas = &quot;Canada&quot;)
+ggsave(&quot;canada_deaths_4_01.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_deaths_4_01.png" /></p>
+<hr />
+</div>
+<div id="ontario-3" class="section level2">
+<h2>Ontario</h2>
+<pre class="r"><code>mp &lt;- deathPlot4(areas = &quot;Ontario&quot;)
+ggsave(&quot;canada_deaths_4_02.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_deaths_4_02.png" /></p>
+<hr />
+</div>
+<div id="quebec-3" class="section level2">
+<h2>Quebec</h2>
+<pre class="r"><code>mp &lt;- deathPlot4(areas = &quot;Quebec&quot;)
+ggsave(&quot;canada_deaths_4_03.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_deaths_4_03.png" /></p>
+<hr />
+</div>
+<div id="british-columbia-3" class="section level2">
+<h2>British Columbia</h2>
+<pre class="r"><code>mp &lt;- deathPlot4(areas = &quot;British Columbia&quot;)
+ggsave(&quot;canada_deaths_4_04.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_deaths_4_04.png" /></p>
+<hr />
+</div>
+<div id="alberta-3" class="section level2">
+<h2>Alberta</h2>
+<pre class="r"><code>mp &lt;- deathPlot4(areas = &quot;Alberta&quot;)
+ggsave(&quot;canada_deaths_4_05.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_deaths_4_05.png" /></p>
+<hr />
+</div>
+<div id="saskatchewan-3" class="section level2">
+<h2>Saskatchewan</h2>
+<pre class="r"><code>mp &lt;- deathPlot4(areas = &quot;Saskatchewan&quot;)
+ggsave(&quot;canada_deaths_4_06.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_deaths_4_06.png" /></p>
+<hr />
+</div>
+<div id="manitoba-2" class="section level2">
+<h2>Manitoba</h2>
+<pre class="r"><code>mp &lt;- deathPlot4(areas = &quot;Manitoba&quot;)
+ggsave(&quot;canada_deaths_4_07.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_deaths_4_07.png" /></p>
 <hr />
 </div>
 </div>
 <div id="deaths-by-gender" class="section level1">
 <h1>Deaths By Gender</h1>
-<div id="canada-3" class="section level2">
+<div id="canada-4" class="section level2">
 <h2>Canada</h2>
 <pre class="r"><code># Prep data
 xx &lt;- d2 %&gt;% filter(Area %in% &quot;Canada&quot;, Sex != &quot;Both sexes&quot;, Year == 2020)
@@ -371,14 +493,14 @@ mp &lt;- ggplot(xx, aes(x = JulianDay, y = Value, group = Sex, color = Sex)) +
   theme_agData(legend.position = &quot;top&quot;) +
   labs(y = &quot;Deaths Per Week&quot;, x = &quot;Julian Day&quot;,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;canada_deaths_4_01.png&quot;, mp, width = 8, height = 4)</code></pre>
-<p><img src="canada_deaths_4_01.png" /></p>
+ggsave(&quot;canada_deaths_5_01.png&quot;, mp, width = 8, height = 4)</code></pre>
+<p><img src="canada_deaths_5_01.png" /></p>
 <hr />
 </div>
 </div>
 <div id="death-rate" class="section level1">
 <h1>Death Rate</h1>
-<div id="canada-4" class="section level2">
+<div id="canada-5" class="section level2">
 <h2>Canada</h2>
 <pre class="r"><code># Plot
 mp &lt;- ggplot(d3 %&gt;% filter(Area == &quot;Canada&quot;), 
@@ -389,8 +511,8 @@ mp &lt;- ggplot(d3 %&gt;% filter(Area == &quot;Canada&quot;),
   theme_agData(legend.position = &quot;none&quot;) +
   labs(title = &quot;Death Rate - Canada&quot;, y = &quot;Deaths Per Thousand People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;canada_deaths_5_01.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="canada_deaths_5_01.png" /></p>
+ggsave(&quot;canada_deaths_6_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_deaths_6_01.png" /></p>
 <hr />
 </div>
 <div id="provinces" class="section level2">
@@ -404,8 +526,8 @@ mp &lt;- ggplot(d3, aes(x = Year, y = Death.Rate, fill = Group)) +
   theme_agData(legend.position = &quot;none&quot;) +
   labs(title = &quot;Death Rate - Canada&quot;, y = &quot;Deaths Per Thousand People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;canada_deaths_5_02.png&quot;, mp, width = 10, height = 6)</code></pre>
-<p><img src="canada_deaths_5_02.png" /></p>
+ggsave(&quot;canada_deaths_6_02.png&quot;, mp, width = 10, height = 6)</code></pre>
+<p><img src="canada_deaths_6_02.png" /></p>
 <hr />
 </div>
 <div id="vs-2020" class="section level2">
@@ -430,8 +552,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Death.Rate, fill = factor(Year))) +
   labs(title = &quot;Death Rate in Canada&quot;,  subtitle = &quot;2019 and 2020&quot;,
        y = &quot;Deaths Per Thousand People&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;canada_deaths_5_03.png&quot;, mp, width = 13, height = 4)</code></pre>
-<p><img src="canada_deaths_5_03.png" /></p>
+ggsave(&quot;canada_deaths_6_03.png&quot;, mp, width = 13, height = 4)</code></pre>
+<p><img src="canada_deaths_6_03.png" /></p>
 <hr />
 </div>
 <div id="change" class="section level2">
@@ -450,8 +572,8 @@ mp &lt;- ggplot(xx, aes(x = Area, y = Change)) +
        subtitle = &quot;Deaths per thousand people&quot;,
        y = &quot;Change&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;canada_deaths_5_04.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="canada_deaths_5_04.png" /></p>
+ggsave(&quot;canada_deaths_6_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_deaths_6_04.png" /></p>
 <hr />
 <pre class="r"><code># Prep data
 xx &lt;- d3 %&gt;% filter(Year %in% c(1991, 2019, 2020)) %&gt;%
@@ -473,8 +595,8 @@ mp &lt;- ggplot(xx, aes(x = Area, y = Value, fill = Trait)) +
        subtitle = &quot;Deaths per thousand people&quot;,
        y = &quot;Change&quot;, x = NULL,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;canada_deaths_5_05.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="canada_deaths_5_05.png" /></p>
+ggsave(&quot;canada_deaths_6_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_deaths_6_05.png" /></p>
 <hr />
 </div>
 <div id="select-provinces-1" class="section level2">
@@ -496,8 +618,8 @@ mp &lt;- ggplot(xx, aes(x = JulianDay, y = Death.Rate, color = Area)) +
   labs(title = &quot;Death Rate 2020&quot;, 
        y = &quot;Deaths per 1000 people per week&quot;, x = &quot;Julian Day&quot;,
        caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
-ggsave(&quot;canada_deaths_5_06.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="canada_deaths_5_06.png" /></p>
+ggsave(&quot;canada_deaths_6_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_deaths_6_06.png" /></p>
 <hr />
 </div>
 </div>
@@ -516,8 +638,8 @@ mp &lt;- ggplot(xx, aes(x = Year, y = Value, alpha = Covid)) +
   theme_agData(legend.position = &quot;none&quot;) +
   labs(title = &quot;Death Rate in Canada&quot;, y = &quot;Deaths per 1000 people&quot;, x = NULL,
          caption = &quot;\xa9 www.dblogr.com/  |  Data: Wikipedia&quot;)
-ggsave(&quot;canada_deaths_6_01.png&quot;, mp, width = 6, height = 4)</code></pre>
-<p><img src="canada_deaths_6_01.png" /></p>
+ggsave(&quot;canada_deaths_7_01.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_deaths_7_01.png" /></p>
 <hr />
 <pre class="r"><code># https://www.bloomberg.com/news/articles/2021-06-01/trudeau-s-covid-19-spending-was-tilted-to-high-earning-canadians?sref=7iNjhqyV
 quantiles &lt;- c(&quot;Lowest&quot;, &quot;Second&quot;, &quot;Third&quot;, &quot;Forth&quot;, &quot;Highest&quot;)

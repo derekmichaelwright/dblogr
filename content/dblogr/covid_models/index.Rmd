@@ -4,8 +4,7 @@ subtitle: "Graphs for covid models vs actual data"
 summary:  "Graphs for covid models vs actual data"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/covid_models/)"
-tags: [ "dblogr", "Demographics", "Politics" ]
-draft: true
+tags: [ "dblogr", "SciComm", "Politics" ]
 weight: 6
 codefolding_show: "hide"
 image:

@@ -4,7 +4,7 @@ subtitle: "A look at CBC finances - government funding, ad revenue and total pro
 summary:  "A look at CBC finances - government funding, ad revenue and total profit"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/cbc_finances/)"
-tags: [ "dblogr", "Economics", "Politics" ]
+tags: [ "dblogr", "Economics" ]
 weight: 5
 codefolding_show: "hide"
 image:

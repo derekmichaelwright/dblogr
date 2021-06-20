@@ -4,8 +4,8 @@ subtitle: "A look at suicide data among indigenous people from a STACAN report"
 summary:  "A look at suicide data among indigenous people from a STACAN report"
 date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/canada_suicide/)"
-tags: [ "dblogr", "Economics", "Demographics" ]
-weight: 5
+tags: [ "dblogr", "Demographics" ]
+weight: 4
 codefolding_show: "hide"
 image:
   preview_only: true
