@@ -6,6 +6,7 @@ date: "`r Sys.Date()`"
 author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/dblogr/covid_models/)"
 tags: [ "dblogr", "SciComm", "Politics" ]
 weight: 6
+draft: true
 codefolding_show: "hide"
 image:
   preview_only: true
