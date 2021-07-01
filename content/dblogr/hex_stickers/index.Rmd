@@ -156,6 +156,21 @@ sticker(filename="hex_buffalo_black.png", package="",
 
 ---
 
+# BioHazard
+
+```{r}
+sticker(filename="hex_biohazard.png", package="", 
+        # Logo
+        "logo_biohazard.png", 
+        s_x = 1, s_y = 1.1, 
+        s_width = 0.8, 
+        # Border
+        h_fill = "grey90", h_color = "darkgreen", h_size = 1.5,
+        # Url
+        url = "www.dblogr.com/", u_color = "black",
+        u_x = 1.1, u_y = 0.15, u_size = 6 )
+```
+
 ```{r echo = F, eval = F}
 # Copy to gallery
 #file.copy(from = "hex_dblogr.png", 
