@@ -2,7 +2,7 @@
 title: "Deaths In Canada"
 subtitle: "An exploration of weekly deaths in Canada"
 summary:  "An exploration of weekly deaths in Canada"
-date: "2021-06-20"
+date: "2021-07-01"
 author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/dblogr/canada_deaths/)"
 tags: [ "dblogr", "Demographics" ]
 weight: 4
@@ -43,6 +43,7 @@ output:
 <li><a href="#alberta-1">Alberta</a></li>
 <li><a href="#saskatchewan-1">Saskatchewan</a></li>
 <li><a href="#manitoba-1">Manitoba</a></li>
+<li><a href="#ontario-vs-saskatchewan">Ontario vs Saskatchewan</a></li>
 </ul></li>
 <li><a href="#weekly-deaths-by-age-group">Weekly Deaths by Age Group</a><ul>
 <li><a href="#canada-2">Canada</a></li>
@@ -299,6 +300,45 @@ ggsave(&quot;canada_deaths_2_07.png&quot;, mp, width = 6, height = 4)</code></pr
 <pre class="r"><code>mp &lt;- deathPlot2(areas = &quot;Manitoba&quot;)
 ggsave(&quot;canada_deaths_2_08.png&quot;, mp, width = 6, height = 4)</code></pre>
 <p><img src="canada_deaths_2_08.png" /></p>
+<hr />
+</div>
+<div id="ontario-vs-saskatchewan" class="section level2">
+<h2>Ontario vs Saskatchewan</h2>
+<pre class="r"><code># Prep data
+xx &lt;- d1 %&gt;% filter(Area %in% c(&quot;Saskatchewan&quot;, &quot;Ontario&quot;)) %&gt;% 
+  mutate(Year = factor(Year))
+colors1 &lt;- c(rep(&quot;darkgreen&quot;,4), rep(&quot;darkorange&quot;,4), rep(&quot;darkred&quot;,4))
+ltys1 &lt;- c(1:4, 1:4, 1:4)
+colors2 &lt;- c(rep(&quot;darkred&quot;,4), rep(&quot;darkorange&quot;,4), rep(&quot;darkgreen&quot;,4))
+ltys2 &lt;- c(4:1, 4:1, 4:1)
+# Plot
+mp1 &lt;- ggplot(xx %&gt;% filter(Area == &quot;Ontario&quot;), 
+              aes(x = JulianDay, y = Value, lty = Year, color = Year)) +
+  geom_line() +
+  facet_wrap(Area ~ ., scales = &quot;free_y&quot;, ncol = 5) +
+  scale_color_manual(name = NULL, values = colors1) +
+  scale_linetype_manual(name = NULL, values = ltys1) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;Which Year is the Pandemic?&quot;, y = &quot;Deaths Per Week&quot;,
+       subtitle = &quot;A)&quot;, caption = &quot;&quot;)
+mp2 &lt;- ggplot(xx %&gt;% filter(Area == &quot;Saskatchewan&quot;), 
+              aes(x = JulianDay, y = Value, lty = Year, color = Year)) +
+  geom_line() +
+  facet_wrap(Area ~ ., scales = &quot;free_y&quot;, ncol = 5) +
+  scale_color_manual(name = NULL, values = colors2) +
+  scale_linetype_manual(name = NULL, values = ltys2) +
+  theme_agData(legend.position = &quot;none&quot;) +
+  labs(title = &quot;&quot;, y = &quot;Deaths Per Week&quot;, subtitle = &quot;B)&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+mp &lt;- ggarrange(mp1, mp2, ncol = 2)
+ggsave(&quot;canada_deaths_2_09.png&quot;, mp, width = 8, height = 4)
+mp &lt;- mp2 + 
+  labs(title = &quot;Which Year is the Pandemic?&quot;, 
+       subtitle = NULL, y = &quot;Deaths Per Week&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: STATCAN&quot;)
+ggsave(&quot;canada_deaths_2_10.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="canada_deaths_2_09.png" /></p>
+<p><img src="canada_deaths_2_10.png" /></p>
 <hr />
 </div>
 </div>

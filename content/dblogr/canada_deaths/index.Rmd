@@ -363,6 +363,50 @@ ggsave("canada_deaths_2_08.png", mp, width = 6, height = 4)
 
 ---
 
+## Ontario vs Saskatchewan
+
+```{r}
+# Prep data
+xx <- d1 %>% filter(Area %in% c("Saskatchewan", "Ontario")) %>% 
+  mutate(Year = factor(Year))
+colors1 <- c(rep("darkgreen",4), rep("darkorange",4), rep("darkred",4))
+ltys1 <- c(1:4, 1:4, 1:4)
+colors2 <- c(rep("darkred",4), rep("darkorange",4), rep("darkgreen",4))
+ltys2 <- c(4:1, 4:1, 4:1)
+# Plot
+mp1 <- ggplot(xx %>% filter(Area == "Ontario"), 
+              aes(x = JulianDay, y = Value, lty = Year, color = Year)) +
+  geom_line() +
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+  scale_color_manual(name = NULL, values = colors1) +
+  scale_linetype_manual(name = NULL, values = ltys1) +
+  theme_agData(legend.position = "none") +
+  labs(title = "Which Year is the Pandemic?", y = "Deaths Per Week",
+       subtitle = "A)", caption = "")
+mp2 <- ggplot(xx %>% filter(Area == "Saskatchewan"), 
+              aes(x = JulianDay, y = Value, lty = Year, color = Year)) +
+  geom_line() +
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+  scale_color_manual(name = NULL, values = colors2) +
+  scale_linetype_manual(name = NULL, values = ltys2) +
+  theme_agData(legend.position = "none") +
+  labs(title = "", y = "Deaths Per Week", subtitle = "B)",
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+mp <- ggarrange(mp1, mp2, ncol = 2)
+ggsave("canada_deaths_2_09.png", mp, width = 8, height = 4)
+mp <- mp2 + 
+  labs(title = "Which Year is the Pandemic?", 
+       subtitle = NULL, y = "Deaths Per Week",
+       caption = "\xa9 www.dblogr.com/  |  Data: STATCAN")
+ggsave("canada_deaths_2_10.png", mp, width = 6, height = 4)
+```
+
+![](canada_deaths_2_09.png)
+
+![](canada_deaths_2_10.png)
+
+---
+
 # Weekly Deaths by Age Group
 
 ```{r}
