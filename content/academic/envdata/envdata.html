@@ -1,0 +1,587 @@
+---
+title: "Environmental Data Vignette"
+subtitle: "Environmental data for the agile project"
+summary:  "Environmental data for the agile project"
+date: "2021-07-03"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/envdata/)"
+tags: [ "Academic", "AGILE", "Tutorial" ]
+math: true
+weight: 5
+codefolding_show: "show"
+image:
+  preview_only: true
+links:
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/academic/envdata.html"
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#prepare-the-data">Prepare the data</a></li>
+<li><a href="#summarize-data">Summarize data</a></li>
+<li><a href="#plot-all-data">Plot all data</a></li>
+<li><a href="#temperature">Temperature</a></li>
+<li><a href="#day-lengths">Day Lengths</a></li>
+<li><a href="#precipitation">Precipitation</a></li>
+<li><a href="#temperature-day-length-rainfall">Temperature, Day Length &amp; Rainfall</a></li>
+<li><a href="#soil-temperature">Soil Temperature</a></li>
+<li><a href="#each-experiment">Each experiment</a><ul>
+<li><a href="#sutherland-canada-2016">Sutherland, Canada 2016</a></li>
+<li><a href="#sutherland-canada-2017">Sutherland, Canada 2017</a></li>
+<li><a href="#sutherland-canada-2018">Sutherland, Canada 2018</a></li>
+<li><a href="#rosthern-canada-2016">Rosthern, Canada 2016</a></li>
+<li><a href="#rosthern-canada-2017">Rosthern, Canada 2017</a></li>
+<li><a href="#central-ferry-usa-2017">Central Ferry, USA 2017</a></li>
+<li><a href="#central-ferry-usa-2018">Central Ferry, USA 2018</a></li>
+<li><a href="#bhopal-india-2016">Bhopal, India 2016</a></li>
+<li><a href="#bhopal-india-2017">Bhopal, India 2017</a></li>
+<li><a href="#jessore-bangladesh-2016">Jessore, Bangladesh 2016</a></li>
+<li><a href="#jessore-bangladesh-2017">Jessore, Bangladesh 2017</a></li>
+<li><a href="#bardiya-nepal-2016">Bardiya, Nepal 2016</a></li>
+<li><a href="#bardiya-nepal-2017">Bardiya, Nepal 2017</a></li>
+<li><a href="#marchouch-morocco-2016">Marchouch, Morocco 2016</a></li>
+<li><a href="#marchouch-morocco-2017">Marchouch, Morocco 2017</a></li>
+<li><a href="#cordoba-spain-2016">Cordoba, Spain 2016</a></li>
+<li><a href="#cordoba-spain-2017">Cordoba, Spain 2017</a></li>
+<li><a href="#metaponto-italy-2016">Metaponto, Italy 2016</a></li>
+<li><a href="#metaponto-italy-2017">Metaponto, Italy 2017</a></li>
+</ul></li>
+</ul>
+</div>
+
+<hr />
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>The purpose of this document is to provide a few examples of how to manipulate and plot the environmental data for the AGILE project.</p>
+<p>Data sets can be downloaded from <a href="http://knowpulse.usask.ca/portal/"><strong>knowpulse.usask.ca/</strong></a></p>
+<hr />
+</div>
+<div id="prepare-the-data" class="section level1">
+<h1>Prepare the data</h1>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel</code></pre>
+<pre class="r"><code># Read in data
+KP_file &lt;- &quot;environment_data.tar&quot; # Location of File
+files &lt;- untar(KP_file, list = T) # Store filenames
+untar(KP_file) # Extract files</code></pre>
+<pre class="r"><code>dd &lt;- list() # Create Empty list
+files &lt;- list.files()[grepl(&quot;.csv&quot;, list.files())]
+for (i in 1:length(files)) { 
+  dd[[i]] &lt;- read.csv(files[i], stringsAsFactors = T)
+  colnames(dd[[i]])[1] &lt;- &quot;Location&quot;
+}
+# Bind files together
+dd &lt;- do.call(rbind, dd)
+# Filter data
+dd &lt;- dd %&gt;% filter(!is.na(DaysAfterPlanting))
+# Prep data for plotting
+locs &lt;- c(&quot;Rosthern, Canada&quot;, &quot;Sutherland, Canada&quot;, &quot;Central Ferry, USA&quot;,
+          &quot;Bhopal, India&quot;,&quot;Jessore, Bangladesh&quot;,&quot;Bardiya, Nepal&quot;,
+          &quot;Marchouch, Morocco&quot;, &quot;Cordoba, Spain&quot;, &quot;Metaponto, Italy&quot;)
+dd &lt;- dd %&gt;% 
+  mutate(Value = as.numeric(Value)) %&gt;% 
+  filter(!is.na(Value)) %&gt;%
+  mutate(Expt = paste(Location, Year),
+         Time = ifelse(is.na(Time) | Time == &quot;&quot;, &quot;12:00:00&quot;, as.character(Time)),
+         Date = as.Date(Date),
+         DateTime = as.POSIXct(paste(Date, Time)),
+         Location = factor(Location, levels = locs),
+         LoggerID = factor(LoggerID, levels = unique(.$LoggerID)) )
+# Create a color palette
+myCols &lt;- c(&quot;darkgreen&quot;, &quot;darkred&quot;, &quot;coral3&quot;, &quot;deeppink3&quot;, &quot;darkcyan&quot;,
+          &quot;burlywood4&quot;, &quot;darkslateblue&quot;, &quot;darkmagenta&quot;, &quot;darkgoldenrod3&quot;)
+# View table
+dd %&gt;% as_tibble()</code></pre>
+<pre><code>## # A tibble: 355,207 x 11
+##    Location       Year Date       Time     LoggerID      Measurement Unit  Value
+##    &lt;fct&gt;         &lt;int&gt; &lt;date&gt;     &lt;chr&gt;    &lt;fct&gt;         &lt;fct&gt;       &lt;fct&gt; &lt;dbl&gt;
+##  1 Bardiya, Nep~  2016 2016-11-14 06:44:24 Weather Stat~ Day Length  Hours  10.6
+##  2 Bardiya, Nep~  2016 2016-11-15 06:45:36 Weather Stat~ Day Length  Hours  10.6
+##  3 Bardiya, Nep~  2016 2016-11-16 06:46:12 Weather Stat~ Day Length  Hours  10.6
+##  4 Bardiya, Nep~  2016 2016-11-17 06:46:48 Weather Stat~ Day Length  Hours  10.6
+##  5 Bardiya, Nep~  2016 2016-11-18 06:48:00 Weather Stat~ Day Length  Hours  10.6
+##  6 Bardiya, Nep~  2016 2016-11-19 06:48:36 Weather Stat~ Day Length  Hours  10.5
+##  7 Bardiya, Nep~  2016 2016-11-20 06:49:12 Weather Stat~ Day Length  Hours  10.5
+##  8 Bardiya, Nep~  2016 2016-11-21 06:50:24 Weather Stat~ Day Length  Hours  10.5
+##  9 Bardiya, Nep~  2016 2016-11-22 06:51:00 Weather Stat~ Day Length  Hours  10.5
+## 10 Bardiya, Nep~  2016 2016-11-23 06:51:36 Weather Stat~ Day Length  Hours  10.5
+## # ... with 355,197 more rows, and 3 more variables: DaysAfterPlanting &lt;int&gt;,
+## #   Expt &lt;chr&gt;, DateTime &lt;dttm&gt;</code></pre>
+<pre class="r"><code># List experiments
+dd %&gt;% distinct(Location, Year)</code></pre>
+<pre><code>##               Location Year
+## 1       Bardiya, Nepal 2016
+## 2       Bardiya, Nepal 2017
+## 3        Bhopal, India 2016
+## 4        Bhopal, India 2017
+## 5   Central Ferry, USA 2017
+## 6   Central Ferry, USA 2018
+## 7       Cordoba, Spain 2016
+## 8       Cordoba, Spain 2017
+## 9  Jessore, Bangladesh 2016
+## 10 Jessore, Bangladesh 2017
+## 11  Marchouch, Morocco 2016
+## 12  Marchouch, Morocco 2017
+## 13    Metaponto, Italy 2016
+## 14    Metaponto, Italy 2017
+## 15    Rosthern, Canada 2016
+## 16    Rosthern, Canada 2017
+## 17  Sutherland, Canada 2016
+## 18  Sutherland, Canada 2017
+## 19  Sutherland, Canada 2018</code></pre>
+<pre class="r"><code>#List Measurements from a single experiment
+dd %&gt;% filter(Location == &quot;Sutherland, Canada&quot;, Year == 2016) %&gt;% 
+  distinct(Measurement)</code></pre>
+<pre><code>##               Measurement
+## 1              Day Length
+## 2             Temperature
+## 3       Relative Humidity
+## 4           Precipitation
+## 5               Dew Point
+## 6       Rain Accumulation
+## 7         Solar Radiation
+## 8     Barometric Pressure
+## 9           Soil Moisture
+## 10   Soil Temperature 5cm
+## 11  Soil Temperature 10cm
+## 12  Soil Temperature 20cm
+## 13  Soil Temperature 50cm
+## 14 Soil Temperature 100cm</code></pre>
+<pre class="r"><code># List data logger names from a single experiment
+dd %&gt;% filter(Location == &quot;Sutherland, Canada&quot;, Year == 2016) %&gt;% 
+  distinct(LoggerID)</code></pre>
+<pre><code>##                 LoggerID
+## 1        Weather Station
+## 2       Weather Station1
+## 3       Weather Station2
+## 4       Weather Station3
+## 5               IButton1
+## 6               IButton2
+## 7               IButton3
+## 8                   Hobo
+## 9 Kernen Weather Station</code></pre>
+<hr />
+</div>
+<div id="summarize-data" class="section level1">
+<h1>Summarize data</h1>
+<p>Calucate min, mean and max for each measurement</p>
+<pre class="r"><code>xx &lt;- dd %&gt;% 
+  group_by(Location, Year, Date, Measurement) %&gt;%
+  summarise_at(vars(Value), funs(min, mean, max)) %&gt;%
+  ungroup()
+str(xx)</code></pre>
+<pre><code>## tibble [18,795 x 7] (S3: tbl_df/tbl/data.frame)
+##  $ Location   : Factor w/ 9 levels &quot;Rosthern, Canada&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Year       : int [1:18795] 2016 2016 2016 2016 2016 2016 2016 2016 2016 2016 ...
+##  $ Date       : Date[1:18795], format: &quot;2016-05-06&quot; &quot;2016-05-06&quot; ...
+##  $ Measurement: Factor w/ 64 levels &quot;Day Length&quot;,&quot;Maximum Temperature&quot;,..: 1 6 1 6 1 6 1 6 1 6 ...
+##  $ min        : num [1:18795] 15.1 3 15.2 0 15.2 ...
+##  $ mean       : num [1:18795] 15.1 11.1 15.2 12.8 15.2 ...
+##  $ max        : num [1:18795] 15.1 18 15.2 26 15.2 ...</code></pre>
+<hr />
+</div>
+<div id="plot-all-data" class="section level1">
+<h1>Plot all data</h1>
+<pre class="r"><code># Filter data
+xx &lt;- dd %&gt;% filter(Location == &quot;Sutherland, Canada&quot;, Year == 2016)
+# Plot graph
+mp &lt;- ggplot(xx, aes(x = DateTime, y = Value, color = LoggerID)) +
+  geom_line() + 
+  geom_point(size = 0.5) +
+  facet_wrap(Measurement + Unit ~ ., scales = &quot;free_y&quot;, switch = &quot;y&quot;,
+             ncol = 1, labeller = label_wrap_gen(width = 10)) +
+  theme_agData(strip.placement = &quot;outside&quot;, legend.position = &quot;bottom&quot;) +
+  scale_x_datetime(date_breaks = &quot;1 month&quot;, date_minor_breaks = &quot;1 day&quot;,
+                   date_labels = &quot;%b %Y&quot;) +
+  scale_colour_manual(values = myCols) +
+  labs(title = &quot;Sutherland, Canada 2016&quot;, y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: AGILE&quot;)
+ggsave(&quot;envdata_01.png&quot;, mp, width = 12, height = 15, limitsize = F)</code></pre>
+<p><img src="envdata_01.png" /></p>
+<hr />
+</div>
+<div id="temperature" class="section level1">
+<h1>Temperature</h1>
+<p>Plot and calculate daily min, mean and max</p>
+<pre class="r"><code># Filter data
+xx &lt;- dd %&gt;% filter(Location == &quot;Sutherland, Canada&quot;, Year == 2016,
+                    Measurement == &quot;Temperature&quot;)
+# Plot graph
+mp &lt;- ggplot(xx, aes(x = DateTime, y = Value, color = LoggerID)) +
+  geom_line() + 
+  geom_point(size = 0.5) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  scale_colour_manual(values = myCols) +
+  scale_x_datetime(date_labels = &quot;%b %Y&quot; , date_breaks = &quot;1 month&quot;) +
+  labs(title = &quot;Sutherland, Canada 2016&quot;, y = &quot;Temperautre (C)&quot;, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: AGILE&quot;)
+ggsave(&quot;envdata_02.png&quot;, mp, width = 7, height = 5)</code></pre>
+<p><img src="envdata_02.png" /></p>
+<hr />
+<p>Plot temperatures for one month (July 2016)</p>
+<pre class="r"><code>mp &lt;- mp + 
+  scale_x_datetime(date_breaks = &quot;1 month&quot;, date_minor_breaks = &quot;1 day&quot;, 
+                   date_labels = &quot;%b %Y&quot; , 
+                   limits = as.POSIXct(c(&quot;2016-07-01&quot;,&quot;2016-08-01&quot;))) +
+  ylim(c(5,45))
+ggsave(&quot;envdata_03.png&quot;, mp, width = 7, height = 5)</code></pre>
+<p><img src="envdata_03.png" /></p>
+<hr />
+<p>Calculate daily mean for each data logger</p>
+<pre class="r"><code>yy &lt;- xx %&gt;% 
+  group_by(LoggerID, Date) %&gt;%
+  summarise(Value = mean(Value)) %&gt;%
+  spread(LoggerID, Value) %&gt;% 
+  mutate(Temp_Mean = rowMeans(select(.,-Date), na.rm = T))
+str(yy)</code></pre>
+<pre><code>## tibble [115 x 7] (S3: tbl_df/tbl/data.frame)
+##  $ Date                  : Date[1:115], format: &quot;2016-04-27&quot; &quot;2016-04-28&quot; ...
+##  $ Weather Station       : num [1:115] NA NA NA NA NA NA NA NA NA NA ...
+##  $ IButton2              : num [1:115] NA NA 18.3 16.7 16.8 ...
+##  $ IButton3              : num [1:115] NA NA 17.5 16.7 16.9 ...
+##  $ Hobo                  : num [1:115] NA NA NA NA NA ...
+##  $ Kernen Weather Station: num [1:115] 6.43 8.19 8.94 9.84 11.01 ...
+##  $ Temp_Mean             : num [1:115] 6.43 8.19 14.93 14.4 14.91 ...</code></pre>
+<p>Calculate daily min, mean and max from specific data loggers</p>
+<pre class="r"><code>yy &lt;- xx %&gt;% 
+  filter(LoggerID %in% c(&quot;Ibutton2&quot;,&quot;IButton3&quot;,&quot;Hobo&quot;)) %&gt;% 
+  group_by(Location, Date) %&gt;% 
+  summarise_at(vars(Value), funs(min, mean, max), na.rm = T) %&gt;%
+  rename(Temp_min = min, Temp_mean = mean, Temp_max = max)
+str(yy)</code></pre>
+<pre><code>## grouped_df [113 x 5] (S3: grouped_df/tbl_df/tbl/data.frame)
+##  $ Location : Factor w/ 9 levels &quot;Rosthern, Canada&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ Date     : Date[1:113], format: &quot;2016-04-29&quot; &quot;2016-04-30&quot; ...
+##  $ Temp_min : num [1:113] 8.04 2.52 3.02 7.03 4.53 ...
+##  $ Temp_mean: num [1:113] 17.5 16.7 16.9 22.2 21.8 ...
+##  $ Temp_max : num [1:113] 27.1 35.5 35 41 46.5 ...
+##  - attr(*, &quot;groups&quot;)= tibble [1 x 2] (S3: tbl_df/tbl/data.frame)
+##   ..$ Location: Factor w/ 9 levels &quot;Rosthern, Canada&quot;,..: 2
+##   ..$ .rows   : list&lt;int&gt; [1:1] 
+##   .. ..$ : int [1:113] 1 2 3 4 5 6 7 8 9 10 ...
+##   .. ..@ ptype: int(0) 
+##   ..- attr(*, &quot;.drop&quot;)= logi TRUE</code></pre>
+<p>Plot daily mean temperatures for each experiment</p>
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Measurement == &quot;Temperature&quot;, Year != 2018) %&gt;% 
+  group_by(Location, Year, Expt, DaysAfterPlanting) %&gt;% 
+  summarise(Mean = mean(Value))
+# Plot graph
+mp &lt;- ggplot(xx, aes(x = DaysAfterPlanting, y = Mean, color = Location)) + 
+  geom_smooth(method = &quot;loess&quot;, size = 2) + 
+  facet_grid(Year ~ .) +
+  scale_color_manual(values = myCols) +
+  theme_agData() +
+  labs(title = &quot;Temperature&quot;, 
+       y = &quot;Degrees Celsius&quot;, x = &quot;Days After Planting&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: AGILE&quot;)
+ggsave(&quot;envdata_04.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="envdata_04.png" /></p>
+<hr />
+</div>
+<div id="day-lengths" class="section level1">
+<h1>Day Lengths</h1>
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Measurement == &quot;Day Length&quot;, Year != 2018) %&gt;% 
+  group_by(Location, Year, Expt, DaysAfterPlanting) %&gt;% 
+  summarise(Mean = mean(Value) )
+# Plot graph
+mp &lt;- ggplot(xx, aes(x = DaysAfterPlanting, y = Mean, color = Location)) + 
+  geom_line(size = 2) +
+  facet_grid(Year ~ .) +
+  scale_color_manual(values = myCols) +
+  theme_agData() +
+  labs(title = &quot;Day Lengths&quot;,
+       y = &quot;Hours&quot;, x = &quot;Days After Planting&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: AGILE&quot;)
+ggsave(&quot;envdata_05.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="envdata_05.png" /></p>
+<hr />
+</div>
+<div id="precipitation" class="section level1">
+<h1>Precipitation</h1>
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Measurement == &quot;Precipitation&quot;) %&gt;%
+  group_by(Expt, Location, Year) %&gt;%
+  summarise(Rainfall = sum(Value)) %&gt;%
+  arrange(Rainfall) %&gt;%
+  ungroup() %&gt;%
+  mutate(Expt = factor(Expt, levels = Expt),
+         Year = factor(Year))
+# Plot graph
+mp &lt;- ggplot(xx, aes(x = Location, y = Rainfall, fill = Year)) + 
+  geom_bar(stat = &quot;identity&quot;, 
+           position = position_dodge2(preserve = &quot;single&quot;)) + 
+  scale_fill_manual(values = myCols) +
+  theme_agData() +
+  coord_flip() +
+  labs(title = &quot;Total Precipitation&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: AGILE&quot;)
+ggsave(&quot;envdata_06.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="envdata_06.png" /></p>
+<hr />
+<pre class="r"><code># Prep data
+xx &lt;- dd %&gt;% 
+  filter(Measurement == &quot;Precipitation&quot;, Year == 2016) %&gt;% 
+  group_by(Location, Year, Expt, Date, DaysAfterPlanting) %&gt;% 
+  summarise(Value = sum(Value))
+# Plot graph
+mp &lt;- ggplot(xx, aes(x = DaysAfterPlanting, y = Value)) + 
+  geom_bar(stat = &quot;identity&quot;, fill = &quot;darkblue&quot;) +
+  facet_wrap(Location~., ncol = 1) +
+  theme_agData() +
+  labs(title = &quot;Precipitation&quot;, y = &quot;mm&quot;, x = &quot;Days After Planting&quot;,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: AGILE&quot;)
+ggsave(&quot;envdata_07.png&quot;, mp, width = 6, height = 8)</code></pre>
+<p><img src="envdata_07.png" /></p>
+<hr />
+</div>
+<div id="temperature-day-length-rainfall" class="section level1">
+<h1>Temperature, Day Length &amp; Rainfall</h1>
+<p>Temperature and Daylength will require separate axes so we will have to rescale the data.</p>
+<p><span class="math display">\[y_{scaled}=(y_{2i}-min(y_2))*\frac{max(y_1)-min(y_1)}{max(y_2)-min(y_2)}\]</span></p>
+<p><span class="math display">\[y_{2i}=y_{scaled}*\frac{max(y_2)-min(y_2)}{max(y_1)-min(y_1)}+min(y_2)\]</span></p>
+<p>e.g.,</p>
+<p><span class="math display">\[12=(11.333-9.11)*\frac{(40-0)}{16.52-9.11})\]</span></p>
+<p><span class="math display">\[11.333=12*\frac{16.52-9.11}{40-0}+9.11\]</span></p>
+<pre class="r"><code># Prep rainfall data
+locs &lt;- c(&quot;Sutherland, Canada&quot;, &quot;Metaponto, Italy&quot;, &quot;Bhopal, India&quot;)
+xR &lt;- dd %&gt;% 
+  filter(Location %in% locs, Year == 2017, 
+         Measurement == &quot;Precipitation&quot;, Value &gt; 0) %&gt;%
+  group_by(Expt, Date, DaysAfterPlanting) %&gt;% 
+  summarise(Value = sum(Value))
+# Prep temperature and daylength data
+xx &lt;- dd %&gt;% 
+  filter(Location %in% locs, Year == 2017,
+         Measurement %in% c(&quot;Temperature&quot;, &quot;Day Length&quot;)) %&gt;% 
+  group_by(Expt, Measurement, Date) %&gt;% 
+  summarise_at(vars(Value), funs(min, mean, max)) %&gt;%
+  ungroup() %&gt;%
+  gather(Calc, Value, min, mean, max) %&gt;%
+  mutate(Measurement = plyr::mapvalues(Measurement, 
+           c(&quot;Temperature&quot;, &quot;Day Length&quot;), c(&quot;Temp&quot;, &quot;DayLen&quot;)),
+         Measurement = paste(Measurement, Calc, sep=&quot;_&quot;)) %&gt;%
+  select(-Calc) %&gt;%
+  filter(!Measurement %in% c(&quot;DayLen_min&quot;, &quot;DayLen_max&quot;)) %&gt;%
+  spread(Measurement, Value) %&gt;%
+  mutate(DayLen_Rescaled = scales::rescale(DayLen_mean, to = c(0, 45)))
+# Print
+str(xx)</code></pre>
+<pre><code>## tibble [450 x 7] (S3: tbl_df/tbl/data.frame)
+##  $ Expt           : chr [1:450] &quot;Bhopal, India 2017&quot; &quot;Bhopal, India 2017&quot; &quot;Bhopal, India 2017&quot; &quot;Bhopal, India 2017&quot; ...
+##  $ Date           : Date[1:450], format: &quot;2017-11-09&quot; &quot;2017-11-10&quot; ...
+##  $ DayLen_mean    : num [1:450] 11 11 11 10.9 10.9 ...
+##  $ Temp_max       : num [1:450] 30.5 29.6 27.3 28.1 28.9 29.5 30.5 28.4 26.7 25.3 ...
+##  $ Temp_mean      : num [1:450] 26.6 25.6 24 23.6 24.8 ...
+##  $ Temp_min       : num [1:450] 22.6 21.7 20.7 19.2 20.6 19.3 21.6 20.3 20.5 19.4 ...
+##  $ DayLen_Rescaled: num [1:450] 11.5 11.4 11.3 11.2 11.1 ...</code></pre>
+<pre class="r"><code># Collect values for rescaling seconday axis
+range(xx$DayLen_mean)</code></pre>
+<pre><code>## [1]  9.11 16.52</code></pre>
+<pre class="r"><code># Plot graph
+mp &lt;- ggplot(xx, aes(x = Date, y = Temp_mean)) + 
+  facet_wrap(Expt ~ ., ncol = 1, scales = &quot;free_x&quot;) + 
+  geom_line(color = &quot;Red&quot;) +
+  geom_line(aes(y = DayLen_Rescaled), color = &quot;darkblue&quot;) +
+  geom_bar(data = xR, aes(y = Value), stat = &quot;identity&quot;, fill = &quot;darkblue&quot;) +
+  geom_ribbon(aes(ymin = Temp_min, ymax = Temp_max), 
+              fill = alpha(&quot;Red&quot;, 0.25), 
+              color = alpha(&quot;Red&quot;, 0.25) ) +
+  scale_x_date(name = NULL, date_labels = &quot;%b&quot; , date_breaks = &quot;1 month&quot;) +
+  scale_y_continuous(name = &quot;\u00B0Celcius / mm Rain&quot;,
+    sec.axis = sec_axis(~ . * (16.62-9.11) / (45-0) + 9.11, 
+                        breaks = c(10, 12, 14, 16), name = &quot;Hours&quot;) ) +
+  coord_cartesian(ylim=c(0, 45)) +
+  theme_agData() +
+  labs(caption = &quot;\xa9 www.dblogr.com/  |  Data: AGILE&quot;)
+ggsave(&quot;envdata_08.png&quot;, mp, width = 6, height = 5.5)</code></pre>
+<p><img src="envdata_08.png" /></p>
+<hr />
+</div>
+<div id="soil-temperature" class="section level1">
+<h1>Soil Temperature</h1>
+<pre class="r"><code># Prep data
+mm &lt;- c(&quot;Soil Temperature 5cm&quot;,  &quot;Soil Temperature 10cm&quot;,
+        &quot;Soil Temperature 20cm&quot;, &quot;Soil Temperature 50cm&quot;,
+        &quot;Soil Temperature 100cm&quot;)
+xx &lt;- dd %&gt;% 
+  filter(Location == &quot;Sutherland, Canada&quot;, Year == 2016, 
+         Measurement %in% mm) %&gt;%
+  mutate(Measurement = factor(Measurement, levels = mm),
+         Measurement = plyr::mapvalues(Measurement, mm, 
+           c(&quot;5cm&quot;,&quot;10cm&quot;,&quot;20cm&quot;,&quot;50cm&quot;,&quot;100cm&quot;)))
+# Plot
+mp &lt;- ggplot(xx, aes(x = DateTime, y = Value, color = Measurement)) +
+  geom_line() +
+  scale_color_manual(values = myCols) +
+  theme_agData() +
+  labs(title = &quot;Soil Temperatures: Sutherland, Canada 2016&quot;,
+       y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: AGILE&quot;)
+ggsave(&quot;envdata_09.png&quot;, mp, width = 6, height = 4)</code></pre>
+<p><img src="envdata_09.png" /></p>
+<hr />
+</div>
+<div id="each-experiment" class="section level1">
+<h1>Each experiment</h1>
+<pre class="r"><code># Create Plotting function
+envPlot &lt;- function(xx) {
+  ggplot(xx, aes(x = DateTime, y = Value, color = LoggerID)) +
+  geom_line() + 
+  geom_point(size = 0.5) +
+  facet_grid(Measurement + Unit ~ ., scales = &quot;free_y&quot;, switch = &quot;y&quot;,
+             labeller = label_wrap_gen(width = 10)) +
+  theme_agData(strip.placement = &quot;outside&quot;, legend.position = &quot;bottom&quot;) +
+  scale_x_datetime(date_labels = &quot;%b %Y&quot; , date_breaks = &quot;1 month&quot;) +
+  scale_color_manual(values = myCols) +
+  labs(title = paste(unique(xx$Location), unique(xx$Year)), 
+       y = NULL, x = NULL,
+       caption = &quot;\xa9 www.dblogr.com/  |  Data: AGILE&quot;)
+}</code></pre>
+<hr />
+<div id="sutherland-canada-2016" class="section level2">
+<h2>Sutherland, Canada 2016</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Sutherland, Canada&quot;, Year == 2016))
+ggsave(&quot;envdata_expt_01.png&quot;, mp, width = 12, height = 15)</code></pre>
+<p><img src="envdata_expt_01.png" /></p>
+<hr />
+</div>
+<div id="sutherland-canada-2017" class="section level2">
+<h2>Sutherland, Canada 2017</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Sutherland, Canada&quot;, Year == 2017))
+ggsave(&quot;envdata_expt_02.png&quot;, mp, width = 12, height = 11)</code></pre>
+<p><img src="envdata_expt_02.png" /></p>
+<hr />
+</div>
+<div id="sutherland-canada-2018" class="section level2">
+<h2>Sutherland, Canada 2018</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Sutherland, Canada&quot;, Year == 2018))
+ggsave(&quot;envdata_expt_03.png&quot;, mp, width = 12, height = 11)</code></pre>
+<p><img src="envdata_expt_03.png" /></p>
+<hr />
+</div>
+<div id="rosthern-canada-2016" class="section level2">
+<h2>Rosthern, Canada 2016</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Rosthern, Canada&quot;, Year == 2016))
+ggsave(&quot;envdata_expt_04.png&quot;, mp, width = 12, height = 10)</code></pre>
+<p><img src="envdata_expt_04.png" /></p>
+<hr />
+</div>
+<div id="rosthern-canada-2017" class="section level2">
+<h2>Rosthern, Canada 2017</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Rosthern, Canada&quot;, Year == 2017))
+ggsave(&quot;envdata_expt_05.png&quot;, mp, width = 12, height = 10)</code></pre>
+<p><img src="envdata_expt_05.png" /></p>
+<hr />
+</div>
+<div id="central-ferry-usa-2017" class="section level2">
+<h2>Central Ferry, USA 2017</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Central Ferry, USA&quot;, Year == 2017))
+ggsave(&quot;envdata_expt_06.png&quot;, mp, width = 12, height = 23)</code></pre>
+<p><img src="envdata_expt_06.png" /></p>
+<hr />
+</div>
+<div id="central-ferry-usa-2018" class="section level2">
+<h2>Central Ferry, USA 2018</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Central Ferry, USA&quot;, Year == 2018))
+ggsave(&quot;envdata_expt_07.png&quot;, mp, width = 12, height = 10)</code></pre>
+<p><img src="envdata_expt_07.png" /></p>
+<hr />
+</div>
+<div id="bhopal-india-2016" class="section level2">
+<h2>Bhopal, India 2016</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Bhopal, India&quot;, Year == 2016))
+ggsave(&quot;envdata_expt_08.png&quot;, mp, width = 12, height = 10)</code></pre>
+<p><img src="envdata_expt_08.png" /></p>
+<hr />
+</div>
+<div id="bhopal-india-2017" class="section level2">
+<h2>Bhopal, India 2017</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Bhopal, India&quot;, Year == 2017))
+ggsave(&quot;envdata_expt_09.png&quot;, mp, width = 12, height = 5)</code></pre>
+<p><img src="envdata_expt_09.png" /></p>
+<hr />
+</div>
+<div id="jessore-bangladesh-2016" class="section level2">
+<h2>Jessore, Bangladesh 2016</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Jessore, Bangladesh&quot;, Year == 2016))
+ggsave(&quot;envdata_expt_10.png&quot;, mp, width = 12, height = 8)</code></pre>
+<p><img src="envdata_expt_10.png" /></p>
+<hr />
+</div>
+<div id="jessore-bangladesh-2017" class="section level2">
+<h2>Jessore, Bangladesh 2017</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Jessore, Bangladesh&quot;, Year == 2017))
+ggsave(&quot;envdata_expt_11.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="envdata_expt_11.png" /></p>
+<hr />
+</div>
+<div id="bardiya-nepal-2016" class="section level2">
+<h2>Bardiya, Nepal 2016</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Bardiya, Nepal&quot;, Year == 2016))
+ggsave(&quot;envdata_expt_12.png&quot;, mp, width = 12, height = 5)</code></pre>
+<p><img src="envdata_expt_12.png" /></p>
+<hr />
+</div>
+<div id="bardiya-nepal-2017" class="section level2">
+<h2>Bardiya, Nepal 2017</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Bardiya, Nepal&quot;, Year == 2017))
+ggsave(&quot;envdata_expt_13.png&quot;, mp, width = 12, height = 4)</code></pre>
+<p><img src="envdata_expt_13.png" /></p>
+<hr />
+</div>
+<div id="marchouch-morocco-2016" class="section level2">
+<h2>Marchouch, Morocco 2016</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Marchouch, Morocco&quot;, Year == 2016))
+ggsave(&quot;envdata_expt_14.png&quot;, mp, width = 12, height = 9)</code></pre>
+<p><img src="envdata_expt_14.png" /></p>
+<hr />
+</div>
+<div id="marchouch-morocco-2017" class="section level2">
+<h2>Marchouch, Morocco 2017</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Marchouch, Morocco&quot;, Year == 2017))
+ggsave(&quot;envdata_expt_15.png&quot;, mp, width = 12, height = 5)</code></pre>
+<p><img src="envdata_expt_15.png" /></p>
+<hr />
+</div>
+<div id="cordoba-spain-2016" class="section level2">
+<h2>Cordoba, Spain 2016</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Cordoba, Spain&quot;, Year == 2016))
+ggsave(&quot;envdata_expt_16.png&quot;, mp, width = 12, height = 6)</code></pre>
+<p><img src="envdata_expt_16.png" /></p>
+<hr />
+</div>
+<div id="cordoba-spain-2017" class="section level2">
+<h2>Cordoba, Spain 2017</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Cordoba, Spain&quot;, Year == 2017))
+ggsave(&quot;envdata_expt_17.png&quot;, mp, width = 12, height = 6)</code></pre>
+<p><img src="envdata_expt_17.png" /></p>
+<hr />
+</div>
+<div id="metaponto-italy-2016" class="section level2">
+<h2>Metaponto, Italy 2016</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Metaponto, Italy&quot;, Year == 2016))
+ggsave(&quot;envdata_expt_18.png&quot;, mp, width = 12, height = 12)</code></pre>
+<p><img src="envdata_expt_18.png" /></p>
+<hr />
+</div>
+<div id="metaponto-italy-2017" class="section level2">
+<h2>Metaponto, Italy 2017</h2>
+<pre class="r"><code>mp &lt;- envPlot(filter(dd, Location == &quot;Metaponto, Italy&quot;, Year == 2017))
+ggsave(&quot;envdata_expt_19.png&quot;, mp, width = 12, height = 11)</code></pre>
+<p><img src="envdata_expt_19.png" /></p>
+<hr />
+<p>© Derek Michael Wright 2020 <a href="https://dblogr.netlify.com/">www.dblogr.com/</a></p>
+</div>
+</div>

@@ -1,0 +1,158 @@
+---
+title: "Dual y-Axis"
+subtitle: "How to create a plot with dual y-axes in R"
+summary:  "How to create a plot with dual y-axes in R"
+date: "2021-07-03"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/academic/dual_y_axis)"
+tags: [ "dblogr", "R" ]
+weight: 3
+math: true
+codefolding_show: "show"
+image:
+  preview_only: true
+links:
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/academic/dual_y_axis.html"
+output:
+  rmarkdown::html_document:
+    toc: true
+---
+
+<script src="/rmarkdown-libs/font-awesome/js/script.js"></script>
+
+
+<hr />
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>In some cases, a graph with two y-axes is desired for visualizing two different sets of data. However, this is sometimes frowned upon since the required scaling of the data can be adjusted to fit the desired narrative.</p>
+<p><img src="examples.png" /></p>
+<p><em>Source: <a href="https://blog.datawrapper.de/dualaxis/" class="uri">https://blog.datawrapper.de/dualaxis/</a></em></p>
+<p>With that said, there still are situations were dual y-axes are appropriate. This vignette will show you how to do this in <code>R</code> with <code>ggplot2</code>, despite <a href="https://stackoverflow.com/questions/3099219/ggplot-with-2-y-axes-on-each-side-and-different-scales/3101876#3101876">the package authors disagreements</a>.</p>
+<hr />
+</div>
+<div id="prepare-data" class="section level1">
+<h1>Prepare data</h1>
+<a href="https://github.com/derekmichaelwright/dblogr/blob/master/content/academic/dual_y_axis_data.csv">
+<button class="btn btn-success"><i class="fa fa-save"></i> dual_y_axis_data.csv</button>
+</a>
+<pre class="r"><code># devtools::install_github(&quot;derekmichaelwright/agData&quot;)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+# Prep data
+xx &lt;- read.csv(&quot;dual_y_axis_data.csv&quot;) %&gt;% 
+  mutate(Date = as.Date(Date))
+as_tibble(xx)</code></pre>
+<pre><code>## # A tibble: 214 x 4
+##    Date       Day.Length Soil.Temperature Air.Temperature
+##    &lt;date&gt;          &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;
+##  1 2016-11-29       9.38             5.56            8.56
+##  2 2016-11-30       9.35             5.34            8.74
+##  3 2016-12-01       9.33             4.65            8.75
+##  4 2016-12-02       9.31             4.17            8.68
+##  5 2016-12-03       9.29             3.53            8.99
+##  6 2016-12-04       9.27             3.66           10.9 
+##  7 2016-12-05       9.26             3.21           10.6 
+##  8 2016-12-06       9.24             2.89            9.21
+##  9 2016-12-07       9.22             2.96           11.0 
+## 10 2016-12-08       9.21             3.02            9.90
+## # ... with 204 more rows</code></pre>
+<hr />
+</div>
+<div id="single-y-axis" class="section level1">
+<h1>Single y-axis</h1>
+<p>First lets create a plot of Air Temperature.</p>
+<pre class="r"><code>mp1 &lt;- ggplot(xx, aes(x = Date)) +
+  geom_line(aes(y = Air.Temperature, color = &quot;1&quot;), size = 1.25) +
+  scale_color_manual(name = NULL, values = &quot;darkred&quot;, labels = &quot;Air Temp&quot;) +
+  scale_x_date(date_labels = &quot;%b&quot; , date_breaks = &quot;1 month&quot;) +
+  labs(title = &quot;Environmental Data&quot;, y = &quot;Temperature (\u00B0C)&quot;, x = NULL) +
+  theme_agData(legend.position = &quot;bottom&quot;) +
+  labs(caption = &quot;\xa9 www.dblogr.com/  |  Data: AGILE&quot;)
+mp1</code></pre>
+<p><img src="/academic/dual_y_axis/dual_y_axis_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Now lets add a second set of data (Soil Temperature), in this case it uses the same unit as the first (°C).</p>
+<pre class="r"><code>mp2 &lt;- mp1 + 
+  geom_line(aes(y = Soil.Temperature, color = &quot;2&quot;), size = 1.25) +
+  scale_color_manual(name = NULL, values = c(&quot;darkred&quot;,&quot;red&quot;), 
+                     labels = c(&quot;Air Temp&quot;,&quot;Soil Temp&quot;))
+mp2</code></pre>
+<p><img src="/academic/dual_y_axis/dual_y_axis_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>But when we add another data set (Day Length) using different units (hours), problems arise.</p>
+<pre class="r"><code>mp3 &lt;- mp2 + 
+  geom_line(aes(y = Day.Length, color = &quot;3&quot;), size = 1.25) +
+  scale_color_manual(name = NULL, values = c(&quot;darkred&quot;,&quot;red&quot;,&quot;steelblue&quot;), 
+                     labels = c(&quot;Air Temp&quot;,&quot;Soil Temp&quot;,&quot;DayLength&quot;))
+mp3</code></pre>
+<p><img src="/academic/dual_y_axis/dual_y_axis_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<hr />
+</div>
+<div id="data-scaling" class="section level1">
+<h1>Data Scaling</h1>
+<p>In this case, the range of Day Length and Temperature are drastically different.</p>
+<pre class="r"><code>max(xx$Air.Temperature) - min(xx$Air.Temperature)</code></pre>
+<pre><code>## [1] 31.9055</code></pre>
+<pre class="r"><code>max(xx$Day.Length) - min(xx$Day.Length)</code></pre>
+<pre><code>## [1] 5.78</code></pre>
+<p>In order to present the data better, we need to rescale it</p>
+<p><span class="math display">\[y_{scaled}=(y_{2i}-min(y_2))*\frac{max(y_1)-min(y_1)}{max(y_2)-min(y_2)}+min(y_1)\]</span></p>
+<p>where:</p>
+<ul>
+<li>y<sub>1</sub> = Set of values you want to scale to</li>
+<li>y<sub>2</sub> = Set of values to be rescaled to min and max of y<sub>1</sub></li>
+<li>y<sub>2i</sub> = Value from the y<sub>2</sub> set to be rescaled</li>
+</ul>
+<p>in our case:</p>
+<ul>
+<li>y<sub>1</sub> = Air + Soil Temperature</li>
+<li>y<sub>2</sub> = Day Length</li>
+<li>y<sub>2i</sub> = Day Length on a specific day</li>
+</ul>
+<pre class="r"><code>y1_min &lt;- min(c(xx$Soil.Temperature, xx$Air.Temperature))
+y1_max &lt;- max(c(xx$Soil.Temperature, xx$Air.Temperature))
+y2_min &lt;- min(xx$Day.Length)
+y2_max &lt;- max(xx$Day.Length)
+xx &lt;- xx %&gt;%
+  mutate(Day.Length_scaled = (Day.Length - y2_min) * (y1_max - y1_min) / 
+                             (y2_max - y2_min) + y1_min)</code></pre>
+<p>Scaling the data can also be done with the <code>rescale</code> function from the <code>scales</code> package</p>
+<pre class="r"><code>xx &lt;- xx %&gt;% 
+  mutate(Day.Length_scaled = scales::rescale(Day.Length, to = c(y1_min, y1_max)))</code></pre>
+<pre class="r"><code>mp4 &lt;- mp3 + 
+  geom_line(data = xx, aes(y = Day.Length_scaled, color = &quot;4&quot;), size = 1.25) +
+  scale_color_manual(name = NULL, values = c(&quot;darkred&quot;,&quot;red&quot;,&quot;steelblue&quot;,&quot;darkblue&quot;), 
+                     labels = c(&quot;Air Temp&quot;,&quot;Soil Temp&quot;,&quot;Day Length&quot;,&quot;Day Length*&quot;))
+mp4</code></pre>
+<p><img src="/academic/dual_y_axis/dual_y_axis_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>That looks better. However, we still need to add the second y-axis, which will require some more math.</p>
+<p><span class="math display">\[y_{2i}=(y_{scaled}-min(y_1))*\frac{max(y_2)-min(y_2)}{max(y_1)-min(y_1)}+min(y_2)\]</span></p>
+<hr />
+</div>
+<div id="double-y-axis" class="section level1">
+<h1>Double y-axis</h1>
+<pre class="r"><code>mp5 &lt;- mp2 +
+  geom_line(data = xx, aes(y = Day.Length_scaled, color = &quot;4&quot;), size = 1.25) +
+  scale_color_manual(name = NULL, values = c(&quot;darkred&quot;,&quot;red&quot;,&quot;darkblue&quot;), 
+                     labels = c(&quot;Air Temp&quot;,&quot;Soil Temp&quot;,&quot;Day Length&quot;)) +
+  scale_y_continuous(sec.axis = sec_axis(~ (. - y1_min) * (y2_max - y2_min) / 
+                                           (y1_max - y1_min) + y2_min, 
+                                         name = &quot;Hours&quot;, breaks = 9:14))
+mp5</code></pre>
+<p><img src="/academic/dual_y_axis/dual_y_axis_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>To help better visualize this rescaling, we will use a simpler example.</p>
+<p><span class="math display">\[y_{scaled}=(y_{2i}-min(y_2))*\frac{max(y_1)-min(y_1)}{max(y_2)-min(y_2)}+min(y_1)\]</span></p>
+<p><span class="math display">\[y_{scaled}=(7.5-5)*\frac{40-20}{10-5}+20)=30\]</span></p>
+<p><span class="math display">\[y_{2i}=(y_{scaled}-min(y_1))*\frac{max(y_2)-min(y_2)}{max(y_1)-min(y_1)}+min(y_2)\]</span></p>
+<p><span class="math display">\[y_{2i}=(30-20)*\frac{10-5}{40-20}+5=7.5\]</span></p>
+<pre class="r"><code>xx &lt;- data.frame(x = 1:20, y = 1:20)
+ggplot(xx, aes(x = x, y = y)) + 
+  geom_hline(yintercept = 30, color = &quot;blue&quot;, size = 2) +
+  theme_agData(axis.text.y = element_text(color = &quot;red&quot;, size = 10, face = &quot;bold&quot;)) +
+  scale_y_continuous(limits = c(20, 40), 
+                     sec.axis = sec_axis(~ (. - 20) * (10 - 5) / (20 - 0) + 5,
+                        name = &quot;y2&quot;, breaks = 5:10)) +
+  labs(caption = &quot;\xa9 www.dblogr.com/  |  Data: AGILE&quot;)</code></pre>
+<p><img src="/academic/dual_y_axis/dual_y_axis_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<hr />
+<p>© Derek Michael Wright <a href="https://dblogr.com/">www.dblogr.com/</a></p>
+</div>
