@@ -3,7 +3,7 @@ title: "R Tutorial Vignette"
 subtitle: "An introduction to R"
 summary:  "An introduction to R"
 date: "`r Sys.Date()`"
-author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/r_tutorial)"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/#posts_academic)"
 tags: [ "Academic", "AGILE", "Tutorial", "Featured" ]
 weight: 1
 codefolding_show: "show"

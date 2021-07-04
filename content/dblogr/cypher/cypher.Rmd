@@ -1,0 +1,69 @@
+---
+title: "Cypher"
+subtitle: "An R package for coding messages"
+summary:  "An R package for coding messages"
+date: "`r Sys.Date()`"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/#posts_dblogr)"
+tags: [ "dblogr", "R" ]
+weight: 7
+codefolding_show: "show"
+image:
+  preview_only: true
+links:
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/dblogr/cypher.html"
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+```
+
+---
+
+`cypher`: an `R` package for coding secret messages
+
+# Installation
+
+```{r eval = F}
+devtools::install_github("derekmichaelwright/cypher")
+```
+
+```{r}
+library(cypher)
+```
+
+# Code Message
+
+```{r}
+xx <- cypher_code("This is a secret coded message")
+xx
+```
+
+# Decoded Message
+
+```{r}
+cypher_decode(xx)
+```
+
+---
+
+# Personalize
+
+A custom cypher for this package can be recreated using the following code. However, it should be noted that the recipient will need the `Data/cyphers.RData` file to decode the messages.
+
+```{r eval = F}
+cyphers <- list()
+for(i in 1:999) {
+  cyphers[i] <- paste(round(runif(1000, 0, 9)),collapse = "")
+}
+save(cyphers, file = "Data/cyphers.RData")
+```
+
+---
+
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

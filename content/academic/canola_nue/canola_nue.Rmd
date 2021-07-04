@@ -3,7 +3,7 @@ title: "MSc Thesis - Canola NUE"
 subtitle: "Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)"
 summary:  "Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)"
 date: "`r Sys.Date()`"
-author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/canola_nue)"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/#posts_academic)"
 tags: [ "Academic", "Literature" ]
 math: true
 weight: 3

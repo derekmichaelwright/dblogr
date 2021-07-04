@@ -3,7 +3,7 @@ title: "Global Cotton Production"
 subtitle: "Graphs of cotton production using FAO data"
 summary:  "Graphs of cotton production using FAO data"
 date: "`r Sys.Date()`"
-author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/cotton/)"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/#posts_agdata)"
 tags: [ "agData", "Cotton" ]
 weight: 3
 codefolding_show: "hide"

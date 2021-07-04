@@ -3,7 +3,7 @@ title: "Crop Production Germany"
 subtitle: "Graphs for crop production in Germany with FAO data"
 summary:  "Graphs for crop production in Germany with FAO data"
 date: "`r Sys.Date()`"
-author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/crops_germany/)"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/#posts_agdata)"
 tags: [ "agData", "Regions" ]
 weight: 4
 codefolding_show: "hide"

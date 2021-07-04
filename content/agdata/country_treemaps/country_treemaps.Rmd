@@ -3,7 +3,7 @@ title: "Country Treemaps"
 subtitle: "Graphs of crops produced by specific countries"
 summary:  "Graphs of crops produced by specific countries"
 date: "`r Sys.Date()`"
-author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/agdata/country_treemaps/)"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/#posts_agdata)"
 tags: [ "agData", "Regions" ]
 weight: 3
 codefolding_show: "hide"

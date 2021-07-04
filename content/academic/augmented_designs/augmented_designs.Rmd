@@ -3,7 +3,7 @@ title: "Augmented Designs"
 subtitle: "Exploration of the data analysis of augmented designs"
 summary:  "Exploration of the data analysis of augmented designs"
 date: "`r Sys.Date()`"
-author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/augmented_designs)"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/#posts_academic)"
 tags: [ "dblogr", "R" ]
 draft: true
 weight: 7

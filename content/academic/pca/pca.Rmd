@@ -3,7 +3,7 @@ title: "Principal Component Analysis"
 subtitle: "Principal component analysis with R and the Iris data set"
 summary:  "Principal component analysis with R and the Iris data set"
 date: "`r Sys.Date()`"
-author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/pca)"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/#posts_academic)"
 tags: [ "Academic", "Tutorial", "R" ]
 weight: 4
 image:

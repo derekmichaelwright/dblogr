@@ -3,7 +3,7 @@ title: "Dual y-Axis"
 subtitle: "How to create a plot with dual y-axes in R"
 summary:  "How to create a plot with dual y-axes in R"
 date: "`r Sys.Date()`"
-author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/academic/dual_y_axis)"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/#posts_academic)"
 tags: [ "dblogr", "R" ]
 weight: 3
 math: true

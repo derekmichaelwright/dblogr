@@ -1,0 +1,350 @@
+---
+title: "Global Food Security"
+subtitle: "Graphs of of crop production per capita using FAO data"
+summary:  "Graphs of of crop production per capita using FAO data"
+date: "`r Sys.Date()`"
+author: "Derek Michael Wright <wrightmderek@gmail.com> [www.dblogr.com/](https://dblogr.com/#posts_agdata)"
+tags: [ "agData", "Regions" ]
+weight: 3
+codefolding_show: "hide"
+image:
+  preview_only: true
+links:
+  - icon: "file-code"
+    icon_pack: "far"
+    name: "HTML < R Script Vignette >"
+    url: "https://derekmichaelwright.github.io/htmls/agdata/global_food_security.html"
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+```
+
+---
+
+```{r}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(gganimate)
+```
+
+---
+
+# Prep data
+
+```{r}
+# Prep Data
+areas <- c("World", agData_FAO_Country_Table %>% pull(SubRegion) %>% unique() %>% as.character())
+crops <- c("Cereals", "Pulses", "Roots and Tubers")
+colors <- c("darkgoldenrod2", "darkgreen", "darkred", "darkblue")
+dd <- agData_FAO_Crops2 %>% select(-Unit) %>%
+  filter(Area %in% areas, Crop %in% crops) %>%
+  spread(Measurement, Value)
+pp <- agData_FAO_Population %>%
+  filter(Measurement == "Total") %>%
+  select(Area, Year, Population=Value)
+dd <- left_join(dd, pp, by = c("Area", "Year")) %>%
+  left_join(agData_FAO_Region_Table, by = c("Area"="SubRegion")) %>%
+  mutate(TonnesPerPerson = Production / Population,
+         Crop = plyr::mapvalues(Crop, crops, c("Cereals", "Pulses", "Tubers")),
+         Area = plyr::mapvalues(Area, "Australia and New Zealand", "Au and NZ"))
+for(i in 1:nrow(dd)) {
+  p1961 <- dd %>% filter(Area == dd$Area[i], Crop == dd$Crop[i], Year == 1961) %>% 
+    pull(Population)
+  dd$Population_R1961[i] <- ifelse(length(p1961)>0, 100*(dd$Population[i] - p1961) / p1961, NA)
+  p1961 <- dd %>% filter(Area == dd$Area[i], Crop == dd$Crop[i], Year == 1961) %>% 
+    pull(Production)
+  dd$Production_R1961[i] <- ifelse(length(p1961), 100*(dd$Production[i] - p1961) / p1961, NA)
+  p1961 <- dd %>% filter(Area == dd$Area[i], Crop == dd$Crop[i], Year == 1961) %>% 
+    pull(Yield)
+  dd$Yield_R1961[i] <- ifelse(length(p1961), 100*(dd$Yield[i] - p1961) / p1961, NA)
+  p1961 <- dd %>% filter(Area == dd$Area[i], Crop == dd$Crop[i], Year == 1961) %>% 
+    pull(`Area harvested`)
+  dd$Area_R1961[i] <- ifelse(length(p1961), 100*(dd$`Area harvested`[i] - p1961) / p1961, NA)
+}
+```
+
+---
+
+# Relative to Population
+
+## Crops
+
+```{r}
+# Prep data
+xx <- dd %>% filter(Area == "World")
+# Plot
+mp <- ggplot(xx, aes(x = Year)) +
+  geom_line(aes(y = Population_R1961, color = "Population"), 
+            size = 1.5, alpha = 0.8) +
+  geom_line(aes(y = Production_R1961, color = Crop), 
+            size = 1.5, alpha = 0.8) +
+  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) +
+  scale_color_manual(name = NULL, values = colors,
+                     breaks = c("Population", "Cereals", "Pulses", "Tubers")) +
+  theme_agData() +
+  labs(title = "Production Relative to 1961", 
+       y = "Percent Change", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
+ggsave("global_food_security_01.png", mp, width = 6, height = 4)
+```
+
+![](global_food_security_01.png)
+
+---
+
+## Production, Area & Yield
+
+```{r}
+# Prep data
+xx <- dd %>% filter(Area == "World")
+# Plot
+mp <- ggplot(xx, aes(x = Year)) +
+  geom_line(aes(y = Population_R1961, color = "Population"),
+            size = 1.25, alpha = 0.8) +
+  geom_line(aes(y = Production_R1961, color = "Production"),
+            size = 1.25, alpha = 0.8) +
+  geom_line(aes(y = Yield_R1961, color = "Yield"),
+            size = 1.25, alpha = 0.8) +
+  geom_line(aes(y = Area_R1961, color = "Area"),
+            size = 1.25, alpha = 0.8) +
+  facet_grid(. ~ Crop) +
+  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) +
+  scale_color_manual(name = NULL, values = colors,
+                     breaks = c("Population","Production", "Yield", "Area")) +
+  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Relative to 1961", y = "Percent Change", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
+ggsave("global_food_security_02.png", mp, width = 8, height = 4)
+```
+
+![](global_food_security_02.png)
+
+---
+
+## Cereals
+
+```{r}
+# Prep data
+xx <- dd %>% filter(Crop == "Cereals", Area == "World")
+# Plot
+mp <- ggplot(xx, aes(x = Year)) +
+  geom_line(aes(y = Population_R1961, color = "Population"),
+            size = 1.5, alpha = 0.8) +
+  geom_line(aes(y = Production_R1961, color = "Production"),
+            size = 1.5, alpha = 0.8) +
+  geom_line(aes(y = Yield_R1961, color = "Yield"),
+            size = 1.5, alpha = 0.8) +
+  geom_line(aes(y = Area_R1961, color = "Area"),
+            size = 1.5, alpha = 0.8) +
+  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) +
+  scale_color_manual(name = NULL, values = colors,
+                     breaks = c("Population","Production", "Yield", "Area")) +
+  theme_agData() +
+  labs(title = "Relative to 1961 - Cereals", y = "Percent Change", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
+ggsave("global_food_security_03.png", mp, width = 6, height = 4)
+```
+
+![](global_food_security_03.png)
+
+---
+
+# Tonnes Per Person
+
+## Regions
+
+```{r}
+# Prep data
+colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "darkslategrey")
+xx <- dd %>% filter(Year == max(Year), Area != "World")
+# Plot
+mp <- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Region)) + 
+  geom_bar(stat = "identity", color = "black", alpha = 0.8) +
+  facet_grid(Crop ~ Region, scales = "free", space = "free_x") +
+  scale_fill_manual(values = colors) +
+  theme_agData(legend.position = "none", 
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = paste("Food Security -", max(xx$Year)), 
+       y = "Tonnes Per Person", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
+ggsave("global_food_security_04.png", mp, width = 6, height = 4)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 6, height = 4)
+```
+
+![](global_food_security_04.png)
+
+```{r eval = F, echo = F}
+# Prep data
+colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "darkslategrey")
+xx <- dd %>% filter(Area != "World")
+# Plot
+mp <- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Region)) + 
+  geom_bar(stat = "identity", color = "black") +
+  facet_grid(Crop ~ Region, scales = "free") +
+  scale_fill_manual(values = agData_Colors[c(1,4,3,2,7)]) +
+  theme_agData(legend.position = "none", 
+               axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(title = "Food Security - {round(frame_time)}",
+       y = "Tonnes Per Person", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT") +
+  # gganimate specific bits
+  transition_reveal(Year) +
+  ease_aes('linear')
+mp <- animate(mp, end_pause = 20, width = 600, height = 400)
+anim_save("global_food_security_gifs_01.gif", mp)
+#![](global_food_security_gifs_01.gif)
+```
+
+---
+
+```{r}
+# Prep Data
+colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "darkslategrey")
+xx <- dd %>% filter(Year == max(Year), Area != "World") %>%
+  select(Area, Region, Crop, TonnesPerPerson) %>%
+  spread(Crop, TonnesPerPerson)
+# Plot
+mp <- ggplot(xx, aes(x = Cereals, y = Pulses)) + 
+  geom_point(aes(size = Tubers, color = Region), alpha = 0.75) + 
+  geom_text_repel(aes(label = Area), size = 2, alpha = 0.3) +
+  scale_color_manual(values = agData_Colors[c(1,4,3,2,7)]) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(title = paste("Tonnes Per Person -", max(dd$Year)),
+       caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
+ggsave("global_food_security_05.png", mp, width = 6, height = 4)
+```
+
+![](global_food_security_05.png)
+
+---
+
+## SubRegions
+
+```{r}
+# Prep data
+colors <- c("darkgreen","darkred","darkblue")
+xx <- dd %>% filter(Area != "World")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = TonnesPerPerson, color = Crop)) + 
+  geom_line(size = 1, alpha = 0.8) +
+  facet_wrap(. ~ Area, ncol = 7) +
+  scale_x_continuous(breaks = seq(1970,2010, by = 20)) +
+  scale_color_manual(name = NULL, values = colors) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Global Food Security", y = "Tonnes Per Person", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
+ggsave("global_food_security_06.png", mp, width = 10, height = 6)
+```
+
+![](global_food_security_06.png)
+
+---
+
+```{r}
+# Prep data
+colors <- c("darkgreen","darkred","darkblue")
+xx <- dd %>% filter(Area != "World")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = TonnesPerPerson, color = Crop, group = Area)) + 
+  geom_line(size = 1, alpha = 0.8) +
+  facet_grid(Crop ~ Region, scales = "free_y") +
+  scale_x_continuous(breaks = seq(1970,2010, by = 20)) +
+  scale_color_manual(name = NULL, values = colors) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Global Food Security - SubRegions", y = "Tonnes Per Person", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
+ggsave("global_food_security_07.png", mp, width = 10, height = 6)
+```
+
+![](global_food_security_07.png)
+
+---
+
+# Import/Export
+
+## Grains
+
+```{r}
+# Prep data
+colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "darkslategrey")
+areas <- c("Americas", "Europe", "Africa", "Asia", "Oceania")
+crops <- c("Wheat", "Maize", "Rice", "Sorghum")
+xx <- agData_FAO_Trade %>%
+  filter(Measurement %in% c("Import Quantity", "Export Quantity"),
+         Crop %in% crops, Area %in% areas) %>%
+  mutate(Area = factor(Area, levels = areas))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Area, color = Area)) + 
+  geom_line(size = 1, alpha = 0.8) + 
+  facet_grid(Crop ~ Measurement, scales = "free_y") +
+  scale_x_continuous(breaks       = seq(1965, 2015, by = 10),
+                     minor_breaks = seq(1965, 2015, by = 5))  +
+  scale_color_manual(values = colors) +
+  theme_agData(legend.position = "bottom") + 
+  labs(title = "Import/Export of Major Grains", y = "Million Tonnes", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
+ggsave("global_food_security_08.png", mp, width = 6, height = 6)
+```
+
+![](global_food_security_08.png)
+
+---
+
+## Legumes
+
+```{r}
+# Prep data
+colors <- c("darkgreen", "darkblue", "darkred", "darkgoldenrod2", "darkslategrey")
+areas <- c("Americas", "Europe", "Africa", "Asia", "Oceania")
+crops <- c("Soybeans", "Beans, dry", "Chick peas", "Lentils")
+xx <- agData_FAO_Trade %>%
+  filter(Measurement %in% c("Import Quantity", "Export Quantity"),
+         Crop %in% crops, Area %in% areas) %>%
+  mutate(Area = factor(Area, levels = areas))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Area, color = Area)) + 
+  geom_line(size = 1, alpha = 0.8) + 
+  facet_grid(Crop ~ Measurement, scales = "free_y") +
+  scale_x_continuous(breaks       = seq(1965, 2015, by = 10),
+                     minor_breaks = seq(1965, 2015, by = 5))  +
+  scale_color_manual(values = colors) +
+  theme_agData(legend.position = "bottom") + 
+  labs(title = "Import/Export of Major Legumes", y = "Million Tonnes", x = NULL,
+       caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
+ggsave("global_food_security_09.png", mp, width = 6, height = 6)
+```
+
+![](global_food_security_09.png)
+
+---
+
+# Countries
+
+under construction...
+
+```{r eval = F, echo = F}
+# Prep Data
+xx <- dd %>% filter(Year == 2017, Area %in% c("Canada","USA","India","China","Germany")) %>%
+  select(Area, Region, Crop, TonnesPerPerson) %>%
+  spread(Crop, TonnesPerPerson)
+# Plot
+mp <- ggplot(xx, aes(x = Cereals, y = Pulses)) + 
+  geom_point(aes(size = Tubers, color = Region), alpha = 0.5) + 
+  geom_text_repel(aes(label = Area), size = 3) +
+  scale_color_manual(values = agData_Colors[c(1,4,3,2,7)]) +
+  theme_agData(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(title = "Food Security - 2017",
+       caption = "\xa9 www.dblogr.com/  |  Data: FAOSTAT")
+ggsave("global_food_security_07.png", mp, width = 6, height = 4)
+```
+
+---
+
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

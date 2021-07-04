@@ -3,7 +3,7 @@ title: "Explaining Correlation Coefficients"
 subtitle: "A quick explanation of how to properly use correlation coefficients when evaluating models"
 summary:  "A quick explanation of how to properly use correlation coefficients when evaluating models"
 date: "`r Sys.Date()`"
-author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/academic/correlation_coefficients)"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/#posts_academic)"
 tags: [ "Academic", "AGILE", "Featured" ]
 math: true
 weight: 3
