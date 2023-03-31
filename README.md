@@ -1,6 +1,6 @@
-www.dblogr.com/
+Welcome to the Personal Website for Derek Michael Wright
 ================
-2023-03-31
+www.dblogr.com/home
 
 ------------------------------------------------------------------------
 

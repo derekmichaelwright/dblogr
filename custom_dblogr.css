@@ -1,0 +1,78 @@
+<style type="text/css">
+
+title {
+  font-size: 120pt;
+}
+
+h1,h2,h3,h4,h5,h6,legend{
+    color: #1E3D2A;
+}
+
+#sidebar h2{
+    background: url("logo_dblogr.png");
+    background-size: 75%;
+    background-position: top center;
+    padding-top: 270px !important;
+    background-repeat: no-repeat;
+    background-color: #1E3D2A;
+}
+
+#main .nav-pills > li.active > a,
+#main .nav-pills > li.active > a:hover,
+#main .nav-pills > li.active > a:focus {
+    background-color: #1E3D2A;
+}
+
+#main .nav-pills > li > a {
+    color: #1E3D2A;
+}
+
+#main .nav-pills > li > a:hover {
+    background-color: #1E3D2A;
+}
+
+/* links */
+#main a:link {
+  color: darkred;
+}
+
+#main a:hover {
+  color: darkred;
+}
+
+#main a:visited {
+  color: darkred;
+}
+
+#main a:active {
+  color: darkred;
+}
+
+/* The navigation bar */
+.navbar {
+  #position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 665px; /* Full width */
+  background-color: #1E3D2A;
+  margin-top: 0px;
+  margin-left: 00px;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  font-size: 12pt;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+</style>
