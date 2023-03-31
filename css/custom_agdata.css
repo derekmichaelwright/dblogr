@@ -1,0 +1,20 @@
+<style type="text/css">
+
+.title {
+  font-size: 50pt;
+}
+
+h1,h2,h3,h4,h5,h6,legend{
+    color: #1E3D2A;
+}
+
+#sidebar h2{
+    background: url("logo_agData.png");
+    background-size: 75%;
+    background-position: top center;
+    padding-top: 270px !important;
+    background-repeat: no-repeat;
+    background-color: #1E3D2A;
+}
+
+</style>
