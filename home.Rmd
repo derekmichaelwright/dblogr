@@ -9,7 +9,13 @@ author: "Derek Michael Wright https://dblogr.com/ https://github.com/derekmichae
 knitr::opts_chunk$set(echo = T, message = F, warning = F, out.width = "100%")
 ```
 
+```{r echo = F}
+library(shiny)
+```
+
 ---
+
+`r shiny::icon("address-card")`
 
 # <i class="fa-regular fa-address-card"></i> About
 
@@ -22,7 +28,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 <i class="fa-brands fa-twitter"></i> https://twitter.com/DerekMWright
 </div>
 <div class = "col-md-4">
-![](cv/about.jpg)</div>
+![](cv/about.png)</div>
 </div>
 
 ---
@@ -31,10 +37,13 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 ## Lentil GWAS Phenology {.active}
 
-<div class = "row"><div class = "col-md-3">![](logo_dblogr.png)</div>
+<div class = "row"><div class = "col-md-3">
+![](publications/ldp_gwas_phenology/featured.png)
+</div>
+
 <div class = "col-md-9">
-- [link 1](www.dblogr.com/)
-- [link 2](www.dblogr.com/)
+- <i class="fa-regular fa-newspaper"></i> [link 1](www.dblogr.com/)
+- <i class="fa-brands fa-github"></i> [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology)
 </div></div>
 
 ## Lentil Phenology
