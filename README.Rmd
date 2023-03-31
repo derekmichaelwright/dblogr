@@ -1,7 +1,6 @@
 ---
 title: "www.dblogr.com/"
 subtitle: "Personal Website for Derek Michael Wright"
-author: "Derek Michael Wright"
 date: "`r Sys.Date()`"
 output: 
   github_document: default
@@ -10,10 +9,6 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
----
-
-www.dblogr.com/
 
 ---
 
