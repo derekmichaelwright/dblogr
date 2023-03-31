@@ -1,0 +1,132 @@
+---
+title: "www.dblogr.com/"
+subtitle: "Personal Website for Derek Michael Wright"
+date: "Last updated: `r Sys.Date()`"
+author: "Derek Michael Wright https://dblogr.com/ https://github.com/derekmichaelwright https://twitter.com/DerekMWright"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F, out.width = "100%")
+```
+
+---
+
+# <i class="fa-regular fa-address-card"></i> About
+
+<div class = "row"><div class = "col-md-8">
+I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from the [*University of Regina*](https://www.uregina.ca/) in 2012, followed by a **MSc in Agrobiotechnology** from [*Justus-Liebig-Universität Gießen*](https://www.uni-giessen.de/) (*University of Giessen, Germany*) in 2015. I now work in the Plant Sciences department at the [*University of Saskatchewan*](https://www.usask.ca/) and have been involved in three research projects ([**AGILE**](https://knowpulse.usask.ca/study/2675314), [**EVOLVES**](https://knowpulse.usask.ca/study/2691111) & [**P2IRC**](https://p2irc.usask.ca/index.php)) with **lentil** (*Lens culinaris*). 
+
+**My curriculum vitae** (**CV**): &nbsp; &nbsp; <i class="fas fa-file-pdf"></i> &nbsp; [PDF](https://www.dblogr.com/cv/cv.wright.derek.pdf) &nbsp; &nbsp; <i class="fa fa-laptop"></i> &nbsp; [HTML](https://www.dblogr.com/cv/)
+
+<i class="fa-brands fa-github"></i> https://github.com/derekmichaelwright
+<i class="fa-brands fa-twitter"></i> https://twitter.com/DerekMWright
+</div>
+<div class = "col-md-4">
+![](cv/avatar.jpg)</div>
+</div>
+
+---
+
+# <i class="fa-regular fa-newspaper"></i> Publications {.tabset .tabset-pills}
+
+## Lentil GWAS Phenology {.active}
+
+<div class = "row"><div class = "col-md-3">![](css/logo_dblogr.png)</div>
+<div class = "col-md-9">
+- [link 1](www.dblogr.com/)
+- [link 2](www.dblogr.com/)
+</div></div>
+
+## Lentil Phenology
+
+text
+
+## Nepal Lentil Phenology
+
+text
+
+## Genomic Selection in Lentil
+
+text
+
+## NEU in Canola
+
+text
+
+## Lentil UAV
+
+text
+
+# {-}
+
+---
+
+# <i class="fa fa-laptop"></i> Academic {.tabset .tabset-pills}
+
+## Lentils
+
+<br>
+<div class = "row"><div class = "col-md-3">![](css/logo_dblogr.png)</div>
+<div class = "col-md-9">
+[**Saskatchewan Crop Production**](https://dblogr.com/agdata/crops_saskatchewan/)
+
+Graphs of crop production in Saskatchewan using STATCAN data
+</div></div>
+
+## Saskatchewan Crop Production
+
+[**Saskatchewan Crop Production**](https://dblogr.com/agdata/crops_saskatchewan/)
+
+Graphs of crop production in Saskatchewan using STATCAN data
+<div class = "row"><div class = "col-md-4">![](css/logo_dblogr.png)</div>
+<div class = "col-md-4">![](css/logo_dblogr.png)</div>
+<div class = "col-md-4">![](css/logo_dblogr.png)</div>
+</div>
+
+## Rapeseed
+
+<br><div class = "row">
+<div class = "col-md-9">
+[**Saskatchewan Crop Production**](https://dblogr.com/agdata/crops_saskatchewan/)
+
+Graphs of crop production in Saskatchewan using STATCAN data
+</div>
+<div class = "col-md-3">![](css/logo_dblogr.png)</div></div>
+
+# {-}
+
+---
+
+# <i class="fab fa-r-project"></i> agData {.tabset .tabset-pills}
+
+An <i class="fab fa-r-project"></i> Package Containing Agricultural Data Sets
+
+`r shiny::icon("house")` https://derekmichaelwright.github.io/agData/
+
+Install: `devtools::install_github("derekmichaelwright/agData")`
+
+## Lentils
+
+## Maize
+
+## Rapeseed
+
+# {-}
+
+---
+
+# <i class="fa fa-chart-line"></i> Blog {.tabset .tabset-pills}
+
+## Featured {.active}
+
+## SciComm
+
+## Demographics
+
+## Economics
+
+## R
+
+# {-}
+
+---
