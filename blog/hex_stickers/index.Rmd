@@ -1,0 +1,199 @@
+---
+title: "Hex Stickers"
+subtitle: "Creation of hex stickers with R"
+date: "Last updated: `r Sys.Date()`"
+author: "Derek Michael Wright <derek.wright@usask.ca>"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F, fig.align="center")
+```
+
+---
+
+```{r class.source = 'fold-show'}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData)
+library(hexSticker)
+```
+
+---
+
+# dblogr
+
+![](logo_dblogr.png)
+
+```{r}
+# Prep data
+xx <- read.csv("data_dblogr.csv") %>%
+  group_by(Entry) %>%
+  summarise(Value = mean(DTF))
+mp <- ggplot(xx, aes(x = "", y = Value)) +
+  geom_boxplot(fill = "darkgreen", alpha = 0.8) +
+  scale_y_reverse() +
+  coord_flip() +
+  theme_void()
+#
+sticker(filename="logo_dblogr.png", package="dblogr", 
+        p_size = 35, p_x = 1, p_y = 1.3, p_color = "black",
+        # Logo
+        mp, s_x = 1, s_y = 0.75, s_width = 1.5, s_height = 0.4,
+        # Border
+        h_fill = "grey90", h_color = "darkgreen", h_size = 1.5,
+        # Url
+        url = "derekmichaelwright.github.io/dblogr/", 
+        u_color = "black", u_x = 1, u_y = 0.09, u_size = 4 )
+```
+
+---
+
+# agData
+
+![](logo_agData.png)
+
+```{r}
+# Prep data
+xx <- agData_FAO_Crops %>% 
+  filter(Area        == "Canada", 
+         Crop        == "Lentils", 
+         Measurement == "Production")
+# Create sticker
+mp <- ggplot(xx, aes(x = Year, y = Value) ) + 
+  geom_line(size = 1) + 
+  theme_void()
+#
+sticker(filename = "logo_agData.png",
+        package = "agData", p_color = "black",
+        p_x = 0.8, p_y = 1.3, p_size = 27,
+        # Logo
+        mp, s_x = 1, s_y = 1, 
+        s_width = 1.5, s_height = 1,
+        # Border 
+        h_fill = "grey90", h_color = "darkgreen", h_size = 1.5,
+        # Url
+        url = "github.com/derekmichaelwright/agData/", 
+        u_color = "black", u_x = 1, u_y = 0.09, u_size = 3.75 )
+```
+
+---
+
+# gwaspr
+
+![](logo_gwaspr.png)
+
+```{r}
+# Prep data
+xx <- read.csv("gwas_results.csv")
+myColors <- c("black", "darkgreen", "black", "darkgreen",
+              "black", "darkgreen", "black")
+# Create sticker
+mp <- ggplot(xx, aes(x = Position, y = -log10(P.value), 
+                     color = factor(Chromosome))) + 
+  geom_point(size = 0.1) + 
+  facet_grid(. ~ Chromosome, scales = "free_x", space = "free_x") +
+  scale_color_manual(values = myColors) +
+  theme_void() +
+  theme(legend.position = "none",
+        strip.text.x = element_blank(),
+        panel.spacing = unit(0.1, "lines")) 
+#
+sticker(filename = "logo_gwaspr.png",
+        package = "gwaspr", p_color = "black",
+        p_x = 1, p_y = 1.4, p_size = 30,
+        # Logo
+        mp, s_x = 1, s_y = 0.9, 
+        s_width = 1.5, s_height = .6,
+        # Border 
+        h_fill = "grey90", h_color = "darkgreen", h_size = 1.5,
+        # Url
+        url = "github.com/derekmichaelwright/gwaspr/", 
+        u_color = "black", u_x = 1, u_y = 0.09, u_size = 3.75 )
+```
+
+---
+
+# cypher
+
+![](logo_cypher.png)
+
+```{r}
+mp <- ggplot() + theme_void() +
+  geom_text(aes(x = 1, y = 1, label = "abc > ??? > abc"), size = 12.5)
+sticker(filename="logo_cypher.png", package="cypher", 
+        p_size = 40, p_x = 1, p_y = 1.25, p_color = "black",
+        subplot = mp,
+        s_x = 1, s_y = 0.7, s_width = 1.5,
+        # Border
+        h_fill = "grey90", h_color = "darkgreen", h_size = 1.5,
+        # Url
+        url = "github.com/derekmichaelwright/cypher/", 
+        u_color = "black", u_x = 1, u_y = 0.09, u_size = 3.75 )
+```
+
+---
+
+```{r eval = F, echo = F}
+sticker(filename="logo_dblogr2.png", package="dblogr", 
+        p_size = 35, p_x = 1, p_y = 1.4, p_color = "black",
+        # Logo
+        "logo_dblogr.png", 
+        s_x = 1, s_y = 1, 
+        s_width = 0.7,
+        # Border
+        h_fill = "grey90", h_color = "darkgreen", h_size = 1.5,
+        # Url
+        url = "www.dblogr.com/", u_color = "black",
+        u_x = 1.1, u_y = 0.15, u_size = 6 )
+```
+
+```{r eval = F, echo = F}
+myTraits <- c("DTF", "DTS", "DTM")
+myExpts <- c("Sutherland, Canada 2016", "Jessore, Bangladesh 2016", "Metaponto, Italy 2016")
+myExpts <- c("Jessore, Bangladesh 2017", "Bardiya, Nepal 2017", "Metaponto, Italy 2017")
+myExpts <- "Sutherland, Canada 2017"
+xx <- read.csv("data_raw.csv") %>%
+  filter(Expt %in% myExpts) %>%
+  gather(Trait, Value, myTraits) %>%
+  group_by(Name, Expt, Trait) %>%
+  summarise(Value = mean(Value)) %>%
+  mutate(Trait = factor(Trait, levels = myTraits),
+         Expt = factor(Expt, levels  = myExpts))
+# Create sticker
+mp <- ggplot(xx, aes(x = Value, y = Expt, fill = Trait)) + 
+  ggridges::geom_density_ridges(scale = 1, lwd = 0.25, alpha = 0.7) + #rel_min_height = 0.01,   alpha = 0.9, scale = 0.8,
+  scale_fill_manual(name = NULL, guide = F,
+                    values = c("darkgreen", "darkred", "darkgoldenrod2")) +
+  theme_void()
+mp
+```
+
+```{r echo = F, eval = F}
+# Copy for feature.png
+file.copy(from = "logo_dblogr.png", to = "featured.png", overwrite = T)
+# Copy for agData package
+file.copy(from = "logo_agData.png", 
+          to = "C:/gitfolder/agData/man/figures/logo_agData.png", overwrite = T)
+# Copy for cypher package
+file.copy(from = "logo_cypher.png", 
+          to = "C:/gitfolder/cypher/man/figures/logo_cypher.png", overwrite = T)
+# Copy for gwaspr package
+file.copy(from = "logo_gwaspr.png",
+          to = "C:/gitfolder/dblogr/academic/gwas_tutorial/logo_gwaspr.png", overwrite = T)
+file.copy(from = "logo_gwaspr.png", 
+          to = "C:/gitfolder/gwaspr/man/figures/logo_gwaspr.png", overwrite = T)
+# Copy to other posts
+library(magick)
+im1 <- image_read("logo_dblogr.png")
+im2 <- image_read("logo_agData.png")
+im3 <- image_read("logo_cypher.png")
+im4 <- image_read("logo_gwaspr.png")
+im <- im1 %>% image_resize("512x512")
+image_write(im, "C:/gitfolder/dblogr/icon.png")
+#
+im <- image_append(c(im1,im2))
+imm <- image_append(c(im1,im2,im4))
+image_write(imm, "C:/gitfolder/dblogr/cv/logo_banner.png")
+image_write(im1, "C:/gitfolder/dblogr/logo_dblogr.png")
+image_write(im, "C:/gitfolder/dblogr/logo_agData.png")
+image_write(im4, "C:/gitfolder/dblogr/logo_gwaspr.png")
+```

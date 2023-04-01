@@ -2,7 +2,7 @@
 title: "derekmichaelwright.github.io/dblogr/"
 subtitle: "Personal Website for Derek Michael Wright"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright https://derekmichaelwright.github.io/dblogr/ https://github.com/derekmichaelwright https://twitter.com/DerekMWright"
+author: "Derek Michael Wright [dblogr](derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> github.com/derekmichaelwright twitter.com/DerekMWright"
 ---
 
 ```{r setup, include=FALSE}
@@ -22,17 +22,16 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 **My Curriculum Vitae (CV)**
 
-- &nbsp; `r shiny::icon("file-pdf")` [Curriculum Vitae (PDF)](https://derekmichaelwright.github.io/dblogr/cv/cv.wright.derek.pdf) 
-- `r shiny::icon("laptop")` [Curriculum Vitae (HTML)](https://derekmichaelwright.github.io/dblogr/cv/)
+- &nbsp; `r shiny::icon("file-pdf")` [Curriculum Vitae (PDF)](cv/cv.wright.derek.pdf) 
+- `r shiny::icon("laptop")` [Curriculum Vitae (HTML)](cv/)
+- `r shiny::icon("envelope")` derek.wright@usask.ca
 
 **Social Media**
 
-- `r shiny::icon("github")`  https://github.com/derekmichaelwright
-- `r shiny::icon("twitter")` https://twitter.com/DerekMWright
+- `r shiny::icon("github")`  github.com/derekmichaelwright
+- `r shiny::icon("twitter")` twitter.com/DerekMWright
 
 </div>
-
-<div class = "col-md-4">![](cv/about.png)</div></div>
 
 ---
 
@@ -44,7 +43,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 <div class = "col-md-8">
 
-**Wright, D.M.**, Neupane, S., Heidecker, T., Haile, T.A., Chan, C., Coyne, C.J., McGee, R.J., Udupa, S., Henkrar, F., Barilli, E., Rubiales, D., Gioia, T., Logozzo, G., Marzario, S., Mehra, R., Sarker, A., Dhakal, R., Anwar, B., Sarker, D., Vandenberg A. & Bett K.E. (2020) **Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**. *Plants, People, Planet*. 00: 1-11.
+**Wright, D.M.**, Neupane, S., Heidecker, T., Haile, T.A., Chan, C., Coyne, C.J., McGee, R.J., Udupa, S., Henkrar, F., Barilli, E., Rubiales, D., Gioia, T., Logozzo, G., Marzario, S., Mehra, R., Sarker, A., Dhakal, R., Anwar, B., Sarker, D., Vandenberg A. & Bett K.E. (2020) **Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**. *Plants, People, Planet*. 00: 1-11. https://doi.org/10.1002/ppp3.10158
 
 - `r shiny::icon("newspaper")` [*Plants, People, Planet*. (2020) 00: 1-11.](https://doi.org/10.1002/ppp3.10158)
 - `r shiny::icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_Phenology)
@@ -62,7 +61,8 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 <br><div class = "row"><div class = "col-md-4">![](publications/ldp_gwas_phenology/featured.png)</div>
 
 <div class = "col-md-8">
-Sandesh Neupane, **Derek M Wright**, Jakob Butler, Raul Martinez, Jim Weller, Kirstin E Bett (2022) **Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**. *The Plant Genome*. e20269.
+
+Sandesh Neupane, **Derek M Wright**, Jakob Butler, Raul Martinez, Jim Weller, Kirstin E Bett (2022) **Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**. *The Plant Genome*. e20269. https://doi.org/10.1002/tpg2.20269
 
 - `r shiny::icon("newspaper")` ["The Plant Genome. (2022) e20269.](https://doi.org/10.1002/tpg2.20269)
 - `r shiny::icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology)
@@ -99,8 +99,7 @@ Disecting lentil crop growth across multi-environment trials using unoccupied ae
 
 <div class = "col-md-8">
 
-Neupane S., Dhakal R., **Wright D.M.**, Shrestha D.K., Dhakal B., Bett K.E. (2021) **Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**. *Agronomy*. 11(10): 1933.
-https://doi.org/10.3390/agronomy11101933
+Neupane S., Dhakal R., **Wright D.M.**, Shrestha D.K., Dhakal B., Bett K.E. (2021) **Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**. *Agronomy*. 11(10): 1933. https://doi.org/10.3390/agronomy11101933
 
 - `r shiny::icon("newspaper")` [Agronomy. (2021) 11(10): 1933.](https://doi.org/10.3390/agronomy11101933)
 - `r shiny::icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology)
@@ -134,35 +133,187 @@ Teketel A. Haile,  Taryn Heidecker,  **Derek Wright**,  Sandesh Neupane,  Lariss
 
 Derek Michael Wright (2015) **Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)**. *University of Giessen*. MSc. Thesis.
 
-- `r shiny::icon("file-pdf")` [MSc Thesis (MastersThesis.pdf)](https://derekmichaelwright.github.io/dblogr/publications/canola_nue/MastersThesis.pdf)
-- `r shiny::icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/dblogr/publications/canola_nue/)
+- `r shiny::icon("file-pdf")` [MSc Thesis (MastersThesis.pdf)](publications/canola_nue/MastersThesis.pdf)
+- `r shiny::icon("r-project")` [R Script (HTML)](publications/canola_nue/)
 
 </div></div>
 
+# {-}
+
+- Wright, et al. (2020) **Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**. *Plants, People, Planet*. 00: 1-11. https://doi.org/10.1002/ppp3.10158
+- Neupane et al. (2022) **Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**. *The Plant Genome*. e20269. https://doi.org/10.1002/tpg2.20269
+- Neupane et al. (2021) **Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**. *Agronomy*. 11(10): 1933. https://doi.org/10.3390/agronomy11101933
+- Haile et al. (2020) **Genomic selection for lentil breeding: Empirical evidence**. *The Plant Genome*. 13(e20002): 1-15. https://doi.org/10.1002/tpg2.20002
+
 ---
 
-# `r shiny::icon("laptop")` Academic 
+# `r shiny::icon("laptop")` Academic {.tabset .tabset-pills}
 
 ## gwaspr
 
-under construction...
+<br><div class = "row"><div class = "col-md-3">
+![](blog/hex_stickers/logo_gwaspr.png)
+</div>
+
+<div class = "col-md-9">
+
+`gwaspr`: an `r shiny::icon("r-project")` package for plotting GWAS results from the `GAPIT` package
+
+- `r shiny::icon("house")` https://derekmichaelwright.github.io/gwaspr/
+- `r shiny::icon("github")` https://github.com/derekmichaelwright/gwaspr/
+- Install: `devtools::install_github("derekmichaelwright/gwaspr")`
+
+</div></div>
+
+## gwaspr Tutorial
+
+<br><div class = "row"><div class = "col-md-3">
+![](academic/gwaspr_tutorial/featured.png)
+</div>
+
+<div class = "col-md-9">
+
+[GWAS Vignette with gwaspr](academic/gwaspr_tutorial)
+
+An R tutorial on running genome-wide association studies (GWAS) with GAPIT and gwaspr
+
+</div></div>
+
+## R Tutorial
+
+<br><div class = "row"><div class = "col-md-3">
+![](academic/r_tutorial/featured.png)
+</div>
+
+<div class = "col-md-9">
+
+[R Tutorial](academic/r_tutorial)
+
+An introduction to R
+
+</div></div>
+
+# {-}
 
 ---
 
-# `r shiny::icon("r-project")` agData 
+# `r shiny::icon("r-project")` agData {.tabset .tabset-pills}
 
-An `r shiny::icon("r-project")` Package Containing Agricultural Data Sets
+Vignettes for the `r shiny::icon("r-project")` Package `agData` 
 
-`r shiny::icon("house")` https://derekmichaelwright.github.io/agData/
+## agdata
 
-Install: `devtools::install_github("derekmichaelwright/agData")`
+<br><div class = "row"><div class = "col-md-3">
+![](blog/hex_stickers/logo_agdata.png)
+</div>
 
-under construction...
+<div class = "col-md-9">
+
+`agData`: An `r shiny::icon("r-project")` Package Containing Agricultural Data Sets
+
+- `r shiny::icon("house")` https://derekmichaelwright.github.io/agData/
+- `r shiny::icon("github")` https://github.com/derekmichaelwright/agData/
+- Install: `devtools::install_github("derekmichaelwright/agData")`
+
+</div></div>
+
+## Maps of Canadian Crop Production
+
+<br><div class = "row"><div class = "col-md-3">
+![](agdata/crops_canada_maps/featured.png)
+</div>
+
+<div class = "col-md-9">
+
+[Maps of Canadian Crop Production](agdata/crops_canada_maps)
+
+Maps of crop production in Canada using STATCAN data
+
+</div></div>
+
+## Maps of Canadian Crop Production
+
+<br><div class = "row"><div class = "col-md-3">
+![](agdata/crops_canada_maps/featured.png)
+</div>
+
+<div class = "col-md-9">
+
+[Maps of Canadian Crop Production](agdata/crops_canada_maps)
+
+Maps of crop production in Canada using STATCAN data
+
+</div></div>
+
+## Maps of Global Crop Production
+
+<br><div class = "row"><div class = "col-md-3">
+![](agdata/crops_world_maps/featured.png)
+</div>
+
+<div class = "col-md-9">
+
+[Maps of Global Crop Production](agdata/crops_world_maps)
+
+Maps of crop production using FAO data
+
+</div></div>
+
+## Saskatchewan Crop Production
+
+<br><div class = "row"><div class = "col-md-3">
+![](agdata/crops_saskatchewan/featured.png)
+</div>
+
+<div class = "col-md-9">
+
+[Saskatchewan Crop Production](agdata/crops_saskatchewan)
+
+Graphs of crop production in Saskatchewan using STATCAN data
+
+</div></div>
+
+# {-}
 
 ---
 
-# `r shiny::icon("chart-line")` Blog
+# `r shiny::icon("chart-line")` Blog {.tabset .tabset-pills}
 
-under construction...
+## Population Demographics In Canada
+
+<br><div class = "row"><div class = "col-md-3">
+![](blog/canada_population/featured.png)
+</div>
+
+<div class = "col-md-9">
+
+[Population Demographics In Canada](blog/canada_population)
+
+Graphs of population demographics in Canada using STATCAN data
+
+</div></div>
+
+## cypher
+
+<br><div class = "row"><div class = "col-md-3">
+![](blog/hex_stickers/logo_cypher.png)
+</div>
+
+<div class = "col-md-9">
+
+`cypher`: an `r shiny::icon("r-project")` package for coding and decoding secret messages
+
+- `r shiny::icon("house")` https://derekmichaelwright.github.io/cypher/
+- `r shiny::icon("github")` https://github.com/derekmichaelwright/cypher/
+- Install: `devtools::install_github("derekmichaelwright/cypher")`
+- `r shiny::icon("code")` https://github.com/derekmichaelwright/cypher/blob/master/shinyapp/app.R
+
+</div></div>
+
+# {-}
+
+---
+
+![](cv/logo_banner.png)
 
 ---

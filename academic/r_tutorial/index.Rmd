@@ -1,8 +1,8 @@
 ---
 title: "R Tutorial"
 subtitle: "An introduction to R"
-date: "`r Sys.Date()`"
-author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/)"
+date: "Last updated: `r Sys.Date()`"
+author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include=FALSE}
@@ -521,5 +521,3 @@ Tutorials on how to create an R markdown document like this one can be found her
  - https://alexd106.github.io/intro2R/Rmarkdown_intro.html
 
 ---
-
-&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)
