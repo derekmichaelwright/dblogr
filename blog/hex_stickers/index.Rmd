@@ -144,9 +144,7 @@ sticker(filename="logo_dblogr2.png", package="dblogr",
         # Url
         url = "www.dblogr.com/", u_color = "black",
         u_x = 1.1, u_y = 0.15, u_size = 6 )
-```
-
-```{r eval = F, echo = F}
+#
 myTraits <- c("DTF", "DTS", "DTM")
 myExpts <- c("Sutherland, Canada 2016", "Jessore, Bangladesh 2016", "Metaponto, Italy 2016")
 myExpts <- c("Jessore, Bangladesh 2017", "Bardiya, Nepal 2017", "Metaponto, Italy 2017")

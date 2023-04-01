@@ -28,22 +28,22 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 **My Curriculum Vitae (CV)**
 
-- &nbsp; `r shiny::icon("file-pdf")` [cv/cv.derek.m.wright.pdf](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf) 
-- `r shiny::icon("laptop")` [cv/cv.derek.m.wright](cv/cv.derek.m.wright/)
-- `r shiny::icon("envelope")` derek.wright@usask.ca
+- &nbsp; `r icon("file-pdf")` [cv/cv.derek.m.wright.pdf](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf) 
+- `r icon("laptop")` [cv/cv.derek.m.wright](cv/cv.derek.m.wright/)
+- `r icon("envelope")` derek.wright@usask.ca
 
 </div><div class = "col-md-6">
 
 **Social Media**
 
-- `r shiny::icon("github")`  [github.com/derekmichaelwright](https://github.com/derekmichaelwright)
-- `r shiny::icon("twitter")` [twitter.com/DerekMWright](https://twitter.com/DerekMWright)
+- `r icon("github")`  [github.com/derekmichaelwright](https://github.com/derekmichaelwright)
+- `r icon("twitter")` [twitter.com/DerekMWright](https://twitter.com/DerekMWright)
 
 </div></div>
 
 ---
 
-# `r shiny::icon("newspaper")` Publications {.tabset .tabset-pills}
+# `r icon("newspaper")` Publications {.tabset .tabset-pills}
 
 ## LDP Phenology {.active}
 
@@ -53,14 +53,14 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 [<u>**Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**</u>](https://doi.org/10.1002/ppp3.10158). *Plants, People, Planet*. (**2020**) 00: 1-11. doi.org/10.1002/ppp3.10158
 
-- `r shiny::icon("newspaper")` [*Plants, People, Planet*. (**2020**) 00: 1-11.](https://doi.org/10.1002/ppp3.10158)
-- `r shiny::icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_Phenology)
-- `r shiny::icon("save")` [Data](https://github.com/derekmichaelwright/AGILE_LDP_Phenology/tree/master/data)
-- `r shiny::icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html)
-- &nbsp; `r shiny::icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_Phenology/blob/master/README.pdf)
-- `r shiny::icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html)
-- `r shiny::icon("laptop-code")` [AGILE_LDP_Phenology (Shiny App)](https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/)
-- `r shiny::icon("laptop-code")` [Predict DTF (Shiny App)](https://derek-wright-usask.shinyapps.io/AGILE_Predict_DTF/)
+- `r icon("newspaper")` [*Plants, People, Planet*. (**2020**) 00: 1-11.](https://doi.org/10.1002/ppp3.10158)
+- `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_Phenology)
+- `r icon("save")` [Data](https://github.com/derekmichaelwright/AGILE_LDP_Phenology/tree/master/data)
+- `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html)
+- &nbsp; `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_Phenology/blob/master/README.pdf)
+- `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html)
+- `r icon("laptop-code")` [AGILE_LDP_Phenology (Shiny App)](https://derek-wright-usask.shinyapps.io/AGILE_LDP_Phenology/)
+- `r icon("laptop-code")` [Predict DTF (Shiny App)](https://derek-wright-usask.shinyapps.io/AGILE_Predict_DTF/)
 
 </div><div class = "col-md-6">![](publications/ldp_phenology/featured.png)</div></div></div>
 
@@ -72,10 +72,10 @@ Sandesh Neupane, **Derek M. Wright**, Jakob Butler, Raul O. Martinez, Jim L. Wel
 
 [<u>**Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**</u>](https://doi.org/10.1002/tpg2.20269). *The Plant Genome*. (**2022**) e20269. doi.org/10.1002/tpg2.20269
 
-- `r shiny::icon("newspaper")` [*The Plant Genome*. (**2022**) e20269.](https://doi.org/10.1002/tpg2.20269)
-- `r shiny::icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology)
-- `r shiny::icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_GWAS_Phenology/README.html)
-- &nbsp; `r shiny::icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology/blob/master/README.pdf)
+- `r icon("newspaper")` [*The Plant Genome*. (**2022**) e20269.](https://doi.org/10.1002/tpg2.20269)
+- `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology)
+- `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_GWAS_Phenology/README.html)
+- &nbsp; `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology/blob/master/README.pdf)
 - `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_GWAS_Phenology/GWAS_Phenology_Vignette.html)
 
 </div><div class = "col-md-6">![](publications/ldp_gwas_phenology/featured.png)</div></div></div>
@@ -88,10 +88,10 @@ Sandesh Neupane, **Derek M. Wright**, Jakob Butler, Raul O. Martinez, Jim L. Wel
 
 <u>**Disecting lentil crop growth across multi-environment trials using unoccupied aerial vehicles and genome-wide association studies**</u>. *unpublished*.
 
-- `r shiny::icon("newspaper")` *unpublished*
-- `r shiny::icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_UAV)
-- `r shiny::icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_UAV/README.html)
-- &nbsp;`r shiny::icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_UAV/blob/master/README.pdf)
+- `r icon("newspaper")` *unpublished*
+- `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_UAV)
+- `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_UAV/README.html)
+- &nbsp;`r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_UAV/blob/master/README.pdf)
 - `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_UAV/LDP_UAV_Vignette.html)
 - `r icon("youtube")` [P2IRC Conference](https://www.youtube.com/watch?v=FkjKaGJG7Xc&list=PLNqTYnctRQrkNKbRPBt6Z3Wb81Vq-rAum&index=11)
 
@@ -105,10 +105,10 @@ Sandesh Neupane, Rajeev Dhakal, **Derek M. Wright**, Deny K. Shrestha, Bishnu Dh
 
 [<u>**Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**</u>](https://doi.org/10.3390/agronomy11101933). *Agronomy*. (**2021**) 11(10): 1933. doi.org/10.3390/agronomy11101933
 
-- `r shiny::icon("newspaper")` [*Agronomy*. (**2021**) 11(10): 1933.](https://doi.org/10.3390/agronomy11101933)
-- `r shiny::icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology)
-- `r shiny::icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_GWAS_Phenology/README.html)
-- &nbsp; `r shiny::icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology/blob/master/README.pdf)
+- `r icon("newspaper")` [*Agronomy*. (**2021**) 11(10): 1933.](https://doi.org/10.3390/agronomy11101933)
+- `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology)
+- `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_GWAS_Phenology/README.html)
+- &nbsp; `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology/blob/master/README.pdf)
 - `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Nepal/Phenology_Vignette.html)
 
 </div><div class = "col-md-6">![](publications/ldp_nepal/featured.png)</div></div></div>
@@ -121,7 +121,7 @@ Teketel A. Haile,  Taryn Heidecker,  **Derek M. Wright**,  Sandesh Neupane,  Lar
 
 [<u>**Genomic selection for lentil breeding: Empirical evidence**</u>](https://doi.org/10.1002/tpg2.20002). *The Plant Genome*. (**2020**) 13(e20002): 1-15. doi.org/10.1002/tpg2.20002
 
-- `r shiny::icon("newspaper")` [*The Plant Genome*. (**2020**) 13(e20002): 1-15.](https://doi.org/10.1002/tpg2.20002)
+- `r icon("newspaper")` [*The Plant Genome*. (**2020**) 13(e20002): 1-15.](https://doi.org/10.1002/tpg2.20002)
 
 </div><div class = "col-md-6">![](publications/ldp_genomic_selection/featured.png)</div></div></div>
 
@@ -133,8 +133,8 @@ Teketel A. Haile,  Taryn Heidecker,  **Derek M. Wright**,  Sandesh Neupane,  Lar
 
 <u>**Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)**</u>. *University of Giessen*. (**2015**) MSc. Thesis.
 
-- &nbsp; `r shiny::icon("file-pdf")` [MSc Thesis (MastersThesis.pdf)](publications/canola_nue/MastersThesis.pdf)
-- `r shiny::icon("r-project")` [R Script (HTML)](publications/canola_nue/)
+- &nbsp; `r icon("file-pdf")` [MSc Thesis (MastersThesis.pdf)](publications/canola_nue/MastersThesis.pdf)
+- `r icon("r-project")` [R Script (HTML)](publications/canola_nue/)
 
 </div><div class = "col-md-6">![](publications/canola_nue/featured.jpg)</div></div></div>
 
@@ -150,7 +150,7 @@ Teketel A. Haile,  Taryn Heidecker,  **Derek M. Wright**,  Sandesh Neupane,  Lar
 
 ---
 
-# `r shiny::icon("laptop")` Academic {.tabset .tabset-pills}
+# `r icon("laptop")` Academic {.tabset .tabset-pills}
 
 ## gwaspr
 
@@ -158,10 +158,10 @@ Teketel A. Haile,  Taryn Heidecker,  **Derek M. Wright**,  Sandesh Neupane,  Lar
 
 ### gwaspr
 
-`gwaspr`: an `r shiny::icon("r-project")` package for plotting GWAS results from the `GAPIT` package
+`gwaspr`: an `r icon("r-project")` package for plotting GWAS results from the `GAPIT` package
 
-- `r shiny::icon("house")` https://derekmichaelwright.github.io/gwaspr/
-- `r shiny::icon("github")` https://github.com/derekmichaelwright/gwaspr/
+- `r icon("house")` https://derekmichaelwright.github.io/gwaspr/
+- `r icon("github")` https://github.com/derekmichaelwright/gwaspr/
 - Install: `devtools::install_github("derekmichaelwright/gwaspr")`
 
 </div><div class = "col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
@@ -190,7 +190,7 @@ An introduction to R
 
 ---
 
-# `r shiny::icon("r-project")` agData {.tabset .tabset-pills}
+# `r icon("r-project")` agData {.tabset .tabset-pills}
 
 ## agdata
 
@@ -198,10 +198,10 @@ An introduction to R
 
 ### agData
 
-`agData`: An `r shiny::icon("r-project")` Package Containing Agricultural Data Sets
+`agData`: An `r icon("r-project")` Package Containing Agricultural Data Sets
 
-- `r shiny::icon("house")` https://derekmichaelwright.github.io/agData/
-- `r shiny::icon("github")` https://github.com/derekmichaelwright/agData/
+- `r icon("house")` https://derekmichaelwright.github.io/agData/
+- `r icon("github")` https://github.com/derekmichaelwright/agData/
 - Install: `devtools::install_github("derekmichaelwright/agData")`
 
 </div><div class = "col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
@@ -240,7 +240,7 @@ Graphs of crop production in Saskatchewan using STATCAN data
 
 ---
 
-# `r shiny::icon("chart-line")` Blog {.tabset .tabset-pills}
+# `r icon("chart-line")` Blog {.tabset .tabset-pills}
 
 ## Population Demographics In Canada
 
@@ -268,12 +268,12 @@ Creation of hex stickers with R
 
 ### cypher
 
-`cypher`: an `r shiny::icon("r-project")` package for coding and decoding secret messages
+`cypher`: an `r icon("r-project")` package for coding and decoding secret messages
 
-- `r shiny::icon("house")` https://derekmichaelwright.github.io/cypher/
-- `r shiny::icon("github")` https://github.com/derekmichaelwright/cypher/
+- `r icon("house")` https://derekmichaelwright.github.io/cypher/
+- `r icon("github")` https://github.com/derekmichaelwright/cypher/
 - Install: `devtools::install_github("derekmichaelwright/cypher")`
-- `r shiny::icon("code")` https://github.com/derekmichaelwright/cypher/blob/master/shinyapp/app.R
+- `r icon("code")` https://github.com/derekmichaelwright/cypher/blob/master/shinyapp/app.R
 
 </div><div class = "col-md-4">![](blog/hex_stickers/logo_cypher.png)</div></div></div>
 
