@@ -20,28 +20,25 @@ library(shiny)
 <div class = "row"><div class = "col-md-8">
 I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from the [*University of Regina*](https://www.uregina.ca/) in 2012, followed by a **MSc in Agrobiotechnology** from [*Justus-Liebig-Universität Gießen*](https://www.uni-giessen.de/) (*University of Giessen, Germany*) in 2015. I now work in the Plant Sciences department at the [*University of Saskatchewan*](https://www.usask.ca/) and have been involved in three research projects ([**AGILE**](https://knowpulse.usask.ca/study/2675314), [**EVOLVES**](https://knowpulse.usask.ca/study/2691111) & [**P2IRC**](https://p2irc.usask.ca/index.php)) with **lentil** (*Lens culinaris*). 
 
-## My Curriculum Vitae (CV)
+**My Curriculum Vitae (CV)**
 
-- `r shiny::icon("file-pdf")` &nbsp; [Curriculum Vitae (PDF)](https://derekmichaelwright.github.io/dblogr/cv/cv.wright.derek.pdf) 
+- &nbsp; `r shiny::icon("file-pdf")` [Curriculum Vitae (PDF)](https://derekmichaelwright.github.io/dblogr/cv/cv.wright.derek.pdf) 
 - `r shiny::icon("laptop")` [Curriculum Vitae (HTML)](https://derekmichaelwright.github.io/dblogr/cv/)
+
+**Social Media**
 
 - `r shiny::icon("github")`  https://github.com/derekmichaelwright
 - `r shiny::icon("twitter")` https://twitter.com/DerekMWright
 
- 
- 
 </div>
-<div class = "col-md-4">
-![](cv/about.png)</div>
-</div>
+
+<div class = "col-md-4">![](cv/about.png)</div></div>
 
 ---
 
-# `r shiny::icon("newspaper")` Publications
+# `r shiny::icon("newspaper")` Publications {.tabset .tabset-pills}
 
-## Lentil {.tabset .tabset-pills}
-
-### LDP Phenology {.active}
+## LDP Phenology {.active}
 
 <br><div class = "row"><div class = "col-md-4">![](publications/ldp_phenology/featured.png)</div>
 
@@ -60,7 +57,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 </div></div>
 
-### LDP GWAS Phenology
+## LDP GWAS Phenology
 
 <br><div class = "row"><div class = "col-md-4">![](publications/ldp_gwas_phenology/featured.png)</div>
 
@@ -75,7 +72,7 @@ Sandesh Neupane, **Derek M Wright**, Jakob Butler, Raul Martinez, Jim Weller, Ki
 
 </div></div>
 
-### Lentil UAV
+## Lentil UAV
 
 <br><div class = "row"><div class = "col-md-4">
 ![](publications/ldp_uav/featured.png)
@@ -94,7 +91,7 @@ Disecting lentil crop growth across multi-environment trials using unoccupied ae
 
 </div></div>
 
-### LDP Nepal Phenology
+## LDP Nepal Phenology
 
 <br><div class = "row"><div class = "col-md-4">
 ![](publications/ldp_nepal/featured.png)
@@ -113,7 +110,7 @@ https://doi.org/10.3390/agronomy11101933
 
 </div></div>
 
-### Genomic Selection in Lentil
+## Genomic Selection in Lentil
 
 <br><div class = "row"><div class = "col-md-4">
 ![](publications/ldp_genomic_selection/featured.png)
@@ -127,7 +124,7 @@ Teketel A. Haile,  Taryn Heidecker,  **Derek Wright**,  Sandesh Neupane,  Lariss
 
 </div></div>
 
-### NEU in Canola
+## NEU in Canola
 
 <br><div class = "row"><div class = "col-md-4">
 ![](publications/canola_nue/featured.jpg)
@@ -142,48 +139,17 @@ Derek Michael Wright (2015) **Influence of heterozygosity on nitrogen use effici
 
 </div></div>
 
-# {-}
+---
+
+# `r shiny::icon("laptop")` Academic 
+
+## gwaspr
+
+under construction...
 
 ---
 
-# `r shiny::icon("laptop")` Academic {.tabset .tabset-pills}
-
-## Lentils
-
-<br>
-<div class = "row"><div class = "col-md-3">![](logo_dblogr.png)</div>
-<div class = "col-md-9">
-[**Saskatchewan Crop Production**](https://derekmichaelwright.github.io/dblogr/agdata/crops_saskatchewan/)
-
-Graphs of crop production in Saskatchewan using STATCAN data
-</div></div>
-
-## Saskatchewan Crop Production
-
-[**Saskatchewan Crop Production**](https://derekmichaelwright.github.io/dblogr/agdata/crops_saskatchewan/)
-
-Graphs of crop production in Saskatchewan using STATCAN data
-
-<div class = "row"><div class = "col-md-4">![](logo_dblogr.png)</div>
-<div class = "col-md-4">![](logo_dblogr.png)</div>
-<div class = "col-md-4">![](logo_dblogr.png)</div>
-</div>
-
-## Rapeseed
-
-<br><div class = "row">
-<div class = "col-md-9">
-[**Saskatchewan Crop Production**](https://derekmichaelwright.github.io/dblogr/agdata/crops_saskatchewan/)
-
-Graphs of crop production in Saskatchewan using STATCAN data
-</div>
-<div class = "col-md-3">![](logo_dblogr.png)</div></div>
-
-# {-}
-
----
-
-# `r shiny::icon("r-project")` agData {.tabset .tabset-pills}
+# `r shiny::icon("r-project")` agData 
 
 An `r shiny::icon("r-project")` Package Containing Agricultural Data Sets
 
@@ -191,28 +157,12 @@ An `r shiny::icon("r-project")` Package Containing Agricultural Data Sets
 
 Install: `devtools::install_github("derekmichaelwright/agData")`
 
-## Lentils
-
-## Maize
-
-## Rapeseed
-
-# {-}
+under construction...
 
 ---
 
-# `r shiny::icon("chart-line")` Blog {.tabset .tabset-pills}
+# `r shiny::icon("chart-line")` Blog
 
-## Featured {.active}
-
-## SciComm
-
-## Demographics
-
-## Economics
-
-## R
-
-# {-}
+under construction...
 
 ---
