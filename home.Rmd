@@ -165,15 +165,15 @@ Derek Michael Wright (2015) **Influence of heterozygosity on nitrogen use effici
 
 </div></div>
 
-## gwaspr Tutorial
+## GWAS Tutorial
 
 <br><div class = "row"><div class = "col-md-3">
-![](academic/gwaspr_tutorial/featured.png)
+![](academic/gwas_tutorial/featured.png)
 </div>
 
 <div class = "col-md-9">
 
-[GWAS Vignette with gwaspr](academic/gwaspr_tutorial)
+[GWAS Vignette with gwaspr](academic/gwas_tutorial)
 
 An R tutorial on running genome-wide association studies (GWAS) with GAPIT and gwaspr
 
