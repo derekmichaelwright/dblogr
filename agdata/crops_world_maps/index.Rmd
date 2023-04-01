@@ -354,7 +354,7 @@ ggCropMap(myCrop = "Potatoes", myYear = 2019,
 ```{r results="hide"}
 ggCropMap(myCrop = "Cottonseed", myYear = 2019,
           myMeasure = "Production",
-          myFilename = "crops_world_maps_coton.png")
+          myFilename = "crops_world_maps_cotton.png")
 ```
 
 ---

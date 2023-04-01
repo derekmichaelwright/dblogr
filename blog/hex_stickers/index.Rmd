@@ -118,7 +118,7 @@ sticker(filename = "logo_gwaspr.png",
 
 ```{r}
 mp <- ggplot() + theme_void() +
-  geom_text(aes(x = 1, y = 1, label = "abc > ??? > abc"), size = 12.5)
+  geom_text(aes(x = 1, y = 1, label = "abc -> ### -> abc"), size = 12.5)
 sticker(filename="logo_cypher.png", package="cypher", 
         p_size = 40, p_x = 1, p_y = 1.25, p_color = "black",
         subplot = mp,
