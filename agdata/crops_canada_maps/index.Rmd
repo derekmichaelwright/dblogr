@@ -34,6 +34,32 @@ library(mapcan)
 
 ---
 
+# Prepare Data
+
+```{r}
+# Plotting functions
+cropMapCan_Production <- function(crop, year) {
+  xx <- agData_STATCAN_Crops %>% 
+    filter(Crop == crop, Year == year, Measurement == "Production")
+  xx <- mapcan(boundaries = province, type = standard) %>% 
+    left_join(xx, by = c("pr_english"="Area"))
+  # Plot
+  ggplot(xx, aes(x = long, y = lat, group = group, fill = Value / 1000000)) +
+    geom_polygon() + 
+    coord_fixed() + 
+    theme_mapcan() +
+    scale_fill_continuous(name = "Million Tonnes",
+                          low = "lightgrey", high = "darkgreen") +
+    theme(legend.position = "right") +
+    labs(title = paste(crop, "Production", year, sep = " - "),
+         caption = myCaption)
+}
+#
+myCaption <- "\u00A9 www.dblogr.com/  |  Data: STATCAN"
+```
+
+---
+
 # PDF - All Crops
 
 ```{r echo = F}
@@ -74,49 +100,16 @@ dev.off()
 
 ---
 
-# Plotting Function
+# Production
 
-```{r}
-cropMapCan <- function(crop, measurement, year) {
-  xx <- agData_STATCAN_Crops %>% 
-    filter(Crop == crop, Year == year, Measurement == measurement) 
-  xx <- mapcan(boundaries = province, type = standard) %>% 
-    left_join(xx, by = c("pr_english"="Area"))
-  # Plot
-  ggplot(xx, aes(x = long, y = lat, group = group, fill = Value)) +
-    geom_polygon() + 
-    coord_fixed() + 
-    theme_mapcan() +
-    scale_fill_continuous(name = unique(xx$Unit[!is.na(xx$Unit)]),
-                          low = "lightgrey", high = "darkgreen") +
-    theme(legend.position = "right") +
-    labs(title = paste(crop, measurement, year, sep = " - "),
-         caption = "\u00A9 www.dblogr.com/  |  Data: STATCAN")
-}
-```
+## Wheat
 
----
-
-# Wheat
-
-![](maps_crops_canada_01.png)
+![](maps_crops_canada_wheat.png)
 
 ```{r}
 # Plot
-mp <- cropMapCan("Wheat", "Production", 2020)
-ggsave("maps_crops_canada_01.png", mp, width = 6, height = 4, bg = "white")
-```
-
----
-
-# Canola
-
-![](maps_crops_canada_02.png)
-
-```{r}
-# Plot
-mp <- cropMapCan("Canola", "Production", 2020)
-ggsave("maps_crops_canada_02.png", mp, width = 6, height = 4, bg = "white")
+mp <- cropMapCan_Production("Wheat", 2020)
+ggsave("maps_crops_canada_wheat.png", mp, width = 6, height = 4, bg = "white")
 ```
 
 ```{r echo = F}
@@ -125,86 +118,96 @@ ggsave("featured.png", mp, width = 6, height = 4, bg = "white")
 
 ---
 
-# Soybeans
+## Canola
 
-![](maps_crops_canada_03.png)
+![](maps_crops_canada_canola.png)
 
 ```{r}
 # Plot
-mp <- cropMapCan("Soybeans", "Production", 2020)
-ggsave("maps_crops_canada_03.png", mp, width = 6, height = 4, bg = "white")
+mp <- cropMapCan_Production("Canola", 2020)
+ggsave("maps_crops_canada_canola.png", mp, width = 6, height = 4, bg = "white")
 ```
 
 ---
 
-# Barley
+## Barley
 
-![](maps_crops_canada_04.png)
+![](maps_crops_canada_barley.png)
 
 ```{r}
 # Plot
-mp <- cropMapCan("Barley", "Production", 2020)
-ggsave("maps_crops_canada_04.png", mp, width = 6, height = 4, bg = "white")
+mp <- cropMapCan_Production("Barley", 2020)
+ggsave("maps_crops_canada_barley.png", mp, width = 6, height = 4, bg = "white")
 ```
 
 ---
 
-# Peas
+## Peas
 
-![](maps_crops_canada_05.png)
+![](maps_crops_canada_peas.png)
 
 ```{r}
 # Plot
-mp <- cropMapCan("Peas", "Production", 2020)
-ggsave("maps_crops_canada_05.png", mp, width = 6, height = 4, bg = "white")
+mp <- cropMapCan_Production("Peas", 2020)
+ggsave("maps_crops_canada_peas.png", mp, width = 6, height = 4, bg = "white")
 ```
 
 ---
 
-# Oats
+## Oats
 
-![](maps_crops_canada_06.png)
+![](maps_crops_canada_oats.png)
 
 ```{r}
 # Plot
-mp <- cropMapCan("Oats", "Production", 2020)
-ggsave("maps_crops_canada_06.png", mp, width = 6, height = 4, bg = "white")
+mp <- cropMapCan_Production("Oats", 2020)
+ggsave("maps_crops_canada_oats.png", mp, width = 6, height = 4, bg = "white")
 ```
 
 ---
 
-# Lentils
+## Lentils
 
-![](maps_crops_canada_07.png)
+![](maps_crops_canada_lentils.png)
 
 ```{r}
 # Plot
-mp <- cropMapCan("Lentils", "Production", 2020)
-ggsave("maps_crops_canada_07.png", mp, width = 6, height = 4, bg = "white")
+mp <- cropMapCan_Production("Lentils", 2020)
+ggsave("maps_crops_canada_lentils.png", mp, width = 6, height = 4, bg = "white")
 ```
 
 ---
 
-# Beans
+## Beans
 
-![](maps_crops_canada_08.png)
+![](maps_crops_canada_beans.png)
 
 ```{r}
 # Plot
-mp <- cropMapCan("Beans", "Production", 2020)
-ggsave("maps_crops_canada_08.png", mp, width = 6, height = 4, bg = "white")
+mp <- cropMapCan_Production("Beans", 2020)
+ggsave("maps_crops_canada_beans.png", mp, width = 6, height = 4, bg = "white")
 ```
 
 ---
 
-# Chickpeas
+## Chickpeas
 
-![](maps_crops_canada_09.png)
+![](maps_crops_canada_chickpeas.png)
 
 ```{r}
 # Plot
-mp <- cropMapCan("Chick peas", "Production", 2020)
-ggsave("maps_crops_canada_09.png", mp, width = 6, height = 4, bg = "white")
+mp <- cropMapCan_Production("Chick peas", 2020)
+ggsave("maps_crops_canada_chickpeas.png", mp, width = 6, height = 4, bg = "white")
 ```
 
 ---
+
+## Soybeans
+
+![](maps_crops_canada_soybeans.png)
+
+```{r}
+# Plot
+mp <- cropMapCan_Production("Soybeans", 2020)
+ggsave("maps_crops_canada_soybeans.png", mp, width = 6, height = 4, bg = "white")
+```

@@ -26,16 +26,24 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 </div></div>
 
+<div class = "row"><div class = "col-md-6">
+
 **My Curriculum Vitae (CV)**
 
-- &nbsp; `r shiny::icon("file-pdf")` [Curriculum Vitae (PDF)](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.wright.pdf) 
-- `r shiny::icon("laptop")` [Curriculum Vitae (HTML)](cv/)
+- &nbsp; `r shiny::icon("file-pdf")` [cv/cv.derek.m.wright.pdf](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf) 
+- `r shiny::icon("laptop")` [cv/cv.derek.m.wright](cv/cv.derek.m.wright)
 - `r shiny::icon("envelope")` derek.wright@usask.ca
+
+</div>
+
+<div class = "col-md-6">
 
 **Social Media**
 
 - `r shiny::icon("github")`  [github.com/derekmichaelwright](https://github.com/derekmichaelwright)
 - `r shiny::icon("twitter")` [twitter.com/DerekMWright](https://twitter.com/DerekMWright)
+
+</div></div>
 
 ---
 
