@@ -1,0 +1,525 @@
+---
+title: "R Tutorial"
+subtitle: "An introduction to R"
+date: "`r Sys.Date()`"
+author: "Derek Michael Wright <derek.wright@usask.ca> [www.dblogr.com/](https://dblogr.com/)"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+```
+
+---
+
+# Introduction
+
+This tutorial is will introduce the reader to <i class="fab fa-r-project"></i>, a free, open-source statistical computing environment often used with `RStudio`, a integrated development environment for <i class="fab fa-r-project"></i>.   
+
+![R Project Logo](logo_r.png){width=25%}
+
+---
+
+# Download <i class="fab fa-r-project"></i>
+
+Download <i class="fab fa-r-project"></i> at https://www.r-project.org/
+
+Download `RStudio` at https://rstudio.com/products/rstudio/download/
+
+![](rstudio.png)
+
+## Other Useful Tutorials
+
+http://r-statistics.co/R-Tutorial.html
+
+https://bookdown.org/rdpeng/exdata/getting-started-with-r.html#installation
+
+---
+
+# Calculator
+
+<i class="fab fa-r-project"></i> can be used as a super awesome calculator
+
+```{r}
+# 5 + 3 = 8
+5 + 3 
+# 24 / (1 + 2) = 8
+24 / (1 + 2) 
+# 2 * 2 * 2 = 8
+2^3 
+# 8 * 8 = 64
+sqrt(64) 
+# -log10(0.05 / 5000000) = 8
+-log10(0.05 / 5000000) 
+```
+
+---
+
+# Functions
+
+<i class="fab fa-r-project"></i> has many useful built in functions
+
+```{r}
+1:10
+as.character(1:10)
+rep(1:2, times = 5)
+rep(1:5, times = 2)
+rep(1:5, each = 2)
+rep(1:5, length.out = 7)
+help(rep)
+seq(5, 50, by = 5)
+seq(5, 50, length.out = 5)
+paste(1:10, 20:30, sep = "-")
+paste(1:10, collapse = "-")
+paste0("x", 1:10)
+min(1:10)
+max(1:10)
+range(1:10)
+mean(1:10)
+sd(1:10)
+```
+
+## Custom Functions
+
+Users can also create their own <i class="fab fa-r-project"></i> functions
+
+```{r}
+customFunction1 <- function(x, y) {
+  z <- 100 * x / (x + y)
+  paste(z, "%")
+}
+customFunction1(x = 10, y = 90)
+customFunction2 <- function(x) {
+  mymin <- mean(x - sd(x))
+  mymax <- mean(x) + sd(x)
+  print(paste("Min =", mymin))
+  print(paste("Max =", mymax))
+}
+customFunction2(x = 1:10)
+```
+
+## `for` loops and `if` `else` statements
+
+```{r}
+xx <- NULL #creates and empty object
+for(i in 1:10) {
+  xx[i] <- i*3
+}
+xx
+xx %% 2 #gives the remainder when divided by 2
+for(i in 1:length(xx)) {
+  if((xx[i] %% 2) == 0) {
+    print(paste(xx[i],"is Even"))
+  } else { 
+      print(paste(xx[i],"is Odd")) 
+    }
+}
+# or
+ifelse(xx %% 2 == 0, "Even", "Odd")
+paste(xx, ifelse(xx %% 2 == 0, "is Even", "is Odd"))
+```
+
+---
+
+# Objects
+
+Information can be stored in user defined objects, in multiple forms:
+
+- `c()`: a string of values
+- `matrix()`: a two dimensional matrix in one format 
+- `data.frame()`: a two dimensional matrix where each column can be a different format 
+- `list()`:
+
+## A string...
+
+```{r}
+xc <- 1:10
+xc
+xc <- c(1,2,3,4,5,6,7,8,9,10)
+xc
+```
+
+## A matrix...
+
+```{r}
+xm <- matrix(1:100, nrow = 10, ncol = 10, byrow = T)
+xm
+xm <- matrix(1:100, nrow = 10, ncol = 10, byrow = F)
+xm
+```
+
+## A data frame...
+
+```{r}
+xd <- data.frame(
+  x1 = c("aa","bb","cc","dd","ee",
+         "ff","gg","hh","ii","jj"),
+  x2 = 1:10,
+  x3 = c(1,1,1,1,1,2,2,2,3,3),
+  x4 = rep(c(1,2), times = 5),
+  x5 = rep(1:5, times = 2),
+  x6 = rep(1:5, each = 2),
+  x7 = seq(5, 50, by = 5),
+  x8 = log10(1:10),
+  x9 = (1:10)^3,
+  x10 = c(T,T,T,F,F,T,T,F,F,F)
+)
+xd
+```
+
+## A list...
+
+```{r}
+xl <- list(xc, xm, xd)
+xl[[1]]
+xl[[2]]
+xl[[3]]
+```
+
+# Selecting Data
+
+```{r}
+xc[5] # 5th element in xc
+xd$x3[5] # 5th element in col "x3"
+xd[5,"x3"] # row 5, col "x3"
+xd$x3 # all of col "x3"
+xd[,"x3"] # all rows, col "x3"
+xd[3,] # row 3, all cols
+xd[c(2,4),c("x4","x5")] # rows 2 & 4, cols "x4" & "x5"
+xl[[3]]$x1 # 3rd object in the list, col "x1
+```
+
+---
+
+# Data Formats
+
+Data can also be saved in many formats:
+
+- numeric
+- integer
+- character
+- factor
+- logical
+
+```{r}
+
+xd$x3 <- as.character(xd$x3)
+xd$x3
+xd$x3 <- as.numeric(xd$x3)
+xd$x3
+xd$x3 <- as.factor(xd$x3)
+xd$x3
+xd$x3 <- factor(xd$x3, levels = c("3","2","1"))
+xd$x3
+xd$x10
+as.numeric(xd$x10) # TRUE = 1, FALSE = 0
+sum(xd$x10)
+```
+
+Internal structure of an object can be checked with `str()`
+
+```{r}
+str(xc) # c()
+str(xm) # matrix()
+str(xd) # data.frame()
+str(xl) # list()
+```
+
+---
+
+# Packages
+
+Additional libraries can be installed and loaded for use.
+
+```{r eval = F}
+install.packages("scales")
+```
+
+```{r}
+library(scales)
+xx <- data.frame(Values = 1:10)
+xx$Rescaled <- rescale(x = xx$Values, to = c(1,30))
+xx
+```
+
+libraries can also be used without having to load them
+
+```{r}
+scales::rescale(1:10, to = c(1,30))
+```
+
+---
+
+# Data Wrangling
+
+R for Data Science - https://r4ds.had.co.nz/
+
+```{r}
+xx <- data.frame(Group = c("X","X","Y","Y","Y","X","X","X","Y","Y"),
+                 Data1 = 1:10, 
+                 Data2 = seq(10, 100, by = 10))
+xx$NewData1 <- xx$Data1 + xx$Data2
+xx$NewData2 <- xx$Data1 * 1000
+xx
+xx$Data1 < 5 # which are less than 5
+xx[xx$Data1 < 5,]
+xx[xx$Group == "X", c("Group","Data2","NewData1")]
+```
+
+Data wrangling with `tidyverse` and pipes (`%>%`)
+
+```{r}
+library(tidyverse) # install.packages("tidyverse")
+xx <- data.frame(Group = c("X","X","Y","Y","Y","Y","Y","X","X","X")) %>%
+  mutate(Data1 = 1:10, 
+         Data2 = seq(10, 100, by = 10),
+         NewData1 = Data1 + Data2,
+         NewData2 = Data1 * 1000)
+xx
+filter(xx, Data1 < 5)
+xx %>% filter(Data1 < 5)
+xx %>% filter(Group == "X") %>% 
+  select(Group, NewColName=Data2, NewData1)
+xs <- xx %>% 
+  group_by(Group) %>% 
+  summarise(Data2_mean = mean(Data2),
+            Data2_sd = sd(Data2),
+            NewData2_mean = mean(NewData2),
+            NewData2_sd = sd(NewData2))
+xs
+xx %>% left_join(xs, by = "Group")
+```
+
+# Read/Write data
+
+```{r}
+xx <- read.csv("data_r_tutorial.csv")
+write.csv(xx, "data_r_tutorial.csv", row.names = F)
+```
+
+For excel sheets, the package `readxl` can be used to read in sheets of data.
+
+```{r}
+library(readxl) # install.packages("readxl")
+xx <- read_xlsx("data_r_tutorial.xlsx", sheet = "Data")
+```
+
+```{r echo = F}
+DT::datatable(xx)
+```
+
+# Tidy Data
+
+Tutorial 1 - https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
+
+Tutorial 2 - https://r4ds.had.co.nz/tidy-data.html
+
+```{r}
+yy <- xx %>%
+  group_by(Name, Location) %>%
+  summarise(Mean_DTF = round(mean(DTF),1)) %>% 
+  arrange(Location)
+yy
+yy <- yy %>% spread(key = Location, value = Mean_DTF)
+yy
+yy <- yy %>% gather(key = TraitName, value = Value, 2:4)
+yy
+yy <- yy %>% spread(key = Name, value = Value)
+yy
+```
+
+---
+
+# Base Plotting
+
+We will start with some basic plotting using the base function `plot()`
+
+Tutorial 1 - http://www.sthda.com/english/wiki/r-base-graphs
+
+Tutorial 2 - https://bookdown.org/rdpeng/exdata/the-base-plotting-system-1.html
+
+```{r}
+# A basic scatter plot
+plot(x = xd$x8, y = xd$x9)
+# Adjust color and shape of the points
+plot(x = xd$x8, y = xd$x9, col = "darkred", pch = 0)
+plot(x = xd$x8, y = xd$x9, col = xd$x4, pch = xd$x4)
+# Adjust plot type 
+plot(x = xd$x8, y = xd$x9, type = "line")
+# Adjust linetype
+plot(x = xd$x8, y = xd$x9, type = "line", lty = 2)
+# Plot lines and points
+plot(x = xd$x8, y = xd$x9, type = "both")
+```
+
+Now lets create some random and normally distributed data to make some more complicated plots
+
+```{r}
+# 100 random uniformly distributed numbers ranging from 0 - 100
+ru <- runif(100, min = 0, max = 100)
+ru
+plot(x = ru)
+order(ru)
+ru<- ru[order(ru)]
+ru
+plot(x = ru)
+# 100 normally distributed numbers with a mean of 50 and sd of 10
+nd <- rnorm(100, mean = 50, sd = 10)
+nd
+nd <- nd[order(nd)]
+nd
+plot(x = nd)
+hist(x = nd)
+hist(nd, breaks = 20, col = "darkgreen")
+plot(x = density(nd))
+boxplot(x = nd)
+boxplot(x = nd, horizontal = T)
+```
+
+# ggplot2
+
+Lets be honest, the base plots are ugly! The `ggplot2` package gives the user to create a better, more visually appealing plots. Additional packages such as `ggbeeswarm` and `ggrepel` also contain useful functions to add to the functionality of `ggplot2`.
+
+ggplot2 - https://ggplot2.tidyverse.org/
+
+Tutorial 1 - http://r-statistics.co/ggplot2-Tutorial-With-R.html
+
+Tutorial 2 - https://www.statsandr.com/blog/graphics-in-r-with-ggplot2/
+
+The R Graph Gallery - https://www.r-graph-gallery.com/ggplot2-package.html
+
+```{r}
+library(ggplot2)
+mp <- ggplot(xd, aes(x = x8, y = x9))
+mp + geom_point()
+mp + geom_point(aes(color = x3, shape = x3), size = 4)
+mp + geom_line(size = 2)
+mp + geom_line(aes(color = x3), size = 2)
+mp + geom_smooth(method = "loess")
+mp + geom_smooth(method = "lm")
+xx <- data.frame(data = c(rnorm(50, mean = 40, sd = 10),
+                          rnorm(50, mean = 60, sd = 5)),
+                 group = factor(rep(1:2, each = 50)),
+                 label = c("Label1", rep(NA, 49), "Label2", rep(NA, 49)))
+mp <- ggplot(xx, aes(x = data, fill = group))
+mp + geom_histogram(color = "black")
+mp + geom_histogram(color = "black", position = "dodge")
+mp1 <- mp + geom_histogram(color = "black") + facet_grid(group~.)
+mp1
+mp + geom_density(alpha = 0.5)
+mp <- ggplot(xx, aes(x = group, y = data, fill = group))
+mp + geom_boxplot(color = "black")
+mp + geom_boxplot() + geom_point()
+mp + geom_violin() + geom_boxplot(width = 0.1, fill = "white")
+library(ggbeeswarm)
+mp + geom_quasirandom()
+mp + geom_quasirandom(aes(shape = group))
+mp2 <- mp + geom_violin() + 
+  geom_boxplot(width = 0.1, fill = "white") +
+  geom_beeswarm(alpha = 0.5)
+library(ggrepel)
+mp2 + geom_text_repel(aes(label = label), nudge_x = 0.4)
+library(ggpubr)
+ggarrange(mp1, mp2, ncol = 2, widths = c(2,1),
+          common.legend = T, legend = "bottom")
+```
+
+---
+
+# Statistics
+
+Handbook of Biological Statistics - http://biostathandbook.com/
+
+R Companion for ^ - https://rcompanion.org/rcompanion/a_02.html
+
+```{r}
+# Prep data
+lev_Loc  <- c("Saskatoon, Canada", "Jessore, Bangladesh", "Metaponto, Italy")
+lev_Name <- c("ILL 618 AGL", "CDC Maxim AGL", "Laird AGL")
+dd <- read_xlsx("data_r_tutorial.xlsx", sheet = "Data") %>%
+  mutate(Location = factor(Location, levels = lev_Loc),
+         Name = factor(Name, levels = lev_Name))
+xx <- dd %>%
+  group_by(Name, Location) %>%
+  summarise(Mean_DTF = mean(DTF))
+xx %>% spread(Location, Mean_DTF)
+# Plot
+mp1 <- ggplot(dd, aes(x = Location, y = DTF, color = Name, shape = Name)) +
+  geom_point(size = 2, alpha = 0.7, position = position_dodge(width=0.5))
+mp2 <- ggplot(xx, aes(x = Location, y = Mean_DTF, 
+                      color = Name, group = Name, shape = Name)) +
+  geom_point(size = 2.5, alpha = 0.7) + 
+  geom_line(size = 1, alpha = 0.7) +
+  theme(legend.position = "top")
+ggarrange(mp1, mp2, ncol = 2, common.legend = T, legend = "top")
+```
+
+From first glace, it is clear there are differences between genotypes, locations, and genotype x environment (GxE) interactions. Now let's do a few statistical tests.
+
+```{r}
+summary(aov(DTF ~ Name * Location, data = dd))
+```
+
+As expected, an ANOVA shows statistical significance for genotype (p-value = 0.0395), Location (p-value < 2e-16) and GxE interactions (p-value < 2.52e-06). However, all this tells us is that one genotype is different from the rest, one location is different from the others and that there is GxE interactions. If we want to be more specific, would need to do some multiple comparison tests.
+
+If we only have two things to compare, we could do a *t-test*.
+
+```{r}
+xx <- dd %>% 
+  filter(Location %in% c("Saskatoon, Canada", "Jessore, Bangladesh")) %>%
+  spread(Location, DTF)
+t.test(x = xx$`Saskatoon, Canada`, y = xx$`Jessore, Bangladesh`)
+```
+
+DTF in Saskatoon, Canada is significantly different (p-value < 2.2e-16) from DTF in Jessore, Bangladesh.
+
+```{r}
+xx <- dd %>% 
+  filter(Name %in% c("ILL 618 AGL", "Laird AGL"),
+         Location == "Metaponto, Italy") %>%
+  spread(Name, DTF)
+t.test(x = xx$`ILL 618 AGL`, y = xx$`Laird AGL`)
+```
+
+DTF between ILL 618 AGL and Laird AGL are not significantly different (p-value = 0.7137) in Metaponto, Italy.
+
+---
+
+# pch Plot
+
+```{r}
+xx <- data.frame(x = rep(1:6, times = 5, length.out = 26),
+                 y = rep(5:1, each = 6, length.out = 26),
+                 pch = 0:25)
+mp <- ggplot(xx, aes(x = x, y = y, shape = as.factor(pch))) +
+  geom_point(color = "darkred", fill = "darkblue", size = 5) +
+  geom_text(aes(label = pch), nudge_x = -0.25) +
+  scale_shape_manual(values = xx$pch) +
+  scale_x_continuous(breaks = 6:1) +
+  scale_y_continuous(breaks = 6:1) +
+  theme_void() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        axis.text = element_blank(),
+        axis.ticks = element_blank()) +
+  labs(title = "Plot symbols in R (pch)",
+       subtitle = "color = \"darkred\", fill = \"darkblue\"",
+       x = NULL, y = NULL)
+ggsave("pch.png", mp, width = 4.5, height = 3, bg = "white")
+```
+
+![](pch.png)
+
+---
+
+# R Markdown
+
+Tutorials on how to create an R markdown document like this one can be found here:
+
+ - https://rmarkdown.rstudio.com/articles_intro.html
+ - https://rmarkdown.rstudio.com/lesson-1.html
+ - https://alexd106.github.io/intro2R/Rmarkdown_intro.html
+
+---
+
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)
