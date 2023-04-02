@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 
+extra.Rmd
 Rendering_Script.R
 
 academic/gwas_tutorial/myG_hmp.csv
