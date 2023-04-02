@@ -55,7 +55,7 @@ cropMapCan_Production <- function(crop, year) {
          caption = myCaption)
 }
 #
-myCaption <- "\u00A9 www.dblogr.com/  |  Data: STATCAN"
+myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 ```
 
 ---
@@ -92,7 +92,7 @@ for(i in unique(xx$Crop)) {
                                 low = "lightgrey", high = "darkgreen") +
           theme(legend.position = "right") + 
           labs(title = paste(i, "- Production -", 2020),
-               caption = "\u00A9 www.dblogr.com/  |  Data: STATCAN")
+               caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
         ) 
 }
 dev.off()
@@ -211,3 +211,5 @@ ggsave("maps_crops_canada_chickpeas.png", mp, width = 6, height = 4, bg = "white
 mp <- cropMapCan_Production("Soybeans", 2020)
 ggsave("maps_crops_canada_soybeans.png", mp, width = 6, height = 4, bg = "white")
 ```
+
+---

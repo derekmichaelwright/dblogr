@@ -1,0 +1,16 @@
+# Data from USASK AGILE + EVOLVES projects
+# Abstract of paper at: 
+# 
+crosstype: riself
+geno: LR95_geno.csv
+pheno: LR95_pheno.csv
+gmap: LR95_gmap.csv
+alleles:
+- a
+- b
+genotypes:
+  a: 1
+  b: 2
+na.strings:
+- '-'
+- NA

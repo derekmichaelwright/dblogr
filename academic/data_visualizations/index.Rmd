@@ -1,0 +1,252 @@
+---
+title: "Data Visualizations"
+subtitle: "A vignette illustrating different ways to visualize data"
+date: "`r Sys.Date()`"
+author: "Derek Michael Wright <derek.wright@usask.ca>"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+```
+
+---
+
+# Introduction
+
+This vignette will explore several aspects of data visualization using a lentil phenology data set from [Wright *et al*. 2020](https://dblogr.com/academic/ldp_phenology/). For further details on the lentil population and data visit: https://dblogr.com/academic/lentil_diversity_panel/lentil_diversity_panel.html
+
+```{r echo = F}
+downloadthis::download_link(
+  link = "data_visualizations_1.csv",
+  button_label = "data_visualizations_1.csv",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+downloadthis::download_link(
+  link = "data_visualizations_2.csv",
+  button_label = "data_visualizations_2.csv",
+  button_type = "success",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
+
+```{r echo = F, eval = T}
+library(agData)
+expts <- c("Metaponto, Italy 2016",
+           "Marchouch, Morocco 2017",
+           "Bardiya, Nepal 2017")
+locs <- c("Metaponto, Italy",
+           "Marchouch, Morocco",
+           "Bardiya, Nepal")
+labels <- c("Italy","Morocco","Nepal")
+myEntries <- c("Laird AGL", "Indianhead AGL", "CDC Robin AGL",
+               "PI 299366 LSP AGL", "ILL 28 AGL", "PI 177430 LSP AGL",
+                "PI 289066 AGL", "Crimson AGL")
+# "PI 379368 LSP AGL", "ILL 4400 AGL",
+#, "ILL 8072 AGL",  "CDC Rosie AGL","PI 212610 LSP AGL"
+# "PI 320953 LSP AGL","PI 345627 LSP AGL"
+#
+xx <- read.csv("data_raw.csv") %>%
+  filter(Name %in% myEntries, 
+         Expt %in% expts) %>%
+  mutate(Location = plyr::mapvalues(Location, locs, labels)) %>% 
+  select(Entry, Name, Location, Rep, DTF) #%>% 
+  #group_by(Entry, Name, Location) %>%
+  #summarise(DTF = mean(DTF, na.rm = T))
+write.csv(xx, "data_visualizations_2.csv", row.names = F)
+#
+x1 <- read.csv("data_raw.csv") %>%
+  filter(Expt %in% expts) %>%
+  mutate(Location = plyr::mapvalues(Location, locs, labels)) %>% 
+  select(Entry, Name, Location, Rep, DTF) %>% 
+  #filter(Location %in%  c("Italy", "Morocco")) %>%
+  spread(Location, DTF)
+#
+xx <- read.csv("data_raw.csv") %>%
+  filter(Expt == "Metaponto, Italy 2016") %>%
+  select(Entry, Name, Rep, DTF, DTS, DTM) %>% 
+  group_by(Entry, Name) %>%
+  summarise_at(vars(DTF, DTS, DTM), funs(mean), na.rm = T)
+write.csv(xx, "data_visualizations_1.csv", row.names = F)
+```
+
+```{r}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData)
+myCaption <- "\u00A9 www.dblogr.com/ | Data: AGILE"
+```
+
+---
+
+# Histograms
+
+For this first example, we will illustrate the different ways to visualize histograms. This data set includes days from sowing to flower (**DTF**), days from sowing to swollen pod (**DTS**), and days from sowing to maturity (**DTM**), for 324 lentil accessions (**LDP**) grown in Metaponto, Italy in the 2016-2017 growing season.
+
+![](data_visualizations_01.png)
+
+```{r}
+# Prep data
+xx <- read.csv("data_visualizations_1.csv") %>%
+  gather(Trait, Value, DTF, DTS, DTM) %>%
+  mutate(Trait = factor(Trait, levels = c("DTF","DTS","DTM")),
+         Trait = plyr::mapvalues(Trait, c("DTF","DTS","DTM"),
+           c("Days to Flower","Days to Swollen Pod","Days to Maturity")))
+myColors <- c("steelblue","darkgreen","darkorange")
+# Plot
+mp <- ggplot(xx, aes(fill = Trait, x = Value)) +
+  theme_agData(legend.position = "none",
+               axis.text.y = element_blank(),
+               axis.ticks.y = element_blank()) +
+  scale_fill_manual(values = myColors) +
+  labs(x = NULL, y = NULL)
+mp1 <- mp + labs(subtitle = "(a) Facetted histograms", 
+                 x = "Days After Planting") +
+  geom_histogram(binwidth = 3, color = "black", alpha = 0.7) + 
+  facet_grid(. ~ Trait)
+mp2 <- mp + labs(subtitle = "(b) Dodged histograms")+
+  geom_histogram(binwidth = 3, position = "dodge", 
+                 color = "black", lwd = 0.4, alpha = 0.7)
+mp3 <- mp + labs(subtitle = "(c) Stacked histograms (binwidth = 3 days)") +
+  geom_histogram(binwidth = 3, color = "black", alpha = 0.7)
+mp4 <- mp + labs(subtitle = "(d) Stacked histograms (binwidth = 1 day)") +
+  geom_histogram(binwidth = 1, lwd = 0.4, color = "black", alpha = 0.7)
+mp5 <- mp + geom_density(alpha = 0.5) +
+  labs(title = "Lentil Diversity Panel (LDP) Phenology in Italy", 
+       subtitle = "(e) Density plots",
+       caption = myCaption)
+mp <- ggarrange(mp1, mp2, mp3, mp4, mp5,  ncol = 1, nrow = 5, 
+                heights = c(1.1,1,1,1,1.3))
+ggsave("data_visualizations_01.png", mp, width = 6, height = 8)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 6, height = 8)
+```
+
+---
+
+## Bonus - Histogram + scatterplot
+
+Scatter plots and histograms can be combined to display histograms along with a correlation plot.
+
+![](data_visualizations_02.png)
+
+```{r}
+# Prep data
+library(ggExtra)
+xx <- read.csv("data_visualizations_1.csv")
+myColors <- c("steelblue","darkorange")
+# Plot
+mp <- ggplot(xx, aes(x = DTF, y = DTM)) +
+  geom_point(alpha = 0.7) +
+  theme_agData() +
+  labs(title = "Lentil Diversity Panel (LDP) Phenology in Italy",
+       x = "Days to Flower", y = "Days to Maturity",
+       caption = myCaption)
+mp <- ggMarginal(mp, type = "densigram",
+           xparams = list(fill = alpha("steelblue",0.7)),
+           yparams = list(fill = alpha("darkorange",0.7)))
+ggsave("data_visualizations_02.png", mp, width = 6, height = 4)
+```
+
+---
+
+# Boxplots
+
+For the second example, we will use a subset of 8 accessions grown in Morocco, Nepal and Italy with 3 replicates in each location. This data can be visualized in a number of different ways. 
+
+![](data_visualizations_03.png)
+
+```{r}
+# Prep data
+myLocations <- c("Morocco", "Nepal", "Italy")
+myColors <- c("darkgreen", "darkorange", "steelblue")
+myEntries <- c("Crimson AGL", "ILL 28 AGL", "PI 299366 LSP AGL", 
+               "Laird AGL", "CDC Robin AGL",
+               "PI 177430 LSP AGL", "Indianhead AGL", "PI 289066 AGL")
+xx <- read.csv("data_visualizations_2.csv") %>%
+  mutate(Location = factor(Location, levels = myLocations),
+         Name = factor(Name, levels = myEntries) ) 
+# Plot
+mp <- ggplot(xx, aes(x = Location, y = DTF, fill = Location)) +
+  theme_agData(legend.position = "none") +
+  scale_fill_manual(values = myColors) +
+  labs(x = NULL, y = NULL)
+mp1 <- mp + 
+  geom_boxplot(alpha = 0.6, coef = 2.5) +
+  stat_boxplot(geom = "errorbar", width = 0.25, coef = 2.5) +
+  labs(title = "Lentil - Days to Flower", subtitle = "(a) boxplots")
+mp2 <- mp + 
+  geom_violin(alpha = 0.6) +
+  labs(subtitle = "(b) violin plots")
+mp3 <- mp + 
+  geom_violin(alpha = 0.6) +
+  geom_boxplot(width = 0.1, fill = "white",
+               outlier.shape = NA, coef = 0) +
+  labs(subtitle = "(c) violins + boxplots")
+mp4 <- mp + 
+  geom_violin(alpha = 0.6) +
+  geom_beeswarm(aes(shape = Name), alpha = 0.7, cex = 1.5) +
+  scale_shape_manual(values = 0:7) +
+  labs(subtitle = "(d) violins + points", caption = myCaption)
+mp <- ggarrange(mp1, mp2, mp3, mp4, ncol = 2, nrow = 2, align = "hv")
+ggsave("data_visualizations_03.png", mp, width = 6, height = 6)
+```
+
+---
+
+## Bonus - Faceted
+
+Additionally, if we want to compare individual genotypes instead of environments, we can change how we present the data.
+
+![](data_visualizations_04.png)
+
+
+```{r}
+# Plot
+mp <- ggplot(xx, aes(x = Location, y = DTF, 
+                     color = Location, shape = Name)) +
+  geom_beeswarm(alpha = 0.7, cex = 2, lwd = 2) +
+  facet_wrap(Name ~ ., ncol = 4) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_blank(),
+               axis.ticks.x = element_blank()) +
+  scale_color_manual(name = NULL, values = myColors) +
+  scale_shape_manual(values = 0:7, guide = F) +
+  labs(x = NULL, y = "Days to Flower", caption = myCaption)
+ggsave("data_visualizations_04.png", mp, width = 6, height = 3)
+```
+
+---
+
+## Bonus - G x E
+
+Here we can see the various genotype by environment interactions (G x E).
+
+![](data_visualizations_05.png)
+
+```{r}
+# prep data
+yy <- xx %>% group_by(Name, Location) %>%
+  summarise(DTF = mean(DTF, na.rm = T))
+myColors <- c("darkred", "darkgoldenrod2", "darkblue", "darkgreen", 
+              "maroon4", "purple4", "black",  "steelblue" )
+# plot
+mp <- ggplot(yy, aes(x = Location, y = DTF, 
+                     color = Name, shape = Name, group = Name)) +
+  geom_point(size = 3, alpha = 0.8) + 
+  geom_line(size = 1.25, alpha = 0.6) +
+  scale_color_manual(name = NULL, values = myColors) +
+  scale_shape_manual(name = NULL, values = 0:7) +
+  theme_agData(legend.position = "top") +
+  coord_cartesian(xlim = c(1.5,2.5)) +
+  guides(color = guide_legend(nrow = 2, byrow = T)) +
+  labs(x = NULL, y = "Days to Flower", caption = myCaption)
+ggsave("data_visualizations_05.png", mp, width = 6, height = 4)
+```
+
+---

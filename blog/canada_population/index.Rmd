@@ -82,7 +82,7 @@ d2 <- read.csv("1710000501_databaseLoadingData.csv")  %>%
          Year = substr(Year, 1,4),
          Year = as.numeric(Year)) %>%
   filter(!is.na(Age))
-myCaption <- "\u00A9 www.dblogr.com/ | Data: STATCAN"
+myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 ```
 
 ---

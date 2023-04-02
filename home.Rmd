@@ -1,6 +1,6 @@
 ---
 title: "dblogr"
-subtitle: "Welcome to derekmichaelwright.github.io/dblogr/"
+subtitle: "Welcome to derekmichaelwright.github.io/dblogr"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca> [github.com/derekmichaelwright](https://github.com/derekmichaelwright) [twitter.com/DerekMWright](https://twitter.com/DerekMWright)"
 ---
@@ -166,6 +166,16 @@ Teketel A. Haile,  Taryn Heidecker,  **Derek M. Wright**,  Sandesh Neupane,  Lar
 
 </div><div class = "col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
 
+## Lentil Diversity Panel
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [**Lentil Diversity Panel**](academic/lentil_diversity_panel)
+
+A population representing global genetic diversity in cultivated lentil varieties
+
+</div><div class = "col-md-6">![](academic/lentil_diversity_panel/featured.png)</div></div></div>
+
 ## GWAS Tutorial
 
 <div class="box"><div class = "row"><div class = "col-md-6">
@@ -175,6 +185,86 @@ Teketel A. Haile,  Taryn Heidecker,  **Derek M. Wright**,  Sandesh Neupane,  Lar
 An R tutorial on running genome-wide association studies (GWAS) with GAPIT and gwaspr
 
 </div><div class = "col-md-6">![](academic/gwas_tutorial/featured.png)</div></div></div>
+
+## QTL Tutorial
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [**QTL Tutorial**](academic/qtl_tutorial)
+
+A tutorial on how to run QTL analyses in R
+
+</div><div class = "col-md-6">![](academic/qtl_tutorial/featured.png)</div></div></div>
+
+## PCA Tutorial
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [**PCA Tutorial**](academic/pca_tutorial)
+
+A tutorial on how to run principal component analyses and heirarchical clustering in R
+
+</div><div class = "col-md-6">![](academic/pca_tutorial/featured.png)</div></div></div>
+
+## Augmented Designs
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [**Augmented Field Trial Designs**](academic/augmented_designs)
+
+An R tutorial on augmented field trial designs and how to adjust their values
+
+</div><div class = "col-md-6">![](academic/augmented_designs/featured.png)</div></div></div>
+
+## Correlation Coefficients and Predictive Models
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [**Correlation Coefficients and Predictive Models**](academic/correlation_coefficients)
+
+An R tutorial on how to properly use correlation coefficients when evaluating predictive models
+
+</div><div class = "col-md-6">![](academic/correlation_coefficients/featured.png)</div></div></div>
+
+## Data Visualizations
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [**Data Visualization**](academic/data_visualizations)
+
+A vignette illustrating different ways to visualize data
+
+</div><div class = "col-md-6">![](academic/data_visualizations/featured.png)</div></div></div>
+
+## Dual Y-axis
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [**Dual Y-axis**](academic/dual_y_axis)
+
+An R tutorial on how to create a plots with dual y-axes
+
+</div><div class = "col-md-6">![](academic/dual_y_axis/featured.png)</div></div></div>
+
+## Thermal Time
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [**Calculating Thermal Time/Growing Degree Days**](academic/thermal_time)
+
+An R tutorial on how to calculate thermal time and incorporate environmental data into a phenotype
+
+</div><div class = "col-md-6">![](academic/thermal_time/featured.png)</div></div></div>
+
+## EnvData Vignette
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [**Environmental Data Vignette**](academic/envdata)
+
+An R tutorial on how to manipulate and plot environmental data
+
+</div><div class = "col-md-6">![](academic/envdata/featured.png)</div></div></div>
 
 ## R Tutorial
 
@@ -205,6 +295,26 @@ An introduction to R
 - Install: `devtools::install_github("derekmichaelwright/agData")`
 
 </div><div class = "col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
+
+## Lentil
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [Lentil Production](agdata/lentil)
+
+Graphs of lentil production using FAO data
+
+</div><div class = "col-md-6">![](agdata/lentil/featured.png)</div></div></div>
+
+## Lentil Saskatchewan
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [Saskatchewan Lentil Production and Exports](agdata/lentil_saskatchewan)
+
+Graphs of lentil production and exports using SKAG data
+
+</div><div class = "col-md-6">![](agdata/lentil_saskatchewan/featured.png)</div></div></div>
 
 ## Maps of Global Crop Production
 

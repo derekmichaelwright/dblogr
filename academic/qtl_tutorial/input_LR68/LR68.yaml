@@ -1,0 +1,16 @@
+# Data from USASK AGILE & EVOLVES projects
+# LR68: intraspecific lentil RIL population
+# IG 72643 (wild accession) x 3339-3 (CDC Greenstar)
+crosstype: riself
+geno: LR68_geno.csv
+pheno: LR68_pheno.csv
+gmap: LR68_gmap.csv
+alleles:
+- a
+- b
+genotypes:
+  a: 1
+  b: 2
+na.strings:
+- '-'
+- NA
