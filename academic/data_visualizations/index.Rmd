@@ -77,7 +77,7 @@ write.csv(xx, "data_visualizations_1.csv", row.names = F)
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
-myCaption <- "\u00A9 www.dblogr.com/ | Data: AGILE"
+myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 ```
 
 ---

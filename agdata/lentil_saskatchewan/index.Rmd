@@ -49,6 +49,7 @@ library(gganimate)
 myColors <- c("darkgreen", "darkgoldenrod3", "darkred", "black")
 myCrops <- c("Large Green Lentils","Small Green Lentils",
              "Red Lentils","Other Lentils")
+myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 #
 x1 <- agData_STATCAN_Crops %>%
   filter(Crop == "Lentils", Measurement == "Production",
@@ -82,9 +83,8 @@ mp <- ggplot(d1, aes(x = Year)) +
   theme_agData(legend.position = "none",
                panel.grid.major.x = element_blank(),
                panel.grid.minor.x = element_blank()) +
-  labs(title = "Canadian Lentil Industry",
-       y = "Production (Million Tonnes)", x = NULL,
-       caption = "\u00A9 www.dblogr.com/ | Data: STATCAN")
+  labs(title = "Canadian Lentil Industry", x = NULL,
+       y = "Production (Million Tonnes)", caption = myCaption)
 ggsave("lentil_saskatchewan_1.png", mp, width = 6, height = 4)
 ```
 
@@ -117,8 +117,8 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
                axis.text.y = element_blank(), 
                axis.ticks.y = element_blank()) + 
   labs(title = "Saskatchewan Lentil Exports - {round(frame_time)}", 
-       x = "Million Tonnes (3 year moving average)", y = NULL,
-       caption = "\u00A9 www.dblogr.com/ | Data: SK AG") +
+       x = "Million Tonnes (3 year moving average)", 
+       y = NULL, caption = myCaption) +
   transition_time(Year)
 anim_save("lentil_saskatchewan_gif_01.gif", mp, 
           nframes = 600, fps = 30, end_pause = 120, 
@@ -141,8 +141,7 @@ mp <- ggplot(d2, aes(x = Year, y = Value, color = Crop)) +
   theme_agData(legend.position = "bottom") +
   scale_color_manual(name = NULL, values = myColors) +
   labs(title = "Lentil - Production", 
-       y = NULL, x = NULL,
-       caption = "\u00A9 www.dblogr.com/ | Data: SK AG")
+       y = NULL, x = NULL, caption = myCaption)
 ggsave("lentil_saskatchewan_2_01.png", width = 8, height = 6)
 ```
 
@@ -164,8 +163,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
   scale_color_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Lentil - Area Harvested", 
-       y = "Million Hectares", x = NULL,
-       caption = "\u00A9 www.dblogr.com/ | Data: SK AG")
+       y = "Million Hectares", x = NULL, caption = myCaption)
 ggsave("lentil_saskatchewan_2_02.png", width = 8, height = 5)
 ```
 
@@ -185,8 +183,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
   scale_color_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Lentil - Production", 
-       y = "Million Tonnes", x = NULL,
-       caption = "\u00A9 www.dblogr.com/ | Data: SK AG")
+       y = "Million Tonnes", x = NULL, caption = myCaption)
 ggsave("lentil_saskatchewan_2_03.png", width = 8, height = 5)
 ```
 
@@ -207,8 +204,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Crop)) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Lentil - Production", 
-       y = "Million", x = NULL,
-       caption = "\u00A9 www.dblogr.com/ | Data: SK AG")
+       y = "Million", x = NULL, caption = myCaption)
 ggsave("lentil_saskatchewan_2_04.png", width = 8, height = 5)
 ```
 
@@ -229,8 +225,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, group = Area)) +
            fill = "darkgreen", alpha = 0.7) + 
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Saskatchewan Lentil Exports", 
-       y = "Thousand Tonnes", x = NULL,
-       caption = "\u00A9 www.dblogr.com/ | Data: SK AG")
+       y = "Thousand Tonnes", x = NULL, caption = myCaption)
 ggsave("lentil_saskatchewan_3_01.png", width = 6, height = 4)
 ```
 
@@ -248,8 +243,7 @@ mp <- ggplot(d3, aes(x = Year, y = Value / 1000, group = Area)) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 8) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Saskatchewan Lentil Exports", 
-       y = "Thousand Tonnes", x = NULL,
-       caption = "\u00A9 www.dblogr.com/ | Data: SK AG")
+       y = "Thousand Tonnes", x = NULL, caption = myCaption)
 ggsave("lentil_saskatchewan_3_02.png", width = 20, height = 8)
 ```
 
@@ -273,8 +267,8 @@ mp <- ggplot(xx, aes(x = Area, y = Value / 1000, group = Area, fill = Region)) +
   facet_wrap(Year ~ ., scales = "free_y", ncol = 8) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Saskatchewan Lentil Exports", y = "Thousand Tonnes", x = NULL,
-       caption = "\u00A9 www.dblogr.com/ | Data: SK AG")
+  labs(title = "Saskatchewan Lentil Exports", 
+       y = "Thousand Tonnes", x = NULL, caption = myCaption)
 ggsave("lentil_saskatchewan_3_03.png", width = 6, height = 4)
 ```
 
@@ -297,8 +291,8 @@ mp <- ggplot(xx, aes(x = Area, y = Value / 1000, group = Area, fill = Region)) +
   facet_wrap(Year ~ ., scales = "free_y", ncol = 8) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Saskatchewan Lentil Exports", y = "Thousand Tonnes", x = NULL,
-       caption = "\u00A9 www.dblogr.com/ | Data: SK AG")
+  labs(title = "Saskatchewan Lentil Exports", 
+       y = "Thousand Tonnes", x = NULL, caption = myCaption)
 ggsave("lentil_saskatchewan_3_04.png", width = 6, height = 4)
 ```
 
@@ -321,8 +315,8 @@ mp <- ggplot(xx, aes(x = Area, y = Value / 1000, group = Area, fill = Region)) +
   facet_wrap(Year ~ ., scales = "free_y", ncol = 8) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Saskatchewan Lentil Exports", y = "Thousand Tonnes", x = NULL,
-       caption = "\u00A9 www.dblogr.com/ | Data: SK AG")
+  labs(title = "Saskatchewan Lentil Exports", x = NULL,
+       y = "Thousand Tonnes", caption = myCaption)
 ggsave("lentil_saskatchewan_3_05.png", width = 6, height = 4)
 ```
 
