@@ -45,32 +45,11 @@ https://kbroman.org/qtl2/assets/vignettes/input_files.html
 
 In order to run the analysis we first need to set up an `input` folder with properly formatted files containing our ***phenotyope*** data, ***genotype*** data, a ***genetic map*** and a ***yaml*** file with details for running the analysis. The `input` folders used in this vignette can be downloaded below:
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "input_LR95.zip",
-  button_label = "input_LR95.zip",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-downloadthis::download_link(
-  link = "input_LR89.zip",
-  button_label = "input_LR89.zip",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-downloadthis::download_link(
-  link = "input_LR68.zip",
-  button_label = "input_LR68.zip",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="5"> `r shiny::icon("save")` [input_LR95.zip](input_LR95.zip) </font>
+
+<font size="5"> `r shiny::icon("save")` [input_LR89.zip](input_LR89.zip) </font>
+
+<font size="5"> `r shiny::icon("save")` [input_LR68.zip](input_LR68.zip) </font>
 
 ---
 
@@ -151,16 +130,7 @@ write.csv(find_peaks(out, map, threshold = 3, drop = 1.5),
           "LR68_results.csv", row.names = F)
 ```
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "LR68_results.csv",
-  button_label = "LR68_results.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="5"> `r shiny::icon("save")` [LR68_results.csv](LR68_results.csv) </font>
 
 ---
 
@@ -405,16 +375,7 @@ ggsave("qtl_tutorial_LR68_11.png", mp, width = 8, height = 6)
 
 If you have many traits, plotting the results into a pdf can be a useful.
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "https://dblogr.com/academic/qtl_tutorial/qtl_tutorial_results_LR68.pdf",
-  button_label = "qtl_tutorial_results_LR68.pdf",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="5"> `r shiny::icon("save")` [qtl_tutorial_results_LR68.pdf](qtl_tutorial_results_LR68.pdf) </font>
 
 ```{r results="hide"}
 pdf("qtl_tutorial_results_LR68.pdf", width = 12, height = 4)
@@ -547,16 +508,7 @@ write.csv(find_peaks(out, map, threshold = 3, drop = 1.5),
           "LR95_results.csv", row.names = F)
 ```
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "LR95_results.csv",
-  button_label = "LR95_results.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="5"> `r shiny::icon("save")` [LR95_results.csv](LR95_results.csv) </font>
 
 ---
 
@@ -850,16 +802,7 @@ write.csv(find_peaks(out, map, threshold = 3, drop = 1.5),
           "LR89_results.csv", row.names = F)
 ```
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "LR89_results.csv",
-  button_label = "LR89_results.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="5"> `r shiny::icon("save")` [LR89_results.csv](LR89_results.csv) </font>
 
 ---
 

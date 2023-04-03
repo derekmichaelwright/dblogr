@@ -26,16 +26,7 @@ Augmented designs were developed as a way of controlling error in plant breeding
 
 [**Federer, W.** (1956) Augmented (or hoonuiaku) designs. *Hawaiian Planters Record*.](https://ecommons.cornell.edu/handle/1813/32841)
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "data_augmented_designs_1.csv",
-  button_label = "data_augmented_designs_1.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="5"> `r shiny::icon("save")` [data_augmented_designs_1.csv](data_augmented_designs_1.csv) </font>
 
 ## Type II - Modified
 
@@ -45,16 +36,7 @@ downloadthis::download_link(
 
 [Table S1 – The raw phenotypic data of a population with 243 RILs derived from a cross between ‘CDC Bethune’ and ‘Macbeth’ (BM) for the case study](https://data.nal.usda.gov/dataset/data-estimation-genetic-parameters-and-their-sampling-variances-quantitative-traits-type-2-modified-augmented-design)
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "data_augmented_designs_2.csv",
-  button_label = "data_augmented_designs_2.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="5"> `r shiny::icon("save")` [data_augmented_designs_2.csv](data_augmented_designs_2.csv) </font>
 
 ---
 

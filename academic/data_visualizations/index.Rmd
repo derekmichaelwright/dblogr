@@ -15,24 +15,9 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 This vignette will explore several aspects of data visualization using a lentil phenology data set from [Wright *et al*. 2020](https://dblogr.com/academic/ldp_phenology/). For further details on the lentil population and data visit: https://dblogr.com/academic/lentil_diversity_panel/lentil_diversity_panel.html
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "data_visualizations_1.csv",
-  button_label = "data_visualizations_1.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-downloadthis::download_link(
-  link = "data_visualizations_2.csv",
-  button_label = "data_visualizations_2.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="4"> `r shiny::icon("save")` [data_visualizations_1.csv](data_visualizations_1.csv) </font>
+
+<font size="4"> `r shiny::icon("save")` [data_visualizations_2.csv](data_visualizations_2.csv) </font>
 
 ```{r echo = F, eval = T}
 library(agData)

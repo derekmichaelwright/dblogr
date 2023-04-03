@@ -26,16 +26,7 @@ library(ggpmisc) # stat_poly_eq()
 
 # Data
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "data_correlation_coefficients.xlsx",
-  button_label = "data_correlation_coefficients.xlsx",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="5"> `r shiny::icon("save")` [data_correlation_coefficients.xlsx](data_correlation_coefficients.xlsx) </font>
 
 ## Dataset 1
 

@@ -17,24 +17,9 @@ Awada, L., Nagy, C. and Phillips, P.W. (2021) **Contribution of land use practic
 
 https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0260946
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "journal.pone.0260946.s002.docx",
-  button_label = "journal.pone.0260946.s002.docx",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-downloadthis::download_link(
-  link = "data_soil_carbon.xlsx",
-  button_label = "data_soil_carbon.xlsx",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="5"> `r shiny::icon("save")` [journal.pone.0260946.s002.docx](journal.pone.0260946.s002.docx) </font>
+
+<font size="5"> `r shiny::icon("save")` [data_soil_carbon.xlsx](data_soil_carbon.xlsx) </font>
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")

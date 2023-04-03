@@ -22,16 +22,7 @@ The purpose of this document is to provide a few examples of how to manipulate a
 
 Data sets can be downloaded from [**knowpulse.usask.ca/**](http://knowpulse.usask.ca/portal/) or my [**github**](https://github.com/derekmichaelwright/dblogr/tree/master/content/academic/envdata).
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "environment_data.tar",
-  button_label = "environment_data.tar",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="5"> `r shiny::icon("save")` [environment_data.tar](environment_data.tar) </font>
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")

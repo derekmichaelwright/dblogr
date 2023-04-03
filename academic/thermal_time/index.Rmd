@@ -46,45 +46,13 @@ where:
 
 The Data used in this tutorial are sourced from [**knowpulse.usask.ca/**](http://knowpulse.usask.ca/portal/) and can be found in my [github repository](https://github.com/derekmichaelwright/AGILE_LDP_Phenology/tree/master/data) for our [lentil phenology paper](https://nph.onlinelibrary.wiley.com/doi/10.1002/ppp3.10158). 
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "data_ldp.csv",
-  button_label = "data_ldp.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-downloadthis::download_link(
-  link = "https://github.com/derekmichaelwright/AGILE_LDP_Phenology/blob/master/data/data_tb_pc.csv",
-  button_label = "Tb and Pc (data_tb_pc.csv)",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="5"> `r shiny::icon("save")` [data_ldp.csv](data_ldp.csv) </font>
 
-<br>
+<font size="5"> `r shiny::icon("save")` [Tb and Pc (data_tb_pc.csv)](https://github.com/derekmichaelwright/AGILE_LDP_Phenology/blob/master/data/data_tb_pc.csv) </font>
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "data_env_sutherland_2017.csv",
-  button_label = "data_env_sutherland_2017.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-downloadthis::download_link(
-  link = "data_env_morocco_2017.csv",
-  button_label = "data_env_morocco_2017.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="5"> `r shiny::icon("save")` [data_env_sutherland_2017.csv](data_env_sutherland_2017.csv) </font>
+
+<font size="5"> `r shiny::icon("save")` [data_env_morocco_2017.csv](data_env_morocco_2017.csv) </font>
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")

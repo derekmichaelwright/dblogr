@@ -32,42 +32,13 @@ This vignette is a tutorial on running **Genome-Wide Association Studies** (**GW
 
 # Data
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "myY.csv",
-  button_label = "myY.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-downloadthis::download_link(
-  link = "myG_hmp.zip",
-  button_label = "myG_hmp.zip",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-downloadthis::download_link(
-  link = "myCV.csv",
-  button_label = "myCV.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-downloadthis::download_link(
-  link = "myM.csv",
-  button_label = "myM.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="5"> `r shiny::icon("save")` [myY.csv](myY.csv) </font>
 
-<br>
+<font size="5"> `r shiny::icon("save")` [myG_hmp.zip](myG_hmp.zip) </font>
+
+<font size="5"> `r shiny::icon("save")` [myCV.csv](myCV.csv) </font>
+
+<font size="5"> `r shiny::icon("save")` [myM.csv](myM.csv) </font>
 
 - `myY.csv`: Phenotype file
 
@@ -221,24 +192,9 @@ myG[1:10,12:17] # genotrype calls
 
 GAPIT will automatically calculate kinship matrices and performs PCA on the genotype data to be used as a covariate to account for population structure. However, custom Kinship matrices and covariates can be used as well. Just make sure they are formatted similar to the output files `GAPIT` uses for covariates and kinship.
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "GWAS_Results/GAPIT.Genotype.PCA.csv",
-  button_label = "GWAS_Results/GAPIT.Genotype.PCA.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-downloadthis::download_link(
-  link = "GWAS_Results/GAPIT.Genotype.Kin_Zhang.csv",
-  button_label = "GWAS_Results/GAPIT.Genotype.Kin_Zhang.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+<font size="5"> `r shiny::icon("save")` [GWAS_Results/GAPIT.Genotype.PCA.csv](GWAS_Results/GAPIT.Genotype.PCA.csv) </font>
+
+<font size="5"> `r shiny::icon("save")` [GWAS_Results/GAPIT.Genotype.Kin_Zhang.csv](GWAS_Results/GAPIT.Genotype.Kin_Zhang.csv) </font>
 
 ```{r}
 myCV <- read.csv("GWAS_Results/GAPIT.Genotype.PCA.csv")

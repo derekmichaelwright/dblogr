@@ -13,6 +13,8 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
+<font size="5"> `r shiny::icon("save")` [data_radar_plots.csv](data_radar_plots.csv) </font>
+
 ```{r echo = F}
 downloadthis::download_link(
   link = "data_radar_plots.csv",
@@ -88,6 +90,8 @@ ggsave("featured.png", mp, width = 11, height = 10)
 ---
 
 # PDF
+
+<font size="5"> `r shiny::icon("save")` [radar_plots.pdf](radar_plots.pdf) </font>
 
 ```{r echo = F}
 downloadthis::download_link(
