@@ -45,11 +45,11 @@ https://kbroman.org/qtl2/assets/vignettes/input_files.html
 
 In order to run the analysis we first need to set up an `input` folder with properly formatted files containing our ***phenotyope*** data, ***genotype*** data, a ***genetic map*** and a ***yaml*** file with details for running the analysis. The `input` folders used in this vignette can be downloaded below:
 
-<font size="5"> `r shiny::icon("save")` [input_LR95.zip](input_LR95.zip) </font>
+`r shiny::icon("save")` [input_LR95.zip](input_LR95.zip)
 
-<font size="5"> `r shiny::icon("save")` [input_LR89.zip](input_LR89.zip) </font>
+`r shiny::icon("save")` [input_LR89.zip](input_LR89.zip)
 
-<font size="5"> `r shiny::icon("save")` [input_LR68.zip](input_LR68.zip) </font>
+`r shiny::icon("save")` [input_LR68.zip](input_LR68.zip)
 
 ---
 
@@ -130,7 +130,7 @@ write.csv(find_peaks(out, map, threshold = 3, drop = 1.5),
           "LR68_results.csv", row.names = F)
 ```
 
-<font size="5"> `r shiny::icon("save")` [LR68_results.csv](LR68_results.csv) </font>
+`r shiny::icon("save")` [LR68_results.csv](LR68_results.csv)
 
 ---
 
@@ -375,7 +375,7 @@ ggsave("qtl_tutorial_LR68_11.png", mp, width = 8, height = 6)
 
 If you have many traits, plotting the results into a pdf can be a useful.
 
-<font size="5"> `r shiny::icon("save")` [qtl_tutorial_results_LR68.pdf](qtl_tutorial_results_LR68.pdf) </font>
+`r shiny::icon("save")` [qtl_tutorial_results_LR68.pdf](qtl_tutorial_results_LR68.pdf)
 
 ```{r results="hide"}
 pdf("qtl_tutorial_results_LR68.pdf", width = 12, height = 4)
@@ -508,7 +508,7 @@ write.csv(find_peaks(out, map, threshold = 3, drop = 1.5),
           "LR95_results.csv", row.names = F)
 ```
 
-<font size="5"> `r shiny::icon("save")` [LR95_results.csv](LR95_results.csv) </font>
+`r shiny::icon("save")` [LR95_results.csv](LR95_results.csv)
 
 ---
 
@@ -802,7 +802,7 @@ write.csv(find_peaks(out, map, threshold = 3, drop = 1.5),
           "LR89_results.csv", row.names = F)
 ```
 
-<font size="5"> `r shiny::icon("save")` [LR89_results.csv](LR89_results.csv) </font>
+`r shiny::icon("save")` [LR89_results.csv](LR89_results.csv)
 
 ---
 

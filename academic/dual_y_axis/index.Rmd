@@ -26,7 +26,7 @@ With that said, there still are situations were dual y-axes are appropriate. Thi
 
 # Data
 
-<font size="5"> `r shiny::icon("save")` [data_dual_y_axis.csv](data_dual_y_axis.csv) </font>
+`r shiny::icon("save")` [data_dual_y_axis.csv](data_dual_y_axis.csv)
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")

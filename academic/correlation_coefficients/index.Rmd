@@ -26,7 +26,7 @@ library(ggpmisc) # stat_poly_eq()
 
 # Data
 
-<font size="5"> `r shiny::icon("save")` [data_correlation_coefficients.xlsx](data_correlation_coefficients.xlsx) </font>
+`r shiny::icon("save")` [data_correlation_coefficients.xlsx](data_correlation_coefficients.xlsx)
 
 ## Dataset 1
 

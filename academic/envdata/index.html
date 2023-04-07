@@ -7,7 +7,7 @@
 
         <meta name="author" content="Derek Michael Wright derek.wright@usask.ca" />
     
-        <meta name="date" content="2023-04-03" />
+        <meta name="date" content="2023-04-07" />
     
     <title>Environmental Data Vignette</title>
 
@@ -287,7 +287,7 @@ plot environmental data</h1>
                   <p class="author"><span class="glyphicon glyphicon-user"></span> Derek
 Michael Wright <a href="mailto:derek.wright@usask.ca"
 class="email">derek.wright@usask.ca</a></p>
-                        <p class="date"><span class="glyphicon glyphicon-calendar"></span> 2023-04-03</p>
+                        <p class="date"><span class="glyphicon glyphicon-calendar"></span> 2023-04-07</p>
           </div>
    </div>
      
@@ -311,9 +311,8 @@ comes from lentil field trials in the AGILE project.</p>
 href="http://knowpulse.usask.ca/portal/"><strong>knowpulse.usask.ca/</strong></a>
 or my <a
 href="https://github.com/derekmichaelwright/dblogr/tree/master/content/academic/envdata"><strong>github</strong></a>.</p>
-<p><font size="5">
-<i class="far fa-floppy-disk" role="presentation" aria-label="floppy-disk icon"></i>
-<a href="environment_data.tar">environment_data.tar</a> </font></p>
+<p><i class="far fa-floppy-disk" role="presentation" aria-label="floppy-disk icon"></i>
+<a href="environment_data.tar">environment_data.tar</a></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;derekmichaelwright/agData&quot;)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agData)</span></code></pre></div>
 <hr />
@@ -356,18 +355,18 @@ href="https://github.com/derekmichaelwright/dblogr/tree/master/content/academic/
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># View table</span></span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>dd <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 355,207 × 11
-##    Location        Year Date       Time     LoggerID        Measurement Unit  Value DaysAfterPlanting Expt                DateTime           
-##    &lt;fct&gt;          &lt;int&gt; &lt;date&gt;     &lt;chr&gt;    &lt;fct&gt;           &lt;fct&gt;       &lt;fct&gt; &lt;dbl&gt;             &lt;int&gt; &lt;chr&gt;               &lt;dttm&gt;             
-##  1 Bardiya, Nepal  2016 2016-11-14 06:44:24 Weather Station Day Length  Hours  10.6                 0 Bardiya, Nepal 2016 2016-11-14 06:44:24
-##  2 Bardiya, Nepal  2016 2016-11-15 06:45:36 Weather Station Day Length  Hours  10.6                 1 Bardiya, Nepal 2016 2016-11-15 06:45:36
-##  3 Bardiya, Nepal  2016 2016-11-16 06:46:12 Weather Station Day Length  Hours  10.6                 2 Bardiya, Nepal 2016 2016-11-16 06:46:12
-##  4 Bardiya, Nepal  2016 2016-11-17 06:46:48 Weather Station Day Length  Hours  10.6                 3 Bardiya, Nepal 2016 2016-11-17 06:46:48
-##  5 Bardiya, Nepal  2016 2016-11-18 06:48:00 Weather Station Day Length  Hours  10.6                 4 Bardiya, Nepal 2016 2016-11-18 06:48:00
-##  6 Bardiya, Nepal  2016 2016-11-19 06:48:36 Weather Station Day Length  Hours  10.5                 5 Bardiya, Nepal 2016 2016-11-19 06:48:36
-##  7 Bardiya, Nepal  2016 2016-11-20 06:49:12 Weather Station Day Length  Hours  10.5                 6 Bardiya, Nepal 2016 2016-11-20 06:49:12
-##  8 Bardiya, Nepal  2016 2016-11-21 06:50:24 Weather Station Day Length  Hours  10.5                 7 Bardiya, Nepal 2016 2016-11-21 06:50:24
-##  9 Bardiya, Nepal  2016 2016-11-22 06:51:00 Weather Station Day Length  Hours  10.5                 8 Bardiya, Nepal 2016 2016-11-22 06:51:00
-## 10 Bardiya, Nepal  2016 2016-11-23 06:51:36 Weather Station Day Length  Hours  10.5                 9 Bardiya, Nepal 2016 2016-11-23 06:51:36
+##    Location        Year Date       Time     LoggerID        Measurement Unit  Value DaysAfterPlanting Expt         DateTime           
+##    &lt;fct&gt;          &lt;int&gt; &lt;date&gt;     &lt;chr&gt;    &lt;fct&gt;           &lt;fct&gt;       &lt;fct&gt; &lt;dbl&gt;             &lt;int&gt; &lt;chr&gt;        &lt;dttm&gt;             
+##  1 Bardiya, Nepal  2016 2016-11-14 06:44:24 Weather Station Day Length  Hours  10.6                 0 Bardiya, Ne… 2016-11-14 06:44:24
+##  2 Bardiya, Nepal  2016 2016-11-15 06:45:36 Weather Station Day Length  Hours  10.6                 1 Bardiya, Ne… 2016-11-15 06:45:36
+##  3 Bardiya, Nepal  2016 2016-11-16 06:46:12 Weather Station Day Length  Hours  10.6                 2 Bardiya, Ne… 2016-11-16 06:46:12
+##  4 Bardiya, Nepal  2016 2016-11-17 06:46:48 Weather Station Day Length  Hours  10.6                 3 Bardiya, Ne… 2016-11-17 06:46:48
+##  5 Bardiya, Nepal  2016 2016-11-18 06:48:00 Weather Station Day Length  Hours  10.6                 4 Bardiya, Ne… 2016-11-18 06:48:00
+##  6 Bardiya, Nepal  2016 2016-11-19 06:48:36 Weather Station Day Length  Hours  10.5                 5 Bardiya, Ne… 2016-11-19 06:48:36
+##  7 Bardiya, Nepal  2016 2016-11-20 06:49:12 Weather Station Day Length  Hours  10.5                 6 Bardiya, Ne… 2016-11-20 06:49:12
+##  8 Bardiya, Nepal  2016 2016-11-21 06:50:24 Weather Station Day Length  Hours  10.5                 7 Bardiya, Ne… 2016-11-21 06:50:24
+##  9 Bardiya, Nepal  2016 2016-11-22 06:51:00 Weather Station Day Length  Hours  10.5                 8 Bardiya, Ne… 2016-11-22 06:51:00
+## 10 Bardiya, Nepal  2016 2016-11-23 06:51:36 Weather Station Day Length  Hours  10.5                 9 Bardiya, Ne… 2016-11-23 06:51:36
 ## # ℹ 355,197 more rows</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List experiments</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dd <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(Location, Year)</span></code></pre></div>

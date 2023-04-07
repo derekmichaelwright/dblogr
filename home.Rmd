@@ -68,7 +68,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 <div class="box"><div class = "row"><div class = "col-md-6">
 
-Sandesh Neupane, **Derek M. Wright**, Jakob Butler, Raul O. Martinez, Jim L. Weller, Kirstin E. Bett
+Sandesh Neupane, **Derek M. Wright**, Raul O. Martinez, Jakob Butler, Jim L. Weller, Kirstin E. Bett
 
 [<u>**Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**</u>](https://doi.org/10.1002/tpg2.20269). *The Plant Genome*. (**2022**) e20269. doi.org/10.1002/tpg2.20269
 
@@ -127,10 +127,10 @@ Sandesh Neupane, Rajeev Dhakal, **Derek M. Wright**, Deny K. Shrestha, Bishnu Dh
 [<u>**Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**</u>](https://doi.org/10.3390/agronomy11101933). *Agronomy*. (**2021**) 11(10): 1933. doi.org/10.3390/agronomy11101933
 
 - `r icon("newspaper")` [*Agronomy*. (**2021**) 11(10): 1933.](https://doi.org/10.3390/agronomy11101933)
-- `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology)
+- `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_Nepal)
 - `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Nepal/Phenology_Vignette.html)
-- `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_GWAS_Phenology/README.html)
-- &nbsp; `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology/blob/master/README.pdf)
+- `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Nepal/README.html)
+- &nbsp; `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_Nepal/blob/master/README.pdf)
 
 </div><div class = "col-md-6">![](publications/ldp_nepal/featured.png)</div></div></div>
 
@@ -154,7 +154,7 @@ Fatma M. Elessawy, **Derek M. Wright**, Albert Vandenberg, Anas El-Aneed & Randy
 
 [<u>**Mass Spectrometry-Based Untargeted Metabolomics Reveals the Importance of Glycosylated Flavones in Patterned Lentil Seed Coats**</u>](https://pubs.acs.org/doi/10.1021/acs.jafc.2c07844). *J. Agric. Food Chem*. (**2023**) 71(7): 3541–3549 doi.org/10.1021/acs.jafc.2c07844
 
-- `r icon("newspaper")` [MSc Thesis (MastersThesis.pdf)](https://pubs.acs.org/doi/10.1021/acs.jafc.2c07844)
+- `r icon("newspaper")` [*J. Agric. Food Chem*. (**2023**) 71(7): 3541–3549 doi.org/10.1021/acs.jafc.2c07844](https://pubs.acs.org/doi/10.1021/acs.jafc.2c07844)
 
 </div><div class = "col-md-6">![](publications/lentil_flavones/featured.gif)</div></div></div>
 

@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = T, warning = F, message = F)
 
 # Data
 
-<font size="5"> `r shiny::icon("save")` [data_ldp.csv](data_ldp.csv) </font>
+`r shiny::icon("save")` [data_ldp.csv](data_ldp.csv)
 
 ```{r echo = F}
 DT::datatable(read.csv("data_ldp.csv"))

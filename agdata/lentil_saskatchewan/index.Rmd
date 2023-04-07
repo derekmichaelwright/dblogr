@@ -15,25 +15,9 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 https://publications.saskatchewan.ca/#/categories/4426
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "https://github.com/derekmichaelwright/agData/raw/master/Data/agData_SKAG_Specialty_Crops.csv",
-  button_label = "agData_SKAG_Specialty_Crops.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = F
-)
-#
-downloadthis::download_link(
-  link = "https://github.com/derekmichaelwright/agData/raw/master/Data/agData_Lentil_Exports.csv",
-  button_label = "agData_SKAG_Lentil_Exports.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = F
-)
-```
+`r shiny::icon("save")` [agData_SKAG_Specialty_Crops.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_SKAG_Specialty_Crops.csv)
+
+`r shiny::icon("save")` [agData_Lentil_Exports.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_Lentil_Exports.csv)
 
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")

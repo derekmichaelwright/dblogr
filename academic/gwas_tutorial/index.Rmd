@@ -32,13 +32,13 @@ This vignette is a tutorial on running **Genome-Wide Association Studies** (**GW
 
 # Data
 
-<font size="5"> `r shiny::icon("save")` [myY.csv](myY.csv) </font>
+`r shiny::icon("save")` [myY.csv](myY.csv)
 
-<font size="5"> `r shiny::icon("save")` [myG_hmp.zip](myG_hmp.zip) </font>
+`r shiny::icon("save")` [myG_hmp.zip](myG_hmp.zip)
 
-<font size="5"> `r shiny::icon("save")` [myCV.csv](myCV.csv) </font>
+`r shiny::icon("save")` [myCV.csv](myCV.csv)
 
-<font size="5"> `r shiny::icon("save")` [myM.csv](myM.csv) </font>
+`r shiny::icon("save")` [myM.csv](myM.csv)
 
 - `myY.csv`: Phenotype file
 
@@ -192,9 +192,9 @@ myG[1:10,12:17] # genotrype calls
 
 GAPIT will automatically calculate kinship matrices and performs PCA on the genotype data to be used as a covariate to account for population structure. However, custom Kinship matrices and covariates can be used as well. Just make sure they are formatted similar to the output files `GAPIT` uses for covariates and kinship.
 
-<font size="5"> `r shiny::icon("save")` [GWAS_Results/GAPIT.Genotype.PCA.csv](GWAS_Results/GAPIT.Genotype.PCA.csv) </font>
+`r shiny::icon("save")` [GWAS_Results/GAPIT.Genotype.PCA.csv](GWAS_Results/GAPIT.Genotype.PCA.csv)
 
-<font size="5"> `r shiny::icon("save")` [GWAS_Results/GAPIT.Genotype.Kin_Zhang.csv](GWAS_Results/GAPIT.Genotype.Kin_Zhang.csv) </font>
+`r shiny::icon("save")` [GWAS_Results/GAPIT.Genotype.Kin_Zhang.csv](GWAS_Results/GAPIT.Genotype.Kin_Zhang.csv)
 
 ```{r}
 myCV <- read.csv("GWAS_Results/GAPIT.Genotype.PCA.csv")

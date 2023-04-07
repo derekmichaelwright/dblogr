@@ -84,7 +84,7 @@ https://doi.org/10.1104/pp.106.077867
 
 # Tomato Example
 
-<font size="5"> `r shiny::icon("save")` [TBRTQuality.csv](TBRTQuality.csv) </font>
+`r shiny::icon("save")` [TBRTQuality.csv](TBRTQuality.csv)
 
 ```{r}
 # Prep data

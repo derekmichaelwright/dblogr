@@ -39,33 +39,16 @@ https://bookdown.org/rdpeng/exdata/getting-started-with-r.html#installation
 
 `r shiny::icon("r-project")` can be used as a super awesome calculator
 
-5 + 3 = 8
-
 ```{r}
+# 5 + 3 = 8
 5 + 3 
-```
-
-24 / (1 + 2) = 8
-
-```{r}
+# 24 / (1 + 2) = 8
 24 / (1 + 2) 
-```
-
-2 * 2 * 2 = 8
-
-```{r}
+# 2 * 2 * 2 = 8
 2^3 
-```
-
-8 * 8 = 64
-
-```{r}
+# 8 * 8 = 64
 sqrt(64) 
-```
-
--log10(0.05 / 5000000) = 8
-
-```{r}
+# -log10(0.05 / 5000000) = 8
 -log10(0.05 / 5000000) 
 ```
 
@@ -82,7 +65,6 @@ rep(1:2, times = 5)
 rep(1:5, times = 2)
 rep(1:5, each = 2)
 rep(1:5, length.out = 7)
-help(rep)
 seq(5, 50, by = 5)
 seq(5, 50, length.out = 5)
 paste(1:10, 20:30, sep = "-")
@@ -192,6 +174,8 @@ xl[[2]]
 xl[[3]]
 ```
 
+---
+
 # Selecting Data
 
 ```{r}
@@ -203,6 +187,20 @@ xd[,"x3"] # all rows, col "x3"
 xd[3,] # row 3, all cols
 xd[c(2,4),c("x4","x5")] # rows 2 & 4, cols "x4" & "x5"
 xl[[3]]$x1 # 3rd object in the list, col "x1
+```
+
+## regexpr
+
+
+```{r}
+xx <- data.frame(Name = c("Item 1 (detail 1)",
+                          "Item 20 (detail 20)",
+                          "Item 300 (detail 300)"),
+                 Item = NA,
+                 Detail = NA)
+xx$Detail <- substr(xx$Name, regexpr("\\(", xx$Name)+1, regexpr("\\)", xx$Name)-1)
+xx$Item <- substr(xx$Name, 1, regexpr("\\(", xx$Name)-2)
+xx
 ```
 
 ---
@@ -306,6 +304,8 @@ xs
 xx %>% left_join(xs, by = "Group")
 ```
 
+---
+
 # Read/Write data
 
 ```{r}
@@ -323,6 +323,8 @@ xx <- read_xlsx("data_r_tutorial.xlsx", sheet = "Data")
 ```{r echo = F}
 DT::datatable(xx)
 ```
+
+---
 
 # Tidy Data
 
@@ -391,6 +393,8 @@ plot(x = density(nd))
 boxplot(x = nd)
 boxplot(x = nd, horizontal = T)
 ```
+
+---
 
 # ggplot2
 

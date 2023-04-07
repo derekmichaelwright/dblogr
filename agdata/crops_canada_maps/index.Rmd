@@ -15,16 +15,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035901
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Crops.csv",
-  button_label = "agData_STATCAN_Crops.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = F
-)
-```
+`r shiny::icon("save")` [agData_STATCAN_Crops.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Crops.csv)
 
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
@@ -61,6 +52,8 @@ myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 ---
 
 # PDF - All Crops
+
+`r shiny::icon("file-pdf")` []()
 
 ```{r echo = F}
 downloadthis::download_link(

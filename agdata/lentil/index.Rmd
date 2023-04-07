@@ -15,25 +15,9 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 http://www.fao.org/faostat/en/#data/QC
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Crops.csv.gz",
-  button_label = "agData_FAO_Crops.csv.gz",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = F
-)
-#
-downloadthis::download_link(
-  link = "https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Country_Table.csv",
-  button_label = "agData_FAO_Country_Table.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = F
-)
-```
+`r shiny::icon("save")` [agData_FAO_Crops.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Crops.csv.gz)
+
+`r shiny::icon("save")` [agData_FAO_Country_Table.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Country_Table.csv)
 
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
@@ -45,16 +29,7 @@ library(gganimate)
 
 # PDF - All Lentil Data
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "https://dblogr.com/agdata/lentil/figures_lentil_fao.pdf",
-  button_label = "figures_lentil_fao.pdf",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-file-pdf",
-  self_contained = FALSE
-)
-```
+`r shiny::icon("file-pdf")` [figures_lentil_fao.pdf"](figures_lentil_fao.pdf")
 
 ```{r results="hide"}
 # Prep data

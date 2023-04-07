@@ -15,26 +15,11 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901
 
+`r shiny::icon("save")` [1710000901_databaseLoadingData.csv](1710000901_databaseLoadingData.csv)
+
 https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000501
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "1710000901_databaseLoadingData.csv",
-  button_label = "1710000901_databaseLoadingData.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-downloadthis::download_link(
-  link = "1710000501_databaseLoadingData.csv",
-  button_label = "1710000501_databaseLoadingData.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+`r shiny::icon("save")` [1710000501_databaseLoadingData.csv](1710000501_databaseLoadingData.csv)
 
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")

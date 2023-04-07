@@ -15,16 +15,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F, results="hide")
 
 http://www.fao.org/faostat/en/#data/QC
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Crops.csv.gz",
-  button_label = "agData_FAO_Crops.csv.gz",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = F
-)
-```
+`r shiny::icon("save")` [agData_FAO_Crops.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Crops.csv.gz)
 
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
