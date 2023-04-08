@@ -1,7 +1,7 @@
 ---
 title: "Lentil Production"
 subtitle: "Graphs of lentil production using FAO data"
-date: "`r Sys.Date()`"
+date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
@@ -23,6 +23,7 @@ http://www.fao.org/faostat/en/#data/QC
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(gganimate)
+myCaoption <- "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
 ```
 
 ---
@@ -56,8 +57,7 @@ for(i in myAreas) {
                  axis.text.x = element_text(angle = 45, hjust = 1)) +
     scale_color_manual(values = myColors) +
     scale_x_continuous(breaks = seq(1960, 2020, by = 5) ) +
-    labs(title = i, y = NULL, x = NULL,
-         caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT") )
+    labs(title = i, y = NULL, x = NULL, caption = myCaption) )
 }
 dev.off()
 ```
@@ -94,9 +94,8 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
   theme_agData(legend.position = "none",
                axis.text.y = element_blank(), 
                axis.ticks.y = element_blank()) + 
-  labs(title = "Lentil - Production - {round(frame_time)}", 
-       x = "Million Tonnes (3 year moving average)", y = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN") +
+  labs(title = "Lentil - Production - {round(frame_time)}", y = NULL,
+       x = "Million Tonnes (3 year moving average)", caption = myCaption) +
   transition_time(Year)
 anim_save("lentil_gif_01.gif", mp, 
           nframes = 600, fps = 30, end_pause = 60, 
@@ -127,9 +126,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-2)) +
   theme_agData(legend.position = "bottom") +
   guides(color = guide_legend(nrow = 1)) +
-  labs(title = "Lentil - Production", 
-       y = "Million Tonnes", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT")
+  labs(title = "Lentil - Production", x = NULL,
+       y = "Million Tonnes", caption = myCaption)
 ggsave("lentil_01.png", width = 7, height = 5)
 ```
 
@@ -159,9 +157,8 @@ mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) +
   geom_bar(stat = "identity", color = "black", alpha = 0.7) +
   scale_fill_manual(values = myColors) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Lentil - Production - 2019", 
-       y = "Million Tonnes", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT")
+  labs(title = "Lentil - Production - 2019", x = NULL,
+       y = "Million Tonnes", caption = myCaption)
 ggsave("lentil_02.png", mp, width = 6, height = 4)
 ```
 
@@ -189,9 +186,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-2)) +
   theme_agData(legend.position = "bottom") +
   guides(color = guide_legend(nrow = 1)) +
-  labs(title = "Lentil - Area Harvested", 
-       y = "Million Hectares", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT")
+  labs(title = "Lentil - Area Harvested", x = NULL, 
+       y = "Million Hectares", caption = myCaption)
 ggsave("lentil_03.png", width = 7, height = 5)
 ```
 
@@ -222,8 +218,7 @@ mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) +
   scale_fill_manual(values = myColors) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Lentil - Area Harvested - 2019", 
-       y = "Million Hectares", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT")
+       y = "Million Hectares", x = NULL, caption = myCaption)
 ggsave("lentil_04.png", mp, width = 6, height = 4)
 ```
 
@@ -259,8 +254,7 @@ mp <- ggplot(xx, aes(x = Area, y = Value / 1000, fill = Region)) +
   scale_fill_manual(values = myColors) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Lentil Yields - 5 year average",
-       y = "Tonnes / Hectare", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT")
+       y = "Tonnes / Hectare", x = NULL, caption = myCaption)
 ggsave("lentil_05.png", mp, width = 6, height = 4)
 ```
 
@@ -284,8 +278,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-2)) +
   scale_color_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "Lentil Yields", y = "Tonnes / Hectare", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT")
+  labs(title = "Lentil Yields", x = NULL,
+       y = "Tonnes / Hectare", caption = myCaption)
 ggsave("lentil_06.png", mp, width = 6, height = 4)
 ```
 
@@ -309,8 +303,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-2)) +
   scale_color_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "Lentil Yields", y = "Tonnes / Hectare", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT")
+  labs(title = "Lentil Yields", x = NULL,
+       y = "Tonnes / Hectare", caption = myCaption)
 ggsave("lentil_07.png", mp, width = 6, height = 4)
 ```
 
@@ -337,8 +331,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000,
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-3)) +
   theme_agData() +
   labs(title   = "Canada's Contribution to Global Lentil Production", 
-       y = "Million Tonnes", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT")
+       y = "Million Tonnes", x = NULL, caption = myCaption)
 ggsave("lentil_08.png", mp, width = 6, height = 4)
 ```
 
@@ -396,8 +389,7 @@ ggPie_single <- function(crop = "Lentils", measurement = "Production",
     scale_y_continuous(breaks = xx$Label_y, labels = xx$ISO2) +
     xlim(0.545, 1.45) +
     scale_fill_manual(name = NULL, values = agData_Colors[c(1:10,41:50)]) +
-    labs(title = paste(crop, measurement),
-         caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT")
+    labs(title = paste(crop, measurement), caption = myCaption)
 }
 #
 ggPie_anim <- function(crop = "Lentils", measurement = "Production", 
@@ -429,7 +421,7 @@ ggPie_anim <- function(crop = "Lentils", measurement = "Production",
     scale_fill_manual(values = agData_Colors) +
     xlim(0.545, 1.5) +
     labs(title = paste(crop, "|", measurement, "| {round(frame_time)}"),
-         caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT") +
+         caption = myCaption) +
     transition_time(Year)
 }
 #
@@ -471,8 +463,7 @@ ggPie_multi <- function(crop = "Lentils", measurement = "Production",
     scale_y_continuous(breaks = xx$Label_y, labels = xx$ISO2) +
     xlim(0.545, 1.45) +
     scale_fill_manual(name = NULL, values = agData_Colors[c(1:10,41:50)]) +
-    labs(title = paste(crop, measurement),
-         caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT")
+    labs(title = paste(crop, measurement), caption = myCaption)
 }
 ```
 
@@ -485,7 +476,7 @@ ggPie_multi <- function(crop = "Lentils", measurement = "Production",
 ```{r}
 # Plot
 mp <- ggPie_multi(crop = "Lentils", measurement = "Production", 
-            years = c(1965,2019), limit = 3)
+                  years = c(1965,2019), limit = 3)
 ggsave("lentil_09.png", mp, width = 8, height = 4)
 ```
 
@@ -498,7 +489,7 @@ ggsave("lentil_09.png", mp, width = 8, height = 4)
 ```{r}
 # Plot
 mp <- ggPie_single(crop = "Lentils", measurement = "Production", 
-            year = 2019, other = 0.03)
+                   year = 2019, other = 0.03)
 ggsave("lentil_10.png", mp, width = 5, height = 4)
 ```
 
@@ -558,8 +549,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Measurement,
   scale_x_continuous(breaks       = seq(1965, 2015, by = 10),
                      minor_breaks = seq(1965, 2015, by = 5))  +
   theme_agData() +
-  labs(title = "Lentil Import/Export", y = "Million Tonnes", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT")
+  labs(title = "Lentil Import/Export", x = NULL,
+       y = "Million Tonnes", caption = myCaption)
 ggsave("lentil_11.png", mp, width = 6, height = 4)
 ```
 
@@ -586,8 +577,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000,
                      minor_breaks = seq(1965, 2015, by = 5))  +
   scale_color_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom") + 
-  labs(title = "Lentil Import/Export", y = "Million Tonnes", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT")
+  labs(title = "Lentil Import/Export", x = NULL,
+       y = "Million Tonnes", caption = myCaption)
 ggsave("lentil_12.png", mp, width = 6, height = 4)
 ```
 
@@ -611,12 +602,9 @@ myColors <- c("lightgrey", "darkgreen")
 mp <- ggplot(xx, aes(x = Year, y = Area, fill = Value / 1000000)) +
   geom_tile(color = "white", size = 0.35) +
   scale_x_continuous(expand = c(0,0)) +
-  scale_fill_gradientn(name = "Million Tonnes", 
-                       colors = myColors, na.value = 'white') +
-  theme_agData(legend.position = "bottom", 
-               bgFill = "white") +
-  labs(title = "Lentil Production", x = NULL, y = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT")
+  scale_fill_gradientn(name = "Million Tonnes", colors = myColors, na.value = 'white') +
+  theme_agData(legend.position = "bottom", bgFill = "white") +
+  labs(title = "Lentil Production", x = NULL, y = NULL, caption = myCaption)
 ggsave("lentil_13.png", mp, width = 6, height = 4)
 ```
 

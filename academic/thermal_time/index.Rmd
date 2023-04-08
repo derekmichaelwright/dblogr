@@ -1,7 +1,7 @@
 ---
 title: "Calculating Thermal Time/Growing Degree Days"
 subtitle: "An R tutorial on how to calculate thermal time and incorporate environmental data into a phenotype"
-date: "`r Sys.Date()`"
+date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
@@ -62,6 +62,9 @@ library(agData)
 # Prepare Data
 
 ```{r}
+# Prep data
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myColors <- c("darkgreen", "steelblue", "darkblue", "darkorange", "darkred", "purple4")
 # Prep phenotype data
 x1 <- read.csv("https://raw.githubusercontent.com/derekmichaelwright/AGILE_LDP_Phenology/master/data/data_raw.csv") %>%
   filter(Expt %in% c("Marchouch, Morocco 2017", "Sutherland, Canada 2017")) %>%
@@ -86,10 +89,6 @@ eMo17 <- read.csv("data_env_morocco_2017.csv") %>%
   filter(Measurement == "Temperature") %>%
   mutate(DateTime = as.POSIXct(paste(Date, Time), 
                                format = "%Y-%m-%d %H:%M:%OS"))
-# Colors
-myColors <- c("darkgreen", "steelblue", "darkblue", "darkorange",
-              "darkred", "purple4")
-myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/"
 ```
 
 ---

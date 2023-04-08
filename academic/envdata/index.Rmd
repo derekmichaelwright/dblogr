@@ -1,7 +1,7 @@
 ---
 title: "Environmental Data Vignette"
 subtitle: "An R tutorial on how to manipulate and plot environmental data"
-date: "`r Sys.Date()`"
+date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 math: true
 ---
@@ -41,6 +41,12 @@ untar(KP_file) # Extract files
 ```
 
 ```{r}
+# Prep data
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+locs <- c("Rosthern, Canada", "Sutherland, Canada", "Central Ferry, USA",
+          "Bhopal, India","Jessore, Bangladesh","Bardiya, Nepal",
+          "Marchouch, Morocco", "Cordoba, Spain", "Metaponto, Italy")
+#
 dd <- list() # Create Empty list
 files <- list.files()[grepl(".csv", list.files())]
 for (i in 1:length(files)) { 
@@ -52,9 +58,6 @@ dd <- do.call(rbind, dd)
 # Filter data
 dd <- dd %>% filter(!is.na(DaysAfterPlanting))
 # Prep data for plotting
-locs <- c("Rosthern, Canada", "Sutherland, Canada", "Central Ferry, USA",
-          "Bhopal, India","Jessore, Bangladesh","Bardiya, Nepal",
-          "Marchouch, Morocco", "Cordoba, Spain", "Metaponto, Italy")
 dd <- dd %>% 
   mutate(Value = as.numeric(Value)) %>% 
   filter(!is.na(Value)) %>%
@@ -69,7 +72,6 @@ dd <- dd %>%
 # Create a color palette
 myCols <- c("darkgreen", "darkred", "coral3", "deeppink3", "darkcyan",
           "burlywood4", "darkslateblue", "darkmagenta", "darkgoldenrod3")
-myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 # View table
 dd %>% as_tibble()
 # List experiments

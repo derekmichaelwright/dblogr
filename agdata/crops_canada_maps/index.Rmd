@@ -46,7 +46,7 @@ cropMapCan_Production <- function(crop, year) {
          caption = myCaption)
 }
 #
-myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 ```
 
 ---

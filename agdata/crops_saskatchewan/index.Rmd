@@ -22,6 +22,7 @@ https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035901
 library(agData)
 library(treemapify)
 library(gganimate)
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 ```
 
 ---
@@ -55,8 +56,7 @@ for(i in myCrops) {
     scale_x_continuous(breaks = seq(1920, 2020, by = 20) ) +
     theme_agData(legend.position = "none", 
                  axis.text.x = element_text(angle = 45, hjust = 1)) +
-    labs(title = i, y = NULL, x = NULL,
-         caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN") )
+    labs(title = i, y = NULL, x = NULL, caption = myCaption) )
 }
 dev.off()
 ```
@@ -103,8 +103,7 @@ mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Crop Production", 
-       y = "Million Tonnes", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+       y = "Million Tonnes", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_01.png", mp, width = 6, height = 5)
 ```
 
@@ -128,9 +127,8 @@ mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) +
   scale_fill_manual(values = agData_Colors) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
-  labs(title = "Saskatchewan - Area Seeded", 
-       y = "Million Hectares", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+  labs(title = "Saskatchewan - Area Seeded", x = NULL,
+       y = "Million Hectares", caption = myCaption)
 ggsave("crops_saskatchewan_02.png", mp, width = 6, height = 5)
 ```
 
@@ -158,9 +156,8 @@ mp <- ggplot(xx, aes(x = Crop, y = Value / 1000, fill = Crop)) +
   scale_fill_manual(values = agData_Colors) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
-  labs(title = "Saskatchewan - Yield", 
-       y = "Tonnes / Hectare", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+  labs(title = "Saskatchewan - Yield", x = NULL, 
+       y = "Tonnes / Hectare", caption = myCaption)
 ggsave("crops_saskatchewan_03.png", mp, width = 6, height = 5)
 ```
 
@@ -202,8 +199,7 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
                panel.grid.major.y = element_blank(),
                panel.grid.minor.y = element_blank()) + 
   labs(title = paste("Saskatchewan - Production -", "{frame_time}"),
-       x = "Million Tonnes", y = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN") +
+       x = "Million Tonnes", y = NULL, caption = myCaption) +
   transition_time(Year) 
 anim_save("crops_saskatchewan_gif_01.gif", mp,
           nframes = 600, fps = 20, end_pause = 60, 
@@ -244,8 +240,7 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
                panel.grid.major.y = element_blank(),
                panel.grid.minor.y = element_blank()) + 
   labs(title = paste("Saskatchewan - Area Harvested -", "{frame_time}"),
-       x = "Million Hectares", y = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN") +
+       x = "Million Hectares", y = NULL, caption = myCaption) +
   transition_time(Year) 
 anim_save("crops_saskatchewan_gif_02.gif", mp,
           nframes = 600, fps = 20, end_pause = 60, 
@@ -283,8 +278,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Crop)) +
   scale_x_continuous(breaks = seq(1910, 2020, by =10)) +
   theme_agData() + 
   labs(title = "Saskatchewan - Crop Production", 
-       y = "Million Tonnes", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+       y = "Million Tonnes", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_04.png", mp, width = 6, height = 4)
 ```
 
@@ -307,8 +301,7 @@ mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000,
   scale_alpha_manual(name = NULL, values = c(0.7, 0.3)) +
   theme_agData(legend.position = "bottom") + 
   labs(title = "Saskatchewan - Crop Production - 2020 vs. 2021", 
-       y = "Million Tonnes", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+       y = "Million Tonnes", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_05.png", mp, width = 6, height = 4)
 ```
 
@@ -349,14 +342,12 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Crop)) +
   scale_fill_manual(name = NULL, values = agData_Colors[c(9:1)]) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1),
                strip.text = element_blank()) + 
-  labs(title = "Saskatchewan - Drought Years", 
-       y = "Million Tonnes", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+  labs(title = "Saskatchewan - Drought Years", x = NULL,
+       y = "Million Tonnes", caption = myCaption)
 ggsave("crops_saskatchewan_06.png", mp, width = 8, height = 4)
 ```
 
 ---
-
 
 # Yields 2020
 
@@ -377,8 +368,7 @@ mp <- ggplot(xx, aes(x = Crop, y = Value / 1000, fill = Crop)) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Crop yields", 
-       y = "Tonnes / Hectare", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+       y = "Tonnes / Hectare", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_07.png", mp, width = 6, height = 5)
 ```
 
@@ -410,8 +400,7 @@ mp <- ggplot(xx, aes(x = Crop, y = PerPerson, fill = Crop)) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Crop Production Per Person", 
-       y = "1000 kg", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+       y = "1000 kg", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_08.png", mp, width = 6, height = 4)
 ```
 
@@ -438,8 +427,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan Crops - Area Seeded", 
-       y = "Million Hectares", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+       y = "Million Hectares", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_09.png", mp, width = 6, height = 5)
 ```
 
@@ -464,8 +452,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan Crops - Production", 
-       y = "Million Hectares", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+       y = "Million Hectares", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_10.png", mp, width = 6, height = 5)
 ```
 
@@ -488,8 +475,8 @@ mp <- ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
   geom_treemap_text(place = "centre", grow = T, color = "white") +
   scale_fill_manual(values = agData_Colors) +
   theme_agData(legend.position = "none") +
-  labs(title = "Saskatchewan Cropland", subtitle = "Area Seeded 2020",
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+  labs(title = "Saskatchewan Cropland", 
+       subtitle = "Area Seeded 2020", caption = myCaption)
 ggsave("crops_saskatchewan_11.png", mp, width = 6, height = 4)
 ```
 
@@ -513,8 +500,7 @@ mp <- ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
   scale_fill_manual(values = agData_Colors) +
   theme_agData(legend.position = "none") +
   labs(title = "Saskatchewan Cropland - Area Seeded",
-       subtitle = "Year: {frame_time}",
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN") +
+       subtitle = "Year: {frame_time}", caption = myCaption) +
   transition_time(Year)
 anim_save("crops_saskatchewan_gif_03.gif", mp,
           nframes = 600, fps = 20, end_pause = 60, 
@@ -538,8 +524,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
   scale_x_continuous(breaks = seq(1920, 2020, 10)) +
   theme_agData() +
   labs(title = "Total area of farms in Saskatchewan", 
-       y = "Million Hectares", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+       y = "Million Hectares", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_12.png", mp, width = 6, height = 4)
 ```
 
@@ -560,8 +545,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
   scale_x_continuous(breaks = seq(1920, 2020, 10)) +
   theme_agData() +
   labs(title = "Summerfallow in Saskatchewan", 
-       y = "Million Hectares", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+       y = "Million Hectares", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_13.png", mp, width = 6, height = 4)
 ```
 
@@ -595,8 +579,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
   scale_x_continuous(breaks = seq(1910,2020,10)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Saskatchewan Industrialized Food Production", 
-       y = "Million Tonnes", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+       y = "Million Tonnes", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_14.png", mp, width = 6, height = 4)
 ```
 

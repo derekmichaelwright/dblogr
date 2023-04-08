@@ -7,7 +7,6 @@
 
         <meta name="author" content="Derek Michael Wright derek.wright@usask.ca" />
     
-        <meta name="date" content="2023-04-07" />
     
     <title>Environmental Data Vignette</title>
 
@@ -287,7 +286,8 @@ plot environmental data</h1>
                   <p class="author"><span class="glyphicon glyphicon-user"></span> Derek
 Michael Wright <a href="mailto:derek.wright@usask.ca"
 class="email">derek.wright@usask.ca</a></p>
-                        <p class="date"><span class="glyphicon glyphicon-calendar"></span> 2023-04-07</p>
+                        <p class="date"><span class="glyphicon glyphicon-calendar"></span> Last
+updated: 2023-04-08</p>
           </div>
    </div>
      
@@ -323,50 +323,52 @@ href="https://github.com/derekmichaelwright/dblogr/tree/master/content/academic/
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>KP_file <span class="ot">&lt;-</span> <span class="st">&quot;environment_data.tar&quot;</span> <span class="co"># Location of File</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">untar</span>(KP_file, <span class="at">list =</span> T) <span class="co"># Store filenames</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">untar</span>(KP_file) <span class="co"># Extract files</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="fu">list</span>() <span class="co"># Create Empty list</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>()[<span class="fu">grepl</span>(<span class="st">&quot;.csv&quot;</span>, <span class="fu">list.files</span>())]</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(files)) { </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  dd[[i]] <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(files[i], <span class="at">stringsAsFactors =</span> T)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(dd[[i]])[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Location&quot;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind files together</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, dd)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> dd <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(DaysAfterPlanting))</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Prep data for plotting</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>locs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Rosthern, Canada&quot;</span>, <span class="st">&quot;Sutherland, Canada&quot;</span>, <span class="st">&quot;Central Ferry, USA&quot;</span>,</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;Bhopal, India&quot;</span>,<span class="st">&quot;Jessore, Bangladesh&quot;</span>,<span class="st">&quot;Bardiya, Nepal&quot;</span>,</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;Marchouch, Morocco&quot;</span>, <span class="st">&quot;Cordoba, Spain&quot;</span>, <span class="st">&quot;Metaponto, Italy&quot;</span>)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> dd <span class="sc">%&gt;%</span> </span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Value =</span> <span class="fu">as.numeric</span>(Value)) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Value)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Expt =</span> <span class="fu">paste</span>(Location, Year),</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">Time =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(Time) <span class="sc">|</span> Time <span class="sc">==</span> <span class="st">&quot;&quot;</span>, </span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;12:00:00&quot;</span>, <span class="fu">as.character</span>(Time)),</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">Date =</span> <span class="fu">as.Date</span>(Date),</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">DateTime =</span> <span class="fu">as.POSIXct</span>(<span class="fu">paste</span>(Date, Time), </span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>                               <span class="at">format =</span> <span class="st">&quot;%Y-%m-%d %H:%M:%OS&quot;</span>),</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>         <span class="at">Location =</span> <span class="fu">factor</span>(Location, <span class="at">levels =</span> locs),</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>         <span class="at">LoggerID =</span> <span class="fu">factor</span>(LoggerID, <span class="at">levels =</span> <span class="fu">unique</span>(.<span class="sc">$</span>LoggerID)) )</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a color palette</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>myCols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;coral3&quot;</span>, <span class="st">&quot;deeppink3&quot;</span>, <span class="st">&quot;darkcyan&quot;</span>,</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;burlywood4&quot;</span>, <span class="st">&quot;darkslateblue&quot;</span>, <span class="st">&quot;darkmagenta&quot;</span>, <span class="st">&quot;darkgoldenrod3&quot;</span>)</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>myCaption <span class="ot">&lt;-</span> <span class="st">&quot;\u00A9 derekmichaelwright.github.io/dblogr/ | Data: AGILE&quot;</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># View table</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>dd <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prep data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>myCaption <span class="ot">&lt;-</span> <span class="st">&quot;derekmichaelwright.github.io/dblogr/ | Data: AGILE&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>locs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Rosthern, Canada&quot;</span>, <span class="st">&quot;Sutherland, Canada&quot;</span>, <span class="st">&quot;Central Ferry, USA&quot;</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;Bhopal, India&quot;</span>,<span class="st">&quot;Jessore, Bangladesh&quot;</span>,<span class="st">&quot;Bardiya, Nepal&quot;</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;Marchouch, Morocco&quot;</span>, <span class="st">&quot;Cordoba, Spain&quot;</span>, <span class="st">&quot;Metaponto, Italy&quot;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="fu">list</span>() <span class="co"># Create Empty list</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>()[<span class="fu">grepl</span>(<span class="st">&quot;.csv&quot;</span>, <span class="fu">list.files</span>())]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(files)) { </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  dd[[i]] <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(files[i], <span class="at">stringsAsFactors =</span> T)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(dd[[i]])[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Location&quot;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind files together</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, dd)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> dd <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(DaysAfterPlanting))</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Prep data for plotting</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> dd <span class="sc">%&gt;%</span> </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Value =</span> <span class="fu">as.numeric</span>(Value)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Value)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Expt =</span> <span class="fu">paste</span>(Location, Year),</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">Time =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(Time) <span class="sc">|</span> Time <span class="sc">==</span> <span class="st">&quot;&quot;</span>, </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;12:00:00&quot;</span>, <span class="fu">as.character</span>(Time)),</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>         <span class="at">Date =</span> <span class="fu">as.Date</span>(Date),</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>         <span class="at">DateTime =</span> <span class="fu">as.POSIXct</span>(<span class="fu">paste</span>(Date, Time), </span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                               <span class="at">format =</span> <span class="st">&quot;%Y-%m-%d %H:%M:%OS&quot;</span>),</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>         <span class="at">Location =</span> <span class="fu">factor</span>(Location, <span class="at">levels =</span> locs),</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>         <span class="at">LoggerID =</span> <span class="fu">factor</span>(LoggerID, <span class="at">levels =</span> <span class="fu">unique</span>(.<span class="sc">$</span>LoggerID)) )</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a color palette</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>myCols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;darkgreen&quot;</span>, <span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;coral3&quot;</span>, <span class="st">&quot;deeppink3&quot;</span>, <span class="st">&quot;darkcyan&quot;</span>,</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;burlywood4&quot;</span>, <span class="st">&quot;darkslateblue&quot;</span>, <span class="st">&quot;darkmagenta&quot;</span>, <span class="st">&quot;darkgoldenrod3&quot;</span>)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co"># View table</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>dd <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 355,207 × 11
-##    Location        Year Date       Time     LoggerID        Measurement Unit  Value DaysAfterPlanting Expt         DateTime           
-##    &lt;fct&gt;          &lt;int&gt; &lt;date&gt;     &lt;chr&gt;    &lt;fct&gt;           &lt;fct&gt;       &lt;fct&gt; &lt;dbl&gt;             &lt;int&gt; &lt;chr&gt;        &lt;dttm&gt;             
-##  1 Bardiya, Nepal  2016 2016-11-14 06:44:24 Weather Station Day Length  Hours  10.6                 0 Bardiya, Ne… 2016-11-14 06:44:24
-##  2 Bardiya, Nepal  2016 2016-11-15 06:45:36 Weather Station Day Length  Hours  10.6                 1 Bardiya, Ne… 2016-11-15 06:45:36
-##  3 Bardiya, Nepal  2016 2016-11-16 06:46:12 Weather Station Day Length  Hours  10.6                 2 Bardiya, Ne… 2016-11-16 06:46:12
-##  4 Bardiya, Nepal  2016 2016-11-17 06:46:48 Weather Station Day Length  Hours  10.6                 3 Bardiya, Ne… 2016-11-17 06:46:48
-##  5 Bardiya, Nepal  2016 2016-11-18 06:48:00 Weather Station Day Length  Hours  10.6                 4 Bardiya, Ne… 2016-11-18 06:48:00
-##  6 Bardiya, Nepal  2016 2016-11-19 06:48:36 Weather Station Day Length  Hours  10.5                 5 Bardiya, Ne… 2016-11-19 06:48:36
-##  7 Bardiya, Nepal  2016 2016-11-20 06:49:12 Weather Station Day Length  Hours  10.5                 6 Bardiya, Ne… 2016-11-20 06:49:12
-##  8 Bardiya, Nepal  2016 2016-11-21 06:50:24 Weather Station Day Length  Hours  10.5                 7 Bardiya, Ne… 2016-11-21 06:50:24
-##  9 Bardiya, Nepal  2016 2016-11-22 06:51:00 Weather Station Day Length  Hours  10.5                 8 Bardiya, Ne… 2016-11-22 06:51:00
-## 10 Bardiya, Nepal  2016 2016-11-23 06:51:36 Weather Station Day Length  Hours  10.5                 9 Bardiya, Ne… 2016-11-23 06:51:36
+##    Location        Year Date       Time     LoggerID        Measurement Unit  Value DaysAfterPlanting Expt        DateTime           
+##    &lt;fct&gt;          &lt;int&gt; &lt;date&gt;     &lt;chr&gt;    &lt;fct&gt;           &lt;fct&gt;       &lt;fct&gt; &lt;dbl&gt;             &lt;int&gt; &lt;chr&gt;       &lt;dttm&gt;             
+##  1 Bardiya, Nepal  2016 2016-11-14 06:44:24 Weather Station Day Length  Hours  10.6                 0 Bardiya, N… 2016-11-14 06:44:24
+##  2 Bardiya, Nepal  2016 2016-11-15 06:45:36 Weather Station Day Length  Hours  10.6                 1 Bardiya, N… 2016-11-15 06:45:36
+##  3 Bardiya, Nepal  2016 2016-11-16 06:46:12 Weather Station Day Length  Hours  10.6                 2 Bardiya, N… 2016-11-16 06:46:12
+##  4 Bardiya, Nepal  2016 2016-11-17 06:46:48 Weather Station Day Length  Hours  10.6                 3 Bardiya, N… 2016-11-17 06:46:48
+##  5 Bardiya, Nepal  2016 2016-11-18 06:48:00 Weather Station Day Length  Hours  10.6                 4 Bardiya, N… 2016-11-18 06:48:00
+##  6 Bardiya, Nepal  2016 2016-11-19 06:48:36 Weather Station Day Length  Hours  10.5                 5 Bardiya, N… 2016-11-19 06:48:36
+##  7 Bardiya, Nepal  2016 2016-11-20 06:49:12 Weather Station Day Length  Hours  10.5                 6 Bardiya, N… 2016-11-20 06:49:12
+##  8 Bardiya, Nepal  2016 2016-11-21 06:50:24 Weather Station Day Length  Hours  10.5                 7 Bardiya, N… 2016-11-21 06:50:24
+##  9 Bardiya, Nepal  2016 2016-11-22 06:51:00 Weather Station Day Length  Hours  10.5                 8 Bardiya, N… 2016-11-22 06:51:00
+## 10 Bardiya, Nepal  2016 2016-11-23 06:51:36 Weather Station Day Length  Hours  10.5                 9 Bardiya, N… 2016-11-23 06:51:36
 ## # ℹ 355,197 more rows</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List experiments</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dd <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(Location, Year)</span></code></pre></div>

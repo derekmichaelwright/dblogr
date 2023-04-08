@@ -1,7 +1,7 @@
 ---
 title: "Correlation Coefficients and Predictive Models"
 subtitle: "An R tutorial on how to properly use correlation coefficients when evaluating predictive models"
-date: "`r Sys.Date()`"
+date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
@@ -81,8 +81,8 @@ The most obvious correlation is that of two traits. For example, since `DTF`, `D
 
 ```{r}
 # Prep data
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 myColors <- c("darkgreen","darkorange","darkblue")
-myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 # Remove any rows with missing data
 d1 <- d1 %>% filter(!is.na(DTF), !is.na(DTS), !is.na(DTM))
 # DTF - DTS

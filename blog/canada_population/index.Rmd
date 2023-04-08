@@ -1,7 +1,7 @@
 ---
 title: "Population Demographics In Canada"
 subtitle: "Graphs of population demographics in Canada using STATCAN data"
-date: "`r Sys.Date()`"
+date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
@@ -34,6 +34,7 @@ library(transformr)
 
 ```{r}
 # Prep data
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 myAreas <- c("Canada", "Ontario", "Quebec", "New Brunswick", "Nova Scotia",
            "Prince Edward Island", "Newfoundland and Labrador",
            "British Columbia", "Alberta","Saskatchewan", "Manitoba",
@@ -67,7 +68,6 @@ d2 <- read.csv("1710000501_databaseLoadingData.csv")  %>%
          Year = substr(Year, 1,4),
          Year = as.numeric(Year)) %>%
   filter(!is.na(Age))
-myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 ```
 
 ---

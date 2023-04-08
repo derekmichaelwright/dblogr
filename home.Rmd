@@ -2,7 +2,7 @@
 title: "dblogr"
 subtitle: "Welcome to derekmichaelwright.github.io/dblogr"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright <derek.wright@usask.ca> [github.com/derekmichaelwright](https://github.com/derekmichaelwright) [twitter.com/DerekMWright](https://twitter.com/DerekMWright)"
+author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include=FALSE}
@@ -349,6 +349,26 @@ Graphs of lentil production and exports using SKAG data
 
 </div><div class = "col-md-6">![](agdata/lentil_saskatchewan/featured.png)</div></div></div>
 
+## Honeybee Canada
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [<u>**Canadian Honeybee Production**</u>](agdata/honeybee_canada)
+
+Graphs of honeybee production in Canada using STATCAN data
+
+</div><div class = "col-md-6">![](agdata/honeybee_canada/featured.png)</div></div></div>
+
+## Honeybee
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [<u>**Honeybee Producion**</u>](agdata/honeybee)
+
+Graphs of honeybee production using FAO data
+
+</div><div class = "col-md-6">![](agdata/honeybee/featured.png)</div></div></div>
+
 ## Maps of Global Crop Production
 
 <div class="box"><div class = "row"><div class = "col-md-6">
@@ -394,6 +414,56 @@ Graphs of crop production in Saskatchewan using STATCAN data
 Graphs of population demographics in Canada using STATCAN data
 
 </div><div class = "col-md-6">![](blog/canada_population/featured.png)</div></div></div>
+
+## Canada Fossil Fuels
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [<u>**Canadian Fossil Fuel Production & Import**</u>](blog/canada_fossil_fuels)
+
+Graphs of crude oil, natural gas, and coal production, import and export using STATCAN data
+
+</div><div class = "col-md-6">![](blog/canada_fossil_fuels/featured.png)</div></div></div>
+
+## Global Energy Use & Poverty
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [<u>**Global Energy Use & Poverty**</u>](blog/world_energy)
+
+Graphs of global energy use, CO2 emissions, GDP, and poverty using data from Our World in Data
+
+</div><div class = "col-md-6">![](blog/world_energy/featured.png)</div></div></div>
+
+## Saskatchewan Overdoses
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [<u>**Overdose Deaths In Saskatchewan**</u>](blog/saskatchewan_overdoses)
+
+Graphs of yearly overdose deaths in Saskatchewan using SK GOV data
+
+</div><div class = "col-md-6">![](blog/saskatchewan_overdoses/featured.png)</div></div></div>
+
+## British Columbia Overdoses
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [<u>**Overdose Deaths In British Columbia**</u>](blog/british_columbia_overdoses)
+
+Graphs of yearly and monthly overdose deaths in British Columbia using BC GOV data
+
+</div><div class = "col-md-6">![](blog/british_columbia_overdoses/featured.png)</div></div></div>
+
+## Canada House Prices
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+### [<u>**House Prices In Canada**</u>](blog/canada_house_prices)
+
+Graphs of house prices in Canada using STATCAN data
+
+</div><div class = "col-md-6">![](blog/canada_house_prices/featured.png)</div></div></div>
 
 ## Hex Stickers
 

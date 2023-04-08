@@ -1,7 +1,7 @@
 ---
 title: "PCA Tutorial"
 subtitle: "A tutorial on how to run principal component analyses and heirarchical clustering in R"
-date: "`r Sys.Date()`"
+date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
@@ -24,6 +24,9 @@ library(plotly) # plot_ly()
 library(rworldmap)   # mapPies()
 library(FactoMineR)  # PCA() & HCPC()
 library(htmlwidgets) # saveWidget()
+# Prep data
+myCaption1 = "derekmichaelwright.github.io/dblogr/ | Data: Anderson (1935) & Fisher (1936)"
+myCaption2 = "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 ```
 
 ---
@@ -53,8 +56,7 @@ mp <- ggpairs(iris, columns = 1:4, aes(color = Species)) +
   scale_color_manual(values = alpha(agData_Colors,0.7)) +
   scale_fill_manual(values = alpha(agData_Colors,0.7)) +
   theme_agData() +
-  labs(title = "Iris Data Set",
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: Anderson (1935) & Fisher (1936)")
+  labs(title = "Iris Data Set", caption = myCaption1)
 ggsave("pca_tutorial_1_01.png", mp, width = 8, height = 6)
 ```
 
@@ -83,8 +85,7 @@ mp <- ggplot(xx, aes(x = Dim.1, y = Dim.2, color = Cluster, pch = Species)) +
   scale_color_manual(values = colors) +
   scale_shape_manual(values = shapes) +
   theme_agData() +
-  labs(title = "Iris Data Set", x = "PC 1", y = "PC 2",
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: Anderson (1935)")
+  labs(title = "Iris Data Set", x = "PC 1", y = "PC 2", caption = myCaption1)
 ggsave("pca_tutorial_1_02.png", mp,  width = 6, height = 4)
 ```
 
@@ -170,7 +171,7 @@ mp <- ggplot(xx, aes(x = Expt, y = Value)) +
   geom_quasirandom(size = 0.2, alpha = 0.5) + 
   facet_grid(Trait ~ ., scales = "free_y") +
   theme_agData() +
-  labs(y = NULL, x = NULL)
+  labs(y = NULL, x = NULL, caption = myCaption2)
 ggsave("pca_tutorial_2_01.png", mp,  width = 8, height = 6)
 ```
 
@@ -217,7 +218,8 @@ mp <- ggplot(myPC, aes(x = PC1, y = PC2, color = Cluster)) +
   geom_point() + 
   scale_color_manual(values = myColors) +
   theme_agData(panel.grid.minor.x = element_blank(),
-               panel.grid.minor.y = element_blank())
+               panel.grid.minor.y = element_blank()) +
+  labs(caption = myCaption2)
 ggsave("pca_tutorial_2_02.png", mp, width = 6, height = 4)
 ```
 
@@ -323,7 +325,7 @@ mp <- ggplot(xx, aes(x = Expt, y = mean, group = Cluster)) +
   theme_agData() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
         legend.position = "none", panel.grid = element_blank()) + 
-  labs(y = "DTF (scaled 1-5)", x = NULL)
+  labs(y = "DTF (scaled 1-5)", x = NULL, caption = myCaption2)
 #
 ggsave("pca_tutorial_2_04.png", mp, width = 8, height =3.5)
 ```

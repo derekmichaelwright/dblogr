@@ -1,7 +1,7 @@
 ---
 title: "Augmented Field Trial Designs"
 subtitle: "An R tutorial on augmented field trial designs and how to adjust their values"
-date: "`r Sys.Date()`"
+date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
@@ -13,9 +13,10 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
-library(agData)
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(GGally) # ggpairs() 
 library(latex2exp) # TeX()
+myCaption <- "derekmichaelwright.github.io/dblogr/"
 ```
 
 # Introduction to Augmented Designs
@@ -66,7 +67,7 @@ mp <- ggplot(dd, aes(x = "", y = Row)) +
   theme_agData(legend.position = "none",
                axis.text.y = element_blank(),
                axis.ticks = element_blank()) +
-  labs(y = NULL, x = NULL, caption = "\u00A9 derekmichaelwright.github.io/dblogr/")
+  labs(y = NULL, x = NULL, caption = myCaption)
 ggsave("aug_00_01.png", mp, width = 6, height = 4)
 ```
 
@@ -97,8 +98,7 @@ mp <- ggplot(dd, aes(x = "", y = Row)) +
   theme_agData(legend.position = "bottom",
                axis.text.y = element_blank(),
                axis.ticks = element_blank()) +
-  labs(title = "", y = NULL, x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/")
+  labs(title = "", y = NULL, x = NULL, caption = myCaption)
 ggsave("aug_00_02.png", mp, width = 6, height = 4)
 ```
 
@@ -132,8 +132,8 @@ mp <- ggplot(dd, aes(x = "", y = Row)) +
   theme_agData(legend.position = "bottom",
                axis.text.y = element_blank(),
                axis.ticks = element_blank()) +
-  labs(title = "Tons of sugar cane per acre", y = NULL, x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/")
+  labs(title = "Tons of sugar cane per acre", 
+       y = NULL, x = NULL, caption = myCaption)
 ggsave("aug_01_01.png", mp, width = 6, height = 4)
 ```
 
@@ -152,8 +152,7 @@ mp <- ggplot(dd, aes(x = Block, y = Yield)) +
   scale_shape_manual(name = NULL, values = c(16,16,16,16,15)) +
   scale_y_continuous(breaks = seq(70, 95, by = 5)) +
   theme_agData(legend.position = "bottom") +
-  labs(y = "Tons of sugar cane per acre", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/")
+  labs(y = "Tons of sugar cane per acre", x = NULL, caption = myCaption)
 ggsave("aug_01_02.png", mp, width = 6, height = 4)
 ```
 
@@ -171,8 +170,7 @@ mp <- ggplot(dd, aes(x = Block, y = Yield)) +
   scale_alpha_manual(name = NULL, values = c(0.2,0.2,0.2,0.2,1)) +
   scale_y_continuous(breaks = seq(70, 95, by = 5)) +
   theme_agData(legend.position = "bottom") +
-  labs(y = "Tons of sugar cane per acre", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/")
+  labs(y = "Tons of sugar cane per acre", x = NULL, caption = myCaption)
 ggsave("aug_01_03.png", mp, width = 6, height = 4)
 ```
 
@@ -191,8 +189,7 @@ mp <- ggplot(dd, aes(x = Block, y = Yield)) +
   scale_alpha_manual(name = NULL, values = c(1,1,1,1,0.2)) +
   ylim(c(70,96)) +
   theme_agData(legend.position = "bottom") +
-  labs(y = "Tons of sugar cane per acre", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/")
+  labs(y = "Tons of sugar cane per acre", x = NULL, caption = myCaption)
 ggsave("aug_01_04.png", mp, width = 6, height = 4)
 ```
 
@@ -253,7 +250,7 @@ mp <- ggplot(xt, aes(x = Genotype, color = Block)) +
   theme_agData(legend.position = "none") +
   labs(title = "Block Effect Adjustments", 
        y = "Tons of sugar cane per acre",
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/")
+       caption = myCaption)
 ggsave("aug_01_05.png", mp, width = 6, height = 4)
 ```
 
@@ -276,9 +273,8 @@ mp <- ggplot(xt, aes(x = Trait, y = Value,
   scale_color_manual(values = myColors) +
   coord_cartesian(xlim = c(1.5, 1.5)) +
   theme_agData(legend.position = "none") +
-  labs(title = "Block Effect Adjustments", 
-       y = "Tons of sugar cane per acre", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/")
+  labs(title = "Block Effect Adjustments", x = NULL, 
+       y = "Tons of sugar cane per acre", caption = myCaption)
 ggsave("aug_01_06.png", mp, width = 6, height = 4)
 ```
 
@@ -456,8 +452,8 @@ gg_FieldPlan <- function(env) {
     theme_agData(axis.text = element_blank(), 
                  axis.ticks = element_blank(),
                  legend.position = "none") +
-    labs(title = paste("Field plan -", env), x = NULL, y = NULL,
-         caption = "\u00A9 derekmichaelwright.github.io/dblogr/")
+    labs(title = paste("Field plan -", env), 
+         x = NULL, y = NULL, caption = myCaption)
   ggsave(paste0("aug_02_01_", env, ".png"), mp, width = 10, height = 10)
 }
 gg_FieldPlan(env = "M2009") 
@@ -473,6 +469,7 @@ gg_FieldPlan(env = "S2012")
 ```{r echo = F, eval = T}
 #ggsave("featured.png", mp, width = 6, height = 4)
 file.copy(from = "aug_02_01_M2009.png", to = "featured.png", overwrite = T)
+file.copy(from = "aug_02_01_M2009.png", to = "../../posts_academic/augmented_designs/featured.png", overwrite = T)
 ```
 
 ![](aug_02_01_M2009.png)
@@ -567,7 +564,7 @@ method_I <- function(env = "M2009") {
       scale_color_manual(name = NULL, values = myColors) +
       scale_shape_manual(name = NULL, values = c(16,17)) +
       theme_agData(legend.position = "none", legend.box="vertical") +
-      labs(y = i, x = "unadjusted vs adjusted",
+      labs(y = i, x = "unadjusted vs adjusted", caption = myCaption,
            title = paste("Tratment Range =", myMin1, "-", myMax1))
     mp <- ggarrange(mp1, mp2, mp3, mp4, ncol = 2, nrow = 2)
     ggsave(paste0("aug_02_02_", i, "_", env, "_MI.png"), mp, 
@@ -679,7 +676,7 @@ method_III <- function(env = "M2009") {
       scale_color_manual(name = NULL, values = myColors) +
       scale_shape_manual(name = NULL, values = c(16,17)) +
       theme_agData(legend.position = "none", legend.box="vertical") +
-      labs(y = i, x = "unadjusted vs adjusted",
+      labs(y = i, x = "unadjusted vs adjusted", caption = myCaption,
            title = paste("Tratment Range =", myMin1, "-", myMax1))
     mp <- ggarrange(mp1, mp2, mp3, mp4, ncol = 2, nrow = 2)
     ggsave(paste0("aug_02_02_", i, "_", env, "_MIII.png"), mp, 
@@ -819,7 +816,8 @@ gg_Corr <- function(env = "M2009") {
   mp <- ggpairs(xx, columns = 13:16, aes(color = Genotype)) +
     scale_color_manual(values = myColors) +
     scale_fill_manual(values = alpha(myColors,0.5)) +
-    theme_agData()
+    theme_agData() +
+    labs(caption = myCaption)
   ggsave(paste0("aug_03_01_", env, ".png"), mp, width = 8, height = 6)
 }
 gg_Corr(env = "M2009")
@@ -862,3 +860,5 @@ mp <- ggplot(x2, aes(x = Block, y = Yield, color = Type, pch = Type)) +
   scale_color_manual(values = c("darkgreen", "darkred","darkblue", "Black"))
 ggsave("test5.png", mp, width = 15, height = 6)
 ```
+
+&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

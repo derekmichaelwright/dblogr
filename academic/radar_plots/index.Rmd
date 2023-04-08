@@ -1,7 +1,7 @@
 ---
 title: "Radar Plots"
 subtitle: "An R tutorial on how to create radar plots"
-date: "`r Sys.Date()`"
+date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
@@ -14,17 +14,6 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 # Data
 
 `r shiny::icon("save")` [data_radar_plots.csv](data_radar_plots.csv)
-
-```{r echo = F}
-downloadthis::download_link(
-  link = "data_radar_plots.csv",
-  button_label = "data_radar_plots.csv",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
@@ -41,9 +30,9 @@ x2 <- read.csv("https://raw.githubusercontent.com/derekmichaelwright/AGILE_LDP_P
   group_by(Entry, Name, Location) %>%
   summarise(DTF = round(mean(DTF2, na.rm = T))) %>%
   ungroup() %>% 
-  #left_join(x1, by = "Name") %>%
+  left_join(x1, by = "Name") %>%
   select(-Entry) %>%
-  select(Name, Location, DTF)
+  select(Name, Location, Cluster, DTF)
 write.csv(x2, "data_radar_plots.csv", row.names = F)
 ```
 
@@ -53,6 +42,9 @@ write.csv(x2, "data_radar_plots.csv", row.names = F)
 
 ```{r}
 # Prep data
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myColors <- c("darkred",   "darkorange3", "darkgoldenrod2", "deeppink3", 
+              "steelblue", "darkorchid4", "cornsilk4",      "darkgreen")
 myLocs <- c("Rosthern, Canada", "Sutherland, Canada",  
             "Bhopal, India", "Jessore, Bangladesh", "Bardiya, Nepal",
             "Marchouch, Morocco", "Cordoba, Spain", "Metaponto, Italy" )
@@ -68,18 +60,24 @@ dd <- read.csv("data_radar_plots.csv") %>%
 
 ```{r}
 # Prep data
-myNames <- c("PI 320953 LSP AGL", "Indianhead AGL", "PI 339285 AGL", 
-             "IG 4258 AGL", "CN 105791 AGL", "ILL 5888 AGL")
-xx <- dd %>%
+myNames <- c("Indianhead AGL", "PI 339285 AGL", 
+             "IG 4258 AGL", "CN 105791 AGL")#,"PI 320953 LSP AGL",  "ILL 5888 AGL")
+xx <- dd %>% 
+  #select(-Cluster) %>%
   group_by(Location) %>%
   mutate(DTF = scales::rescale(DTF)) %>%
   spread(Location, DTF) %>%
   filter(Name %in% myNames) %>%
-  mutate(Name = factor(Name, levels = myNames))
+  mutate(Name = factor(Name, levels = myNames)) %>%
+  arrange(Name)
+xColors <- myColors[xx$Cluster]
+xx <- xx %>% select(-Cluster)
 DT::datatable(xx)
 # Plot
 myTitle <- "Reltaive days to flower for selected lentil accessions\nfrom a lentil diversity panel accross environments"
-mp <- ggradar(xx, plot.title = myTitle, legend.position = "bottom")
+mp <- ggradar(xx, group.colours = xColors,
+              plot.title = myTitle, legend.position = "bottom") +
+  labs(caption = myCaption)
 ggsave("radar_plots_01.png", mp, width = 11, height = 10)
 ```
 
@@ -87,36 +85,29 @@ ggsave("radar_plots_01.png", mp, width = 11, height = 10)
 ggsave("featured.png", mp, width = 11, height = 10)
 ```
 
+
+
 ---
 
 # PDF
 
-`r shiny::icon("save")` [radar_plots.pdf](radar_plots.pdf)
-
-```{r echo = F}
-downloadthis::download_link(
-  link = "radar_plots.pdf",
-  button_label = "radar_plots.pdf",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+`r shiny::icon("file-pdf")` [radar_plots.pdf](radar_plots.pdf)
 
 ```{r results="hide"}
 # Prep data
-xx <- read.csv("data_radar_plots.csv") %>%
+xx <- dd %>%
   group_by(Location) %>%
   mutate(DTF = scales::rescale(DTF)) %>%
   spread(Location, DTF) %>%
-  mutate_at(vars(-Name), scales::rescale)
+  mutate_at(vars(-Name, -Cluster), scales::rescale) %>%
+  arrange(Cluster, `Rosthern, Canada`)
 # PDF 
 pdf("radar_plots.pdf", width = 11, height = 10)
 for(i in unique(xx$Name)) {
-    xi <- xx %>% filter(Name == i)
-    mp <- ggradar(xi) 
-    print(mp, plot.title = i)
+  ci <- myColors[xx %>% filter(Name == i) %>% pull(Cluster)]
+  xi <- xx %>% filter(Name == i) %>% select(-Cluster)
+  mp <- ggradar(xi, group.colours = ci) + labs(caption = myCaption)
+  print(mp, plot.title = i)
 }
 dev.off()
 ```

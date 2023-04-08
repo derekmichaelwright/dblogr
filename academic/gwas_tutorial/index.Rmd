@@ -72,7 +72,7 @@ file.copy(from = "C:/gitfolder/dblogr/content/academic/lentil_diversity_panel/le
 ```{r}
 # devtools::install_github("derekmichaelwright/gwaspr")
 library(gwaspr)
-myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 ```
 
 ```{r eval = F, echo = F}

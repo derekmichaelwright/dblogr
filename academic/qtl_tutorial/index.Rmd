@@ -1,7 +1,7 @@
 ---
 title: "QTL Tutorial"
 subtitle: "A tutorial on how to run QTL analyses in R"
-date: "`r Sys.Date()`"
+date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
@@ -35,6 +35,7 @@ To aid with data prep and data visualization, I will also be using my own option
 ```{r}
 # devtools::install_github("derekmichaelwright/gwaspr")
 library(gwaspr)
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 ```
 
 ---
@@ -96,7 +97,7 @@ mp <- ggplot(xx, aes(x = value, fill = trait)) +
   facet_wrap(trait ~ ., scales = "free", ncol = 4) +
   scale_fill_manual(values = myColors) +
   theme_gwaspr(legend.position = "none") +
-  labs(title = "LR68 - Phenotypes")
+  labs(title = "LR68 - Phenotypes", caption = myCaption)
 ggsave("qtl_tutorial_LR68_01.png", mp, width = 8, height = 4)
 ```
 
@@ -355,7 +356,7 @@ mp <- ggplot(xx, aes(x = cM, y = value, color = trait)) +
   facet_grid(trait ~ lg, scales = "free", space = "free_x") +
   scale_color_manual(values = myColors) +
   theme_gwaspr(legend.position = "none") +
-  labs(title = "LR68 QTL Results", y = "LOD")
+  labs(title = "LR68 QTL Results", y = "LOD", caption = myCaption)
 ggsave("qtl_tutorial_LR68_10.png", mp, width = 8, height = 6)
 # Plot by physical location - pseudomarkers removed
 mp <- ggplot(xx %>% filter(!is.na(pos)), 
@@ -365,7 +366,8 @@ mp <- ggplot(xx %>% filter(!is.na(pos)),
   facet_grid(trait ~ paste("Chr", chr), scales = "free", space = "free_x") +
   scale_color_manual(values = myColors) +
   theme_gwaspr(legend.position = "none") +
-  labs(title = "LR68 QTL Results", y = "LOD", x = "100 Mbp")
+  labs(title = "LR68 QTL Results", y = "LOD", 
+       x = "100 Mbp", caption = myCaption)
 ggsave("qtl_tutorial_LR68_11.png", mp, width = 8, height = 6)
 ```
 
@@ -386,7 +388,7 @@ for(i in myTraits) {
           geom_hline(yintercept = 3, color = "red") +
           facet_grid(. ~ lg, space = "free_x") +
           theme_gwaspr() +
-          labs(title = i, y = "LOD")
+          labs(title = i, y = "LOD", caption = myCaption)
   )
 }
 dev.off()
@@ -426,7 +428,8 @@ mp <- ggplot(xx, aes(x = cM, y = value, color = Model)) +
   facet_grid(trait ~ lg, scales = "free", space = "free_x") +
   scale_color_manual(values = c("darkorange", "darkblue")) +
   theme_gwaspr(legend.position = "bottom") +
-  labs(title = "LR68 QTL Results - Model Comparisons", y = "LOD")
+  labs(title = "LR68 QTL Results - Model Comparisons", 
+       y = "LOD", caption = myCaption)
 ggsave("qtl_tutorial_LR68_12.png", mp, width = 8, height = 6)
 ```
 
@@ -474,7 +477,7 @@ mp <- ggplot(xx, aes(x = value, fill = trait)) +
   facet_grid(. ~ trait) +
   scale_fill_manual(values = myColors) +
   theme_gwaspr(legend.position = "none") +
-  labs(title = "LR95 Phenotypes")
+  labs(title = "LR95 Phenotypes", caption = myCaption)
 ggsave("qtl_tutorial_LR95_01.png", mp, width = 6, height = 4)
 ```
 
@@ -623,7 +626,7 @@ mp <- ggplot(xx, aes(x = cM, y = value, color = trait)) +
   facet_grid(trait ~ lg, scales = "free", space = "free_x") +
   scale_color_manual(values = myColors) +
   theme_gwaspr() + 
-  labs(title = "LR95 QTL Results", y = "LOD")
+  labs(title = "LR95 QTL Results", y = "LOD", caption = myCaption)
 ggsave("qtl_tutorial_LR95_05.png", mp, width = 8, height = 6)
 # Plot by physical location - pseudomarkers removed
 mp <- ggplot(xx %>% filter(!is.na(pos)), 
@@ -633,9 +636,9 @@ mp <- ggplot(xx %>% filter(!is.na(pos)),
   facet_grid(trait ~ chr, scales = "free", space = "free_x") +
   scale_color_manual(values = myColors) +
   theme_gwaspr() +
-  labs(title = "LR95 QTL Results", y = "LOD", x = "100 Mbp")
+  labs(title = "LR95 QTL Results", y = "LOD", 
+       x = "100 Mbp", caption = myCaption)
 ggsave("qtl_tutorial_LR95_06.png", mp, width = 8, height = 6)
-xx[1:10,]
 ```
 
 ```{r echo = F}
@@ -664,7 +667,8 @@ mp2 <- ggplot(yy %>% filter(chr == "1"), aes(x = pos / 100000000, y = value)) +
   geom_hline(yintercept = 3, color = "red") +
   facet_grid(trait ~ paste("Chr", chr), scales = "free", space = "free_x") +
   theme_gwaspr() +
-  labs(title = "LR95 Physical Location", y = "LOD", x = "100 Mbp")
+  labs(title = "LR95 Physical Location", y = "LOD", 
+       x = "100 Mbp", caption = myCaption)
 mp <- ggpubr::ggarrange(mp1, mp2)
 ggsave("qtl_tutorial_LR95_07.png", mp, width = 8, height = 4)
 ```
@@ -768,7 +772,7 @@ mp <- ggplot(xx, aes(x = value, fill = trait)) +
   facet_grid(. ~ trait) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_gwaspr(legend.position = "none") +
-  labs(title = "LR89 Phenotypes")
+  labs(title = "LR89 Phenotypes", caption = myCaption)
 ggsave("qtl_tutorial_LR89_01.png", mp, width = 8, height = 4)
 ```
 
@@ -1058,7 +1062,7 @@ mp <- ggplot(xx, aes(x = cM, y = value, color = trait)) +
   facet_grid(trait ~ lg, scales = "free", space = "free_x") +
   scale_color_manual(values = myColors) +
   theme_gwaspr() + 
-  labs(title = "LR89 QTL Results", y = "LOD")
+  labs(title = "LR89 QTL Results", y = "LOD", caption = myCaption)
 ggsave("qtl_tutorial_LR89_10.png", mp, width = 8, height = 6)
 mp <- ggplot(xx %>% filter(!is.na(pos)), 
              aes(x = pos/1000000, y = value, color = trait)) + 
@@ -1067,7 +1071,7 @@ mp <- ggplot(xx %>% filter(!is.na(pos)),
   facet_grid(trait ~ chr, scales = "free", space = "free_x") +
   scale_color_manual(values = myColors) +
   theme_gwaspr() +
-  labs(title = "LR89 QTL Results", y = "LOD")
+  labs(title = "LR89 QTL Results", y = "LOD", caption = myCaption)
 ggsave("qtl_tutorial_LR89_11.png", mp, width = 8, height = 6)
 ```
 
@@ -1080,7 +1084,8 @@ mp <- ggplot(xx, aes(x = Lcu.2RBY.Chr7p4197838, y = Root.Rot)) +
   geom_violin() +
   geom_boxplot(width = 0.1) +
   geom_quasirandom() +
-  theme_gwaspr()
+  theme_gwaspr() +
+  labs(caption = myCaption)
 ggsave("qtl_tutorial_LR89_12.png", mp, width = 6, height = 4)
 ```
 

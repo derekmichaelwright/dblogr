@@ -1,7 +1,7 @@
 ---
 title: "Lentil Diversity Panel"
 subtitle: "A population representing global genetic diversity in cultivated lentil varieties"
-date: "`r Sys.Date()`"
+date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
@@ -78,15 +78,15 @@ library(htmlwidgets) # saveWidget()
 
 ```{r}
 # Prep data
-dd <- read.csv("data_ldp.csv") %>%
-  mutate(DTF_Cluster = factor(DTF_Cluster))
-#
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 rColors <- c("darkred", "darkgreen", "darkorange3", "steelblue", "grey")
 cColors <- c("darkred",   "darkorange3", "darkgoldenrod2", "deeppink3", 
              "steelblue", "darkorchid4", "cornsilk4",      "darkgreen") 
 sColors <- c("deeppink3", "darkblue", "darkorchid4", "darkorange3", "steelblue",
              "darkgoldenrod2", "darkred", "darkgreen", "cornsilk4")
-myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+#
+dd <- read.csv("data_ldp.csv") %>%
+  mutate(DTF_Cluster = factor(DTF_Cluster))
 ```
 
 mapBubbles function

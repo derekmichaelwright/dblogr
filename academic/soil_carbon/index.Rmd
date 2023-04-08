@@ -1,7 +1,7 @@
 ---
 title: "Carbon in Prairie Agriculture"
 subtitle: "A vignette of graphs using data from the paper *Contribution of land use practices to GHGs in the Canadian Prairies crop sector*"
-date: "`r Sys.Date()`"
+date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
@@ -33,6 +33,8 @@ library(readxl)
 
 ```{r}
 # Prep data
+myCaption <- expression(paste("derekmichaelwright.github.io/dblogr/ | Data: Awada ", 
+                               italic("et al"), ". (2021)"))
 myMeasures <- c("Net GHG Balance", "Transport Fuel", "Farm Fuel", 
                 "Fertilizers", "Crop Residue", "Summerfallow", "Soil")
 myAreas <- c("Alberta", "Saskatchewan", "Manitoba")
@@ -64,9 +66,6 @@ d3 <- bind_rows(
 d4 <- read_xlsx("data_soil_carbon.xlsx", "Soil Types") %>% 
   gather(`Soil Type`, Percent, 3:7) %>%
   mutate(Percent = Percent * 100)
-#
-myCaption <- expression(paste("\u00A9 derekmichaelwright.github.io/dblogr/  |  Data: Awada ", 
-                               italic("et al"), ". (2021)"))
 ```
 
 ---

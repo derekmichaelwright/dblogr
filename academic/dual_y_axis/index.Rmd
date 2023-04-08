@@ -1,7 +1,7 @@
 ---
 title: "Dual y-Axis"
 subtitle: "An R tutorial on how to create a plots with dual y-axes"
-date: "`r Sys.Date()`"
+date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 math: true
 ---
@@ -39,6 +39,7 @@ library(agData)
 
 ```{r}
 # Prep data
+myCaption <- c("derekmichaelwright.github.io/dblogr/ | Data: AGILE")
 xx <- read.csv("data_dual_y_axis.csv") %>% 
   mutate(Date = as.Date(Date))
 as_tibble(xx)
@@ -55,8 +56,8 @@ mp1 <- ggplot(xx, aes(x = Date)) +
   geom_line(aes(y = Air.Temperature, color = "1"), size = 1.25) +
   scale_color_manual(name = NULL, values = "red", labels = "Air Temp") +
   scale_x_date(date_labels = "%b" , date_breaks = "1 month") +
-  labs(title = "Environmental Data", y = "Temperature (\u00B0C)", x = NULL,
-       caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: AGILE") +
+  labs(title = "Environmental Data", x = NULL,
+       y = "Temperature (\u00B0C)", caption = myCaption) +
   theme_agData(legend.position = "bottom")
 mp1
 ```
@@ -178,7 +179,7 @@ ggplot(xx, aes(x = x, y = y)) +
   scale_y_continuous(limits = c(20, 40), 
                      sec.axis = sec_axis(~ (. - 20) * (10 - 5) / (20 - 0) + 5,
                         name = "y2", breaks = 5:10)) +
-  labs(caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: AGILE")
+  labs(caption = myCaption)
 ```
 
 ---

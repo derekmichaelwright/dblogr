@@ -192,7 +192,7 @@ ggCropMap <- function(myCrop = "Lentils",
               oceanCol = "grey90", landCol = "white", borderCol = "black")
   title(main = paste(myMeasure, "-", myCrop,"-", myYear), 
         line = 0, cex = 3) 
-  title(sub = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT", 
+  title(sub = "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT", 
         line = 0, cex.sub = 0.75, adj = 1)
   dev.off()
 }
