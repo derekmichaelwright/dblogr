@@ -6,7 +6,7 @@ author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```
 
 ---

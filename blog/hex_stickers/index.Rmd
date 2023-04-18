@@ -6,7 +6,7 @@ author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = T, message = F, warning = F, fig.align="center")
+knitr::opts_chunk$set(echo = F, message = F, warning = F, fig.align="center")
 ```
 
 ---
@@ -167,7 +167,7 @@ mp
 
 ```{r echo = F, eval = F}
 # Copy for feature.png
-file.copy(from = "logo_dblogr.png", to = "featured.png", overwrite = T)
+#file.copy(from = "logo_dblogr.png", to = "featured.png", overwrite = T)
 # Copy for agData package
 file.copy(from = "logo_agData.png", 
           to = "C:/gitfolder/agData/man/figures/logo_agData.png", overwrite = T)
@@ -191,6 +191,7 @@ image_write(im, "C:/gitfolder/dblogr/icon.png")
 im <- image_append(c(im1,im2))
 imm <- image_append(c(im1,im2,im4))
 image_write(imm, "C:/gitfolder/dblogr/cv/logo_banner.png")
+image_write(imm, "featured.png")
 image_write(im1, "C:/gitfolder/dblogr/logo_dblogr.png")
 image_write(im, "C:/gitfolder/dblogr/logo_agData.png")
 image_write(im4, "C:/gitfolder/dblogr/logo_gwaspr.png")

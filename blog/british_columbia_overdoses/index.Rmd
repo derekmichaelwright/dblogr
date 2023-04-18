@@ -6,14 +6,14 @@ author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```
 
 ---
 
 # Data
 
-https://www2.gov.bc.ca/assets/gov/birth-adoption-death-marriage-and-divorce/deaths/coroners-service/statistical/illicit-drug.pdf
+`r shiny::icon("globe")` https://www2.gov.bc.ca/assets/gov/birth-adoption-death-marriage-and-divorce/deaths/coroners-service/statistical/illicit-drug.pdf
 
 `r shiny::icon("save")` [data_british_columbia_overdoses.xlsx](data_british_columbia_overdoses.xlsx)
 

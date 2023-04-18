@@ -37,29 +37,29 @@ h1,h2,h3,h4,h5,h6,legend{
 
 /* links */
 #main a:link {
-  color: darkred;
+  color: darkgreen;
 }
 
 #main a:hover {
-  color: darkred;
+  color: darkgreen;
 }
 
 #main a:visited {
-  color: darkred;
+  color: darkgreen;
 }
 
 #main a:active {
-  color: darkred;
+  color: darkgreen;
 }
 
 /* The navigation bar */
 .navbar {
   #position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
-  width: 665px; /* Full width */
+  width: 100%; /* Full width */
   background-color: #1E3D2A;
   margin-top: 0px;
-  margin-left: 00px;
+  margin-left: 0px;
 }
 
 /* Links inside the navbar */

@@ -6,14 +6,14 @@ author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```
 
 ---
 
 # Data
 
-https://publications.saskatchewan.ca/#/categories/2179
+`r shiny::icon("globe")` https://publications.saskatchewan.ca/#/categories/2179
 
 `r shiny::icon("save")` [data_saskatchewan_overdoses.xlsx](data_saskatchewan_overdoses.xlsx)
 
@@ -30,23 +30,27 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: SK GOV\nNote: recent data may be incomplete"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: SK GOV"
 myColorsMF <- c("palevioletred3", "steelblue")
 myRaces <- c("Unknown", "Other", "Black", "Asian",
              "Metis","First Nations", "Caucasian")
 #
-d1 <- read_xlsx("data_saskatchewan_overdoses.xlsx", "Annual") 
+d1 <- read_xlsx("data_saskatchewan_overdoses.xlsx", "Annual") %>%
+  filter(Year < 2022)
 #
-d2 <- read_xlsx("data_saskatchewan_overdoses.xlsx", "Meth") 
+d2 <- read_xlsx("data_saskatchewan_overdoses.xlsx", "Meth")  %>%
+  filter(Year < 2022)
 #
 d3 <- read_xlsx("data_saskatchewan_overdoses.xlsx", "Age") %>%
   gather(Year, Deaths, 3:ncol(.)) %>% 
-  mutate(Year = as.numeric(Year))
+  mutate(Year = as.numeric(Year)) %>%
+  filter(Year < 2022)
 #
 d4 <- read_xlsx("data_saskatchewan_overdoses.xlsx", "Race") %>%
   gather(Year, Deaths, 3:ncol(.)) %>%
   mutate(Year = as.numeric(Year),
-         Race = factor(Race, levels = myRaces))
+         Race = factor(Race, levels = myRaces)) %>%
+  filter(Year < 2022)
 ```
 
 ---

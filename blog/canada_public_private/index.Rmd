@@ -1,0 +1,556 @@
+---
+title: "Public vs Private Sector Employment in Canada"
+subtitle: "Graphs of public vs private sector employment in Canada using STATCAN data"
+date: "Last updated: `r Sys.Date()`"
+author: "Derek Michael Wright <derek.wright@usask.ca>"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+```
+
+---
+
+# Data
+
+`r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410028801
+
+`r shiny::icon("save")` [1410028801_databaseLoadingData.csv](1410028801_databaseLoadingData.csv)
+
+```{r class.source = 'fold-show'}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData)
+```
+
+---
+
+# Prepare Data
+
+```{r}
+# Prep data
+myCaption = "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myAreas <- c("Canada", "Quebec", "Ontario", "British Columbia", 
+           "Alberta", "Saskatchewan", "Manitoba", "Nova Scotia",
+           "Newfoundland and Labrador", "New Brunswick", "Prince Edward Island", 
+           "Northwest Territories", "Yukon", "Nunavut")
+myColors_Ind <- c("darkgreen", "darkslategray", "darkred")
+myColors_Sex <- c("palevioletred3","steelblue")
+myMeasures <- c("Self-employed", "Private sector", "Public sector")
+myDates <- as.Date(c("2010-01-01","2015-01-01","2020-01-01"))
+#
+d1 <- read.csv("1410028801_databaseLoadingData.csv") %>%
+  select(Area=GEO, Date=1, Measurement=Class.of.worker, 
+         Sex, Unit=UOM, Scale=SCALAR_FACTOR, Value=VALUE) %>%
+  mutate(Area = factor(Area, levels = myAreas),
+         Date = as.Date(paste0(Date, "-15"), format = "%Y-%m-%d"),
+         Measurement = gsub(" employees", "", Measurement),
+         Measurement = factor(Measurement, levels = myMeasures))
+d2 <- d1 %>% 
+  mutate(Year = as.numeric(substr(Date, 1, 4))) %>%
+  group_by(Area, Year, Measurement, Sex) %>%
+  summarise(Value = sum(Value)) %>% ungroup() %>%
+  group_by(Area, Year, Sex) %>% mutate(Total = sum(Value)) %>% ungroup() %>%
+  mutate(Percent = 100 * Value / Total)
+```
+
+---
+
+# Private vs Government
+
+## Canada
+
+![](canada_public_private_1_01.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% filter(Area == "Canada", Sex == "Both sexes")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Measurement)) +
+  geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
+  geom_line(size = 1, alpha = 0.7) +
+  scale_color_manual(name = NULL, values = myColors_Ind) +
+  scale_y_continuous(breaks = 0:13, minor_breaks = 0:13, limits = c(0,13)) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Employment in Canada", x = NULL,
+       y = "Million Jobs", caption = myCaption)
+ggsave("canada_public_private_1_01.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Provinces
+
+![](canada_public_private_1_02.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Area != "Canada", Sex == "Both sexes")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Measurement)) +
+  geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
+  geom_line(alpha = 0.7) +
+  scale_color_manual(name = NULL, values = myColors_Ind) +
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Employment in Canada", x = NULL,
+       y = "Million Jobs", caption = myCaption)
+ggsave("canada_public_private_1_02.png", mp, width = 12, height = 6)
+```
+
+---
+
+### Provinces > 2010
+
+![](canada_public_private_1_03.png)
+
+```{r}
+# Prep data
+xx <- xx %>% filter(Date > "2010-01-01")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Measurement)) +
+  geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
+  geom_line(alpha = 0.7, size = 1) +
+  scale_color_manual(name = NULL, values = myColors_Ind) +
+  scale_x_date(breaks = myDates, minor_breaks = "1 year", date_labels = "%Y") +
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Employment in Canada", x = NULL,
+       y = "Million Jobs", caption = myCaption)
+ggsave("canada_public_private_1_03.png", mp, width = 12, height = 6)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 12, height = 6)
+```
+
+---
+
+# Scaled
+
+Create plotting function
+
+```{r}
+# Create plotting function
+gg_Priv_Gov <- function(myArea = "Canada") {
+  # Prep data
+  xx <- d1 %>% 
+    filter(Sex == "Both sexes", Date > "2010-01-01",
+           Area == myArea)
+  # Plot
+  ggplot(xx, aes(x = Date, y = Value / 1000, color = Measurement)) +
+    geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
+    geom_line(size = 1, alpha = 0.7) +
+    scale_color_manual(name = NULL, values = myColors_Ind) +
+    scale_x_date(breaks = "1 year", minor_breaks = "1 year", date_labels = "%Y") +
+    facet_wrap(. ~ Measurement, ncol = 3, scale = "free_y") +
+    theme_agData(legend.position = "bottom",
+                 axis.text.x = element_text(angle = 45, hjust = 1)) +
+    labs(title = paste("Employment in", myArea), 
+         y = "Million Jobs", x = NULL, caption = myCaption)
+}
+```
+
+---
+
+## Canada
+
+![](canada_public_private_2_01.png)
+
+```{r}
+mp <- gg_Priv_Gov(myArea = "Canada")
+ggsave("canada_public_private_2_01.png", mp, width = 10, height = 4)
+```
+
+---
+
+## Ontario
+
+![](canada_public_private_2_02.png)
+
+```{r}
+mp <- gg_Priv_Gov(myArea = "Ontario")
+ggsave("canada_public_private_2_02.png", mp, width = 10, height = 4)
+```
+
+---
+
+## Alberta
+
+![](canada_public_private_2_03.png)
+
+```{r}
+mp <- gg_Priv_Gov(myArea = "Alberta")
+ggsave("canada_public_private_2_03.png", mp, width = 10, height = 4)
+```
+
+---
+
+## Saskatchewan
+
+![](canada_public_private_2_04.png)
+
+```{r}
+mp <- gg_Priv_Gov(myArea = "Saskatchewan")
+ggsave("canada_public_private_2_04.png", mp, width = 10, height = 4)
+```
+
+---
+
+# Change
+
+## Change Since Feburary
+
+![](canada_public_private_3_01.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Area == "Canada", Sex == "Both sexes", 
+         Date >= "2020-02-15") %>%
+  select(Date, Measurement, Value) %>%
+  spread(Date, Value) %>%
+  mutate(Start = `2020-02-15`) %>%
+  select(Measurement, Start, everything()) %>%
+  gather(Date, Value, 3:ncol(.)) %>%
+  mutate(Date = as.Date(Date),
+         PercentChange = 100 * (Value - Start) / Start)
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = PercentChange, 
+                     color = Measurement, group = Measurement)) +
+  geom_hline(yintercept = 0, alpha = 0.7) + 
+  geom_line(size = 1.5, alpha = 0.7) +
+  scale_color_manual(name = NULL, values = myColors_Ind) +
+  scale_x_date(breaks = unique(xx$Date), minor_breaks = unique(xx$Date),
+               date_labels = "%Y-%m") +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Percent change since Feburary 2020",
+       x = NULL, y = NULL, caption = myCaption)
+ggsave("canada_public_private_3_01.png", mp, width = 7, height = 4)
+```
+
+---
+
+## Change Since 2019-09-15
+
+![](canada_public_private_3_02.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Area == "Canada", Sex == "Both sexes", 
+         Date >= "2019-09-15") %>%
+  select(Date, Measurement, Value) %>%
+  spread(Date, Value) %>%
+  mutate(Start = `2019-09-15`) %>%
+  select(Measurement, Start, everything()) %>%
+  gather(Date, Value, 3:ncol(.)) %>%
+  mutate(Date = as.Date(Date),
+         PercentChange = 100 * (Value - Start) / Start)
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = PercentChange, 
+                     color = Measurement, group = Measurement)) +
+  geom_hline(yintercept = 0, alpha = 0.7) + 
+  geom_line(size = 1.5, alpha = 0.7) +
+  scale_color_manual(name = NULL, values = myColors_Ind) +
+  scale_x_date(breaks = unique(xx$Date), minor_breaks = unique(xx$Date),
+               date_labels = "%Y-%m") +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Percent change since 2019-09-15",
+       x = NULL, y = NULL, caption = myCaption)
+ggsave("canada_public_private_3_02.png", mp, width = 7, height = 4)
+```
+
+---
+
+# Percentages
+
+## Canada
+
+![](canada_public_private_4_01.png)
+
+```{r}
+# Prep data
+xx <- d2 %>% filter(Area == "Canada", Sex == "Both sexes")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Measurement)) +
+  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  scale_fill_manual(name = NULL, values = myColors_Ind) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Employment in Canada", x = NULL, caption = myCaption)
+ggsave("canada_public_private_4_01.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Sex
+
+![](canada_public_private_4_02.png)
+
+```{r}
+# Prep data
+xx <- d2 %>% filter(Area == "Canada", Sex != "Both sexes")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Measurement)) +
+  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  facet_grid(. ~ Sex) +
+  scale_fill_manual(name = NULL, values = myColors_Ind) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Employment in Canada", x = NULL, caption = myCaption)
+ggsave("canada_public_private_4_02.png", mp, width = 8, height = 4)
+```
+
+---
+
+## Provinces
+
+![](canada_public_private_4_03.png)
+
+```{r}
+# Prep data
+xx <- d2 %>% filter(Area != "Canada", Sex == "Both sexes")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Measurement)) +
+  geom_bar(stat = "identity", color = "black", alpha = 0.7, lwd = 0.1) +
+  facet_wrap(Area ~ ., ncol = 5) +
+  scale_fill_manual(name = NULL, values = myColors_Ind) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Employment in Canada", x = NULL, caption = myCaption)
+ggsave("canada_public_private_4_03.png", mp, width = 12, height = 6)
+```
+
+---
+
+# Males vs. Females
+
+## Canada
+
+![](canada_public_private_5_01.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Area == "Canada", Sex != "Both sexes")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
+  geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
+  geom_line(size = 1, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = myColors_Sex) +
+  facet_wrap(. ~ Measurement, ncol = 3, scales = "free_y") +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Employment in Canada", x = NULL,
+       y = "Million Jobs", caption = myCaption)
+ggsave("canada_public_private_5_01.png", mp, width = 10, height = 4)
+```
+
+---
+
+### > 2010
+
+![](canada_public_private_5_02.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Area == "Canada", Sex != "Both sexes", Date > "2010-01-01")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
+  geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
+  geom_line(size = 1, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = myColors_Sex) +
+  scale_x_date(breaks = myDates, minor_breaks = "1 year", date_labels = "%Y") +
+  facet_wrap(. ~ Measurement, ncol = 3, scales = "free_y") +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Employment in Canada", x = NULL,
+       y = "Million Jobs", caption = myCaption)
+ggsave("canada_public_private_5_02.png", mp, width = 10, height = 4)
+```
+
+---
+
+## Change Since Februrary
+
+![](canada_public_private_5_03.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Area == "Canada", Sex != "Both sexes", 
+         Date %in% as.Date(c("2020-02-15","2022-05-15"))) %>%
+  select(Date, Measurement, Sex, Value) %>%
+  spread(Date, Value) %>%
+  mutate(Change = `2022-05-15` - `2020-02-15`)
+# Plot
+mp <- ggplot(xx, aes(x = Sex, y = Change, fill = Sex)) +
+  geom_bar(stat = "identity", position = "dodge", 
+           color = "black", alpha = 0.7) +
+  facet_grid(. ~ Measurement) +
+  scale_fill_manual(values = myColors_Sex) +
+  theme_agData(legend.position = "none") +
+  labs(title = "Change since Feburary 2020", x = NULL,
+       y = "Thousand", caption = myCaption)
+ggsave("canada_public_private_5_03.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Change Since Februrary
+
+![](canada_public_private_5_04.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Area == "Canada", Sex != "Both sexes", 
+         Date %in% as.Date(c("2019-09-15","2022-05-15"))) %>%
+  select(Date, Measurement, Sex, Value) %>%
+  spread(Date, Value) %>%
+  mutate(Change = `2022-05-15` - `2019-09-15`)
+# Plot
+mp <- ggplot(xx, aes(x = Sex, y = Change, fill = Sex)) +
+  geom_bar(stat = "identity", position = "dodge", 
+           color = "black", alpha = 0.7) +
+  facet_grid(. ~ Measurement) +
+  scale_fill_manual(values = myColors_Sex) +
+  theme_agData(legend.position = "none") +
+  labs(title = "Change since 2019-09-15", x = NULL,
+       y = "Thousand", caption = myCaption)
+ggsave("canada_public_private_5_04.png", mp, width = 6, height = 4)
+```
+
+---
+
+# Public Sector
+
+## Provinces
+
+![](canada_public_private_6_01.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Area != "Canada", Sex != "Both sexes",
+         Measurement == "Public sector")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
+  geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
+  geom_line(size = 0.8, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = myColors_Sex) +
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Public Sector Employees", x = NULL,
+       y = "Million Jobs", caption = myCaption)
+ggsave("canada_public_private_6_01.png", mp, width = 12, height = 6)
+```
+
+---
+
+![](canada_public_private_6_02.png)
+
+```{r}
+# Prep data
+xx <- xx %>% filter(Date > "2010-01-01")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
+  geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
+  geom_line(size = 1, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = myColors_Sex) +
+  scale_x_date(breaks = myDates, minor_breaks = "1 year", date_labels = "%Y") +
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Public Sector Employees", x = NULL,
+       y = "Million Jobs", caption = myCaption)
+ggsave("canada_public_private_6_02.png", mp, width = 12, height = 6)
+```
+
+---
+
+# Self Employed
+
+## Canada
+
+![](canada_public_private_7_01.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Area == "Canada", Sex == "Both sexes",
+         Measurement == "Self-employed")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
+  geom_line(color = "darkgreen", size = 1.25, alpha = 0.7) +
+  scale_y_continuous(breaks = 0:3, minor_breaks = 0:3, limits = c(0,3)) +
+  theme_agData() +
+  labs(title = "Self-Employment in Canada", x = NULL,
+       y = "Million Jobs", caption = myCaption)
+ggsave("canada_public_private_7_01.png", mp, width = 6, height = 4)
+```
+
+---
+
+### > 2010
+
+![](canada_public_private_7_02.png)
+
+```{r}
+# Prep data
+xx <- xx %>% filter(Date > "2010-01-01")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
+  geom_line(color = "darkgreen", size = 1.25, alpha = 0.7) +
+  scale_x_date(breaks = myDates, minor_breaks = "1 year", date_labels = "%Y") +
+  theme_agData() +
+  labs(title = "Self-Employment in Canada", x = NULL,
+       y = "Million Jobs", caption = myCaption)
+ggsave("canada_public_private_7_02.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Provinces
+
+![](canada_public_private_7_03.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Area != "Canada", Sex == "Both sexes",
+         Measurement == "Self-employed")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
+  geom_line(color = "darkgreen", alpha = 0.7) +
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+  theme_agData() +
+  labs(title = "Self-Employment in Canada", x = NULL,
+       y = "Million Jobs", caption = myCaption)
+ggsave("canada_public_private_7_03.png", mp, width = 12, height = 6)
+```
+
+---
+
+### > 2010
+
+![](canada_public_private_7_04.png)
+
+```{r}
+# Prep data
+xx <- xx %>% filter(Date > "2010-01-01")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
+  geom_line(color = "darkgreen", size = 1, alpha = 0.7) +
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+  scale_x_date(breaks = myDates, minor_breaks = "1 year", date_labels = "%Y") +
+  theme_agData() +
+  labs(title = "Self-Employment in Canada", x = NULL,
+       y = "Million Jobs", caption = myCaption)
+ggsave("canada_public_private_7_04.png", mp, width = 12, height = 6)
+```
+
+---

@@ -6,14 +6,14 @@ author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = T, message = F, warning = F, results="hide")
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```
 
 ---
 
 # Data
 
-http://www.fao.org/faostat/en/#data/QC
+`r shiny::icon("globe")` http://www.fao.org/faostat/en/#data/QC
 
 `r shiny::icon("save")` [agData_FAO_Crops.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Crops.csv.gz)
 
@@ -167,7 +167,7 @@ mapBubbles2 <- function (dF = "", nameX = "longitude", nameY = "latitude",
 
 ---
 
-## Plotting Function
+# Plotting Function
 
 ```{r}
 ggCropMap <- function(myCrop = "Lentils", 
@@ -307,7 +307,7 @@ ggCropMap(myCrop = "Soybeans", myYear = 2019,
 ![](crops_world_maps_sugarbeet.png)
 
 ```{r results="hide"}
-ggCropMap(myCrop = "Sugarbeet", myYear = 2019,
+ggCropMap(myCrop = "Sugar beet", myYear = 2019,
           myMeasure = "Production",
           myFilename = "crops_world_maps_sugarbeet.png")
 ```
@@ -343,7 +343,7 @@ ggCropMap(myCrop = "Potatoes", myYear = 2019,
 ![](crops_world_maps_cotton.png)
 
 ```{r results="hide"}
-ggCropMap(myCrop = "Cottonseed", myYear = 2019,
+ggCropMap(myCrop = "Cottonseed", myYear = 2018,
           myMeasure = "Production",
           myFilename = "crops_world_maps_cotton.png")
 ```

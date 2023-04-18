@@ -10,7 +10,7 @@ math: true
 knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```
 
-![](featured.jpg)
+![](jlu_logo.jpg)
 
 # Introduction
 
@@ -18,24 +18,9 @@ This is a vignette for my Masters thesis titled "Influence of heterozygosity on 
 
 Department of Agronomy and Plant Breeding I, Justus-Liebig-Universität, Gießen 35392, Germany
 
-```{r echo = F}
-downloadthis::download_link(
-  link = "MastersThesis.pdf",
-  button_label = "MastersThesis.pdf",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-file-pdf",
-  self_contained = FALSE
-)
-downloadthis::download_link(
-  link = "data_canola_nue.xlsx",
-  button_label = "data_canola_nue.xlsx",
-  button_type = "success",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+`r shiny::icon("file-pdf")` [MastersThesis.pdf](MastersThesis.pdf)
+
+`r shiny::icon("save")` [data_canola_nue.xlsx](data_canola_nue.xlsx)
 
 ---
 
@@ -75,6 +60,8 @@ $N1=\frac{44.65\frac{mgNO_3}{kgsoil}+2.15\frac{mgNH_4}{kgsoil}*(130.1kgsoil)}{9p
 **N2** - Calculation of available N with fertilization of 200 kg N/ha
 
 $N2=677\frac{mgN}{perplant}+\frac{2*(1600mgN)}{9plants}=1033\frac{mgN}{perplant}$
+
+[home](#)
 
 ---
 
@@ -170,16 +157,11 @@ dd_sd <- rr %>%
 ```{r}
 gg_PlantMass <- function(nlevel, title) {
   x1 <- dd %>% 
-    mutate(SeedMass  = ifelse(Genotype == "Pacific" & Nlevel == "N2", 
-                              0, SeedMass),
-           StrawMass = ifelse(Genotype == "Pacific" & Nlevel == "N2", 
-                              0, StrawMass),
-           StemMass  = ifelse(Genotype == "Pacific" & Nlevel == "N2", 
-                              0, StemMass),
-           RootMass  = ifelse(Genotype == "Pacific" & Nlevel == "N2", 
-                              0, RootMass),
-           RootScore = ifelse(Genotype == "Pacific" & Nlevel == "N2", 
-                              0, RootScore))
+    mutate(SeedMass  = ifelse(Genotype == "Pacific" & Nlevel == "N2", 0, SeedMass),
+           StrawMass = ifelse(Genotype == "Pacific" & Nlevel == "N2", 0, StrawMass),
+           StemMass  = ifelse(Genotype == "Pacific" & Nlevel == "N2", 0, StemMass),
+           RootMass  = ifelse(Genotype == "Pacific" & Nlevel == "N2", 0, RootMass),
+           RootScore = ifelse(Genotype == "Pacific" & Nlevel == "N2", 0, RootScore))
   genoOrder <- x1 %>% 
     filter(Nlevel == nlevel) %>%
     arrange(SeedMass, Type) %>% 
@@ -257,6 +239,8 @@ mp <- ggplot(xx, aes(x = Genotype, y = RootMass, fill = Nlevel)) +
   labs(caption = "\u00A9 www.dblogr.com/  |  Data: JLU")
 ggsave("canola_nue_02.png", mp, width = 8, height = 4)
 ```
+
+---
 
 # N1 vs N2
 
@@ -435,7 +419,7 @@ ggsave("canola_nue_10.png", mp, width = 9, height = 6)
 
 ![](canola_nue_12.png)
 
-```{r}
+```{r results="hide"}
 library(corrplot)
 traits <- c("RootMass", "RootScore", "StemMass", "ShootMass", 
             "StrawMass", #"StrawMassMain", #"StrawMassSide",

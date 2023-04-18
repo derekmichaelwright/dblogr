@@ -85,8 +85,6 @@ ggsave("radar_plots_01.png", mp, width = 11, height = 10)
 ggsave("featured.png", mp, width = 11, height = 10)
 ```
 
-
-
 ---
 
 # PDF

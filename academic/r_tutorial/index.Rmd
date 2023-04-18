@@ -21,9 +21,9 @@ This tutorial is will introduce the reader to `r shiny::icon("r-project")`, a fr
 
 # Download `r shiny::icon("r-project")`
 
-Download `r shiny::icon("r-project")` at https://www.r-project.org/
+`r shiny::icon("download")` Download `r shiny::icon("r-project")` at https://www.r-project.org/
 
-Download `RStudio` at https://rstudio.com/products/rstudio/download/
+`r shiny::icon("download")` Download `RStudio` at https://rstudio.com/products/rstudio/download/
 
 ![](rstudio.png)
 

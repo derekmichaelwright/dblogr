@@ -6,14 +6,14 @@ author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = T, message = F, warning = F, out.width = "100%")
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```
 
 ---
 
 # Data
 
-https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810020501
+`r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810020501
 
 `r shiny::icon("save")` [1810020501_databaseLoadingData.csv](1810020501_databaseLoadingData.csv)
 

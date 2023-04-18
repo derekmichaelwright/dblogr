@@ -13,11 +13,11 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901
+`r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901
 
 `r shiny::icon("save")` [1710000901_databaseLoadingData.csv](1710000901_databaseLoadingData.csv)
 
-https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000501
+`r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000501
 
 `r shiny::icon("save")` [1710000501_databaseLoadingData.csv](1710000501_databaseLoadingData.csv)
 
@@ -35,22 +35,22 @@ library(transformr)
 ```{r}
 # Prep data
 myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
-myAreas <- c("Canada", "Ontario", "Quebec", "New Brunswick", "Nova Scotia",
-           "Prince Edward Island", "Newfoundland and Labrador",
-           "British Columbia", "Alberta","Saskatchewan", "Manitoba",
-           "Yukon", "Northwest Territories including Nunavut", 
-           "Northwest Territories", "Nunavut")
+myAreas <- c("Canada", "British Columbia", "Alberta", "Saskatchewan", 
+             "Manitoba", "Ontario", "Quebec", "New Brunswick", "Nova Scotia",
+             "Prince Edward Island", "Newfoundland and Labrador",
+             "Yukon", "Northwest Territories including Nunavut", 
+             "Northwest Territories", "Nunavut")
 myAges <- c("0 to 4 years", "5 to 9 years", 
-          "10 to 14 years", "15 to 19 years",
-          "20 to 24 years", "25 to 29 years", 
-          "30 to 34 years", "35 to 39 years",
-          "40 to 44 years", "45 to 49 years", 
-          "50 to 54 years", "55 to 59 years",
-          "60 to 64 years", "65 to 69 years", 
-          "70 to 74 years", "75 to 79 years",
-          "80 to 84 years", "85 to 89 years", 
-          "90 to 94 years", "95 to 99 years",
-          "100 years and over")
+            "10 to 14 years", "15 to 19 years",
+            "20 to 24 years", "25 to 29 years", 
+            "30 to 34 years", "35 to 39 years",
+            "40 to 44 years", "45 to 49 years", 
+            "50 to 54 years", "55 to 59 years",
+            "60 to 64 years", "65 to 69 years", 
+            "70 to 74 years", "75 to 79 years",
+            "80 to 84 years", "85 to 89 years", 
+            "90 to 94 years", "95 to 99 years",
+            "100 years and over")
 #
 d1 <- read.csv("1710000901_databaseLoadingData.csv") %>%
   select(Year=1, Area=GEO, Unit=UOM, Value=VALUE) %>%
@@ -565,6 +565,8 @@ anim_save("canada_population_gif_4_01.gif", mp,
 
 ## Canada
 
+![](canada_population_5_01.png)
+
 ```{r}
 # Prep data
 xx <- d2 %>% 
@@ -581,9 +583,10 @@ xx <- d2 %>%
 mp <- ggplot(xx %>% filter(Area == "Canada", Group == "Young"), 
        aes(x = Year, y = Percent, color = Sex)) +
   geom_line() +
+  scale_color_manual(name = NULL, values = c("palevioletred3", "steelblue")) +
   ylim(c(70,100)) +
-  facet_wrap(Area ~ .) +
-  theme_agData(legend.position = "bottom")
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canada - Percent of population under 65", x = NULL)
 ggsave("canada_population_5_01.png", mp, width = 6, height = 4)
 ```
 
@@ -591,15 +594,38 @@ ggsave("canada_population_5_01.png", mp, width = 6, height = 4)
 
 ## Provinces 
 
+![](canada_population_5_02.png)
+
 ```{r}
 # Plot
-ggplot(xx %>% filter(Area != "Canada", Group == "Young"), 
+mp <-ggplot(xx %>% filter(Area != "Canada", Group == "Young"), 
        aes(x = Year, y = Percent, color = Sex)) +
   geom_line() +
+  scale_color_manual(name = NULL, values = c("palevioletred3", "steelblue")) +
+  facet_wrap(Area ~ ., ncol = 5) +
   ylim(c(70,100)) +
-  facet_wrap(Area ~ .) +
-  theme_agData(legend.position = "bottom")
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canada - Percent of population under 65", x = NULL)
 ggsave("canada_population_5_02.png", mp, width = 12, height = 6)
+```
+
+---
+
+## 2021
+
+![](canada_population_5_03.png)
+
+```{r}
+# Prep data
+xx <- xx %>% filter(Year == 2021, Group == "Young")
+# Plot
+mp <- ggplot(xx, aes(x = Area, y = Percent, fill = Sex)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_manual(name = NULL, values = c("palevioletred3", "steelblue")) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada - Percent of population under 65", x = NULL)
+ggsave("canada_population_5_03.png", mp, width = 6, height = 4)
 ```
 
 ---

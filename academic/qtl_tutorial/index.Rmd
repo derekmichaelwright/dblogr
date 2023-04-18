@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Introduction
 
-`qtl2` Tutorial: https://kbroman.org/qtl2/assets/vignettes/user_guide.html
+`r shiny::icon("globe")` `qtl2` Tutorial: https://kbroman.org/qtl2/assets/vignettes/user_guide.html
 
 Running a QTL analysis in <i class="fab fa-r-project"></i> can be done with a few simple steps. This tutorial will go through a couple quick examples with a few lentil (*Lens culinaris*) **recombinant inbred line** (**RIL**) populations (**LR68**, **LR89** & **LR95**).
 
@@ -42,7 +42,7 @@ myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 
 ## Input Files
 
-https://kbroman.org/qtl2/assets/vignettes/input_files.html
+`r shiny::icon("globe")` https://kbroman.org/qtl2/assets/vignettes/input_files.html
 
 In order to run the analysis we first need to set up an `input` folder with properly formatted files containing our ***phenotyope*** data, ***genotype*** data, a ***genetic map*** and a ***yaml*** file with details for running the analysis. The `input` folders used in this vignette can be downloaded below:
 
