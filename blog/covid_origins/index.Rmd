@@ -24,7 +24,6 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
-#library(readxl)
 ```
 
 ---
@@ -33,16 +32,16 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption1 <- expression(paste("derekmichaelwright.github.io/dblogr/ | Data: Morning Consult"))
+myCaption1 <- "derekmichaelwright.github.io/dblogr/ | Data: Morning Consult"
 d1 <- read.csv("data_morning_consult.csv") %>%
   mutate(Area = factor(Area, levels = rev(.$Area))) 
 #
-myCaption2 <- expression(paste("derekmichaelwright.github.io/dblogr/ | Data: YouGov"))
+myCaption2 <- "derekmichaelwright.github.io/dblogr/ | Data: YouGov"
 myTitle <- "35. COVID-19 Originated in Chinese Lab"
 mySubtitle <- "Regardless of whether or not the virus responsible for COVID-19 was created or naturally mutated,\ndo you believe it is true or false that a laboratory in China was the origin of the virus?"
 myAnswers <- c("Definatly false", "Propably false", "Not sure",
                "Probably true", "Definatly true")
-d2 <- read.csv("data_yougov.csv", skip = 1) %>%
+d2 <- read.csv("data_yougov.csv", skip = 1, check.names = FALSE) %>%
   gather(Group, Percent, 2:ncol(.)) %>%
   mutate(Answer = factor(Answer, levels = myAnswers))
 ```

@@ -43,7 +43,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 **My Curriculum Vitae (CV)**
 
 - `r icon("file-pdf")` [cv/cv.derek.m.wright.pdf](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf) 
-- `r icon("globe")` [cv/cv.derek.m.wright](cv/cv.derek.m.wright)
+- `r icon("globe")` [cv/](cv/)
 
 </div></div>
 
@@ -154,11 +154,11 @@ Jiayi Hang, **Derek M. Wright**, Kirstin E. Bett & James D. House
 - `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Protein/LDP_Protein_Vignette.html)
 - `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Protein/README.html)
 
-Jiayi Hang, Da Shi, Jason Neufeld, Kirstin E. Bett & James D. House
-
 A follow up to:
 
 [<u>**Prediction of protein and amino acid contents in whole and ground lentils using near-infrared reflectance spectroscopy**</u>](https://doi.org/10.1016/j.lwt.2022.113669). *LWT*. (**2022**) 165: 113669. doi.org/10.1016/j.lwt.2022.113669
+
+Jiayi Hang, Da Shi, Jason Neufeld, Kirstin E. Bett & James D. House
 
 - `r icon("newspaper")` [*LWT*. (**2022**) 165: 113669.](https://doi.org/10.1016/j.lwt.2022.113669)
 
@@ -188,7 +188,6 @@ A follow up to:
 - (**2022**) Neupane *et al*. [<u>**Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**</u>](https://doi.org/10.1002/tpg2.20269). *The Plant Genome*. e20269. doi.org/10.1002/tpg2.20269
 - (**2021**) Neupane *et al*. [<u>**Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**</u>](https://doi.org/10.3390/agronomy11101933). *Agronomy*. 11(10): 1933. doi.org/10.3390/agronomy11101933
 - (**2020**) Wright, *et al*. [<u>**Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**</u>](https://doi.org/10.1002/ppp3.10158). *Plants, People, Planet*. 00: 1-11. doi.org/10.1002/ppp3.10158
-- (**2015**) [<u>**Wright DM Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)**</u>](publications/canola_nue/). *University of Giessen*. MSc. Thesis. 
 
 </div>
 
@@ -197,10 +196,6 @@ A follow up to:
 ---
 
 # `r icon("newspaper")` Academic
-
-## Vignettes {.tabset .tabset-pills}
-
-### gwaspr
 
 <div class="box"><div class = "row"><div class = "col-md-8">
 
@@ -212,36 +207,6 @@ A follow up to:
 - `r icon("github")` https://github.com/derekmichaelwright/gwaspr/
 
 </div><div class = "col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
-
-### Lentil Diversity Panel
-
-<div class="box"><div class = "row"><div class = "col-md-6">
-
-[<u>**Lentil Diversity Panel**</u>](academic/lentil_diversity_panel)
-
-A population representing global genetic diversity in cultivated lentil varieties
-
-</div><div class = "col-md-6">![](academic/lentil_diversity_panel/featured.png)</div></div></div>
-
-### Correlation Coefficients and Predictive Models
-
-<div class="box"><div class = "row"><div class = "col-md-6">
-
-[<u>**Correlation Coefficients and Predictive Models**</u>](academic/correlation_coefficients)
-
-An R tutorial on how to properly use correlation coefficients when evaluating predictive models
-
-</div><div class = "col-md-6">![](academic/correlation_coefficients/featured.png)</div></div></div>
-
-### Data Visualizations
-
-<div class="box"><div class = "row"><div class = "col-md-6">
-
-[<u>**Data Visualization**</u>](academic/data_visualizations)
-
-A vignette illustrating different ways to visualize data
-
-</div><div class = "col-md-6">![](academic/data_visualizations/featured.png)</div></div></div>
 
 ## Tutorials {.tabset .tabset-pills}
 
@@ -327,15 +292,45 @@ An introduction to R
 
 </div><div class = "col-md-6">![](academic/r_tutorial/featured.png)</div></div></div>
 
+## Vignettes {.tabset .tabset-pills}
+
+### Lentil Diversity Panel
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**Lentil Diversity Panel**</u>](academic/lentil_diversity_panel)
+
+A population representing global genetic diversity in cultivated lentil varieties
+
+</div><div class = "col-md-6">![](academic/lentil_diversity_panel/featured.png)</div></div></div>
+
+### Correlation Coefficients and Predictive Models
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**Correlation Coefficients and Predictive Models**</u>](academic/correlation_coefficients)
+
+An R tutorial on how to properly use correlation coefficients when evaluating predictive models
+
+</div><div class = "col-md-6">![](academic/correlation_coefficients/featured.png)</div></div></div>
+
+### Data Visualizations
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**Data Visualization**</u>](academic/data_visualizations)
+
+A vignette illustrating different ways to visualize data
+
+</div><div class = "col-md-6">![](academic/data_visualizations/featured.png)</div></div></div>
+
+## {-}
+
 <br>
 
 ---
 
 # `r icon("r-project")` agData 
-
-## {.tabset .tabset-pills}
-
-### agdata
 
 <div class="box"><div class = "row"><div class = "col-md-8">
 
@@ -452,43 +447,13 @@ Graphs of honeybee production using FAO data
 
 </div><div class = "col-md-6">![](agdata/honeybee/featured.png)</div></div></div>
 
+## {-}
+
 <br>
 
 ---
 
 # `r icon("chart-line")` Blog
-
-## Demographics {.tabset .tabset-pills}
-
-### Population Demographics In Canada
-
-<div class="box"><div class = "row"><div class = "col-md-6">
-
-[<u>**Population Demographics In Canada**</u>](blog/canada_population)
-
-Graphs of population demographics in Canada using STATCAN data
-
-</div><div class = "col-md-6">![](blog/canada_population/featured.png)</div></div></div>
-
-### Saskatchewan Overdoses
-
-<div class="box"><div class = "row"><div class = "col-md-6">
-
-[<u>**Overdose Deaths In Saskatchewan**</u>](blog/saskatchewan_overdoses)
-
-Graphs of yearly overdose deaths in Saskatchewan using SK GOV data
-
-</div><div class = "col-md-6">![](blog/saskatchewan_overdoses/featured.png)</div></div></div>
-
-### British Columbia Overdoses
-
-<div class="box"><div class = "row"><div class = "col-md-6">
-
-[<u>**Overdose Deaths In British Columbia**</u>](blog/british_columbia_overdoses)
-
-Graphs of yearly and monthly overdose deaths in British Columbia using BC GOV data
-
-</div><div class = "col-md-6">![](blog/british_columbia_overdoses/featured.png)</div></div></div>
 
 ## Economics {.tabset .tabset-pills}
 
@@ -542,7 +507,59 @@ Graphs of trade surplus/deficits with other countries using STATCAN data
 
 </div><div class = "col-md-6">![](blog/canada_trade/featured.png)</div></div></div>
 
-## R Vignettes {.tabset .tabset-pills}
+### CBC Finances
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**CBC Finances**</u>](blog/cbc_finances)
+
+A look at CBC finances - government funding, ad revenue and total profit
+
+</div><div class = "col-md-6">![](blog/cbc_finances/featured.png)</div></div></div>
+
+## Demographics {.tabset .tabset-pills}
+
+### Population Demographics In Canada
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**Population Demographics In Canada**</u>](blog/canada_population)
+
+Graphs of population demographics in Canada using STATCAN data
+
+</div><div class = "col-md-6">![](blog/canada_population/featured.png)</div></div></div>
+
+### Saskatchewan Overdoses
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**Overdose Deaths In Saskatchewan**</u>](blog/saskatchewan_overdoses)
+
+Graphs of yearly overdose deaths in Saskatchewan using SK GOV data
+
+</div><div class = "col-md-6">![](blog/saskatchewan_overdoses/featured.png)</div></div></div>
+
+### British Columbia Overdoses
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**Overdose Deaths In British Columbia**</u>](blog/british_columbia_overdoses)
+
+Graphs of yearly and monthly overdose deaths in British Columbia using BC GOV data
+
+</div><div class = "col-md-6">![](blog/british_columbia_overdoses/featured.png)</div></div></div>
+
+### Covid Origin Polls
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**Covid Origin Polls**</u>](blog/covid_origins)
+
+Polling results from various polls on the origins of covid
+
+</div><div class = "col-md-6">![](blog/covid_origins/featured.png)</div></div></div>
+
+## R Stuff {.tabset .tabset-pills}
 
 ### cypher
 
@@ -554,7 +571,7 @@ Graphs of trade surplus/deficits with other countries using STATCAN data
 
 - `r icon("house")` https://derekmichaelwright.github.io/cypher/
 - `r icon("github")` https://github.com/derekmichaelwright/cypher/
-- `r icon("code")` [Shiny App (R Script)](https://github.com/derekmichaelwright/cypher/blob/master/shinyapp/app.R)
+- `r icon("laptop-code")` [Shiny App (R Script)](https://github.com/derekmichaelwright/cypher/blob/master/shinyapp/app.R)
 
 </div><div class = "col-md-4">![](blog/hex_stickers/logo_cypher.png)</div></div></div>
 
@@ -568,13 +585,33 @@ Creation of hex stickers with R
 
 </div><div class = "col-md-6">![](blog/hex_stickers/featured.png)</div></div></div>
 
+### Street Maps
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**Street Maps**</u>](blog/street_maps)
+
+Create street map art with R and road network files
+
+</div><div class = "col-md-6">![](blog/street_maps/featured.png)</div></div></div>
+
+### Hex Stickers
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**starBliss**</u>](blog/starbliss)
+
+Graphs of star constelations using the starBliss R package
+
+</div><div class = "col-md-6">![](blog/starbliss/featured.png)</div></div></div>
+
 ## {-}
 
 <br>
 
 ---
 
-# `r icon("quotes")` Quotes
+# Quotes
 
 <div class = "row"><div class = "col-md-4">
 
@@ -584,25 +621,51 @@ Creation of hex stickers with R
 
 <div class="box">“That which can be asserted without evidence, can be dismissed without evidence.” ― Christopher Hitchens</div>
 
+<div class="box">“I would rather have questions that can’t be answered than answers that can’t be questioned.” — Richard Feynman</div>
+
+<div class="box">“We shall go into the pyre—we shall burn. But we shall not retreat from our convictions.” - Nikolai Vavilov</div>
+
 </div>
 
 <div class = "col-md-4">
 
-<div class="box">“We shall go into the pyre—we shall burn. But we shall not retreat from our convictions.” - Nikolai Vavilov</div>
+<div class="box">“Comedy is surprises, so if you're inteding to make somebody laugh and they don't laugh, that's funny.” ― Norm MacDonald</div>
 
 <div class="box">“Karl Marx was right, socialism works, it is just that he had the wrong species” ― Edward O. Wilson</div>
 
 <div class="box">“Whoever controls the people’s fears becomes master of their souls.” — Niccolò Machiavelli</div>
 
+<div class="box">“It's amazing how much panic one honest man can spread among a multitude of hypocrites.” - Thomas Sowell</div>
+
 </div>
 
 <div class = "col-md-4">
 
-<div class="box">“Growing up, I was free in my childhood years. And now they tell me I can wash away my tears. These tears explain the way, it's the way that I feel, because the freedom they give me is real. /nI want freedom, the kind that they promised me, just for livin' in this country. I want the freedom, the kind that makes me feel strong, but, let me tell you, something is wrong." - Grand Funk Railroad</div>
+<div class="box">“Growing up, I was free in my childhood years. And now they tell me I can wash away my tears. These tears explain the way, it's the way that I feel, because the freedom they give me is real. 
+
+I want freedom, the kind that they promised me, just for livin' in this country. I want the freedom, the kind that makes me feel strong, but, let me tell you, something is wrong." - Grand Funk Railroad</div>
 
 <div class="box">“Following our will and wind, we may just go where no one's been. We'll ride the spiral till the end and may just go where no one's been." - Tool</div>
 
 </div>
+
+</div>
+
+<div class="box">
+
+I do not choose to be a common man. It is my right to be uncommon... if I can.
+
+I seek opportunity... not security. I do not wish to be a kept citizen, humbled and dulled by having the state look after me. I want to take the calculated risk; to dream and to build, to fail and to succeed.
+
+I refuse to barter incentive for dole. I prefer the challenges of life to the guaranteed existence; the thrill of fulfillment to the state of calm Utopia.
+
+I will not trade freedom for beneficence nor my dignity for a handout.
+
+I will never cower before any master nor bend to any threat. It is my heritage to stand erect, proud and unafraid; to think and act for myself; enjoy the benefits of my creations and to face the world bodly and say, "This I have done."
+
+-Roy R. Wright
+
+![](cv/lefty.jpg)
 
 </div>
 
