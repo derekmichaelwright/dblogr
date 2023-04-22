@@ -306,7 +306,7 @@ mp <- ggplot(d1, aes(x = Year, y = Percent, fill = Source)) +
                      minor_breaks = seq(1800, 2020, by = 10)) +
   theme_agData() +
   labs(title = "Global Energy Consumption",
-       y = "Percent of Total", x = NULL, caption = myCaption)
+       y = "Percent of total energy use", x = NULL, caption = myCaption)
 ggsave("world_energy_1_08.png", mp, width = 6, height = 4)
 ```
 
@@ -331,7 +331,7 @@ mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Source)) +
                      minor_breaks = seq(1800, 2020, by = 10)) +
   theme_agData(legend.position = "none") +
   labs(title = "Global Energy Consumption", x = NULL,
-       y = "Percent of Total Energy", caption = myCaption)
+       y = "Percent of total energy use", caption = myCaption)
 ggsave("world_energy_1_09.png", mp, width = 6, height = 3)
 ```
 
@@ -354,7 +354,7 @@ mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Source)) +
                      minor_breaks = seq(1850, 2020, by = 10)) +
   theme_agData(legend.position = "none") +
   labs(title = "Global Consumption of Renewable Energy",
-       y = "Percent of Total Energy", x = NULL, caption = myCaption)
+       y = "Percent of total energy use", x = NULL, caption = myCaption)
 ggsave("world_energy_1_10.png", mp, width = 6, height = 4)
 ```
 

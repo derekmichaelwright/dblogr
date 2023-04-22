@@ -47,7 +47,7 @@ d2 <- read.csv("data_yougov.csv", skip = 1, check.names = FALSE) %>%
 ```
 
 
-# Morning Consult
+# Morning Consult Poll
 
 ![](covid_origin_1_01.png)
 
@@ -70,7 +70,9 @@ ggsave("covid_origin_1_01.png", mp, width = 6, height = 4)
 
 ---
 
-# 35. COVID-19 Originated in Chinese Lab
+# YOUGOV Poll
+
+## 35. COVID-19 Originated in Chinese Lab
 
 Regardless of whether or not the virus responsible for COVID-19 was created or naturally mutated, do you believe it is true or false that a laboratory in China was the origin of the virus?
 
@@ -81,7 +83,7 @@ Regardless of whether or not the virus responsible for COVID-19 was created or n
 
 ---
 
-# All Data
+## All Data
 
 ![](covid_origin_2_01.png)
 
@@ -112,12 +114,12 @@ mp <- ggplot(xx, aes(x= Group, y = Percent)) +
   theme_agData(legend.position = "bottom") +
   labs(title = myTitle, subtitle = mySubtitle, 
        x = NULL, caption = myCaption2)
-ggsave("covid_origin_2_01.png", mp, width = 8, height = 5)
+ggsave("covid_origin_2_01.png", mp, width = 8, height = 6)
 ```
 
 ---
 
-# Ordered
+## Ordered
 
 ![](covid_origin_2_02.png)
 
@@ -146,16 +148,16 @@ mp <- ggplot(xx, aes(x = Group, y = Percent)) +
   theme_agData(legend.position = "bottom") +
   labs(title = myTitle, subtitle = mySubtitle, 
        x = NULL, caption = myCaption2)
-ggsave("covid_origin_2_02.png", mp, width = 8, height = 5)
+ggsave("covid_origin_2_02.png", mp, width = 8, height = 6)
 ```
 
 ```{r echo = F}
-ggsave("featured.png", mp, width = 8, height = 4)
+ggsave("featured.png", mp, width = 8, height = 6)
 ```
 
 ---
 
-# Bar Charts
+## Bar Charts
 
 ```{r}
 # Create plotting function
@@ -178,7 +180,7 @@ plotPoll_1 <- function(xx = d2, myGroups, myColors,
 
 ---
 
-## Total
+### Total
 
 ![](covid_origin_3_01.png)
 
@@ -191,7 +193,7 @@ ggsave("covid_origin_3_01.png", mp, width = 7.5, height = 5)
 
 ---
 
-## Race
+### Race
 
 ![](covid_origin_3_02.png)
 
@@ -204,7 +206,7 @@ ggsave("covid_origin_3_02.png", mp, width = 7.5, height = 5)
 
 ---
 
-## Age
+### Age
 
 ![](covid_origin_3_03.png)
 
@@ -217,7 +219,7 @@ ggsave("covid_origin_3_03.png", mp, width = 7.5, height = 5)
 
 ---
 
-## Biden vs Trump
+### Biden vs Trump
 
 ![](covid_origin_3_04.png)
 
@@ -230,7 +232,7 @@ ggsave("covid_origin_3_04.png", mp, width = 7.5, height = 5)
 
 ---
 
-## Ideology
+### Ideology
 
 ![](covid_origin_3_05.png)
 
@@ -243,7 +245,7 @@ ggsave("covid_origin_3_05.png", mp, width = 7.5, height = 5)
 
 ---
 
-# Pie
+## Pie
 
 ```{r}
 # Create plotting function
@@ -272,7 +274,7 @@ plotPoll_2 <- function(xx = d2, myGroups,
 
 ---
 
-## Total
+### Total
 
 ![](covid_origin_4_01.png)
 
@@ -284,7 +286,7 @@ ggsave("covid_origin_4_01.png", mp, width = 8, height = 8)
 
 ---
 
-## Race
+### Race
 
 ![](covid_origin_4_02.png)
 
@@ -296,7 +298,7 @@ ggsave("covid_origin_4_02.png", mp, width = 7.5, height = 4)
 
 ---
 
-## Age
+### Age
 
 ![](covid_origin_4_03.png)
 
@@ -308,7 +310,7 @@ ggsave("covid_origin_4_03.png", mp, width = 7.5, height = 3.5)
 
 ---
 
-## Biden vs Trump
+### Biden vs Trump
 
 ![](covid_origin_4_04.png)
 
@@ -320,7 +322,7 @@ ggsave("covid_origin_4_04.png", mp, width = 7.5, height = 5)
 
 ---
 
-## Ideology
+### Ideology
 
 ![](covid_origin_4_05.png)
 

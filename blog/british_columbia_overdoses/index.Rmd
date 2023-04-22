@@ -201,7 +201,7 @@ ggsave("british_columbia_overdoses_06.png", mp, width = 9, height = 4)
 mp <- ggplot(d4, aes(x = Year, y = Deaths)) +
   geom_bar(stat = "identity", position = "dodge", 
            color = "black", fill = "darkred", alpha = 0.7) +
-  facet_grid(. ~ `Age Group`) +
+  facet_grid(. ~ paste("Ages",`Age Group`)) +
   scale_x_continuous(breaks = c(2013, 2019), minor_breaks = 2011:2021) +
   theme_agData(legend.position = "none") +
   labs(title = "Drug Overdoses in British Columbia", x = NULL,
@@ -219,7 +219,7 @@ ggsave("british_columbia_overdoses_07.png", mp, width = 12, height = 4)
 mp <- ggplot(d4, aes(x = Year, y = Deaths)) +
   geom_bar(stat = "identity", position = "dodge", 
            color = "black", fill = "darkred", alpha = 0.7) +
-  facet_wrap(. ~ `Age Group`, scales = "free_y", ncol = 7) +
+  facet_wrap(. ~ paste("Ages",`Age Group`), scales = "free_y", ncol = 7) +
   scale_x_continuous(breaks = c(2013, 2019), minor_breaks = 2011:2021) +
   theme_agData(legend.position = "none") +
   labs(title = "Drug Overdoses in British Columbia", 

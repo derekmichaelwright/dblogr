@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 `r shiny::icon("code")` https://benyamindsmith.shinyapps.io/starBlissGUI/
 
-```{r}
+```{r class.source = 'fold-show'}
 # devtools::install_github("benyamindsmith/starBliss")
 library(starBliss)
 library(ggplot2)

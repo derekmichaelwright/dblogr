@@ -447,7 +447,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   geom_line(data = x2, lwd = 1.5, lty = 2, alpha = 0.7) +
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Predictions of Crude Oil Production in Canada", 
+  labs(title = "Sinmple Predictions of Crude Oil Production in Canada", 
        y = "Million Cubic Meters", x = NULL, caption = myCaption)
 ggsave("canada_fossil_fuels_3_04.png", mp, width = 6, height = 4)
 ```

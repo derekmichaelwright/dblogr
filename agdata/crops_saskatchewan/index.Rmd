@@ -46,12 +46,12 @@ xx <- agData_STATCAN_Crops %>%
                   c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
 myCrops <- unique(xx$Crop)
 # Plot
-pdf("figures_crops_saskatchewan_statcan.pdf", width = 12, height = 4)
+pdf("figures_crops_saskatchewan_statcan.pdf", width = 10, height = 6)
 for(i in myCrops) {
   xi <- xx %>% filter(Crop == i)
   print(ggplot(xi, aes(x = Year, y = Value, color = Measurement)) +
     geom_line(size = 1.5, alpha = 0.7) +
-    facet_wrap(. ~ Measurement, scales = "free_y", ncol = 5) +
+    facet_wrap(. ~ Measurement, scales = "free_y", ncol = 3) +
     scale_color_manual(values = myColors) +
     scale_x_continuous(breaks = seq(1920, 2020, by = 20) ) +
     theme_agData(legend.position = "none", 

@@ -25,7 +25,7 @@ My shape files
 
 `r shiny::icon("github")` https://github.com/derekmichaelwright/dblogr/tree/master/content/dblogr/street_maps
 
-```{r}
+```{r class.source = 'fold-show'}
 # Load libraries
 library(tidyverse)
 library(sf)
