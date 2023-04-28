@@ -1,6 +1,6 @@
 ---
 title: "Correlation Coefficients and Predictive Models"
-subtitle: "An R tutorial on how to properly use correlation coefficients when evaluating predictive models"
+subtitle: "A vignette on how to properly use correlation coefficients when evaluating predictive models"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---

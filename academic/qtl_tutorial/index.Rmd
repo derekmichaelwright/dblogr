@@ -1,6 +1,6 @@
 ---
-title: "QTL Tutorial"
-subtitle: "A tutorial on how to run QTL analyses in R"
+title: "QTL Tutorial with qtl2"
+subtitle: "A tutorial on how to run QTL analyses in R with qtl2"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---

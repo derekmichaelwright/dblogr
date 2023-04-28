@@ -1,5 +1,5 @@
 ---
-title: "GWAS Vignette with gwaspr"
+title: "GWAS Tutorial with gwaspr"
 subtitle: "An R tutorial on running genome-wide association studies (GWAS) with GAPIT and gwaspr"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"

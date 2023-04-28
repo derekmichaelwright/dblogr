@@ -1,7 +1,7 @@
 ---
 title: "starBliss"
-subtitle: "Graphs of star constelations using the starBliss R package"
-date: "`r Sys.Date()`"
+subtitle: "Graphs of star constellations using the starBliss R package"
+date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
 ---
 

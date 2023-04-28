@@ -1,5 +1,5 @@
 ---
-title: "Environmental Data Vignette"
+title: "Environmental Data Tutorial"
 subtitle: "An R tutorial on how to manipulate and plot environmental data"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright <derek.wright@usask.ca>"
