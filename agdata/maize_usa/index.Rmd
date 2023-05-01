@@ -27,9 +27,31 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(gganimate)
+```
+
+---
+
+# Prepare Data
+
+```{r}
+# Prep data
 myCaption1 = "derekmichaelwright.github.io/dblogr/ | Data: USDA"
 myCaption2 = "derekmichaelwright.github.io/dblogr/ | Data: USDA & NCGA"
 myCaption3 = "derekmichaelwright.github.io/dblogr/ | Data: USDA & FAOSTAT"
+#
+myColors <- c("darkcyan", "darkorange", "darkgreen", "darkred")
+mylevels <- c("Open-Pollination", "Hybrid", "Biotech", "Yield Contest")
+d1 <- agData_USDA_Grains %>% 
+  filter(Crop == "Maize") %>%
+  mutate(Era = ifelse(Year < 1937, mylevels[1], 
+                 ifelse(Year < 1996, mylevels[2], mylevels[3])),
+         Era = factor(Era, levels = mylevels))
+d2 <- agData_MaizeContest
+#
+myColors_Areas <- c("darkblue", "darkred", "darkgoldenrod2", "darkgreen")
+d3 <- agData_FAO_Crops %>% 
+  filter(Crop == "Maize", Measurement == "Yield", 
+         Area %in% c("Germany", "Mexico", "Africa"))
 ```
 
 ---
@@ -40,29 +62,19 @@ myCaption3 = "derekmichaelwright.github.io/dblogr/ | Data: USDA & FAOSTAT"
 
 ```{r}
 # Prep Data
-myColors <- c("darkcyan", "darkorange", "darkgreen")
-mylevels <- c("Open-Pollination", "Hybrid", "Biotech")
-xx <- agData_USDA_Grains %>% 
-  filter(Crop == "Maize") %>%
-  mutate(Era = ifelse(Year < 1937, mylevels[1], 
-                      ifelse(Year < 1996, mylevels[2], mylevels[3])),
-         Era = factor(Era, levels = mylevels))
-x1 <- xx %>% filter(Measurement == "Yield")
-# Prep rect data
-#x2 <- x1 %>% group_by(Era) %>% summarise(min = min(Year), max = max(Year))
+xx <- d1 %>% filter(Measurement == "Yield")
 # Calculate slopes
-c1 <- x1 %>% filter(Era == mylevels[1])
-c2 <- x1 %>% filter(Era == mylevels[2])
-c3 <- x1 %>% filter(Era == mylevels[3])
+c1 <- xx %>% filter(Era == mylevels[1])
+c2 <- xx %>% filter(Era == mylevels[2])
+c3 <- xx %>% filter(Era == mylevels[3])
 c1 <- round(summary(lm(data = c1, Value ~ Year))$coefficients[2] / 1000, 3)
 c2 <- round(summary(lm(data = c2, Value ~ Year))$coefficients[2] / 1000, 3)
 c3 <- round(summary(lm(data = c3, Value ~ Year))$coefficients[2] / 1000, 3)
 # Plot Yields
-mp <- ggplot(x1, aes(x = Year, y = Value / 1000, color = Era)) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Era)) +
   geom_line(size = 1, alpha = 0.5, color = "black") +
   geom_line(size = 1.5, alpha = 0.7) + 
-  scale_color_manual(name = "Era:", values = myColors) +
-  scale_fill_manual(name = "Era:",  values = myColors) +
+  scale_color_manual(name = "Breeding Era:", values = myColors) +
   scale_x_continuous(breaks = seq(1865, 2015, 10), minor_breaks = NULL) +
   scale_y_continuous(breaks = seq(0, 12, 2)) +
   coord_cartesian(xlim = c(1865, 2018), ylim = c(0, 11.5), expand = F) +
@@ -103,19 +115,19 @@ anim_save("maize_usa_gif_01.gif", mp,
 
 ```{r}
 # Prep data
-mylevels <- c(mylevels, "Yield Contest")
-myColors <- c("darkcyan", "darkorange", "darkgreen", "darkred")
-x2 <- agData_MaizeContest %>% 
+x2 <- d2 %>%
   filter(Unit == "kg/ha") %>% 
-  mutate(Era = "Yield Contest") %>% 
-  group_by(Era, Year) %>% 
+  mutate(Era = "Yield Contest",
+         Measurement = "Yield") %>% 
+  group_by(Era, Measurement, Year) %>% 
   summarise(Value = mean(Value))
-x2 <- bind_rows(x1, x2) %>%
+xx <- bind_rows(d1, x2) %>%
+  filter(Measurement == "Yield") %>%
   mutate(Era = factor(Era, levels = mylevels))
 # Plot
-mp <- ggplot(x2, aes(x = Year, y = Value / 1000, color = Era)) + 
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Era)) + 
   geom_line(size = 1.5, alpha = 0.7) +
-  scale_color_manual(name = "Era:", values = myColors) +
+  scale_color_manual(name = "Breeding Era:", values = myColors) +
   scale_x_continuous(breaks = seq(1865, 2015, 10), minor_breaks = NULL) +
   coord_cartesian(xlim = c(1865, 2019), ylim = c(0, 27), expand = F) +
   theme_agData(legend.position = "bottom", 
@@ -134,14 +146,12 @@ ggsave("maize_usa_02.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep Data
-x1 <- xx %>% filter(Measurement %in% c("Area Harvested", "Production"))
-myColors <- c("darkcyan", "darkorange", "darkgreen", "darkred")
 myLabels <- c("Area Harvested (Hectares)", "Production (Tonnes)")
+xx <- d1 %>% filter(Measurement %in% c("Area Harvested", "Production"))
 # Plot Production
-mp <- ggplot(x1) +
+mp <- ggplot(xx) +
   geom_line(aes(x = Year, y = Value / 1000000, color = Measurement),
             size = 1.5, alpha = 0.7) + 
-  #guides(fill = F) +
   scale_color_manual(name = NULL, values = myColors, labels = myColors) +
   scale_x_continuous(breaks = seq(1865, 2015, 10), minor_breaks = NULL) +
   coord_cartesian(xlim = c(1865, 2018), ylim = c(0,400), expand = 0) +
@@ -160,19 +170,15 @@ ggsave("maize_usa_03.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep Data
-myColors <- c("darkcyan", "darkred", "darkgoldenrod2", "darkgreen")
-x1 <- agData_USDA_Grains %>% filter(Crop == "Maize", Measurement == "Yield")
-x2 <- agData_FAO_Crops %>% filter(Crop == "Maize", Measurement == "Yield", 
-                                  Area %in% c("Germany","Mexico","Africa"))
-xx <- bind_rows(x1, x2) %>%
+xx <- bind_rows(d1, d3) %>%
+  filter(Measurement == "Yield") %>%
   mutate(Area = factor(Area, levels = c("USA", "Germany", "Mexico", "Africa")))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   geom_line(size = 1.25, alpha = 0.7) + 
-  scale_color_manual(name = NULL, values = myColors) +
+  scale_color_manual(name = NULL, values = myColors_Areas) +
   scale_x_continuous(breaks = seq(1865, 2015, 10), minor_breaks = NULL) +
   scale_y_continuous(breaks = seq(0, 12, 2)) +
-  coord_cartesian(xlim = c(1865, 2018), ylim = c(0, 11.5), expand = 0) +
   theme_agData(legend.position = "bottom", 
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title   = "Maize Yields - Developed vs Developing Countries", 
@@ -188,10 +194,10 @@ ggsave("maize_usa_04.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-x1 <- agData_MaizeContest %>% filter(Unit == "kg/ha") 
-x2 <- agData_USDA_Grains %>% 
-  filter(Crop == "Maize", Measurement == "Yield", Year >= min(x1$Year)) %>%
+x1 <- d1 %>% filter(Measurement == "Yield", Year >= 2010) %>%
   mutate(Measurement = "Commercial Average")
+x2 <- d2 %>% filter(Unit == "kg/ha")
+#
 xx <- bind_rows(x1, x2) %>% 
   arrange(desc(Value)) %>%
   mutate(Measurement = factor(Measurement, levels = unique(Measurement)))
@@ -213,13 +219,13 @@ ggsave("maize_usa_05.png", mp, width = 7, height = 4)
 
 ```{r}
 # Prep data
-x1 <- agData_MaizeContest %>% filter(Unit == "kg/ha") %>% 
-  group_by(Year) %>% summarise(Value = max(Value)) %>% 
-  mutate(Measurement = "Max Yield",
-         Value = Value)
-x2 <- agData_USDA_Grains %>% 
-  filter(Crop == "Maize", Year > 1990, Measurement == "Yield") %>% 
+x1 <- d1 %>%  
+  filter(Year > 1990, Measurement == "Yield") %>% 
   mutate(Measurement = "Average Yield")
+x2 <- d2 %>% filter(Unit == "kg/ha") %>% 
+  group_by(Year) %>% summarise(Value = max(Value)) %>% 
+  mutate(Measurement = "Max Yield", Value = Value)
+#
 xx <- bind_rows(x1, x2) 
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) + 
@@ -240,8 +246,8 @@ ggsave("maize_usa_06.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- agData_USDA_Grains %>% 
-  filter(Crop == "Maize", Measurement == "Yield") %>%
+xx <- d1 %>% 
+  filter(Measurement == "Yield") %>%
   mutate(Value = 1000 / Value)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value)) + 
@@ -282,10 +288,10 @@ ggsave("maize_usa_08.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- agData_USDA_Grains %>% filter(Crop == "Maize", Year >= 1940)
-y1 <- xx %>% filter(Year == 1940, Measurement == "Yield") %>% pull(Value)
+xx <- d1 %>% filter(Year >= 1940)
+yy <- xx %>% filter(Year == 1940, Measurement == "Yield") %>% pull(Value)
 x1 <- xx %>% filter(Measurement == "Area Harvested") %>%
-  mutate(Value = Value * y1 / 1000, 
+  mutate(Value = Value * yy / 1000, 
          Measurement = "1940 Yields")
 xx <- xx %>% filter(Measurement == "Production") %>% 
   mutate(Measurement = "Actual Yields") %>%
@@ -315,7 +321,8 @@ xx <- xx %>% select(-Unit) %>%
   mutate(Difference = `Actual Yields` - `1940 Yields`)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Difference / 1000000)) + 
-  geom_line(size = 1.5, alpha = 0.7, color = "darkgreen") + 
+  geom_bar(stat = "identity",fill = "darkgreen", alpha = 0.7,
+           color = "black", lwd = 0.3) +
   scale_x_continuous(breaks = seq(1940, 2020, 10)) +
   theme_agData() +
   labs(title = "Additional Maize Production Based on Yield Gains After 1940",
@@ -331,33 +338,38 @@ ggsave("maize_usa_10.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- agData_USDA_Grains %>% filter(Measurement == "Yield", Crop == "Wheat")
+xx <- agData_USDA_Grains %>% arrange(Year) %>%
+  filter(Measurement == "Yield", Crop == "Maize")
 xb <- mean(xx %>% filter(Year <= 1935) %>% pull(Value))   
 # Calculate yield gains compared to 1935
-i<-6
 xx$YieldGains <- NA
 for(i in 6:nrow(xx)) { 
-  xx$YieldGains[i] <- (xx$Value[i] - mean(xx$Value[(i-1):(i-5)])) / xb
+  xx$YieldGains[i] <- 100 * (xx$Value[i] - mean(xx$Value[(i-1):(i-6)])) / xb
 }
-
-xi <- xx %>% filter(Year == 1935)
-xx <- xx %>% mutate(YieldGains = 100 * (Value - xi$Value) / xi$Value)
+#
+myCaption4 <- paste("Percent Yield Gain = 100 * (Yi - Y5) / Yb",
+                    "Yi = Current years yield", 
+                    "Y5 = Average of past 5 years",
+                    "Yb = Average from 1866 - 1935\n", 
+                    myCaption1, sep = "\n")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = YieldGains)) + 
   geom_hline(yintercept = 0) +
-  geom_bar(stat = "identity") +#size = 1.5, alpha = 0.7, color = "darkgreen") + 
-  geom_smooth() +
-  #scale_x_continuous(breaks = seq(1940, 2020, 10)) +
+  geom_bar(stat = "identity", fill = "darkgreen", alpha = 0.4) + 
+  stat_smooth(geom = "line", method = "loess", se = F) +
+  scale_x_continuous(breaks = seq(1860, 2020, 20)) +
+  scale_y_continuous(breaks = seq(-110, 110, 20), 
+                     sec.axis = sec_axis(~ ., breaks = seq(-110, 110, 20))) +
   theme_agData() +
-  labs(title = "Wheat - US Yearly Yield Gains", 
-       subtitle = "10 year rolling average", x = NULL, caption = myCaption1)
+  labs(title = "Maize - US Yearly Yield Gains", 
+       subtitle = "Compared to the average prior to 1935",
+       y = "Percent Yield Gain",  x = NULL, caption = myCaption4)
 ggsave("maize_usa_11.png", mp, width = 6, height = 4)
-
-
 ```
 
+---
 
-```{r}
+```{r eval = F, echo = F}
 
   xx %>% filter(Year %in% c(1961, 2017)) %>% spread(Year, Value) %>%
   mutate(Percent = 100 * 2017 / 1961)
@@ -373,12 +385,49 @@ xx <- xx %>% mutate(Percent = movingAverage(Percent, n = 10))
 mp <- ggplot(xx, aes(x = Year, y = Percent)) + 
   geom_hline(yintercept = 0) +
   geom_line(size = 1.5, alpha = 0.7, color = "darkgreen") + 
-  #scale_x_continuous(breaks = seq(1940, 2020, 10)) +
   theme_agData() +
-  labs(title = "Wheat - US Yearly Yield Gains", 
+  labs(title = "Maize - US Yearly Yield Gains", 
        subtitle = "10 year rolling average", x = NULL,
        caption = "\u00A9 www.dblogr.com/  |  Data: USDA")
 ggsave("maize_usa_11.png", mp, width = 6, height = 4)
 ```
 
----
+```{r eval = F}
+# Prep Data
+myColors <- c("darkcyan", "darkorange", "darkgreen")
+mylevels <- c("Open-Pollination", "Hybrid", "Biotech")
+xx <- agData_USDA_Grains %>% 
+  filter(Crop == "Maize") %>%
+  mutate(Era = ifelse(Year < 1937, mylevels[1], 
+                 ifelse(Year < 1996, mylevels[2], mylevels[3])),
+         Era = factor(Era, levels = mylevels))
+x1 <- xx %>% filter(Measurement == "Yield")
+# Calculate slopes
+c1 <- x1 %>% filter(Era == mylevels[1])
+c2 <- x1 %>% filter(Era == mylevels[2])
+c3 <- x1 %>% filter(Era == mylevels[3])
+c1 <- round(summary(lm(data = c1, Value ~ Year))$coefficients[2] / 1000, 3)
+c2 <- round(summary(lm(data = c2, Value ~ Year))$coefficients[2] / 1000, 3)
+c3 <- round(summary(lm(data = c3, Value ~ Year))$coefficients[2] / 1000, 3)
+# Plot Yields
+mp <- ggplot(x1, aes(x = Year, y = Value / 1000, color = Era)) +
+  geom_line(size = 1, alpha = 0.5, color = "black") +
+  geom_line(size = 1.5, alpha = 0.7) + 
+  scale_color_manual(name = "Breeding Era:", values = myColors) +
+  scale_fill_manual(name = "Breeding Era:",  values = myColors) +
+  scale_x_continuous(breaks = seq(1865, 2015, 10), minor_breaks = NULL) +
+  scale_y_continuous(breaks = seq(0, 12, 2)) +
+  coord_cartesian(xlim = c(1865, 2018), ylim = c(0, 11.5), expand = F) +
+  theme_agData(legend.position = "bottom", 
+               axis.text.x = element_text(angle = 45, hjust = 1)) + 
+  labs(title = "Maize Yields in the United States", 
+       y = "Tonnes / Hectare", x = NULL, caption = myCaption1)
+mp1 <- mp +
+  stat_smooth(aes(x = Year, y = Value / 1000, group = Era), 
+              geom = "line", method = "lm", se = F, 
+              color = "black", alpha = 0.6) +
+  annotate("text", x = 1900, y = 2.75, size = 4, label = paste("m =", c1)) +
+  annotate("text", x = 1965, y = 6.5,  size = 4, label = paste("m =", c2)) +
+  annotate("text", x = 2005, y = 11,   size = 4, label = paste("m =", c3)) 
+ggsave("maize_usa_01.png", mp1, width = 6, height = 4)
+```
