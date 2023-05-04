@@ -2,7 +2,7 @@
 title: "Genetically Engineered Crop Production in USA"
 subtitle: "Graphs of GE crop production using USDA data"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include = FALSE}

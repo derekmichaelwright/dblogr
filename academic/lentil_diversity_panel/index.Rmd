@@ -2,7 +2,7 @@
 title: "Lentil Diversity Panel"
 subtitle: "A population representing global genetic diversity in cultivated lentil varieties"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include=FALSE}

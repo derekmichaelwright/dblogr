@@ -2,7 +2,7 @@
 title: "Overdose Deaths In Saskatchewan"
 subtitle: "Graphs of yearly overdose deaths in Saskatchewan using SK GOV data"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include=FALSE}

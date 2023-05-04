@@ -2,7 +2,7 @@
 title: "Saskatchewan Crop Production"
 subtitle: "Graphs of crop production in Saskatchewan using STATCAN data"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include = FALSE}
@@ -249,7 +249,7 @@ anim_save("crops_saskatchewan_gif_02.gif", mp,
 
 ---
 
-# Top 10
+# Production of Major Crops
 
 ![](crops_saskatchewan_04.png)
 
@@ -275,7 +275,8 @@ xx <- bind_rows(x1, x2) %>%
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Crop)) + 
   geom_bar(stat = "identity", alpha = 0.7, color = "black", lwd = 0.1) + 
   scale_fill_manual(name = NULL, values = agData_Colors[c(9:1)]) +
-  scale_x_continuous(breaks = seq(1910, 2020, by =10)) +
+  scale_x_continuous(breaks = seq(1910, 2020, by=10)) +
+  guides(fill = guide_legend(override.aes = list(lwd = 0.4))) +
   theme_agData() + 
   labs(title = "Saskatchewan - Crop Production", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
@@ -340,6 +341,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Crop)) +
   geom_bar(stat = "identity", alpha = 0.7, color = "black", lwd = 0.3) + 
   facet_wrap(Group ~ . , ncol = 6, scales = "free") +
   scale_fill_manual(name = NULL, values = agData_Colors[c(9:1)]) +
+  guides(fill = guide_legend(override.aes = list(lwd = 0.4))) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1),
                strip.text = element_blank()) + 
   labs(title = "Saskatchewan - Drought Years", x = NULL,
@@ -388,12 +390,13 @@ xx <- agData_STATCAN_Crops %>%
   filter(Area == "Saskatchewan", Year %in% 2020,
          Measurement == "Production", Crop %in% myCrops) %>%
   mutate(Crop = factor(Crop, levels = myCrops),
-         PerPerson = Value / pp)
+         PerPerson = Value / pp) %>%
+  filter(PerPerson > 0.1)
 # Plot
 mp <- ggplot(xx, aes(x = Crop, y = PerPerson, fill = Crop)) + 
   geom_bar(stat = "identity", color = "Black", alpha = 0.7) + 
-  geom_label(aes(label = round(PerPerson,1)), vjust = -0.1, fill = "White",
-             size = 2.5, label.padding = unit(0.15, "lines")) +
+  geom_label(aes(label = round(PerPerson,1)), vjust = -0.15, fill = "White",
+             size = 3, label.padding = unit(0.15, "lines")) +
   facet_grid(Year~.) + 
   scale_y_continuous(limits = c(0,15), expand = c(0,0)) +
   scale_fill_manual(values = agData_Colors) +
@@ -520,10 +523,12 @@ xx <- agData_STATCAN_FarmLand_Use %>%
          Unit == "Hectares", !is.na(Value))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
+  geom_bar(stat = "identity", alpha = 0) +
   geom_line(color = "darkgreen", size = 1.25, alpha = 0.7) +
   scale_x_continuous(breaks = seq(1920, 2020, 10)) +
+  scale_y_continuous(breaks = seq(0, 30, 5)) +
   theme_agData() +
-  labs(title = "Total area of farms in Saskatchewan", 
+  labs(title = "Saskatchewan - Total Farmland Area", 
        y = "Million Hectares", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_12.png", mp, width = 6, height = 4)
 ```
@@ -536,15 +541,22 @@ ggsave("crops_saskatchewan_12.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
+myColors <- c("darkgreen","darkgoldenrod2","darkred")
+myCrops <- c("Summerfallow", "Wheat", "Canola")
 xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Crop == "Summerfallow", 
-         Measurement == "Area Seeded")
+  filter(Area == "Saskatchewan", Measurement == "Area Seeded",
+         Crop %in% myCrops) %>%
+  mutate(Crop = factor(Crop, levels = myCrops))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
-  geom_line(color = "darkgreen", size = 1.25, alpha = 0.7) +
-  scale_x_continuous(breaks = seq(1920, 2020, 10)) +
-  theme_agData() +
-  labs(title = "Summerfallow in Saskatchewan", 
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, 
+                     color = Crop, alpha = Crop, size = Crop)) + 
+  geom_line() +
+  scale_color_manual(name = NULL, values = myColors) +
+  scale_alpha_manual(name = NULL, values = c(0.8,0.6,0.6)) +
+  scale_size_manual(name = NULL, values = c(1.75,1.5,1.5)) +
+  scale_x_continuous(breaks = seq(1910, 2020, 10)) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Saskatchewan - Summerfallow", 
        y = "Million Hectares", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_13.png", mp, width = 6, height = 4)
 ```
@@ -560,27 +572,27 @@ ggsave("crops_saskatchewan_13.png", mp, width = 6, height = 4)
 myColors <- c("darkgoldenrod2","darkgreen","darkred")
 x1 <- agData_STATCAN_Crops %>% 
   filter(Area == "Saskatchewan", Measurement == "Production",
-         Crop %in% c("Lentils","Peas","Beans","Chickpeas")) %>%
+         Crop %in% c("Lentils", "Peas", "Beans", "Chickpeas")) %>%
   group_by(Year) %>% 
   summarise(Value = sum(Value)) %>%
-  mutate(Crop = "Fake Meat Proteins")
+  mutate(Crop = "Fake Meat Proteins (Legumes)")
 x2 <- agData_STATCAN_Crops %>% 
   filter(Area == "Saskatchewan", Measurement == "Production",
-         Crop %in% c("Canola","Wheat")) %>%
-  mutate(Crop = plyr::mapvalues(Crop, c("Canola","Wheat"), 
-                                      c("Evil GMO Oilseeds","Toxic Gluten")))
+         Crop %in% c("Canola", "Wheat")) %>%
+  mutate(Crop = plyr::mapvalues(Crop, c("Canola", "Wheat"), 
+                                      c("Evil GMO Oilseeds (Canola)", "Toxic Gluten (Wheat)")))
 xx <- bind_rows(x1, x2) %>% filter(Year < 2021) %>%
-  mutate(Crop = factor(Crop, levels = c("Toxic Gluten", "Fake Meat Proteins", 
-                                        "Evil GMO Oilseeds")))
+  mutate(Crop = factor(Crop, levels = c("Toxic Gluten (Wheat)", "Fake Meat Proteins (Legumes)", 
+                                        "Evil GMO Oilseeds (Canola)")))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
   geom_line(size = 1.5, alpha = 0.7) +
   scale_color_manual(name = NULL, values = myColors) +
-  scale_x_continuous(breaks = seq(1910,2020,10)) +
+  scale_x_continuous(breaks = seq(1910, 2020, 10)) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "Saskatchewan Industrialized Food Production", 
+  labs(title = "Saskatchewan's Industrialized Food Production", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
-ggsave("crops_saskatchewan_14.png", mp, width = 6, height = 4)
+ggsave("crops_saskatchewan_14.png", mp, width = 6.5, height = 4)
 ```
 
 ---
