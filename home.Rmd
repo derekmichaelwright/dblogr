@@ -2,7 +2,7 @@
 title: "dblogr/"
 subtitle: "derekmichaelwright.github.io/dblogr"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include=FALSE}
@@ -18,6 +18,10 @@ library(shiny)
 
 # `r icon("address-card")` About Me
 
+## {.tabset .tabset-pills}
+
+### Biography
+
 <div class="box">
 
 <div class = "row"><div class = "col-md-6">
@@ -28,32 +32,41 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 </div><div class = "col-md-6">![](cv/about.png)</div></div>
 
-<br>
+### My Curriculum Vitae (CV)
 
-<div class = "row"><div class = "col-md-6">
+<div class="box">
+
+- `r icon("globe")` [My Curriculum Vitae (HTML)](cv/) 
+- `r icon("file-pdf")` [My Curriculum Vitae (PDF)](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf)
+
+</div>
+
+### Social Media & Contact
+
+<div class="box">
 
 **Social Media**
 
 - `r icon("github")`  [github.com/derekmichaelwright](https://github.com/derekmichaelwright)
 - `r icon("twitter")` [twitter.com/DerekMWright](https://twitter.com/DerekMWright)
 
-</div><div class = "col-md-6">
+**Email**
 
-**My Curriculum Vitae (CV)**
-
-- `r icon("globe")` [HTML](cv/) 
-- `r icon("file-pdf")` [PDF](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf)
 - `r icon("envelope")` derek.wright@usask.ca
 
-</div></div>
-
 </div>
+
+## {-}
+
+![](cv/DW-P-16-07-07-04-1.jpg)
 
 <br>
 
 ---
 
 # `r icon("book")` Publications 
+
+Scientific publications I have been involved in while working/studying at *University of Regin*, *Justus-Liebig-Universität Gießen (University of Giessen)* & the *University of Saskatchewan*.
 
 ## All Publications {.tabset .tabset-pills}
 
@@ -183,21 +196,19 @@ Jiayi Hang, Da Shi, Jason Neufeld, Kirstin E. Bett & James D. House
 
 </div><div class = "col-md-6">![](publications/ldp_uav/featured.png)</div></div></div>
 
-## Highlighted Publications:
+<br><br>
 
-<div class="box">
+## Highlighted Publications:
 
 - (**2022**) [<u>**Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**</u>](https://doi.org/10.1002/tpg2.20269). *The Plant Genome*. e20269. doi.org/10.1002/tpg2.20269
 - (**2021**) [<u>**Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**</u>](https://doi.org/10.3390/agronomy11101933). *Agronomy*. 11(10): 1933. doi.org/10.3390/agronomy11101933
 - (**2020**) [<u>**Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**</u>](https://doi.org/10.1002/ppp3.10158). *Plants, People, Planet*. 00: 1-11. doi.org/10.1002/ppp3.10158
 
-</div>
-
-<br>
-
 ---
 
 # `r icon("newspaper")` Academic
+
+Tutorials and Vignettes based on some of my academic work.
 
 <div class="box"><div class = "row"><div class = "col-md-8">
 
@@ -491,6 +502,8 @@ Graphs of GE crop production using USDA data
 
 # `r icon("chart-line")` Blog
 
+Random data visualizations and general blog posts.
+
 ## Economics {.tabset .tabset-pills}
 
 ### Global Energy Use and Poverty
@@ -637,7 +650,7 @@ Graphs of star constellations using the starBliss R package
 
 ---
 
-# Quotes
+# Memorable Quotes
 
 <div class = "row"><div class = "col-md-4">
 
@@ -677,7 +690,12 @@ Graphs of star constellations using the starBliss R package
 
 -Niccolò Machiavelli</div>
 
+<div class="box">"All animals are equal, but some animals are more equal than others"
+
+- George Orwell</div>
+
 <div class="box">“It's amazing how much panic one honest man can spread among a multitude of hypocrites.” 
+
 -Thomas Sowell</div>
 
 </div>
