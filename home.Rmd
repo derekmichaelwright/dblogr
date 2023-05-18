@@ -58,7 +58,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 ## {-}
 
-![](cv/DW-P-16-07-07-04-1.jpg)
+<div class="box">![](cv/DW-P-16-07-07-04-1.jpg)</div>
 
 <br>
 
@@ -692,7 +692,7 @@ Graphs of star constellations using the starBliss R package
 
 <div class="box">"All animals are equal, but some animals are more equal than others"
 
-- George Orwell</div>
+-George Orwell</div>
 
 <div class="box">“It's amazing how much panic one honest man can spread among a multitude of hypocrites.” 
 
