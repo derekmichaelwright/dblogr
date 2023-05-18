@@ -132,21 +132,40 @@ ggsave("british_columbia_overdoses_04.png", mp, width = 6, height = 4)
 
 ---
 
-# By Sex
+### > 2019
 
 ![](british_columbia_overdoses_05.png)
+
+```{r}
+mp <- ggplot(d2 %>% filter(Year >= 2019), aes(x = Date, y = Deaths)) + 
+  geom_vline(xintercept = as.Date(paste0(2011:2022,"-01-01")),
+             alpha = 0.5, lty = 2) +
+  geom_bar(stat = "identity", fill = "darkred", 
+           color = "black", lwd = 0.5, alpha = 0.7) +
+  scale_x_date(date_breaks = "year", date_labels = "%Y") +
+  theme_agData() +
+  labs(title = "Drug Overdoses in British Columbia", x = NULL,
+       caption = myCaption)
+ggsave("british_columbia_overdoses_05.png", mp, width = 6, height = 4)
+```
+
+---
+
+# By Sex
+
+![](british_columbia_overdoses_06.png)
 
 ```{r}
 mp <- ggplot(d3, aes(x = Year, y = Deaths, fill = Sex)) +
   geom_bar(stat = "identity", position = "dodge", 
            color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("palevioletred3", "steelblue")) +
-  scale_x_continuous(breaks = 2011:2021) +
+  scale_x_continuous(breaks = 2011:2022) +
   scale_y_continuous(breaks = seq(0, 1500, by = 500), limits = c(0,1750)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Drug Overdoses in British Columbia", x = NULL,
        caption = myCaption)
-ggsave("british_columbia_overdoses_05.png", mp, width = 6, height = 4)
+ggsave("british_columbia_overdoses_06.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -174,7 +193,7 @@ anim_save("british_columbia_overdoses_gif_01.gif", mp,
 
 ## 2011 - 2016 - 2017 - 2021
 
-![](british_columbia_overdoses_06.png)
+![](british_columbia_overdoses_07.png)
 
 ```{r}
 # Prep data
@@ -188,14 +207,14 @@ mp <- ggplot(xx, aes(x = `Age Group`, y = Deaths)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Drug Overdoses in British Columbia", x = NULL,
        caption = myCaption)
-ggsave("british_columbia_overdoses_06.png", mp, width = 9, height = 4)
+ggsave("british_columbia_overdoses_07.png", mp, width = 9, height = 4)
 ```
 
 ---
 
 ## Unscaled
 
-![](british_columbia_overdoses_07.png)
+![](british_columbia_overdoses_08.png)
 
 ```{r}
 mp <- ggplot(d4, aes(x = Year, y = Deaths)) +
@@ -206,14 +225,14 @@ mp <- ggplot(d4, aes(x = Year, y = Deaths)) +
   theme_agData(legend.position = "none") +
   labs(title = "Drug Overdoses in British Columbia", x = NULL,
        caption = myCaption)
-ggsave("british_columbia_overdoses_07.png", mp, width = 12, height = 4)
+ggsave("british_columbia_overdoses_08.png", mp, width = 12, height = 4)
 ```
 
 ---
 
 ## Scaled
 
-![](british_columbia_overdoses_08.png)
+![](british_columbia_overdoses_09.png)
 
 ```{r}
 mp <- ggplot(d4, aes(x = Year, y = Deaths)) +
@@ -224,7 +243,7 @@ mp <- ggplot(d4, aes(x = Year, y = Deaths)) +
   theme_agData(legend.position = "none") +
   labs(title = "Drug Overdoses in British Columbia", 
        x = NULL, caption = myCaption)
-ggsave("british_columbia_overdoses_08.png", mp, width = 12, height = 4)
+ggsave("british_columbia_overdoses_09.png", mp, width = 12, height = 4)
 ```
 
 ---

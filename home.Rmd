@@ -556,16 +556,6 @@ Graphs of trade surplus/deficits with other countries using STATCAN data
 
 </div><div class = "col-md-6">![](blog/canada_trade/featured.png)</div></div></div>
 
-### CBC Finances
-
-<div class="box"><div class = "row"><div class = "col-md-6">
-
-[<u>**CBC Finances**</u>](blog/cbc_finances)
-
-A look at CBC finances - government funding, ad revenue and total profit
-
-</div><div class = "col-md-6">![](blog/cbc_finances/featured.png)</div></div></div>
-
 ## Demographics {.tabset .tabset-pills}
 
 ### Population Demographics In Canada
@@ -598,7 +588,7 @@ Graphs of yearly and monthly overdose deaths in British Columbia using BC GOV da
 
 </div><div class = "col-md-6">![](blog/british_columbia_overdoses/featured.png)</div></div></div>
 
-## R Stuff {.tabset .tabset-pills}
+## `r icon("r-project")` Stuff {.tabset .tabset-pills}
 
 ### cypher
 
