@@ -1,0 +1,114 @@
+---
+title: "USA Lentil Production"
+subtitle: "Graphs of lentil production using USDA data"
+date: "Last updated: `r Sys.Date()`"
+author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+```
+
+---
+
+# Data
+
+`r shiny::icon("globe")` usda.gov
+
+`r shiny::icon("save")` [agData_USDA_Lentil.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_USDA_Lentil.csv)
+
+`r shiny::icon("save")` [agData_USDA_Lentil.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_USDA_Lentil.csv)
+
+```{r class.source = 'fold-show'}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData)
+library(usmap)
+library(gganimate)
+```
+
+---
+
+# Prepare Data
+
+```{r}
+myColors <- c("darkgreen", "darkgoldenrod3", "darkred", "black")
+myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: USDA"
+#
+dd <- agData_USDA_Lentil
+```
+
+```{r}
+ggUSmap_Lentil <- function(myYear = 1999) {
+  xx <- dd %>% #rename(counties=County, state=State) %>%
+    filter(Measurement == "ACRES HARVESTED", Geo.Level == "COUNTY") %>%
+    mutate(Value = Value / 100000)
+  x1 <- xx %>% filter(Year == myYear)
+  #
+  plot_usmap(data = x1, values = "Value", exclude = c("AK","HI"), regions = "counties", color = "NA") + 
+    scale_fill_gradient(name = "100,000x Acres", na.value = "grey", limits = c(0,max(xx$Value)),
+                        high = "darkgreen", low = alpha("darkgreen",0.1)) + 
+    theme(legend.position = "right")
+}
+myYears <- c(1997,1999,2002,2006,2007,2008,2010:2019)
+for(i in myYears) {
+  mpi <- ggUSmap_Lentil(myYear = i)
+  ggsave(paste0("lentil_usa_1_",i,".png"), mpi, width = 6, height = 4, bg = "white")
+}
+ggUSmap_Lentil(myYear = 2023)
+#
+ggUSmap_Lentil <- function() {
+  xx <- dd %>% #rename(counties=County, state=State) %>%
+    filter(Measurement == "ACRES HARVESTED", Year %in% myYears) %>%
+    mutate(Value = Value / 100000)
+  #
+  plot_usmap(data = xx, values = "Value", exclude = c("AK","HI"), regions = "counties", color = "NA") + 
+    scale_fill_gradient(name = "100,000x Acres", na.value = "grey",
+                        high = "darkgreen", low = "grey") + 
+    theme(legend.position = "right") +
+    labs(title = paste("Year =", "{frame_time}")) +
+    transition_time(Year)
+}
+anim_save("lentil_usa_gif_1.01.gif", ggUSmap_Lentil(),
+          nframes = 400, fps = 20, end_pause = 100, bg = "white", 
+          width = 600, height = 400, res = 100)
+#
+ggUSmap_Lentil <- function(myYear = 2016) {
+  xx <- dd %>% #select(-state) %>% 
+    filter(Measurement == "ACRES HARVESTED", #Year == myYear,
+           Geo.Level == "STATE") %>%
+    #rename(state = State) %>%
+    mutate(Value = Value / 100000) %>% 
+    select(Year, state=State, Value)
+  #
+  plot_usmap(data = xx, values = "Value", exclude = c("AK","HI"), color = "NA") + 
+    scale_fill_gradient2(name = "100,000x Acres", na.value = "grey",
+                         high = "darkgreen", mid = alpha("darkgreen",0.1)) + 
+    theme(legend.position = "right") +
+    labs(title = paste("Year =", "{frame_time}")) +
+    transition_time(Year)
+}
+#
+dd <- agData_USDA_Beehives
+ggUSmap_Beehives <- function(myYear = 2016) {
+  xx <- dd %>% #select(-state) %>% 
+    filter(Measurement == "PRODUCTION", #Year == myYear,
+           Geo.Level == "STATE") %>%
+    #rename(state = State) %>%
+    mutate(Value = Value / 100000) %>% 
+    select(Year, state=State, Value)
+  #
+  plot_usmap(data = xx, values = "Value", exclude = c("AK","HI"), color = "NA") + 
+    scale_fill_gradient2(name = "100,000x Acres", na.value = "grey",
+                         high = "darkgreen", mid = alpha("darkgreen",0.3)) + 
+    theme(legend.position = "right") +
+    labs(title = paste("Year =", "{frame_time}")) +
+    transition_time(Year)
+}
+anim_save("lentil_usa_gif_1.02.gif", ggUSmap_Beehives(),
+          nframes = 400, fps = 20, end_pause = 100, bg = "white", 
+          width = 600, height = 400, res = 100)
+
+xx <- dd %>% filter(Geo.Level == "STATE")
+```
+
+---

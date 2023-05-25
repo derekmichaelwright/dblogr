@@ -42,11 +42,16 @@ myColors2 <- c("darkgreen", "steelblue", "darkred")
 myMeasures <- c("Production", "Exports", "Imports",
                 "Gross withdrawals", "Industrial consumption",
                 "Residential consumption", "Commercial consumption")
+myAreas <- c("Canada", "Alberta", "Saskatchewan", "Manitoba", 
+             "British Columbia", "Quebec", "Ontario", "Atlantic provinces", 
+             "Newfoundland and Labrador", "Nova Scotia", "New Brunswick",
+             "Northwest Territories", "Yukon")
 # Oil
 dd_oil <- read.csv("2510006301_databaseLoadingData.csv") %>%
   mutate(Item = "Crude oil") %>%
   select(Date=1, Area=GEO, Item, Measurement=4, Unit=UOM, Value=VALUE) %>%
-  mutate(Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"),
+  mutate(Area = factor(Area, levels = myAreas),
+         Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"),
          Measurement = plyr::mapvalues(Measurement, 
             "Crude oil production", "Production"),
          Measurement = factor(Measurement, levels = myMeasures)) %>%
@@ -55,8 +60,8 @@ dd_oil <- read.csv("2510006301_databaseLoadingData.csv") %>%
 dd_gas <- read.csv("2510005501_databaseLoadingData.csv") %>%
   mutate(Item = "Natural gas") %>%
   select(Date=1, Area=GEO, Item, Measurement=4, Unit=UOM, Value=VALUE) %>%
-  mutate(Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"),
-         #Value = Value * 1000
+  mutate(Area = factor(Area, levels = myAreas),
+         Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"),
          Measurement = plyr::mapvalues(Measurement, 
             "Marketable production", "Production"),
          Measurement = factor(Measurement, levels = myMeasures),
@@ -66,7 +71,8 @@ dd_gas <- read.csv("2510005501_databaseLoadingData.csv") %>%
 dd_coal <- read.csv("2510004601_databaseLoadingData.csv") %>%
   mutate(Item = "Coal") %>%
   select(Date=1, Area=GEO, Item, Measurement=5, Unit=UOM, Value=VALUE) %>%
-  mutate(Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"),
+  mutate(Area = factor(Area, levels = myAreas),
+         Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"),
          Measurement = factor(Measurement, levels = myMeasures),
          Value = 1000 * Value, UOM = "Kilograms") %>%
   filter(!is.na(Value))
@@ -220,13 +226,9 @@ ggsave("canada_fossil_fuels_1_08.png", mp, width = 8, height = 4)
 
 ```{r}
 # Prep data
-myAreas <- c("Alberta", "British Columbia", "Saskatchewan", "Manitoba",
-             "Northwest Territories", "Atlantic provinces", 
-             "Nova Scotia", "New Brunswick", "Quebec", "Ontario")
 xx <- dd %>% 
   filter(Area %in% myAreas, Measurement == "Production", 
-         Date > as.Date("2015-12-30")) %>%
-  mutate(Area = factor(Area, levels  = myAreas))
+         Date > as.Date("2015-12-30"))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Item)) +
   geom_line(size = 1, alpha = 0.7) +
@@ -271,11 +273,7 @@ ggsave("canada_fossil_fuels_2_01.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myAreas <- c("Alberta", "Saskatchewan", "Manitoba", "British Columbia",
-             "Quebec", "Ontario", "Atlantic provinces",
-             "Northwest Territories")
-xx <- dd_oil %>% filter(Area != "Canada") %>% 
-  mutate(Area = factor(Area, levels = myAreas))
+xx <- dd_oil %>% filter(Area != "Canada")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   geom_line(alpha = 0.7, size = 1.25) +
@@ -301,7 +299,7 @@ myAreas <- c("All Other Provinces", "Saskatchewan", "Alberta")
 xx <- dd_oil %>%
   filter(Measurement == "Production",
          !Area %in% c("Canada", "Atlantic provinces")) %>%
-  mutate(Area = ifelse(Area %in% myAreas, Area, "All Other Provinces"),
+  mutate(Area = ifelse(Area %in% myAreas, as.character(Area), "All Other Provinces"),
          Area = factor(Area, levels = myAreas)) %>%
   group_by(Date, Area) %>%
   summarise(Value = sum(Value, na.rm = T))
@@ -378,12 +376,7 @@ ggsave("canada_fossil_fuels_3_01.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 myMeasures <- c("Production", "Exports", "Imports")
-myAreas <- c("Alberta","British Columbia", "Saskatchewan", "Manitoba",
-             "Ontario", "Quebec", "Nova Scotia", "New Brunswick", 
-             "Northwest Territories")
-xx <- dd_gas %>% 
-  filter(Area != "Canada", Measurement %in% myMeasures) %>%
-  mutate(Area = factor(Area, levels = myAreas))
+xx <- dd_gas %>% filter(Area != "Canada", Measurement %in% myMeasures)
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   geom_line(alpha = 0.7, size = 1.25) +
@@ -409,7 +402,7 @@ myAreas <- c("All Other Provinces", "British Columbia", "Alberta")
 xx <- dd_gas %>%
   filter(Measurement == "Production",
          !Area %in% c("Canada", "Atlantic provinces")) %>%
-  mutate(Area = ifelse(Area %in% myAreas, Area, "All Other Provinces"),
+  mutate(Area = ifelse(Area %in% myAreas, as.character(Area), "All Other Provinces"),
          Area = factor(Area, levels = myAreas)) %>%
   group_by(Date, Area) %>%
   summarise(Value = sum(Value, na.rm = T))
@@ -462,7 +455,8 @@ ggsave("canada_fossil_fuels_3_04.png", mp, width = 6, height = 4)
 # Prep data
 myMeasures <- c("Industrial consumption", "Residential consumption", 
                 "Commercial consumption")
-xx <- dd_gas %>% filter(Area == "Canada", Measurement %in% myMeasures) %>%
+xx <- dd_gas %>% 
+  filter(Area == "Canada", Measurement %in% myMeasures) %>%
   mutate(Measurement = factor(Measurement, levels = myMeasures))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
@@ -487,7 +481,8 @@ ggsave("canada_fossil_fuels_3_05.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 xx <- dd_coal %>% filter(Area == "Canada") %>% 
-  spread(Measurement, Value) %>% gather(Measurement, Value, 6:7)
+  spread(Measurement, Value) %>% 
+  gather(Measurement, Value, 6:7)
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   geom_line(size = 1.5, alpha = 0.7) +
@@ -508,11 +503,9 @@ ggsave("canada_fossil_fuels_4_01.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myAreas <- c("Alberta", "Saskatchewan", "Manitoba", "British Columbia",
-             "Quebec", "Ontario",  "Atlantic provinces",
-             "Northwest Territories")
-xx <- dd_coal %>% mutate(Area = factor(Area, levels = myAreas)) %>% 
-  spread(Measurement, Value) %>% gather(Measurement, Value, 6:7)
+xx <- dd_coal %>% filter(Area != "Canada") %>%
+  spread(Measurement, Value) %>% 
+  gather(Measurement, Value, 6:7)
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   geom_line(alpha = 0.7, size = 1) +
@@ -523,7 +516,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Coal Production, Export & Import", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
-ggsave("canada_fossil_fuels_4_02.png", mp, width = 12, height = 6)
+ggsave("canada_fossil_fuels_4_02.png", mp, width = 10, height = 4)
 ```
 
 ---
@@ -534,12 +527,10 @@ ggsave("canada_fossil_fuels_4_02.png", mp, width = 12, height = 6)
 
 ```{r}
 # Prep data
-myAreas <- c("All Other Provinces", "Saskatchewan", "Alberta")
+myAreas <- c("British Columbia", "Saskatchewan", "Alberta")
 xx <- dd_coal %>%
-  filter(Measurement == "Production",
-         !Area %in% c("Canada", "Atlantic provinces")) %>%
-  mutate(Area = ifelse(Area %in% myAreas, Area, "All Other Provinces"),
-         Area = factor(Area, levels = myAreas)) %>%
+  filter(Measurement == "Production", Area %in% myAreas) %>%
+  mutate(Area = factor(Area, levels = myAreas)) %>%
   group_by(Date, Area) %>%
   summarise(Value = sum(Value, na.rm = T))
 # Plot

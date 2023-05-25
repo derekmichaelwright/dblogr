@@ -74,21 +74,23 @@ d2 <- read.csv("1710000501_databaseLoadingData.csv")  %>%
 
 # Population
 
+## Canada
+
 ![](canada_population_1_01.png)
 
 ```{r}
 # Prep data
+xx <- d1 %>% filter(Area == "Canada")
 myBreaks <- as.Date(paste0(seq(1950, 2020, by = 10), "-01-01"))
 # Plot
-mp <- ggplot(d1, aes(x = Date, y = Value / 1000000)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   geom_line(size = 1, color = "darkgreen", alpha = 0.7) +
   facet_wrap(Area ~ ., ncol = 4, scales = "free_y") +
   scale_x_date(breaks = myBreaks, date_labels = "%Y") +
-  theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Canadian Population", 
+  theme_agData(legend.position = "none") +
+  labs(title = "Population", 
        y = "Million People", x = NULL, caption = myCaption)
-ggsave("canada_population_1_01.png", mp, width = 10, height = 6)
+ggsave("canada_population_1_01.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -110,6 +112,27 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   labs(title = "Population", 
        y = "Million People", x = NULL, caption = myCaption)
 ggsave("canada_population_1_02.png", mp, width = 6, height = 4)
+```
+
+---
+
+## All Provinces
+
+![](canada_population_1_03.png)
+
+```{r}
+# Prep data
+myBreaks <- as.Date(paste0(seq(1950, 2020, by = 10), "-01-01"))
+# Plot
+mp <- ggplot(d1, aes(x = Date, y = Value / 1000000)) +
+  geom_line(size = 1, color = "darkgreen", alpha = 0.7) +
+  facet_wrap(Area ~ ., ncol = 4, scales = "free_y") +
+  scale_x_date(breaks = myBreaks, date_labels = "%Y") +
+  theme_agData(legend.position = "none", 
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canadian Population", 
+       y = "Million People", x = NULL, caption = myCaption)
+ggsave("canada_population_1_03.png", mp, width = 10, height = 6)
 ```
 
 ---

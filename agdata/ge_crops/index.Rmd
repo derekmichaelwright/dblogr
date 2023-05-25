@@ -355,12 +355,12 @@ xx<- agData_ISAAA_Country %>%
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
   geom_bar(stat = "identity", fill = "darkgreen", 
            alpha = 0.6, color = "black") +
-  facet_wrap(Area ~ ., scales = "free_y", ncol = 10) +
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 11) +
   theme_agData() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   labs(title = "Area of GE Crop by Country", x = NULL,
        y = "Million Hectares", caption = myCaption)
-ggsave("ge_crops_12.png", mp, width = 20, height = 8)
+ggsave("ge_crops_12.png", mp, width = 21, height = 8)
 ```
 
 ---

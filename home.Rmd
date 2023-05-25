@@ -1,5 +1,5 @@
 ---
-title: "dblogr/"
+title: "www.dblogr.com/"
 subtitle: "derekmichaelwright.github.io/dblogr"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
@@ -18,10 +18,6 @@ library(shiny)
 
 # `r icon("address-card")` About Me
 
-## {.tabset .tabset-pills}
-
-### Biography
-
 <div class="box">
 
 <div class = "row"><div class = "col-md-6">
@@ -32,33 +28,27 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 </div><div class = "col-md-6">![](cv/about.png)</div></div>
 
-### My Curriculum Vitae (CV)
-
-<div class="box">
-
-- `r icon("globe")` [My Curriculum Vitae (HTML)](cv/) 
-- `r icon("file-pdf")` [My Curriculum Vitae (PDF)](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf)
-
-</div>
-
-### Social Media & Contact
-
-<div class="box">
+<div class = "row"><div class = "col-md-6">
 
 **Social Media**
 
-- `r icon("github")`  [github.com/derekmichaelwright](https://github.com/derekmichaelwright)
-- `r icon("twitter")` [twitter.com/DerekMWright](https://twitter.com/DerekMWright)
+## `r icon("github")`  [github.com/derekmichaelwright](https://github.com/derekmichaelwright)
+## `r icon("twitter")` [twitter.com/DerekMWright](https://twitter.com/DerekMWright)
 
 **Email**
 
 - `r icon("envelope")` derek.wright@usask.ca
 
+</div><div class = "col-md-6">
+
+**My Curriculum Vitae (CV)**
+
+- `r icon("globe")` [CV (HTML version)](cv/) 
+- `r icon("file-pdf")` [CV (PDF Version)](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf)
+
 </div>
 
-## {-}
-
-<div class="box">![](cv/DW-P-16-07-07-04-1.jpg)</div>
+![](cv/DW-P-16-07-07-04-1.jpg)</div></div>
 
 <br>
 
@@ -66,7 +56,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 # `r icon("book")` Publications 
 
-Scientific publications I have been involved in while working/studying at *University of Regin*, *Justus-Liebig-Universität Gießen (University of Giessen)* & the *University of Saskatchewan*.
+Scientific publications I have been involved in while working/studying at ***University of Regina***, ***Justus-Liebig-Universität Gießen (University of Giessen)*** & the ***University of Saskatchewan***.
 
 ## All Publications {.tabset .tabset-pills}
 

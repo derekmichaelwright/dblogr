@@ -30,27 +30,23 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: SK GOV"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: SK GOV"
 myColorsMF <- c("palevioletred3", "steelblue")
 myRaces <- c("Unknown", "Other", "Black", "Asian",
              "Metis","First Nations", "Caucasian")
 #
-d1 <- read_xlsx("data_saskatchewan_overdoses.xlsx", "Annual") %>%
-  filter(Year < 2022)
+d1 <- read_xlsx("data_saskatchewan_overdoses.xlsx", "Annual")
 #
-d2 <- read_xlsx("data_saskatchewan_overdoses.xlsx", "Meth")  %>%
-  filter(Year < 2022)
+d2 <- read_xlsx("data_saskatchewan_overdoses.xlsx", "Meth")
 #
 d3 <- read_xlsx("data_saskatchewan_overdoses.xlsx", "Age") %>%
   gather(Year, Deaths, 3:ncol(.)) %>% 
-  mutate(Year = as.numeric(Year)) %>%
-  filter(Year < 2022)
+  mutate(Year = as.numeric(Year))
 #
 d4 <- read_xlsx("data_saskatchewan_overdoses.xlsx", "Race") %>%
   gather(Year, Deaths, 3:ncol(.)) %>%
   mutate(Year = as.numeric(Year),
-         Race = factor(Race, levels = myRaces)) %>%
-  filter(Year < 2022)
+         Race = factor(Race, levels = myRaces))
 ```
 
 ---
