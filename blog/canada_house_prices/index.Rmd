@@ -28,7 +28,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 myColors_M <- c("purple4", "darkgreen", "darkorange")
 myColors_P <- c("steelblue","darkred","darkblue")
 #

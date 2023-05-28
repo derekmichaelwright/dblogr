@@ -86,7 +86,7 @@ https://doi.org/10.1104/pp.106.077867
 
 ```{r}
 # Prep data
-myCaption <- expression(paste("derekmichaelwright.github.io/dblogr/ | Data: Collins ", 
+myCaption <- expression(paste("www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Collins ", 
                                italic("et al"), ". (1930)"))
 #
 dd <- read.csv("TBRTQuality.csv") %>% 

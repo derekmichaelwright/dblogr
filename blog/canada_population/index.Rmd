@@ -34,7 +34,7 @@ library(transformr)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 myAreas <- c("Canada", "British Columbia", "Alberta", "Saskatchewan", 
              "Manitoba", "Ontario", "Quebec", "New Brunswick", "Nova Scotia",
              "Prince Edward Island", "Newfoundland and Labrador",

@@ -22,7 +22,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 library(agData)
 library(treemapify)
 library(gganimate)
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 ```
 
 ---

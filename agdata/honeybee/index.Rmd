@@ -28,7 +28,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
 #
 dd <- agData_FAO_Livestock %>% 
   filter(Animal == "Beehives") %>%

@@ -42,7 +42,7 @@ untar(KP_file) # Extract files
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 locs <- c("Rosthern, Canada", "Sutherland, Canada", "Central Ferry, USA",
           "Bhopal, India","Jessore, Bangladesh","Bardiya, Nepal",
           "Marchouch, Morocco", "Cordoba, Spain", "Metaponto, Italy")

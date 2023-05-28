@@ -35,9 +35,9 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption1 = "derekmichaelwright.github.io/dblogr/ | Data: USDA"
-myCaption2 = "derekmichaelwright.github.io/dblogr/ | Data: USDA & NCGA"
-myCaption3 = "derekmichaelwright.github.io/dblogr/ | Data: USDA & FAOSTAT"
+myCaption1 = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: USDA"
+myCaption2 = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: USDA & NCGA"
+myCaption3 = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: USDA & FAOSTAT"
 #
 myColors <- c("darkcyan", "darkorange", "darkgreen", "darkred")
 mylevels <- c("Open-Pollination", "Hybrid", "Biotech", "Yield Contest")

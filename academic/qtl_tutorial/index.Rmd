@@ -35,7 +35,7 @@ To aid with data prep and data visualization, I will also be using my own option
 ```{r}
 # devtools::install_github("derekmichaelwright/gwaspr")
 library(gwaspr)
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 ```
 
 ---

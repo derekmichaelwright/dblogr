@@ -32,7 +32,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption1 <- "derekmichaelwright.github.io/dblogr/ | Data: Morning Consult"
+myCaption1 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Morning Consult"
 d1 <- read.csv("data_morning_consult.csv") %>%
   mutate(Area = factor(Area, levels = rev(.$Area))) 
 #

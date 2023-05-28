@@ -38,7 +38,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: ISAAA"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: ISAAA"
 myCrops <- c("Soybean", "Maize", "Cotton", "Canola")
 myColors_Crops <- c("darkblue", "darkgreen", "darkred", "darkgoldenrod2")
 myColors_Areas <- c("darkblue", "antiquewhite4", "darkslategrey", 

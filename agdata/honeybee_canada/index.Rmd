@@ -29,7 +29,7 @@ library(gganimate)
 
 ```{r}
 ## Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 #
 dd <- agData_STATCAN_Beehives %>%
   mutate(Era   = ifelse(Year >= 1994, "Post", "Pre"),

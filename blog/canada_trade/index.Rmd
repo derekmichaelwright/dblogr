@@ -28,7 +28,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 dd <- read.csv("1210001101_databaseLoadingData.csv") %>%
   select(Year=1, Area=GEO, Trade, Basis, Seasonal.adjustment,
          Trading.Partner=Principal.trading.partners, 

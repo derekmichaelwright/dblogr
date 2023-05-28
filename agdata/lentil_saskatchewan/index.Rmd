@@ -33,7 +33,7 @@ library(gganimate)
 myColors <- c("darkgreen", "darkgoldenrod3", "darkred", "black")
 myCrops <- c("Large Green Lentils","Small Green Lentils",
              "Red Lentils","Other Lentils")
-myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 #
 x1 <- agData_STATCAN_Crops %>%
   filter(Crop == "Lentils", Measurement == "Production",

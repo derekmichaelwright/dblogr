@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(GGally) # ggpairs() 
 library(latex2exp) # TeX()
-myCaption <- "derekmichaelwright.github.io/dblogr/"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/"
 ```
 
 # Introduction to Augmented Designs

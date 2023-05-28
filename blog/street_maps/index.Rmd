@@ -29,6 +29,7 @@ My shape files
 # Load libraries
 library(tidyverse)
 library(sf)
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/"
 ```
 
 ---
@@ -65,7 +66,7 @@ mp <- ggplot(s_roads2) +
   coord_sf(crs = st_crs(4326)) +
   theme_void() +
   theme(panel.grid.major = element_line("transparent")) +
-  labs(caption = "derekmichaelwright.github.io/dblogr/")
+  labs(caption = myCaption)
 ggsave("roads_saskatoon.png", mp, bg = "transparent", width = 6, height = 6)
 ```
 
@@ -82,7 +83,7 @@ mp <- ggplot(s_roads2) +
   coord_sf(crs = st_crs(4326)) +
   theme_void() +
   theme(panel.grid.major = element_line("transparent")) +
-  labs(caption = "derekmichaelwright.github.io/dblogr/")
+  labs(caption = myCaption)
 ggsave("roads_saskatoon_zoom.png", mp, bg = "transparent", width = 6, height = 6)
 ```
 
@@ -107,7 +108,7 @@ mp <- ggplot(r_roads) +
   coord_sf(crs = st_crs(4326)) +
   theme_void() +
   theme(panel.grid.major = element_line("transparent")) +
-  labs(caption = "derekmichaelwright.github.io/dblogr/")
+  labs(caption = myCaption)
 ggsave(filename = "roads_regina.png", mp, bg = "transparent", width = 6, height = 6)
 ```
 
@@ -126,7 +127,7 @@ mp <- ggplot(rail_roads) +
   coord_sf(crs = st_crs(4326)) +
   theme_void() +
   theme(panel.grid.major = element_line("transparent")) +
-  labs(caption = "derekmichaelwright.github.io/dblogr/")
+  labs(caption = myCaption)
 ggsave("railroads_germany.png", mp, bg = "transparent", width = 6, height = 6)
 ```
 

@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(gganimate)
-myCaoption <- "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
+myCaoption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
 ```
 
 ---
