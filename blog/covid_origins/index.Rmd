@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Download Data
 
 `r shiny::icon("globe")` https://morningconsult.com/2023/04/11/covid-19-lab-leak-theory-survey-data/
 
@@ -21,14 +21,14 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 `r shiny::icon("save")` [data_yougov.csv](data_yougov.csv)
 
+---
+
+# Prepare Data
+
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
-
----
-
-# Prepare Data
 
 ```{r}
 # Prep data

@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Download Data
 
 `r shiny::icon("globe")` https://www.nass.usda.gov/
 
@@ -23,15 +23,15 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 `r shiny::icon("save")` [agData_MaizeContest.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_MaizeContest.csv)
 
+---
+
+# Prepare Data
+
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(gganimate)
 ```
-
----
-
-# Prepare Data
 
 ```{r}
 # Prep data

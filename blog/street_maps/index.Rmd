@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Download Data
 
 STATCAN road network files
 
@@ -25,16 +25,16 @@ My shape files
 
 `r shiny::icon("github")` https://github.com/derekmichaelwright/dblogr/tree/master/content/dblogr/street_maps
 
+---
+
+# Prepare Data
+
 ```{r class.source = 'fold-show'}
 # Load libraries
 library(tidyverse)
 library(sf)
 myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/"
 ```
-
----
-
-# Prepare Data
 
 ```{r eval = F}
 # STATCAN file
@@ -101,9 +101,9 @@ ggsave("featured.png", mp, bg = "transparent", width = 6, height = 6)
 # Read file
 r_roads <- st_read("roads_regina.shp", quiet = T) 
 # Crop
-r_roads2 <- st_intersection(r_roads, st_buffer(st_centroid(st_union(r_roads)), 8000))
+r_roads2 <- st_intersection(r_roads, st_buffer(st_centroid(st_union(r_roads)), 5000))
 # Plot
-mp <- ggplot(r_roads) +
+mp <- ggplot(r_roads2) +
   geom_sf(color = "black") +
   coord_sf(crs = st_crs(4326)) +
   theme_void() +

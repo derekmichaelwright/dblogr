@@ -11,20 +11,20 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Download Data
 
 `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810020501
 
 `r shiny::icon("save")` [1810020501_databaseLoadingData.csv](1810020501_databaseLoadingData.csv)
 
+---
+
+# Prepare Data
+
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
-
----
-
-# Prepare Data
 
 ```{r}
 # Prep data

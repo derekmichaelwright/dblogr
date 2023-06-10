@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Download Data
 
 `r shiny::icon("save")` [data_ldp.csv](data_ldp.csv)
 
@@ -63,7 +63,11 @@ write.csv(yy, "data_ldp.csv", row.names = F)
 #write.csv(AGILE_GeneList, "Data_GeneList.csv", row.names = F)
 ```
 
-```{r}
+---
+
+# Prepare Data
+
+```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(rworldmap)   # mapBubbles()
@@ -71,10 +75,6 @@ library(plotly)      # plot_ly()
 library(leaflet)     # leaflet()
 library(htmlwidgets) # saveWidget()
 ```
-
----
-
-# Prepare Data
 
 ```{r}
 # Prep data
@@ -330,13 +330,15 @@ xx <- dd %>%
          Size = 1)
 # Plot png
 png("lentil_diversity_panel_1_02.png", width = 3600, height = 2055, res = 600)
-par(mai = c(0,0,0,0), xaxs = "i", yaxs = "i")
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
 mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", 
             nameZColour = alpha("darkred",0.8), 
             nameZFill = alpha("darkgoldenrod2",0.8),
             nameZSize = "Size", symbolSize = 0.2, addLegend = F,
             xlim = c(-140,110), ylim = c(5,20), lwd = 1,
             oceanCol = "grey90", landCol = "white", borderCol = "black")
+title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
 dev.off()
 ```
 
@@ -356,14 +358,15 @@ xx <- dd %>%
   as.data.frame()
 # Plot
 png("lentil_diversity_panel_1_03.png", width = 3600, height = 2055, res = 600)
-par(mai = c(0,0,0,0), xaxs = "i",yaxs = "i")
+par(mai = c(0.2,0,0.25,0), xaxs = "i",yaxs = "i")
 mapBubbles2(dF = xx, nameX = "Country_Lon", nameY = "Country_Lat", 
             nameZColour = alpha("darkgoldenrod2",0.8), 
             nameZFill = alpha("darkgreen",0.8),
             nameZSize = "Count", legendPos = "bottomleft",
             xlim = c(-140,110), ylim = c(5,20), lwd = 1,
             oceanCol = "grey90", landCol = "white", borderCol = "black")
-title(main = "Lentil Diversity Panel", line = 0, cex = 3)
+title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
 dev.off()
 ```
 
@@ -464,14 +467,15 @@ xx <- dd %>%
   as.data.frame()
 # Plot
 png("lentil_diversity_panel_2_03.png", width = 3600, height = 2055, res = 600)
-par(mai = c(0,0,0,0), xaxs = "i", yaxs = "i")
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
 mapPies(dF = xx, nameX = "Country_Lon", nameY = "Country_Lat", 
         zColours = sColors, nameZs = myG, lwd = 1,
         xlim = c(-140,110), ylim = c(5,20), addCatLegend = F,
         oceanCol = "grey90", landCol = "white", borderCol = "black") 
 legend(-138.5, 15.5, title = "STR Group", legend = myG, col = sColors,
        pch = 16, cex = 0.8, pt.cex = 1.25, box.lwd = 2)
-title(main = "Lentil Diversity Panel", line = 0, cex = 3)
+title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
 dev.off()
 ```
 
@@ -499,7 +503,7 @@ xx <- dd %>%
          Size = 1)
 # Plot png
 png("lentil_diversity_panel_2_04.png", width = 3600, height = 2055, res = 600)
-par(mai = c(0,0,0,0), xaxs = "i", yaxs = "i")
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
 mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", 
             nameZFill = "STR_Group",
             fillPalette = alpha(sColors,0.8), 
@@ -509,7 +513,8 @@ mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat",
             oceanCol = "grey90", landCol = "white", borderCol = "black")
 legend(-138.5, 13, title = "STR Group", legend = myG, col = sColors,
        pch = 16, cex = 0.8, pt.cex = 1.5, box.lwd = 2)
-title(main = "Lentil Diversity Panel", line = 0, cex = 3)
+title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
 dev.off()
 # Plot html
 pal <- colorFactor(sColors, domain = myG)
@@ -600,14 +605,15 @@ xx <- dd %>%
   as.data.frame()
 # Plot
 png("lentil_diversity_panel_3_01.png", width = 3600, height = 2055, res = 600)
-par(mai = c(0,0,0,0), xaxs = "i", yaxs = "i")
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
 mapPies(dF = xx, nameX = "Country_Lon", nameY = "Country_Lat", 
         zColours = cColors, nameZs = c("1","2","3","4","5","6","7","8"), 
         xlim = c(-140,110), ylim = c(5,20), addCatLegend = F, lwd = 1,
         oceanCol = "grey90", landCol = "white", borderCol = "black") 
 legend(-138.5, 13, title = "DTF Cluster", legend = 1:8, col = cColors,
        pch = 16, cex = 0.8, pt.cex = 1.5, box.lwd = 2)
-title(main = "Lentil Diversity Panel", line = 0, cex = 3)
+title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
 dev.off()
 ```
 
@@ -638,7 +644,7 @@ xx <- dd %>%
          Size = 1)
 # Plot png
 png("lentil_diversity_panel_3_02.png", width = 3600, height = 2055, res = 600)
-par(mai = c(0,0,0,0), xaxs = "i", yaxs = "i")
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
 mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", 
             nameZFill = "DTF_Cluster",
             fillPalette = alpha(cColors,0.8), 
@@ -648,7 +654,8 @@ mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat",
             oceanCol = "grey90", landCol = "white", borderCol = "black")
 legend(-138.5, 13, title = "DTF Cluster", legend = 1:8, col = cColors,
        pch = 16, cex = 0.8, pt.cex = 1.5, box.lwd = 2)
-title(main = "Lentil Diversity Panel", line = 0, cex = 3)
+title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
 dev.off()
 # Plot html
 pal <- colorFactor(cColors, domain = 1:8)
@@ -797,7 +804,7 @@ xx <- dd %>%
          Size = 1)
 # Plot png
 png("lentil_diversity_panel_4_01.png", width = 3600, height = 2055, res = 600)
-par(mai = c(0,0,0,0), xaxs = "i", yaxs = "i")
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
 mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", 
             nameZFill = "CotyledonColor", 
             fillPalette = myColors, 
@@ -809,6 +816,8 @@ mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat",
 legend(55, 3, title = "Cotyledon Color", 
        legend = c("Red", "Yellow"), col = myColors,
        pch = 16, cex = 0.8, pt.cex = 1.5, box.lwd = 2)
+title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
 dev.off()
 ```
 

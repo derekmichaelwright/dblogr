@@ -18,20 +18,20 @@ The purpose of this document is to provide a few examples of how to manipulate a
 
 ---
 
-# Data
+# Download Data
 
 Data sets can be downloaded from [**knowpulse.usask.ca/**](http://knowpulse.usask.ca/portal/) or my [**github**](https://github.com/derekmichaelwright/dblogr/tree/master/content/academic/envdata).
 
 `r shiny::icon("save")` [environment_data.tar](https://github.com/derekmichaelwright/dblogr/raw/main/academic/envdata/environment_data.tar)
 
+---
+
+# Prepare the data
+
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
-
----
-
-# Prepare the data
 
 ```{r eval = F}
 # Read in data

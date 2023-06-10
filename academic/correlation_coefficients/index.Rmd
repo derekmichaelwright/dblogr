@@ -15,18 +15,22 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 The correlation coefficient (***R^2^***), which indicates the proportion of variation explained by an independent variable or model, can be misused/incorectly used when evaluating predictive models. Depending on the situation, different calculations for *R^2^* can be used to convey different meanings. The goal of this vignette is to help clear up this confusion, with a few different examples.
 
+---
+
+# Download Data
+
+`r shiny::icon("save")` [data_correlation_coefficients.xlsx](data_correlation_coefficients.xlsx)
+
+---
+
+# Prepare Data
+
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(readxl)  # read_xlsx()
 library(ggpmisc) # stat_poly_eq()
 ```
-
----
-
-# Data
-
-`r shiny::icon("save")` [data_correlation_coefficients.xlsx](data_correlation_coefficients.xlsx)
 
 ## Dataset 1
 

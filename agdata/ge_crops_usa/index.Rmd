@@ -11,11 +11,15 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Download Data
 
 `r shiny::icon("globe")` https://www.ers.usda.gov/data-products/adoption-of-genetically-engineered-crops-in-the-us/
 
 `r shiny::icon("save")` [agData_USDA_GE_Crops.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_USDA_GE_Crops.csv)
+
+---
+
+# Prepare Data
 
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")

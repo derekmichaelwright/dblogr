@@ -11,11 +11,15 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Download Data
 
 `r shiny::icon("save")` [data_radar_plots.csv](data_radar_plots.csv)
 
-```{r}
+---
+
+# Prepare Data
+
+```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 # devtools::install_github("ricardo-bion/ggradar")
@@ -35,10 +39,6 @@ x2 <- read.csv("https://raw.githubusercontent.com/derekmichaelwright/AGILE_LDP_P
   select(Name, Location, Cluster, DTF)
 write.csv(x2, "data_radar_plots.csv", row.names = F)
 ```
-
----
-
-# Prepare Data
 
 ```{r}
 # Prep data

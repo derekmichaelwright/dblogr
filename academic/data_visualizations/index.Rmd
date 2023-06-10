@@ -15,6 +15,10 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 This vignette will explore several aspects of data visualization using a lentil phenology data set from [Wright *et al*. 2020](https://dblogr.com/academic/ldp_phenology/). For further details on the lentil population and data visit: https://dblogr.com/academic/lentil_diversity_panel/lentil_diversity_panel.html
 
+---
+
+# Download Data
+
 `r shiny::icon("save")` [data_visualizations_1.csv](data_visualizations_1.csv)
 
 `r shiny::icon("save")` [data_visualizations_2.csv](data_visualizations_2.csv)
@@ -59,7 +63,7 @@ xx <- read.csv("data_raw.csv") %>%
 write.csv(xx, "data_visualizations_1.csv", row.names = F)
 ```
 
-```{r}
+```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AGILE"

@@ -15,7 +15,7 @@ Principal component analysis (**PCA**) is a statistical process commonly used fo
 
 For more info: https://en.wikipedia.org/wiki/Principal_component_analysis
 
-```{r}
+```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(scales) # rescale()

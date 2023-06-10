@@ -11,14 +11,6 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-```{r}
-# devtools::install_github("derekmichaelwright/agData")
-library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
-library(GGally) # ggpairs() 
-library(latex2exp) # TeX()
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/"
-```
-
 # Introduction to Augmented Designs
 
 Augmented designs were developed as a way of controlling error in plant breeding trials which often have many genotypes that need to be tested, and limited seed or resources to do proper replications of all material (Federer, 1956). Therefore, in order to control for the heterogeneity that exists within a field, a set of check cultivars are replicated in each *block*. The block effects and error estimated from the replicated checks, is then used to adjust the values of each new genotype being tested.
@@ -38,6 +30,14 @@ Augmented designs were developed as a way of controlling error in plant breeding
 [Table S1 – The raw phenotypic data of a population with 243 RILs derived from a cross between ‘CDC Bethune’ and ‘Macbeth’ (BM) for the case study](https://data.nal.usda.gov/dataset/data-estimation-genetic-parameters-and-their-sampling-variances-quantitative-traits-type-2-modified-augmented-design)
 
 `r shiny::icon("save")` [data_augmented_designs_2.csv](data_augmented_designs_2.csv)
+
+```{r class.source = 'fold-show'}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
+library(GGally) # ggpairs() 
+library(latex2exp) # TeX()
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/"
+```
 
 ---
 
@@ -860,5 +860,3 @@ mp <- ggplot(x2, aes(x = Block, y = Yield, color = Type, pch = Type)) +
   scale_color_manual(values = c("darkgreen", "darkred","darkblue", "Black"))
 ggsave("test5.png", mp, width = 15, height = 6)
 ```
-
-&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

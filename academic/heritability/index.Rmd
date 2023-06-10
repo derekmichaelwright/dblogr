@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Introduction
 
-```{r}
+```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(lme4)

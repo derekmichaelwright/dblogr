@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Download Data
 
 `r shiny::icon("globe")` https://ourworldindata.org/energy-production-consumption
 
@@ -27,6 +27,10 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 `r shiny::icon("save")` [literate-and-illiterate-world-population.csv](literate-and-illiterate-world-population.csv)
 
+---
+
+# Prepare Data
+
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
@@ -34,10 +38,6 @@ library(plotly) # ggplotly()
 library(htmlwidgets) # saveWidget()
 library(gganimate)
 ```
-
----
-
-# Prepare Data
 
 ```{r}
 # Prep data

@@ -59,7 +59,6 @@ ggsave("misleading_graphs_01.png", mp, width = 8, height = 4)
 
 ```{r echo = F} 
 ggsave("featured.png", mp, width = 8, height = 4)
-ggsave("../../posts_blog/misleading_graphs/featured.png", mp, width = 8, height = 4)
 ```
 
 ---
@@ -592,5 +591,3 @@ ggplot(xx, aes(xmin = Year-10, xmax = Year+10, fill = Temp)) +
   theme(legend.position = "none") +
   scale_fill_continuous(high = "darkred", low = "steelblue")
 ```
-
-&copy; Derek Michael Wright [www.dblogr.com/](https://dblogr.com/)

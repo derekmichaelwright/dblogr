@@ -56,7 +56,7 @@ h1,h2,h3,h4,h5,h6,legend{
 .navbar {
   #position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  width: 70%; /* Full width */
   background-color: #1E3D2A;
   margin-top: 0px;
   margin-left: 0px;

@@ -11,11 +11,15 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Download Data
 
 `r shiny::icon("globe")` http://www.fao.org/faostat/en/#data/QC
 
 `r shiny::icon("save")` [agData_FAO_Crops.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Crops.csv.gz)
+
+---
+
+# Prepare Data
 
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
@@ -23,9 +27,7 @@ library(agData)
 library(rworldmap)
 ```
 
----
-
-# mapBubbles Function
+## mapBubbles Function
 
 ```{r}
 # Create plotting function
@@ -167,7 +169,7 @@ mapBubbles2 <- function (dF = "", nameX = "longitude", nameY = "latitude",
 
 ---
 
-# Plotting Function
+## Plotting Function
 
 ```{r}
 ggCropMap <- function(myCrop = "Lentils", 

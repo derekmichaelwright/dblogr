@@ -29,7 +29,7 @@ This vignette is a tutorial on running **Genome-Wide Association Studies** (**GW
 
 ---
 
-# Data
+# Download Data
 
 `r shiny::icon("save")` [myY.csv](myY.csv)
 
@@ -66,9 +66,9 @@ file.copy(from = "C:/gitfolder/dblogr/content/academic/lentil_diversity_panel/le
 
 ---
 
-## Phenotype Data
+## Prepare Data
 
-```{r}
+```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/gwaspr")
 library(gwaspr)
 myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AGILE"

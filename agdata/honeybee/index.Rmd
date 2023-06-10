@@ -11,20 +11,20 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Download Data
 
 `r shiny::icon("globe")` http://www.fao.org/faostat/en/#data/QA
 
 `r shiny::icon("save")` [agData_FAO_Livestock.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Livestock.csv.gz)
 
+---
+
+# Prepare Data
+
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
-
----
-
-# Prepare Data
 
 ```{r}
 # Prep data

@@ -24,18 +24,18 @@ With that said, there still are situations were dual y-axes are appropriate. Thi
 
 ---
 
-# Data
+# Download Data
 
 `r shiny::icon("save")` [data_dual_y_axis.csv](data_dual_y_axis.csv)
-
-```{r}
-# devtools::install_github("derekmichaelwright/agData")
-library(agData)
-```
 
 ---
 
 # Prepare Data
+
+```{r class.source = 'fold-show'}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData)
+```
 
 ```{r}
 # Prep data
