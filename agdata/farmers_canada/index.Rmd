@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210023001
 
-`r shiny::icon("save")` [agData_STATCAN_Farmers.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Farmers.csv)
+`r shiny::icon("save")` [agData_STATCAN_Farmers.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Farmers.csv.gz)
 
 ---
 

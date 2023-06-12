@@ -15,17 +15,17 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 `r shiny::icon("globe")` https://www.isaaa.org/
 
-`r shiny::icon("save")` [agData_ISAAA_Area.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_ISAAA_Area.csv)
+`r shiny::icon("save")` [agData_ISAAA_Area.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_ISAAA_Area.csv.gz)
 
-`r shiny::icon("save")` [agData_ISAAA_Country.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_ISAAA_Country.csv)
+`r shiny::icon("save")` [agData_ISAAA_Country.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_ISAAA_Country.csv.gz)
 
-`r shiny::icon("save")` [agData_ISAAA_Crop.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_ISAAA_Crop.csv)
+`r shiny::icon("save")` [agData_ISAAA_Crop.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_ISAAA_Crop.csv.gz)
 
-`r shiny::icon("save")` [agData_ISAAA_CropPercent.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_ISAAA_CropPercent.csv)
+`r shiny::icon("save")` [agData_ISAAA_CropPercent.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_ISAAA_CropPercent.csv.gz)
 
-`r shiny::icon("save")` [agData_ISAAA_DVDDVG.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_ISAAA_DVDDVG.csv)
+`r shiny::icon("save")` [agData_ISAAA_DVDDVG.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_ISAAA_DVDDVG.csv.gz)
 
-`r shiny::icon("save")` [agData_ISAAA_Value.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_ISAAA_Value.csv)
+`r shiny::icon("save")` [agData_ISAAA_Value.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_ISAAA_Value.csv.gz)
 
 ---
 

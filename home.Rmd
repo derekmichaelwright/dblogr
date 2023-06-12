@@ -580,6 +580,16 @@ Graphs of yearly and monthly overdose deaths in British Columbia using BC GOV da
 
 </div><div class = "col-md-6">![](blog/british_columbia_overdoses/featured.png)</div></div></div>
 
+### Canada Deaths
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**Deaths In Canada**</u>](blog/canada_deaths)
+
+Graphs of weekly deaths in Canada using STATCAN data
+
+</div><div class = "col-md-6">![](blog/canada_deaths/featured.png)</div></div></div>
+
 ## `r icon("r-project")` Stuff {.tabset .tabset-pills}
 
 ### cypher

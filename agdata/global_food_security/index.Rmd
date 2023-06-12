@@ -13,15 +13,15 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Download Data
 
+`r shiny::icon("save")` [agData_FAO_Country_Table.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Country_Table.csv.gz)
+
 `r shiny::icon("globe")` http://www.fao.org/faostat/en/#data/QC
 
 `r shiny::icon("save")` [agData_FAO_Crops2.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Crops2.csv.gz)
 
 `r shiny::icon("globe")` http://www.fao.org/faostat/en/#data/TCL
 
-`r shiny::icon("save")` [https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Trade_Quantity.csv.gz
-
-`r shiny::icon("save")` [agData_FAO_Country_Table.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Country_Table.csv)
+`r shiny::icon("save")` [agData_FAO_Trade_Quantity.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Trade_Quantity.csv.gz)
 
 ---
 
@@ -35,13 +35,13 @@ library(gganimate)
 
 ```{r}
 # Prep Data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
 myRegions <- unique(agData_FAO_Country_Table$Region)
 mySubRegions <- unique(agData_FAO_Country_Table$SubRegion)
 myAreas <- c("World", myRegions, mySubRegions)
-myItems1 <- c("Oilcrops, Oil Equivalent", "Treenuts",
-             "Vegetables Primary", "Fruit Primary", "Sugar Raw Centrifugal", 
-             "Cereals", "Pulses", "Roots and Tubers")
+myItems1 <- c("Oilcrops, Oil Equivalent", "Treenuts, Total", 
+              "Vegetables Primary", "Fruit Primary", "Sugar Crops Primary",
+              "Cereals, primary", "Pulses, Total", "Roots and Tubers, Total")
 myItems2 <- c("Population", "Oilcrops", "Treenuts", "Vegtables", "Fruits",
               "Sugar", "Cereals", "Pulses", "Tubers")
 myColors1 <- c("purple4",  "darkgoldenrod2", "red", "steelblue", "darkblue",

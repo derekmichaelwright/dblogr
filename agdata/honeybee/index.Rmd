@@ -31,7 +31,7 @@ library(agData)
 myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
 #
 dd <- agData_FAO_Livestock %>% 
-  filter(Animal == "Beehives") %>%
+  filter(Animal == "Bees") %>%
   mutate(Era = ifelse(Year >= 1994, "Post-NeoNic", "Pre-NeoNic"),
          Era = factor(Era, levels = c("Pre-NeoNic", "Post-NeoNic")))
 ```

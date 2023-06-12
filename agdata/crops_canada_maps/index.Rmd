@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035901
 
-`r shiny::icon("save")` [agData_STATCAN_Crops.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Crops.csv)
+`r shiny::icon("save")` [agData_STATCAN_Crops.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Crops.csv.gz)
 
 ---
 
@@ -91,11 +91,11 @@ dev.off()
 ```{r}
 # Plot
 mp <- cropMapCan_Production("Wheat", 2020)
-ggsave("maps_crops_canada_wheat.png", mp, width = 6, height = 4, bg = "white")
+ggsave("maps_crops_canada_wheat.png", mp, width = 7, height = 5, bg = "white")
 ```
 
 ```{r echo = F}
-ggsave("featured.png", mp, width = 6, height = 4, bg = "white")
+ggsave("featured.png", mp, width = 7, height = 5, bg = "white")
 ```
 
 ---
@@ -107,7 +107,7 @@ ggsave("featured.png", mp, width = 6, height = 4, bg = "white")
 ```{r}
 # Plot
 mp <- cropMapCan_Production("Canola", 2020)
-ggsave("maps_crops_canada_canola.png", mp, width = 6, height = 4, bg = "white")
+ggsave("maps_crops_canada_canola.png", mp, width = 7, height = 5, bg = "white")
 ```
 
 ---
@@ -119,7 +119,7 @@ ggsave("maps_crops_canada_canola.png", mp, width = 6, height = 4, bg = "white")
 ```{r}
 # Plot
 mp <- cropMapCan_Production("Barley", 2020)
-ggsave("maps_crops_canada_barley.png", mp, width = 6, height = 4, bg = "white")
+ggsave("maps_crops_canada_barley.png", mp, width = 7, height = 5, bg = "white")
 ```
 
 ---
@@ -131,7 +131,7 @@ ggsave("maps_crops_canada_barley.png", mp, width = 6, height = 4, bg = "white")
 ```{r}
 # Plot
 mp <- cropMapCan_Production("Peas", 2020)
-ggsave("maps_crops_canada_peas.png", mp, width = 6, height = 4, bg = "white")
+ggsave("maps_crops_canada_peas.png", mp, width = 7, height = 5, bg = "white")
 ```
 
 ---
@@ -143,7 +143,7 @@ ggsave("maps_crops_canada_peas.png", mp, width = 6, height = 4, bg = "white")
 ```{r}
 # Plot
 mp <- cropMapCan_Production("Oats", 2020)
-ggsave("maps_crops_canada_oats.png", mp, width = 6, height = 4, bg = "white")
+ggsave("maps_crops_canada_oats.png", mp, width = 7, height = 5, bg = "white")
 ```
 
 ---
@@ -155,7 +155,7 @@ ggsave("maps_crops_canada_oats.png", mp, width = 6, height = 4, bg = "white")
 ```{r}
 # Plot
 mp <- cropMapCan_Production("Lentils", 2020)
-ggsave("maps_crops_canada_lentils.png", mp, width = 6, height = 4, bg = "white")
+ggsave("maps_crops_canada_lentils.png", mp, width = 7, height = 5, bg = "white")
 ```
 
 ---
@@ -167,7 +167,7 @@ ggsave("maps_crops_canada_lentils.png", mp, width = 6, height = 4, bg = "white")
 ```{r}
 # Plot
 mp <- cropMapCan_Production("Beans", 2020)
-ggsave("maps_crops_canada_beans.png", mp, width = 6, height = 4, bg = "white")
+ggsave("maps_crops_canada_beans.png", mp, width = 7, height = 5, bg = "white")
 ```
 
 ---
@@ -179,7 +179,7 @@ ggsave("maps_crops_canada_beans.png", mp, width = 6, height = 4, bg = "white")
 ```{r}
 # Plot
 mp <- cropMapCan_Production("Chick peas", 2020)
-ggsave("maps_crops_canada_chickpeas.png", mp, width = 6, height = 4, bg = "white")
+ggsave("maps_crops_canada_chickpeas.png", mp, width = 7, height = 5, bg = "white")
 ```
 
 ---
@@ -191,7 +191,7 @@ ggsave("maps_crops_canada_chickpeas.png", mp, width = 6, height = 4, bg = "white
 ```{r}
 # Plot
 mp <- cropMapCan_Production("Soybeans", 2020)
-ggsave("maps_crops_canada_soybeans.png", mp, width = 6, height = 4, bg = "white")
+ggsave("maps_crops_canada_soybeans.png", mp, width = 7, height = 5, bg = "white")
 ```
 
 ---

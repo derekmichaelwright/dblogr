@@ -15,9 +15,9 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 `r shiny::icon("globe")` https://publications.saskatchewan.ca/#/categories/4426
 
-`r shiny::icon("save")` [agData_SKAG_Specialty_Crops.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_SKAG_Specialty_Crops.csv)
+`r shiny::icon("save")` [agData_SKAG_Specialty_Crops.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_SKAG_Specialty_Crops.csv.gz)
 
-`r shiny::icon("save")` [agData_Lentil_Exports.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_Lentil_Exports.csv)
+`r shiny::icon("save")` [agData_Lentil_Exports.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_Lentil_Exports.csv.gz)
 
 ---
 
