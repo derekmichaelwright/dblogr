@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Download Data
+# Data
 
 `r shiny::icon("globe")` http://www.fao.org/faostat/en/#data/QC
 
@@ -27,7 +27,7 @@ library(agData)
 library(rworldmap)
 ```
 
-## mapBubbles Function
+Create new `mapBubbles` Function
 
 ```{r}
 # Create plotting function
@@ -167,9 +167,7 @@ mapBubbles2 <- function (dF = "", nameX = "longitude", nameY = "latitude",
 }
 ```
 
----
-
-## Plotting Function
+Create custom plotting function `ggCropMap`
 
 ```{r}
 ggCropMap <- function(myCrop = "Lentils", 
@@ -179,7 +177,7 @@ ggCropMap <- function(myCrop = "Lentils",
                       myFilename = "crops_world_maps_lentils.png") {
   # Prep data
   xx <- agData_FAO_Crops %>%
-    filter(Crop == myCrop, 
+    filter(Item == myCrop, 
            Year == myYear,
            Measurement == myMeasure,
            Area %in% agData_FAO_Country_Table$Country) %>%
@@ -219,7 +217,7 @@ ggCropMap(myCrop = "Wheat", myYear = 2019,
 ![](crops_world_maps_maize.png)
 
 ```{r results="hide"}
-ggCropMap(myCrop = "Maize", myYear = 2019,
+ggCropMap(myCrop = "Maize (corn)", myYear = 2019,
           myMeasure = "Production",
           myFilename = "crops_world_maps_maize.png")
 ```
@@ -231,7 +229,7 @@ ggCropMap(myCrop = "Maize", myYear = 2019,
 ![](crops_world_maps_rapeseed.png)
 
 ```{r results="hide"}
-ggCropMap(myCrop = "Rapeseed", myYear = 2019,
+ggCropMap(myCrop = "Rapeseed or canola oil, crude", myYear = 2019,
           myMeasure = "Production",
           myFilename = "crops_world_maps_rapeseed.png")
 ```
@@ -243,7 +241,7 @@ ggCropMap(myCrop = "Rapeseed", myYear = 2019,
 ![](crops_world_maps_lentils.png)
 
 ```{r results="hide"}
-ggCropMap(myCrop = "Lentils", myYear = 2019,
+ggCropMap(myCrop = "Lentils, dry", myYear = 2019,
           myMeasure = "Production",
           myFilename = "crops_world_maps_lentils.png")
 ```
@@ -261,7 +259,7 @@ ggCropMap(myCrop = "Lentils", myYear = 2019,
 ![](crops_world_maps_chickpeas.png)
 
 ```{r results="hide"}
-ggCropMap(myCrop = "Chick peas", myYear = 2019,
+ggCropMap(myCrop = "Chick peas, dry", myYear = 2019,
           myMeasure = "Production",
           myFilename = "crops_world_maps_chickpeas.png")
 ```
@@ -297,7 +295,7 @@ ggCropMap(myCrop = "Beans, dry", myYear = 2019,
 ![](crops_world_maps_soybeans.png)
 
 ```{r results="hide"}
-ggCropMap(myCrop = "Soybeans", myYear = 2019,
+ggCropMap(myCrop = "Soya beans", myYear = 2019,
           myMeasure = "Production",
           myFilename = "crops_world_maps_soybeans.png")
 ```
@@ -345,7 +343,7 @@ ggCropMap(myCrop = "Potatoes", myYear = 2019,
 ![](crops_world_maps_cotton.png)
 
 ```{r results="hide"}
-ggCropMap(myCrop = "Cottonseed", myYear = 2018,
+ggCropMap(myCrop = "Cotton seed", myYear = 2018,
           myMeasure = "Production",
           myFilename = "crops_world_maps_cotton.png")
 ```

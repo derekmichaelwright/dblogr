@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Download Data
+# Data
 
 `r shiny::icon("globe")` https://www.nass.usda.gov/
 
@@ -42,7 +42,7 @@ myCaption3 = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: US
 myColors <- c("darkcyan", "darkorange", "darkgreen", "darkred")
 mylevels <- c("Open-Pollination", "Hybrid", "Biotech", "Yield Contest")
 d1 <- agData_USDA_Grains %>% 
-  filter(Crop == "Maize") %>%
+  filter(Item == "Maize") %>%
   mutate(Era = ifelse(Year < 1937, mylevels[1], 
                  ifelse(Year < 1996, mylevels[2], mylevels[3])),
          Era = factor(Era, levels = mylevels))
@@ -50,7 +50,7 @@ d2 <- agData_MaizeContest
 #
 myColors_Areas <- c("darkblue", "darkred", "darkgoldenrod2", "darkgreen")
 d3 <- agData_FAO_Crops %>% 
-  filter(Crop == "Maize", Measurement == "Yield", 
+  filter(Item == "Maize (corn)", Measurement == "Yield", 
          Area %in% c("Germany", "Mexico", "Africa"))
 ```
 
@@ -339,7 +339,7 @@ ggsave("maize_usa_10.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 xx <- agData_USDA_Grains %>% arrange(Year) %>%
-  filter(Measurement == "Yield", Crop == "Maize")
+  filter(Measurement == "Yield", Item == "Maize")
 xb <- mean(xx %>% filter(Year <= 1935) %>% pull(Value))   
 # Calculate yield gains compared to 1935
 xx$YieldGains <- NA
@@ -396,7 +396,7 @@ ggsave("maize_usa_11.png", mp, width = 6, height = 4)
 myColors <- c("darkcyan", "darkorange", "darkgreen")
 mylevels <- c("Open-Pollination", "Hybrid", "Biotech")
 xx <- agData_USDA_Grains %>% 
-  filter(Crop == "Maize") %>%
+  filter(Item == "Maize") %>%
   mutate(Era = ifelse(Year < 1937, mylevels[1], 
                  ifelse(Year < 1996, mylevels[2], mylevels[3])),
          Era = factor(Era, levels = mylevels))

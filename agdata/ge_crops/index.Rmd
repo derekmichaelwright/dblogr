@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Download Data
+# Data
 
 `r shiny::icon("globe")` https://www.isaaa.org/
 
@@ -43,6 +43,13 @@ myCrops <- c("Soybean", "Maize", "Cotton", "Canola")
 myColors_Crops <- c("darkblue", "darkgreen", "darkred", "darkgoldenrod2")
 myColors_Areas <- c("darkblue", "antiquewhite4", "darkslategrey", 
                     "darkgreen", "darkgoldenrod2", "darkred", "darkorchid1")
+#
+d1 <- agData_ISAAA_Area
+d2 <- agData_ISAAA_DVDDVG
+d3 <- agData_ISAAA_Crop
+d4 <- agData_ISAAA_CropPercent
+d5 <- agData_ISAAA_Country
+d6 <- agData_ISAAA_Value
 ```
 
 ---
@@ -55,7 +62,7 @@ myColors_Areas <- c("darkblue", "antiquewhite4", "darkslategrey",
 
 ```{r}
 # Prep data
-xx <- agData_ISAAA_Area %>% filter(Measurement == "Area")
+xx <- d1 %>% filter(Measurement == "Area")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
   geom_bar(stat = "identity", alpha = 0.25, fill = "darkgreen") +
@@ -76,7 +83,7 @@ ggsave("ge_crops_01.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- agData_ISAAA_Area %>% 
+xx <- d1 %>% 
   mutate(Value = ifelse(Measurement != "Percent Change", Value / 1000000, Value),
          Unit  = ifelse(Measurement != "Percent Change", paste("Million", Unit), Unit),
          Text  = ifelse((Measurement == "Percent Change" & Year %in% 1997:1999), Value, NA),
@@ -105,7 +112,7 @@ ggsave("ge_crops_02.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- agData_ISAAA_DVDDVG %>% filter(Unit == "Hectares")
+xx <- d2 %>% filter(Unit == "Hectares")
 xE <- xx %>% top_n(1, Year) %>% pull(Value) / 1000000
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) + 
@@ -134,7 +141,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- agData_ISAAA_DVDDVG %>% filter(Unit == "Percent")
+xx <- d2 %>% filter(Unit == "Percent")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) + 
   geom_line(size = 1.5, alpha = 0.7) + 
@@ -157,12 +164,12 @@ ggsave("ge_crops_04.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep Data
-xx <- agData_ISAAA_Crop %>% 
-  filter(Measurement == "Area", Crop %in% myCrops) %>%
-  mutate(Crop = factor(Crop, levels = myCrops))
+xx <- d3 %>% 
+  filter(Measurement == "Area", Item %in% myCrops) %>%
+  mutate(Item = factor(Item, levels = myCrops))
 xE <- xx %>% top_n(1, Year) %>% pull(Value) / 1000000
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
   geom_line(size = 1.5, alpha = 0.7) +
   scale_color_manual(name = NULL, values = myColors_Crops) +
   scale_y_continuous(breaks = seq(0, 100, by = 10), 
@@ -184,12 +191,12 @@ ggsave("ge_crops_05.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep Data
-xx <- agData_ISAAA_Crop %>% 
-  filter(Measurement == "Percent of GE Area", Crop %in% myCrops) %>%
-  mutate(Crop = factor(Crop, levels = myCrops))
+xx <- d3 %>% 
+  filter(Measurement == "Percent of GE Area", Item %in% myCrops) %>%
+  mutate(Item = factor(Item, levels = myCrops))
 xE <- xx %>% top_n(1, Year) %>% pull(Value)
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Item)) +
   geom_line(size = 1.5, alpha = 0.7) +
   scale_color_manual(name = NULL, values = myColors_Crops) +
   scale_y_continuous(breaks = seq(0, 60, by = 10), 
@@ -212,13 +219,13 @@ ggsave("ge_crops_06.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep Data
-xx <- agData_ISAAA_Crop %>% 
-  filter(Measurement == "Area Change", Crop %in% myCrops) %>%
-  mutate(Crop = factor(Crop, levels = myCrops))
+xx <- d3 %>% 
+  filter(Measurement == "Area Change", Item %in% myCrops) %>%
+  mutate(Item = factor(Item, levels = myCrops))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Crop)) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) +
   geom_bar(stat = "identity", color = "black", alpha = 0.7) +
-  facet_grid(Crop ~ ., scales = "free_y") +
+  facet_grid(Item ~ ., scales = "free_y") +
   scale_fill_manual(values = myColors_Crops) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
@@ -237,13 +244,13 @@ ggsave("ge_crops_07.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep Data
-xx <- agData_ISAAA_Crop %>% 
-  filter(Measurement == "Percent Change", Year > 1997, Crop %in% myCrops) %>%
-  mutate(Crop = factor(Crop, levels = myCrops))
+xx <- d3 %>% 
+  filter(Measurement == "Percent Change", Year > 1997, Item %in% myCrops) %>%
+  mutate(Item = factor(Item, levels = myCrops))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value, fill = Crop)) +
+mp <- ggplot(xx, aes(x = Year, y = Value, fill = Item)) +
   geom_bar(stat = "identity", color = "black", alpha = 0.7) +
-  facet_grid(Crop ~ ., scales = "free_y") +
+  facet_grid(Item ~ ., scales = "free_y") +
   scale_fill_manual(values = myColors_Crops) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
@@ -264,12 +271,12 @@ ggsave("ge_crops_08.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep Data
-xx <- agData_ISAAA_CropPercent %>% 
-  filter(Measurement == "Percent", Crop %in% myCrops) %>%
-  mutate(Crop = factor(Crop, levels = myCrops))
+xx <- d4 %>% 
+  filter(Measurement == "Percent", Item %in% myCrops) %>%
+  mutate(Item = factor(Item, levels = myCrops))
 xE <- xx %>% top_n(1, Year) %>% pull(Value)
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Item)) +
   geom_line(size = 1.5, alpha = 0.7) +
   scale_color_manual(name = NULL, values = myColors_Crops) +
   scale_y_continuous(breaks = seq(0, 80, by = 10), 
@@ -293,13 +300,13 @@ ggsave("ge_crops_09.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep Data
-xx <- agData_ISAAA_CropPercent %>% 
-  filter(Crop != "Others", Measurement != "Percent") %>%
+xx <- d4 %>% 
+  filter(Item != "Others", Measurement != "Percent") %>%
   mutate(Measurement = plyr::mapvalues(Measurement, "Area", "Total Area"))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement)) +
   geom_line(size = 1.5, alpha = 0.7) +
-  facet_wrap(Crop ~ ., ncol= 2, scales = "free_y") +
+  facet_wrap(Item ~ ., ncol= 2, scales = "free_y") +
   scale_color_manual(name = NULL, values = c("black", "darkgreen")) +
   scale_x_continuous(breaks = c(2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
@@ -317,7 +324,7 @@ ggsave("ge_crops_10.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep Data
-xx<- agData_ISAAA_Country %>% filter(Measurement == "Area")
+xx<- d5 %>% filter(Measurement == "Area")
 yy <- xx %>% filter(Value > 3000000) %>% pull(Area) %>% unique()
 xx <- xx %>% filter(Area %in% yy) %>%
   arrange(desc(Value)) %>%
@@ -347,7 +354,7 @@ ggsave("ge_crops_11.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep Data
-xx<- agData_ISAAA_Country %>%
+xx<- d5 %>%
   filter(Measurement == "Area") %>%
   arrange(desc(Value)) %>%
   mutate(Area = factor(Area, levels = unique(.$Area)))
@@ -371,7 +378,7 @@ ggsave("ge_crops_12.png", mp, width = 21, height = 8)
 
 ```{r}
 # Plot 
-mp <- ggplot(agData_ISAAA_Value, aes(x = Year, y = Value)) +
+mp <- ggplot(d6, aes(x = Year, y = Value)) +
   geom_bar(stat = "identity", alpha = 0.25, fill = "darkgreen") +
   geom_line(color = "darkgreen", size = 1.5, alpha = 0.7) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
@@ -406,8 +413,8 @@ ggsave("ge_crops_14.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F, eval = F}
-xx <- agData_ISAAA_CropPercent %>% filter(Crop == "Others")
-ggplot(xx, aes(x = Year, y = Value, color = Crop)) +
+xx <- d4 %>% filter(Item == "Others")
+ggplot(xx, aes(x = Year, y = Value, color = Item)) +
   geom_line(size = 2) +
   facet_grid(.~) +
   theme_agData() +

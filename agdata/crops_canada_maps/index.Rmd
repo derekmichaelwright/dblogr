@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Download Data
+# Data
 
 `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035901
 
@@ -31,7 +31,7 @@ library(mapcan)
 # Plotting functions
 cropMapCan_Production <- function(crop, year) {
   xx <- agData_STATCAN_Crops %>% 
-    filter(Crop == crop, Year == year, Measurement == "Production")
+    filter(Item == crop, Year == year, Measurement == "Production")
   xx <- mapcan(boundaries = province, type = standard) %>% 
     left_join(xx, by = c("pr_english"="Area"))
   # Plot
@@ -60,9 +60,9 @@ myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: ST
 xx <- agData_STATCAN_Crops
 # Plot
 pdf("figures_crops_canada_maps_statcan.pdf", width = 6, height = 4)
-for(i in unique(xx$Crop)) {
+for(i in unique(xx$Item)) {
   xi <- xx %>% 
-    filter(Crop == i, Year == 2020, Measurement == "Production") 
+    filter(Item == i, Year == 2020, Measurement == "Production") 
   xi <- mapcan(boundaries = province, type = standard) %>% 
     left_join(xi, by = c("pr_english"="Area"))
   print(ggplot(xi, aes(x = long, y = lat, group = group, 

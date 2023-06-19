@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Download Data
+# Data
 
 `r shiny::icon("save")` [data_ldp.csv](data_ldp.csv)
 
@@ -89,7 +89,7 @@ dd <- read.csv("data_ldp.csv") %>%
   mutate(DTF_Cluster = factor(DTF_Cluster))
 ```
 
-mapBubbles function
+Create custom mapBubbles function
 
 ```{r}
 mapBubbles2 <- function (dF = "", nameX = "longitude", nameY = "latitude", 

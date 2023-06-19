@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Download Data
+# Data
 
 `r shiny::icon("globe")` https://publications.saskatchewan.ca/#/categories/2179
 
@@ -24,13 +24,13 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
-library(readxl) # read_xlsx()
+library(readxl)
 library(gganimate)
 ```
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: SK GOV"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: SK GOV\nNote: most recent years data may be incomplete"
 myColorsMF <- c("palevioletred3", "steelblue")
 myRaces <- c("Unknown", "Other", "Black", "Asian",
              "Metis","First Nations", "Caucasian")

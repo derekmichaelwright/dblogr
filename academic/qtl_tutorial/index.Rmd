@@ -40,7 +40,7 @@ myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AG
 
 ---
 
-## Input Files
+## Data/Input Files
 
 `r shiny::icon("globe")` https://kbroman.org/qtl2/assets/vignettes/input_files.html
 

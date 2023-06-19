@@ -201,7 +201,7 @@ Data for Canadian autism rates can be found at https://www.canada.ca/en/public-h
 # Prep data
 x1 <- read.csv("data_quebec_autism_rates.csv")
 x2 <- agData_STATCAN_Crops %>% 
-  filter(Crop == "Soybeans", 
+  filter(Item == "Soybeans", 
          Measurement == "Production",
          Area == "Quebec") %>%
   select(Year, Soybean_Production=Value) %>%
@@ -302,7 +302,7 @@ In 1994 the first GM maize variety was released in the USA. If we only focus on 
 ```{r}
 # Prep data
 xx <- agData_USDA_Grains %>%
-  filter(Measurement == "Yield", Crop == "Maize") 
+  filter(Measurement == "Yield", Item == "Maize") 
 y1 <- xx %>% filter(Year > 1994, Year < 2011)
 y2 <- xx %>% filter(Year > 1950)
 # Plot

@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Download Data
+# Data
 
 `r shiny::icon("globe")` https://www2.gov.bc.ca/assets/gov/birth-adoption-death-marriage-and-divorce/deaths/coroners-service/statistical/illicit-drug.pdf
 
@@ -24,13 +24,13 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) 
-library(readxl) # read_xlsx()
+library(readxl)
 library(gganimate)
 ```
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: BC GOV"
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: BC GOV\nNote: most recent years data may be incomplete"
 #
 d1 <- read_xlsx("data_british_columbia_overdoses.xlsx", "Annual")
 #

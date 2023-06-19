@@ -202,11 +202,11 @@ x1 <- d1 %>% filter(Measurement != "Net GHG Balance", Area == "Saskatchewan")
 x2 <- d1 %>% filter(Measurement == "Net GHG Balance", Area == "Saskatchewan")
 myCrops <- c("Wheat","Canola","Barley","Tame hay","Lentils","Peas","Oats")
 x3 <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Crop %in% myCrops,
+  filter(Area == "Saskatchewan", Item %in% myCrops,
          Year %in% 1985:2016, Measurement == "Production") %>%
-  mutate(Crop = factor(Crop, levels = rev(myCrops)))
+  mutate(Item = factor(Item, levels = rev(myCrops)))
 # Plot
-mp1 <- ggplot(x3, aes(x = Year, y = Value / 1000000, fill = Crop)) +
+mp1 <- ggplot(x3, aes(x = Year, y = Value / 1000000, fill = Item)) +
   geom_bar(stat = "identity", color = "black", lwd = 0.3, alpha = 0.7) +
   scale_fill_manual(name = NULL, values = agData_Colors[7:1]) +
   scale_x_continuous(breaks = seq(1985, 2015, by = 5),
@@ -246,7 +246,7 @@ myCaption2 <- expression(paste("\u00A9 derekmichaelwright.github.io/dblogr/  |  
                                italic("et al"), ". (2021)"))
 x1 <- d1 %>% filter(Measurement == "Net GHG Balance", Area == "Saskatchewan")
 x2 <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Crop == "Canola",
+  filter(Area == "Saskatchewan", Item == "Canola",
          Year %in% 1985:2016, Measurement == "Area Harvested")
 xx <- left_join(select(x1, Year, GHG=All),
                 select(x2, Year, Canola=Value), by = "Year") %>%

@@ -11,18 +11,32 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Download Data
+# Data
 
 `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035901
 
 `r shiny::icon("save")` [agData_STATCAN_Crops.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Crops.csv.gz)
+
+`r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015301
+
+`r shiny::icon("save")` [agData_STATCAN_FarmLand_Use.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_FarmLand_Use.csv.gz)
+
+---
+
+# Prepare Data
 
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(treemapify)
 library(gganimate)
+```
+
+```{r}
 myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+#
+d1 <- agData_STATCAN_Crops %>% filter(Area == "Saskatchewan")
+d2 <- agData_STATCAN_FarmLand_Use %>% filter(Area == "Saskatchewan")
 ```
 
 ---
@@ -37,18 +51,17 @@ myColors <- c("darkgreen", "darkorange", "darkred",
               "antiquewhite4", "steelblue", "darkblue")
 myMeasures <- c("Area Seeded", "Area Harvested", "Production", 
                 "Yield", "Average Farm Price", "Total Farm Value")
-xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan") %>%
+xx <- d1 %>%
   mutate(Measurement = factor(Measurement, levels = myMeasures),
          Value = ifelse(Measurement != "Yield",
                         Value / 1000000, Value / 1000),
          Unit = plyr::mapvalues(Unit, c("Hectares", "Tonnes", "kg/ha"), 
                   c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
-myCrops <- unique(xx$Crop)
+myCrops <- unique(xx$Item)
 # Plot
 pdf("figures_crops_saskatchewan_statcan.pdf", width = 10, height = 6)
 for(i in myCrops) {
-  xi <- xx %>% filter(Crop == i)
+  xi <- xx %>% filter(Item == i)
   print(ggplot(xi, aes(x = Year, y = Value, color = Measurement)) +
     geom_line(size = 1.5, alpha = 0.7) +
     facet_wrap(. ~ Measurement, scales = "free_y", ncol = 3) +
@@ -70,15 +83,11 @@ dev.off()
 cropList <- function(measurement, years) {
   # Prep data
   xx <- agData_STATCAN_Crops %>% 
-    filter(Area == "Saskatchewan", Measurement == measurement, Year %in% years) 
-  # Get top 15 crops from each year
-  topcrops <- function(x, year) {
-    x <- x %>% filter(Year == year) %>% arrange(desc(Value)) %>% 
-      pull(Crop) %>% unique() %>% as.character()
-  }
-  myCrops <- NULL
-  for(i in years) { myCrops <- c(myCrops, topcrops(xx, i)) }
-  unique(myCrops)
+    filter(Measurement == measurement, Year %in% years,
+           Area == "Saskatchewan") %>%
+    arrange(desc(Value)) %>% 
+    pull(Item) %>% unique() %>% as.character()
+  xx
 }
 ```
 
@@ -91,12 +100,12 @@ cropList <- function(measurement, years) {
 ```{r}
 # Prep data
 myCrops <- cropList(measurement = "Production", years = c(2020, 1961, 1908))
-xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Year %in% c(2020, 1961, 1908),
-         Measurement == "Production", Crop %in% myCrops) %>%
-  mutate(Crop = factor(Crop, levels = myCrops) )
+xx <- d1 %>% 
+  filter(Measurement == "Production", Item %in% myCrops,
+         Year %in% c(2020, 1961, 1908) ) %>%
+  mutate(Item = factor(Item, levels = myCrops) )
 # Plot
-mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) + 
+mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) + 
   geom_bar(stat = "identity", color = "Black", alpha = 0.7) + 
   facet_grid(Year ~ .) + 
   scale_fill_manual(values = agData_Colors) +
@@ -116,12 +125,12 @@ ggsave("crops_saskatchewan_01.png", mp, width = 6, height = 5)
 ```{r}
 # Prep data
 myCrops <- cropList(measurement = "Area Seeded", years = c(2020, 1961, 1908))
-xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Year %in% c(2020, 1961, 1908),
-         Measurement == "Area Seeded", Crop %in% myCrops) %>%
-  mutate(Crop = factor(Crop, levels = myCrops) )
+xx <- d1 %>% 
+  filter(Measurement == "Area Seeded", Item %in% myCrops,
+         Year %in% c(2020, 1961, 1908) ) %>%
+  mutate(Item = factor(Item, levels = myCrops) )
 # Plot
-mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, fill = Crop)) + 
+mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) + 
   geom_bar(stat = "identity", color = "Black", alpha = 0.7) + 
   facet_grid(Year ~ .) + 
   scale_fill_manual(values = agData_Colors) +
@@ -145,12 +154,12 @@ ggsave("featured.png", mp, width = 6, height = 5)
 ```{r}
 # Prep data
 myCrops <- cropList(measurement = "Yield", years = c(2020, 1961, 1908))[-1]
-xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Year %in% c(2020, 1961, 1908),
-         Measurement == "Yield", Crop %in% myCrops) %>%
-  mutate(Crop = factor(Crop, levels = myCrops) )
+xx <- d1 %>% 
+  filter(Measurement == "Yield", Item %in% myCrops,
+         Year %in% c(2020, 1961, 1908) ) %>%
+  mutate(Item = factor(Item, levels = myCrops) )
 # Plot
-mp <- ggplot(xx, aes(x = Crop, y = Value / 1000, fill = Crop)) + 
+mp <- ggplot(xx, aes(x = Item, y = Value / 1000, fill = Item)) + 
   geom_bar(stat = "identity", color = "Black", alpha = 0.7) + 
   facet_grid(Year ~ .) + 
   scale_fill_manual(values = agData_Colors) +
@@ -171,27 +180,27 @@ ggsave("crops_saskatchewan_03.png", mp, width = 6, height = 5)
 
 ```{r}
 # Prep data
-xx <- agData_STATCAN_Crops %>% 
-    filter(Area == "Saskatchewan", !Crop %in% c("Hemp","Sugar beets"),
+xx <- d1 %>% 
+    filter(!Item %in% c("Hemp","Sugar beets"),
            Measurement == "Production") %>% 
-  group_by(Crop) %>%
+  group_by(Item) %>%
   mutate(Value = movingAverage(Value, n = 3)) %>%
   group_by(Year) %>%
   arrange(Year, -Value) %>%
   mutate(Rank = 1:n()) %>%
   filter(Rank < 15) %>% 
   arrange(desc(Year)) %>%
-  mutate(Crop = factor(Crop, levels = unique(.$Crop)))
+  mutate(Item = factor(Item, levels = unique(.$Item)))
 # Plot
 mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000, 
                      ymin = Rank - 0.45, ymax = Rank + 0.45, y = Rank, 
-                     fill = Crop)) + 
+                     fill = Item)) + 
   geom_rect(alpha = 0.7, color = "black") + 
   scale_fill_manual(values = agData_Colors) +
   scale_x_continuous(limits = c(-4,max(xx$Value)/1000000),
                      breaks = seq(0, 18, by = 4),
                      minor_breaks = seq(0, 18, by = 2)) +
-  geom_text(aes(label = Crop), col = "black", hjust = 1, x = -0.2) +
+  geom_text(aes(label = Item), col = "black", hjust = 1, x = -0.2) +
   scale_y_reverse() +
   theme_agData(legend.position = "none",
                axis.text.y = element_blank(), 
@@ -214,25 +223,24 @@ anim_save("crops_saskatchewan_gif_01.gif", mp,
 
 ```{r}
 # Prep data
-xx <- agData_STATCAN_Crops %>% 
-    filter(Area == "Saskatchewan", 
-           Measurement == "Area Seeded") %>% 
+xx <- d1 %>% 
+  filter(Measurement == "Area Seeded") %>% 
   group_by(Year) %>%
   arrange(Year, -Value) %>%
   mutate(Rank = 1:n()) %>%
   filter(Rank < 15) %>% 
   arrange(desc(Year)) %>%
-  mutate(Crop = factor(Crop, levels = unique(.$Crop)))
+  mutate(Item = factor(Item, levels = unique(.$Item)))
 # Plot
 mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000, 
                      ymin = Rank - 0.45, ymax = Rank + 0.45, y = Rank, 
-                     fill = Crop)) + 
+                     fill = Item)) + 
   geom_rect(alpha = 0.7, color = "black") + 
   scale_fill_manual(values = agData_Colors) +
   scale_x_continuous(limits = c(-2,max(xx$Value)/1000000),
                      breaks = seq(0, 10, by = 2),
                      minor_breaks = seq(0, 10, by = 1)) +
-  geom_text(aes(label = Crop), col = "black", hjust = 1, x = -0.1) +
+  geom_text(aes(label = Item), col = "black", hjust = 1, x = -0.1) +
   scale_y_reverse() +
   theme_agData(legend.position = "none",
                axis.text.y = element_blank(), 
@@ -257,22 +265,16 @@ anim_save("crops_saskatchewan_gif_02.gif", mp,
 # Prep data
 myCrops <- cropList(measurement = "Production", years = 2020)[c(1:8)]
 myCrops <- c(myCrops, "Other")
-x1 <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan",
-         Measurement == "Production", 
-         Crop %in% myCrops) 
-x2 <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan",
-         Measurement == "Production", 
-         !Crop %in% myCrops) %>%
+x1 <- d1 %>% filter(Measurement == "Production", Item %in% myCrops) 
+x2 <- d1 %>% filter(Measurement == "Production", !Item %in% myCrops) %>%
   group_by(Year) %>%
   summarise(Value = sum(Value, na.rm = T)) %>%
   ungroup() %>%
-  mutate(Crop = "Other")
+  mutate(Item = "Other")
 xx <- bind_rows(x1, x2) %>%
-  mutate(Crop = factor(Crop, levels = rev(myCrops)))
+  mutate(Item = factor(Item, levels = rev(myCrops)))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Crop)) + 
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) + 
   geom_bar(stat = "identity", alpha = 0.7, color = "black", lwd = 0.1) + 
   scale_fill_manual(name = NULL, values = agData_Colors[c(9:1)]) +
   scale_x_continuous(breaks = seq(1910, 2020, by=10)) +
@@ -292,11 +294,11 @@ ggsave("crops_saskatchewan_04.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 xx <- xx %>% filter(Year %in% c(2020, 2021)) %>%
-  mutate(Crop = factor(Crop, levels = myCrops),
+  mutate(Item = factor(Item, levels = myCrops),
          Year = factor(Year))
 # Plot
-mp <- ggplot(xx, aes(x = Crop, y = Value / 1000000, 
-                     fill = Crop, alpha = Year)) + 
+mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, 
+                     fill = Item, alpha = Year)) + 
   geom_bar(stat = "identity", position = "dodge", color = "black") + 
   scale_fill_manual(values = agData_Colors, guide = F) +
   scale_alpha_manual(name = NULL, values = c(0.7, 0.3)) +
@@ -320,24 +322,18 @@ myYears <- c(1935,1936,1937,1938,1939, 1952,1953,1954,1955,1956,
              1959,1960,1961,1962,1963, 1986,1987,1988,1989,1990, 
              2000,2001,2002,2003,2004, 2019,2020,2021,2022,2023)
 myGroups <- c(rep(1:6, each = 5))
-x1 <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan",
-         Measurement == "Production", 
-         Crop %in% myCrops) 
-x2 <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan",
-         Measurement == "Production", 
-         !Crop %in% myCrops) %>%
+x1 <- d1 %>% filter(Measurement == "Production", Item %in% myCrops) 
+x2 <- d1 %>% filter(Measurement == "Production", !Item %in% myCrops) %>%
   group_by(Year) %>%
   summarise(Value = sum(Value, na.rm = T)) %>%
   ungroup() %>%
-  mutate(Crop = "Other")
+  mutate(Item = "Other")
 xx <- bind_rows(x1, x2) %>%
   filter(Year %in% myYears) %>%
-  mutate(Crop = factor(Crop, levels = rev(myCrops)),
+  mutate(Item = factor(Item, levels = rev(myCrops)),
          Group = plyr::mapvalues(Year, myYears, myGroups))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Crop)) + 
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) + 
   geom_bar(stat = "identity", alpha = 0.7, color = "black", lwd = 0.3) + 
   facet_wrap(Group ~ . , ncol = 6, scales = "free") +
   scale_fill_manual(name = NULL, values = agData_Colors[c(9:1)]) +
@@ -358,12 +354,11 @@ ggsave("crops_saskatchewan_06.png", mp, width = 8, height = 4)
 ```{r}
 # Prep data
 myCrops <- cropList(measurement = "Yield", years = 2020)[-1]
-xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Year == 2020,
-         Measurement == "Yield", Crop %in% myCrops) %>%
-  mutate(Crop = factor(Crop, levels = myCrops) )
+xx <- d1 %>% 
+  filter(Year == 2020, Measurement == "Yield", Item %in% myCrops) %>%
+  mutate(Item = factor(Item, levels = myCrops) )
 # Plot
-mp <- ggplot(xx, aes(x = Crop, y = Value / 1000, fill = Crop)) + 
+mp <- ggplot(xx, aes(x = Item, y = Value / 1000, fill = Item)) + 
   geom_bar(stat = "identity", color = "Black", alpha = 0.7) + 
   facet_grid(Year ~ .) + 
   scale_fill_manual(values = agData_Colors) +
@@ -386,14 +381,14 @@ pp <- agData_STATCAN_Population %>%
   filter(Month == 1, Area == "Saskatchewan", Year == 2020) %>%
   pull(Value)
 myCrops <- cropList(measurement = "Production", years = 2020)
-xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Year %in% 2020,
-         Measurement == "Production", Crop %in% myCrops) %>%
-  mutate(Crop = factor(Crop, levels = myCrops),
+xx <- d1 %>% 
+  filter(Year == 2020, Item %in% myCrops,
+         Measurement == "Production") %>%
+  mutate(Item = factor(Item, levels = myCrops),
          PerPerson = Value / pp) %>%
   filter(PerPerson > 0.1)
 # Plot
-mp <- ggplot(xx, aes(x = Crop, y = PerPerson, fill = Crop)) + 
+mp <- ggplot(xx, aes(x = Item, y = PerPerson, fill = Item)) + 
   geom_bar(stat = "identity", color = "Black", alpha = 0.7) + 
   geom_label(aes(label = round(PerPerson,1)), vjust = -0.15, fill = "White",
              size = 3, label.padding = unit(0.15, "lines")) +
@@ -417,15 +412,14 @@ ggsave("crops_saskatchewan_08.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Measurement == "Area Seeded") 
+xx <- d1 %>% filter(Measurement == "Area Seeded") 
 myCrops <- unique(c(cropList(measurement = "Area Seeded", years = 2017), 
-                    as.character(xx$Crop)))
-xx <- xx %>% mutate(Crop = factor(Crop, levels = myCrops))
+                    as.character(xx$Item)))
+xx <- xx %>% mutate(Item = factor(Item, levels = myCrops))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) + 
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) + 
   geom_line(alpha = 0.7) + 
-  facet_wrap(Crop ~ ., ncol = 6) + 
+  facet_wrap(Item ~ ., ncol = 6) + 
   scale_color_manual(values = agData_Colors) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
@@ -442,15 +436,14 @@ ggsave("crops_saskatchewan_09.png", mp, width = 6, height = 5)
 
 ```{r}
 # Prep data
-xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Measurement == "Production") 
+xx <- d1 %>% filter(Measurement == "Production") 
 myCrops <- unique(c(cropList(measurement = "Production", years = 2017), 
-                    as.character(xx$Crop)))
-xx <- xx %>% mutate(Crop = factor(Crop, levels = myCrops))
+                    as.character(xx$Item)))
+xx <- xx %>% mutate(Item = factor(Item, levels = myCrops))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) + 
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) + 
   geom_line(alpha = 0.7) + 
-  facet_wrap(Crop ~ ., ncol = 6) + 
+  facet_wrap(Item ~ ., ncol = 6) + 
   scale_color_manual(values = agData_Colors) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
@@ -467,13 +460,11 @@ ggsave("crops_saskatchewan_10.png", mp, width = 6, height = 5)
 
 ```{r}
 # Prep data
-xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Year == 2020, 
-         Measurement == "Area Seeded") %>%
+xx <- d1 %>% filter(Year == 2020, Measurement == "Area Seeded") %>%
   arrange(desc(Value)) %>%
-  mutate(Crop = factor(Crop, levels = unique(.$Crop)))
+  mutate(Item = factor(Item, levels = unique(.$Item)))
 # Plot
-mp <- ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
+mp <- ggplot(xx, aes(area = Value, fill = Item, label = Item)) +
   geom_treemap(color = "black", alpha = 0.7, size = 1.5) +
   geom_treemap_text(place = "centre", grow = T, color = "white") +
   scale_fill_manual(values = agData_Colors) +
@@ -491,12 +482,11 @@ ggsave("crops_saskatchewan_11.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Measurement == "Area Seeded") %>%
+xx <- d1 %>% filter(Measurement == "Area Seeded") %>%
   arrange(desc(Year), desc(Value)) %>% 
-  mutate(Crop = factor(Crop, levels = unique(.$Crop)))
+  mutate(Item = factor(Item, levels = unique(.$Item)))
 # Plot
-mp <- ggplot(xx, aes(area = Value, fill = Crop, label = Crop)) +
+mp <- ggplot(xx, aes(area = Value, fill = Item, label = Item)) +
   geom_treemap(layout = "fixed", color = "black", alpha = 0.7, size = 1.5) +
   geom_treemap_text(layout = "fixed", place = "centre", 
                     grow = T, color = "white") +
@@ -518,13 +508,13 @@ anim_save("crops_saskatchewan_gif_03.gif", mp,
 
 ```{r}
 # Prep data
-xx <- agData_STATCAN_FarmLand_Use %>% 
-  filter(Area == "Saskatchewan", Item == "Total area of farms", 
+xx <- d2 %>%
+  filter(Item == "Total area of farms", 
          Unit == "Hectares", !is.na(Value))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
   geom_bar(stat = "identity", alpha = 0) +
-  geom_line(color = "darkgreen", size = 1.25, alpha = 0.7) +
+  geom_line(color = "darkgreen", size = 1.5, alpha = 0.7) +
   scale_x_continuous(breaks = seq(1920, 2020, 10)) +
   scale_y_continuous(breaks = seq(0, 30, 5)) +
   theme_agData() +
@@ -543,13 +533,11 @@ ggsave("crops_saskatchewan_12.png", mp, width = 6, height = 4)
 # Prep data
 myColors <- c("darkgreen","darkgoldenrod2","darkred")
 myCrops <- c("Summerfallow", "Wheat", "Canola")
-xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Measurement == "Area Seeded",
-         Crop %in% myCrops) %>%
-  mutate(Crop = factor(Crop, levels = myCrops))
+xx <- d1 %>% filter(Measurement == "Area Seeded", Item %in% myCrops) %>%
+  mutate(Item = factor(Item, levels = myCrops))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, 
-                     color = Crop, alpha = Crop, size = Crop)) + 
+                     color = Item, alpha = Item, size = Item)) + 
   geom_line() +
   scale_color_manual(name = NULL, values = myColors) +
   scale_alpha_manual(name = NULL, values = c(0.8,0.6,0.6)) +
@@ -563,31 +551,32 @@ ggsave("crops_saskatchewan_13.png", mp, width = 6, height = 4)
 
 ---
 
-# 1970 Crop Area
+# 1960 Crop Area
 
 ![](crops_saskatchewan_14.png)
 
 ```{r}
 # Prep data
-myCrops <- cropList(measurement = "Area Seeded", years = c(1970, 2020))
-xx <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Year %in% c(1970,2020),
-         Measurement == "Area Seeded") %>%
-  arrange(desc(Value)) %>%
-  mutate(Crop = factor(Crop, levels = unique(.$Crop)))
+myYears <- c(2020, 1990, 1960)
+myCrops <- cropList(measurement = "Area Seeded", years = myYears)[1:9]
+xx <- d1 %>% filter(Year %in% myYears, Measurement == "Area Seeded")
+x1 <- xx %>% filter(Item %in% myCrops)
+x2 <- xx %>% filter(!Item %in% myCrops) %>% 
+  group_by(Area, Year, Measurement, Unit) %>%
+  summarise(Value = sum(Value)) %>%
+  mutate(Item = "Other")
+myCrops <- c(myCrops[myCrops != "Summerfallow"], "Other", "Summerfallow")
+xx <- bind_rows(x1, x2) %>%
+  mutate(Item = factor(Item, levels = myCrops))
 # Plot
-mp <- ggplot(xx, aes(x = "", y = Value / 1000000, fill = Crop)) + 
-  geom_bar(stat = "identity", color = "black") +
+mp <- ggplot(xx, aes(x = "", y = Value / 1000000, fill = Item)) + 
+  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
   facet_grid(. ~ Year) +
   scale_fill_manual(name = NULL, values = agData_Colors) +
-  #scale_alpha_manual(name = NULL, values = c(0.8,0.6,0.6)) +
-  #scale_size_manual(name = NULL, values = c(1.75,1.5,1.5)) +
-  #scale_x_continuous(breaks = seq(1910, 2020, 10)) +
   theme_agData() +
-  labs(title = "Saskatchewan - Summerfallow", 
+  labs(title = "Saskatchewan - Area Seeded", 
        y = "Million Hectares", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_14.png", mp, width = 6, height = 4)
-levels(xx$Crop)
 ```
 
 ---
@@ -599,22 +588,22 @@ levels(xx$Crop)
 ```{r}
 # Prep data
 myColors <- c("darkgoldenrod2","darkgreen","darkred")
-x1 <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Measurement == "Production",
-         Crop %in% c("Lentils", "Peas", "Beans", "Chickpeas")) %>%
+x1 <- d1 %>% 
+  filter(Measurement == "Production",
+         Item %in% c("Lentils", "Peas", "Beans", "Chickpeas")) %>%
   group_by(Year) %>% 
   summarise(Value = sum(Value)) %>%
-  mutate(Crop = "Fake Meat Proteins (Legumes)")
+  mutate(Item = "Fake Meat Proteins (Legumes)")
 x2 <- agData_STATCAN_Crops %>% 
   filter(Area == "Saskatchewan", Measurement == "Production",
-         Crop %in% c("Canola", "Wheat")) %>%
-  mutate(Crop = plyr::mapvalues(Crop, c("Canola", "Wheat"), 
+         Item %in% c("Canola", "Wheat")) %>%
+  mutate(Item = plyr::mapvalues(Item, c("Canola", "Wheat"), 
                                       c("Evil GMO Oilseeds (Canola)", "Toxic Gluten (Wheat)")))
 xx <- bind_rows(x1, x2) %>% filter(Year < 2021) %>%
-  mutate(Crop = factor(Crop, levels = c("Toxic Gluten (Wheat)", "Fake Meat Proteins (Legumes)", 
+  mutate(Item = factor(Item, levels = c("Toxic Gluten (Wheat)", "Fake Meat Proteins (Legumes)", 
                                         "Evil GMO Oilseeds (Canola)")))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
   geom_line(size = 1.5, alpha = 0.7) +
   scale_color_manual(name = NULL, values = myColors) +
   scale_x_continuous(breaks = seq(1910, 2020, 10)) +

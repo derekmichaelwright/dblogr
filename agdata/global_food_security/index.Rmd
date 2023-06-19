@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Download Data
+# Data
 
 `r shiny::icon("save")` [agData_FAO_Country_Table.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Country_Table.csv.gz)
 
@@ -49,7 +49,7 @@ myColors1 <- c("purple4",  "darkgoldenrod2", "red", "steelblue", "darkblue",
 myColors2 <- c("purple4",  "darkgreen", "darkred", "steelblue")
 myColors3 <- c("darkred", "darkgreen", "darkorange", "darkblue", "steelblue")
 dd <- agData_FAO_Crops2 %>% select(-Unit) %>%
-  filter(Area %in% myAreas, Crop %in% myItems1) %>%
+  filter(Area %in% myAreas, Item %in% myItems1) %>%
   spread(Measurement, Value)
 pp <- agData_FAO_Population %>%
   filter(Measurement == "Total") %>%
@@ -57,31 +57,31 @@ pp <- agData_FAO_Population %>%
 dd <- left_join(dd, pp, by = c("Area", "Year")) %>%
   left_join(agData_FAO_Region_Table, by = c("Area"="SubRegion")) %>%
   mutate(TonnesPerPerson = Production / Population,
-         Crop = plyr::mapvalues(Crop, myItems1, myItems2[-1]),
+         Item = plyr::mapvalues(Item, myItems1, myItems2[-1]),
          Area = plyr::mapvalues(Area, "Australia and New Zealand", "Au and NZ"),
          Population_R1961 = NA, Production_R1961 = NA,
          Area_R1961 = NA, Yield_R1961 = NA)
-for(i in unique(dd$Crop)) {
+for(i in unique(dd$Item)) {
   for(j in unique(dd$Area)) {
     # Population
     p1961 <- dd %>% 
-      filter(Area == j, Crop == i, Year == 1961) %>% pull(Population)
-    dd <- dd %>% mutate(Population_R1961 = ifelse(Area == j & Crop == i, 
+      filter(Area == j, Item == i, Year == 1961) %>% pull(Population)
+    dd <- dd %>% mutate(Population_R1961 = ifelse(Area == j & Item == i, 
               100*(Population - p1961) / p1961, Population_R1961))
     # Production
     p1961 <- dd %>% 
-      filter(Area == j, Crop == i, Year == 1961) %>% pull(Production)
-    dd <- dd %>% mutate(Production_R1961 = ifelse(Area == j & Crop == i, 
+      filter(Area == j, Item == i, Year == 1961) %>% pull(Production)
+    dd <- dd %>% mutate(Production_R1961 = ifelse(Area == j & Item == i, 
               100*(Production - p1961) / p1961, Production_R1961))
     # Area
     p1961 <- dd %>% 
-      filter(Area == j, Crop == i, Year == 1961) %>% pull(`Area Harvested`)
-    dd <- dd %>% mutate(Area_R1961 = ifelse(Area == j & Crop == i, 
+      filter(Area == j, Item == i, Year == 1961) %>% pull(`Area Harvested`)
+    dd <- dd %>% mutate(Area_R1961 = ifelse(Area == j & Item == i, 
               100*(`Area Harvested` - p1961) / p1961, Area_R1961))
     # Yield
     p1961 <- dd %>% 
-      filter(Area == j, Crop == i, Year == 1961) %>% pull(Yield)
-    dd <- dd %>% mutate(Yield_R1961 = ifelse(Area == j & Crop == i, 
+      filter(Area == j, Item == i, Year == 1961) %>% pull(Yield)
+    dd <- dd %>% mutate(Yield_R1961 = ifelse(Area == j & Item == i, 
               100*(Yield - p1961) / p1961, Yield_R1961))
   }
 }
@@ -102,7 +102,7 @@ xx <- dd %>% filter(Area == "World")
 mp <- ggplot(xx, aes(x = Year, )) +
   geom_line(aes(y = Population_R1961, color = "Population"), 
             size = 1.75, alpha = 0.8) +
-  geom_line(aes(y = Production_R1961, color = Crop), 
+  geom_line(aes(y = Production_R1961, color = Item), 
             size = 0.75, alpha = 0.7) +
   scale_x_continuous(breaks = seq(1960, 2020, by = 10)) +
   scale_color_manual(name = NULL, values = myColors1, breaks = myItems2) +
@@ -131,7 +131,7 @@ mp <- ggplot(xx, aes(x = Year)) +
             size = 1.25, alpha = 0.7) +
   geom_line(aes(y = Yield_R1961, color = "Yield"),
             size = 1.25, alpha = 0.7) +
-  facet_wrap(. ~ Crop, ncol = 4, scales = "free_y") +
+  facet_wrap(. ~ Item, ncol = 4, scales = "free_y") +
   scale_x_continuous(breaks = seq(1960, 2020, by = 10)) +
   scale_color_manual(name = NULL, values = myColors2,
                      breaks = c("Population","Production", "Yield", "Area")) +
@@ -150,7 +150,7 @@ ggsave("global_food_security_02.png", mp, width = 10, height = 6)
 
 ```{r}
 # Prep data
-xx <- dd %>% filter(Area == "World", Crop == "Cereals")
+xx <- dd %>% filter(Area == "World", Item == "Cereals")
 # Plot
 mp <- ggplot(xx, aes(x = Year)) +
   geom_line(aes(y = Population_R1961, color = "Population"),
@@ -178,7 +178,7 @@ ggsave("global_food_security_03.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- dd %>% filter(Area == "World", Crop %in% c("Cereals", "Pulses"))
+xx <- dd %>% filter(Area == "World", Item %in% c("Cereals", "Pulses"))
 # Plot
 mp <- ggplot(xx, aes(x = Year)) +
   geom_line(aes(y = Population_R1961, color = "Population"),
@@ -189,7 +189,7 @@ mp <- ggplot(xx, aes(x = Year)) +
             size = 1.5, alpha = 0.7) +
   geom_line(aes(y = Area_R1961, color = "Area"),
             size = 1.5, alpha = 0.7) +
-  facet_grid(. ~ Crop) +
+  facet_grid(. ~ Item) +
   scale_x_continuous(breaks = seq(1960, 2020, by = 10)) +
   scale_color_manual(name = NULL, values = myColors2,
                      breaks = c("Population","Production", "Yield", "Area")) +
@@ -217,13 +217,13 @@ xx <- dd %>% filter(Area %in% myRegions, Year == max(Year))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Area)) + 
   geom_bar(stat = "identity", color = "black", alpha = 0.7) +
-  facet_wrap(Crop ~ ., scales = "free", ncol = 7) +
+  facet_wrap(Item ~ ., scales = "free", ncol = 4) +
   scale_fill_manual(values = myColors3) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = paste("Food Security -", max(xx$Year)), 
        y = "Tonnes Per Person", x = NULL, caption = myCaption)
-ggsave("global_food_security_05.png", mp, width = 12, height = 4)
+ggsave("global_food_security_05.png", mp, width = 12, height = 6)
 ```
 
 ---
@@ -238,7 +238,7 @@ xx <- dd %>% filter(Area %in% mySubRegions, Year == max(Year))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Region)) + 
   geom_bar(stat = "identity", color = "black", alpha = 0.7) +
-  facet_grid(Crop ~ Region, scales = "free", space = "free_x") +
+  facet_grid(Item ~ Region, scales = "free", space = "free_x") +
   scale_fill_manual(values = myColors3) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -255,7 +255,7 @@ xx <- dd %>% filter(!Area %in% c("World", "Oceania"))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Region)) + 
   geom_bar(stat = "identity", color = "black") +
-  facet_grid(Crop ~ Region, scales = "free") +
+  facet_grid(Item ~ Region, scales = "free") +
   scale_fill_manual(values = agData_Colors[c(1,4,3,2,7)]) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
@@ -278,8 +278,8 @@ anim_save("global_food_security_gifs_01.gif", mp)
 ```{r}
 # Prep Data
 xx <- dd %>% filter(Area %in% mySubRegions, Year == max(Year)) %>%
-  select(Area, Region, Crop, TonnesPerPerson) %>%
-  spread(Crop, TonnesPerPerson)
+  select(Area, Region, Item, TonnesPerPerson) %>%
+  spread(Item, TonnesPerPerson)
 # Plot
 mp <- ggplot(xx, aes(x = Cereals, y = Pulses)) + 
   geom_point(aes(size = Tubers, color = Region), alpha = 0.8) + 
@@ -303,7 +303,7 @@ ggsave("global_food_security_07.png", mp, width = 6, height = 4)
 # Prep data
 xx <- dd %>% filter(Area %in% mySubRegions)
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = TonnesPerPerson, color = Crop)) + 
+mp <- ggplot(xx, aes(x = Year, y = TonnesPerPerson, color = Item)) + 
   geom_line(size = 1, alpha = 0.7) +
   facet_wrap(. ~ Region + Area, ncol = 7) +
   scale_x_continuous(breaks = seq(1970,2010, by = 20)) +
@@ -311,7 +311,7 @@ mp <- ggplot(xx, aes(x = Year, y = TonnesPerPerson, color = Crop)) +
   theme_agData() +
   labs(title = "Global Food Security - SubRegions", x = NULL,
        y = "Tonnes Per Person", caption = myCaption)
-ggsave("global_food_security_08.png", mp, width = 10, height = 8)
+ggsave("global_food_security_08.png", mp, width = 10, height = 6)
 ```
 
 ---
@@ -324,7 +324,7 @@ ggsave("global_food_security_08.png", mp, width = 10, height = 8)
 # Prep data
 xx <- dd %>% filter(Area %in% mySubRegions)
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = TonnesPerPerson, color = Crop)) + 
+mp <- ggplot(xx, aes(x = Year, y = TonnesPerPerson, color = Item)) + 
   geom_line(size = 1, alpha = 0.7) +
   facet_wrap(. ~ Region + Area, scales = "free_y", ncol = 7) +
   scale_x_continuous(breaks = seq(1970,2010, by = 20)) +
@@ -332,7 +332,7 @@ mp <- ggplot(xx, aes(x = Year, y = TonnesPerPerson, color = Crop)) +
   theme_agData() +
   labs(title = "Global Food Security - SubRegions", x = NULL,
        y = "Tonnes Per Person", caption = myCaption)
-ggsave("global_food_security_09.png", mp, width = 12, height = 8)
+ggsave("global_food_security_09.png", mp, width = 12, height = 6)
 ```
 
 ---
@@ -345,7 +345,7 @@ ggsave("global_food_security_09.png", mp, width = 12, height = 8)
 
 ```{r}
 # Prep data
-myItems <- c("Wheat", "Maize", "Rice", "Sorghum")
+myItems <- c("Wheat", "Maize (corn)", "Rice", "Sorghum")
 xx <- agData_FAO_Trade_Quantity %>%
   filter(Item %in% myItems, Area %in% myRegions)# %>%
   #mutate(Area = factor(Area, levels = myAreas))
@@ -371,7 +371,7 @@ ggsave("global_food_security_10.png", mp, width = 6, height = 6)
 
 ```{r}
 # Prep data
-myItems <- c("Soybeans", "Beans, dry", "Chick peas", "Lentils")
+myItems <- c("Soya beans", "Beans, dry", "Chick peas, dry", "Lentils, dry")
 xx <- agData_FAO_Trade_Quantity %>%
   filter(Item %in% myItems, Area %in% myRegions)# %>%
   #mutate(Area = factor(Area, levels = myAreas))
@@ -400,9 +400,9 @@ ggsave("global_food_security_11.png", mp, width = 6, height = 6)
 xx <- dd %>% filter(Area != "World")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = TonnesPerPerson, 
-                     color = Crop, group = Area)) + 
+                     color = Item, group = Area)) + 
   geom_line(size = 1, alpha = 0.7) +
-  facet_grid(Crop ~ Region, scales = "free_y") +
+  facet_grid(Item ~ Region, scales = "free_y") +
   scale_x_continuous(breaks = seq(1970,2010, by = 20)) +
   scale_color_manual(name = NULL, values = myColors1) +
   theme_agData(legend.position = "bottom") +

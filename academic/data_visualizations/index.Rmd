@@ -17,11 +17,15 @@ This vignette will explore several aspects of data visualization using a lentil 
 
 ---
 
-# Download Data
+# Data
 
 `r shiny::icon("save")` [data_visualizations_1.csv](data_visualizations_1.csv)
 
 `r shiny::icon("save")` [data_visualizations_2.csv](data_visualizations_2.csv)
+
+---
+
+# Prepare Data
 
 ```{r echo = F, eval = T}
 library(agData)
@@ -67,6 +71,17 @@ write.csv(xx, "data_visualizations_1.csv", row.names = F)
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myColors <- c("steelblue","darkgreen","darkorange")
+# Prep data
+d1 <- read.csv("data_visualizations_1.csv")
+#
+myLocations <- c("Morocco", "Nepal", "Italy")
+myEntries <- c("Crimson AGL", "ILL 28 AGL", "PI 299366 LSP AGL", 
+               "Laird AGL", "CDC Robin AGL",
+               "PI 177430 LSP AGL", "Indianhead AGL", "PI 289066 AGL")
+d2 <- read.csv("data_visualizations_2.csv") %>%
+  mutate(Location = factor(Location, levels = myLocations),
+         Name = factor(Name, levels = myEntries) ) 
 ```
 
 ---
@@ -79,12 +94,11 @@ For this first example, we will illustrate the different ways to visualize histo
 
 ```{r}
 # Prep data
-xx <- read.csv("data_visualizations_1.csv") %>%
+xx <- d1 %>%
   gather(Trait, Value, DTF, DTS, DTM) %>%
   mutate(Trait = factor(Trait, levels = c("DTF","DTS","DTM")),
          Trait = plyr::mapvalues(Trait, c("DTF","DTS","DTM"),
            c("Days to Flower","Days to Swollen Pod","Days to Maturity")))
-myColors <- c("steelblue","darkgreen","darkorange")
 # Plot
 mp <- ggplot(xx, aes(fill = Trait, x = Value)) +
   theme_agData(legend.position = "none",
@@ -127,10 +141,8 @@ Scatter plots and histograms can be combined to display histograms along with a 
 ```{r}
 # Prep data
 library(ggExtra)
-xx <- read.csv("data_visualizations_1.csv")
-myColors <- c("steelblue","darkorange")
 # Plot
-mp <- ggplot(xx, aes(x = DTF, y = DTM)) +
+mp <- ggplot(d1, aes(x = DTF, y = DTM)) +
   geom_point(alpha = 0.7) +
   theme_agData() +
   labs(title = "Lentil Diversity Panel (LDP) Phenology in Italy",
@@ -151,17 +163,8 @@ For the second example, we will use a subset of 8 accessions grown in Morocco, N
 ![](data_visualizations_03.png)
 
 ```{r}
-# Prep data
-myLocations <- c("Morocco", "Nepal", "Italy")
-myColors <- c("darkgreen", "darkorange", "steelblue")
-myEntries <- c("Crimson AGL", "ILL 28 AGL", "PI 299366 LSP AGL", 
-               "Laird AGL", "CDC Robin AGL",
-               "PI 177430 LSP AGL", "Indianhead AGL", "PI 289066 AGL")
-xx <- read.csv("data_visualizations_2.csv") %>%
-  mutate(Location = factor(Location, levels = myLocations),
-         Name = factor(Name, levels = myEntries) ) 
 # Plot
-mp <- ggplot(xx, aes(x = Location, y = DTF, fill = Location)) +
+mp <- ggplot(d2, aes(x = Location, y = DTF, fill = Location)) +
   theme_agData(legend.position = "none") +
   scale_fill_manual(values = myColors) +
   labs(x = NULL, y = NULL)
@@ -197,7 +200,7 @@ Additionally, if we want to compare individual genotypes instead of environments
 
 ```{r}
 # Plot
-mp <- ggplot(xx, aes(x = Location, y = DTF, 
+mp <- ggplot(d2, aes(x = Location, y = DTF, 
                      color = Location, shape = Name)) +
   geom_beeswarm(alpha = 0.7, cex = 2, lwd = 2) +
   facet_wrap(Name ~ ., ncol = 4) +
@@ -220,12 +223,12 @@ Here we can see the various genotype by environment interactions (G x E).
 
 ```{r}
 # prep data
-yy <- xx %>% group_by(Name, Location) %>%
+xx <- d2 %>% group_by(Name, Location) %>%
   summarise(DTF = mean(DTF, na.rm = T))
 myColors <- c("darkred", "darkgoldenrod2", "darkblue", "darkgreen", 
               "maroon4", "purple4", "black",  "steelblue" )
 # plot
-mp <- ggplot(yy, aes(x = Location, y = DTF, 
+mp <- ggplot(xx, aes(x = Location, y = DTF, 
                      color = Name, shape = Name, group = Name)) +
   geom_point(size = 3, alpha = 0.8) + 
   geom_line(size = 1.25, alpha = 0.6) +

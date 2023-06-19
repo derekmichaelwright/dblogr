@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Download Data
+# Data
 
 `r shiny::icon("globe")` https://publications.saskatchewan.ca/#/categories/4426
 
@@ -36,15 +36,15 @@ myCrops <- c("Large Green Lentils","Small Green Lentils",
 myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 #
 x1 <- agData_STATCAN_Crops %>%
-  filter(Crop == "Lentils", Measurement == "Production",
+  filter(Item == "Lentils", Measurement == "Production",
          Area == "Saskatchewan")
 x2 <- read.csv("lentil_timeline.csv")
 d1 <- full_join(x1, x2, by = "Year") %>%
   mutate(Value = ifelse(is.na(Value), 0, Value))
 #
 d2 <- agData_SKAG_Specialty_Crops %>%
-  filter(grepl("Lentil", Crop), Crop != "Total Lentils") %>%
-  mutate(Crop = factor(Crop, levels = myCrops))
+  filter(grepl("Lentil", Item), Item != "Total Lentils") %>%
+  mutate(Item = factor(Item, levels = myCrops))
 #
 d3 <- agData_SKAG_Lentil_Exports
 ```
@@ -121,7 +121,7 @@ anim_save("lentil_saskatchewan_gif_01.gif", mp,
 
 ```{r}
 # Plot
-mp <- ggplot(d2, aes(x = Year, y = Value, color = Crop)) +
+mp <- ggplot(d2, aes(x = Year, y = Value, color = Item)) +
   geom_line(size = 1, alpha = 0.7) +
   facet_wrap(Measurement + Unit ~ ., scales = "free_y") +
   theme_agData(legend.position = "bottom") +
@@ -143,9 +143,9 @@ ggsave("lentil_saskatchewan_2_01.png", width = 8, height = 6)
 # Prep data
 xx <- d2 %>% filter(Measurement == "Area Harvested")
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
   geom_line(size = 1.5, alpha = 0.7) +
-  facet_wrap(Crop ~ ., scales = "free_y") +
+  facet_wrap(Item ~ ., scales = "free_y") +
   scale_color_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Lentil - Area Harvested", 
@@ -163,9 +163,9 @@ ggsave("lentil_saskatchewan_2_02.png", width = 8, height = 5)
 # Prep data
 xx <- d2 %>% filter(Measurement == "Production")
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Crop)) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
   geom_line(size = 1.5, alpha = 0.7) +
-  facet_wrap(Crop ~ ., scales = "free_y") +
+  facet_wrap(Item ~ ., scales = "free_y") +
   scale_color_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Lentil - Production", 
@@ -183,7 +183,7 @@ ggsave("lentil_saskatchewan_2_03.png", width = 8, height = 5)
 # Prep data
 xx <- d2 %>% filter(Measurement %in% c("Production", "Area Harvested"))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Crop)) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) +
   geom_bar(stat = "identity", position = "stack", 
            color = "black", alpha = 0.7) +
   facet_wrap(Measurement + Unit ~ ., scales = "free_y") +

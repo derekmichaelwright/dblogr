@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Download Data
+# Data
 
 `r shiny::icon("globe")` https://morningconsult.com/2023/04/11/covid-19-lab-leak-theory-survey-data/
 

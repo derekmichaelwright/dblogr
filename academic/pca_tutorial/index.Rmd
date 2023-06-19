@@ -9,6 +9,8 @@ author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmic
 knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```
 
+---
+
 # Introduction
 
 Principal component analysis (**PCA**) is a statistical process commonly used for dimensionality reduction by projecting each data point onto only the first few principal components to obtain lower-dimensional data while preserving as much of the data's variation as possible. The first principal component can equivalently be defined as a direction that maximizes the variance of the projected data.

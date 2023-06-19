@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Download Data
+# Data
 
 `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301
 
@@ -45,7 +45,7 @@ library(agData)
 ```{r}
 # Prep data
 myCaption1 <- c("www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
-myCaption2 <- c("www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN\nNote: recent data may be incomplete")
+myCaption2 <- c("www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN\nNote: most recent years data may be incomplete")
 myColors <- c("darkgreen", "darkred", "darkorange", "steelblue", "purple4", "magenta3")
 myAreas <- c("Canada", "Quebec", "Ontario", "British Columbia", 
            "Alberta", "Saskatchewan", "Manitoba", "Nova Scotia",

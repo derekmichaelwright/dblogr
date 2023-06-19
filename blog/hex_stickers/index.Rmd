@@ -56,9 +56,8 @@ sticker(filename="logo_dblogr.png", package="dblogr",
 ```{r}
 # Prep data
 xx <- agData_FAO_Crops %>% 
-  filter(Area        == "Canada", 
-         Crop        == "Lentils", 
-         Measurement == "Production")
+  filter(Area == "Canada", Item == "Lentils, dry", 
+         Measurement == "Production", Year < 2021)
 # Create sticker
 mp <- ggplot(xx, aes(x = Year, y = Value) ) + 
   geom_line(size = 1) + 

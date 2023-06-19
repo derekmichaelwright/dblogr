@@ -17,7 +17,7 @@ The correlation coefficient (***R^2^***), which indicates the proportion of vari
 
 ---
 
-# Download Data
+# Data
 
 `r shiny::icon("save")` [data_correlation_coefficients.xlsx](data_correlation_coefficients.xlsx)
 
