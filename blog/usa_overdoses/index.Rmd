@@ -1,0 +1,392 @@
+---
+title: "Overdose Deaths In The USA"
+subtitle: "Graphs of weekly overdose deaths in the USA using CDC data"
+date: "`r Sys.Date()`"
+author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+```
+
+---
+
+# Data
+
+`r shiny::icon("globe")` https://data.cdc.gov/NCHS/Early-Model-based-Provisional-Estimates-of-Drug-Ov/v2g4-wqg2
+
+`r shiny::icon("globe")` https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html
+
+`r shiny::icon("save")` [data_usa_overdoses.csv](data_usa_overdoses.csv)
+
+---
+
+# Prepare Data
+
+```{r echo = F}
+dd <- read.csv("https://data.cdc.gov/api/views/v2g4-wqg2/rows.csv?accessType=DOWNLOAD")
+write.csv(dd, "data_usa_overdoses.csv", row.names = F)
+```
+
+```{r class.source = 'fold-show'}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData)
+```
+
+---
+
+# Prepare Data
+
+```{r}
+# Prep data
+dd <- read.csv("data_usa_overdoses.csv") %>%
+  rename(Area=State, Date=Week.Ending.Date) %>%
+  mutate(Date = as.Date(Date, format = "%m/%d/%Y"))
+# Remove states with no data
+areas <- NULL
+for(i in unique(dd$Area)) {
+  xi <- dd %>% filter(Area == i)
+  if(sum(!is.na(xi$Rolling.4.Week.Mean)) < 1) { areas <- c(areas, i) }
+}
+dd <- dd %>% filter(!Area %in% areas)
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: CDC\nNote: most recent years data may be incomplete"
+```
+
+---
+
+# Weekly Overdoses
+
+```{r}
+# Create plotting function
+overdosePlot1 <- function(area = "United States") {
+  # Prep data
+  vv <- as.Date(c("2016-01-01","2017-01-01","2018-01-01",
+                  "2019-01-01","2020-01-01","2021-01-01"))
+  xx <- dd %>% filter(Outcome == "Drug Overdose") %>% 
+    filter(Area %in% area)
+  yy <- xx %>% filter(Date < "2020-01-01")
+  # Plot
+  ggplot(xx, aes(x = Date, y = Rolling.4.Week.Mean)) +
+    geom_bar(stat = "identity", size = 1, fill = "darkred", alpha = 0.8) +
+    stat_smooth(data = yy, geom = "line", method = "lm", se = F, fullrange = T) +
+    stat_smooth(data = yy, geom = "line", method = "lm", se = F, alpha = 0.7, size = 1.5) +
+    geom_vline(xintercept = vv, lty = 2, alpha = 0.5)  +
+    facet_wrap(Area ~ ., scales = "free_y") +
+    scale_x_date(date_breaks = "1 year", date_labels = "%Y", 
+                 minor_breaks = "1 year") +
+    theme_agData(legend.position = "bottom") +
+    labs(y = "Weekly Deaths (Rolling 4 Week Mean)", x = NULL,
+         caption = myCaption)
+}
+```
+
+---
+
+## United States
+  
+![](usa_overdoses_1_01.png)
+  
+```{r}
+mp <- overdosePlot1(area = "United States")
+ggsave("usa_overdoses_1_01.png", mp, width = 6, height = 4)
+```
+
+```{r}
+ggsave("featured.png", mp, width = 6, height = 4)
+```
+
+---
+
+## All States
+  
+![](usa_overdoses_1_02.png)
+  
+```{r}
+mp <- overdosePlot1(area = unique(dd$Area))
+ggsave("usa_overdoses_1_02.png", mp, width = 20, height = 10)
+```
+
+---
+
+## Arizona
+  
+![](usa_overdoses_1_03.png)
+  
+```{r}
+mp <- overdosePlot1(area = "Arizona")
+ggsave("usa_overdoses_1_03.png", mp, width = 6, height = 4)
+```
+
+---
+
+## California
+  
+![](usa_overdoses_1_04.png)
+  
+```{r}
+mp <- overdosePlot1(area = "California")
+ggsave("usa_overdoses_1_04.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Colorado
+  
+![](usa_overdoses_1_05.png)
+  
+```{r}
+mp <- overdosePlot1(area = "Colorado")
+ggsave("usa_overdoses_1_05.png", mp, width = 6, height = 4)
+```
+
+---
+
+## New York
+  
+![](usa_overdoses_1_06.png)
+  
+```{r}
+mp <- overdosePlot1(area = "New York")
+ggsave("usa_overdoses_1_06.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Texas
+  
+![](usa_overdoses_1_07.png)
+  
+```{r}
+mp <- overdosePlot1(area = "Texas")
+ggsave("usa_overdoses_1_07.png", mp, width = 6, height = 4)
+```
+
+---
+
+# Yearly Deaths
+
+```{r}
+# Create plotting function
+overdosePlot2 <- function(area = "United States") {
+  # Prep data
+  xx <- dd %>% 
+    mutate(Year = substr(Date, 1, 4)) %>%
+    filter(Area %in% area, Outcome == "Drug Overdose", Year < 2021) %>% 
+    group_by(Area, Year) %>% 
+    summarise(Value = sum(Rolling.4.Week.Mean, na.rm = T)) %>%
+    mutate(YearGroup = ifelse(Year < 2020, "Pre-Covid", "Covid"),
+           YearGroup = factor(YearGroup, levels = c("Pre-Covid", "Covid")))
+  myCols <- c(alpha("darkred",0.3), alpha("darkred",0.6))
+  # Plot
+  ggplot(xx, aes(x = Year, y = Value / 1000)) +
+    geom_bar(aes(fill = YearGroup), stat = "identity", 
+             color = "black") +
+    geom_label(aes(label = round(Value / 1000, 1)), vjust = 1) +
+    facet_wrap(Area ~ ., scales = "free_y") +
+    scale_fill_manual(name = NULL, values = myCols) +
+    theme_agData(legend.position = "bottom") +
+    labs(title = "Yearly Drug Overdoses", y = "Thousand Deaths", x = NULL,
+         caption = myCaption)
+}
+```
+
+---
+
+## United States
+  
+![](usa_overdoses_2_01.png)
+  
+```{r}
+mp <- overdosePlot2(area = "United States")
+ggsave("usa_overdoses_2_01.png", mp, width = 6, height = 4)
+```
+  
+---
+
+## All States
+  
+![](usa_overdoses_2_02.png)
+  
+```{r}
+mp <- overdosePlot2(area = unique(dd$Area))
+ggsave("usa_overdoses_2_02.png", mp, width = 20, height = 10)
+```
+
+---
+
+## Arizona
+  
+![](usa_overdoses_2_03.png)
+  
+```{r}
+mp <- overdosePlot2(area = "Arizona")
+ggsave("usa_overdoses_2_03.png", mp, width = 6, height = 4)
+```
+
+---
+
+## California
+  
+![](usa_overdoses_2_04.png)
+  
+```{r}
+mp <- overdosePlot2(area = "California")
+ggsave("usa_overdoses_2_04.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Colorado
+  
+![](usa_overdoses_2_05.png)
+  
+```{r}
+mp <- overdosePlot2(area = "Colorado")
+ggsave("usa_overdoses_2_05.png", mp, width = 6, height = 4)
+```
+
+---
+
+## New York
+  
+![](usa_overdoses_2_06.png)
+  
+```{r}
+mp <- overdosePlot2(area = "New York")
+ggsave("usa_overdoses_2_06.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Texas
+  
+![](usa_overdoses_2_07.png)
+  
+```{r}
+mp <- overdosePlot2(area = "Texas")
+ggsave("usa_overdoses_2_07.png", mp, width = 6, height = 4)
+```
+
+---
+
+# Weekly Deaths
+
+```{r}
+# Create plotting function
+overdosePlot2 <- function(area = "Alaska") {
+  # Prep data
+  colors <- c("darkred", "darkorange", "darkgreen")
+  vv <- as.Date(c("2016-01-01","2017-01-01","2018-01-01",
+                  "2019-01-01","2020-01-01","2021-01-01"))
+  xx <- dd %>% 
+    filter(Area %in% area, Date > "2016-02-27")
+  # Plot
+  ggplot(xx, aes(x = Date, y = Rolling.4.Week.Mean, color = Outcome)) +
+    geom_line(size = 1, alpha = 0.8) +
+    geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
+    facet_wrap(Area ~ ., scales = "free_y") +
+    scale_color_manual(name = NULL, values = colors) +
+    scale_x_date(date_breaks = "1 year", date_labels = "%Y", 
+                 minor_breaks = "1 year") +
+    theme_agData(legend.position = "bottom") +
+    labs(y = "Weekly Deaths (Rolling 4 Week Mean)", x = NULL,
+         caption = myCaption)
+}
+```
+
+---
+
+## United States
+  
+![](usa_overdoses_3_01.png)
+  
+```{r}
+mp <- overdosePlot2(area = "United States")
+ggsave("usa_overdoses_3_01.png", mp, width = 6, height = 4)
+```
+
+---
+
+## All States
+  
+![](usa_overdoses_3_02.png)
+  
+```{r}
+mp <- overdosePlot2(area = unique(dd$Area))
+ggsave("usa_overdoses_3_02.png", mp, width = 20, height = 10)
+```
+
+---
+
+## Arizona
+  
+![](usa_overdoses_3_03.png)
+  
+```{r}
+mp <- overdosePlot2(area = "Arizona")
+ggsave("usa_overdoses_3_03.png", mp, width = 6, height = 4)
+```
+
+---
+
+## California
+  
+![](usa_overdoses_3_04.png)
+  
+```{r}
+mp <- overdosePlot2(area = "California")
+ggsave("usa_overdoses_3_04.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Colorado
+  
+![](usa_overdoses_3_05.png)
+  
+```{r}
+mp <- overdosePlot2(area = "Colorado")
+ggsave("usa_overdoses_3_05.png", mp, width = 6, height = 4)
+```
+
+---
+
+## New York
+  
+![](usa_overdoses_3_06.png)
+  
+```{r}
+mp <- overdosePlot2(area = "New York")
+ggsave("usa_overdoses_3_06.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Texas
+  
+![](usa_overdoses_3_07.png)
+  
+```{r}
+mp <- overdosePlot2(area = "Texas")
+ggsave("usa_overdoses_3_07.png", mp, width = 6, height = 4)
+```
+
+---
+
+```{r}
+# Bonus USA Age Pyramid
+
+#![](usa_overdoses_4_01.png)
+
+# Prep data
+xx <- read.csv("data_usa_age_sex.csv") %>%
+  mutate(Age = factor(Age, levels = unique(.$Age)))
+# Plot
+mp <- ggplot(xx, aes(x = Age), color = "black") +
+  geom_bar(aes(y = -Female), stat = "identity", fill = "palevioletred3") +
+  geom_bar(aes(y = Male), stat = "identity", fill = "steelblue") +
+  coord_flip() +
+  theme_agData() +
+  labs(caption = "ww.dblogr.com/ or derekmichaelwright.github.io/dblogr/")
+ggsave("usa_overdoses_4_01.png", mp, width = 6, height = 4)
+```

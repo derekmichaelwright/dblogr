@@ -14,6 +14,8 @@ library(shiny)
 # https://derekmichaelwright.github.io/dblogr/home
 ```
 
+Welcome to the personal website for Derek Michael Wright
+
 ---
 
 # `r icon("address-card")` About Me
@@ -560,25 +562,25 @@ Graphs of population demographics in Canada using STATCAN data
 
 </div><div class = "col-md-6">![](blog/canada_population/featured.png)</div></div></div>
 
-### Saskatchewan Overdoses
+### Canada Overdoses
 
 <div class="box"><div class = "row"><div class = "col-md-6">
 
-[<u>**Overdose Deaths In Saskatchewan**</u>](blog/saskatchewan_overdoses)
+[<u>**Overdose Deaths In Canada**</u>](blog/canada_overdoses)
 
-Graphs of yearly overdose deaths in Saskatchewan using SK GOV data
+Graphs of yearly overdose deaths in Canada using GOV CA, SK & BC data
 
-</div><div class = "col-md-6">![](blog/saskatchewan_overdoses/featured.png)</div></div></div>
+</div><div class = "col-md-6">![](blog/canada_overdoses/featured.png)</div></div></div>
 
-### British Columbia Overdoses
+### USA Overdoses
 
 <div class="box"><div class = "row"><div class = "col-md-6">
 
-[<u>**Overdose Deaths In British Columbia**</u>](blog/british_columbia_overdoses)
+[<u>**Overdose Deaths In The USA**</u>](blog/usa_overdoses)
 
-Graphs of yearly and monthly overdose deaths in British Columbia using BC GOV data
+Graphs of weekly overdose deaths in the USA using CDC data
 
-</div><div class = "col-md-6">![](blog/british_columbia_overdoses/featured.png)</div></div></div>
+</div><div class = "col-md-6">![](blog/usa_overdoses/featured.png)</div></div></div>
 
 ### Canada Deaths
 
@@ -589,6 +591,16 @@ Graphs of yearly and monthly overdose deaths in British Columbia using BC GOV da
 Graphs of weekly deaths in Canada using STATCAN data
 
 </div><div class = "col-md-6">![](blog/canada_deaths/featured.png)</div></div></div>
+
+### Covid Origin Polls
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**Covid Origin Polls**</u>](blog/covid_origins)
+
+Polling results from various polls on the origins of covid
+
+</div><div class = "col-md-6">![](blog/covid_origins/featured.png)</div></div></div>
 
 ## `r icon("r-project")` Stuff {.tabset .tabset-pills}
 
@@ -646,23 +658,24 @@ Graphs of star constellations using the starBliss R package
 
 <div class = "row"><div class = "col-md-4">
 
-<div class="box">“We shall go into the pyre—we shall burn. But we shall not retreat from our convictions.” 
+<div class="box">"We shall go into the pyre—we shall burn. But we shall not retreat from our convictions." 
 
+"All thoughts of rest must be forsaken. Sustained efforts are necessary to complete the revolution in agriculture"
 -Nikolai Vavilov</div>
 
 <div class="box">"Extraordinary claims require extraordinary evidence." 
 
 -Carl Sagan</div>
 
-<div class="box">“That which can be asserted without evidence, can be dismissed without evidence.” 
+<div class="box">"That which can be asserted without evidence, can be dismissed without evidence." 
 
 -Christopher Hitchens</div>
 
-<div class="box">“I would rather have questions that can’t be answered than answers that can’t be questioned.” 
+<div class="box">"I would rather have questions that can’t be answered than answers that can’t be questioned." 
 
 -Richard Feynman</div>
 
-<div class="box">“Think For Yourself, Question Authority"
+<div class="box">"Think For Yourself, Question Authority"
 
 -Timothy Leary</div>
 
@@ -670,15 +683,15 @@ Graphs of star constellations using the starBliss R package
 
 <div class = "col-md-4">
 
-<div class="box">“Comedy is surprises, so if you're inteding to make somebody laugh and they don't laugh, that's funny.” 
+<div class="box">"Comedy is surprises, so if you're inteding to make somebody laugh and they don't laugh, that's funny." 
 
 -Norm MacDonald</div>
 
-<div class="box">“Karl Marx was right, socialism works, it is just that he had the wrong species” 
+<div class="box">"Karl Marx was right, socialism works, it is just that he had the wrong species" 
 
 -Edward O. Wilson</div>
 
-<div class="box">“Whoever controls the people’s fears becomes master of their souls.” 
+<div class="box">"Whoever controls the people’s fears becomes master of their souls." 
 
 -Niccolò Machiavelli</div>
 
@@ -686,7 +699,7 @@ Graphs of star constellations using the starBliss R package
 
 -George Orwell</div>
 
-<div class="box">“It's amazing how much panic one honest man can spread among a multitude of hypocrites.” 
+<div class="box">"It's amazing how much panic one honest man can spread among a multitude of hypocrites." 
 
 -Thomas Sowell</div>
 
@@ -694,13 +707,13 @@ Graphs of star constellations using the starBliss R package
 
 <div class = "col-md-4">
 
-<div class="box">“Growing up, I was free in my childhood years. And now they tell me I can wash away my tears. These tears explain the way, it's the way that I feel, because the freedom they give me is real. 
+<div class="box">"Growing up, I was free in my childhood years. And now they tell me I can wash away my tears. These tears explain the way, it's the way that I feel, because the freedom they give me is real. 
 
 I want freedom, the kind that they promised me, just for livin' in this country. I want the freedom, the kind that makes me feel strong, but, let me tell you, something is wrong." 
 
 -Grand Funk Railroad</div>
 
-<div class="box">“Following our will and wind, we may just go where no one's been. We'll ride the spiral till the end and may just go where no one's been." 
+<div class="box">"Following our will and wind, we may just go where no one's been. We'll ride the spiral till the end and may just go where no one's been." 
 
 -Tool</div>
 

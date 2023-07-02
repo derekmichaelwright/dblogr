@@ -391,6 +391,30 @@ ggsave("global_food_security_11.png", mp, width = 6, height = 6)
 
 ---
 
+```{r echo = F, eval = F}
+xx <- agData_FAO_Crops %>% 
+  filter(Area == "Sri Lanka", Year %in% 2019:2022,
+         Measurement == "Production")
+ggplot(xx, aes(x = Year, y = Value)) +
+  geom_bar(stat = "identity", fill = "darkgreen", alpha = 0.7) +
+  theme_agData() +
+  labs(title = "Sri Lanka", x = NULL, y = "tonnes")
+```
+
+```{r echo = F, eval = F}
+# Famines
+
+#https://ourworldindata.org/famines#the-our-world-in-data-dataset-of-famines
+
+# Prep data
+xx <- read.csv("data_global_famines.csv") %>%
+  mutate(Deaths.midpoint = as.numeric(gsub(",","",Deaths.midpoint)),
+         Deaths.lower = as.numeric(gsub(",","",Deaths.lower)),
+         Deaths.upper = as.numeric(gsub(",","",Deaths.upper)))
+# Plot
+ggplot(xx, aes(Deaths.midpoint))
+```
+
 ```{r eval = F, echo = F}
 ## Regions
 

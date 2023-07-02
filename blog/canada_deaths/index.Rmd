@@ -109,11 +109,13 @@ d2 <- d2 %>%
     mutate(Season = factor(Season, levels = mySeasons),
            SeasonGroup = factor(SeasonGroup, levels = unique(myGroups)))
 # d3 = Yearly death rate (1991-2023)
-pp <- read.csv("1710000901_databaseLoadingData.csv") %>% 
+p1 <- read.csv("1710000901_databaseLoadingData.csv") %>% 
   select(Area=GEO, Year=REF_DATE, Population=VALUE) %>%
   filter(Year %in% paste0(1991:2023,"-01")) %>%
   mutate(Year = as.numeric(gsub("-01","",Year)))
   #filter(Month == 1) %>% select(Area, Year, Population=Value)
+p2 <- read.csv("1710000501_databaseLoadingData.csv") %>% 
+  select(Area=GEO, Year=REF_DATE, Sex, Age.group, Population=VALUE)
 yy <- d1 %>% filter(Year > 2020) %>% 
   group_by(Area, Year) %>%
   summarise(Value = sum(Value)) %>%
@@ -127,7 +129,7 @@ d3 <- read.csv("1310070801_databaseLoadingData.csv") %>%
   filter(Unit == "Number") %>%
   bind_rows(yy) %>%
   rename(Total.Deaths=Value) %>%
-  left_join(pp, by = c("Area", "Year")) %>%
+  left_join(p1, by = c("Area", "Year")) %>%
   mutate(Death.Rate = 1000 * Total.Deaths / Population) %>%
   filter(Month.of.death == "Total", !is.na(Area)) %>%
   mutate(Group = ifelse(Year < 2020, "<2020", Year),
@@ -825,6 +827,83 @@ ggsave("canada_deaths_07_07.png", mp, width = 8, height = 4)
 
 ---
 
+# Over 65 Death Rate
+
+```{r}
+ggDeaths65 <- function(myArea = "Canada") {
+  # Prep data
+  xx <- d2 %>% 
+    filter(Area == myArea, Date > "2010-01-01", Sex == "Both sexes",
+           Age %in% c("65 to 84 years", "84 years and over"), !is.na(Value)) %>%
+    group_by(Area, Year) %>%
+    summarise(Value = sum(Value, na.rm = T))
+  pi <- p2 %>% 
+    filter(Area == myArea, Sex == "Both sexes",
+           Age.group %in% c("65 to 69 years", "70 to 74 years", 
+                            "75 to 79 years", "80 to 84 years", 
+                            "85 to 89 years", "90 to 94 years", 
+                            "95 to 99 years", "100 years and over")) %>%
+    group_by(Year) %>%
+    summarise(Population = sum(Population, na.rm = T))
+  xx <- xx %>% left_join(pi, by = "Year") %>%
+    mutate(Rate = 100000 * Value / Population)
+  # Plot
+  ggplot(xx, aes(x = Year, y = Rate)) +
+    geom_bar(stat = "identity", color = "black", fill = "darkred", alpha = 0.7) + 
+    scale_fill_manual(values = myColors) +
+    scale_x_continuous(breaks = 2010:2022) +
+    theme_agData(legend.position = "none",
+                 axis.text.x = element_text(angle = 45, hjust = 1)) +
+    labs(title = paste(myArea, "- Ages 65 and over"),
+         x = NULL, y = "Deaths per 100,000 people", caption = myCaption1)
+}
+```
+
+## Canada
+
+![](canada_deaths_08_01.png)
+
+```{r}
+mp <- ggDeaths65(myArea = "Canada")
+ggsave("canada_deaths_08_01.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Provinces
+
+```{r}
+# Prep data
+xx <- d2 %>% 
+  filter(Area != "Canada", Date > "2010-01-01", Sex == "Both sexes",
+         Age %in% c("65 to 84 years", "84 years and over"), !is.na(Value)) %>%
+  group_by(Area, Year) %>%
+  summarise(Value = sum(Value, na.rm = T))
+pi <- p2 %>% 
+  filter(Area != "Canada", Sex == "Both sexes",
+         Age.group %in% c("65 to 69 years", "70 to 74 years", 
+                          "75 to 79 years", "80 to 84 years", 
+                          "85 to 89 years", "90 to 94 years", 
+                          "95 to 99 years", "100 years and over")) %>%
+  group_by(Area, Year) %>%
+  summarise(Population = sum(Population, na.rm = T))
+xx <- xx %>% left_join(pi, by = c("Area", "Year")) %>%
+  mutate(Rate = 100000 * Value / Population)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Rate)) +
+  geom_bar(stat = "identity", color = "black", fill = "darkred", alpha = 0.7) + 
+  facet_wrap(Area ~ ., ncol = 5) +
+  scale_fill_manual(values = myColors) +
+  scale_x_continuous(breaks = 2010:2022) +
+  theme_agData(legend.position = "none",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = paste("Canada - Ages 65 and over"),
+       x = NULL, y = "Deaths per 100,000 people", caption = myCaption1)
+ggsave("canada_deaths_08_02.png", mp, width = 10, height = 8)
+```
+
+---
+
 # Weekly Deaths Ages 0-44
 
 ```{r}
@@ -851,77 +930,77 @@ ggDeaths044 <- function(myArea = "Canada") {
 
 ## Canada
 
-![](canada_deaths_08_01.png)
+![](canada_deaths_09_01.png)
 
 ```{r}
 mp <- ggDeaths044(myArea = "Canada")
-ggsave("canada_deaths_08_01.png", mp, width = 8, height = 4)
+ggsave("canada_deaths_09_01.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ## Ontario
 
-![](canada_deaths_08_02.png)
+![](canada_deaths_09_02.png)
 
 ```{r}
 mp <- ggDeaths044(myArea = "Ontario")
-ggsave("canada_deaths_08_02.png", mp, width = 8, height = 4)
+ggsave("canada_deaths_09_02.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ## Quebec
 
-![](canada_deaths_08_03.png)
+![](canada_deaths_09_03.png)
 
 ```{r}
 mp <- ggDeaths044(myArea = "Quebec")
-ggsave("canada_deaths_08_03.png", mp, width = 8, height = 4)
+ggsave("canada_deaths_09_03.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ## British Columbia
 
-![](canada_deaths_08_04.png)
+![](canada_deaths_09_04.png)
 
 ```{r}
 mp <- ggDeaths044(myArea = "British Columbia")
-ggsave("canada_deaths_08_04.png", mp, width = 8, height = 4)
+ggsave("canada_deaths_09_04.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ## Alberta
 
-![](canada_deaths_08_05.png)
+![](canada_deaths_09_05.png)
 
 ```{r}
 mp <- ggDeaths044(myArea = "Alberta")
-ggsave("canada_deaths_08_05.png", mp, width = 8, height = 4)
+ggsave("canada_deaths_09_05.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ## Saskatcehwan
 
-![](canada_deaths_08_06.png)
+![](canada_deaths_09_06.png)
 
 ```{r}
 mp <- ggDeaths044(myArea = "Saskatchewan")
-ggsave("canada_deaths_08_06.png", mp, width = 8, height = 4)
+ggsave("canada_deaths_09_06.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ## Manitoba
 
-![](canada_deaths_08_07.png)
+![](canada_deaths_09_07.png)
 
 ```{r}
 mp <- ggDeaths044(myArea = "Manitoba")
-ggsave("canada_deaths_08_07.png", mp, width = 8, height = 4)
+ggsave("canada_deaths_09_07.png", mp, width = 8, height = 4)
 ```
 
 ---
@@ -930,7 +1009,7 @@ ggsave("canada_deaths_08_07.png", mp, width = 8, height = 4)
 
 ## Canada
 
-![](canada_deaths_09_01.png)
+![](canada_deaths_10_01.png)
 
 ```{r}
 # Prep data
@@ -943,14 +1022,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value, group = Sex, color = Sex)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(y = "Deaths Per Week", x = NULL, caption = myCaption1)
-ggsave("canada_deaths_09_01.png", mp, width = 8, height = 4)
+ggsave("canada_deaths_10_01.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ## 2020
 
-![](canada_deaths_09_02.png)
+![](canada_deaths_10_02.png)
 
 ```{r}
 # Prep data
@@ -965,7 +1044,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value, group = Sex, color = Sex)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(y = "Deaths Per Week", x = NULL, caption = myCaption1)
-ggsave("canada_deaths_09_02.png", mp, width = 8, height = 4)
+ggsave("canada_deaths_10_02.png", mp, width = 8, height = 4)
 ```
 
 ---
@@ -974,7 +1053,7 @@ ggsave("canada_deaths_09_02.png", mp, width = 8, height = 4)
 
 ## Canada
 
-![](canada_deaths_10_01.png)
+![](canada_deaths_11_01.png)
 
 ```{r}
 # Plot
@@ -987,14 +1066,14 @@ mp <- ggplot(d3 %>% filter(Area == "Canada", Year < 2023),
   theme_agData(legend.position = "none") +
   labs(title = "Death Rate - Canada", 
        y = "Deaths Per Thousand People", x = NULL, caption = myCaption1)
-ggsave("canada_deaths_10_01.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_11_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Provinces
 
-![](canada_deaths_10_02.png)
+![](canada_deaths_11_02.png)
 
 ```{r}
 # Plot
@@ -1008,14 +1087,14 @@ mp <- ggplot(d3 %>% filter(Year < 2023),
   theme_agData(legend.position = "none") +
   labs(title = "Death Rate - Canada", 
        y = "Deaths Per Thousand People", x = NULL, caption = myCaption1)
-ggsave("canada_deaths_10_02.png", mp, width = 10, height = 6)
+ggsave("canada_deaths_11_02.png", mp, width = 10, height = 6)
 ```
 
 ---
 
 ## 2019 vs 2020
 
-![](canada_deaths_10_03.png)
+![](canada_deaths_11_03.png)
 
 ```{r}
 # Prep data
@@ -1032,14 +1111,14 @@ mp <- ggplot(xx, aes(x = Year, y = Death.Rate, fill = factor(Year))) +
                axis.ticks.x = element_blank()) +
   labs(title = "Death Rate Change in Canada",  subtitle = "2019 and 2020",
        y = "Deaths Per Thousand People", x = NULL, caption = myCaption1)
-ggsave("canada_deaths_10_03.png", mp, width = 13, height = 4)
+ggsave("canada_deaths_11_03.png", mp, width = 13, height = 4)
 ```
 
 ---
 
 ## Change
 
-![](canada_deaths_10_04.png)
+![](canada_deaths_11_04.png)
 
 ```{r}
 # Prep data
@@ -1055,12 +1134,12 @@ mp <- ggplot(xx, aes(x = Area, y = Change)) +
   labs(title = "Death Rate Change (1991 to 2019)", 
        subtitle = "Deaths per thousand people",
        y = "Change", x = NULL, caption = myCaption1)
-ggsave("canada_deaths_10_04.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_11_04.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-![](canada_deaths_10_05.png)
+![](canada_deaths_11_05.png)
 
 ```{r}
 # Prep data
@@ -1084,23 +1163,23 @@ mp <- ggplot(xx, aes(x = Area, y = Value, fill = Trait)) +
   labs(title = "Death Rate Change", 
        subtitle = "Deaths per thousand people",
        y = "Change", x = NULL, caption = myCaption1)
-ggsave("canada_deaths_10_05.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_11_05.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Select Provinces 
 
-![](canada_deaths_10_06.png)
+![](canada_deaths_11_06.png)
 
 ```{r}
 # Prep data
 myAreas <- c("Ontario", "Quebec", "Alberta")
 myColors <- c("darkblue", "steelblue", "darkred")
-p1 <- pp %>% filter(Year > 2019)
+pi <- p1 %>% filter(Year > 2019)
 xx <- d1 %>% 
   filter(Year > 2019, Area %in% myAreas) %>%
-  left_join(p1, by = c("Area", "Year")) %>%
+  left_join(pi, by = c("Area", "Year")) %>%
   mutate(Death.Rate = 1000000 * Value / Population,
          #Death.Rate = movingAverage(Death.Rate, n = 3),
          Area = factor(Area, levels = myAreas)) %>%
@@ -1112,23 +1191,23 @@ mp <- ggplot(xx, aes(x = Date, y = Death.Rate, color = Area)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Death Rate 2020", x = "Julian Day", 
        y = "Deaths per million people per week", caption = myCaption1)
-ggsave("canada_deaths_10_06.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_11_06.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Heatmap
 
-![](canada_deaths_10_07.png)
+![](canada_deaths_11_07.png)
 
 ```{r}
 # Prep data
 myAreas <- c("Yukon", "Northwest Territories", "Nunavut")
 myColors <- c("white", "darkorange1", "darkred")
-p1 <- pp %>% filter(Year > 2019)
+pi <- p1 %>% filter(Year > 2019)
 xx <- d1 %>% 
   filter(Year > 2019, !Area %in% myAreas) %>%
-  left_join(p1 %>% select(-Year), by = "Area") %>%
+  left_join(pi %>% select(-Year), by = "Area") %>%
   mutate(Death.Rate = 1000000 * Value / Population)
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Area, fill = Death.Rate)) +
@@ -1141,14 +1220,14 @@ mp <- ggplot(xx, aes(x = Date, y = Area, fill = Death.Rate)) +
         theme(legend.position = "bottom", 
               text = element_text(size = 8)) +
   labs(x = NULL, y = NULL, caption = myCaption1)
-ggsave("canada_deaths_10_07.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_11_07.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 # 1900 - Present
 
-![](canada_deaths_11_01.png)
+![](canada_deaths_12_01.png)
 
 ```{r}
 # Prep data
@@ -1171,7 +1250,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, alpha = Group)) +
   theme_agData(legend.position = "none") +
   labs(title = "Death Rate in Canada", y = "Deaths per 1000 people", x = NULL,
        caption = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Wikipedia")
-ggsave("canada_deaths_11_01.png", mp, width = 6, height = 4)
+ggsave("canada_deaths_12_01.png", mp, width = 6, height = 4)
 ```
 
 ---

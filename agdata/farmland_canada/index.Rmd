@@ -98,7 +98,7 @@ xx <- d1 %>%
 x1 <- xx %>% filter(Area == "Canada")
 xx <- xx %>% filter(Area != "Canada") %>% 
   mutate(Percent = round(100 * Value / x1$Value)) %>% 
-  arrange(Percent) %>%
+  arrange(Percent) %>% filter(Percent > 0) %>%
   mutate(Label_y = cumsum(Percent),
          Label_y = Label_y - (Percent / 2),
          Label = ifelse(Percent > 6, paste(Percent, "%"), NA)) %>%
@@ -109,12 +109,13 @@ xx <- xx %>% filter(Area != "Canada") %>%
 mp <- ggplot(xx, aes(x = 1)) +
   geom_bar(aes(y = -Percent, fill = Area), stat = "identity", 
            color = "black", alpha = 0.7) +
-  geom_label(aes(y = -Label_y, label = Label), 
-             nudge_x = 0.275, size = 3) +
   coord_polar("y", start = 0) +
-  scale_fill_manual(values = agData_Colors) +
-  xlim(0.54, 1.45) +
-  theme_agData_pie() +
+  geom_label(aes(y = -Label_y, label = Label), 
+             nudge_x = 0.275, size = 3, alpha = 0.9) +
+  
+  theme_agData_pie(plot.caption = element_text(size = 7)) +
+  xlim(0.542, 1.45) +
+  scale_fill_manual(name = NULL, values = agData_Colors) +
   labs(title = "Canadian Farmland (2016)", x = NULL, 
        y = "Million Hectares", caption = myCaption)
 ggsave("farmland_canada_1_02.png", mp, width = 6, height = 4)
@@ -547,6 +548,34 @@ mp <- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = Year)) +
   labs(title = "Farm Size in Canada", x = NULL,
        y = "Thousand Farms", caption = myCaption)
 ggsave("farmland_canada_3_07.png", mp, width = 9, height = 8)
+```
+
+---
+
+![](farland_canada_gifs_01.gif)
+
+```{r}
+# Prep data
+myColors <- c("maroon4", "darkgoldenrod3", "darkgreen",
+              "darkred", "steelblue4", "darkslategrey")
+myAreas <- c("British Columbia", "Alberta", "Saskatchewan",
+             "Manitoba", "Ontario", "Quebec")
+xx <- d3 %>% 
+  filter(Area %in% myAreas, Measurement != "Total number of farms") %>%
+  mutate(Area = factor(Area, levels = myAreas))
+#
+mp <- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = Area)) + 
+  geom_bar(stat = "identity", color = "black", lwd = 0.2) +
+  facet_grid(Area ~ ., scales = "free_y") +
+  scale_fill_manual(values = myColors) +
+  theme_agData(legend.position = "none",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Farm Size in Canada | {round(frame_time)}", 
+       y = "Thousand Farms", x = NULL, caption = myCaption) +
+  transition_time(Year)
+anim_save("farland_canada_gif_01.gif", mp,
+          nframes = 300, fps = 30, end_pause = 60, 
+          width = 900, height = 1200, res = 150)
 ```
 
 ---

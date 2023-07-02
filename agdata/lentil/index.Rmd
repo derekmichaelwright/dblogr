@@ -398,15 +398,15 @@ ggPie_single <- function(crop = "Lentils, dry", measurement = "Production",
            Cummulative_P = cumsum(Percentage),
            Label_y = Cummulative_P - (Percentage / 2))
   # Plot
-  ggplot(yy, aes(x = 1, fill = Area)) +
-    geom_bar(aes(y = Percentage), stat = "identity",
+  ggplot(yy, aes(x = 1)) +
+    geom_bar(aes(y = Percentage, fill = Area), stat = "identity",
              color = "black", alpha = 0.7) +
     coord_polar("y", start = 0) +
     geom_label(aes(label = paste(Percentage, "%"), y = Label_y), 
-               size = 2.5, fill = "white", alpha = 0.9, nudge_x = 0.29) + 
+               size = 2.5, alpha = 0.9, nudge_x = 0.29) + 
     facet_grid(. ~ Year) +
     theme_agData_pie(plot.caption = element_text(size = 7)) +
-    xlim(0.545, 1.45) +
+    xlim(0.542, 1.45) +
     scale_fill_manual(name = NULL, values = myColors,
                       breaks = yy$Area) +
     labs(title = paste(crop, measurement), caption = myCaption)

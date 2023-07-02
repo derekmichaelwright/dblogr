@@ -113,7 +113,7 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Crop Production", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
-ggsave("crops_saskatchewan_01.png", mp, width = 6, height = 5)
+ggsave("crops_saskatchewan_01.png", mp, width = 7, height = 5)
 ```
 
 ---
@@ -138,11 +138,11 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Area Seeded", x = NULL,
        y = "Million Hectares", caption = myCaption)
-ggsave("crops_saskatchewan_02.png", mp, width = 6, height = 5)
+ggsave("crops_saskatchewan_02.png", mp, width = 7, height = 5)
 ```
 
 ```{r echo = F}
-ggsave("featured.png", mp, width = 6, height = 5)
+ggsave("featured.png", mp, width = 7, height = 5)
 ```
 
 ---
@@ -167,7 +167,7 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000, fill = Item)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Yield", x = NULL, 
        y = "Tonnes / Hectare", caption = myCaption)
-ggsave("crops_saskatchewan_03.png", mp, width = 6, height = 5)
+ggsave("crops_saskatchewan_03.png", mp, width = 7, height = 5)
 ```
 
 ---
@@ -211,7 +211,7 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
        x = "Million Tonnes", y = NULL, caption = myCaption) +
   transition_time(Year) 
 anim_save("crops_saskatchewan_gif_01.gif", mp,
-          nframes = 600, fps = 20, end_pause = 60, 
+          nframes = 600, fps = 15, end_pause = 60, 
           width = 900, height = 600, res = 150)
 ```
 
@@ -251,7 +251,7 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
        x = "Million Hectares", y = NULL, caption = myCaption) +
   transition_time(Year) 
 anim_save("crops_saskatchewan_gif_02.gif", mp,
-          nframes = 600, fps = 20, end_pause = 60, 
+          nframes = 600, fps = 15, end_pause = 60, 
           width = 900, height = 600, res = 150)
 ```
 

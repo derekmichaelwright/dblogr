@@ -260,12 +260,13 @@ plotPoll_2 <- function(xx = d2, myGroups,
     summarise(Answer = Answer,
               Percent = 100 * Percent / sum(Percent))
   # Plot
-  ggplot(xx, aes(x = "", y = Percent, fill = Answer)) +
+  ggplot(xx, aes(x = 1, y = Percent, fill = Answer)) +
     geom_bar(stat = "identity", lwd = 0.2,
              color = "black", alpha = 0.7) +
     coord_polar("y", start = 0) +
     facet_grid(. ~ Group) +
     scale_fill_manual(name = NULL, values = myColors) +
+    xlim(0.542, 1.45) +
     theme_agData_pie(legend.position = "bottom") +
     labs(title = myTitle, subtitle = mySubtitle, 
          x = NULL, caption = myCaption2)
