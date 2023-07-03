@@ -68,7 +68,7 @@ ggsave("featured.png", mp, width = 6, height = 8)
 xx <- dd %>% filter(Area == "Canada", Measurement == "Colonies")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value)) + 
-  geom_bar(stat = "identity", fill = "darkgreen", alpha = 0.7) + 
+  geom_col(fill = "darkgreen", alpha = 0.7) + 
   scale_x_continuous(breaks = seq(1925, 2020, 10), minor_breaks = NULL) + 
   coord_cartesian(xlim = c(min(xx$Year)+4, max(xx$Year)-4)) +
   theme_agData(strip.placement = "outside", legend.position = "none") + 
@@ -109,7 +109,7 @@ anim_save("honeybee_canada_gif_01.gif", mp,
 xx <- dd %>% filter(Measurement == "Colonies")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, fill = Area)) +
-  geom_bar(stat = "identity", alpha = 0.7) +
+  geom_col(alpha = 0.7) +
   facet_wrap(Area ~ ., scales= "free_y", ncol = 5) +
   scale_fill_manual(values = agData_Colors) +
   scale_x_continuous(breaks = seq(1920, 2020, by = 20)) +
@@ -134,7 +134,7 @@ xx <- dd %>%
   filter(Area %in% c("Canada", "Ontario"), Measurement == "Colonies")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, fill = Area)) +
-  geom_bar(stat = "identity", alpha = 0.7) +
+  geom_col(alpha = 0.7) +
   facet_wrap(Area ~ ., ncol = 2, scales = "free_y") +
   scale_fill_manual(name = NULL, values = c("darkred", "darkblue")) +
   scale_x_continuous(breaks = seq(1920, 2020, by = 10)) +
@@ -198,7 +198,7 @@ ggsave("honeybee_canada_06.png", mp, width = 6, height = 4)
 xx <- dd %>% filter(Area == "Saskatchewan", Measurement == "Colonies")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value)) +
-  geom_bar(stat = "identity", fill = "darkgreen", alpha = 0.7) +
+  geom_col(fill = "darkgreen", alpha = 0.7) +
   scale_x_continuous(breaks = seq(1920, 2020, by = 10)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +

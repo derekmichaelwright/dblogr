@@ -71,8 +71,7 @@ xx <- d1 %>%
   mutate(PlusMinus = ifelse(Source == "Expenses", "Plus", "Minus"))
 # Plot
 mp <- ggplot(xx, aes(x = PlusMinus, y = Value / 1000000000, fill = Source)) + 
-  geom_bar(stat = "identity", position = "stack", 
-           color = "black", alpha = 0.7) +
+  geom_col(position = "stack", color = "black", alpha = 0.7) +
   facet_grid(. ~ Year) +
   scale_fill_manual(name = NULL, values = myColors1) +
   theme_agData(legend.position = "bottom",
@@ -116,7 +115,7 @@ ggsave("cbc_finances_02.png", width = 6, height = 4)
 ```{r}
 # Plot
 mp <- ggplot(d1, aes(x = Year, y = Revenue / 1000000000)) + 
-  geom_bar(stat = "identity", alpha = 0) +
+  geom_col(alpha = 0) +
   geom_line(size = 1.5, color = "darkgreen", alpha = 0.8) + 
   scale_x_continuous(minor_breaks = 2000:2022) +
   scale_color_manual(name = NULL, values = myColors1) +
@@ -144,7 +143,7 @@ myMin <- min(c(x1$Profit, x2$Profit)) / 1000000000
 myMax <- max(c(x1$Profit, x2$Profit)) / 1000000000
 # Plot
 mp1 <- ggplot(x1, aes(x = Year, y = Profit / 1000000000, fill = Net)) + 
-  geom_bar(stat = "identity", color = "black", alpha = 0.8) +
+  geom_col(color = "black", alpha = 0.8) +
   scale_fill_manual(values = c("darkred", "darkgreen")) +
   scale_x_continuous(breaks = c(2001,2005,2010,2015,2020),
                      minor_breaks = 2000:2022) + 
@@ -155,7 +154,7 @@ mp1 <- ggplot(x1, aes(x = Year, y = Profit / 1000000000, fill = Net)) +
        subtitle = "A) Net Profit With Government Funding", 
        y = "Billion CAD", x = NULL)
 mp2 <- ggplot(x2, aes(x = Year, y = Profit / 1000000000, fill = Net)) + 
-  geom_bar(stat = "identity", color = "black", alpha = 0.8) +
+  geom_col(color = "black", alpha = 0.8) +
   scale_fill_manual(values = c("darkred","darkblue")) +
   scale_x_continuous(breaks = c(2001,2005,2010,2015,2020)) +
   ylim(c(myMin,myMax)) +
@@ -181,7 +180,7 @@ Now lets recreate the graph without deception!
 ```{r}
 # Plot
 mp <- ggplot(d2, aes(x = Group, y = Value, fill = Type)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   facet_grid(. ~ Year) +
   scale_fill_manual(name = NULL, values = myColors2) +
   scale_x_continuous(minor_breaks = NULL, breaks = NULL) +

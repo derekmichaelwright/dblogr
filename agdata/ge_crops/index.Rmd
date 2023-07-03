@@ -65,7 +65,7 @@ d6 <- agData_ISAAA_Value
 xx <- d1 %>% filter(Measurement == "Area")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
-  geom_bar(stat = "identity", alpha = 0.25, fill = "darkgreen") +
+  geom_col(alpha = 0.25, fill = "darkgreen") +
   geom_line(color = "darkgreen", size = 1.5, alpha = 0.7) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
@@ -90,7 +90,7 @@ xx <- d1 %>%
          Value = ifelse((Measurement == "Percent Change" & Year %in% 1997:1999), NA, Value))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value)) + 
-  geom_bar(stat = "identity", alpha = 0.5, color = "Black", fill = "darkgreen") + 
+  geom_col(alpha = 0.5, color = "Black", fill = "darkgreen") + 
   geom_text(aes(label = Text), y = 0, angle = 270, hjust = 1, vjust = 0.5 ) + 
   facet_grid(Measurement + Unit ~ ., scales = "free_y", switch = "y") +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
@@ -224,7 +224,7 @@ xx <- d3 %>%
   mutate(Item = factor(Item, levels = myCrops))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   facet_grid(Item ~ ., scales = "free_y") +
   scale_fill_manual(values = myColors_Crops) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
@@ -249,7 +249,7 @@ xx <- d3 %>%
   mutate(Item = factor(Item, levels = myCrops))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, fill = Item)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   facet_grid(Item ~ ., scales = "free_y") +
   scale_fill_manual(values = myColors_Crops) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
@@ -360,8 +360,7 @@ xx<- d5 %>%
   mutate(Area = factor(Area, levels = unique(.$Area)))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
-  geom_bar(stat = "identity", fill = "darkgreen", 
-           alpha = 0.6, color = "black") +
+  geom_col(fill = "darkgreen", alpha = 0.6, color = "black") +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 11) +
   theme_agData() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
@@ -379,7 +378,7 @@ ggsave("ge_crops_12.png", mp, width = 21, height = 8)
 ```{r}
 # Plot 
 mp <- ggplot(d6, aes(x = Year, y = Value)) +
-  geom_bar(stat = "identity", alpha = 0.25, fill = "darkgreen") +
+  geom_col(alpha = 0.25, fill = "darkgreen") +
   geom_line(color = "darkgreen", size = 1.5, alpha = 0.7) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
@@ -403,7 +402,7 @@ xx <- xx %>%
   mutate(Limiting.Factor = factor(Limiting.Factor, levels = rev(Limiting.Factor)))
 # Plot
 mp <- ggplot(xx, aes(x = Limiting.Factor, y = Percent, label = PercentLabel)) + 
-  geom_bar(stat = "identity", alpha = 0.8, color = "black", fill = "darkred") + 
+  geom_col(alpha = 0.8, color = "black", fill = "darkred") + 
   geom_text(color = "white", nudge_y = -1.5) + 
   theme_agData() + 
   coord_flip() +

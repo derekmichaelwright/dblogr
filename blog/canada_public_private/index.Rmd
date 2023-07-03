@@ -29,10 +29,6 @@ library(agData)
 ```{r}
 # Prep data
 myCaption = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
-myAreas <- c("Canada", "Quebec", "Ontario", "British Columbia", 
-           "Alberta", "Saskatchewan", "Manitoba", "Nova Scotia",
-           "Newfoundland and Labrador", "New Brunswick", "Prince Edward Island", 
-           "Northwest Territories", "Yukon", "Nunavut")
 myColors_Ind <- c("darkgreen", "darkslategray", "darkred")
 myColors_Sex <- c("palevioletred3","steelblue")
 myMeasures <- c("Self-employed", "Private sector", "Public sector")
@@ -41,7 +37,7 @@ myDates <- as.Date(c("2010-01-01","2015-01-01","2020-01-01"))
 d1 <- read.csv("1410028801_databaseLoadingData.csv") %>%
   select(Area=GEO, Date=1, Measurement=Class.of.worker, 
          Sex, Unit=UOM, Scale=SCALAR_FACTOR, Value=VALUE) %>%
-  mutate(Area = factor(Area, levels = myAreas),
+  mutate(Area = factor(Area, levels = agData_STATCAN_Region_Table$Area),
          Date = as.Date(paste0(Date, "-15"), format = "%Y-%m-%d"),
          Measurement = gsub(" employees", "", Measurement),
          Measurement = factor(Measurement, levels = myMeasures))
@@ -276,7 +272,7 @@ ggsave("canada_public_private_3_02.png", mp, width = 7, height = 4)
 xx <- d2 %>% filter(Area == "Canada", Sex == "Both sexes")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Measurement)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColors_Ind) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Employment in Canada", x = NULL, caption = myCaption)
@@ -294,7 +290,7 @@ ggsave("canada_public_private_4_01.png", mp, width = 6, height = 4)
 xx <- d2 %>% filter(Area == "Canada", Sex != "Both sexes")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Measurement)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   facet_grid(. ~ Sex) +
   scale_fill_manual(name = NULL, values = myColors_Ind) +
   theme_agData(legend.position = "bottom") +
@@ -313,7 +309,7 @@ ggsave("canada_public_private_4_02.png", mp, width = 8, height = 4)
 xx <- d2 %>% filter(Area != "Canada", Sex == "Both sexes")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Measurement)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7, lwd = 0.1) +
+  geom_col(color = "black", alpha = 0.7, lwd = 0.1) +
   facet_wrap(Area ~ ., ncol = 5) +
   scale_fill_manual(name = NULL, values = myColors_Ind) +
   theme_agData(legend.position = "bottom",
@@ -385,8 +381,7 @@ xx <- d1 %>%
   mutate(Change = `2022-05-15` - `2020-02-15`)
 # Plot
 mp <- ggplot(xx, aes(x = Sex, y = Change, fill = Sex)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", alpha = 0.7) +
   facet_grid(. ~ Measurement) +
   scale_fill_manual(values = myColors_Sex) +
   theme_agData(legend.position = "none") +
@@ -411,8 +406,7 @@ xx <- d1 %>%
   mutate(Change = `2022-05-15` - `2019-09-15`)
 # Plot
 mp <- ggplot(xx, aes(x = Sex, y = Change, fill = Sex)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", alpha = 0.7) +
   facet_grid(. ~ Measurement) +
   scale_fill_manual(values = myColors_Sex) +
   theme_agData(legend.position = "none") +

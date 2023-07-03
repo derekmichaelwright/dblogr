@@ -160,7 +160,7 @@ xx <- d1 %>% region_Info() %>%
          Region = factor(Region, levels = myRegions))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) + 
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   scale_fill_manual(values = myColors) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Lentil - Production - 2019", x = NULL,
@@ -218,7 +218,7 @@ xx <- d1 %>% region_Info() %>%
          Region = factor(Region, levels = myRegions))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) + 
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   scale_fill_manual(values = myColors) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Lentil - Area Harvested - 2019", 
@@ -250,7 +250,7 @@ xx <- d1 %>%
          Region = factor(Region, levels = myRegions))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000, fill = Region)) + 
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) + 
+  geom_col(color = "black", alpha = 0.7) + 
   scale_fill_manual(values = myColors) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Lentil Yields - 5 year average",
@@ -399,8 +399,7 @@ ggPie_single <- function(crop = "Lentils, dry", measurement = "Production",
            Label_y = Cummulative_P - (Percentage / 2))
   # Plot
   ggplot(yy, aes(x = 1)) +
-    geom_bar(aes(y = Percentage, fill = Area), stat = "identity",
-             color = "black", alpha = 0.7) +
+    geom_col(aes(y = Percentage, fill = Area), color = "black", alpha = 0.7) +
     coord_polar("y", start = 0) +
     geom_label(aes(label = paste(Percentage, "%"), y = Label_y), 
                size = 2.5, alpha = 0.9, nudge_x = 0.29) + 
@@ -434,8 +433,7 @@ ggPie_anim <- function(crop = "Lentils, dry", measurement = "Production",
            ISO2 = ifelse(Area == "Other", "", ISO2))
   # Plot
   ggplot(xx, aes(x = 1, fill = Area)) +
-    geom_bar(aes(y = -Percent), stat = "identity", 
-             position = "fill", color = "black") +
+    geom_col(aes(y = -Percent), position = "fill", color = "black") +
     coord_polar("y", start = 0) +
     theme_agData_pie() +
     scale_fill_manual(values = agData_Colors) +
@@ -477,8 +475,7 @@ ggPie_multi <- function(crop = "Lentils, dry", measurement = "Production",
     mutate(Label_y = Cummulative_P - (Percentage / 2))
   # Plot
   ggplot(xx, aes(x = 1, fill = Area)) +
-    geom_bar(aes(y = -Percentage), stat = "identity",
-             color = "black", alpha = 0.7) +
+    geom_col(aes(y = -Percentage), color = "black", alpha = 0.7) +
     coord_polar("y", start = 0) +
     facet_grid(. ~ Year) +
     theme_agData_pie() +

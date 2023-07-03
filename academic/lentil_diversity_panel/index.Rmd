@@ -303,7 +303,7 @@ xx <- dd %>%
   mutate(Origin = factor(Origin, levels = .$Origin))
 # Plot
 mp <- ggplot(xx, aes(x = Origin, y = Count, fill = Region)) + 
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) + 
+  geom_col(color = "black", alpha = 0.7) + 
   facet_grid(. ~ Region, scales = "free", space = "free") + 
   scale_fill_manual(values = rColors) +
   theme_agData(legend.position = "none",
@@ -412,7 +412,7 @@ xx <- dd %>%
   mutate(Name = factor(Name, unique(Name)))
 # Plot
 mp <- ggplot(xx, aes(x = Name, y = Value, fill = Group)) +
-  geom_bar(stat = "identity", position = "stack") +
+  geom_col(position = "stack") +
   scale_fill_manual(name = NULL, values = sColors) +
   guides(fill = guide_legend(nrow = 1)) +
   theme_agData(legend.position = "bottom",
@@ -438,7 +438,7 @@ xx <- dd %>%
   mutate(Name = factor(Name, unique(Name)))
 # Plot
 mp <- ggplot(xx, aes(x = Name, y = Value, fill = Group)) +
-  geom_bar(stat = "identity", position = "stack") +
+  geom_col(position = "stack") +
   facet_grid(. ~ Region, scales = "free_x", space = "free_x") +
   scale_fill_manual(name = NULL, values = sColors) +
   guides(fill = guide_legend(nrow = 1)) +
@@ -551,7 +551,7 @@ xx <- left_join(x1, x2, by = "SubRegion") %>%
   mutate(SubRegion = factor(SubRegion, levels = myLevels))
 # Plot
 mp <- ggplot(xx, aes(x = "", y = Percent, fill = STR_Group)) + 
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) + 
+  geom_col(color = "black", alpha = 0.7) + 
    coord_polar("y", start = 0) +
   facet_wrap(. ~ SubRegion + paste("n =", Total), ncol = 6) +
   scale_fill_manual(values = sColors) +
@@ -745,7 +745,7 @@ xx <- left_join(x1, x2, by = "SubRegion") %>%
   mutate(SubRegion = factor(SubRegion, levels = myLevels))
 # Plot
 mp <- ggplot(xx, aes(x = "", y = Percent, fill = DTF_Cluster)) + 
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) + 
+  geom_col(color = "black", alpha = 0.7) + 
   coord_polar("y", start = 0) +
   facet_wrap(. ~ SubRegion + paste("n =", Total), ncol = 6) +
   scale_fill_manual(values = cColors) +

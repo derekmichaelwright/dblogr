@@ -259,7 +259,7 @@ xx <- dd %>%
          Year = factor(Year))
 # Plot graph
 mp <- ggplot(xx, aes(x = Location, y = Rainfall, fill = Year)) + 
-  geom_bar(stat = "identity", alpha = 0.7, color = "black", lwd = 0.3,
+  geom_col(alpha = 0.7, color = "black", lwd = 0.3,
            position = position_dodge2(preserve = "single")) + 
   scale_fill_manual(values = myCols) +
   theme_agData() +
@@ -281,7 +281,7 @@ xx <- dd %>%
   summarise(Value = sum(Value))
 # Plot graph
 mp <- ggplot(xx, aes(x = DaysAfterPlanting, y = Value)) + 
-  geom_bar(stat = "identity", fill = "steelblue") +
+  geom_col(fill = "steelblue") +
   facet_wrap(Location~., ncol = 1) +
   theme_agData() +
   labs(title = "Precipitation", y = "mm", x = "Days After Planting",
@@ -339,7 +339,7 @@ mp <- ggplot(xx, aes(x = Date, y = Temp_mean)) +
   facet_wrap(Expt ~ ., ncol = 1, scales = "free_x") + 
   geom_line(color = "Red") +
   geom_line(aes(y = DayLen_Rescaled), color = "darkblue") +
-  geom_bar(data = xR, aes(y = Value), stat = "identity", fill = "steelblue") +
+  geom_col(data = xR, aes(y = Value), fill = "steelblue") +
   geom_ribbon(aes(ymin = Temp_min, ymax = Temp_max), 
               fill = alpha("Red", 0.25), 
               color = alpha("Red", 0.25) ) +

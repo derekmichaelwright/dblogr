@@ -49,6 +49,10 @@ d2 <- read.csv("data_yougov.csv", skip = 1, check.names = FALSE) %>%
 
 # Morning Consult Poll
 
+The share of adults who said the following comes closest to their opinion about the origins of the COVID-19 pandemic. 
+
+Surveys conducted **March 14-April 2, 2023**, among a representative sample of 2,200 U.S. adults and samples of roughly 1,000 adults in Australia and Latin American and European countries, with unweighted margins of error of +/- 2 and +/- 3 percentage points, respectively. Figures may not add up to 100% due to rounding.
+
 ![](covid_origin_1_01.png)
 
 ```{r}
@@ -60,11 +64,12 @@ xx <- d1 %>% gather(Trait, Value, 2:4) %>%
          Trait = factor(Trait, levels = myTraits))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value, fill = Trait)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.8)  +
+  geom_col(color = "black", alpha = 0.8)  +
   scale_fill_manual(name = NULL, values = myColors, breaks = rev(myTraits)) +
   theme_agData(legend.position = "bottom") +
   coord_flip() +
-  labs(y = NULL, caption = myCaption1)
+  labs(subtitle = "The share of adults who said the following comes closest to their opinion about the origins of the COVID-19 pandemic",
+       x = NULL, y = "Percent", caption = myCaption1)
 ggsave("covid_origin_1_01.png", mp, width = 6, height = 4)
 ```
 
@@ -73,6 +78,8 @@ ggsave("covid_origin_1_01.png", mp, width = 6, height = 4)
 # YOUGOV Poll
 
 ## 35. COVID-19 Originated in Chinese Lab
+
+**March 4 - 7, 2023 - 1500 U.S. Adult Citizens**
 
 Regardless of whether or not the virus responsible for COVID-19 was created or naturally mutated, do you believe it is true or false that a laboratory in China was the origin of the virus?
 
@@ -106,7 +113,7 @@ yy <- xx %>% filter(Answer %in% c("Definatly true", "Probably true")) %>%
   reframe(Percent = round(sum(Percent)))
 # Plot
 mp <- ggplot(xx, aes(x= Group, y = Percent)) +
-  geom_bar(aes(fill = Answer), stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(aes(fill = Answer), color = "black", alpha = 0.7) +
   geom_text(data = yy, aes(label = Percent), color = "white") +
   scale_fill_manual(name = NULL, values = myColors) +
   scale_y_continuous(breaks = seq(0,100, by = 10), expand = c(0.01,0)) +
@@ -140,7 +147,7 @@ yy <- xx %>% filter(Answer %in% c("Definatly true", "Probably true")) %>%
   reframe(Percent = round(sum(Percent)))
 # Plot
 mp <- ggplot(xx, aes(x = Group, y = Percent)) +
-  geom_bar(aes(fill = Answer), stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(aes(fill = Answer), color = "black", alpha = 0.7) +
   geom_text(data = yy, aes(label = Percent), color = "white") +
   scale_fill_manual(name = NULL, values = myColors) +
   scale_y_continuous(breaks = seq(0,100, by = 10), expand = c(0.01,0)) +
@@ -169,8 +176,7 @@ plotPoll_1 <- function(xx = d2, myGroups, myColors,
     mutate(Group = factor(Group, levels = myGroups))
   # Plot
   ggplot(xx, aes(x = Answer, y = Percent, fill = Group)) +
-    geom_bar(stat = "identity", position = "dodge", 
-             color = "black", alpha = 0.7) +
+    geom_col(position = "dodge", color = "black", alpha = 0.7) +
     scale_fill_manual(name = NULL, values = myColors) +
     theme_agData(legend.position = "bottom") +
     labs(title = myTitle, subtitle = mySubtitle, 
@@ -261,12 +267,11 @@ plotPoll_2 <- function(xx = d2, myGroups,
               Percent = 100 * Percent / sum(Percent))
   # Plot
   ggplot(xx, aes(x = 1, y = Percent, fill = Answer)) +
-    geom_bar(stat = "identity", lwd = 0.2,
-             color = "black", alpha = 0.7) +
+    geom_col(lwd = 0.2, color = "black", alpha = 0.7) +
     coord_polar("y", start = 0) +
     facet_grid(. ~ Group) +
     scale_fill_manual(name = NULL, values = myColors) +
-    xlim(0.542, 1.45) +
+    xlim(0.548, 1.45) +
     theme_agData_pie(legend.position = "bottom") +
     labs(title = myTitle, subtitle = mySubtitle, 
          x = NULL, caption = myCaption2)

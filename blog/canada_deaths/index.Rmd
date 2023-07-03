@@ -148,7 +148,7 @@ xx <- d3 %>% filter(Area == "Canada", Year < 2023)
 # Plot
 mp1 <- ggplot(xx, aes(x = Year, y = Total.Deaths / 1000, 
                       fill = Group, alpha = Group)) +
-  geom_bar(stat = "identity", color = "black") +
+  geom_col(color = "black") +
   scale_fill_manual(name = NULL, values = myColors) +
   scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8,0.8)) +
   scale_x_continuous(breaks = c(1991, seq(1995,2020, by = 5))) +
@@ -158,7 +158,7 @@ mp1 <- ggplot(xx, aes(x = Year, y = Total.Deaths / 1000,
        y = "Thousand Deaths", x = NULL, caption = "")
 mp2 <- ggplot(xx, aes(x = Year, y = Death.Rate, 
                       fill = Group, alpha = Group)) +
-  geom_bar(stat = "identity", color = "black") +
+  geom_col(color = "black") +
   scale_fill_manual(name = NULL, values = myColors) +
   scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8,0.8)) +
   scale_x_continuous(breaks = c(1991, seq(1995,2020, by = 5))) +
@@ -184,7 +184,7 @@ ggWeeklyDeaths <- function(area = "Canada", xmin = 2010, xmax = max(d1$Year)) {
   myMax <- max(xx %>% filter(Year < 2020) %>% pull(Value), na.rm = T)
   # Plot
   ggplot(xx, aes(x = Date, y = Value, fill = Group)) +
-    geom_bar(stat = "identity", alpha = 0.7) +
+    geom_col(alpha = 0.7) +
     geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
     geom_vline(xintercept = as.Date("2020-03-01"), alpha = 0.6) +
     geom_hline(yintercept = myMax, alpha = 0.2) +
@@ -736,7 +736,7 @@ deathPlot5 <- function(myArea = "Canada") {
     summarise(Value = sum(Value, na.rm = T))
   # Plot
   ggplot(xx, aes(x = Year, y = Value / 1000, fill = Group, alpha = Group)) +
-    geom_bar(stat = "identity", color = "black") +
+    geom_col(color = "black") +
     facet_grid(. ~ Age) +
     scale_fill_manual(name = NULL, values = myColors) +
     scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8)) +
@@ -849,7 +849,7 @@ ggDeaths65 <- function(myArea = "Canada") {
     mutate(Rate = 100000 * Value / Population)
   # Plot
   ggplot(xx, aes(x = Year, y = Rate)) +
-    geom_bar(stat = "identity", color = "black", fill = "darkred", alpha = 0.7) + 
+    geom_col(color = "black", fill = "darkred", alpha = 0.7) + 
     scale_fill_manual(values = myColors) +
     scale_x_continuous(breaks = 2010:2022) +
     theme_agData(legend.position = "none",
@@ -891,7 +891,7 @@ xx <- xx %>% left_join(pi, by = c("Area", "Year")) %>%
   mutate(Rate = 100000 * Value / Population)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Rate)) +
-  geom_bar(stat = "identity", color = "black", fill = "darkred", alpha = 0.7) + 
+  geom_col(color = "black", fill = "darkred", alpha = 0.7) + 
   facet_wrap(Area ~ ., ncol = 5) +
   scale_fill_manual(values = myColors) +
   scale_x_continuous(breaks = 2010:2022) +
@@ -914,7 +914,7 @@ ggDeaths044 <- function(myArea = "Canada") {
   vv <- as.Date(paste0(as.character(2010:2023),"-01-01"))
   # Plot
   ggplot(xx, aes(x = Date, y = Value, fill = Group)) +
-    geom_bar(stat = "identity", alpha = 0.7) + #geom_line(alpha = 0.7) +
+    geom_col(alpha = 0.7) +
     geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
     geom_vline(xintercept = as.Date("2020-03-01"), alpha = 0.25) +
     scale_fill_manual(values = myColors) +
@@ -1059,7 +1059,7 @@ ggsave("canada_deaths_10_02.png", mp, width = 8, height = 4)
 # Plot
 mp <- ggplot(d3 %>% filter(Area == "Canada", Year < 2023), 
              aes(x = Year, y = Death.Rate, fill = Group, alpha = Group)) +
-  geom_bar(stat = "identity", color = "black") +
+  geom_col(color = "black") +
   scale_fill_manual(values = myColors) +
   scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8)) +
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
@@ -1079,7 +1079,7 @@ ggsave("canada_deaths_11_01.png", mp, width = 6, height = 4)
 # Plot
 mp <- ggplot(d3 %>% filter(Year < 2023), 
              aes(x = Year, y = Death.Rate, fill = Group, alpha = Group)) +
-  geom_bar(stat = "identity", color = "black") +
+  geom_col(color = "black") +
   scale_fill_manual(name = NULL, values = myColors) +
   scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8)) +
   scale_x_continuous(breaks = seq(1995, 2015, 10)) +
@@ -1102,8 +1102,7 @@ xx <- d3 %>% filter(Year %in% c(2019, 2020, 2021, 2022)) %>%
   filter(!is.na(Total.Deaths), Total.Deaths > 0)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Death.Rate, fill = factor(Year))) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", alpha = 0.7) +
   facet_grid(. ~ Area, labeller = label_wrap_gen(width = 10)) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom",
@@ -1129,7 +1128,7 @@ xx <- d3 %>% filter(Year %in% c(1991, 2019)) %>%
   filter(!is.na(Change))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Change)) +
-  geom_bar(stat = "identity", color = "black", fill = "darkred", alpha = 0.7) +
+  geom_col(color = "black", fill = "darkred", alpha = 0.7) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Death Rate Change (1991 to 2019)", 
        subtitle = "Deaths per thousand people",
@@ -1156,7 +1155,7 @@ myColors <- c(alpha("darkred",0.3), alpha("darkred",0.6), alpha("darkred",0.8))
 myLabels <- c(c("1991  to 2019", "2019 to 2020", "2020 to 2021"))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value, fill = Trait)) +
-  geom_bar(stat = "identity", position = "dodge", color = "black") +
+  geom_col(position = "dodge", color = "black") +
   scale_fill_manual(values = myColors, labels = myLabels) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -1243,7 +1242,7 @@ xx <- d4 %>% filter(Trait == "Death.rate..per.1.000.") %>%
          Group = ifelse(Year %in% c(1918, 2020, 2021), "Pandemic", Group))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, alpha = Group)) +
-  geom_bar(stat = "identity", color = "black", fill = "darkred", size = 0.3) +
+  geom_col(color = "black", fill = "darkred", size = 0.3) +
   scale_x_continuous(breaks = seq(1900, 2020, 20)) +
   scale_fill_manual(values = c("darkred", "darkgreen", "darkred")) +
   scale_alpha_manual(values = c(0.6, 0.3, 0.8)) +
@@ -1303,7 +1302,7 @@ xx <- read.csv("data_covid_releif.csv") %>%
          Trait = factor(Trait, levels = traits2))
 # Plot
 mp <- ggplot(xx, aes(x = Quantile, y = Value, fill = Quantile)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.8) +
+  geom_col(color = "black", alpha = 0.8) +
   facet_wrap(Trait ~ ., ncol = 3, scale = "free_y") +
   scale_fill_manual(values = agData_Colors) +
   theme_agData(legend.position = "none",
@@ -1316,7 +1315,7 @@ ggsave("canada_deaths_9_02.png", mp, width = 8, height = 4)
 xx <- xx %>% filter(Trait == "Percent of Releif")
 # Plot
 mp <- ggplot(xx, aes(x = Quantile, y = Value, fill = Quantile)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.8) +
+  geom_col(color = "black", alpha = 0.8) +
   facet_wrap(Trait ~ ., ncol = 3, scale = "free_y") +
   scale_fill_manual(values = agData_Colors) +
   theme_agData(legend.position = "none",

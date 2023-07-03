@@ -55,7 +55,7 @@ xx <- dd %>%
   mutate(Year = factor(Year))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Year)) +
-  geom_bar(stat = "identity", color = "black") +
+  geom_col(color = "black") +
   facet_wrap(Measurement ~ ., scales = "free_y") +
   scale_fill_manual(name = NULL, values = myColors_Years) +
   theme_agData(legend.position = "none",
@@ -78,8 +78,7 @@ xx <- dd %>%
   mutate(Year = factor(Year))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000, fill = Year)) +
-  geom_bar(stat = "identity", position = "dodge",
-           color = "black") +
+  geom_col(position = "dodge", color = "black") +
   scale_fill_manual(name = NULL, values = myColors_Years) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Total Number of Farm Operators",
@@ -98,7 +97,7 @@ xx <- dd %>%
   mutate(Year = factor(Year))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Year)) +
-  geom_bar(stat = "identity", color = "black") +
+  geom_col(color = "black") +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
   scale_fill_manual(name = NULL, values = myColors_Years) +
   theme_agData(legend.position = "none",
@@ -123,8 +122,7 @@ xx <- dd %>%
   mutate(Year = factor(Year))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Measurement)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColors_Sex) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada", subtitle = "Total Number of Farm Operators",
@@ -149,8 +147,7 @@ xx <- dd %>%
   mutate(Year = factor(Year))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Measurement)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColors_Sex) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Saskatchewan", subtitle = "Total Number of Farm Operators",
@@ -171,8 +168,7 @@ xx <- dd %>%
   mutate(Year = factor(Year))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Measurement)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", alpha = 0.7) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
   scale_fill_manual(name = NULL, values = myColors_Sex) +
   theme_agData(legend.position = "bottom",
@@ -227,7 +223,7 @@ xx <- dd %>%
   mutate(Percent = 100 * Value / sum(Value))
 # Plot
 mp <- ggplot(xx, aes(x = "", y = Percent, fill = Measurement)) + 
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   coord_polar("y", start = 0) +
   facet_wrap(Area ~ ., ncol = 5) +
   scale_fill_manual(name = NULL, values = myColors_Sex) +
@@ -401,7 +397,7 @@ xx <- dd %>%
   mutate(Percent = 100 * Value / sum(Value))
 # Plot
 mp <- ggplot(xx, aes(x = "", y = Percent, fill = Measurement)) + 
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   coord_polar("y", start = 0) +
   facet_wrap(Area ~ ., ncol = 5) +
   scale_fill_manual(name = NULL, values = myColors_Age) +

@@ -42,13 +42,8 @@ library(gganimate)
 #
 myCaptionCA <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: CA GOV\nNote: most recent years data may be incomplete"
 myColorsMF <- c("palevioletred3", "steelblue")
-myAreas <- c("Canada", "British Columbia", "Alberta", "Saskatchewan", 
-             "Manitoba", "Ontario", "Quebec", "New Brunswick", "Nova Scotia",
-             "Prince Edward Island", "Newfoundland and Labrador",
-             "Yukon", "Northwest Territories including Nunavut", 
-             "Northwest Territories", "Nunavut")
 ca1 <- read_xlsx("data_canada_overdoses.xlsx", "Canada") %>%
-  mutate(Area = factor(Area, levels = myAreas))
+  mutate(Area = factor(Area, levels = agData_STATCAN_Region_Table$Area))
 #
 # Prep BC data
 #
@@ -108,7 +103,7 @@ sk4 <- read_xlsx("data_canada_overdoses.xlsx", "SK Race") %>%
 xx <- ca1 %>% filter(Area == "Canada")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Number / 1000)) +
-  geom_bar(stat = "identity", fill = "darkred", color = "black", alpha = 0.7) +
+  geom_col(fill = "darkred", color = "black", alpha = 0.7) +
   scale_x_continuous(breaks = 2016:2022) +
   theme_agData() +
   labs(title = "Drug Overdoses in Canada", 
@@ -127,7 +122,7 @@ ggsave("canada_overdoses_01.png", mp, width = 6, height = 4)
 xx <- ca1 %>% filter(Area != "Canada")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Number)) +
-  geom_bar(stat = "identity", fill = "darkred", color = "black", alpha = 0.7) +
+  geom_col(fill = "darkred", color = "black", alpha = 0.7) +
   facet_wrap(Area ~ ., scales = "free_y") +
   scale_x_continuous(breaks = 2016:2022) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -148,7 +143,7 @@ ggsave("canada_overdoses_02.png", mp, width = 10, height = 6)
 
 ```{r}
 mp <- ggplot(bc1, aes(x = Year, y = Deaths)) +
-  geom_bar(stat = "identity", fill = "darkred", color = "black", alpha = 0.7) +
+  geom_col(fill = "darkred", color = "black", alpha = 0.7) +
   scale_x_continuous(breaks = seq(1995, 2020, by = 5),
                      minor_breaks = 1990:2025) +
   theme_agData() +
@@ -185,13 +180,11 @@ ggsave("british_columbia_overdoses_02.png", mp, width = 6, height = 4)
 
 ## Monthly Drug Overdoses
 
-### Line Graph
-
 ![](british_columbia_overdoses_03.png)
 
 ```{r}
 mp <- ggplot(bc2, aes(x = Date, y = Deaths)) + 
-  geom_line(color = "darkred", alpha = 0.7, size = 1.25) +
+  geom_col(fill = "darkred", color = "black", lwd = 0.2, alpha = 0.7) +
   geom_vline(xintercept = as.Date(paste0(2011:2022,"-01-01")),
              alpha = 0.5, lty = 2) +
   scale_x_date(date_breaks = "year", date_labels = "%Y") +
@@ -203,59 +196,38 @@ ggsave("british_columbia_overdoses_03.png", mp, width = 7, height = 4)
 
 ---
 
-### Bar Graph
+### > 2019
 
 ![](british_columbia_overdoses_04.png)
 
 ```{r}
-mp <- ggplot(bc2, aes(x = Date, y = Deaths)) + 
-  geom_bar(stat = "identity", fill = "darkred", 
-           color = "black", lwd = 0.2, alpha = 0.7) +
-  geom_vline(xintercept = as.Date(paste0(2011:2022,"-01-01")),
-             alpha = 0.5, lty = 2) +
-  scale_x_date(date_breaks = "year", date_labels = "%Y") +
-  theme_agData() +
-  labs(title = "Drug Overdoses in British Columbia", x = NULL,
-       caption = myCaptionBC)
-ggsave("british_columbia_overdoses_04.png", mp, width = 7, height = 4)
-```
-
----
-
-#### > 2019
-
-![](british_columbia_overdoses_05.png)
-
-```{r}
 mp <- ggplot(bc2 %>% filter(Year >= 2019), aes(x = Date, y = Deaths)) + 
-  geom_bar(stat = "identity", fill = "darkred", 
-           color = "black", lwd = 0.5, alpha = 0.7) +
+  geom_col(fill = "darkred", color = "black", lwd = 0.5, alpha = 0.7) +
   geom_vline(xintercept = as.Date(paste0(2011:2022,"-01-01")),
              alpha = 0.5, lty = 2) +
   scale_x_date(date_breaks = "year", date_labels = "%Y") +
   theme_agData() +
   labs(title = "Drug Overdoses in British Columbia", x = NULL,
        caption = myCaptionBC)
-ggsave("british_columbia_overdoses_05.png", mp, width = 6, height = 4)
+ggsave("british_columbia_overdoses_04.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## By Sex
 
-![](british_columbia_overdoses_06.png)
+![](british_columbia_overdoses_05.png)
 
 ```{r}
 mp <- ggplot(bc3, aes(x = Year, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColorsMF) +
   scale_x_continuous(breaks = 2011:2022) +
   scale_y_continuous(breaks = seq(0, 1500, by = 500), limits = c(0,1800)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Drug Overdoses in British Columbia", x = NULL,
        caption = myCaptionBC)
-ggsave("british_columbia_overdoses_06.png", mp, width = 6, height = 4)
+ggsave("british_columbia_overdoses_05.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -268,8 +240,7 @@ ggsave("british_columbia_overdoses_06.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- ggplot(bc4, aes(x = `Age Group`, y = Deaths, fill = `Age Group`)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", fill = "darkred", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", fill = "darkred", alpha = 0.7) +
   theme_agData(legend.position = "none") +
   labs(title = "Drug Overdoses in British Columbia - {round(frame_time)}",
        caption = myCaptionBC) +
@@ -283,57 +254,54 @@ anim_save("british_columbia_overdoses_gif_01.gif", mp,
 
 ### 2011 - 2016 - 2017 - 2021
 
-![](british_columbia_overdoses_07.png)
+![](british_columbia_overdoses_06.png)
 
 ```{r}
 # Prep data
 xx <- bc4 %>% filter(Year %in% c(2011, 2016, 2017, 2021))
 # Plot
 mp <- ggplot(xx, aes(x = `Age Group`, y = Deaths)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", fill = "darkred", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", fill = "darkred", alpha = 0.7) +
   facet_grid(. ~ Year) +
   theme_agData(legend.position = "none",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Drug Overdoses in British Columbia", x = NULL,
        caption = myCaptionBC)
-ggsave("british_columbia_overdoses_07.png", mp, width = 9, height = 4)
+ggsave("british_columbia_overdoses_06.png", mp, width = 9, height = 4)
 ```
 
 ---
 
 ### Unscaled
 
-![](british_columbia_overdoses_08.png)
+![](british_columbia_overdoses_07.png)
 
 ```{r}
 mp <- ggplot(bc4, aes(x = Year, y = Deaths)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", fill = "darkred", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", fill = "darkred", alpha = 0.7) +
   facet_grid(. ~ paste("Ages",`Age Group`)) +
   scale_x_continuous(breaks = c(2013, 2019), minor_breaks = 2011:2021) +
   theme_agData(legend.position = "none") +
   labs(title = "Drug Overdoses in British Columbia", x = NULL,
        caption = myCaptionBC)
-ggsave("british_columbia_overdoses_08.png", mp, width = 12, height = 4)
+ggsave("british_columbia_overdoses_07.png", mp, width = 12, height = 4)
 ```
 
 ---
 
 ### Scaled
 
-![](british_columbia_overdoses_09.png)
+![](british_columbia_overdoses_08.png)
 
 ```{r}
 mp <- ggplot(bc4, aes(x = Year, y = Deaths)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", fill = "darkred", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", fill = "darkred", alpha = 0.7) +
   facet_wrap(. ~ paste("Ages",`Age Group`), scales = "free_y", ncol = 7) +
   scale_x_continuous(breaks = c(2013, 2019), minor_breaks = 2011:2021) +
   theme_agData(legend.position = "none") +
   labs(title = "Drug Overdoses in British Columbia", 
        x = NULL, caption = myCaptionBC)
-ggsave("british_columbia_overdoses_09.png", mp, width = 12, height = 4)
+ggsave("british_columbia_overdoses_08.png", mp, width = 12, height = 4)
 ```
 
 ---
@@ -348,8 +316,7 @@ ggsave("british_columbia_overdoses_09.png", mp, width = 12, height = 4)
 
 ```{r}
 mp <- ggplot(ab1, aes(x = Date, y = Number)) +
-  geom_bar(stat = "identity", color = "black", lwd = 0.3,
-           fill = "darkred", alpha = 0.7) +
+  geom_col(color = "black", lwd = 0.3, fill = "darkred", alpha = 0.7) +
   geom_vline(xintercept = as.Date(paste0(2016:2023,"-01-01")),
              alpha = 0.5, lty = 2) +
   theme_agData() +
@@ -366,8 +333,7 @@ ggsave("alberta_overdoses_01.png", mp, width = 7, height = 4)
 
 ```{r}
 mp <- ggplot(ab1, aes(x = Date, y = Rate)) +
-  geom_bar(stat = "identity", color = "black", lwd = 0.3,
-           fill = "darkred", alpha = 0.7) +
+  geom_col(color = "black", lwd = 0.3, fill = "darkred", alpha = 0.7) +
   geom_vline(xintercept = as.Date(paste0(2016:2023,"-01-01")),
              alpha = 0.5, lty = 2) +
   theme_agData() +
@@ -386,8 +352,7 @@ ggsave("alberta_overdoses_02.png", mp, width = 7, height = 4)
 
 ```{r}
 mp <- ggplot(sk1, aes(x = Year, y = Accident)) +
-  geom_bar(stat = "identity", color = "black", 
-           fill = "darkred", alpha = 0.7) +
+  geom_col(color = "black", fill = "darkred", alpha = 0.7) +
   scale_x_continuous(breaks = 2010:max(sk1$Year), 
                      minor_breaks = 2010:max(sk1$Year)) +
   theme_agData() +
@@ -404,8 +369,7 @@ ggsave("saskatchewan_overdoses_01.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- ggplot(sk2, aes(x = Year, y = Deaths)) +
-  geom_bar(stat = "identity", color = "black", 
-           fill = "darkred", alpha = 0.7) +
+  geom_col(color = "black", fill = "darkred", alpha = 0.7) +
   scale_x_continuous(breaks = 2013:max(sk2$Year),
                      minor_breaks = 2013:max(sk2$Year)) +
   theme_agData() +
@@ -427,8 +391,7 @@ xx <- sk3 %>%
   summarise(Deaths = sum(Deaths))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColorsMF) +
   scale_x_continuous(breaks = 2010:max(xx$Year),
                      minor_breaks = 2010:max(xx$Year)) +
@@ -450,7 +413,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- ggplot(sk3, aes(x = Year, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", color = "black", lwd = 0.3, alpha = 0.7) +
+  geom_col(color = "black", lwd = 0.3, alpha = 0.7) +
   facet_grid(. ~ `Age Group`) +
   scale_x_continuous(breaks = c(2013, 2019), 
                      minor_breaks = 2010:max(sk3$Year)) +
@@ -469,8 +432,7 @@ ggsave("saskatchewan_overdoses_04.png", mp, width = 12, height = 4)
 
 ```{r}
 mp <- ggplot(sk3, aes(x = Year, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", lwd = 0.3, alpha = 0.8) +
+  geom_col(position = "dodge", color = "black", lwd = 0.3, alpha = 0.8) +
   facet_grid(Sex ~ `Age Group`) +
   scale_x_continuous(breaks = c(2013, 2019), 
                      minor_breaks = 2010:max(sk3$Year)) +
@@ -489,8 +451,7 @@ ggsave("saskatchewan_overdoses_05.png", mp, width = 12, height = 6)
 
 ```{r}
 mp <- ggplot(sk3, aes(x = `Age Group`, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", alpha = 0.8) +
+  geom_col(position = "dodge", color = "black", alpha = 0.8) +
   scale_fill_manual(name = NULL, values = myColorsMF) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Drug Overdoses in Saskatchewan - {round(frame_time)}",
@@ -510,8 +471,7 @@ anim_save("saskatchewan_overdoses_gif_01.gif", mp,
 ```{r}
 mp <- ggplot(sk3 %>% filter(Year == 2021), 
              aes(x = `Age Group`, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", position = "dodge",
-           color = "black", alpha = 0.8) +
+  geom_col(position = "dodge", color = "black", alpha = 0.8) +
   scale_fill_manual(name = NULL, values = myColorsMF) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Drug Overdoses in Saskatchewan - 2021", 
@@ -530,8 +490,7 @@ ggsave("saskatchewan_overdoses_06.png", mp, width = 6, height = 4)
 ```{r}
 mp <- ggplot(sk3 %>% filter(Year %in% c(2010,2015,2019,2021)), 
              aes(x = `Age Group`, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", position = "dodge",
-           color = "black", alpha = 0.8) +
+  geom_col(position = "dodge", color = "black", alpha = 0.8) +
   facet_grid(. ~ Year) +
   scale_fill_manual(name = NULL, values = myColorsMF) +
   theme_agData(legend.position = "bottom",
@@ -554,8 +513,7 @@ myColors <- c(alpha("darkred",0.1), alpha("darkred",0.3),
               alpha("darkred",0.6), alpha("darkred",0.9))
 # Plot
 mp <- ggplot(xx, aes(x = `Age Group`, y = Deaths, fill = factor(Year))) +
-  geom_bar(stat = "identity", position = "dodge",
-           color = "black") +
+  geom_col(position = "dodge", color = "black") +
   facet_grid(. ~ Sex) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom",
@@ -573,7 +531,7 @@ ggsave("saskatchewan_overdoses_08.png", mp, width = 8, height = 4)
 
 ```{r}
 mp <- ggplot(sk4, aes(x = Year, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", color = "black", lwd = 0.3, alpha = 0.8) +
+  geom_col(color = "black", lwd = 0.3, alpha = 0.8) +
   facet_grid(. ~ Race) +
   scale_x_continuous(breaks = c(2013, 2019), minor_breaks = 2010:2021) +
   scale_fill_manual(name = NULL, values = myColorsMF) +
@@ -591,8 +549,7 @@ ggsave("saskatchewan_overdoses_09.png", mp, width = 12, height = 4)
 
 ```{r}
 mp <- ggplot(sk4, aes(x = Year, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", lwd = 0.3, alpha = 0.8) +
+  geom_col(position = "dodge", color = "black", lwd = 0.3, alpha = 0.8) +
   facet_grid(Sex ~ Race) +
   scale_x_continuous(breaks = c(2013, 2019), minor_breaks = 2010:2021) +
   scale_fill_manual(name = NULL, values = myColorsMF) +
@@ -611,8 +568,7 @@ ggsave("saskatchewan_overdoses_10.png", mp, width = 12, height = 6)
 ```{r}
 mp <- ggplot(sk4 %>% filter(Year == 2021), 
              aes(x = Race, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", position = "dodge",
-           color = "black", alpha = 0.8) +
+  geom_col(position = "dodge", color = "black", alpha = 0.8) +
   scale_fill_manual(name = NULL, values = myColorsMF) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Drug Overdoses in Saskatchewan - 2021", 
@@ -628,8 +584,7 @@ ggsave("saskatchewan_overdoses_11.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- ggplot(sk4, aes(x = Race, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", alpha = 0.8) +
+  geom_col(position = "dodge", color = "black", alpha = 0.8) +
   scale_fill_manual(name = NULL, values = myColorsMF) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Drug Overdoses in Saskatchewan - {round(frame_time)}",
@@ -654,8 +609,7 @@ myColors <- c(alpha("darkred",0.1), alpha("darkred",0.3),
               alpha("darkred",0.6), alpha("darkred",0.9))
 # Plot
 mp <- ggplot(xx, aes(x = Race, y = Deaths, fill = factor(Year))) +
-  geom_bar(stat = "identity", position = "dodge",
-           color = "black") +
+  geom_col(position = "dodge", color = "black") +
   facet_grid(. ~ Sex) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom") +
@@ -687,7 +641,7 @@ xx <- sk4 %>%
 myColors <- c(alpha("darkred",0.3), alpha("darkred",0.7))
 # Plot
 mp <- ggplot(xx, aes(x = Race, y = Rate, fill = factor(Year))) +
-  geom_bar(stat = "identity", position = "dodge",
+  geom_col(position = "dodge",
            color = "black") +
   facet_grid(. ~ Sex) +
   scale_fill_manual(name = NULL, values = myColors) +
@@ -714,8 +668,7 @@ xx <- sk4 %>%
   gather(Trait, Value, `2021 / 2010`, `2021 / 2019`)
 # Plot
 mp <- ggplot(xx, aes(x = Race, y = Value, fill = Sex)) +
-  geom_bar(stat = "identity", position = "dodge",
-           color = "black", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", alpha = 0.7) +
   facet_wrap(. ~ Trait, scales = "free_y") +
   scale_fill_manual(name = NULL, values = myColorsMF) +
   scale_y_continuous(minor_breaks = 0:18) +

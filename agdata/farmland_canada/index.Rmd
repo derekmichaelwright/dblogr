@@ -142,7 +142,7 @@ xx <- d1 %>%
          Unit == "Hectares", Area != "Canada")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
-  geom_bar(stat = "identity", alpha = 0) +
+  geom_col(alpha = 0) +
   geom_line(color = "darkgreen", alpha = 0.7, size = 1) + 
   geom_point(alpha = 0.3, size = 0.5) +
   facet_wrap(. ~ Area, scales = "free_y", ncol = 5) +
@@ -166,7 +166,7 @@ xx <- d1 %>%
          Area %in% c("Ontario", "Quebec"))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
-  geom_bar(stat = "identity", position = "dodge", alpha = 0) +
+  geom_col(position = "dodge", alpha = 0) +
   geom_line(aes(color = Area), size = 1.25, alpha = 0.7) +
   geom_point(alpha = 0.3) +
   scale_color_manual(name = NULL, values = c("darkblue", "steelblue")) +
@@ -191,7 +191,7 @@ xx <- d1 %>%
          Measurement == "Hectares")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
-  geom_bar(stat = "identity", alpha = 0) +
+  geom_col(alpha = 0) +
   geom_line(aes(color = Item), alpha = 0.7, size = 1) + 
   geom_point(alpha = 0.3, size = 0.5) +
   facet_wrap(Item ~ ., scales = "free") +
@@ -273,7 +273,7 @@ xx <- d1 %>%
          Measurement == "Hectares")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
-  geom_bar(stat = "identity", alpha = 0) +
+  geom_col(alpha = 0) +
   geom_line(aes(color = Item), alpha = 0.7, size = 1) + 
   geom_point(alpha = 0.3, size = 0.5) +
   facet_wrap(. ~ Area, scales = "free_y", ncol = 5) +
@@ -302,7 +302,7 @@ xx <- d2 %>%
   mutate(Size = Hectares / Number)
 # Plot
 mp <- ggplot(xx %>% filter(Area == "Canada"), aes(y = Size, x = Year)) + 
-  geom_bar(stat = "identity", alpha = 0) +
+  geom_col(alpha = 0) +
   geom_line(color = "darkgreen", alpha = 0.7, size = 1) + 
   geom_point(alpha = 0.3, size = 0.75) +
   scale_x_continuous(breaks = seq(1925, 2015, 10), expand = c(0.01,0)) +
@@ -321,7 +321,7 @@ ggsave("farmland_canada_2_01.png", mp, width = 6, height = 4)
 ```{r}
 # Plot
 mp <- ggplot(xx %>% filter(Area != "Canada"), aes(y = Size, x = Year)) + 
-  geom_bar(stat = "identity", alpha = 0) +
+  geom_col(alpha = 0) +
   geom_line(color = "darkgreen", alpha = 0.7, size = 1) + 
   geom_point(alpha = 0.3, size = 0.5) +
   facet_wrap(Area ~ ., ncol = 5) +
@@ -352,7 +352,7 @@ xx <- d2 %>%
               "Number of farms (x1000)")))
 # Plot
 mp <- ggplot(xx, aes(y = Value, x = Year)) + 
-  geom_bar(stat = "identity", position = "dodge", alpha = 0) +
+  geom_col(position = "dodge", alpha = 0) +
   geom_line(aes(color = Unit), size = 1.5, alpha = 0.7) +
   geom_point(alpha = 0.3, size = 0.5) +
   scale_color_manual(name = NULL, values = c("steelblue", "darkgreen")) +
@@ -381,7 +381,7 @@ xx <- d2 %>%
               "Number of farms (x1000)")))
 # Plot
 mp <- ggplot(xx, aes(y = Value, x = Year)) + 
-  geom_bar(stat = "identity", position = "dodge", alpha = 0) +
+  geom_col(position = "dodge", alpha = 0) +
   geom_line(aes(color = Unit), size = 2, alpha = 0.7) +
   geom_point(alpha = 0.3, size = 0.5) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
@@ -426,7 +426,7 @@ ggsave("farmland_canada_3_01.png", mp, width = 14, height = 5)
 ```{r}
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000)) + 
-  geom_bar(stat = "identity", alpha = 0) +
+  geom_col(alpha = 0) +
   geom_line(color = "darkgreen", size = 1.5, alpha = 0.7) + 
   facet_wrap(Measurement ~ ., scales = "free_y", ncol = 7) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -446,7 +446,7 @@ ggsave("farmland_canada_3_02.png", mp, width = 14, height = 5)
 myColors <- alpha("darkgreen", seq(0.1, 1, by = 0.1))
 # Plot
 mp <- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = as.factor(Year))) + 
-  geom_bar(stat = "identity", position = "dodge", color = "black", lwd = 0.2) +
+  geom_col(position = "dodge", color = "black", lwd = 0.2) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Farm Size in Canada", x = NULL,
@@ -457,7 +457,7 @@ ggsave("farmland_canada_3_03.png", mp, width = 9, height = 4)
 ```{r eval = F, echo = F}
 # Plot
 mp <- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = Year)) + 
-  geom_bar(stat = "identity", color = "black") +
+  geom_col(color = "black") +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Farm Size in Canada", y = "Thousand Farms", x = NULL,
        caption = myCaption) + transition_time(Year)
@@ -496,7 +496,7 @@ ggsave("farmland_canada_3_04.png", mp, width = 14, height = 5)
 ```{r}
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000)) +
-  geom_bar(stat = "identity", alpha = 0) +
+  geom_col(alpha = 0) +
   geom_line(color = "darkgreen", size = 1.5, alpha = 0.7) + 
   facet_wrap(Measurement ~ ., scales = "free_y", ncol = 7) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -517,7 +517,7 @@ myColors <- alpha("darkgreen", seq(0.1, 1, by = 0.1))
 # Plot
 mp <- ggplot(xx, aes(y = Value / 1000, x = Measurement, 
                      fill = as.factor(Year))) + 
-  geom_bar(stat = "identity", position = "dodge", color = "black", lwd = 0.2) +
+  geom_col(position = "dodge", color = "black", lwd = 0.2) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Farm Size in Saskatchewan", x = NULL,
@@ -541,7 +541,7 @@ xx <- d3 %>%
   mutate(Year = factor(Year))
 #
 mp <- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = Year)) + 
-  geom_bar(stat = "identity", position = "dodge", color = "black", lwd = 0.2) +
+  geom_col(position = "dodge", color = "black", lwd = 0.2) +
   facet_grid(Area ~ .) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -565,7 +565,7 @@ xx <- d3 %>%
   mutate(Area = factor(Area, levels = myAreas))
 #
 mp <- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = Area)) + 
-  geom_bar(stat = "identity", color = "black", lwd = 0.2) +
+  geom_col(color = "black", lwd = 0.2) +
   facet_grid(Area ~ ., scales = "free_y") +
   scale_fill_manual(values = myColors) +
   theme_agData(legend.position = "none",

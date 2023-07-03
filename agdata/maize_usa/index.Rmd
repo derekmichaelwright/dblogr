@@ -251,8 +251,7 @@ xx <- d1 %>%
   mutate(Value = 1000 / Value)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value)) + 
-  geom_bar(stat = "identity", color = "black",
-           fill = "darkgreen", alpha = 0.7, lwd = 0.3) +
+  geom_col(color = "black", fill = "darkgreen", alpha = 0.7, lwd = 0.3) +
   scale_x_continuous(breaks = seq(1865, 2015, 10), minor_breaks = NULL) +
   scale_y_continuous(breaks = seq(0, 1, 0.1)) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -270,8 +269,7 @@ ggsave("maize_usa_07.png", mp, width = 6, height = 4)
 xx <- xx %>% filter(Year %in% seq(1875, 2015, by = 10))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value)) + 
-  geom_bar(stat = "identity", color = "black", 
-           fill = "darkgreen", alpha = 0.7) +
+  geom_col(color = "black", fill = "darkgreen", alpha = 0.7) +
   scale_x_continuous(breaks = seq(1875, 2015, 10), minor_breaks = NULL) +
   scale_y_continuous(breaks = seq(0, 1, 0.1)) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -355,7 +353,7 @@ myCaption4 <- paste("Percent Yield Gain = 100 * (Yi - Y5) / Yb",
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = YieldGains)) + 
   geom_hline(yintercept = 0) +
-  geom_bar(stat = "identity", fill = "darkgreen", alpha = 0.4) + 
+  geom_col(fill = "darkgreen", alpha = 0.4) + 
   stat_smooth(geom = "line", method = "loess", se = F) +
   scale_x_continuous(breaks = seq(1860, 2020, 20)) +
   scale_y_continuous(breaks = seq(-110, 110, 20), 

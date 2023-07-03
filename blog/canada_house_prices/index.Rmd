@@ -83,7 +83,7 @@ for(i in 1:nrow(pp)) {
 }
 # Plot
 mp <- ggplot(pp, aes(x = Admin, y = PercentChange, fill = Party)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   scale_x_discrete(labels = paste(pp$xmin, pp$xmax, sep = "\n")) +
   scale_fill_manual(name = NULL, values = myColors_P) +
   theme_agData(legend.position = "bottom") +
@@ -161,7 +161,7 @@ for(i in 1:nrow(pp)) {
 }
 # Plot
 mp <- ggplot(pp, aes(x = Admin, y = PercentChange, fill = Party)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   scale_x_discrete(labels = paste(pp$xmin, pp$xmax, sep = "\n")) +
   scale_fill_manual(name = NULL, values = myColors_P) +
   theme_agData(legend.position = "bottom") +

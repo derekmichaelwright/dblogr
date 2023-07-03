@@ -42,15 +42,11 @@ myColors2 <- c("darkgreen", "steelblue", "darkred")
 myMeasures <- c("Production", "Exports", "Imports",
                 "Gross withdrawals", "Industrial consumption",
                 "Residential consumption", "Commercial consumption")
-myAreas <- c("Canada", "Alberta", "Saskatchewan", "Manitoba", 
-             "British Columbia", "Quebec", "Ontario", "Atlantic provinces", 
-             "Newfoundland and Labrador", "Nova Scotia", "New Brunswick",
-             "Northwest Territories", "Yukon")
 # Oil
 dd_oil <- read.csv("2510006301_databaseLoadingData.csv") %>%
   mutate(Item = "Crude oil") %>%
   select(Date=1, Area=GEO, Item, Measurement=4, Unit=UOM, Value=VALUE) %>%
-  mutate(Area = factor(Area, levels = myAreas),
+  mutate(Area = factor(Area, levels = agData_STATCAN_Region_Table$Area),
          Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"),
          Measurement = plyr::mapvalues(Measurement, 
             "Crude oil production", "Production"),
@@ -60,7 +56,7 @@ dd_oil <- read.csv("2510006301_databaseLoadingData.csv") %>%
 dd_gas <- read.csv("2510005501_databaseLoadingData.csv") %>%
   mutate(Item = "Natural gas") %>%
   select(Date=1, Area=GEO, Item, Measurement=4, Unit=UOM, Value=VALUE) %>%
-  mutate(Area = factor(Area, levels = myAreas),
+  mutate(Area = factor(Area, levels = agData_STATCAN_Region_Table$Area),
          Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"),
          Measurement = plyr::mapvalues(Measurement, 
             "Marketable production", "Production"),
@@ -71,7 +67,7 @@ dd_gas <- read.csv("2510005501_databaseLoadingData.csv") %>%
 dd_coal <- read.csv("2510004601_databaseLoadingData.csv") %>%
   mutate(Item = "Coal") %>%
   select(Date=1, Area=GEO, Item, Measurement=5, Unit=UOM, Value=VALUE) %>%
-  mutate(Area = factor(Area, levels = myAreas),
+  mutate(Area = factor(Area, levels = agData_STATCAN_Region_Table$Area),
          Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"),
          Measurement = factor(Measurement, levels = myMeasures),
          Value = 1000 * Value, UOM = "Kilograms") %>%
@@ -227,8 +223,8 @@ ggsave("canada_fossil_fuels_1_08.png", mp, width = 8, height = 4)
 ```{r}
 # Prep data
 xx <- dd %>% 
-  filter(Area %in% myAreas, Measurement == "Production", 
-         Date > as.Date("2015-12-30"))
+  filter(Area %in% agData_STATCAN_Region_Table$Area, 
+         Measurement == "Production", Date > as.Date("2015-12-30"))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Item)) +
   geom_line(size = 1, alpha = 0.7) +
@@ -305,7 +301,7 @@ xx <- dd_oil %>%
   summarise(Value = sum(Value, na.rm = T))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, fill = Area)) +
-  geom_bar(stat = "identity", color = "black", lwd = 0.3, 
+  geom_col(color = "black", lwd = 0.3, 
            alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColors2[c(2,1,3)], breaks = rev(myAreas)) +
   scale_x_date(date_breaks = "year", date_labels = "%Y") +
@@ -408,7 +404,7 @@ xx <- dd_gas %>%
   summarise(Value = sum(Value, na.rm = T))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, fill = Area)) +
-  geom_bar(stat = "identity", color = "black", lwd = 0.3, alpha = 0.7) +
+  geom_col(color = "black", lwd = 0.3, alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColors2[c(2,1,3)], breaks = rev(myAreas)) +
   scale_x_date(date_breaks = "year", date_labels = "%Y") +
   theme_agData(legend.position = "bottom",
@@ -535,8 +531,7 @@ xx <- dd_coal %>%
   summarise(Value = sum(Value, na.rm = T))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, fill = Area)) +
-  geom_bar(stat = "identity", color = "black", lwd = 0.3, 
-           alpha = 0.7) +
+  geom_col(color = "black", lwd = 0.3, alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColors2[3:1], breaks = rev(myAreas)) +
   scale_x_date(date_breaks = "year", date_labels = "%Y") +
   theme_agData(legend.position = "bottom",

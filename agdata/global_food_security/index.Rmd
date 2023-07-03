@@ -216,7 +216,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 xx <- dd %>% filter(Area %in% myRegions, Year == max(Year))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Area)) + 
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   facet_wrap(Item ~ ., scales = "free", ncol = 4) +
   scale_fill_manual(values = myColors3) +
   theme_agData(legend.position = "none", 
@@ -237,7 +237,7 @@ ggsave("global_food_security_05.png", mp, width = 12, height = 6)
 xx <- dd %>% filter(Area %in% mySubRegions, Year == max(Year))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Region)) + 
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   facet_grid(Item ~ Region, scales = "free", space = "free_x") +
   scale_fill_manual(values = myColors3) +
   theme_agData(legend.position = "none", 
@@ -254,7 +254,7 @@ myColors <- c("darkgreen", "darkblue", "darkred",
 xx <- dd %>% filter(!Area %in% c("World", "Oceania"))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Region)) + 
-  geom_bar(stat = "identity", color = "black") +
+  geom_col(color = "black") +
   facet_grid(Item ~ Region, scales = "free") +
   scale_fill_manual(values = agData_Colors[c(1,4,3,2,7)]) +
   theme_agData(legend.position = "none", 
@@ -396,7 +396,7 @@ xx <- agData_FAO_Crops %>%
   filter(Area == "Sri Lanka", Year %in% 2019:2022,
          Measurement == "Production")
 ggplot(xx, aes(x = Year, y = Value)) +
-  geom_bar(stat = "identity", fill = "darkgreen", alpha = 0.7) +
+  geom_col(fill = "darkgreen", alpha = 0.7) +
   theme_agData() +
   labs(title = "Sri Lanka", x = NULL, y = "tonnes")
 ```
@@ -474,7 +474,7 @@ xx <- d2 %>% filter(grepl("Total", SubRegion), Measurement %in% myMeasures) %>%
   mutate(Measurement = factor(Measurement, levels = rev(myMeasures)))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, fill = Measurement)) + 
-  geom_bar(stat = "identity", alpha = 0.7, color = "black") +
+  geom_col(alpha = 0.7, color = "black") +
   facet_grid(. ~ SubRegion, scale = "free_y") +
   #scale_color_manual(values = agData_Colors[c(1,4,3,2,7)]) +
   scale_fill_manual(name = NULL, values = c("darkgreen","darkred"),

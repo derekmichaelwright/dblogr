@@ -67,7 +67,7 @@ overdosePlot1 <- function(area = "United States") {
   yy <- xx %>% filter(Date < "2020-01-01")
   # Plot
   ggplot(xx, aes(x = Date, y = Rolling.4.Week.Mean)) +
-    geom_bar(stat = "identity", size = 1, fill = "darkred", alpha = 0.8) +
+    geom_col(size = 1, fill = "darkred", alpha = 0.8) +
     stat_smooth(data = yy, geom = "line", method = "lm", se = F, fullrange = T) +
     stat_smooth(data = yy, geom = "line", method = "lm", se = F, alpha = 0.7, size = 1.5) +
     geom_vline(xintercept = vv, lty = 2, alpha = 0.5)  +
@@ -179,8 +179,7 @@ overdosePlot2 <- function(area = "United States") {
   myCols <- c(alpha("darkred",0.3), alpha("darkred",0.6))
   # Plot
   ggplot(xx, aes(x = Year, y = Value / 1000)) +
-    geom_bar(aes(fill = YearGroup), stat = "identity", 
-             color = "black") +
+    geom_col(aes(fill = YearGroup), color = "black") +
     geom_label(aes(label = round(Value / 1000, 1)), vjust = 1) +
     facet_wrap(Area ~ ., scales = "free_y") +
     scale_fill_manual(name = NULL, values = myCols) +
@@ -383,8 +382,8 @@ xx <- read.csv("data_usa_age_sex.csv") %>%
   mutate(Age = factor(Age, levels = unique(.$Age)))
 # Plot
 mp <- ggplot(xx, aes(x = Age), color = "black") +
-  geom_bar(aes(y = -Female), stat = "identity", fill = "palevioletred3") +
-  geom_bar(aes(y = Male), stat = "identity", fill = "steelblue") +
+  geom_col(aes(y = -Female), fill = "palevioletred3") +
+  geom_col(aes(y = Male), fill = "steelblue") +
   coord_flip() +
   theme_agData() +
   labs(caption = "ww.dblogr.com/ or derekmichaelwright.github.io/dblogr/")
