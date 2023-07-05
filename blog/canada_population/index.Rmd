@@ -175,18 +175,19 @@ xx <- d1 %>%
          Group = factor(Group, levels = c("West", "East")),
          Rate = NA)
 for(i in 1:nrow(xx)) {
-  priorV <- 1000 * xx$Value[xx$Year == xx$Year[i]-1 & xx$Area == xx$Area[i]]
-  if(length(priorV)>0) { xx$Rate[i] <- (xx$Value[i] - priorV) / priorV }
+  priorV <- xx$Value[xx$Year == xx$Year[i]-1 & xx$Area == xx$Area[i]]
+  if(length(priorV)>0) { xx$Rate[i] <- 1000 * (xx$Value[i] - priorV) / priorV }
 }
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Rate, color = Area)) +
   geom_line(size = 1.25, alpha = 0.7) +
   facet_grid(. ~ Group) +
   scale_color_manual(name = NULL, values = myColorsP) +
+  scale_x_continuous(breaks = seq(1950, 2020, by = 10)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Population Growth Rate In Canada", x = NULL,
        y = "People Per 1000", caption = myCaption)
-ggsave("canada_population_1_05.png", mp, width = 10, height = 4)
+ggsave("canada_population_1_05.png", mp, width = 10, height = 5)
 ```
 
 ---

@@ -59,16 +59,23 @@ Surveys conducted **March 14-April 2, 2023**, among a representative sample of 2
 # Prep data
 myTraits <- c("Natural", "Unsure", "Lab Leak")
 myColors <- c("darkred", "steelblue", "darkgreen")
+yy <- d1 %>% 
+  mutate(Natural.pos = Lab.Leak + Unsure,
+         Lab.Leak.pos = Lab.Leak) 
 xx <- d1 %>% gather(Trait, Value, 2:4) %>%
   mutate(Trait = gsub("\\."," ", Trait),
          Trait = factor(Trait, levels = myTraits))
 # Plot
-mp <- ggplot(xx, aes(x = Area, y = Value, fill = Trait)) +
-  geom_col(color = "black", alpha = 0.8)  +
+mp <- ggplot(xx, aes(x = Area)) +
+  geom_col(aes(y = Value, fill = Trait), color = "black", alpha = 0.8)  +
+  geom_text(data = yy, aes(y = Lab.Leak.pos, label = Lab.Leak), color = "white") +
+  geom_text(data = yy, aes(y = Natural.pos, label = Natural), color = "white") +
   scale_fill_manual(name = NULL, values = myColors, breaks = rev(myTraits)) +
+  scale_y_continuous(expand = c(0,0)) +
   theme_agData(legend.position = "bottom") +
   coord_flip() +
-  labs(subtitle = "The share of adults who said the following comes closest to their opinion about the origins of the COVID-19 pandemic",
+  labs(subtitle = "The share of adults who said the following comes closest
+       /nto their opinion about the origins of the COVID-19 pandemic",
        x = NULL, y = "Percent", caption = myCaption1)
 ggsave("covid_origin_1_01.png", mp, width = 6, height = 4)
 ```

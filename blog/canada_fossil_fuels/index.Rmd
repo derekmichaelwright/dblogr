@@ -223,7 +223,7 @@ ggsave("canada_fossil_fuels_1_08.png", mp, width = 8, height = 4)
 ```{r}
 # Prep data
 xx <- dd %>% 
-  filter(Area %in% agData_STATCAN_Region_Table$Area, 
+  filter(Area %in% agData_STATCAN_Region_Table$Area[-1], 
          Measurement == "Production", Date > as.Date("2015-12-30"))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Item)) +

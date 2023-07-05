@@ -68,8 +68,8 @@ overdosePlot1 <- function(area = "United States") {
   # Plot
   ggplot(xx, aes(x = Date, y = Rolling.4.Week.Mean)) +
     geom_col(size = 1, fill = "darkred", alpha = 0.8) +
-    stat_smooth(data = yy, geom = "line", method = "lm", se = F, fullrange = T) +
-    stat_smooth(data = yy, geom = "line", method = "lm", se = F, alpha = 0.7, size = 1.5) +
+    stat_smooth(data = yy, geom = "line", alpha = 0.7,
+                method = "lm", se = F, fullrange = T) +
     geom_vline(xintercept = vv, lty = 2, alpha = 0.5)  +
     facet_wrap(Area ~ ., scales = "free_y") +
     scale_x_date(date_breaks = "1 year", date_labels = "%Y", 
@@ -171,7 +171,7 @@ overdosePlot2 <- function(area = "United States") {
   # Prep data
   xx <- dd %>% 
     mutate(Year = substr(Date, 1, 4)) %>%
-    filter(Area %in% area, Outcome == "Drug Overdose", Year < 2021) %>% 
+    filter(Area %in% area, Outcome == "Drug Overdose") %>% 
     group_by(Area, Year) %>% 
     summarise(Value = sum(Rolling.4.Week.Mean, na.rm = T)) %>%
     mutate(YearGroup = ifelse(Year < 2020, "Pre-Covid", "Covid"),

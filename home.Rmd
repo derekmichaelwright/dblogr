@@ -602,7 +602,7 @@ Polling results from various polls on the origins of covid
 
 </div><div class = "col-md-6">![](blog/covid_origins/featured.png)</div></div></div>
 
-## `r icon("r-project")` Stuff {.tabset .tabset-pills}
+## Other `r icon("r-project")` Stuff {.tabset .tabset-pills}
 
 ### cypher
 
@@ -661,6 +661,7 @@ Graphs of star constellations using the starBliss R package
 <div class="box">"We shall go into the pyre—we shall burn. But we shall not retreat from our convictions." 
 
 "All thoughts of rest must be forsaken. Sustained efforts are necessary to complete the revolution in agriculture"
+
 -Nikolai Vavilov</div>
 
 <div class="box">"Extraordinary claims require extraordinary evidence." 
