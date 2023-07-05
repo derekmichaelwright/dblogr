@@ -238,10 +238,10 @@ ggsave("canada_population_1_07.png", mp, width = 10, height = 6)
 # Population Pyramids
 
 ```{r}
-gg_PopDem_plot <- function(area = "Saskatchewan", years = 2019 ) {
+gg_PopDem_plot <- function(myArea = "Saskatchewan", myYears = 2019 ) {
   # Prep data
   xx <- d2 %>% 
-    filter(Area == area, Year %in% years, 
+    filter(Area == myArea, Year %in% myYears, 
            Age != "Median age", Sex != "Both sexes") 
   yy <- xx %>% spread(Sex, Value) %>% 
     mutate(Value = Females - Males,
@@ -251,12 +251,12 @@ gg_PopDem_plot <- function(area = "Saskatchewan", years = 2019 ) {
   # Plot
   ggplot(xx, aes(y = Value / 1000, x = Age, fill = Sex)) + 
     geom_col(color = "black", alpha = 0.7) +
-    geom_col(data = yy, color = "black") +
+    geom_col(data = yy, color = "black", alpha = 0.7) +
     scale_fill_manual(name = NULL, values = myColorsMF) +
     #scale_x_discrete(sec.axis = sec_axis(~ .)) +
     facet_grid(. ~ Year) + 
     theme_agData(legend.position = "bottom") + 
-    labs(title = paste("Population in", area), x = NULL, 
+    labs(title = paste("Population in", myArea), x = NULL, 
          y = "Thousand People", caption = myCaption) +
     coord_cartesian(ylim = c(-max(xx$Value), max(xx$Value))) +
     coord_flip()
@@ -268,7 +268,7 @@ gg_PopDem_plot <- function(area = "Saskatchewan", years = 2019 ) {
 ![](canada_population_2_01.png)
 
 ```{r}
-mp <- gg_PopDem_plot(area = "Canada", years = c(1971, 1995, 2021))
+mp <- gg_PopDem_plot(myArea = "Canada", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_2_01.png", mp, width = 10, height = 4)
 ```
 
@@ -283,7 +283,7 @@ ggsave("featured.png", mp, width = 10, height = 4)
 ![](canada_population_2_02.png)
 
 ```{r}
-mp <- gg_PopDem_plot(area = "British Columbia", years = c(1971, 1995, 2021))
+mp <- gg_PopDem_plot(myArea = "British Columbia", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_2_02.png", mp, width = 10, height = 4)
 ```
 
@@ -294,7 +294,7 @@ ggsave("canada_population_2_02.png", mp, width = 10, height = 4)
 ![](canada_population_2_03.png)
 
 ```{r}
-mp <- gg_PopDem_plot(area = "Alberta", years = c(1971, 1995, 2021))
+mp <- gg_PopDem_plot(myArea = "Alberta", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_2_03.png", mp, width = 10, height = 4)
 ```
 
@@ -305,7 +305,7 @@ ggsave("canada_population_2_03.png", mp, width = 10, height = 4)
 ![](canada_population_2_04.png)
 
 ```{r}
-mp <- gg_PopDem_plot(area = "Saskatchewan", years = c(1971, 1995, 2021))
+mp <- gg_PopDem_plot(myArea = "Saskatchewan", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_2_04.png", mp, width = 10, height = 4)
 ```
 
@@ -316,7 +316,7 @@ ggsave("canada_population_2_04.png", mp, width = 10, height = 4)
 ![](canada_population_2_05.png)
 
 ```{r}
-mp <- gg_PopDem_plot(area = "Manitoba", years = c(1971, 1995, 2021))
+mp <- gg_PopDem_plot(myArea = "Manitoba", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_2_05.png", mp, width = 10, height = 4)
 ```
 
@@ -327,7 +327,7 @@ ggsave("canada_population_2_05.png", mp, width = 10, height = 4)
 ![](canada_population_2_06.png)
 
 ```{r}
-mp <- gg_PopDem_plot(area = "Ontario", years = c(1971, 1995, 2021))
+mp <- gg_PopDem_plot(myArea = "Ontario", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_2_06.png", mp, width = 10, height = 4)
 ```
 
@@ -338,7 +338,7 @@ ggsave("canada_population_2_06.png", mp, width = 10, height = 4)
 ![](canada_population_2_07.png)
 
 ```{r}
-mp <- gg_PopDem_plot(area = "Quebec", years = c(1971, 1995, 2021))
+mp <- gg_PopDem_plot(myArea = "Quebec", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_2_07.png", mp, width = 10, height = 4)
 ```
 
@@ -349,8 +349,8 @@ ggsave("canada_population_2_07.png", mp, width = 10, height = 4)
 ![](canada_population_2_08.png)
 
 ```{r}
-mp <- gg_PopDem_plot(area = "Newfoundland and Labrador", 
-                     years = c(1971, 1995, 2021))
+mp <- gg_PopDem_plot(myArea = "Newfoundland and Labrador", 
+                     myYears = c(1971, 1995, 2021))
 ggsave("canada_population_2_08.png", mp, width = 10, height = 4)
 ```
 
@@ -361,7 +361,7 @@ ggsave("canada_population_2_08.png", mp, width = 10, height = 4)
 ![](canada_population_2_09.png)
 
 ```{r}
-mp <- gg_PopDem_plot(area = "Yukon", years = c(1971, 1995, 2021))
+mp <- gg_PopDem_plot(myArea = "Yukon", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_2_09.png", mp, width = 10, height = 4)
 ```
 
@@ -370,10 +370,10 @@ ggsave("canada_population_2_09.png", mp, width = 10, height = 4)
 # Animated Population Pyramids
 
 ```{r}
-gg_PopDem_anim <- function(area = "Saskatchewan") {
+gg_PopDem_anim <- function(myArea = "Saskatchewan") {
   # Prep data
   xx <- d2 %>% 
-    filter(Area %in% area, Age != "Median age", Sex != "Both sexes")
+    filter(Area %in% myArea, Age != "Median age", Sex != "Both sexes")
   yy <- xx %>% spread(Sex, Value) %>% 
     mutate(Value = Females - Males,
            Sex = ifelse(Value < 0, "Males", "Females"))
@@ -390,7 +390,7 @@ gg_PopDem_anim <- function(area = "Saskatchewan") {
     coord_cartesian(ylim = c(-max(xx$Value), max(xx$Value))) +
     coord_flip() +
     # gganimate specific bits
-    labs(title = paste(area, '{round(frame_time)}')) +
+    labs(title = paste(myArea, '{round(frame_time)}')) +
     transition_time(Year) +
     ease_aes('linear')
 }
@@ -401,9 +401,9 @@ gg_PopDem_anim <- function(area = "Saskatchewan") {
 ![](canada_population_gif_2_01.gif)
 
 ```{r}
-mp <- gg_PopDem_anim(area = "Canada")
+mp <- gg_PopDem_anim(myArea = "Canada")
 anim_save("canada_population_gif_2_01.gif", mp, 
-          nframes = 300, fps = 60, end_pause = 90, 
+          nframes = 400, fps = 20, end_pause = 80, 
           width = 900, height = 600, res = 150)
 ```
 
@@ -414,9 +414,9 @@ anim_save("canada_population_gif_2_01.gif", mp,
 ![](canada_population_gif_2_02.gif)
 
 ```{r}
-mp <- gg_PopDem_anim(area = "British Columbia")
+mp <- gg_PopDem_anim(myArea = "British Columbia")
 anim_save("canada_population_gif_2_02.gif", mp, 
-          nframes = 300, fps = 60, end_pause = 90, 
+          nframes = 400, fps = 20, end_pause = 80, 
           width = 900, height = 600, res = 150)
 ```
 
@@ -427,9 +427,9 @@ anim_save("canada_population_gif_2_02.gif", mp,
 ![](canada_population_gif_2_03.gif)
 
 ```{r}
-mp <- gg_PopDem_anim(area = "Alberta")
+mp <- gg_PopDem_anim(myArea = "Alberta")
 anim_save("canada_population_gif_2_03.gif", mp, 
-          nframes = 300, fps = 60, end_pause = 90, 
+          nframes = 400, fps = 20, end_pause = 80, 
           width = 900, height = 600, res = 150)
 ```
 
@@ -440,9 +440,9 @@ anim_save("canada_population_gif_2_03.gif", mp,
 ![](canada_population_gif_2_04.gif)
 
 ```{r}
-mp <- gg_PopDem_anim(area = "Saskatchewan")
+mp <- gg_PopDem_anim(myArea = "Saskatchewan")
 anim_save("canada_population_gif_2_04.gif", mp, 
-          nframes = 300, fps = 60, end_pause = 90, 
+          nframes = 400, fps = 20, end_pause = 80, 
           width = 900, height = 600, res = 150)
 ```
 
@@ -453,9 +453,9 @@ anim_save("canada_population_gif_2_04.gif", mp,
 ![](canada_population_gif_2_05.gif)
 
 ```{r}
-mp <- gg_PopDem_anim(area = "Manitoba")
+mp <- gg_PopDem_anim(myArea = "Manitoba")
 anim_save("canada_population_gif_2_05.gif", mp, 
-          nframes = 300, fps = 60, end_pause = 90, 
+          nframes = 400, fps = 20, end_pause = 80, 
           width = 900, height = 600, res = 150)
 ```
 
@@ -466,9 +466,9 @@ anim_save("canada_population_gif_2_05.gif", mp,
 ![](canada_population_gif_2_06.gif)
 
 ```{r}
-mp <- gg_PopDem_anim(area = "Ontario")
+mp <- gg_PopDem_anim(myArea = "Ontario")
 anim_save("canada_population_gif_2_06.gif", mp, 
-          nframes = 300, fps = 60, end_pause = 90, 
+          nframes = 400, fps = 20, end_pause = 80, 
           width = 900, height = 600, res = 150)
 ```
 
@@ -479,9 +479,9 @@ anim_save("canada_population_gif_2_06.gif", mp,
 ![](canada_population_gif_2_07.gif)
 
 ```{r}
-mp <- gg_PopDem_anim(area = "Quebec")
+mp <- gg_PopDem_anim(myArea = "Quebec")
 anim_save("canada_population_gif_2_07.gif", mp, 
-          nframes = 300, fps = 60, end_pause = 90, 
+          nframes = 400, fps = 20, end_pause = 80, 
           width = 900, height = 600, res = 150)
 ```
 
@@ -492,9 +492,9 @@ anim_save("canada_population_gif_2_07.gif", mp,
 ![](canada_population_gif_2_08.gif)
 
 ```{r}
-mp <- gg_PopDem_anim(area = "Newfoundland and Labrador")
+mp <- gg_PopDem_anim(myArea = "Newfoundland and Labrador")
 anim_save("canada_population_gif_2_08.gif", mp, 
-          nframes = 300, fps = 60, end_pause = 90, 
+          nframes = 400, fps = 20, end_pause = 80, 
           width = 900, height = 600, res = 150)
 ```
 
@@ -505,10 +505,138 @@ anim_save("canada_population_gif_2_08.gif", mp,
 ![](canada_population_gif_2_09.gif)
 
 ```{r}
-mp <- gg_PopDem_anim(area = "Yukon")
+mp <- gg_PopDem_anim(myArea = "Yukon")
 anim_save("canada_population_gif_2_09.gif", mp,
-          nframes = 300, fps = 60, end_pause = 90, 
+          nframes = 400, fps = 20, end_pause = 80, 
           width = 900, height = 600, res = 150)
+```
+
+---
+
+# Dual Year Population Pyramids
+
+```{r}
+gg_PopDem_plot2 <- function(myArea = "Saskatchewan", myYears = c(1971,2022) ) {
+  # Prep data
+  xx <- d2 %>% 
+    filter(Area == myArea, Year %in% myYears, 
+           Age != "Median age", Sex == "Both sexes") 
+  yy <- xx %>% spread(Year, Value) 
+  yy$Value <- yy[,6] - yy[,5] 
+  yy <- yy %>%
+    mutate(Year = ifelse(Value < 0, myYears[1], myYears[2]),
+           Year = factor(Year))
+  xx <- xx %>% 
+    mutate(Value = ifelse(Year == myYears[1], -Value, Value),
+           Year = factor(Year))
+  # Plot
+  ggplot(xx, aes(y = Value / 1000, x = Age, fill = Year)) + 
+    geom_col(color = "black", alpha = 0.7) +
+    geom_col(data = yy, color = "black", alpha = 0.7) +
+    scale_fill_manual(name = NULL, values = c("darkgreen","purple4")) +
+    theme_agData(legend.position = "bottom") + 
+    labs(title = paste("Population in", myArea), x = NULL, 
+         y = "Thousand People", caption = myCaption) +
+    coord_cartesian(ylim = c(-max(xx$Value), max(xx$Value))) +
+    coord_flip()
+}
+```
+
+## Canada
+
+![](canada_population_3_01.png)
+
+```{r}
+mp <- gg_PopDem_plot2(myArea = "Canada")
+ggsave("canada_population_3_01.png", mp, width = 6, height = 4)
+```
+
+---
+
+## British Columbia
+
+![](canada_population_3_02.png)
+
+```{r}
+mp <- gg_PopDem_plot2(myArea = "British Columbia")
+ggsave("canada_population_3_02.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Alberta
+
+![](canada_population_3_03.png)
+
+```{r}
+mp <- gg_PopDem_plot2(myArea = "Alberta")
+ggsave("canada_population_3_03.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Saskatchewan
+
+![](canada_population_3_04.png)
+
+```{r}
+mp <- gg_PopDem_plot2(myArea = "Saskatchewan")
+ggsave("canada_population_3_04.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Manitoba
+
+![](canada_population_3_05.png)
+
+```{r}
+mp <- gg_PopDem_plot2(myArea = "Manitoba")
+ggsave("canada_population_3_05.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Ontario
+
+![](canada_population_3_06.png)
+
+```{r}
+mp <- gg_PopDem_plot2(myArea = "Ontario")
+ggsave("canada_population_3_06.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Quebec
+
+![](canada_population_3_07.png)
+
+```{r}
+mp <- gg_PopDem_plot2(myArea = "Quebec")
+ggsave("canada_population_3_07.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Newfoundland and Labrador
+
+![](canada_population_3_08.png)
+
+```{r}
+mp <- gg_PopDem_plot2(myArea = "Newfoundland and Labrador")
+ggsave("canada_population_3_08.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Yukon
+
+![](canada_population_3_09.png)
+
+```{r}
+mp <- gg_PopDem_plot2(myArea = "Yukon")
+ggsave("canada_population_3_09.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -516,10 +644,10 @@ anim_save("canada_population_gif_2_09.gif", mp,
 # Sex Ratios
 
 ```{r}
-gg_SexRatio_plot <- function(area = "Saskatchewan", years = 2019) {
+gg_SexRatio_plot <- function(myArea = "Saskatchewan", myYears = 2019) {
   # Prep data
   xx <- d2 %>% 
-    filter(Area %in% area, Year %in% years, 
+    filter(Area %in% myArea, Year %in% myYears, 
            Age != "Median age", Sex %in% c("Males","Females")) %>%
     spread(Sex, Value) %>%
     mutate(Value = Females - Males, 
@@ -531,7 +659,7 @@ gg_SexRatio_plot <- function(area = "Saskatchewan", years = 2019) {
     scale_fill_manual(name = NULL, values = myColorsMF) +
     facet_grid(. ~ Year) +
     theme_agData(legend.position = "bottom") +
-    labs(title = paste("Sex Ratio in", area), subtitle = "Females - Males", 
+    labs(title = paste("Sex Ratio in", myArea), subtitle = "Females - Males", 
          y = "Thousand People", x = NULL, caption = myCaption) +
     coord_cartesian(ylim = c(-max(xx$Value), max(xx$Value))) +
     coord_flip()
@@ -540,100 +668,100 @@ gg_SexRatio_plot <- function(area = "Saskatchewan", years = 2019) {
 
 ## Canada
 
-![](canada_population_3_01.png)
+![](canada_population_4_01.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(area = "Canada", years = c(1971, 1995, 2021))
-ggsave("canada_population_3_01.png", mp, width = 10, height = 4)
+mp <- gg_SexRatio_plot(myArea = "Canada", myYears = c(1971, 1995, 2021))
+ggsave("canada_population_4_01.png", mp, width = 10, height = 4)
 ```
 
 ---
 
 ## British Columbia
 
-![](canada_population_3_02.png)
+![](canada_population_4_02.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(area = "British Columbia", years = c(1971, 1995, 2021))
-ggsave("canada_population_3_02.png", mp, width = 10, height = 4)
+mp <- gg_SexRatio_plot(myArea = "British Columbia", myYears = c(1971, 1995, 2021))
+ggsave("canada_population_4_02.png", mp, width = 10, height = 4)
 ```
 
 ---
 
 ## Alberta
 
-![](canada_population_3_03.png)
+![](canada_population_4_03.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(area = "Alberta", years = c(1971, 1995, 2021))
-ggsave("canada_population_3_03.png", mp, width = 10, height = 4)
+mp <- gg_SexRatio_plot(myArea = "Alberta", myYears = c(1971, 1995, 2021))
+ggsave("canada_population_4_03.png", mp, width = 10, height = 4)
 ```
 
 ---
 
 ## Saskatchewan
 
-![](canada_population_3_04.png)
+![](canada_population_4_04.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(area = "Saskatchewan", years = c(1971, 1995, 2021))
-ggsave("canada_population_3_04.png", mp, width = 10, height = 4)
+mp <- gg_SexRatio_plot(myArea = "Saskatchewan", myYears = c(1971, 1995, 2021))
+ggsave("canada_population_4_04.png", mp, width = 10, height = 4)
 ```
 
 ---
 
 ## Manitoba
 
-![](canada_population_3_05.png)
+![](canada_population_4_05.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(area = "Manitoba", years = c(1971, 1995, 2021))
-ggsave("canada_population_3_05.png", mp, width = 10, height = 4)
+mp <- gg_SexRatio_plot(myArea = "Manitoba", myYears = c(1971, 1995, 2021))
+ggsave("canada_population_4_05.png", mp, width = 10, height = 4)
 ```
 
 ---
 
 ## Ontario
 
-![](canada_population_3_06.png)
+![](canada_population_4_06.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(area = "Ontario", years = c(1971, 1995, 2021))
-ggsave("canada_population_3_06.png", mp, width = 10, height = 4)
+mp <- gg_SexRatio_plot(myArea = "Ontario", myYears = c(1971, 1995, 2021))
+ggsave("canada_population_4_06.png", mp, width = 10, height = 4)
 ```
 
 ---
 
 ## Quebec
 
-![](canada_population_3_07.png)
+![](canada_population_4_07.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(area = "Quebec", years = c(1971, 1995, 2021))
-ggsave("canada_population_3_07.png", mp, width = 10, height = 4)
+mp <- gg_SexRatio_plot(myArea = "Quebec", myYears = c(1971, 1995, 2021))
+ggsave("canada_population_4_07.png", mp, width = 10, height = 4)
 ```
 
 ---
 
 ## Newfoundland and Labrador
 
-![](canada_population_3_08.png)
+![](canada_population_4_08.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(area = "Newfoundland and Labrador", 
-                     years = c(1971, 1995, 2021))
-ggsave("canada_population_3_08.png", mp, width = 10, height = 4)
+mp <- gg_SexRatio_plot(myArea = "Newfoundland and Labrador", 
+                     myYears = c(1971, 1995, 2021))
+ggsave("canada_population_4_08.png", mp, width = 10, height = 4)
 ```
 
 ---
 
 ## Yukon
 
-![](canada_population_3_09.png)
+![](canada_population_4_09.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(area = "Yukon", years = c(1971, 1995, 2021))
-ggsave("canada_population_3_09.png", mp, width = 10, height = 4)
+mp <- gg_SexRatio_plot(myArea = "Yukon", myYears = c(1971, 1995, 2021))
+ggsave("canada_population_4_09.png", mp, width = 10, height = 4)
 ```
 
 ---
@@ -642,7 +770,7 @@ ggsave("canada_population_3_09.png", mp, width = 10, height = 4)
 
 ## Males vs. Females
 
-![](canada_population_4_01.png)
+![](canada_population_5_01.png)
 
 ```{r}
 # Prep data
@@ -657,7 +785,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Sex)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canadian Population Dynamics", 
        y = "Million People", x = NULL, caption = myCaption)
-ggsave("canada_population_4_01.png", mp, width = 12, height = 6)
+ggsave("canada_population_5_01.png", mp, width = 12, height = 6)
 ```
 
 ---
@@ -690,7 +818,7 @@ anim_save("canada_population_gif_4_01.gif", mp,
 
 ## Canada
 
-![](canada_population_5_01.png)
+![](canada_population_6_01.png)
 
 ```{r}
 # Prep data
@@ -712,14 +840,14 @@ mp <- ggplot(xx %>% filter(Area == "Canada", Group == "Young"),
   scale_y_continuous(minor_breaks = 70:100, limits = c(70,100)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - Percent Of Population Under 65", x = NULL)
-ggsave("canada_population_5_01.png", mp, width = 6, height = 4)
+ggsave("canada_population_6_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Provinces 
 
-![](canada_population_5_02.png)
+![](canada_population_6_02.png)
 
 ```{r}
 # Plot
@@ -731,14 +859,14 @@ mp <-ggplot(xx %>% filter(Area != "Canada", Group == "Young"),
   scale_y_continuous(minor_breaks = 70:100, limits = c(70,100)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - Percent Of Population Under 65", x = NULL)
-ggsave("canada_population_5_02.png", mp, width = 12, height = 6)
+ggsave("canada_population_6_02.png", mp, width = 12, height = 6)
 ```
 
 ---
 
 ## 2021
 
-![](canada_population_5_03.png)
+![](canada_population_6_03.png)
 
 ```{r}
 # Prep data
@@ -750,7 +878,7 @@ mp <- ggplot(xx, aes(x = Area, y = Percent, fill = Sex)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canada - Percent Of Population Under 65", x = NULL)
-ggsave("canada_population_5_03.png", mp, width = 6, height = 4)
+ggsave("canada_population_6_03.png", mp, width = 6, height = 4)
 ```
 
 ---

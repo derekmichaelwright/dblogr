@@ -64,12 +64,9 @@ overdosePlot1 <- function(area = "United States") {
                   "2019-01-01","2020-01-01","2021-01-01"))
   xx <- dd %>% filter(Outcome == "Drug Overdose") %>% 
     filter(Area %in% area)
-  yy <- xx %>% filter(Date < "2020-01-01")
   # Plot
   ggplot(xx, aes(x = Date, y = Rolling.4.Week.Mean)) +
     geom_col(size = 1, fill = "darkred", alpha = 0.8) +
-    stat_smooth(data = yy, geom = "line", alpha = 0.7,
-                method = "lm", se = F, fullrange = T) +
     geom_vline(xintercept = vv, lty = 2, alpha = 0.5)  +
     facet_wrap(Area ~ ., scales = "free_y") +
     scale_x_date(date_breaks = "1 year", date_labels = "%Y", 
