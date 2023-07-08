@@ -1,7 +1,7 @@
 ---
 title: "Overdose Deaths In The USA"
 subtitle: "Graphs of weekly overdose deaths in the USA using CDC data"
-date: "`r Sys.Date()`"
+date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
 
@@ -368,21 +368,3 @@ ggsave("usa_overdoses_3_07.png", mp, width = 6, height = 4)
 ```
 
 ---
-
-```{r}
-# Bonus USA Age Pyramid
-
-#![](usa_overdoses_4_01.png)
-
-# Prep data
-xx <- read.csv("data_usa_age_sex.csv") %>%
-  mutate(Age = factor(Age, levels = unique(.$Age)))
-# Plot
-mp <- ggplot(xx, aes(x = Age), color = "black") +
-  geom_col(aes(y = -Female), fill = "palevioletred3") +
-  geom_col(aes(y = Male), fill = "steelblue") +
-  coord_flip() +
-  theme_agData() +
-  labs(caption = "ww.dblogr.com/ or derekmichaelwright.github.io/dblogr/")
-ggsave("usa_overdoses_4_01.png", mp, width = 6, height = 4)
-```

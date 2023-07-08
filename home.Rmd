@@ -552,7 +552,7 @@ Graphs of trade surplus/deficits with other countries using STATCAN data
 
 ## Demographics {.tabset .tabset-pills}
 
-### Population Demographics In Canada
+### Canada Population
 
 <div class="box"><div class = "row"><div class = "col-md-6">
 
@@ -561,6 +561,16 @@ Graphs of trade surplus/deficits with other countries using STATCAN data
 Graphs of population demographics in Canada using STATCAN data
 
 </div><div class = "col-md-6">![](blog/canada_population/featured.png)</div></div></div>
+
+### USA Population
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**USA Population Demographics**</u>](blog/usa_population)
+
+Graphs of population demographics in USA using Census Bureau data
+
+</div><div class = "col-md-6">![](blog/usa_population/featured.png)</div></div></div>
 
 ### Canada Overdoses
 
@@ -591,6 +601,16 @@ Graphs of weekly overdose deaths in the USA using CDC data
 Graphs of weekly deaths in Canada using STATCAN data
 
 </div><div class = "col-md-6">![](blog/canada_deaths/featured.png)</div></div></div>
+
+### USA Deaths
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**Deaths In The United States**</u>](blog/usa_deaths)
+
+Graphs of weekly deaths in the USA using CDC & USCB data
+
+</div><div class = "col-md-6">![](blog/usa_deaths/featured.png)</div></div></div>
 
 ### Covid Origin Polls
 

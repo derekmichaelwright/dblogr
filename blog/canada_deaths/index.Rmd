@@ -44,8 +44,8 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- c("www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN\nNote: most recent years data may be incomplete")
-myColors <- c("darkgreen", "darkred", "darkorange", "steelblue", "purple4", "magenta3")
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN\nNote: most recent years data may be incomplete"
+myColors <- c("darkgreen", "darkred", "darkorange", "steelblue", "darkblue", "purple4", "magenta3")
 myAreas <- c("Canada", "Quebec", "Ontario", "British Columbia", 
            "Alberta", "Saskatchewan", "Manitoba", "Nova Scotia",
            "Newfoundland and Labrador", "New Brunswick", "Prince Edward Island", 
@@ -53,7 +53,7 @@ myAreas <- c("Canada", "Quebec", "Ontario", "British Columbia",
 #
 # d1 = Deaths per Week (2010-2023)
 mySeasons <- paste(2009:2023, 2010:2024, sep = "-")
-myGroups <- c(rep("pre-COVID",10), mySeasons[11:length(mySeasons)])
+myGroups <- c(rep("pre-2020",10), mySeasons[11:length(mySeasons)])
 d1 <- read.csv("1310078301_databaseLoadingData.csv") %>% 
   rename(Date=1, Area=GEO, Value=VALUE) %>%
   mutate(Date = as.Date(Date),
@@ -175,8 +175,9 @@ ggsave("canada_deaths_01_01.png", mp, width = 10, height = 4, bg = "white")
 
 ```{r}
 # Create plotting function
-ggWeeklyDeaths <- function(myArea = "Canada", xmin = 2010, xmax = max(d1$Year)) {
+ggWeeklyDeaths <- function(myArea = "Canada", xmin = 2010) {
   # Prep data
+  xmax <- max(d1$Year)
   vv <- as.Date(paste0(as.character(xmin:xmax),"-01-01"))
   xx <- d1 %>% filter(Area == myArea, Year >= xmin)
   #
@@ -1256,7 +1257,8 @@ mp <- ggplot(xx, aes(x = Trait, y = Value, fill = Trait)) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   coord_cartesian(ylim = c(70, 90)) +
   theme_agData(legend.position = "top",
-               axis.text.x = element_blank()) +
+               axis.text.x = element_blank(),
+               axis.ticks.x = element_blank()) +
   labs(title = "", x = NULL, y = NULL, caption = myCaption)
 ggsave("canada_deaths_12_02.png", mp, width = 10, height = 6)
 ```
@@ -1272,7 +1274,7 @@ mp <- ggplot(d5, aes(x = Area, fill = Area,
   theme_agData(legend.position = "none",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "COVID-19 Death Rate In Canada", 
-       x = NULL, caption = myCaption)
+       y = "Deaths per 1000 People", x = NULL, caption = myCaption)
 ggsave("canada_deaths_12_03.png", mp, width = 6, height = 4)
 ```
 
