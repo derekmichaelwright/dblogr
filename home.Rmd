@@ -20,6 +20,13 @@ Welcome to the personal website for Derek Michael Wright
 
 # `r icon("address-card")` About Me
 
+## **My Curriculum Vitae (CV)**
+
+- `r icon("globe")` [CV (HTML version)](cv/) 
+- `r icon("file-pdf")` [CV (PDF Version)](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf)
+
+## Biography
+
 <div class="box">
 
 <div class = "row"><div class = "col-md-6">
@@ -39,16 +46,11 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 - `r icon("github")`  [github.com/derekmichaelwright](https://github.com/derekmichaelwright)
 - `r icon("twitter")` [twitter.com/DerekMWright](https://twitter.com/DerekMWright)
 
+</div><div class = "col-md-6">
+
 **Email**
 
 - `r icon("envelope")` derek.wright@usask.ca
-
-</div><div class = "col-md-6">
-
-**My Curriculum Vitae (CV)**
-
-- `r icon("globe")` [CV (HTML version)](cv/) 
-- `r icon("file-pdf")` [CV (PDF Version)](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf)
 
 </div>
 
@@ -192,6 +194,8 @@ Jiayi Hang, Da Shi, Jason Neufeld, Kirstin E. Bett & James D. House
 
 <br><br>
 
+---
+
 ## Highlighted Publications:
 
 - (**2022**) [<u>**Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**</u>](https://doi.org/10.1002/tpg2.20269). *The Plant Genome*. e20269. doi.org/10.1002/tpg2.20269
@@ -217,7 +221,11 @@ Tutorials and Vignettes based on some of my academic work.
 
 </div><div class = "col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
 
+---
+
 ## Tutorials {.tabset .tabset-pills}
+
+`r icon("r-project")` tutorials 
 
 ### GWAS Tutorial
 
@@ -301,6 +309,8 @@ An introduction to R
 
 </div><div class = "col-md-6">![](academic/r_tutorial/featured.png)</div></div></div>
 
+---
+
 ## Vignettes {.tabset .tabset-pills}
 
 ### Lentil Diversity Panel
@@ -351,6 +361,8 @@ A vignette illustrating different ways to visualize data
 - `r icon("github")` https://github.com/derekmichaelwright/agData/
 
 </div><div class = "col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
+
+---
 
 ## STATCAN {.tabset .tabset-pills}
 
@@ -414,6 +426,8 @@ Maps of crop production in Canada using STATCAN data
 
 </div><div class = "col-md-6">![](agdata/crops_canada_maps/featured.png)</div></div></div>
 
+---
+
 ## FAOSTAT {.tabset .tabset-pills}
 
 ### Maps of Global Crop Production
@@ -456,6 +470,8 @@ Graphs of honeybee production using FAO data
 
 </div><div class = "col-md-6">![](agdata/honeybee/featured.png)</div></div></div>
 
+---
+
 ## USDA, ISAAA, *etc*. {.tabset .tabset-pills}
 
 ### Maize USA
@@ -497,6 +513,8 @@ Graphs of GE crop production using USDA data
 # `r icon("chart-line")` Blog
 
 Random data visualizations and general blog posts.
+
+---
 
 ## Economics {.tabset .tabset-pills}
 
@@ -550,6 +568,8 @@ Graphs of trade surplus/deficits with other countries using STATCAN data
 
 </div><div class = "col-md-6">![](blog/canada_trade/featured.png)</div></div></div>
 
+---
+
 ## Demographics {.tabset .tabset-pills}
 
 ### Canada Population
@@ -561,6 +581,16 @@ Graphs of trade surplus/deficits with other countries using STATCAN data
 Graphs of population demographics in Canada using STATCAN data
 
 </div><div class = "col-md-6">![](blog/canada_population/featured.png)</div></div></div>
+
+### Canada Migration
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**"Migration Demographics In Canada**</u>](blog/canada_migration)
+
+Graphs of migration demographics in Canada using STATCAN data
+
+</div><div class = "col-md-6">![](blog/canada_migration/featured.png)</div></div></div>
 
 ### USA Population
 
@@ -621,6 +651,8 @@ Graphs of weekly deaths in the USA using CDC & USCB data
 Polling results from various polls on the origins of covid
 
 </div><div class = "col-md-6">![](blog/covid_origins/featured.png)</div></div></div>
+
+---
 
 ## Other `r icon("r-project")` Stuff {.tabset .tabset-pills}
 

@@ -429,10 +429,6 @@ mp <- ggRespSeasons(myArea = "United States")
 ggsave("usa_deaths_3_01.png", mp, width = 7, height = 4)
 ```
 
-```{r}
-ggsave("featured.png", mp, width = 7, height = 4)
-```
-
 ---
 
 ## New York
