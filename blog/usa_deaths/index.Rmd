@@ -962,6 +962,8 @@ ggsave("usa_deaths_6_05.png", mp, width = 6, height = 4)
 
 # Death Rate - Ages 0 - 44
 
+![](usa_deaths_7_01.png)
+
 ```{r}
 # Prep data
 x1 <- dd %>% 
@@ -986,6 +988,8 @@ ggsave("usa_deaths_7_01.png", mp, width = 6, height = 4)
 ---
 
 # Death Rate - Ages 65+
+
+![](usa_deaths_7_02.png)
 
 ```{r}
 # Prep data

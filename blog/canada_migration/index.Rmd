@@ -110,80 +110,9 @@ ggsave("featured.png", mp, width = 12, height = 6)
 
 ---
 
-## Birth Rates
-
-![](canada_migration_1_02.png)
-
-```{r}
-# Prep data
-x1 <- d2 %>% filter(Measurement == "Births") %>%
-  select(Year, Area, Births=Value)
-x2 <- d1 %>% filter(Month == 1) %>%
-  select(Year, Area, Population=Value)
-xx <- left_join(x1, x2, by = c("Year", "Area")) %>%
-  mutate(BirthRate = Births / Population)
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = BirthRate * 1000)) + 
-  geom_line(size = 1, alpha = 0.7, color = "darkgreen") + 
-  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
-  theme_agData(legend.position = "none",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Birth Rates", x = NULL,
-       y = "Births Per Thousand People", caption = myCaption)
-ggsave("canada_migration_1_02.png", mp, width = 12, height = 6)
-```
-
----
-
-### Saskatchewan
-
-![](canada_migration_1_03.png)
-
-```{r}
-# Prep data
-xx <- d2 %>% 
-  filter(Area == "Saskatchewan", Measurement %in% c("Births","Deaths"))
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) + 
-  geom_line(size = 1.5, alpha = 0.7) + 
-  scale_color_manual(name = NULL, values = myColors) +
-  scale_y_continuous(minor_breaks = 0:20, limits = c(0.5,18.5)) +
-  theme_agData(legend.position = "bottom") +
-  labs(title = "Population Dynamics in Saskatchewan", 
-       y = "Thousand People", x = NULL, caption = myCaption)
-ggsave("canada_migration_1_03.png", mp, width = 6, height = 4)
-```
-
----
-
-### Maritimes
-
-![](canada_migration_1_04.png)
-
-```{r}
-# Prep data
-xx <- d2 %>% 
-  filter(Measurement %in% c("Births","Deaths"),
-         Area %in% c("Prince Edward Island", "Nova Scotia", "New Brunswick",
-                     "Newfoundland and Labrador")) %>% 
-  group_by(Year, Measurement) %>%
-  summarise(Value = sum(Value))
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) + 
-  geom_line(size = 1.5, alpha = 0.7) + 
-  scale_color_manual(name = NULL, values = myColors) +
-  scale_y_continuous(minor_breaks = 0:45, limits = c(1,41)) +
-  theme_agData(legend.position = "bottom") +
-  labs(title = "Population Dynamics in The Maritimes", 
-       y = "Thousand People", x = NULL, caption = myCaption)
-ggsave("canada_migration_1_04.png", mp, width = 6, height = 4)
-```
-
----
-
 ## Migration
 
-![](canada_migration_1_05.png)
+![](canada_migration_1_02.png)
 
 ```{r}
 # Prep data
@@ -192,48 +121,51 @@ xx <- d2 %>%
   mutate(Value = ifelse(Measurement == "Emigrants", -Value, Value))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Measurement)) +
-  geom_bar(stat = "identity", alpha = 0.7, color = "black", lwd = 0.2) +
+  geom_hline(yintercept = 0) +
+  geom_col(alpha = 0.7, color = "black", lwd = 0.1) +
   facet_wrap(Area ~ ., ncol = 5, scales = "free_y") +
   scale_fill_manual(name = NULL, values = myColors[3:4]) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Net Migration", x = NULL, 
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_05.png", mp, width = 12, height = 6)
+ggsave("canada_migration_1_02.png", mp, width = 14, height = 6)
 ```
 
 ---
 
 ## Net Migration
 
-![](canada_migration_1_06.png)
+![](canada_migration_1_03.png)
 
 ```{r}
 # Prep data
 xx <- d2 %>% 
   filter(Measurement %in% c("Immigrants", "Emigrants")) %>%
   spread(Measurement, Value) %>%
-  mutate(Net = Immigrants - Emigrants)
+  mutate(Net = Immigrants - Emigrants,
+         Group = ifelse(Net > 0, "Pos", "Neg"))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Net / 1000)) +
+mp <- ggplot(xx, aes(x = Year, y = Net / 1000, fill = Group)) +
   geom_hline(yintercept = 0) +
-  geom_line(size = 1, alpha = 0.7, color = "darkgreen") +
+  geom_col(alpha = 0.7, color = "black", lwd = 0.1) +
   facet_wrap(Area ~ ., ncol = 5, scales = "free_y") +
+  scale_fill_manual(name = NULL, values = myColors[3:4]) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Net Migration", x = NULL, 
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_06.png", mp, width = 12, height = 6)
+ggsave("canada_migration_1_03.png", mp, width = 14, height = 6)
 ```
 
 ---
 
 ### Prairies vs. NonPrairies
 
-![](canada_migration_1_07.png)
+![](canada_migration_1_04.png)
 
 ```{r}
 # Prep data
-myColors <- c("steelblue", "red", "darkorange", 
+myColorsArea <- c("steelblue", "red", "darkorange", 
             "darkblue", "darkgreen", "darkred")
 areas <- c("Quebec", "Ontario", "British Columbia", 
            "Alberta", "Saskatchewan", "Manitoba")
@@ -256,40 +188,42 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   geom_smooth(se = F) +
   facet_grid(. ~ Wing) +
   scale_x_continuous(breaks = seq(1975, 2015, 10)) +
-  scale_color_manual(name = NULL, values = myColors) +
+  scale_color_manual(name = NULL, values = myColorsArea) +
   theme_agData() +
   labs(title = "Immigration Rates", x = NULL,
        y = "Immigrants per Million People", caption = myCaption)
-ggsave("canada_migration_1_07.png", mp, width = 8, height = 4)
+ggsave("canada_migration_1_04.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 # Net Interprovincial Migration
 
-![](canada_migration_1_08.png)
+![](canada_migration_1_05.png)
 
 ```{r}
 # Prep data
 xx <- d2 %>% 
   filter(Area != "Canada",
-         Measurement == "Net interprovincial migration")
+         Measurement == "Net interprovincial migration") %>%
+  mutate(Group = ifelse(Value > 0, "Pos", "Neg"))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000)) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Group)) +
   geom_hline(yintercept = 0) +
-  geom_line(size = 1, alpha = 0.7, color = "darkgreen") +
+  geom_col(alpha = 0.7, color = "black", lwd = 0.1) +
   facet_wrap(Area ~ ., ncol = 5, scales = "free_y") +
+  scale_fill_manual(name = NULL, values = myColors[3:4]) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Net Interprovincial Migration", x = NULL,
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_08.png", mp, width = 12, height = 6)
+ggsave("canada_migration_1_05.png", mp, width = 12, height = 6)
 ```
 
 ---
 
 ### Alberta vs BC
 
-![](canada_migration_1_09.png)
+![](canada_migration_1_06.png)
 
 ```{r}
 # Prep data
@@ -300,11 +234,11 @@ xx <- d2 %>%
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   geom_hline(yintercept = 0) +
   geom_line(size = 1.5, alpha = 0.7) +
-  scale_color_manual(name = NULL, values = c("darkorange","darkblue")) +
+  scale_color_manual(name = NULL, values = myColorsArea[3:4]) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Net Interprovincial Migration", x = NULL,
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_09.png", mp, width = 6, height = 4)
+ggsave("canada_migration_1_06.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -323,7 +257,7 @@ xx <- d3 %>%
          Measurement == "Net-migration")
 # Plot
 mp <- ggplot(xx, aes(x = Age, y = Value / 1000, fill = Net)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   facet_wrap(. ~ Year, ncol = 10) +
   scale_fill_manual(values = myColors[3:4]) +
   theme_agData(legend.position = "none",
@@ -347,7 +281,7 @@ xx <- d3 %>%
          Measurement == "Net-migration")
 # Plot
 mp <- ggplot(xx, aes(x = Age, y = Value / 1000, fill = Net)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   facet_wrap(. ~ Year, ncol = 10) +
   scale_fill_manual(values = myColors[3:4]) +
   theme_agData(legend.position = "none",
@@ -371,7 +305,7 @@ xx <- d3 %>%
          Measurement == "Net-migration")
 # Plot
 mp <- ggplot(xx, aes(x = Age, y = Value / 1000, fill = Net)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   facet_wrap(. ~ Year, ncol = 10) +
   scale_fill_manual(values = myColors[3:4]) +
   theme_agData(legend.position = "none",
@@ -397,7 +331,7 @@ xx <- d3 %>%
          Measurement == "Net-migration")
 # Plot
 mp <- ggplot(xx, aes(x = Age, y = Value, fill = Net)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   facet_wrap(. ~ Year, ncol = 3) +
   scale_fill_manual(values = myColors[3:4]) +
   theme_agData(legend.position = "none",
@@ -423,7 +357,7 @@ xx <- d3 %>%
          Measurement == "Net-migration")
 # Plot
 mp <- ggplot(xx, aes(x = Age, y = Value, fill = Net)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   facet_grid(. ~ Year) +
   scale_fill_manual(values = myColors[3:4]) +
   theme_agData(legend.position = "none",
@@ -447,7 +381,7 @@ xx <- d3 %>%
          Measurement == "Net-migration")
 # Plot
 mp <- ggplot(xx, aes(x = Age, y = Value, fill = Net)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   facet_grid(. ~ Year) +
   scale_fill_manual(values = myColors[3:4]) +
   theme_agData(legend.position = "none",
@@ -471,7 +405,7 @@ xx <- d3 %>%
          Measurement == "Net-migration")
 # Plot
 mp <- ggplot(xx, aes(x = Age, y = Value, fill = Net)) +
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7) +
   facet_grid(. ~ Year) +
   scale_fill_manual(values = myColors[3:4]) +
   theme_agData(legend.position = "none",
@@ -496,7 +430,7 @@ xx <- d2 %>% filter(Measurement == "Births") %>%
   mutate(BirthRate = 1000 * Value / Population)
 # Plot
 mp <- ggplot(xx %>% filter(Area == "Canada"), aes( Year, y = BirthRate)) +
-  geom_line(color = "darkgreen", alpha = 0.7, size = 1) +
+  geom_col(color = "black", fill = "darkgreen", alpha = 0.7, lwd = 0.2) +
   theme_agData() +
   labs(title = "Birth Rate in Canada", x = NULL,
        y = "Births Per Thousand People", caption = myCaption)
@@ -505,17 +439,73 @@ ggsave("canada_migration_3_01.png", mp, width = 6, height = 4)
 
 ---
 
+## Birth Rates
+
 ![](canada_migration_3_02.png)
 
 ```{r}
+# Prep data
+x1 <- d2 %>% filter(Measurement == "Births") %>%
+  select(Year, Area, Births=Value)
+x2 <- d1 %>% filter(Month == 1) %>%
+  select(Year, Area, Population=Value)
+xx <- left_join(x1, x2, by = c("Year", "Area")) %>%
+  mutate(BirthRate = Births / Population)
 # Plot
-mp <- ggplot(xx, aes( Year, y = BirthRate)) +
-  geom_line(color = "darkgreen", alpha = 0.7, size = 1) +
-  facet_wrap(Area ~ ., ncol = 5) +
-  theme_agData() +
-  labs(title = "Birth Rate in Canada", x = NULL,
+mp <- ggplot(xx, aes(x = Year, y = BirthRate * 1000)) + 
+  geom_col(alpha = 0.7, fill = "darkgreen") + 
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+  theme_agData(legend.position = "none",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Birth Rates", x = NULL,
        y = "Births Per Thousand People", caption = myCaption)
-ggsave("canada_migration_3_02.png", mp, width = 12, height = 6)
+ggsave("canada_migration_3_02.png", mp, width = 14, height = 6)
+```
+
+---
+
+### Saskatchewan
+
+![](canada_migration_3_03.png)
+
+```{r}
+# Prep data
+xx <- d2 %>% 
+  filter(Area == "Saskatchewan", Measurement %in% c("Births","Deaths"))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) + 
+  geom_line(size = 1.5, alpha = 0.7) + 
+  scale_color_manual(name = NULL, values = myColors) +
+  scale_y_continuous(minor_breaks = 0:20, limits = c(0.5,18.5)) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Population Dynamics in Saskatchewan", 
+       y = "Thousand People", x = NULL, caption = myCaption)
+ggsave("canada_migration_3_03.png", mp, width = 6, height = 4)
+```
+
+---
+
+### Maritimes
+
+![](canada_migration_3_04.png)
+
+```{r}
+# Prep data
+xx <- d2 %>% 
+  filter(Measurement %in% c("Births","Deaths"),
+         Area %in% c("Prince Edward Island", "Nova Scotia", "New Brunswick",
+                     "Newfoundland and Labrador")) %>% 
+  group_by(Year, Measurement) %>%
+  summarise(Value = sum(Value))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) + 
+  geom_line(size = 1.5, alpha = 0.7) + 
+  scale_color_manual(name = NULL, values = myColors) +
+  scale_y_continuous(minor_breaks = 0:45, limits = c(1,41)) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Population Dynamics in The Maritimes", 
+       y = "Thousand People", x = NULL, caption = myCaption)
+ggsave("canada_migration_3_04.png", mp, width = 6, height = 4)
 ```
 
 --- 

@@ -37,7 +37,8 @@ myDates <- as.Date(c("2010-01-01","2015-01-01","2020-01-01"))
 d1 <- read.csv("1410028801_databaseLoadingData.csv") %>%
   select(Area=GEO, Date=1, Measurement=Class.of.worker, 
          Sex, Unit=UOM, Scale=SCALAR_FACTOR, Value=VALUE) %>%
-  mutate(Area = factor(Area, levels = agData_STATCAN_Region_Table$Area),
+  mutate(Value = Value * 1000,
+         Area = factor(Area, levels = agData_STATCAN_Region_Table$Area),
          Date = as.Date(paste0(Date, "-15"), format = "%Y-%m-%d"),
          Measurement = gsub(" employees", "", Measurement),
          Measurement = factor(Measurement, levels = myMeasures))
@@ -61,7 +62,7 @@ d2 <- d1 %>%
 # Prep data
 xx <- d1 %>% filter(Area == "Canada", Sex == "Both sexes")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Measurement)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(size = 1, alpha = 0.7) +
   scale_color_manual(name = NULL, values = myColors_Ind) +
@@ -83,7 +84,7 @@ ggsave("canada_public_private_1_01.png", mp, width = 6, height = 4)
 xx <- d1 %>% 
   filter(Area != "Canada", Sex == "Both sexes")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Measurement)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(alpha = 0.7) +
   scale_color_manual(name = NULL, values = myColors_Ind) +
@@ -104,7 +105,7 @@ ggsave("canada_public_private_1_02.png", mp, width = 12, height = 6)
 # Prep data
 xx <- xx %>% filter(Date > "2010-01-01")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Measurement)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(alpha = 0.7, size = 1) +
   scale_color_manual(name = NULL, values = myColors_Ind) +
@@ -134,7 +135,7 @@ gg_Priv_Gov <- function(myArea = "Canada") {
     filter(Sex == "Both sexes", Date > "2010-01-01",
            Area == myArea)
   # Plot
-  ggplot(xx, aes(x = Date, y = Value / 1000, color = Measurement)) +
+  ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
     geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
     geom_line(size = 1, alpha = 0.7) +
     scale_color_manual(name = NULL, values = myColors_Ind) +
@@ -331,7 +332,7 @@ ggsave("canada_public_private_4_03.png", mp, width = 12, height = 6)
 xx <- d1 %>% 
   filter(Area == "Canada", Sex != "Both sexes")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Sex)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(size = 1, alpha = 0.8) +
   scale_color_manual(name = NULL, values = myColors_Sex) +
@@ -353,7 +354,7 @@ ggsave("canada_public_private_5_01.png", mp, width = 10, height = 4)
 xx <- d1 %>% 
   filter(Area == "Canada", Sex != "Both sexes", Date > "2010-01-01")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Sex)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(size = 1, alpha = 0.8) +
   scale_color_manual(name = NULL, values = myColors_Sex) +
@@ -429,7 +430,7 @@ xx <- d1 %>%
   filter(Area != "Canada", Sex != "Both sexes",
          Measurement == "Public sector")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Sex)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(size = 0.8, alpha = 0.8) +
   scale_color_manual(name = NULL, values = myColors_Sex) +
@@ -448,7 +449,7 @@ ggsave("canada_public_private_6_01.png", mp, width = 12, height = 6)
 # Prep data
 xx <- xx %>% filter(Date > "2010-01-01")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Sex)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(size = 1, alpha = 0.8) +
   scale_color_manual(name = NULL, values = myColors_Sex) +
@@ -474,7 +475,7 @@ xx <- d1 %>%
   filter(Area == "Canada", Sex == "Both sexes",
          Measurement == "Self-employed")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(color = "darkgreen", size = 1.25, alpha = 0.7) +
   scale_y_continuous(breaks = 0:3, minor_breaks = 0:3, limits = c(0,3)) +
@@ -494,7 +495,7 @@ ggsave("canada_public_private_7_01.png", mp, width = 6, height = 4)
 # Prep data
 xx <- xx %>% filter(Date > "2010-01-01")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(color = "darkgreen", size = 1.25, alpha = 0.7) +
   scale_x_date(breaks = myDates, minor_breaks = "1 year", date_labels = "%Y") +
@@ -516,7 +517,7 @@ xx <- d1 %>%
   filter(Area != "Canada", Sex == "Both sexes",
          Measurement == "Self-employed")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(color = "darkgreen", alpha = 0.7) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
@@ -536,7 +537,7 @@ ggsave("canada_public_private_7_03.png", mp, width = 12, height = 6)
 # Prep data
 xx <- xx %>% filter(Date > "2010-01-01")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(color = "darkgreen", size = 1, alpha = 0.7) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +

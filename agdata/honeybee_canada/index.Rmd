@@ -53,10 +53,6 @@ mp <- ggplot(xx, aes(x = Year, y = Value)) +
 ggsave("honeybee_canada_01.png", mp, width = 6, height = 8)
 ```
 
-```{r echo = F}
-ggsave("featured.png", mp, width = 6, height = 8)
-```
-
 ---
 
 # Colonies
@@ -118,6 +114,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Area)) +
   labs(title = "Canada - Honeybee Colonies", x = NULL,
        y = "Thousand Colonies", caption = myCaption)
 ggsave("honeybee_canada_03.png", mp, width = 10, height = 4)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 10, height = 4)
 ```
 
 ---

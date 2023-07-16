@@ -22,8 +22,9 @@ Welcome to the personal website for Derek Michael Wright
 
 ## **My Curriculum Vitae (CV)**
 
-- `r icon("globe")` [CV (HTML version)](cv/) 
-- `r icon("file-pdf")` [CV (PDF Version)](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf)
+`r icon("globe")` [Derek M Wright (CV HTML version)](cv/)
+
+`r icon("file-pdf")` [Derek M Wright (CV PDF Version)](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf)
 
 ## Biography
 
@@ -208,9 +209,11 @@ Jiayi Hang, Da Shi, Jason Neufeld, Kirstin E. Bett & James D. House
 
 Tutorials and Vignettes based on some of my academic work.
 
+## gwaspr
+
 <div class="box"><div class = "row"><div class = "col-md-8">
 
-`gwaspr`: an `r icon("r-project")` package for plotting GWAS results from the `GAPIT` package
+An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` package
 
 `devtools::install_github("derekmichaelwright/gwaspr")`
 
@@ -225,37 +228,37 @@ Tutorials and Vignettes based on some of my academic work.
 
 ## Tutorials {.tabset .tabset-pills}
 
-`r icon("r-project")` tutorials 
+Tutorials in `r icon("r-project")` on how to perform various statistical and genetic analyses.
 
 ### GWAS Tutorial
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**GWAS Tutorial with gwaspr**</u>](academic/gwas_tutorial)
 
 An R tutorial on running genome-wide association studies (GWAS) with GAPIT and gwaspr
 
-</div><div class = "col-md-6">![](academic/gwas_tutorial/featured.png)</div></div></div>
+![](academic/gwas_tutorial/featured.png)</div>
 
 ### QTL Tutorial
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**QTL Tutorial with qtl2**</u>](academic/qtl_tutorial)
 
 A tutorial on how to run QTL analyses in R with qtl2
 
-</div><div class = "col-md-6">![](academic/qtl_tutorial/featured.png)</div></div></div>
+![](academic/qtl_tutorial/featured.png)</div>
 
 ### PCA Tutorial
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**PCA Tutorial**</u>](academic/pca_tutorial)
 
 A tutorial on how to run principal component analyses and heirarchical clustering in R
 
-</div><div class = "col-md-6">![](academic/pca_tutorial/featured.png)</div></div></div>
+![](academic/pca_tutorial/featured.png)</div>
 
 ### Augmented Designs
 
@@ -313,25 +316,27 @@ An introduction to R
 
 ## Vignettes {.tabset .tabset-pills}
 
+Vignettes related to my work academic work and general science communication.
+
 ### Lentil Diversity Panel
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Lentil Diversity Panel**</u>](academic/lentil_diversity_panel)
 
 A population representing global genetic diversity in cultivated lentil varieties
 
-</div><div class = "col-md-6">![](academic/lentil_diversity_panel/featured.png)</div></div></div>
+![](academic/lentil_diversity_panel/featured.png)</div>
 
 ### Correlation Coefficients and Predictive Models
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Correlation Coefficients and Predictive Models**</u>](academic/correlation_coefficients)
 
 A vignette on how to properly use correlation coefficients when evaluating predictive models
 
-</div><div class = "col-md-6">![](academic/correlation_coefficients/featured.png)</div></div></div>
+![](academic/correlation_coefficients/featured.png)</div>
 
 ### Data Visualizations
 
@@ -353,7 +358,9 @@ A vignette illustrating different ways to visualize data
 
 <div class="box"><div class = "row"><div class = "col-md-8">
 
-`agData`: An `r icon("r-project")` Package Containing Agricultural Data Sets
+<p size="20" style="font-style:bold">agData</p>
+
+An `r icon("r-project")` Package Containing Agricultural Data Sets
 
 `devtools::install_github("derekmichaelwright/agData")`
 
@@ -388,13 +395,13 @@ Graphs of lentil production and exports using SKAG data
 
 ### Honeybee Canada
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Canadian Honeybee Production**</u>](agdata/honeybee_canada)
 
 Graphs of honeybee production in Canada using STATCAN data
 
-</div><div class = "col-md-6">![](agdata/honeybee_canada/featured.png)</div></div></div>
+![](agdata/honeybee_canada/featured.png)</div>
 
 ### Canadian Farmland
 
@@ -432,23 +439,23 @@ Maps of crop production in Canada using STATCAN data
 
 ### Maps of Global Crop Production
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Maps of Global Crop Production**</u>](agdata/crops_world_maps)
 
 Maps of crop production using FAO data
 
-</div><div class = "col-md-6">![](agdata/crops_world_maps/featured.png)</div></div></div>
+![](agdata/crops_world_maps/featured.png)</div>
 
 ### Global Food Security
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Global Food Security**</u>](agdata/global_food_security)
 
 Graphs related to global food security using FAO data
 
-</div><div class = "col-md-6">![](agdata/global_food_security/featured.png)</div></div></div>
+![](agdata/global_food_security/featured.png)</div>
 
 ### Lentil
 
@@ -540,23 +547,23 @@ Graphs of crude oil, natural gas, and coal production, import and export using S
 
 ### Canada House Prices
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**House Prices In Canada**</u>](blog/canada_house_prices)
 
 Graphs of house prices in Canada using STATCAN data
 
-</div><div class = "col-md-6">![](blog/canada_house_prices/featured.png)</div></div></div>
+![](blog/canada_house_prices/featured.png)</div>
 
 ### Canada Public Private
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Public vs Private Sector Employment in Canada**</u>](blog/canada_public_private)
 
 Graphs of public vs private sector employment in Canada using STATCAN data
 
-</div><div class = "col-md-6">![](blog/canada_public_private/featured.png)</div></div></div>
+![](blog/canada_public_private/featured.png)</div>
 
 ### Canada Trade
 
@@ -574,23 +581,23 @@ Graphs of trade surplus/deficits with other countries using STATCAN data
 
 ### Canada Population
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Population Demographics In Canada**</u>](blog/canada_population)
 
 Graphs of population demographics in Canada using STATCAN data
 
-</div><div class = "col-md-6">![](blog/canada_population/featured.png)</div></div></div>
+![](blog/canada_population/featured.png)</div>
 
 ### Canada Migration
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**"Migration Demographics In Canada**</u>](blog/canada_migration)
 
 Graphs of migration demographics in Canada using STATCAN data
 
-</div><div class = "col-md-6">![](blog/canada_migration/featured.png)</div></div></div>
+![](blog/canada_migration/featured.png)</div>
 
 ### USA Population
 
@@ -624,23 +631,23 @@ Graphs of weekly overdose deaths in the USA using CDC data
 
 ### Canada Deaths
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Deaths In Canada**</u>](blog/canada_deaths)
 
 Graphs of weekly deaths in Canada using STATCAN data
 
-</div><div class = "col-md-6">![](blog/canada_deaths/featured.png)</div></div></div>
+![](blog/canada_deaths/featured.png)</div>
 
 ### USA Deaths
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Deaths In The United States**</u>](blog/usa_deaths)
 
 Graphs of weekly deaths in the USA using CDC & USCB data
 
-</div><div class = "col-md-6">![](blog/usa_deaths/featured.png)</div></div></div>
+![](blog/usa_deaths/featured.png)</div>
 
 ### Covid Origin Polls
 

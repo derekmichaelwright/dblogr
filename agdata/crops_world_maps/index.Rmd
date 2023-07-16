@@ -247,7 +247,7 @@ ggCropMap(myCrop = "Lentils, dry", myYear = 2019,
 ```
 
 ```{r echo = F, results="hide"}
-ggCropMap(myCrop = "Lentils", myYear = 2019,
+ggCropMap(myCrop = "Lentils, dry", myYear = 2019,
           myMeasure = "Production",
           myFilename = "featured.png")
 ```
