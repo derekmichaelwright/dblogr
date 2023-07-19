@@ -84,9 +84,27 @@ ggsave("featured.png", mp, width = 8, height = 4)
 
 ---
 
-# Honeybees vs. Sugarbeet
+# USA
 
 ![](honeybee_03.png)
+
+```{r}
+# Prep data
+xx <- dd %>% filter(Area == "USA")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
+  geom_col(fill = "darkgreen", alpha = 0.7, color = "black") +
+  theme_agData() +
+  labs(Title = "USA", y = "Million Colonies",
+       x = NULL, caption = myCaption)
+ggsave("honeybee_03.png", mp, width = 6, height = 4)
+```
+
+---
+
+# Honeybees vs. Sugarbeet
+
+![](honeybee_04.png)
 
 ```{r}
 # Prep data
@@ -107,7 +125,7 @@ mp <- ggplot(xx, aes(x = Sugar.beet / 1000000, y = Beehives / 1000000)) +
   labs(y = "Million Beehive Colonies", 
        x = "Million Tonnes of Sugar Beet",
        caption = myCaption)
-ggsave("honeybee_03.png", mp, width = 8, height = 4)
+ggsave("honeybee_04.png", mp, width = 8, height = 4)
 ```
 
 ---

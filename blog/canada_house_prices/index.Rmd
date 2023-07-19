@@ -58,7 +58,6 @@ myxmax <- max(xx$Value)
 mp <- ggplot(xx) +
   geom_rect(data = pp, alpha = 0.3, ymin = -Inf, ymax = Inf,
             aes(xmin = xmin, xmax = xmax, fill = Party)) +
-  geom_vline(xintercept = as.Date("2016-12-31"), alpha = 0.6) +
   geom_line(aes(x = Date, y = Value, color = Measurement), alpha = 0.7, size = 1.5) +
   scale_color_manual(name = NULL, values = myColors_M) +
   scale_fill_manual(name = NULL, values = myColors_P) +
@@ -105,7 +104,6 @@ xx <- dd %>% filter(Measurement == "Total (house and land)")
 mp <- ggplot(xx) +
   geom_rect(data = pp, alpha = 0.3, ymin = -Inf, ymax = Inf,
             aes(xmin = xmin, xmax = xmax, fill = Party)) +
-  geom_vline(xintercept = as.Date("2016-12-31"), alpha = 0.6) +
   geom_line(aes(x = Date, y = Value), size = 1.5, alpha = 0.7) +
   facet_wrap(Area ~ ., ncol = 5) +
   scale_color_manual(name = NULL, values = myColors_M) +
@@ -131,7 +129,6 @@ xx <- dd %>%
 mp <- ggplot(xx) +
   geom_rect(data = pp, alpha = 0.3, ymin = -Inf, ymax = Inf,
             aes(xmin = xmin, xmax = xmax, fill = Party)) +
-  geom_vline(xintercept = as.Date("2016-12-31"), alpha = 0.6) +
   geom_line(aes(x = Date, y = Value, color = Measurement), 
             alpha = 0.7, size = 1.5) +
   facet_grid(. ~ Area) +
@@ -197,6 +194,29 @@ ggsave("canada_house_prices_06.png", mp, width = 6, height = 4)
 
 ```{r echo = F}
 ggsave("featured.png", mp, width = 6, height = 4)
+```
+
+---
+
+![](canada_house_prices_07.png)
+
+```{r}
+# Prep data
+myAreas <- c("Canada", "Ontario", "Quebec", "Prairie Region")
+myColors_A <- c("darkred", "darkblue", "steelblue", "darkgreen")
+xx <- dd %>% 
+  filter(Measurement == "Total (house and land)",
+         Area %in% myAreas) %>%
+  mutate(Area = factor(Area, levels = myAreas))
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value, color = Area)) +
+  geom_line(alpha = 0.7, size = 1.5) +
+  scale_color_manual(name = NULL, values = myColors_A) +
+  scale_x_date(date_breaks = "10 years", date_labels = "%Y") +
+  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "House prices in Canada", x = NULL, 
+       y = "Index (2016-12 = 100)", caption = myCaption)
+ggsave("canada_house_prices_07.png", mp, width = 6, height = 4)
 ```
 
 ---

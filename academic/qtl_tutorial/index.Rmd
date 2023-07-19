@@ -627,7 +627,7 @@ mp <- ggplot(xx, aes(x = cM, y = value, color = trait)) +
   scale_color_manual(values = myColors) +
   theme_gwaspr() + 
   labs(title = "LR95 QTL Results", y = "LOD", caption = myCaption)
-ggsave("qtl_tutorial_LR95_05.png", mp, width = 8, height = 6)
+ggsave("qtl_tutorial_LR95_05.png", mp, width = 8, height = 5)
 # Plot by physical location - pseudomarkers removed
 mp <- ggplot(xx %>% filter(!is.na(pos)), 
              aes(x = pos/100000000, y = value, color = trait)) + 
@@ -638,11 +638,11 @@ mp <- ggplot(xx %>% filter(!is.na(pos)),
   theme_gwaspr() +
   labs(title = "LR95 QTL Results", y = "LOD", 
        x = "100 Mbp", caption = myCaption)
-ggsave("qtl_tutorial_LR95_06.png", mp, width = 8, height = 6)
+ggsave("qtl_tutorial_LR95_06.png", mp, width = 8, height = 5)
 ```
 
 ```{r echo = F}
-ggsave("featured.png", mp, width = 8, height = 6)
+ggsave("featured.png", mp, width = 8, height = 5)
 ```
 
 ---
