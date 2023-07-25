@@ -16,9 +16,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 In some cases, a graph with two y-axes is desired for visualizing two different sets of data. However, this is sometimes frowned upon since the required scaling of the data can be adjusted to fit the desired narrative.
 
-![](examples.png)
-
-*Source: https://blog.datawrapper.de/dualaxis/*
+![Source: https://blog.datawrapper.de/dualaxis/](examples.png)
 
 With that said, there still are situations were dual y-axes are appropriate. This vignette will show you how to do this in <i class="fab fa-r-project"></i> with `ggplot2`, despite [the package authors disagreements](https://stackoverflow.com/questions/3099219/ggplot-with-2-y-axes-on-each-side-and-different-scales/3101876#3101876).
 

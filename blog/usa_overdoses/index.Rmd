@@ -19,6 +19,10 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 `r shiny::icon("save")` [data_usa_overdoses.csv](data_usa_overdoses.csv)
 
+https://www.cdc.gov/nchs/nvss/vsrr/vsrr11-dashboard/index.htm
+
+https://www.cdc.gov/nchs/nvss/vsrr/drug-overdose-data.htm
+
 ---
 
 # Prepare Data

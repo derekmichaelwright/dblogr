@@ -266,7 +266,7 @@ A tutorial on how to run principal component analyses and heirarchical clusterin
 
 ### Augmented Designs
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Augmented Field Trial Designs**</u>](academic/augmented_designs)
 
@@ -274,37 +274,37 @@ An R tutorial on augmented field trial designs and how to adjust their values
 
 **Note: Under Construction**
 
-</div><div class = "col-md-6">![](academic/augmented_designs/featured.png)</div></div></div>
+![](academic/augmented_designs/featured.png)</div>
 
 ### Dual Y-axis
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Dual Y-axis**</u>](academic/dual_y_axis)
 
 An R tutorial on how to create a plots with dual y-axes
 
-</div><div class = "col-md-6">![](academic/dual_y_axis/featured.png)</div></div></div>
+![](academic/dual_y_axis/featured.png)</div>
 
 ### Thermal Time
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Calculating Thermal Time/Growing Degree Days**</u>](academic/thermal_time)
 
 An R tutorial on how to calculate thermal time and incorporate environmental data into a phenotype
 
-</div><div class = "col-md-6">![](academic/thermal_time/featured.png)</div></div></div>
+![](academic/thermal_time/featured.png)</div>
 
 ### Environmental Data
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Environmental Data Tutorial**</u>](academic/envdata)
 
 An R tutorial on how to manipulate and plot environmental data
 
-</div><div class = "col-md-6">![](academic/envdata/featured.png)</div></div></div>
+![](academic/envdata/featured.png)</div>
 
 ### R Tutorial
 
@@ -344,13 +344,13 @@ A vignette on how to properly use correlation coefficients when evaluating predi
 
 ### Data Visualizations
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Data Visualization**</u>](academic/data_visualizations)
 
 A vignette illustrating different ways to visualize data
 
-</div><div class = "col-md-6">![](academic/data_visualizations/featured.png)</div></div></div>
+![](academic/data_visualizations/featured.png)</div>
 
 ## {-}
 
@@ -379,23 +379,23 @@ An `r icon("r-project")` Package Containing Agricultural Data Sets
 
 ### Saskatchewan Crop Production
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Saskatchewan Crop Production**</u>](agdata/crops_saskatchewan)
 
 Graphs of crop production in Saskatchewan using STATCAN data
 
-</div><div class = "col-md-6">![](agdata/crops_saskatchewan/featured.png)</div></div></div>
+![](agdata/crops_saskatchewan/featured.png)</div>
 
 ### Lentil Saskatchewan
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Saskatchewan Lentil Production and Exports**</u>](agdata/lentil_saskatchewan)
 
 Graphs of lentil production and exports using SKAG data
 
-</div><div class = "col-md-6">![](agdata/lentil_saskatchewan/featured.png)</div></div></div>
+![](agdata/lentil_saskatchewan/featured.png)</div>
 
 ### Honeybee Canada
 
@@ -409,33 +409,33 @@ Graphs of honeybee production in Canada using STATCAN data
 
 ### Canadian Farmland
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Canadian Farmland**</u>](agdata/farmland_canada)
 
 Graphs about Canadian farmland using STATCAN data
 
-</div><div class = "col-md-6">![](agdata/farmland_canada/featured.png)</div></div></div>
+![](agdata/farmland_canada/featured.png)</div>
 
 ### Canadian Farmers
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Canadian Farm Operators**</u>](agdata/farmers_canada)
 
 Graphs on Canadian farm operator demographics using STATCAN data
 
-</div><div class = "col-md-6">![](agdata/farmers_canada/featured.png)</div></div></div>
+![](agdata/farmers_canada/featured.png)</div>
 
 ### Maps of Canadian Crop Production
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Maps of Canadian Crop Production**</u>](agdata/crops_canada_maps)
 
 Maps of crop production in Canada using STATCAN data
 
-</div><div class = "col-md-6">![](agdata/crops_canada_maps/featured.png)</div></div></div>
+![](agdata/crops_canada_maps/featured.png)</div>
 
 ---
 
@@ -473,13 +473,13 @@ Graphs related to global food security using FAO data
 
 ### Lentil
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Lentil Production**</u>](agdata/lentil)
 
 Graphs of lentil production using FAO data
 
-</div><div class = "col-md-6">![](agdata/lentil/featured.png)</div></div></div>
+![](agdata/lentil/featured.png)</div>
 
 ### Honeybee
 
@@ -497,33 +497,33 @@ Graphs of honeybee production using FAO data
 
 ### Maize USA
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**USA Maize Production**</u>](agdata/maize_usa)
 
 Graphs of maize production in the USA using USDA data
 
-</div><div class = "col-md-6">![](agdata/maize_usa/featured.png)</div></div></div>
+![](agdata/maize_usa/featured.png)</div>
 
 ### GE Crops
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Genetically Engineered Crop Production**</u>](agdata/ge_crops)
 
 Graphs of GE crop production using ISAAA data
 
-</div><div class = "col-md-6">![](agdata/ge_crops/featured.png)</div></div></div>
+![](agdata/ge_crops/featured.png)</div>
 
 ### GE Crops USA
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Genetically Engineered Crop Production in USA**</u>](agdata/ge_crops_usa)
 
 Graphs of GE crop production using USDA data
 
-</div><div class = "col-md-6">![](agdata/ge_crops_usa/featured.png)</div></div></div>
+![](agdata/ge_crops_usa/featured.png)</div>
 
 ## {-}
 
@@ -541,33 +541,33 @@ Random data visualizations and general blog posts.
 
 ### Global Energy Use and Poverty
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Global Energy Use and Poverty**</u>](blog/world_energy)
 
 Graphs of global energy use, CO2 emissions, GDP, and poverty using data from Our World in Data
 
-</div><div class = "col-md-6">![](blog/world_energy/featured.png)</div></div></div>
+![](blog/world_energy/featured.png)</div>
 
 ### Canada Fossil Fuels
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Canadian Fossil Fuel Production and Import**</u>](blog/canada_fossil_fuels)
 
 Graphs of crude oil, natural gas, and coal production, import and export using STATCAN data
 
-</div><div class = "col-md-6">![](blog/canada_fossil_fuels/featured.png)</div></div></div>
+![](blog/canada_fossil_fuels/featured.png)</div>
 
 ### Canada House Prices
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**House Prices In Canada**</u>](blog/canada_house_prices)
 
 Graphs of house prices in Canada using STATCAN data
 
-</div><div class = "col-md-6">![](blog/canada_house_prices/featured.png)</div></div></div>
+![](blog/canada_house_prices/featured.png)</div>
 
 ### Canada Public Private
 
@@ -581,13 +581,13 @@ Graphs of public vs private sector employment in Canada using STATCAN data
 
 ### Canada Trade
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Canadian Trade - Imports and Exports**</u>](blog/canada_house_prices)
 
 Graphs of trade surplus/deficits with other countries using STATCAN data
 
-</div><div class = "col-md-6">![](blog/canada_trade/featured.png)</div></div></div>
+![](blog/canada_trade/featured.png)</div>
 
 ---
 
@@ -615,33 +615,33 @@ Graphs of migration demographics in Canada using STATCAN data
 
 ### USA Population
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**USA Population Demographics**</u>](blog/usa_population)
 
 Graphs of population demographics in USA using Census Bureau data
 
-</div><div class = "col-md-6">![](blog/usa_population/featured.png)</div></div></div>
+![](blog/usa_population/featured.png)</div>
 
 ### Canada Overdoses
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Overdose Deaths In Canada**</u>](blog/canada_overdoses)
 
 Graphs of yearly overdose deaths in Canada using GOV CA, SK & BC data
 
-</div><div class = "col-md-6">![](blog/canada_overdoses/featured.png)</div></div></div>
+![](blog/canada_overdoses/featured.png)</div>
 
 ### USA Overdoses
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Overdose Deaths In The USA**</u>](blog/usa_overdoses)
 
 Graphs of weekly overdose deaths in the USA using CDC data
 
-</div><div class = "col-md-6">![](blog/usa_overdoses/featured.png)</div></div></div>
+![](blog/usa_overdoses/featured.png)</div>
 
 ### Canada Deaths
 
@@ -665,13 +665,13 @@ Graphs of weekly deaths in the USA using CDC & USCB data
 
 ### Covid Origin Polls
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Covid Origin Polls**</u>](blog/covid_origins)
 
 Polling results from various polls on the origins of covid
 
-</div><div class = "col-md-6">![](blog/covid_origins/featured.png)</div></div></div>
+![](blog/covid_origins/featured.png)</div>
 
 ---
 
@@ -693,33 +693,33 @@ Polling results from various polls on the origins of covid
 
 ### Hex Stickers
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box"><div class = "row"><div class = "col-md-5">
 
 [<u>**Hex Stickers**</u>](blog/hex_stickers)
 
 Creation of hex stickers with R
 
-</div><div class = "col-md-6">![](blog/hex_stickers/featured.png)</div></div></div>
+</div><div class = "col-md-7">![](blog/hex_stickers/featured.png)</div></div></div>
 
 ### Street Maps
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**Street Maps**</u>](blog/street_maps)
 
 Create street map art with R and road network files
 
-</div><div class = "col-md-6">![](blog/street_maps/featured.png)</div></div></div>
+![](blog/street_maps/featured.png)</div>
 
 ### starBliss
 
-<div class="box"><div class = "row"><div class = "col-md-6">
+<div class="box">
 
 [<u>**starBliss**</u>](blog/starbliss)
 
 Graphs of star constellations using the starBliss R package
 
-</div><div class = "col-md-6">![](blog/starbliss/featured.png)</div></div></div>
+![](blog/starbliss/featured.png)</div>
 
 ## {-}
 

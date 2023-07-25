@@ -104,7 +104,8 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
                axis.ticks.y = element_blank()) + 
   labs(title = "Lentil - Production - {round(frame_time)}", y = NULL,
        x = "Million Tonnes (3 year moving average)", caption = myCaption) +
-  transition_time(Year)
+  transition_time(Year) #+
+  #view_follow(fixed_x = c(-1, NA))
 anim_save("lentil_gif_01.gif", mp, 
           nframes = 600, fps = 30, end_pause = 60, 
           width = 900, height = 600, res = 150)

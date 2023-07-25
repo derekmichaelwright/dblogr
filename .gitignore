@@ -5,6 +5,7 @@
 
 extra.Rmd
 Rendering_Script.R
+blank_index.Rmd
 
 academic/gwas_tutorial/myG_hmp.csv
 academic/gwas_tutorial/GWAS_Results/

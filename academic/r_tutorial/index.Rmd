@@ -13,9 +13,9 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Introduction
 
-This tutorial is will introduce the reader to `r shiny::icon("r-project")`, a free, open-source statistical computing environment often used with `RStudio`, a integrated development environment for `r shiny::icon("r-project")`.   
+This tutorial is will introduce the reader to `r shiny::icon("r-project")`, a free, open-source statistical computing environment often used with *RStudio*, a integrated development environment for `r shiny::icon("r-project")`.   
 
-![R Project Logo](logo_r.png){width=25%}
+![R Project Logo](logo_r.png){width=50%}
 
 ---
 

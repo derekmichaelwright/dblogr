@@ -27,8 +27,8 @@ library(rworldmap)   # mapPies()
 library(FactoMineR)  # PCA() & HCPC()
 library(htmlwidgets) # saveWidget()
 # Prep data
-myCaption1 = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Anderson (1935) & Fisher (1936)"
-myCaption2 = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myCaption1 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Anderson (1935) & Fisher (1936)"
+myCaption2 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 ```
 
 ---

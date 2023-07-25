@@ -69,6 +69,9 @@ p1 <- bind_rows(
     read_xlsx("data_usa_population.xlsx", "2021", range = "A7:G25") %>% fixSheet(myYear = 2021) ) %>%
   mutate(Age = factor(Age, levels = myAges),
          Sex = factor(Sex, levels  = c("Both sexes", "Males", "Females")))
+#
+p2 <- bind_rows(read.csv("nation-populationpyramid-2000-2010-2020.csv"),
+                read.csv("state-populationpyramid-2000-2010-2020.csv") )
 ```
 
 ---
@@ -161,6 +164,33 @@ mp <- ggplot(xx, aes(y = Population / 1000000, x = Age, fill = Year)) +
   coord_cartesian(ylim = c(-max(xx$Population), max(xx$Population))) +
   coord_flip()
 ggsave("usa_population_03.png", width = 6, height = 4)
+```
+
+---
+
+# Median Age By Race
+
+```{r}
+myRaces1 <- c("White alone, not Hispanic or Latino",
+             "Asian alone, not Hispanic or Latino", 
+             "Black or African American alone, not Hispanic or Latino",
+             "American Indian and Alaska Native alone, not Hispanic or Latino",
+             "Hispanic or Latino")
+myRaces2 <- c("White", "Asian", "Black", "Indigenous", "Hispanic")
+myColors <- c("darkgreen", "darkblue", "black", "darkred", "darkorange")
+#
+xx <- p2 %>% filter(Group %in% myRaces, Nation == "United States") %>%
+  mutate(Group = plyr::mapvalues(Group, myRaces1, myRaces2),
+         Group = factor(Group, levels = myRaces2))
+#
+mp <- ggplot(xx, aes(y = Median.age, x = Year, color = Group)) + 
+  geom_line() + geom_point() +
+  scale_color_manual(name = NULL, values = myColors) +
+  guides(color = guide_legend(ncol = 1)) +
+  theme_agData() + 
+  labs(title = "Population Change in The United States", 
+       y = "Median Age", x = NULL, caption = myCaption)
+ggsave("usa_population_04.png", width = 6, height = 4)
 ```
 
 ---
