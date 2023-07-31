@@ -17,19 +17,15 @@ Augmented designs were developed as a way of controlling error in plant breeding
 
 ## Type I - Augmented RCBD
 
-[**Federer, W.** (1956) Augmented (or hoonuiaku) designs. *Hawaiian Planters Record*.](https://ecommons.cornell.edu/handle/1813/32841)
-
-`r shiny::icon("save")` [data_augmented_designs_1.csv](data_augmented_designs_1.csv)
+- [**Federer, W.** (1956) Augmented (or hoonuiaku) designs. *Hawaiian Planters Record*.](https://ecommons.cornell.edu/handle/1813/32841)
+- `r shiny::icon("save")` [data_augmented_designs_1.csv](data_augmented_designs_1.csv)
 
 ## Type II - Modified
 
-[**Lin, C.S. & Poushinsky, G.** (1985) A modified augmented design (type 2) for rectangular plots. *Canadian journal of plant science*. 65(3): 743-749.](https://cdnsciencepub.com/doi/abs/10.4141/cjps85-094)
-
-[**You, F.M., Song, Q., Jia, G., Cheng, Y., Duguid, S., Booker, H. and Cloutier, S.** (2016) Estimation of genetic parameters and their sampling variances for quantitative traits in the type 2 modified augmented design. *The Crop Journal*. 4(2): 107-118.](https://www.sciencedirect.com/science/article/pii/S2214514116000179)
-
-[Table S1 – The raw phenotypic data of a population with 243 RILs derived from a cross between ‘CDC Bethune’ and ‘Macbeth’ (BM) for the case study](https://data.nal.usda.gov/dataset/data-estimation-genetic-parameters-and-their-sampling-variances-quantitative-traits-type-2-modified-augmented-design)
-
-`r shiny::icon("save")` [data_augmented_designs_2.csv](data_augmented_designs_2.csv)
+- [**Lin, C.S. & Poushinsky, G.** (1985) A modified augmented design (type 2) for rectangular plots. *Canadian journal of plant science*. 65(3): 743-749.](https://cdnsciencepub.com/doi/abs/10.4141/cjps85-094)
+- [**You, F.M., Song, Q., Jia, G., Cheng, Y., Duguid, S., Booker, H. and Cloutier, S.** (2016) Estimation of genetic parameters and their sampling variances for quantitative traits in the type 2 modified augmented design. *The Crop Journal*. 4(2): 107-118.](https://www.sciencedirect.com/science/article/pii/S2214514116000179)
+- [Table S1 – The raw phenotypic data of a population with 243 RILs derived from a cross between ‘CDC Bethune’ and ‘Macbeth’ (BM) for the case study](https://data.nal.usda.gov/dataset/data-estimation-genetic-parameters-and-their-sampling-variances-quantitative-traits-type-2-modified-augmented-design)
+- `r shiny::icon("save")` [data_augmented_designs_2.csv](data_augmented_designs_2.csv)
 
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")

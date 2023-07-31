@@ -15,15 +15,11 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 This vignette is a tutorial on running **Genome-Wide Association Studies** (**GWAS**) in <i class="fab fa-r-project"></i> with the packages `GAPIT` and plotting the results with `gwaspr`.
 
-**GAPIT Website**: https://www.maizegenetics.net/gapit
-
-**GAPIT Manual**: http://www.zzlab.net/GAPIT/gapit_help_document.pdf
-
-**GAPIT Forum**: https://groups.google.com/forum/#!forum/gapit-forum
-
-**GAPIT3 github**: https://github.com/jiabowang/GAPIT3
-
-**gwaspr Website**: https://derekmichaelwright.github.io/gwaspr/
+- **GAPIT Website**: https://www.maizegenetics.net/gapit
+- **GAPIT Manual**: http://www.zzlab.net/GAPIT/gapit_help_document.pdf
+- **GAPIT Forum**: https://groups.google.com/forum/#!forum/gapit-forum
+- **GAPIT3 github**: https://github.com/jiabowang/GAPIT3
+- **gwaspr Website**: https://derekmichaelwright.github.io/gwaspr/
 
 ![](logo_gwaspr.png)
 
@@ -31,20 +27,14 @@ This vignette is a tutorial on running **Genome-Wide Association Studies** (**GW
 
 # Data
 
-`r shiny::icon("save")` [myY.csv](myY.csv)
-
-`r shiny::icon("save")` [myG_hmp.zip](myG_hmp.zip)
-
-`r shiny::icon("save")` [myCV.csv](myCV.csv)
-
-`r shiny::icon("save")` [myM.csv](myM.csv)
+- `r shiny::icon("save")` [myY.csv](myY.csv)
+- `r shiny::icon("save")` [myG_hmp.zip](myG_hmp.zip)
+- `r shiny::icon("save")` [myCV.csv](myCV.csv)
+- `r shiny::icon("save")` [myM.csv](myM.csv)
 
 - `myY.csv`: Phenotype file
-
 - `myG_hmp.csv`: Genotype file in hapmap format
-
 - `myCV.csv`: (Optional) Covariate file
-
 - `myM.csv`: (Optional) Metadata file for the genotypes.
 
 All phenotype and genotype data is derived from and available at: https://knowpulse.usask.ca/

@@ -13,11 +13,9 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-`r shiny::icon("globe")` usda.gov
-
-`r shiny::icon("save")` [agData_USDA_Lentil.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_USDA_Lentil.csv)
-
-`r shiny::icon("save")` [agData_USDA_Lentil.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_USDA_Lentil.csv)
+- `r shiny::icon("globe")` usda.gov
+- `r shiny::icon("save")` [agData_USDA_Lentil.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_USDA_Lentil.csv)
+- `r shiny::icon("save")` [agData_USDA_Lentil.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_USDA_Lentil.csv)
 
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")

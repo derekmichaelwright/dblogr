@@ -19,9 +19,9 @@ This vignette will explore several aspects of data visualization using a lentil 
 
 # Data
 
-`r shiny::icon("save")` [data_visualizations_1.csv](data_visualizations_1.csv)
+- `r shiny::icon("save")` [data_visualizations_1.csv](data_visualizations_1.csv)
 
-`r shiny::icon("save")` [data_visualizations_2.csv](data_visualizations_2.csv)
+- `r shiny::icon("save")` [data_visualizations_2.csv](data_visualizations_2.csv)
 
 ---
 

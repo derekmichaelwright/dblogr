@@ -22,7 +22,7 @@ The purpose of this document is to provide a few examples of how to manipulate a
 
 Data sets can be downloaded from [**knowpulse.usask.ca/**](http://knowpulse.usask.ca/portal/) or my `r shiny::icon("github")` [**github**](https://github.com/derekmichaelwright/dblogr/tree/master/content/academic/envdata).
 
-`r shiny::icon("save")` [environment_data.tar](https://github.com/derekmichaelwright/dblogr/raw/main/academic/envdata/environment_data.tar)
+- `r shiny::icon("save")` [environment_data.tar](https://github.com/derekmichaelwright/dblogr/raw/main/academic/envdata/environment_data.tar)
 
 ---
 

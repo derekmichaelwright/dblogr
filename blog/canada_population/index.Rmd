@@ -13,13 +13,15 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-`r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901
+STATCAN Table: 17-10-0009-01
 
-`r shiny::icon("save")` [1710000901_databaseLoadingData.csv](1710000901_databaseLoadingData.csv)
+- `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901
+- `r shiny::icon("save")` [1710000901_databaseLoadingData.csv](1710000901_databaseLoadingData.csv)
 
-`r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000501
+STATCAN Table: 17-10-0005-01
 
-`r shiny::icon("save")` [1710000501_databaseLoadingData.csv](1710000501_databaseLoadingData.csv)
+- `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000501
+- `r shiny::icon("save")` [1710000501_databaseLoadingData.csv](1710000501_databaseLoadingData.csv)
 
 ---
 

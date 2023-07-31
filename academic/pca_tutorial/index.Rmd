@@ -37,9 +37,8 @@ myCaption2 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: A
 
 ## Data Source
 
-Fisher, R. A. (1936) **The use of multiple measurements in taxonomic problems**. *Annals of Eugenics*. 7(II): 179–188.
-
-Anderson, Edgar (1935) **The irises of the Gaspe Peninsula**. *Bulletin of the American Iris Society*. 59: 2–5.
+- Fisher, R. A. (1936) **The use of multiple measurements in taxonomic problems**. *Annals of Eugenics*. 7(II): 179–188.
+- Anderson, Edgar (1935) **The irises of the Gaspe Peninsula**. *Bulletin of the American Iris Society*. 59: 2–5.
 
 ```{r}
 # print the data
@@ -79,16 +78,28 @@ xx <- iris %>%
   mutate(Cluster = myhpca[[1]]$clust) %>%
   bind_cols(pcs)
 #
-colors <- c("darkslategrey", "darkred", "darkgreen")
-shapes <- c(16, 13, 15)
+myColors <- c("darkslategrey", "darkred", "darkgreen")
+myShapes <- c(16, 13, 15)
 # Plot 
-mp <- ggplot(xx, aes(x = Dim.1, y = Dim.2, color = Cluster, pch = Species)) +
-  geom_point(size = 2, alpha = 0.8) +
-  scale_color_manual(values = colors) +
-  scale_shape_manual(values = shapes) +
+mp <- ggplot(xx, aes(x = Dim.1, y = Dim.2)) +
+  geom_point(aes(color = Cluster, pch = Species), size = 2, alpha = 0.8) +
+  scale_color_manual(values = myColors) +
+  scale_shape_manual(values = myShapes) +
   theme_agData() +
   labs(title = "Iris Data Set", x = "PC 1", y = "PC 2", caption = myCaption1)
 ggsave("pca_tutorial_1_02.png", mp,  width = 6, height = 4)
+```
+
+### ggforce::geom_mark_hull
+
+![](pca_tutorial_1_03.png)
+
+```{r}
+# Plot
+mp <- mp +
+  ggforce::geom_mark_hull(aes(fill = Cluster), expand = unit(3, "mm")) +
+  scale_fill_manual(values = myColors)
+ggsave("pca_tutorial_1_03.png", mp,  width = 6, height = 4)
 ```
 
 ---
@@ -107,8 +118,8 @@ https://dblogr.com/academic/pca_tutorial/pca_tutorial_iris_1.html
 
 ```{r}
 mp <- plot_ly(iris, x = ~Sepal.Length, y = ~Sepal.Width, z = ~Petal.Length, text = ~Species,
-              color = ~Species, colors = colors, 
-              symbol = ~Species, symbols = shapes) %>% 
+              color = ~Species, colors = myColors, 
+              symbol = ~Species, symbols = myShapes) %>% 
   add_markers()
 htmlwidgets::saveWidget(mp, file="pca_tutorial_iris_1.html")
 ```
@@ -127,8 +138,8 @@ https://dblogr.com/academic/pca_tutorial/pca_tutorial_iris_2.html
 
 ```{r}
 mp <- plot_ly(xx, x = ~Dim.1, y = ~Dim.2, z = ~Dim.3, text = ~Species,
-              color = ~Cluster, colors = colors, 
-              symbol = ~Species, symbols = shapes) %>% 
+              color = ~Cluster, colors = myColors, 
+              symbol = ~Species, symbols = myShapes) %>% 
   add_markers()
 htmlwidgets::saveWidget(mp, file="pca_tutorial_iris_2.html")
 ```
@@ -141,11 +152,9 @@ htmlwidgets::saveWidget(mp, file="pca_tutorial_iris_2.html")
 
 Derek M. Wright, Sandesh Neupane, Taryn Heidecker, Teketel A. Haile, Crystal Chan, Clarice J. Coyne, Rebecca J. McGee, Sripada Udupa, Fatima Henkrar, Eleonora Barilli, Diego Rubiales, Tania Gioia, Giuseppina Logozzo, Stefania Marzario, Reena Mehra, Ashutosh Sarker, Rajeev Dhakal, Babul Anwar, Debashish Sarker, Albert Vandenberg & Kirstin E. Bett. **Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (Lens culinaris Medik.)**. *Plants, People, Planet*. (**2020**) 00: 1-11. [doi.org/10.1002/ppp3.10158](https://doi.org/10.1002/ppp3.10158)
 
-`r shiny::icon("save")` [data_ldp.csv](data_ldp.csv)
-
-`r shiny::icon("save")` [data_phenology.csv](data_phenology.csv)
-
-`r shiny::icon("save")` [data_countries.csv](data_countries.csv)
+- `r shiny::icon("save")` [data_ldp.csv](data_ldp.csv)
+- `r shiny::icon("save")` [data_phenology.csv](data_phenology.csv)
+- `r shiny::icon("save")` [data_countries.csv](data_countries.csv)
 
 ---
 
@@ -286,7 +295,7 @@ mp3 <- ggplot(myPC) +
   theme(legend.position = "none", panel.grid = element_blank()) +
   labs(x = paste0("PC2 (", perc[2], "%)"),
        y = paste0("PC3 (", perc[3], "%)"),
-       caption = myCaption)
+       caption = myCaption2)
 # Append 
 mp <- ggarrange(mp1, mp2, mp3, nrow = 1, ncol = 3, hjust = 0)
 ggsave("pca_tutorial_2_03.png", mp, width = 8, height = 2.5)

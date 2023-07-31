@@ -13,9 +13,10 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-`r shiny::icon("globe")` https://www.census.gov/topics/population/age-and-sex/data/tables.html
+CDC age & sex tables
 
-`r shiny::icon("save")` [data_usa_population.csv](data_usa_population.csv)
+- `r shiny::icon("globe")` https://www.census.gov/topics/population/age-and-sex/data/tables.html
+- `r shiny::icon("save")` [data_usa_population.csv](data_usa_population.csv)
 
 ---
 

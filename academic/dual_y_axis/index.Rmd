@@ -24,7 +24,7 @@ With that said, there still are situations were dual y-axes are appropriate. Thi
 
 # Data
 
-`r shiny::icon("save")` [data_dual_y_axis.csv](data_dual_y_axis.csv)
+- `r shiny::icon("save")` [data_dual_y_axis.csv](data_dual_y_axis.csv)
 
 ---
 
@@ -51,7 +51,8 @@ First lets create a plot of `Air Temperature`.
 
 ```{r}
 mp1 <- ggplot(xx, aes(x = Date)) +
-  geom_line(aes(y = Air.Temperature, color = "1"), size = 1.25) +
+  geom_line(aes(y = Air.Temperature, color = "1"), 
+            alpha = 0.7, size = 1.25) +
   scale_color_manual(name = NULL, values = "red", labels = "Air Temp") +
   scale_x_date(date_labels = "%b" , date_breaks = "1 month") +
   labs(title = "Environmental Data", x = NULL,
@@ -64,7 +65,8 @@ Now lets add a second set of data (`Soil Temperature`), in this case it uses the
 
 ```{r}
 mp2 <- mp1 + 
-  geom_line(aes(y = Soil.Temperature, color = "2"), size = 1.25) +
+  geom_line(aes(y = Soil.Temperature, color = "2"), 
+            alpha = 0.7, size = 1.25) +
   scale_color_manual(name = NULL, values = c("red","darkred"), 
                      labels = c("Air Temp","Soil Temp"))
 mp2
@@ -74,7 +76,8 @@ But when we add another data set (`Day Length`) using different units (hours), p
 
 ```{r}
 mp3 <- mp2 + 
-  geom_line(aes(y = Day.Length, color = "3"), size = 1.25) +
+  geom_line(aes(y = Day.Length, color = "3"), 
+            alpha = 0.7, size = 1.25) +
   scale_color_manual(name = NULL, values = c("red","darkred","steelblue"), 
                      labels = c("Air Temp","Soil Temp","DayLength"))
 mp3
@@ -126,7 +129,8 @@ xx <- xx %>%
 
 ```{r}
 mp4 <- mp3 + 
-  geom_line(data = xx, aes(y = Day.Length_scaled, color = "4"), size = 1.25) +
+  geom_line(data = xx, aes(y = Day.Length_scaled, color = "4"), 
+            alpha = 0.7, size = 1.25) +
   scale_color_manual(name = NULL, 
     values = c("red","darkred","steelblue","darkblue"), 
     labels = c("Air Temp","Soil Temp","Day Length","Day Length*"))
@@ -147,7 +151,8 @@ mySA <- sec_axis(~(. - y1_min) * (y2_max - y2_min) / (y1_max - y1_min) + y2_min,
                  name = "Hours", breaks = 9:14)
 # Plot
 mp5 <- mp2 +
-  geom_line(data = xx, aes(y = Day.Length_scaled, color = "4"), size = 1.25) +
+  geom_line(data = xx, aes(y = Day.Length_scaled, color = "4"),
+            alpha = 0.7, size = 1.25) +
   scale_color_manual(name = NULL, values = c("red","darkred","darkblue"), 
                      labels = c("Air Temp","Soil Temp","Day Length")) +
   scale_y_continuous(sec.axis = mySA)
@@ -172,7 +177,7 @@ $$y_{2i}=(30-20)*\frac{10-5}{40-20}+5=7.5$$
 ```{r}
 xx <- data.frame(x = 1:20, y = 1:20)
 ggplot(xx, aes(x = x, y = y)) + 
-  geom_hline(yintercept = 30, color = "blue", size = 2) +
+  geom_hline(yintercept = 30, color = "blue", alpha = 0.7, size = 2) +
   theme_agData(axis.text.y = element_text(color = "red", size = 10)) +
   scale_y_continuous(limits = c(20, 40), 
                      sec.axis = sec_axis(~ (. - 20) * (10 - 5) / (20 - 0) + 5,

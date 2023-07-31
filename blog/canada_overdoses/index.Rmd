@@ -13,17 +13,25 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-Canada Data
+Health Canada Data
 
-`r shiny::icon("globe")` https://health-infobase.canada.ca/src/doc/SRHD/Update_Deaths_2023-06.pdf
+- `r shiny::icon("globe")` https://health-infobase.canada.ca/src/doc/SRHD/Update_Deaths_2023-06.pdf
 
-`r shiny::icon("globe")` https://www2.gov.bc.ca/assets/gov/birth-adoption-death-marriage-and-divorce/deaths/coroners-service/statistical/illicit-drug.pdf
+BC Coroners Service
 
-`r shiny::icon("globe")` https://healthanalytics.alberta.ca/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F1bbb695d-14b1-4346-b66e-d401a40f53e6&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false
+- `r shiny::icon("globe")` https://www2.gov.bc.ca/assets/gov/birth-adoption-death-marriage-and-divorce/deaths/coroners-service/statistical/illicit-drug.pdf
 
-`r shiny::icon("globe")` https://publications.saskatchewan.ca/#/categories/2179
+Alberta Health Services
 
-`r shiny::icon("save")` [data_canada_overdoses.xlsx](data_canada_overdoses.xlsx)
+- `r shiny::icon("globe")` https://healthanalytics.alberta.ca/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F1bbb695d-14b1-4346-b66e-d401a40f53e6&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false
+
+SK Coroners Service
+
+- `r shiny::icon("globe")` https://publications.saskatchewan.ca/#/categories/2179
+
+All Data
+
+- `r shiny::icon("save")` [data_canada_overdoses.xlsx](data_canada_overdoses.xlsx)
 
 ---
 

@@ -13,19 +13,21 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-`r shiny::icon("globe")` https://ourworldindata.org/energy-production-consumption
+Energy production and consumption
 
-`r shiny::icon("save")` [global-energy-substitution.csv](global-energy-substitution.csv)
+- `r shiny::icon("globe")` https://ourworldindata.org/energy-production-consumption
+- `r shiny::icon("save")` [global-energy-substitution.csv](global-energy-substitution.csv)
 
-`r shiny::icon("globe")` https://ourworldindata.org/worlds-energy-problem
+CO2 emmissions per capita
 
-`r shiny::icon("save")` [consumption-co2-per-capita-vs-gdppc.csv](consumption-co2-per-capita-vs-gdppc.csv)
+- `r shiny::icon("globe")` https://ourworldindata.org/worlds-energy-problem
+- `r shiny::icon("save")` [consumption-co2-per-capita-vs-gdppc.csv](consumption-co2-per-capita-vs-gdppc.csv)
 
-`r shiny::icon("globe")` https://ourworldindata.org/a-history-of-global-living-conditions-in-5-charts
+Extreme poverty & literacy
 
-`r shiny::icon("save")` [world-population-in-extreme-poverty-absolute.csv](world-population-in-extreme-poverty-absolute.csv)
-
-`r shiny::icon("save")` [literate-and-illiterate-world-population.csv](literate-and-illiterate-world-population.csv)
+- `r shiny::icon("globe")` https://ourworldindata.org/a-history-of-global-living-conditions-in-5-charts
+- `r shiny::icon("save")` [world-population-in-extreme-poverty-absolute.csv](world-population-in-extreme-poverty-absolute.csv)
+- `r shiny::icon("save")` [literate-and-illiterate-world-population.csv](literate-and-illiterate-world-population.csv)
 
 ---
 
