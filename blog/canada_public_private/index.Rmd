@@ -15,8 +15,8 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 STATCAN Table: 14-10-0288-01
 
-- `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410028801
-- `r shiny::icon("save")` [1410028801_databaseLoadingData.csv](1410028801_databaseLoadingData.csv)
+> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410028801
+> - `r shiny::icon("save")` [1410028801_databaseLoadingData.csv](1410028801_databaseLoadingData.csv)
 
 ---
 

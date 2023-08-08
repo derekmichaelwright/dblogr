@@ -13,13 +13,15 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-- `r shiny::icon("globe")`https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015301
-- `r shiny::icon("save")` [agData_STATCAN_FarmLand_Use.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_FarmLand_Use.csv.gz)
-- `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015201
-- `r shiny::icon("save")` [agData_STATCAN_FarmLand_Farms.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_FarmLand_Farms.csv.gz)
-- `r shiny::icon("globe")`https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015601
-- `r shiny::icon("save")` [agData_STATCAN_FarmLand_Size.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_FarmLand_Size.csv.gz)
-- `r shiny::icon("save")` [agData_STATCAN_Region_Table.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Region_Table.csv.gz)
+> - `r shiny::icon("globe")`https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015301
+> - `r shiny::icon("save")` [agData_STATCAN_FarmLand_Use.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_FarmLand_Use.csv.gz)
+
+> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015201
+> - `r shiny::icon("save")` [agData_STATCAN_FarmLand_Farms.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_FarmLand_Farms.csv.gz)
+
+> - `r shiny::icon("globe")`https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015601
+> - `r shiny::icon("save")` [agData_STATCAN_FarmLand_Size.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_FarmLand_Size.csv.gz)
+> - `r shiny::icon("save")` [agData_STATCAN_Region_Table.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Region_Table.csv.gz)
 
 ---
 

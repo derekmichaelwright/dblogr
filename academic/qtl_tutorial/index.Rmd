@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Introduction
 
-- `r shiny::icon("globe")` `qtl2` Tutorial: https://kbroman.org/qtl2/assets/vignettes/user_guide.html
+> - `r shiny::icon("globe")` `qtl2` Tutorial: https://kbroman.org/qtl2/assets/vignettes/user_guide.html
 
 Running a QTL analysis in <i class="fab fa-r-project"></i> can be done with a few simple steps. This tutorial will go through a couple quick examples with a few lentil (*Lens culinaris*) **recombinant inbred line** (**RIL**) populations (**LR68**, **LR89** & **LR95**).
 

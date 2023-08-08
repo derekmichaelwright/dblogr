@@ -13,8 +13,8 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-- `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035301
-- `r shiny::icon("save")` [agData_STATCAN_Beehives.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Beehives.csv.gz)
+> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035301
+> - `r shiny::icon("save")` [agData_STATCAN_Beehives.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Beehives.csv.gz)
 
 ---
 

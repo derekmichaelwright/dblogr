@@ -15,20 +15,20 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 Weekly deaths
 
-- `r shiny::icon("globe")` https://www.cdc.gov/nchs/nvss/vsrr/covid19/excess_deaths.htm#dashboard
-- `r shiny::icon("save")` [data_usa_deaths.csv](data_usa_deaths.csv)
+> - `r shiny::icon("globe")` https://www.cdc.gov/nchs/nvss/vsrr/covid19/excess_deaths.htm#dashboard
+> - `r shiny::icon("save")` [data_usa_deaths.csv](data_usa_deaths.csv)
 
 State Population
 
-- `r shiny::icon("globe")` https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html
-- `r shiny::icon("save")` [data_usa_population.csv](data_usa_population.csv)
+> - `r shiny::icon("globe")` https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html
+> - `r shiny::icon("save")` [data_usa_population.csv](data_usa_population.csv)
 
 CDC Age & sex tables
 
-- `r shiny::icon("globe")` https://www.census.gov/topics/population/age-and-sex/data/tables.html
-- `r shiny::icon("save")` [data_usa_population.xlsx](data_usa_population.xlsx)
+> - `r shiny::icon("globe")` https://www.census.gov/topics/population/age-and-sex/data/tables.html
+> - `r shiny::icon("save")` [data_usa_population.xlsx](data_usa_population.xlsx)
 
-- `r shiny::icon("globe")` https://www.census.gov/library/visualizations/interactive/how-has-our-nations-population-changed.html
+> - `r shiny::icon("globe")` https://www.census.gov/library/visualizations/interactive/how-has-our-nations-population-changed.html
 
 ```{r echo = F}
 dd <- read.csv("https://data.cdc.gov/api/views/y5bj-9g5w/rows.csv?accessType=DOWNLOAD&bom=true&format=true%20target=")

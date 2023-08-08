@@ -13,11 +13,12 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-- `r shiny::icon("globe")` https://www.nass.usda.gov/
-- `r shiny::icon("globe")` https://www.ncga.com/
-- `r shiny::icon("globe")` https://www.ers.usda.gov/webdocs/publications/42517/13616_aib786_1_.pdf?v=1689.2
-- `r shiny::icon("save")` [agData_USDA_Grains.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_USDA_Grains.csv.gz)
-- `r shiny::icon("save")` [agData_MaizeContest.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_MaizeContest.csv.gz)
+> - `r shiny::icon("globe")` https://www.nass.usda.gov/
+> - `r shiny::icon("globe")` https://www.ers.usda.gov/webdocs/publications/42517/13616_aib786_1_.pdf?v=1689.2
+> - `r shiny::icon("save")` [agData_USDA_Grains.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_USDA_Grains.csv.gz)
+
+> - `r shiny::icon("globe")` https://www.ncga.com/
+> - `r shiny::icon("save")` [agData_MaizeContest.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_MaizeContest.csv.gz)
 
 ---
 

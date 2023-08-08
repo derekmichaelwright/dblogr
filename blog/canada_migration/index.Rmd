@@ -15,18 +15,18 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 STATCAN Table: 17-10-0009-01
 
-- `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901
-- `r shiny::icon("save")` [1710000901_databaseLoadingData.csv](1710000901_databaseLoadingData.csv)
+> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901
+> - `r shiny::icon("save")` [1710000901_databaseLoadingData.csv](1710000901_databaseLoadingData.csv)
 
 STATCAN Table: 17-10-0008-01
 
-- `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000801
-- `r shiny::icon("save")` [1710000801_databaseLoadingData.csv](1710000801_databaseLoadingData.csv)
+> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000801
+> - `r shiny::icon("save")` [1710000801_databaseLoadingData.csv](1710000801_databaseLoadingData.csv)
 
 STATCAN Table: 17-10-0015-01
 
-- `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710001501
-- `r shiny::icon("save")` [1710001501_databaseLoadingData.csv](1710001501_databaseLoadingData.csv)
+> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710001501
+> - `r shiny::icon("save")` [1710001501_databaseLoadingData.csv](1710001501_databaseLoadingData.csv)
 
 ---
 

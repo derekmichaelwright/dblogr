@@ -15,9 +15,9 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 Awada, L., Nagy, C. and Phillips, P.W. (2021) **Contribution of land use practices to GHGs in the Canadian Prairies crop sector**. *PloS one*. 16(12): p.e0260946.
 
-- `r shiny::icon("globe")` https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0260946
-- `r shiny::icon("save")` [journal.pone.0260946.s002.docx](journal.pone.0260946.s002.docx)
-- `r shiny::icon("save")` [data_soil_carbon.xlsx](data_soil_carbon.xlsx)
+> - `r shiny::icon("globe")` https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0260946
+> - `r shiny::icon("save")` [journal.pone.0260946.s002.docx](journal.pone.0260946.s002.docx)
+> - `r shiny::icon("save")` [data_soil_carbon.xlsx](data_soil_carbon.xlsx)
 
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")

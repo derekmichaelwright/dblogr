@@ -37,8 +37,8 @@ myCaption2 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: A
 
 ## Data Source
 
-- Fisher, R. A. (1936) **The use of multiple measurements in taxonomic problems**. *Annals of Eugenics*. 7(II): 179–188.
-- Anderson, Edgar (1935) **The irises of the Gaspe Peninsula**. *Bulletin of the American Iris Society*. 59: 2–5.
+> - Fisher, R. A. (1936) **The use of multiple measurements in taxonomic problems**. *Annals of Eugenics*. 7(II): 179–188.
+> - Anderson, Edgar (1935) **The irises of the Gaspe Peninsula**. *Bulletin of the American Iris Society*. 59: 2–5.
 
 ```{r}
 # print the data
@@ -152,9 +152,9 @@ htmlwidgets::saveWidget(mp, file="pca_tutorial_iris_2.html")
 
 Derek M. Wright, Sandesh Neupane, Taryn Heidecker, Teketel A. Haile, Crystal Chan, Clarice J. Coyne, Rebecca J. McGee, Sripada Udupa, Fatima Henkrar, Eleonora Barilli, Diego Rubiales, Tania Gioia, Giuseppina Logozzo, Stefania Marzario, Reena Mehra, Ashutosh Sarker, Rajeev Dhakal, Babul Anwar, Debashish Sarker, Albert Vandenberg & Kirstin E. Bett. **Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (Lens culinaris Medik.)**. *Plants, People, Planet*. (**2020**) 00: 1-11. [doi.org/10.1002/ppp3.10158](https://doi.org/10.1002/ppp3.10158)
 
-- `r shiny::icon("save")` [data_ldp.csv](data_ldp.csv)
-- `r shiny::icon("save")` [data_phenology.csv](data_phenology.csv)
-- `r shiny::icon("save")` [data_countries.csv](data_countries.csv)
+> - `r shiny::icon("save")` [data_ldp.csv](data_ldp.csv)
+> - `r shiny::icon("save")` [data_phenology.csv](data_phenology.csv)
+> - `r shiny::icon("save")` [data_countries.csv](data_countries.csv)
 
 ---
 

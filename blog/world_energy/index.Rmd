@@ -15,19 +15,19 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 Energy production and consumption
 
-- `r shiny::icon("globe")` https://ourworldindata.org/energy-production-consumption
-- `r shiny::icon("save")` [global-energy-substitution.csv](global-energy-substitution.csv)
+> - `r shiny::icon("globe")` https://ourworldindata.org/energy-production-consumption
+> - `r shiny::icon("save")` [global-energy-substitution.csv](global-energy-substitution.csv)
 
 CO2 emmissions per capita
 
-- `r shiny::icon("globe")` https://ourworldindata.org/worlds-energy-problem
-- `r shiny::icon("save")` [consumption-co2-per-capita-vs-gdppc.csv](consumption-co2-per-capita-vs-gdppc.csv)
+> - `r shiny::icon("globe")` https://ourworldindata.org/worlds-energy-problem
+> - `r shiny::icon("save")` [consumption-co2-per-capita-vs-gdppc.csv](consumption-co2-per-capita-vs-gdppc.csv)
 
 Extreme poverty & literacy
 
-- `r shiny::icon("globe")` https://ourworldindata.org/a-history-of-global-living-conditions-in-5-charts
-- `r shiny::icon("save")` [world-population-in-extreme-poverty-absolute.csv](world-population-in-extreme-poverty-absolute.csv)
-- `r shiny::icon("save")` [literate-and-illiterate-world-population.csv](literate-and-illiterate-world-population.csv)
+> - `r shiny::icon("globe")` https://ourworldindata.org/a-history-of-global-living-conditions-in-5-charts
+> - `r shiny::icon("save")` [world-population-in-extreme-poverty-absolute.csv](world-population-in-extreme-poverty-absolute.csv)
+> - `r shiny::icon("save")` [literate-and-illiterate-world-population.csv](literate-and-illiterate-world-population.csv)
 
 ---
 
@@ -46,7 +46,7 @@ library(gganimate)
 myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: OurWorldInData"
 myItems <- c("Other", "Biofuels", "Solar", "Wind",
              "Hydro", "Nuclear", "Gas", "Oil", "Coal", "Biomass")
-myColors <- c("burlywood3", "green","darkgoldenrod2","steelblue",
+myColors <- c("burlywood3", "darkseagreen4","darkgoldenrod2","steelblue",
               "darkblue", "darkred", "slategray3", 
               "black", "grey50", "darkgreen")
 d1 <- read.csv("global-energy-substitution.csv") 
@@ -636,7 +636,7 @@ xx <- d2 %>% select(Country, Year, GDP, CO2) %>%
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   geom_line(size = 2, alpha = 0.7) +
   facet_wrap(Measurement ~ ., scales = "free") +
-  scale_color_manual(values = c("darkred", "darkgreen")) +
+  scale_color_manual(values = c("darkred", "steelblue")) +
   xlim(c(1997, 2020)) +
   theme_agData(legend.position = "none") +
   labs(title = "Canadian Carbon Emmissions And GDP", 
@@ -656,7 +656,7 @@ ggsave("world_energy_2_05.png", mp, width = 6, height = 4)
 # Plot
 mp <- ggplot(d3, aes(x = Year, y = Value / 1000000000, color = Measurement)) +
   geom_line(size = 1.5, alpha = 0.7) +
-  scale_color_manual(name = NULL, values = c("darkred", "darkgreen")) +
+  scale_color_manual(name = NULL, values = c("darkred", "steelblue")) +
   scale_y_continuous(breaks = 0:7) +
   scale_x_continuous(breaks = seq(1820, 2020, by = 20)) +
   theme_agData(legend.position = "bottom") +
@@ -700,7 +700,7 @@ ggsave("world_energy_3_02.png", mp, width = 6, height = 4)
 # Plot
 mp <- ggplot(d3, aes(x = "", y = Percent, fill = Measurement)) +
   geom_col(color = "black", alpha = 0.7) +
-  scale_fill_manual(name = NULL, values = c("darkred", "darkgreen")) +
+  scale_fill_manual(name = NULL, values = c("darkred", "steelblue")) +
   coord_polar("y", start = 0) +
   theme_agData(legend.position = "bottom") +
   theme_agData_pie() +
@@ -724,7 +724,7 @@ mp <- ggplot(d4, aes(x = Year, y = Percent, color = Measurement)) +
   geom_hline(yintercept = min(xx$Percent), alpha = 0.2) +
   geom_hline(yintercept = max(xx$Percent), alpha = 0.2) +
   geom_line(size = 1.5, alpha = 0.7) +
-  scale_color_manual(name = NULL, values = c("darkred", "darkgreen")) +
+  scale_color_manual(name = NULL, values = c("darkred", "steelblue")) +
   scale_y_continuous(limits = c(0, 100),
                      breaks = seq(0, 100, by = 10)) +
   scale_x_continuous(breaks = seq(1800, 2020, by = 20)) +
@@ -749,7 +749,7 @@ xx <- bind_rows(x1, x2)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Percent, color = Measurement)) +
   geom_line(size = 1.5, alpha = 0.7) +
-  scale_color_manual(name = NULL, values = c("darkgoldenrod2", "darkgreen")) +
+  scale_color_manual(name = NULL, values = c("darkgoldenrod2", "steelblue")) +
   scale_y_continuous(limits = c(0, 100),
                      breaks = seq(0, 100, by = 10)) +
   scale_x_continuous(breaks = seq(1800, 2020, by = 20)) +
@@ -778,7 +778,7 @@ xx <- left_join(x1, x2, by = "Year")
 # Plot
 mp <- ggplot(xx, aes(x = `Fossil Fuels` / 1000, y = Percent)) +
   stat_smooth(geom = "line", method = "lm", alpha = 0.7) +
-  geom_point(size = 2.5, color = "darkgreen", alpha = 0.7) +
+  geom_point(size = 2.5, color = "steelblue", alpha = 0.7) +
   theme_agData(legend.position = "none") +
   guides(fill = guide_legend(nrow = 2, ncol = 1)) +
   labs(title = "Fossil Fuels And Global Reduction In Poverty", 
