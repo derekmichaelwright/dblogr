@@ -16,19 +16,7 @@ library(shiny)
 
 **Welcome to the personal website for Derek Michael Wright**
 
----
-
 # `r icon("address-card")` About Me
-
-## **My Curriculum Vitae (CV)**
-
-`r icon("globe")` [Derek M Wright (CV HTML version)](cv/)
-
-`r icon("file-pdf")` [Derek M Wright (CV PDF Version)](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf)
-
----
-
-## Biography
 
 <div class="box">
 
@@ -44,16 +32,22 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 <div class = "row"><div class = "col-md-6">
 
-**Social Media**
+
+**Socials**
 
 - `r icon("github")`  [github.com/derekmichaelwright](https://github.com/derekmichaelwright)
-- `r icon("twitter")` [twitter.com/DerekMWright](https://twitter.com/DerekMWright)
+- `r icon("x")` [x.com/DerekMWright](https://x.com/DerekMWright) `r icon("twitter")`
 
 </div><div class = "col-md-6">
 
 **Email**
 
 - `r icon("envelope")` derek.wright@usask.ca
+
+**My Curriculum Vitae (CV)**
+
+- `r icon("globe")` [CV HTML version](cv/)
+- `r icon("file-pdf")` [CV PDF Version](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf)
 
 </div>
 
@@ -92,11 +86,11 @@ Scientific publications I have been involved in while working/studying at ***Uni
 
 <div class="box"><div class = "row"><div class = "col-md-6">
 
-[<u>**Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**</u>](https://doi.org/10.1002/tpg2.20269). *The Plant Genome*. (**2022**) e20269. doi.org/10.1002/tpg2.20269
+[<u>**Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**</u>](https://doi.org/10.1002/tpg2.20269). *The Plant Genome*. (**2022**) 16(1): e20269. doi.org/10.1002/tpg2.20269
 
 Sandesh Neupane, **Derek M. Wright**, Raul O. Martinez, Jakob Butler, Jim L. Weller, Kirstin E. Bett.
 
-- `r icon("newspaper")` [*The Plant Genome*. (**2022**) e20269.](https://doi.org/10.1002/tpg2.20269)
+- `r icon("newspaper")` [*The Plant Genome*. (**2022**) 16(1): e20269.](https://doi.org/10.1002/tpg2.20269)
 - `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology)
 - `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_GWAS_Phenology/GWAS_Phenology_Vignette.html)
 - `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_GWAS_Phenology/README.html)

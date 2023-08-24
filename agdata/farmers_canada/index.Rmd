@@ -39,13 +39,16 @@ myAreas <- c("Canada", "British Columbia", "Alberta", "Saskatchewan",
              "Unknown province or territory")
 dd <- agData_STATCAN_Farmers #%>%
   #mutate(Area = factor(Area, levels = myAreas))
+pp <- agData_STATCAN_Population %>% 
+  group_by(Area, Year) %>%
+  summarise(Population = mean(Value, na.rm = T))
 ```
 
 ---
 
 # Canada
 
-![](farmers_canada_01.png)
+![](farmers_canada_1_01.png)
 
 ```{r}
 # Prep data
@@ -61,14 +64,16 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Year)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canadian Farm Operator Demographics",
        x = NULL, y = "Thousand", caption = myCaption)
-ggsave("farmers_canada_01.png", mp, width = 9, height = 5)
+ggsave("farmers_canada_1_01.png", mp, width = 9, height = 5)
 ```
 
 ---
 
 # Total Number of Farm Operators
 
-![](farmers_canada_02.png)
+## Canada
+
+![](farmers_canada_1_02.png)
 
 ```{r}
 # Prep data
@@ -82,12 +87,14 @@ mp <- ggplot(xx, aes(x = Area, y = Value / 1000, fill = Year)) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Total Number of Farm Operators",
        y = "Thousand Operators", x = NULL, caption = myCaption)
-ggsave("farmers_canada_02.png", mp, width = 6, height = 4)
+ggsave("farmers_canada_1_02.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-![](farmers_canada_03.png)
+## Provinces
+
+![](farmers_canada_1_03.png)
 
 ```{r}
 # Prep data
@@ -103,7 +110,61 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Year)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Total Number of Farm Operators",
        y = "Thousand Operators", x = NULL, caption = myCaption)
-ggsave("farmers_canada_03.png", mp, width = 10, height = 5)
+ggsave("farmers_canada_1_03.png", mp, width = 10, height = 5)
+```
+
+---
+
+## Percent of Population
+
+### Provinces
+
+![](farmers_canada_1_04.png)
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  filter(Area != "Canada", Measurement == "Total number of operators") %>%
+  left_join(pp, by = c("Year", "Area")) %>%
+  mutate(Year = factor(Year),
+         Rate = 100 * Value / Population)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Rate, fill = Year)) +
+  geom_col(color = "black") +
+  facet_wrap(Area ~ ., ncol = 5) +
+  scale_fill_manual(name = NULL, values = myColors_Years) +
+  theme_agData(legend.position = "none",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Total Number of Farm Operators",
+       y = "Percent of Population", x = NULL, caption = myCaption)
+ggsave("farmers_canada_1_04.png", mp, width = 10, height = 5)
+```
+
+---
+
+## Percent of Population
+
+### 2021 
+
+![](farmers_canada_1_05.png)
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  filter(Year == 2021, Measurement == "Total number of operators") %>%
+  left_join(pp, by = c("Year", "Area")) %>%
+  mutate(Rate = 100 * Value / Population) %>%
+  arrange(desc(Rate)) %>%
+  mutate(Area = factor(Area, levels = unique(.$Area)))
+# Plot
+mp <- ggplot(xx, aes(x = Area, y = Rate, fill = Area)) +
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(name = NULL, values = agData_Colors) +
+  theme_agData(legend.position = "none",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Total Number of Farm Operators",
+       y = "Percent of Population", x = NULL, caption = myCaption)
+ggsave("farmers_canada_1_05.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -112,7 +173,7 @@ ggsave("farmers_canada_03.png", mp, width = 10, height = 5)
 
 ## Canada
 
-![](farmers_canada_04.png)
+![](farmers_canada_2_01.png)
 
 ```{r}
 # Prep data
@@ -126,7 +187,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada", subtitle = "Total Number of Farm Operators",
        y = "Thousand", x = NULL, caption = myCaption)
-ggsave("farmers_canada_04.png", mp, width = 6, height = 4)
+ggsave("farmers_canada_2_01.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F}
@@ -137,7 +198,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ## Saskatchewan
 
-![](farmers_canada_05.png)
+![](farmers_canada_2_02.png)
 
 ```{r}
 # Prep data
@@ -151,14 +212,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Saskatchewan", subtitle = "Total Number of Farm Operators",
        y = "Thousand", x = NULL, caption = myCaption)
-ggsave("farmers_canada_05.png", mp, width = 6, height = 4)
+ggsave("farmers_canada_2_02.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Provinces
 
-![](farmers_canada_06.png)
+![](farmers_canada_2_03.png)
 
 ```{r}
 # Prep data
@@ -174,14 +235,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Measurement)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Total Number of Farm Operators",
        y = "Thousand", x = NULL, caption = myCaption)
-ggsave("farmers_canada_06.png", mp, width = 10, height = 5)
+ggsave("farmers_canada_2_03.png", mp, width = 10, height = 5)
 ```
 
 ---
 
 ## Percent
 
-![](farmers_canada_07.png)
+![](farmers_canada_2_04.png)
 
 ```{r}
 # Prep data
@@ -203,14 +264,14 @@ mp <- ggplot(xx, aes(x = Year, y = Percent)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Farm Operators", x = NULL,
        y = "Percent Males", caption = myCaption)
-ggsave("farmers_canada_07.png", mp, width = 10, height = 5)
+ggsave("farmers_canada_2_04.png", mp, width = 10, height = 5)
 ```
 
 ---
 
 ## 2021 Pies
 
-![](farmers_canada_08.png)
+![](farmers_canada_2_05.png)
 
 ```{r}
 # Prep data
@@ -229,7 +290,7 @@ mp <- ggplot(xx, aes(x = "", y = Percent, fill = Measurement)) +
   theme_agData_pie(legend.position = "bottom") +
   labs(title = "Percent of Farm Operators (2021)",
        caption = myCaption)
-ggsave("farmers_canada_08.png", mp, width = 10, height = 5)
+ggsave("farmers_canada_2_05.png", mp, width = 10, height = 5)
 ```
 
 ---
@@ -240,7 +301,7 @@ ggsave("farmers_canada_08.png", mp, width = 10, height = 5)
 
 ### Canada
 
-![](farmers_canada_09.png)
+![](farmers_canada_3_01.png)
 
 ```{r}
 # Prep data
@@ -256,14 +317,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value)) +
   theme_agData() +
   labs(title = "Average Age of Farm Operators in Canada", 
        y = "Age", x = NULL, caption = myCaption)
-ggsave("farmers_canada_09.png", mp, width = 6, height = 4)
+ggsave("farmers_canada_3_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### Saskatchewan
 
-![](farmers_canada_10.png)
+![](farmers_canada_3_02.png)
 
 ```{r}
 # Prep data
@@ -279,14 +340,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value)) +
   theme_agData() +
   labs(title = "Average Age of Farm Operators in Saskatchewan",
        y = "Age", x = NULL, caption = myCaption)
-ggsave("farmers_canada_10.png", mp, width = 6, height = 4)
+ggsave("farmers_canada_3_02.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### Provinces
 
-![](farmers_canada_11.png)
+![](farmers_canada_3_03.png)
 
 ```{r}
 # Prep data
@@ -303,7 +364,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value)) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Average age of farm operators", 
        y = "Age", x = NULL, caption = myCaption)
-ggsave("farmers_canada_11.png", mp, width = 10, height = 5)
+ggsave("farmers_canada_3_03.png", mp, width = 10, height = 5)
 ```
 
 ---
@@ -312,7 +373,7 @@ ggsave("farmers_canada_11.png", mp, width = 10, height = 5)
 
 ### Canada
 
-![](farmers_canada_12.png)
+![](farmers_canada_3_04.png)
 
 ```{r}
 # Prep data
@@ -330,14 +391,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
                      minor_breaks = unique(xx$Year)) +
   labs(title = "Total Number of Farm Operators in Canada",
        y = "Thousand", x = NULL, caption = myCaption)
-ggsave("farmers_canada_12.png", mp, width = 6, height = 4)
+ggsave("farmers_canada_3_04.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### Saskatchewan
 
-![](farmers_canada_13.png)
+![](farmers_canada_3_05.png)
 
 ```{r}
 # Prep data
@@ -354,14 +415,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
                      minor_breaks = unique(xx$Year)) +
   labs(title = "Total Number of Farm Operators in Saskatchewan",
        y = "Thousand", x = NULL, caption = myCaption)
-ggsave("farmers_canada_13.png", mp, width = 6, height = 4)
+ggsave("farmers_canada_3_05.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### Provinces
 
-![](farmers_canada_14.png)
+![](farmers_canada_3_06.png)
 
 ```{r}
 # Prep data
@@ -377,14 +438,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   scale_color_manual(name = NULL, values = myColors_Age) +
   labs(title = "Total Number of Farm Operators in Canada",
        y = "Thousand", x = NULL, caption = myCaption)
-ggsave("farmers_canada_14.png", mp, width = 10, height = 5)
+ggsave("farmers_canada_3_06.png", mp, width = 10, height = 5)
 ```
 
 ---
 
 ### 2021 Pies
 
-![](farmers_canada_15.png)
+![](farmers_canada_3_07.png)
 
 ```{r}
 # Prep data
@@ -402,7 +463,7 @@ mp <- ggplot(xx, aes(x = "", y = Percent, fill = Measurement)) +
   scale_fill_manual(name = NULL, values = myColors_Age) +
   theme_agData_pie(legend.position = "bottom") +
   labs(title = "Percent of Farm Operators (2021)", caption = myCaption)
-ggsave("farmers_canada_15.png", mp, width = 10, height = 5)
+ggsave("farmers_canada_3_07.png", mp, width = 10, height = 5)
 ```
 
 ---
