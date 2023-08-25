@@ -1,0 +1,94 @@
+---
+output:
+  pagedown::html_resume: 
+    self_contained: yes
+---
+
+Aside
+====================================
+
+{#contact}
+--------------------------------------------------------------------------------
+
+![](about.png){width=100%}
+
+<br>
+
+### <i class="fa fa-address-card"></i> Contact Info {#contact}
+
+- <i class="fa fa-envelope"></i> &nbsp; wrightmderek@gmail.com
+- <i class="fa fa-envelope-o"></i> &nbsp; derek.wright@usask.ca
+- <i class="fa fa-phone"></i> &nbsp; +1 306-220-0645
+
+### <i class="fa fa-cloud"></i> Social Media
+
+- <i class="fa fa-twitter-square"></i> &nbsp; [@DerekMWright](https://twitter.com/DerekMWright)
+- <i class="fa fa-github"></i> &nbsp; [github.com/derekmichaelwright](https://github.com/derekmichaelwright)
+
+### <i class="fa fa-globe"></i> Personal Website
+
+[www.dblogr.com/](http://dblogr.com/) or 
+
+[derekmichaelwright.github.io/dblogr/](https://derekmichaelwright.github.io/dblogr/)
+
+Main
+================================================================================
+
+Derek M. Wright {#title}
+--------------------------------------------------------------------------------
+
+Job Application: **Research Chair in Lentil and Faba Bean Breeding**
+
+2023-08-25
+
+Dear Curtis Pozniak,
+
+Please accept my application for the position of **Research Chair in Lentil and Faba Bean Breeding**. I am excited to be considered for this role and believe I would be a good candidate. I have a BSc in Biology from the University of Regina, a MSc in Agrobiotechnology from Justus-Liebig-Universität Gießen (University of Giessen) and have spent the last 7+ years at the University of Saskatchewan as a Research Assistant in the pulse crop breeding & genetics group working with lentils.  
+
+For the last 7+ years I have been in charge of field trials for various lentil populations including a diversity panel (LDP), a nested association panel and numerous inter-specific RIL populations, giving me an extensive knowledge of the phenotypic diversity within the *Lens* genus. My duties included planning of the field trial set-up, seed preparation, phenotyping, harvest and post-harvest processing, along with the data wrangling and analyses. I was also responsible for coordinating the import and export of seed for our international field trials.
+
+In addition to overseeing our field trials, I have extensive experience in wrangling very large data sets and performing complex statistical procedures such as PCA, GWAS and QTL analyses. I am very comfortable working in <i class="fab fa-r-project"></i> and have a passion for data visualization. My most recent unpublished work involves utilizing UAV imagery to model growth curves for the LDP across multi-environment trials and performing GWAS on novel traits derived from the analysis. In addition, I am also currently working with protein and amino acid analysis in the LDP, evaluating the breeding potential for increased protein content and utilizing GWAS to identify SNPs suitable for marker assisted selection. In my previous work for the AGILE project here at the U of S, I was part of a large experiment investigating phenology in the LDP across the major macroenvironments for cultivated lentils, modeling days to flower based on temperature and photoperiod. This was followed by GWAS investigation using a somewhat novel approach exploiting our large multi-environmental datasets. I also have experience working with Brassica crops for my MSc and during an internship I did with Cargil, where I briefly worked on nitrogen use efficiency and disease resistance. 
+
+I am confident my knowledge and experience in plant breeding and research will make me a good fit for this position. Thank you for your consideration, and I hope to hear from you soon.
+
+<i class="fa fa-address-card"></i> Referees {#referees}
+--------------------------------------------------------------------------------
+
+### **Dr. Kirstin Bett**
+
+Professor, Plant Breeding & Genetics
+
+University of Saskatchewan
+
+N/A
+
+::: concise
+- <i class="fa fa-phone"></i> 306-371-2999
+- <i class="fa fa-envelope"></i> k.bett@usask.ca
+:::
+
+### **Dr. Harmeet Chawla**
+
+Professor, Department of Plant Science
+
+University of Manitoba
+
+N/A
+
+::: concise
+- <i class="fa fa-phone"></i> 204-474-7192
+- <i class="fa fa-envelope"></i> harmeet.chawla@umanitoba.ca
+:::
+
+### **Brent Barlow**
+
+Pulse Crops Field Lab Manager
+
+Crop Development Centre
+
+N/A
+
+::: concise
+- <i class="fa fa-phone"></i> 306-222-8933
+- <i class="fa fa-envelope"></i> brent.barlow@usask.ca
+:::
