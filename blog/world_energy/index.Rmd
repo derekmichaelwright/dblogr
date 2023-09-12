@@ -101,11 +101,11 @@ mp <- ggplot(d1, aes(x = Year, y = Value / 1000, fill = Source)) +
   theme_agData() +
   labs(title = "Global Energy Consumption",
        y = "Thousand TWH", x = NULL, caption = myCaption)
-ggsave("world_energy_1_01.png", mp, width = 7, height = 4)
+ggsave("world_energy_1_01.png", mp, width = 8, height = 4)
 ```
 
 ```{r echo = F}
-ggsave("featured.png", mp, width = 7, height = 4)
+ggsave("featured.png", mp, width = 8, height = 4)
 ```
 
 ---

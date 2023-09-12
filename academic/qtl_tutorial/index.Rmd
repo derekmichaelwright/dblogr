@@ -95,7 +95,7 @@ mp <- ggplot(xx, aes(x = value, fill = trait)) +
   facet_wrap(trait ~ ., scales = "free", ncol = 4) +
   scale_fill_manual(values = myColors) +
   theme_gwaspr(legend.position = "none") +
-  labs(title = "LR68 - Phenotypes", caption = myCaption)
+  labs(title = "LR68 - Phenotypes", x = NULL, caption = myCaption)
 ggsave("qtl_tutorial_LR68_01.png", mp, width = 8, height = 4)
 ```
 
@@ -162,14 +162,14 @@ dev.off()
 
 ```{r results="hide"}
 # Plot
-png("qtl_tutorial_LR68_03.png", width = 1200, height = 400, res = 200)
+png("qtl_tutorial_LR68_03.png", width = 1200, height = 600, res = 200)
 par(mar = c(2,4,2,1))
 plot(out, map, lodcolumn = 2, col = myColors[2], main = "LR68")
 plot(out, map, lodcolumn = 3, col = myColors[3], add = T)
 plot(out, map, lodcolumn = 4, col = myColors[4], add = T)
 abline(h = 3, col = "red")
-legend("top", lwd = 2, col = myColors[c(2,4)], 
-       colnames(out)[c(2,4)], bg = "gray90")
+legend("top", lwd = 2, col = myColors[c(2:4)], 
+       colnames(out)[c(2:4)], bg = "gray90")
 dev.off()
 ```
 
@@ -191,7 +191,7 @@ find_peaks(out, map, threshold = 3, drop = 1.5)
 # Prep data
 xx <- maxmarg(pr, map, chr = "LG1", pos = 42, return_char = T)
 # Plot
-png("qtl_tutorial_LR68_04.png", width = 600, height = 400, res = 200)
+png("qtl_tutorial_LR68_04.png", width = 800, height = 600, res = 200)
 par(mar = c(2,4,2,1))
 plot_pxg(xx, myQTL$pheno[,"Cotyledon_Color"], ylab = "Cotyledon Color",
          main = "LR68 - LG1 pos 42")
@@ -208,7 +208,7 @@ dev.off()
 # Prep data
 xx <- maxmarg(pr, map, chr = "LG6", pos = 23, return_char = T)
 # Plot
-png("qtl_tutorial_LR68_05.png", width = 600, height = 400, res = 200)
+png("qtl_tutorial_LR68_05.png", width = 800, height = 600, res = 200)
 par(mar = c(2,4,2,1))
 plot_pxg(xx, myQTL$pheno[,"Testa_Pattern"], ylab = "Testa Pattern", 
          main = "LR68 - LG6 pos 23")
@@ -223,7 +223,7 @@ dev.off()
 
 ```{r results="hide"}
 # Prep plot 
-png("qtl_tutorial_LR68_06.png", width = 1200, height = 400, res = 200)
+png("qtl_tutorial_LR68_06.png", width = 1200, height = 600, res = 200)
 par(mfrow = c(1,2), mar = c(2,4,2,1))
 # Plot QTL 1
 xx <- maxmarg(pr, map, chr = "LG2", pos = 16, return_char = T)
@@ -251,7 +251,7 @@ dev.off()
 c2eff <- scan1coef(pr[,"LG1"], myQTL$pheno[,"Cotyledon_Color"])
 myColors2 <- c("slateblue", "violetred")
 # Plot
-png("qtl_tutorial_LR68_07.png", width = 600, height = 400, res = 200)
+png("qtl_tutorial_LR68_07.png", width = 800, height = 600, res = 200)
 par(mar = c(4,4,2,2.5))
 plot(c2eff, map["LG1"], columns = 1:2, 
      col = myColors2, main = "LR68 Cotyledon Color")
@@ -273,7 +273,7 @@ dev.off()
 # Prep data
 myColors2 <- c("slateblue", "violetred")
 # Plot
-png("qtl_tutorial_LR68_08.png", width = 1200, height = 400, res = 200)
+png("qtl_tutorial_LR68_08.png", width = 1400, height = 600, res = 200)
 par(mfrow = c(1,2), mar = c(4,4,2,2.5))
 c2eff <- scan1coef(pr[,"LG2"], myQTL$pheno[,"Testa_Color"])
 plot(c2eff, map["LG2"], columns = 1:2, 
@@ -303,7 +303,7 @@ dev.off()
 c2eff <- scan1coef(pr[,"LG6"], myQTL$pheno[,"Testa_Pattern"])
 myColors2 <- c("slateblue", "violetred")
 # Plot
-png("qtl_tutorial_LR68_09.png", width = 600, height = 400, res = 200)
+png("qtl_tutorial_LR68_09.png", width = 800, height = 600, res = 200)
 par(mar = c(4,4,2,2.5))
 plot(c2eff, map["LG6"], columns = 1:2, 
      col = myColors2, main = "LR68 Testa Pattern")
@@ -476,7 +476,7 @@ mp <- ggplot(xx, aes(x = value, fill = trait)) +
   facet_grid(. ~ trait) +
   scale_fill_manual(values = myColors) +
   theme_gwaspr(legend.position = "none") +
-  labs(title = "LR95 Phenotypes", caption = myCaption)
+  labs(title = "LR95 Phenotypes", x = NULL, caption = myCaption)
 ggsave("qtl_tutorial_LR95_01.png", mp, width = 6, height = 4)
 ```
 
@@ -520,7 +520,7 @@ write.csv(find_peaks(out, map, threshold = 3, drop = 1.5),
 
 ```{r results="hide"}
 # Plot
-png("qtl_tutorial_LR95_02.png", width = 1200, height = 800, res = 200)
+png("qtl_tutorial_LR95_02.png", width = 1400, height = 1000, res = 200)
 par(mfrow = c(2,1), mar = c(2,4,2,1.5))
 plot(out, map, lodcolumn = 1, col = myColors[1], 
      main = paste("LR95", colnames(out)[1]))
@@ -544,7 +544,7 @@ find_peaks(out, map, threshold = 3, drop = 1.5)
 
 ```{r results="hide"}
 # Prep plot 
-png("qtl_tutorial_LR95_03.png", width = 1200, height = 400, res = 200)
+png("qtl_tutorial_LR95_03.png", width = 1400, height = 600, res = 200)
 par(mfrow = c(1,2), mar = c(2,4,2,1))
 # Plot QTL 1
 xx <- maxmarg(pr, map, chr = "LG1", pos = 68.45, return_char = T)
@@ -567,7 +567,7 @@ dev.off()
 # Prep data
 myColors2 <- c("slateblue", "violetred", "green3")
 # Plot
-png("qtl_tutorial_LR95_04.png", width = 1200, height = 400, res = 200)
+png("qtl_tutorial_LR95_04.png", width = 1400, height = 600, res = 200)
 par(mfrow = c(1,2), mar = c(4,4,2,2.5))
 c2eff <- scan1coef(pr[,"LG1"], myQTL$pheno[,"Cotyledon_Color"])
 plot(c2eff, map["LG1"], columns = 1:2, col = myColors2, main = "LR95 Cotyledon_Color")
@@ -624,7 +624,7 @@ mp <- ggplot(xx, aes(x = cM, y = value, color = trait)) +
   geom_hline(yintercept = 3, color = "red") +
   facet_grid(trait ~ lg, scales = "free", space = "free_x") +
   scale_color_manual(values = myColors) +
-  theme_gwaspr() + 
+  theme_gwaspr(legend.position = "none") + 
   labs(title = "LR95 QTL Results", y = "LOD", caption = myCaption)
 ggsave("qtl_tutorial_LR95_05.png", mp, width = 8, height = 5)
 # Plot by physical location - pseudomarkers removed
@@ -634,7 +634,7 @@ mp <- ggplot(xx %>% filter(!is.na(pos)),
   geom_hline(yintercept = 3, color = "red") +
   facet_grid(trait ~ chr, scales = "free", space = "free_x") +
   scale_color_manual(values = myColors) +
-  theme_gwaspr() +
+  theme_gwaspr(legend.position = "none") +
   labs(title = "LR95 QTL Results", y = "LOD", 
        x = "100 Mbp", caption = myCaption)
 ggsave("qtl_tutorial_LR95_06.png", mp, width = 8, height = 5)
@@ -660,7 +660,7 @@ mp1 <- ggplot(yy, aes(x = cM, y = value)) +
   geom_hline(yintercept = 3, color = "red") +
   facet_grid(trait ~ lg, scales = "free", space = "free_x") +
   theme_gwaspr() +
-  labs(title = "LR95 Linkage Map", y = "LOD")
+  labs(title = "LR95 Linkage Map", y = "LOD", caption = "")
 mp2 <- ggplot(yy %>% filter(chr == "1"), aes(x = pos / 100000000, y = value)) +
   geom_line(color = "darkgreen", alpha = 0.7, size = 1) +
   geom_hline(yintercept = 3, color = "red") +
@@ -771,7 +771,7 @@ mp <- ggplot(xx, aes(x = value, fill = trait)) +
   facet_grid(. ~ trait) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_gwaspr(legend.position = "none") +
-  labs(title = "LR89 Phenotypes", caption = myCaption)
+  labs(title = "LR89 Phenotypes", x = NULL, caption = myCaption)
 ggsave("qtl_tutorial_LR89_01.png", mp, width = 8, height = 4)
 ```
 
@@ -916,7 +916,7 @@ dev.off()
 myColors2 <- c("slateblue", "violetred")
 myLims <- c(-4.4,4.4)
 # Plot
-png("qtl_tutorial_LR89_07.png", width = 600, height = 1200, res = 200)
+png("qtl_tutorial_LR89_07.png", width = 800, height = 1200, res = 200)
 par(mfrow = c(3,1), mar = c(4,4,2,2.5))
 c2eff <- scan1coef(pr[,"LG3"], myQTL$pheno[,"RootRot_E1"])
 plot(c2eff, map["LG3"], columns = 1:2, col = myColors2, 
@@ -954,7 +954,7 @@ dev.off()
 # Prep data
 myLims <- c(-4.3,4.3)
 # Plot
-png("qtl_tutorial_LR89_08.png", width = 600, height = 1200, res = 200)
+png("qtl_tutorial_LR89_08.png", width = 800, height = 1200, res = 200)
 par(mfrow = c(3,1), mar = c(4,4,2,2.5))
 c2eff <- scan1coef(pr[,"LG5"], myQTL$pheno[,"RootRot_E1"])
 plot(c2eff, map["LG5"], columns = 1:2, col = myColors2, 
@@ -993,7 +993,7 @@ dev.off()
 # Prep data
 myLims <- c(-4.2,4.2)
 # Plot
-png("qtl_tutorial_LR89_09.png", width = 600, height = 1200, res = 200)
+png("qtl_tutorial_LR89_09.png", width = 800, height = 1200, res = 200)
 par(mfrow = c(3,1), mar = c(4,4,2,2.5))
 c2eff <- scan1coef(pr[,"LG6"], myQTL$pheno[,"RootRot_E1"])
 plot(c2eff, map["LG6"], columns = 1:2, col = myColors2, 
@@ -1060,7 +1060,7 @@ mp <- ggplot(xx, aes(x = cM, y = value, color = trait)) +
   geom_hline(yintercept = 3, color = "red") +
   facet_grid(trait ~ lg, scales = "free", space = "free_x") +
   scale_color_manual(values = myColors) +
-  theme_gwaspr() + 
+  theme_gwaspr(legend.position = "none") + 
   labs(title = "LR89 QTL Results", y = "LOD", caption = myCaption)
 ggsave("qtl_tutorial_LR89_10.png", mp, width = 8, height = 6)
 mp <- ggplot(xx %>% filter(!is.na(pos)), 
@@ -1069,7 +1069,7 @@ mp <- ggplot(xx %>% filter(!is.na(pos)),
   geom_hline(yintercept = 3, color = "red") +
   facet_grid(trait ~ chr, scales = "free", space = "free_x") +
   scale_color_manual(values = myColors) +
-  theme_gwaspr() +
+  theme_gwaspr(legend.position = "none") +
   labs(title = "LR89 QTL Results", y = "LOD", caption = myCaption)
 ggsave("qtl_tutorial_LR89_11.png", mp, width = 8, height = 6)
 ```

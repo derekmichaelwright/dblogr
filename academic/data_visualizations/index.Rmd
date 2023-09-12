@@ -105,21 +105,31 @@ mp <- ggplot(xx, aes(fill = Trait, x = Value)) +
                axis.ticks.y = element_blank()) +
   scale_fill_manual(values = myColors) +
   labs(x = NULL, y = NULL)
-mp1 <- mp + labs(subtitle = "(a) Facetted histograms", 
-                 x = "Days After Planting") +
+# (A)
+mp1 <- mp + 
   geom_histogram(binwidth = 3, color = "black", alpha = 0.7) + 
-  facet_grid(. ~ Trait)
-mp2 <- mp + labs(subtitle = "(b) Dodged histograms")+
+  facet_grid(. ~ Trait) +
+  labs(title = "Lentil Diversity Panel (LDP) Phenology in Italy",
+       subtitle = "(A) Facetted histograms")
+# (B)
+mp2 <- mp + 
   geom_histogram(binwidth = 3, position = "dodge", 
-                 color = "black", lwd = 0.4, alpha = 0.7)
-mp3 <- mp + labs(subtitle = "(c) Stacked histograms (binwidth = 3 days)") +
-  geom_histogram(binwidth = 3, color = "black", alpha = 0.7)
-mp4 <- mp + labs(subtitle = "(d) Stacked histograms (binwidth = 1 day)") +
-  geom_histogram(binwidth = 1, lwd = 0.4, color = "black", alpha = 0.7)
-mp5 <- mp + geom_density(alpha = 0.5) +
-  labs(title = "Lentil Diversity Panel (LDP) Phenology in Italy", 
-       subtitle = "(e) Density plots",
+                 color = "black", lwd = 0.4, alpha = 0.7) +
+  labs(subtitle = "(B) Dodged histograms")
+# (C)
+mp3 <- mp + 
+  geom_histogram(binwidth = 3, color = "black", alpha = 0.7) +
+  labs(subtitle = "(C) Stacked histograms (binwidth = 3 days)")
+# (D)
+mp4 <- mp + 
+  geom_histogram(binwidth = 1, lwd = 0.4, color = "black", alpha = 0.7) +
+  labs(subtitle = "(D) Stacked histograms (binwidth = 1 day)")
+# (E)
+mp5 <- mp + 
+  geom_density(alpha = 0.5) +
+  labs(subtitle = "(E) Density plots", x = "Days After Planting",
        caption = myCaption)
+#
 mp <- ggarrange(mp1, mp2, mp3, mp4, mp5,  ncol = 1, nrow = 5, 
                 heights = c(1.1,1,1,1,1.3))
 ggsave("data_visualizations_01.png", mp, width = 6, height = 8)
@@ -157,7 +167,7 @@ ggsave("data_visualizations_02.png", mp, width = 6, height = 4)
 
 # Boxplots
 
-For the second example, we will use a subset of 8 accessions grown in Morocco, Nepal and Italy with 3 replicates in each location. This data can be visualized in a number of different ways. 
+For the second example, we will use a subset of 8 accessions from the LDP grown in Morocco, Nepal and Italy with 3 replicates in each location. This data can be visualized in a number of different ways. 
 
 ![](data_visualizations_03.png)
 
@@ -167,25 +177,31 @@ mp <- ggplot(d2, aes(x = Location, y = DTF, fill = Location)) +
   theme_agData(legend.position = "none") +
   scale_fill_manual(values = myColors) +
   labs(x = NULL, y = NULL)
+# (A)
 mp1 <- mp + 
   geom_boxplot(alpha = 0.6, coef = 2.5) +
   stat_boxplot(geom = "errorbar", width = 0.25, coef = 2.5) +
-  labs(title = "Lentil - Days to Flower", subtitle = "(a) boxplots")
+  labs(subtitle = "(A) boxplots")
+# (B)
 mp2 <- mp + 
   geom_violin(alpha = 0.6) +
-  labs(subtitle = "(b) violin plots")
+  labs(subtitle = "(B) violin plots")
+# (C)
 mp3 <- mp + 
   geom_violin(alpha = 0.6) +
   geom_boxplot(width = 0.1, fill = "white",
                outlier.shape = NA, coef = 0) +
-  labs(subtitle = "(c) violins + boxplots")
+  labs(subtitle = "(C) violins + boxplots")
+# (D)
 mp4 <- mp + 
   geom_violin(alpha = 0.6) +
   geom_beeswarm(aes(shape = Name), alpha = 0.7, cex = 1.5) +
   scale_shape_manual(values = 0:7) +
-  labs(subtitle = "(d) violins + points", caption = myCaption)
-mp <- ggarrange(mp1, mp2, mp3, mp4, ncol = 2, nrow = 2, align = "hv")
-ggsave("data_visualizations_03.png", mp, width = 6, height = 6)
+  labs(subtitle = "(D) violins + points", caption = myCaption)
+#
+mp <- ggarrange(mp1, mp2, mp3, mp4, ncol = 2, nrow = 2, align = "hv") %>%
+  annotate_figure(text_grob("Lentil Diversity Panel (LDP) Subset - Days to Flower", hjust = 0.69))
+ggsave("data_visualizations_03.png", mp, width = 6, height = 6, bg = "white")
 ```
 
 ---
@@ -208,8 +224,9 @@ mp <- ggplot(d2, aes(x = Location, y = DTF,
                axis.ticks.x = element_blank()) +
   scale_color_manual(name = NULL, values = myColors) +
   scale_shape_manual(values = 0:7, guide = F) +
-  labs(x = NULL, y = "Days to Flower", caption = myCaption)
-ggsave("data_visualizations_04.png", mp, width = 6, height = 3)
+  labs(title = "Lentil Diversity Panel (LDP) Subset",
+       x = NULL, y = "Days to Flower", caption = myCaption)
+ggsave("data_visualizations_04.png", mp, width = 7, height = 5)
 ```
 
 ---
@@ -233,11 +250,12 @@ mp <- ggplot(xx, aes(x = Location, y = DTF,
   geom_line(size = 1.25, alpha = 0.6) +
   scale_color_manual(name = NULL, values = myColors) +
   scale_shape_manual(name = NULL, values = 0:7) +
-  theme_agData(legend.position = "top") +
+  theme_agData(legend.position = "bottom") +
   coord_cartesian(xlim = c(1.5,2.5)) +
   guides(color = guide_legend(nrow = 2, byrow = T)) +
-  labs(x = NULL, y = "Days to Flower", caption = myCaption)
-ggsave("data_visualizations_05.png", mp, width = 6, height = 4)
+  labs(title = "Lentil Diversity Panel (LDP) Subset",
+       x = NULL, y = "Days to Flower", caption = myCaption)
+ggsave("data_visualizations_05.png", mp, width = 7, height = 5)
 ```
 
 ---

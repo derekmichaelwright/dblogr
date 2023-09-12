@@ -505,9 +505,30 @@ ggsave("canada_migration_3_03.png", mp, width = 6, height = 4)
 
 ---
 
-### Maritimes
+### British Columbia
 
 ![](canada_migration_3_04.png)
+
+```{r}
+# Prep data
+xx <- d2 %>% 
+  filter(Area == "British Columbia", Measurement %in% c("Births","Deaths"))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) + 
+  geom_line(size = 1.5, alpha = 0.7) + 
+  scale_color_manual(name = NULL, values = myColors) +
+  scale_y_continuous(limits = c(1,48)) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Population Dynamics in The Maritimes", 
+       y = "Thousand People", x = NULL, caption = myCaption)
+ggsave("canada_migration_3_04.png", mp, width = 6, height = 4)
+```
+
+---
+
+### Maritimes
+
+![](canada_migration_3_05.png)
 
 ```{r}
 # Prep data
@@ -521,11 +542,11 @@ xx <- d2 %>%
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) + 
   geom_line(size = 1.5, alpha = 0.7) + 
   scale_color_manual(name = NULL, values = myColors) +
-  scale_y_continuous(minor_breaks = 0:45, limits = c(1,41)) +
+  scale_y_continuous(limits = c(1,42)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Population Dynamics in The Maritimes", 
        y = "Thousand People", x = NULL, caption = myCaption)
-ggsave("canada_migration_3_04.png", mp, width = 6, height = 4)
+ggsave("canada_migration_3_05.png", mp, width = 6, height = 4)
 ```
 
 --- 

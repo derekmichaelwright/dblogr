@@ -1,0 +1,221 @@
+---
+title: "Crop Production In India"
+subtitle: "Graphs of crop production in India with FAO data"
+date: "Last updated: `r Sys.Date()`"
+author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+```
+
+---
+
+# Data
+
+> - `r shiny::icon("globe")` http://www.fao.org/faostat/en/#data/QC
+> - `r shiny::icon("save")` [agData_FAO_Crops.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Crops.csv.gz)
+
+---
+
+# Prepare Data
+
+```{r class.source = 'fold-show'}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData) 
+library(ggforce)
+library(gganimate)
+```
+
+```{r}
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
+```
+
+---
+
+# PDF - All India Crops
+
+> - `r shiny::icon("file-pdf")` [figures_crops_india_fao.pdf](figures_crops_india_fao.pdf)
+
+```{r results="hide"}
+# Prep data
+myColors <- c("darkgreen", "darkred", "darkgoldenrod2")
+xx <- agData_FAO_Crops %>% 
+  filter(Area == "India") %>%
+   mutate(Value = ifelse(Measurement %in% c("Area Harvested", "Production"),
+                        Value / 1000000, Value / 1000),
+         Unit = plyr::mapvalues(Unit, c("hectares", "tonnes", "kg/ha"), 
+                  c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
+myCrops <- unique(xx$Item)
+# Plot
+pdf("figures_crops_india_fao.pdf", width = 12, height = 4)
+for(i in myCrops) {
+  xi <- xx %>% filter(Item == i)
+  print(ggplot(xi, aes(x = Year, y = Value, color = Measurement)) +
+    geom_line(size = 1.5, alpha = 0.7) +
+    facet_wrap(. ~ Measurement + Unit, scales = "free_y", ncol = 3) +
+    scale_color_manual(values = myColors) +
+    scale_x_continuous(breaks = seq(1960, 2020, by = 5) ) +
+    theme_agData(legend.position = "none", 
+                 axis.text.x = element_text(angle = 45, hjust = 1)) +
+    labs(title = i, y = NULL, x = NULL, caption = myCaption) )
+}
+dev.off()
+```
+
+---
+
+# All India Crops
+
+```{r}
+# Prep data
+xx <- agData_FAO_Crops %>% 
+  filter(Area == "India", Measurement == "Production")
+# Plot
+ggcropplot <- function(x) {
+  ggplot(xx, aes(x = Year, y = Value / 100000)) + 
+  geom_line(size = 1, color = "darkgreen", alpha = 0.7) + 
+  scale_x_continuous(limits       =   c(1960, 2020),
+                     breaks       = seq(1960, 2020, 20), 
+                     minor_breaks = seq(1960, 2020, 10)) +
+  theme_agData() +
+  theme(legend.position = "none") +
+  labs(y = "Tonnes (x 100,000)", x = NULL, caption = myCaption)
+}
+```
+
+```{r}
+# Plot
+mp1 <- ggcropplot(xx) + 
+  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
+                      ncol = 4, nrow = 5, page = 1) +
+  labs(title = "Crop Production - India (1/5)")
+mp2 <- ggcropplot(xx) +
+  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
+                      ncol = 4, nrow = 5, page = 2) +
+  labs(title = "Crop Production - India (2/5)")
+mp3 <- ggcropplot(xx) + 
+  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
+                      ncol = 4, nrow = 5, page = 3) +
+  labs(title = "Crop Production - India (3/5)")
+mp4 <- ggcropplot(xx) +
+  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
+                      ncol = 4, nrow = 5, page = 4) +
+  labs(title = "Crop Production - India (4/5)")
+mp5 <- ggcropplot(xx) +
+  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
+                      ncol = 4, nrow = 5, page = 5) +
+  labs(title = "Crop Production - India (5/5)")
+ggsave("crops_india_01.png", mp1, width = 12, height = 8)
+ggsave("crops_india_02.png", mp2, width = 12, height = 8)
+ggsave("crops_india_03.png", mp3, width = 12, height = 8)
+ggsave("crops_india_04.png", mp4, width = 12, height = 8)
+ggsave("crops_india_05.png", mp5, width = 12, height = 8)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp1, width = 12, height = 8)
+```
+
+![](crops_india_01.png)
+
+![](crops_india_02.png)
+
+![](crops_india_03.png)
+
+![](crops_india_04.png)
+
+---
+
+# Bar Chart Racer
+
+## Production
+
+![](crops_india_gif_01.gif)
+
+```{r}
+# Prep data
+fnames <- paste(", fresh n.e.c.", ", excluding shelled", 
+                " \\(excluding dehydrated)"," and mangosteens", sep = "|")
+xx <- agData_FAO_Crops %>% 
+  filter(Area == "India", Measurement == "Production") %>% 
+  group_by(Item) %>%
+  mutate(Value = movingAverage(Value, n = 3)) %>%
+  group_by(Year) %>%
+  arrange(Year, -Value) %>%
+  mutate(Rank = 1:n()) %>%
+  filter(Rank < 15) %>% 
+  arrange(desc(Year)) %>%
+  mutate(Item = gsub(fnames, "", Item)) %>% 
+  mutate(Item = factor(Item, levels = unique(.$Item)),
+         Value = Value / 1000000)
+# Plot
+mp <- ggplot(xx, aes(xmin = 0, xmax = Value, 
+                     ymin = Rank - 0.45, ymax = Rank + 0.45, y = Rank, 
+                     fill = Item)) + 
+  geom_rect(alpha = 0.7, color = "black") + 
+  scale_fill_manual(values = agData_Colors) +
+  scale_x_continuous(limits = c(-150,max(xx$Value)),
+                     breaks = seq(0, 400, by = 100),
+                     minor_breaks = seq(0, 400, by = 50)) +
+  geom_text(aes(label = Item), col = "black", hjust = 1, x = -4) +
+  scale_y_reverse() +
+  theme_agData(legend.position = "none",
+               axis.text.y = element_blank(), 
+               axis.ticks = element_blank(),
+               panel.grid.major.y = element_blank(),
+               panel.grid.minor.y = element_blank()) + 
+  labs(title = paste("India - Production -", "{frame_time}"),
+       x = "Million Tonnes (3 year moving average)", 
+       y = NULL, caption = myCaption) +
+  transition_time(Year) 
+anim_save("crops_india_gif_01.gif", mp,
+          nframes = 600, fps = 30, end_pause = 150, 
+          width = 900, height = 600, res = 150)
+```
+
+---
+
+## Area Harvested
+
+![](crops_india_gif_02.gif)
+
+```{r}
+# Prep data
+fnames <- paste(", fresh n.e.c.", ", Fibre Equivalent", 
+                ", excluding shelled", sep = "|")
+xx <- agData_FAO_Crops %>%
+  filter(Area == "India", Measurement == "Area Harvested") %>%
+  group_by(Year) %>%
+  arrange(Year, -Value) %>%
+  mutate(Rank = 1:n()) %>%
+  filter(Rank < 15) %>% 
+  arrange(desc(Year)) %>%
+  mutate(Item = gsub(fnames, "", Item)) %>% 
+  mutate(Item = factor(Item, levels = unique(.$Item)),
+         Value = Value / 1000000)
+# Plot
+mp <- ggplot(xx, aes(xmin = 0, xmax = Value, 
+                     ymin = Rank - 0.45, ymax = Rank + 0.45, y = Rank, 
+                     fill = Item)) + 
+  geom_rect(alpha = 0.7, color = "black") + 
+  scale_fill_manual(values = agData_Colors) +
+  scale_x_continuous(limits = c(-15,max(xx$Value)),
+                     breaks = seq(0, 50, by = 10),
+                     minor_breaks = seq(0, 50, by = 5) ) +
+  geom_text(aes(label = Item), col = "black", hjust = 1, x = -0.3) +
+  scale_y_reverse() +
+  theme_agData(legend.position = "none",
+               axis.text.y = element_blank(), 
+               axis.ticks = element_blank(),
+               panel.grid.major.y = element_blank(),
+               panel.grid.minor.y = element_blank()) + 
+  labs(title = paste("India - Area Harvested -", "{frame_time}"),
+       x = "Million Hectares", y = NULL, caption = myCaption) +
+  transition_time(Year) 
+anim_save("crops_india_gif_02.gif", mp,
+          nframes = 600, fps = 30, end_pause = 150, 
+          width = 900, height = 600, res = 150)
+```
+
+---

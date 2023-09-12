@@ -51,7 +51,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 **Personal Email**
 
-- `r icon("envelope-o")` derek.wright@usask.ca
+- `r icon("envelope")` derek.wright@usask.ca
 
 </div>
 
@@ -63,7 +63,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 # `r icon("book")` Publications 
 
-Scientific publications I have been involved in while working/studying at ***University of Regina***, ***Justus-Liebig-Universität Gießen (University of Giessen)*** & the ***University of Saskatchewan***.
+Scientific publications I have been involved in while working/studying at [***University of Regina***](https://www.uregina.ca/){target="_blank"}, [***Justus-Liebig-Universität Gießen (University of Giessen)***](https://www.uni-giessen.de/){target="_blank"} & the [***University of Saskatchewan***](https://www.usask.ca/){target="_blank"}.
 
 ## All Publications {.tabset .tabset-pills}
 
@@ -577,11 +577,11 @@ Graphs of crude oil, natural gas, and coal production, import and export using S
 
 <div class="box">
 
-[<u>**House Prices In Canada**</u>](blog/canada_house_prices){target="_blank"}
+[<u>**Housing In Canada**</u>](blog/canada_housing){target="_blank"}
 
-Graphs of house prices in Canada using STATCAN data
+Graphs of housing data in Canada using STATCAN data
 
-![](blog/canada_house_prices/featured.png)</div>
+![](blog/canada_housing/featured.png)</div>
 
 ### Canada Public Private
 
