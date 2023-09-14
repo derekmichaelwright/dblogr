@@ -83,7 +83,7 @@ ab1 <- read_xlsx("data_canada_overdoses.xlsx", "AB Monthly") %>%
 # Prep SK data
 #
 myCaptionSK <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: SK GOV\nNote: most recent years data may be incomplete"
-myRaces <- c("Unknown", "Other", "Black", "Asian",
+myRaces <- c("Unknown", "Other", "Hispanic","Black", "Asian",
              "Metis","First Nations", "Caucasian")
 #
 sk1 <- read_xlsx("data_canada_overdoses.xlsx", "SK Annual")
