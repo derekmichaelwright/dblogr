@@ -170,14 +170,14 @@ gg_Trade <- function(myArea = "India") {
     filter(Trading.Partner == myArea, Trade == "Trade Balance") %>%
     mutate(Balance = ifelse(Value > 0, "Net Export", "Net Import"))
   # Plot
-  mp2 <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  mp2 <- ggplot(xx, aes(x = Date, y = Value)) +
     geom_col(aes(fill = Balance), alpha = 0.9) +
     stat_smooth(geom = "line", alpha = 0.7) +
     scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
     scale_x_date(date_minor_breaks = "1 year", expand = c(0,0)) +
     scale_y_continuous(minor_breaks = -6:6) +
     theme_agData(legend.position = "bottom") +
-    labs(subtitle = "", x = NULL, y = "Billion CAD", caption = myCaption)
+    labs(subtitle = "", x = NULL, y = "Million CAD", caption = myCaption)
   ggarrange(mp1, mp2)
 }
 ```
