@@ -1,6 +1,5 @@
 ---
-title: "www.dblogr.com/"
-subtitle: "derekmichaelwright.github.io/dblogr"
+title: "derekmichaelwright.github.io/dblogr"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
@@ -13,6 +12,8 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 library(shiny)
 # https://derekmichaelwright.github.io/dblogr/home
 ```
+
+# `r icon("home")` www.dblogr.com/
 
 **Welcome to the personal website for Derek Michael Wright**
 
