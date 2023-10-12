@@ -34,13 +34,15 @@ library(agData)
 
 ```{r}
 # Prep data
+myTitle1 <- "Morning Consult Poll"
+mySubtitle1 <- "The share of adults who said the following comes closest to their opinion\nabout the origins of the COVID-19 pandemic"
 myCaption1 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Morning Consult"
 d1 <- read.csv("data_morning_consult.csv") %>%
   mutate(Area = factor(Area, levels = rev(.$Area))) 
 #
 myCaption2 <- "derekmichaelwright.github.io/dblogr/ | Data: YouGov"
-myTitle <- "35. COVID-19 Originated in Chinese Lab"
-mySubtitle <- "Regardless of whether or not the virus responsible for COVID-19 was created or naturally mutated,\ndo you believe it is true or false that a laboratory in China was the origin of the virus?"
+myTitle2 <- "35. COVID-19 Originated in Chinese Lab"
+mySubtitle2 <- "Regardless of whether or not the virus responsible for COVID-19 was created or naturally mutated,\ndo you believe it is true or false that a laboratory in China was the origin of the virus?"
 myAnswers <- c("Definatly false", "Propably false", "Not sure",
                "Probably true", "Definatly true")
 d2 <- read.csv("data_yougov.csv", skip = 1, check.names = FALSE) %>%
@@ -76,8 +78,7 @@ mp <- ggplot(xx, aes(x = Area)) +
   scale_y_continuous(expand = c(0,0)) +
   theme_agData(legend.position = "bottom") +
   coord_flip() +
-  labs(subtitle = "The share of adults who said the following comes closest
-       /nto their opinion about the origins of the COVID-19 pandemic",
+  labs(title = myTitle1, subtitle = mySubtitle1, 
        x = NULL, y = "Percent", caption = myCaption1)
 ggsave("covid_origin_1_01.png", mp, width = 6, height = 4)
 ```
@@ -93,9 +94,6 @@ ggsave("covid_origin_1_01.png", mp, width = 6, height = 4)
 Regardless of whether or not the virus responsible for COVID-19 was created or naturally mutated, do you believe it is true or false that a laboratory in China was the origin of the virus?
 
 ![](yougov_poll_35.png)
-
-```{r}
-```
 
 ---
 
@@ -128,7 +126,7 @@ mp <- ggplot(xx, aes(x= Group, y = Percent)) +
   scale_y_continuous(breaks = seq(0,100, by = 10), expand = c(0.01,0)) +
   coord_flip() + guides(fill = guide_legend(reverse=TRUE)) +
   theme_agData(legend.position = "bottom") +
-  labs(title = myTitle, subtitle = mySubtitle, 
+  labs(title = myTitle2, subtitle = mySubtitle2, 
        x = NULL, caption = myCaption2)
 ggsave("covid_origin_2_01.png", mp, width = 8, height = 6)
 ```
@@ -162,7 +160,7 @@ mp <- ggplot(xx, aes(x = Group, y = Percent)) +
   scale_y_continuous(breaks = seq(0,100, by = 10), expand = c(0.01,0)) +
   coord_flip() + guides(fill = guide_legend(reverse=TRUE)) +
   theme_agData(legend.position = "bottom") +
-  labs(title = myTitle, subtitle = mySubtitle, 
+  labs(title = myTitle2, subtitle = mySubtitle2, 
        x = NULL, caption = myCaption2)
 ggsave("covid_origin_2_02.png", mp, width = 8, height = 6)
 ```
@@ -177,9 +175,7 @@ ggsave("featured.png", mp, width = 8, height = 6)
 
 ```{r}
 # Create plotting function
-plotPoll_1 <- function(xx = d2, myGroups, myColors, 
-                       myTitle = "35. COVID-19 Originated in Chinese Lab",
-                       mySubtitle = "Regardless of whether or not the virus responsible for COVID-19 was created or naturally mutated,\ndo you believe it is true or false that a laboratory in China was the origin of the virus?") {
+plotPoll_1 <- function(xx = d2, myGroups, myColors) {
   # Prep data
   xx <- xx %>% filter(Group %in% myGroups) %>%
     mutate(Group = factor(Group, levels = myGroups))
@@ -188,7 +184,7 @@ plotPoll_1 <- function(xx = d2, myGroups, myColors,
     geom_col(position = "dodge", color = "black", alpha = 0.7) +
     scale_fill_manual(name = NULL, values = myColors) +
     theme_agData(legend.position = "bottom") +
-    labs(title = myTitle, subtitle = mySubtitle, 
+    labs(title = myTitle2, subtitle = mySubtitle2, 
          x = NULL, caption = myCaption2)
 }
 ```
@@ -265,9 +261,7 @@ ggsave("covid_origin_3_05.png", mp, width = 7.5, height = 5)
 ```{r}
 # Create plotting function
 plotPoll_2 <- function(xx = d2, myGroups, 
-                       myColors = c("darkred", "palevioletred3","black", "steelblue", "darkblue"), 
-                       myTitle = "35. COVID-19 Originated in Chinese Lab",
-                       mySubtitle = "Regardless of whether or not the virus responsible for COVID-19 was created or naturally mutated,\ndo you believe it is true or false that a laboratory in China was the origin of the virus?") {
+                       myColors = c("darkred", "palevioletred3","black", "steelblue", "darkblue")) {
   # Prep data
   xx <- xx %>% filter(Group %in% myGroups) %>%
     mutate(Group = factor(Group, levels = myGroups)) %>%
@@ -282,7 +276,7 @@ plotPoll_2 <- function(xx = d2, myGroups,
     scale_fill_manual(name = NULL, values = myColors) +
     xlim(0.548, 1.45) +
     theme_agData_pie(legend.position = "bottom") +
-    labs(title = myTitle, subtitle = mySubtitle, 
+    labs(title = myTitle2, subtitle = mySubtitle2, 
          x = NULL, caption = myCaption2)
 }
 ```

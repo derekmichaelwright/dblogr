@@ -18,7 +18,7 @@ Energy production and consumption
 > - `r shiny::icon("globe")` https://ourworldindata.org/energy-production-consumption
 > - `r shiny::icon("save")` [global-energy-substitution.csv](global-energy-substitution.csv)
 
-CO2 emmissions per capita
+CO2 emissions per capita
 
 > - `r shiny::icon("globe")` https://ourworldindata.org/worlds-energy-problem
 > - `r shiny::icon("save")` [consumption-co2-per-capita-vs-gdppc.csv](consumption-co2-per-capita-vs-gdppc.csv)

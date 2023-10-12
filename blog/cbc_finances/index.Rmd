@@ -40,18 +40,6 @@ d2 <- read.csv("data_cbc_finances_2.csv") %>%
   mutate(Type = factor(Type, levels = unique(.$Type)))
 ```
 
-calculate the cost per person per year
-
-```{r}
-cost <- d1 %>% 
-  filter(Year == 2019) %>% 
-  pull(Government.Funding) 
-pop <- agData_STATCAN_Population %>% 
-  filter(Year == 2019, Area == "Canada") %>% 
-  pull(Value) %>% mean()
-cost / pop
-```
-
 ```{r}
 d1 %>% filter(Year == 2021) %>% 
   mutate(Percent = 100* `Government.Funding` / (`Government.Funding` + Revenue) ) %>% 
@@ -101,8 +89,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000000, color = Source)) +
   scale_x_continuous(minor_breaks = 2000:2022) +
   scale_color_manual(name = NULL, values = myColors1) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "CBC Finances", x = NULL, y = "Billion CAD",
-       caption = myCaption)
+  labs(title = "CBC Finances", x = NULL, 
+       y = "Billion CAD", caption = myCaption)
 ggsave("cbc_finances_02.png", width = 6, height = 4)
 ```
 
@@ -115,13 +103,12 @@ ggsave("cbc_finances_02.png", width = 6, height = 4)
 ```{r}
 # Plot
 mp <- ggplot(d1, aes(x = Year, y = Revenue / 1000000000)) + 
-  geom_col(alpha = 0) +
-  geom_line(size = 1.5, color = "darkgreen", alpha = 0.8) + 
+  geom_col(color = "black", fill = "darkgreen", alpha = 0.7) +
   scale_x_continuous(minor_breaks = 2000:2022) +
   scale_color_manual(name = NULL, values = myColors1) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "CBC Revenue", x = NULL, y = "Billion CAD",
-       caption = myCaption)
+  labs(title = "CBC Revenue", x = NULL, 
+       y = "Billion CAD", caption = myCaption)
 ggsave("cbc_finances_03.png", width = 6, height = 4)
 ```
 
@@ -187,7 +174,7 @@ mp <- ggplot(d2, aes(x = Group, y = Value, fill = Type)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_blank(),
                axis.ticks.x = element_blank()) +
-  labs(y = "Million Dollars", caption = myCaption)
+  labs(title = "CBC Finances", y = "Million Dollars", caption = myCaption)
 ggsave("cbc_finances_05.png", width = 7, height = 7)
 ```
 
@@ -207,9 +194,42 @@ mp <- ggplot(xx, aes(x = Year, y = Percent)) +
   scale_y_continuous(minor_breaks = 59:76) +
   scale_x_continuous(minor_breaks = 2000:2022) +
   theme_agData() +
-  labs(title = "CBC", y = "Percent Government Funding",
-       x = NULL, caption = myCaption)
+  labs(title = "CBC Finances", subtitle = "Percent Government Funding",
+       y = "Percent", x = NULL, caption = myCaption)
 ggsave("cbc_finances_06.png", width = 6, height = 4)
 ```
 
 ---
+
+# Cost Per Person
+
+Calculate the cost per person per year.
+
+```{r}
+cost <- d1 %>% 
+  filter(Year == 2019) %>% 
+  pull(Government.Funding) 
+pop <- agData_STATCAN_Population %>% 
+  filter(Year == 2019, Area == "Canada") %>% 
+  pull(Value) %>% mean()
+cost / pop
+```
+
+![](cbc_finances_07.png)
+
+```{r}
+# Prep data
+pp <- agData_STATCAN_Population %>% filter(Area == "Canada", Month == 1)
+xx <- d1 %>% left_join(pp, by = "Year") %>%
+  mutate(Percent = Government.Funding / Value)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Percent)) +
+  geom_line(color = "darkgreen", size = 1, alpha = 0.7) +
+  geom_point(alpha = 0.7) +
+  scale_y_continuous(breaks = 29:37) +
+  scale_x_continuous(minor_breaks = 2000:2022) +
+  theme_agData() +
+  labs(title = "CBC Finances", subtitle = "Government Funding Per Person",
+       y = "CAD", x = NULL, caption = myCaption)
+ggsave("cbc_finances_07.png", width = 6, height = 4)
+```

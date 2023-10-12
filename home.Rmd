@@ -519,6 +519,16 @@ Graphs of maize production in the USA using USDA data
 
 ![](agdata/maize_usa/featured.png)</div>
 
+### Sugarbeet USA
+
+<div class="box">
+
+[<u>**Sugarbeet Production in USA**</u>](agdata/sugarbeet_usa){target="_blank"}
+
+Graphs of sugarbeet production using USDA data
+
+![](agdata/sugarbeet_usa/featured.png)</div>
+
 ### GE Crops
 
 <div class="box">
@@ -602,6 +612,16 @@ Graphs of public vs private sector employment in Canada using STATCAN data
 Graphs of trade surplus/deficits with other countries using STATCAN data
 
 ![](blog/canada_trade/featured.png)</div>
+
+### gapminder
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**gapminder**</u>](blog/gapminder)
+
+Graphs with gapminder data
+
+</div><div class = "col-md-6">![](blog/gapminder/featured.png)</div></div></div>
 
 ---
 
@@ -687,16 +707,6 @@ Graphs of weekly deaths in the USA using CDC & USCB data
 
 ![](blog/usa_deaths/featured.png)</div>
 
-### Covid Origin Polls
-
-<div class="box">
-
-[<u>**Covid Origin Polls**</u>](blog/covid_origins){target="_blank"}
-
-Polling results from various polls on the origins of covid
-
-![](blog/covid_origins/featured.png)</div>
-
 ---
 
 ## Other `r icon("r-project")` Stuff {.tabset .tabset-pills}
@@ -781,14 +791,6 @@ Graphs of star constellations using the starBliss R package
 
 <div class = "col-md-4">
 
-<div class="box">"Comedy is surprises, so if you're inteding to make somebody laugh and they don't laugh, that's funny." 
-
--Norm MacDonald</div>
-
-<div class="box">"Karl Marx was right, socialism works, it is just that he had the wrong species" 
-
--Edward O. Wilson</div>
-
 <div class="box">"Whoever controls the people’s fears becomes master of their souls." 
 
 -Niccolò Machiavelli</div>
@@ -801,9 +803,21 @@ Graphs of star constellations using the starBliss R package
 
 -Thomas Sowell</div>
 
+<div class="box">"In questions of science, the authority of a thousand is not worth the humble reasoning of a single individual.”  
+
+-Galileo Galilei</div>
+
 </div>
 
 <div class = "col-md-4">
+
+<div class="box">"Comedy is surprises, so if you're inteding to make somebody laugh and they don't laugh, that's funny." 
+
+-Norm MacDonald</div>
+
+<div class="box">"Karl Marx was right, socialism works, it is just that he had the wrong species" 
+
+-Edward O. Wilson</div>
 
 <div class="box">"Growing up, I was free in my childhood years. And now they tell me I can wash away my tears. These tears explain the way, it's the way that I feel, because the freedom they give me ain't real. 
 
