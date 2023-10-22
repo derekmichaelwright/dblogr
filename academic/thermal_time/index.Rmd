@@ -94,7 +94,7 @@ eMo17 <- read.csv("data_env_morocco_2017.csv") %>%
 
 # Plot Phenotype Data
 
-We will be be using phenology data for a [Lentil Diversity Panel](https://dblogr.com/academic/lentil_diversity_panel/) grown in two different environments: Morocco and Canada.
+We will be be using phenology data for a [Lentil Diversity Panel](https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/) grown in two different environments: Morocco and Canada.
 
 - **DTE** : days from sowing to emergence
 - **DTF** : days from sowing to flower

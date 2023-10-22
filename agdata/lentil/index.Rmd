@@ -432,7 +432,7 @@ ggPie_anim <- function(crop = "Lentils, dry", measurement = "Production",
            ISO2 = ifelse(Area == "Other", "", ISO2))
   # Plot
   ggplot(xx, aes(x = 1, fill = Area)) +
-    geom_col(aes(y = -Percent), position = "fill", color = "black") +
+    geom_col(aes(y = -Percent), position = "fill", color = "black", alpha = 0.7) +
     coord_polar("y", start = 0) +
     theme_agData_pie() +
     scale_fill_manual(values = agData_Colors) +

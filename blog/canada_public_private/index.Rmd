@@ -93,7 +93,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Employment in Canada", x = NULL,
        y = "Million Jobs", caption = myCaption)
-ggsave("canada_public_private_1_02.png", mp, width = 12, height = 6)
+ggsave("canada_public_private_1_02.png", mp, width = 12, height = 5)
 ```
 
 ---
@@ -115,11 +115,11 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Employment in Canada", x = NULL,
        y = "Million Jobs", caption = myCaption)
-ggsave("canada_public_private_1_03.png", mp, width = 12, height = 6)
+ggsave("canada_public_private_1_03.png", mp, width = 12, height = 5)
 ```
 
 ```{r echo = F}
-ggsave("featured.png", mp, width = 12, height = 6)
+ggsave("featured.png", mp, width = 12, height = 5)
 ```
 
 ---
@@ -317,7 +317,7 @@ mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Measurement)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Employment in Canada", x = NULL, caption = myCaption)
-ggsave("canada_public_private_4_03.png", mp, width = 12, height = 6)
+ggsave("canada_public_private_4_03.png", mp, width = 12, height = 5)
 ```
 
 ---
@@ -439,7 +439,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Sex)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Public Sector Employees", x = NULL,
        y = "Million Jobs", caption = myCaption)
-ggsave("canada_public_private_6_01.png", mp, width = 12, height = 6)
+ggsave("canada_public_private_6_01.png", mp, width = 12, height = 5)
 ```
 
 ---
@@ -459,7 +459,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Sex)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Public Sector Employees", x = NULL,
        y = "Million Jobs", caption = myCaption)
-ggsave("canada_public_private_6_02.png", mp, width = 12, height = 6)
+ggsave("canada_public_private_6_02.png", mp, width = 12, height = 5)
 ```
 
 ---
@@ -525,7 +525,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   theme_agData() +
   labs(title = "Self-Employment in Canada", x = NULL,
        y = "Million Jobs", caption = myCaption)
-ggsave("canada_public_private_7_03.png", mp, width = 12, height = 6)
+ggsave("canada_public_private_7_03.png", mp, width = 12, height = 5)
 ```
 
 ---
@@ -546,7 +546,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   theme_agData() +
   labs(title = "Self-Employment in Canada", x = NULL,
        y = "Million Jobs", caption = myCaption)
-ggsave("canada_public_private_7_04.png", mp, width = 12, height = 6)
+ggsave("canada_public_private_7_04.png", mp, width = 12, height = 5)
 ```
 
 ---

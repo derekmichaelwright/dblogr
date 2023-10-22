@@ -108,7 +108,7 @@ ggsave("pca_tutorial_1_03.png", mp,  width = 6, height = 4)
 
 ### Species
 
-https://dblogr.com/academic/pca_tutorial/pca_tutorial_iris_1.html
+https://derekmichaelwright.github.io/dblogr/academic/pca_tutorial/pca_tutorial_iris_1.html
 
 <iframe
   src="pca_tutorial_iris_1.html"
@@ -128,7 +128,7 @@ htmlwidgets::saveWidget(mp, file="pca_tutorial_iris_1.html")
 
 ### PCA
 
-https://dblogr.com/academic/pca_tutorial/pca_tutorial_iris_2.html
+https://derekmichaelwright.github.io/dblogr/academic/pca_tutorial/pca_tutorial_iris_2.html
 
 <iframe
   src="pca_tutorial_iris_2.html"
@@ -234,7 +234,7 @@ mp <- ggplot(myPC, aes(x = PC1, y = PC2, color = Cluster)) +
 ggsave("pca_tutorial_2_02.png", mp, width = 6, height = 4)
 ```
 
-https://dblogr.com/academic/pca_tutorial/pca_tutorial_ldp_1.html
+https://derekmichaelwright.github.io/dblogr/academic/pca_tutorial/pca_tutorial_ldp_1.html
 
 <iframe
   src="pca_tutorial_ldp_1.html"

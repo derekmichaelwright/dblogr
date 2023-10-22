@@ -356,7 +356,7 @@ ggsave("Figures_02_Eigen_Values.png", width = 6, height = 3)
 
 ## User-inputted Kinship and Covariates
 
-We will rerun GWAS on the DTF traits using the *b* coefficient from a photothermal model derived from [**Wright *et al*. (2020)**](https://dblogr.com/academic/phenology_paper/). This should act to remove or diminish temperature related associations, and thus emphasize photoperiod related associations.
+We will rerun GWAS on the DTF traits using the *b* coefficient from a photothermal model derived from [**Wright *et al*. (2020)**](https://github.com/derekmichaelwright/AGILE_LDP_Phenology/). This should act to remove or diminish temperature related associations, and thus emphasize photoperiod related associations.
 
 ```{r}
 myCV <- read.csv("myCV.csv")[,c("Name","b")] %>%
@@ -1096,7 +1096,7 @@ xx <- read.csv("GWAS_Results/GAPIT.Genotype.PCA.csv") %>%
 
 ## Testa Pattern
 
-https://dblogr.com/academic/gwas_tutorial/Figures_PCA_Testa_Pattern.html
+https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Figures_PCA_Testa_Pattern.html
 
 ```{r}
 myColors <- c("darkgoldenrod3", "darkblue")
@@ -1112,7 +1112,7 @@ mp
 
 ## DTF Nepal 2017
 
-https://dblogr.com/academic/gwas_tutorial/Figures_PCA_DTF_Nepal_2017.html
+https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Figures_PCA_DTF_Nepal_2017.html
 
 ```{r}
 myColors <- c("darkred", "darkgoldenrod3", "darkblue")
@@ -1128,7 +1128,7 @@ mp
 
 ## DTF Sask 2017
 
-https://dblogr.com/academic/gwas_tutorial/Figures_PCA_DTF_Sask_2017.html
+https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Figures_PCA_DTF_Sask_2017.html
 
 ```{r}
 mp <- plot_ly(xx, x = ~PC1, y = ~PC2, z = ~PC3, text = ~taxa,

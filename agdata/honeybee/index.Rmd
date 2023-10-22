@@ -92,7 +92,7 @@ ggsave("featured.png", mp, width = 8, height = 4)
 xx <- dd %>% filter(Area == "USA")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
-  geom_col(fill = "darkgreen", alpha = 0.7, color = "black") +
+  geom_col(fill = "darkgreen", alpha = 0.7) +
   theme_agData() +
   labs(Title = "USA", y = "Million Colonies",
        x = NULL, caption = myCaption)

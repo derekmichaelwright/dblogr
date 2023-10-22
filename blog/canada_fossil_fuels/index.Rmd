@@ -238,7 +238,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Item)) +
                legend.position = "bottom") +
   labs(title = "Canadian Fossil Fuel Production",
        y = "Value / 1,000,000", x = NULL, caption = myCaption)
-ggsave("canada_fossil_fuels_1_09.png", mp, width = 10, height = 4.5)
+ggsave("canada_fossil_fuels_1_09.png", mp, width = 12, height = 6)
 ```
 
 ---
@@ -332,7 +332,7 @@ x2$Value <- predict(fit, newdata = x2)
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   geom_line(lwd = 1, alpha = 0.7) +
-  stat_smooth(geom = "line", method = "lm", lwd = 2,
+  stat_smooth(geom = "line", method = "lm", lwd = 1.5,
               color = "darkred", alpha = 0.7) +
   geom_line(data = x2, lwd = 1.5, lty = 2, alpha = 0.7) +
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
@@ -434,7 +434,7 @@ x2$Value <- predict(fit, newdata = x2)
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   geom_line(lwd = 1, alpha = 0.7) +
-  stat_smooth(geom = "line", method = "lm", lwd = 2,
+  stat_smooth(geom = "line", method = "lm", lwd = 1.5,
               color = "darkred", alpha = 0.7) +
   geom_line(data = x2, lwd = 1.5, lty = 2, alpha = 0.7) +
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
@@ -561,7 +561,7 @@ x2$Value <- predict(fit, newdata = x2)
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   geom_line(lwd = 1, alpha = 0.5) +
-  stat_smooth(geom = "line", method = "lm", lwd = 2,
+  stat_smooth(geom = "line", method = "lm", lwd = 1.5,
               color = "darkred", alpha = 0.7) +
   geom_line(data = x2, lwd = 1.5, lty = 2, alpha = 0.7) +
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +

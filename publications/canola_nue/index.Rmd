@@ -18,9 +18,8 @@ This is a vignette for my Masters thesis titled "Influence of heterozygosity on 
 
 Department of Agronomy and Plant Breeding I, Justus-Liebig-Universität, Gießen 35392, Germany
 
-`r shiny::icon("file-pdf")` [MastersThesis.pdf](MastersThesis.pdf)
-
-`r shiny::icon("save")` [data_canola_nue.xlsx](data_canola_nue.xlsx)
+> - `r shiny::icon("file-pdf")` [MastersThesis.pdf](MastersThesis.pdf)
+> - `r shiny::icon("save")` [data_canola_nue.xlsx](data_canola_nue.xlsx)
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "derekmichaelwright.github.io/dblogr"
+title: ""
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
@@ -15,7 +15,9 @@ library(shiny)
 
 # `r icon("home")` www.dblogr.com/
 
-**Welcome to the personal website for Derek Michael Wright**
+**derekmichaelwright.github.io/dblogr**
+
+Welcome to the personal website for Derek Michael Wright
 
 # `r icon("address-card")` About Me
 
@@ -608,7 +610,7 @@ Graphs of public vs private sector employment in Canada using STATCAN data
 
 <div class="box">
 
-[<u>**Canadian Trade - Imports and Exports**</u>](blog/canada_house_prices){target="_blank"}
+[<u>**Canadian Trade - Imports and Exports**</u>](blog/canada_trade){target="_blank"}
 
 Graphs of trade surplus/deficits with other countries using STATCAN data
 

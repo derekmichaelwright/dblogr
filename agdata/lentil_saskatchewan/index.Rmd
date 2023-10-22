@@ -67,7 +67,7 @@ mp <- ggplot(d1, aes(x = Year)) +
   theme_agData(legend.position = "none",
                panel.grid.major.x = element_blank(),
                panel.grid.minor.x = element_blank()) +
-  labs(title = "Canadian Lentil Industry", x = NULL,
+  labs(title = "Saskatchewan Lentil Industry", x = NULL,
        y = "Production (Million Tonnes)", caption = myCaption)
 ggsave("lentil_saskatchewan_1.png", mp, width = 6, height = 4)
 ```

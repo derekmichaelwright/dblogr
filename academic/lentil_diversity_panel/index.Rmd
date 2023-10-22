@@ -374,7 +374,7 @@ dev.off()
 
 ## Genotype PCA By Region
 
-`r shiny::icon("globe")` https://dblogr.com/academic/lentil_diversity_panel/lentil_diversity_panel_1_04.html
+`r shiny::icon("globe")` https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/lentil_diversity_panel_1_04.html
 
 <iframe
   src="lentil_diversity_panel_1_04.html"
@@ -485,7 +485,7 @@ dev.off()
 
 ![](lentil_diversity_panel_2_04.png)
 
-`r shiny::icon("globe")` https://dblogr.com/academic/lentil_diversity_panel/Lentil_diversity_panel_2_04.html
+`r shiny::icon("globe")` https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/Lentil_diversity_panel_2_04.html
 
 <iframe
   src="lentil_diversity_panel_2_04.html"
@@ -566,7 +566,7 @@ ggsave("lentil_diversity_panel_2_05.png", mp, width = 12, height = 6)
 
 ## Genotype PCA By Structure Group
 
-`r shiny::icon("globe")` https://dblogr.com/academic/lentil_diversity_panel/lentil_diversity_panel_2_06.html
+`r shiny::icon("globe")` https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/lentil_diversity_panel_2_06.html
 
 <iframe
   src="lentil_diversity_panel_2_06.html"
@@ -627,7 +627,7 @@ file.copy(from = "lentil_diversity_panel_3_01.png", to = "featured.png", overwri
 
 ![](lentil_diversity_panel_3_02.png)
 
-`r shiny::icon("globe")` https://dblogr.com/academic/lentil_diversity_panel/Lentil_diversity_panel_3_02.html
+`r shiny::icon("globe")` https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/Lentil_diversity_panel_3_02.html
 
 <iframe
   src="lentil_diversity_panel_3_02.html"
@@ -674,7 +674,7 @@ saveWidget(mp, file="lentil_diversity_panel_3_02.html")
 
 From phenology paper
 
-`r shiny::icon("globe")` https://dblogr.com/academic/lentil_diversity_panel/lentil_diversity_panel_3_03.html
+`r shiny::icon("globe")` https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/lentil_diversity_panel_3_03.html
 
 <iframe
   src="lentil_diversity_panel_3_03.html"
@@ -697,7 +697,7 @@ saveWidget(as_widget(mp), "lentil_diversity_panel_3_03.html")
 
 ---
 
-`r shiny::icon("globe")` https://dblogr.com/academic/lentil_diversity_panel/lentil_diversity_panel_3_04.html
+`r shiny::icon("globe")` https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/lentil_diversity_panel_3_04.html
 
 <iframe
   src="lentil_diversity_panel_3_04.html"
@@ -762,7 +762,7 @@ ggsave("lentil_diversity_panel_3_04.png", width = 12, height = 6)
 
 From phenology paper
 
-`r shiny::icon("globe")` https://dblogr.com/academic/lentil_diversity_panel/lentil_diversity_panel_3_05.html
+`r shiny::icon("globe")` https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/lentil_diversity_panel_3_05.html
 
 <iframe
   src="lentil_diversity_panel_3_05.html"

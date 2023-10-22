@@ -21,15 +21,15 @@ This tutorial is will introduce the reader to `r shiny::icon("r-project")`, a fr
 
 # Download `r shiny::icon("r-project")`
 
-- `r shiny::icon("download")` Download `r shiny::icon("r-project")` at https://www.r-project.org/
-- `r shiny::icon("download")` Download `RStudio` at https://rstudio.com/products/rstudio/download/
+> - `r shiny::icon("download")` Download `r shiny::icon("r-project")` at https://www.r-project.org/
+> - `r shiny::icon("download")` Download `RStudio` at https://rstudio.com/products/rstudio/download/
 
 ![](rstudio.png)
 
 ## Other Useful Tutorials
 
-- http://r-statistics.co/R-Tutorial.html
-- https://bookdown.org/rdpeng/exdata/getting-started-with-r.html#installation
+> - http://r-statistics.co/R-Tutorial.html
+> - https://bookdown.org/rdpeng/exdata/getting-started-with-r.html#installation
 
 ---
 
@@ -325,9 +325,8 @@ DT::datatable(xx)
 
 # Tidy Data
 
-Tutorial 1 - https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
-
-Tutorial 2 - https://r4ds.had.co.nz/tidy-data.html
+> - Tutorial 1 - https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
+> - Tutorial 2 - https://r4ds.had.co.nz/tidy-data.html
 
 ```{r}
 yy <- xx %>%
@@ -349,8 +348,8 @@ yy
 
 We will start with some basic plotting using the base function `plot()`
 
-- Tutorial 1 - http://www.sthda.com/english/wiki/r-base-graphs
-- Tutorial 2 - https://bookdown.org/rdpeng/exdata/the-base-plotting-system-1.html
+> - Tutorial 1 - http://www.sthda.com/english/wiki/r-base-graphs
+> - Tutorial 2 - https://bookdown.org/rdpeng/exdata/the-base-plotting-system-1.html
 
 ```{r}
 # A basic scatter plot
@@ -396,10 +395,10 @@ boxplot(x = nd, horizontal = T)
 
 Lets be honest, the base plots are ugly! The `ggplot2` package gives the user to create a better, more visually appealing plots. Additional packages such as `ggbeeswarm` and `ggrepel` also contain useful functions to add to the functionality of `ggplot2`.
 
-- ggplot2 - https://ggplot2.tidyverse.org/
-- Tutorial 1 - http://r-statistics.co/ggplot2-Tutorial-With-R.html
-- Tutorial 2 - https://www.statsandr.com/blog/graphics-in-r-with-ggplot2/
-- The R Graph Gallery - https://www.r-graph-gallery.com/ggplot2-package.html
+> - ggplot2 - https://ggplot2.tidyverse.org/
+> - Tutorial 1 - http://r-statistics.co/ggplot2-Tutorial-With-R.html
+> - Tutorial 2 - https://www.statsandr.com/blog/graphics-in-r-with-ggplot2/
+> - The R Graph Gallery - https://www.r-graph-gallery.com/ggplot2-package.html
 
 ```{r}
 library(ggplot2)
@@ -441,8 +440,8 @@ ggarrange(mp1, mp2, ncol = 2, widths = c(2,1),
 
 # Statistics
 
-- Handbook of Biological Statistics - http://biostathandbook.com/
-- R Companion for ^ - https://rcompanion.org/rcompanion/a_02.html
+> - Handbook of Biological Statistics - http://biostathandbook.com/
+> - R Companion for ^ - https://rcompanion.org/rcompanion/a_02.html
 
 ```{r}
 # Prep data
@@ -529,8 +528,8 @@ ggsave("pch.png", mp, width = 4.5, height = 3, bg = "white")
 
 Tutorials on how to create an R markdown document like this one can be found here:
 
-- https://rmarkdown.rstudio.com/articles_intro.html
-- https://rmarkdown.rstudio.com/lesson-1.html
-- https://alexd106.github.io/intro2R/Rmarkdown_intro.html
+> - https://rmarkdown.rstudio.com/articles_intro.html
+> - https://rmarkdown.rstudio.com/lesson-1.html
+> - https://alexd106.github.io/intro2R/Rmarkdown_intro.html
 
 ---

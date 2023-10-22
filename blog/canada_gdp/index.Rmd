@@ -46,6 +46,8 @@ myAs <- c("CA","BC","AB","SK","MB","ON","QC","NB",
 myCs <- c("black", "darkgoldenrod3", "darkred", "darkgreen", "darkslategray", 
           "darkblue", "steelblue", "maroon4", "purple4", 
           "cyan4", "burlywood4", "green4", "darkgoldenrod2", "red3")
+#
+colorNumeric()
 # GDP by province
 d1 <- read.csv("3610040201_databaseLoadingData.csv") %>%
   select(-Value) %>%
@@ -53,7 +55,8 @@ d1 <- read.csv("3610040201_databaseLoadingData.csv") %>%
          Industry=North.American.Industry.Classification.System..NAICS.) %>%
   mutate(Value = Value * 1000000,
          Area = factor(Area, levels = myAreas),
-         Area_Short = plyr::mapvalues(Area, myAreas, myAs)) %>%
+         Area_Short = plyr::mapvalues(Area, myAreas, myAs),
+         Color = plyr::mapvalues()) %>%
   select(Area, Area_Short, Year, Industry, Value)
 # GDP percent by industry
 d2 <- read.csv("3610040001_databaseLoadingData.csv") %>%

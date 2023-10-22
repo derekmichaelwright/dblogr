@@ -89,7 +89,7 @@ ggsave("featured.png", mp, width = 11, height = 10)
 
 # PDF
 
-- `r shiny::icon("file-pdf")` [radar_plots.pdf](radar_plots.pdf)
+> - `r shiny::icon("file-pdf")` [radar_plots.pdf](radar_plots.pdf)
 
 ```{r results="hide"}
 # Prep data

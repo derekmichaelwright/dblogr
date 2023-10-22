@@ -42,13 +42,13 @@ myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AG
 
 ## Data/Input Files
 
-- `r shiny::icon("globe")` https://kbroman.org/qtl2/assets/vignettes/input_files.html
+> - `r shiny::icon("globe")` https://kbroman.org/qtl2/assets/vignettes/input_files.html
 
 In order to run the analysis we first need to set up an `input` folder with properly formatted files containing our ***phenotyope*** data, ***genotype*** data, a ***genetic map*** and a ***yaml*** file with details for running the analysis. The `input` folders used in this vignette can be downloaded below:
 
-- `r shiny::icon("save")` [input_LR95.zip](input_LR95.zip)
-- `r shiny::icon("save")` [input_LR89.zip](input_LR89.zip)
-- `r shiny::icon("save")` [input_LR68.zip](input_LR68.zip)
+> - `r shiny::icon("save")` [input_LR95.zip](input_LR95.zip)
+> - `r shiny::icon("save")` [input_LR89.zip](input_LR89.zip)
+> - `r shiny::icon("save")` [input_LR68.zip](input_LR68.zip)
 
 ---
 
@@ -123,7 +123,7 @@ summary(operm, alpha = c(0.05, 0.01))
 
 Save Results
 
-- `r shiny::icon("save")` [LR68_results.csv](LR68_results.csv)
+> - `r shiny::icon("save")` [LR68_results.csv](LR68_results.csv)
 
 ```{r}
 # Save QTL peaks
@@ -235,8 +235,6 @@ plot_pxg(xx, myQTL$pheno[,"Testa_Color"], ylab = "Testa Color",
          main = "LR68 - LG3 pos 108")
 dev.off()
 ```
-
----
 
 ---
 
@@ -376,7 +374,7 @@ ggsave("qtl_tutorial_LR68_11.png", mp, width = 8, height = 6)
 
 If you have many traits, plotting the results into a pdf can be a useful.
 
-`r shiny::icon("save")` [qtl_tutorial_results_LR68.pdf](qtl_tutorial_results_LR68.pdf)
+> - `r shiny::icon("save")` [qtl_tutorial_results_LR68.pdf](qtl_tutorial_results_LR68.pdf)
 
 ```{r results="hide"}
 pdf("qtl_tutorial_results_LR68.pdf", width = 12, height = 4)
@@ -504,7 +502,7 @@ summary(operm, alpha = c(0.05, 0.01))
 
 Save Results
 
-- `r shiny::icon("save")` [LR95_results.csv](LR95_results.csv)
+> - `r shiny::icon("save")` [LR95_results.csv](LR95_results.csv)
 
 ```{r}
 # Save QTL peaks
@@ -799,7 +797,7 @@ summary(operm, alpha = c(0.05, 0.01))
 
 Save Restuls
 
-- `r shiny::icon("save")` [LR89_results.csv](LR89_results.csv)
+> - `r shiny::icon("save")` [LR89_results.csv](LR89_results.csv)
 
 ```{r}
 # Save QTL peaks

@@ -171,6 +171,8 @@ ggsave("usa_population_03.png", width = 6, height = 4)
 
 # Median Age By Race
 
+![](usa_population_04.png)
+
 ```{r}
 myRaces1 <- c("White alone, not Hispanic or Latino",
              "Asian alone, not Hispanic or Latino", 
@@ -180,7 +182,7 @@ myRaces1 <- c("White alone, not Hispanic or Latino",
 myRaces2 <- c("White", "Asian", "Black", "Indigenous", "Hispanic")
 myColors <- c("darkgreen", "darkblue", "black", "darkred", "darkorange")
 #
-xx <- p2 %>% filter(Group %in% myRaces, Nation == "United States") %>%
+xx <- p2 %>% filter(Group %in% myRaces1, Nation == "United States") %>%
   mutate(Group = plyr::mapvalues(Group, myRaces1, myRaces2),
          Group = factor(Group, levels = myRaces2))
 #
