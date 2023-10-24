@@ -266,7 +266,8 @@ xx <- d3 %>%
   filter(Area != "World", Year == "2019-2020") %>%
   left_join(agData_FAO_Country_Table, by = c("Area"="Country")) %>%
   arrange(desc(Value)) %>%
-  mutate(Area = factor(Area, levels = c(.$Area[.$Area!="Other"],"Other")))
+  mutate(Area = factor(Area, levels = c(.$Area[.$Area!="Other"],"Other")),
+         Region = ifelse(Area == "Other", "Other", Region))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000, group = Area, fill = Region)) +
   geom_col(alpha = 0.7, color = "black") + 
@@ -290,7 +291,8 @@ xx <- d3 %>%
   filter(Area != "World", Year == "2020-2021") %>%
   left_join(agData_FAO_Country_Table, by = c("Area"="Country")) %>%
   arrange(desc(Value)) %>%
-  mutate(Area = factor(Area, levels = c(.$Area[.$Area!="Other"],"Other")))
+  mutate(Area = factor(Area, levels = c(.$Area[.$Area!="Other"],"Other")),
+         Region = ifelse(Area == "Other", "Other", Region))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000, group = Area, fill = Region)) +
   geom_col(alpha = 0.7, color = "black") + 
