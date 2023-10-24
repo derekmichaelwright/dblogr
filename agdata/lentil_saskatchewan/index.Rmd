@@ -73,7 +73,7 @@ ggsave("lentil_saskatchewan_1.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F}
-ggsave("featured.png", mp, width = 7, height = 4.5)
+ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -148,7 +148,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Lentil - Area Harvested", 
        y = "Million Hectares", x = NULL, caption = myCaption)
-ggsave("lentil_saskatchewan_2_02.png", width = 8, height = 5)
+ggsave("lentil_saskatchewan_2_02.png", width = 8, height = 6)
 ```
 
 ---
@@ -168,7 +168,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Lentil - Production", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
-ggsave("lentil_saskatchewan_2_03.png", width = 8, height = 5)
+ggsave("lentil_saskatchewan_2_03.png", width = 8, height = 6)
 ```
 
 ---
@@ -183,12 +183,12 @@ xx <- d2 %>% filter(Measurement %in% c("Production", "Area Harvested"))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) +
   geom_col(position = "stack", color = "black", alpha = 0.7) +
-  facet_wrap(Measurement + Unit ~ ., scales = "free_y") +
+  facet_wrap(paste0(Measurement, " (", Unit, ")") ~ ., scales = "free_y") +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "Lentil - Production", 
+  labs(title = "Lentil - Saskatchewan", 
        y = "Million", x = NULL, caption = myCaption)
-ggsave("lentil_saskatchewan_2_04.png", width = 8, height = 5)
+ggsave("lentil_saskatchewan_2_04.png", width = 8, height = 4)
 ```
 
 ---
@@ -236,12 +236,13 @@ ggsave("lentil_saskatchewan_3_02.png", width = 20, height = 8)
 
 ```{r}
 # Prep data
-myColors <- c("darkred","darkgreen","darkorange","darkblue")
+myColors <- c("darkred","darkgreen","darkorange","darkblue","grey")
 xx <- d3 %>% 
   filter(Area != "World", Year == "2018-2019") %>%
   left_join(agData_FAO_Country_Table, by = c("Area"="Country")) %>%
   arrange(desc(Value)) %>%
-  mutate(Area = factor(Area, levels = c(.$Area[.$Area!="Other"],"Other")))
+  mutate(Area = factor(Area, levels = c(.$Area[.$Area!="Other"],"Other")),
+         Region = ifelse(Area == "Other", "Other", Region))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000, group = Area, fill = Region)) +
   geom_col(alpha = 0.7, color = "black") + 
