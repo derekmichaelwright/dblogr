@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "www.dblogr.com/"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
@@ -13,9 +13,8 @@ library(shiny)
 # https://derekmichaelwright.github.io/dblogr/home
 ```
 
-# `r icon("home")` www.dblogr.com/
 
-**derekmichaelwright.github.io/dblogr**
+**www.dblogr.com/** or **derekmichaelwright.github.io/dblogr**
 
 Welcome to the personal website for Derek Michael Wright
 
