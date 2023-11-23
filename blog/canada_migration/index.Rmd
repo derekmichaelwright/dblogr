@@ -127,7 +127,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Population Dynamics", x = NULL,
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_02.png", mp, width = 12, height = 6)
+ggsave("canada_migration_1_02.png", mp, width = 14, height = 6)
 ```
 
 ---
@@ -219,9 +219,32 @@ ggsave("canada_migration_1_05.png", mp, width = 8, height = 4)
 
 ---
 
-# Net Interprovincial Migration
+## Non-permentant Residents
 
 ![](canada_migration_1_06.png)
+
+```{r}
+# Prep data
+myMeasures <- c("Non-permanent residents, outflows", 
+                "Non-permanent residents, inflows")
+xx <- d2 %>% 
+  filter(Measurement %in% myMeasures, !is.na(Value)) %>%
+  mutate(Year = factor(Year))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Measurement)) +
+  geom_col(position = "dodge", color = "black", alpha = 0.7) +
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+  scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
+  theme_agData(legend.position = "bottom") +
+  labs(y = "Thousand People", x = NULL, caption = myCaption)
+ggsave("canada_migration_1_06.png", mp, width = 12, height = 6)
+```
+
+---
+
+# Net Interprovincial Migration
+
+![](canada_migration_1_07.png)
 
 ```{r}
 # Prep data
@@ -238,14 +261,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Group)) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Net Interprovincial Migration", x = NULL,
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_06.png", mp, width = 12, height = 6)
+ggsave("canada_migration_1_07.png", mp, width = 12, height = 6)
 ```
 
 ---
 
 ### Alberta vs BC
 
-![](canada_migration_1_07.png)
+![](canada_migration_1_08.png)
 
 ```{r}
 # Prep data
@@ -260,7 +283,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Net Interprovincial Migration", x = NULL,
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_07.png", mp, width = 6, height = 4)
+ggsave("canada_migration_1_08.png", mp, width = 6, height = 4)
 ```
 
 ---
