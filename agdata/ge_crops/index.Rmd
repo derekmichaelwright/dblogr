@@ -200,8 +200,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Item)) +
                      minor_breaks = seq(1996, 2020, by = 1)) +
   coord_cartesian(xlim = c(min(xx$Year)+0.5, max(xx$Year)-0.9)) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "Percent of GE Area", x = NULL,
-       y = "Percent", caption = myCaption)
+  labs(title = "Global Area", x = NULL,
+       y = "Percent GE", caption = myCaption)
 ggsave("ge_crops_06.png", mp, width = 6, height = 4)
 ```
 
@@ -305,8 +305,9 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement)) +
   scale_x_continuous(breaks = c(2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "Adoption of GE Crops", x = NULL,
-       y = "Million Hectares", caption = myCaption)
+  labs(title = "Adoption of GE Crops", 
+       subtitle = "Amount of global cropland planted with GE varieties",
+       y = "Million Hectares", x = NULL, aption = myCaption)
 ggsave("ge_crops_10.png", mp, width = 6, height = 4)
 ```
 

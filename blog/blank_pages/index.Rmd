@@ -1,0 +1,24 @@
+---
+title: "Blank Pages"
+subtitle: "Blank pages for notebook creation"
+date: "Last updated: `r Sys.Date()`"
+author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+---
+
+```{r setup, include = FALSE, warning = F, message = F}
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+```
+
+`r shiny::icon("save")` [page_blank.docx](page_blank.docx)
+
+![](img_page_blank.png)
+
+`r shiny::icon("save")` [page_line.docx](page_line.docx)
+
+![](img_page_line.png)
+
+`r shiny::icon("save")` [page_grid.docx](page_grid.docx)
+
+![](img_page_grid.png)
+
+---

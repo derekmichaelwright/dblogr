@@ -27,7 +27,6 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-> - `r shiny::icon("globe")` 
 > - `r shiny::icon("save")` [data_mendel.xlsx](data_mendel.xlsx)
 
 ---
