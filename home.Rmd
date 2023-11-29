@@ -88,6 +88,22 @@ Scientific publications I have been involved in while working/studying at [***Un
 
 </div><div class = "col-md-6">![](publications/ldp_phenology/featured.png)</div></div></div>
 
+### LDP Nepal Phenology
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+[<u>**Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**</u>](https://doi.org/10.3390/agronomy11101933){target="_blank"}. *Agronomy*. (**2021**) 11(10): 1933. doi.org/10.3390/agronomy11101933
+
+Sandesh Neupane, Rajeev Dhakal, **Derek M. Wright**, Deny K. Shrestha, Bishnu Dhakal & Kirstin E. Bett .
+
+- `r icon("newspaper")` [*Agronomy*. (**2021**) 11(10): 1933.](https://doi.org/10.3390/agronomy11101933){target="_blank"}
+- `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_Nepal){target="_blank"}
+- `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Nepal/Phenology_Vignette.html){target="_blank"}
+- `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Nepal/README.html){target="_blank"}
+- `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_Nepal/blob/master/README.pdf){target="_blank"}
+
+</div><div class = "col-md-6">![](publications/ldp_nepal/featured.png)</div></div></div>
+
 ### LDP GWAS Phenology
 
 <div class="box"><div class = "row"><div class = "col-md-6">
@@ -104,21 +120,44 @@ Sandesh Neupane, **Derek M. Wright**, Raul O. Martinez, Jakob Butler, Jim L. Wel
 
 </div><div class = "col-md-6">![](publications/ldp_gwas_phenology/featured.png)</div></div></div>
 
-### LDP Nepal Phenology
+### LDP GWAS UAV
 
 <div class="box"><div class = "row"><div class = "col-md-6">
 
-[<u>**Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**</u>](https://doi.org/10.3390/agronomy11101933){target="_blank"}. *Agronomy*. (**2021**) 11(10): 1933. doi.org/10.3390/agronomy11101933
+<u>**Disecting lentil crop growth across multi-environment trials using unoccupied aerial vehicles and genome-wide association studies**</u>. *unpublished*.
 
-Sandesh Neupane, Rajeev Dhakal, **Derek M. Wright**, Deny K. Shrestha, Bishnu Dhakal & Kirstin E. Bett .
+**Derek M Wright**, Sandesh Neupane, Tania Gioia, Steve Shirtlife & Kirstin E Bett.
 
-- `r icon("newspaper")` [*Agronomy*. (**2021**) 11(10): 1933.](https://doi.org/10.3390/agronomy11101933){target="_blank"}
-- `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_Nepal){target="_blank"}
-- `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Nepal/Phenology_Vignette.html){target="_blank"}
-- `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Nepal/README.html){target="_blank"}
-- `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_Nepal/blob/master/README.pdf){target="_blank"}
+- `r icon("newspaper")` *unpublished*
+- `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_UAV){target="_blank"}
+- `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_UAV/LDP_UAV_Vignette.html){target="_blank"}
+- `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_UAV/README.html){target="_blank"}
+- `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_UAV/blob/master/README.pdf){target="_blank"}
+- `r icon("youtube")` [P2IRC Conference](https://www.youtube.com/watch?v=FkjKaGJG7Xc&list=PLNqTYnctRQrkNKbRPBt6Z3Wb81Vq-rAum&index=11){target="_blank"}
 
-</div><div class = "col-md-6">![](publications/ldp_nepal/featured.png)</div></div></div>
+</div><div class = "col-md-6">![](publications/ldp_uav/featured.png)</div></div></div>
+
+### LDP GWAS Protein
+
+<div class="box"><div class = "row"><div class = "col-md-6">
+
+Jiayi Hang, **Derek M. Wright**, Kirstin E. Bett & James D. House
+
+- `r icon("newspaper")` *unpublished*
+- `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_Protein){target="_blank"}
+- `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Protein/LDP_Protein_Vignette.html){target="_blank"}
+- `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Protein/README.html){target="_blank"}
+- `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_Protein/blob/master/README.pdf){target="_blank"}
+
+A follow up to:
+
+[<u>**Prediction of protein and amino acid contents in whole and ground lentils using near-infrared reflectance spectroscopy**</u>](https://doi.org/10.1016/j.lwt.2022.113669){target="_blank"}. *LWT*. (**2022**) 165: 113669. doi.org/10.1016/j.lwt.2022.113669
+
+Jiayi Hang, Da Shi, Jason Neufeld, Kirstin E. Bett & James D. House
+
+- `r icon("newspaper")` [*LWT*. (**2022**) 165: 113669.](https://doi.org/10.1016/j.lwt.2022.113669){target="_blank"}
+
+</div><div class = "col-md-6">![](publications/ldp_protein/featured.png)</div></div></div>
 
 ### Genomic Selection in Lentil
 
@@ -156,44 +195,6 @@ Fatma M. Elessawy, **Derek M. Wright**, Albert Vandenberg, Anas El-Aneed & Randy
 - `r icon("r-project")` [R Script (HTML)](publications/canola_nue/){target="_blank"}
 
 </div><div class = "col-md-6">![](publications/canola_nue/featured.png)</div></div></div>
-
-### LDP Protein
-
-<div class="box"><div class = "row"><div class = "col-md-6">
-
-Jiayi Hang, **Derek M. Wright**, Kirstin E. Bett & James D. House
-
-- `r icon("newspaper")` *unpublished*
-- `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_Protein){target="_blank"}
-- `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Protein/LDP_Protein_Vignette.html){target="_blank"}
-- `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Protein/README.html){target="_blank"}
-
-A follow up to:
-
-[<u>**Prediction of protein and amino acid contents in whole and ground lentils using near-infrared reflectance spectroscopy**</u>](https://doi.org/10.1016/j.lwt.2022.113669){target="_blank"}. *LWT*. (**2022**) 165: 113669. doi.org/10.1016/j.lwt.2022.113669
-
-Jiayi Hang, Da Shi, Jason Neufeld, Kirstin E. Bett & James D. House
-
-- `r icon("newspaper")` [*LWT*. (**2022**) 165: 113669.](https://doi.org/10.1016/j.lwt.2022.113669){target="_blank"}
-
-</div><div class = "col-md-6">![](publications/ldp_protein/featured.png)</div></div></div>
-
-### Lentil UAV
-
-<div class="box"><div class = "row"><div class = "col-md-6">
-
-<u>**Disecting lentil crop growth across multi-environment trials using unoccupied aerial vehicles and genome-wide association studies**</u>. *unpublished*.
-
-**Derek M Wright**, Sandesh Neupane, Tania Gioia, Steve Shirtlife & Kirstin E Bett.
-
-- `r icon("newspaper")` *unpublished*
-- `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_UAV){target="_blank"}
-- `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_UAV/LDP_UAV_Vignette.html){target="_blank"}
-- `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_UAV/README.html){target="_blank"}
-- `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_UAV/blob/master/README.pdf){target="_blank"}
-- `r icon("youtube")` [P2IRC Conference](https://www.youtube.com/watch?v=FkjKaGJG7Xc&list=PLNqTYnctRQrkNKbRPBt6Z3Wb81Vq-rAum&index=11){target="_blank"}
-
-</div><div class = "col-md-6">![](publications/ldp_uav/featured.png)</div></div></div>
 
 ### News Articles
 
