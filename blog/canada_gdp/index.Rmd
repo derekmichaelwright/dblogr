@@ -1,8 +1,8 @@
 ---
 title: "GDP of Canada"
 subtitle: "Graphs of GDP among Canadian provinces using STATCAN data"
-date: "`r Sys.Date()`"
-author: "Derek Michael Wright <dblogr.com@gmail.com> [www.dblogr.com/](https://dblogr.com/)"
+date: "Last updated: `r Sys.Date()`"
+author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include=FALSE}
@@ -41,13 +41,13 @@ myAreas <- c("Canada", "British Columbia", "Alberta", "Saskatchewan", "Manitoba"
              "Ontario", "Quebec", "New Brunswick", "Prince Edward Island", 
              "Nova Scotia", "Newfoundland and Labrador",  
              "Yukon", "Northwest Territories", "Nunavut")
-myAs <- c("CA","BC","AB","SK","MB","ON","QC","NB",
-          "PE","NS","NL","YT","NT","NU")
+myAs <- c("CA", "BC", "AB", "SK", "MB", "ON", "QC", "NB",
+          "PE", "NS", "NL", "YT", "NT", "NU")
 myCs <- c("black", "darkgoldenrod3", "darkred", "darkgreen", "darkslategray", 
           "darkblue", "steelblue", "maroon4", "purple4", 
           "cyan4", "burlywood4", "green4", "darkgoldenrod2", "red3")
 #
-colorNumeric()
+myPal <- leaflet::colorFactor(palette = myCs, domain = myAreas)
 # GDP by province
 d1 <- read.csv("3610040201_databaseLoadingData.csv") %>%
   select(-Value) %>%
@@ -56,15 +56,21 @@ d1 <- read.csv("3610040201_databaseLoadingData.csv") %>%
   mutate(Value = Value * 1000000,
          Area = factor(Area, levels = myAreas),
          Area_Short = plyr::mapvalues(Area, myAreas, myAs),
-         Color = plyr::mapvalues()) %>%
-  select(Area, Area_Short, Year, Industry, Value)
+         Color = plyr::mapvalues(Area, myAreas, myCs)
+         ) %>%
+  select(Area, Area_Short, Color, Year, Industry, Value)
 # GDP percent by industry
 d2 <- read.csv("3610040001_databaseLoadingData.csv") %>%
   rename(Area=GEO, Year=REF_DATE, Value=VALUE,
          Industry=North.American.Industry.Classification.System..NAICS.) %>%
   mutate(Area = factor(Area, levels = myAreas),
          Area_Short = plyr::mapvalues(Area, myAreas, myAs)) %>%
-  select(Area, Area_Short, Year, Industry, Value) 
+  select(Area, Area_Short, Year, Industry, Value)
+d2.1 <- d2 %>% group_by(Year, Industry) %>%
+  summarise(Value = sum(Value, na.rm = T)) %>%
+  ungroup() %>%
+  mutate(Area = "Canada", AreaShort = "CA")
+d2 <- bind_rows(d2, d2.1)
 # Population by province
 d3 <- read.csv("1710000901_databaseLoadingData.csv") %>% 
   rename(Year=REF_DATE, Area=GEO) %>%
@@ -93,7 +99,7 @@ xx <- d1 %>%
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value, fill = Area)) + 
   geom_col(color = "black", alpha = 0.7) +
-  scale_fill_manual(values = myCs[c(6,7,3,2,4,5,10,8,11,9,13,14,12)]) + 
+  scale_fill_manual(values = myCs[match(levels(xx$Area), myAreas)]) +
   theme_agData(legend.position = "none",
         axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = paste("GDP by Province", max(xx$Year)), 
@@ -115,8 +121,8 @@ xx <- d1 %>%
 x2 <- xx %>% filter(Year == max(Year), Value > 200)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) + 
-  geom_line(size = 1) +
-  scale_color_manual(values = myCs[-1]) +
+  geom_line(linewidth = 1) +
+  scale_color_manual(values = myCs[match(levels(xx$Area), myAreas)]) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-1)) +
   scale_y_continuous(sec.axis = sec_axis(~ ., breaks = x2$Value, 
                                               labels = x2$Area)) +
@@ -157,7 +163,7 @@ xx <- xx %>% filter(!is.na(Value)) %>%
   summarise(Value = sum(Value))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Region)) + 
-  geom_line(size = 1.5, alpha = 0.7) + 
+  geom_line(linewidth = 1.5, alpha = 0.7) + 
   geom_point(size = 2) +
   coord_cartesian(xlim = c(1997.75, 2015.25)) +
   scale_color_manual(values = c("darkblue", "darkred")) +
@@ -186,7 +192,7 @@ x2 <- xx %>% filter(Year == max(Year)) %>%
 # Plot
 mp <- ggplot(x2, aes(x = Area, y = GDP_PP, fill = Area)) + 
   geom_col(color = "black", alpha = 0.7) +
-  scale_fill_manual(values = myCs) +
+  scale_fill_manual(values = myCs[match(levels(x2$Area), myAreas)]) +
   theme_agData(legend.position = "none",
         axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = paste("GDP Per Person by Province -", max(xx$Year)), 
@@ -202,8 +208,9 @@ ggsave("canada_gdp_05.png", mp, width = 6, height = 4)
 
 ```{r}
 mp <- ggplot(xx, aes(x = Year, y = GDP_PP, color = Area)) + 
-  geom_line(size = 1) +
+  geom_line(linewidth = 1) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-1)) +
+  scale_color_manual(values = myCs[match(levels(x2$Area), myAreas)]) +
   scale_y_continuous(sec.axis = sec_axis(~ ., breaks = x2$GDP_PP, 
                                               labels = x2$Area)) +
   theme_agData(legend.position = "none") +
@@ -244,7 +251,7 @@ xx <- xx %>% filter(!is.na(Value)) %>%
   summarise(GDP_PP = mean(GDP_PP))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = GDP_PP, color = Region)) + 
-  geom_line(size = 1.5, alpha = 0.7) + 
+  geom_line(linewidth = 1.5, alpha = 0.7) + 
   geom_point(size = 2) +
   scale_color_manual(name = NULL, values = c("darkblue", "darkred")) +
   theme_agData(legend.position = "bottom") +
@@ -281,16 +288,15 @@ ggsave("canada_gdp_09.png", mp, width = 10, height = 6)
 # Compare Privinces
 
 ```{r}
-ggGDP_PP <- function(year, areas, colors) {
+ggGDP_Areas <- function(year, areas, colors) {
   industries <- c("Information and communication technology sector [T013]",
                   "Energy sector [T016]", "Industrial production [T010]",
                   "Goods-producing industries [T002]",
                   "Service-producing industries [T003]",
                   "All industries [T001]")
   # Prep data
-  xx <- d2 %>% #select(1:3, 9:ncol(.)) %>% 
+  xx <- d2 %>%
     filter(Year == year, Area %in% areas, !Industry %in% industries) %>%
-    #gather(Industry, Value, 4:ncol(.)) %>%
     left_join(d3, by = c("Area", "Year")) %>%
     mutate(GDP_PP = 1000000 * Value / Number) %>%
     filter(!is.na(GDP_PP))
@@ -306,9 +312,8 @@ ggGDP_PP <- function(year, areas, colors) {
     scale_fill_manual(name = NULL, values = colors) +
     theme_agData(legend.position = "bottom") +
     coord_flip() +
-    labs(title ="GDP Per Person 2016", y = "Million $ / Person", 
-         x = NULL, y = NULL,
-         caption = myCaption)
+    labs(title = paste("GDP Per Person", year), x = NULL,
+         y = "Million $ / Person", caption = myCaption)
 }
 ```
 
@@ -319,9 +324,9 @@ ggGDP_PP <- function(year, areas, colors) {
 ![](canada_gdp_10.png)
 
 ```{r}
-mp <- ggGDP_PP(year = 2016, 
-               areas = c("Alberta", "Quebec"),
-               colors = c("darkblue", "lightblue"))
+mp <- ggGDP_Areas(year = 2019,
+                  areas = c("Alberta", "Quebec"),
+                  colors = c("darkblue", "lightblue"))
 ggsave("canada_gdp_10.png", mp, width = 8, height = 6)
 ```
 
@@ -332,9 +337,9 @@ ggsave("canada_gdp_10.png", mp, width = 8, height = 6)
 ![](canada_gdp_11.png)
 
 ```{r}
-mp <- ggGDP_PP(year = 2016, 
-               areas = c("Alberta", "Ontario"), 
-               colors = c("darkblue", "darkred"))
+mp <- ggGDP_Areas(year = 2019,
+                  areas = c("Alberta", "Ontario"),
+                  colors = c("darkblue", "darkred"))
 ggsave("canada_gdp_11.png", mp, width = 8, height = 6)
 ```
 
@@ -345,35 +350,35 @@ ggsave("canada_gdp_11.png", mp, width = 8, height = 6)
 ![](canada_gdp_12.png)
 
 ```{r}
-mp <- ggGDP_PP(year = 2016, 
-               areas = c("Alberta", "British Columbia"), 
-               colors = c("darkblue", "darkgreen"))
+mp <- ggGDP_Areas(year = 2019,
+                  areas = c("Alberta", "British Columbia"), 
+                  colors = c("darkblue", "darkgreen"))
 ggsave("canada_gdp_12.png", mp, width = 8, height = 6)
+```
+
+---
+
+## Alberta vs. Saskatchewan
+
+![](canada_gdp_13.png)
+
+```{r}
+mp <- ggGDP_Areas(year = 2019, 
+                  areas = c("Alberta", "Saskatchewan"), 
+                  colors = c("darkblue", "darkorange3"))
+ggsave("canada_gdp_13.png", mp, width = 8, height = 6)
 ```
 
 ---
 
 ## Saskatchewan vs. Manitoba
 
-![](canada_gdp_13.png)
+![](canada_gdp_14png)
 
 ```{r}
-mp <- ggGDP_PP(year = 2016, 
-               areas = c("Saskatchewan", "Manitoba"), 
-               colors = c("darkorange3", "darkmagenta"))
-ggsave("canada_gdp_13.png", mp, width = 8, height = 6)
-```
-
----
-
-## Saskatchewan vs. Alberta
-
-![](canada_gdp_14.png)
-
-```{r}
-mp <- ggGDP_PP(year = 2016, 
-               areas = c("Saskatchewan", "Alberta"), 
-               colors = c("darkblue", "darkorange3"))
+mp <- ggGDP_Areas(year = 2019,
+                  areas = c("Saskatchewan", "Manitoba"), 
+                  colors = c("darkorange3", "darkmagenta"))
 ggsave("canada_gdp_14.png", mp, width = 8, height = 6)
 ```
 
@@ -384,10 +389,71 @@ ggsave("canada_gdp_14.png", mp, width = 8, height = 6)
 ![](canada_gdp_15.png)
 
 ```{r}
-mp <- ggGDP_PP(year = 2016, 
-               areas = c("Saskatchewan", "Ontario"), 
-               colors = c("darkred", "darkorange3"))
+mp <- ggGDP_Areas(year = 2019, 
+                  areas = c("Saskatchewan", "Ontario"), 
+                  colors = c("darkred", "darkorange3"))
 ggsave("canada_gdp_15.png", mp, width = 8, height = 6)
+```
+
+---
+
+# Compare Years
+
+```{r}
+ggGDP_Years <- function(area, years, colors) {
+  industries <- c("Information and communication technology sector [T013]",
+                  "Energy sector [T016]", "Industrial production [T010]",
+                  "Goods-producing industries [T002]",
+                  "Service-producing industries [T003]",
+                  "All industries [T001]",
+                  "Finance and insurance, real estate and renting and leasing and management of companies and enterprises")
+  # Prep data
+  xx <- d2 %>% 
+    filter(Year %in% years, Area == area, !Industry %in% industries) %>%
+    left_join(d3, by = c("Area", "Year")) %>%
+    mutate(GDP_PP = 1000000 * Value / Number) %>%
+    filter(!is.na(GDP_PP))
+  levs <- xx %>% filter(Year %in% years[1], Area == area) %>% 
+    arrange(Value) %>% pull(Industry)
+  xx <- xx %>% 
+    mutate(Industry = factor(Industry, levels = levs),
+           Year = factor(Year)
+           #Area = factor(Area, levels = areas)
+           )
+  # Plot
+  ggplot(xx, aes(x = Industry, y = GDP_PP, fill = Year)) +
+    geom_col(position = "dodge", width = 0.75,
+             alpha = 0.7, color = "black", lwd = 0.3) +
+    scale_fill_manual(name = NULL, values = colors) +
+    theme_agData(legend.position = "bottom") +
+    coord_flip() +
+    labs(title = paste("GDP Per Person", area), x = NULL,
+         y = "Million $ / Person", caption = myCaption)
+}
+```
+
+---
+
+# Canadian GDP by Industry
+
+![](canada_gdp_16.png)
+
+```{r}
+mp <- ggGDP_Years(area = "Canada",
+                  years = c(2019, 2022), 
+                  colors = c("steelblue","darkred"))
+ggsave("canada_gdp_16.png", mp, width = 8, height = 6)
+```
+
+---
+
+![](canada_gdp_17.png)
+
+```{r}
+mp <- ggGDP_Years(area = "Canada",
+                  years = c(2008, 2015, 2019, 2022), 
+                  colors = c("steelblue","darkblue","red3","darkred"))
+ggsave("canada_gdp_17.png", mp, width = 8, height = 6)
 ```
 
 ---

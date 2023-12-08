@@ -59,22 +59,26 @@ d1 <- d1 %>% gather(Source, Value, 4:13) %>%
          Percent = 100 * Value / Total) %>%
   ungroup()
 #
+d2 <- read.csv("per-capita-energy-use.csv") %>%
+  mutate(Unit = "kWh per person") %>%
+  rename(Area=Entity, Value=4)
+#
 oldnames <- c("United States", "South Korea", "Brunei")
 newnames <- c("USA", "Republic of Korea", "Brunei Darussalam")
-d2 <- read.csv("consumption-co2-per-capita-vs-gdppc.csv") %>%
+d3 <- read.csv("consumption-co2-per-capita-vs-gdppc.csv") %>%
   select(Country=1, Year, CO2=4, GDP=5, Population=6) %>%
   mutate(Country = plyr::mapvalues(Country, oldnames, newnames)) %>%
   left_join(agData_FAO_Country_Table, by = "Country") %>% 
   filter(!(is.na(GDP) & is.na(CO2) & is.na(Population)))
 #
-d3 <- read.csv("world-population-in-extreme-poverty-absolute.csv") %>%
+d4 <- read.csv("world-population-in-extreme-poverty-absolute.csv") %>%
   rename(`Not in extreme poverty`    = 4,
          `Living in extreme poverty` = 5) %>%
   mutate(Total = `Not in extreme poverty` + `Living in extreme poverty`) %>%
   gather(Measurement, Value, 4:5) %>%
   mutate(Percent = 100 * Value / Total)
 #
-d4 <- read.csv("literate-and-illiterate-world-population.csv") %>%
+d5 <- read.csv("literate-and-illiterate-world-population.csv") %>%
   rename(Literate  = 4,
          Iliterate = 5) %>%
   gather(Measurement, Percent, 4:5)
@@ -91,7 +95,7 @@ d4 <- read.csv("literate-and-illiterate-world-population.csv") %>%
 ```{r}
 # Plot
 mp <- ggplot(d1, aes(x = Year, y = Value / 1000, fill = Source)) +
-  geom_area(alpha = 0.7, color = "black", lwd = 0.3) +
+  geom_area(alpha = 0.7, color = alpha("black",0.7), lwd = 0.3) +
   scale_fill_manual(name = NULL, values = myColors) +
   scale_y_continuous(expand = c(0,0), limits = c(0,180),
                      minor_breaks = seq(0,180,10)) +
@@ -438,15 +442,70 @@ anim_save("world_energy_gif_1_02.gif", mp,
 
 ---
 
-# CO2 vs GDP
+# Per Capita Energy Use
 
-## 1990
+## Select Countries
 
 ![](world_energy_2_01.png)
 
 ```{r}
 # Prep data
-xx <- d2 %>% filter(Year == 1990, !is.na(Region), !is.na(CO2), !is.na(GDP))
+myAreas <- c("Canada", "United States", "China", "India", "Africa")
+myColors <- c("steelblue", "darkblue", "darkred", "darkorange", "darkgreen")
+xx <- d2 %>% filter(Area %in% myAreas) %>% 
+  mutate(Area = factor(Area, levels = myAreas))
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
+  geom_line(linewidth = 1.5, alpha = 0.7) +
+  scale_color_manual(name = NULL, values = myColors) +
+  theme_agData() +
+  labs(title = "Per Capita Emmisions", x = NULL,
+       y = "Thousand kWh Per Person", caption = myCaption)
+ggsave("world_energy_2_01.png", mp, width = 6, height = 4)
+```
+
+---
+
+# Canada vs China
+
+![](world_energy_2_02.png)
+
+```{r}
+# Prep data
+myAreas <- c("Canada", "China")
+myColors <- c("steelblue", "darkred")
+xx <- d2 %>% filter(Area %in% myAreas) %>% 
+  mutate(Area = factor(Area, levels = myAreas))
+mp1 <- ggplot(xx %>% filter(Year >= 2000), 
+              aes(x = Year, y = Value / 1000, color = Area)) +
+  geom_line(alpha = 0.7) +
+  facet_wrap(Area ~ ., scales = "free_y") +
+  scale_color_manual(name = NULL, values = myColors) +
+  theme_agData() +
+  labs(title = "A) Propaganda For Canada", x = NULL,
+       y = "Thousand kWh Per Person", caption = myCaption)
+mp2 <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
+  geom_line(alpha = 0.7) +
+  scale_color_manual(name = NULL, values = myColors) +
+  theme_agData() +
+  labs(title = "B) Propaganda For China", x = NULL,
+       y = "Thousand kWh Per Person", caption = myCaption)
+mp1 <- mp2 + facet_wrap(Area ~ ., scales = "free_y") +
+  labs(title = "A)", caption = NULL)
+mp <- ggarrange(mp1, mp2, ncol = 1, common.legend = T, legend = "bottom")
+ggsave("world_energy_2_02.png", mp, width = 6, height = 5)
+```
+
+---
+
+# CO2 vs GDP
+
+## 1990
+
+![](world_energy_3_01.png)
+
+```{r}
+# Prep data
+xx <- d3 %>% filter(Year == 1990, !is.na(Region), !is.na(CO2), !is.na(GDP))
 myColors <- c("darkgreen", "darkblue", "darkred","darkorange", "purple")
 r2 <- round(cor(xx$CO2, xx$GDP)^2, 2)
 mm <- round(summary(lm(data = xx, GDP / 1000 ~ CO2))$coefficients[2], 1)
@@ -465,18 +524,18 @@ mp <- ggplot(xx, aes(x = CO2, y = GDP / 1000)) +
        y = "GDP Per Capita (int.-$ x1000)", 
        x = "Per Capita Consumption-Based CO2 emissions",
        caption = myCaption)
-ggsave("world_energy_2_01.png", mp, width = 6, height = 4)
+ggsave("world_energy_3_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## 2018
 
-![](world_energy_2_02.png)
+![](world_energy_3_02.png)
 
 ```{r}
 # Prep data
-xx <- d2 %>% filter(Year == 2018, !is.na(Region), !is.na(CO2), !is.na(GDP))
+xx <- d3 %>% filter(Year == 2018, !is.na(Region), !is.na(CO2), !is.na(GDP))
 myColors <- c("darkgreen", "darkblue", "darkred","darkorange", "purple")
 r2 <- round(cor(xx$CO2, xx$GDP)^2, 2)
 mm <- round(summary(lm(data = xx, GDP / 1000 ~ CO2))$coefficients[2], 1)
@@ -495,35 +554,35 @@ mp <- ggplot(xx, aes(x = CO2, y = GDP / 1000)) +
        y = "GDP Per Capita (int.-$ x1000)", 
        x = "Per Capita Consumption-Based CO2 Emissions",
        caption = myCaption)
-ggsave("world_energy_2_02.png", mp, width = 6, height = 4)
+ggsave("world_energy_3_02.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Interactive
 
-https://dblogr.com/blog/world_energy/world_energy_2_02.html
+https://dblogr.com/blog/world_energy/world_energy_3_02.html
 
 <iframe
-  src="world_energy_2_02.html"
+  src="world_energy_3_02.html"
   style="width:100%; height:600px;"
   data-external="1"
 ></iframe>
 
 ```{r}
 mp <- ggplotly(mp)
-saveWidget(as_widget(mp), "world_energy_2_02.html")
+saveWidget(as_widget(mp), "world_energy_3_02.html")
 ```
 
 ---
 
 ## 1990 vs 2018
 
-![](world_energy_2_03.png)
+![](world_energy_3_03.png)
 
 ```{r}
 # Prep data
-xx <- d2 %>% 
+xx <- d3 %>% 
   filter(Year %in% c(1990, 2018), !is.na(Region), !is.na(CO2), !is.na(GDP))
 myColors <- c("darkgreen", "darkblue", "darkred","darkorange", "purple")
 # Plot
@@ -539,7 +598,7 @@ mp <- ggplot(xx, aes(x = CO2, y = GDP / 1000)) +
        y = "GDP Per Capita (int.-$ x1000)", 
        x = "Per Capita Consumption-Based CO2 Emissions",
        caption = myCaption)
-ggsave("world_energy_2_03.png", mp, width = 8, height = 4)
+ggsave("world_energy_3_03.png", mp, width = 8, height = 4)
 ```
 
 ---
@@ -550,7 +609,7 @@ ggsave("world_energy_2_03.png", mp, width = 8, height = 4)
 
 ```{r}
 # Prep data
-xx <- d2 %>% filter(!is.na(Region), !is.na(CO2), !is.na(GDP))
+xx <- d3 %>% filter(!is.na(Region), !is.na(CO2), !is.na(GDP))
 myColors <- c("darkgreen", "darkblue", "darkred","darkorange", "purple")
 r2 <- round(cor(xx$CO2, xx$GDP)^2, 2)
 # Plot
@@ -574,11 +633,11 @@ anim_save("world_energy_gif_2_01.gif", mp,
 
 ## Change
 
-![](world_energy_2_04.png)
+![](world_energy_3_04.png)
 
 ```{r}
 # Prep data
-xx <- d2 %>% 
+xx <- d3 %>% 
   filter(Year %in% c(2000, 2018), !is.na(Region), !is.na(CO2), !is.na(GDP)) %>%
   mutate(Year = factor(Year))
 y1 <- xx %>% select(Country, Year, CO2) %>%
@@ -615,18 +674,18 @@ mp <- ggplot(xx, aes(x = CO2, y = GDP / 1000)) +
        y = "GDP Per Capita (int.-$ x1000)", 
        x = "Per Capita Consumption-Based CO2 Emissions",
        caption = myCaption)
-ggsave("world_energy_2_04.png", mp, width = 10, height = 3.5)
+ggsave("world_energy_3_04.png", mp, width = 10, height = 3.5)
 ```
 
 ---
 
 ## Canada
 
-![](world_energy_2_05.png)
+![](world_energy_3_05.png)
 
 ```{r}
 # Prep data
-xx <- d2 %>% select(Country, Year, GDP, CO2) %>%
+xx <- d3 %>% select(Country, Year, GDP, CO2) %>%
     filter(Country == "Canada") %>%
     mutate(GDP = GDP / 1000) %>%
     gather(Measurement, Value, CO2, GDP) %>%
@@ -641,7 +700,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   theme_agData(legend.position = "none") +
   labs(title = "Canadian Carbon Emmissions and GDP", 
        y = NULL, x = NULL, caption = myCaption)
-ggsave("world_energy_2_05.png", mp, width = 6, height = 4)
+ggsave("world_energy_3_05.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -650,11 +709,11 @@ ggsave("world_energy_2_05.png", mp, width = 6, height = 4)
 
 ## Global Poverty
 
-![](world_energy_3_01.png)
+![](world_energy_4_01.png)
 
 ```{r}
 # Plot
-mp <- ggplot(d3, aes(x = Year, y = Value / 1000000000, color = Measurement)) +
+mp <- ggplot(d4, aes(x = Year, y = Value / 1000000000, color = Measurement)) +
   geom_line(size = 1.5, alpha = 0.7) +
   scale_color_manual(name = NULL, values = c("darkred", "steelblue")) +
   scale_y_continuous(breaks = 0:7) +
@@ -663,18 +722,18 @@ mp <- ggplot(d3, aes(x = Year, y = Value / 1000000000, color = Measurement)) +
   guides(color = guide_legend(nrow = 2, ncol = 1)) +
   labs(title = "Global Poverty", x = NULL, 
        y = "Billion People", caption = myCaption)
-ggsave("world_energy_3_01.png", mp, width = 6, height = 4)
+ggsave("world_energy_4_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Percent Poverty
 
-![](world_energy_3_02.png)
+![](world_energy_4_02.png)
 
 ```{r}
 # Prep data
-xx <- d3 %>% filter(Measurement == "Living in extreme poverty")
+xx <- d4 %>% filter(Measurement == "Living in extreme poverty")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Percent)) +
   geom_hline(yintercept = min(xx$Percent), alpha = 0.2) +
@@ -687,7 +746,7 @@ mp <- ggplot(xx, aes(x = Year, y = Percent)) +
   guides(color = guide_legend(nrow = 2, ncol = 1)) +
   labs(title = "Percent of People Living in Extreme Poverty", 
        y = NULL, x = NULL, caption = myCaption)
-ggsave("world_energy_3_02.png", mp, width = 6, height = 4)
+ggsave("world_energy_4_02.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -698,7 +757,7 @@ ggsave("world_energy_3_02.png", mp, width = 6, height = 4)
 
 ```{r}
 # Plot
-mp <- ggplot(d3, aes(x = "", y = Percent, fill = Measurement)) +
+mp <- ggplot(d4, aes(x = "", y = Percent, fill = Measurement)) +
   geom_col(color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("darkred", "steelblue")) +
   coord_polar("y", start = 0) +
@@ -716,7 +775,7 @@ anim_save("world_energy_gif_3_01.gif", mp,
 
 ## Literacy
 
-![](world_energy_3_03.png)
+![](world_energy_4_03.png)
 
 ```{r}
 # Plot
@@ -732,19 +791,19 @@ mp <- ggplot(d4, aes(x = Year, y = Percent, color = Measurement)) +
   guides(fill = guide_legend(nrow = 2, ncol = 1)) +
   labs(title = "Global Literacy Rates", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("world_energy_3_03.png", mp, width = 6, height = 4)
+ggsave("world_energy_4_03.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Poverty + Illiteracy
 
-![](world_energy_3_04.png)
+![](world_energy_4_04.png)
 
 ```{r}
 # Prep data
-x1 <- d3 %>% filter(Measurement == "Not in extreme poverty")
-x2 <- d4 %>% filter(Measurement == "Literate")
+x1 <- d4 %>% filter(Measurement == "Not in extreme poverty")
+x2 <- d5%>% filter(Measurement == "Literate")
 xx <- bind_rows(x1, x2)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Percent, color = Measurement)) +
@@ -757,18 +816,18 @@ mp <- ggplot(xx, aes(x = Year, y = Percent, color = Measurement)) +
   guides(fill = guide_legend(nrow = 2, ncol = 1)) +
   labs(title = "Global Reduction in Poverty and Illiteracy", 
        y = "Percent", x = NULL, caption = myCaption)
-ggsave("world_energy_3_04.png", mp, width = 6, height = 4)
+ggsave("world_energy_4_04.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Energy and Poverty
 
-![](world_energy_3_05.png)
+![](world_energy_4_05.png)
 
 ```{r}
 # Prep data
-x1 <- d3 %>% 
+x1 <- d4 %>% 
   filter(Measurement == "Not in extreme poverty")
 x2 <- d1 %>% filter(Source %in% myItems[7:9]) %>%
   select(Year, Source, Value) %>%
@@ -785,7 +844,7 @@ mp <- ggplot(xx, aes(x = `Fossil Fuels` / 1000, y = Percent)) +
        y = "Percent Not in Extreme Poverty", 
        x = "Thousand TWH From Fossil Fuels",
        caption = myCaption)
-ggsave("world_energy_3_05.png", mp, width = 6, height = 4)
+ggsave("world_energy_4_05.png", mp, width = 6, height = 4)
 ```
 
 ---

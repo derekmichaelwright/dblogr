@@ -1,0 +1,25 @@
+---
+title: "Create Business Cards in R"
+subtitle: "A tutorial on how to create business cards in R"
+date: "Last updated: `r Sys.Date()`"
+author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+```
+
+---
+
+# Data
+
+> - `r shiny::icon("globe")` https://derekmichaelwright.github.io/dblogr/blog/business_cards/business_cards.html
+> - `r shiny::icon("save")` [data_canada_academia.csv](data_canada_academia.csv)
+
+---
+
+```{r eval = F}
+source("business_cards.Rmd")
+```
+
+---
