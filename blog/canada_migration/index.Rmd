@@ -55,9 +55,8 @@ myMeasures <- c("Births", "Deaths", "Emigrants", "Immigrants", "Net non-permanen
 myColors <- c("darkgreen", "black", "darkred", "steelblue", "darkblue")
 myAreas <- c("Canada", "Ontario", "Quebec", "New Brunswick", "Nova Scotia",
            "Prince Edward Island", "Newfoundland and Labrador",
-           "British Columbia", "Alberta","Saskatchewan", "Manitoba",
-           "Yukon", "Northwest Territories including Nunavut", 
-           "Northwest Territories", "Nunavut")
+           "British Columbia", "Alberta", "Saskatchewan", "Manitoba",
+           "Yukon", "NWT & Nunavut", "Northwest Territories", "Nunavut")
 myAges <- c("0 to 4 years", "5 to 9 years", 
             "10 to 14 years", "15 to 19 years",
             "20 to 24 years", "25 to 29 years", 
@@ -72,7 +71,8 @@ myAges <- c("0 to 4 years", "5 to 9 years",
 #
 d1 <- read.csv("1710000901_databaseLoadingData.csv") %>%
   select(Year=1, Area=GEO, Unit=UOM, Value=VALUE) %>%
-  mutate(Area = factor(Area, levels = myAreas),
+  mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
+         Area = factor(Area, levels = myAreas),
          Month = substr(Year, 6, 8),
          Year = substr(Year, 1,4),
          Year = as.numeric(Year),
@@ -84,21 +84,24 @@ pp <- d1 %>% group_by(Area, Year) %>%
 d2 <- read.csv("1710000801_databaseLoadingData.csv") %>%
   select(Year=1, Area=GEO, Measurement=Components.of.population.growth, 
          Unit=UOM, Value=VALUE) %>%
-  mutate(Area = factor(Area, levels = myAreas),
+  mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
+         Area = factor(Area, levels = myAreas),
          Year = substr(Year, 1,4),
          Year = as.numeric(Year))
 #
 d3 <- read.csv("1710001501_databaseLoadingData.csv") %>%
   select(Year=1, Area=GEO, Sex, Age=Age.group, 
          Measurement=Migrants, UOM, Value=VALUE) %>%
-  mutate(Age = factor(Age, levels = myAges),
+  mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
+         Age = factor(Age, levels = myAges),
          Net = ifelse(Value > 0, "Positive", "Negative"))
 #
 d4 <- read.csv("1710012101_databaseLoadingData.csv") %>%
   select(Date=REF_DATE, Area=GEO, 
          Type=Non.permanent.resident.types,
          UOM, Value=VALUE) %>%
-  mutate(Area = factor(Area, levels = myAreas),
+  mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
+         Area = factor(Area, levels = myAreas),
          Date = factor(Date))
 #
 myAges <- c("Total - Age", "0 to 14 years", "15 to 24 years",
@@ -107,15 +110,18 @@ d5 <- read.csv("9810036101_databaseLoadingData.csv") %>%
   select(Year=1, Area=GEO, Sex=Gender..3., Age=Age..15C., 
          Type=Non.permanent.resident.type..10.,
          POB=Place.of.birth..290., UOM, Value=VALUE) %>%
-  mutate(Age = factor(Age, levels = myAges),
+  mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
+         Age = factor(Age, levels = myAges),
          Sex = gsub("+", "", Sex))
 ```
 
 ---
 
-# Births, Deaths & Immigration
+# Births, Deaths & Migration
 
 ## Canada
+
+![](canada_migration_1_01.png)
 
 ```{r}
 # Prep data
@@ -162,7 +168,7 @@ ggsave("canada_migration_1_02.png", mp, width = 14, height = 6)
 
 ---
 
-# Migration
+# Immigrants vs Emigrants
 
 ## Provinces
 
@@ -213,7 +219,7 @@ ggsave("canada_migration_1_04.png", mp, width = 14, height = 6)
 
 ---
 
-## Prairies vs. NonPrairies
+## Prairies vs. Non-Prairies
 
 ![](canada_migration_1_05.png)
 
@@ -251,7 +257,7 @@ ggsave("canada_migration_1_05.png", mp, width = 8, height = 4)
 
 ---
 
-# Non-permentant Residents
+# Non-Permentant Residents
 
 ## Canada
 
@@ -263,14 +269,13 @@ xx <- d2 %>%
   filter(Area == "Canada", 
          Measurement %in% c("Immigrants", "Net non-permanent residents"))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
-  geom_hline(yintercept = 0) +
-  geom_line(line.width = 1.5, alpha = 0.7) +
-  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
-  scale_color_manual(name = NULL, values = c("darkred", "steelblue")) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Measurement)) +
+  geom_hline(yintercept = 0, line.width = 0.5) +
+  geom_col(color = "black", alpha = 0.7, lwd = 0.3) +
+  scale_fill_manual(name = NULL, values = c("darkred", "steelblue")) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "", x = NULL,
-       y = "Thousand People", caption = myCaption)
+  labs(title = "Canada", subtitle = "Immigrants & Non-Permanent Residents", 
+       y = "Thousand People", x = NULL, caption = myCaption)
 ggsave("canada_migration_1_06.png", mp, width = 6, height = 4)
 ```
 
@@ -285,14 +290,14 @@ ggsave("canada_migration_1_06.png", mp, width = 6, height = 4)
 xx <- d2 %>% 
   filter(Measurement %in% c("Immigrants", "Net non-permanent residents"))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
-  geom_hline(yintercept = 0) +
-  geom_line(line.width = 1.5, alpha = 0.7) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Measurement)) +
+  geom_hline(yintercept = 0, line.width = 0.5) +
+  geom_col(color = "black", alpha = 0.7, lwd = 0.3) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
-  scale_color_manual(name = NULL, values = c("darkred", "steelblue")) +
+  scale_fill_manual(name = NULL, values = c("darkred", "steelblue")) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "", x = NULL,
-       y = "Thousand People", caption = myCaption)
+  labs(title = "Canada", subtitle = "Immigrants & Non-Permanent Residents",
+       y = "Thousand People", x = NULL, caption = myCaption)
 ggsave("canada_migration_1_07.png", mp, width = 12, height = 5)
 ```
 

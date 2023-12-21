@@ -51,12 +51,19 @@ myAges <- c("0 to 4 years", "5 to 9 years",
             "80 to 84 years", "85 to 89 years", 
             "90 to 94 years", "95 to 99 years",
             "100 years and over", "Median age")
+myAreas <- c("Canada", "British Columbia", "Alberta", "Saskatchewan", "Manitoba",
+             "Ontario", "Quebec", "New Brunswick", "Prince Edward Island",
+             "Nova Scotia", "Newfoundland and Labrador", 
+             "Yukon", "NWT & Nunavut", "Northwest Territories", "Nunavut")
+myAreasShort <- c("CA", "BC", "AB", "SK", "MB", 
+                  "ON", "QC", "NB", "PE", "NS", "NL", 
+                  "YT", "NTNU", "NT", "NU")
 #
 d1 <- read.csv("1710000901_databaseLoadingData.csv") %>%
   select(Year=1, Area=GEO, Unit=UOM, Value=VALUE) %>%
-  mutate(Area = factor(Area, levels = agData_STATCAN_Region_Table$Area),
-         AreaShort = plyr::mapvalues(Area, agData_STATCAN_Region_Table$Area,
-                                     agData_STATCAN_Region_Table$Area_Short),
+  mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
+         Area = factor(Area, levels = myAreas),
+         AreaShort = plyr::mapvalues(Area, myAreas, myAreasShort),
          Month = substr(Year, 6, 8),
          Year = substr(Year, 1,4),
          Year = as.numeric(Year),
@@ -65,7 +72,8 @@ d1 <- read.csv("1710000901_databaseLoadingData.csv") %>%
 #
 d2 <- read.csv("1710000501_databaseLoadingData.csv") %>%
   select(Year=1, Area=GEO, Sex, Age=Age.group, Unit=UOM, Value=VALUE) %>%
-  mutate(Area = factor(Area, levels = agData_STATCAN_Region_Table$Area),
+  mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
+         Area = factor(Area, levels = myAreas),
          Sex = factor(Sex, levels = c("Both sexes", "Males", "Females")),
          Age = factor(Age, levels = myAges),
          Year = substr(Year, 1,4),

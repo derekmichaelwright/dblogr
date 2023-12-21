@@ -275,7 +275,7 @@ xx <- d2 %>% filter(Industry %in% industries) %>%
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, fill = Industry)) +
   geom_col(alpha = 0.7) +
-  facet_wrap(Area ~ ., ncol = 5) +
+  facet_wrap(Area ~ ., ncol = 5, scales = "free_y") +
   scale_fill_manual(name = NULL, values = c("darkred", "darkgreen")) +
   theme_agData(legend.position = "bottom") +
   labs(title = "GDP by Industry", x = NULL,
