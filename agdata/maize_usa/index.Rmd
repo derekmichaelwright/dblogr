@@ -98,7 +98,10 @@ ggsave("featured.png", mp1, width = 6, height = 4)
 ![](maize_usa_gif_01.gif)
 
 ```{r}
-mp <- mp + transition_reveal(Year) 
+# Animate
+mp <- mp + 
+  transition_reveal(Year) + 
+  view_follow(fixed_y = T, fixed_x = c(1865, NA))
 anim_save("maize_usa_gif_01.gif", mp,
           nframes = 300, fps = 20, end_pause = 60, 
           width = 900, height = 600, res = 150)

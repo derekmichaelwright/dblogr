@@ -197,3 +197,28 @@ ggsave("usa_population_04.png", width = 6, height = 4)
 ```
 
 ---
+
+# Bonus - Rural Urban Voting
+
+> - `r shiny::icon("globe")` https://www.cambridge.org/core/journals/perspectives-on-politics/article/sequential-polarization-the-development-of-the-ruralurban-political-divide-19762020/ED2077E0263BC149FED8538CD9B27109
+> - `r shiny::icon("save")` [rural_urban.csv](rural_urban.csv)
+
+```{r}
+# Prep data
+xx <- read.csv("rural_urban.csv") %>%
+  gather(Type, Value, Rural, Urban) %>%
+  mutate(Value = 100 * Value)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Type)) +
+  geom_line(size = 2) + 
+  geom_label(aes(label = Value), size = 2.5, label.padding = unit(0.1, "lines")) +
+  scale_color_manual(name = NULL, values = c("darkred", "darkblue")) +
+  scale_x_continuous(breaks = unique(xx$Year), minor_breaks = unique(xx$Year)) +
+  theme_agData(legend.position = "bottom") +
+  labs(x = "Year (Election)", 
+       y = "Percent of Votes Going to\nRepublicans Candidate (County-Level)",
+       caption = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Brown & Mettler (2023)")
+ggsave("usa_population_05.png", width = 7, height = 4)
+```
+
+---

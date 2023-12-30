@@ -169,9 +169,28 @@ ggsave("canada_population_1_04.png", mp, width = 6, height = 4)
 
 ---
 
-# Growth Rate
+## Western Canada
 
 ![](canada_population_1_05.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% filter(Area %in% myAreas[2:5])
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Area)) +
+  geom_line(size = 1.25, alpha = 0.7) +
+  scale_color_manual(name = NULL, values = myColorsP) +
+  theme_agData() +
+  labs(title = "Western Canada Population Growth",
+       y = "Million People", x = NULL, caption = myCaption)
+ggsave("canada_population_1_05.png", mp, width = 6, height = 4)
+```
+
+---
+
+# Growth Rate
+
+![](canada_population_1_06.png)
 
 ```{r}
 # Prep data
@@ -197,7 +216,7 @@ mp <- ggplot(xx, aes(x = Year, y = Rate, color = Area)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Population Growth Rate In Canada", x = NULL,
        y = "People Per 1000", caption = myCaption)
-ggsave("canada_population_1_05.png", mp, width = 10, height = 5)
+ggsave("canada_population_1_06.png", mp, width = 10, height = 5)
 ```
 
 ---
@@ -206,7 +225,7 @@ ggsave("canada_population_1_05.png", mp, width = 10, height = 5)
 
 ## Canada
 
-![](canada_population_1_06.png)
+![](canada_population_1_07.png)
 
 ```{r}
 # Prep data
@@ -221,12 +240,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Sex)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Median Age In Canada", x = NULL,
        y = "Median Age", caption = myCaption)
-ggsave("canada_population_1_06.png", mp, width = 6, height = 4)
+ggsave("canada_population_1_07.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-![](canada_population_1_07.png)
+## Provinces
+
+![](canada_population_1_08.png)
 
 ```{r}
 # Prep data
@@ -240,7 +261,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Sex)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Median Age In Canada", x = NULL,
        y = "Median Age", caption = myCaption)
-ggsave("canada_population_1_07.png", mp, width = 10, height = 6)
+ggsave("canada_population_1_08.png", mp, width = 10, height = 6)
 ```
 
 ---
