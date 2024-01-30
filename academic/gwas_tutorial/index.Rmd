@@ -900,7 +900,7 @@ mp <- gg_Manhattan_Zoom(folder = "GWAS_Results_CV_b/",
                         vline.color = "blue",
                         start = 2528817 - 2000000, 
                         end = 2528817 + 2000000) +
-  labs(caption = myCaption))
+  labs(caption = myCaption)
 ggsave("Figures_DTF_Sask_2017_05_01.png", mp, width = 6, height = 10)
 ```
 

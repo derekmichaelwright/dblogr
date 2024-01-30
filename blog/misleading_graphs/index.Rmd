@@ -89,6 +89,23 @@ mp <- ggarrange(mp2, mp1, ncol = 2, align = "h")
 ggsave("misleading_graphs_02.png", mp, width = 8, height = 4)
 ```
 
+```{r echo = F, eval = F}
+## Manipulating the y-axis
+#[https://data.bas.ac.uk/](https://ramadda.data.bas.ac.uk/repository/entry/show?entryid=77b64c55-7166-4a06-9def-2e400398e452)
+#
+# Prep dat
+xx <- read.csv("data_ice.csv") #%>%
+  #select(Year, Total=Mass.balance..Gt.yr., Cummulative=Cumulative.mass.balance..Gt.) %>%
+  #gather(Trait, Value, 2:3)
+# Plot
+ggplot(xx, aes(x = Year, y = Cumulative.mass.balance..Gt.)) +
+  geom_line() + theme_agData() +
+  labs(title = "Cumulative.mass.balance..Gt.", y = "Gt")
+ggplot(xx, aes(x = Year, y = Mass.balance..Gt.yr.)) +
+  geom_line() + theme_agData() +
+  labs(title = "Cumulative.mass.balance..Gt.", y = "Gt")
+```
+
 ---
 
 # 2. Dual y-axis
