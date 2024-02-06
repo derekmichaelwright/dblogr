@@ -854,9 +854,52 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Type)) +
   scale_fill_manual(name = NULL, values = c("darkred", "steelblue")) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Total, non-permanent residents", x = NULL,
-       y = "Thousand People", caption = myCaption)
+  labs(title = "Canada", subtitle = "Total, non-permanent residents", 
+       x = NULL, y = "Thousand People", caption = myCaption)
 ggsave("canada_migration_4_02.png", mp, width = 14, height = 6)
+```
+
+---
+
+## Assylum Seekers
+
+### Canada
+
+![](canada_migration_4_03.png)
+
+```{r}
+# Prep Data
+xx <- d4 %>% 
+  filter(Area == "Canada", Type == "Total, asylum claimants")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_col(color = "black", fill = "darkred", alpha = 0.7) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Total, asylum claimants", x = NULL,
+       y = "Thousand People", caption = myCaption)
+ggsave("canada_migration_4_03.png", mp, width = 6, height = 4)
+```
+
+---
+
+### Provinces
+
+![](canada_migration_4_03.png)
+
+```{r}
+# Prep Data
+xx <- d4 %>% 
+  filter(Type == "Total, asylum claimants")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_col(color = "black", fill = "darkred", alpha = 0.7) +
+  facet_wrap(Area ~ ., ncol = 7, scales = "free_y") +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Total, asylum claimants", x = NULL,
+       y = "Thousand People", caption = myCaption)
+ggsave("canada_migration_4_04.png", mp, width = 14, height = 6)
 ```
 
 ---

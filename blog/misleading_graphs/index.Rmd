@@ -132,8 +132,9 @@ xx <- read.csv("https://health-infobase.canada.ca/src/data/covidLive/covid19-dow
   rename(area=prname) %>%
   filter(area == "Canada", date < "2021-03-25") %>%
   mutate(date = as.POSIXct(date, format = "%Y-%m-%d"),
-         numcases_daily = numtotal_last7 / 7,
-         numdeaths_daily = numdeaths_last7 / 7)
+         numdeaths_last7 = as.numeric(numdeaths_last7),
+         numdeaths_daily = numdeaths_last7 / 7,
+         numcases_daily = numtotal_last7 / 7 )
 y1_max <- max(xx$numcases_daily, na.rm = T)
 y2_max <- max(xx$numdeaths_daily, na.rm = T)
 xx <- xx %>%
@@ -174,6 +175,7 @@ yy <- read.csv("https://health-infobase.canada.ca/src/data/covidLive/covid19-dow
   rename(area=prname) %>%
   filter(area == "Canada") %>%
   mutate(date = as.POSIXct(date, format = "%Y-%m-%d"),
+         numdeaths_last7 = as.numeric(numdeaths_last7),
          numcases_daily = numtotal_last7 / 7,
          numdeaths_daily = numdeaths_last7 / 7)
 y3_max <- max(yy$numcases_daily, na.rm = T)
