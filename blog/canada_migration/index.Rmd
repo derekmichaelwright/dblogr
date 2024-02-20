@@ -397,9 +397,9 @@ xx <- d2 %>%
   filter(Area %in% c("Alberta", "British Columbia"),
          Measurement == "Net interprovincial migration")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Area)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Area, group = Area)) +
   geom_hline(yintercept = 0) +
-  geom_line(line.width = 1.5, alpha = 0.7) +
+  geom_line(alpha = 0.7) +
   scale_color_manual(name = NULL, values = c("darkorange", "darkblue")) +
   scale_x_discrete(breaks = myDates) +
   theme_agData(legend.position = "bottom",

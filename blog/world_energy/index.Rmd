@@ -270,7 +270,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Source)) +
   scale_color_manual(values = myColors) +
   theme_agData(legend.position = "none",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Global Consumption of Fossil Fuels",
+  labs(title = "Global Consumption of \"Green\" Energy",
        y = "Thousand TWH", x = NULL, caption = myCaption)
 ggsave("world_energy_1_06.png", mp, width = 6, height = 4)
 ```
@@ -295,7 +295,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Source)) +
   scale_x_continuous(breaks = seq(1800, 2020, by = 50), 
                      minor_breaks = seq(1800, 2020, by = 10)) +
   theme_agData(legend.position = "none") +
-  labs(title = "Global Consumption of Renewable Energy",
+  labs(title = "Global Consumption of \"Green\" Energy",
        y = "Thousand TWH", x = NULL, caption = myCaption)
 ggsave("world_energy_1_07.png", mp, width = 6, height = 4)
 ```
@@ -341,7 +341,7 @@ mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Source)) +
   scale_x_continuous(breaks = seq(1800, 2020, by = 50), 
                      minor_breaks = seq(1800, 2020, by = 10)) +
   theme_agData(legend.position = "none") +
-  labs(title = "Global Energy Consumption", x = NULL,
+  labs(title = "Global Consumption of Fossil Fuels", x = NULL,
        y = "Percent of Total Energy Use", caption = myCaption)
 ggsave("world_energy_1_09.png", mp, width = 6, height = 3)
 ```
@@ -364,7 +364,7 @@ mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Source)) +
   scale_x_continuous(breaks = seq(1850, 2020, by = 50), 
                      minor_breaks = seq(1850, 2020, by = 10)) +
   theme_agData(legend.position = "none") +
-  labs(title = "Global Consumption of Renewable Energy",
+  labs(title = "Global Consumption of \"Green\" Energy",
        y = "Percent of Total Energy Use", x = NULL, caption = myCaption)
 ggsave("world_energy_1_10.png", mp, width = 6, height = 4)
 ```
@@ -475,14 +475,6 @@ myAreas <- c("Canada", "China")
 myColors <- c("steelblue", "darkred")
 xx <- d2 %>% filter(Area %in% myAreas) %>% 
   mutate(Area = factor(Area, levels = myAreas))
-mp1 <- ggplot(xx %>% filter(Year >= 2000), 
-              aes(x = Year, y = Value / 1000, color = Area)) +
-  geom_line(alpha = 0.7) +
-  facet_wrap(Area ~ ., scales = "free_y") +
-  scale_color_manual(name = NULL, values = myColors) +
-  theme_agData() +
-  labs(title = "A) Propaganda For Canada", x = NULL,
-       y = "Thousand kWh Per Person", caption = myCaption)
 mp2 <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   geom_line(alpha = 0.7) +
   scale_color_manual(name = NULL, values = myColors) +
@@ -490,9 +482,9 @@ mp2 <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   labs(title = "B) Propaganda For China", x = NULL,
        y = "Thousand kWh Per Person", caption = myCaption)
 mp1 <- mp2 + facet_wrap(Area ~ ., scales = "free_y") +
-  labs(title = "A)", caption = NULL)
+  labs(title = "A) Propaganda For Canada", caption = NULL)
 mp <- ggarrange(mp1, mp2, ncol = 1, common.legend = T, legend = "bottom")
-ggsave("world_energy_2_02.png", mp, width = 6, height = 5)
+ggsave("world_energy_2_02.png", mp, width = 6, height = 5, bg = "white")
 ```
 
 ---

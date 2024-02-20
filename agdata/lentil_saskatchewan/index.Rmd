@@ -28,7 +28,8 @@ library(gganimate)
 ```
 
 ```{r}
-myColors <- c("darkgreen", "darkgoldenrod3", "darkred", "black")
+myCs_Regions <- c("darkred","darkgreen","darkorange","darkblue","grey")
+myCs_Lens <- c("darkgreen", "darkgoldenrod3", "darkred", "black")
 myCrops <- c("Large Green Lentils","Small Green Lentils",
              "Red Lentils","Other Lentils")
 myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
@@ -44,7 +45,8 @@ d2 <- agData_SKAG_Specialty_Crops %>%
   filter(grepl("Lentil", Item), Item != "Total Lentils") %>%
   mutate(Item = factor(Item, levels = myCrops))
 #
-d3 <- agData_SKAG_Lentil_Exports
+d3 <- agData_SKAG_Lentil_Exports %>%
+  left_join(agData_FAO_Country_Table, by = c("Area"="Country"))
 ```
 
 ---
@@ -123,7 +125,7 @@ mp <- ggplot(d2, aes(x = Year, y = Value, color = Item)) +
   geom_line(size = 1, alpha = 0.7) +
   facet_wrap(Measurement + Unit ~ ., scales = "free_y") +
   theme_agData(legend.position = "bottom") +
-  scale_color_manual(name = NULL, values = myColors) +
+  scale_color_manual(name = NULL, values = myCs_Lens) +
   labs(title = "Lentil - Production", 
        y = NULL, x = NULL, caption = myCaption)
 ggsave("lentil_saskatchewan_2_01.png", width = 8, height = 6)
@@ -144,7 +146,7 @@ xx <- d2 %>% filter(Measurement == "Area Harvested")
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
   geom_line(size = 1.5, alpha = 0.7) +
   facet_wrap(Item ~ ., scales = "free_y") +
-  scale_color_manual(name = NULL, values = myColors) +
+  scale_color_manual(name = NULL, values = myCs_Lens) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Lentil - Area Harvested", 
        y = "Million Hectares", x = NULL, caption = myCaption)
@@ -164,7 +166,7 @@ xx <- d2 %>% filter(Measurement == "Production")
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
   geom_line(size = 1.5, alpha = 0.7) +
   facet_wrap(Item ~ ., scales = "free_y") +
-  scale_color_manual(name = NULL, values = myColors) +
+  scale_color_manual(name = NULL, values = myCs_Lens) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Lentil - Production", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
@@ -184,7 +186,7 @@ xx <- d2 %>% filter(Measurement %in% c("Production", "Area Harvested"))
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) +
   geom_col(position = "stack", color = "black", alpha = 0.7) +
   facet_wrap(paste0(Measurement, " (", Unit, ")") ~ ., scales = "free_y") +
-  scale_fill_manual(name = NULL, values = myColors) +
+  scale_fill_manual(name = NULL, values = myCs_Lens) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Lentil - Saskatchewan", 
        y = "Million", x = NULL, caption = myCaption)
@@ -203,7 +205,7 @@ ggsave("lentil_saskatchewan_2_04.png", width = 8, height = 4)
 # Prep data
 xx <- d3 %>% filter(Area == "World")
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000, group = Area)) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000)) +
   geom_col(color = "black", fill = "darkgreen", alpha = 0.7) + 
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Saskatchewan Lentil Exports", 
@@ -218,14 +220,22 @@ ggsave("lentil_saskatchewan_3_01.png", width = 6, height = 4)
 ![](lentil_saskatchewan_3_02.png)
 
 ```{r}
+# Prep data
+myRegions <- c("Africa", "Americas", "Asia", "Europe", "Other") 
+xx <- d3 %>%
+  arrange(desc(Value)) %>%
+  mutate(Area = factor(Area, levels = unique(c(.$Area[.$Area!="Other"],"Other"))),
+         Region = ifelse(Area == "Other", "Other", Region))
 # Plot
-mp <- ggplot(d3, aes(x = Year, y = Value / 1000, group = Area)) +
-  geom_col(color = "black", fill = "darkgreen", alpha = 0.7) + 
-  facet_wrap(Area ~ ., scales = "free_y", ncol = 8) +
-  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Region)) +
+  geom_col(color = "black", alpha = 0.7) + 
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 4) +
+  scale_fill_manual(name = NULL, values = myCs_Regions, breaks = myRegions) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Saskatchewan Lentil Exports", 
        y = "Thousand Tonnes", x = NULL, caption = myCaption)
-ggsave("lentil_saskatchewan_3_02.png", width = 20, height = 8)
+ggsave("lentil_saskatchewan_3_02.png", width = 14, height = 18)
 ```
 
 ---
@@ -236,10 +246,8 @@ ggsave("lentil_saskatchewan_3_02.png", width = 20, height = 8)
 
 ```{r}
 # Prep data
-myColors <- c("darkred","darkgreen","darkorange","darkblue","grey")
 xx <- d3 %>% 
   filter(Area != "World", Year == "2018-2019") %>%
-  left_join(agData_FAO_Country_Table, by = c("Area"="Country")) %>%
   arrange(desc(Value)) %>%
   mutate(Area = factor(Area, levels = c(.$Area[.$Area!="Other"],"Other")),
          Region = ifelse(Area == "Other", "Other", Region))
@@ -247,7 +255,7 @@ xx <- d3 %>%
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000, group = Area, fill = Region)) +
   geom_col(alpha = 0.7, color = "black") + 
   facet_wrap(Year ~ ., scales = "free_y", ncol = 8) +
-  scale_fill_manual(name = NULL, values = myColors) +
+  scale_fill_manual(name = NULL, values = myCs_Regions) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Saskatchewan Lentil Exports", 
        y = "Thousand Tonnes", x = NULL, caption = myCaption)
@@ -264,7 +272,6 @@ ggsave("lentil_saskatchewan_3_03.png", width = 6, height = 4)
 # Prep data
 xx <- d3 %>% 
   filter(Area != "World", Year == "2019-2020") %>%
-  left_join(agData_FAO_Country_Table, by = c("Area"="Country")) %>%
   arrange(desc(Value)) %>%
   mutate(Area = factor(Area, levels = c(.$Area[.$Area!="Other"],"Other")),
          Region = ifelse(Area == "Other", "Other", Region))
@@ -272,7 +279,7 @@ xx <- d3 %>%
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000, group = Area, fill = Region)) +
   geom_col(alpha = 0.7, color = "black") + 
   facet_wrap(Year ~ ., scales = "free_y", ncol = 8) +
-  scale_fill_manual(name = NULL, values = myColors) +
+  scale_fill_manual(name = NULL, values = myCs_Regions) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Saskatchewan Lentil Exports", 
        y = "Thousand Tonnes", x = NULL, caption = myCaption)
@@ -289,7 +296,6 @@ ggsave("lentil_saskatchewan_3_04.png", width = 6, height = 4)
 # Prep data
 xx <- d3 %>% 
   filter(Area != "World", Year == "2020-2021") %>%
-  left_join(agData_FAO_Country_Table, by = c("Area"="Country")) %>%
   arrange(desc(Value)) %>%
   mutate(Area = factor(Area, levels = c(.$Area[.$Area!="Other"],"Other")),
          Region = ifelse(Area == "Other", "Other", Region))
@@ -297,7 +303,7 @@ xx <- d3 %>%
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000, group = Area, fill = Region)) +
   geom_col(alpha = 0.7, color = "black") + 
   facet_wrap(Year ~ ., scales = "free_y", ncol = 8) +
-  scale_fill_manual(name = NULL, values = myColors) +
+  scale_fill_manual(name = NULL, values = myCs_Regions) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Saskatchewan Lentil Exports", x = NULL,
        y = "Thousand Tonnes", caption = myCaption)

@@ -186,7 +186,7 @@ ggsave("farmland_canada_1_04.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myItems <- c("Land in crops", "Summerfallow land", "Tame or seeded pasture")
+myItems <- c("Land in crops", "Tame or seeded pasture", "Summerfallow land")
 xx <- d1 %>%
   filter(Item %in% myItems, Area == "Canada",
          Measurement == "Hectares")

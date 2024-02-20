@@ -721,7 +721,7 @@ ggsave("usa_deaths_4_10.png", mp, width = 12, height = 5)
 ggYearlyDeathsAge <- function(myArea) {
   # Prep data
   xx <- dd %>% 
-    filter(Type == "Unweighted", Area == myArea, Year < 2022) %>%
+    filter(Type == "Unweighted", Area == myArea, Year < 2023) %>%
     group_by(Year, Age.Group, Group) %>%
     summarise(Number.of.Deaths = sum(Number.of.Deaths, na.rm = T))
   # Plot

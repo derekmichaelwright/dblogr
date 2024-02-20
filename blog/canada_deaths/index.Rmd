@@ -932,6 +932,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Measurement)) +
 ggsave("canada_deaths_08_05.png", mp, width = 6, height = 4)
 ```
 
+
 ```{r}
 sum(xx$Value[xx$Year%in%2021:2022 & xx$Measurement == "Deaths"] - xx$Value[xx$Year==2020 & xx$Measurement=="Deaths"])
 sum(xx$Value[xx$Year%in%2020:2022 & xx$Measurement == "Deaths"] - xx$Value[xx$Year==2019 & xx$Measurement=="Overdoses"])
