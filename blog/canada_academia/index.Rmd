@@ -44,17 +44,16 @@ dd <- read.csv("data_canada_academia.csv") %>%
 ```{r}
 # Plot
 mp <- ggplot(dd, aes(x = Party, y = X2021, fill = Measurement)) + 
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Political Affiliations in Canada - 2021",
        y = "Percent", x = NULL, caption = myCaption1)
-ggsave("canada_academia_01.png", mp, width = 8, height = 4)
+ggsave("canada_academia_01.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F}
-ggsave("featured.png", mp, width = 8, height = 4)
+ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -66,13 +65,12 @@ ggsave("featured.png", mp, width = 8, height = 4)
 ```{r}
 # Plot
 mp <- ggplot(dd, aes(x = Party, y = X2000, fill = Measurement)) + 
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Political Affiliations in Canada - 2000",
        y = "Percent", x = NULL, caption = myCaption2)
-ggsave("canada_academia_02.png", mp, width = 8, height = 4)
+ggsave("canada_academia_02.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -84,13 +82,12 @@ ggsave("canada_academia_02.png", mp, width = 8, height = 4)
 ```{r}
 # Plot
 mp <- ggplot(dd, aes(x = Party, y = X1997, fill = Measurement)) + 
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Political Affiliations in Canada - 1997",
        y = "Percent", x = NULL, caption = myCaption2)
-ggsave("canada_academia_03.png", mp, width = 8, height = 4)
+ggsave("canada_academia_03.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -102,13 +99,33 @@ ggsave("canada_academia_03.png", mp, width = 8, height = 4)
 ```{r}
 # Plot
 mp <- ggplot(dd, aes(x = Party, y = X1993, fill = Measurement)) + 
-  geom_bar(stat = "identity", position = "dodge", 
-           color = "black", alpha = 0.7) +
+  geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Political Affiliations in Canada - 1993",
        y = "Percent", x = NULL, caption = myCaption2)
-ggsave("canada_academia_04.png", mp, width = 8, height = 4)
+ggsave("canada_academia_04.png", mp, width = 6, height = 4)
 ```
 
 ---
+
+# Bonus
+
+> - `r shiny::icon("globe")` https://www.pewresearch.org/science/2023/11/14/americans-trust-in-scientists-positive-views-of-science-continue-to-decline/
+> - `r shiny::icon("save")` [data_science_trust.xlsx](data_science_trust.xlsx)
+
+![](canada_academia_2_01.png)
+
+```{r eval = F, echo = F}
+#Prep data
+x1 <- read_xlsx("science_trust.xlsx", "Effect on Society")
+x2 <- read_xlsx("science_trust.xlsx", "Trust")
+# Plot
+mp <- ggplot(dd, aes(x = Date, y = X1993, fill = Measurement)) + 
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Political Affiliations in Canada - 1993",
+       y = "Percent", x = NULL, caption = myCaption2)
+ggsave("canada_academia_04.png", mp, width = 6, height = 4)
+```

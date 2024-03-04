@@ -399,12 +399,14 @@ ggsave("world_energy_1_11.png", mp, width = 7, height = 5)
 ![](world_energy_gif_1_01.gif)
 
 ```{r}
+# Prep data
+xx <- d1 %>% filter(Percent > 0)
 # Plot
-mp <- ggplot(d1, aes(x = "", y = -Percent, fill = Source)) +
+mp <- ggplot(xx, aes(x = "", y = -Percent, fill = Source)) +
   geom_col(color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, breaks = myItems[c(9:1,10)],
                     values = myColors[c(9:1,10)]) +
-  coord_polar("y", start = 0) +
+  coord_polar("y", start = 360) +
   theme_agData_pie() +
   labs(title = "Percent of Global Energy Consumption - {round(frame_time)}",
        caption = myCaption) +

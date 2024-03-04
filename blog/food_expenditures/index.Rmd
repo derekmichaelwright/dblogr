@@ -65,35 +65,9 @@ d3 <- read.csv("data_usa_food_prices.csv")
 
 # Food Share of Expenditures
 
-## vs Total Expenditures
+## Country
 
 ![](food_expenses_1_01.png)
-
-```{r}
-# Prep data
-xx <- d1 %>% filter(Year == 2021)
-# Plot
-mp <- ggplot(xx, aes(x = TotalExp, y = FoodPercent)) +
-  geom_point(aes(color = Region), alpha = 0.7) +
-  geom_text(aes(label = Label), size = 2.5) +
-  facet_grid(. ~ Year) +
-  scale_color_manual(name = NULL, values = myCs_Regions) +
-  theme_agData() +
-  labs(title = "Percent Food Expenses vs. Total Income",
-       y = "Percent Spent on Food", x = "Total Consumer Expenditure", 
-       caption = myCaption1)
-ggsave("food_expenses_1_01.png", mp, width = 6, height = 4)
-```
-
-```{r echo = F}
-ggsave("featured.png", mp, width = 6, height = 4)
-```
-
----
-
-## Countries
-
-![](food_expenses_1_02.png)
 
 ```{r}
 # Prep data
@@ -121,7 +95,33 @@ mp2 <- ggplot(x2, aes(x = Country, y = FoodPercent)) +
   theme_agData(legend.position = "none") +
   labs(y = "Percent Spent on Food", x = NULL, caption = myCaption1)
 mp <- ggarrange(mp1, mp2, ncol = 2) 
-ggsave("food_expenses_1_02.png", mp, width = 10, height = 8)
+ggsave("food_expenses_1_01.png", mp, width = 10, height = 8)
+```
+
+---
+
+## Food vs Total Expenditures
+
+![](food_expenses_1_02.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% filter(Year == 2021)
+# Plot
+mp <- ggplot(xx, aes(x = TotalExp, y = FoodPercent)) +
+  geom_point(aes(color = Region), alpha = 0.7) +
+  geom_text(aes(label = Label), size = 2.5) +
+  facet_grid(. ~ Year) +
+  scale_color_manual(name = NULL, values = myCs_Regions) +
+  theme_agData() +
+  labs(title = "Percent Food Expenses vs. Total Income",
+       y = "Percent Spent on Food", x = "Total Consumer Expenditure", 
+       caption = myCaption1)
+ggsave("food_expenses_1_02.png", mp, width = 6, height = 4)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
 ---

@@ -125,6 +125,7 @@ xx <- d1 %>% filter(Area == "Canada", Measurement == "Total (house and land)")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value)) +
   geom_line(color = "darkred", alpha = 0.7, size = 1.5) +
+  scale_x_date(date_minor_breaks = "year") +
   theme_agData(legend.position = "bottom") +
   labs(title = "House prices in Canada", x = NULL,
        y = "Index (2016-12 = 100)", caption = myCaption)
@@ -149,9 +150,10 @@ xx <- d1 %>%
 mp <- ggplot(xx, aes(x = Date, y = Value, color = Area)) +
   geom_line(alpha = 0.7, size = 1.5) +
   scale_color_manual(name = NULL, values = myCs) +
-  scale_x_date(breaks = as.Date(c("1985-01-01","1995-01-01","2005-01-01","2015-01-01")), 
-               date_labels = "%Y", date_minor_breaks = "1 year") +
-  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_x_date(date_minor_breaks = "year") +
+  #scale_x_date(breaks = as.Date(c("1985-01-01","1995-01-01","2005-01-01","2015-01-01")), 
+  #             date_labels = "%Y", date_minor_breaks = "year") +
+  theme_agData() +#axis.text.x = element_text(angle = 45, hjust = 1)
   labs(title = "House prices in Canada", x = NULL, 
        y = "Index (2016-12 = 100)", caption = myCaption)
 ggsave("canada_housing_1_02.png", mp, width = 6, height = 4)

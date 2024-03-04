@@ -106,24 +106,26 @@ mp5 <- ggcropplot(xx) +
   facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
                       ncol = 4, nrow = 5, page = 5) +
   labs(title = "Crop Production - India (5/5)")
-ggsave("crops_india_01.png", mp1, width = 12, height = 8)
-ggsave("crops_india_02.png", mp2, width = 12, height = 8)
-ggsave("crops_india_03.png", mp3, width = 12, height = 8)
-ggsave("crops_india_04.png", mp4, width = 12, height = 8)
-ggsave("crops_india_05.png", mp5, width = 12, height = 8)
+ggsave("crops_india_1_01.png", mp1, width = 12, height = 8)
+ggsave("crops_india_1_02.png", mp2, width = 12, height = 8)
+ggsave("crops_india_1_03.png", mp3, width = 12, height = 8)
+ggsave("crops_india_1_04.png", mp4, width = 12, height = 8)
+ggsave("crops_india_1_05.png", mp5, width = 12, height = 8)
 ```
 
 ```{r echo = F}
 ggsave("featured.png", mp1, width = 12, height = 8)
 ```
 
-![](crops_india_01.png)
+![](crops_india_1_01.png)
 
-![](crops_india_02.png)
+![](crops_india_1_02.png)
 
-![](crops_india_03.png)
+![](crops_india_1_03.png)
 
-![](crops_india_04.png)
+![](crops_india_1_04.png)
+
+![](crops_india_1_05.png)
 
 ---
 
@@ -216,6 +218,32 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value,
 anim_save("crops_india_gif_02.gif", mp,
           nframes = 600, fps = 30, end_pause = 150, 
           width = 900, height = 600, res = 150)
+```
+
+---
+
+# Sri Lanka
+
+> - `r shiny::icon("globe")` https://ipad.fas.usda.gov/countrysummary/?id=CE
+> - `r shiny::icon("save")` [sri_lanka_Crops.csv](sri_lanka_Crops.csv)
+
+![](crops_india_2_01.png)
+
+```{r}
+# Prep data
+xx <- read.csv("sri_lanka_Crops.csv") %>% 
+  filter(Crop != "Millet", Measurement == "Yield")
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: USDA"
+# Plot
+mp <- ggplot(xx, aes(x = Market.Year, y = Value, group = Crop, color = Crop)) +
+  geom_line(size = 2, alpha = 0.7) +
+  geom_point() +
+  facet_wrap(. ~ Measurement, scales = "free_y") +
+  expand_limits(y = 0) +
+  scale_color_manual(name = NULL, values = c("darkgreen", "darkorange")) +
+  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Sri Lanka", y = "T / Ha", x = NULL)
+ggsave("crops_india_2_01.png", mp, width = 6, height = 4)
 ```
 
 ---

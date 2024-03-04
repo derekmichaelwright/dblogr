@@ -283,7 +283,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   scale_color_manual(name = NULL, values = myC) +
   theme_agData() +
   labs(title = "Immigration Rates", x = NULL,
-       y = "Immigrants per Million People", caption = myCaption)
+       y = "Immigrants / Million People", caption = myCaption)
 ggsave("canada_migration_1_06.png", mp, width = 8, height = 4)
 ```
 
@@ -708,7 +708,7 @@ mp <- ggplot(xx %>% filter(Area == "Canada"), aes(Date, y = BirthRate)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   theme_agData() +
   labs(title = "Birth Rate in Canada", x = NULL,
-       y = "Births Per Thousand People", caption = myCaption)
+       y = "Births / Thousand People", caption = myCaption)
 ggsave("canada_migration_3_01.png", mp, width = 6, height = 4)
 ```
 
@@ -734,7 +734,7 @@ mp <- ggplot(xx, aes(x = Year, y = BirthRate * 1000)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Birth Rates", x = NULL,
-       y = "Births Per Thousand People", caption = myCaption)
+       y = "Births / Thousand People", caption = myCaption)
 ggsave("canada_migration_3_02.png", mp, width = 14, height = 6)
 ```
 

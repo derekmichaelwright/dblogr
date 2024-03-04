@@ -1,0 +1,100 @@
+Crop,Market Year,Measurement,Unit,Value
+Rice,2013/2014,Area,1000 Ha,924
+Rice,2014/2015,Area,1000 Ha,931
+Rice,2015/2016,Area,1000 Ha,1097
+Rice,2016/2017,Area,1000 Ha,686
+Rice,2017/2018,Area,1000 Ha,769
+Rice,2018/2019,Area,1000 Ha,974
+Rice,2019/2020,Area,1000 Ha,973
+Rice,2020/2021,Area,1000 Ha,1085
+Rice,2021/2022,Area,1000 Ha,1130
+Rice,2022/2023,Area,1000 Ha,1150
+Rice,2023/2024,Area,1000 Ha,1160
+Rice,2013/2014,Production,1000 T,2727
+Rice,2014/2015,Production,1000 T,2735
+Rice,2015/2016,Production,1000 T,3294
+Rice,2016/2017,Production,1000 T,2034
+Rice,2017/2018,Production,1000 T,2248
+Rice,2018/2019,Production,1000 T,3132
+Rice,2019/2020,Production,1000 T,3207
+Rice,2020/2021,Production,1000 T,3390
+Rice,2021/2022,Production,1000 T,2733
+Rice,2022/2023,Production,1000 T,2836
+Rice,2023/2024,Production,1000 T,3332
+Rice,2013/2014,Yield,T/Ha,4.3
+Rice,2014/2015,Yield,T/Ha,4.3
+Rice,2015/2016,Yield,T/Ha,4.4
+Rice,2016/2017,Yield,T/Ha,4.4
+Rice,2017/2018,Yield,T/Ha,4.3
+Rice,2018/2019,Yield,T/Ha,4.7
+Rice,2019/2020,Yield,T/Ha,4.8
+Rice,2020/2021,Yield,T/Ha,4.6
+Rice,2021/2022,Yield,T/Ha,3.6
+Rice,2022/2023,Yield,T/Ha,3.6
+Rice,2023/2024,Yield,T/Ha,4.2
+Maize,2013/2014,Area,1000 Ha,67
+Maize,2014/2015,Area,1000 Ha,70
+Maize,2015/2016,Area,1000 Ha,68
+Maize,2016/2017,Area,1000 Ha,53
+Maize,2017/2018,Area,1000 Ha,71
+Maize,2018/2019,Area,1000 Ha,63
+Maize,2019/2020,Area,1000 Ha,78
+Maize,2020/2021,Area,1000 Ha,108
+Maize,2021/2022,Area,1000 Ha,70
+Maize,2022/2023,Area,1000 Ha,70
+Maize,2023/2024,Area,1000 Ha,70
+Maize,2013/2014,Production,1000 T,241
+Maize,2014/2015,Production,1000 T,261
+Maize,2015/2016,Production,1000 T,244
+Maize,2016/2017,Production,1000 T,197
+Maize,2017/2018,Production,1000 T,270
+Maize,2018/2019,Production,1000 T,246
+Maize,2019/2020,Production,1000 T,313
+Maize,2020/2021,Production,1000 T,475
+Maize,2021/2022,Production,1000 T,273
+Maize,2022/2023,Production,1000 T,273
+Maize,2023/2024,Production,1000 T,273
+Maize,2013/2014,Yield,T/Ha,3.6
+Maize,2014/2015,Yield,T/Ha,3.7
+Maize,2015/2016,Yield,T/Ha,3.6
+Maize,2016/2017,Yield,T/Ha,3.7
+Maize,2017/2018,Yield,T/Ha,3.8
+Maize,2018/2019,Yield,T/Ha,3.9
+Maize,2019/2020,Yield,T/Ha,4
+Maize,2020/2021,Yield,T/Ha,4.4
+Maize,2021/2022,Yield,T/Ha,3.9
+Maize,2022/2023,Yield,T/Ha,3.9
+Maize,2023/2024,Yield,T/Ha,3.9
+Millet,2013/2014,Area,1000 Ha,6
+Millet,2014/2015,Area,1000 Ha,7
+Millet,2015/2016,Area,1000 Ha,7
+Millet,2016/2017,Area,1000 Ha,6
+Millet,2017/2018,Area,1000 Ha,4
+Millet,2018/2019,Area,1000 Ha,7
+Millet,2019/2020,Area,1000 Ha,7
+Millet,2020/2021,Area,1000 Ha,7
+Millet,2021/2022,Area,1000 Ha,7
+Millet,2022/2023,Area,1000 Ha,7
+Millet,2023/2024,Area,1000 Ha,7
+Millet,2013/2014,Production,1000 T,7
+Millet,2014/2015,Production,1000 T,9
+Millet,2015/2016,Production,1000 T,9
+Millet,2016/2017,Production,1000 T,9
+Millet,2017/2018,Production,1000 T,69
+Millet,2018/2019,Production,1000 T,8
+Millet,2019/2020,Production,1000 T,7
+Millet,2020/2021,Production,1000 T,7
+Millet,2021/2022,Production,1000 T,7
+Millet,2022/2023,Production,1000 T,7
+Millet,2023/2024,Production,1000 T,7
+Millet,2013/2014,Yield,T/Ha,1.2
+Millet,2014/2015,Yield,T/Ha,1.3
+Millet,2015/2016,Yield,T/Ha,1.3
+Millet,2016/2017,Yield,T/Ha,1.5
+Millet,2017/2018,Yield,T/Ha,1.5
+Millet,2018/2019,Yield,T/Ha,1.1
+Millet,2019/2020,Yield,T/Ha,1
+Millet,2020/2021,Yield,T/Ha,1
+Millet,2021/2022,Yield,T/Ha,1
+Millet,2022/2023,Yield,T/Ha,1
+Millet,2023/2024,Yield,T/Ha,1

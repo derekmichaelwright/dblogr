@@ -282,6 +282,8 @@ ggsave("saskatchewan_2020_election_07.png", mp, width = 20, height = 8)
 
 ![](saskatchewan_2020_election_08.png)
 
+![](saskatchewan_2020_election_09.png)
+
 ```{r}
 # Prep data
 xx <- dd %>%
