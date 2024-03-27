@@ -57,7 +57,7 @@ mp <- ggpairs(iris, columns = 1:4, aes(color = Species)) +
   scale_color_manual(values = alpha(agData_Colors,0.7)) +
   scale_fill_manual(values = alpha(agData_Colors,0.7)) +
   theme_agData() +
-  labs(title = "Iris Data Set", caption = myCaption1)
+  labs(title = "Iris Data Set by Species", caption = myCaption1)
 ggsave("pca_tutorial_1_01.png", mp, width = 8, height = 6)
 ```
 
@@ -82,7 +82,7 @@ myColors <- c("darkslategrey", "darkred", "darkgreen")
 myShapes <- c(16, 13, 15)
 # Plot 
 mp <- ggplot(xx, aes(x = Dim.1, y = Dim.2)) +
-  geom_point(aes(color = Cluster, pch = Species), size = 2, alpha = 0.8) +
+  geom_point(aes(color = Species, pch = Cluster), size = 2, alpha = 0.8) +
   scale_color_manual(values = myColors) +
   scale_shape_manual(values = myShapes) +
   theme_agData() +
@@ -138,8 +138,8 @@ https://derekmichaelwright.github.io/dblogr/academic/pca_tutorial/pca_tutorial_i
 
 ```{r}
 mp <- plot_ly(xx, x = ~Dim.1, y = ~Dim.2, z = ~Dim.3, text = ~Species,
-              color = ~Cluster, colors = myColors, 
-              symbol = ~Species, symbols = myShapes) %>% 
+              color = ~Species, colors = myColors, 
+              symbol = ~Cluster, symbols = myShapes) %>% 
   add_markers()
 htmlwidgets::saveWidget(mp, file="pca_tutorial_iris_2.html")
 ```

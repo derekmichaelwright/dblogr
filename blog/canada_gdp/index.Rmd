@@ -55,10 +55,8 @@ d1 <- read.csv("3610040201_databaseLoadingData.csv") %>%
          Industry=North.American.Industry.Classification.System..NAICS.) %>%
   mutate(Value = Value * 1000000,
          Area = factor(Area, levels = myAreas),
-         Area_Short = plyr::mapvalues(Area, myAreas, myAs),
-         Color = plyr::mapvalues(Area, myAreas, myCs)
-         ) %>%
-  select(Area, Area_Short, Color, Year, Industry, Value)
+         Area_Short = plyr::mapvalues(Area, myAreas, myAs) ) %>%
+  select(Area, Area_Short, Year, Industry, Value)
 # GDP percent by industry
 d2 <- read.csv("3610040001_databaseLoadingData.csv") %>%
   rename(Area=GEO, Year=REF_DATE, Value=VALUE,
@@ -168,7 +166,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Region)) +
   coord_cartesian(xlim = c(1997.75, 2015.25)) +
   scale_color_manual(values = c("darkblue", "darkred")) +
   theme_agData(legend.position = "bottom") +
-  labs(y = "Current Dollars (Billion)", x = NULL, caption = myCaption)
+  labs(title = "GDP in Canada", x = NULL,
+       y = "Current Dollars (Billion)",  caption = myCaption)
 ggsave("canada_gdp_04.png", mp, width = 6, height = 4)
 ```
 
@@ -255,7 +254,7 @@ mp <- ggplot(xx, aes(x = Year, y = GDP_PP, color = Region)) +
   geom_point(size = 2) +
   scale_color_manual(name = NULL, values = c("darkblue", "darkred")) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "GDP Per Person", x = NULL,
+  labs(title = "GDP Per Person in Canada", x = NULL,
        y = "Current Dollars (Million)", caption = myCaption)
 ggsave("canada_gdp_08.png", mp, width = 6, height = 4)
 ```
@@ -457,3 +456,19 @@ ggsave("canada_gdp_17.png", mp, width = 8, height = 6)
 ```
 
 ---
+
+```{r eval = F, echo = F}
+# Industries Over the Years
+
+## Canada
+
+# Prep data
+myIs <- c("Energy sector [T016]", "Industrial production [T010]",
+          "Goods-producing industries [T002]")
+xx <- d1 %>% filter(Industry %in% myIs) %>% group_by(Year, Industry) %>%
+  summarise(Value = sum(Value))
+# Plot
+ggplot(xx, aes(x = Year, y = Value, color = Industry)) +
+  geom_line() +
+  theme_agData()
+```

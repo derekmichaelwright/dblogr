@@ -406,7 +406,7 @@ mp <- ggplot(xx, aes(x = "", y = -Percent, fill = Source)) +
   geom_col(color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, breaks = myItems[c(9:1,10)],
                     values = myColors[c(9:1,10)]) +
-  coord_polar("y", start = 360) +
+  coord_polar("y", start = 0) +
   theme_agData_pie() +
   labs(title = "Percent of Global Energy Consumption - {round(frame_time)}",
        caption = myCaption) +
@@ -830,6 +830,7 @@ x2 <- d1 %>% filter(Source %in% myItems[7:9]) %>%
 xx <- left_join(x1, x2, by = "Year") 
 # Plot
 mp <- ggplot(xx, aes(x = `Fossil Fuels` / 1000, y = Percent)) +
+  stat_regline_equation(aes(label = ..rr.label..)) +
   stat_smooth(geom = "line", method = "lm", alpha = 0.7) +
   geom_point(size = 2.5, color = "steelblue", alpha = 0.7) +
   theme_agData(legend.position = "none") +
