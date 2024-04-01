@@ -455,7 +455,7 @@ mp <- gg_Manhattan(folder = "GWAS_Results/",
                    labels = c("845","948","759"),
                    vline.colors = rep("green", 3),
                    facet = F, vline.legend = T,
-                   models = c("MLM","MLMM","FarmCPU","BLINK")) %>%
+                   models = c("MLM","MLMM","FarmCPU","BLINK") ) %>%
   annotate_figure(fig.lab.pos = "bottom.right", fig.lab.size = 6,
                   fig.lab = myCaption)
 ggsave("Figures_Testa_Pattern_01_01.png", mp, width = 12, height = 4, bg = "white")
@@ -476,7 +476,7 @@ mp <- gg_Manhattan(folder = "GWAS_Results/",
                    facet = T, vline.legend = T) %>%
   annotate_figure(fig.lab.pos = "bottom.right", fig.lab.size = 6,
                   fig.lab = myCaption)
-ggsave("Figures_Testa_Pattern_02_01.png", mp, width = 12, height = 10)
+ggsave("Figures_Testa_Pattern_02_01.png", mp, width = 12, height = 10, bg = "white")
 ```
 
 The MLM method appears to be the most appropriate with the lowest amount of potential false positives. The Additive model produced one very strong association peak, while the Dominant Model produced two. 
@@ -498,7 +498,7 @@ mp <- gg_Manhattan(folder = "GWAS_Results/",
                    models = "MLM") %>%
   annotate_figure(fig.lab.pos = "bottom.right", fig.lab.size = 6,
                   fig.lab = myCaption)
-ggsave("Figures_Testa_Pattern_03_01.png", mp, width = 12, height = 4)
+ggsave("Figures_Testa_Pattern_03_01.png", mp, width = 12, height = 4, bg = "white")
 ```
 
 ---
@@ -519,8 +519,8 @@ list_Top_Markers(trait = "Testa_Pattern", model = "MLM",
 ![](Figures_Testa_Pattern_04_01.png)
 
 ```{r echo = T, eval = F}
-mp <- gg_Marker(myG, myY, trait = "Testa_Pattern", type = "bar",
-                marker = "Lcu.2RBY.Chr6p12213490") +
+mp <- gg_Marker_Bar(myG = myG, myY = myY, trait = "Testa_Pattern",
+                markers = "Lcu.2RBY.Chr6p12213490") +
   labs(caption = myCaption)
 ggsave("Figures_Testa_Pattern_04_01.png", mp, width = 6, height = 4)
 ```
@@ -532,8 +532,8 @@ The peak on Chr 2 is a false positive.
 ![](Figures_Testa_Pattern_04_02.png)
 
 ```{r echo = T, eval = F}
-mp <- gg_Marker(myG, myY, trait ="Testa_Pattern", type = "bar",
-                marker = "Lcu.2RBY.Chr2p383533077") +
+mp <- gg_Marker_Bar(myG = myG, myY = myY, trait = "Testa_Pattern",
+                markers = "Lcu.2RBY.Chr2p383533077") +
   labs(caption = myCaption)
 ggsave("Figures_Testa_Pattern_04_02.png", mp, width = 6, height = 4)
 ```
@@ -564,11 +564,9 @@ ggsave("Figures_Testa_Pattern_05_01.png", mp, width = 6, height = 10)
 ![](Figures_Testa_Pattern_06_01.png)
 
 ```{r echo = T, eval = F}
-mp <- gg_Volcano(folder = "GWAS_Results/", 
-                 trait = "Testa_Pattern",
-                 markers = c("Lcu.2RBY.Chr6p12192948",
-                             "Lcu.2RBY.Chr6p12212845"), 
-                 labels = c("12192948", "12212845")) +
+mp <- gg_Volcano(folder = "GWAS_Results/", trait = "Testa_Pattern",
+                 markers = c("Lcu.2RBY.Chr6p12192948", "Lcu.2RBY.Chr6p12212845"), 
+                 labels = c("Chr6p12192948", "Chr6p12212845")) +
   labs(caption = myCaption)
 ggsave("Figures_Testa_Pattern_06_01.png", mp, width = 12, height = 4)
 ```
@@ -611,7 +609,7 @@ mp <- gg_Manhattan(folder = "GWAS_Results/",
                    facet = T, vline.legend = T) %>%
   annotate_figure(fig.lab.pos = "bottom.right", fig.lab.size = 6,
                   fig.lab = myCaption)
-ggsave("Figures_DTF_Nepal_2017_02_01.png", mp, width = 12, height = 10)
+ggsave("Figures_DTF_Nepal_2017_02_01.png", mp, width = 12, height = 10, bg = "white")
 ```
 
 ---
@@ -629,7 +627,7 @@ mp <- gg_Manhattan(folder = "GWAS_Results/",
                    models = "MLM") %>%
   annotate_figure(fig.lab.pos = "bottom.right", fig.lab.size = 6,
                   fig.lab = myCaption)
-ggsave("Figures_DTF_Nepal_2017_03_01.png", mp, width = 12, height = 4)
+ggsave("Figures_DTF_Nepal_2017_03_01.png", mp, width = 12, height = 4, bg = "white")
 ```
 
 ```{r echo = F, eval = F}
@@ -655,8 +653,9 @@ list_Top_Markers(trait = "DTF_Nepal_2017",
 ![](Figures_DTF_Nepal_2017_04_01.png)
 
 ```{r echo = T, eval = F}
-mp <- gg_Marker(myG, myY, trait = "DTF_Nepal_2017", type = "box",
-                marker = "Lcu.2RBY.Chr2p42543877") +
+mp <- gg_Marker_Box(myG = myG, myY = myY, 
+                    trait = "DTF_Nepal_2017",
+                    markers = "Lcu.2RBY.Chr2p42543877") +
   labs(caption = myCaption)
 ggsave("Figures_DTF_Nepal_2017_04_01.png", mp, width = 6, height = 4)
 ```
@@ -666,8 +665,9 @@ ggsave("Figures_DTF_Nepal_2017_04_01.png", mp, width = 6, height = 4)
 ![](Figures_DTF_Nepal_2017_04_02.png)
 
 ```{r echo = T, eval = F}
-mp <- gg_Marker(myG, myY, trait = "DTF_Nepal_2017", type = "box", 
-                marker = "Lcu.2RBY.Chr5p1069654") +
+mp <- gg_Marker_Box(myG = myG, myY = myY, 
+                    trait = "DTF_Nepal_2017", 
+                    markers = "Lcu.2RBY.Chr5p1069654") +
   labs(caption = myCaption)
 ggsave("Figures_DTF_Nepal_2017_04_02.png", mp, width = 6, height = 4)
 ```
@@ -679,9 +679,8 @@ Now lets plot both markers
 ![](Figures_DTF_Nepal_2017_04_03.png)
 
 ```{r echo = T, eval = F}
-mp <- gg_Marker(myG, myY, trait = "DTF_Nepal_2017", type = "box",
-                marker = "Lcu.2RBY.Chr2p42543877",  
-                marker2 = "Lcu.2RBY.Chr5p1069654") +
+mp <- gg_Marker_Box(myG = myG, myY = myY, trait = "DTF_Nepal_2017",
+                markers = c("Lcu.2RBY.Chr2p42543877", "Lcu.2RBY.Chr5p1069654")) +
   labs(caption = myCaption)
 ggsave("Figures_DTF_Nepal_2017_04_03.png", mp, width = 6, height = 4)
 ```
@@ -731,7 +730,9 @@ ggsave("Figures_DTF_Nepal_2017_05_02.png", mp, width = 6, height = 10)
 ![](Figures_DTF_Nepal_2017_06_01.png)
 
 ```{r echo = T, eval = F}
-mp <- gg_Volcano(folder = "GWAS_Results/", trait = "DTF_Nepal_2017") +
+mp <- gg_Volcano(folder = "GWAS_Results/", trait = "DTF_Nepal_2017",
+                 markers = c("Lcu.2RBY.Chr2p42543877", "Lcu.2RBY.Chr5p1069654"), 
+                 labels = c("Chr2p42543877", "Chr5p1069654")) +
   labs(caption = myCaption)
 ggsave("Figures_DTF_Nepal_2017_06_01.png", mp, width = 12, height = 4)
 ```
@@ -793,7 +794,7 @@ mp <- gg_Manhattan(folder = "GWAS_Results/",
                    facet = T, vline.legend = T) %>%
   annotate_figure(fig.lab.pos = "bottom.right", fig.lab.size = 6,
                   fig.lab = myCaption)
-ggsave("Figures_DTF_Sask_2017_02_01.png", mp, width = 12, height = 10)
+ggsave("Figures_DTF_Sask_2017_02_01.png", mp, width = 12, height = 10, bg = "white")
 ```
 
 ---
@@ -811,7 +812,7 @@ mp <- gg_Manhattan(folder = "GWAS_Results_CV_b/",
                    facet = T, vline.legend = T) %>%
   annotate_figure(fig.lab.pos = "bottom.right", fig.lab.size = 6,
                   fig.lab = myCaption)
-ggsave("Figures_DTF_Sask_2017_02_02.png", mp, width = 12, height = 10)
+ggsave("Figures_DTF_Sask_2017_02_02.png", mp, width = 12, height = 10, bg = "white")
 ```
 
 ---
@@ -829,7 +830,7 @@ mp <- gg_Manhattan(folder = "GWAS_Results/",
                    models = "MLMM") %>%
   annotate_figure(fig.lab.pos = "bottom.right", fig.lab.size = 6,
                   fig.lab = myCaption)
-ggsave("Figures_DTF_Sask_2017_03_01.png", mp, width = 12, height = 4)
+ggsave("Figures_DTF_Sask_2017_03_01.png", mp, width = 12, height = 4, bg = "white")
 ```
 
 ---
@@ -848,7 +849,7 @@ mp <- gg_Manhattan(folder = "GWAS_Results_CV_b/",
                    models = "FarmCPU") %>%
   annotate_figure(fig.lab.pos = "bottom.right", fig.lab.size = 6,
                   fig.lab = myCaption)
-ggsave("Figures_DTF_Sask_2017_03_02.png", mp, width = 12, height = 4)
+ggsave("Figures_DTF_Sask_2017_03_02.png", mp, width = 12, height = 4, bg = "white")
 ```
 
 ---
@@ -867,8 +868,8 @@ list_Top_Markers(trait = "DTF_Sask_2017", model = "MLM",
 ![](Figures_DTF_Sask_2017_04_01.png)
 
 ```{r echo = T, eval = F}
-mp <- gg_Marker(myG, myY, trait = "DTF_Sask_2017", type = "box", 
-                marker = "Lcu.2RBY.Chr2p46908331") +
+mp <- gg_Marker_Box(myG = myG, myY = myY, trait = "DTF_Sask_2017",
+                    markers = "Lcu.2RBY.Chr2p46908331") +
   labs(caption = myCaption)
 ggsave("Figures_DTF_Sask_2017_04_01.png", mp, width = 6, height = 4)
 ```
@@ -878,8 +879,8 @@ ggsave("Figures_DTF_Sask_2017_04_01.png", mp, width = 6, height = 4)
 ![](Figures_DTF_Sask_2017_04_02.png)
 
 ```{r echo = T, eval = F}
-mp <- gg_Marker(myG, myY, trait = "DTF_Sask_2017", type = "box", 
-                marker = "Lcu.2RBY.Chr6p2528817") +
+mp <- gg_Marker_Box(myG = myG, myY = myY, trait = "DTF_Sask_2017",
+                    markers = "Lcu.2RBY.Chr6p2528817") +
   labs(caption = myCaption)
 ggsave("Figures_DTF_Sask_2017_04_02.png", mp, width = 6, height = 4)
 ```
@@ -911,7 +912,9 @@ ggsave("Figures_DTF_Sask_2017_05_01.png", mp, width = 6, height = 10)
 ![](Figures_DTF_Sask_2017_06_01.png)
 
 ```{r echo = T, eval = F}
-mp <- gg_Volcano(folder = "GWAS_Results/", trait = "DTF_Sask_2017") +
+mp <- gg_Volcano(folder = "GWAS_Results/", trait = "DTF_Sask_2017",
+                 markers = "Lcu.2RBY.Chr6p2528817", 
+                 labels = "Chr6p2528817") +
   labs(caption = myCaption)
 ggsave("Figures_DTF_Sask_2017_06_01.png", mp, width = 12, height = 4)
 ```
@@ -922,6 +925,8 @@ ggsave("Figures_DTF_Sask_2017_06_01.png", mp, width = 12, height = 4)
 
 ```{r echo = T, eval = F}
 mp <- gg_Volcano(folder = "GWAS_Results_CV_b/", trait = "DTF_Sask_2017",
+                 markers = "Lcu.2RBY.Chr6p2528817", 
+                 labels = "Chr6p2528817",
                  title = "DTF_Sask_2017 | CV = b") +
   labs(caption = myCaption)
 ggsave("Figures_DTF_Sask_2017_06_02.png", mp, width = 12, height = 4)
@@ -1145,14 +1150,15 @@ mp
 
 Package Source: https://github.com/YinLiLin/R-CMplot
 
-![](SNP-Density.Col1.Col0.jpg)
+![](Marker_Density.LDP.jpg)
 
 ```{r eval = F}
 library(CMplot)
 xx <- myG %>% select(rs, chrom, pos) 
 CMplot(xx, plot.type="d", bin.size=1e7, 
        chr.den.col=c("darkgreen", "darkgoldenrod3", "darkred"), 
-       file="jpg", file.output=T, verbose=F, width=9, height=6)
+       file="jpg", file.output=T, verbose=F, width=9, height=6,
+       file.name = "LDP")
 ```
 
 ---

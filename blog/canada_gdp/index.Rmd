@@ -84,7 +84,7 @@ d3 <- read.csv("1710000901_databaseLoadingData.csv") %>%
 
 ## 2017
 
-![](canada_gdp_01.png)
+![](canada_gdp_1_01.png)
 
 ```{r}
 # Prep data
@@ -102,14 +102,14 @@ mp <- ggplot(xx, aes(x = Area, y = Value, fill = Area)) +
         axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = paste("GDP by Province", max(xx$Year)), 
        y = "Current Dollars (Billion)", x = NULL, caption = myCaption)
-ggsave("canada_gdp_01.png", mp, width = 6, height = 4)
+ggsave("canada_gdp_1_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## All Data
 
-![](canada_gdp_02.png)
+![](canada_gdp_1_02.png)
 
 ```{r}
 # Prep data
@@ -119,7 +119,7 @@ xx <- d1 %>%
 x2 <- xx %>% filter(Year == max(Year), Value > 200)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) + 
-  geom_line(linewidth = 1) +
+  geom_line(linewidth = 1, alpha = 0.7) +
   scale_color_manual(values = myCs[match(levels(xx$Area), myAreas)]) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-1)) +
   scale_y_continuous(sec.axis = sec_axis(~ ., breaks = x2$Value, 
@@ -127,27 +127,27 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   theme_agData(legend.position = "none") +
   labs(title = "GDP by Province", x = NULL,
        y = "Current Dollars (Billion)", caption = myCaption)
-ggsave("canada_gdp_02.png", mp, width = 6, height = 4)
+ggsave("canada_gdp_1_02.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## By Province
 
-![](canada_gdp_03.png)
+![](canada_gdp_1_03.png)
 
 ```{r}
 # Plot
 mp <- mp + facet_wrap(Area ~ ., scale = "free_y", ncol = 5) + 
   scale_y_continuous()
-ggsave("canada_gdp_03.png", mp, width = 12, height = 6)
+ggsave("canada_gdp_1_03.png", mp, width = 12, height = 6)
 ```
 
 ---
 
 ## West vs. East
 
-![](canada_gdp_04.png)
+![](canada_gdp_1_04.png)
 
 ```{r}
 # Prep data
@@ -162,13 +162,13 @@ xx <- xx %>% filter(!is.na(Value)) %>%
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Region)) + 
   geom_line(linewidth = 1.5, alpha = 0.7) + 
-  geom_point(size = 2) +
+  geom_point(size = 1.75) +
   coord_cartesian(xlim = c(1997.75, 2015.25)) +
   scale_color_manual(values = c("darkblue", "darkred")) +
   theme_agData(legend.position = "bottom") +
   labs(title = "GDP in Canada", x = NULL,
        y = "Current Dollars (Billion)",  caption = myCaption)
-ggsave("canada_gdp_04.png", mp, width = 6, height = 4)
+ggsave("canada_gdp_1_04.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -177,7 +177,7 @@ ggsave("canada_gdp_04.png", mp, width = 6, height = 4)
 
 ## 2017
 
-![](canada_gdp_05.png)
+![](canada_gdp_2_01.png)
 
 ```{r}
 # Prep data
@@ -196,18 +196,18 @@ mp <- ggplot(x2, aes(x = Area, y = GDP_PP, fill = Area)) +
         axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = paste("GDP Per Person by Province -", max(xx$Year)), 
        y = "Current Dollars (x1000)", x = NULL, caption = myCaption)
-ggsave("canada_gdp_05.png", mp, width = 6, height = 4)
+ggsave("canada_gdp_2_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## By Province
 
-![](canada_gdp_06.png)
+![](canada_gdp_2_02.png)
 
 ```{r}
 mp <- ggplot(xx, aes(x = Year, y = GDP_PP, color = Area)) + 
-  geom_line(linewidth = 1) +
+  geom_line(linewidth = 1, alpha = 0.7) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-1)) +
   scale_color_manual(values = myCs[match(levels(x2$Area), myAreas)]) +
   scale_y_continuous(sec.axis = sec_axis(~ ., breaks = x2$GDP_PP, 
@@ -215,19 +215,19 @@ mp <- ggplot(xx, aes(x = Year, y = GDP_PP, color = Area)) +
   theme_agData(legend.position = "none") +
   labs(title = "GDP Per Person", x = NULL,
        y = "Current Dollars (Million)", caption = myCaption)
-ggsave("canada_gdp_06.png", mp, width = 6, height = 4)
+ggsave("canada_gdp_2_02.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## By Province Facetted
 
-![](canada_gdp_07.png)
+![](canada_gdp_2_03.png)
 
 ```{r}
 mp <- mp + facet_wrap(Area ~ ., ncol = 5) + 
   scale_y_continuous()
-ggsave("canada_gdp_07.png", mp, width = 10, height = 6)
+ggsave("canada_gdp_2_03.png", mp, width = 10, height = 6)
 ```
 
 ```{r echo = F}
@@ -238,7 +238,7 @@ ggsave("featured.png", mp, width = 10, height = 6)
 
 ## West vs. East
 
-![](canada_gdp_08.png)
+![](canada_gdp_2_04.png)
 
 ```{r}
 # Prep data
@@ -256,14 +256,44 @@ mp <- ggplot(xx, aes(x = Year, y = GDP_PP, color = Region)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "GDP Per Person in Canada", x = NULL,
        y = "Current Dollars (Million)", caption = myCaption)
-ggsave("canada_gdp_08.png", mp, width = 6, height = 4)
+ggsave("canada_gdp_2_04.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-# Goods vs. Services
+# By Industry
 
-![](canada_gdp_09.png)
+![](canada_gdp_3_01.png)
+
+```{r}
+# Prep data
+industries <- c("Information and communication technology sector [T013]",
+                "Energy sector [T016]", "Industrial production [T010]",
+                "Goods-producing industries [T002]",
+                "Service-producing industries [T003]",
+                "All industries [T001]",
+                "Finance and insurance, real estate and renting and leasing and management of companies and enterprises")
+xx <- d2 %>% 
+  group_by(Year, Industry) %>% 
+  summarise(Value = sum(Value, na.rm = T)) %>%
+  filter(!Industry %in% industries)
+levs <- xx %>% arrange(rev(Value)) %>% pull(Industry) %>% unique() 
+xx <- xx %>% mutate(Industry = factor(Industry, levels = levs))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Industry)) +
+  geom_line(alpha = 0.7, size = 1.5) +
+  facet_wrap(Industry~., scales = "free_y", ncol = 4,
+             labeller = label_wrap_gen(width = 50)) +
+  theme_agData(legend.position = "none") +
+  labs(x = NULL,y = "Million $", caption = myCaption)
+ggsave("canada_gdp_3_01.png", mp, width = 14, height = 10)
+```
+
+---
+
+## Goods vs. Services
+
+![](canada_gdp_3_02.png)
 
 ```{r}
 # Prep data
@@ -274,12 +304,13 @@ xx <- d2 %>% filter(Industry %in% industries) %>%
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, fill = Industry)) +
   geom_col(alpha = 0.7) +
-  facet_wrap(Area ~ ., ncol = 5, scales = "free_y") +
+  facet_wrap(Area ~ ., ncol = 7, scales = "free_y") +
   scale_fill_manual(name = NULL, values = c("darkred", "darkgreen")) +
-  theme_agData(legend.position = "bottom") +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "GDP by Industry", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_gdp_09.png", mp, width = 10, height = 6)
+ggsave("canada_gdp_3_02.png", mp, width = 12, height = 5)
 ```
 
 ---
@@ -320,78 +351,78 @@ ggGDP_Areas <- function(year, areas, colors) {
 
 ## Alberta vs. Quebec
 
-![](canada_gdp_10.png)
+![](canada_gdp_4_01.png)
 
 ```{r}
 mp <- ggGDP_Areas(year = 2019,
                   areas = c("Alberta", "Quebec"),
                   colors = c("darkblue", "lightblue"))
-ggsave("canada_gdp_10.png", mp, width = 8, height = 6)
+ggsave("canada_gdp_4_01.png", mp, width = 8, height = 6)
 ```
 
 ---
 
 ## Alberta vs. Ontario
 
-![](canada_gdp_11.png)
+![](canada_gdp_4_02.png)
 
 ```{r}
 mp <- ggGDP_Areas(year = 2019,
                   areas = c("Alberta", "Ontario"),
                   colors = c("darkblue", "darkred"))
-ggsave("canada_gdp_11.png", mp, width = 8, height = 6)
+ggsave("canada_gdp_4_02.png", mp, width = 8, height = 6)
 ```
 
 ---
 
 ## Alberta vs. British Columbia
 
-![](canada_gdp_12.png)
+![](canada_gdp_4_03.png)
 
 ```{r}
 mp <- ggGDP_Areas(year = 2019,
                   areas = c("Alberta", "British Columbia"), 
                   colors = c("darkblue", "darkgreen"))
-ggsave("canada_gdp_12.png", mp, width = 8, height = 6)
+ggsave("canada_gdp_4_03.png", mp, width = 8, height = 6)
 ```
 
 ---
 
 ## Alberta vs. Saskatchewan
 
-![](canada_gdp_13.png)
+![](canada_gdp_4_04.png)
 
 ```{r}
 mp <- ggGDP_Areas(year = 2019, 
                   areas = c("Alberta", "Saskatchewan"), 
                   colors = c("darkblue", "darkorange3"))
-ggsave("canada_gdp_13.png", mp, width = 8, height = 6)
+ggsave("canada_gdp_4_04.png", mp, width = 8, height = 6)
 ```
 
 ---
 
 ## Saskatchewan vs. Manitoba
 
-![](canada_gdp_14png)
+![](canada_gdp_4_05.png)
 
 ```{r}
 mp <- ggGDP_Areas(year = 2019,
                   areas = c("Saskatchewan", "Manitoba"), 
                   colors = c("darkorange3", "darkmagenta"))
-ggsave("canada_gdp_14.png", mp, width = 8, height = 6)
+ggsave("canada_gdp_4_05.png", mp, width = 8, height = 6)
 ```
 
 ---
 
 ## Saskatchewan vs. Ontario
 
-![](canada_gdp_15.png)
+![](canada_gdp_4_06.png)
 
 ```{r}
 mp <- ggGDP_Areas(year = 2019, 
                   areas = c("Saskatchewan", "Ontario"), 
                   colors = c("darkred", "darkorange3"))
-ggsave("canada_gdp_15.png", mp, width = 8, height = 6)
+ggsave("canada_gdp_4_06.png", mp, width = 8, height = 6)
 ```
 
 ---
@@ -435,40 +466,24 @@ ggGDP_Years <- function(area, years, colors) {
 
 # Canadian GDP by Industry
 
-![](canada_gdp_16.png)
+![](canada_gdp_5_01.png)
 
 ```{r}
 mp <- ggGDP_Years(area = "Canada",
                   years = c(2019, 2022), 
                   colors = c("steelblue","darkred"))
-ggsave("canada_gdp_16.png", mp, width = 8, height = 6)
+ggsave("canada_gdp_5_01.png", mp, width = 8, height = 6)
 ```
 
 ---
 
-![](canada_gdp_17.png)
+![](canada_gdp_5_02.png)
 
 ```{r}
 mp <- ggGDP_Years(area = "Canada",
                   years = c(2008, 2015, 2019, 2022), 
                   colors = c("steelblue","darkblue","red3","darkred"))
-ggsave("canada_gdp_17.png", mp, width = 8, height = 6)
+ggsave("canada_gdp_5_02.png", mp, width = 8, height = 6)
 ```
 
 ---
-
-```{r eval = F, echo = F}
-# Industries Over the Years
-
-## Canada
-
-# Prep data
-myIs <- c("Energy sector [T016]", "Industrial production [T010]",
-          "Goods-producing industries [T002]")
-xx <- d1 %>% filter(Industry %in% myIs) %>% group_by(Year, Industry) %>%
-  summarise(Value = sum(Value))
-# Plot
-ggplot(xx, aes(x = Year, y = Value, color = Industry)) +
-  geom_line() +
-  theme_agData()
-```
