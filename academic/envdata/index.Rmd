@@ -14,11 +14,13 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Introduction
 
-The purpose of this document is to provide a few examples of how to manipulate and plot the environmental data. The data for this vignette comes from lentil field trials in the AGILE project.
+The purpose of this document is to provide a few examples of how to manipulate and plot the environmental data. The data for this vignette comes from the `EnvRtype` and `geosphere` R packages and lentil field trials in the AGILE project.
 
 ---
 
 # Data
+
+> - `r shiny::icon("r-studio")` https://github.com/allogamous/EnvRtype
 
 Data sets can be downloaded from [**knowpulse.usask.ca/**](http://knowpulse.usask.ca/portal/) or my `r shiny::icon("github")` [**github**](https://github.com/derekmichaelwright/dblogr/tree/master/content/academic/envdata).
 
@@ -31,7 +33,62 @@ Data sets can be downloaded from [**knowpulse.usask.ca/**](http://knowpulse.usas
 ```{r}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
+# devtools::install_github('allogamous/EnvRtype')
+library(EnvRtype)
+# install.packages("geosphere")
+library(geosphere)
 ```
+
+```{r eval = F, echo = F}
+library(agiler)
+xx <- AGILE_Timeline %>% 
+  filter(Year != 2015, Location != "UofS Greenhouse", Expt != "USA 2016") %>% 
+  select(Expt, Location, Year, Lat, Lon, Start, End)
+write.csv(xx, "AGILE_Expts.csv", row.names = F)
+```
+
+
+# EnvRtype and geosphere R packages
+
+```{r}
+# Prep data from 
+xx <- read.csv("AGILE_Expts.csv")
+DT::datatable(xx)
+```
+
+> - `r shiny::icon("save")` [My_EnvData.csv](My_EnvData.csv)
+
+```{r}
+# Prep data
+ee <- get_weather(env.id = xx$Expt, lat = xx$Lat, lon = xx$Lon,
+                  start.day = xx$Start, end.day = xx$End) %>%
+  mutate(DayLength = daylength(lat = .$LAT, doy = .$YYYYMMDD) )
+#
+write.csv(ee, "My_EnvData.csv", row.names = F)
+DT::datatable(ee)
+```
+
+---
+
+```{r}
+mp <- ggplot(ee, aes(x = YYYYMMDD)) +
+  geom_line(aes(y = T2M)) +
+  geom_line(aes(y = DayLength), color = "darkblue") +
+  geom_ribbon(aes(ymin = T2M_MIN, ymax = T2M_MAX), 
+              fill = alpha("Red", 0.25), 
+              color = alpha("Red", 0.25) ) +
+  geom_col(aes(y = PRECTOT), fill = "steelblue") +
+  scale_x_date(date_breaks = "month", date_labels = "%b") +
+  facet_grid(. ~ env, scales = "free_x", space = "free_x") +
+  theme_agData()
+ggsave("envdata_1_01.png", mp, width = 8, height = 4)
+```
+
+![](envdata_1_01.png)
+
+---
+
+# Manually Collected Data
 
 ```{r eval = F}
 # Read in data
@@ -129,10 +186,10 @@ mp <- ggplot(xx, aes(x = DateTime, y = Value, color = LoggerID)) +
   scale_colour_manual(values = myCols) +
   labs(title = "Sutherland, Canada 2016", y = NULL, x = NULL,
        caption = myCaption)
-ggsave("envdata_01.png", mp, width = 12, height = 15, limitsize = F)
+ggsave("envdata_2_01.png", mp, width = 12, height = 15, limitsize = F)
 ```
 
-![](envdata_01.png)
+![](envdata_2_01.png)
 
 ---
 
@@ -153,10 +210,10 @@ mp <- ggplot(xx, aes(x = DateTime, y = Value, color = LoggerID)) +
   scale_x_datetime(date_labels = "%b %Y" , date_breaks = "1 month") +
   labs(title = "Sutherland, Canada 2016", y = "Temperautre (C)", x = NULL,
        caption = myCaption)
-ggsave("envdata_02.png", mp, width = 7, height = 5)
+ggsave("envdata_2_02.png", mp, width = 7, height = 5)
 ```
 
-![](envdata_02.png)
+![](envdata_2_02.png)
 
 ---
 
@@ -168,10 +225,10 @@ mp <- mp +
                    date_labels = "%b %Y" , 
                    limits = as.POSIXct(c("2016-07-01","2016-08-01"))) +
   ylim(c(5,45))
-ggsave("envdata_03.png", mp, width = 7, height = 5)
+ggsave("envdata_2_03.png", mp, width = 7, height = 5)
 ```
 
-![](envdata_03.png)
+![](envdata_2_03.png)
 
 ---
 
@@ -214,10 +271,10 @@ mp <- ggplot(xx, aes(x = DaysAfterPlanting, y = Mean, color = Location)) +
   labs(title = "Temperature", 
        y = "Degrees Celsius", x = "Days After Planting",
        caption = myCaption)
-ggsave("envdata_04.png", mp, width = 6, height = 4)
+ggsave("envdata_2_04.png", mp, width = 6, height = 4)
 ```
 
-![](envdata_04.png)
+![](envdata_2_04.png)
 
 ---
 
@@ -238,10 +295,10 @@ mp <- ggplot(xx, aes(x = DaysAfterPlanting, y = Mean, color = Location)) +
   labs(title = "Day Lengths",
        y = "Hours", x = "Days After Planting",
        caption = myCaption)
-ggsave("envdata_05.png", mp, width = 6, height = 4)
+ggsave("envdata_2_05.png", mp, width = 6, height = 4)
 ```
 
-![](envdata_05.png)
+![](envdata_2_05.png)
 
 ---
 
@@ -266,10 +323,10 @@ mp <- ggplot(xx, aes(x = Location, y = Rainfall, fill = Year)) +
   coord_flip() +
   labs(title = "Total Precipitation",
        caption = myCaption)
-ggsave("envdata_06.png", mp, width = 6, height = 4)
+ggsave("envdata_2_06.png", mp, width = 6, height = 4)
 ```
 
-![](envdata_06.png)
+![](envdata_2_06.png)
 
 ---
 
@@ -286,10 +343,10 @@ mp <- ggplot(xx, aes(x = DaysAfterPlanting, y = Value)) +
   theme_agData() +
   labs(title = "Precipitation", y = "mm", x = "Days After Planting",
        caption = myCaption)
-ggsave("envdata_07.png", mp, width = 6, height = 8)
+ggsave("envdata_2_07.png", mp, width = 6, height = 8)
 ```
 
-![](envdata_07.png)
+![](envdata_2_07.png)
 
 ---
 
@@ -350,14 +407,14 @@ mp <- ggplot(xx, aes(x = Date, y = Temp_mean)) +
   coord_cartesian(ylim=c(0, 45)) +
   theme_agData() +
   labs(caption = myCaption)
-ggsave("envdata_08.png", mp, width = 6, height = 5.5)
+ggsave("envdata_2_08.png", mp, width = 6, height = 5.5)
 ```
 
 ```{r echo = F}
 ggsave("featured.png", mp, width = 6, height = 5.5)
 ```
 
-![](envdata_08.png)
+![](envdata_2_08.png)
 
 ---
 
@@ -382,10 +439,10 @@ mp <- ggplot(xx, aes(x = DateTime, y = Value, color = Measurement)) +
   labs(title = "Soil Temperatures: Sutherland, Canada 2016",
        y = NULL, x = NULL,
        caption = myCaption)
-ggsave("envdata_09.png", mp, width = 6, height = 4)
+ggsave("envdata_2_09.png", mp, width = 6, height = 4)
 ```
 
-![](envdata_09.png)
+![](envdata_2_09.png)
 
 ---
 
@@ -414,10 +471,10 @@ envPlot <- function(xx) {
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Sutherland, Canada", Year == 2016))
-ggsave("envdata_expt_01.png", mp, width = 12, height = 15)
+ggsave("envdata_3_01.png", mp, width = 12, height = 15)
 ```
 
-![](envdata_expt_01.png)
+![](envdata_3_01.png)
 
 ---
 
@@ -425,10 +482,10 @@ ggsave("envdata_expt_01.png", mp, width = 12, height = 15)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Sutherland, Canada", Year == 2017))
-ggsave("envdata_expt_02.png", mp, width = 12, height = 11)
+ggsave("envdata_3_02.png", mp, width = 12, height = 11)
 ```
 
-![](envdata_expt_02.png)
+![](envdata_3_02.png)
 
 ---
 
@@ -436,10 +493,10 @@ ggsave("envdata_expt_02.png", mp, width = 12, height = 11)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Sutherland, Canada", Year == 2018))
-ggsave("envdata_expt_03.png", mp, width = 12, height = 11)
+ggsave("envdata_3_03.png", mp, width = 12, height = 11)
 ```
 
-![](envdata_expt_03.png)
+![](envdata_3_03.png)
 
 ---
 
@@ -447,10 +504,10 @@ ggsave("envdata_expt_03.png", mp, width = 12, height = 11)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Rosthern, Canada", Year == 2016))
-ggsave("envdata_expt_04.png", mp, width = 12, height = 10)
+ggsave("envdata_3_04.png", mp, width = 12, height = 10)
 ```
 
-![](envdata_expt_04.png)
+![](envdata_3_04.png)
 
 ---
 
@@ -458,10 +515,10 @@ ggsave("envdata_expt_04.png", mp, width = 12, height = 10)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Rosthern, Canada", Year == 2017))
-ggsave("envdata_expt_05.png", mp, width = 12, height = 10)
+ggsave("envdata_3_05.png", mp, width = 12, height = 10)
 ```
 
-![](envdata_expt_05.png)
+![](envdata_3_05.png)
 
 ---
 
@@ -469,10 +526,10 @@ ggsave("envdata_expt_05.png", mp, width = 12, height = 10)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Central Ferry, USA", Year == 2017))
-ggsave("envdata_expt_06.png", mp, width = 12, height = 23)
+ggsave("envdata_3_06.png", mp, width = 12, height = 23)
 ```
 
-![](envdata_expt_06.png)
+![](envdata_3_06.png)
 
 ---
 
@@ -480,10 +537,10 @@ ggsave("envdata_expt_06.png", mp, width = 12, height = 23)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Central Ferry, USA", Year == 2018))
-ggsave("envdata_expt_07.png", mp, width = 12, height = 10)
+ggsave("envdata_3_07.png", mp, width = 12, height = 10)
 ```
 
-![](envdata_expt_07.png)
+![](envdata_3_07.png)
 
 ---
 
@@ -491,10 +548,10 @@ ggsave("envdata_expt_07.png", mp, width = 12, height = 10)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Bhopal, India", Year == 2016))
-ggsave("envdata_expt_08.png", mp, width = 12, height = 10)
+ggsave("envdata_3_08.png", mp, width = 12, height = 10)
 ```
 
-![](envdata_expt_08.png)
+![](envdata_3_08.png)
 
 ---
 
@@ -502,10 +559,10 @@ ggsave("envdata_expt_08.png", mp, width = 12, height = 10)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Bhopal, India", Year == 2017))
-ggsave("envdata_expt_09.png", mp, width = 12, height = 5)
+ggsave("envdata_3_09.png", mp, width = 12, height = 5)
 ```
 
-![](envdata_expt_09.png)
+![](envdata_3_09.png)
 
 ---
 
@@ -513,10 +570,10 @@ ggsave("envdata_expt_09.png", mp, width = 12, height = 5)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Jessore, Bangladesh", Year == 2016))
-ggsave("envdata_expt_10.png", mp, width = 12, height = 8)
+ggsave("envdata_3_10.png", mp, width = 12, height = 8)
 ```
 
-![](envdata_expt_10.png)
+![](envdata_3_10.png)
 
 ---
 
@@ -524,10 +581,10 @@ ggsave("envdata_expt_10.png", mp, width = 12, height = 8)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Jessore, Bangladesh", Year == 2017))
-ggsave("envdata_expt_11.png", mp, width = 12, height = 4)
+ggsave("envdata_3_11.png", mp, width = 12, height = 4)
 ```
 
-![](envdata_expt_11.png)
+![](envdata_3_11.png)
 
 ---
 
@@ -535,10 +592,10 @@ ggsave("envdata_expt_11.png", mp, width = 12, height = 4)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Bardiya, Nepal", Year == 2016))
-ggsave("envdata_expt_12.png", mp, width = 12, height = 5)
+ggsave("envdata_3_12.png", mp, width = 12, height = 5)
 ```
 
-![](envdata_expt_12.png)
+![](envdata_3_12.png)
 
 ---
 
@@ -546,10 +603,10 @@ ggsave("envdata_expt_12.png", mp, width = 12, height = 5)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Bardiya, Nepal", Year == 2017))
-ggsave("envdata_expt_13.png", mp, width = 12, height = 4)
+ggsave("envdata_3_13.png", mp, width = 12, height = 4)
 ```
 
-![](envdata_expt_13.png)
+![](envdata_3_13.png)
 
 ---
 
@@ -557,10 +614,10 @@ ggsave("envdata_expt_13.png", mp, width = 12, height = 4)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Marchouch, Morocco", Year == 2016))
-ggsave("envdata_expt_14.png", mp, width = 12, height = 9)
+ggsave("envdata_3_14.png", mp, width = 12, height = 9)
 ```
 
-![](envdata_expt_14.png)
+![](envdata_3_14.png)
 
 ---
 
@@ -568,10 +625,10 @@ ggsave("envdata_expt_14.png", mp, width = 12, height = 9)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Marchouch, Morocco", Year == 2017))
-ggsave("envdata_expt_15.png", mp, width = 12, height = 5)
+ggsave("envdata_3_15.png", mp, width = 12, height = 5)
 ```
 
-![](envdata_expt_15.png)
+![](envdata_3_15.png)
 
 ---
 
@@ -579,10 +636,10 @@ ggsave("envdata_expt_15.png", mp, width = 12, height = 5)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Cordoba, Spain", Year == 2016))
-ggsave("envdata_expt_16.png", mp, width = 12, height = 6)
+ggsave("envdata_3_16.png", mp, width = 12, height = 6)
 ```
 
-![](envdata_expt_16.png)
+![](envdata_3_16.png)
 
 ---
 
@@ -590,10 +647,10 @@ ggsave("envdata_expt_16.png", mp, width = 12, height = 6)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Cordoba, Spain", Year == 2017))
-ggsave("envdata_expt_17.png", mp, width = 12, height = 6)
+ggsave("envdata_3_17.png", mp, width = 12, height = 6)
 ```
 
-![](envdata_expt_17.png)
+![](envdata_3_17.png)
 
 ---
 
@@ -601,10 +658,10 @@ ggsave("envdata_expt_17.png", mp, width = 12, height = 6)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Metaponto, Italy", Year == 2016))
-ggsave("envdata_expt_18.png", mp, width = 12, height = 12)
+ggsave("envdata_3_18.png", mp, width = 12, height = 12)
 ```
 
-![](envdata_expt_18.png)
+![](envdata_3_18.png)
 
 ---
 
@@ -612,9 +669,34 @@ ggsave("envdata_expt_18.png", mp, width = 12, height = 12)
 
 ```{r}
 mp <- envPlot(filter(dd, Location == "Metaponto, Italy", Year == 2017))
-ggsave("envdata_expt_19.png", mp, width = 12, height = 11)
+ggsave("envdata_3_19.png", mp, width = 12, height = 11)
 ```
 
-![](envdata_expt_19.png)
+![](envdata_3_19.png)
+
+```{r eval = F, echo = F}
+library(geosphere)
+# Prep data
+xx <- read.csv("My_Expts.csv")
+#
+ee <- get_weather(env.id = xx$Expt, lat = xx$Lat, lon = xx$Lon,
+                  start.day = xx$Start, end.day = xx$End) %>%
+  mutate(DayLength = daylength(lat = .$LAT, doy = .$YYYYMMDD) )
+
+daylength(lat = ee$LAT, doy = ee$YYYYMMDD) 
+# Plot
+mp <- ggplot(ee, aes(x = YYYYMMDD)) +
+  geom_line(aes(y = T2M)) +
+  geom_line(aes(y = DayLength), color = "darkblue") +
+  geom_ribbon(aes(ymin = T2M_MIN, ymax = T2M_MAX), 
+              fill = alpha("Red", 0.25), 
+              color = alpha("Red", 0.25) ) +
+  geom_col(aes(y = PRECTOT), fill = "steelblue") +
+  scale_x_date(date_breaks = "month", date_labels = "%b") +
+  facet_grid(. ~ env, scales = "free_x", space = "free_x") +
+  theme_agData()
+ggsave("my_expt_01.png", mp, width = 8, height = 4)
+write.csv(ee, "Italy_EnvData.csv", row.names = F)
+```
 
 ---
