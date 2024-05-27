@@ -104,7 +104,7 @@ mp <- mp +
   view_follow(fixed_y = T, fixed_x = c(1865, NA))
 anim_save("maize_usa_gif_01.gif", mp,
           nframes = 300, fps = 20, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---

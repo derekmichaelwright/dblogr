@@ -1,0 +1,13 @@
+Questions,Answer,Party,Percent
+Origin,It was developed in a laboratory,,69
+Origin,It emerged naturally,,31
+Investigation,Satisfied,Overall,49
+Investigation,Unsatisfied,Overall,51
+Investigation,Satisfied,Republicans,31
+Investigation,Unsatisfied,Republicans,69
+Investigation,Satisfied,Democrats,70
+Investigation,Unsatisfied,Democrats,30
+Investigation,Satisfied,Independants,42
+Investigation,Unsatisfied,Independants,58
+Investigation,Satisfied,Other,69
+Investigation,Unsatisfied,Other,31

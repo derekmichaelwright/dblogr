@@ -413,7 +413,7 @@ mp <- ggplot(xx, aes(x = "", y = -Percent, fill = Source)) +
   transition_time(Year)
 anim_save("world_energy_gif_1_01.gif", mp,
           nframes = 300, fps = 10, end_pause = 30, 
-          width = 900, height = 700, res = 150)
+          width = 900, height = 700, res = 150, units = "px")
 ```
 
 ---
@@ -439,7 +439,7 @@ mp <- ggplot(d1, aes(x = 1, y = Value / 1000, fill = Source)) +
   transition_time(Year)
 anim_save("world_energy_gif_1_02.gif", mp,
           nframes = 300, fps = 10, end_pause = 30, 
-          width = 1200, height = 300, res = 150)
+          width = 1200, height = 300, res = 150, units = "px")
 ```
 
 ---
@@ -620,7 +620,7 @@ mp <- ggplot(xx, aes(x = CO2, y = GDP / 1000)) +
   transition_time(Year) 
 anim_save("world_energy_gif_2_01.gif", mp, 
           nframes = 300, fps = 10, end_pause = 30, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -762,7 +762,7 @@ mp <- ggplot(d4, aes(x = "", y = Percent, fill = Measurement)) +
   transition_time(Year)
 anim_save("world_energy_gif_3_01.gif", mp,
           nframes = 300, fps = 10, end_pause = 30, 
-          width = 900, height = 700, res = 150)
+          width = 900, height = 700, res = 150, units = "px")
 ```
 
 ---
@@ -840,6 +840,30 @@ mp <- ggplot(xx, aes(x = `Fossil Fuels` / 1000, y = Percent)) +
        x = "Thousand TWH From Fossil Fuels",
        caption = myCaption)
 ggsave("world_energy_4_05.png", mp, width = 6, height = 4)
+```
+
+```{r eval = F, echo = F}
+# Prep data
+myColors <- c("darkgreen", "darkgoldenrod2", "darkred",
+              "steelblue", "darkblue", "slategray3", "darkseagreen4")
+xx <- read.csv("jusper-table.csv") %>%
+  filter(Area != "East Africa") %>%
+  arrange(Population) %>% 
+  mutate(Area = factor(Area, levels = rev(.$Area)),
+         `Per.Capita` = Oil.Use / Population)
+myMeasures <- colnames(xx)[2:4]
+xx <- xx %>%
+  gather(Measurement, Value, 2:4) %>%
+  mutate(Measurement = factor(Measurement, levels = myMeasures))
+# Plot
+mp <- ggplot(xx, aes(x = Area, y = Value, fill = Area)) +
+  geom_col(alpha = 0.7, color = "black") +
+  facet_grid(Measurement ~ ., scales = "free_y") +
+  scale_fill_manual(values = myColors) +
+  theme_agData(legend.position = "none",
+               axis.text = element_text(angle = 45, hjust = 1)) +
+  labs(y = NULL, x = NULL)
+ggsave("world_energy_5_01.png", mp, width = 4, height = 6)
 ```
 
 ---

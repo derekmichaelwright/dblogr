@@ -180,7 +180,7 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value,
   transition_time(Year) 
 anim_save("crops_netherlands_gif_01.gif", mp,
           nframes = 600, fps = 30, end_pause = 150, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -226,7 +226,7 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value,
   transition_time(Year) 
 anim_save("crops_netherlands_gif_02.gif", mp,
           nframes = 600, fps = 30, end_pause = 150, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---

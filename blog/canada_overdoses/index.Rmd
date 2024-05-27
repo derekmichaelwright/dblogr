@@ -15,11 +15,11 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 Health Canada Data
 
-> - `r shiny::icon("globe")` https://health-infobase.canada.ca/src/doc/SRHD/Update_Deaths_2023-06.pdf
+> - `r shiny::icon("globe")` https://health-infobase.canada.ca/substance-related-harms/opioids-stimulants/
 
 BC Coroners Service
 
-> - `r shiny::icon("globe")` https://www2.gov.bc.ca/assets/gov/birth-adoption-death-marriage-and-divorce/deaths/coroners-service/statistical/illicit-drug.pdf
+> - `r shiny::icon("globe")` https://www2.gov.bc.ca/gov/content/life-events/death/coroners-service/statistical-reports
 
 Alberta Health Services
 
@@ -32,6 +32,11 @@ SK Coroners Service
 All Data
 
 > - `r shiny::icon("save")` [data_canada_overdoses.xlsx](data_canada_overdoses.xlsx)
+
+```{r echo = F, eval = F}
+# https://health-infobase.canada.ca/src/doc/SRHD/Update_Deaths_2023-06.pdf
+# https://www2.gov.bc.ca/assets/gov/birth-adoption-death-marriage-and-divorce/deaths/coroners-service/statistical/illicit-drug.pdf
+```
 
 ---
 
@@ -55,7 +60,7 @@ ca1 <- read_xlsx("data_canada_overdoses.xlsx", "Canada") %>%
 #
 # Prep BC data
 #
-myCaptionBC <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: BC GOV\nNote: most recent years data may be incomplete"
+myCaptionBC <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: BC GOV"
 #
 bc1 <- read_xlsx("data_canada_overdoses.xlsx", "BC Annual")
 #
@@ -74,7 +79,7 @@ bc4 <- read_xlsx("data_canada_overdoses.xlsx", "BC Age") %>%
 #
 # Prep AB data
 #
-myCaptionAB <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AB GOV\nNote: most recent years data may be incomplete"
+myCaptionAB <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AB GOV"
 #
 ab1 <- read_xlsx("data_canada_overdoses.xlsx", "AB Monthly") %>%
   mutate(Date = as.Date(paste(Year, Month, "15", sep = "-"), 
@@ -82,7 +87,7 @@ ab1 <- read_xlsx("data_canada_overdoses.xlsx", "AB Monthly") %>%
 #
 # Prep SK data
 #
-myCaptionSK <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: SK GOV\nNote: most recent years data may be incomplete"
+myCaptionSK <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: SK GOV"
 myRaces <- c("Unknown", "Other", "Hispanic","Black", "Asian",
              "Metis","First Nations", "Caucasian")
 #
@@ -132,7 +137,7 @@ xx <- ca1 %>% filter(Area != "Canada")
 mp <- ggplot(xx, aes(x = Year, y = Number)) +
   geom_col(fill = "darkred", color = "black", alpha = 0.7) +
   facet_wrap(Area ~ ., scales = "free_y") +
-  scale_x_continuous(breaks = 2016:2022) +
+  #scale_x_continuous(breaks = 2016:max(xx$Year)) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Drug Overdoses in Canada", 
        x = NULL, y = "Deaths", caption = myCaptionCA)
@@ -152,8 +157,8 @@ ggsave("canada_overdoses_02.png", mp, width = 10, height = 6)
 ```{r}
 mp <- ggplot(bc1, aes(x = Year, y = Deaths)) +
   geom_col(fill = "darkred", color = "black", alpha = 0.7) +
-  scale_x_continuous(breaks = seq(1995, 2020, by = 5),
-                     minor_breaks = 1990:2025) +
+  #scale_x_continuous(breaks = seq(1995, 2020, by = 5),
+  #                   minor_breaks = 1990:max(bc1$Year)) +
   theme_agData() +
   labs(title = "Drug Overdoses in British Columbia", x = NULL,
        caption = myCaptionBC)
@@ -174,9 +179,9 @@ ggsave("featured.png", mp, width = 6, height = 4)
 mp <- ggplot(bc1, aes(x = Year, y = Rate)) +
   geom_line(color = "darkred", alpha = 0.7, size = 1) +
   geom_point(alpha = 0.7) +
-  geom_label_repel(data = bc1 %>% filter(Year %in% c(2008,2021)), 
+  geom_label_repel(data = bc1 %>% filter(Year %in% c(2008,2017,2023)), 
                    aes(label = Rate)) +
-  scale_x_continuous(minor_breaks = 1990:2025) +
+  #scale_x_continuous(minor_breaks = 1990:max(bc1$Year)) +
   theme_agData() +
   labs(title = "Drug Overdoses in British Columbia", 
        y = "Deaths per 100,000 people", x = NULL,
@@ -193,7 +198,7 @@ ggsave("british_columbia_overdoses_02.png", mp, width = 6, height = 4)
 ```{r}
 mp <- ggplot(bc2, aes(x = Date, y = Deaths)) + 
   geom_col(fill = "darkred", color = "black", lwd = 0.2, alpha = 0.7) +
-  geom_vline(xintercept = as.Date(paste0(2011:2022,"-01-01")),
+  geom_vline(xintercept = as.Date(paste0(2011:max(bc2$Year),"-01-01")),
              alpha = 0.5, lty = 2) +
   scale_x_date(date_breaks = "year", date_labels = "%Y") +
   theme_agData() +
@@ -210,8 +215,8 @@ ggsave("british_columbia_overdoses_03.png", mp, width = 7, height = 4)
 
 ```{r}
 mp <- ggplot(bc2 %>% filter(Year >= 2019), aes(x = Date, y = Deaths)) + 
-  geom_col(fill = "darkred", color = "black", lwd = 0.5, alpha = 0.7) +
-  geom_vline(xintercept = as.Date(paste0(2011:2022,"-01-01")),
+  geom_col(fill = "darkred", color = "black", lwd = 0.3, alpha = 0.7) +
+  geom_vline(xintercept = as.Date(paste0(2011:max(bc2$Year),"-01-01")),
              alpha = 0.5, lty = 2) +
   scale_x_date(date_breaks = "year", date_labels = "%Y") +
   theme_agData() +
@@ -230,8 +235,8 @@ ggsave("british_columbia_overdoses_04.png", mp, width = 6, height = 4)
 mp <- ggplot(bc3, aes(x = Year, y = Deaths, fill = Sex)) +
   geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColorsMF) +
-  scale_x_continuous(breaks = 2011:2022) +
-  scale_y_continuous(breaks = seq(0, 1500, by = 500), limits = c(0,1800)) +
+  scale_x_continuous(breaks = 2011:max(bc3$Year)) +
+  #scale_y_continuous(breaks = seq(0, 1500, by = 500), limits = c(0,1800)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Drug Overdoses in British Columbia", x = NULL,
        caption = myCaptionBC)
@@ -255,7 +260,7 @@ mp <- ggplot(bc4, aes(x = `Age Group`, y = Deaths, fill = `Age Group`)) +
   transition_time(Year)
 anim_save("british_columbia_overdoses_gif_01.gif", mp, 
           nframes = 300, fps = 30, end_pause = 30, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -288,7 +293,7 @@ ggsave("british_columbia_overdoses_06.png", mp, width = 9, height = 4)
 mp <- ggplot(bc4, aes(x = Year, y = Deaths)) +
   geom_col(position = "dodge", color = "black", fill = "darkred", alpha = 0.7) +
   facet_grid(. ~ paste("Ages",`Age Group`)) +
-  scale_x_continuous(breaks = c(2013, 2019), minor_breaks = 2011:2021) +
+  scale_x_continuous(breaks = c(2013, 2019), minor_breaks = 2011:max(bc4$Year)) +
   theme_agData(legend.position = "none") +
   labs(title = "Drug Overdoses in British Columbia", x = NULL,
        caption = myCaptionBC)
@@ -305,7 +310,7 @@ ggsave("british_columbia_overdoses_07.png", mp, width = 12, height = 4)
 mp <- ggplot(bc4, aes(x = Year, y = Deaths)) +
   geom_col(position = "dodge", color = "black", fill = "darkred", alpha = 0.7) +
   facet_wrap(. ~ paste("Ages",`Age Group`), scales = "free_y", ncol = 7) +
-  scale_x_continuous(breaks = c(2013, 2019), minor_breaks = 2011:2021) +
+  scale_x_continuous(breaks = c(2013, 2019), minor_breaks = 2011:max(bc4$Year)) +
   theme_agData(legend.position = "none") +
   labs(title = "Drug Overdoses in British Columbia", 
        x = NULL, caption = myCaptionBC)
@@ -325,7 +330,7 @@ ggsave("british_columbia_overdoses_08.png", mp, width = 12, height = 4)
 ```{r}
 mp <- ggplot(ab1, aes(x = Date, y = Number)) +
   geom_col(color = "black", lwd = 0.3, fill = "darkred", alpha = 0.7) +
-  geom_vline(xintercept = as.Date(paste0(2016:2023,"-01-01")),
+  geom_vline(xintercept = as.Date(paste0(2016:max(ab1$Year),"-01-01")),
              alpha = 0.5, lty = 2) +
   theme_agData() +
   labs(title = "Drug Overdoses in Alberta", 
@@ -342,7 +347,7 @@ ggsave("alberta_overdoses_01.png", mp, width = 7, height = 4)
 ```{r}
 mp <- ggplot(ab1, aes(x = Date, y = Rate)) +
   geom_col(color = "black", lwd = 0.3, fill = "darkred", alpha = 0.7) +
-  geom_vline(xintercept = as.Date(paste0(2016:2023,"-01-01")),
+  geom_vline(xintercept = as.Date(paste0(2016:max(ab1$Year),"-01-01")),
              alpha = 0.5, lty = 2) +
   theme_agData() +
   labs(title = "Drug Overdoses in Alberta", x = NULL,
@@ -467,7 +472,7 @@ mp <- ggplot(sk3, aes(x = `Age Group`, y = Deaths, fill = Sex)) +
   transition_time(Year)
 anim_save("saskatchewan_overdoses_gif_01.gif", mp, 
           nframes = 300, fps = 30, end_pause = 30, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -541,7 +546,7 @@ ggsave("saskatchewan_overdoses_08.png", mp, width = 8, height = 4)
 mp <- ggplot(sk4, aes(x = Year, y = Deaths, fill = Sex)) +
   geom_col(color = "black", lwd = 0.3, alpha = 0.8) +
   facet_grid(. ~ Race) +
-  scale_x_continuous(breaks = c(2013, 2019), minor_breaks = 2010:2021) +
+  scale_x_continuous(breaks = c(2013, 2019), minor_breaks = 2010:max(sk4$Year)) +
   scale_fill_manual(name = NULL, values = myColorsMF) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Drug Overdoses in Saskatchewan", 
@@ -600,7 +605,7 @@ mp <- ggplot(sk4, aes(x = Race, y = Deaths, fill = Sex)) +
   transition_time(Year)
 anim_save("saskatchewan_overdoses_gif_02.gif", mp, 
           nframes = 300, fps = 30, end_pause = 30, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---

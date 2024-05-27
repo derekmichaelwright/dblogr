@@ -226,7 +226,7 @@ mp <- ggplot(xx, aes(x = "", y = Value, fill = Measurement)) +
   transition_time(Year)
 anim_save("food_expenses_2_01.gif", mp,
           nframes = 300, fps = 10, end_pause = 30, 
-          width = 600, height = 600, res = 150)
+          width = 600, height = 600, res = 150, units = "px")
 ```
 
 ---

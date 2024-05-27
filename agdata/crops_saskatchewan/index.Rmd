@@ -13,8 +13,12 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
+STATCAN Table: 32-10-0359-01
+
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035901
 > - `r shiny::icon("save")` [agData_STATCAN_Crops.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Crops.csv.gz)
+
+STATCAN Table: 32-10-0153-01
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015301
 > - `r shiny::icon("save")` [agData_STATCAN_FarmLand_Use.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_FarmLand_Use.csv.gz)
@@ -93,7 +97,7 @@ cropList <- function(measurement, years) {
 
 ## Production
 
-![](crops_saskatchewan_01.png)
+![](crops_saskatchewan_1_01.png)
 
 ```{r}
 # Prep data
@@ -111,14 +115,14 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Crop Production", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
-ggsave("crops_saskatchewan_01.png", mp, width = 7, height = 5)
+ggsave("crops_saskatchewan_1_01.png", mp, width = 7, height = 5)
 ```
 
 ---
 
 ## Area Seeded
 
-![](crops_saskatchewan_02.png)
+![](crops_saskatchewan_1_02.png)
 
 ```{r}
 # Prep data
@@ -136,7 +140,7 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Area Seeded", x = NULL,
        y = "Million Hectares", caption = myCaption)
-ggsave("crops_saskatchewan_02.png", mp, width = 7, height = 5)
+ggsave("crops_saskatchewan_1_02.png", mp, width = 7, height = 5)
 ```
 
 ```{r echo = F}
@@ -147,7 +151,7 @@ ggsave("featured.png", mp, width = 7, height = 5)
 
 ## Yields
 
-![](crops_saskatchewan_03.png)
+![](crops_saskatchewan_1_03.png)
 
 ```{r}
 # Prep data
@@ -165,7 +169,7 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000, fill = Item)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Yield", x = NULL, 
        y = "Tonnes / Hectare", caption = myCaption)
-ggsave("crops_saskatchewan_03.png", mp, width = 7, height = 5)
+ggsave("crops_saskatchewan_1_03.png", mp, width = 7, height = 5)
 ```
 
 ---
@@ -210,7 +214,7 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
   transition_time(Year) 
 anim_save("crops_saskatchewan_gif_01.gif", mp,
           nframes = 600, fps = 15, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -250,14 +254,14 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
   transition_time(Year) 
 anim_save("crops_saskatchewan_gif_02.gif", mp,
           nframes = 600, fps = 15, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
 
 # Production of Major Crops
 
-![](crops_saskatchewan_04.png)
+![](crops_saskatchewan_2_01.png)
 
 ```{r}
 # Prep data
@@ -280,12 +284,12 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) +
   theme_agData() + 
   labs(title = "Saskatchewan - Crop Production", x = NULL, 
        y = "Million Tonnes", caption = myCaption)
-ggsave("crops_saskatchewan_04.png", mp, width = 8, height = 4)
+ggsave("crops_saskatchewan_2_01.png", mp, width = 8, height = 4)
 ```
 
 ## Production By Decade
 
-![](crops_saskatchewan_05.png)
+![](crops_saskatchewan_2_02.png)
 
 ```{r}
 # Prep data
@@ -318,14 +322,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) +
   labs(title = "Saskatchewan - Crop Production", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
 mp
-ggsave("crops_saskatchewan_05.png", mp, width = 8, height = 4)
+ggsave("crops_saskatchewan_2_02.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ## Droughts
 
-![](crops_saskatchewan_06.png)
+![](crops_saskatchewan_2_03.png)
 
 ```{r}
 # Prep data
@@ -355,14 +359,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) +
                strip.text = element_blank()) + 
   labs(title = "Saskatchewan - Drought Years", x = NULL,
        y = "Million Tonnes", caption = myCaption)
-ggsave("crops_saskatchewan_06.png", mp, width = 8, height = 4)
+ggsave("crops_saskatchewan_2_03.png", mp, width = 8, height = 4)
 ```
 
 ---
 
-# 2020 vs 2021
+## 2020 vs 2021
 
-![](crops_saskatchewan_07.png)
+![](crops_saskatchewan_2_04.png)
 
 ```{r}
 # Prep data
@@ -378,14 +382,35 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000000,
   theme_agData(legend.position = "bottom") + 
   labs(title = "Saskatchewan - Crop Production - 2020 vs. 2021", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
-ggsave("crops_saskatchewan_07.png", mp, width = 6, height = 4)
+ggsave("crops_saskatchewan_2_04.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Wheat, Barley & Oates
+
+![](crops_saskatchewan_2_05.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Item %in% c("Wheat", "Barley", "Oats"),
+         Measurement == "Yield")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, fill = Item)) +
+  geom_col() +
+  scale_fill_manual(name = NULL, values = agData_Colors) +
+  theme_agData(legend.position = "bottom") + 
+  labs(title = "Saskatchewan - Crop Production - 2020 vs. 2021", 
+       y = "Million Tonnes", x = NULL, caption = myCaption)
+ggsave("crops_saskatchewan_2_05.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 # Yields 2020
 
-![](crops_saskatchewan_08.png)
+![](crops_saskatchewan_3_01.png)
 
 ```{r}
 # Prep data
@@ -402,14 +427,14 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000, fill = Item)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Crop yields", 
        y = "Tonnes / Hectare", x = NULL, caption = myCaption)
-ggsave("crops_saskatchewan_08.png", mp, width = 6, height = 5)
+ggsave("crops_saskatchewan_3_01.png", mp, width = 6, height = 5)
 ```
 
 ---
 
 # Per Person
 
-![](crops_saskatchewan_09.png)
+![](crops_saskatchewan_3_02.png)
 
 ```{r}
 # Prep data
@@ -435,7 +460,7 @@ mp <- ggplot(xx, aes(x = Item, y = PerPerson, fill = Item)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Crop Production Per Person", 
        y = "1000 kg", x = NULL, caption = myCaption)
-ggsave("crops_saskatchewan_09.png", mp, width = 6, height = 4)
+ggsave("crops_saskatchewan_3_02.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -444,7 +469,7 @@ ggsave("crops_saskatchewan_09.png", mp, width = 6, height = 4)
 
 ## Area Seeded
 
-![](crops_saskatchewan_10.png)
+![](crops_saskatchewan_4_01.png)
 
 ```{r}
 # Prep data
@@ -461,14 +486,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan Crops - Area Seeded", 
        y = "Million Hectares", x = NULL, caption = myCaption)
-ggsave("crops_saskatchewan_10.png", mp, width = 6, height = 5)
+ggsave("crops_saskatchewan_4_01.png", mp, width = 6, height = 5)
 ```
 
 ---
 
 ## Production
 
-![](crops_saskatchewan_11.png)
+![](crops_saskatchewan_4_02.png)
 
 ```{r}
 # Prep data
@@ -485,14 +510,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan Crops - Production", 
        y = "Million Hectares", x = NULL, caption = myCaption)
-ggsave("crops_saskatchewan_11.png", mp, width = 6, height = 5)
+ggsave("crops_saskatchewan_4_02.png", mp, width = 6, height = 5)
 ```
 
 ---
 
 # Treemap
 
-![](crops_saskatchewan_12.png)
+![](crops_saskatchewan_4_03.png)
 
 ```{r}
 # Prep data
@@ -507,7 +532,7 @@ mp <- ggplot(xx, aes(area = Value, fill = Item, label = Item)) +
   theme_agData(legend.position = "none") +
   labs(title = "Saskatchewan Cropland", 
        subtitle = "Area Seeded 2020", caption = myCaption)
-ggsave("crops_saskatchewan_12.png", mp, width = 6, height = 4)
+ggsave("crops_saskatchewan_4_03.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -533,14 +558,14 @@ mp <- ggplot(xx, aes(area = Value, fill = Item, label = Item)) +
   transition_time(Year)
 anim_save("crops_saskatchewan_gif_03.gif", mp,
           nframes = 600, fps = 20, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
 
 # Farm Area
 
-![](crops_saskatchewan_13.png)
+![](crops_saskatchewan_5_01.png)
 
 ```{r}
 # Prep data
@@ -556,14 +581,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
   theme_agData() +
   labs(title = "Saskatchewan - Total Farmland Area", 
        y = "Million Hectares", x = NULL, caption = myCaption)
-ggsave("crops_saskatchewan_13.png", mp, width = 6, height = 4)
+ggsave("crops_saskatchewan_5_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-# Summerfallow
+## Summerfallow
 
-![](crops_saskatchewan_14.png)
+![](crops_saskatchewan_5_02.png)
 
 ```{r}
 # Prep data
@@ -582,14 +607,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000,
   theme_agData(legend.position = "bottom") +
   labs(title = "Saskatchewan - Summerfallow", 
        y = "Million Hectares", x = NULL, caption = myCaption)
-ggsave("crops_saskatchewan_14.png", mp, width = 6, height = 4)
+ggsave("crops_saskatchewan_5_02.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-# 1960 Crop Area
+## Crop Area
 
-![](crops_saskatchewan_15.png)
+![](crops_saskatchewan_5_03.png)
 
 ```{r}
 # Prep data
@@ -612,14 +637,14 @@ mp <- ggplot(xx, aes(x = "", y = Value / 1000000, fill = Item)) +
   theme_agData() +
   labs(title = "Saskatchewan - Area Seeded", 
        y = "Million Hectares", x = NULL, caption = myCaption)
-ggsave("crops_saskatchewan_15.png", mp, width = 6, height = 4)
+ggsave("crops_saskatchewan_5_03.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 # Activist Graph
 
-![](crops_saskatchewan_16.png)
+![](crops_saskatchewan_6_01.png)
 
 ```{r}
 # Prep data
@@ -646,7 +671,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Saskatchewan's Industrialized Food Production", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
-ggsave("crops_saskatchewan_16.png", mp, width = 6.5, height = 4)
+ggsave("crops_saskatchewan_6_01.png", mp, width = 6.5, height = 4)
 ```
 
 ---

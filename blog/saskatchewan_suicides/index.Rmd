@@ -141,7 +141,7 @@ mp <- ggplot(d1, aes(x = Age, y = Deaths, fill = Sex)) +
   transition_time(Year)
 anim_save("saskatchewan_suicides_gif_01.gif", mp, 
           nframes = 600, fps = 30, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---

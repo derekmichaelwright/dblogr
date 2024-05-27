@@ -1,0 +1,1905 @@
+Expt,Location,Year,Date,Time,LoggerID,Measurement,Unit,Value,DaysAfterPlanting
+In16,"Bhopal, India",2016,2016-12-04,6:53:24,Weather Station,Day Length,Hours,10.65,0
+In16,"Bhopal, India",2016,2016-12-05,6:54:00,Weather Station,Day Length,Hours,10.65,1
+In16,"Bhopal, India",2016,2016-12-06,6:54:36,Weather Station,Day Length,Hours,10.64,2
+In16,"Bhopal, India",2016,2016-12-07,6:55:12,Weather Station,Day Length,Hours,10.63,3
+In16,"Bhopal, India",2016,2016-12-08,6:55:48,Weather Station,Day Length,Hours,10.62,4
+In16,"Bhopal, India",2016,2016-12-09,6:56:24,Weather Station,Day Length,Hours,10.62,5
+In16,"Bhopal, India",2016,2016-12-10,6:57:00,Weather Station,Day Length,Hours,10.61,6
+In16,"Bhopal, India",2016,2016-12-11,6:57:36,Weather Station,Day Length,Hours,10.61,7
+In16,"Bhopal, India",2016,2016-12-12,6:58:12,Weather Station,Day Length,Hours,10.6,8
+In16,"Bhopal, India",2016,2016-12-13,6:58:48,Weather Station,Day Length,Hours,10.6,9
+In16,"Bhopal, India",2016,2016-12-14,6:59:24,Weather Station,Day Length,Hours,10.59,10
+In16,"Bhopal, India",2016,2016-12-15,7:00:00,Weather Station,Day Length,Hours,10.59,11
+In16,"Bhopal, India",2016,2016-12-16,7:00:36,Weather Station,Day Length,Hours,10.59,12
+In16,"Bhopal, India",2016,2016-12-17,7:01:12,Weather Station,Day Length,Hours,10.58,13
+In16,"Bhopal, India",2016,2016-12-18,7:01:48,Weather Station,Day Length,Hours,10.58,14
+In16,"Bhopal, India",2016,2016-12-19,7:02:24,Weather Station,Day Length,Hours,10.58,15
+In16,"Bhopal, India",2016,2016-12-20,7:03:00,Weather Station,Day Length,Hours,10.58,16
+In16,"Bhopal, India",2016,2016-12-21,7:03:36,Weather Station,Day Length,Hours,10.58,17
+In16,"Bhopal, India",2016,2016-12-22,7:04:12,Weather Station,Day Length,Hours,10.58,18
+In16,"Bhopal, India",2016,2016-12-23,7:04:12,Weather Station,Day Length,Hours,10.58,19
+In16,"Bhopal, India",2016,2016-12-24,7:04:48,Weather Station,Day Length,Hours,10.58,20
+In16,"Bhopal, India",2016,2016-12-25,7:05:24,Weather Station,Day Length,Hours,10.58,21
+In16,"Bhopal, India",2016,2016-12-26,7:05:24,Weather Station,Day Length,Hours,10.59,22
+In16,"Bhopal, India",2016,2016-12-27,7:06:00,Weather Station,Day Length,Hours,10.59,23
+In16,"Bhopal, India",2016,2016-12-28,7:06:36,Weather Station,Day Length,Hours,10.59,24
+In16,"Bhopal, India",2016,2016-12-29,7:06:36,Weather Station,Day Length,Hours,10.6,25
+In16,"Bhopal, India",2016,2016-12-30,7:07:12,Weather Station,Day Length,Hours,10.6,26
+In16,"Bhopal, India",2016,2016-12-31,7:07:48,Weather Station,Day Length,Hours,10.61,27
+In16,"Bhopal, India",2016,2017-01-01,7:07:48,Weather Station,Day Length,Hours,10.61,28
+In16,"Bhopal, India",2016,2017-01-02,7:07:48,Weather Station,Day Length,Hours,10.62,29
+In16,"Bhopal, India",2016,2017-01-03,7:08:24,Weather Station,Day Length,Hours,10.62,30
+In16,"Bhopal, India",2016,2017-01-04,7:08:24,Weather Station,Day Length,Hours,10.63,31
+In16,"Bhopal, India",2016,2017-01-05,7:09:00,Weather Station,Day Length,Hours,10.64,32
+In16,"Bhopal, India",2016,2017-01-06,7:09:00,Weather Station,Day Length,Hours,10.65,33
+In16,"Bhopal, India",2016,2017-01-07,7:09:00,Weather Station,Day Length,Hours,10.66,34
+In16,"Bhopal, India",2016,2017-01-08,7:09:36,Weather Station,Day Length,Hours,10.66,35
+In16,"Bhopal, India",2016,2017-01-09,7:09:36,Weather Station,Day Length,Hours,10.67,36
+In16,"Bhopal, India",2016,2017-01-10,7:09:36,Weather Station,Day Length,Hours,10.68,37
+In16,"Bhopal, India",2016,2017-01-11,7:09:36,Weather Station,Day Length,Hours,10.69,38
+In16,"Bhopal, India",2016,2017-01-12,7:09:36,Weather Station,Day Length,Hours,10.71,39
+In16,"Bhopal, India",2016,2017-01-13,7:09:36,Weather Station,Day Length,Hours,10.72,40
+In16,"Bhopal, India",2016,2017-01-14,7:09:36,Weather Station,Day Length,Hours,10.73,41
+In16,"Bhopal, India",2016,2017-01-15,7:09:36,Weather Station,Day Length,Hours,10.74,42
+In16,"Bhopal, India",2016,2017-01-16,7:09:36,Weather Station,Day Length,Hours,10.75,43
+In16,"Bhopal, India",2016,2017-01-17,7:09:36,Weather Station,Day Length,Hours,10.77,44
+In16,"Bhopal, India",2016,2017-01-18,7:09:36,Weather Station,Day Length,Hours,10.78,45
+In16,"Bhopal, India",2016,2017-01-19,7:09:36,Weather Station,Day Length,Hours,10.79,46
+In16,"Bhopal, India",2016,2017-01-20,7:09:36,Weather Station,Day Length,Hours,10.81,47
+In16,"Bhopal, India",2016,2017-01-21,7:09:00,Weather Station,Day Length,Hours,10.82,48
+In16,"Bhopal, India",2016,2017-01-22,7:09:00,Weather Station,Day Length,Hours,10.84,49
+In16,"Bhopal, India",2016,2017-01-23,7:09:00,Weather Station,Day Length,Hours,10.85,50
+In16,"Bhopal, India",2016,2017-01-24,7:08:24,Weather Station,Day Length,Hours,10.87,51
+In16,"Bhopal, India",2016,2017-01-25,7:08:24,Weather Station,Day Length,Hours,10.88,52
+In16,"Bhopal, India",2016,2017-01-26,7:07:48,Weather Station,Day Length,Hours,10.9,53
+In16,"Bhopal, India",2016,2017-01-27,7:07:48,Weather Station,Day Length,Hours,10.92,54
+In16,"Bhopal, India",2016,2017-01-28,7:07:12,Weather Station,Day Length,Hours,10.93,55
+In16,"Bhopal, India",2016,2017-01-29,7:07:12,Weather Station,Day Length,Hours,10.95,56
+In16,"Bhopal, India",2016,2017-01-30,7:06:36,Weather Station,Day Length,Hours,10.97,57
+In16,"Bhopal, India",2016,2017-01-31,7:06:36,Weather Station,Day Length,Hours,10.99,58
+In16,"Bhopal, India",2016,2017-02-01,7:06:00,Weather Station,Day Length,Hours,11,59
+In16,"Bhopal, India",2016,2017-02-02,7:05:24,Weather Station,Day Length,Hours,11.02,60
+In16,"Bhopal, India",2016,2017-02-03,7:05:24,Weather Station,Day Length,Hours,11.04,61
+In16,"Bhopal, India",2016,2017-02-04,7:04:48,Weather Station,Day Length,Hours,11.06,62
+In16,"Bhopal, India",2016,2017-02-05,7:04:12,Weather Station,Day Length,Hours,11.08,63
+In16,"Bhopal, India",2016,2017-02-06,7:03:36,Weather Station,Day Length,Hours,11.1,64
+In16,"Bhopal, India",2016,2017-02-07,7:03:00,Weather Station,Day Length,Hours,11.12,65
+In16,"Bhopal, India",2016,2017-02-08,7:02:24,Weather Station,Day Length,Hours,11.13,66
+In16,"Bhopal, India",2016,2017-02-09,7:01:48,Weather Station,Day Length,Hours,11.15,67
+In16,"Bhopal, India",2016,2017-02-10,7:01:12,Weather Station,Day Length,Hours,11.17,68
+In16,"Bhopal, India",2016,2017-02-11,7:01:12,Weather Station,Day Length,Hours,11.19,69
+In16,"Bhopal, India",2016,2017-02-12,7:00:00,Weather Station,Day Length,Hours,11.21,70
+In16,"Bhopal, India",2016,2017-02-13,6:59:24,Weather Station,Day Length,Hours,11.23,71
+In16,"Bhopal, India",2016,2017-02-14,6:58:48,Weather Station,Day Length,Hours,11.25,72
+In16,"Bhopal, India",2016,2017-02-15,6:58:12,Weather Station,Day Length,Hours,11.28,73
+In16,"Bhopal, India",2016,2017-02-16,6:57:36,Weather Station,Day Length,Hours,11.3,74
+In16,"Bhopal, India",2016,2017-02-17,6:57:00,Weather Station,Day Length,Hours,11.32,75
+In16,"Bhopal, India",2016,2017-02-18,6:56:24,Weather Station,Day Length,Hours,11.34,76
+In16,"Bhopal, India",2016,2017-02-19,6:55:48,Weather Station,Day Length,Hours,11.36,77
+In16,"Bhopal, India",2016,2017-02-20,6:54:36,Weather Station,Day Length,Hours,11.38,78
+In16,"Bhopal, India",2016,2017-02-21,6:54:00,Weather Station,Day Length,Hours,11.4,79
+In16,"Bhopal, India",2016,2017-02-22,6:53:24,Weather Station,Day Length,Hours,11.42,80
+In16,"Bhopal, India",2016,2017-02-23,6:52:12,Weather Station,Day Length,Hours,11.44,81
+In16,"Bhopal, India",2016,2017-02-24,6:51:36,Weather Station,Day Length,Hours,11.47,82
+In16,"Bhopal, India",2016,2017-02-25,6:51:00,Weather Station,Day Length,Hours,11.49,83
+In16,"Bhopal, India",2016,2017-02-26,6:49:48,Weather Station,Day Length,Hours,11.51,84
+In16,"Bhopal, India",2016,2017-02-27,6:49:12,Weather Station,Day Length,Hours,11.53,85
+In16,"Bhopal, India",2016,2017-02-28,6:48:36,Weather Station,Day Length,Hours,11.55,86
+In16,"Bhopal, India",2016,2017-03-01,6:47:24,Weather Station,Day Length,Hours,11.58,87
+In16,"Bhopal, India",2016,2017-03-02,6:46:48,Weather Station,Day Length,Hours,11.6,88
+In16,"Bhopal, India",2016,2017-03-03,6:45:36,Weather Station,Day Length,Hours,11.62,89
+In16,"Bhopal, India",2016,2017-03-04,6:45:00,Weather Station,Day Length,Hours,11.64,90
+In16,"Bhopal, India",2016,2017-03-05,6:43:48,Weather Station,Day Length,Hours,11.66,91
+In16,"Bhopal, India",2016,2017-03-06,6:43:12,Weather Station,Day Length,Hours,11.69,92
+In16,"Bhopal, India",2016,2017-03-07,6:42:00,Weather Station,Day Length,Hours,11.71,93
+In16,"Bhopal, India",2016,2017-03-08,6:41:24,Weather Station,Day Length,Hours,11.73,94
+In16,"Bhopal, India",2016,2017-03-09,6:40:12,Weather Station,Day Length,Hours,11.75,95
+In16,"Bhopal, India",2016,2017-03-10,6:39:36,Weather Station,Day Length,Hours,11.78,96
+In16,"Bhopal, India",2016,2017-03-11,6:38:24,Weather Station,Day Length,Hours,11.8,97
+In16,"Bhopal, India",2016,2017-03-12,6:37:48,Weather Station,Day Length,Hours,11.82,98
+In16,"Bhopal, India",2016,2017-03-13,6:36:36,Weather Station,Day Length,Hours,11.84,99
+In16,"Bhopal, India",2016,2017-03-14,6:35:24,Weather Station,Day Length,Hours,11.87,100
+In16,"Bhopal, India",2016,2017-03-15,6:34:48,Weather Station,Day Length,Hours,11.89,101
+In16,"Bhopal, India",2016,2017-03-16,6:33:36,Weather Station,Day Length,Hours,11.91,102
+In16,"Bhopal, India",2016,2017-03-17,6:33:00,Weather Station,Day Length,Hours,11.93,103
+In16,"Bhopal, India",2016,2017-03-18,6:31:48,Weather Station,Day Length,Hours,11.96,104
+In16,"Bhopal, India",2016,2017-03-19,6:30:36,Weather Station,Day Length,Hours,11.98,105
+In16,"Bhopal, India",2016,2017-03-20,6:30:00,Weather Station,Day Length,Hours,12,106
+In16,"Bhopal, India",2016,2017-03-21,6:28:48,Weather Station,Day Length,Hours,12.02,107
+In16,"Bhopal, India",2016,2017-03-22,6:27:36,Weather Station,Day Length,Hours,12.05,108
+In16,"Bhopal, India",2016,2017-03-23,6:27:00,Weather Station,Day Length,Hours,12.07,109
+In16,"Bhopal, India",2016,2017-03-24,6:25:48,Weather Station,Day Length,Hours,12.09,110
+In16,"Bhopal, India",2016,2017-03-25,6:25:12,Weather Station,Day Length,Hours,12.11,111
+In16,"Bhopal, India",2016,2017-03-26,6:24:00,Weather Station,Day Length,Hours,12.14,112
+In16,"Bhopal, India",2016,2017-03-27,6:22:48,Weather Station,Day Length,Hours,12.16,113
+In16,"Bhopal, India",2016,2017-03-28,6:22:12,Weather Station,Day Length,Hours,12.18,114
+In16,"Bhopal, India",2016,2017-03-29,6:21:00,Weather Station,Day Length,Hours,12.2,115
+In16,"Bhopal, India",2016,2017-03-30,6:20:24,Weather Station,Day Length,Hours,12.23,116
+In16,"Bhopal, India",2016,2017-03-31,6:19:12,Weather Station,Day Length,Hours,12.25,117
+In16,"Bhopal, India",2016,2017-04-01,6:18:00,Weather Station,Day Length,Hours,12.27,118
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Temperature,C,7.7,0
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Temperature,C,7.6,1
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Temperature,C,7.5,2
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Temperature,C,7.8,3
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Temperature,C,7,4
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Temperature,C,7.5,5
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Temperature,C,6.8,6
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Temperature,C,6.2,7
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Temperature,C,6.9,8
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Temperature,C,8.5,9
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Temperature,C,8.2,10
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Temperature,C,7.5,11
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Temperature,C,8.5,12
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Temperature,C,6.3,13
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Temperature,C,6.5,14
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Temperature,C,5.8,15
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Temperature,C,6.1,16
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Temperature,C,7.5,17
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Temperature,C,7.1,18
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Temperature,C,8.5,19
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Temperature,C,10.4,20
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Temperature,C,9.5,21
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Temperature,C,9.2,22
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Temperature,C,8.2,23
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Temperature,C,7.5,24
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Temperature,C,8.2,25
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Temperature,C,9.5,26
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Temperature,C,10,27
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Temperature,C,10.5,28
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Temperature,C,7.5,29
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Temperature,C,6.5,30
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Temperature,C,6.2,31
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Temperature,C,6.5,32
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Temperature,C,6.8,33
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Temperature,C,7,34
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Temperature,C,8.5,35
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Temperature,C,10,36
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Temperature,C,9,37
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Temperature,C,6.2,38
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Temperature,C,3.5,39
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Temperature,C,0.9,40
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Temperature,C,3.1,41
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Temperature,C,3.9,42
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Temperature,C,12,43
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Temperature,C,12.5,44
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Temperature,C,12,45
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Temperature,C,13,46
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Temperature,C,13.5,47
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Temperature,C,13.2,48
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Temperature,C,12.5,49
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Temperature,C,13.5,50
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Temperature,C,14.5,51
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Temperature,C,15.1,52
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Temperature,C,13.6,53
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Temperature,C,13.2,54
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Temperature,C,12.5,55
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Temperature,C,9.5,56
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Temperature,C,7.5,57
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Temperature,C,8.8,58
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Temperature,C,7.1,59
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Temperature,C,10.5,60
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Temperature,C,12.5,61
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Temperature,C,15.2,62
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Temperature,C,13.5,63
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Temperature,C,11,64
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Temperature,C,11.5,65
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Temperature,C,12.5,66
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Temperature,C,15.5,67
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Temperature,C,13.5,68
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Temperature,C,11,69
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Temperature,C,9.5,70
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Temperature,C,8.5,71
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Temperature,C,9.9,72
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Temperature,C,11.9,73
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Temperature,C,11.4,74
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Temperature,C,10.9,75
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Temperature,C,11.5,76
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Temperature,C,12.5,77
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Temperature,C,16.6,78
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Temperature,C,15.5,79
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Temperature,C,11.3,80
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Temperature,C,12.1,81
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Temperature,C,14.8,82
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Temperature,C,12.8,83
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Temperature,C,10.7,84
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Temperature,C,11.5,85
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Temperature,C,14.5,86
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Temperature,C,14.1,87
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Temperature,C,15.5,88
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Temperature,C,15.4,89
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Temperature,C,14.5,90
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Temperature,C,13,91
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Temperature,C,15.1,92
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Temperature,C,14.7,93
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Temperature,C,14.6,94
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Temperature,C,12.5,95
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Temperature,C,9,96
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Temperature,C,9.5,97
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Temperature,C,8.2,98
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Temperature,C,9.9,99
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Temperature,C,10.2,100
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Temperature,C,12.3,101
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Temperature,C,14.5,102
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Temperature,C,15.5,103
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Temperature,C,14.2,104
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Temperature,C,14.8,105
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Temperature,C,13.6,106
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Temperature,C,14.6,107
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Temperature,C,15.8,108
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Temperature,C,17.2,109
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Temperature,C,19.8,110
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Temperature,C,17.7,111
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Temperature,C,18.3,112
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Temperature,C,19.3,113
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Temperature,C,19.2,114
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Temperature,C,20.5,115
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Temperature,C,19.2,116
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Temperature,C,20.3,117
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Temperature,C,25.3,0
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Temperature,C,25.3,1
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Temperature,C,26.5,2
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Temperature,C,25.5,3
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Temperature,C,23,4
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Temperature,C,23.4,5
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Temperature,C,23.6,6
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Temperature,C,24.4,7
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Temperature,C,24.6,8
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Temperature,C,24.1,9
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Temperature,C,23.7,10
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Temperature,C,25.8,11
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Temperature,C,25.4,12
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Temperature,C,23.5,13
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Temperature,C,23.4,14
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Temperature,C,23.4,15
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Temperature,C,24.5,16
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Temperature,C,25.7,17
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Temperature,C,25,18
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Temperature,C,26.3,19
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Temperature,C,26.4,20
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Temperature,C,25.5,21
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Temperature,C,24.5,22
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Temperature,C,24.9,23
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Temperature,C,25.1,24
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Temperature,C,25,25
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Temperature,C,26.5,26
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Temperature,C,27,27
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Temperature,C,26.5,28
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Temperature,C,25.5,29
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Temperature,C,23.5,30
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Temperature,C,24.5,31
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Temperature,C,24.8,32
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Temperature,C,25.5,33
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Temperature,C,23.2,34
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Temperature,C,22.5,35
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Temperature,C,27.5,36
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Temperature,C,23,37
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Temperature,C,22.1,38
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Temperature,C,20.3,39
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Temperature,C,19,40
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Temperature,C,15,41
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Temperature,C,16,42
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Temperature,C,18.5,43
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Temperature,C,26.5,44
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Temperature,C,25,45
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Temperature,C,24.7,46
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Temperature,C,24,47
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Temperature,C,24.5,48
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Temperature,C,25.2,49
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Temperature,C,26.5,50
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Temperature,C,28.5,51
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Temperature,C,29,52
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Temperature,C,26,53
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Temperature,C,25,54
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Temperature,C,25.5,55
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Temperature,C,22.2,56
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Temperature,C,24.5,57
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Temperature,C,25.8,58
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Temperature,C,27,59
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Temperature,C,28.2,60
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Temperature,C,29.2,61
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Temperature,C,30.1,62
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Temperature,C,28.5,63
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Temperature,C,25,64
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Temperature,C,24.5,65
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Temperature,C,24.4,66
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Temperature,C,29.5,67
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Temperature,C,26.5,68
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Temperature,C,23.5,69
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Temperature,C,19.5,70
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Temperature,C,19.7,71
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Temperature,C,27.1,72
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Temperature,C,28.3,73
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Temperature,C,26.2,74
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Temperature,C,28.3,75
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Temperature,C,28.5,76
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Temperature,C,30.6,77
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Temperature,C,31,78
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Temperature,C,31.5,79
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Temperature,C,28.7,80
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Temperature,C,28.9,81
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Temperature,C,28.6,82
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Temperature,C,28.9,83
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Temperature,C,28.2,84
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Temperature,C,30.5,85
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Temperature,C,31.6,86
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Temperature,C,33.6,87
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Temperature,C,34.5,88
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Temperature,C,35,89
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Temperature,C,32.5,90
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Temperature,C,30.5,91
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Temperature,C,29.5,92
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Temperature,C,28.4,93
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Temperature,C,30.3,94
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Temperature,C,30.7,95
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Temperature,C,30.2,96
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Temperature,C,27.1,97
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Temperature,C,26.5,98
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Temperature,C,25.7,99
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Temperature,C,28.5,100
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Temperature,C,30,101
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Temperature,C,32.8,102
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Temperature,C,32.3,103
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Temperature,C,32.2,104
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Temperature,C,30.6,105
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Temperature,C,30.9,106
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Temperature,C,32.8,107
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Temperature,C,33.5,108
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Temperature,C,36.3,109
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Temperature,C,37.5,110
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Temperature,C,37.4,111
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Temperature,C,36.9,112
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Temperature,C,37.6,113
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Temperature,C,38.2,114
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Temperature,C,39.4,115
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Temperature,C,39.6,116
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Temperature,C,40,117
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Relative Humidity,%,45,0
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Relative Humidity,%,45,1
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Relative Humidity,%,54,2
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Relative Humidity,%,48,3
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Relative Humidity,%,45,4
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Relative Humidity,%,55,5
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Relative Humidity,%,50,6
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Relative Humidity,%,52,7
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Relative Humidity,%,55,8
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Relative Humidity,%,55,9
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Relative Humidity,%,52,10
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Relative Humidity,%,50,11
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Relative Humidity,%,49,12
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Relative Humidity,%,47,13
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Relative Humidity,%,45,14
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Relative Humidity,%,40,15
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Relative Humidity,%,49,16
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Relative Humidity,%,46,17
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Relative Humidity,%,40,18
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Relative Humidity,%,51,19
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Relative Humidity,%,52,20
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Relative Humidity,%,55,21
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Relative Humidity,%,56,22
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Relative Humidity,%,48,23
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Relative Humidity,%,52,24
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Relative Humidity,%,50,25
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Relative Humidity,%,47,26
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Relative Humidity,%,45,27
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Relative Humidity,%,48,28
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Relative Humidity,%,52,29
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Relative Humidity,%,50,30
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Relative Humidity,%,45,31
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Relative Humidity,%,48,32
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Relative Humidity,%,50,33
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Relative Humidity,%,48,34
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Relative Humidity,%,51,35
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Relative Humidity,%,48,36
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Relative Humidity,%,52,37
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Relative Humidity,%,55,38
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Relative Humidity,%,41,39
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Relative Humidity,%,40,40
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Relative Humidity,%,44,41
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Relative Humidity,%,48,42
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Relative Humidity,%,48,43
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Relative Humidity,%,45,44
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Relative Humidity,%,48,45
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Relative Humidity,%,47,46
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Relative Humidity,%,46,47
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Relative Humidity,%,48,48
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Relative Humidity,%,50,49
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Relative Humidity,%,49,50
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Relative Humidity,%,54,51
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Relative Humidity,%,52,52
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Relative Humidity,%,53,53
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Relative Humidity,%,65,54
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Relative Humidity,%,51,55
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Relative Humidity,%,49,56
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Relative Humidity,%,47,57
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Relative Humidity,%,48,58
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Relative Humidity,%,47,59
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Relative Humidity,%,47,60
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Relative Humidity,%,45,61
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Relative Humidity,%,51,62
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Relative Humidity,%,55,63
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Relative Humidity,%,53,64
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Relative Humidity,%,47,65
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Relative Humidity,%,49,66
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Relative Humidity,%,53,67
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Relative Humidity,%,51,68
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Relative Humidity,%,51,69
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Relative Humidity,%,54,70
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Relative Humidity,%,54,71
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Relative Humidity,%,54,72
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Relative Humidity,%,52,73
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Relative Humidity,%,51,74
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Relative Humidity,%,51,75
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Relative Humidity,%,63,76
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Relative Humidity,%,51,77
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Relative Humidity,%,56,78
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Relative Humidity,%,57,79
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Relative Humidity,%,49,80
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Relative Humidity,%,51,81
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Relative Humidity,%,52,82
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Relative Humidity,%,51,83
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Relative Humidity,%,50,84
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Relative Humidity,%,47,85
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Relative Humidity,%,54,86
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Relative Humidity,%,55,87
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Relative Humidity,%,54,88
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Relative Humidity,%,54,89
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Relative Humidity,%,55,90
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Relative Humidity,%,14.9,91
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Relative Humidity,%,64,92
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Relative Humidity,%,55,93
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Relative Humidity,%,54,94
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Relative Humidity,%,56,95
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Relative Humidity,%,56,96
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Relative Humidity,%,49,97
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Relative Humidity,%,48,98
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Relative Humidity,%,51,99
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Relative Humidity,%,50,100
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Relative Humidity,%,56,101
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Relative Humidity,%,54,102
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Relative Humidity,%,55,103
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Relative Humidity,%,54,104
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Relative Humidity,%,54,105
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Relative Humidity,%,53,106
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Relative Humidity,%,56,107
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Relative Humidity,%,56,108
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Relative Humidity,%,57,109
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Relative Humidity,%,58,110
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Relative Humidity,%,57,111
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Relative Humidity,%,59,112
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Relative Humidity,%,59,113
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Relative Humidity,%,60,114
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Relative Humidity,%,61,115
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Relative Humidity,%,59,116
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Relative Humidity,%,60,117
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Relative Humidity,%,54,0
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Relative Humidity,%,56,1
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Relative Humidity,%,65,2
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Relative Humidity,%,66,3
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Relative Humidity,%,65,4
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Relative Humidity,%,66,5
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Relative Humidity,%,68,6
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Relative Humidity,%,69,7
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Relative Humidity,%,66,8
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Relative Humidity,%,66,9
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Relative Humidity,%,64,10
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Relative Humidity,%,67,11
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Relative Humidity,%,66,12
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Relative Humidity,%,66,13
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Relative Humidity,%,65,14
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Relative Humidity,%,64,15
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Relative Humidity,%,65,16
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Relative Humidity,%,63,17
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Relative Humidity,%,64,18
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Relative Humidity,%,65,19
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Relative Humidity,%,64,20
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Relative Humidity,%,66,21
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Relative Humidity,%,69,22
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Relative Humidity,%,62,23
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Relative Humidity,%,64,24
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Relative Humidity,%,65,25
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Relative Humidity,%,60,26
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Relative Humidity,%,58,27
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Relative Humidity,%,58,28
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Relative Humidity,%,60,29
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Relative Humidity,%,61,30
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Relative Humidity,%,60,31
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Relative Humidity,%,64,32
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Relative Humidity,%,65,33
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Relative Humidity,%,63,34
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Relative Humidity,%,58,35
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Relative Humidity,%,59,36
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Relative Humidity,%,63,37
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Relative Humidity,%,69,38
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Relative Humidity,%,50,39
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Relative Humidity,%,50,40
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Relative Humidity,%,52,41
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Relative Humidity,%,57,42
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Relative Humidity,%,57,43
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Relative Humidity,%,55,44
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Relative Humidity,%,59,45
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Relative Humidity,%,56,46
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Relative Humidity,%,57,47
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Relative Humidity,%,58,48
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Relative Humidity,%,60,49
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Relative Humidity,%,56,50
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Relative Humidity,%,60,51
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Relative Humidity,%,60,52
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Relative Humidity,%,60,53
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Relative Humidity,%,75,54
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Relative Humidity,%,54,55
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Relative Humidity,%,55,56
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Relative Humidity,%,55,57
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Relative Humidity,%,57,58
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Relative Humidity,%,66,59
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Relative Humidity,%,63,60
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Relative Humidity,%,60,61
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Relative Humidity,%,59,62
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Relative Humidity,%,60,63
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Relative Humidity,%,60,64
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Relative Humidity,%,54,65
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Relative Humidity,%,56,66
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Relative Humidity,%,61,67
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Relative Humidity,%,58,68
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Relative Humidity,%,56,69
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Relative Humidity,%,59,70
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Relative Humidity,%,59,71
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Relative Humidity,%,66,72
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Relative Humidity,%,67,73
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Relative Humidity,%,67,74
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Relative Humidity,%,68,75
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Relative Humidity,%,70,76
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Relative Humidity,%,70,77
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Relative Humidity,%,71,78
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Relative Humidity,%,71,79
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Relative Humidity,%,69,80
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Relative Humidity,%,68,81
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Relative Humidity,%,68,82
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Relative Humidity,%,67,83
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Relative Humidity,%,70,84
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Relative Humidity,%,67,85
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Relative Humidity,%,71,86
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Relative Humidity,%,73,87
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Relative Humidity,%,73,88
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Relative Humidity,%,72,89
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Relative Humidity,%,71,90
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Relative Humidity,%,68,91
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Relative Humidity,%,64,92
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Relative Humidity,%,56,93
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Relative Humidity,%,70,94
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Relative Humidity,%,70,95
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Relative Humidity,%,67,96
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Relative Humidity,%,66,97
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Relative Humidity,%,65,98
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Relative Humidity,%,67,99
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Relative Humidity,%,68,100
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Relative Humidity,%,62,101
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Relative Humidity,%,72,102
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Relative Humidity,%,72,103
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Relative Humidity,%,72,104
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Relative Humidity,%,70,105
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Relative Humidity,%,70,106
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Relative Humidity,%,72,107
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Relative Humidity,%,75,108
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Relative Humidity,%,77,109
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Relative Humidity,%,77,110
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Relative Humidity,%,77,111
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Relative Humidity,%,77,112
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Relative Humidity,%,77,113
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Relative Humidity,%,78,114
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Relative Humidity,%,78,115
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Relative Humidity,%,79,116
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Relative Humidity,%,79,117
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Precipitation,mm,0,0
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Precipitation,mm,0,1
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Precipitation,mm,0,2
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Precipitation,mm,0,3
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Precipitation,mm,0,4
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Precipitation,mm,0,5
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Precipitation,mm,0,6
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Precipitation,mm,0,7
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Precipitation,mm,0,8
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Precipitation,mm,0,9
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Precipitation,mm,0,10
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Precipitation,mm,0,11
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Precipitation,mm,0,12
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Precipitation,mm,0,13
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Precipitation,mm,0,14
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Precipitation,mm,0,15
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Precipitation,mm,0,16
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Precipitation,mm,0,17
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Precipitation,mm,0,18
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Precipitation,mm,0,19
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Precipitation,mm,0,20
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Precipitation,mm,0,21
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Precipitation,mm,0,22
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Precipitation,mm,0,23
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Precipitation,mm,0,24
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Precipitation,mm,0,25
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Precipitation,mm,0,26
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Precipitation,mm,0,27
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Precipitation,mm,0,28
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Precipitation,mm,0,29
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Precipitation,mm,0,30
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Precipitation,mm,0,31
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Precipitation,mm,0,32
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Precipitation,mm,0,33
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Precipitation,mm,0,34
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Precipitation,mm,0,35
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Precipitation,mm,0,36
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Precipitation,mm,0,37
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Precipitation,mm,0,38
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Precipitation,mm,0,39
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Precipitation,mm,0,40
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Precipitation,mm,0,41
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Precipitation,mm,0,42
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Precipitation,mm,0,43
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Precipitation,mm,0,44
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Precipitation,mm,0,45
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Precipitation,mm,0,46
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Precipitation,mm,0,47
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Precipitation,mm,0,48
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Precipitation,mm,0,49
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Precipitation,mm,0,50
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Precipitation,mm,0,51
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Precipitation,mm,0,52
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Precipitation,mm,0,53
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Precipitation,mm,4.2,54
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Precipitation,mm,0,55
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Precipitation,mm,0,56
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Precipitation,mm,0,57
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Precipitation,mm,0,58
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Precipitation,mm,0,59
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Precipitation,mm,0,60
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Precipitation,mm,0,61
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Precipitation,mm,0,62
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Precipitation,mm,0,63
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Precipitation,mm,0,64
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Precipitation,mm,0,65
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Precipitation,mm,0,66
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Precipitation,mm,0,67
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Precipitation,mm,4,68
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Precipitation,mm,0,69
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Precipitation,mm,0,70
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Precipitation,mm,0,71
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Precipitation,mm,0,72
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Precipitation,mm,0,73
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Precipitation,mm,0,74
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Precipitation,mm,0,75
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Precipitation,mm,0,76
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Precipitation,mm,0,77
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Precipitation,mm,0,78
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Precipitation,mm,0,79
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Precipitation,mm,0,80
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Precipitation,mm,0,81
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Precipitation,mm,6,82
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Precipitation,mm,0,83
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Precipitation,mm,0,84
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Precipitation,mm,0,85
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Precipitation,mm,0,86
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Precipitation,mm,0,87
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Precipitation,mm,0,88
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Precipitation,mm,0,89
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Precipitation,mm,0,90
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Precipitation,mm,0,91
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Precipitation,mm,0,92
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Precipitation,mm,0,93
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Precipitation,mm,0,94
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Precipitation,mm,0,95
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Precipitation,mm,0,96
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Precipitation,mm,0,97
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Precipitation,mm,0,98
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Precipitation,mm,0,99
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Precipitation,mm,0,100
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Precipitation,mm,0,101
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Precipitation,mm,0,102
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Precipitation,mm,0,103
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Precipitation,mm,0,104
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Precipitation,mm,0,105
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Precipitation,mm,0,106
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Precipitation,mm,0,107
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Precipitation,mm,0,108
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Precipitation,mm,0,109
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Precipitation,mm,0,110
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Precipitation,mm,0,111
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Precipitation,mm,0,112
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Precipitation,mm,0,113
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Precipitation,mm,0,114
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Precipitation,mm,0,115
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Precipitation,mm,0,116
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Precipitation,mm,0,117
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Barometric Pressure,hPa,959.8,0
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Barometric Pressure,hPa,962.7,1
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Barometric Pressure,hPa,962.2,2
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Barometric Pressure,hPa,960,3
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Barometric Pressure,hPa,959.3,4
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Barometric Pressure,hPa,956.6,5
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Barometric Pressure,hPa,910,6
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Barometric Pressure,hPa,902,7
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Barometric Pressure,hPa,956.6,8
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Barometric Pressure,hPa,871.9,9
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Barometric Pressure,hPa,810,10
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Barometric Pressure,hPa,875,11
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Barometric Pressure,hPa,829.3,12
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Barometric Pressure,hPa,873.6,13
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Barometric Pressure,hPa,864,14
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Barometric Pressure,hPa,874.7,15
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Barometric Pressure,hPa,919.8,16
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Barometric Pressure,hPa,919.1,17
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Barometric Pressure,hPa,919.4,18
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Barometric Pressure,hPa,917.7,19
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Barometric Pressure,hPa,925,20
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Barometric Pressure,hPa,950,21
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Barometric Pressure,hPa,980,22
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Barometric Pressure,hPa,810,23
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Barometric Pressure,hPa,850,24
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Barometric Pressure,hPa,750,25
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Barometric Pressure,hPa,810,26
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Barometric Pressure,hPa,920,27
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Barometric Pressure,hPa,989.6,28
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Barometric Pressure,hPa,950,29
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Barometric Pressure,hPa,959.7,30
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Barometric Pressure,hPa,960.7,31
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Barometric Pressure,hPa,864.9,32
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Barometric Pressure,hPa,957.7,33
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Barometric Pressure,hPa,955.6,34
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Barometric Pressure,hPa,954.8,35
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Barometric Pressure,hPa,957,36
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Barometric Pressure,hPa,957.2,37
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Barometric Pressure,hPa,957.7,38
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Barometric Pressure,hPa,957.8,39
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Barometric Pressure,hPa,957.9,40
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Barometric Pressure,hPa,958.5,41
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Barometric Pressure,hPa,959.4,42
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Barometric Pressure,hPa,958.6,43
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Barometric Pressure,hPa,959.9,44
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Barometric Pressure,hPa,959.2,45
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Barometric Pressure,hPa,959.5,46
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Barometric Pressure,hPa,959.6,47
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Barometric Pressure,hPa,959.7,48
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Barometric Pressure,hPa,959.9,49
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Barometric Pressure,hPa,959.4,50
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Barometric Pressure,hPa,960.7,51
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Barometric Pressure,hPa,960.7,52
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Barometric Pressure,hPa,960.1,53
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Barometric Pressure,hPa,961.5,54
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Barometric Pressure,hPa,772,55
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Barometric Pressure,hPa,959.2,56
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Barometric Pressure,hPa,959.1,57
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Barometric Pressure,hPa,957.4,58
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Barometric Pressure,hPa,957.4,59
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Barometric Pressure,hPa,862.7,60
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Barometric Pressure,hPa,956.7,61
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Barometric Pressure,hPa,748.4,62
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Barometric Pressure,hPa,862,63
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Barometric Pressure,hPa,877.8,64
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Barometric Pressure,hPa,886.1,65
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Barometric Pressure,hPa,890.5,66
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Barometric Pressure,hPa,884.8,67
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Barometric Pressure,hPa,885.8,68
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Barometric Pressure,hPa,878.2,69
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Barometric Pressure,hPa,874,70
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Barometric Pressure,hPa,892.8,71
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Barometric Pressure,hPa,962,72
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Barometric Pressure,hPa,963.5,73
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Barometric Pressure,hPa,963,74
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Barometric Pressure,hPa,960.7,75
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Barometric Pressure,hPa,959.8,76
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Barometric Pressure,hPa,960.3,77
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Barometric Pressure,hPa,955.6,78
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Barometric Pressure,hPa,953.1,79
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Barometric Pressure,hPa,953,80
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Barometric Pressure,hPa,955.5,81
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Barometric Pressure,hPa,958.3,82
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Barometric Pressure,hPa,853.9,83
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Barometric Pressure,hPa,956.2,84
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Barometric Pressure,hPa,956.4,85
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Barometric Pressure,hPa,957.4,86
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Barometric Pressure,hPa,956.7,87
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Barometric Pressure,hPa,954.5,88
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Barometric Pressure,hPa,952,89
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Barometric Pressure,hPa,952.2,90
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Barometric Pressure,hPa,953.4,91
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Barometric Pressure,hPa,489.4,92
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Barometric Pressure,hPa,950.5,93
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Barometric Pressure,hPa,950.6,94
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Barometric Pressure,hPa,949.6,95
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Barometric Pressure,hPa,950.3,96
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Barometric Pressure,hPa,953.4,97
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Barometric Pressure,hPa,956.3,98
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Barometric Pressure,hPa,956.3,99
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Barometric Pressure,hPa,957.1,100
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Barometric Pressure,hPa,955.3,101
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Barometric Pressure,hPa,953.9,102
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Barometric Pressure,hPa,953.5,103
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Barometric Pressure,hPa,953.6,104
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Barometric Pressure,hPa,955,105
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Barometric Pressure,hPa,956.9,106
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Barometric Pressure,hPa,956.2,107
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Barometric Pressure,hPa,955,108
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Barometric Pressure,hPa,953.8,109
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Barometric Pressure,hPa,953.8,110
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Barometric Pressure,hPa,892.2,111
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Barometric Pressure,hPa,954.9,112
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Barometric Pressure,hPa,954.9,113
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Barometric Pressure,hPa,953.9,114
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Barometric Pressure,hPa,953.1,115
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Barometric Pressure,hPa,953.3,116
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Barometric Pressure,hPa,953.7,117
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Sun Duration,min,348,0
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Sun Duration,min,735,1
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Sun Duration,min,249,2
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Sun Duration,min,850,3
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Sun Duration,min,840,4
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Sun Duration,min,859,5
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Sun Duration,min,825,6
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Sun Duration,min,910,7
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Sun Duration,min,859,8
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Sun Duration,min,859,9
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Sun Duration,min,820,10
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Sun Duration,min,830,11
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Sun Duration,min,859,12
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Sun Duration,min,853,13
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Sun Duration,min,830,14
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Sun Duration,min,850,15
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Sun Duration,min,816,16
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Sun Duration,min,856,17
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Sun Duration,min,900,18
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Sun Duration,min,900,19
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Sun Duration,min,900,20
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Sun Duration,min,935,21
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Sun Duration,min,965,22
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Sun Duration,min,810,23
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Sun Duration,min,900,24
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Sun Duration,min,915,25
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Sun Duration,min,989,26
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Sun Duration,min,989,27
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Sun Duration,min,889,28
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Sun Duration,min,836,29
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Sun Duration,min,657,30
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Sun Duration,min,728,31
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Sun Duration,min,839,32
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Sun Duration,min,847,33
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Sun Duration,min,838,34
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Sun Duration,min,828,35
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Sun Duration,min,900,36
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Sun Duration,min,900,37
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Sun Duration,min,900,38
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Sun Duration,min,900,39
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Sun Duration,min,900,40
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Sun Duration,min,902,41
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Sun Duration,min,807,42
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Sun Duration,min,807,43
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Sun Duration,min,810,44
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Sun Duration,min,840,45
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Sun Duration,min,810,46
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Sun Duration,min,920,47
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Sun Duration,min,930,48
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Sun Duration,min,925,49
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Sun Duration,min,880,50
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Sun Duration,min,836,51
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Sun Duration,min,836,52
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Sun Duration,min,840,53
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Sun Duration,min,810,54
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Sun Duration,min,922,55
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Sun Duration,min,912,56
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Sun Duration,min,912,57
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Sun Duration,min,924,58
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Sun Duration,min,927,59
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Sun Duration,min,845,60
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Sun Duration,min,948,61
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Sun Duration,min,855,62
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Sun Duration,min,845,63
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Sun Duration,min,845,64
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Sun Duration,min,837,65
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Sun Duration,min,918,66
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Sun Duration,min,917,67
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Sun Duration,min,905,68
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Sun Duration,min,906,69
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Sun Duration,min,856,70
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Sun Duration,min,856,71
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Sun Duration,min,843,72
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Sun Duration,min,910,73
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Sun Duration,min,908,74
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Sun Duration,min,933,75
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Sun Duration,min,747,76
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Sun Duration,min,942,77
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Sun Duration,min,938,78
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Sun Duration,min,443,79
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Sun Duration,min,944,80
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Sun Duration,min,938,81
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Sun Duration,min,941,82
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Sun Duration,min,956,83
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Sun Duration,min,956,84
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Sun Duration,min,950,85
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Sun Duration,min,952,86
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Sun Duration,min,948,87
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Sun Duration,min,941,88
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Sun Duration,min,934,89
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Sun Duration,min,749,90
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Sun Duration,min,944,91
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Sun Duration,min,958,92
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Sun Duration,min,956,93
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Sun Duration,min,930,94
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Sun Duration,min,937,95
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Sun Duration,min,805,96
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Sun Duration,min,948,97
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Sun Duration,min,1008,98
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Sun Duration,min,1012,99
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Sun Duration,min,1011,100
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Sun Duration,min,1008,101
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Sun Duration,min,915,102
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Sun Duration,min,1002,103
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Sun Duration,min,1001,104
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Sun Duration,min,941,105
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Sun Duration,min,911,106
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Sun Duration,min,1015,107
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Sun Duration,min,1012,108
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Sun Duration,min,1008,109
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Sun Duration,min,1009,110
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Sun Duration,min,1011,111
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Sun Duration,min,1013,112
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Sun Duration,min,1020,113
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Sun Duration,min,1013,114
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Sun Duration,min,1020,115
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Sun Duration,min,1015,116
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Sun Duration,min,1012,117
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Wind Speed,m/s,1.8,0
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Wind Speed,m/s,1,1
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Wind Speed,m/s,1.6,2
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Wind Speed,m/s,6.1,3
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Wind Speed,m/s,5.5,4
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Wind Speed,m/s,3.7,5
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Wind Speed,m/s,4.5,6
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Wind Speed,m/s,2.5,7
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Wind Speed,m/s,3.7,8
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Wind Speed,m/s,9.2,9
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Wind Speed,m/s,6.2,10
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Wind Speed,m/s,4.5,11
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Wind Speed,m/s,9.2,12
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Wind Speed,m/s,9.2,13
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Wind Speed,m/s,5.4,14
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Wind Speed,m/s,5.5,15
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Wind Speed,m/s,4.2,16
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Wind Speed,m/s,4.9,17
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Wind Speed,m/s,4.7,18
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Wind Speed,m/s,3.5,19
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Wind Speed,m/s,3.9,20
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Wind Speed,m/s,5.4,21
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Wind Speed,m/s,2.5,22
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Wind Speed,m/s,1.5,23
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Wind Speed,m/s,3.1,24
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Wind Speed,m/s,4.5,25
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Wind Speed,m/s,5.4,26
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Wind Speed,m/s,6.2,27
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Wind Speed,m/s,5.6,28
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Wind Speed,m/s,6.2,29
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Wind Speed,m/s,4.1,30
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Wind Speed,m/s,4.5,31
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Wind Speed,m/s,6.5,32
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Wind Speed,m/s,4.5,33
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Wind Speed,m/s,5.9,34
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Wind Speed,m/s,4.7,35
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Wind Speed,m/s,2.5,36
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Wind Speed,m/s,3.5,37
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Wind Speed,m/s,3,38
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Wind Speed,m/s,3.9,39
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Wind Speed,m/s,3.9,40
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Wind Speed,m/s,3.7,41
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Wind Speed,m/s,3.3,42
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Wind Speed,m/s,3.3,43
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Wind Speed,m/s,4.5,44
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Wind Speed,m/s,5.5,45
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Wind Speed,m/s,4.5,46
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Wind Speed,m/s,3.5,47
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Wind Speed,m/s,3.5,48
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Wind Speed,m/s,2.8,49
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Wind Speed,m/s,3.5,50
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Wind Speed,m/s,4.7,51
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Wind Speed,m/s,3.7,52
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Wind Speed,m/s,3.1,53
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Wind Speed,m/s,4.5,54
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Wind Speed,m/s,2.7,55
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Wind Speed,m/s,2.3,56
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Wind Speed,m/s,2.3,57
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Wind Speed,m/s,2.9,58
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Wind Speed,m/s,2.5,59
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Wind Speed,m/s,3.9,60
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Wind Speed,m/s,7,61
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Wind Speed,m/s,2.5,62
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Wind Speed,m/s,5.1,63
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Wind Speed,m/s,5.1,64
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Wind Speed,m/s,2.2,65
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Wind Speed,m/s,3.9,66
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Wind Speed,m/s,3.1,67
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Wind Speed,m/s,4.9,68
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Wind Speed,m/s,5.1,69
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Wind Speed,m/s,6.3,70
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Wind Speed,m/s,6.3,71
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Wind Speed,m/s,5.7,72
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Wind Speed,m/s,6.6,73
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Wind Speed,m/s,3.9,74
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Wind Speed,m/s,5.7,75
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Wind Speed,m/s,4.1,76
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Wind Speed,m/s,5.3,77
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Wind Speed,m/s,6.6,78
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Wind Speed,m/s,9.8,79
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Wind Speed,m/s,14.9,80
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Wind Speed,m/s,9,81
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Wind Speed,m/s,3.9,82
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Wind Speed,m/s,6.3,83
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Wind Speed,m/s,8.6,84
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Wind Speed,m/s,7.6,85
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Wind Speed,m/s,5.3,86
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Wind Speed,m/s,7,87
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Wind Speed,m/s,8,88
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Wind Speed,m/s,7.8,89
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Wind Speed,m/s,27.4,90
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Wind Speed,m/s,6.8,91
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Wind Speed,m/s,7.8,92
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Wind Speed,m/s,1.2,93
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Wind Speed,m/s,10.2,94
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Wind Speed,m/s,8.6,95
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Wind Speed,m/s,10.6,96
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Wind Speed,m/s,9.4,97
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Wind Speed,m/s,6.8,98
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Wind Speed,m/s,5.7,99
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Wind Speed,m/s,6.5,100
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Wind Speed,m/s,6.5,101
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Wind Speed,m/s,7.8,102
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Wind Speed,m/s,10.6,103
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Wind Speed,m/s,11.5,104
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Wind Speed,m/s,14.1,105
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Wind Speed,m/s,7.2,106
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Wind Speed,m/s,5.1,107
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Wind Speed,m/s,6.3,108
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Wind Speed,m/s,9.8,109
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Wind Speed,m/s,11.5,110
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Wind Speed,m/s,9.6,111
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Wind Speed,m/s,6.5,112
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Wind Speed,m/s,7.2,113
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Wind Speed,m/s,8.4,114
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Wind Speed,m/s,6.5,115
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Wind Speed,m/s,13.9,116
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Wind Speed,m/s,10.9,117
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Soil Temperature,C,14.5,0
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Soil Temperature,C,19.3,1
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Soil Temperature,C,19.9,2
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Soil Temperature,C,16.8,3
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Soil Temperature,C,17.2,4
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Soil Temperature,C,19.1,5
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Soil Temperature,C,18.5,6
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Soil Temperature,C,18.5,7
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Soil Temperature,C,19.1,8
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Soil Temperature,C,18.2,9
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Soil Temperature,C,19.1,10
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Soil Temperature,C,18.2,11
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Soil Temperature,C,17.8,12
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Soil Temperature,C,16.7,13
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Soil Temperature,C,16.5,14
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Soil Temperature,C,16,15
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Soil Temperature,C,17.1,16
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Soil Temperature,C,16.3,17
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Soil Temperature,C,15.6,18
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Soil Temperature,C,16,19
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Soil Temperature,C,17,20
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Soil Temperature,C,18,21
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Soil Temperature,C,19.1,22
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Soil Temperature,C,15.5,23
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Soil Temperature,C,16.1,24
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Soil Temperature,C,17.2,25
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Soil Temperature,C,18,26
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Soil Temperature,C,19.1,27
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Soil Temperature,C,16,28
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Soil Temperature,C,15.8,29
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Soil Temperature,C,15.4,30
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Soil Temperature,C,15.5,31
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Soil Temperature,C,14.5,32
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Soil Temperature,C,15.6,33
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Soil Temperature,C,14.1,34
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Soil Temperature,C,14.6,35
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Soil Temperature,C,14,36
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Soil Temperature,C,13,37
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Soil Temperature,C,12.5,38
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Soil Temperature,C,12.4,39
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Soil Temperature,C,11.6,40
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Soil Temperature,C,11.2,41
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Soil Temperature,C,14.2,42
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Soil Temperature,C,13.6,43
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Soil Temperature,C,14.5,44
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Soil Temperature,C,13.5,45
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Soil Temperature,C,12,46
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Soil Temperature,C,12.2,47
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Soil Temperature,C,12,48
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Soil Temperature,C,12.3,49
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Soil Temperature,C,14.5,50
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Soil Temperature,C,16.7,51
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Soil Temperature,C,16.4,52
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Soil Temperature,C,16.9,53
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Soil Temperature,C,14.8,54
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Soil Temperature,C,15.7,55
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Soil Temperature,C,16.1,56
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Soil Temperature,C,15.3,57
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Soil Temperature,C,15.5,58
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Soil Temperature,C,16.1,59
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Soil Temperature,C,17.1,60
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Soil Temperature,C,21.9,61
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Soil Temperature,C,17.8,62
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Soil Temperature,C,18.1,63
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Soil Temperature,C,17.6,64
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Soil Temperature,C,16.1,65
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Soil Temperature,C,16.1,66
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Soil Temperature,C,17.4,67
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Soil Temperature,C,17,68
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Soil Temperature,C,16.5,69
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Soil Temperature,C,16.5,70
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Soil Temperature,C,16.1,71
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Soil Temperature,C,19.3,72
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Soil Temperature,C,19.2,73
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Soil Temperature,C,18.1,74
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Soil Temperature,C,18.2,75
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Soil Temperature,C,19.2,76
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Soil Temperature,C,19.1,77
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Soil Temperature,C,19.8,78
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Soil Temperature,C,18,79
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Soil Temperature,C,19.7,80
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Soil Temperature,C,19.6,81
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Soil Temperature,C,19.7,82
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Soil Temperature,C,18.1,83
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Soil Temperature,C,19.9,84
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Soil Temperature,C,19.5,85
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Soil Temperature,C,20.6,86
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Soil Temperature,C,21.9,87
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Soil Temperature,C,21.8,88
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Soil Temperature,C,22.2,89
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Soil Temperature,C,20.8,90
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Soil Temperature,C,22.5,91
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Soil Temperature,C,18,92
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Soil Temperature,C,19,93
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Soil Temperature,C,22.1,94
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Soil Temperature,C,22.2,95
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Soil Temperature,C,20.6,96
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Soil Temperature,C,19.4,97
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Soil Temperature,C,19.9,98
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Soil Temperature,C,20.9,99
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Soil Temperature,C,20.9,100
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Soil Temperature,C,20.4,101
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Soil Temperature,C,21.9,102
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Soil Temperature,C,22.2,103
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Soil Temperature,C,22.3,104
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Soil Temperature,C,24.1,105
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Soil Temperature,C,22.2,106
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Soil Temperature,C,24.9,107
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Soil Temperature,C,24.3,108
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Soil Temperature,C,25.1,109
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Soil Temperature,C,25.4,110
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Soil Temperature,C,24.9,111
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Soil Temperature,C,25.8,112
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Soil Temperature,C,26.4,113
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Soil Temperature,C,26.7,114
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Soil Temperature,C,26.9,115
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Soil Temperature,C,26.8,116
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Soil Temperature,C,27,117
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Soil Moisture,%,29.3,0
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Soil Moisture,%,29.5,1
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Soil Moisture,%,28,2
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Soil Moisture,%,28,3
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Soil Moisture,%,28,4
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Soil Moisture,%,28,5
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Soil Moisture,%,27,6
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Soil Moisture,%,29,7
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Soil Moisture,%,28,8
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Soil Moisture,%,28.3,9
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Soil Moisture,%,29,10
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Soil Moisture,%,28,11
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Soil Moisture,%,28.2,12
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Soil Moisture,%,28.5,13
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Soil Moisture,%,28.5,14
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Soil Moisture,%,28,15
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Soil Moisture,%,27.1,16
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Soil Moisture,%,28,17
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Soil Moisture,%,28,18
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Soil Moisture,%,29,19
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Soil Moisture,%,28.1,20
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Soil Moisture,%,28,21
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Soil Moisture,%,29,22
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Soil Moisture,%,26,23
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Soil Moisture,%,28,24
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Soil Moisture,%,28.2,25
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Soil Moisture,%,28,26
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Soil Moisture,%,28,27
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Soil Moisture,%,27,28
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Soil Moisture,%,26.6,29
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Soil Moisture,%,26.5,30
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Soil Moisture,%,26,31
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Soil Moisture,%,26,32
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Soil Moisture,%,26,33
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Soil Moisture,%,26,34
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Soil Moisture,%,26,35
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Soil Moisture,%,26,36
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Soil Moisture,%,26.1,37
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Soil Moisture,%,26,38
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Soil Moisture,%,26,39
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Soil Moisture,%,26,40
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Soil Moisture,%,26,41
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Soil Moisture,%,26,42
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Soil Moisture,%,26,43
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Soil Moisture,%,27,44
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Soil Moisture,%,26.8,45
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Soil Moisture,%,26.2,46
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Soil Moisture,%,26.3,47
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Soil Moisture,%,26.1,48
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Soil Moisture,%,26.3,49
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Soil Moisture,%,26.6,50
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Soil Moisture,%,26.4,51
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Soil Moisture,%,26.4,52
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Soil Moisture,%,27.2,53
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Soil Moisture,%,26,54
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Soil Moisture,%,26,55
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Soil Moisture,%,26,56
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Soil Moisture,%,26,57
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Soil Moisture,%,26,58
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Soil Moisture,%,26,59
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Soil Moisture,%,26,60
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Soil Moisture,%,26,61
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Soil Moisture,%,26,62
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Soil Moisture,%,26,63
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Soil Moisture,%,26,64
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Soil Moisture,%,26,65
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Soil Moisture,%,26,66
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Soil Moisture,%,26,67
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Soil Moisture,%,26,68
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Soil Moisture,%,26,69
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Soil Moisture,%,26,70
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Soil Moisture,%,26,71
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Soil Moisture,%,26,72
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Soil Moisture,%,26,73
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Soil Moisture,%,26,74
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Soil Moisture,%,26,75
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Soil Moisture,%,26,76
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Soil Moisture,%,26,77
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Soil Moisture,%,26.5,78
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Soil Moisture,%,26,79
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Soil Moisture,%,26.4,80
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Soil Moisture,%,26,81
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Soil Moisture,%,26,82
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Soil Moisture,%,26,83
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Soil Moisture,%,26,84
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Soil Moisture,%,26,85
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Soil Moisture,%,26,86
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Soil Moisture,%,26,87
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Soil Moisture,%,26.3,88
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Soil Moisture,%,26.4,89
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Soil Moisture,%,26,90
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Soil Moisture,%,26,91
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Soil Moisture,%,26,92
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Soil Moisture,%,26,93
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Soil Moisture,%,26,94
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Soil Moisture,%,26,95
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Soil Moisture,%,26,96
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Soil Moisture,%,26,97
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Soil Moisture,%,26,98
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Soil Moisture,%,26,99
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Soil Moisture,%,26,100
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Soil Moisture,%,26,101
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Soil Moisture,%,26,102
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Soil Moisture,%,26,103
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Soil Moisture,%,26,104
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Soil Moisture,%,26,105
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Soil Moisture,%,26,106
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Soil Moisture,%,26,107
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Soil Moisture,%,26,108
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Soil Moisture,%,26,109
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Soil Moisture,%,26,110
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Soil Moisture,%,26,111
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Soil Moisture,%,26,112
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Soil Moisture,%,26,113
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Soil Moisture,%,26,114
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Soil Moisture,%,26,115
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Soil Moisture,%,26,116
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Soil Moisture,%,26,117
+In16,"Bhopal, India",2016,2016-12-01,,Weather Station,Maximum Huminity,%,64,
+In16,"Bhopal, India",2016,2016-12-02,,Weather Station,Maximum Huminity,%,62,
+In16,"Bhopal, India",2016,2016-12-03,,Weather Station,Maximum Huminity,%,59,
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Maximum Huminity,%,54,
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Maximum Huminity,%,56,
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Maximum Huminity,%,65,
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Maximum Huminity,%,66,
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Maximum Huminity,%,65,
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Maximum Huminity,%,66,
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Maximum Huminity,%,68,
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Maximum Huminity,%,69,
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Maximum Huminity,%,66,
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Maximum Huminity,%,66,
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Maximum Huminity,%,64,
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Maximum Huminity,%,67,
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Maximum Huminity,%,66,
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Maximum Huminity,%,66,
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Maximum Huminity,%,65,
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Maximum Huminity,%,64,
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Maximum Huminity,%,65,
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Maximum Huminity,%,63,
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Maximum Huminity,%,64,
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Maximum Huminity,%,65,
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Maximum Huminity,%,64,
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Maximum Huminity,%,66,
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Maximum Huminity,%,69,
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Maximum Huminity,%,62,
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Maximum Huminity,%,64,
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Maximum Huminity,%,65,
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Maximum Huminity,%,60,
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Maximum Huminity,%,58,
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Maximum Huminity,%,58,
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Maximum Huminity,%,60,
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Maximum Huminity,%,61,
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Maximum Huminity,%,60,
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Maximum Huminity,%,64,
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Maximum Huminity,%,65,
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Maximum Huminity,%,63,
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Maximum Huminity,%,58,
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Maximum Huminity,%,59,
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Maximum Huminity,%,63,
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Maximum Huminity,%,69,
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Maximum Huminity,%,50,
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Maximum Huminity,%,50,
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Maximum Huminity,%,52,
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Maximum Huminity,%,57,
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Maximum Huminity,%,57,
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Maximum Huminity,%,55,
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Maximum Huminity,%,59,
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Maximum Huminity,%,56,
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Maximum Huminity,%,57,
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Maximum Huminity,%,58,
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Maximum Huminity,%,60,
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Maximum Huminity,%,56,
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Maximum Huminity,%,60,
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Maximum Huminity,%,60,
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Maximum Huminity,%,60,
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Maximum Huminity,%,75,
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Maximum Huminity,%,54,
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Maximum Huminity,%,55,
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Maximum Huminity,%,55,
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Maximum Huminity,%,57,
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Maximum Huminity,%,66,
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Maximum Huminity,%,63,
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Maximum Huminity,%,60,
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Maximum Huminity,%,59,
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Maximum Huminity,%,60,
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Maximum Huminity,%,60,
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Maximum Huminity,%,54,
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Maximum Huminity,%,56,
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Maximum Huminity,%,61,
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Maximum Huminity,%,58,
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Maximum Huminity,%,56,
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Maximum Huminity,%,59,
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Maximum Huminity,%,59,
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Maximum Huminity,%,66,
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Maximum Huminity,%,67,
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Maximum Huminity,%,67,
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Maximum Huminity,%,68,
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Maximum Huminity,%,70,
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Maximum Huminity,%,70,
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Maximum Huminity,%,71,
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Maximum Huminity,%,71,
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Maximum Huminity,%,69,
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Maximum Huminity,%,68,
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Maximum Huminity,%,68,
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Maximum Huminity,%,67,
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Maximum Huminity,%,70,
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Maximum Huminity,%,67,
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Maximum Huminity,%,71,
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Maximum Huminity,%,73,
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Maximum Huminity,%,73,
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Maximum Huminity,%,72,
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Maximum Huminity,%,71,
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Maximum Huminity,%,68,
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Maximum Huminity,%,64,
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Maximum Huminity,%,56,
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Maximum Huminity,%,70,
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Maximum Huminity,%,70,
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Maximum Huminity,%,67,
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Maximum Huminity,%,66,
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Maximum Huminity,%,65,
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Maximum Huminity,%,67,
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Maximum Huminity,%,68,
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Maximum Huminity,%,62,
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Maximum Huminity,%,72,
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Maximum Huminity,%,72,
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Maximum Huminity,%,72,
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Maximum Huminity,%,70,
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Maximum Huminity,%,70,
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Maximum Huminity,%,72,
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Maximum Huminity,%,75,
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Maximum Huminity,%,77,
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Maximum Huminity,%,77,
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Maximum Huminity,%,77,
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Maximum Huminity,%,77,
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Maximum Huminity,%,77,
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Maximum Huminity,%,78,
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Maximum Huminity,%,78,
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Maximum Huminity,%,79,
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Maximum Huminity,%,79,
+In16,"Bhopal, India",2016,2016-12-01,,Weather Station,Maximum Temperature,C,26.2,
+In16,"Bhopal, India",2016,2016-12-02,,Weather Station,Maximum Temperature,C,25.5,
+In16,"Bhopal, India",2016,2016-12-03,,Weather Station,Maximum Temperature,C,24.4,
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Maximum Temperature,C,25.3,
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Maximum Temperature,C,25.3,
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Maximum Temperature,C,26.5,
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Maximum Temperature,C,25.5,
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Maximum Temperature,C,23,
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Maximum Temperature,C,23.4,
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Maximum Temperature,C,23.6,
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Maximum Temperature,C,24.4,
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Maximum Temperature,C,24.6,
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Maximum Temperature,C,24.1,
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Maximum Temperature,C,23.7,
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Maximum Temperature,C,25.8,
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Maximum Temperature,C,25.4,
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Maximum Temperature,C,23.5,
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Maximum Temperature,C,23.4,
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Maximum Temperature,C,23.4,
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Maximum Temperature,C,24.5,
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Maximum Temperature,C,25.7,
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Maximum Temperature,C,25,
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Maximum Temperature,C,26.3,
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Maximum Temperature,C,26.4,
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Maximum Temperature,C,25.5,
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Maximum Temperature,C,24.5,
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Maximum Temperature,C,24.9,
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Maximum Temperature,C,25.1,
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Maximum Temperature,C,25,
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Maximum Temperature,C,26.5,
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Maximum Temperature,C,27,
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Maximum Temperature,C,26.5,
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Maximum Temperature,C,25.5,
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Maximum Temperature,C,23.5,
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Maximum Temperature,C,24.5,
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Maximum Temperature,C,24.8,
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Maximum Temperature,C,25.5,
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Maximum Temperature,C,23.2,
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Maximum Temperature,C,22.5,
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Maximum Temperature,C,27.5,
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Maximum Temperature,C,23,
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Maximum Temperature,C,22.1,
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Maximum Temperature,C,20.3,
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Maximum Temperature,C,19,
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Maximum Temperature,C,15,
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Maximum Temperature,C,16,
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Maximum Temperature,C,18.5,
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Maximum Temperature,C,26.5,
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Maximum Temperature,C,25,
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Maximum Temperature,C,24.7,
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Maximum Temperature,C,24,
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Maximum Temperature,C,24.5,
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Maximum Temperature,C,25.2,
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Maximum Temperature,C,26.5,
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Maximum Temperature,C,28.5,
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Maximum Temperature,C,29,
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Maximum Temperature,C,26,
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Maximum Temperature,C,25,
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Maximum Temperature,C,25.5,
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Maximum Temperature,C,22.2,
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Maximum Temperature,C,24.5,
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Maximum Temperature,C,25.8,
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Maximum Temperature,C,27,
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Maximum Temperature,C,28.2,
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Maximum Temperature,C,29.2,
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Maximum Temperature,C,30.1,
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Maximum Temperature,C,28.5,
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Maximum Temperature,C,25,
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Maximum Temperature,C,24.5,
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Maximum Temperature,C,24.4,
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Maximum Temperature,C,29.5,
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Maximum Temperature,C,26.5,
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Maximum Temperature,C,23.5,
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Maximum Temperature,C,19.5,
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Maximum Temperature,C,19.7,
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Maximum Temperature,C,27.1,
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Maximum Temperature,C,28.3,
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Maximum Temperature,C,26.2,
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Maximum Temperature,C,28.3,
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Maximum Temperature,C,28.5,
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Maximum Temperature,C,30.6,
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Maximum Temperature,C,31,
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Maximum Temperature,C,31.5,
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Maximum Temperature,C,28.7,
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Maximum Temperature,C,28.9,
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Maximum Temperature,C,28.6,
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Maximum Temperature,C,28.9,
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Maximum Temperature,C,28.2,
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Maximum Temperature,C,30.5,
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Maximum Temperature,C,31.6,
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Maximum Temperature,C,33.6,
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Maximum Temperature,C,34.5,
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Maximum Temperature,C,35,
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Maximum Temperature,C,32.5,
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Maximum Temperature,C,30.5,
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Maximum Temperature,C,29.5,
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Maximum Temperature,C,28.4,
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Maximum Temperature,C,30.3,
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Maximum Temperature,C,30.7,
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Maximum Temperature,C,30.2,
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Maximum Temperature,C,27.1,
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Maximum Temperature,C,26.5,
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Maximum Temperature,C,25.7,
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Maximum Temperature,C,28.5,
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Maximum Temperature,C,30,
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Maximum Temperature,C,32.8,
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Maximum Temperature,C,32.3,
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Maximum Temperature,C,32.2,
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Maximum Temperature,C,30.6,
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Maximum Temperature,C,30.9,
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Maximum Temperature,C,32.8,
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Maximum Temperature,C,33.5,
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Maximum Temperature,C,36.3,
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Maximum Temperature,C,37.5,
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Maximum Temperature,C,37.4,
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Maximum Temperature,C,36.9,
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Maximum Temperature,C,37.6,
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Maximum Temperature,C,38.2,
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Maximum Temperature,C,39.4,
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Maximum Temperature,C,39.6,
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Maximum Temperature,C,40,
+In16,"Bhopal, India",2016,2016-12-01,,Weather Station,Minimum Huminity,%,48,
+In16,"Bhopal, India",2016,2016-12-02,,Weather Station,Minimum Huminity,%,47,
+In16,"Bhopal, India",2016,2016-12-03,,Weather Station,Minimum Huminity,%,48,
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Minimum Huminity,%,45,
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Minimum Huminity,%,45,
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Minimum Huminity,%,54,
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Minimum Huminity,%,48,
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Minimum Huminity,%,45,
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Minimum Huminity,%,55,
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Minimum Huminity,%,50,
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Minimum Huminity,%,52,
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Minimum Huminity,%,55,
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Minimum Huminity,%,55,
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Minimum Huminity,%,52,
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Minimum Huminity,%,50,
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Minimum Huminity,%,49,
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Minimum Huminity,%,47,
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Minimum Huminity,%,45,
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Minimum Huminity,%,40,
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Minimum Huminity,%,49,
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Minimum Huminity,%,46,
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Minimum Huminity,%,40,
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Minimum Huminity,%,51,
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Minimum Huminity,%,52,
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Minimum Huminity,%,55,
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Minimum Huminity,%,56,
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Minimum Huminity,%,48,
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Minimum Huminity,%,52,
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Minimum Huminity,%,50,
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Minimum Huminity,%,47,
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Minimum Huminity,%,45,
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Minimum Huminity,%,48,
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Minimum Huminity,%,52,
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Minimum Huminity,%,50,
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Minimum Huminity,%,45,
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Minimum Huminity,%,48,
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Minimum Huminity,%,50,
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Minimum Huminity,%,48,
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Minimum Huminity,%,51,
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Minimum Huminity,%,48,
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Minimum Huminity,%,52,
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Minimum Huminity,%,55,
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Minimum Huminity,%,41,
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Minimum Huminity,%,40,
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Minimum Huminity,%,44,
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Minimum Huminity,%,48,
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Minimum Huminity,%,48,
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Minimum Huminity,%,45,
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Minimum Huminity,%,48,
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Minimum Huminity,%,47,
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Minimum Huminity,%,46,
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Minimum Huminity,%,48,
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Minimum Huminity,%,50,
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Minimum Huminity,%,49,
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Minimum Huminity,%,54,
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Minimum Huminity,%,52,
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Minimum Huminity,%,53,
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Minimum Huminity,%,65,
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Minimum Huminity,%,51,
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Minimum Huminity,%,49,
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Minimum Huminity,%,47,
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Minimum Huminity,%,48,
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Minimum Huminity,%,47,
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Minimum Huminity,%,47,
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Minimum Huminity,%,45,
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Minimum Huminity,%,51,
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Minimum Huminity,%,55,
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Minimum Huminity,%,53,
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Minimum Huminity,%,47,
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Minimum Huminity,%,49,
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Minimum Huminity,%,53,
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Minimum Huminity,%,51,
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Minimum Huminity,%,51,
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Minimum Huminity,%,54,
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Minimum Huminity,%,54,
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Minimum Huminity,%,54,
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Minimum Huminity,%,52,
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Minimum Huminity,%,51,
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Minimum Huminity,%,51,
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Minimum Huminity,%,63,
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Minimum Huminity,%,51,
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Minimum Huminity,%,56,
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Minimum Huminity,%,57,
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Minimum Huminity,%,49,
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Minimum Huminity,%,51,
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Minimum Huminity,%,52,
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Minimum Huminity,%,51,
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Minimum Huminity,%,50,
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Minimum Huminity,%,47,
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Minimum Huminity,%,54,
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Minimum Huminity,%,55,
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Minimum Huminity,%,54,
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Minimum Huminity,%,54,
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Minimum Huminity,%,55,
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Minimum Huminity,%,14.9,
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Minimum Huminity,%,64,
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Minimum Huminity,%,55,
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Minimum Huminity,%,54,
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Minimum Huminity,%,56,
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Minimum Huminity,%,56,
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Minimum Huminity,%,49,
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Minimum Huminity,%,48,
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Minimum Huminity,%,51,
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Minimum Huminity,%,50,
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Minimum Huminity,%,56,
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Minimum Huminity,%,54,
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Minimum Huminity,%,55,
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Minimum Huminity,%,54,
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Minimum Huminity,%,54,
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Minimum Huminity,%,53,
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Minimum Huminity,%,56,
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Minimum Huminity,%,56,
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Minimum Huminity,%,57,
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Minimum Huminity,%,58,
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Minimum Huminity,%,57,
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Minimum Huminity,%,59,
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Minimum Huminity,%,59,
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Minimum Huminity,%,60,
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Minimum Huminity,%,61,
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Minimum Huminity,%,59,
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Minimum Huminity,%,60,
+In16,"Bhopal, India",2016,2016-12-01,,Weather Station,Minimum Temperature,C,8,
+In16,"Bhopal, India",2016,2016-12-02,,Weather Station,Minimum Temperature,C,9,
+In16,"Bhopal, India",2016,2016-12-03,,Weather Station,Minimum Temperature,C,9.5,
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Minimum Temperature,C,7.7,
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Minimum Temperature,C,7.6,
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Minimum Temperature,C,7.5,
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Minimum Temperature,C,7.8,
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Minimum Temperature,C,7,
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Minimum Temperature,C,7.5,
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Minimum Temperature,C,6.8,
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Minimum Temperature,C,6.2,
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Minimum Temperature,C,6.9,
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Minimum Temperature,C,8.5,
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Minimum Temperature,C,8.2,
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Minimum Temperature,C,7.5,
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Minimum Temperature,C,8.5,
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Minimum Temperature,C,6.3,
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Minimum Temperature,C,6.5,
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Minimum Temperature,C,5.8,
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Minimum Temperature,C,6.1,
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Minimum Temperature,C,7.5,
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Minimum Temperature,C,7.1,
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Minimum Temperature,C,8.5,
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Minimum Temperature,C,10.4,
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Minimum Temperature,C,9.5,
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Minimum Temperature,C,9.2,
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Minimum Temperature,C,8.2,
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Minimum Temperature,C,7.5,
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Minimum Temperature,C,8.2,
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Minimum Temperature,C,9.5,
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Minimum Temperature,C,10,
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Minimum Temperature,C,10.5,
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Minimum Temperature,C,7.5,
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Minimum Temperature,C,6.5,
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Minimum Temperature,C,6.2,
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Minimum Temperature,C,6.5,
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Minimum Temperature,C,6.8,
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Minimum Temperature,C,7,
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Minimum Temperature,C,8.5,
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Minimum Temperature,C,10,
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Minimum Temperature,C,9,
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Minimum Temperature,C,6.2,
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Minimum Temperature,C,3.5,
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Minimum Temperature,C,0.9,
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Minimum Temperature,C,3.1,
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Minimum Temperature,C,3.9,
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Minimum Temperature,C,12,
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Minimum Temperature,C,12.5,
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Minimum Temperature,C,12,
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Minimum Temperature,C,13,
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Minimum Temperature,C,13.5,
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Minimum Temperature,C,13.2,
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Minimum Temperature,C,12.5,
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Minimum Temperature,C,13.5,
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Minimum Temperature,C,14.5,
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Minimum Temperature,C,15.1,
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Minimum Temperature,C,13.6,
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Minimum Temperature,C,13.2,
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Minimum Temperature,C,12.5,
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Minimum Temperature,C,9.5,
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Minimum Temperature,C,7.5,
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Minimum Temperature,C,8.8,
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Minimum Temperature,C,7.1,
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Minimum Temperature,C,10.5,
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Minimum Temperature,C,12.5,
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Minimum Temperature,C,15.2,
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Minimum Temperature,C,13.5,
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Minimum Temperature,C,11,
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Minimum Temperature,C,11.5,
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Minimum Temperature,C,12.5,
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Minimum Temperature,C,15.5,
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Minimum Temperature,C,13.5,
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Minimum Temperature,C,11,
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Minimum Temperature,C,9.5,
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Minimum Temperature,C,8.5,
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Minimum Temperature,C,9.9,
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Minimum Temperature,C,11.9,
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Minimum Temperature,C,11.4,
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Minimum Temperature,C,10.9,
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Minimum Temperature,C,11.5,
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Minimum Temperature,C,12.5,
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Minimum Temperature,C,16.6,
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Minimum Temperature,C,15.5,
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Minimum Temperature,C,11.3,
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Minimum Temperature,C,12.1,
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Minimum Temperature,C,14.8,
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Minimum Temperature,C,12.8,
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Minimum Temperature,C,10.7,
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Minimum Temperature,C,11.5,
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Minimum Temperature,C,14.5,
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Minimum Temperature,C,14.1,
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Minimum Temperature,C,15.5,
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Minimum Temperature,C,15.4,
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Minimum Temperature,C,14.5,
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Minimum Temperature,C,13,
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Minimum Temperature,C,15.1,
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Minimum Temperature,C,14.7,
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Minimum Temperature,C,14.6,
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Minimum Temperature,C,12.5,
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Minimum Temperature,C,9,
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Minimum Temperature,C,9.5,
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Minimum Temperature,C,8.2,
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Minimum Temperature,C,9.9,
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Minimum Temperature,C,10.2,
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Minimum Temperature,C,12.3,
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Minimum Temperature,C,14.5,
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Minimum Temperature,C,15.5,
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Minimum Temperature,C,14.2,
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Minimum Temperature,C,14.8,
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Minimum Temperature,C,13.6,
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Minimum Temperature,C,14.6,
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Minimum Temperature,C,15.8,
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Minimum Temperature,C,17.2,
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Minimum Temperature,C,19.8,
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Minimum Temperature,C,17.7,
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Minimum Temperature,C,18.3,
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Minimum Temperature,C,19.3,
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Minimum Temperature,C,19.2,
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Minimum Temperature,C,20.5,
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Minimum Temperature,C,19.2,
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Minimum Temperature,C,20.3,
+In16,"Bhopal, India",2016,2016-12-01,,Weather Station,Wind direction,degrees,315,
+In16,"Bhopal, India",2016,2016-12-02,,Weather Station,Wind direction,degrees,338,
+In16,"Bhopal, India",2016,2016-12-03,,Weather Station,Wind direction,degrees,137,
+In16,"Bhopal, India",2016,2016-12-04,,Weather Station,Wind direction,degrees,115,
+In16,"Bhopal, India",2016,2016-12-05,,Weather Station,Wind direction,degrees,83,
+In16,"Bhopal, India",2016,2016-12-06,,Weather Station,Wind direction,degrees,62,
+In16,"Bhopal, India",2016,2016-12-07,,Weather Station,Wind direction,degrees,99,
+In16,"Bhopal, India",2016,2016-12-08,,Weather Station,Wind direction,degrees,172,
+In16,"Bhopal, India",2016,2016-12-09,,Weather Station,Wind direction,degrees,273,
+In16,"Bhopal, India",2016,2016-12-10,,Weather Station,Wind direction,degrees,200,
+In16,"Bhopal, India",2016,2016-12-11,,Weather Station,Wind direction,degrees,105,
+In16,"Bhopal, India",2016,2016-12-12,,Weather Station,Wind direction,degrees,273,
+In16,"Bhopal, India",2016,2016-12-13,,Weather Station,Wind direction,degrees,170,
+In16,"Bhopal, India",2016,2016-12-14,,Weather Station,Wind direction,degrees,150,
+In16,"Bhopal, India",2016,2016-12-15,,Weather Station,Wind direction,degrees,165,
+In16,"Bhopal, India",2016,2016-12-16,,Weather Station,Wind direction,degrees,122,
+In16,"Bhopal, India",2016,2016-12-17,,Weather Station,Wind direction,degrees,72,
+In16,"Bhopal, India",2016,2016-12-18,,Weather Station,Wind direction,degrees,155,
+In16,"Bhopal, India",2016,2016-12-19,,Weather Station,Wind direction,degrees,162,
+In16,"Bhopal, India",2016,2016-12-20,,Weather Station,Wind direction,degrees,175,
+In16,"Bhopal, India",2016,2016-12-21,,Weather Station,Wind direction,degrees,148,
+In16,"Bhopal, India",2016,2016-12-22,,Weather Station,Wind direction,degrees,169,
+In16,"Bhopal, India",2016,2016-12-23,,Weather Station,Wind direction,degrees,187,
+In16,"Bhopal, India",2016,2016-12-24,,Weather Station,Wind direction,degrees,157,
+In16,"Bhopal, India",2016,2016-12-25,,Weather Station,Wind direction,degrees,210,
+In16,"Bhopal, India",2016,2016-12-26,,Weather Station,Wind direction,degrees,225,
+In16,"Bhopal, India",2016,2016-12-27,,Weather Station,Wind direction,degrees,195,
+In16,"Bhopal, India",2016,2016-12-28,,Weather Station,Wind direction,degrees,185,
+In16,"Bhopal, India",2016,2016-12-29,,Weather Station,Wind direction,degrees,300,
+In16,"Bhopal, India",2016,2016-12-30,,Weather Station,Wind direction,degrees,310,
+In16,"Bhopal, India",2016,2016-12-31,,Weather Station,Wind direction,degrees,337,
+In16,"Bhopal, India",2016,2017-01-01,,Weather Station,Wind direction,degrees,275,
+In16,"Bhopal, India",2016,2017-01-02,,Weather Station,Wind direction,degrees,215,
+In16,"Bhopal, India",2016,2017-01-03,,Weather Station,Wind direction,degrees,200.7,
+In16,"Bhopal, India",2016,2017-01-04,,Weather Station,Wind direction,degrees,196.1,
+In16,"Bhopal, India",2016,2017-01-05,,Weather Station,Wind direction,degrees,141.2,
+In16,"Bhopal, India",2016,2017-01-06,,Weather Station,Wind direction,degrees,123.3,
+In16,"Bhopal, India",2016,2017-01-07,,Weather Station,Wind direction,degrees,158.2,
+In16,"Bhopal, India",2016,2017-01-08,,Weather Station,Wind direction,degrees,148.9,
+In16,"Bhopal, India",2016,2017-01-09,,Weather Station,Wind direction,degrees,235,
+In16,"Bhopal, India",2016,2017-01-10,,Weather Station,Wind direction,degrees,245,
+In16,"Bhopal, India",2016,2017-01-11,,Weather Station,Wind direction,degrees,260,
+In16,"Bhopal, India",2016,2017-01-12,,Weather Station,Wind direction,degrees,202.7,
+In16,"Bhopal, India",2016,2017-01-13,,Weather Station,Wind direction,degrees,188.2,
+In16,"Bhopal, India",2016,2017-01-14,,Weather Station,Wind direction,degrees,97.6,
+In16,"Bhopal, India",2016,2017-01-15,,Weather Station,Wind direction,degrees,108.5,
+In16,"Bhopal, India",2016,2017-01-16,,Weather Station,Wind direction,degrees,130,
+In16,"Bhopal, India",2016,2017-01-17,,Weather Station,Wind direction,degrees,130,
+In16,"Bhopal, India",2016,2017-01-18,,Weather Station,Wind direction,degrees,150,
+In16,"Bhopal, India",2016,2017-01-19,,Weather Station,Wind direction,degrees,200,
+In16,"Bhopal, India",2016,2017-01-20,,Weather Station,Wind direction,degrees,225,
+In16,"Bhopal, India",2016,2017-01-21,,Weather Station,Wind direction,degrees,330,
+In16,"Bhopal, India",2016,2017-01-22,,Weather Station,Wind direction,degrees,310,
+In16,"Bhopal, India",2016,2017-01-23,,Weather Station,Wind direction,degrees,156,
+In16,"Bhopal, India",2016,2017-01-24,,Weather Station,Wind direction,degrees,127,
+In16,"Bhopal, India",2016,2017-01-25,,Weather Station,Wind direction,degrees,125.4,
+In16,"Bhopal, India",2016,2017-01-26,,Weather Station,Wind direction,degrees,121.7,
+In16,"Bhopal, India",2016,2017-01-27,,Weather Station,Wind direction,degrees,100.5,
+In16,"Bhopal, India",2016,2017-01-28,,Weather Station,Wind direction,degrees,149.3,
+In16,"Bhopal, India",2016,2017-01-29,,Weather Station,Wind direction,degrees,134,
+In16,"Bhopal, India",2016,2017-01-30,,Weather Station,Wind direction,degrees,133.4,
+In16,"Bhopal, India",2016,2017-01-31,,Weather Station,Wind direction,degrees,140,
+In16,"Bhopal, India",2016,2017-02-01,,Weather Station,Wind direction,degrees,135.7,
+In16,"Bhopal, India",2016,2017-02-02,,Weather Station,Wind direction,degrees,134.3,
+In16,"Bhopal, India",2016,2017-02-03,,Weather Station,Wind direction,degrees,171.8,
+In16,"Bhopal, India",2016,2017-02-04,,Weather Station,Wind direction,degrees,225.9,
+In16,"Bhopal, India",2016,2017-02-05,,Weather Station,Wind direction,degrees,156.2,
+In16,"Bhopal, India",2016,2017-02-06,,Weather Station,Wind direction,degrees,166.8,
+In16,"Bhopal, India",2016,2017-02-07,,Weather Station,Wind direction,degrees,148.7,
+In16,"Bhopal, India",2016,2017-02-08,,Weather Station,Wind direction,degrees,133.5,
+In16,"Bhopal, India",2016,2017-02-09,,Weather Station,Wind direction,degrees,233.5,
+In16,"Bhopal, India",2016,2017-02-10,,Weather Station,Wind direction,degrees,74,
+In16,"Bhopal, India",2016,2017-02-11,,Weather Station,Wind direction,degrees,91.5,
+In16,"Bhopal, India",2016,2017-02-12,,Weather Station,Wind direction,degrees,72.4,
+In16,"Bhopal, India",2016,2017-02-13,,Weather Station,Wind direction,degrees,75.4,
+In16,"Bhopal, India",2016,2017-02-14,,Weather Station,Wind direction,degrees,84.2,
+In16,"Bhopal, India",2016,2017-02-15,,Weather Station,Wind direction,degrees,92.5,
+In16,"Bhopal, India",2016,2017-02-16,,Weather Station,Wind direction,degrees,123.9,
+In16,"Bhopal, India",2016,2017-02-17,,Weather Station,Wind direction,degrees,153.8,
+In16,"Bhopal, India",2016,2017-02-18,,Weather Station,Wind direction,degrees,182.4,
+In16,"Bhopal, India",2016,2017-02-19,,Weather Station,Wind direction,degrees,132.4,
+In16,"Bhopal, India",2016,2017-02-20,,Weather Station,Wind direction,degrees,183.9,
+In16,"Bhopal, India",2016,2017-02-21,,Weather Station,Wind direction,degrees,242.4,
+In16,"Bhopal, India",2016,2017-02-22,,Weather Station,Wind direction,degrees,241.5,
+In16,"Bhopal, India",2016,2017-02-23,,Weather Station,Wind direction,degrees,225.4,
+In16,"Bhopal, India",2016,2017-02-24,,Weather Station,Wind direction,degrees,145.6,
+In16,"Bhopal, India",2016,2017-02-25,,Weather Station,Wind direction,degrees,86,
+In16,"Bhopal, India",2016,2017-02-26,,Weather Station,Wind direction,degrees,169.8,
+In16,"Bhopal, India",2016,2017-02-27,,Weather Station,Wind direction,degrees,165.9,
+In16,"Bhopal, India",2016,2017-02-28,,Weather Station,Wind direction,degrees,124.3,
+In16,"Bhopal, India",2016,2017-03-01,,Weather Station,Wind direction,degrees,171.8,
+In16,"Bhopal, India",2016,2017-03-02,,Weather Station,Wind direction,degrees,191.4,
+In16,"Bhopal, India",2016,2017-03-03,,Weather Station,Wind direction,degrees,217.5,
+In16,"Bhopal, India",2016,2017-03-04,,Weather Station,Wind direction,degrees,212.1,
+In16,"Bhopal, India",2016,2017-03-05,,Weather Station,Wind direction,degrees,56.3,
+In16,"Bhopal, India",2016,2017-03-06,,Weather Station,Wind direction,degrees,73,
+In16,"Bhopal, India",2016,2017-03-07,,Weather Station,Wind direction,degrees,245.5,
+In16,"Bhopal, India",2016,2017-03-08,,Weather Station,Wind direction,degrees,272.8,
+In16,"Bhopal, India",2016,2017-03-09,,Weather Station,Wind direction,degrees,247.1,
+In16,"Bhopal, India",2016,2017-03-10,,Weather Station,Wind direction,degrees,171.7,
+In16,"Bhopal, India",2016,2017-03-11,,Weather Station,Wind direction,degrees,217.5,
+In16,"Bhopal, India",2016,2017-03-12,,Weather Station,Wind direction,degrees,140.7,
+In16,"Bhopal, India",2016,2017-03-13,,Weather Station,Wind direction,degrees,165.1,
+In16,"Bhopal, India",2016,2017-03-14,,Weather Station,Wind direction,degrees,79.4,
+In16,"Bhopal, India",2016,2017-03-15,,Weather Station,Wind direction,degrees,103.8,
+In16,"Bhopal, India",2016,2017-03-16,,Weather Station,Wind direction,degrees,189.3,
+In16,"Bhopal, India",2016,2017-03-17,,Weather Station,Wind direction,degrees,226.5,
+In16,"Bhopal, India",2016,2017-03-18,,Weather Station,Wind direction,degrees,239.3,
+In16,"Bhopal, India",2016,2017-03-19,,Weather Station,Wind direction,degrees,136.1,
+In16,"Bhopal, India",2016,2017-03-20,,Weather Station,Wind direction,degrees,109.1,
+In16,"Bhopal, India",2016,2017-03-21,,Weather Station,Wind direction,degrees,127.3,
+In16,"Bhopal, India",2016,2017-03-22,,Weather Station,Wind direction,degrees,182.8,
+In16,"Bhopal, India",2016,2017-03-23,,Weather Station,Wind direction,degrees,254,
+In16,"Bhopal, India",2016,2017-03-24,,Weather Station,Wind direction,degrees,234.2,
+In16,"Bhopal, India",2016,2017-03-25,,Weather Station,Wind direction,degrees,216.7,
+In16,"Bhopal, India",2016,2017-03-26,,Weather Station,Wind direction,degrees,136,
+In16,"Bhopal, India",2016,2017-03-27,,Weather Station,Wind direction,degrees,146.4,
+In16,"Bhopal, India",2016,2017-03-28,,Weather Station,Wind direction,degrees,183.8,
+In16,"Bhopal, India",2016,2017-03-29,,Weather Station,Wind direction,degrees,198.7,
+In16,"Bhopal, India",2016,2017-03-30,,Weather Station,Wind direction,degrees,267.3,
+In16,"Bhopal, India",2016,2017-03-31,,Weather Station,Wind direction,degrees,267.4,

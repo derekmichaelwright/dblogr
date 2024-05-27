@@ -112,7 +112,7 @@ mp <- ggplot(gapminder, aes(x = gdpPercap / 1000, y = lifeExp,
   transition_time(year)
 anim_save("gapminder_gif_01.gif", mp, 
           nframes = 300, fps = 20, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -139,7 +139,7 @@ mp <- ggplot(xx, aes(x = country, y = gdpPercap / 1000,
   transition_time(year)
 anim_save("gapminder_gif_02.gif", mp, 
           nframes = 300, fps = 20, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -166,7 +166,7 @@ mp <- ggplot(xx, aes(x = country, y = lifeExp,
   transition_time(year)
 anim_save("gapminder_gif_03.gif", mp, 
           nframes = 300, fps = 20, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -200,7 +200,7 @@ xx <- gapminder %>%
 mp <- gg_gapminder1(xx)
 anim_save("gapminder_gif_04.gif", mp, 
           nframes = 300, fps = 20, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -221,7 +221,7 @@ xx <- gapminder %>%
 mp <- gg_gapminder1(xx, "Africa")
 anim_save("gapminder_gif_05.gif", mp, 
           nframes = 300, fps = 20, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -240,7 +240,7 @@ xx <- gapminder %>%
 mp <- gg_gapminder1(xx, "Americas")
 anim_save("gapminder_gif_06.gif", mp, 
           nframes = 300, fps = 20, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -259,7 +259,7 @@ xx <- gapminder %>%
 mp <- gg_gapminder1(xx, "Asia")
 anim_save("gapminder_gif_07.gif", mp, 
           nframes = 300, fps = 20, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -278,7 +278,7 @@ xx <- gapminder %>%
 mp <- gg_gapminder1(xx, "Europe")
 anim_save("gapminder_gif_08.gif", mp, 
           nframes = 300, fps = 20, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -310,7 +310,7 @@ gg_gapminder2 <- function(mycountries) {
 mp <- gg_gapminder2("Canada")
 anim_save("gapminder_gif_09.gif", mp, 
           nframes = 300, fps = 20, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -323,7 +323,7 @@ anim_save("gapminder_gif_09.gif", mp,
 mp <- gg_gapminder2("China")
 anim_save("gapminder_gif_10.gif", mp, 
           nframes = 300, fps = 20, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -336,7 +336,7 @@ anim_save("gapminder_gif_10.gif", mp,
 mp <- gg_gapminder2(c("Rwanda", "South Africa", "Nigeria"))
 anim_save("gapminder_gif_11.gif", mp, 
           nframes = 300, fps = 20, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---

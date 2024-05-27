@@ -668,7 +668,7 @@ mp <- mp +
   #view_follow(fixed_x = c(as.Date("1866-01-01"), NA))
 anim_save("canada_housing_4_01.gif", mp, 
           nframes = 600, fps = 30, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---

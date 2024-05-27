@@ -1,0 +1,1023 @@
+Expt,Location,Year,Date,Time,LoggerID,Measurement,Unit,Value,DaysAfterPlanting
+Ba17,"Jessore, Bangladesh",2017,2017-12-03,6:33:36,Weather Station,Day Length,Hours,10.66,0
+Ba17,"Jessore, Bangladesh",2017,2017-12-04,6:34:12,Weather Station,Day Length,Hours,10.65,1
+Ba17,"Jessore, Bangladesh",2017,2017-12-05,6:34:48,Weather Station,Day Length,Hours,10.64,2
+Ba17,"Jessore, Bangladesh",2017,2017-12-06,6:35:24,Weather Station,Day Length,Hours,10.63,3
+Ba17,"Jessore, Bangladesh",2017,2017-12-07,6:36:00,Weather Station,Day Length,Hours,10.63,4
+Ba17,"Jessore, Bangladesh",2017,2017-12-08,6:36:36,Weather Station,Day Length,Hours,10.62,5
+Ba17,"Jessore, Bangladesh",2017,2017-12-09,6:37:12,Weather Station,Day Length,Hours,10.61,6
+Ba17,"Jessore, Bangladesh",2017,2017-12-10,6:37:48,Weather Station,Day Length,Hours,10.61,7
+Ba17,"Jessore, Bangladesh",2017,2017-12-11,6:38:24,Weather Station,Day Length,Hours,10.6,8
+Ba17,"Jessore, Bangladesh",2017,2017-12-12,6:39:00,Weather Station,Day Length,Hours,10.6,9
+Ba17,"Jessore, Bangladesh",2017,2017-12-13,6:39:36,Weather Station,Day Length,Hours,10.59,10
+Ba17,"Jessore, Bangladesh",2017,2017-12-14,6:40:12,Weather Station,Day Length,Hours,10.59,11
+Ba17,"Jessore, Bangladesh",2017,2017-12-15,6:40:48,Weather Station,Day Length,Hours,10.58,12
+Ba17,"Jessore, Bangladesh",2017,2017-12-16,6:41:24,Weather Station,Day Length,Hours,10.58,13
+Ba17,"Jessore, Bangladesh",2017,2017-12-17,6:42:00,Weather Station,Day Length,Hours,10.58,14
+Ba17,"Jessore, Bangladesh",2017,2017-12-18,6:42:36,Weather Station,Day Length,Hours,10.58,15
+Ba17,"Jessore, Bangladesh",2017,2017-12-19,6:43:12,Weather Station,Day Length,Hours,10.57,16
+Ba17,"Jessore, Bangladesh",2017,2017-12-20,6:43:48,Weather Station,Day Length,Hours,10.57,17
+Ba17,"Jessore, Bangladesh",2017,2017-12-21,6:44:24,Weather Station,Day Length,Hours,10.57,18
+Ba17,"Jessore, Bangladesh",2017,2017-12-22,6:45:00,Weather Station,Day Length,Hours,10.57,19
+Ba17,"Jessore, Bangladesh",2017,2017-12-23,6:45:00,Weather Station,Day Length,Hours,10.57,20
+Ba17,"Jessore, Bangladesh",2017,2017-12-24,6:45:36,Weather Station,Day Length,Hours,10.57,21
+Ba17,"Jessore, Bangladesh",2017,2017-12-25,6:46:12,Weather Station,Day Length,Hours,10.58,22
+Ba17,"Jessore, Bangladesh",2017,2017-12-26,6:46:48,Weather Station,Day Length,Hours,10.58,23
+Ba17,"Jessore, Bangladesh",2017,2017-12-27,6:46:48,Weather Station,Day Length,Hours,10.58,24
+Ba17,"Jessore, Bangladesh",2017,2017-12-28,6:47:24,Weather Station,Day Length,Hours,10.59,25
+Ba17,"Jessore, Bangladesh",2017,2017-12-29,6:47:24,Weather Station,Day Length,Hours,10.59,26
+Ba17,"Jessore, Bangladesh",2017,2017-12-30,6:48:00,Weather Station,Day Length,Hours,10.59,27
+Ba17,"Jessore, Bangladesh",2017,2017-12-31,6:48:36,Weather Station,Day Length,Hours,10.6,28
+Ba17,"Jessore, Bangladesh",2017,2018-01-01,6:48:36,Weather Station,Day Length,Hours,10.6,29
+Ba17,"Jessore, Bangladesh",2017,2018-01-02,6:49:12,Weather Station,Day Length,Hours,10.61,30
+Ba17,"Jessore, Bangladesh",2017,2018-01-03,6:49:12,Weather Station,Day Length,Hours,10.62,31
+Ba17,"Jessore, Bangladesh",2017,2018-01-04,6:49:12,Weather Station,Day Length,Hours,10.62,32
+Ba17,"Jessore, Bangladesh",2017,2018-01-05,6:49:48,Weather Station,Day Length,Hours,10.63,33
+Ba17,"Jessore, Bangladesh",2017,2018-01-06,6:49:48,Weather Station,Day Length,Hours,10.64,34
+Ba17,"Jessore, Bangladesh",2017,2018-01-07,6:49:48,Weather Station,Day Length,Hours,10.65,35
+Ba17,"Jessore, Bangladesh",2017,2018-01-08,6:50:24,Weather Station,Day Length,Hours,10.66,36
+Ba17,"Jessore, Bangladesh",2017,2018-01-09,6:50:24,Weather Station,Day Length,Hours,10.67,37
+Ba17,"Jessore, Bangladesh",2017,2018-01-10,6:50:24,Weather Station,Day Length,Hours,10.68,38
+Ba17,"Jessore, Bangladesh",2017,2018-01-11,6:50:24,Weather Station,Day Length,Hours,10.69,39
+Ba17,"Jessore, Bangladesh",2017,2018-01-12,6:50:24,Weather Station,Day Length,Hours,10.7,40
+Ba17,"Jessore, Bangladesh",2017,2018-01-13,6:50:24,Weather Station,Day Length,Hours,10.71,41
+Ba17,"Jessore, Bangladesh",2017,2018-01-14,6:50:24,Weather Station,Day Length,Hours,10.72,42
+Ba17,"Jessore, Bangladesh",2017,2018-01-15,6:50:24,Weather Station,Day Length,Hours,10.73,43
+Ba17,"Jessore, Bangladesh",2017,2018-01-16,6:50:24,Weather Station,Day Length,Hours,10.75,44
+Ba17,"Jessore, Bangladesh",2017,2018-01-17,6:50:24,Weather Station,Day Length,Hours,10.76,45
+Ba17,"Jessore, Bangladesh",2017,2018-01-18,6:50:24,Weather Station,Day Length,Hours,10.77,46
+Ba17,"Jessore, Bangladesh",2017,2018-01-19,6:50:24,Weather Station,Day Length,Hours,10.79,47
+Ba17,"Jessore, Bangladesh",2017,2018-01-20,6:50:24,Weather Station,Day Length,Hours,10.8,48
+Ba17,"Jessore, Bangladesh",2017,2018-01-21,6:50:24,Weather Station,Day Length,Hours,10.81,49
+Ba17,"Jessore, Bangladesh",2017,2018-01-22,6:49:48,Weather Station,Day Length,Hours,10.83,50
+Ba17,"Jessore, Bangladesh",2017,2018-01-23,6:49:48,Weather Station,Day Length,Hours,10.84,51
+Ba17,"Jessore, Bangladesh",2017,2018-01-24,6:49:48,Weather Station,Day Length,Hours,10.86,52
+Ba17,"Jessore, Bangladesh",2017,2018-01-25,6:49:12,Weather Station,Day Length,Hours,10.88,53
+Ba17,"Jessore, Bangladesh",2017,2018-01-26,6:49:12,Weather Station,Day Length,Hours,10.89,54
+Ba17,"Jessore, Bangladesh",2017,2018-01-27,6:48:36,Weather Station,Day Length,Hours,10.91,55
+Ba17,"Jessore, Bangladesh",2017,2018-01-28,6:48:36,Weather Station,Day Length,Hours,10.92,56
+Ba17,"Jessore, Bangladesh",2017,2018-01-29,6:48:00,Weather Station,Day Length,Hours,10.94,57
+Ba17,"Jessore, Bangladesh",2017,2018-01-30,6:48:00,Weather Station,Day Length,Hours,10.96,58
+Ba17,"Jessore, Bangladesh",2017,2018-01-31,6:47:24,Weather Station,Day Length,Hours,10.98,59
+Ba17,"Jessore, Bangladesh",2017,2018-02-01,6:46:48,Weather Station,Day Length,Hours,10.99,60
+Ba17,"Jessore, Bangladesh",2017,2018-02-02,6:46:48,Weather Station,Day Length,Hours,11.01,61
+Ba17,"Jessore, Bangladesh",2017,2018-02-03,6:46:12,Weather Station,Day Length,Hours,11.03,62
+Ba17,"Jessore, Bangladesh",2017,2018-02-04,6:45:36,Weather Station,Day Length,Hours,11.05,63
+Ba17,"Jessore, Bangladesh",2017,2018-02-05,6:45:00,Weather Station,Day Length,Hours,11.07,64
+Ba17,"Jessore, Bangladesh",2017,2018-02-06,6:44:24,Weather Station,Day Length,Hours,11.09,65
+Ba17,"Jessore, Bangladesh",2017,2018-02-07,6:44:24,Weather Station,Day Length,Hours,11.11,66
+Ba17,"Jessore, Bangladesh",2017,2018-02-08,6:43:48,Weather Station,Day Length,Hours,11.13,67
+Ba17,"Jessore, Bangladesh",2017,2018-02-09,6:43:12,Weather Station,Day Length,Hours,11.15,68
+Ba17,"Jessore, Bangladesh",2017,2018-02-10,6:42:36,Weather Station,Day Length,Hours,11.17,69
+Ba17,"Jessore, Bangladesh",2017,2018-02-11,6:42:00,Weather Station,Day Length,Hours,11.19,70
+Ba17,"Jessore, Bangladesh",2017,2018-02-12,6:41:24,Weather Station,Day Length,Hours,11.21,71
+Ba17,"Jessore, Bangladesh",2017,2018-02-13,6:40:48,Weather Station,Day Length,Hours,11.23,72
+Ba17,"Jessore, Bangladesh",2017,2018-02-14,6:40:12,Weather Station,Day Length,Hours,11.25,73
+Ba17,"Jessore, Bangladesh",2017,2018-02-15,6:39:36,Weather Station,Day Length,Hours,11.27,74
+Ba17,"Jessore, Bangladesh",2017,2018-02-16,6:38:24,Weather Station,Day Length,Hours,11.29,75
+Ba17,"Jessore, Bangladesh",2017,2018-02-17,6:37:48,Weather Station,Day Length,Hours,11.31,76
+Ba17,"Jessore, Bangladesh",2017,2018-02-18,6:37:12,Weather Station,Day Length,Hours,11.33,77
+Ba17,"Jessore, Bangladesh",2017,2018-02-19,6:36:36,Weather Station,Day Length,Hours,11.35,78
+Ba17,"Jessore, Bangladesh",2017,2018-02-20,6:36:00,Weather Station,Day Length,Hours,11.37,79
+Ba17,"Jessore, Bangladesh",2017,2018-02-21,6:34:48,Weather Station,Day Length,Hours,11.39,80
+Ba17,"Jessore, Bangladesh",2017,2018-02-22,6:34:12,Weather Station,Day Length,Hours,11.42,81
+Ba17,"Jessore, Bangladesh",2017,2018-02-23,6:33:36,Weather Station,Day Length,Hours,11.44,82
+Ba17,"Jessore, Bangladesh",2017,2018-02-24,6:32:24,Weather Station,Day Length,Hours,11.46,83
+Ba17,"Jessore, Bangladesh",2017,2018-02-25,6:31:48,Weather Station,Day Length,Hours,11.48,84
+Ba17,"Jessore, Bangladesh",2017,2018-02-26,6:31:12,Weather Station,Day Length,Hours,11.5,85
+Ba17,"Jessore, Bangladesh",2017,2018-02-27,6:30:00,Weather Station,Day Length,Hours,11.52,86
+Ba17,"Jessore, Bangladesh",2017,2018-02-28,6:29:24,Weather Station,Day Length,Hours,11.55,87
+Ba17,"Jessore, Bangladesh",2017,2018-03-01,6:28:12,Weather Station,Day Length,Hours,11.57,88
+Ba17,"Jessore, Bangladesh",2017,2018-03-02,6:27:36,Weather Station,Day Length,Hours,11.59,89
+Ba17,"Jessore, Bangladesh",2017,2018-03-03,6:27:00,Weather Station,Day Length,Hours,11.61,90
+Ba17,"Jessore, Bangladesh",2017,2018-03-04,6:25:48,Weather Station,Day Length,Hours,11.64,91
+Ba17,"Jessore, Bangladesh",2017,2018-03-05,6:25:12,Weather Station,Day Length,Hours,11.66,92
+Ba17,"Jessore, Bangladesh",2017,2018-03-06,6:24:00,Weather Station,Day Length,Hours,11.68,93
+Ba17,"Jessore, Bangladesh",2017,2018-03-07,6:23:24,Weather Station,Day Length,Hours,11.7,94
+Ba17,"Jessore, Bangladesh",2017,2018-03-08,6:22:12,Weather Station,Day Length,Hours,11.73,95
+Ba17,"Jessore, Bangladesh",2017,2018-03-09,6:21:36,Weather Station,Day Length,Hours,11.75,96
+Ba17,"Jessore, Bangladesh",2017,2018-03-10,6:20:24,Weather Station,Day Length,Hours,11.77,97
+Ba17,"Jessore, Bangladesh",2017,2018-03-11,6:19:12,Weather Station,Day Length,Hours,11.79,98
+Ba17,"Jessore, Bangladesh",2017,2018-03-12,6:18:36,Weather Station,Day Length,Hours,11.82,99
+Ba17,"Jessore, Bangladesh",2017,2018-03-13,6:17:24,Weather Station,Day Length,Hours,11.84,100
+Ba17,"Jessore, Bangladesh",2017,2018-03-14,6:16:48,Weather Station,Day Length,Hours,11.86,101
+Ba17,"Jessore, Bangladesh",2017,2018-03-15,6:15:36,Weather Station,Day Length,Hours,11.88,102
+Ba17,"Jessore, Bangladesh",2017,2018-03-16,6:14:24,Weather Station,Day Length,Hours,11.91,103
+Ba17,"Jessore, Bangladesh",2017,2018-03-17,6:13:48,Weather Station,Day Length,Hours,11.93,104
+Ba17,"Jessore, Bangladesh",2017,2018-03-18,6:12:36,Weather Station,Day Length,Hours,11.95,105
+Ba17,"Jessore, Bangladesh",2017,2018-03-19,6:12:00,Weather Station,Day Length,Hours,11.97,106
+Ba17,"Jessore, Bangladesh",2017,2018-03-20,6:10:48,Weather Station,Day Length,Hours,12,107
+Ba17,"Jessore, Bangladesh",2017,2018-03-21,6:09:36,Weather Station,Day Length,Hours,12.02,108
+Ba17,"Jessore, Bangladesh",2017,2018-03-22,6:09:00,Weather Station,Day Length,Hours,12.04,109
+Ba17,"Jessore, Bangladesh",2017,2018-03-23,6:07:48,Weather Station,Day Length,Hours,12.06,110
+Ba17,"Jessore, Bangladesh",2017,2018-03-24,6:06:36,Weather Station,Day Length,Hours,12.09,111
+Ba17,"Jessore, Bangladesh",2017,2018-03-25,6:06:00,Weather Station,Day Length,Hours,12.11,112
+Ba17,"Jessore, Bangladesh",2017,2018-03-26,6:04:48,Weather Station,Day Length,Hours,12.13,113
+Ba17,"Jessore, Bangladesh",2017,2018-03-27,6:04:12,Weather Station,Day Length,Hours,12.15,114
+Ba17,"Jessore, Bangladesh",2017,2018-03-28,6:03:00,Weather Station,Day Length,Hours,12.18,115
+Ba17,"Jessore, Bangladesh",2017,2018-03-29,6:01:48,Weather Station,Day Length,Hours,12.2,116
+Ba17,"Jessore, Bangladesh",2017,2018-03-30,6:01:12,Weather Station,Day Length,Hours,12.22,117
+Ba17,"Jessore, Bangladesh",2017,2018-03-31,6:00:00,Weather Station,Day Length,Hours,12.24,118
+Ba17,"Jessore, Bangladesh",2017,2018-04-01,5:59:24,Weather Station,Day Length,Hours,12.27,119
+Ba17,"Jessore, Bangladesh",2017,2018-04-02,5:58:12,Weather Station,Day Length,Hours,12.29,120
+Ba17,"Jessore, Bangladesh",2017,2018-04-03,5:57:00,Weather Station,Day Length,Hours,12.31,121
+Ba17,"Jessore, Bangladesh",2017,2018-04-04,5:56:24,Weather Station,Day Length,Hours,12.33,122
+Ba17,"Jessore, Bangladesh",2017,2018-04-05,5:55:12,Weather Station,Day Length,Hours,12.35,123
+Ba17,"Jessore, Bangladesh",2017,2018-04-06,5:54:36,Weather Station,Day Length,Hours,12.38,124
+Ba17,"Jessore, Bangladesh",2017,2018-04-07,5:53:24,Weather Station,Day Length,Hours,12.4,125
+Ba17,"Jessore, Bangladesh",2017,2018-04-08,5:52:48,Weather Station,Day Length,Hours,12.42,126
+Ba17,"Jessore, Bangladesh",2017,2018-04-09,5:51:36,Weather Station,Day Length,Hours,12.44,127
+Ba17,"Jessore, Bangladesh",2017,2018-04-10,5:50:24,Weather Station,Day Length,Hours,12.46,128
+Ba17,"Jessore, Bangladesh",2017,2018-04-11,5:49:48,Weather Station,Day Length,Hours,12.48,129
+Ba17,"Jessore, Bangladesh",2017,2018-04-12,5:48:36,Weather Station,Day Length,Hours,12.51,130
+Ba17,"Jessore, Bangladesh",2017,2018-04-13,5:48:00,Weather Station,Day Length,Hours,12.53,131
+Ba17,"Jessore, Bangladesh",2017,2018-04-14,5:46:48,Weather Station,Day Length,Hours,12.55,132
+Ba17,"Jessore, Bangladesh",2017,2018-04-15,5:46:12,Weather Station,Day Length,Hours,12.57,133
+Ba17,"Jessore, Bangladesh",2017,2018-04-16,5:45:36,Weather Station,Day Length,Hours,12.59,134
+Ba17,"Jessore, Bangladesh",2017,2018-04-17,5:44:24,Weather Station,Day Length,Hours,12.61,135
+Ba17,"Jessore, Bangladesh",2017,2018-04-18,5:43:48,Weather Station,Day Length,Hours,12.63,136
+Ba17,"Jessore, Bangladesh",2017,2018-04-19,5:42:36,Weather Station,Day Length,Hours,12.65,137
+Ba17,"Jessore, Bangladesh",2017,2018-04-20,5:42:00,Weather Station,Day Length,Hours,12.67,138
+Ba17,"Jessore, Bangladesh",2017,2018-04-21,5:41:24,Weather Station,Day Length,Hours,12.69,139
+Ba17,"Jessore, Bangladesh",2017,2018-04-22,5:40:12,Weather Station,Day Length,Hours,12.71,140
+Ba17,"Jessore, Bangladesh",2017,2018-04-23,5:39:36,Weather Station,Day Length,Hours,12.73,141
+Ba17,"Jessore, Bangladesh",2017,2018-04-24,5:39:00,Weather Station,Day Length,Hours,12.75,142
+Ba17,"Jessore, Bangladesh",2017,2018-04-25,5:37:48,Weather Station,Day Length,Hours,12.77,143
+Ba17,"Jessore, Bangladesh",2017,2018-04-26,5:37:12,Weather Station,Day Length,Hours,12.79,144
+Ba17,"Jessore, Bangladesh",2017,2018-04-27,5:36:36,Weather Station,Day Length,Hours,12.81,145
+Ba17,"Jessore, Bangladesh",2017,2018-04-28,5:36:00,Weather Station,Day Length,Hours,12.83,146
+Ba17,"Jessore, Bangladesh",2017,2018-04-29,5:34:48,Weather Station,Day Length,Hours,12.85,147
+Ba17,"Jessore, Bangladesh",2017,2018-04-30,5:34:12,Weather Station,Day Length,Hours,12.87,148
+Ba17,"Jessore, Bangladesh",2017,2018-05-01,5:33:36,Weather Station,Day Length,Hours,12.89,149
+Ba17,"Jessore, Bangladesh",2017,2018-05-02,5:33:00,Weather Station,Day Length,Hours,12.91,150
+Ba17,"Jessore, Bangladesh",2017,2017-12-03,,Weather Station,Temperature,C,15.01,0
+Ba17,"Jessore, Bangladesh",2017,2017-12-04,,Weather Station,Temperature,C,15.08,1
+Ba17,"Jessore, Bangladesh",2017,2017-12-05,,Weather Station,Temperature,C,14.58,2
+Ba17,"Jessore, Bangladesh",2017,2017-12-06,,Weather Station,Temperature,C,15.99,3
+Ba17,"Jessore, Bangladesh",2017,2017-12-07,,Weather Station,Temperature,C,19.22,4
+Ba17,"Jessore, Bangladesh",2017,2017-12-08,,Weather Station,Temperature,C,20.25,5
+Ba17,"Jessore, Bangladesh",2017,2017-12-09,,Weather Station,Temperature,C,19.44,6
+Ba17,"Jessore, Bangladesh",2017,2017-12-10,,Weather Station,Temperature,C,21.58,7
+Ba17,"Jessore, Bangladesh",2017,2017-12-11,,Weather Station,Temperature,C,20.22,8
+Ba17,"Jessore, Bangladesh",2017,2017-12-12,,Weather Station,Temperature,C,19.22,9
+Ba17,"Jessore, Bangladesh",2017,2017-12-13,,Weather Station,Temperature,C,17.49,10
+Ba17,"Jessore, Bangladesh",2017,2017-12-14,,Weather Station,Temperature,C,15.65,11
+Ba17,"Jessore, Bangladesh",2017,2017-12-15,,Weather Station,Temperature,C,14.84,12
+Ba17,"Jessore, Bangladesh",2017,2017-12-16,,Weather Station,Temperature,C,12.19,13
+Ba17,"Jessore, Bangladesh",2017,2017-12-17,,Weather Station,Temperature,C,11.1,14
+Ba17,"Jessore, Bangladesh",2017,2017-12-18,,Weather Station,Temperature,C,14.89,15
+Ba17,"Jessore, Bangladesh",2017,2017-12-19,,Weather Station,Temperature,C,13.64,16
+Ba17,"Jessore, Bangladesh",2017,2017-12-20,,Weather Station,Temperature,C,12.92,17
+Ba17,"Jessore, Bangladesh",2017,2017-12-21,,Weather Station,Temperature,C,12.65,18
+Ba17,"Jessore, Bangladesh",2017,2017-12-22,,Weather Station,Temperature,C,11.93,19
+Ba17,"Jessore, Bangladesh",2017,2017-12-23,,Weather Station,Temperature,C,13.21,20
+Ba17,"Jessore, Bangladesh",2017,2017-12-24,,Weather Station,Temperature,C,12.12,21
+Ba17,"Jessore, Bangladesh",2017,2017-12-25,,Weather Station,Temperature,C,12.7,22
+Ba17,"Jessore, Bangladesh",2017,2017-12-26,,Weather Station,Temperature,C,12.53,23
+Ba17,"Jessore, Bangladesh",2017,2017-12-27,,Weather Station,Temperature,C,10.88,24
+Ba17,"Jessore, Bangladesh",2017,2017-12-28,,Weather Station,Temperature,C,12.46,25
+Ba17,"Jessore, Bangladesh",2017,2017-12-29,,Weather Station,Temperature,C,12.73,26
+Ba17,"Jessore, Bangladesh",2017,2017-12-30,,Weather Station,Temperature,C,11.54,27
+Ba17,"Jessore, Bangladesh",2017,2017-12-31,,Weather Station,Temperature,C,12.85,28
+Ba17,"Jessore, Bangladesh",2017,2018-01-01,,Weather Station,Temperature,C,11.86,29
+Ba17,"Jessore, Bangladesh",2017,2018-01-02,,Weather Station,Temperature,C,12.9,30
+Ba17,"Jessore, Bangladesh",2017,2018-01-03,,Weather Station,Temperature,C,9.26,31
+Ba17,"Jessore, Bangladesh",2017,2018-01-04,,Weather Station,Temperature,C,6.86,32
+Ba17,"Jessore, Bangladesh",2017,2018-01-05,,Weather Station,Temperature,C,8.19,33
+Ba17,"Jessore, Bangladesh",2017,2018-01-06,,Weather Station,Temperature,C,7.42,34
+Ba17,"Jessore, Bangladesh",2017,2018-01-07,,Weather Station,Temperature,C,5.39,35
+Ba17,"Jessore, Bangladesh",2017,2018-01-08,,Weather Station,Temperature,C,6.59,36
+Ba17,"Jessore, Bangladesh",2017,2018-01-09,,Weather Station,Temperature,C,5.51,37
+Ba17,"Jessore, Bangladesh",2017,2018-01-10,,Weather Station,Temperature,C,6.43,38
+Ba17,"Jessore, Bangladesh",2017,2018-01-11,,Weather Station,Temperature,C,6.56,39
+Ba17,"Jessore, Bangladesh",2017,2018-01-12,,Weather Station,Temperature,C,7.04,40
+Ba17,"Jessore, Bangladesh",2017,2018-01-13,,Weather Station,Temperature,C,9.34,41
+Ba17,"Jessore, Bangladesh",2017,2018-01-14,,Weather Station,Temperature,C,9.34,42
+Ba17,"Jessore, Bangladesh",2017,2018-01-15,,Weather Station,Temperature,C,8.79,43
+Ba17,"Jessore, Bangladesh",2017,2018-01-16,,Weather Station,Temperature,C,8.54,44
+Ba17,"Jessore, Bangladesh",2017,2018-01-17,,Weather Station,Temperature,C,8.12,45
+Ba17,"Jessore, Bangladesh",2017,2018-01-18,,Weather Station,Temperature,C,8.12,46
+Ba17,"Jessore, Bangladesh",2017,2018-01-19,,Weather Station,Temperature,C,8.02,47
+Ba17,"Jessore, Bangladesh",2017,2018-01-20,,Weather Station,Temperature,C,8.12,48
+Ba17,"Jessore, Bangladesh",2017,2018-01-21,,Weather Station,Temperature,C,9.04,49
+Ba17,"Jessore, Bangladesh",2017,2018-01-22,,Weather Station,Temperature,C,8.42,50
+Ba17,"Jessore, Bangladesh",2017,2018-01-23,,Weather Station,Temperature,C,9.76,51
+Ba17,"Jessore, Bangladesh",2017,2018-01-24,,Weather Station,Temperature,C,11.78,52
+Ba17,"Jessore, Bangladesh",2017,2018-01-25,,Weather Station,Temperature,C,10.25,53
+Ba17,"Jessore, Bangladesh",2017,2018-01-26,,Weather Station,Temperature,C,10.44,54
+Ba17,"Jessore, Bangladesh",2017,2018-01-27,,Weather Station,Temperature,C,8.77,55
+Ba17,"Jessore, Bangladesh",2017,2018-01-28,,Weather Station,Temperature,C,9.16,56
+Ba17,"Jessore, Bangladesh",2017,2018-01-29,,Weather Station,Temperature,C,9.06,57
+Ba17,"Jessore, Bangladesh",2017,2018-01-30,,Weather Station,Temperature,C,10.15,58
+Ba17,"Jessore, Bangladesh",2017,2018-01-31,,Weather Station,Temperature,C,11.54,59
+Ba17,"Jessore, Bangladesh",2017,2018-02-01,,Weather Station,Temperature,C,11.81,60
+Ba17,"Jessore, Bangladesh",2017,2018-02-02,,Weather Station,Temperature,C,12.29,61
+Ba17,"Jessore, Bangladesh",2017,2018-02-03,,Weather Station,Temperature,C,13.35,62
+Ba17,"Jessore, Bangladesh",2017,2018-02-04,,Weather Station,Temperature,C,17.51,63
+Ba17,"Jessore, Bangladesh",2017,2018-02-05,,Weather Station,Temperature,C,17.51,64
+Ba17,"Jessore, Bangladesh",2017,2018-02-06,,Weather Station,Temperature,C,15.58,65
+Ba17,"Jessore, Bangladesh",2017,2018-02-07,,Weather Station,Temperature,C,13.5,66
+Ba17,"Jessore, Bangladesh",2017,2018-02-08,,Weather Station,Temperature,C,15.7,67
+Ba17,"Jessore, Bangladesh",2017,2018-02-09,,Weather Station,Temperature,C,14.34,68
+Ba17,"Jessore, Bangladesh",2017,2018-02-10,,Weather Station,Temperature,C,17.87,69
+Ba17,"Jessore, Bangladesh",2017,2018-02-11,,Weather Station,Temperature,C,13.21,70
+Ba17,"Jessore, Bangladesh",2017,2018-02-12,,Weather Station,Temperature,C,14.24,71
+Ba17,"Jessore, Bangladesh",2017,2018-02-13,,Weather Station,Temperature,C,15.34,72
+Ba17,"Jessore, Bangladesh",2017,2018-02-14,,Weather Station,Temperature,C,14.17,73
+Ba17,"Jessore, Bangladesh",2017,2018-02-15,,Weather Station,Temperature,C,11.54,74
+Ba17,"Jessore, Bangladesh",2017,2018-02-16,,Weather Station,Temperature,C,12.97,75
+Ba17,"Jessore, Bangladesh",2017,2018-02-17,,Weather Station,Temperature,C,14.36,76
+Ba17,"Jessore, Bangladesh",2017,2018-02-18,,Weather Station,Temperature,C,14.96,77
+Ba17,"Jessore, Bangladesh",2017,2018-02-19,,Weather Station,Temperature,C,16.8,78
+Ba17,"Jessore, Bangladesh",2017,2018-02-20,,Weather Station,Temperature,C,17.39,79
+Ba17,"Jessore, Bangladesh",2017,2018-02-21,,Weather Station,Temperature,C,16.65,80
+Ba17,"Jessore, Bangladesh",2017,2018-02-22,,Weather Station,Temperature,C,16.61,81
+Ba17,"Jessore, Bangladesh",2017,2018-02-23,,Weather Station,Temperature,C,20.1,82
+Ba17,"Jessore, Bangladesh",2017,2018-02-24,,Weather Station,Temperature,C,17.94,83
+Ba17,"Jessore, Bangladesh",2017,2018-02-25,,Weather Station,Temperature,C,17.53,84
+Ba17,"Jessore, Bangladesh",2017,2018-02-26,,Weather Station,Temperature,C,19.17,85
+Ba17,"Jessore, Bangladesh",2017,2018-02-27,,Weather Station,Temperature,C,18.82,86
+Ba17,"Jessore, Bangladesh",2017,2018-02-28,,Weather Station,Temperature,C,17.77,87
+Ba17,"Jessore, Bangladesh",2017,2018-03-01,,Weather Station,Temperature,C,21.77,88
+Ba17,"Jessore, Bangladesh",2017,2018-03-02,,Weather Station,Temperature,C,21.77,89
+Ba17,"Jessore, Bangladesh",2017,2018-03-03,,Weather Station,Temperature,C,22.82,90
+Ba17,"Jessore, Bangladesh",2017,2018-03-04,,Weather Station,Temperature,C,20.32,91
+Ba17,"Jessore, Bangladesh",2017,2018-03-05,,Weather Station,Temperature,C,16.51,92
+Ba17,"Jessore, Bangladesh",2017,2018-03-06,,Weather Station,Temperature,C,13.5,93
+Ba17,"Jessore, Bangladesh",2017,2018-03-07,,Weather Station,Temperature,C,15.13,94
+Ba17,"Jessore, Bangladesh",2017,2018-03-08,,Weather Station,Temperature,C,16.15,95
+Ba17,"Jessore, Bangladesh",2017,2018-03-09,,Weather Station,Temperature,C,15.58,96
+Ba17,"Jessore, Bangladesh",2017,2018-03-10,,Weather Station,Temperature,C,17.75,97
+Ba17,"Jessore, Bangladesh",2017,2018-03-11,,Weather Station,Temperature,C,22.68,98
+Ba17,"Jessore, Bangladesh",2017,2018-03-12,,Weather Station,Temperature,C,17.8,99
+Ba17,"Jessore, Bangladesh",2017,2018-03-13,,Weather Station,Temperature,C,18.44,100
+Ba17,"Jessore, Bangladesh",2017,2018-03-14,,Weather Station,Temperature,C,24.41,101
+Ba17,"Jessore, Bangladesh",2017,2018-03-15,,Weather Station,Temperature,C,21.25,102
+Ba17,"Jessore, Bangladesh",2017,2018-03-16,,Weather Station,Temperature,C,19.22,103
+Ba17,"Jessore, Bangladesh",2017,2018-03-17,,Weather Station,Temperature,C,20.58,104
+Ba17,"Jessore, Bangladesh",2017,2018-03-18,,Weather Station,Temperature,C,16.25,105
+Ba17,"Jessore, Bangladesh",2017,2018-03-19,,Weather Station,Temperature,C,20.17,106
+Ba17,"Jessore, Bangladesh",2017,2018-03-20,,Weather Station,Temperature,C,22.63,107
+Ba17,"Jessore, Bangladesh",2017,2018-03-21,,Weather Station,Temperature,C,21.49,108
+Ba17,"Jessore, Bangladesh",2017,2018-03-22,,Weather Station,Temperature,C,22.87,109
+Ba17,"Jessore, Bangladesh",2017,2018-03-23,,Weather Station,Temperature,C,24.36,110
+Ba17,"Jessore, Bangladesh",2017,2018-03-24,,Weather Station,Temperature,C,22.35,111
+Ba17,"Jessore, Bangladesh",2017,2018-03-25,,Weather Station,Temperature,C,23.93,112
+Ba17,"Jessore, Bangladesh",2017,2018-03-26,,Weather Station,Temperature,C,23.52,113
+Ba17,"Jessore, Bangladesh",2017,2018-03-27,,Weather Station,Temperature,C,23.33,114
+Ba17,"Jessore, Bangladesh",2017,2018-03-28,,Weather Station,Temperature,C,24.05,115
+Ba17,"Jessore, Bangladesh",2017,2018-03-29,,Weather Station,Temperature,C,20.34,116
+Ba17,"Jessore, Bangladesh",2017,2018-03-30,,Weather Station,Temperature,C,18.72,117
+Ba17,"Jessore, Bangladesh",2017,2018-03-31,,Weather Station,Temperature,C,18.72,118
+Ba17,"Jessore, Bangladesh",2017,2018-04-01,,Weather Station,Temperature,C,19.29,119
+Ba17,"Jessore, Bangladesh",2017,2018-04-02,,Weather Station,Temperature,C,19.29,120
+Ba17,"Jessore, Bangladesh",2017,2018-04-03,,Weather Station,Temperature,C,20.53,121
+Ba17,"Jessore, Bangladesh",2017,2018-04-04,,Weather Station,Temperature,C,20.25,122
+Ba17,"Jessore, Bangladesh",2017,2018-04-05,,Weather Station,Temperature,C,20.41,123
+Ba17,"Jessore, Bangladesh",2017,2018-04-06,,Weather Station,Temperature,C,20.27,124
+Ba17,"Jessore, Bangladesh",2017,2018-04-07,,Weather Station,Temperature,C,20.53,125
+Ba17,"Jessore, Bangladesh",2017,2018-04-08,,Weather Station,Temperature,C,20.72,126
+Ba17,"Jessore, Bangladesh",2017,2018-04-09,,Weather Station,Temperature,C,20.01,127
+Ba17,"Jessore, Bangladesh",2017,2018-04-10,,Weather Station,Temperature,C,22.85,128
+Ba17,"Jessore, Bangladesh",2017,2018-04-11,,Weather Station,Temperature,C,19.22,129
+Ba17,"Jessore, Bangladesh",2017,2018-04-12,,Weather Station,Temperature,C,19.51,130
+Ba17,"Jessore, Bangladesh",2017,2018-04-13,,Weather Station,Temperature,C,24.6,131
+Ba17,"Jessore, Bangladesh",2017,2018-04-14,,Weather Station,Temperature,C,21.72,132
+Ba17,"Jessore, Bangladesh",2017,2018-04-15,,Weather Station,Temperature,C,23.71,133
+Ba17,"Jessore, Bangladesh",2017,2018-04-16,,Weather Station,Temperature,C,22.47,134
+Ba17,"Jessore, Bangladesh",2017,2018-04-17,,Weather Station,Temperature,C,21.06,135
+Ba17,"Jessore, Bangladesh",2017,2018-04-18,,Weather Station,Temperature,C,23.26,136
+Ba17,"Jessore, Bangladesh",2017,2018-04-19,,Weather Station,Temperature,C,26.06,137
+Ba17,"Jessore, Bangladesh",2017,2018-04-20,,Weather Station,Temperature,C,22.39,138
+Ba17,"Jessore, Bangladesh",2017,2018-04-21,,Weather Station,Temperature,C,19.41,139
+Ba17,"Jessore, Bangladesh",2017,2018-04-22,,Weather Station,Temperature,C,20.34,140
+Ba17,"Jessore, Bangladesh",2017,2018-04-23,,Weather Station,Temperature,C,23.69,141
+Ba17,"Jessore, Bangladesh",2017,2018-04-24,,Weather Station,Temperature,C,19.41,142
+Ba17,"Jessore, Bangladesh",2017,2018-04-25,,Weather Station,Temperature,C,21.65,143
+Ba17,"Jessore, Bangladesh",2017,2018-04-26,,Weather Station,Temperature,C,20.72,144
+Ba17,"Jessore, Bangladesh",2017,2018-04-27,,Weather Station,Temperature,C,20.34,145
+Ba17,"Jessore, Bangladesh",2017,2018-04-28,,Weather Station,Temperature,C,23.54,146
+Ba17,"Jessore, Bangladesh",2017,2018-04-29,,Weather Station,Temperature,C,23.69,147
+Ba17,"Jessore, Bangladesh",2017,2018-04-30,,Weather Station,Temperature,C,19.41,148
+Ba17,"Jessore, Bangladesh",2017,2017-12-03,,Weather Station,Temperature,C,30.09,0
+Ba17,"Jessore, Bangladesh",2017,2017-12-04,,Weather Station,Temperature,C,28.69,1
+Ba17,"Jessore, Bangladesh",2017,2017-12-05,,Weather Station,Temperature,C,29.77,2
+Ba17,"Jessore, Bangladesh",2017,2017-12-06,,Weather Station,Temperature,C,29.66,3
+Ba17,"Jessore, Bangladesh",2017,2017-12-07,,Weather Station,Temperature,C,30.52,4
+Ba17,"Jessore, Bangladesh",2017,2017-12-08,,Weather Station,Temperature,C,25.91,5
+Ba17,"Jessore, Bangladesh",2017,2017-12-09,,Weather Station,Temperature,C,22.25,6
+Ba17,"Jessore, Bangladesh",2017,2017-12-10,,Weather Station,Temperature,C,23.14,7
+Ba17,"Jessore, Bangladesh",2017,2017-12-11,,Weather Station,Temperature,C,28.12,8
+Ba17,"Jessore, Bangladesh",2017,2017-12-12,,Weather Station,Temperature,C,30.6,9
+Ba17,"Jessore, Bangladesh",2017,2017-12-13,,Weather Station,Temperature,C,30.44,10
+Ba17,"Jessore, Bangladesh",2017,2017-12-14,,Weather Station,Temperature,C,31,11
+Ba17,"Jessore, Bangladesh",2017,2017-12-15,,Weather Station,Temperature,C,28.79,12
+Ba17,"Jessore, Bangladesh",2017,2017-12-16,,Weather Station,Temperature,C,27.8,13
+Ba17,"Jessore, Bangladesh",2017,2017-12-17,,Weather Station,Temperature,C,26.96,14
+Ba17,"Jessore, Bangladesh",2017,2017-12-18,,Weather Station,Temperature,C,26.18,15
+Ba17,"Jessore, Bangladesh",2017,2017-12-19,,Weather Station,Temperature,C,23.59,16
+Ba17,"Jessore, Bangladesh",2017,2017-12-20,,Weather Station,Temperature,C,23.95,17
+Ba17,"Jessore, Bangladesh",2017,2017-12-21,,Weather Station,Temperature,C,26.6,18
+Ba17,"Jessore, Bangladesh",2017,2017-12-22,,Weather Station,Temperature,C,28.17,19
+Ba17,"Jessore, Bangladesh",2017,2017-12-23,,Weather Station,Temperature,C,28.99,20
+Ba17,"Jessore, Bangladesh",2017,2017-12-24,,Weather Station,Temperature,C,27.55,21
+Ba17,"Jessore, Bangladesh",2017,2017-12-25,,Weather Station,Temperature,C,28.07,22
+Ba17,"Jessore, Bangladesh",2017,2017-12-26,,Weather Station,Temperature,C,27.38,23
+Ba17,"Jessore, Bangladesh",2017,2017-12-27,,Weather Station,Temperature,C,28.62,24
+Ba17,"Jessore, Bangladesh",2017,2017-12-28,,Weather Station,Temperature,C,28.99,25
+Ba17,"Jessore, Bangladesh",2017,2017-12-29,,Weather Station,Temperature,C,27.85,26
+Ba17,"Jessore, Bangladesh",2017,2017-12-30,,Weather Station,Temperature,C,29.19,27
+Ba17,"Jessore, Bangladesh",2017,2017-12-31,,Weather Station,Temperature,C,29.87,28
+Ba17,"Jessore, Bangladesh",2017,2018-01-01,,Weather Station,Temperature,C,28.1,29
+Ba17,"Jessore, Bangladesh",2017,2018-01-02,,Weather Station,Temperature,C,27.65,30
+Ba17,"Jessore, Bangladesh",2017,2018-01-03,,Weather Station,Temperature,C,25.96,31
+Ba17,"Jessore, Bangladesh",2017,2018-01-04,,Weather Station,Temperature,C,18.56,32
+Ba17,"Jessore, Bangladesh",2017,2018-01-05,,Weather Station,Temperature,C,24.56,33
+Ba17,"Jessore, Bangladesh",2017,2018-01-06,,Weather Station,Temperature,C,25.72,34
+Ba17,"Jessore, Bangladesh",2017,2018-01-07,,Weather Station,Temperature,C,23.3,35
+Ba17,"Jessore, Bangladesh",2017,2018-01-08,,Weather Station,Temperature,C,22.08,36
+Ba17,"Jessore, Bangladesh",2017,2018-01-09,,Weather Station,Temperature,C,24.63,37
+Ba17,"Jessore, Bangladesh",2017,2018-01-10,,Weather Station,Temperature,C,24.03,38
+Ba17,"Jessore, Bangladesh",2017,2018-01-11,,Weather Station,Temperature,C,19.94,39
+Ba17,"Jessore, Bangladesh",2017,2018-01-12,,Weather Station,Temperature,C,22.06,40
+Ba17,"Jessore, Bangladesh",2017,2018-01-13,,Weather Station,Temperature,C,20.29,41
+Ba17,"Jessore, Bangladesh",2017,2018-01-14,,Weather Station,Temperature,C,20.96,42
+Ba17,"Jessore, Bangladesh",2017,2018-01-15,,Weather Station,Temperature,C,24.63,43
+Ba17,"Jessore, Bangladesh",2017,2018-01-16,,Weather Station,Temperature,C,24.56,44
+Ba17,"Jessore, Bangladesh",2017,2018-01-17,,Weather Station,Temperature,C,25.82,45
+Ba17,"Jessore, Bangladesh",2017,2018-01-18,,Weather Station,Temperature,C,25.82,46
+Ba17,"Jessore, Bangladesh",2017,2018-01-19,,Weather Station,Temperature,C,28.15,47
+Ba17,"Jessore, Bangladesh",2017,2018-01-20,,Weather Station,Temperature,C,26.57,48
+Ba17,"Jessore, Bangladesh",2017,2018-01-21,,Weather Station,Temperature,C,26.48,49
+Ba17,"Jessore, Bangladesh",2017,2018-01-22,,Weather Station,Temperature,C,27.01,50
+Ba17,"Jessore, Bangladesh",2017,2018-01-23,,Weather Station,Temperature,C,28.32,51
+Ba17,"Jessore, Bangladesh",2017,2018-01-24,,Weather Station,Temperature,C,29.19,52
+Ba17,"Jessore, Bangladesh",2017,2018-01-25,,Weather Station,Temperature,C,27.28,53
+Ba17,"Jessore, Bangladesh",2017,2018-01-26,,Weather Station,Temperature,C,25.38,54
+Ba17,"Jessore, Bangladesh",2017,2018-01-27,,Weather Station,Temperature,C,27.19,55
+Ba17,"Jessore, Bangladesh",2017,2018-01-28,,Weather Station,Temperature,C,27.31,56
+Ba17,"Jessore, Bangladesh",2017,2018-01-29,,Weather Station,Temperature,C,27.43,57
+Ba17,"Jessore, Bangladesh",2017,2018-01-30,,Weather Station,Temperature,C,28.77,58
+Ba17,"Jessore, Bangladesh",2017,2018-01-31,,Weather Station,Temperature,C,27.33,59
+Ba17,"Jessore, Bangladesh",2017,2018-02-01,,Weather Station,Temperature,C,28.47,60
+Ba17,"Jessore, Bangladesh",2017,2018-02-02,,Weather Station,Temperature,C,29.71,61
+Ba17,"Jessore, Bangladesh",2017,2018-02-03,,Weather Station,Temperature,C,31.46,62
+Ba17,"Jessore, Bangladesh",2017,2018-02-04,,Weather Station,Temperature,C,30.39,63
+Ba17,"Jessore, Bangladesh",2017,2018-02-05,,Weather Station,Temperature,C,30.87,64
+Ba17,"Jessore, Bangladesh",2017,2018-02-06,,Weather Station,Temperature,C,31.56,65
+Ba17,"Jessore, Bangladesh",2017,2018-02-07,,Weather Station,Temperature,C,29.49,66
+Ba17,"Jessore, Bangladesh",2017,2018-02-08,,Weather Station,Temperature,C,29.49,67
+Ba17,"Jessore, Bangladesh",2017,2018-02-09,,Weather Station,Temperature,C,33.11,68
+Ba17,"Jessore, Bangladesh",2017,2018-02-10,,Weather Station,Temperature,C,29.92,69
+Ba17,"Jessore, Bangladesh",2017,2018-02-11,,Weather Station,Temperature,C,30.62,70
+Ba17,"Jessore, Bangladesh",2017,2018-02-12,,Weather Station,Temperature,C,23.04,71
+Ba17,"Jessore, Bangladesh",2017,2018-02-13,,Weather Station,Temperature,C,31.79,72
+Ba17,"Jessore, Bangladesh",2017,2018-02-14,,Weather Station,Temperature,C,30.98,73
+Ba17,"Jessore, Bangladesh",2017,2018-02-15,,Weather Station,Temperature,C,29.46,74
+Ba17,"Jessore, Bangladesh",2017,2018-02-16,,Weather Station,Temperature,C,30.57,75
+Ba17,"Jessore, Bangladesh",2017,2018-02-17,,Weather Station,Temperature,C,31.33,76
+Ba17,"Jessore, Bangladesh",2017,2018-02-18,,Weather Station,Temperature,C,32.82,77
+Ba17,"Jessore, Bangladesh",2017,2018-02-19,,Weather Station,Temperature,C,32.87,78
+Ba17,"Jessore, Bangladesh",2017,2018-02-20,,Weather Station,Temperature,C,34.28,79
+Ba17,"Jessore, Bangladesh",2017,2018-02-21,,Weather Station,Temperature,C,32.85,80
+Ba17,"Jessore, Bangladesh",2017,2018-02-22,,Weather Station,Temperature,C,33.7,81
+Ba17,"Jessore, Bangladesh",2017,2018-02-23,,Weather Station,Temperature,C,35.85,82
+Ba17,"Jessore, Bangladesh",2017,2018-02-24,,Weather Station,Temperature,C,34.94,83
+Ba17,"Jessore, Bangladesh",2017,2018-02-25,,Weather Station,Temperature,C,35.96,84
+Ba17,"Jessore, Bangladesh",2017,2018-02-26,,Weather Station,Temperature,C,35.34,85
+Ba17,"Jessore, Bangladesh",2017,2018-02-27,,Weather Station,Temperature,C,34.89,86
+Ba17,"Jessore, Bangladesh",2017,2018-02-28,,Weather Station,Temperature,C,35.45,87
+Ba17,"Jessore, Bangladesh",2017,2018-03-01,,Weather Station,Temperature,C,36.71,88
+Ba17,"Jessore, Bangladesh",2017,2018-03-02,,Weather Station,Temperature,C,36.71,89
+Ba17,"Jessore, Bangladesh",2017,2018-03-03,,Weather Station,Temperature,C,37.73,90
+Ba17,"Jessore, Bangladesh",2017,2018-03-04,,Weather Station,Temperature,C,36.82,91
+Ba17,"Jessore, Bangladesh",2017,2018-03-05,,Weather Station,Temperature,C,34.86,92
+Ba17,"Jessore, Bangladesh",2017,2018-03-06,,Weather Station,Temperature,C,35.64,93
+Ba17,"Jessore, Bangladesh",2017,2018-03-07,,Weather Station,Temperature,C,35.1,94
+Ba17,"Jessore, Bangladesh",2017,2018-03-08,,Weather Station,Temperature,C,35.72,95
+Ba17,"Jessore, Bangladesh",2017,2018-03-09,,Weather Station,Temperature,C,37.23,96
+Ba17,"Jessore, Bangladesh",2017,2018-03-10,,Weather Station,Temperature,C,37.84,97
+Ba17,"Jessore, Bangladesh",2017,2018-03-11,,Weather Station,Temperature,C,39.18,98
+Ba17,"Jessore, Bangladesh",2017,2018-03-12,,Weather Station,Temperature,C,38.59,99
+Ba17,"Jessore, Bangladesh",2017,2018-03-13,,Weather Station,Temperature,C,37.73,100
+Ba17,"Jessore, Bangladesh",2017,2018-03-14,,Weather Station,Temperature,C,35.31,101
+Ba17,"Jessore, Bangladesh",2017,2018-03-15,,Weather Station,Temperature,C,38,102
+Ba17,"Jessore, Bangladesh",2017,2018-03-16,,Weather Station,Temperature,C,37.67,103
+Ba17,"Jessore, Bangladesh",2017,2018-03-17,,Weather Station,Temperature,C,39.46,104
+Ba17,"Jessore, Bangladesh",2017,2018-03-18,,Weather Station,Temperature,C,37.78,105
+Ba17,"Jessore, Bangladesh",2017,2018-03-19,,Weather Station,Temperature,C,37.73,106
+Ba17,"Jessore, Bangladesh",2017,2018-03-20,,Weather Station,Temperature,C,37.48,107
+Ba17,"Jessore, Bangladesh",2017,2018-03-21,,Weather Station,Temperature,C,35.66,108
+Ba17,"Jessore, Bangladesh",2017,2018-03-22,,Weather Station,Temperature,C,37.62,109
+Ba17,"Jessore, Bangladesh",2017,2018-03-23,,Weather Station,Temperature,C,38.9,110
+Ba17,"Jessore, Bangladesh",2017,2018-03-24,,Weather Station,Temperature,C,37.29,111
+Ba17,"Jessore, Bangladesh",2017,2018-03-25,,Weather Station,Temperature,C,38.2,112
+Ba17,"Jessore, Bangladesh",2017,2018-03-26,,Weather Station,Temperature,C,36.39,113
+Ba17,"Jessore, Bangladesh",2017,2018-03-27,,Weather Station,Temperature,C,36.47,114
+Ba17,"Jessore, Bangladesh",2017,2018-03-28,,Weather Station,Temperature,C,35.64,115
+Ba17,"Jessore, Bangladesh",2017,2018-03-29,,Weather Station,Temperature,C,35.64,116
+Ba17,"Jessore, Bangladesh",2017,2018-03-30,,Weather Station,Temperature,C,37.18,117
+Ba17,"Jessore, Bangladesh",2017,2018-03-31,,Weather Station,Temperature,C,37.18,118
+Ba17,"Jessore, Bangladesh",2017,2018-04-01,,Weather Station,Temperature,C,31.64,119
+Ba17,"Jessore, Bangladesh",2017,2018-04-02,,Weather Station,Temperature,C,31.64,120
+Ba17,"Jessore, Bangladesh",2017,2018-04-03,,Weather Station,Temperature,C,37.48,121
+Ba17,"Jessore, Bangladesh",2017,2018-04-04,,Weather Station,Temperature,C,35.77,122
+Ba17,"Jessore, Bangladesh",2017,2018-04-05,,Weather Station,Temperature,C,36.09,123
+Ba17,"Jessore, Bangladesh",2017,2018-04-06,,Weather Station,Temperature,C,37.01,124
+Ba17,"Jessore, Bangladesh",2017,2018-04-07,,Weather Station,Temperature,C,34.28,125
+Ba17,"Jessore, Bangladesh",2017,2018-04-08,,Weather Station,Temperature,C,36.28,126
+Ba17,"Jessore, Bangladesh",2017,2018-04-09,,Weather Station,Temperature,C,35.9,127
+Ba17,"Jessore, Bangladesh",2017,2018-04-10,,Weather Station,Temperature,C,35.21,128
+Ba17,"Jessore, Bangladesh",2017,2018-04-11,,Weather Station,Temperature,C,36.61,129
+Ba17,"Jessore, Bangladesh",2017,2018-04-12,,Weather Station,Temperature,C,35.21,130
+Ba17,"Jessore, Bangladesh",2017,2018-04-13,,Weather Station,Temperature,C,37.76,131
+Ba17,"Jessore, Bangladesh",2017,2018-04-14,,Weather Station,Temperature,C,38.11,132
+Ba17,"Jessore, Bangladesh",2017,2018-04-15,,Weather Station,Temperature,C,38.62,133
+Ba17,"Jessore, Bangladesh",2017,2018-04-16,,Weather Station,Temperature,C,38.59,134
+Ba17,"Jessore, Bangladesh",2017,2018-04-17,,Weather Station,Temperature,C,35.96,135
+Ba17,"Jessore, Bangladesh",2017,2018-04-18,,Weather Station,Temperature,C,38.31,136
+Ba17,"Jessore, Bangladesh",2017,2018-04-19,,Weather Station,Temperature,C,37.23,137
+Ba17,"Jessore, Bangladesh",2017,2018-04-20,,Weather Station,Temperature,C,39.8,138
+Ba17,"Jessore, Bangladesh",2017,2018-04-21,,Weather Station,Temperature,C,38.98,139
+Ba17,"Jessore, Bangladesh",2017,2018-04-22,,Weather Station,Temperature,C,35.96,140
+Ba17,"Jessore, Bangladesh",2017,2018-04-23,,Weather Station,Temperature,C,35.53,141
+Ba17,"Jessore, Bangladesh",2017,2018-04-24,,Weather Station,Temperature,C,32.3,142
+Ba17,"Jessore, Bangladesh",2017,2018-04-25,,Weather Station,Temperature,C,35.16,143
+Ba17,"Jessore, Bangladesh",2017,2018-04-26,,Weather Station,Temperature,C,35.96,144
+Ba17,"Jessore, Bangladesh",2017,2018-04-27,,Weather Station,Temperature,C,33.03,145
+Ba17,"Jessore, Bangladesh",2017,2018-04-28,,Weather Station,Temperature,C,38.98,146
+Ba17,"Jessore, Bangladesh",2017,2018-04-29,,Weather Station,Temperature,C,35.53,147
+Ba17,"Jessore, Bangladesh",2017,2018-04-30,,Weather Station,Temperature,C,32.3,148
+Ba17,"Jessore, Bangladesh",2017,2017-12-03,,Weather Station,Precipitation,mm,0,0
+Ba17,"Jessore, Bangladesh",2017,2017-12-04,,Weather Station,Precipitation,mm,0,1
+Ba17,"Jessore, Bangladesh",2017,2017-12-05,,Weather Station,Precipitation,mm,0,2
+Ba17,"Jessore, Bangladesh",2017,2017-12-06,,Weather Station,Precipitation,mm,0,3
+Ba17,"Jessore, Bangladesh",2017,2017-12-07,,Weather Station,Precipitation,mm,0,4
+Ba17,"Jessore, Bangladesh",2017,2017-12-08,,Weather Station,Precipitation,mm,0,5
+Ba17,"Jessore, Bangladesh",2017,2017-12-09,,Weather Station,Precipitation,mm,10.2,6
+Ba17,"Jessore, Bangladesh",2017,2017-12-10,,Weather Station,Precipitation,mm,9.8,7
+Ba17,"Jessore, Bangladesh",2017,2017-12-11,,Weather Station,Precipitation,mm,0.2,8
+Ba17,"Jessore, Bangladesh",2017,2017-12-12,,Weather Station,Precipitation,mm,0,9
+Ba17,"Jessore, Bangladesh",2017,2017-12-13,,Weather Station,Precipitation,mm,0,10
+Ba17,"Jessore, Bangladesh",2017,2017-12-14,,Weather Station,Precipitation,mm,0,11
+Ba17,"Jessore, Bangladesh",2017,2017-12-15,,Weather Station,Precipitation,mm,0,12
+Ba17,"Jessore, Bangladesh",2017,2017-12-16,,Weather Station,Precipitation,mm,0,13
+Ba17,"Jessore, Bangladesh",2017,2017-12-17,,Weather Station,Precipitation,mm,0,14
+Ba17,"Jessore, Bangladesh",2017,2017-12-18,,Weather Station,Precipitation,mm,0,15
+Ba17,"Jessore, Bangladesh",2017,2017-12-19,,Weather Station,Precipitation,mm,0,16
+Ba17,"Jessore, Bangladesh",2017,2017-12-20,,Weather Station,Precipitation,mm,0,17
+Ba17,"Jessore, Bangladesh",2017,2017-12-21,,Weather Station,Precipitation,mm,0,18
+Ba17,"Jessore, Bangladesh",2017,2017-12-22,,Weather Station,Precipitation,mm,0,19
+Ba17,"Jessore, Bangladesh",2017,2017-12-23,,Weather Station,Precipitation,mm,0,20
+Ba17,"Jessore, Bangladesh",2017,2017-12-24,,Weather Station,Precipitation,mm,0,21
+Ba17,"Jessore, Bangladesh",2017,2017-12-25,,Weather Station,Precipitation,mm,0,22
+Ba17,"Jessore, Bangladesh",2017,2017-12-26,,Weather Station,Precipitation,mm,0,23
+Ba17,"Jessore, Bangladesh",2017,2017-12-27,,Weather Station,Precipitation,mm,0,24
+Ba17,"Jessore, Bangladesh",2017,2017-12-28,,Weather Station,Precipitation,mm,0,25
+Ba17,"Jessore, Bangladesh",2017,2017-12-29,,Weather Station,Precipitation,mm,0,26
+Ba17,"Jessore, Bangladesh",2017,2017-12-30,,Weather Station,Precipitation,mm,0.2,27
+Ba17,"Jessore, Bangladesh",2017,2017-12-31,,Weather Station,Precipitation,mm,0,28
+Ba17,"Jessore, Bangladesh",2017,2018-01-01,,Weather Station,Precipitation,mm,0,29
+Ba17,"Jessore, Bangladesh",2017,2018-01-02,,Weather Station,Precipitation,mm,0,30
+Ba17,"Jessore, Bangladesh",2017,2018-01-03,,Weather Station,Precipitation,mm,0,31
+Ba17,"Jessore, Bangladesh",2017,2018-01-04,,Weather Station,Precipitation,mm,0,32
+Ba17,"Jessore, Bangladesh",2017,2018-01-05,,Weather Station,Precipitation,mm,0,33
+Ba17,"Jessore, Bangladesh",2017,2018-01-06,,Weather Station,Precipitation,mm,0,34
+Ba17,"Jessore, Bangladesh",2017,2018-01-07,,Weather Station,Precipitation,mm,0,35
+Ba17,"Jessore, Bangladesh",2017,2018-01-08,,Weather Station,Precipitation,mm,0,36
+Ba17,"Jessore, Bangladesh",2017,2018-01-09,,Weather Station,Precipitation,mm,0,37
+Ba17,"Jessore, Bangladesh",2017,2018-01-10,,Weather Station,Precipitation,mm,0,38
+Ba17,"Jessore, Bangladesh",2017,2018-01-11,,Weather Station,Precipitation,mm,0,39
+Ba17,"Jessore, Bangladesh",2017,2018-01-12,,Weather Station,Precipitation,mm,0,40
+Ba17,"Jessore, Bangladesh",2017,2018-01-13,,Weather Station,Precipitation,mm,0,41
+Ba17,"Jessore, Bangladesh",2017,2018-01-14,,Weather Station,Precipitation,mm,0,42
+Ba17,"Jessore, Bangladesh",2017,2018-01-15,,Weather Station,Precipitation,mm,0,43
+Ba17,"Jessore, Bangladesh",2017,2018-01-16,,Weather Station,Precipitation,mm,0,44
+Ba17,"Jessore, Bangladesh",2017,2018-01-17,,Weather Station,Precipitation,mm,0,45
+Ba17,"Jessore, Bangladesh",2017,2018-01-18,,Weather Station,Precipitation,mm,0,46
+Ba17,"Jessore, Bangladesh",2017,2018-01-19,,Weather Station,Precipitation,mm,0,47
+Ba17,"Jessore, Bangladesh",2017,2018-01-20,,Weather Station,Precipitation,mm,0,48
+Ba17,"Jessore, Bangladesh",2017,2018-01-21,,Weather Station,Precipitation,mm,0,49
+Ba17,"Jessore, Bangladesh",2017,2018-01-22,,Weather Station,Precipitation,mm,0,50
+Ba17,"Jessore, Bangladesh",2017,2018-01-23,,Weather Station,Precipitation,mm,0,51
+Ba17,"Jessore, Bangladesh",2017,2018-01-24,,Weather Station,Precipitation,mm,0,52
+Ba17,"Jessore, Bangladesh",2017,2018-01-25,,Weather Station,Precipitation,mm,0,53
+Ba17,"Jessore, Bangladesh",2017,2018-01-26,,Weather Station,Precipitation,mm,0,54
+Ba17,"Jessore, Bangladesh",2017,2018-01-27,,Weather Station,Precipitation,mm,0,55
+Ba17,"Jessore, Bangladesh",2017,2018-01-28,,Weather Station,Precipitation,mm,0,56
+Ba17,"Jessore, Bangladesh",2017,2018-01-29,,Weather Station,Precipitation,mm,0,57
+Ba17,"Jessore, Bangladesh",2017,2018-01-30,,Weather Station,Precipitation,mm,0,58
+Ba17,"Jessore, Bangladesh",2017,2018-01-31,,Weather Station,Precipitation,mm,0,59
+Ba17,"Jessore, Bangladesh",2017,2018-02-01,,Weather Station,Precipitation,mm,0,60
+Ba17,"Jessore, Bangladesh",2017,2018-02-02,,Weather Station,Precipitation,mm,0,61
+Ba17,"Jessore, Bangladesh",2017,2018-02-03,,Weather Station,Precipitation,mm,0,62
+Ba17,"Jessore, Bangladesh",2017,2018-02-04,,Weather Station,Precipitation,mm,0,63
+Ba17,"Jessore, Bangladesh",2017,2018-02-05,,Weather Station,Precipitation,mm,0,64
+Ba17,"Jessore, Bangladesh",2017,2018-02-06,,Weather Station,Precipitation,mm,0,65
+Ba17,"Jessore, Bangladesh",2017,2018-02-07,,Weather Station,Precipitation,mm,0,66
+Ba17,"Jessore, Bangladesh",2017,2018-02-08,,Weather Station,Precipitation,mm,0,67
+Ba17,"Jessore, Bangladesh",2017,2018-02-09,,Weather Station,Precipitation,mm,0,68
+Ba17,"Jessore, Bangladesh",2017,2018-02-10,,Weather Station,Precipitation,mm,0.2,69
+Ba17,"Jessore, Bangladesh",2017,2018-02-11,,Weather Station,Precipitation,mm,0,70
+Ba17,"Jessore, Bangladesh",2017,2018-02-12,,Weather Station,Precipitation,mm,0,71
+Ba17,"Jessore, Bangladesh",2017,2018-02-13,,Weather Station,Precipitation,mm,0,72
+Ba17,"Jessore, Bangladesh",2017,2018-02-14,,Weather Station,Precipitation,mm,0,73
+Ba17,"Jessore, Bangladesh",2017,2018-02-15,,Weather Station,Precipitation,mm,0,74
+Ba17,"Jessore, Bangladesh",2017,2018-02-16,,Weather Station,Precipitation,mm,0,75
+Ba17,"Jessore, Bangladesh",2017,2018-02-17,,Weather Station,Precipitation,mm,0,76
+Ba17,"Jessore, Bangladesh",2017,2018-02-18,,Weather Station,Precipitation,mm,0,77
+Ba17,"Jessore, Bangladesh",2017,2018-02-19,,Weather Station,Precipitation,mm,0,78
+Ba17,"Jessore, Bangladesh",2017,2018-02-20,,Weather Station,Precipitation,mm,0,79
+Ba17,"Jessore, Bangladesh",2017,2018-02-21,,Weather Station,Precipitation,mm,0,80
+Ba17,"Jessore, Bangladesh",2017,2018-02-22,,Weather Station,Precipitation,mm,0,81
+Ba17,"Jessore, Bangladesh",2017,2018-02-23,,Weather Station,Precipitation,mm,0,82
+Ba17,"Jessore, Bangladesh",2017,2018-02-24,,Weather Station,Precipitation,mm,0,83
+Ba17,"Jessore, Bangladesh",2017,2018-02-25,,Weather Station,Precipitation,mm,0,84
+Ba17,"Jessore, Bangladesh",2017,2018-02-26,,Weather Station,Precipitation,mm,0.4,85
+Ba17,"Jessore, Bangladesh",2017,2018-02-27,,Weather Station,Precipitation,mm,0,86
+Ba17,"Jessore, Bangladesh",2017,2018-02-28,,Weather Station,Precipitation,mm,0,87
+Ba17,"Jessore, Bangladesh",2017,2018-03-01,,Weather Station,Precipitation,mm,0,88
+Ba17,"Jessore, Bangladesh",2017,2018-03-02,,Weather Station,Precipitation,mm,0,89
+Ba17,"Jessore, Bangladesh",2017,2018-03-03,,Weather Station,Precipitation,mm,0,90
+Ba17,"Jessore, Bangladesh",2017,2018-03-04,,Weather Station,Precipitation,mm,0.2,91
+Ba17,"Jessore, Bangladesh",2017,2018-03-05,,Weather Station,Precipitation,mm,0,92
+Ba17,"Jessore, Bangladesh",2017,2018-03-06,,Weather Station,Precipitation,mm,0,93
+Ba17,"Jessore, Bangladesh",2017,2018-03-07,,Weather Station,Precipitation,mm,0,94
+Ba17,"Jessore, Bangladesh",2017,2018-03-08,,Weather Station,Precipitation,mm,0,95
+Ba17,"Jessore, Bangladesh",2017,2018-03-09,,Weather Station,Precipitation,mm,0,96
+Ba17,"Jessore, Bangladesh",2017,2018-03-10,,Weather Station,Precipitation,mm,0,97
+Ba17,"Jessore, Bangladesh",2017,2018-03-11,,Weather Station,Precipitation,mm,0,98
+Ba17,"Jessore, Bangladesh",2017,2018-03-12,,Weather Station,Precipitation,mm,0,99
+Ba17,"Jessore, Bangladesh",2017,2018-03-13,,Weather Station,Precipitation,mm,0,100
+Ba17,"Jessore, Bangladesh",2017,2018-03-14,,Weather Station,Precipitation,mm,0,101
+Ba17,"Jessore, Bangladesh",2017,2018-03-15,,Weather Station,Precipitation,mm,0,102
+Ba17,"Jessore, Bangladesh",2017,2018-03-16,,Weather Station,Precipitation,mm,0,103
+Ba17,"Jessore, Bangladesh",2017,2018-03-17,,Weather Station,Precipitation,mm,0.2,104
+Ba17,"Jessore, Bangladesh",2017,2018-03-18,,Weather Station,Precipitation,mm,0,105
+Ba17,"Jessore, Bangladesh",2017,2018-03-19,,Weather Station,Precipitation,mm,0,106
+Ba17,"Jessore, Bangladesh",2017,2018-03-20,,Weather Station,Precipitation,mm,0,107
+Ba17,"Jessore, Bangladesh",2017,2018-03-21,,Weather Station,Precipitation,mm,0,108
+Ba17,"Jessore, Bangladesh",2017,2018-03-22,,Weather Station,Precipitation,mm,0,109
+Ba17,"Jessore, Bangladesh",2017,2018-03-23,,Weather Station,Precipitation,mm,0.2,110
+Ba17,"Jessore, Bangladesh",2017,2018-03-24,,Weather Station,Precipitation,mm,0,111
+Ba17,"Jessore, Bangladesh",2017,2018-03-25,,Weather Station,Precipitation,mm,0,112
+Ba17,"Jessore, Bangladesh",2017,2018-03-26,,Weather Station,Precipitation,mm,0,113
+Ba17,"Jessore, Bangladesh",2017,2018-03-27,,Weather Station,Precipitation,mm,0,114
+Ba17,"Jessore, Bangladesh",2017,2018-03-28,,Weather Station,Precipitation,mm,0,115
+Ba17,"Jessore, Bangladesh",2017,2018-03-29,,Weather Station,Precipitation,mm,0,116
+Ba17,"Jessore, Bangladesh",2017,2018-03-30,,Weather Station,Precipitation,mm,0,117
+Ba17,"Jessore, Bangladesh",2017,2018-03-31,,Weather Station,Precipitation,mm,0.2,118
+Ba17,"Jessore, Bangladesh",2017,2018-04-01,,Weather Station,Precipitation,mm,0,119
+Ba17,"Jessore, Bangladesh",2017,2018-04-02,,Weather Station,Precipitation,mm,0,120
+Ba17,"Jessore, Bangladesh",2017,2018-04-03,,Weather Station,Precipitation,mm,0,121
+Ba17,"Jessore, Bangladesh",2017,2018-04-04,,Weather Station,Precipitation,mm,0,122
+Ba17,"Jessore, Bangladesh",2017,2018-04-05,,Weather Station,Precipitation,mm,11.6,123
+Ba17,"Jessore, Bangladesh",2017,2018-04-06,,Weather Station,Precipitation,mm,0,124
+Ba17,"Jessore, Bangladesh",2017,2018-04-07,,Weather Station,Precipitation,mm,38,125
+Ba17,"Jessore, Bangladesh",2017,2018-04-08,,Weather Station,Precipitation,mm,0.6,126
+Ba17,"Jessore, Bangladesh",2017,2018-04-09,,Weather Station,Precipitation,mm,0.2,127
+Ba17,"Jessore, Bangladesh",2017,2018-04-10,,Weather Station,Precipitation,mm,1,128
+Ba17,"Jessore, Bangladesh",2017,2018-04-11,,Weather Station,Precipitation,mm,0,129
+Ba17,"Jessore, Bangladesh",2017,2018-04-12,,Weather Station,Precipitation,mm,93,130
+Ba17,"Jessore, Bangladesh",2017,2018-04-13,,Weather Station,Precipitation,mm,0,131
+Ba17,"Jessore, Bangladesh",2017,2018-04-14,,Weather Station,Precipitation,mm,0,132
+Ba17,"Jessore, Bangladesh",2017,2018-04-15,,Weather Station,Precipitation,mm,0,133
+Ba17,"Jessore, Bangladesh",2017,2018-04-16,,Weather Station,Precipitation,mm,0,134
+Ba17,"Jessore, Bangladesh",2017,2018-04-17,,Weather Station,Precipitation,mm,1.2,135
+Ba17,"Jessore, Bangladesh",2017,2018-04-18,,Weather Station,Precipitation,mm,0,136
+Ba17,"Jessore, Bangladesh",2017,2018-04-19,,Weather Station,Precipitation,mm,0,137
+Ba17,"Jessore, Bangladesh",2017,2018-04-20,,Weather Station,Precipitation,mm,0,138
+Ba17,"Jessore, Bangladesh",2017,2018-04-21,,Weather Station,Precipitation,mm,0,139
+Ba17,"Jessore, Bangladesh",2017,2018-04-22,,Weather Station,Precipitation,mm,3.2,140
+Ba17,"Jessore, Bangladesh",2017,2018-04-23,,Weather Station,Precipitation,mm,0,141
+Ba17,"Jessore, Bangladesh",2017,2018-04-24,,Weather Station,Precipitation,mm,0,142
+Ba17,"Jessore, Bangladesh",2017,2018-04-25,,Weather Station,Precipitation,mm,0,143
+Ba17,"Jessore, Bangladesh",2017,2018-04-26,,Weather Station,Precipitation,mm,0.2,144
+Ba17,"Jessore, Bangladesh",2017,2018-04-27,,Weather Station,Precipitation,mm,0,145
+Ba17,"Jessore, Bangladesh",2017,2018-04-28,,Weather Station,Precipitation,mm,0,146
+Ba17,"Jessore, Bangladesh",2017,2018-04-29,,Weather Station,Precipitation,mm,0,147
+Ba17,"Jessore, Bangladesh",2017,2018-04-30,,Weather Station,Precipitation,mm,19.4,148
+Ba17,"Jessore, Bangladesh",2017,2017-10-01,,Weather Station,Maximum Temperature,C,32,
+Ba17,"Jessore, Bangladesh",2017,2017-10-02,,Weather Station,Maximum Temperature,C,32.4,
+Ba17,"Jessore, Bangladesh",2017,2017-10-03,,Weather Station,Maximum Temperature,C,31,
+Ba17,"Jessore, Bangladesh",2017,2017-10-04,,Weather Station,Maximum Temperature,C,31.2,
+Ba17,"Jessore, Bangladesh",2017,2017-10-05,,Weather Station,Maximum Temperature,C,30.7,
+Ba17,"Jessore, Bangladesh",2017,2017-10-06,,Weather Station,Maximum Temperature,C,30.6,
+Ba17,"Jessore, Bangladesh",2017,2017-10-07,,Weather Station,Maximum Temperature,C,30.5,
+Ba17,"Jessore, Bangladesh",2017,2017-10-08,,Weather Station,Maximum Temperature,C,31,
+Ba17,"Jessore, Bangladesh",2017,2017-10-09,,Weather Station,Maximum Temperature,C,31.6,
+Ba17,"Jessore, Bangladesh",2017,2017-10-10,,Weather Station,Maximum Temperature,C,30.9,
+Ba17,"Jessore, Bangladesh",2017,2017-10-11,,Weather Station,Maximum Temperature,C,30.7,
+Ba17,"Jessore, Bangladesh",2017,2017-10-12,,Weather Station,Maximum Temperature,C,31.5,
+Ba17,"Jessore, Bangladesh",2017,2017-10-13,,Weather Station,Maximum Temperature,C,30.8,
+Ba17,"Jessore, Bangladesh",2017,2017-10-14,,Weather Station,Maximum Temperature,C,31.6,
+Ba17,"Jessore, Bangladesh",2017,2017-10-15,,Weather Station,Maximum Temperature,C,30.7,
+Ba17,"Jessore, Bangladesh",2017,2017-10-16,,Weather Station,Maximum Temperature,C,31.5,
+Ba17,"Jessore, Bangladesh",2017,2017-10-17,,Weather Station,Maximum Temperature,C,31.9,
+Ba17,"Jessore, Bangladesh",2017,2017-10-18,,Weather Station,Maximum Temperature,C,29.6,
+Ba17,"Jessore, Bangladesh",2017,2017-10-19,,Weather Station,Maximum Temperature,C,29.5,
+Ba17,"Jessore, Bangladesh",2017,2017-10-20,,Weather Station,Maximum Temperature,C,28.8,
+Ba17,"Jessore, Bangladesh",2017,2017-10-21,,Weather Station,Maximum Temperature,C,30.2,
+Ba17,"Jessore, Bangladesh",2017,2017-10-22,,Weather Station,Maximum Temperature,C,29.6,
+Ba17,"Jessore, Bangladesh",2017,2017-10-23,,Weather Station,Maximum Temperature,C,29.5,
+Ba17,"Jessore, Bangladesh",2017,2017-10-24,,Weather Station,Maximum Temperature,C,29.9,
+Ba17,"Jessore, Bangladesh",2017,2017-10-25,,Weather Station,Maximum Temperature,C,29,
+Ba17,"Jessore, Bangladesh",2017,2017-10-26,,Weather Station,Maximum Temperature,C,30.2,
+Ba17,"Jessore, Bangladesh",2017,2017-10-27,,Weather Station,Maximum Temperature,C,30.7,
+Ba17,"Jessore, Bangladesh",2017,2017-10-28,,Weather Station,Maximum Temperature,C,30.9,
+Ba17,"Jessore, Bangladesh",2017,2017-10-29,,Weather Station,Maximum Temperature,C,29.8,
+Ba17,"Jessore, Bangladesh",2017,2017-10-30,,Weather Station,Maximum Temperature,C,29.5,
+Ba17,"Jessore, Bangladesh",2017,2017-10-31,,Weather Station,Maximum Temperature,C,29.6,
+Ba17,"Jessore, Bangladesh",2017,2017-11-01,,Weather Station,Maximum Temperature,C,29,
+Ba17,"Jessore, Bangladesh",2017,2017-11-02,,Weather Station,Maximum Temperature,C,28.7,
+Ba17,"Jessore, Bangladesh",2017,2017-11-03,,Weather Station,Maximum Temperature,C,28.7,
+Ba17,"Jessore, Bangladesh",2017,2017-11-04,,Weather Station,Maximum Temperature,C,29,
+Ba17,"Jessore, Bangladesh",2017,2017-11-05,,Weather Station,Maximum Temperature,C,28.1,
+Ba17,"Jessore, Bangladesh",2017,2017-11-06,,Weather Station,Maximum Temperature,C,28.3,
+Ba17,"Jessore, Bangladesh",2017,2017-11-07,,Weather Station,Maximum Temperature,C,29.6,
+Ba17,"Jessore, Bangladesh",2017,2017-11-08,,Weather Station,Maximum Temperature,C,29.6,
+Ba17,"Jessore, Bangladesh",2017,2017-11-09,,Weather Station,Maximum Temperature,C,28.7,
+Ba17,"Jessore, Bangladesh",2017,2017-11-10,,Weather Station,Maximum Temperature,C,28.4,
+Ba17,"Jessore, Bangladesh",2017,2017-11-11,,Weather Station,Maximum Temperature,C,28.5,
+Ba17,"Jessore, Bangladesh",2017,2017-11-12,,Weather Station,Maximum Temperature,C,28.3,
+Ba17,"Jessore, Bangladesh",2017,2017-11-13,,Weather Station,Maximum Temperature,C,28.2,
+Ba17,"Jessore, Bangladesh",2017,2017-11-14,,Weather Station,Maximum Temperature,C,28.9,
+Ba17,"Jessore, Bangladesh",2017,2017-11-15,,Weather Station,Maximum Temperature,C,28.3,
+Ba17,"Jessore, Bangladesh",2017,2017-11-16,,Weather Station,Maximum Temperature,C,28.7,
+Ba17,"Jessore, Bangladesh",2017,2017-11-17,,Weather Station,Maximum Temperature,C,29.6,
+Ba17,"Jessore, Bangladesh",2017,2017-11-18,,Weather Station,Maximum Temperature,C,28.3,
+Ba17,"Jessore, Bangladesh",2017,2017-11-19,,Weather Station,Maximum Temperature,C,29.2,
+Ba17,"Jessore, Bangladesh",2017,2017-11-20,,Weather Station,Maximum Temperature,C,28.7,
+Ba17,"Jessore, Bangladesh",2017,2017-11-21,,Weather Station,Maximum Temperature,C,28.9,
+Ba17,"Jessore, Bangladesh",2017,2017-11-22,,Weather Station,Maximum Temperature,C,28.2,
+Ba17,"Jessore, Bangladesh",2017,2017-11-23,,Weather Station,Maximum Temperature,C,28.7,
+Ba17,"Jessore, Bangladesh",2017,2017-11-24,,Weather Station,Maximum Temperature,C,28.7,
+Ba17,"Jessore, Bangladesh",2017,2017-11-25,,Weather Station,Maximum Temperature,C,28,
+Ba17,"Jessore, Bangladesh",2017,2017-11-26,,Weather Station,Maximum Temperature,C,27.9,
+Ba17,"Jessore, Bangladesh",2017,2017-11-27,,Weather Station,Maximum Temperature,C,28.6,
+Ba17,"Jessore, Bangladesh",2017,2017-11-28,,Weather Station,Maximum Temperature,C,28.2,
+Ba17,"Jessore, Bangladesh",2017,2017-11-29,,Weather Station,Maximum Temperature,C,29.1,
+Ba17,"Jessore, Bangladesh",2017,2017-11-30,,Weather Station,Maximum Temperature,C,28.3,
+Ba17,"Jessore, Bangladesh",2017,2017-12-01,,Weather Station,Maximum Temperature,C,29.89,
+Ba17,"Jessore, Bangladesh",2017,2017-12-02,,Weather Station,Maximum Temperature,C,30.14,
+Ba17,"Jessore, Bangladesh",2017,2017-12-03,,Weather Station,Maximum Temperature,C,30.09,
+Ba17,"Jessore, Bangladesh",2017,2017-12-04,,Weather Station,Maximum Temperature,C,28.69,
+Ba17,"Jessore, Bangladesh",2017,2017-12-05,,Weather Station,Maximum Temperature,C,29.77,
+Ba17,"Jessore, Bangladesh",2017,2017-12-06,,Weather Station,Maximum Temperature,C,29.66,
+Ba17,"Jessore, Bangladesh",2017,2017-12-07,,Weather Station,Maximum Temperature,C,30.52,
+Ba17,"Jessore, Bangladesh",2017,2017-12-08,,Weather Station,Maximum Temperature,C,25.91,
+Ba17,"Jessore, Bangladesh",2017,2017-12-09,,Weather Station,Maximum Temperature,C,22.25,
+Ba17,"Jessore, Bangladesh",2017,2017-12-10,,Weather Station,Maximum Temperature,C,23.14,
+Ba17,"Jessore, Bangladesh",2017,2017-12-11,,Weather Station,Maximum Temperature,C,28.12,
+Ba17,"Jessore, Bangladesh",2017,2017-12-12,,Weather Station,Maximum Temperature,C,30.6,
+Ba17,"Jessore, Bangladesh",2017,2017-12-13,,Weather Station,Maximum Temperature,C,30.44,
+Ba17,"Jessore, Bangladesh",2017,2017-12-14,,Weather Station,Maximum Temperature,C,31,
+Ba17,"Jessore, Bangladesh",2017,2017-12-15,,Weather Station,Maximum Temperature,C,28.79,
+Ba17,"Jessore, Bangladesh",2017,2017-12-16,,Weather Station,Maximum Temperature,C,27.8,
+Ba17,"Jessore, Bangladesh",2017,2017-12-17,,Weather Station,Maximum Temperature,C,26.96,
+Ba17,"Jessore, Bangladesh",2017,2017-12-18,,Weather Station,Maximum Temperature,C,26.18,
+Ba17,"Jessore, Bangladesh",2017,2017-12-19,,Weather Station,Maximum Temperature,C,23.59,
+Ba17,"Jessore, Bangladesh",2017,2017-12-20,,Weather Station,Maximum Temperature,C,23.95,
+Ba17,"Jessore, Bangladesh",2017,2017-12-21,,Weather Station,Maximum Temperature,C,26.6,
+Ba17,"Jessore, Bangladesh",2017,2017-12-22,,Weather Station,Maximum Temperature,C,28.17,
+Ba17,"Jessore, Bangladesh",2017,2017-12-23,,Weather Station,Maximum Temperature,C,28.99,
+Ba17,"Jessore, Bangladesh",2017,2017-12-24,,Weather Station,Maximum Temperature,C,27.55,
+Ba17,"Jessore, Bangladesh",2017,2017-12-25,,Weather Station,Maximum Temperature,C,28.07,
+Ba17,"Jessore, Bangladesh",2017,2017-12-26,,Weather Station,Maximum Temperature,C,27.38,
+Ba17,"Jessore, Bangladesh",2017,2017-12-27,,Weather Station,Maximum Temperature,C,28.62,
+Ba17,"Jessore, Bangladesh",2017,2017-12-28,,Weather Station,Maximum Temperature,C,28.99,
+Ba17,"Jessore, Bangladesh",2017,2017-12-29,,Weather Station,Maximum Temperature,C,27.85,
+Ba17,"Jessore, Bangladesh",2017,2017-12-30,,Weather Station,Maximum Temperature,C,29.19,
+Ba17,"Jessore, Bangladesh",2017,2017-12-31,,Weather Station,Maximum Temperature,C,29.87,
+Ba17,"Jessore, Bangladesh",2017,2018-01-01,,Weather Station,Maximum Temperature,C,28.1,
+Ba17,"Jessore, Bangladesh",2017,2018-01-02,,Weather Station,Maximum Temperature,C,27.65,
+Ba17,"Jessore, Bangladesh",2017,2018-01-03,,Weather Station,Maximum Temperature,C,25.96,
+Ba17,"Jessore, Bangladesh",2017,2018-01-04,,Weather Station,Maximum Temperature,C,18.56,
+Ba17,"Jessore, Bangladesh",2017,2018-01-05,,Weather Station,Maximum Temperature,C,24.56,
+Ba17,"Jessore, Bangladesh",2017,2018-01-06,,Weather Station,Maximum Temperature,C,25.72,
+Ba17,"Jessore, Bangladesh",2017,2018-01-07,,Weather Station,Maximum Temperature,C,23.3,
+Ba17,"Jessore, Bangladesh",2017,2018-01-08,,Weather Station,Maximum Temperature,C,22.08,
+Ba17,"Jessore, Bangladesh",2017,2018-01-09,,Weather Station,Maximum Temperature,C,24.63,
+Ba17,"Jessore, Bangladesh",2017,2018-01-10,,Weather Station,Maximum Temperature,C,24.03,
+Ba17,"Jessore, Bangladesh",2017,2018-01-11,,Weather Station,Maximum Temperature,C,19.94,
+Ba17,"Jessore, Bangladesh",2017,2018-01-12,,Weather Station,Maximum Temperature,C,22.06,
+Ba17,"Jessore, Bangladesh",2017,2018-01-13,,Weather Station,Maximum Temperature,C,20.29,
+Ba17,"Jessore, Bangladesh",2017,2018-01-14,,Weather Station,Maximum Temperature,C,20.96,
+Ba17,"Jessore, Bangladesh",2017,2018-01-15,,Weather Station,Maximum Temperature,C,24.63,
+Ba17,"Jessore, Bangladesh",2017,2018-01-16,,Weather Station,Maximum Temperature,C,24.56,
+Ba17,"Jessore, Bangladesh",2017,2018-01-17,,Weather Station,Maximum Temperature,C,25.82,
+Ba17,"Jessore, Bangladesh",2017,2018-01-18,,Weather Station,Maximum Temperature,C,25.82,
+Ba17,"Jessore, Bangladesh",2017,2018-01-19,,Weather Station,Maximum Temperature,C,28.15,
+Ba17,"Jessore, Bangladesh",2017,2018-01-20,,Weather Station,Maximum Temperature,C,26.57,
+Ba17,"Jessore, Bangladesh",2017,2018-01-21,,Weather Station,Maximum Temperature,C,26.48,
+Ba17,"Jessore, Bangladesh",2017,2018-01-22,,Weather Station,Maximum Temperature,C,27.01,
+Ba17,"Jessore, Bangladesh",2017,2018-01-23,,Weather Station,Maximum Temperature,C,28.32,
+Ba17,"Jessore, Bangladesh",2017,2018-01-24,,Weather Station,Maximum Temperature,C,29.19,
+Ba17,"Jessore, Bangladesh",2017,2018-01-25,,Weather Station,Maximum Temperature,C,27.28,
+Ba17,"Jessore, Bangladesh",2017,2018-01-26,,Weather Station,Maximum Temperature,C,25.38,
+Ba17,"Jessore, Bangladesh",2017,2018-01-27,,Weather Station,Maximum Temperature,C,27.19,
+Ba17,"Jessore, Bangladesh",2017,2018-01-28,,Weather Station,Maximum Temperature,C,27.31,
+Ba17,"Jessore, Bangladesh",2017,2018-01-29,,Weather Station,Maximum Temperature,C,27.43,
+Ba17,"Jessore, Bangladesh",2017,2018-01-30,,Weather Station,Maximum Temperature,C,28.77,
+Ba17,"Jessore, Bangladesh",2017,2018-01-31,,Weather Station,Maximum Temperature,C,27.33,
+Ba17,"Jessore, Bangladesh",2017,2018-02-01,,Weather Station,Maximum Temperature,C,28.47,
+Ba17,"Jessore, Bangladesh",2017,2018-02-02,,Weather Station,Maximum Temperature,C,29.71,
+Ba17,"Jessore, Bangladesh",2017,2018-02-03,,Weather Station,Maximum Temperature,C,31.46,
+Ba17,"Jessore, Bangladesh",2017,2018-02-04,,Weather Station,Maximum Temperature,C,30.39,
+Ba17,"Jessore, Bangladesh",2017,2018-02-05,,Weather Station,Maximum Temperature,C,30.87,
+Ba17,"Jessore, Bangladesh",2017,2018-02-06,,Weather Station,Maximum Temperature,C,31.56,
+Ba17,"Jessore, Bangladesh",2017,2018-02-07,,Weather Station,Maximum Temperature,C,29.49,
+Ba17,"Jessore, Bangladesh",2017,2018-02-08,,Weather Station,Maximum Temperature,C,29.49,
+Ba17,"Jessore, Bangladesh",2017,2018-02-09,,Weather Station,Maximum Temperature,C,33.11,
+Ba17,"Jessore, Bangladesh",2017,2018-02-10,,Weather Station,Maximum Temperature,C,29.92,
+Ba17,"Jessore, Bangladesh",2017,2018-02-11,,Weather Station,Maximum Temperature,C,30.62,
+Ba17,"Jessore, Bangladesh",2017,2018-02-12,,Weather Station,Maximum Temperature,C,23.04,
+Ba17,"Jessore, Bangladesh",2017,2018-02-13,,Weather Station,Maximum Temperature,C,31.79,
+Ba17,"Jessore, Bangladesh",2017,2018-02-14,,Weather Station,Maximum Temperature,C,30.98,
+Ba17,"Jessore, Bangladesh",2017,2018-02-15,,Weather Station,Maximum Temperature,C,29.46,
+Ba17,"Jessore, Bangladesh",2017,2018-02-16,,Weather Station,Maximum Temperature,C,30.57,
+Ba17,"Jessore, Bangladesh",2017,2018-02-17,,Weather Station,Maximum Temperature,C,31.33,
+Ba17,"Jessore, Bangladesh",2017,2018-02-18,,Weather Station,Maximum Temperature,C,32.82,
+Ba17,"Jessore, Bangladesh",2017,2018-02-19,,Weather Station,Maximum Temperature,C,32.87,
+Ba17,"Jessore, Bangladesh",2017,2018-02-20,,Weather Station,Maximum Temperature,C,34.28,
+Ba17,"Jessore, Bangladesh",2017,2018-02-21,,Weather Station,Maximum Temperature,C,32.85,
+Ba17,"Jessore, Bangladesh",2017,2018-02-22,,Weather Station,Maximum Temperature,C,33.7,
+Ba17,"Jessore, Bangladesh",2017,2018-02-23,,Weather Station,Maximum Temperature,C,35.85,
+Ba17,"Jessore, Bangladesh",2017,2018-02-24,,Weather Station,Maximum Temperature,C,34.94,
+Ba17,"Jessore, Bangladesh",2017,2018-02-25,,Weather Station,Maximum Temperature,C,35.96,
+Ba17,"Jessore, Bangladesh",2017,2018-02-26,,Weather Station,Maximum Temperature,C,35.34,
+Ba17,"Jessore, Bangladesh",2017,2018-02-27,,Weather Station,Maximum Temperature,C,34.89,
+Ba17,"Jessore, Bangladesh",2017,2018-02-28,,Weather Station,Maximum Temperature,C,35.45,
+Ba17,"Jessore, Bangladesh",2017,2018-03-01,,Weather Station,Maximum Temperature,C,36.71,
+Ba17,"Jessore, Bangladesh",2017,2018-03-02,,Weather Station,Maximum Temperature,C,36.71,
+Ba17,"Jessore, Bangladesh",2017,2018-03-03,,Weather Station,Maximum Temperature,C,37.73,
+Ba17,"Jessore, Bangladesh",2017,2018-03-04,,Weather Station,Maximum Temperature,C,36.82,
+Ba17,"Jessore, Bangladesh",2017,2018-03-05,,Weather Station,Maximum Temperature,C,34.86,
+Ba17,"Jessore, Bangladesh",2017,2018-03-06,,Weather Station,Maximum Temperature,C,35.64,
+Ba17,"Jessore, Bangladesh",2017,2018-03-07,,Weather Station,Maximum Temperature,C,35.1,
+Ba17,"Jessore, Bangladesh",2017,2018-03-08,,Weather Station,Maximum Temperature,C,35.72,
+Ba17,"Jessore, Bangladesh",2017,2018-03-09,,Weather Station,Maximum Temperature,C,37.23,
+Ba17,"Jessore, Bangladesh",2017,2018-03-10,,Weather Station,Maximum Temperature,C,37.84,
+Ba17,"Jessore, Bangladesh",2017,2018-03-11,,Weather Station,Maximum Temperature,C,39.18,
+Ba17,"Jessore, Bangladesh",2017,2018-03-12,,Weather Station,Maximum Temperature,C,38.59,
+Ba17,"Jessore, Bangladesh",2017,2018-03-13,,Weather Station,Maximum Temperature,C,37.73,
+Ba17,"Jessore, Bangladesh",2017,2018-03-14,,Weather Station,Maximum Temperature,C,35.31,
+Ba17,"Jessore, Bangladesh",2017,2018-03-15,,Weather Station,Maximum Temperature,C,38,
+Ba17,"Jessore, Bangladesh",2017,2018-03-16,,Weather Station,Maximum Temperature,C,37.67,
+Ba17,"Jessore, Bangladesh",2017,2018-03-17,,Weather Station,Maximum Temperature,C,39.46,
+Ba17,"Jessore, Bangladesh",2017,2018-03-18,,Weather Station,Maximum Temperature,C,37.78,
+Ba17,"Jessore, Bangladesh",2017,2018-03-19,,Weather Station,Maximum Temperature,C,37.73,
+Ba17,"Jessore, Bangladesh",2017,2018-03-20,,Weather Station,Maximum Temperature,C,37.48,
+Ba17,"Jessore, Bangladesh",2017,2018-03-21,,Weather Station,Maximum Temperature,C,35.66,
+Ba17,"Jessore, Bangladesh",2017,2018-03-22,,Weather Station,Maximum Temperature,C,37.62,
+Ba17,"Jessore, Bangladesh",2017,2018-03-23,,Weather Station,Maximum Temperature,C,38.9,
+Ba17,"Jessore, Bangladesh",2017,2018-03-24,,Weather Station,Maximum Temperature,C,37.29,
+Ba17,"Jessore, Bangladesh",2017,2018-03-25,,Weather Station,Maximum Temperature,C,38.2,
+Ba17,"Jessore, Bangladesh",2017,2018-03-26,,Weather Station,Maximum Temperature,C,36.39,
+Ba17,"Jessore, Bangladesh",2017,2018-03-27,,Weather Station,Maximum Temperature,C,36.47,
+Ba17,"Jessore, Bangladesh",2017,2018-03-28,,Weather Station,Maximum Temperature,C,35.64,
+Ba17,"Jessore, Bangladesh",2017,2018-03-29,,Weather Station,Maximum Temperature,C,35.64,
+Ba17,"Jessore, Bangladesh",2017,2018-03-30,,Weather Station,Maximum Temperature,C,37.18,
+Ba17,"Jessore, Bangladesh",2017,2018-03-31,,Weather Station,Maximum Temperature,C,37.18,
+Ba17,"Jessore, Bangladesh",2017,2018-04-01,,Weather Station,Maximum Temperature,C,31.64,
+Ba17,"Jessore, Bangladesh",2017,2018-04-02,,Weather Station,Maximum Temperature,C,31.64,
+Ba17,"Jessore, Bangladesh",2017,2018-04-03,,Weather Station,Maximum Temperature,C,37.48,
+Ba17,"Jessore, Bangladesh",2017,2018-04-04,,Weather Station,Maximum Temperature,C,35.77,
+Ba17,"Jessore, Bangladesh",2017,2018-04-05,,Weather Station,Maximum Temperature,C,36.09,
+Ba17,"Jessore, Bangladesh",2017,2018-04-06,,Weather Station,Maximum Temperature,C,37.01,
+Ba17,"Jessore, Bangladesh",2017,2018-04-07,,Weather Station,Maximum Temperature,C,34.28,
+Ba17,"Jessore, Bangladesh",2017,2018-04-08,,Weather Station,Maximum Temperature,C,36.28,
+Ba17,"Jessore, Bangladesh",2017,2018-04-09,,Weather Station,Maximum Temperature,C,35.9,
+Ba17,"Jessore, Bangladesh",2017,2018-04-10,,Weather Station,Maximum Temperature,C,35.21,
+Ba17,"Jessore, Bangladesh",2017,2018-04-11,,Weather Station,Maximum Temperature,C,36.61,
+Ba17,"Jessore, Bangladesh",2017,2018-04-12,,Weather Station,Maximum Temperature,C,35.21,
+Ba17,"Jessore, Bangladesh",2017,2018-04-13,,Weather Station,Maximum Temperature,C,37.76,
+Ba17,"Jessore, Bangladesh",2017,2018-04-14,,Weather Station,Maximum Temperature,C,38.11,
+Ba17,"Jessore, Bangladesh",2017,2018-04-15,,Weather Station,Maximum Temperature,C,38.62,
+Ba17,"Jessore, Bangladesh",2017,2018-04-16,,Weather Station,Maximum Temperature,C,38.59,
+Ba17,"Jessore, Bangladesh",2017,2018-04-17,,Weather Station,Maximum Temperature,C,35.96,
+Ba17,"Jessore, Bangladesh",2017,2018-04-18,,Weather Station,Maximum Temperature,C,38.31,
+Ba17,"Jessore, Bangladesh",2017,2018-04-19,,Weather Station,Maximum Temperature,C,37.23,
+Ba17,"Jessore, Bangladesh",2017,2018-04-20,,Weather Station,Maximum Temperature,C,39.8,
+Ba17,"Jessore, Bangladesh",2017,2018-04-21,,Weather Station,Maximum Temperature,C,38.98,
+Ba17,"Jessore, Bangladesh",2017,2018-04-22,,Weather Station,Maximum Temperature,C,35.96,
+Ba17,"Jessore, Bangladesh",2017,2018-04-23,,Weather Station,Maximum Temperature,C,35.53,
+Ba17,"Jessore, Bangladesh",2017,2018-04-24,,Weather Station,Maximum Temperature,C,32.3,
+Ba17,"Jessore, Bangladesh",2017,2018-04-25,,Weather Station,Maximum Temperature,C,35.16,
+Ba17,"Jessore, Bangladesh",2017,2018-04-26,,Weather Station,Maximum Temperature,C,35.96,
+Ba17,"Jessore, Bangladesh",2017,2018-04-27,,Weather Station,Maximum Temperature,C,33.03,
+Ba17,"Jessore, Bangladesh",2017,2018-04-28,,Weather Station,Maximum Temperature,C,38.98,
+Ba17,"Jessore, Bangladesh",2017,2018-04-29,,Weather Station,Maximum Temperature,C,35.53,
+Ba17,"Jessore, Bangladesh",2017,2018-04-30,,Weather Station,Maximum Temperature,C,32.3,
+Ba17,"Jessore, Bangladesh",2017,2017-10-01,,Weather Station,Minimum Temperature,C,19.3,
+Ba17,"Jessore, Bangladesh",2017,2017-10-02,,Weather Station,Minimum Temperature,C,19.2,
+Ba17,"Jessore, Bangladesh",2017,2017-10-03,,Weather Station,Minimum Temperature,C,18.5,
+Ba17,"Jessore, Bangladesh",2017,2017-10-04,,Weather Station,Minimum Temperature,C,18.6,
+Ba17,"Jessore, Bangladesh",2017,2017-10-05,,Weather Station,Minimum Temperature,C,18.6,
+Ba17,"Jessore, Bangladesh",2017,2017-10-06,,Weather Station,Minimum Temperature,C,17.9,
+Ba17,"Jessore, Bangladesh",2017,2017-10-07,,Weather Station,Minimum Temperature,C,18.6,
+Ba17,"Jessore, Bangladesh",2017,2017-10-08,,Weather Station,Minimum Temperature,C,17.9,
+Ba17,"Jessore, Bangladesh",2017,2017-10-09,,Weather Station,Minimum Temperature,C,17.3,
+Ba17,"Jessore, Bangladesh",2017,2017-10-10,,Weather Station,Minimum Temperature,C,15.6,
+Ba17,"Jessore, Bangladesh",2017,2017-10-11,,Weather Station,Minimum Temperature,C,15.2,
+Ba17,"Jessore, Bangladesh",2017,2017-10-12,,Weather Station,Minimum Temperature,C,15.6,
+Ba17,"Jessore, Bangladesh",2017,2017-10-13,,Weather Station,Minimum Temperature,C,14.5,
+Ba17,"Jessore, Bangladesh",2017,2017-10-14,,Weather Station,Minimum Temperature,C,14.8,
+Ba17,"Jessore, Bangladesh",2017,2017-10-15,,Weather Station,Minimum Temperature,C,15.3,
+Ba17,"Jessore, Bangladesh",2017,2017-10-16,,Weather Station,Minimum Temperature,C,17.3,
+Ba17,"Jessore, Bangladesh",2017,2017-10-17,,Weather Station,Minimum Temperature,C,16.4,
+Ba17,"Jessore, Bangladesh",2017,2017-10-18,,Weather Station,Minimum Temperature,C,15.2,
+Ba17,"Jessore, Bangladesh",2017,2017-10-19,,Weather Station,Minimum Temperature,C,14.2,
+Ba17,"Jessore, Bangladesh",2017,2017-10-20,,Weather Station,Minimum Temperature,C,14.3,
+Ba17,"Jessore, Bangladesh",2017,2017-10-21,,Weather Station,Minimum Temperature,C,14.9,
+Ba17,"Jessore, Bangladesh",2017,2017-10-22,,Weather Station,Minimum Temperature,C,14.6,
+Ba17,"Jessore, Bangladesh",2017,2017-10-23,,Weather Station,Minimum Temperature,C,14.2,
+Ba17,"Jessore, Bangladesh",2017,2017-10-24,,Weather Station,Minimum Temperature,C,14.6,
+Ba17,"Jessore, Bangladesh",2017,2017-10-25,,Weather Station,Minimum Temperature,C,14.9,
+Ba17,"Jessore, Bangladesh",2017,2017-10-26,,Weather Station,Minimum Temperature,C,13.9,
+Ba17,"Jessore, Bangladesh",2017,2017-10-27,,Weather Station,Minimum Temperature,C,13.8,
+Ba17,"Jessore, Bangladesh",2017,2017-10-28,,Weather Station,Minimum Temperature,C,14,
+Ba17,"Jessore, Bangladesh",2017,2017-10-29,,Weather Station,Minimum Temperature,C,14.5,
+Ba17,"Jessore, Bangladesh",2017,2017-10-30,,Weather Station,Minimum Temperature,C,14.5,
+Ba17,"Jessore, Bangladesh",2017,2017-10-31,,Weather Station,Minimum Temperature,C,15.6,
+Ba17,"Jessore, Bangladesh",2017,2017-11-01,,Weather Station,Minimum Temperature,C,15.6,
+Ba17,"Jessore, Bangladesh",2017,2017-11-02,,Weather Station,Minimum Temperature,C,16,
+Ba17,"Jessore, Bangladesh",2017,2017-11-03,,Weather Station,Minimum Temperature,C,15.3,
+Ba17,"Jessore, Bangladesh",2017,2017-11-04,,Weather Station,Minimum Temperature,C,14.9,
+Ba17,"Jessore, Bangladesh",2017,2017-11-05,,Weather Station,Minimum Temperature,C,14.6,
+Ba17,"Jessore, Bangladesh",2017,2017-11-06,,Weather Station,Minimum Temperature,C,15,
+Ba17,"Jessore, Bangladesh",2017,2017-11-07,,Weather Station,Minimum Temperature,C,14.7,
+Ba17,"Jessore, Bangladesh",2017,2017-11-08,,Weather Station,Minimum Temperature,C,14.9,
+Ba17,"Jessore, Bangladesh",2017,2017-11-09,,Weather Station,Minimum Temperature,C,14.6,
+Ba17,"Jessore, Bangladesh",2017,2017-11-10,,Weather Station,Minimum Temperature,C,15,
+Ba17,"Jessore, Bangladesh",2017,2017-11-11,,Weather Station,Minimum Temperature,C,16.2,
+Ba17,"Jessore, Bangladesh",2017,2017-11-12,,Weather Station,Minimum Temperature,C,15.6,
+Ba17,"Jessore, Bangladesh",2017,2017-11-13,,Weather Station,Minimum Temperature,C,14.6,
+Ba17,"Jessore, Bangladesh",2017,2017-11-14,,Weather Station,Minimum Temperature,C,14,
+Ba17,"Jessore, Bangladesh",2017,2017-11-15,,Weather Station,Minimum Temperature,C,14.7,
+Ba17,"Jessore, Bangladesh",2017,2017-11-16,,Weather Station,Minimum Temperature,C,14.7,
+Ba17,"Jessore, Bangladesh",2017,2017-11-17,,Weather Station,Minimum Temperature,C,15.2,
+Ba17,"Jessore, Bangladesh",2017,2017-11-18,,Weather Station,Minimum Temperature,C,16.6,
+Ba17,"Jessore, Bangladesh",2017,2017-11-19,,Weather Station,Minimum Temperature,C,15.7,
+Ba17,"Jessore, Bangladesh",2017,2017-11-20,,Weather Station,Minimum Temperature,C,14.4,
+Ba17,"Jessore, Bangladesh",2017,2017-11-21,,Weather Station,Minimum Temperature,C,14,
+Ba17,"Jessore, Bangladesh",2017,2017-11-22,,Weather Station,Minimum Temperature,C,14.8,
+Ba17,"Jessore, Bangladesh",2017,2017-11-23,,Weather Station,Minimum Temperature,C,15.3,
+Ba17,"Jessore, Bangladesh",2017,2017-11-24,,Weather Station,Minimum Temperature,C,15.2,
+Ba17,"Jessore, Bangladesh",2017,2017-11-25,,Weather Station,Minimum Temperature,C,14.6,
+Ba17,"Jessore, Bangladesh",2017,2017-11-26,,Weather Station,Minimum Temperature,C,14.6,
+Ba17,"Jessore, Bangladesh",2017,2017-11-27,,Weather Station,Minimum Temperature,C,14.5,
+Ba17,"Jessore, Bangladesh",2017,2017-11-28,,Weather Station,Minimum Temperature,C,14.9,
+Ba17,"Jessore, Bangladesh",2017,2017-11-29,,Weather Station,Minimum Temperature,C,14.7,
+Ba17,"Jessore, Bangladesh",2017,2017-11-30,,Weather Station,Minimum Temperature,C,14,
+Ba17,"Jessore, Bangladesh",2017,2017-12-01,,Weather Station,Minimum Temperature,C,14.86,
+Ba17,"Jessore, Bangladesh",2017,2017-12-02,,Weather Station,Minimum Temperature,C,15.08,
+Ba17,"Jessore, Bangladesh",2017,2017-12-03,,Weather Station,Minimum Temperature,C,15.01,
+Ba17,"Jessore, Bangladesh",2017,2017-12-04,,Weather Station,Minimum Temperature,C,15.08,
+Ba17,"Jessore, Bangladesh",2017,2017-12-05,,Weather Station,Minimum Temperature,C,14.58,
+Ba17,"Jessore, Bangladesh",2017,2017-12-06,,Weather Station,Minimum Temperature,C,15.99,
+Ba17,"Jessore, Bangladesh",2017,2017-12-07,,Weather Station,Minimum Temperature,C,19.22,
+Ba17,"Jessore, Bangladesh",2017,2017-12-08,,Weather Station,Minimum Temperature,C,20.25,
+Ba17,"Jessore, Bangladesh",2017,2017-12-09,,Weather Station,Minimum Temperature,C,19.44,
+Ba17,"Jessore, Bangladesh",2017,2017-12-10,,Weather Station,Minimum Temperature,C,21.58,
+Ba17,"Jessore, Bangladesh",2017,2017-12-11,,Weather Station,Minimum Temperature,C,20.22,
+Ba17,"Jessore, Bangladesh",2017,2017-12-12,,Weather Station,Minimum Temperature,C,19.22,
+Ba17,"Jessore, Bangladesh",2017,2017-12-13,,Weather Station,Minimum Temperature,C,17.49,
+Ba17,"Jessore, Bangladesh",2017,2017-12-14,,Weather Station,Minimum Temperature,C,15.65,
+Ba17,"Jessore, Bangladesh",2017,2017-12-15,,Weather Station,Minimum Temperature,C,14.84,
+Ba17,"Jessore, Bangladesh",2017,2017-12-16,,Weather Station,Minimum Temperature,C,12.19,
+Ba17,"Jessore, Bangladesh",2017,2017-12-17,,Weather Station,Minimum Temperature,C,11.1,
+Ba17,"Jessore, Bangladesh",2017,2017-12-18,,Weather Station,Minimum Temperature,C,14.89,
+Ba17,"Jessore, Bangladesh",2017,2017-12-19,,Weather Station,Minimum Temperature,C,13.64,
+Ba17,"Jessore, Bangladesh",2017,2017-12-20,,Weather Station,Minimum Temperature,C,12.92,
+Ba17,"Jessore, Bangladesh",2017,2017-12-21,,Weather Station,Minimum Temperature,C,12.65,
+Ba17,"Jessore, Bangladesh",2017,2017-12-22,,Weather Station,Minimum Temperature,C,11.93,
+Ba17,"Jessore, Bangladesh",2017,2017-12-23,,Weather Station,Minimum Temperature,C,13.21,
+Ba17,"Jessore, Bangladesh",2017,2017-12-24,,Weather Station,Minimum Temperature,C,12.12,
+Ba17,"Jessore, Bangladesh",2017,2017-12-25,,Weather Station,Minimum Temperature,C,12.7,
+Ba17,"Jessore, Bangladesh",2017,2017-12-26,,Weather Station,Minimum Temperature,C,12.53,
+Ba17,"Jessore, Bangladesh",2017,2017-12-27,,Weather Station,Minimum Temperature,C,10.88,
+Ba17,"Jessore, Bangladesh",2017,2017-12-28,,Weather Station,Minimum Temperature,C,12.46,
+Ba17,"Jessore, Bangladesh",2017,2017-12-29,,Weather Station,Minimum Temperature,C,12.73,
+Ba17,"Jessore, Bangladesh",2017,2017-12-30,,Weather Station,Minimum Temperature,C,11.54,
+Ba17,"Jessore, Bangladesh",2017,2017-12-31,,Weather Station,Minimum Temperature,C,12.85,
+Ba17,"Jessore, Bangladesh",2017,2018-01-01,,Weather Station,Minimum Temperature,C,11.86,
+Ba17,"Jessore, Bangladesh",2017,2018-01-02,,Weather Station,Minimum Temperature,C,12.9,
+Ba17,"Jessore, Bangladesh",2017,2018-01-03,,Weather Station,Minimum Temperature,C,9.26,
+Ba17,"Jessore, Bangladesh",2017,2018-01-04,,Weather Station,Minimum Temperature,C,6.86,
+Ba17,"Jessore, Bangladesh",2017,2018-01-05,,Weather Station,Minimum Temperature,C,8.19,
+Ba17,"Jessore, Bangladesh",2017,2018-01-06,,Weather Station,Minimum Temperature,C,7.42,
+Ba17,"Jessore, Bangladesh",2017,2018-01-07,,Weather Station,Minimum Temperature,C,5.39,
+Ba17,"Jessore, Bangladesh",2017,2018-01-08,,Weather Station,Minimum Temperature,C,6.59,
+Ba17,"Jessore, Bangladesh",2017,2018-01-09,,Weather Station,Minimum Temperature,C,5.51,
+Ba17,"Jessore, Bangladesh",2017,2018-01-10,,Weather Station,Minimum Temperature,C,6.43,
+Ba17,"Jessore, Bangladesh",2017,2018-01-11,,Weather Station,Minimum Temperature,C,6.56,
+Ba17,"Jessore, Bangladesh",2017,2018-01-12,,Weather Station,Minimum Temperature,C,7.04,
+Ba17,"Jessore, Bangladesh",2017,2018-01-13,,Weather Station,Minimum Temperature,C,9.34,
+Ba17,"Jessore, Bangladesh",2017,2018-01-14,,Weather Station,Minimum Temperature,C,9.34,
+Ba17,"Jessore, Bangladesh",2017,2018-01-15,,Weather Station,Minimum Temperature,C,8.79,
+Ba17,"Jessore, Bangladesh",2017,2018-01-16,,Weather Station,Minimum Temperature,C,8.54,
+Ba17,"Jessore, Bangladesh",2017,2018-01-17,,Weather Station,Minimum Temperature,C,8.12,
+Ba17,"Jessore, Bangladesh",2017,2018-01-18,,Weather Station,Minimum Temperature,C,8.12,
+Ba17,"Jessore, Bangladesh",2017,2018-01-19,,Weather Station,Minimum Temperature,C,8.02,
+Ba17,"Jessore, Bangladesh",2017,2018-01-20,,Weather Station,Minimum Temperature,C,8.12,
+Ba17,"Jessore, Bangladesh",2017,2018-01-21,,Weather Station,Minimum Temperature,C,9.04,
+Ba17,"Jessore, Bangladesh",2017,2018-01-22,,Weather Station,Minimum Temperature,C,8.42,
+Ba17,"Jessore, Bangladesh",2017,2018-01-23,,Weather Station,Minimum Temperature,C,9.76,
+Ba17,"Jessore, Bangladesh",2017,2018-01-24,,Weather Station,Minimum Temperature,C,11.78,
+Ba17,"Jessore, Bangladesh",2017,2018-01-25,,Weather Station,Minimum Temperature,C,10.25,
+Ba17,"Jessore, Bangladesh",2017,2018-01-26,,Weather Station,Minimum Temperature,C,10.44,
+Ba17,"Jessore, Bangladesh",2017,2018-01-27,,Weather Station,Minimum Temperature,C,8.77,
+Ba17,"Jessore, Bangladesh",2017,2018-01-28,,Weather Station,Minimum Temperature,C,9.16,
+Ba17,"Jessore, Bangladesh",2017,2018-01-29,,Weather Station,Minimum Temperature,C,9.06,
+Ba17,"Jessore, Bangladesh",2017,2018-01-30,,Weather Station,Minimum Temperature,C,10.15,
+Ba17,"Jessore, Bangladesh",2017,2018-01-31,,Weather Station,Minimum Temperature,C,11.54,
+Ba17,"Jessore, Bangladesh",2017,2018-02-01,,Weather Station,Minimum Temperature,C,11.81,
+Ba17,"Jessore, Bangladesh",2017,2018-02-02,,Weather Station,Minimum Temperature,C,12.29,
+Ba17,"Jessore, Bangladesh",2017,2018-02-03,,Weather Station,Minimum Temperature,C,13.35,
+Ba17,"Jessore, Bangladesh",2017,2018-02-04,,Weather Station,Minimum Temperature,C,17.51,
+Ba17,"Jessore, Bangladesh",2017,2018-02-05,,Weather Station,Minimum Temperature,C,17.51,
+Ba17,"Jessore, Bangladesh",2017,2018-02-06,,Weather Station,Minimum Temperature,C,15.58,
+Ba17,"Jessore, Bangladesh",2017,2018-02-07,,Weather Station,Minimum Temperature,C,13.5,
+Ba17,"Jessore, Bangladesh",2017,2018-02-08,,Weather Station,Minimum Temperature,C,15.7,
+Ba17,"Jessore, Bangladesh",2017,2018-02-09,,Weather Station,Minimum Temperature,C,14.34,
+Ba17,"Jessore, Bangladesh",2017,2018-02-10,,Weather Station,Minimum Temperature,C,17.87,
+Ba17,"Jessore, Bangladesh",2017,2018-02-11,,Weather Station,Minimum Temperature,C,13.21,
+Ba17,"Jessore, Bangladesh",2017,2018-02-12,,Weather Station,Minimum Temperature,C,14.24,
+Ba17,"Jessore, Bangladesh",2017,2018-02-13,,Weather Station,Minimum Temperature,C,15.34,
+Ba17,"Jessore, Bangladesh",2017,2018-02-14,,Weather Station,Minimum Temperature,C,14.17,
+Ba17,"Jessore, Bangladesh",2017,2018-02-15,,Weather Station,Minimum Temperature,C,11.54,
+Ba17,"Jessore, Bangladesh",2017,2018-02-16,,Weather Station,Minimum Temperature,C,12.97,
+Ba17,"Jessore, Bangladesh",2017,2018-02-17,,Weather Station,Minimum Temperature,C,14.36,
+Ba17,"Jessore, Bangladesh",2017,2018-02-18,,Weather Station,Minimum Temperature,C,14.96,
+Ba17,"Jessore, Bangladesh",2017,2018-02-19,,Weather Station,Minimum Temperature,C,16.8,
+Ba17,"Jessore, Bangladesh",2017,2018-02-20,,Weather Station,Minimum Temperature,C,17.39,
+Ba17,"Jessore, Bangladesh",2017,2018-02-21,,Weather Station,Minimum Temperature,C,16.65,
+Ba17,"Jessore, Bangladesh",2017,2018-02-22,,Weather Station,Minimum Temperature,C,16.61,
+Ba17,"Jessore, Bangladesh",2017,2018-02-23,,Weather Station,Minimum Temperature,C,20.1,
+Ba17,"Jessore, Bangladesh",2017,2018-02-24,,Weather Station,Minimum Temperature,C,17.94,
+Ba17,"Jessore, Bangladesh",2017,2018-02-25,,Weather Station,Minimum Temperature,C,17.53,
+Ba17,"Jessore, Bangladesh",2017,2018-02-26,,Weather Station,Minimum Temperature,C,19.17,
+Ba17,"Jessore, Bangladesh",2017,2018-02-27,,Weather Station,Minimum Temperature,C,18.82,
+Ba17,"Jessore, Bangladesh",2017,2018-02-28,,Weather Station,Minimum Temperature,C,17.77,
+Ba17,"Jessore, Bangladesh",2017,2018-03-01,,Weather Station,Minimum Temperature,C,21.77,
+Ba17,"Jessore, Bangladesh",2017,2018-03-02,,Weather Station,Minimum Temperature,C,21.77,
+Ba17,"Jessore, Bangladesh",2017,2018-03-03,,Weather Station,Minimum Temperature,C,22.82,
+Ba17,"Jessore, Bangladesh",2017,2018-03-04,,Weather Station,Minimum Temperature,C,20.32,
+Ba17,"Jessore, Bangladesh",2017,2018-03-05,,Weather Station,Minimum Temperature,C,16.51,
+Ba17,"Jessore, Bangladesh",2017,2018-03-06,,Weather Station,Minimum Temperature,C,13.5,
+Ba17,"Jessore, Bangladesh",2017,2018-03-07,,Weather Station,Minimum Temperature,C,15.13,
+Ba17,"Jessore, Bangladesh",2017,2018-03-08,,Weather Station,Minimum Temperature,C,16.15,
+Ba17,"Jessore, Bangladesh",2017,2018-03-09,,Weather Station,Minimum Temperature,C,15.58,
+Ba17,"Jessore, Bangladesh",2017,2018-03-10,,Weather Station,Minimum Temperature,C,17.75,
+Ba17,"Jessore, Bangladesh",2017,2018-03-11,,Weather Station,Minimum Temperature,C,22.68,
+Ba17,"Jessore, Bangladesh",2017,2018-03-12,,Weather Station,Minimum Temperature,C,17.8,
+Ba17,"Jessore, Bangladesh",2017,2018-03-13,,Weather Station,Minimum Temperature,C,18.44,
+Ba17,"Jessore, Bangladesh",2017,2018-03-14,,Weather Station,Minimum Temperature,C,24.41,
+Ba17,"Jessore, Bangladesh",2017,2018-03-15,,Weather Station,Minimum Temperature,C,21.25,
+Ba17,"Jessore, Bangladesh",2017,2018-03-16,,Weather Station,Minimum Temperature,C,19.22,
+Ba17,"Jessore, Bangladesh",2017,2018-03-17,,Weather Station,Minimum Temperature,C,20.58,
+Ba17,"Jessore, Bangladesh",2017,2018-03-18,,Weather Station,Minimum Temperature,C,16.25,
+Ba17,"Jessore, Bangladesh",2017,2018-03-19,,Weather Station,Minimum Temperature,C,20.17,
+Ba17,"Jessore, Bangladesh",2017,2018-03-20,,Weather Station,Minimum Temperature,C,22.63,
+Ba17,"Jessore, Bangladesh",2017,2018-03-21,,Weather Station,Minimum Temperature,C,21.49,
+Ba17,"Jessore, Bangladesh",2017,2018-03-22,,Weather Station,Minimum Temperature,C,22.87,
+Ba17,"Jessore, Bangladesh",2017,2018-03-23,,Weather Station,Minimum Temperature,C,24.36,
+Ba17,"Jessore, Bangladesh",2017,2018-03-24,,Weather Station,Minimum Temperature,C,22.35,
+Ba17,"Jessore, Bangladesh",2017,2018-03-25,,Weather Station,Minimum Temperature,C,23.93,
+Ba17,"Jessore, Bangladesh",2017,2018-03-26,,Weather Station,Minimum Temperature,C,23.52,
+Ba17,"Jessore, Bangladesh",2017,2018-03-27,,Weather Station,Minimum Temperature,C,23.33,
+Ba17,"Jessore, Bangladesh",2017,2018-03-28,,Weather Station,Minimum Temperature,C,24.05,
+Ba17,"Jessore, Bangladesh",2017,2018-03-29,,Weather Station,Minimum Temperature,C,20.34,
+Ba17,"Jessore, Bangladesh",2017,2018-03-30,,Weather Station,Minimum Temperature,C,18.72,
+Ba17,"Jessore, Bangladesh",2017,2018-03-31,,Weather Station,Minimum Temperature,C,18.72,
+Ba17,"Jessore, Bangladesh",2017,2018-04-01,,Weather Station,Minimum Temperature,C,19.29,
+Ba17,"Jessore, Bangladesh",2017,2018-04-02,,Weather Station,Minimum Temperature,C,19.29,
+Ba17,"Jessore, Bangladesh",2017,2018-04-03,,Weather Station,Minimum Temperature,C,20.53,
+Ba17,"Jessore, Bangladesh",2017,2018-04-04,,Weather Station,Minimum Temperature,C,20.25,
+Ba17,"Jessore, Bangladesh",2017,2018-04-05,,Weather Station,Minimum Temperature,C,20.41,
+Ba17,"Jessore, Bangladesh",2017,2018-04-06,,Weather Station,Minimum Temperature,C,20.27,
+Ba17,"Jessore, Bangladesh",2017,2018-04-07,,Weather Station,Minimum Temperature,C,20.53,
+Ba17,"Jessore, Bangladesh",2017,2018-04-08,,Weather Station,Minimum Temperature,C,20.72,
+Ba17,"Jessore, Bangladesh",2017,2018-04-09,,Weather Station,Minimum Temperature,C,20.01,
+Ba17,"Jessore, Bangladesh",2017,2018-04-10,,Weather Station,Minimum Temperature,C,22.85,
+Ba17,"Jessore, Bangladesh",2017,2018-04-11,,Weather Station,Minimum Temperature,C,19.22,
+Ba17,"Jessore, Bangladesh",2017,2018-04-12,,Weather Station,Minimum Temperature,C,19.51,
+Ba17,"Jessore, Bangladesh",2017,2018-04-13,,Weather Station,Minimum Temperature,C,24.6,
+Ba17,"Jessore, Bangladesh",2017,2018-04-14,,Weather Station,Minimum Temperature,C,21.72,
+Ba17,"Jessore, Bangladesh",2017,2018-04-15,,Weather Station,Minimum Temperature,C,23.71,
+Ba17,"Jessore, Bangladesh",2017,2018-04-16,,Weather Station,Minimum Temperature,C,22.47,
+Ba17,"Jessore, Bangladesh",2017,2018-04-17,,Weather Station,Minimum Temperature,C,21.06,
+Ba17,"Jessore, Bangladesh",2017,2018-04-18,,Weather Station,Minimum Temperature,C,23.26,
+Ba17,"Jessore, Bangladesh",2017,2018-04-19,,Weather Station,Minimum Temperature,C,26.06,
+Ba17,"Jessore, Bangladesh",2017,2018-04-20,,Weather Station,Minimum Temperature,C,22.39,
+Ba17,"Jessore, Bangladesh",2017,2018-04-21,,Weather Station,Minimum Temperature,C,19.41,
+Ba17,"Jessore, Bangladesh",2017,2018-04-22,,Weather Station,Minimum Temperature,C,20.34,
+Ba17,"Jessore, Bangladesh",2017,2018-04-23,,Weather Station,Minimum Temperature,C,23.69,
+Ba17,"Jessore, Bangladesh",2017,2018-04-24,,Weather Station,Minimum Temperature,C,19.41,
+Ba17,"Jessore, Bangladesh",2017,2018-04-25,,Weather Station,Minimum Temperature,C,21.65,
+Ba17,"Jessore, Bangladesh",2017,2018-04-26,,Weather Station,Minimum Temperature,C,20.72,
+Ba17,"Jessore, Bangladesh",2017,2018-04-27,,Weather Station,Minimum Temperature,C,20.34,
+Ba17,"Jessore, Bangladesh",2017,2018-04-28,,Weather Station,Minimum Temperature,C,23.54,
+Ba17,"Jessore, Bangladesh",2017,2018-04-29,,Weather Station,Minimum Temperature,C,23.69,
+Ba17,"Jessore, Bangladesh",2017,2018-04-30,,Weather Station,Minimum Temperature,C,19.41,

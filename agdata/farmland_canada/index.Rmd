@@ -464,7 +464,7 @@ mp <- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = Year)) +
        caption = myCaption) + transition_time(Year)
 anim_save("farmland_canada_gifs_01.gif", mp,
           nframes = 2*(max(xx$Year) - min(xx$Year)), fps = 10, 
-          end_pause = 20, width = 1200, height = 800, res = 150)
+          end_pause = 20, width = 1200, height = 800, res = 150, units = "px")
 ```
 
 ---
@@ -576,7 +576,7 @@ mp <- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = Area)) +
   transition_time(Year)
 anim_save("farland_canada_gif_01.gif", mp,
           nframes = 300, fps = 30, end_pause = 60, 
-          width = 900, height = 1200, res = 150)
+          width = 900, height = 1200, res = 150, units = "px")
 ```
 
 ---

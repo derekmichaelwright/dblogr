@@ -172,8 +172,8 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value,
        y = NULL, caption = myCaption) +
   transition_time(Year) 
 anim_save("crops_india_gif_01.gif", mp,
-          nframes = 600, fps = 30, end_pause = 150, 
-          width = 900, height = 600, res = 150)
+          nframes = 600, fps = 15, end_pause = 60, 
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -216,8 +216,8 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value,
        x = "Million Hectares", y = NULL, caption = myCaption) +
   transition_time(Year) 
 anim_save("crops_india_gif_02.gif", mp,
-          nframes = 600, fps = 30, end_pause = 150, 
-          width = 900, height = 600, res = 150)
+          nframes = 600, fps = 15, end_pause = 60, 
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -236,7 +236,7 @@ xx <- read.csv("sri_lanka_Crops.csv") %>%
 myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: USDA"
 # Plot
 mp <- ggplot(xx, aes(x = Market.Year, y = Value, group = Crop, color = Crop)) +
-  geom_line(size = 2, alpha = 0.7) +
+  geom_line(size = 1.5, alpha = 0.7) +
   geom_point() +
   facet_wrap(. ~ Measurement, scales = "free_y") +
   expand_limits(y = 0) +

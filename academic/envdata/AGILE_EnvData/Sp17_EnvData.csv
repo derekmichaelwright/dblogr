@@ -1,0 +1,2310 @@
+Expt,Location,Year,Date,Time,LoggerID,Measurement,Unit,Value,DaysAfterPlanting
+Sp17,"Cordoba, Spain",2017,2017-12-01,8:21:00,Weather Station,Day Length,Hours,9.57,0
+Sp17,"Cordoba, Spain",2017,2017-12-02,8:22:12,Weather Station,Day Length,Hours,9.55,1
+Sp17,"Cordoba, Spain",2017,2017-12-03,8:22:48,Weather Station,Day Length,Hours,9.54,2
+Sp17,"Cordoba, Spain",2017,2017-12-04,8:24:00,Weather Station,Day Length,Hours,9.52,3
+Sp17,"Cordoba, Spain",2017,2017-12-05,8:24:36,Weather Station,Day Length,Hours,9.5,4
+Sp17,"Cordoba, Spain",2017,2017-12-06,8:25:48,Weather Station,Day Length,Hours,9.49,5
+Sp17,"Cordoba, Spain",2017,2017-12-07,8:26:24,Weather Station,Day Length,Hours,9.47,6
+Sp17,"Cordoba, Spain",2017,2017-12-08,8:27:36,Weather Station,Day Length,Hours,9.46,7
+Sp17,"Cordoba, Spain",2017,2017-12-09,8:28:12,Weather Station,Day Length,Hours,9.45,8
+Sp17,"Cordoba, Spain",2017,2017-12-10,8:28:48,Weather Station,Day Length,Hours,9.43,9
+Sp17,"Cordoba, Spain",2017,2017-12-11,8:30:00,Weather Station,Day Length,Hours,9.42,10
+Sp17,"Cordoba, Spain",2017,2017-12-12,8:30:36,Weather Station,Day Length,Hours,9.41,11
+Sp17,"Cordoba, Spain",2017,2017-12-13,8:31:12,Weather Station,Day Length,Hours,9.4,12
+Sp17,"Cordoba, Spain",2017,2017-12-14,8:31:48,Weather Station,Day Length,Hours,9.4,13
+Sp17,"Cordoba, Spain",2017,2017-12-15,8:33:00,Weather Station,Day Length,Hours,9.39,14
+Sp17,"Cordoba, Spain",2017,2017-12-16,8:33:36,Weather Station,Day Length,Hours,9.38,15
+Sp17,"Cordoba, Spain",2017,2017-12-17,8:34:12,Weather Station,Day Length,Hours,9.38,16
+Sp17,"Cordoba, Spain",2017,2017-12-18,8:34:48,Weather Station,Day Length,Hours,9.38,17
+Sp17,"Cordoba, Spain",2017,2017-12-19,8:35:24,Weather Station,Day Length,Hours,9.37,18
+Sp17,"Cordoba, Spain",2017,2017-12-20,8:36:00,Weather Station,Day Length,Hours,9.37,19
+Sp17,"Cordoba, Spain",2017,2017-12-21,8:36:00,Weather Station,Day Length,Hours,9.37,20
+Sp17,"Cordoba, Spain",2017,2017-12-22,8:36:36,Weather Station,Day Length,Hours,9.37,21
+Sp17,"Cordoba, Spain",2017,2017-12-23,8:37:12,Weather Station,Day Length,Hours,9.37,22
+Sp17,"Cordoba, Spain",2017,2017-12-24,8:37:48,Weather Station,Day Length,Hours,9.37,23
+Sp17,"Cordoba, Spain",2017,2017-12-25,8:37:48,Weather Station,Day Length,Hours,9.38,24
+Sp17,"Cordoba, Spain",2017,2017-12-26,8:38:24,Weather Station,Day Length,Hours,9.38,25
+Sp17,"Cordoba, Spain",2017,2017-12-27,8:39:00,Weather Station,Day Length,Hours,9.39,26
+Sp17,"Cordoba, Spain",2017,2017-12-28,8:39:00,Weather Station,Day Length,Hours,9.39,27
+Sp17,"Cordoba, Spain",2017,2017-12-29,8:39:00,Weather Station,Day Length,Hours,9.4,28
+Sp17,"Cordoba, Spain",2017,2017-12-30,8:39:36,Weather Station,Day Length,Hours,9.41,29
+Sp17,"Cordoba, Spain",2017,2017-12-31,8:39:36,Weather Station,Day Length,Hours,9.42,30
+Sp17,"Cordoba, Spain",2017,2018-01-01,8:39:36,Weather Station,Day Length,Hours,9.43,31
+Sp17,"Cordoba, Spain",2017,2018-01-02,8:40:12,Weather Station,Day Length,Hours,9.44,32
+Sp17,"Cordoba, Spain",2017,2018-01-03,8:40:12,Weather Station,Day Length,Hours,9.45,33
+Sp17,"Cordoba, Spain",2017,2018-01-04,8:40:12,Weather Station,Day Length,Hours,9.47,34
+Sp17,"Cordoba, Spain",2017,2018-01-05,8:40:12,Weather Station,Day Length,Hours,9.48,35
+Sp17,"Cordoba, Spain",2017,2018-01-06,8:40:12,Weather Station,Day Length,Hours,9.5,36
+Sp17,"Cordoba, Spain",2017,2018-01-07,8:40:12,Weather Station,Day Length,Hours,9.51,37
+Sp17,"Cordoba, Spain",2017,2018-01-08,8:40:12,Weather Station,Day Length,Hours,9.53,38
+Sp17,"Cordoba, Spain",2017,2018-01-09,8:39:36,Weather Station,Day Length,Hours,9.55,39
+Sp17,"Cordoba, Spain",2017,2018-01-10,8:39:36,Weather Station,Day Length,Hours,9.57,40
+Sp17,"Cordoba, Spain",2017,2018-01-11,8:39:36,Weather Station,Day Length,Hours,9.59,41
+Sp17,"Cordoba, Spain",2017,2018-01-12,8:39:36,Weather Station,Day Length,Hours,9.61,42
+Sp17,"Cordoba, Spain",2017,2018-01-13,8:39:00,Weather Station,Day Length,Hours,9.63,43
+Sp17,"Cordoba, Spain",2017,2018-01-14,8:39:00,Weather Station,Day Length,Hours,9.65,44
+Sp17,"Cordoba, Spain",2017,2018-01-15,8:38:24,Weather Station,Day Length,Hours,9.67,45
+Sp17,"Cordoba, Spain",2017,2018-01-16,8:37:48,Weather Station,Day Length,Hours,9.7,46
+Sp17,"Cordoba, Spain",2017,2018-01-17,8:37:48,Weather Station,Day Length,Hours,9.72,47
+Sp17,"Cordoba, Spain",2017,2018-01-18,8:37:12,Weather Station,Day Length,Hours,9.74,48
+Sp17,"Cordoba, Spain",2017,2018-01-19,8:36:36,Weather Station,Day Length,Hours,9.77,49
+Sp17,"Cordoba, Spain",2017,2018-01-20,8:36:36,Weather Station,Day Length,Hours,9.8,50
+Sp17,"Cordoba, Spain",2017,2018-01-21,8:36:00,Weather Station,Day Length,Hours,9.82,51
+Sp17,"Cordoba, Spain",2017,2018-01-22,8:35:24,Weather Station,Day Length,Hours,9.85,52
+Sp17,"Cordoba, Spain",2017,2018-01-23,8:34:48,Weather Station,Day Length,Hours,9.88,53
+Sp17,"Cordoba, Spain",2017,2018-01-24,8:34:12,Weather Station,Day Length,Hours,9.91,54
+Sp17,"Cordoba, Spain",2017,2018-01-25,8:33:36,Weather Station,Day Length,Hours,9.94,55
+Sp17,"Cordoba, Spain",2017,2018-01-26,8:32:24,Weather Station,Day Length,Hours,9.97,56
+Sp17,"Cordoba, Spain",2017,2018-01-27,8:31:48,Weather Station,Day Length,Hours,10,57
+Sp17,"Cordoba, Spain",2017,2018-01-28,8:31:12,Weather Station,Day Length,Hours,10.03,58
+Sp17,"Cordoba, Spain",2017,2018-01-29,8:30:36,Weather Station,Day Length,Hours,10.06,59
+Sp17,"Cordoba, Spain",2017,2018-01-30,8:29:24,Weather Station,Day Length,Hours,10.09,60
+Sp17,"Cordoba, Spain",2017,2018-01-31,8:28:48,Weather Station,Day Length,Hours,10.13,61
+Sp17,"Cordoba, Spain",2017,2018-02-01,8:28:12,Weather Station,Day Length,Hours,10.16,62
+Sp17,"Cordoba, Spain",2017,2018-02-02,8:27:00,Weather Station,Day Length,Hours,10.19,63
+Sp17,"Cordoba, Spain",2017,2018-02-03,8:26:24,Weather Station,Day Length,Hours,10.23,64
+Sp17,"Cordoba, Spain",2017,2018-02-04,8:25:12,Weather Station,Day Length,Hours,10.26,65
+Sp17,"Cordoba, Spain",2017,2018-02-05,8:24:00,Weather Station,Day Length,Hours,10.3,66
+Sp17,"Cordoba, Spain",2017,2018-02-06,8:23:24,Weather Station,Day Length,Hours,10.33,67
+Sp17,"Cordoba, Spain",2017,2018-02-07,8:22:12,Weather Station,Day Length,Hours,10.37,68
+Sp17,"Cordoba, Spain",2017,2018-02-08,8:21:00,Weather Station,Day Length,Hours,10.4,69
+Sp17,"Cordoba, Spain",2017,2018-02-09,8:20:24,Weather Station,Day Length,Hours,10.44,70
+Sp17,"Cordoba, Spain",2017,2018-02-10,8:19:12,Weather Station,Day Length,Hours,10.48,71
+Sp17,"Cordoba, Spain",2017,2018-02-11,8:18:00,Weather Station,Day Length,Hours,10.51,72
+Sp17,"Cordoba, Spain",2017,2018-02-12,8:16:48,Weather Station,Day Length,Hours,10.55,73
+Sp17,"Cordoba, Spain",2017,2018-02-13,8:15:36,Weather Station,Day Length,Hours,10.59,74
+Sp17,"Cordoba, Spain",2017,2018-02-14,8:14:24,Weather Station,Day Length,Hours,10.63,75
+Sp17,"Cordoba, Spain",2017,2018-02-15,8:13:12,Weather Station,Day Length,Hours,10.66,76
+Sp17,"Cordoba, Spain",2017,2018-02-16,8:12:00,Weather Station,Day Length,Hours,10.7,77
+Sp17,"Cordoba, Spain",2017,2018-02-17,8:10:48,Weather Station,Day Length,Hours,10.74,78
+Sp17,"Cordoba, Spain",2017,2018-02-18,8:09:36,Weather Station,Day Length,Hours,10.78,79
+Sp17,"Cordoba, Spain",2017,2018-02-19,8:08:24,Weather Station,Day Length,Hours,10.82,80
+Sp17,"Cordoba, Spain",2017,2018-02-20,8:07:12,Weather Station,Day Length,Hours,10.86,81
+Sp17,"Cordoba, Spain",2017,2018-02-21,8:06:00,Weather Station,Day Length,Hours,10.9,82
+Sp17,"Cordoba, Spain",2017,2018-02-22,8:04:48,Weather Station,Day Length,Hours,10.94,83
+Sp17,"Cordoba, Spain",2017,2018-02-23,8:03:00,Weather Station,Day Length,Hours,10.98,84
+Sp17,"Cordoba, Spain",2017,2018-02-24,8:01:48,Weather Station,Day Length,Hours,11.02,85
+Sp17,"Cordoba, Spain",2017,2018-02-25,8:00:36,Weather Station,Day Length,Hours,11.06,86
+Sp17,"Cordoba, Spain",2017,2018-02-26,7:59:24,Weather Station,Day Length,Hours,11.1,87
+Sp17,"Cordoba, Spain",2017,2018-02-27,7:57:36,Weather Station,Day Length,Hours,11.14,88
+Sp17,"Cordoba, Spain",2017,2018-02-28,7:56:24,Weather Station,Day Length,Hours,11.18,89
+Sp17,"Cordoba, Spain",2017,2018-03-01,7:55:12,Weather Station,Day Length,Hours,11.22,90
+Sp17,"Cordoba, Spain",2017,2018-03-02,7:53:24,Weather Station,Day Length,Hours,11.26,91
+Sp17,"Cordoba, Spain",2017,2018-03-03,7:52:12,Weather Station,Day Length,Hours,11.3,92
+Sp17,"Cordoba, Spain",2017,2018-03-04,7:51:00,Weather Station,Day Length,Hours,11.34,93
+Sp17,"Cordoba, Spain",2017,2018-03-05,7:49:12,Weather Station,Day Length,Hours,11.38,94
+Sp17,"Cordoba, Spain",2017,2018-03-06,7:48:00,Weather Station,Day Length,Hours,11.42,95
+Sp17,"Cordoba, Spain",2017,2018-03-07,7:46:12,Weather Station,Day Length,Hours,11.46,96
+Sp17,"Cordoba, Spain",2017,2018-03-08,7:45:00,Weather Station,Day Length,Hours,11.5,97
+Sp17,"Cordoba, Spain",2017,2018-03-09,7:43:12,Weather Station,Day Length,Hours,11.54,98
+Sp17,"Cordoba, Spain",2017,2018-03-10,7:42:00,Weather Station,Day Length,Hours,11.58,99
+Sp17,"Cordoba, Spain",2017,2018-03-11,7:40:12,Weather Station,Day Length,Hours,11.62,100
+Sp17,"Cordoba, Spain",2017,2018-03-12,7:39:00,Weather Station,Day Length,Hours,11.66,101
+Sp17,"Cordoba, Spain",2017,2018-03-13,7:37:12,Weather Station,Day Length,Hours,11.71,102
+Sp17,"Cordoba, Spain",2017,2018-03-14,7:36:00,Weather Station,Day Length,Hours,11.75,103
+Sp17,"Cordoba, Spain",2017,2018-03-15,7:34:12,Weather Station,Day Length,Hours,11.79,104
+Sp17,"Cordoba, Spain",2017,2018-03-16,7:33:00,Weather Station,Day Length,Hours,11.83,105
+Sp17,"Cordoba, Spain",2017,2018-03-17,7:31:12,Weather Station,Day Length,Hours,11.87,106
+Sp17,"Cordoba, Spain",2017,2018-03-18,7:30:00,Weather Station,Day Length,Hours,11.91,107
+Sp17,"Cordoba, Spain",2017,2018-03-19,7:28:12,Weather Station,Day Length,Hours,11.95,108
+Sp17,"Cordoba, Spain",2017,2018-03-20,7:27:00,Weather Station,Day Length,Hours,11.99,109
+Sp17,"Cordoba, Spain",2017,2018-03-21,7:25:12,Weather Station,Day Length,Hours,12.03,110
+Sp17,"Cordoba, Spain",2017,2018-03-22,7:24:00,Weather Station,Day Length,Hours,12.07,111
+Sp17,"Cordoba, Spain",2017,2018-03-23,7:22:12,Weather Station,Day Length,Hours,12.12,112
+Sp17,"Cordoba, Spain",2017,2018-03-24,7:21:00,Weather Station,Day Length,Hours,12.16,113
+Sp17,"Cordoba, Spain",2017,2018-03-25,7:19:12,Weather Station,Day Length,Hours,12.2,114
+Sp17,"Cordoba, Spain",2017,2018-03-26,7:18:00,Weather Station,Day Length,Hours,12.24,115
+Sp17,"Cordoba, Spain",2017,2018-03-27,7:16:12,Weather Station,Day Length,Hours,12.28,116
+Sp17,"Cordoba, Spain",2017,2018-03-28,7:14:24,Weather Station,Day Length,Hours,12.32,117
+Sp17,"Cordoba, Spain",2017,2018-03-29,7:13:12,Weather Station,Day Length,Hours,12.36,118
+Sp17,"Cordoba, Spain",2017,2018-03-30,7:11:24,Weather Station,Day Length,Hours,12.4,119
+Sp17,"Cordoba, Spain",2017,2018-03-31,7:10:12,Weather Station,Day Length,Hours,12.44,120
+Sp17,"Cordoba, Spain",2017,2018-04-01,7:08:24,Weather Station,Day Length,Hours,12.48,121
+Sp17,"Cordoba, Spain",2017,2018-04-02,7:07:12,Weather Station,Day Length,Hours,12.52,122
+Sp17,"Cordoba, Spain",2017,2018-04-03,7:05:24,Weather Station,Day Length,Hours,12.56,123
+Sp17,"Cordoba, Spain",2017,2018-04-04,7:04:12,Weather Station,Day Length,Hours,12.6,124
+Sp17,"Cordoba, Spain",2017,2018-04-05,7:02:24,Weather Station,Day Length,Hours,12.64,125
+Sp17,"Cordoba, Spain",2017,2018-04-06,7:01:12,Weather Station,Day Length,Hours,12.68,126
+Sp17,"Cordoba, Spain",2017,2018-04-07,6:59:24,Weather Station,Day Length,Hours,12.72,127
+Sp17,"Cordoba, Spain",2017,2018-04-08,6:58:12,Weather Station,Day Length,Hours,12.76,128
+Sp17,"Cordoba, Spain",2017,2018-04-09,6:57:00,Weather Station,Day Length,Hours,12.8,129
+Sp17,"Cordoba, Spain",2017,2018-04-10,6:55:12,Weather Station,Day Length,Hours,12.84,130
+Sp17,"Cordoba, Spain",2017,2018-04-11,6:54:00,Weather Station,Day Length,Hours,12.88,131
+Sp17,"Cordoba, Spain",2017,2018-04-12,6:52:12,Weather Station,Day Length,Hours,12.92,132
+Sp17,"Cordoba, Spain",2017,2018-04-13,6:51:00,Weather Station,Day Length,Hours,12.96,133
+Sp17,"Cordoba, Spain",2017,2018-04-14,6:49:48,Weather Station,Day Length,Hours,13,134
+Sp17,"Cordoba, Spain",2017,2018-04-15,6:48:00,Weather Station,Day Length,Hours,13.04,135
+Sp17,"Cordoba, Spain",2017,2018-04-16,6:46:48,Weather Station,Day Length,Hours,13.07,136
+Sp17,"Cordoba, Spain",2017,2018-04-17,6:45:36,Weather Station,Day Length,Hours,13.11,137
+Sp17,"Cordoba, Spain",2017,2018-04-18,6:43:48,Weather Station,Day Length,Hours,13.15,138
+Sp17,"Cordoba, Spain",2017,2018-04-19,6:42:36,Weather Station,Day Length,Hours,13.19,139
+Sp17,"Cordoba, Spain",2017,2018-04-20,6:41:24,Weather Station,Day Length,Hours,13.23,140
+Sp17,"Cordoba, Spain",2017,2018-04-21,6:40:12,Weather Station,Day Length,Hours,13.26,141
+Sp17,"Cordoba, Spain",2017,2018-04-22,6:39:00,Weather Station,Day Length,Hours,13.3,142
+Sp17,"Cordoba, Spain",2017,2018-04-23,6:37:12,Weather Station,Day Length,Hours,13.34,143
+Sp17,"Cordoba, Spain",2017,2018-04-24,6:36:00,Weather Station,Day Length,Hours,13.37,144
+Sp17,"Cordoba, Spain",2017,2018-04-25,6:34:48,Weather Station,Day Length,Hours,13.41,145
+Sp17,"Cordoba, Spain",2017,2018-04-26,6:33:36,Weather Station,Day Length,Hours,13.45,146
+Sp17,"Cordoba, Spain",2017,2018-04-27,6:32:24,Weather Station,Day Length,Hours,13.48,147
+Sp17,"Cordoba, Spain",2017,2018-04-28,6:31:12,Weather Station,Day Length,Hours,13.52,148
+Sp17,"Cordoba, Spain",2017,2018-04-29,6:30:00,Weather Station,Day Length,Hours,13.55,149
+Sp17,"Cordoba, Spain",2017,2018-04-30,6:28:48,Weather Station,Day Length,Hours,13.59,150
+Sp17,"Cordoba, Spain",2017,2018-05-01,6:27:36,Weather Station,Day Length,Hours,13.62,151
+Sp17,"Cordoba, Spain",2017,2018-05-02,6:26:24,Weather Station,Day Length,Hours,13.66,152
+Sp17,"Cordoba, Spain",2017,2018-05-03,6:25:12,Weather Station,Day Length,Hours,13.69,153
+Sp17,"Cordoba, Spain",2017,2018-05-04,6:24:00,Weather Station,Day Length,Hours,13.72,154
+Sp17,"Cordoba, Spain",2017,2018-05-05,6:23:24,Weather Station,Day Length,Hours,13.76,155
+Sp17,"Cordoba, Spain",2017,2018-05-06,6:22:12,Weather Station,Day Length,Hours,13.79,156
+Sp17,"Cordoba, Spain",2017,2018-05-07,6:21:00,Weather Station,Day Length,Hours,13.82,157
+Sp17,"Cordoba, Spain",2017,2018-05-08,6:20:24,Weather Station,Day Length,Hours,13.85,158
+Sp17,"Cordoba, Spain",2017,2018-05-09,6:19:12,Weather Station,Day Length,Hours,13.88,159
+Sp17,"Cordoba, Spain",2017,2018-05-10,6:18:00,Weather Station,Day Length,Hours,13.92,160
+Sp17,"Cordoba, Spain",2017,2018-05-11,6:17:24,Weather Station,Day Length,Hours,13.95,161
+Sp17,"Cordoba, Spain",2017,2018-05-12,6:16:12,Weather Station,Day Length,Hours,13.98,162
+Sp17,"Cordoba, Spain",2017,2018-05-13,6:15:36,Weather Station,Day Length,Hours,14.01,163
+Sp17,"Cordoba, Spain",2017,2018-05-14,6:14:24,Weather Station,Day Length,Hours,14.03,164
+Sp17,"Cordoba, Spain",2017,2018-05-15,6:13:48,Weather Station,Day Length,Hours,14.06,165
+Sp17,"Cordoba, Spain",2017,2018-05-16,6:12:36,Weather Station,Day Length,Hours,14.09,166
+Sp17,"Cordoba, Spain",2017,2018-05-17,6:12:00,Weather Station,Day Length,Hours,14.12,167
+Sp17,"Cordoba, Spain",2017,2018-05-18,6:11:24,Weather Station,Day Length,Hours,14.15,168
+Sp17,"Cordoba, Spain",2017,2018-05-19,6:10:48,Weather Station,Day Length,Hours,14.17,169
+Sp17,"Cordoba, Spain",2017,2018-05-20,6:09:36,Weather Station,Day Length,Hours,14.2,170
+Sp17,"Cordoba, Spain",2017,2018-05-21,6:09:00,Weather Station,Day Length,Hours,14.22,171
+Sp17,"Cordoba, Spain",2017,2018-05-22,6:08:24,Weather Station,Day Length,Hours,14.25,172
+Sp17,"Cordoba, Spain",2017,2018-05-23,6:07:48,Weather Station,Day Length,Hours,14.27,173
+Sp17,"Cordoba, Spain",2017,2018-05-24,6:07:12,Weather Station,Day Length,Hours,14.29,174
+Sp17,"Cordoba, Spain",2017,2018-05-25,6:06:36,Weather Station,Day Length,Hours,14.32,175
+Sp17,"Cordoba, Spain",2017,2018-05-26,6:06:00,Weather Station,Day Length,Hours,14.34,176
+Sp17,"Cordoba, Spain",2017,2018-05-27,6:05:24,Weather Station,Day Length,Hours,14.36,177
+Sp17,"Cordoba, Spain",2017,2018-05-28,6:04:48,Weather Station,Day Length,Hours,14.38,178
+Sp17,"Cordoba, Spain",2017,2018-05-29,6:04:48,Weather Station,Day Length,Hours,14.4,179
+Sp17,"Cordoba, Spain",2017,2018-05-30,6:04:12,Weather Station,Day Length,Hours,14.42,180
+Sp17,"Cordoba, Spain",2017,2018-05-31,6:03:36,Weather Station,Day Length,Hours,14.44,181
+Sp17,"Cordoba, Spain",2017,2018-06-01,6:03:36,Weather Station,Day Length,Hours,14.45,182
+Sp17,"Cordoba, Spain",2017,2018-06-02,6:03:00,Weather Station,Day Length,Hours,14.47,183
+Sp17,"Cordoba, Spain",2017,2018-06-03,6:03:00,Weather Station,Day Length,Hours,14.49,184
+Sp17,"Cordoba, Spain",2017,2018-06-04,6:02:24,Weather Station,Day Length,Hours,14.5,185
+Sp17,"Cordoba, Spain",2017,2017-12-01,8:30:00,Weather Station,Temperature,C,-0.1,0
+Sp17,"Cordoba, Spain",2017,2017-12-02,8:30:00,Weather Station,Temperature,C,0.4,1
+Sp17,"Cordoba, Spain",2017,2017-12-03,8:00:00,Weather Station,Temperature,C,-0.7,2
+Sp17,"Cordoba, Spain",2017,2017-12-04,8:20:00,Weather Station,Temperature,C,0.1,3
+Sp17,"Cordoba, Spain",2017,2017-12-05,7:30:00,Weather Station,Temperature,C,-1.2,4
+Sp17,"Cordoba, Spain",2017,2017-12-06,8:10:00,Weather Station,Temperature,C,-1.1,5
+Sp17,"Cordoba, Spain",2017,2017-12-07,7:40:00,Weather Station,Temperature,C,-1,6
+Sp17,"Cordoba, Spain",2017,2017-12-08,7:50:00,Weather Station,Temperature,C,-0.4,7
+Sp17,"Cordoba, Spain",2017,2017-12-09,2:10:00,Weather Station,Temperature,C,6.6,8
+Sp17,"Cordoba, Spain",2017,2017-12-10,4:30:00,Weather Station,Temperature,C,9.2,9
+Sp17,"Cordoba, Spain",2017,2017-12-11,23:30:00,Weather Station,Temperature,C,6.9,10
+Sp17,"Cordoba, Spain",2017,2017-12-12,8:20:00,Weather Station,Temperature,C,1.5,11
+Sp17,"Cordoba, Spain",2017,2017-12-13,8:20:00,Weather Station,Temperature,C,0.8,12
+Sp17,"Cordoba, Spain",2017,2017-12-14,6:10:00,Weather Station,Temperature,C,1.4,13
+Sp17,"Cordoba, Spain",2017,2017-12-15,0:10:00,Weather Station,Temperature,C,10.3,14
+Sp17,"Cordoba, Spain",2017,2017-12-16,7:50:00,Weather Station,Temperature,C,4.2,15
+Sp17,"Cordoba, Spain",2017,2017-12-17,6:30:00,Weather Station,Temperature,C,1.7,16
+Sp17,"Cordoba, Spain",2017,2017-12-18,8:40:00,Weather Station,Temperature,C,0.6,17
+Sp17,"Cordoba, Spain",2017,2017-12-19,7:40:00,Weather Station,Temperature,C,0.1,18
+Sp17,"Cordoba, Spain",2017,2017-12-20,5:00:00,Weather Station,Temperature,C,1.4,19
+Sp17,"Cordoba, Spain",2017,2017-12-21,4:40:00,Weather Station,Temperature,C,1.2,20
+Sp17,"Cordoba, Spain",2017,2017-12-22,8:40:00,Weather Station,Temperature,C,0.4,21
+Sp17,"Cordoba, Spain",2017,2017-12-23,8:40:00,Weather Station,Temperature,C,2.2,22
+Sp17,"Cordoba, Spain",2017,2017-12-24,7:50:00,Weather Station,Temperature,C,2,23
+Sp17,"Cordoba, Spain",2017,2017-12-25,7:20:00,Weather Station,Temperature,C,1.9,24
+Sp17,"Cordoba, Spain",2017,2017-12-26,20:50:00,Weather Station,Temperature,C,8.8,25
+Sp17,"Cordoba, Spain",2017,2017-12-27,21:00:00,Weather Station,Temperature,C,9.3,26
+Sp17,"Cordoba, Spain",2017,2017-12-28,3:20:00,Weather Station,Temperature,C,10.1,27
+Sp17,"Cordoba, Spain",2017,2017-12-29,8:40:00,Weather Station,Temperature,C,13.1,28
+Sp17,"Cordoba, Spain",2017,2017-12-30,23:59:00,Weather Station,Temperature,C,8.7,29
+Sp17,"Cordoba, Spain",2017,2017-12-31,8:10:00,Weather Station,Temperature,C,6.2,30
+Sp17,"Cordoba, Spain",2017,2018-01-01,9:00:00,Weather Station,Temperature,C,1.8,31
+Sp17,"Cordoba, Spain",2017,2018-01-02,7:50:00,Weather Station,Temperature,C,0.9,32
+Sp17,"Cordoba, Spain",2017,2018-01-03,0:00:00,Weather Station,Temperature,C,8.6,33
+Sp17,"Cordoba, Spain",2017,2018-01-04,8:30:00,Weather Station,Temperature,C,12.1,34
+Sp17,"Cordoba, Spain",2017,2018-01-05,8:50:00,Weather Station,Temperature,C,12.1,35
+Sp17,"Cordoba, Spain",2017,2018-01-06,23:59:00,Weather Station,Temperature,C,4.2,36
+Sp17,"Cordoba, Spain",2017,2018-01-07,6:00:00,Weather Station,Temperature,C,1.2,37
+Sp17,"Cordoba, Spain",2017,2018-01-08,23:59:00,Weather Station,Temperature,C,2.6,38
+Sp17,"Cordoba, Spain",2017,2018-01-09,7:00:00,Weather Station,Temperature,C,-0.4,39
+Sp17,"Cordoba, Spain",2017,2018-01-10,0:00:00,Weather Station,Temperature,C,7.9,40
+Sp17,"Cordoba, Spain",2017,2018-01-11,6:50:00,Weather Station,Temperature,C,3.7,41
+Sp17,"Cordoba, Spain",2017,2018-01-12,7:40:00,Weather Station,Temperature,C,0.2,42
+Sp17,"Cordoba, Spain",2017,2018-01-13,8:10:00,Weather Station,Temperature,C,2.9,43
+Sp17,"Cordoba, Spain",2017,2018-01-14,23:59:00,Weather Station,Temperature,C,3.7,44
+Sp17,"Cordoba, Spain",2017,2018-01-15,8:20:00,Weather Station,Temperature,C,-0.2,45
+Sp17,"Cordoba, Spain",2017,2018-01-16,6:00:00,Weather Station,Temperature,C,0.6,46
+Sp17,"Cordoba, Spain",2017,2018-01-17,3:40:00,Weather Station,Temperature,C,3.7,47
+Sp17,"Cordoba, Spain",2017,2018-01-18,8:20:00,Weather Station,Temperature,C,2.8,48
+Sp17,"Cordoba, Spain",2017,2018-01-19,9:00:00,Weather Station,Temperature,C,3.1,49
+Sp17,"Cordoba, Spain",2017,2018-01-20,8:30:00,Weather Station,Temperature,C,1.5,50
+Sp17,"Cordoba, Spain",2017,2018-01-21,8:20:00,Weather Station,Temperature,C,1.2,51
+Sp17,"Cordoba, Spain",2017,2018-01-22,5:40:00,Weather Station,Temperature,C,2.6,52
+Sp17,"Cordoba, Spain",2017,2018-01-23,7:50:00,Weather Station,Temperature,C,1.8,53
+Sp17,"Cordoba, Spain",2017,2018-01-24,4:40:00,Weather Station,Temperature,C,3.5,54
+Sp17,"Cordoba, Spain",2017,2018-01-25,3:00:00,Weather Station,Temperature,C,5.8,55
+Sp17,"Cordoba, Spain",2017,2018-01-26,7:50:00,Weather Station,Temperature,C,2.7,56
+Sp17,"Cordoba, Spain",2017,2018-01-27,7:30:00,Weather Station,Temperature,C,0.6,57
+Sp17,"Cordoba, Spain",2017,2018-01-28,3:40:00,Weather Station,Temperature,C,0.7,58
+Sp17,"Cordoba, Spain",2017,2018-01-29,0:00:00,Weather Station,Temperature,C,6.3,59
+Sp17,"Cordoba, Spain",2017,2018-01-30,5:50:00,Weather Station,Temperature,C,4.9,60
+Sp17,"Cordoba, Spain",2017,2018-01-31,5:30:00,Weather Station,Temperature,C,4.3,61
+Sp17,"Cordoba, Spain",2017,2018-02-01,8:00:00,Weather Station,Temperature,C,1.9,62
+Sp17,"Cordoba, Spain",2017,2018-02-02,8:40:00,Weather Station,Temperature,C,0.6,63
+Sp17,"Cordoba, Spain",2017,2018-02-03,8:10:00,Weather Station,Temperature,C,-2.9,64
+Sp17,"Cordoba, Spain",2017,2018-02-04,8:30:00,Weather Station,Temperature,C,3.4,65
+Sp17,"Cordoba, Spain",2017,2018-02-05,3:30:00,Weather Station,Temperature,C,3.8,66
+Sp17,"Cordoba, Spain",2017,2018-02-06,7:00:00,Weather Station,Temperature,C,2.8,67
+Sp17,"Cordoba, Spain",2017,2018-02-07,23:59:00,Weather Station,Temperature,C,2,68
+Sp17,"Cordoba, Spain",2017,2018-02-08,7:50:00,Weather Station,Temperature,C,-0.5,69
+Sp17,"Cordoba, Spain",2017,2018-02-09,7:50:00,Weather Station,Temperature,C,-3.1,70
+Sp17,"Cordoba, Spain",2017,2018-02-10,8:30:00,Weather Station,Temperature,C,0.3,71
+Sp17,"Cordoba, Spain",2017,2018-02-11,8:00:00,Weather Station,Temperature,C,-0.2,72
+Sp17,"Cordoba, Spain",2017,2018-02-12,23:59:00,Weather Station,Temperature,C,5.6,73
+Sp17,"Cordoba, Spain",2017,2018-02-13,7:40:00,Weather Station,Temperature,C,-0.9,74
+Sp17,"Cordoba, Spain",2017,2018-02-14,7:30:00,Weather Station,Temperature,C,0,75
+Sp17,"Cordoba, Spain",2017,2018-02-15,7:40:00,Weather Station,Temperature,C,2,76
+Sp17,"Cordoba, Spain",2017,2018-02-16,8:00:00,Weather Station,Temperature,C,3.2,77
+Sp17,"Cordoba, Spain",2017,2018-02-17,7:20:00,Weather Station,Temperature,C,3.4,78
+Sp17,"Cordoba, Spain",2017,2018-02-18,3:10:00,Weather Station,Temperature,C,3,79
+Sp17,"Cordoba, Spain",2017,2018-02-19,7:40:00,Weather Station,Temperature,C,3.4,80
+Sp17,"Cordoba, Spain",2017,2018-02-20,7:50:00,Weather Station,Temperature,C,1.8,81
+Sp17,"Cordoba, Spain",2017,2018-02-21,7:00:00,Weather Station,Temperature,C,4.5,82
+Sp17,"Cordoba, Spain",2017,2018-02-22,7:50:00,Weather Station,Temperature,C,-0.9,83
+Sp17,"Cordoba, Spain",2017,2018-02-23,5:10:00,Weather Station,Temperature,C,-0.6,84
+Sp17,"Cordoba, Spain",2017,2018-02-24,7:00:00,Weather Station,Temperature,C,-0.2,85
+Sp17,"Cordoba, Spain",2017,2018-02-25,6:50:00,Weather Station,Temperature,C,6.1,86
+Sp17,"Cordoba, Spain",2017,2018-02-26,3:00:00,Weather Station,Temperature,C,4.4,87
+Sp17,"Cordoba, Spain",2017,2018-02-27,0:10:00,Weather Station,Temperature,C,11.2,88
+Sp17,"Cordoba, Spain",2017,2018-02-28,8:10:00,Weather Station,Temperature,C,12.1,89
+Sp17,"Cordoba, Spain",2017,2018-03-01,23:59:00,Weather Station,Temperature,C,11.1,90
+Sp17,"Cordoba, Spain",2017,2018-03-02,9:20:00,Weather Station,Temperature,C,9.6,91
+Sp17,"Cordoba, Spain",2017,2018-03-03,21:50:00,Weather Station,Temperature,C,10.8,92
+Sp17,"Cordoba, Spain",2017,2018-03-04,10:00:00,Weather Station,Temperature,C,10.5,93
+Sp17,"Cordoba, Spain",2017,2018-03-05,23:00:00,Weather Station,Temperature,C,9.4,94
+Sp17,"Cordoba, Spain",2017,2018-03-06,8:00:00,Weather Station,Temperature,C,7.7,95
+Sp17,"Cordoba, Spain",2017,2018-03-07,8:10:00,Weather Station,Temperature,C,5.3,96
+Sp17,"Cordoba, Spain",2017,2018-03-08,0:30:00,Weather Station,Temperature,C,9.1,97
+Sp17,"Cordoba, Spain",2017,2018-03-09,7:40:00,Weather Station,Temperature,C,12.3,98
+Sp17,"Cordoba, Spain",2017,2018-03-10,22:40:00,Weather Station,Temperature,C,10.6,99
+Sp17,"Cordoba, Spain",2017,2018-03-11,8:10:00,Weather Station,Temperature,C,9.8,100
+Sp17,"Cordoba, Spain",2017,2018-03-12,7:30:00,Weather Station,Temperature,C,6.9,101
+Sp17,"Cordoba, Spain",2017,2018-03-13,2:40:00,Weather Station,Temperature,C,11.7,102
+Sp17,"Cordoba, Spain",2017,2018-03-14,0:00:00,Weather Station,Temperature,C,13.4,103
+Sp17,"Cordoba, Spain",2017,2018-03-15,23:59:00,Weather Station,Temperature,C,8.5,104
+Sp17,"Cordoba, Spain",2017,2018-03-16,7:40:00,Weather Station,Temperature,C,4,105
+Sp17,"Cordoba, Spain",2017,2018-03-17,5:10:00,Weather Station,Temperature,C,4.9,106
+Sp17,"Cordoba, Spain",2017,2018-03-18,0:00:00,Weather Station,Temperature,C,8.1,107
+Sp17,"Cordoba, Spain",2017,2018-03-19,3:20:00,Weather Station,Temperature,C,6.2,108
+Sp17,"Cordoba, Spain",2017,2018-03-20,7:30:00,Weather Station,Temperature,C,2.1,109
+Sp17,"Cordoba, Spain",2017,2018-03-21,3:10:00,Weather Station,Temperature,C,2.9,110
+Sp17,"Cordoba, Spain",2017,2018-03-22,7:30:00,Weather Station,Temperature,C,0.5,111
+Sp17,"Cordoba, Spain",2017,2018-03-23,3:40:00,Weather Station,Temperature,C,4.2,112
+Sp17,"Cordoba, Spain",2017,2018-03-24,7:30:00,Weather Station,Temperature,C,7.4,113
+Sp17,"Cordoba, Spain",2017,2018-03-25,23:59:00,Weather Station,Temperature,C,7.1,114
+Sp17,"Cordoba, Spain",2017,2018-03-26,8:20:00,Weather Station,Temperature,C,2.3,115
+Sp17,"Cordoba, Spain",2017,2018-03-27,7:40:00,Weather Station,Temperature,C,4.2,116
+Sp17,"Cordoba, Spain",2017,2018-03-28,8:20:00,Weather Station,Temperature,C,6,117
+Sp17,"Cordoba, Spain",2017,2018-03-29,8:20:00,Weather Station,Temperature,C,6.6,118
+Sp17,"Cordoba, Spain",2017,2018-03-30,5:30:00,Weather Station,Temperature,C,6.4,119
+Sp17,"Cordoba, Spain",2017,2018-03-31,8:10:00,Weather Station,Temperature,C,5,120
+Sp17,"Cordoba, Spain",2017,2018-04-01,6:40:00,Weather Station,Temperature,C,5.5,121
+Sp17,"Cordoba, Spain",2017,2018-04-02,8:30:00,Weather Station,Temperature,C,7.5,122
+Sp17,"Cordoba, Spain",2017,2018-04-03,8:10:00,Weather Station,Temperature,C,12.7,123
+Sp17,"Cordoba, Spain",2017,2018-04-04,7:50:00,Weather Station,Temperature,C,9.6,124
+Sp17,"Cordoba, Spain",2017,2018-04-05,6:20:00,Weather Station,Temperature,C,6.7,125
+Sp17,"Cordoba, Spain",2017,2018-04-06,6:00:00,Weather Station,Temperature,C,9.2,126
+Sp17,"Cordoba, Spain",2017,2018-04-07,8:20:00,Weather Station,Temperature,C,10.1,127
+Sp17,"Cordoba, Spain",2017,2018-04-08,1:40:00,Weather Station,Temperature,C,9.4,128
+Sp17,"Cordoba, Spain",2017,2018-04-09,8:10:00,Weather Station,Temperature,C,6,129
+Sp17,"Cordoba, Spain",2017,2018-04-10,23:40:00,Weather Station,Temperature,C,7.1,130
+Sp17,"Cordoba, Spain",2017,2018-04-11,0:00:00,Weather Station,Temperature,C,7.1,131
+Sp17,"Cordoba, Spain",2017,2018-04-12,4:30:00,Weather Station,Temperature,C,6.6,132
+Sp17,"Cordoba, Spain",2017,2018-04-13,4:40:00,Weather Station,Temperature,C,7,133
+Sp17,"Cordoba, Spain",2017,2018-04-14,6:30:00,Weather Station,Temperature,C,4.6,134
+Sp17,"Cordoba, Spain",2017,2018-04-15,3:50:00,Weather Station,Temperature,C,10.9,135
+Sp17,"Cordoba, Spain",2017,2018-04-16,7:50:00,Weather Station,Temperature,C,7.5,136
+Sp17,"Cordoba, Spain",2017,2018-04-17,7:10:00,Weather Station,Temperature,C,7.2,137
+Sp17,"Cordoba, Spain",2017,2018-04-18,6:50:00,Weather Station,Temperature,C,8.4,138
+Sp17,"Cordoba, Spain",2017,2018-04-19,7:40:00,Weather Station,Temperature,C,9.1,139
+Sp17,"Cordoba, Spain",2017,2018-04-20,6:50:00,Weather Station,Temperature,C,10.5,140
+Sp17,"Cordoba, Spain",2017,2018-04-21,8:30:00,Weather Station,Temperature,C,14.1,141
+Sp17,"Cordoba, Spain",2017,2018-04-22,7:20:00,Weather Station,Temperature,C,12.8,142
+Sp17,"Cordoba, Spain",2017,2018-04-23,7:40:00,Weather Station,Temperature,C,14.8,143
+Sp17,"Cordoba, Spain",2017,2018-04-24,8:00:00,Weather Station,Temperature,C,16.1,144
+Sp17,"Cordoba, Spain",2017,2018-04-25,7:20:00,Weather Station,Temperature,C,12.6,145
+Sp17,"Cordoba, Spain",2017,2018-04-26,8:00:00,Weather Station,Temperature,C,15.1,146
+Sp17,"Cordoba, Spain",2017,2018-04-27,6:40:00,Weather Station,Temperature,C,15,147
+Sp17,"Cordoba, Spain",2017,2018-04-28,6:50:00,Weather Station,Temperature,C,11.3,148
+Sp17,"Cordoba, Spain",2017,2018-04-29,7:50:00,Weather Station,Temperature,C,7.8,149
+Sp17,"Cordoba, Spain",2017,2018-04-30,7:30:00,Weather Station,Temperature,C,5.3,150
+Sp17,"Cordoba, Spain",2017,2018-05-01,7:20:00,Weather Station,Temperature,C,5.5,151
+Sp17,"Cordoba, Spain",2017,2018-05-02,7:00:00,Weather Station,Temperature,C,5,152
+Sp17,"Cordoba, Spain",2017,2018-05-03,7:30:00,Weather Station,Temperature,C,6.8,153
+Sp17,"Cordoba, Spain",2017,2018-05-04,6:50:00,Weather Station,Temperature,C,10.2,154
+Sp17,"Cordoba, Spain",2017,2018-05-05,7:10:00,Weather Station,Temperature,C,9.8,155
+Sp17,"Cordoba, Spain",2017,2018-05-06,7:30:00,Weather Station,Temperature,C,13.7,156
+Sp17,"Cordoba, Spain",2017,2018-05-07,5:00:00,Weather Station,Temperature,C,10.8,157
+Sp17,"Cordoba, Spain",2017,2018-05-08,7:00:00,Weather Station,Temperature,C,13.5,158
+Sp17,"Cordoba, Spain",2017,2018-05-09,4:20:00,Weather Station,Temperature,C,16.2,159
+Sp17,"Cordoba, Spain",2017,2018-05-10,5:30:00,Weather Station,Temperature,C,16,160
+Sp17,"Cordoba, Spain",2017,2018-05-11,7:10:00,Weather Station,Temperature,C,10.8,161
+Sp17,"Cordoba, Spain",2017,2018-05-12,6:10:00,Weather Station,Temperature,C,12.8,162
+Sp17,"Cordoba, Spain",2017,2018-05-13,7:30:00,Weather Station,Temperature,C,8.7,163
+Sp17,"Cordoba, Spain",2017,2018-05-14,7:20:00,Weather Station,Temperature,C,7.6,164
+Sp17,"Cordoba, Spain",2017,2018-05-15,6:50:00,Weather Station,Temperature,C,11.4,165
+Sp17,"Cordoba, Spain",2017,2018-05-16,7:20:00,Weather Station,Temperature,C,11,166
+Sp17,"Cordoba, Spain",2017,2018-05-17,6:50:00,Weather Station,Temperature,C,11.3,167
+Sp17,"Cordoba, Spain",2017,2018-05-18,6:50:00,Weather Station,Temperature,C,13.8,168
+Sp17,"Cordoba, Spain",2017,2018-05-19,7:00:00,Weather Station,Temperature,C,15.5,169
+Sp17,"Cordoba, Spain",2017,2018-05-20,6:30:00,Weather Station,Temperature,C,12.5,170
+Sp17,"Cordoba, Spain",2017,2018-05-21,7:20:00,Weather Station,Temperature,C,12.3,171
+Sp17,"Cordoba, Spain",2017,2018-05-22,1:40:00,Weather Station,Temperature,C,15.1,172
+Sp17,"Cordoba, Spain",2017,2018-05-23,6:40:00,Weather Station,Temperature,C,12.7,173
+Sp17,"Cordoba, Spain",2017,2018-05-24,23:30:00,Weather Station,Temperature,C,16.3,174
+Sp17,"Cordoba, Spain",2017,2018-05-25,7:10:00,Weather Station,Temperature,C,13.9,175
+Sp17,"Cordoba, Spain",2017,2018-05-26,6:30:00,Weather Station,Temperature,C,12.3,176
+Sp17,"Cordoba, Spain",2017,2018-05-27,6:00:00,Weather Station,Temperature,C,14.5,177
+Sp17,"Cordoba, Spain",2017,2018-05-28,2:30:00,Weather Station,Temperature,C,16,178
+Sp17,"Cordoba, Spain",2017,2018-05-29,3:20:00,Weather Station,Temperature,C,14.2,179
+Sp17,"Cordoba, Spain",2017,2018-05-30,4:00:00,Weather Station,Temperature,C,13.7,180
+Sp17,"Cordoba, Spain",2017,2018-05-31,6:30:00,Weather Station,Temperature,C,11.7,181
+Sp17,"Cordoba, Spain",2017,2018-06-01,6:30:00,Weather Station,Temperature,C,12.9,182
+Sp17,"Cordoba, Spain",2017,2018-06-02,6:20:00,Weather Station,Temperature,C,14.3,183
+Sp17,"Cordoba, Spain",2017,2018-06-03,7:00:00,Weather Station,Temperature,C,16.3,184
+Sp17,"Cordoba, Spain",2017,2018-06-04,7:30:00,Weather Station,Temperature,C,13.2,185
+Sp17,"Cordoba, Spain",2017,2017-12-01,16:30:00,Weather Station,Temperature,C,12.6,0
+Sp17,"Cordoba, Spain",2017,2017-12-02,16:10:00,Weather Station,Temperature,C,10.7,1
+Sp17,"Cordoba, Spain",2017,2017-12-03,16:10:00,Weather Station,Temperature,C,10.4,2
+Sp17,"Cordoba, Spain",2017,2017-12-04,16:20:00,Weather Station,Temperature,C,14.2,3
+Sp17,"Cordoba, Spain",2017,2017-12-05,16:50:00,Weather Station,Temperature,C,15,4
+Sp17,"Cordoba, Spain",2017,2017-12-06,16:30:00,Weather Station,Temperature,C,15.9,5
+Sp17,"Cordoba, Spain",2017,2017-12-07,16:20:00,Weather Station,Temperature,C,15.6,6
+Sp17,"Cordoba, Spain",2017,2017-12-08,15:30:00,Weather Station,Temperature,C,16.9,7
+Sp17,"Cordoba, Spain",2017,2017-12-09,15:50:00,Weather Station,Temperature,C,15.3,8
+Sp17,"Cordoba, Spain",2017,2017-12-10,23:50:00,Weather Station,Temperature,C,15.5,9
+Sp17,"Cordoba, Spain",2017,2017-12-11,3:20:00,Weather Station,Temperature,C,15.8,10
+Sp17,"Cordoba, Spain",2017,2017-12-12,15:40:00,Weather Station,Temperature,C,11.6,11
+Sp17,"Cordoba, Spain",2017,2017-12-13,16:00:00,Weather Station,Temperature,C,13,12
+Sp17,"Cordoba, Spain",2017,2017-12-14,15:20:00,Weather Station,Temperature,C,14.2,13
+Sp17,"Cordoba, Spain",2017,2017-12-15,16:20:00,Weather Station,Temperature,C,16.6,14
+Sp17,"Cordoba, Spain",2017,2017-12-16,15:20:00,Weather Station,Temperature,C,15.1,15
+Sp17,"Cordoba, Spain",2017,2017-12-17,16:20:00,Weather Station,Temperature,C,13.9,16
+Sp17,"Cordoba, Spain",2017,2017-12-18,16:10:00,Weather Station,Temperature,C,14.4,17
+Sp17,"Cordoba, Spain",2017,2017-12-19,16:40:00,Weather Station,Temperature,C,16,18
+Sp17,"Cordoba, Spain",2017,2017-12-20,16:30:00,Weather Station,Temperature,C,16.4,19
+Sp17,"Cordoba, Spain",2017,2017-12-21,16:10:00,Weather Station,Temperature,C,17.3,20
+Sp17,"Cordoba, Spain",2017,2017-12-22,16:20:00,Weather Station,Temperature,C,16.4,21
+Sp17,"Cordoba, Spain",2017,2017-12-23,16:10:00,Weather Station,Temperature,C,17.5,22
+Sp17,"Cordoba, Spain",2017,2017-12-24,15:50:00,Weather Station,Temperature,C,17.5,23
+Sp17,"Cordoba, Spain",2017,2017-12-25,16:10:00,Weather Station,Temperature,C,11.8,24
+Sp17,"Cordoba, Spain",2017,2017-12-26,12:20:00,Weather Station,Temperature,C,13.8,25
+Sp17,"Cordoba, Spain",2017,2017-12-27,13:40:00,Weather Station,Temperature,C,15.6,26
+Sp17,"Cordoba, Spain",2017,2017-12-28,16:10:00,Weather Station,Temperature,C,19.1,27
+Sp17,"Cordoba, Spain",2017,2017-12-29,16:00:00,Weather Station,Temperature,C,17.9,28
+Sp17,"Cordoba, Spain",2017,2017-12-30,16:20:00,Weather Station,Temperature,C,20.5,29
+Sp17,"Cordoba, Spain",2017,2017-12-31,16:40:00,Weather Station,Temperature,C,13.9,30
+Sp17,"Cordoba, Spain",2017,2018-01-01,17:20:00,Weather Station,Temperature,C,16.6,31
+Sp17,"Cordoba, Spain",2017,2018-01-02,16:20:00,Weather Station,Temperature,C,16.6,32
+Sp17,"Cordoba, Spain",2017,2018-01-03,16:20:00,Weather Station,Temperature,C,16.1,33
+Sp17,"Cordoba, Spain",2017,2018-01-04,14:50:00,Weather Station,Temperature,C,15.2,34
+Sp17,"Cordoba, Spain",2017,2018-01-05,14:00:00,Weather Station,Temperature,C,14.3,35
+Sp17,"Cordoba, Spain",2017,2018-01-06,1:00:00,Weather Station,Temperature,C,13.6,36
+Sp17,"Cordoba, Spain",2017,2018-01-07,15:20:00,Weather Station,Temperature,C,7.5,37
+Sp17,"Cordoba, Spain",2017,2018-01-08,16:20:00,Weather Station,Temperature,C,11.8,38
+Sp17,"Cordoba, Spain",2017,2018-01-09,23:59:00,Weather Station,Temperature,C,7.9,39
+Sp17,"Cordoba, Spain",2017,2018-01-10,16:20:00,Weather Station,Temperature,C,15.5,40
+Sp17,"Cordoba, Spain",2017,2018-01-11,15:30:00,Weather Station,Temperature,C,13.3,41
+Sp17,"Cordoba, Spain",2017,2018-01-12,16:20:00,Weather Station,Temperature,C,13.6,42
+Sp17,"Cordoba, Spain",2017,2018-01-13,16:40:00,Weather Station,Temperature,C,8.2,43
+Sp17,"Cordoba, Spain",2017,2018-01-14,16:50:00,Weather Station,Temperature,C,11.8,44
+Sp17,"Cordoba, Spain",2017,2018-01-15,16:20:00,Weather Station,Temperature,C,13.8,45
+Sp17,"Cordoba, Spain",2017,2018-01-16,16:10:00,Weather Station,Temperature,C,15.2,46
+Sp17,"Cordoba, Spain",2017,2018-01-17,16:50:00,Weather Station,Temperature,C,18.1,47
+Sp17,"Cordoba, Spain",2017,2018-01-18,14:40:00,Weather Station,Temperature,C,16.9,48
+Sp17,"Cordoba, Spain",2017,2018-01-19,16:30:00,Weather Station,Temperature,C,18,49
+Sp17,"Cordoba, Spain",2017,2018-01-20,15:40:00,Weather Station,Temperature,C,16.4,50
+Sp17,"Cordoba, Spain",2017,2018-01-21,17:20:00,Weather Station,Temperature,C,17,51
+Sp17,"Cordoba, Spain",2017,2018-01-22,16:30:00,Weather Station,Temperature,C,19.1,52
+Sp17,"Cordoba, Spain",2017,2018-01-23,17:00:00,Weather Station,Temperature,C,21.6,53
+Sp17,"Cordoba, Spain",2017,2018-01-24,16:00:00,Weather Station,Temperature,C,20.8,54
+Sp17,"Cordoba, Spain",2017,2018-01-25,14:40:00,Weather Station,Temperature,C,14.1,55
+Sp17,"Cordoba, Spain",2017,2018-01-26,15:40:00,Weather Station,Temperature,C,14.9,56
+Sp17,"Cordoba, Spain",2017,2018-01-27,15:30:00,Weather Station,Temperature,C,14.7,57
+Sp17,"Cordoba, Spain",2017,2018-01-28,16:00:00,Weather Station,Temperature,C,16.2,58
+Sp17,"Cordoba, Spain",2017,2018-01-29,14:50:00,Weather Station,Temperature,C,19.3,59
+Sp17,"Cordoba, Spain",2017,2018-01-30,16:00:00,Weather Station,Temperature,C,17.6,60
+Sp17,"Cordoba, Spain",2017,2018-01-31,16:30:00,Weather Station,Temperature,C,17.6,61
+Sp17,"Cordoba, Spain",2017,2018-02-01,16:20:00,Weather Station,Temperature,C,14.9,62
+Sp17,"Cordoba, Spain",2017,2018-02-02,15:10:00,Weather Station,Temperature,C,14.1,63
+Sp17,"Cordoba, Spain",2017,2018-02-03,16:00:00,Weather Station,Temperature,C,14.5,64
+Sp17,"Cordoba, Spain",2017,2018-02-04,16:40:00,Weather Station,Temperature,C,13.2,65
+Sp17,"Cordoba, Spain",2017,2018-02-05,17:00:00,Weather Station,Temperature,C,8.7,66
+Sp17,"Cordoba, Spain",2017,2018-02-06,16:20:00,Weather Station,Temperature,C,11.4,67
+Sp17,"Cordoba, Spain",2017,2018-02-07,15:30:00,Weather Station,Temperature,C,12.2,68
+Sp17,"Cordoba, Spain",2017,2018-02-08,16:30:00,Weather Station,Temperature,C,14.6,69
+Sp17,"Cordoba, Spain",2017,2018-02-09,17:20:00,Weather Station,Temperature,C,13,70
+Sp17,"Cordoba, Spain",2017,2018-02-10,16:10:00,Weather Station,Temperature,C,15.9,71
+Sp17,"Cordoba, Spain",2017,2018-02-11,16:10:00,Weather Station,Temperature,C,16.9,72
+Sp17,"Cordoba, Spain",2017,2018-02-12,16:20:00,Weather Station,Temperature,C,17.4,73
+Sp17,"Cordoba, Spain",2017,2018-02-13,16:40:00,Weather Station,Temperature,C,14.9,74
+Sp17,"Cordoba, Spain",2017,2018-02-14,16:10:00,Weather Station,Temperature,C,17.6,75
+Sp17,"Cordoba, Spain",2017,2018-02-15,17:30:00,Weather Station,Temperature,C,21.5,76
+Sp17,"Cordoba, Spain",2017,2018-02-16,16:50:00,Weather Station,Temperature,C,22.9,77
+Sp17,"Cordoba, Spain",2017,2018-02-17,16:50:00,Weather Station,Temperature,C,15.9,78
+Sp17,"Cordoba, Spain",2017,2018-02-18,16:40:00,Weather Station,Temperature,C,18.4,79
+Sp17,"Cordoba, Spain",2017,2018-02-19,16:50:00,Weather Station,Temperature,C,17.5,80
+Sp17,"Cordoba, Spain",2017,2018-02-20,16:00:00,Weather Station,Temperature,C,22.3,81
+Sp17,"Cordoba, Spain",2017,2018-02-21,14:40:00,Weather Station,Temperature,C,18.8,82
+Sp17,"Cordoba, Spain",2017,2018-02-22,16:40:00,Weather Station,Temperature,C,17.3,83
+Sp17,"Cordoba, Spain",2017,2018-02-23,16:20:00,Weather Station,Temperature,C,17,84
+Sp17,"Cordoba, Spain",2017,2018-02-24,16:40:00,Weather Station,Temperature,C,17.9,85
+Sp17,"Cordoba, Spain",2017,2018-02-25,15:30:00,Weather Station,Temperature,C,20.5,86
+Sp17,"Cordoba, Spain",2017,2018-02-26,15:40:00,Weather Station,Temperature,C,20.4,87
+Sp17,"Cordoba, Spain",2017,2018-02-27,14:40:00,Weather Station,Temperature,C,18.1,88
+Sp17,"Cordoba, Spain",2017,2018-02-28,17:50:00,Weather Station,Temperature,C,15.8,89
+Sp17,"Cordoba, Spain",2017,2018-03-01,16:00:00,Weather Station,Temperature,C,17.1,90
+Sp17,"Cordoba, Spain",2017,2018-03-02,13:20:00,Weather Station,Temperature,C,16.8,91
+Sp17,"Cordoba, Spain",2017,2018-03-03,13:10:00,Weather Station,Temperature,C,16.4,92
+Sp17,"Cordoba, Spain",2017,2018-03-04,15:30:00,Weather Station,Temperature,C,17.5,93
+Sp17,"Cordoba, Spain",2017,2018-03-05,16:20:00,Weather Station,Temperature,C,15.9,94
+Sp17,"Cordoba, Spain",2017,2018-03-06,12:20:00,Weather Station,Temperature,C,14.1,95
+Sp17,"Cordoba, Spain",2017,2018-03-07,15:50:00,Weather Station,Temperature,C,15.6,96
+Sp17,"Cordoba, Spain",2017,2018-03-08,16:40:00,Weather Station,Temperature,C,18.6,97
+Sp17,"Cordoba, Spain",2017,2018-03-09,12:50:00,Weather Station,Temperature,C,17.8,98
+Sp17,"Cordoba, Spain",2017,2018-03-10,16:10:00,Weather Station,Temperature,C,18.7,99
+Sp17,"Cordoba, Spain",2017,2018-03-11,13:10:00,Weather Station,Temperature,C,15.3,100
+Sp17,"Cordoba, Spain",2017,2018-03-12,15:10:00,Weather Station,Temperature,C,17.8,101
+Sp17,"Cordoba, Spain",2017,2018-03-13,16:10:00,Weather Station,Temperature,C,21.2,102
+Sp17,"Cordoba, Spain",2017,2018-03-14,14:50:00,Weather Station,Temperature,C,17.9,103
+Sp17,"Cordoba, Spain",2017,2018-03-15,15:00:00,Weather Station,Temperature,C,16.5,104
+Sp17,"Cordoba, Spain",2017,2018-03-16,17:20:00,Weather Station,Temperature,C,15.2,105
+Sp17,"Cordoba, Spain",2017,2018-03-17,14:40:00,Weather Station,Temperature,C,12.9,106
+Sp17,"Cordoba, Spain",2017,2018-03-18,16:30:00,Weather Station,Temperature,C,15.9,107
+Sp17,"Cordoba, Spain",2017,2018-03-19,16:10:00,Weather Station,Temperature,C,13.7,108
+Sp17,"Cordoba, Spain",2017,2018-03-20,14:20:00,Weather Station,Temperature,C,14.8,109
+Sp17,"Cordoba, Spain",2017,2018-03-21,17:10:00,Weather Station,Temperature,C,16.8,110
+Sp17,"Cordoba, Spain",2017,2018-03-22,16:40:00,Weather Station,Temperature,C,16.2,111
+Sp17,"Cordoba, Spain",2017,2018-03-23,12:40:00,Weather Station,Temperature,C,14,112
+Sp17,"Cordoba, Spain",2017,2018-03-24,16:50:00,Weather Station,Temperature,C,16.8,113
+Sp17,"Cordoba, Spain",2017,2018-03-25,18:50:00,Weather Station,Temperature,C,16.5,114
+Sp17,"Cordoba, Spain",2017,2018-03-26,17:50:00,Weather Station,Temperature,C,19.6,115
+Sp17,"Cordoba, Spain",2017,2018-03-27,19:00:00,Weather Station,Temperature,C,23.7,116
+Sp17,"Cordoba, Spain",2017,2018-03-28,17:00:00,Weather Station,Temperature,C,25.4,117
+Sp17,"Cordoba, Spain",2017,2018-03-29,17:30:00,Weather Station,Temperature,C,19.5,118
+Sp17,"Cordoba, Spain",2017,2018-03-30,16:10:00,Weather Station,Temperature,C,17.4,119
+Sp17,"Cordoba, Spain",2017,2018-03-31,18:00:00,Weather Station,Temperature,C,19.3,120
+Sp17,"Cordoba, Spain",2017,2018-04-01,17:50:00,Weather Station,Temperature,C,24.1,121
+Sp17,"Cordoba, Spain",2017,2018-04-02,16:50:00,Weather Station,Temperature,C,21.5,122
+Sp17,"Cordoba, Spain",2017,2018-04-03,16:00:00,Weather Station,Temperature,C,21.3,123
+Sp17,"Cordoba, Spain",2017,2018-04-04,17:40:00,Weather Station,Temperature,C,20.4,124
+Sp17,"Cordoba, Spain",2017,2018-04-05,16:50:00,Weather Station,Temperature,C,24.8,125
+Sp17,"Cordoba, Spain",2017,2018-04-06,14:20:00,Weather Station,Temperature,C,23.8,126
+Sp17,"Cordoba, Spain",2017,2018-04-07,16:40:00,Weather Station,Temperature,C,17.8,127
+Sp17,"Cordoba, Spain",2017,2018-04-08,17:50:00,Weather Station,Temperature,C,17.9,128
+Sp17,"Cordoba, Spain",2017,2018-04-09,17:50:00,Weather Station,Temperature,C,15.6,129
+Sp17,"Cordoba, Spain",2017,2018-04-10,17:40:00,Weather Station,Temperature,C,13.5,130
+Sp17,"Cordoba, Spain",2017,2018-04-11,17:50:00,Weather Station,Temperature,C,17.8,131
+Sp17,"Cordoba, Spain",2017,2018-04-12,13:30:00,Weather Station,Temperature,C,14.5,132
+Sp17,"Cordoba, Spain",2017,2018-04-13,16:30:00,Weather Station,Temperature,C,17.2,133
+Sp17,"Cordoba, Spain",2017,2018-04-14,17:40:00,Weather Station,Temperature,C,21.5,134
+Sp17,"Cordoba, Spain",2017,2018-04-15,16:30:00,Weather Station,Temperature,C,20.2,135
+Sp17,"Cordoba, Spain",2017,2018-04-16,16:50:00,Weather Station,Temperature,C,20.7,136
+Sp17,"Cordoba, Spain",2017,2018-04-17,18:00:00,Weather Station,Temperature,C,26.3,137
+Sp17,"Cordoba, Spain",2017,2018-04-18,18:50:00,Weather Station,Temperature,C,28.5,138
+Sp17,"Cordoba, Spain",2017,2018-04-19,17:20:00,Weather Station,Temperature,C,28.1,139
+Sp17,"Cordoba, Spain",2017,2018-04-20,16:20:00,Weather Station,Temperature,C,27.4,140
+Sp17,"Cordoba, Spain",2017,2018-04-21,14:40:00,Weather Station,Temperature,C,24.9,141
+Sp17,"Cordoba, Spain",2017,2018-04-22,17:30:00,Weather Station,Temperature,C,28.4,142
+Sp17,"Cordoba, Spain",2017,2018-04-23,18:10:00,Weather Station,Temperature,C,28.5,143
+Sp17,"Cordoba, Spain",2017,2018-04-24,15:00:00,Weather Station,Temperature,C,29.8,144
+Sp17,"Cordoba, Spain",2017,2018-04-25,16:30:00,Weather Station,Temperature,C,28.1,145
+Sp17,"Cordoba, Spain",2017,2018-04-26,17:10:00,Weather Station,Temperature,C,29.8,146
+Sp17,"Cordoba, Spain",2017,2018-04-27,17:40:00,Weather Station,Temperature,C,26.4,147
+Sp17,"Cordoba, Spain",2017,2018-04-28,16:30:00,Weather Station,Temperature,C,21.4,148
+Sp17,"Cordoba, Spain",2017,2018-04-29,16:40:00,Weather Station,Temperature,C,20.5,149
+Sp17,"Cordoba, Spain",2017,2018-04-30,17:00:00,Weather Station,Temperature,C,20.3,150
+Sp17,"Cordoba, Spain",2017,2018-05-01,18:10:00,Weather Station,Temperature,C,17.5,151
+Sp17,"Cordoba, Spain",2017,2018-05-02,17:30:00,Weather Station,Temperature,C,23.1,152
+Sp17,"Cordoba, Spain",2017,2018-05-03,19:20:00,Weather Station,Temperature,C,25.4,153
+Sp17,"Cordoba, Spain",2017,2018-05-04,17:10:00,Weather Station,Temperature,C,27.3,154
+Sp17,"Cordoba, Spain",2017,2018-05-05,18:20:00,Weather Station,Temperature,C,29.2,155
+Sp17,"Cordoba, Spain",2017,2018-05-06,17:50:00,Weather Station,Temperature,C,29.5,156
+Sp17,"Cordoba, Spain",2017,2018-05-07,18:30:00,Weather Station,Temperature,C,27.2,157
+Sp17,"Cordoba, Spain",2017,2018-05-08,15:00:00,Weather Station,Temperature,C,27.6,158
+Sp17,"Cordoba, Spain",2017,2018-05-09,17:30:00,Weather Station,Temperature,C,23.2,159
+Sp17,"Cordoba, Spain",2017,2018-05-10,16:40:00,Weather Station,Temperature,C,26.5,160
+Sp17,"Cordoba, Spain",2017,2018-05-11,16:30:00,Weather Station,Temperature,C,26.9,161
+Sp17,"Cordoba, Spain",2017,2018-05-12,17:10:00,Weather Station,Temperature,C,25.5,162
+Sp17,"Cordoba, Spain",2017,2018-05-13,19:10:00,Weather Station,Temperature,C,24.5,163
+Sp17,"Cordoba, Spain",2017,2018-05-14,17:00:00,Weather Station,Temperature,C,28.3,164
+Sp17,"Cordoba, Spain",2017,2018-05-15,18:50:00,Weather Station,Temperature,C,29.8,165
+Sp17,"Cordoba, Spain",2017,2018-05-16,17:00:00,Weather Station,Temperature,C,31.1,166
+Sp17,"Cordoba, Spain",2017,2018-05-17,18:20:00,Weather Station,Temperature,C,30.6,167
+Sp17,"Cordoba, Spain",2017,2018-05-18,13:30:00,Weather Station,Temperature,C,26.9,168
+Sp17,"Cordoba, Spain",2017,2018-05-19,14:30:00,Weather Station,Temperature,C,29.2,169
+Sp17,"Cordoba, Spain",2017,2018-05-20,17:30:00,Weather Station,Temperature,C,25.9,170
+Sp17,"Cordoba, Spain",2017,2018-05-21,16:40:00,Weather Station,Temperature,C,27.1,171
+Sp17,"Cordoba, Spain",2017,2018-05-22,18:00:00,Weather Station,Temperature,C,28.5,172
+Sp17,"Cordoba, Spain",2017,2018-05-23,18:00:00,Weather Station,Temperature,C,29.4,173
+Sp17,"Cordoba, Spain",2017,2018-05-24,15:00:00,Weather Station,Temperature,C,28,174
+Sp17,"Cordoba, Spain",2017,2018-05-25,17:10:00,Weather Station,Temperature,C,25.4,175
+Sp17,"Cordoba, Spain",2017,2018-05-26,16:20:00,Weather Station,Temperature,C,27.3,176
+Sp17,"Cordoba, Spain",2017,2018-05-27,16:30:00,Weather Station,Temperature,C,26.7,177
+Sp17,"Cordoba, Spain",2017,2018-05-28,18:20:00,Weather Station,Temperature,C,26.7,178
+Sp17,"Cordoba, Spain",2017,2018-05-29,16:30:00,Weather Station,Temperature,C,25.5,179
+Sp17,"Cordoba, Spain",2017,2018-05-30,17:50:00,Weather Station,Temperature,C,26.2,180
+Sp17,"Cordoba, Spain",2017,2018-05-31,18:10:00,Weather Station,Temperature,C,28.9,181
+Sp17,"Cordoba, Spain",2017,2018-06-01,16:50:00,Weather Station,Temperature,C,29.9,182
+Sp17,"Cordoba, Spain",2017,2018-06-02,15:00:00,Weather Station,Temperature,C,26.3,183
+Sp17,"Cordoba, Spain",2017,2018-06-03,17:10:00,Weather Station,Temperature,C,29.4,184
+Sp17,"Cordoba, Spain",2017,2018-06-04,17:40:00,Weather Station,Temperature,C,26.5,185
+Sp17,"Cordoba, Spain",2017,2017-12-01,,Weather Station,Precipitation,mm,0,0
+Sp17,"Cordoba, Spain",2017,2017-12-02,,Weather Station,Precipitation,mm,0,1
+Sp17,"Cordoba, Spain",2017,2017-12-03,,Weather Station,Precipitation,mm,0,2
+Sp17,"Cordoba, Spain",2017,2017-12-04,,Weather Station,Precipitation,mm,0,3
+Sp17,"Cordoba, Spain",2017,2017-12-05,,Weather Station,Precipitation,mm,0,4
+Sp17,"Cordoba, Spain",2017,2017-12-06,,Weather Station,Precipitation,mm,0,5
+Sp17,"Cordoba, Spain",2017,2017-12-07,,Weather Station,Precipitation,mm,0,6
+Sp17,"Cordoba, Spain",2017,2017-12-08,,Weather Station,Precipitation,mm,0,7
+Sp17,"Cordoba, Spain",2017,2017-12-09,,Weather Station,Precipitation,mm,0,8
+Sp17,"Cordoba, Spain",2017,2017-12-10,,Weather Station,Precipitation,mm,0,9
+Sp17,"Cordoba, Spain",2017,2017-12-11,,Weather Station,Precipitation,mm,18.7,10
+Sp17,"Cordoba, Spain",2017,2017-12-12,,Weather Station,Precipitation,mm,0,11
+Sp17,"Cordoba, Spain",2017,2017-12-13,,Weather Station,Precipitation,mm,0,12
+Sp17,"Cordoba, Spain",2017,2017-12-14,,Weather Station,Precipitation,mm,0,13
+Sp17,"Cordoba, Spain",2017,2017-12-15,,Weather Station,Precipitation,mm,6.7,14
+Sp17,"Cordoba, Spain",2017,2017-12-16,,Weather Station,Precipitation,mm,0,15
+Sp17,"Cordoba, Spain",2017,2017-12-17,,Weather Station,Precipitation,mm,0,16
+Sp17,"Cordoba, Spain",2017,2017-12-18,,Weather Station,Precipitation,mm,0,17
+Sp17,"Cordoba, Spain",2017,2017-12-19,,Weather Station,Precipitation,mm,0,18
+Sp17,"Cordoba, Spain",2017,2017-12-20,,Weather Station,Precipitation,mm,0,19
+Sp17,"Cordoba, Spain",2017,2017-12-21,,Weather Station,Precipitation,mm,0,20
+Sp17,"Cordoba, Spain",2017,2017-12-22,,Weather Station,Precipitation,mm,0,21
+Sp17,"Cordoba, Spain",2017,2017-12-23,,Weather Station,Precipitation,mm,0,22
+Sp17,"Cordoba, Spain",2017,2017-12-24,,Weather Station,Precipitation,mm,0,23
+Sp17,"Cordoba, Spain",2017,2017-12-25,,Weather Station,Precipitation,mm,0.1,24
+Sp17,"Cordoba, Spain",2017,2017-12-26,,Weather Station,Precipitation,mm,2.8,25
+Sp17,"Cordoba, Spain",2017,2017-12-27,,Weather Station,Precipitation,mm,1.4,26
+Sp17,"Cordoba, Spain",2017,2017-12-28,,Weather Station,Precipitation,mm,0,27
+Sp17,"Cordoba, Spain",2017,2017-12-29,,Weather Station,Precipitation,mm,0,28
+Sp17,"Cordoba, Spain",2017,2017-12-30,,Weather Station,Precipitation,mm,0,29
+Sp17,"Cordoba, Spain",2017,2017-12-31,,Weather Station,Precipitation,mm,0.3,30
+Sp17,"Cordoba, Spain",2017,2018-01-01,,Weather Station,Precipitation,mm,0,31
+Sp17,"Cordoba, Spain",2017,2018-01-02,,Weather Station,Precipitation,mm,0,32
+Sp17,"Cordoba, Spain",2017,2018-01-03,,Weather Station,Precipitation,mm,0,33
+Sp17,"Cordoba, Spain",2017,2018-01-04,,Weather Station,Precipitation,mm,0,34
+Sp17,"Cordoba, Spain",2017,2018-01-05,,Weather Station,Precipitation,mm,0.2,35
+Sp17,"Cordoba, Spain",2017,2018-01-06,,Weather Station,Precipitation,mm,16.7,36
+Sp17,"Cordoba, Spain",2017,2018-01-07,,Weather Station,Precipitation,mm,1.4,37
+Sp17,"Cordoba, Spain",2017,2018-01-08,,Weather Station,Precipitation,mm,4.1,38
+Sp17,"Cordoba, Spain",2017,2018-01-09,,Weather Station,Precipitation,mm,5.3,39
+Sp17,"Cordoba, Spain",2017,2018-01-10,,Weather Station,Precipitation,mm,9.4,40
+Sp17,"Cordoba, Spain",2017,2018-01-11,,Weather Station,Precipitation,mm,0.1,41
+Sp17,"Cordoba, Spain",2017,2018-01-12,,Weather Station,Precipitation,mm,0,42
+Sp17,"Cordoba, Spain",2017,2018-01-13,,Weather Station,Precipitation,mm,3.7,43
+Sp17,"Cordoba, Spain",2017,2018-01-14,,Weather Station,Precipitation,mm,2.6,44
+Sp17,"Cordoba, Spain",2017,2018-01-15,,Weather Station,Precipitation,mm,0,45
+Sp17,"Cordoba, Spain",2017,2018-01-16,,Weather Station,Precipitation,mm,0,46
+Sp17,"Cordoba, Spain",2017,2018-01-17,,Weather Station,Precipitation,mm,0,47
+Sp17,"Cordoba, Spain",2017,2018-01-18,,Weather Station,Precipitation,mm,0,48
+Sp17,"Cordoba, Spain",2017,2018-01-19,,Weather Station,Precipitation,mm,0,49
+Sp17,"Cordoba, Spain",2017,2018-01-20,,Weather Station,Precipitation,mm,0,50
+Sp17,"Cordoba, Spain",2017,2018-01-21,,Weather Station,Precipitation,mm,0,51
+Sp17,"Cordoba, Spain",2017,2018-01-22,,Weather Station,Precipitation,mm,0,52
+Sp17,"Cordoba, Spain",2017,2018-01-23,,Weather Station,Precipitation,mm,0,53
+Sp17,"Cordoba, Spain",2017,2018-01-24,,Weather Station,Precipitation,mm,0,54
+Sp17,"Cordoba, Spain",2017,2018-01-25,,Weather Station,Precipitation,mm,3.5,55
+Sp17,"Cordoba, Spain",2017,2018-01-26,,Weather Station,Precipitation,mm,0,56
+Sp17,"Cordoba, Spain",2017,2018-01-27,,Weather Station,Precipitation,mm,0,57
+Sp17,"Cordoba, Spain",2017,2018-01-28,,Weather Station,Precipitation,mm,0,58
+Sp17,"Cordoba, Spain",2017,2018-01-29,,Weather Station,Precipitation,mm,0,59
+Sp17,"Cordoba, Spain",2017,2018-01-30,,Weather Station,Precipitation,mm,0,60
+Sp17,"Cordoba, Spain",2017,2018-01-31,,Weather Station,Precipitation,mm,0,61
+Sp17,"Cordoba, Spain",2017,2018-02-01,,Weather Station,Precipitation,mm,0,62
+Sp17,"Cordoba, Spain",2017,2018-02-02,,Weather Station,Precipitation,mm,0,63
+Sp17,"Cordoba, Spain",2017,2018-02-03,,Weather Station,Precipitation,mm,0,64
+Sp17,"Cordoba, Spain",2017,2018-02-04,,Weather Station,Precipitation,mm,0.8,65
+Sp17,"Cordoba, Spain",2017,2018-02-05,,Weather Station,Precipitation,mm,0.9,66
+Sp17,"Cordoba, Spain",2017,2018-02-06,,Weather Station,Precipitation,mm,0,67
+Sp17,"Cordoba, Spain",2017,2018-02-07,,Weather Station,Precipitation,mm,0,68
+Sp17,"Cordoba, Spain",2017,2018-02-08,,Weather Station,Precipitation,mm,0,69
+Sp17,"Cordoba, Spain",2017,2018-02-09,,Weather Station,Precipitation,mm,0,70
+Sp17,"Cordoba, Spain",2017,2018-02-10,,Weather Station,Precipitation,mm,0,71
+Sp17,"Cordoba, Spain",2017,2018-02-12,,Weather Station,Precipitation,mm,1.2,73
+Sp17,"Cordoba, Spain",2017,2018-02-13,,Weather Station,Precipitation,mm,0,74
+Sp17,"Cordoba, Spain",2017,2018-02-14,,Weather Station,Precipitation,mm,0,75
+Sp17,"Cordoba, Spain",2017,2018-02-15,,Weather Station,Precipitation,mm,0,76
+Sp17,"Cordoba, Spain",2017,2018-02-16,,Weather Station,Precipitation,mm,0,77
+Sp17,"Cordoba, Spain",2017,2018-02-17,,Weather Station,Precipitation,mm,0,78
+Sp17,"Cordoba, Spain",2017,2018-02-18,,Weather Station,Precipitation,mm,0,79
+Sp17,"Cordoba, Spain",2017,2018-02-19,,Weather Station,Precipitation,mm,0,80
+Sp17,"Cordoba, Spain",2017,2018-02-20,,Weather Station,Precipitation,mm,0,81
+Sp17,"Cordoba, Spain",2017,2018-02-21,,Weather Station,Precipitation,mm,0,82
+Sp17,"Cordoba, Spain",2017,2018-02-22,,Weather Station,Precipitation,mm,0,83
+Sp17,"Cordoba, Spain",2017,2018-02-23,,Weather Station,Precipitation,mm,0,84
+Sp17,"Cordoba, Spain",2017,2018-02-24,,Weather Station,Precipitation,mm,0,85
+Sp17,"Cordoba, Spain",2017,2018-02-25,,Weather Station,Precipitation,mm,0,86
+Sp17,"Cordoba, Spain",2017,2018-02-26,,Weather Station,Precipitation,mm,4,87
+Sp17,"Cordoba, Spain",2017,2018-02-27,,Weather Station,Precipitation,mm,3.6,88
+Sp17,"Cordoba, Spain",2017,2018-02-28,,Weather Station,Precipitation,mm,11.7,89
+Sp17,"Cordoba, Spain",2017,2018-03-01,,Weather Station,Precipitation,mm,17.1,90
+Sp17,"Cordoba, Spain",2017,2018-03-02,,Weather Station,Precipitation,mm,31.8,91
+Sp17,"Cordoba, Spain",2017,2018-03-03,,Weather Station,Precipitation,mm,10.2,92
+Sp17,"Cordoba, Spain",2017,2018-03-04,,Weather Station,Precipitation,mm,27,93
+Sp17,"Cordoba, Spain",2017,2018-03-05,,Weather Station,Precipitation,mm,12.6,94
+Sp17,"Cordoba, Spain",2017,2018-03-06,,Weather Station,Precipitation,mm,3.9,95
+Sp17,"Cordoba, Spain",2017,2018-03-07,,Weather Station,Precipitation,mm,3.7,96
+Sp17,"Cordoba, Spain",2017,2018-03-08,,Weather Station,Precipitation,mm,15.2,97
+Sp17,"Cordoba, Spain",2017,2018-03-09,,Weather Station,Precipitation,mm,4,98
+Sp17,"Cordoba, Spain",2017,2018-03-10,,Weather Station,Precipitation,mm,15.5,99
+Sp17,"Cordoba, Spain",2017,2018-03-11,,Weather Station,Precipitation,mm,7.1,100
+Sp17,"Cordoba, Spain",2017,2018-03-12,,Weather Station,Precipitation,mm,0,101
+Sp17,"Cordoba, Spain",2017,2018-03-13,,Weather Station,Precipitation,mm,1.2,102
+Sp17,"Cordoba, Spain",2017,2018-03-14,,Weather Station,Precipitation,mm,1.1,103
+Sp17,"Cordoba, Spain",2017,2018-03-15,,Weather Station,Precipitation,mm,18.8,104
+Sp17,"Cordoba, Spain",2017,2018-03-16,,Weather Station,Precipitation,mm,6.2,105
+Sp17,"Cordoba, Spain",2017,2018-03-17,,Weather Station,Precipitation,mm,24.6,106
+Sp17,"Cordoba, Spain",2017,2018-03-18,,Weather Station,Precipitation,mm,0.1,107
+Sp17,"Cordoba, Spain",2017,2018-03-19,,Weather Station,Precipitation,mm,0.7,108
+Sp17,"Cordoba, Spain",2017,2018-03-20,,Weather Station,Precipitation,mm,0.3,109
+Sp17,"Cordoba, Spain",2017,2018-03-21,,Weather Station,Precipitation,mm,0,110
+Sp17,"Cordoba, Spain",2017,2018-03-22,,Weather Station,Precipitation,mm,0,111
+Sp17,"Cordoba, Spain",2017,2018-03-23,,Weather Station,Precipitation,mm,3.4,112
+Sp17,"Cordoba, Spain",2017,2018-03-24,,Weather Station,Precipitation,mm,4.3,113
+Sp17,"Cordoba, Spain",2017,2018-03-25,,Weather Station,Precipitation,mm,6.4,114
+Sp17,"Cordoba, Spain",2017,2018-03-26,,Weather Station,Precipitation,mm,0,115
+Sp17,"Cordoba, Spain",2017,2018-03-27,,Weather Station,Precipitation,mm,0,116
+Sp17,"Cordoba, Spain",2017,2018-03-28,,Weather Station,Precipitation,mm,0,117
+Sp17,"Cordoba, Spain",2017,2018-03-29,,Weather Station,Precipitation,mm,0,118
+Sp17,"Cordoba, Spain",2017,2018-03-30,,Weather Station,Precipitation,mm,0,119
+Sp17,"Cordoba, Spain",2017,2018-03-31,,Weather Station,Precipitation,mm,1.7,120
+Sp17,"Cordoba, Spain",2017,2018-04-01,,Weather Station,Precipitation,mm,0,121
+Sp17,"Cordoba, Spain",2017,2018-04-02,,Weather Station,Precipitation,mm,0,122
+Sp17,"Cordoba, Spain",2017,2018-04-03,,Weather Station,Precipitation,mm,0,123
+Sp17,"Cordoba, Spain",2017,2018-04-04,,Weather Station,Precipitation,mm,0,124
+Sp17,"Cordoba, Spain",2017,2018-04-06,,Weather Station,Precipitation,mm,1.1,126
+Sp17,"Cordoba, Spain",2017,2018-04-07,,Weather Station,Precipitation,mm,9.3,127
+Sp17,"Cordoba, Spain",2017,2018-04-08,,Weather Station,Precipitation,mm,0.4,128
+Sp17,"Cordoba, Spain",2017,2018-04-09,,Weather Station,Precipitation,mm,0.4,129
+Sp17,"Cordoba, Spain",2017,2018-04-10,,Weather Station,Precipitation,mm,17.9,130
+Sp17,"Cordoba, Spain",2017,2018-04-11,,Weather Station,Precipitation,mm,0.4,131
+Sp17,"Cordoba, Spain",2017,2018-04-12,,Weather Station,Precipitation,mm,15.1,132
+Sp17,"Cordoba, Spain",2017,2018-04-13,,Weather Station,Precipitation,mm,1.2,133
+Sp17,"Cordoba, Spain",2017,2018-04-14,,Weather Station,Precipitation,mm,0,134
+Sp17,"Cordoba, Spain",2017,2018-04-15,,Weather Station,Precipitation,mm,0.2,135
+Sp17,"Cordoba, Spain",2017,2018-04-16,,Weather Station,Precipitation,mm,5.5,136
+Sp17,"Cordoba, Spain",2017,2018-04-17,,Weather Station,Precipitation,mm,0,137
+Sp17,"Cordoba, Spain",2017,2018-04-18,,Weather Station,Precipitation,mm,0,138
+Sp17,"Cordoba, Spain",2017,2018-04-19,,Weather Station,Precipitation,mm,0,139
+Sp17,"Cordoba, Spain",2017,2018-04-20,,Weather Station,Precipitation,mm,0,140
+Sp17,"Cordoba, Spain",2017,2018-04-21,,Weather Station,Precipitation,mm,0,141
+Sp17,"Cordoba, Spain",2017,2018-04-22,,Weather Station,Precipitation,mm,0.2,142
+Sp17,"Cordoba, Spain",2017,2018-04-23,,Weather Station,Precipitation,mm,1.1,143
+Sp17,"Cordoba, Spain",2017,2018-04-24,,Weather Station,Precipitation,mm,0,144
+Sp17,"Cordoba, Spain",2017,2018-04-25,,Weather Station,Precipitation,mm,0.4,145
+Sp17,"Cordoba, Spain",2017,2018-04-26,,Weather Station,Precipitation,mm,0,146
+Sp17,"Cordoba, Spain",2017,2018-04-27,,Weather Station,Precipitation,mm,0,147
+Sp17,"Cordoba, Spain",2017,2018-04-29,,Weather Station,Precipitation,mm,0.7,149
+Sp17,"Cordoba, Spain",2017,2018-04-30,,Weather Station,Precipitation,mm,0,150
+Sp17,"Cordoba, Spain",2017,2018-05-01,,Weather Station,Precipitation,mm,4.2,151
+Sp17,"Cordoba, Spain",2017,2018-05-02,,Weather Station,Precipitation,mm,0,152
+Sp17,"Cordoba, Spain",2017,2018-05-03,,Weather Station,Precipitation,mm,0,153
+Sp17,"Cordoba, Spain",2017,2018-05-05,,Weather Station,Precipitation,mm,0,155
+Sp17,"Cordoba, Spain",2017,2018-05-06,,Weather Station,Precipitation,mm,25.6,156
+Sp17,"Cordoba, Spain",2017,2018-05-07,,Weather Station,Precipitation,mm,0,157
+Sp17,"Cordoba, Spain",2017,2018-05-09,,Weather Station,Precipitation,mm,0.1,159
+Sp17,"Cordoba, Spain",2017,2018-05-10,,Weather Station,Precipitation,mm,0,160
+Sp17,"Cordoba, Spain",2017,2018-05-11,,Weather Station,Precipitation,mm,0,161
+Sp17,"Cordoba, Spain",2017,2018-05-12,,Weather Station,Precipitation,mm,0,162
+Sp17,"Cordoba, Spain",2017,2018-05-13,,Weather Station,Precipitation,mm,0,163
+Sp17,"Cordoba, Spain",2017,2018-05-15,,Weather Station,Precipitation,mm,0,165
+Sp17,"Cordoba, Spain",2017,2018-05-16,,Weather Station,Precipitation,mm,0,166
+Sp17,"Cordoba, Spain",2017,2018-05-17,,Weather Station,Precipitation,mm,0,167
+Sp17,"Cordoba, Spain",2017,2018-05-18,,Weather Station,Precipitation,mm,0,168
+Sp17,"Cordoba, Spain",2017,2018-05-19,,Weather Station,Precipitation,mm,0,169
+Sp17,"Cordoba, Spain",2017,2018-05-20,,Weather Station,Precipitation,mm,0.2,170
+Sp17,"Cordoba, Spain",2017,2018-05-21,,Weather Station,Precipitation,mm,1,171
+Sp17,"Cordoba, Spain",2017,2018-05-22,,Weather Station,Precipitation,mm,0,172
+Sp17,"Cordoba, Spain",2017,2018-05-23,,Weather Station,Precipitation,mm,0,173
+Sp17,"Cordoba, Spain",2017,2018-05-24,,Weather Station,Precipitation,mm,0.2,174
+Sp17,"Cordoba, Spain",2017,2018-05-25,,Weather Station,Precipitation,mm,0.1,175
+Sp17,"Cordoba, Spain",2017,2018-05-26,,Weather Station,Precipitation,mm,0,176
+Sp17,"Cordoba, Spain",2017,2018-05-27,,Weather Station,Precipitation,mm,0,177
+Sp17,"Cordoba, Spain",2017,2018-05-28,,Weather Station,Precipitation,mm,0,178
+Sp17,"Cordoba, Spain",2017,2018-05-29,,Weather Station,Precipitation,mm,0,179
+Sp17,"Cordoba, Spain",2017,2018-05-30,,Weather Station,Precipitation,mm,0,180
+Sp17,"Cordoba, Spain",2017,2018-05-31,,Weather Station,Precipitation,mm,0,181
+Sp17,"Cordoba, Spain",2017,2018-06-01,,Weather Station,Precipitation,mm,0,182
+Sp17,"Cordoba, Spain",2017,2018-06-02,,Weather Station,Precipitation,mm,0,183
+Sp17,"Cordoba, Spain",2017,2018-06-03,,Weather Station,Precipitation,mm,0,184
+Sp17,"Cordoba, Spain",2017,2018-06-04,,Weather Station,Precipitation,mm,0,185
+Sp17,"Cordoba, Spain",2017,2017-12-01,16:00:00,Weather Station,Maximum Wind Speed,km/h,25,0
+Sp17,"Cordoba, Spain",2017,2017-12-02,13:10:00,Weather Station,Maximum Wind Speed,km/h,35,1
+Sp17,"Cordoba, Spain",2017,2017-12-03,13:10:00,Weather Station,Maximum Wind Speed,km/h,42,2
+Sp17,"Cordoba, Spain",2017,2017-12-04,11:30:00,Weather Station,Maximum Wind Speed,km/h,35,3
+Sp17,"Cordoba, Spain",2017,2017-12-05,12:10:00,Weather Station,Maximum Wind Speed,km/h,26,4
+Sp17,"Cordoba, Spain",2017,2017-12-06,12:30:00,Weather Station,Maximum Wind Speed,km/h,22,5
+Sp17,"Cordoba, Spain",2017,2017-12-07,11:30:00,Weather Station,Maximum Wind Speed,km/h,21,6
+Sp17,"Cordoba, Spain",2017,2017-12-08,11:10:00,Weather Station,Maximum Wind Speed,km/h,15,7
+Sp17,"Cordoba, Spain",2017,2017-12-09,13:30:00,Weather Station,Maximum Wind Speed,km/h,17,8
+Sp17,"Cordoba, Spain",2017,2017-12-10,23:40:00,Weather Station,Maximum Wind Speed,km/h,59,9
+Sp17,"Cordoba, Spain",2017,2017-12-11,5:50:00,Weather Station,Maximum Wind Speed,km/h,87,10
+Sp17,"Cordoba, Spain",2017,2017-12-12,13:50:00,Weather Station,Maximum Wind Speed,km/h,28,11
+Sp17,"Cordoba, Spain",2017,2017-12-13,11:30:00,Weather Station,Maximum Wind Speed,km/h,22,12
+Sp17,"Cordoba, Spain",2017,2017-12-14,11:00:00,Weather Station,Maximum Wind Speed,km/h,13,13
+Sp17,"Cordoba, Spain",2017,2017-12-15,17:20:00,Weather Station,Maximum Wind Speed,km/h,39,14
+Sp17,"Cordoba, Spain",2017,2017-12-16,12:20:00,Weather Station,Maximum Wind Speed,km/h,26,15
+Sp17,"Cordoba, Spain",2017,2017-12-17,11:40:00,Weather Station,Maximum Wind Speed,km/h,32,16
+Sp17,"Cordoba, Spain",2017,2017-12-18,11:40:00,Weather Station,Maximum Wind Speed,km/h,28,17
+Sp17,"Cordoba, Spain",2017,2017-12-19,15:40:00,Weather Station,Maximum Wind Speed,km/h,33,18
+Sp17,"Cordoba, Spain",2017,2017-12-20,12:00:00,Weather Station,Maximum Wind Speed,km/h,21,19
+Sp17,"Cordoba, Spain",2017,2017-12-21,12:30:00,Weather Station,Maximum Wind Speed,km/h,24,20
+Sp17,"Cordoba, Spain",2017,2017-12-22,11:40:00,Weather Station,Maximum Wind Speed,km/h,17,21
+Sp17,"Cordoba, Spain",2017,2017-12-23,10:40:00,Weather Station,Maximum Wind Speed,km/h,24,22
+Sp17,"Cordoba, Spain",2017,2017-12-24,11:40:00,Weather Station,Maximum Wind Speed,km/h,21,23
+Sp17,"Cordoba, Spain",2017,2017-12-25,10:10:00,Weather Station,Maximum Wind Speed,km/h,21,24
+Sp17,"Cordoba, Spain",2017,2017-12-26,15:10:00,Weather Station,Maximum Wind Speed,km/h,26,25
+Sp17,"Cordoba, Spain",2017,2017-12-27,6:30:00,Weather Station,Maximum Wind Speed,km/h,54,26
+Sp17,"Cordoba, Spain",2017,2017-12-28,16:10:00,Weather Station,Maximum Wind Speed,km/h,35,27
+Sp17,"Cordoba, Spain",2017,2017-12-29,12:10:00,Weather Station,Maximum Wind Speed,km/h,28,28
+Sp17,"Cordoba, Spain",2017,2017-12-30,14:20:00,Weather Station,Maximum Wind Speed,km/h,22,29
+Sp17,"Cordoba, Spain",2017,2017-12-31,20:30:00,Weather Station,Maximum Wind Speed,km/h,18,30
+Sp17,"Cordoba, Spain",2017,2018-01-01,19:50:00,Weather Station,Maximum Wind Speed,km/h,18,31
+Sp17,"Cordoba, Spain",2017,2018-01-02,12:30:00,Weather Station,Maximum Wind Speed,km/h,11,32
+Sp17,"Cordoba, Spain",2017,2018-01-03,9:30:00,Weather Station,Maximum Wind Speed,km/h,24,33
+Sp17,"Cordoba, Spain",2017,2018-01-04,3:00:00,Weather Station,Maximum Wind Speed,km/h,18,34
+Sp17,"Cordoba, Spain",2017,2018-01-05,20:30:00,Weather Station,Maximum Wind Speed,km/h,46,35
+Sp17,"Cordoba, Spain",2017,2018-01-06,17:20:00,Weather Station,Maximum Wind Speed,km/h,35,36
+Sp17,"Cordoba, Spain",2017,2018-01-07,0:40:00,Weather Station,Maximum Wind Speed,km/h,22,37
+Sp17,"Cordoba, Spain",2017,2018-01-08,11:30:00,Weather Station,Maximum Wind Speed,km/h,30,38
+Sp17,"Cordoba, Spain",2017,2018-01-09,23:40:00,Weather Station,Maximum Wind Speed,km/h,21,39
+Sp17,"Cordoba, Spain",2017,2018-01-10,19:20:00,Weather Station,Maximum Wind Speed,km/h,32,40
+Sp17,"Cordoba, Spain",2017,2018-01-11,14:40:00,Weather Station,Maximum Wind Speed,km/h,26,41
+Sp17,"Cordoba, Spain",2017,2018-01-12,12:30:00,Weather Station,Maximum Wind Speed,km/h,30,42
+Sp17,"Cordoba, Spain",2017,2018-01-13,21:20:00,Weather Station,Maximum Wind Speed,km/h,21,43
+Sp17,"Cordoba, Spain",2017,2018-01-14,13:50:00,Weather Station,Maximum Wind Speed,km/h,15,44
+Sp17,"Cordoba, Spain",2017,2018-01-15,13:00:00,Weather Station,Maximum Wind Speed,km/h,24,45
+Sp17,"Cordoba, Spain",2017,2018-01-16,12:00:00,Weather Station,Maximum Wind Speed,km/h,24,46
+Sp17,"Cordoba, Spain",2017,2018-01-17,14:10:00,Weather Station,Maximum Wind Speed,km/h,32,47
+Sp17,"Cordoba, Spain",2017,2018-01-18,14:30:00,Weather Station,Maximum Wind Speed,km/h,21,48
+Sp17,"Cordoba, Spain",2017,2018-01-19,0:40:00,Weather Station,Maximum Wind Speed,km/h,13,49
+Sp17,"Cordoba, Spain",2017,2018-01-20,17:30:00,Weather Station,Maximum Wind Speed,km/h,17,50
+Sp17,"Cordoba, Spain",2017,2018-01-21,12:50:00,Weather Station,Maximum Wind Speed,km/h,17,51
+Sp17,"Cordoba, Spain",2017,2018-01-22,12:50:00,Weather Station,Maximum Wind Speed,km/h,18,52
+Sp17,"Cordoba, Spain",2017,2018-01-23,11:20:00,Weather Station,Maximum Wind Speed,km/h,15,53
+Sp17,"Cordoba, Spain",2017,2018-01-24,11:20:00,Weather Station,Maximum Wind Speed,km/h,18,54
+Sp17,"Cordoba, Spain",2017,2018-01-25,16:10:00,Weather Station,Maximum Wind Speed,km/h,42,55
+Sp17,"Cordoba, Spain",2017,2018-01-26,16:10:00,Weather Station,Maximum Wind Speed,km/h,30,56
+Sp17,"Cordoba, Spain",2017,2018-01-27,13:50:00,Weather Station,Maximum Wind Speed,km/h,45,57
+Sp17,"Cordoba, Spain",2017,2018-01-28,16:00:00,Weather Station,Maximum Wind Speed,km/h,68,58
+Sp17,"Cordoba, Spain",2017,2018-01-29,12:30:00,Weather Station,Maximum Wind Speed,km/h,61,59
+Sp17,"Cordoba, Spain",2017,2018-01-30,11:40:00,Weather Station,Maximum Wind Speed,km/h,37,60
+Sp17,"Cordoba, Spain",2017,2018-01-31,15:00:00,Weather Station,Maximum Wind Speed,km/h,28,61
+Sp17,"Cordoba, Spain",2017,2018-02-01,23:59:00,Weather Station,Maximum Wind Speed,km/h,58,62
+Sp17,"Cordoba, Spain",2017,2018-02-02,0:10:00,Weather Station,Maximum Wind Speed,km/h,41,63
+Sp17,"Cordoba, Spain",2017,2018-02-03,16:50:00,Weather Station,Maximum Wind Speed,km/h,21,64
+Sp17,"Cordoba, Spain",2017,2018-02-04,14:10:00,Weather Station,Maximum Wind Speed,km/h,21,65
+Sp17,"Cordoba, Spain",2017,2018-02-05,13:50:00,Weather Station,Maximum Wind Speed,km/h,30,66
+Sp17,"Cordoba, Spain",2017,2018-02-06,13:10:00,Weather Station,Maximum Wind Speed,km/h,28,67
+Sp17,"Cordoba, Spain",2017,2018-02-07,12:20:00,Weather Station,Maximum Wind Speed,km/h,41,68
+Sp17,"Cordoba, Spain",2017,2018-02-08,10:50:00,Weather Station,Maximum Wind Speed,km/h,28,69
+Sp17,"Cordoba, Spain",2017,2018-02-09,16:40:00,Weather Station,Maximum Wind Speed,km/h,22,70
+Sp17,"Cordoba, Spain",2017,2018-02-10,21:50:00,Weather Station,Maximum Wind Speed,km/h,26,71
+Sp17,"Cordoba, Spain",2017,2018-02-11,18:00:00,Weather Station,Maximum Wind Speed,km/h,26,72
+Sp17,"Cordoba, Spain",2017,2018-02-12,16:00:00,Weather Station,Maximum Wind Speed,km/h,35,73
+Sp17,"Cordoba, Spain",2017,2018-02-13,15:00:00,Weather Station,Maximum Wind Speed,km/h,28,74
+Sp17,"Cordoba, Spain",2017,2018-02-14,11:50:00,Weather Station,Maximum Wind Speed,km/h,17,75
+Sp17,"Cordoba, Spain",2017,2018-02-15,13:40:00,Weather Station,Maximum Wind Speed,km/h,26,76
+Sp17,"Cordoba, Spain",2017,2018-02-16,12:10:00,Weather Station,Maximum Wind Speed,km/h,18,77
+Sp17,"Cordoba, Spain",2017,2018-02-17,15:10:00,Weather Station,Maximum Wind Speed,km/h,21,78
+Sp17,"Cordoba, Spain",2017,2018-02-18,12:10:00,Weather Station,Maximum Wind Speed,km/h,26,79
+Sp17,"Cordoba, Spain",2017,2018-02-19,14:30:00,Weather Station,Maximum Wind Speed,km/h,33,80
+Sp17,"Cordoba, Spain",2017,2018-02-20,12:40:00,Weather Station,Maximum Wind Speed,km/h,26,81
+Sp17,"Cordoba, Spain",2017,2018-02-21,16:20:00,Weather Station,Maximum Wind Speed,km/h,35,82
+Sp17,"Cordoba, Spain",2017,2018-02-22,10:40:00,Weather Station,Maximum Wind Speed,km/h,21,83
+Sp17,"Cordoba, Spain",2017,2018-02-23,11:50:00,Weather Station,Maximum Wind Speed,km/h,39,84
+Sp17,"Cordoba, Spain",2017,2018-02-24,16:20:00,Weather Station,Maximum Wind Speed,km/h,24,85
+Sp17,"Cordoba, Spain",2017,2018-02-25,14:10:00,Weather Station,Maximum Wind Speed,km/h,28,86
+Sp17,"Cordoba, Spain",2017,2018-02-26,19:10:00,Weather Station,Maximum Wind Speed,km/h,45,87
+Sp17,"Cordoba, Spain",2017,2018-02-27,12:10:00,Weather Station,Maximum Wind Speed,km/h,48,88
+Sp17,"Cordoba, Spain",2017,2018-02-28,19:10:00,Weather Station,Maximum Wind Speed,km/h,67,89
+Sp17,"Cordoba, Spain",2017,2018-03-01,13:30:00,Weather Station,Maximum Wind Speed,km/h,85,90
+Sp17,"Cordoba, Spain",2017,2018-03-02,15:40:00,Weather Station,Maximum Wind Speed,km/h,72,91
+Sp17,"Cordoba, Spain",2017,2018-03-03,1:40:00,Weather Station,Maximum Wind Speed,km/h,54,92
+Sp17,"Cordoba, Spain",2017,2018-03-04,18:40:00,Weather Station,Maximum Wind Speed,km/h,68,93
+Sp17,"Cordoba, Spain",2017,2018-03-05,15:00:00,Weather Station,Maximum Wind Speed,km/h,65,94
+Sp17,"Cordoba, Spain",2017,2018-03-06,13:00:00,Weather Station,Maximum Wind Speed,km/h,33,95
+Sp17,"Cordoba, Spain",2017,2018-03-07,22:10:00,Weather Station,Maximum Wind Speed,km/h,24,96
+Sp17,"Cordoba, Spain",2017,2018-03-08,16:30:00,Weather Station,Maximum Wind Speed,km/h,46,97
+Sp17,"Cordoba, Spain",2017,2018-03-09,16:40:00,Weather Station,Maximum Wind Speed,km/h,35,98
+Sp17,"Cordoba, Spain",2017,2018-03-10,12:30:00,Weather Station,Maximum Wind Speed,km/h,82,99
+Sp17,"Cordoba, Spain",2017,2018-03-11,14:30:00,Weather Station,Maximum Wind Speed,km/h,65,100
+Sp17,"Cordoba, Spain",2017,2018-03-12,15:00:00,Weather Station,Maximum Wind Speed,km/h,37,101
+Sp17,"Cordoba, Spain",2017,2018-03-13,19:20:00,Weather Station,Maximum Wind Speed,km/h,28,102
+Sp17,"Cordoba, Spain",2017,2018-03-14,23:30:00,Weather Station,Maximum Wind Speed,km/h,76,103
+Sp17,"Cordoba, Spain",2017,2018-03-15,0:10:00,Weather Station,Maximum Wind Speed,km/h,65,104
+Sp17,"Cordoba, Spain",2017,2018-03-16,14:00:00,Weather Station,Maximum Wind Speed,km/h,35,105
+Sp17,"Cordoba, Spain",2017,2018-03-17,14:50:00,Weather Station,Maximum Wind Speed,km/h,68,106
+Sp17,"Cordoba, Spain",2017,2018-03-18,16:30:00,Weather Station,Maximum Wind Speed,km/h,37,107
+Sp17,"Cordoba, Spain",2017,2018-03-19,17:20:00,Weather Station,Maximum Wind Speed,km/h,54,108
+Sp17,"Cordoba, Spain",2017,2018-03-20,15:00:00,Weather Station,Maximum Wind Speed,km/h,67,109
+Sp17,"Cordoba, Spain",2017,2018-03-21,12:40:00,Weather Station,Maximum Wind Speed,km/h,41,110
+Sp17,"Cordoba, Spain",2017,2018-03-22,18:10:00,Weather Station,Maximum Wind Speed,km/h,30,111
+Sp17,"Cordoba, Spain",2017,2018-03-23,23:59:00,Weather Station,Maximum Wind Speed,km/h,42,112
+Sp17,"Cordoba, Spain",2017,2018-03-24,3:30:00,Weather Station,Maximum Wind Speed,km/h,65,113
+Sp17,"Cordoba, Spain",2017,2018-03-25,3:40:00,Weather Station,Maximum Wind Speed,km/h,48,114
+Sp17,"Cordoba, Spain",2017,2018-03-26,18:10:00,Weather Station,Maximum Wind Speed,km/h,28,115
+Sp17,"Cordoba, Spain",2017,2018-03-27,18:40:00,Weather Station,Maximum Wind Speed,km/h,17,116
+Sp17,"Cordoba, Spain",2017,2018-03-28,18:40:00,Weather Station,Maximum Wind Speed,km/h,28,117
+Sp17,"Cordoba, Spain",2017,2018-03-29,18:00:00,Weather Station,Maximum Wind Speed,km/h,39,118
+Sp17,"Cordoba, Spain",2017,2018-03-30,20:10:00,Weather Station,Maximum Wind Speed,km/h,58,119
+Sp17,"Cordoba, Spain",2017,2018-03-31,0:30:00,Weather Station,Maximum Wind Speed,km/h,46,120
+Sp17,"Cordoba, Spain",2017,2018-04-01,9:20:00,Weather Station,Maximum Wind Speed,km/h,32,121
+Sp17,"Cordoba, Spain",2017,2018-04-02,16:10:00,Weather Station,Maximum Wind Speed,km/h,41,122
+Sp17,"Cordoba, Spain",2017,2018-04-03,17:50:00,Weather Station,Maximum Wind Speed,km/h,52,123
+Sp17,"Cordoba, Spain",2017,2018-04-04,14:50:00,Weather Station,Maximum Wind Speed,km/h,35,124
+Sp17,"Cordoba, Spain",2017,2018-04-05,11:00:00,Weather Station,Maximum Wind Speed,km/h,28,125
+Sp17,"Cordoba, Spain",2017,2018-04-06,19:10:00,Weather Station,Maximum Wind Speed,km/h,48,126
+Sp17,"Cordoba, Spain",2017,2018-04-07,17:20:00,Weather Station,Maximum Wind Speed,km/h,42,127
+Sp17,"Cordoba, Spain",2017,2018-04-08,23:50:00,Weather Station,Maximum Wind Speed,km/h,50,128
+Sp17,"Cordoba, Spain",2017,2018-04-09,0:30:00,Weather Station,Maximum Wind Speed,km/h,45,129
+Sp17,"Cordoba, Spain",2017,2018-04-10,15:00:00,Weather Station,Maximum Wind Speed,km/h,80,130
+Sp17,"Cordoba, Spain",2017,2018-04-11,17:50:00,Weather Station,Maximum Wind Speed,km/h,48,131
+Sp17,"Cordoba, Spain",2017,2018-04-12,17:50:00,Weather Station,Maximum Wind Speed,km/h,45,132
+Sp17,"Cordoba, Spain",2017,2018-04-13,13:50:00,Weather Station,Maximum Wind Speed,km/h,22,133
+Sp17,"Cordoba, Spain",2017,2018-04-14,16:50:00,Weather Station,Maximum Wind Speed,km/h,30,134
+Sp17,"Cordoba, Spain",2017,2018-04-15,20:00:00,Weather Station,Maximum Wind Speed,km/h,33,135
+Sp17,"Cordoba, Spain",2017,2018-04-16,1:20:00,Weather Station,Maximum Wind Speed,km/h,39,136
+Sp17,"Cordoba, Spain",2017,2018-04-17,10:50:00,Weather Station,Maximum Wind Speed,km/h,32,137
+Sp17,"Cordoba, Spain",2017,2018-04-18,21:20:00,Weather Station,Maximum Wind Speed,km/h,32,138
+Sp17,"Cordoba, Spain",2017,2018-04-19,12:20:00,Weather Station,Maximum Wind Speed,km/h,24,139
+Sp17,"Cordoba, Spain",2017,2018-04-20,10:50:00,Weather Station,Maximum Wind Speed,km/h,32,140
+Sp17,"Cordoba, Spain",2017,2018-04-21,1:40:00,Weather Station,Maximum Wind Speed,km/h,32,141
+Sp17,"Cordoba, Spain",2017,2018-04-22,0:10:00,Weather Station,Maximum Wind Speed,km/h,32,142
+Sp17,"Cordoba, Spain",2017,2018-04-23,13:10:00,Weather Station,Maximum Wind Speed,km/h,48,143
+Sp17,"Cordoba, Spain",2017,2018-04-24,21:00:00,Weather Station,Maximum Wind Speed,km/h,41,144
+Sp17,"Cordoba, Spain",2017,2018-04-25,19:40:00,Weather Station,Maximum Wind Speed,km/h,26,145
+Sp17,"Cordoba, Spain",2017,2018-04-26,20:50:00,Weather Station,Maximum Wind Speed,km/h,42,146
+Sp17,"Cordoba, Spain",2017,2018-04-27,0:50:00,Weather Station,Maximum Wind Speed,km/h,32,147
+Sp17,"Cordoba, Spain",2017,2018-04-29,15:10:00,Weather Station,Maximum Wind Speed,km/h,50,149
+Sp17,"Cordoba, Spain",2017,2018-04-30,20:50:00,Weather Station,Maximum Wind Speed,km/h,37,150
+Sp17,"Cordoba, Spain",2017,2018-05-01,13:40:00,Weather Station,Maximum Wind Speed,km/h,45,151
+Sp17,"Cordoba, Spain",2017,2018-05-02,16:10:00,Weather Station,Maximum Wind Speed,km/h,28,152
+Sp17,"Cordoba, Spain",2017,2018-05-03,20:00:00,Weather Station,Maximum Wind Speed,km/h,33,153
+Sp17,"Cordoba, Spain",2017,2018-05-05,22:50:00,Weather Station,Maximum Wind Speed,km/h,24,155
+Sp17,"Cordoba, Spain",2017,2018-05-06,19:20:00,Weather Station,Maximum Wind Speed,km/h,46,156
+Sp17,"Cordoba, Spain",2017,2018-05-07,16:30:00,Weather Station,Maximum Wind Speed,km/h,26,157
+Sp17,"Cordoba, Spain",2017,2018-05-09,18:30:00,Weather Station,Maximum Wind Speed,km/h,39,159
+Sp17,"Cordoba, Spain",2017,2018-05-10,3:00:00,Weather Station,Maximum Wind Speed,km/h,30,160
+Sp17,"Cordoba, Spain",2017,2018-05-11,17:20:00,Weather Station,Maximum Wind Speed,km/h,37,161
+Sp17,"Cordoba, Spain",2017,2018-05-12,17:10:00,Weather Station,Maximum Wind Speed,km/h,41,162
+Sp17,"Cordoba, Spain",2017,2018-05-13,5:10:00,Weather Station,Maximum Wind Speed,km/h,33,163
+Sp17,"Cordoba, Spain",2017,2018-05-14,18:40:00,Weather Station,Maximum Wind Speed,km/h,30,164
+Sp17,"Cordoba, Spain",2017,2018-05-15,12:00:00,Weather Station,Maximum Wind Speed,km/h,37,165
+Sp17,"Cordoba, Spain",2017,2018-05-16,15:20:00,Weather Station,Maximum Wind Speed,km/h,32,166
+Sp17,"Cordoba, Spain",2017,2018-05-17,21:50:00,Weather Station,Maximum Wind Speed,km/h,39,167
+Sp17,"Cordoba, Spain",2017,2018-05-18,15:50:00,Weather Station,Maximum Wind Speed,km/h,41,168
+Sp17,"Cordoba, Spain",2017,2018-05-19,17:10:00,Weather Station,Maximum Wind Speed,km/h,45,169
+Sp17,"Cordoba, Spain",2017,2018-05-20,13:50:00,Weather Station,Maximum Wind Speed,km/h,33,170
+Sp17,"Cordoba, Spain",2017,2018-05-21,17:50:00,Weather Station,Maximum Wind Speed,km/h,45,171
+Sp17,"Cordoba, Spain",2017,2018-05-22,18:30:00,Weather Station,Maximum Wind Speed,km/h,24,172
+Sp17,"Cordoba, Spain",2017,2018-05-23,21:10:00,Weather Station,Maximum Wind Speed,km/h,21,173
+Sp17,"Cordoba, Spain",2017,2018-05-24,19:00:00,Weather Station,Maximum Wind Speed,km/h,48,174
+Sp17,"Cordoba, Spain",2017,2018-05-25,15:30:00,Weather Station,Maximum Wind Speed,km/h,37,175
+Sp17,"Cordoba, Spain",2017,2018-05-26,17:00:00,Weather Station,Maximum Wind Speed,km/h,26,176
+Sp17,"Cordoba, Spain",2017,2018-05-27,13:50:00,Weather Station,Maximum Wind Speed,km/h,37,177
+Sp17,"Cordoba, Spain",2017,2018-05-28,16:40:00,Weather Station,Maximum Wind Speed,km/h,50,178
+Sp17,"Cordoba, Spain",2017,2018-05-29,17:50:00,Weather Station,Maximum Wind Speed,km/h,45,179
+Sp17,"Cordoba, Spain",2017,2018-05-30,17:40:00,Weather Station,Maximum Wind Speed,km/h,35,180
+Sp17,"Cordoba, Spain",2017,2018-05-31,17:30:00,Weather Station,Maximum Wind Speed,km/h,28,181
+Sp17,"Cordoba, Spain",2017,2018-06-01,19:00:00,Weather Station,Maximum Wind Speed,km/h,42,182
+Sp17,"Cordoba, Spain",2017,2018-06-02,16:50:00,Weather Station,Maximum Wind Speed,km/h,39,183
+Sp17,"Cordoba, Spain",2017,2018-06-03,18:40:00,Weather Station,Maximum Wind Speed,km/h,39,184
+Sp17,"Cordoba, Spain",2017,2018-06-04,14:20:00,Weather Station,Maximum Wind Speed,km/h,41,185
+Sp17,"Cordoba, Spain",2017,2017-12-01,14:40:00,Weather Station,Wind Speed,km/h,17,0
+Sp17,"Cordoba, Spain",2017,2017-12-02,13:10:00,Weather Station,Wind Speed,km/h,24,1
+Sp17,"Cordoba, Spain",2017,2017-12-03,14:10:00,Weather Station,Wind Speed,km/h,28,2
+Sp17,"Cordoba, Spain",2017,2017-12-04,11:30:00,Weather Station,Wind Speed,km/h,24,3
+Sp17,"Cordoba, Spain",2017,2017-12-05,12:50:00,Weather Station,Wind Speed,km/h,18,4
+Sp17,"Cordoba, Spain",2017,2017-12-06,12:00:00,Weather Station,Wind Speed,km/h,15,5
+Sp17,"Cordoba, Spain",2017,2017-12-07,12:20:00,Weather Station,Wind Speed,km/h,16,6
+Sp17,"Cordoba, Spain",2017,2017-12-08,11:10:00,Weather Station,Wind Speed,km/h,10,7
+Sp17,"Cordoba, Spain",2017,2017-12-09,13:40:00,Weather Station,Wind Speed,km/h,10,8
+Sp17,"Cordoba, Spain",2017,2017-12-10,23:50:00,Weather Station,Wind Speed,km/h,40,9
+Sp17,"Cordoba, Spain",2017,2017-12-11,6:10:00,Weather Station,Wind Speed,km/h,59,10
+Sp17,"Cordoba, Spain",2017,2017-12-12,11:00:00,Weather Station,Wind Speed,km/h,17,11
+Sp17,"Cordoba, Spain",2017,2017-12-13,11:30:00,Weather Station,Wind Speed,km/h,13,12
+Sp17,"Cordoba, Spain",2017,2017-12-14,17:00:00,Weather Station,Wind Speed,km/h,8,13
+Sp17,"Cordoba, Spain",2017,2017-12-15,17:10:00,Weather Station,Wind Speed,km/h,22,14
+Sp17,"Cordoba, Spain",2017,2017-12-16,11:20:00,Weather Station,Wind Speed,km/h,17,15
+Sp17,"Cordoba, Spain",2017,2017-12-17,11:50:00,Weather Station,Wind Speed,km/h,21,16
+Sp17,"Cordoba, Spain",2017,2017-12-18,11:40:00,Weather Station,Wind Speed,km/h,20,17
+Sp17,"Cordoba, Spain",2017,2017-12-19,15:40:00,Weather Station,Wind Speed,km/h,24,18
+Sp17,"Cordoba, Spain",2017,2017-12-20,12:30:00,Weather Station,Wind Speed,km/h,14,19
+Sp17,"Cordoba, Spain",2017,2017-12-21,12:30:00,Weather Station,Wind Speed,km/h,15,20
+Sp17,"Cordoba, Spain",2017,2017-12-22,11:40:00,Weather Station,Wind Speed,km/h,10,21
+Sp17,"Cordoba, Spain",2017,2017-12-23,10:40:00,Weather Station,Wind Speed,km/h,17,22
+Sp17,"Cordoba, Spain",2017,2017-12-24,11:50:00,Weather Station,Wind Speed,km/h,16,23
+Sp17,"Cordoba, Spain",2017,2017-12-25,10:10:00,Weather Station,Wind Speed,km/h,15,24
+Sp17,"Cordoba, Spain",2017,2017-12-26,15:10:00,Weather Station,Wind Speed,km/h,17,25
+Sp17,"Cordoba, Spain",2017,2017-12-27,6:30:00,Weather Station,Wind Speed,km/h,34,26
+Sp17,"Cordoba, Spain",2017,2017-12-28,16:10:00,Weather Station,Wind Speed,km/h,23,27
+Sp17,"Cordoba, Spain",2017,2017-12-29,12:10:00,Weather Station,Wind Speed,km/h,21,28
+Sp17,"Cordoba, Spain",2017,2017-12-30,14:10:00,Weather Station,Wind Speed,km/h,13,29
+Sp17,"Cordoba, Spain",2017,2017-12-31,21:40:00,Weather Station,Wind Speed,km/h,12,30
+Sp17,"Cordoba, Spain",2017,2018-01-01,20:00:00,Weather Station,Wind Speed,km/h,15,31
+Sp17,"Cordoba, Spain",2017,2018-01-02,19:30:00,Weather Station,Wind Speed,km/h,8,32
+Sp17,"Cordoba, Spain",2017,2018-01-03,9:40:00,Weather Station,Wind Speed,km/h,18,33
+Sp17,"Cordoba, Spain",2017,2018-01-04,3:00:00,Weather Station,Wind Speed,km/h,13,34
+Sp17,"Cordoba, Spain",2017,2018-01-05,20:40:00,Weather Station,Wind Speed,km/h,26,35
+Sp17,"Cordoba, Spain",2017,2018-01-06,17:10:00,Weather Station,Wind Speed,km/h,24,36
+Sp17,"Cordoba, Spain",2017,2018-01-07,0:40:00,Weather Station,Wind Speed,km/h,14,37
+Sp17,"Cordoba, Spain",2017,2018-01-08,11:50:00,Weather Station,Wind Speed,km/h,20,38
+Sp17,"Cordoba, Spain",2017,2018-01-09,23:50:00,Weather Station,Wind Speed,km/h,14,39
+Sp17,"Cordoba, Spain",2017,2018-01-10,20:20:00,Weather Station,Wind Speed,km/h,20,40
+Sp17,"Cordoba, Spain",2017,2018-01-11,14:50:00,Weather Station,Wind Speed,km/h,19,41
+Sp17,"Cordoba, Spain",2017,2018-01-12,12:10:00,Weather Station,Wind Speed,km/h,21,42
+Sp17,"Cordoba, Spain",2017,2018-01-13,21:20:00,Weather Station,Wind Speed,km/h,13,43
+Sp17,"Cordoba, Spain",2017,2018-01-14,13:50:00,Weather Station,Wind Speed,km/h,9,44
+Sp17,"Cordoba, Spain",2017,2018-01-15,13:20:00,Weather Station,Wind Speed,km/h,18,45
+Sp17,"Cordoba, Spain",2017,2018-01-16,12:00:00,Weather Station,Wind Speed,km/h,16,46
+Sp17,"Cordoba, Spain",2017,2018-01-17,14:10:00,Weather Station,Wind Speed,km/h,23,47
+Sp17,"Cordoba, Spain",2017,2018-01-18,0:40:00,Weather Station,Wind Speed,km/h,14,48
+Sp17,"Cordoba, Spain",2017,2018-01-19,0:40:00,Weather Station,Wind Speed,km/h,6,49
+Sp17,"Cordoba, Spain",2017,2018-01-20,11:10:00,Weather Station,Wind Speed,km/h,11,50
+Sp17,"Cordoba, Spain",2017,2018-01-21,13:00:00,Weather Station,Wind Speed,km/h,11,51
+Sp17,"Cordoba, Spain",2017,2018-01-22,12:50:00,Weather Station,Wind Speed,km/h,12,52
+Sp17,"Cordoba, Spain",2017,2018-01-23,11:30:00,Weather Station,Wind Speed,km/h,10,53
+Sp17,"Cordoba, Spain",2017,2018-01-24,11:30:00,Weather Station,Wind Speed,km/h,13,54
+Sp17,"Cordoba, Spain",2017,2018-01-25,16:10:00,Weather Station,Wind Speed,km/h,26,55
+Sp17,"Cordoba, Spain",2017,2018-01-26,17:50:00,Weather Station,Wind Speed,km/h,19,56
+Sp17,"Cordoba, Spain",2017,2018-01-27,14:10:00,Weather Station,Wind Speed,km/h,27,57
+Sp17,"Cordoba, Spain",2017,2018-01-28,16:00:00,Weather Station,Wind Speed,km/h,46,58
+Sp17,"Cordoba, Spain",2017,2018-01-29,11:50:00,Weather Station,Wind Speed,km/h,42,59
+Sp17,"Cordoba, Spain",2017,2018-01-30,11:50:00,Weather Station,Wind Speed,km/h,24,60
+Sp17,"Cordoba, Spain",2017,2018-01-31,10:40:00,Weather Station,Wind Speed,km/h,20,61
+Sp17,"Cordoba, Spain",2017,2018-02-01,23:59:00,Weather Station,Wind Speed,km/h,28,62
+Sp17,"Cordoba, Spain",2017,2018-02-02,0:10:00,Weather Station,Wind Speed,km/h,25,63
+Sp17,"Cordoba, Spain",2017,2018-02-03,17:30:00,Weather Station,Wind Speed,km/h,12,64
+Sp17,"Cordoba, Spain",2017,2018-02-04,14:10:00,Weather Station,Wind Speed,km/h,14,65
+Sp17,"Cordoba, Spain",2017,2018-02-05,13:50:00,Weather Station,Wind Speed,km/h,17,66
+Sp17,"Cordoba, Spain",2017,2018-02-06,13:20:00,Weather Station,Wind Speed,km/h,18,67
+Sp17,"Cordoba, Spain",2017,2018-02-07,12:20:00,Weather Station,Wind Speed,km/h,29,68
+Sp17,"Cordoba, Spain",2017,2018-02-08,11:00:00,Weather Station,Wind Speed,km/h,20,69
+Sp17,"Cordoba, Spain",2017,2018-02-09,16:40:00,Weather Station,Wind Speed,km/h,13,70
+Sp17,"Cordoba, Spain",2017,2018-02-10,13:10:00,Weather Station,Wind Speed,km/h,17,71
+Sp17,"Cordoba, Spain",2017,2018-02-11,18:00:00,Weather Station,Wind Speed,km/h,17,72
+Sp17,"Cordoba, Spain",2017,2018-02-12,16:00:00,Weather Station,Wind Speed,km/h,24,73
+Sp17,"Cordoba, Spain",2017,2018-02-13,16:20:00,Weather Station,Wind Speed,km/h,20,74
+Sp17,"Cordoba, Spain",2017,2018-02-14,17:20:00,Weather Station,Wind Speed,km/h,9,75
+Sp17,"Cordoba, Spain",2017,2018-02-15,13:30:00,Weather Station,Wind Speed,km/h,16,76
+Sp17,"Cordoba, Spain",2017,2018-02-16,12:10:00,Weather Station,Wind Speed,km/h,13,77
+Sp17,"Cordoba, Spain",2017,2018-02-17,15:00:00,Weather Station,Wind Speed,km/h,12,78
+Sp17,"Cordoba, Spain",2017,2018-02-18,12:10:00,Weather Station,Wind Speed,km/h,15,79
+Sp17,"Cordoba, Spain",2017,2018-02-19,13:30:00,Weather Station,Wind Speed,km/h,22,80
+Sp17,"Cordoba, Spain",2017,2018-02-20,12:40:00,Weather Station,Wind Speed,km/h,19,81
+Sp17,"Cordoba, Spain",2017,2018-02-21,17:20:00,Weather Station,Wind Speed,km/h,24,82
+Sp17,"Cordoba, Spain",2017,2018-02-22,11:20:00,Weather Station,Wind Speed,km/h,14,83
+Sp17,"Cordoba, Spain",2017,2018-02-23,11:50:00,Weather Station,Wind Speed,km/h,27,84
+Sp17,"Cordoba, Spain",2017,2018-02-24,10:40:00,Weather Station,Wind Speed,km/h,16,85
+Sp17,"Cordoba, Spain",2017,2018-02-25,16:00:00,Weather Station,Wind Speed,km/h,8,86
+Sp17,"Cordoba, Spain",2017,2018-02-26,19:10:00,Weather Station,Wind Speed,km/h,30,87
+Sp17,"Cordoba, Spain",2017,2018-02-27,12:40:00,Weather Station,Wind Speed,km/h,33,88
+Sp17,"Cordoba, Spain",2017,2018-02-28,18:40:00,Weather Station,Wind Speed,km/h,45,89
+Sp17,"Cordoba, Spain",2017,2018-03-01,15:10:00,Weather Station,Wind Speed,km/h,58,90
+Sp17,"Cordoba, Spain",2017,2018-03-02,16:10:00,Weather Station,Wind Speed,km/h,46,91
+Sp17,"Cordoba, Spain",2017,2018-03-03,2:00:00,Weather Station,Wind Speed,km/h,37,92
+Sp17,"Cordoba, Spain",2017,2018-03-04,22:30:00,Weather Station,Wind Speed,km/h,42,93
+Sp17,"Cordoba, Spain",2017,2018-03-05,15:00:00,Weather Station,Wind Speed,km/h,40,94
+Sp17,"Cordoba, Spain",2017,2018-03-06,17:10:00,Weather Station,Wind Speed,km/h,23,95
+Sp17,"Cordoba, Spain",2017,2018-03-07,21:30:00,Weather Station,Wind Speed,km/h,17,96
+Sp17,"Cordoba, Spain",2017,2018-03-08,16:50:00,Weather Station,Wind Speed,km/h,29,97
+Sp17,"Cordoba, Spain",2017,2018-03-09,17:00:00,Weather Station,Wind Speed,km/h,27,98
+Sp17,"Cordoba, Spain",2017,2018-03-10,12:30:00,Weather Station,Wind Speed,km/h,45,99
+Sp17,"Cordoba, Spain",2017,2018-03-11,14:30:00,Weather Station,Wind Speed,km/h,41,100
+Sp17,"Cordoba, Spain",2017,2018-03-12,15:00:00,Weather Station,Wind Speed,km/h,25,101
+Sp17,"Cordoba, Spain",2017,2018-03-13,19:20:00,Weather Station,Wind Speed,km/h,19,102
+Sp17,"Cordoba, Spain",2017,2018-03-14,17:00:00,Weather Station,Wind Speed,km/h,51,103
+Sp17,"Cordoba, Spain",2017,2018-03-15,0:10:00,Weather Station,Wind Speed,km/h,44,104
+Sp17,"Cordoba, Spain",2017,2018-03-16,14:00:00,Weather Station,Wind Speed,km/h,23,105
+Sp17,"Cordoba, Spain",2017,2018-03-17,14:50:00,Weather Station,Wind Speed,km/h,47,106
+Sp17,"Cordoba, Spain",2017,2018-03-18,16:30:00,Weather Station,Wind Speed,km/h,25,107
+Sp17,"Cordoba, Spain",2017,2018-03-19,17:20:00,Weather Station,Wind Speed,km/h,35,108
+Sp17,"Cordoba, Spain",2017,2018-03-20,15:00:00,Weather Station,Wind Speed,km/h,38,109
+Sp17,"Cordoba, Spain",2017,2018-03-21,14:40:00,Weather Station,Wind Speed,km/h,25,110
+Sp17,"Cordoba, Spain",2017,2018-03-22,18:00:00,Weather Station,Wind Speed,km/h,19,111
+Sp17,"Cordoba, Spain",2017,2018-03-23,23:59:00,Weather Station,Wind Speed,km/h,29,112
+Sp17,"Cordoba, Spain",2017,2018-03-24,3:30:00,Weather Station,Wind Speed,km/h,38,113
+Sp17,"Cordoba, Spain",2017,2018-03-25,3:40:00,Weather Station,Wind Speed,km/h,27,114
+Sp17,"Cordoba, Spain",2017,2018-03-26,18:10:00,Weather Station,Wind Speed,km/h,15,115
+Sp17,"Cordoba, Spain",2017,2018-03-27,10:50:00,Weather Station,Wind Speed,km/h,10,116
+Sp17,"Cordoba, Spain",2017,2018-03-28,18:50:00,Weather Station,Wind Speed,km/h,19,117
+Sp17,"Cordoba, Spain",2017,2018-03-29,17:50:00,Weather Station,Wind Speed,km/h,27,118
+Sp17,"Cordoba, Spain",2017,2018-03-30,20:10:00,Weather Station,Wind Speed,km/h,37,119
+Sp17,"Cordoba, Spain",2017,2018-03-31,0:30:00,Weather Station,Wind Speed,km/h,28,120
+Sp17,"Cordoba, Spain",2017,2018-04-01,11:10:00,Weather Station,Wind Speed,km/h,22,121
+Sp17,"Cordoba, Spain",2017,2018-04-02,16:20:00,Weather Station,Wind Speed,km/h,24,122
+Sp17,"Cordoba, Spain",2017,2018-04-03,18:00:00,Weather Station,Wind Speed,km/h,31,123
+Sp17,"Cordoba, Spain",2017,2018-04-04,15:00:00,Weather Station,Wind Speed,km/h,22,124
+Sp17,"Cordoba, Spain",2017,2018-04-05,12:50:00,Weather Station,Wind Speed,km/h,19,125
+Sp17,"Cordoba, Spain",2017,2018-04-06,19:20:00,Weather Station,Wind Speed,km/h,32,126
+Sp17,"Cordoba, Spain",2017,2018-04-07,17:20:00,Weather Station,Wind Speed,km/h,29,127
+Sp17,"Cordoba, Spain",2017,2018-04-08,20:50:00,Weather Station,Wind Speed,km/h,31,128
+Sp17,"Cordoba, Spain",2017,2018-04-09,18:50:00,Weather Station,Wind Speed,km/h,28,129
+Sp17,"Cordoba, Spain",2017,2018-04-10,15:00:00,Weather Station,Wind Speed,km/h,54,130
+Sp17,"Cordoba, Spain",2017,2018-04-11,17:30:00,Weather Station,Wind Speed,km/h,31,131
+Sp17,"Cordoba, Spain",2017,2018-04-12,17:50:00,Weather Station,Wind Speed,km/h,30,132
+Sp17,"Cordoba, Spain",2017,2018-04-13,14:20:00,Weather Station,Wind Speed,km/h,15,133
+Sp17,"Cordoba, Spain",2017,2018-04-14,19:50:00,Weather Station,Wind Speed,km/h,20,134
+Sp17,"Cordoba, Spain",2017,2018-04-15,19:00:00,Weather Station,Wind Speed,km/h,21,135
+Sp17,"Cordoba, Spain",2017,2018-04-16,1:20:00,Weather Station,Wind Speed,km/h,23,136
+Sp17,"Cordoba, Spain",2017,2018-04-17,10:10:00,Weather Station,Wind Speed,km/h,21,137
+Sp17,"Cordoba, Spain",2017,2018-04-18,21:20:00,Weather Station,Wind Speed,km/h,15,138
+Sp17,"Cordoba, Spain",2017,2018-04-19,12:20:00,Weather Station,Wind Speed,km/h,16,139
+Sp17,"Cordoba, Spain",2017,2018-04-20,10:50:00,Weather Station,Wind Speed,km/h,24,140
+Sp17,"Cordoba, Spain",2017,2018-04-21,2:30:00,Weather Station,Wind Speed,km/h,21,141
+Sp17,"Cordoba, Spain",2017,2018-04-22,0:10:00,Weather Station,Wind Speed,km/h,21,142
+Sp17,"Cordoba, Spain",2017,2018-04-23,13:10:00,Weather Station,Wind Speed,km/h,31,143
+Sp17,"Cordoba, Spain",2017,2018-04-24,21:00:00,Weather Station,Wind Speed,km/h,25,144
+Sp17,"Cordoba, Spain",2017,2018-04-25,19:40:00,Weather Station,Wind Speed,km/h,16,145
+Sp17,"Cordoba, Spain",2017,2018-04-26,20:50:00,Weather Station,Wind Speed,km/h,29,146
+Sp17,"Cordoba, Spain",2017,2018-04-27,18:30:00,Weather Station,Wind Speed,km/h,20,147
+Sp17,"Cordoba, Spain",2017,2018-04-29,13:50:00,Weather Station,Wind Speed,km/h,31,149
+Sp17,"Cordoba, Spain",2017,2018-04-30,20:50:00,Weather Station,Wind Speed,km/h,24,150
+Sp17,"Cordoba, Spain",2017,2018-05-01,13:50:00,Weather Station,Wind Speed,km/h,26,151
+Sp17,"Cordoba, Spain",2017,2018-05-02,16:10:00,Weather Station,Wind Speed,km/h,17,152
+Sp17,"Cordoba, Spain",2017,2018-05-03,20:20:00,Weather Station,Wind Speed,km/h,22,153
+Sp17,"Cordoba, Spain",2017,2018-05-05,22:50:00,Weather Station,Wind Speed,km/h,14,155
+Sp17,"Cordoba, Spain",2017,2018-05-06,19:30:00,Weather Station,Wind Speed,km/h,28,156
+Sp17,"Cordoba, Spain",2017,2018-05-07,19:30:00,Weather Station,Wind Speed,km/h,13,157
+Sp17,"Cordoba, Spain",2017,2018-05-09,18:10:00,Weather Station,Wind Speed,km/h,28,159
+Sp17,"Cordoba, Spain",2017,2018-05-10,2:30:00,Weather Station,Wind Speed,km/h,19,160
+Sp17,"Cordoba, Spain",2017,2018-05-11,17:20:00,Weather Station,Wind Speed,km/h,25,161
+Sp17,"Cordoba, Spain",2017,2018-05-12,19:40:00,Weather Station,Wind Speed,km/h,26,162
+Sp17,"Cordoba, Spain",2017,2018-05-13,21:10:00,Weather Station,Wind Speed,km/h,18,163
+Sp17,"Cordoba, Spain",2017,2018-05-14,11:20:00,Weather Station,Wind Speed,km/h,18,164
+Sp17,"Cordoba, Spain",2017,2018-05-15,12:00:00,Weather Station,Wind Speed,km/h,23,165
+Sp17,"Cordoba, Spain",2017,2018-05-16,17:20:00,Weather Station,Wind Speed,km/h,19,166
+Sp17,"Cordoba, Spain",2017,2018-05-17,21:40:00,Weather Station,Wind Speed,km/h,28,167
+Sp17,"Cordoba, Spain",2017,2018-05-18,15:50:00,Weather Station,Wind Speed,km/h,30,168
+Sp17,"Cordoba, Spain",2017,2018-05-19,16:20:00,Weather Station,Wind Speed,km/h,28,169
+Sp17,"Cordoba, Spain",2017,2018-05-20,13:50:00,Weather Station,Wind Speed,km/h,23,170
+Sp17,"Cordoba, Spain",2017,2018-05-21,17:50:00,Weather Station,Wind Speed,km/h,27,171
+Sp17,"Cordoba, Spain",2017,2018-05-22,18:30:00,Weather Station,Wind Speed,km/h,14,172
+Sp17,"Cordoba, Spain",2017,2018-05-23,21:10:00,Weather Station,Wind Speed,km/h,14,173
+Sp17,"Cordoba, Spain",2017,2018-05-24,18:40:00,Weather Station,Wind Speed,km/h,32,174
+Sp17,"Cordoba, Spain",2017,2018-05-25,15:30:00,Weather Station,Wind Speed,km/h,25,175
+Sp17,"Cordoba, Spain",2017,2018-05-26,19:00:00,Weather Station,Wind Speed,km/h,16,176
+Sp17,"Cordoba, Spain",2017,2018-05-27,16:50:00,Weather Station,Wind Speed,km/h,25,177
+Sp17,"Cordoba, Spain",2017,2018-05-28,16:40:00,Weather Station,Wind Speed,km/h,33,178
+Sp17,"Cordoba, Spain",2017,2018-05-29,18:50:00,Weather Station,Wind Speed,km/h,31,179
+Sp17,"Cordoba, Spain",2017,2018-05-30,17:10:00,Weather Station,Wind Speed,km/h,20,180
+Sp17,"Cordoba, Spain",2017,2018-05-31,19:20:00,Weather Station,Wind Speed,km/h,17,181
+Sp17,"Cordoba, Spain",2017,2018-06-01,19:00:00,Weather Station,Wind Speed,km/h,31,182
+Sp17,"Cordoba, Spain",2017,2018-06-02,14:10:00,Weather Station,Wind Speed,km/h,19,183
+Sp17,"Cordoba, Spain",2017,2018-06-03,21:30:00,Weather Station,Wind Speed,km/h,27,184
+Sp17,"Cordoba, Spain",2017,2018-06-04,13:50:00,Weather Station,Wind Speed,km/h,23,185
+Sp17,"Cordoba, Spain",2017,2017-12-01,16:30:00,Weather Station,Maximum Temperature,C,12.6,
+Sp17,"Cordoba, Spain",2017,2017-12-02,16:10:00,Weather Station,Maximum Temperature,C,10.7,
+Sp17,"Cordoba, Spain",2017,2017-12-03,16:10:00,Weather Station,Maximum Temperature,C,10.4,
+Sp17,"Cordoba, Spain",2017,2017-12-04,16:20:00,Weather Station,Maximum Temperature,C,14.2,
+Sp17,"Cordoba, Spain",2017,2017-12-05,16:50:00,Weather Station,Maximum Temperature,C,15,
+Sp17,"Cordoba, Spain",2017,2017-12-06,16:30:00,Weather Station,Maximum Temperature,C,15.9,
+Sp17,"Cordoba, Spain",2017,2017-12-07,16:20:00,Weather Station,Maximum Temperature,C,15.6,
+Sp17,"Cordoba, Spain",2017,2017-12-08,15:30:00,Weather Station,Maximum Temperature,C,16.9,
+Sp17,"Cordoba, Spain",2017,2017-12-09,15:50:00,Weather Station,Maximum Temperature,C,15.3,
+Sp17,"Cordoba, Spain",2017,2017-12-10,23:50:00,Weather Station,Maximum Temperature,C,15.5,
+Sp17,"Cordoba, Spain",2017,2017-12-11,3:20:00,Weather Station,Maximum Temperature,C,15.8,
+Sp17,"Cordoba, Spain",2017,2017-12-12,15:40:00,Weather Station,Maximum Temperature,C,11.6,
+Sp17,"Cordoba, Spain",2017,2017-12-13,16:00:00,Weather Station,Maximum Temperature,C,13,
+Sp17,"Cordoba, Spain",2017,2017-12-14,15:20:00,Weather Station,Maximum Temperature,C,14.2,
+Sp17,"Cordoba, Spain",2017,2017-12-15,16:20:00,Weather Station,Maximum Temperature,C,16.6,
+Sp17,"Cordoba, Spain",2017,2017-12-16,15:20:00,Weather Station,Maximum Temperature,C,15.1,
+Sp17,"Cordoba, Spain",2017,2017-12-17,16:20:00,Weather Station,Maximum Temperature,C,13.9,
+Sp17,"Cordoba, Spain",2017,2017-12-18,16:10:00,Weather Station,Maximum Temperature,C,14.4,
+Sp17,"Cordoba, Spain",2017,2017-12-19,16:40:00,Weather Station,Maximum Temperature,C,16,
+Sp17,"Cordoba, Spain",2017,2017-12-20,16:30:00,Weather Station,Maximum Temperature,C,16.4,
+Sp17,"Cordoba, Spain",2017,2017-12-21,16:10:00,Weather Station,Maximum Temperature,C,17.3,
+Sp17,"Cordoba, Spain",2017,2017-12-22,16:20:00,Weather Station,Maximum Temperature,C,16.4,
+Sp17,"Cordoba, Spain",2017,2017-12-23,16:10:00,Weather Station,Maximum Temperature,C,17.5,
+Sp17,"Cordoba, Spain",2017,2017-12-24,15:50:00,Weather Station,Maximum Temperature,C,17.5,
+Sp17,"Cordoba, Spain",2017,2017-12-25,16:10:00,Weather Station,Maximum Temperature,C,11.8,
+Sp17,"Cordoba, Spain",2017,2017-12-26,12:20:00,Weather Station,Maximum Temperature,C,13.8,
+Sp17,"Cordoba, Spain",2017,2017-12-27,13:40:00,Weather Station,Maximum Temperature,C,15.6,
+Sp17,"Cordoba, Spain",2017,2017-12-28,16:10:00,Weather Station,Maximum Temperature,C,19.1,
+Sp17,"Cordoba, Spain",2017,2017-12-29,16:00:00,Weather Station,Maximum Temperature,C,17.9,
+Sp17,"Cordoba, Spain",2017,2017-12-30,16:20:00,Weather Station,Maximum Temperature,C,20.5,
+Sp17,"Cordoba, Spain",2017,2017-12-31,16:40:00,Weather Station,Maximum Temperature,C,13.9,
+Sp17,"Cordoba, Spain",2017,2018-01-01,17:20:00,Weather Station,Maximum Temperature,C,16.6,
+Sp17,"Cordoba, Spain",2017,2018-01-02,16:20:00,Weather Station,Maximum Temperature,C,16.6,
+Sp17,"Cordoba, Spain",2017,2018-01-03,16:20:00,Weather Station,Maximum Temperature,C,16.1,
+Sp17,"Cordoba, Spain",2017,2018-01-04,14:50:00,Weather Station,Maximum Temperature,C,15.2,
+Sp17,"Cordoba, Spain",2017,2018-01-05,14:00:00,Weather Station,Maximum Temperature,C,14.3,
+Sp17,"Cordoba, Spain",2017,2018-01-06,1:00:00,Weather Station,Maximum Temperature,C,13.6,
+Sp17,"Cordoba, Spain",2017,2018-01-07,15:20:00,Weather Station,Maximum Temperature,C,7.5,
+Sp17,"Cordoba, Spain",2017,2018-01-08,16:20:00,Weather Station,Maximum Temperature,C,11.8,
+Sp17,"Cordoba, Spain",2017,2018-01-09,23:59:00,Weather Station,Maximum Temperature,C,7.9,
+Sp17,"Cordoba, Spain",2017,2018-01-10,16:20:00,Weather Station,Maximum Temperature,C,15.5,
+Sp17,"Cordoba, Spain",2017,2018-01-11,15:30:00,Weather Station,Maximum Temperature,C,13.3,
+Sp17,"Cordoba, Spain",2017,2018-01-12,16:20:00,Weather Station,Maximum Temperature,C,13.6,
+Sp17,"Cordoba, Spain",2017,2018-01-13,16:40:00,Weather Station,Maximum Temperature,C,8.2,
+Sp17,"Cordoba, Spain",2017,2018-01-14,16:50:00,Weather Station,Maximum Temperature,C,11.8,
+Sp17,"Cordoba, Spain",2017,2018-01-15,16:20:00,Weather Station,Maximum Temperature,C,13.8,
+Sp17,"Cordoba, Spain",2017,2018-01-16,16:10:00,Weather Station,Maximum Temperature,C,15.2,
+Sp17,"Cordoba, Spain",2017,2018-01-17,16:50:00,Weather Station,Maximum Temperature,C,18.1,
+Sp17,"Cordoba, Spain",2017,2018-01-18,14:40:00,Weather Station,Maximum Temperature,C,16.9,
+Sp17,"Cordoba, Spain",2017,2018-01-19,16:30:00,Weather Station,Maximum Temperature,C,18,
+Sp17,"Cordoba, Spain",2017,2018-01-20,15:40:00,Weather Station,Maximum Temperature,C,16.4,
+Sp17,"Cordoba, Spain",2017,2018-01-21,17:20:00,Weather Station,Maximum Temperature,C,17,
+Sp17,"Cordoba, Spain",2017,2018-01-22,16:30:00,Weather Station,Maximum Temperature,C,19.1,
+Sp17,"Cordoba, Spain",2017,2018-01-23,17:00:00,Weather Station,Maximum Temperature,C,21.6,
+Sp17,"Cordoba, Spain",2017,2018-01-24,16:00:00,Weather Station,Maximum Temperature,C,20.8,
+Sp17,"Cordoba, Spain",2017,2018-01-25,14:40:00,Weather Station,Maximum Temperature,C,14.1,
+Sp17,"Cordoba, Spain",2017,2018-01-26,15:40:00,Weather Station,Maximum Temperature,C,14.9,
+Sp17,"Cordoba, Spain",2017,2018-01-27,15:30:00,Weather Station,Maximum Temperature,C,14.7,
+Sp17,"Cordoba, Spain",2017,2018-01-28,16:00:00,Weather Station,Maximum Temperature,C,16.2,
+Sp17,"Cordoba, Spain",2017,2018-01-29,14:50:00,Weather Station,Maximum Temperature,C,19.3,
+Sp17,"Cordoba, Spain",2017,2018-01-30,16:00:00,Weather Station,Maximum Temperature,C,17.6,
+Sp17,"Cordoba, Spain",2017,2018-01-31,16:30:00,Weather Station,Maximum Temperature,C,17.6,
+Sp17,"Cordoba, Spain",2017,2018-02-01,16:20:00,Weather Station,Maximum Temperature,C,14.9,
+Sp17,"Cordoba, Spain",2017,2018-02-02,15:10:00,Weather Station,Maximum Temperature,C,14.1,
+Sp17,"Cordoba, Spain",2017,2018-02-03,16:00:00,Weather Station,Maximum Temperature,C,14.5,
+Sp17,"Cordoba, Spain",2017,2018-02-04,16:40:00,Weather Station,Maximum Temperature,C,13.2,
+Sp17,"Cordoba, Spain",2017,2018-02-05,17:00:00,Weather Station,Maximum Temperature,C,8.7,
+Sp17,"Cordoba, Spain",2017,2018-02-06,16:20:00,Weather Station,Maximum Temperature,C,11.4,
+Sp17,"Cordoba, Spain",2017,2018-02-07,15:30:00,Weather Station,Maximum Temperature,C,12.2,
+Sp17,"Cordoba, Spain",2017,2018-02-08,16:30:00,Weather Station,Maximum Temperature,C,14.6,
+Sp17,"Cordoba, Spain",2017,2018-02-09,17:20:00,Weather Station,Maximum Temperature,C,13,
+Sp17,"Cordoba, Spain",2017,2018-02-10,16:10:00,Weather Station,Maximum Temperature,C,15.9,
+Sp17,"Cordoba, Spain",2017,2018-02-11,16:10:00,Weather Station,Maximum Temperature,C,16.9,
+Sp17,"Cordoba, Spain",2017,2018-02-12,16:20:00,Weather Station,Maximum Temperature,C,17.4,
+Sp17,"Cordoba, Spain",2017,2018-02-13,16:40:00,Weather Station,Maximum Temperature,C,14.9,
+Sp17,"Cordoba, Spain",2017,2018-02-14,16:10:00,Weather Station,Maximum Temperature,C,17.6,
+Sp17,"Cordoba, Spain",2017,2018-02-15,17:30:00,Weather Station,Maximum Temperature,C,21.5,
+Sp17,"Cordoba, Spain",2017,2018-02-16,16:50:00,Weather Station,Maximum Temperature,C,22.9,
+Sp17,"Cordoba, Spain",2017,2018-02-17,16:50:00,Weather Station,Maximum Temperature,C,15.9,
+Sp17,"Cordoba, Spain",2017,2018-02-18,16:40:00,Weather Station,Maximum Temperature,C,18.4,
+Sp17,"Cordoba, Spain",2017,2018-02-19,16:50:00,Weather Station,Maximum Temperature,C,17.5,
+Sp17,"Cordoba, Spain",2017,2018-02-20,16:00:00,Weather Station,Maximum Temperature,C,22.3,
+Sp17,"Cordoba, Spain",2017,2018-02-21,14:40:00,Weather Station,Maximum Temperature,C,18.8,
+Sp17,"Cordoba, Spain",2017,2018-02-22,16:40:00,Weather Station,Maximum Temperature,C,17.3,
+Sp17,"Cordoba, Spain",2017,2018-02-23,16:20:00,Weather Station,Maximum Temperature,C,17,
+Sp17,"Cordoba, Spain",2017,2018-02-24,16:40:00,Weather Station,Maximum Temperature,C,17.9,
+Sp17,"Cordoba, Spain",2017,2018-02-25,15:30:00,Weather Station,Maximum Temperature,C,20.5,
+Sp17,"Cordoba, Spain",2017,2018-02-26,15:40:00,Weather Station,Maximum Temperature,C,20.4,
+Sp17,"Cordoba, Spain",2017,2018-02-27,14:40:00,Weather Station,Maximum Temperature,C,18.1,
+Sp17,"Cordoba, Spain",2017,2018-02-28,17:50:00,Weather Station,Maximum Temperature,C,15.8,
+Sp17,"Cordoba, Spain",2017,2018-03-01,16:00:00,Weather Station,Maximum Temperature,C,17.1,
+Sp17,"Cordoba, Spain",2017,2018-03-02,13:20:00,Weather Station,Maximum Temperature,C,16.8,
+Sp17,"Cordoba, Spain",2017,2018-03-03,13:10:00,Weather Station,Maximum Temperature,C,16.4,
+Sp17,"Cordoba, Spain",2017,2018-03-04,15:30:00,Weather Station,Maximum Temperature,C,17.5,
+Sp17,"Cordoba, Spain",2017,2018-03-05,16:20:00,Weather Station,Maximum Temperature,C,15.9,
+Sp17,"Cordoba, Spain",2017,2018-03-06,12:20:00,Weather Station,Maximum Temperature,C,14.1,
+Sp17,"Cordoba, Spain",2017,2018-03-07,15:50:00,Weather Station,Maximum Temperature,C,15.6,
+Sp17,"Cordoba, Spain",2017,2018-03-08,16:40:00,Weather Station,Maximum Temperature,C,18.6,
+Sp17,"Cordoba, Spain",2017,2018-03-09,12:50:00,Weather Station,Maximum Temperature,C,17.8,
+Sp17,"Cordoba, Spain",2017,2018-03-10,16:10:00,Weather Station,Maximum Temperature,C,18.7,
+Sp17,"Cordoba, Spain",2017,2018-03-11,13:10:00,Weather Station,Maximum Temperature,C,15.3,
+Sp17,"Cordoba, Spain",2017,2018-03-12,15:10:00,Weather Station,Maximum Temperature,C,17.8,
+Sp17,"Cordoba, Spain",2017,2018-03-13,16:10:00,Weather Station,Maximum Temperature,C,21.2,
+Sp17,"Cordoba, Spain",2017,2018-03-14,14:50:00,Weather Station,Maximum Temperature,C,17.9,
+Sp17,"Cordoba, Spain",2017,2018-03-15,15:00:00,Weather Station,Maximum Temperature,C,16.5,
+Sp17,"Cordoba, Spain",2017,2018-03-16,17:20:00,Weather Station,Maximum Temperature,C,15.2,
+Sp17,"Cordoba, Spain",2017,2018-03-17,14:40:00,Weather Station,Maximum Temperature,C,12.9,
+Sp17,"Cordoba, Spain",2017,2018-03-18,16:30:00,Weather Station,Maximum Temperature,C,15.9,
+Sp17,"Cordoba, Spain",2017,2018-03-19,16:10:00,Weather Station,Maximum Temperature,C,13.7,
+Sp17,"Cordoba, Spain",2017,2018-03-20,14:20:00,Weather Station,Maximum Temperature,C,14.8,
+Sp17,"Cordoba, Spain",2017,2018-03-21,17:10:00,Weather Station,Maximum Temperature,C,16.8,
+Sp17,"Cordoba, Spain",2017,2018-03-22,16:40:00,Weather Station,Maximum Temperature,C,16.2,
+Sp17,"Cordoba, Spain",2017,2018-03-23,12:40:00,Weather Station,Maximum Temperature,C,14,
+Sp17,"Cordoba, Spain",2017,2018-03-24,16:50:00,Weather Station,Maximum Temperature,C,16.8,
+Sp17,"Cordoba, Spain",2017,2018-03-25,18:50:00,Weather Station,Maximum Temperature,C,16.5,
+Sp17,"Cordoba, Spain",2017,2018-03-26,17:50:00,Weather Station,Maximum Temperature,C,19.6,
+Sp17,"Cordoba, Spain",2017,2018-03-27,19:00:00,Weather Station,Maximum Temperature,C,23.7,
+Sp17,"Cordoba, Spain",2017,2018-03-28,17:00:00,Weather Station,Maximum Temperature,C,25.4,
+Sp17,"Cordoba, Spain",2017,2018-03-29,17:30:00,Weather Station,Maximum Temperature,C,19.5,
+Sp17,"Cordoba, Spain",2017,2018-03-30,16:10:00,Weather Station,Maximum Temperature,C,17.4,
+Sp17,"Cordoba, Spain",2017,2018-03-31,18:00:00,Weather Station,Maximum Temperature,C,19.3,
+Sp17,"Cordoba, Spain",2017,2018-04-01,17:50:00,Weather Station,Maximum Temperature,C,24.1,
+Sp17,"Cordoba, Spain",2017,2018-04-02,16:50:00,Weather Station,Maximum Temperature,C,21.5,
+Sp17,"Cordoba, Spain",2017,2018-04-03,16:00:00,Weather Station,Maximum Temperature,C,21.3,
+Sp17,"Cordoba, Spain",2017,2018-04-04,17:40:00,Weather Station,Maximum Temperature,C,20.4,
+Sp17,"Cordoba, Spain",2017,2018-04-05,16:50:00,Weather Station,Maximum Temperature,C,24.8,
+Sp17,"Cordoba, Spain",2017,2018-04-06,14:20:00,Weather Station,Maximum Temperature,C,23.8,
+Sp17,"Cordoba, Spain",2017,2018-04-07,16:40:00,Weather Station,Maximum Temperature,C,17.8,
+Sp17,"Cordoba, Spain",2017,2018-04-08,17:50:00,Weather Station,Maximum Temperature,C,17.9,
+Sp17,"Cordoba, Spain",2017,2018-04-09,17:50:00,Weather Station,Maximum Temperature,C,15.6,
+Sp17,"Cordoba, Spain",2017,2018-04-10,17:40:00,Weather Station,Maximum Temperature,C,13.5,
+Sp17,"Cordoba, Spain",2017,2018-04-11,17:50:00,Weather Station,Maximum Temperature,C,17.8,
+Sp17,"Cordoba, Spain",2017,2018-04-12,13:30:00,Weather Station,Maximum Temperature,C,14.5,
+Sp17,"Cordoba, Spain",2017,2018-04-13,16:30:00,Weather Station,Maximum Temperature,C,17.2,
+Sp17,"Cordoba, Spain",2017,2018-04-14,17:40:00,Weather Station,Maximum Temperature,C,21.5,
+Sp17,"Cordoba, Spain",2017,2018-04-15,16:30:00,Weather Station,Maximum Temperature,C,20.2,
+Sp17,"Cordoba, Spain",2017,2018-04-16,16:50:00,Weather Station,Maximum Temperature,C,20.7,
+Sp17,"Cordoba, Spain",2017,2018-04-17,18:00:00,Weather Station,Maximum Temperature,C,26.3,
+Sp17,"Cordoba, Spain",2017,2018-04-18,18:50:00,Weather Station,Maximum Temperature,C,28.5,
+Sp17,"Cordoba, Spain",2017,2018-04-19,17:20:00,Weather Station,Maximum Temperature,C,28.1,
+Sp17,"Cordoba, Spain",2017,2018-04-20,16:20:00,Weather Station,Maximum Temperature,C,27.4,
+Sp17,"Cordoba, Spain",2017,2018-04-21,14:40:00,Weather Station,Maximum Temperature,C,24.9,
+Sp17,"Cordoba, Spain",2017,2018-04-22,17:30:00,Weather Station,Maximum Temperature,C,28.4,
+Sp17,"Cordoba, Spain",2017,2018-04-23,18:10:00,Weather Station,Maximum Temperature,C,28.5,
+Sp17,"Cordoba, Spain",2017,2018-04-24,15:00:00,Weather Station,Maximum Temperature,C,29.8,
+Sp17,"Cordoba, Spain",2017,2018-04-25,16:30:00,Weather Station,Maximum Temperature,C,28.1,
+Sp17,"Cordoba, Spain",2017,2018-04-26,17:10:00,Weather Station,Maximum Temperature,C,29.8,
+Sp17,"Cordoba, Spain",2017,2018-04-27,17:40:00,Weather Station,Maximum Temperature,C,26.4,
+Sp17,"Cordoba, Spain",2017,2018-04-28,16:30:00,Weather Station,Maximum Temperature,C,21.4,
+Sp17,"Cordoba, Spain",2017,2018-04-29,16:40:00,Weather Station,Maximum Temperature,C,20.5,
+Sp17,"Cordoba, Spain",2017,2018-04-30,17:00:00,Weather Station,Maximum Temperature,C,20.3,
+Sp17,"Cordoba, Spain",2017,2018-05-01,18:10:00,Weather Station,Maximum Temperature,C,17.5,
+Sp17,"Cordoba, Spain",2017,2018-05-02,17:30:00,Weather Station,Maximum Temperature,C,23.1,
+Sp17,"Cordoba, Spain",2017,2018-05-03,19:20:00,Weather Station,Maximum Temperature,C,25.4,
+Sp17,"Cordoba, Spain",2017,2018-05-04,17:10:00,Weather Station,Maximum Temperature,C,27.3,
+Sp17,"Cordoba, Spain",2017,2018-05-05,18:20:00,Weather Station,Maximum Temperature,C,29.2,
+Sp17,"Cordoba, Spain",2017,2018-05-06,17:50:00,Weather Station,Maximum Temperature,C,29.5,
+Sp17,"Cordoba, Spain",2017,2018-05-07,18:30:00,Weather Station,Maximum Temperature,C,27.2,
+Sp17,"Cordoba, Spain",2017,2018-05-08,15:00:00,Weather Station,Maximum Temperature,C,27.6,
+Sp17,"Cordoba, Spain",2017,2018-05-09,17:30:00,Weather Station,Maximum Temperature,C,23.2,
+Sp17,"Cordoba, Spain",2017,2018-05-10,16:40:00,Weather Station,Maximum Temperature,C,26.5,
+Sp17,"Cordoba, Spain",2017,2018-05-11,16:30:00,Weather Station,Maximum Temperature,C,26.9,
+Sp17,"Cordoba, Spain",2017,2018-05-12,17:10:00,Weather Station,Maximum Temperature,C,25.5,
+Sp17,"Cordoba, Spain",2017,2018-05-13,19:10:00,Weather Station,Maximum Temperature,C,24.5,
+Sp17,"Cordoba, Spain",2017,2018-05-14,17:00:00,Weather Station,Maximum Temperature,C,28.3,
+Sp17,"Cordoba, Spain",2017,2018-05-15,18:50:00,Weather Station,Maximum Temperature,C,29.8,
+Sp17,"Cordoba, Spain",2017,2018-05-16,17:00:00,Weather Station,Maximum Temperature,C,31.1,
+Sp17,"Cordoba, Spain",2017,2018-05-17,18:20:00,Weather Station,Maximum Temperature,C,30.6,
+Sp17,"Cordoba, Spain",2017,2018-05-18,13:30:00,Weather Station,Maximum Temperature,C,26.9,
+Sp17,"Cordoba, Spain",2017,2018-05-19,14:30:00,Weather Station,Maximum Temperature,C,29.2,
+Sp17,"Cordoba, Spain",2017,2018-05-20,17:30:00,Weather Station,Maximum Temperature,C,25.9,
+Sp17,"Cordoba, Spain",2017,2018-05-21,16:40:00,Weather Station,Maximum Temperature,C,27.1,
+Sp17,"Cordoba, Spain",2017,2018-05-22,18:00:00,Weather Station,Maximum Temperature,C,28.5,
+Sp17,"Cordoba, Spain",2017,2018-05-23,18:00:00,Weather Station,Maximum Temperature,C,29.4,
+Sp17,"Cordoba, Spain",2017,2018-05-24,15:00:00,Weather Station,Maximum Temperature,C,28,
+Sp17,"Cordoba, Spain",2017,2018-05-25,17:10:00,Weather Station,Maximum Temperature,C,25.4,
+Sp17,"Cordoba, Spain",2017,2018-05-26,16:20:00,Weather Station,Maximum Temperature,C,27.3,
+Sp17,"Cordoba, Spain",2017,2018-05-27,16:30:00,Weather Station,Maximum Temperature,C,26.7,
+Sp17,"Cordoba, Spain",2017,2018-05-28,18:20:00,Weather Station,Maximum Temperature,C,26.7,
+Sp17,"Cordoba, Spain",2017,2018-05-29,16:30:00,Weather Station,Maximum Temperature,C,25.5,
+Sp17,"Cordoba, Spain",2017,2018-05-30,17:50:00,Weather Station,Maximum Temperature,C,26.2,
+Sp17,"Cordoba, Spain",2017,2018-05-31,18:10:00,Weather Station,Maximum Temperature,C,28.9,
+Sp17,"Cordoba, Spain",2017,2018-06-01,16:50:00,Weather Station,Maximum Temperature,C,29.9,
+Sp17,"Cordoba, Spain",2017,2018-06-02,15:00:00,Weather Station,Maximum Temperature,C,26.3,
+Sp17,"Cordoba, Spain",2017,2018-06-03,17:10:00,Weather Station,Maximum Temperature,C,29.4,
+Sp17,"Cordoba, Spain",2017,2018-06-04,17:40:00,Weather Station,Maximum Temperature,C,26.5,
+Sp17,"Cordoba, Spain",2017,2018-06-05,15:00:00,Weather Station,Maximum Temperature,C,24.4,
+Sp17,"Cordoba, Spain",2017,2018-06-06,18:40:00,Weather Station,Maximum Temperature,C,25.5,
+Sp17,"Cordoba, Spain",2017,2018-06-07,16:00:00,Weather Station,Maximum Temperature,C,28.9,
+Sp17,"Cordoba, Spain",2017,2018-06-08,11:20:00,Weather Station,Maximum Temperature,C,20.4,
+Sp17,"Cordoba, Spain",2017,2018-06-09,17:20:00,Weather Station,Maximum Temperature,C,25.5,
+Sp17,"Cordoba, Spain",2017,2018-06-10,16:30:00,Weather Station,Maximum Temperature,C,27.8,
+Sp17,"Cordoba, Spain",2017,2018-06-11,15:30:00,Weather Station,Maximum Temperature,C,26.5,
+Sp17,"Cordoba, Spain",2017,2018-06-12,19:20:00,Weather Station,Maximum Temperature,C,30.5,
+Sp17,"Cordoba, Spain",2017,2018-06-13,17:10:00,Weather Station,Maximum Temperature,C,33.4,
+Sp17,"Cordoba, Spain",2017,2018-06-14,19:00:00,Weather Station,Maximum Temperature,C,34.6,
+Sp17,"Cordoba, Spain",2017,2018-06-15,17:30:00,Weather Station,Maximum Temperature,C,37.2,
+Sp17,"Cordoba, Spain",2017,2018-06-16,17:40:00,Weather Station,Maximum Temperature,C,37.9,
+Sp17,"Cordoba, Spain",2017,2018-06-17,19:10:00,Weather Station,Maximum Temperature,C,38.8,
+Sp17,"Cordoba, Spain",2017,2018-06-18,17:40:00,Weather Station,Maximum Temperature,C,40,
+Sp17,"Cordoba, Spain",2017,2018-06-19,16:00:00,Weather Station,Maximum Temperature,C,36.8,
+Sp17,"Cordoba, Spain",2017,2018-06-20,17:40:00,Weather Station,Maximum Temperature,C,37.2,
+Sp17,"Cordoba, Spain",2017,2017-12-01,8:30:00,Weather Station,Minimum Temperature,C,-0.1,
+Sp17,"Cordoba, Spain",2017,2017-12-02,8:30:00,Weather Station,Minimum Temperature,C,0.4,
+Sp17,"Cordoba, Spain",2017,2017-12-03,8:00:00,Weather Station,Minimum Temperature,C,-0.7,
+Sp17,"Cordoba, Spain",2017,2017-12-04,8:20:00,Weather Station,Minimum Temperature,C,0.1,
+Sp17,"Cordoba, Spain",2017,2017-12-05,7:30:00,Weather Station,Minimum Temperature,C,-1.2,
+Sp17,"Cordoba, Spain",2017,2017-12-06,8:10:00,Weather Station,Minimum Temperature,C,-1.1,
+Sp17,"Cordoba, Spain",2017,2017-12-07,7:40:00,Weather Station,Minimum Temperature,C,-1,
+Sp17,"Cordoba, Spain",2017,2017-12-08,7:50:00,Weather Station,Minimum Temperature,C,-0.4,
+Sp17,"Cordoba, Spain",2017,2017-12-09,2:10:00,Weather Station,Minimum Temperature,C,6.6,
+Sp17,"Cordoba, Spain",2017,2017-12-10,4:30:00,Weather Station,Minimum Temperature,C,9.2,
+Sp17,"Cordoba, Spain",2017,2017-12-11,23:30:00,Weather Station,Minimum Temperature,C,6.9,
+Sp17,"Cordoba, Spain",2017,2017-12-12,8:20:00,Weather Station,Minimum Temperature,C,1.5,
+Sp17,"Cordoba, Spain",2017,2017-12-13,8:20:00,Weather Station,Minimum Temperature,C,0.8,
+Sp17,"Cordoba, Spain",2017,2017-12-14,6:10:00,Weather Station,Minimum Temperature,C,1.4,
+Sp17,"Cordoba, Spain",2017,2017-12-15,0:10:00,Weather Station,Minimum Temperature,C,10.3,
+Sp17,"Cordoba, Spain",2017,2017-12-16,7:50:00,Weather Station,Minimum Temperature,C,4.2,
+Sp17,"Cordoba, Spain",2017,2017-12-17,6:30:00,Weather Station,Minimum Temperature,C,1.7,
+Sp17,"Cordoba, Spain",2017,2017-12-18,8:40:00,Weather Station,Minimum Temperature,C,0.6,
+Sp17,"Cordoba, Spain",2017,2017-12-19,7:40:00,Weather Station,Minimum Temperature,C,0.1,
+Sp17,"Cordoba, Spain",2017,2017-12-20,5:00:00,Weather Station,Minimum Temperature,C,1.4,
+Sp17,"Cordoba, Spain",2017,2017-12-21,4:40:00,Weather Station,Minimum Temperature,C,1.2,
+Sp17,"Cordoba, Spain",2017,2017-12-22,8:40:00,Weather Station,Minimum Temperature,C,0.4,
+Sp17,"Cordoba, Spain",2017,2017-12-23,8:40:00,Weather Station,Minimum Temperature,C,2.2,
+Sp17,"Cordoba, Spain",2017,2017-12-24,7:50:00,Weather Station,Minimum Temperature,C,2,
+Sp17,"Cordoba, Spain",2017,2017-12-25,7:20:00,Weather Station,Minimum Temperature,C,1.9,
+Sp17,"Cordoba, Spain",2017,2017-12-26,20:50:00,Weather Station,Minimum Temperature,C,8.8,
+Sp17,"Cordoba, Spain",2017,2017-12-27,21:00:00,Weather Station,Minimum Temperature,C,9.3,
+Sp17,"Cordoba, Spain",2017,2017-12-28,3:20:00,Weather Station,Minimum Temperature,C,10.1,
+Sp17,"Cordoba, Spain",2017,2017-12-29,8:40:00,Weather Station,Minimum Temperature,C,13.1,
+Sp17,"Cordoba, Spain",2017,2017-12-30,23:59:00,Weather Station,Minimum Temperature,C,8.7,
+Sp17,"Cordoba, Spain",2017,2017-12-31,8:10:00,Weather Station,Minimum Temperature,C,6.2,
+Sp17,"Cordoba, Spain",2017,2018-01-01,9:00:00,Weather Station,Minimum Temperature,C,1.8,
+Sp17,"Cordoba, Spain",2017,2018-01-02,7:50:00,Weather Station,Minimum Temperature,C,0.9,
+Sp17,"Cordoba, Spain",2017,2018-01-03,0:00:00,Weather Station,Minimum Temperature,C,8.6,
+Sp17,"Cordoba, Spain",2017,2018-01-04,8:30:00,Weather Station,Minimum Temperature,C,12.1,
+Sp17,"Cordoba, Spain",2017,2018-01-05,8:50:00,Weather Station,Minimum Temperature,C,12.1,
+Sp17,"Cordoba, Spain",2017,2018-01-06,23:59:00,Weather Station,Minimum Temperature,C,4.2,
+Sp17,"Cordoba, Spain",2017,2018-01-07,6:00:00,Weather Station,Minimum Temperature,C,1.2,
+Sp17,"Cordoba, Spain",2017,2018-01-08,23:59:00,Weather Station,Minimum Temperature,C,2.6,
+Sp17,"Cordoba, Spain",2017,2018-01-09,7:00:00,Weather Station,Minimum Temperature,C,-0.4,
+Sp17,"Cordoba, Spain",2017,2018-01-10,0:00:00,Weather Station,Minimum Temperature,C,7.9,
+Sp17,"Cordoba, Spain",2017,2018-01-11,6:50:00,Weather Station,Minimum Temperature,C,3.7,
+Sp17,"Cordoba, Spain",2017,2018-01-12,7:40:00,Weather Station,Minimum Temperature,C,0.2,
+Sp17,"Cordoba, Spain",2017,2018-01-13,8:10:00,Weather Station,Minimum Temperature,C,2.9,
+Sp17,"Cordoba, Spain",2017,2018-01-14,23:59:00,Weather Station,Minimum Temperature,C,3.7,
+Sp17,"Cordoba, Spain",2017,2018-01-15,8:20:00,Weather Station,Minimum Temperature,C,-0.2,
+Sp17,"Cordoba, Spain",2017,2018-01-16,6:00:00,Weather Station,Minimum Temperature,C,0.6,
+Sp17,"Cordoba, Spain",2017,2018-01-17,3:40:00,Weather Station,Minimum Temperature,C,3.7,
+Sp17,"Cordoba, Spain",2017,2018-01-18,8:20:00,Weather Station,Minimum Temperature,C,2.8,
+Sp17,"Cordoba, Spain",2017,2018-01-19,9:00:00,Weather Station,Minimum Temperature,C,3.1,
+Sp17,"Cordoba, Spain",2017,2018-01-20,8:30:00,Weather Station,Minimum Temperature,C,1.5,
+Sp17,"Cordoba, Spain",2017,2018-01-21,8:20:00,Weather Station,Minimum Temperature,C,1.2,
+Sp17,"Cordoba, Spain",2017,2018-01-22,5:40:00,Weather Station,Minimum Temperature,C,2.6,
+Sp17,"Cordoba, Spain",2017,2018-01-23,7:50:00,Weather Station,Minimum Temperature,C,1.8,
+Sp17,"Cordoba, Spain",2017,2018-01-24,4:40:00,Weather Station,Minimum Temperature,C,3.5,
+Sp17,"Cordoba, Spain",2017,2018-01-25,3:00:00,Weather Station,Minimum Temperature,C,5.8,
+Sp17,"Cordoba, Spain",2017,2018-01-26,7:50:00,Weather Station,Minimum Temperature,C,2.7,
+Sp17,"Cordoba, Spain",2017,2018-01-27,7:30:00,Weather Station,Minimum Temperature,C,0.6,
+Sp17,"Cordoba, Spain",2017,2018-01-28,3:40:00,Weather Station,Minimum Temperature,C,0.7,
+Sp17,"Cordoba, Spain",2017,2018-01-29,0:00:00,Weather Station,Minimum Temperature,C,6.3,
+Sp17,"Cordoba, Spain",2017,2018-01-30,5:50:00,Weather Station,Minimum Temperature,C,4.9,
+Sp17,"Cordoba, Spain",2017,2018-01-31,5:30:00,Weather Station,Minimum Temperature,C,4.3,
+Sp17,"Cordoba, Spain",2017,2018-02-01,8:00:00,Weather Station,Minimum Temperature,C,1.9,
+Sp17,"Cordoba, Spain",2017,2018-02-02,8:40:00,Weather Station,Minimum Temperature,C,0.6,
+Sp17,"Cordoba, Spain",2017,2018-02-03,8:10:00,Weather Station,Minimum Temperature,C,-2.9,
+Sp17,"Cordoba, Spain",2017,2018-02-04,8:30:00,Weather Station,Minimum Temperature,C,3.4,
+Sp17,"Cordoba, Spain",2017,2018-02-05,3:30:00,Weather Station,Minimum Temperature,C,3.8,
+Sp17,"Cordoba, Spain",2017,2018-02-06,7:00:00,Weather Station,Minimum Temperature,C,2.8,
+Sp17,"Cordoba, Spain",2017,2018-02-07,23:59:00,Weather Station,Minimum Temperature,C,2,
+Sp17,"Cordoba, Spain",2017,2018-02-08,7:50:00,Weather Station,Minimum Temperature,C,-0.5,
+Sp17,"Cordoba, Spain",2017,2018-02-09,7:50:00,Weather Station,Minimum Temperature,C,-3.1,
+Sp17,"Cordoba, Spain",2017,2018-02-10,8:30:00,Weather Station,Minimum Temperature,C,0.3,
+Sp17,"Cordoba, Spain",2017,2018-02-11,8:00:00,Weather Station,Minimum Temperature,C,-0.2,
+Sp17,"Cordoba, Spain",2017,2018-02-12,23:59:00,Weather Station,Minimum Temperature,C,5.6,
+Sp17,"Cordoba, Spain",2017,2018-02-13,7:40:00,Weather Station,Minimum Temperature,C,-0.9,
+Sp17,"Cordoba, Spain",2017,2018-02-14,7:30:00,Weather Station,Minimum Temperature,C,0,
+Sp17,"Cordoba, Spain",2017,2018-02-15,7:40:00,Weather Station,Minimum Temperature,C,2,
+Sp17,"Cordoba, Spain",2017,2018-02-16,8:00:00,Weather Station,Minimum Temperature,C,3.2,
+Sp17,"Cordoba, Spain",2017,2018-02-17,7:20:00,Weather Station,Minimum Temperature,C,3.4,
+Sp17,"Cordoba, Spain",2017,2018-02-18,3:10:00,Weather Station,Minimum Temperature,C,3,
+Sp17,"Cordoba, Spain",2017,2018-02-19,7:40:00,Weather Station,Minimum Temperature,C,3.4,
+Sp17,"Cordoba, Spain",2017,2018-02-20,7:50:00,Weather Station,Minimum Temperature,C,1.8,
+Sp17,"Cordoba, Spain",2017,2018-02-21,7:00:00,Weather Station,Minimum Temperature,C,4.5,
+Sp17,"Cordoba, Spain",2017,2018-02-22,7:50:00,Weather Station,Minimum Temperature,C,-0.9,
+Sp17,"Cordoba, Spain",2017,2018-02-23,5:10:00,Weather Station,Minimum Temperature,C,-0.6,
+Sp17,"Cordoba, Spain",2017,2018-02-24,7:00:00,Weather Station,Minimum Temperature,C,-0.2,
+Sp17,"Cordoba, Spain",2017,2018-02-25,6:50:00,Weather Station,Minimum Temperature,C,6.1,
+Sp17,"Cordoba, Spain",2017,2018-02-26,3:00:00,Weather Station,Minimum Temperature,C,4.4,
+Sp17,"Cordoba, Spain",2017,2018-02-27,0:10:00,Weather Station,Minimum Temperature,C,11.2,
+Sp17,"Cordoba, Spain",2017,2018-02-28,8:10:00,Weather Station,Minimum Temperature,C,12.1,
+Sp17,"Cordoba, Spain",2017,2018-03-01,23:59:00,Weather Station,Minimum Temperature,C,11.1,
+Sp17,"Cordoba, Spain",2017,2018-03-02,9:20:00,Weather Station,Minimum Temperature,C,9.6,
+Sp17,"Cordoba, Spain",2017,2018-03-03,21:50:00,Weather Station,Minimum Temperature,C,10.8,
+Sp17,"Cordoba, Spain",2017,2018-03-04,10:00:00,Weather Station,Minimum Temperature,C,10.5,
+Sp17,"Cordoba, Spain",2017,2018-03-05,23:00:00,Weather Station,Minimum Temperature,C,9.4,
+Sp17,"Cordoba, Spain",2017,2018-03-06,8:00:00,Weather Station,Minimum Temperature,C,7.7,
+Sp17,"Cordoba, Spain",2017,2018-03-07,8:10:00,Weather Station,Minimum Temperature,C,5.3,
+Sp17,"Cordoba, Spain",2017,2018-03-08,0:30:00,Weather Station,Minimum Temperature,C,9.1,
+Sp17,"Cordoba, Spain",2017,2018-03-09,7:40:00,Weather Station,Minimum Temperature,C,12.3,
+Sp17,"Cordoba, Spain",2017,2018-03-10,22:40:00,Weather Station,Minimum Temperature,C,10.6,
+Sp17,"Cordoba, Spain",2017,2018-03-11,8:10:00,Weather Station,Minimum Temperature,C,9.8,
+Sp17,"Cordoba, Spain",2017,2018-03-12,7:30:00,Weather Station,Minimum Temperature,C,6.9,
+Sp17,"Cordoba, Spain",2017,2018-03-13,2:40:00,Weather Station,Minimum Temperature,C,11.7,
+Sp17,"Cordoba, Spain",2017,2018-03-14,0:00:00,Weather Station,Minimum Temperature,C,13.4,
+Sp17,"Cordoba, Spain",2017,2018-03-15,23:59:00,Weather Station,Minimum Temperature,C,8.5,
+Sp17,"Cordoba, Spain",2017,2018-03-16,7:40:00,Weather Station,Minimum Temperature,C,4,
+Sp17,"Cordoba, Spain",2017,2018-03-17,5:10:00,Weather Station,Minimum Temperature,C,4.9,
+Sp17,"Cordoba, Spain",2017,2018-03-18,0:00:00,Weather Station,Minimum Temperature,C,8.1,
+Sp17,"Cordoba, Spain",2017,2018-03-19,3:20:00,Weather Station,Minimum Temperature,C,6.2,
+Sp17,"Cordoba, Spain",2017,2018-03-20,7:30:00,Weather Station,Minimum Temperature,C,2.1,
+Sp17,"Cordoba, Spain",2017,2018-03-21,3:10:00,Weather Station,Minimum Temperature,C,2.9,
+Sp17,"Cordoba, Spain",2017,2018-03-22,7:30:00,Weather Station,Minimum Temperature,C,0.5,
+Sp17,"Cordoba, Spain",2017,2018-03-23,3:40:00,Weather Station,Minimum Temperature,C,4.2,
+Sp17,"Cordoba, Spain",2017,2018-03-24,7:30:00,Weather Station,Minimum Temperature,C,7.4,
+Sp17,"Cordoba, Spain",2017,2018-03-25,23:59:00,Weather Station,Minimum Temperature,C,7.1,
+Sp17,"Cordoba, Spain",2017,2018-03-26,8:20:00,Weather Station,Minimum Temperature,C,2.3,
+Sp17,"Cordoba, Spain",2017,2018-03-27,7:40:00,Weather Station,Minimum Temperature,C,4.2,
+Sp17,"Cordoba, Spain",2017,2018-03-28,8:20:00,Weather Station,Minimum Temperature,C,6,
+Sp17,"Cordoba, Spain",2017,2018-03-29,8:20:00,Weather Station,Minimum Temperature,C,6.6,
+Sp17,"Cordoba, Spain",2017,2018-03-30,5:30:00,Weather Station,Minimum Temperature,C,6.4,
+Sp17,"Cordoba, Spain",2017,2018-03-31,8:10:00,Weather Station,Minimum Temperature,C,5,
+Sp17,"Cordoba, Spain",2017,2018-04-01,6:40:00,Weather Station,Minimum Temperature,C,5.5,
+Sp17,"Cordoba, Spain",2017,2018-04-02,8:30:00,Weather Station,Minimum Temperature,C,7.5,
+Sp17,"Cordoba, Spain",2017,2018-04-03,8:10:00,Weather Station,Minimum Temperature,C,12.7,
+Sp17,"Cordoba, Spain",2017,2018-04-04,7:50:00,Weather Station,Minimum Temperature,C,9.6,
+Sp17,"Cordoba, Spain",2017,2018-04-05,6:20:00,Weather Station,Minimum Temperature,C,6.7,
+Sp17,"Cordoba, Spain",2017,2018-04-06,6:00:00,Weather Station,Minimum Temperature,C,9.2,
+Sp17,"Cordoba, Spain",2017,2018-04-07,8:20:00,Weather Station,Minimum Temperature,C,10.1,
+Sp17,"Cordoba, Spain",2017,2018-04-08,1:40:00,Weather Station,Minimum Temperature,C,9.4,
+Sp17,"Cordoba, Spain",2017,2018-04-09,8:10:00,Weather Station,Minimum Temperature,C,6,
+Sp17,"Cordoba, Spain",2017,2018-04-10,23:40:00,Weather Station,Minimum Temperature,C,7.1,
+Sp17,"Cordoba, Spain",2017,2018-04-11,0:00:00,Weather Station,Minimum Temperature,C,7.1,
+Sp17,"Cordoba, Spain",2017,2018-04-12,4:30:00,Weather Station,Minimum Temperature,C,6.6,
+Sp17,"Cordoba, Spain",2017,2018-04-13,4:40:00,Weather Station,Minimum Temperature,C,7,
+Sp17,"Cordoba, Spain",2017,2018-04-14,6:30:00,Weather Station,Minimum Temperature,C,4.6,
+Sp17,"Cordoba, Spain",2017,2018-04-15,3:50:00,Weather Station,Minimum Temperature,C,10.9,
+Sp17,"Cordoba, Spain",2017,2018-04-16,7:50:00,Weather Station,Minimum Temperature,C,7.5,
+Sp17,"Cordoba, Spain",2017,2018-04-17,7:10:00,Weather Station,Minimum Temperature,C,7.2,
+Sp17,"Cordoba, Spain",2017,2018-04-18,6:50:00,Weather Station,Minimum Temperature,C,8.4,
+Sp17,"Cordoba, Spain",2017,2018-04-19,7:40:00,Weather Station,Minimum Temperature,C,9.1,
+Sp17,"Cordoba, Spain",2017,2018-04-20,6:50:00,Weather Station,Minimum Temperature,C,10.5,
+Sp17,"Cordoba, Spain",2017,2018-04-21,8:30:00,Weather Station,Minimum Temperature,C,14.1,
+Sp17,"Cordoba, Spain",2017,2018-04-22,7:20:00,Weather Station,Minimum Temperature,C,12.8,
+Sp17,"Cordoba, Spain",2017,2018-04-23,7:40:00,Weather Station,Minimum Temperature,C,14.8,
+Sp17,"Cordoba, Spain",2017,2018-04-24,8:00:00,Weather Station,Minimum Temperature,C,16.1,
+Sp17,"Cordoba, Spain",2017,2018-04-25,7:20:00,Weather Station,Minimum Temperature,C,12.6,
+Sp17,"Cordoba, Spain",2017,2018-04-26,8:00:00,Weather Station,Minimum Temperature,C,15.1,
+Sp17,"Cordoba, Spain",2017,2018-04-27,6:40:00,Weather Station,Minimum Temperature,C,15,
+Sp17,"Cordoba, Spain",2017,2018-04-28,6:50:00,Weather Station,Minimum Temperature,C,11.3,
+Sp17,"Cordoba, Spain",2017,2018-04-29,7:50:00,Weather Station,Minimum Temperature,C,7.8,
+Sp17,"Cordoba, Spain",2017,2018-04-30,7:30:00,Weather Station,Minimum Temperature,C,5.3,
+Sp17,"Cordoba, Spain",2017,2018-05-01,7:20:00,Weather Station,Minimum Temperature,C,5.5,
+Sp17,"Cordoba, Spain",2017,2018-05-02,7:00:00,Weather Station,Minimum Temperature,C,5,
+Sp17,"Cordoba, Spain",2017,2018-05-03,7:30:00,Weather Station,Minimum Temperature,C,6.8,
+Sp17,"Cordoba, Spain",2017,2018-05-04,6:50:00,Weather Station,Minimum Temperature,C,10.2,
+Sp17,"Cordoba, Spain",2017,2018-05-05,7:10:00,Weather Station,Minimum Temperature,C,9.8,
+Sp17,"Cordoba, Spain",2017,2018-05-06,7:30:00,Weather Station,Minimum Temperature,C,13.7,
+Sp17,"Cordoba, Spain",2017,2018-05-07,5:00:00,Weather Station,Minimum Temperature,C,10.8,
+Sp17,"Cordoba, Spain",2017,2018-05-08,7:00:00,Weather Station,Minimum Temperature,C,13.5,
+Sp17,"Cordoba, Spain",2017,2018-05-09,4:20:00,Weather Station,Minimum Temperature,C,16.2,
+Sp17,"Cordoba, Spain",2017,2018-05-10,5:30:00,Weather Station,Minimum Temperature,C,16,
+Sp17,"Cordoba, Spain",2017,2018-05-11,7:10:00,Weather Station,Minimum Temperature,C,10.8,
+Sp17,"Cordoba, Spain",2017,2018-05-12,6:10:00,Weather Station,Minimum Temperature,C,12.8,
+Sp17,"Cordoba, Spain",2017,2018-05-13,7:30:00,Weather Station,Minimum Temperature,C,8.7,
+Sp17,"Cordoba, Spain",2017,2018-05-14,7:20:00,Weather Station,Minimum Temperature,C,7.6,
+Sp17,"Cordoba, Spain",2017,2018-05-15,6:50:00,Weather Station,Minimum Temperature,C,11.4,
+Sp17,"Cordoba, Spain",2017,2018-05-16,7:20:00,Weather Station,Minimum Temperature,C,11,
+Sp17,"Cordoba, Spain",2017,2018-05-17,6:50:00,Weather Station,Minimum Temperature,C,11.3,
+Sp17,"Cordoba, Spain",2017,2018-05-18,6:50:00,Weather Station,Minimum Temperature,C,13.8,
+Sp17,"Cordoba, Spain",2017,2018-05-19,7:00:00,Weather Station,Minimum Temperature,C,15.5,
+Sp17,"Cordoba, Spain",2017,2018-05-20,6:30:00,Weather Station,Minimum Temperature,C,12.5,
+Sp17,"Cordoba, Spain",2017,2018-05-21,7:20:00,Weather Station,Minimum Temperature,C,12.3,
+Sp17,"Cordoba, Spain",2017,2018-05-22,1:40:00,Weather Station,Minimum Temperature,C,15.1,
+Sp17,"Cordoba, Spain",2017,2018-05-23,6:40:00,Weather Station,Minimum Temperature,C,12.7,
+Sp17,"Cordoba, Spain",2017,2018-05-24,23:30:00,Weather Station,Minimum Temperature,C,16.3,
+Sp17,"Cordoba, Spain",2017,2018-05-25,7:10:00,Weather Station,Minimum Temperature,C,13.9,
+Sp17,"Cordoba, Spain",2017,2018-05-26,6:30:00,Weather Station,Minimum Temperature,C,12.3,
+Sp17,"Cordoba, Spain",2017,2018-05-27,6:00:00,Weather Station,Minimum Temperature,C,14.5,
+Sp17,"Cordoba, Spain",2017,2018-05-28,2:30:00,Weather Station,Minimum Temperature,C,16,
+Sp17,"Cordoba, Spain",2017,2018-05-29,3:20:00,Weather Station,Minimum Temperature,C,14.2,
+Sp17,"Cordoba, Spain",2017,2018-05-30,4:00:00,Weather Station,Minimum Temperature,C,13.7,
+Sp17,"Cordoba, Spain",2017,2018-05-31,6:30:00,Weather Station,Minimum Temperature,C,11.7,
+Sp17,"Cordoba, Spain",2017,2018-06-01,6:30:00,Weather Station,Minimum Temperature,C,12.9,
+Sp17,"Cordoba, Spain",2017,2018-06-02,6:20:00,Weather Station,Minimum Temperature,C,14.3,
+Sp17,"Cordoba, Spain",2017,2018-06-03,7:00:00,Weather Station,Minimum Temperature,C,16.3,
+Sp17,"Cordoba, Spain",2017,2018-06-04,7:30:00,Weather Station,Minimum Temperature,C,13.2,
+Sp17,"Cordoba, Spain",2017,2018-06-05,6:50:00,Weather Station,Minimum Temperature,C,16.5,
+Sp17,"Cordoba, Spain",2017,2018-06-06,6:10:00,Weather Station,Minimum Temperature,C,16.3,
+Sp17,"Cordoba, Spain",2017,2018-06-07,3:40:00,Weather Station,Minimum Temperature,C,14.6,
+Sp17,"Cordoba, Spain",2017,2018-06-08,4:50:00,Weather Station,Minimum Temperature,C,15.6,
+Sp17,"Cordoba, Spain",2017,2018-06-09,3:00:00,Weather Station,Minimum Temperature,C,14.8,
+Sp17,"Cordoba, Spain",2017,2018-06-10,4:00:00,Weather Station,Minimum Temperature,C,14.2,
+Sp17,"Cordoba, Spain",2017,2018-06-11,7:20:00,Weather Station,Minimum Temperature,C,16.2,
+Sp17,"Cordoba, Spain",2017,2018-06-12,7:00:00,Weather Station,Minimum Temperature,C,12.8,
+Sp17,"Cordoba, Spain",2017,2018-06-13,7:00:00,Weather Station,Minimum Temperature,C,14.6,
+Sp17,"Cordoba, Spain",2017,2018-06-14,6:50:00,Weather Station,Minimum Temperature,C,15.3,
+Sp17,"Cordoba, Spain",2017,2018-06-15,6:50:00,Weather Station,Minimum Temperature,C,15.1,
+Sp17,"Cordoba, Spain",2017,2018-06-16,7:20:00,Weather Station,Minimum Temperature,C,18.3,
+Sp17,"Cordoba, Spain",2017,2018-06-17,7:10:00,Weather Station,Minimum Temperature,C,18.3,
+Sp17,"Cordoba, Spain",2017,2018-06-18,7:20:00,Weather Station,Minimum Temperature,C,19.7,
+Sp17,"Cordoba, Spain",2017,2018-06-19,6:50:00,Weather Station,Minimum Temperature,C,19.4,
+Sp17,"Cordoba, Spain",2017,2018-06-20,7:00:00,Weather Station,Minimum Temperature,C,18.6,
+Sp17,"Cordoba, Spain",2017,2017-12-01,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-02,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-03,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-04,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-05,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-06,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-07,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-08,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-09,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-10,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-11,,Weather Station,Rainfall 00 to 06h,mm,1.4,
+Sp17,"Cordoba, Spain",2017,2017-12-12,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-13,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-14,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-15,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-16,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-17,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-18,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-19,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-20,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-21,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-22,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-23,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-24,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-25,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-26,,Weather Station,Rainfall 00 to 06h,mm,2.4,
+Sp17,"Cordoba, Spain",2017,2017-12-27,,Weather Station,Rainfall 00 to 06h,mm,1.1,
+Sp17,"Cordoba, Spain",2017,2017-12-28,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-29,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-30,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-31,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-01,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-02,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-03,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-04,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-05,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-06,,Weather Station,Rainfall 00 to 06h,mm,11.9,
+Sp17,"Cordoba, Spain",2017,2018-01-07,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-08,,Weather Station,Rainfall 00 to 06h,mm,2.9,
+Sp17,"Cordoba, Spain",2017,2018-01-09,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-10,,Weather Station,Rainfall 00 to 06h,mm,5.7,
+Sp17,"Cordoba, Spain",2017,2018-01-11,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-12,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-13,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-14,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-15,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-16,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-17,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-18,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-19,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-20,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-21,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-22,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-23,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-24,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-25,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-26,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-27,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-28,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-29,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-30,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-31,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-01,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-02,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-03,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-04,,Weather Station,Rainfall 00 to 06h,mm,0.8,
+Sp17,"Cordoba, Spain",2017,2018-02-05,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-06,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-07,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-08,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-09,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-10,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-11,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-12,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-13,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-14,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-15,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-16,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-17,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-18,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-19,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-20,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-21,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-22,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-23,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-24,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-25,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-26,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-27,,Weather Station,Rainfall 00 to 06h,mm,3.6,
+Sp17,"Cordoba, Spain",2017,2018-02-28,,Weather Station,Rainfall 00 to 06h,mm,1.5,
+Sp17,"Cordoba, Spain",2017,2018-03-01,,Weather Station,Rainfall 00 to 06h,mm,3.3,
+Sp17,"Cordoba, Spain",2017,2018-03-02,,Weather Station,Rainfall 00 to 06h,mm,3.6,
+Sp17,"Cordoba, Spain",2017,2018-03-03,,Weather Station,Rainfall 00 to 06h,mm,3.1,
+Sp17,"Cordoba, Spain",2017,2018-03-04,,Weather Station,Rainfall 00 to 06h,mm,8.5,
+Sp17,"Cordoba, Spain",2017,2018-03-05,,Weather Station,Rainfall 00 to 06h,mm,1.1,
+Sp17,"Cordoba, Spain",2017,2018-03-06,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-07,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-08,,Weather Station,Rainfall 00 to 06h,mm,13.4,
+Sp17,"Cordoba, Spain",2017,2018-03-09,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-10,,Weather Station,Rainfall 00 to 06h,mm,1,
+Sp17,"Cordoba, Spain",2017,2018-03-11,,Weather Station,Rainfall 00 to 06h,mm,0.3,
+Sp17,"Cordoba, Spain",2017,2018-03-12,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-13,,Weather Station,Rainfall 00 to 06h,mm,1.2,
+Sp17,"Cordoba, Spain",2017,2018-03-14,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-15,,Weather Station,Rainfall 00 to 06h,mm,16.1,
+Sp17,"Cordoba, Spain",2017,2018-03-16,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-17,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-18,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-19,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-20,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-21,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-22,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-23,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-24,,Weather Station,Rainfall 00 to 06h,mm,4.3,
+Sp17,"Cordoba, Spain",2017,2018-03-25,,Weather Station,Rainfall 00 to 06h,mm,2.9,
+Sp17,"Cordoba, Spain",2017,2018-03-26,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-27,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-28,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-29,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-30,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-31,,Weather Station,Rainfall 00 to 06h,mm,1.7,
+Sp17,"Cordoba, Spain",2017,2018-04-01,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-02,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-03,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-04,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-05,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-06,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-07,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-08,,Weather Station,Rainfall 00 to 06h,mm,0.2,
+Sp17,"Cordoba, Spain",2017,2018-04-09,,Weather Station,Rainfall 00 to 06h,mm,0.4,
+Sp17,"Cordoba, Spain",2017,2018-04-10,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-11,,Weather Station,Rainfall 00 to 06h,mm,0.2,
+Sp17,"Cordoba, Spain",2017,2018-04-12,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-13,,Weather Station,Rainfall 00 to 06h,mm,0.1,
+Sp17,"Cordoba, Spain",2017,2018-04-14,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-15,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-16,,Weather Station,Rainfall 00 to 06h,mm,5.5,
+Sp17,"Cordoba, Spain",2017,2018-04-17,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-18,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-19,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-20,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-21,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-22,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-23,,Weather Station,Rainfall 00 to 06h,mm,1.1,
+Sp17,"Cordoba, Spain",2017,2018-04-24,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-25,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-26,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-27,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-28,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-29,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-30,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-01,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-02,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-03,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-04,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-05,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-06,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-07,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-08,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-09,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-10,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-11,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-12,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-13,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-15,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-16,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-17,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-18,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-19,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-20,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-21,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-22,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-23,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-24,,Weather Station,Rainfall 00 to 06h,mm,0.2,
+Sp17,"Cordoba, Spain",2017,2018-05-25,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-26,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-27,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-28,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-29,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-30,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-31,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-01,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-02,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-03,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-04,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-05,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-06,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-07,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-08,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-09,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-10,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-11,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-12,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-13,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-14,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-15,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-16,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-17,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-18,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-19,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-20,,Weather Station,Rainfall 00 to 06h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-01,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-02,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-03,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-04,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-05,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-06,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-07,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-08,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-09,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-10,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-11,,Weather Station,Rainfall 06 to 12h,mm,16.5,
+Sp17,"Cordoba, Spain",2017,2017-12-12,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-13,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-14,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-15,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-16,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-17,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-18,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-19,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-20,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-21,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-22,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-23,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-24,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-25,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-26,,Weather Station,Rainfall 06 to 12h,mm,0.4,
+Sp17,"Cordoba, Spain",2017,2017-12-27,,Weather Station,Rainfall 06 to 12h,mm,0.3,
+Sp17,"Cordoba, Spain",2017,2017-12-28,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-29,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-30,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-31,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-01,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-02,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-03,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-04,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-05,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-06,,Weather Station,Rainfall 06 to 12h,mm,4.7,
+Sp17,"Cordoba, Spain",2017,2018-01-07,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-08,,Weather Station,Rainfall 06 to 12h,mm,1.2,
+Sp17,"Cordoba, Spain",2017,2018-01-09,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-10,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-11,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-12,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-13,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-14,,Weather Station,Rainfall 06 to 12h,mm,1.1,
+Sp17,"Cordoba, Spain",2017,2018-01-15,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-16,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-17,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-18,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-19,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-20,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-21,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-22,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-23,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-24,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-25,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-26,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-27,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-28,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-29,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-30,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-31,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-01,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-02,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-03,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-04,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-05,,Weather Station,Rainfall 06 to 12h,mm,0.7,
+Sp17,"Cordoba, Spain",2017,2018-02-06,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-07,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-08,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-09,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-10,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-12,,Weather Station,Rainfall 06 to 12h,mm,1.2,
+Sp17,"Cordoba, Spain",2017,2018-02-13,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-14,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-15,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-16,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-17,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-18,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-19,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-20,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-21,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-22,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-23,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-24,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-25,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-26,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-27,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-28,,Weather Station,Rainfall 06 to 12h,mm,6.1,
+Sp17,"Cordoba, Spain",2017,2018-03-01,,Weather Station,Rainfall 06 to 12h,mm,7.9,
+Sp17,"Cordoba, Spain",2017,2018-03-02,,Weather Station,Rainfall 06 to 12h,mm,18.7,
+Sp17,"Cordoba, Spain",2017,2018-03-03,,Weather Station,Rainfall 06 to 12h,mm,0.7,
+Sp17,"Cordoba, Spain",2017,2018-03-04,,Weather Station,Rainfall 06 to 12h,mm,12.1,
+Sp17,"Cordoba, Spain",2017,2018-03-05,,Weather Station,Rainfall 06 to 12h,mm,10.3,
+Sp17,"Cordoba, Spain",2017,2018-03-06,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-07,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-08,,Weather Station,Rainfall 06 to 12h,mm,0.3,
+Sp17,"Cordoba, Spain",2017,2018-03-09,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-10,,Weather Station,Rainfall 06 to 12h,mm,0.3,
+Sp17,"Cordoba, Spain",2017,2018-03-11,,Weather Station,Rainfall 06 to 12h,mm,1.7,
+Sp17,"Cordoba, Spain",2017,2018-03-12,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-13,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-14,,Weather Station,Rainfall 06 to 12h,mm,0.2,
+Sp17,"Cordoba, Spain",2017,2018-03-15,,Weather Station,Rainfall 06 to 12h,mm,0.3,
+Sp17,"Cordoba, Spain",2017,2018-03-16,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-17,,Weather Station,Rainfall 06 to 12h,mm,0.7,
+Sp17,"Cordoba, Spain",2017,2018-03-18,,Weather Station,Rainfall 06 to 12h,mm,0.1,
+Sp17,"Cordoba, Spain",2017,2018-03-19,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-20,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-21,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-22,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-23,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-24,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-25,,Weather Station,Rainfall 06 to 12h,mm,3.4,
+Sp17,"Cordoba, Spain",2017,2018-03-26,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-27,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-28,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-29,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-30,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-31,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-01,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-02,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-03,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-04,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-05,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-06,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-07,,Weather Station,Rainfall 06 to 12h,mm,2.4,
+Sp17,"Cordoba, Spain",2017,2018-04-08,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-09,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-10,,Weather Station,Rainfall 06 to 12h,mm,1.7,
+Sp17,"Cordoba, Spain",2017,2018-04-11,,Weather Station,Rainfall 06 to 12h,mm,0.2,
+Sp17,"Cordoba, Spain",2017,2018-04-12,,Weather Station,Rainfall 06 to 12h,mm,0.2,
+Sp17,"Cordoba, Spain",2017,2018-04-13,,Weather Station,Rainfall 06 to 12h,mm,1,
+Sp17,"Cordoba, Spain",2017,2018-04-14,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-15,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-16,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-17,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-18,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-19,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-20,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-21,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-22,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-23,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-24,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-25,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-26,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-27,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-28,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-29,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-30,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-01,,Weather Station,Rainfall 06 to 12h,mm,0.4,
+Sp17,"Cordoba, Spain",2017,2018-05-02,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-03,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-05,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-06,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-07,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-09,,Weather Station,Rainfall 06 to 12h,mm,0.1,
+Sp17,"Cordoba, Spain",2017,2018-05-10,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-11,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-12,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-13,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-14,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-15,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-16,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-17,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-18,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-19,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-20,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-21,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-22,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-23,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-24,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-25,,Weather Station,Rainfall 06 to 12h,mm,0.1,
+Sp17,"Cordoba, Spain",2017,2018-05-26,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-27,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-28,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-29,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-30,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-31,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-01,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-02,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-03,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-04,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-05,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-06,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-07,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-08,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-09,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-10,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-11,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-12,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-13,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-14,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-15,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-16,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-17,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-18,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-19,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-20,,Weather Station,Rainfall 06 to 12h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-01,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-02,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-03,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-04,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-05,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-06,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-07,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-08,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-09,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-10,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-11,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-12,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-13,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-14,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-15,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-16,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-17,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-18,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-19,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-20,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-21,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-22,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-23,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-24,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-25,,Weather Station,Rainfall 12 to 18h,mm,0.1,
+Sp17,"Cordoba, Spain",2017,2017-12-26,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-27,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-28,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-29,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-30,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-31,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-01,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-02,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-03,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-04,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-05,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-06,,Weather Station,Rainfall 12 to 18h,mm,0.1,
+Sp17,"Cordoba, Spain",2017,2018-01-07,,Weather Station,Rainfall 12 to 18h,mm,0.9,
+Sp17,"Cordoba, Spain",2017,2018-01-08,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-09,,Weather Station,Rainfall 12 to 18h,mm,0.1,
+Sp17,"Cordoba, Spain",2017,2018-01-10,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-11,,Weather Station,Rainfall 12 to 18h,mm,0.1,
+Sp17,"Cordoba, Spain",2017,2018-01-12,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-13,,Weather Station,Rainfall 12 to 18h,mm,3.7,
+Sp17,"Cordoba, Spain",2017,2018-01-14,,Weather Station,Rainfall 12 to 18h,mm,1.5,
+Sp17,"Cordoba, Spain",2017,2018-01-15,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-16,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-17,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-18,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-19,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-20,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-21,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-22,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-23,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-24,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-25,,Weather Station,Rainfall 12 to 18h,mm,0.2,
+Sp17,"Cordoba, Spain",2017,2018-01-26,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-27,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-28,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-29,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-30,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-31,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-01,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-02,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-03,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-04,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-05,,Weather Station,Rainfall 12 to 18h,mm,0.2,
+Sp17,"Cordoba, Spain",2017,2018-02-06,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-07,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-08,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-09,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-10,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-11,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-12,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-13,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-14,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-15,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-16,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-17,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-18,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-19,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-20,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-21,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-22,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-23,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-24,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-25,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-26,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-27,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-28,,Weather Station,Rainfall 12 to 18h,mm,3.6,
+Sp17,"Cordoba, Spain",2017,2018-03-01,,Weather Station,Rainfall 12 to 18h,mm,5.8,
+Sp17,"Cordoba, Spain",2017,2018-03-02,,Weather Station,Rainfall 12 to 18h,mm,3.8,
+Sp17,"Cordoba, Spain",2017,2018-03-03,,Weather Station,Rainfall 12 to 18h,mm,4.7,
+Sp17,"Cordoba, Spain",2017,2018-03-04,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-05,,Weather Station,Rainfall 12 to 18h,mm,1.2,
+Sp17,"Cordoba, Spain",2017,2018-03-06,,Weather Station,Rainfall 12 to 18h,mm,1.7,
+Sp17,"Cordoba, Spain",2017,2018-03-07,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-08,,Weather Station,Rainfall 12 to 18h,mm,1.5,
+Sp17,"Cordoba, Spain",2017,2018-03-09,,Weather Station,Rainfall 12 to 18h,mm,3,
+Sp17,"Cordoba, Spain",2017,2018-03-10,,Weather Station,Rainfall 12 to 18h,mm,8.5,
+Sp17,"Cordoba, Spain",2017,2018-03-11,,Weather Station,Rainfall 12 to 18h,mm,5,
+Sp17,"Cordoba, Spain",2017,2018-03-12,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-13,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-14,,Weather Station,Rainfall 12 to 18h,mm,0.4,
+Sp17,"Cordoba, Spain",2017,2018-03-15,,Weather Station,Rainfall 12 to 18h,mm,2.1,
+Sp17,"Cordoba, Spain",2017,2018-03-16,,Weather Station,Rainfall 12 to 18h,mm,5.8,
+Sp17,"Cordoba, Spain",2017,2018-03-17,,Weather Station,Rainfall 12 to 18h,mm,12.6,
+Sp17,"Cordoba, Spain",2017,2018-03-18,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-19,,Weather Station,Rainfall 12 to 18h,mm,0.2,
+Sp17,"Cordoba, Spain",2017,2018-03-20,,Weather Station,Rainfall 12 to 18h,mm,0.3,
+Sp17,"Cordoba, Spain",2017,2018-03-21,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-22,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-23,,Weather Station,Rainfall 12 to 18h,mm,0.5,
+Sp17,"Cordoba, Spain",2017,2018-03-24,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-25,,Weather Station,Rainfall 12 to 18h,mm,0.1,
+Sp17,"Cordoba, Spain",2017,2018-03-26,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-27,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-28,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-29,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-30,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-31,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-01,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-02,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-03,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-04,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-06,,Weather Station,Rainfall 12 to 18h,mm,1.1,
+Sp17,"Cordoba, Spain",2017,2018-04-07,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-08,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-09,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-10,,Weather Station,Rainfall 12 to 18h,mm,11.8,
+Sp17,"Cordoba, Spain",2017,2018-04-11,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-12,,Weather Station,Rainfall 12 to 18h,mm,11.8,
+Sp17,"Cordoba, Spain",2017,2018-04-13,,Weather Station,Rainfall 12 to 18h,mm,0.1,
+Sp17,"Cordoba, Spain",2017,2018-04-14,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-15,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-16,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-17,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-18,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-19,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-20,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-21,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-22,,Weather Station,Rainfall 12 to 18h,mm,0.2,
+Sp17,"Cordoba, Spain",2017,2018-04-23,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-24,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-25,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-26,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-27,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-29,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-30,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-01,,Weather Station,Rainfall 12 to 18h,mm,3.8,
+Sp17,"Cordoba, Spain",2017,2018-05-02,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-03,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-04,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-05,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-06,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-07,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-08,,Weather Station,Rainfall 12 to 18h,mm,0.1,
+Sp17,"Cordoba, Spain",2017,2018-05-09,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-10,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-11,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-12,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-13,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-14,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-15,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-16,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-17,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-18,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-19,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-20,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-21,,Weather Station,Rainfall 12 to 18h,mm,1,
+Sp17,"Cordoba, Spain",2017,2018-05-22,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-23,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-24,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-25,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-26,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-27,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-28,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-29,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-30,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-31,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-01,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-02,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-03,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-04,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-05,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-06,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-07,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-08,,Weather Station,Rainfall 12 to 18h,mm,2.1,
+Sp17,"Cordoba, Spain",2017,2018-06-09,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-10,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-11,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-12,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-13,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-14,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-15,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-16,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-17,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-18,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-19,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-20,,Weather Station,Rainfall 12 to 18h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-01,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-02,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-03,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-04,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-05,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-06,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-07,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-08,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-09,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-10,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-11,,Weather Station,Rainfall 18 to 24h,mm,0.8,
+Sp17,"Cordoba, Spain",2017,2017-12-12,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-13,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-14,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-15,,Weather Station,Rainfall 18 to 24h,mm,6.7,
+Sp17,"Cordoba, Spain",2017,2017-12-16,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-17,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-18,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-19,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-20,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-21,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-22,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-23,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-24,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-25,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-26,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-27,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-28,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-29,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-30,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2017-12-31,,Weather Station,Rainfall 18 to 24h,mm,0.3,
+Sp17,"Cordoba, Spain",2017,2018-01-01,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-02,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-03,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-04,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-05,,Weather Station,Rainfall 18 to 24h,mm,0.2,
+Sp17,"Cordoba, Spain",2017,2018-01-06,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-07,,Weather Station,Rainfall 18 to 24h,mm,0.5,
+Sp17,"Cordoba, Spain",2017,2018-01-08,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-09,,Weather Station,Rainfall 18 to 24h,mm,5.2,
+Sp17,"Cordoba, Spain",2017,2018-01-10,,Weather Station,Rainfall 18 to 24h,mm,3.7,
+Sp17,"Cordoba, Spain",2017,2018-01-11,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-12,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-13,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-14,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-15,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-16,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-17,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-18,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-19,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-20,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-21,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-22,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-23,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-24,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-25,,Weather Station,Rainfall 18 to 24h,mm,3.3,
+Sp17,"Cordoba, Spain",2017,2018-01-26,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-27,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-28,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-29,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-30,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-01-31,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-01,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-02,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-03,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-04,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-05,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-06,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-07,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-08,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-09,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-10,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-11,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-12,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-13,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-14,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-15,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-16,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-17,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-18,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-19,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-20,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-21,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-22,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-23,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-24,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-25,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-26,,Weather Station,Rainfall 18 to 24h,mm,4,
+Sp17,"Cordoba, Spain",2017,2018-02-27,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-02-28,,Weather Station,Rainfall 18 to 24h,mm,0.5,
+Sp17,"Cordoba, Spain",2017,2018-03-01,,Weather Station,Rainfall 18 to 24h,mm,0.1,
+Sp17,"Cordoba, Spain",2017,2018-03-02,,Weather Station,Rainfall 18 to 24h,mm,5.7,
+Sp17,"Cordoba, Spain",2017,2018-03-03,,Weather Station,Rainfall 18 to 24h,mm,1.7,
+Sp17,"Cordoba, Spain",2017,2018-03-04,,Weather Station,Rainfall 18 to 24h,mm,6.4,
+Sp17,"Cordoba, Spain",2017,2018-03-05,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-06,,Weather Station,Rainfall 18 to 24h,mm,2.2,
+Sp17,"Cordoba, Spain",2017,2018-03-07,,Weather Station,Rainfall 18 to 24h,mm,3.7,
+Sp17,"Cordoba, Spain",2017,2018-03-08,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-09,,Weather Station,Rainfall 18 to 24h,mm,1,
+Sp17,"Cordoba, Spain",2017,2018-03-10,,Weather Station,Rainfall 18 to 24h,mm,5.7,
+Sp17,"Cordoba, Spain",2017,2018-03-11,,Weather Station,Rainfall 18 to 24h,mm,0.1,
+Sp17,"Cordoba, Spain",2017,2018-03-12,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-13,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-14,,Weather Station,Rainfall 18 to 24h,mm,0.5,
+Sp17,"Cordoba, Spain",2017,2018-03-15,,Weather Station,Rainfall 18 to 24h,mm,0.3,
+Sp17,"Cordoba, Spain",2017,2018-03-16,,Weather Station,Rainfall 18 to 24h,mm,0.4,
+Sp17,"Cordoba, Spain",2017,2018-03-17,,Weather Station,Rainfall 18 to 24h,mm,11.3,
+Sp17,"Cordoba, Spain",2017,2018-03-18,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-19,,Weather Station,Rainfall 18 to 24h,mm,0.5,
+Sp17,"Cordoba, Spain",2017,2018-03-20,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-21,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-22,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-23,,Weather Station,Rainfall 18 to 24h,mm,2.9,
+Sp17,"Cordoba, Spain",2017,2018-03-24,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-25,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-26,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-27,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-28,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-29,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-30,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-03-31,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-01,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-02,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-03,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-04,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-05,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-06,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-07,,Weather Station,Rainfall 18 to 24h,mm,6.9,
+Sp17,"Cordoba, Spain",2017,2018-04-08,,Weather Station,Rainfall 18 to 24h,mm,0.2,
+Sp17,"Cordoba, Spain",2017,2018-04-09,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-10,,Weather Station,Rainfall 18 to 24h,mm,4.4,
+Sp17,"Cordoba, Spain",2017,2018-04-11,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-12,,Weather Station,Rainfall 18 to 24h,mm,3.1,
+Sp17,"Cordoba, Spain",2017,2018-04-13,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-14,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-15,,Weather Station,Rainfall 18 to 24h,mm,0.2,
+Sp17,"Cordoba, Spain",2017,2018-04-16,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-17,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-18,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-19,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-20,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-21,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-22,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-23,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-24,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-25,,Weather Station,Rainfall 18 to 24h,mm,0.4,
+Sp17,"Cordoba, Spain",2017,2018-04-26,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-27,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-04-29,,Weather Station,Rainfall 18 to 24h,mm,0.7,
+Sp17,"Cordoba, Spain",2017,2018-04-30,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-01,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-02,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-03,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-04,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-05,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-06,,Weather Station,Rainfall 18 to 24h,mm,25.6,
+Sp17,"Cordoba, Spain",2017,2018-05-07,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-08,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-09,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-10,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-11,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-12,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-13,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-14,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-15,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-16,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-17,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-18,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-19,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-20,,Weather Station,Rainfall 18 to 24h,mm,0.2,
+Sp17,"Cordoba, Spain",2017,2018-05-21,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-22,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-23,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-24,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-25,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-26,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-27,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-28,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-29,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-30,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-05-31,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-01,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-02,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-03,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-04,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-05,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-06,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-07,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-08,,Weather Station,Rainfall 18 to 24h,mm,1.1,
+Sp17,"Cordoba, Spain",2017,2018-06-09,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-10,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-11,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-12,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-13,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-14,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-15,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-16,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-17,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-18,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-19,,Weather Station,Rainfall 18 to 24h,mm,0,
+Sp17,"Cordoba, Spain",2017,2018-06-20,,Weather Station,Rainfall 18 to 24h,mm,0,

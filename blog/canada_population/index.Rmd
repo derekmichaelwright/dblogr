@@ -435,7 +435,7 @@ gg_PopDem_anim <- function(myArea = "Saskatchewan") {
 mp <- gg_PopDem_anim(myArea = "Canada")
 anim_save("canada_population_gif_2_01.gif", mp, 
           nframes = 400, fps = 20, end_pause = 80, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -448,7 +448,7 @@ anim_save("canada_population_gif_2_01.gif", mp,
 mp <- gg_PopDem_anim(myArea = "British Columbia")
 anim_save("canada_population_gif_2_02.gif", mp, 
           nframes = 400, fps = 20, end_pause = 80, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -461,7 +461,7 @@ anim_save("canada_population_gif_2_02.gif", mp,
 mp <- gg_PopDem_anim(myArea = "Alberta")
 anim_save("canada_population_gif_2_03.gif", mp, 
           nframes = 400, fps = 20, end_pause = 80, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -474,7 +474,7 @@ anim_save("canada_population_gif_2_03.gif", mp,
 mp <- gg_PopDem_anim(myArea = "Saskatchewan")
 anim_save("canada_population_gif_2_04.gif", mp, 
           nframes = 400, fps = 20, end_pause = 80, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -487,7 +487,7 @@ anim_save("canada_population_gif_2_04.gif", mp,
 mp <- gg_PopDem_anim(myArea = "Manitoba")
 anim_save("canada_population_gif_2_05.gif", mp, 
           nframes = 400, fps = 20, end_pause = 80, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -500,7 +500,7 @@ anim_save("canada_population_gif_2_05.gif", mp,
 mp <- gg_PopDem_anim(myArea = "Ontario")
 anim_save("canada_population_gif_2_06.gif", mp, 
           nframes = 400, fps = 20, end_pause = 80, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -513,7 +513,7 @@ anim_save("canada_population_gif_2_06.gif", mp,
 mp <- gg_PopDem_anim(myArea = "Quebec")
 anim_save("canada_population_gif_2_07.gif", mp, 
           nframes = 400, fps = 20, end_pause = 80, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -526,7 +526,7 @@ anim_save("canada_population_gif_2_07.gif", mp,
 mp <- gg_PopDem_anim(myArea = "Newfoundland and Labrador")
 anim_save("canada_population_gif_2_08.gif", mp, 
           nframes = 400, fps = 20, end_pause = 80, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -539,7 +539,7 @@ anim_save("canada_population_gif_2_08.gif", mp,
 mp <- gg_PopDem_anim(myArea = "Yukon")
 anim_save("canada_population_gif_2_09.gif", mp,
           nframes = 400, fps = 20, end_pause = 80, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -839,8 +839,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Sex, group = Sex)) +
   transition_states(Age, transition_length = 1, state_length = 1) +
   ease_aes('linear')
 anim_save("canada_population_gif_4_01.gif", mp, 
-          nframes = 300, fps = 60, 
-          width = 900, height = 600, res = 150)
+          nframes = 400, fps = 20, end_pause = 80, 
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---

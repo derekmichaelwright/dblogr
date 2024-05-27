@@ -108,7 +108,7 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
   #view_follow(fixed_x = c(-1, NA))
 anim_save("lentil_gif_01.gif", mp, 
           nframes = 600, fps = 30, end_pause = 60, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -527,7 +527,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 mp <- ggPie_anim(crop = "Lentils, dry", measurement = "Production", cutoff = 2.5)
 anim_save("lentil_gif_02.gif", mp,
           nframes = 300, fps = 10, end_pause = 30, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
@@ -541,7 +541,7 @@ anim_save("lentil_gif_02.gif", mp,
 mp <- ggPie_anim(crop = "Lentils, dry", measurement = "Area Harvested", cutoff = 2.5)
 anim_save("lentil_gif_03.gif", mp,
           nframes = 300, fps = 10, end_pause = 30, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---

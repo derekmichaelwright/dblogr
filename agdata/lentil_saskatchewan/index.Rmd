@@ -108,7 +108,7 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
   transition_time(Year)
 anim_save("lentil_saskatchewan_gif_01.gif", mp, 
           nframes = 600, fps = 30, end_pause = 120, 
-          width = 900, height = 600, res = 150)
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---

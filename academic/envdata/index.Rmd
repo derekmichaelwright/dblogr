@@ -14,17 +14,26 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Introduction
 
-The purpose of this document is to provide a few examples of how to manipulate and plot the environmental data. The data for this vignette comes from the `EnvRtype` and `geosphere` R packages and lentil field trials in the AGILE project.
+The purpose of this document is to provide a few examples of how to manipulate and plot the environmental data.
 
 ---
 
 # Data
 
-> - `r shiny::icon("r-studio")` https://github.com/allogamous/EnvRtype
+The data for this vignette comes from two sources:
 
-Data sets can be downloaded from [**knowpulse.usask.ca/**](http://knowpulse.usask.ca/portal/) or my `r shiny::icon("github")` [**github**](https://github.com/derekmichaelwright/dblogr/tree/master/content/academic/envdata).
+1. Downloaded from `EnvRtype` and `geosphere` R packages.
 
-> - `r shiny::icon("save")` [environment_data.tar](https://github.com/derekmichaelwright/dblogr/raw/main/academic/envdata/environment_data.tar)
+> - `r shiny::icon("save")` [AGILE_Expts.csv](AGILE_Expts.csv)
+> - `r shiny::icon("save")` [AGILE_R_EnvData.csv](AGILE_R_EnvData.csv)
+> - `r shiny::icon("r-project")` https://github.com/allogamous/EnvRtype
+> - `r shiny::icon("r-project")` https://github.com/rspatial/geosphere
+
+2. Manually collected data from our lentil field trials in the AGILE project.
+
+> - `r shiny::icon("save")` [AGILE_My_EnvData.csv](AGILE_My_EnvData.csv)
+> - `r shiny::icon("github")` [academic/envdata/AGILE_EnvData/](https://github.com/derekmichaelwright/dblogr/tree/main/academic/envdata/AGILE_EnvData/)
+> - `r shiny::icon("globe")` [**knowpulse.usask.ca/**](http://knowpulse.usask.ca/portal/)
 
 ---
 
@@ -37,118 +46,192 @@ library(agData)
 library(EnvRtype)
 # install.packages("geosphere")
 library(geosphere)
-```
-
-```{r eval = F, echo = F}
-library(agiler)
-xx <- AGILE_Timeline %>% 
-  filter(Year != 2015, Location != "UofS Greenhouse", Expt != "USA 2016") %>% 
-  select(Expt, Location, Year, Lat, Lon, Start, End)
-write.csv(xx, "AGILE_Expts.csv", row.names = F)
-```
-
-
-# EnvRtype and geosphere R packages
-
-```{r}
-# Prep data from 
-xx <- read.csv("AGILE_Expts.csv")
-DT::datatable(xx)
-```
-
-> - `r shiny::icon("save")` [My_EnvData.csv](My_EnvData.csv)
-
-```{r}
-# Prep data
-ee <- get_weather(env.id = xx$Expt, lat = xx$Lat, lon = xx$Lon,
-                  start.day = xx$Start, end.day = xx$End) %>%
-  mutate(DayLength = daylength(lat = .$LAT, doy = .$YYYYMMDD) )
 #
-write.csv(ee, "My_EnvData.csv", row.names = F)
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myEs <- c("Ro16", "Ro17", "Su16", "Su17", "Su18", "Us18",
+          "In16", "In17", "Ba16", "Ba17", "Ne16", "Ne17",
+          "Mo16", "Mo17", "Sp16", "Sp17", "It16", "It17")
+myColors <- c("darkgreen", "darkred", "coral3", "deeppink3", "darkcyan",
+              "burlywood4", "darkslateblue", "darkmagenta", "darkgoldenrod3")
+#
+ee <- read.csv("AGILE_Expts.csv") %>%
+  mutate(Expt = factor(Expt, levels = myEs))
 DT::datatable(ee)
 ```
 
 ---
 
+## EnvRtype and geosphere R packages
+
 ```{r}
-mp <- ggplot(ee, aes(x = YYYYMMDD)) +
-  geom_line(aes(y = T2M)) +
-  geom_line(aes(y = DayLength), color = "darkblue") +
+# Prep data
+d1 <- get_weather(env.id = ee$Expt, lat = ee$Lat, lon = ee$Lon,
+                  start.day = ee$Start, end.day = ee$End) %>%
+  mutate(DayLength = daylength(lat = .$LAT, doy = .$YYYYMMDD))
+#
+write.csv(d1, "AGILE_R_EnvData.csv", row.names = F)
+DT::datatable(d1)
+```
+
+---
+
+## Manual Data
+
+```{r}
+# Prep data from 
+d2 <- list() # Create Empty list
+files <- list.files("AGILE_EnvData/")[grepl(".csv", list.files("AGILE_EnvData/"))]
+for (i in 1:length(files)) { 
+  d2[[i]] <- read.csv(paste0("AGILE_EnvData/", files[i]), stringsAsFactors = T)
+  #colnames(d2[[i]])[1] <- "Location"
+}
+# Bind files together
+d2 <- do.call(rbind, d2)
+# Filter data
+d2 <- d2 %>% filter(!is.na(DaysAfterPlanting))
+#
+# Prep data for plotting
+d2 <- d2 %>% 
+  mutate(Value = as.numeric(Value)) %>% 
+  filter(!is.na(Value)) %>%
+  mutate(Time = ifelse(is.na(Time) | Time == "", 
+                       "12:00:00", as.character(Time)),
+         Date = as.Date(Date),
+         DateTime = as.POSIXct(paste(Date, Time), 
+                               format = "%Y-%m-%d %H:%M:%OS"),
+         #Location = factor(Location, levels = locs),
+         LoggerID = factor(LoggerID, levels = unique(.$LoggerID)) )
+#
+write.csv(d2, "AGILE_My_EnvData.csv", row.names = F)
+#
+DT::datatable(d2)
+# View table
+d2 %>% as_tibble()
+# List experiments
+d2 %>% distinct(Location, Year)
+# List Measurements from a single experiment
+d2 %>% filter(Location == "Sutherland, Canada", Year == 2016) %>% 
+  distinct(Measurement)
+# List data logger names from a single experiment
+d2 %>% filter(Location == "Sutherland, Canada", Year == 2016) %>% 
+  distinct(LoggerID)
+```
+
+---
+
+# EnvRtype and geosphere R packages
+
+## All Data
+
+```{r}
+# Prep data
+xx <- d1 %>% mutate(DayLength_Rescaled = scales::rescale(DayLength, to = c(0, 45)))
+# Plot
+mp <- ggplot(xx, aes(x = YYYYMMDD)) +
+  geom_col(aes(y = PRECTOT, color = "Rain"), fill = "steelblue") +
+  geom_line(aes(y = T2M, color = "Temp")) +
+  geom_line(aes(y = DayLength_Rescaled, color = "Day Length")) +
   geom_ribbon(aes(ymin = T2M_MIN, ymax = T2M_MAX), 
-              fill = alpha("Red", 0.25), 
-              color = alpha("Red", 0.25) ) +
-  geom_col(aes(y = PRECTOT), fill = "steelblue") +
+              fill = "red", alpha = 0.25) +
+  scale_color_manual(values = c("red", "darkblue", "steelblue"), 
+                     breaks = c("Temp", "Day Length", "Rain")) +
   scale_x_date(date_breaks = "month", date_labels = "%b") +
-  facet_grid(. ~ env, scales = "free_x", space = "free_x") +
-  theme_agData()
-ggsave("envdata_1_01.png", mp, width = 8, height = 4)
+  scale_y_continuous(name = "\u00B0Celcius / mm Rain",
+    sec.axis = sec_axis(~ . * (16.62-9.11) / (45-0) + 9.11, 
+                        breaks = c(10, 12, 14, 16), name = "Hours") ) +
+  coord_cartesian(ylim = c(-5, 45)) +
+  facet_wrap(. ~ env, ncol = 6, scales = "free_x") +
+  theme_agData() +
+  labs(title = "EnvRtype and geosphere R packages", 
+       y = "Degree C / mm rain", x = NULL, caption = myCaption)
+ggsave("envdata_1_01.png", mp, width = 12, height = 8)
 ```
 
 ![](envdata_1_01.png)
 
 ---
 
-# Manually Collected Data
+## trials
 
-```{r eval = F}
-# Read in data
-KP_file <- "environment_data.tar" # Location of File
-files <- untar(KP_file, list = T) # Store filenames
-untar(KP_file) # Extract files
+```{r}
+# Prep data
+xx <- d1 %>% mutate(DayLength_Rescaled = scales::rescale(DayLength, to = c(0, 45)))
+# Plot
+mp <- ggplot(d1, aes(x = daysFromStart)) +
+  geom_col(aes(y = PRECTOT), fill = "steelblue") +
+  geom_line(aes(y = T2M)) +
+  geom_line(aes(y = DayLength), color = "darkblue") +
+  geom_ribbon(aes(ymin = T2M_MIN, ymax = T2M_MAX), 
+              fill = alpha("Red", 0.25), 
+              color = alpha("Red", 0.25) ) +
+  coord_cartesian(ylim = c(-5, 45)) +
+  facet_grid(env ~ ., scales = "free_x", space = "free_x") +
+  theme_agData() +
+  labs(title = "EnvRtype and geosphere R packages", 
+       y = "Degree C / mm rain", x = NULL, caption = myCaption)
+ggsave("envdata_1_02.png", mp, width = 6, height = 12)
+```
+
+![](envdata_1_02.png)
+
+---
+
+```{r}
+# Prep temperature data
+x1 <- d1 %>% select(Expt=env, Date=YYYYMMDD, T_mean=T2M, T_min=T2M_MIN, T_max=T2M_MAX)
+x2 <- d2 %>% 
+  filter(Measurement == "Temperature") %>% 
+  group_by(Expt, Measurement, Date) %>% 
+  summarise_at(vars(Value), funs(min, mean, max)) %>%
+  ungroup() %>%
+  rename(T_mean=mean, T_min=min, T_max=max)
+xx <- bind_rows(x1, x2)
+# Plot graph
+mp <- ggplot(x1, aes(x = Date, y = T_mean)) + 
+  facet_wrap(Expt ~ ., ncol = 6, scales = "free_x") + 
+  geom_line(color = "Red") +
+  geom_ribbon(aes(ymin = T_min, ymax = T_max), 
+              fill = alpha("blue", 0.25), 
+              color = alpha("blue", 0.25) ) +
+  geom_line(data = x2, color = "blue") +
+  geom_ribbon(data = x2, aes(ymin = T_min, ymax = T_max), 
+              fill = alpha("Red", 0.25), 
+              color = alpha("Red", 0.25) ) +
+  scale_x_date(name = NULL, date_labels = "%b" , date_breaks = "1 month") +
+  theme_agData() +
+  labs(title = "Environmental Data", caption = myCaption)
+ggsave("envdata_1_03.png", mp, width = 12, height = 8)
 ```
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AGILE"
-locs <- c("Rosthern, Canada", "Sutherland, Canada", "Central Ferry, USA",
-          "Bhopal, India","Jessore, Bangladesh","Bardiya, Nepal",
-          "Marchouch, Morocco", "Cordoba, Spain", "Metaponto, Italy")
-#
-dd <- list() # Create Empty list
-files <- list.files()[grepl(".csv", list.files())]
-for (i in 1:length(files)) { 
-  dd[[i]] <- read.csv(files[i], stringsAsFactors = T)
-  colnames(dd[[i]])[1] <- "Location"
-}
-# Bind files together
-dd <- do.call(rbind, dd)
-# Filter data
-dd <- dd %>% filter(!is.na(DaysAfterPlanting))
-# Prep data for plotting
-dd <- dd %>% 
-  mutate(Value = as.numeric(Value)) %>% 
-  filter(!is.na(Value)) %>%
-  mutate(Expt = paste(Location, Year),
-         Time = ifelse(is.na(Time) | Time == "", 
-                       "12:00:00", as.character(Time)),
-         Date = as.Date(Date),
-         DateTime = as.POSIXct(paste(Date, Time), 
-                               format = "%Y-%m-%d %H:%M:%OS"),
-         Location = factor(Location, levels = locs),
-         LoggerID = factor(LoggerID, levels = unique(.$LoggerID)) )
-# Create a color palette
-myCols <- c("darkgreen", "darkred", "coral3", "deeppink3", "darkcyan",
-          "burlywood4", "darkslateblue", "darkmagenta", "darkgoldenrod3")
-# View table
-dd %>% as_tibble()
-# List experiments
-dd %>% distinct(Location, Year)
-#List Measurements from a single experiment
-dd %>% filter(Location == "Sutherland, Canada", Year == 2016) %>% 
-  distinct(Measurement)
-# List data logger names from a single experiment
-dd %>% filter(Location == "Sutherland, Canada", Year == 2016) %>% 
-  distinct(LoggerID)
+xx <- d1
+# Plot
+mp <- ggplot(d1, aes(x = daysFromStart)) +
+  geom_line(aes(y = T2M)) +
+  geom_line(aes(y = DayLength), color = "darkblue") +
+  geom_ribbon(aes(ymin = T2M_MIN, ymax = T2M_MAX), 
+              fill = alpha("Red", 0.25), 
+              color = alpha("Red", 0.25) ) +
+  geom_col(aes(y = PRECTOT), fill = "steelblue") +
+  #scale_x_date(date_breaks = "month", date_labels = "%b") +
+  facet_grid(env ~ ., scales = "free_x", space = "free_x") +
+  theme_agData()
+ggsave("envdata_1_03.png", mp, width = 6, height = 12)
 ```
+
+![](envdata_1_03.png)
 
 ---
 
-# Summarize data
+# Manaul Data
 
-Calucate min, mean and max for each measurement
+## Summarize data
+
+Calculcate min, mean and max for each measurement
 
 ```{r}
-xx <- dd %>% 
+xx <- d2 %>% 
   group_by(Location, Year, Date, Measurement) %>%
   summarise_at(vars(Value), funs(min, mean, max)) %>%
   ungroup()
@@ -158,7 +241,7 @@ str(xx)
 ```{r echo = F, eval = F}
 # Remove specified data loggers from a particular experiment, 
 # then calucate min, mean and max for each measurement.
-xx <- dd %>% 
+xx <- d2 %>% 
   filter(paste(LoggerID, Location, Year, sep="_") != 
            "Weather Station_Rosthern, Canada_2016") %>% 
   group_by(Location, Year, Date, Measurement) %>%
@@ -169,11 +252,11 @@ str(xx)
 
 ---
 
-# Plot all data
+## Plot all data
 
 ```{r}
 # Filter data
-xx <- dd %>% filter(Location == "Sutherland, Canada", Year == 2016)
+xx <- d2 %>% filter(Location == "Sutherland, Canada", Year == 2016)
 # Plot graph
 mp <- ggplot(xx, aes(x = DateTime, y = Value, color = LoggerID)) +
   geom_line(alpha = 0.7) + 
@@ -183,7 +266,7 @@ mp <- ggplot(xx, aes(x = DateTime, y = Value, color = LoggerID)) +
   theme_agData(strip.placement = "outside", legend.position = "bottom") +
   scale_x_datetime(date_breaks = "1 month", date_minor_breaks = "1 day",
                    date_labels = "%b %Y") +
-  scale_colour_manual(values = myCols) +
+  scale_colour_manual(values = myColors) +
   labs(title = "Sutherland, Canada 2016", y = NULL, x = NULL,
        caption = myCaption)
 ggsave("envdata_2_01.png", mp, width = 12, height = 15, limitsize = F)
@@ -193,20 +276,20 @@ ggsave("envdata_2_01.png", mp, width = 12, height = 15, limitsize = F)
 
 ---
 
-# Temperature
+## Temperature
 
 Plot and calculate daily min, mean and max
 
 ```{r}
 # Filter data
-xx <- dd %>% filter(Location == "Sutherland, Canada", Year == 2016,
+xx <- d2 %>% filter(Location == "Sutherland, Canada", Year == 2016,
                     Measurement == "Temperature")
 # Plot graph
 mp <- ggplot(xx, aes(x = DateTime, y = Value, color = LoggerID)) +
   geom_line(alpha = 0.7) + 
   geom_point(alpha = 0.7, size = 0.5) +
   theme_agData(legend.position = "bottom") +
-  scale_colour_manual(values = myCols) +
+  scale_colour_manual(values = myColors) +
   scale_x_datetime(date_labels = "%b %Y" , date_breaks = "1 month") +
   labs(title = "Sutherland, Canada 2016", y = "Temperautre (C)", x = NULL,
        caption = myCaption)
@@ -258,7 +341,7 @@ Plot daily mean temperatures for each experiment
 
 ```{r}
 # Prep data
-xx <- dd %>% 
+xx <- d2 %>% 
   filter(Measurement == "Temperature", Year != 2018) %>% 
   group_by(Location, Year, Expt, DaysAfterPlanting) %>% 
   summarise(Mean = mean(Value))
@@ -266,7 +349,7 @@ xx <- dd %>%
 mp <- ggplot(xx, aes(x = DaysAfterPlanting, y = Mean, color = Location)) + 
   stat_smooth(geom = "line", method = "loess", se = F, alpha = 0.7, size = 2) + 
   facet_grid(Year ~ .) +
-  scale_color_manual(values = myCols) +
+  scale_color_manual(values = myColors) +
   theme_agData() +
   labs(title = "Temperature", 
        y = "Degrees Celsius", x = "Days After Planting",
@@ -282,7 +365,7 @@ ggsave("envdata_2_04.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- dd %>% 
+xx <- d2 %>% 
   filter(Measurement == "Day Length", Year != 2018) %>% 
   group_by(Location, Year, Expt, DaysAfterPlanting) %>% 
   summarise(Mean = mean(Value) )
@@ -290,7 +373,7 @@ xx <- dd %>%
 mp <- ggplot(xx, aes(x = DaysAfterPlanting, y = Mean, color = Location)) + 
   geom_line(alpha = 0.7, size = 2) +
   facet_grid(Year ~ .) +
-  scale_color_manual(values = myCols) +
+  scale_color_manual(values = myColors) +
   theme_agData() +
   labs(title = "Day Lengths",
        y = "Hours", x = "Days After Planting",
@@ -306,7 +389,7 @@ ggsave("envdata_2_05.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- dd %>% 
+xx <- d2 %>% 
   filter(Measurement == "Precipitation") %>%
   group_by(Expt, Location, Year) %>%
   summarise(Rainfall = sum(Value)) %>%
@@ -318,7 +401,7 @@ xx <- dd %>%
 mp <- ggplot(xx, aes(x = Location, y = Rainfall, fill = Year)) + 
   geom_col(alpha = 0.7, color = "black", lwd = 0.3,
            position = position_dodge2(preserve = "single")) + 
-  scale_fill_manual(values = myCols) +
+  scale_fill_manual(values = myColors) +
   theme_agData() +
   coord_flip() +
   labs(title = "Total Precipitation",
@@ -332,7 +415,7 @@ ggsave("envdata_2_06.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- dd %>% 
+xx <- d2 %>% 
   filter(Measurement == "Precipitation", Year == 2016) %>% 
   group_by(Location, Year, Expt, Date, DaysAfterPlanting) %>% 
   summarise(Value = sum(Value))
@@ -366,15 +449,15 @@ $$11.333=12*\frac{16.52-9.11}{40-0}+9.11$$
 
 ```{r}
 # Prep rainfall data
-locs <- c("Sutherland, Canada", "Metaponto, Italy", "Bhopal, India")
-xR <- dd %>% 
-  filter(Location %in% locs, Year == 2017, 
+myLocs <- c("Sutherland, Canada", "Metaponto, Italy", "Bhopal, India")
+xR <- d2 %>% 
+  filter(Location %in% myLocs, Year == 2017, 
          Measurement == "Precipitation", Value > 0) %>%
   group_by(Expt, Date, DaysAfterPlanting) %>% 
   summarise(Value = sum(Value))
 # Prep temperature and daylength data
-xx <- dd %>% 
-  filter(Location %in% locs, Year == 2017,
+xx <- d2 %>% 
+  filter(Location %in% myLocs, Year == 2017,
          Measurement %in% c("Temperature", "Day Length")) %>% 
   group_by(Expt, Measurement, Date) %>% 
   summarise_at(vars(Value), funs(min, mean, max)) %>%
@@ -425,7 +508,7 @@ ggsave("featured.png", mp, width = 6, height = 5.5)
 mm <- c("Soil Temperature 5cm",  "Soil Temperature 10cm",
         "Soil Temperature 20cm", "Soil Temperature 50cm",
         "Soil Temperature 100cm")
-xx <- dd %>% 
+xx <- d2 %>% 
   filter(Location == "Sutherland, Canada", Year == 2016, 
          Measurement %in% mm) %>%
   mutate(Measurement = factor(Measurement, levels = mm),
@@ -434,7 +517,7 @@ xx <- dd %>%
 # Plot
 mp <- ggplot(xx, aes(x = DateTime, y = Value, color = Measurement)) +
   geom_line(alpha = 0.7) +
-  scale_color_manual(values = myCols) +
+  scale_color_manual(values = myColors) +
   theme_agData() +
   labs(title = "Soil Temperatures: Sutherland, Canada 2016",
        y = NULL, x = NULL,
@@ -458,7 +541,7 @@ envPlot <- function(xx) {
              labeller = label_wrap_gen(width = 10)) +
   theme_agData(strip.placement = "outside", legend.position = "bottom") +
   scale_x_datetime(date_labels = "%b %Y" , date_breaks = "1 month") +
-  scale_color_manual(values = myCols) +
+  scale_color_manual(values = myColors) +
   labs(title = paste(unique(xx$Location), unique(xx$Year)), 
        y = NULL, x = NULL,
        caption = myCaption)
@@ -470,7 +553,7 @@ envPlot <- function(xx) {
 ## Sutherland, Canada 2016
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Sutherland, Canada", Year == 2016))
+mp <- envPlot(filter(d2, Location == "Sutherland, Canada", Year == 2016))
 ggsave("envdata_3_01.png", mp, width = 12, height = 15)
 ```
 
@@ -481,7 +564,7 @@ ggsave("envdata_3_01.png", mp, width = 12, height = 15)
 ## Sutherland, Canada 2017
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Sutherland, Canada", Year == 2017))
+mp <- envPlot(filter(d2, Location == "Sutherland, Canada", Year == 2017))
 ggsave("envdata_3_02.png", mp, width = 12, height = 11)
 ```
 
@@ -492,7 +575,7 @@ ggsave("envdata_3_02.png", mp, width = 12, height = 11)
 ## Sutherland, Canada 2018
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Sutherland, Canada", Year == 2018))
+mp <- envPlot(filter(d2, Location == "Sutherland, Canada", Year == 2018))
 ggsave("envdata_3_03.png", mp, width = 12, height = 11)
 ```
 
@@ -503,7 +586,7 @@ ggsave("envdata_3_03.png", mp, width = 12, height = 11)
 ## Rosthern, Canada 2016
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Rosthern, Canada", Year == 2016))
+mp <- envPlot(filter(d2, Location == "Rosthern, Canada", Year == 2016))
 ggsave("envdata_3_04.png", mp, width = 12, height = 10)
 ```
 
@@ -514,7 +597,7 @@ ggsave("envdata_3_04.png", mp, width = 12, height = 10)
 ## Rosthern, Canada 2017
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Rosthern, Canada", Year == 2017))
+mp <- envPlot(filter(d2, Location == "Rosthern, Canada", Year == 2017))
 ggsave("envdata_3_05.png", mp, width = 12, height = 10)
 ```
 
@@ -522,21 +605,21 @@ ggsave("envdata_3_05.png", mp, width = 12, height = 10)
 
 ---
 
-## Central Ferry, USA 2017
+## Central Ferry, USA 2018
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Central Ferry, USA", Year == 2017))
-ggsave("envdata_3_06.png", mp, width = 12, height = 23)
+mp <- envPlot(filter(d2, Location == "Central Ferry, USA", Year == 2018))
+ggsave("envdata_3_06.png", mp, width = 12, height = 10)
 ```
 
 ![](envdata_3_06.png)
 
 ---
 
-## Central Ferry, USA 2018
+## Bhopal, India 2016
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Central Ferry, USA", Year == 2018))
+mp <- envPlot(filter(d2, Location == "Bhopal, India", Year == 2016))
 ggsave("envdata_3_07.png", mp, width = 12, height = 10)
 ```
 
@@ -544,98 +627,98 @@ ggsave("envdata_3_07.png", mp, width = 12, height = 10)
 
 ---
 
-## Bhopal, India 2016
+## Bhopal, India 2017
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Bhopal, India", Year == 2016))
-ggsave("envdata_3_08.png", mp, width = 12, height = 10)
+mp <- envPlot(filter(d2, Location == "Bhopal, India", Year == 2017))
+ggsave("envdata_3_08.png", mp, width = 12, height = 5)
 ```
 
 ![](envdata_3_08.png)
 
 ---
 
-## Bhopal, India 2017
+## Jessore, Bangladesh 2016
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Bhopal, India", Year == 2017))
-ggsave("envdata_3_09.png", mp, width = 12, height = 5)
+mp <- envPlot(filter(d2, Location == "Jessore, Bangladesh", Year == 2016))
+ggsave("envdata_3_09.png", mp, width = 12, height = 8)
 ```
 
 ![](envdata_3_09.png)
 
 ---
 
-## Jessore, Bangladesh 2016
+## Jessore, Bangladesh 2017
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Jessore, Bangladesh", Year == 2016))
-ggsave("envdata_3_10.png", mp, width = 12, height = 8)
+mp <- envPlot(filter(d2, Location == "Jessore, Bangladesh", Year == 2017))
+ggsave("envdata_3_10.png", mp, width = 12, height = 4)
 ```
 
 ![](envdata_3_10.png)
 
 ---
 
-## Jessore, Bangladesh 2017
+## Bardiya, Nepal 2016
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Jessore, Bangladesh", Year == 2017))
-ggsave("envdata_3_11.png", mp, width = 12, height = 4)
+mp <- envPlot(filter(d2, Location == "Bardiya, Nepal", Year == 2016))
+ggsave("envdata_3_11.png", mp, width = 12, height = 5)
 ```
 
 ![](envdata_3_11.png)
 
 ---
 
-## Bardiya, Nepal 2016
+## Bardiya, Nepal 2017
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Bardiya, Nepal", Year == 2016))
-ggsave("envdata_3_12.png", mp, width = 12, height = 5)
+mp <- envPlot(filter(d2, Location == "Bardiya, Nepal", Year == 2017))
+ggsave("envdata_3_12.png", mp, width = 12, height = 4)
 ```
 
 ![](envdata_3_12.png)
 
 ---
 
-## Bardiya, Nepal 2017
+## Marchouch, Morocco 2016
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Bardiya, Nepal", Year == 2017))
-ggsave("envdata_3_13.png", mp, width = 12, height = 4)
+mp <- envPlot(filter(d2, Location == "Marchouch, Morocco", Year == 2016))
+ggsave("envdata_3_13.png", mp, width = 12, height = 9)
 ```
 
 ![](envdata_3_13.png)
 
 ---
 
-## Marchouch, Morocco 2016
+## Marchouch, Morocco 2017
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Marchouch, Morocco", Year == 2016))
-ggsave("envdata_3_14.png", mp, width = 12, height = 9)
+mp <- envPlot(filter(d2, Location == "Marchouch, Morocco", Year == 2017))
+ggsave("envdata_3_14.png", mp, width = 12, height = 5)
 ```
 
 ![](envdata_3_14.png)
 
 ---
 
-## Marchouch, Morocco 2017
+## Cordoba, Spain 2016
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Marchouch, Morocco", Year == 2017))
-ggsave("envdata_3_15.png", mp, width = 12, height = 5)
+mp <- envPlot(filter(d2, Location == "Cordoba, Spain", Year == 2016))
+ggsave("envdata_3_15.png", mp, width = 12, height = 6)
 ```
 
 ![](envdata_3_15.png)
 
 ---
 
-## Cordoba, Spain 2016
+## Cordoba, Spain 2017
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Cordoba, Spain", Year == 2016))
+mp <- envPlot(filter(d2, Location == "Cordoba, Spain", Year == 2017))
 ggsave("envdata_3_16.png", mp, width = 12, height = 6)
 ```
 
@@ -643,39 +726,27 @@ ggsave("envdata_3_16.png", mp, width = 12, height = 6)
 
 ---
 
-## Cordoba, Spain 2017
+## Metaponto, Italy 2016
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Cordoba, Spain", Year == 2017))
-ggsave("envdata_3_17.png", mp, width = 12, height = 6)
+mp <- envPlot(filter(d2, Location == "Metaponto, Italy", Year == 2016))
+ggsave("envdata_3_17.png", mp, width = 12, height = 12)
 ```
 
 ![](envdata_3_17.png)
 
 ---
 
-## Metaponto, Italy 2016
+## Metaponto, Italy 2017
 
 ```{r}
-mp <- envPlot(filter(dd, Location == "Metaponto, Italy", Year == 2016))
-ggsave("envdata_3_18.png", mp, width = 12, height = 12)
+mp <- envPlot(filter(d2, Location == "Metaponto, Italy", Year == 2017))
+ggsave("envdata_3_18.png", mp, width = 12, height = 11)
 ```
 
 ![](envdata_3_18.png)
 
----
-
-## Metaponto, Italy 2017
-
-```{r}
-mp <- envPlot(filter(dd, Location == "Metaponto, Italy", Year == 2017))
-ggsave("envdata_3_19.png", mp, width = 12, height = 11)
-```
-
-![](envdata_3_19.png)
-
 ```{r eval = F, echo = F}
-library(geosphere)
 # Prep data
 xx <- read.csv("My_Expts.csv")
 #
@@ -695,8 +766,67 @@ mp <- ggplot(ee, aes(x = YYYYMMDD)) +
   scale_x_date(date_breaks = "month", date_labels = "%b") +
   facet_grid(. ~ env, scales = "free_x", space = "free_x") +
   theme_agData()
-ggsave("my_expt_01.png", mp, width = 8, height = 4)
+ggsave("my_expt_01.png", mp, width = 15, height = 4)
 write.csv(ee, "Italy_EnvData.csv", row.names = F)
 ```
 
 ---
+
+```{r eval = F, echo = F}
+library(agiler)
+xx <- AGILE_Timeline %>% 
+  filter(Year != 2015, Location != "UofS Greenhouse", Expt != "USA 2016") %>% 
+  select(Expt, Location, Year, Lat, Lon, Start, End)
+write.csv(xx, "AGILE_Expts2.csv", row.names = F)
+```
+
+```{r eval = F, echo = F}
+# Read in data
+KP_file <- "agile_envdata.tar" # Location of File
+files <- untar(KP_file, list = T) # Store filenames
+untar(KP_file) # Extract files
+```
+
+```{r eval = F, echo = F}
+# Prep data
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+locs <- c("Rosthern, Canada", "Sutherland, Canada", "Central Ferry, USA",
+          "Bhopal, India", "Jessore, Bangladesh", "Bardiya, Nepal",
+          "Marchouch, Morocco", "Cordoba, Spain", "Metaponto, Italy")
+#
+dd <- list() # Create Empty list
+files <- list.files("agile_envdata/")[grepl(".csv", list.files())]
+for (i in 1:length(files)) { 
+  dd[[i]] <- read.csv(paste0("agile_envdata/", files[i]), stringsAsFactors = T)
+  colnames(dd[[i]])[1] <- "Location"
+}
+# Bind files together
+dd <- do.call(rbind, dd)
+# Filter data
+dd <- dd %>% filter(!is.na(DaysAfterPlanting))
+# Prep data for plotting
+dd <- dd %>% 
+  mutate(Value = as.numeric(Value)) %>% 
+  filter(!is.na(Value)) %>%
+  mutate(Expt = paste(Location, Year),
+         Time = ifelse(is.na(Time) | Time == "", 
+                       "12:00:00", as.character(Time)),
+         Date = as.Date(Date),
+         DateTime = as.POSIXct(paste(Date, Time), 
+                               format = "%Y-%m-%d %H:%M:%OS"),
+         Location = factor(Location, levels = locs),
+         LoggerID = factor(LoggerID, levels = unique(.$LoggerID)) )
+# Create a color palette
+myColors <- c("darkgreen", "darkred", "coral3", "deeppink3", "darkcyan",
+          "burlywood4", "darkslateblue", "darkmagenta", "darkgoldenrod3")
+# View table
+dd %>% as_tibble()
+# List experiments
+dd %>% distinct(Location, Year)
+# List Measurements from a single experiment
+dd %>% filter(Location == "Sutherland, Canada", Year == 2016) %>% 
+  distinct(Measurement)
+# List data logger names from a single experiment
+dd %>% filter(Location == "Sutherland, Canada", Year == 2016) %>% 
+  distinct(LoggerID)
+```
