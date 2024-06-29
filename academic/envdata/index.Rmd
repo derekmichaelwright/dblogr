@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Introduction
 
-The purpose of this document is to provide a few examples of how to extract environmental data in R and manipulate and plot the environmental data.
+The purpose of this document is to provide a few examples of how to extract environmental data in R and/or manipulate and plot various types of environmental data.
 
 ---
 
@@ -29,7 +29,7 @@ The data for this vignette comes from two sources:
 > - `r shiny::icon("r-project")` https://github.com/allogamous/EnvRtype
 > - `r shiny::icon("r-project")` https://github.com/rspatial/geosphere
 
-2. Manually collected data from our lentil field trials in the AGILE project.
+2. Manually collected data from various our lentil field trials in the AGILE project.
 
 > - `r shiny::icon("save")` [AGILE_My_EnvData.csv](AGILE_My_EnvData.csv)
 > - `r shiny::icon("github")` [academic/envdata/AGILE_EnvData/](https://github.com/derekmichaelwright/dblogr/tree/main/academic/envdata/AGILE_EnvData/)

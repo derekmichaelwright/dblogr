@@ -33,6 +33,13 @@ STATCAN Table: 11-10-0688-01
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110019001
 > - `r shiny::icon("save")` [3610068801_databaseLoadingData.csv](3610068801_databaseLoadingData.csv)
 
+STATCAN Table: 34-10-0133-01
+
+> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410013301
+> - `r shiny::icon("save")` [3410013301_databaseLoadingData.csv](3410013301_databaseLoadingData.csv)
+
+
+
 ```{r eval = F, echo = F}
 #https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110024001
 #https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110001201
@@ -109,6 +116,10 @@ d6 <- left_join(d5, d4, by = c("Year", "Area")) %>%
   filter(!is.na(`Median market income`), !is.na(`Housing price index`)) %>%
   mutate(`Median market income` = ifelse(Month != "01", NA, `Median market income`)) %>%
   gather(Measurement, Value, 5:6) %>% filter(!is.na(Value))
+d7 <- read.csv("3410013301_databaseLoadingData.csv") %>%
+  select(Year=1, Area=GEO, Structure.Type=Type.of.structure,
+         Unit.Type = Type.of.unit, Unit=UOM, Value=VALUE) %>%
+  filter(!is.na(Value), Value > 0)
 ```
 
 ---
@@ -333,7 +344,7 @@ xx <- d2 %>%
   filter(Area %in% myAreas[1], Measurement == "Total units")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value)) +
-  geom_col(position = "dodge", alpha = 0.7, fill = "darkgreen") +
+  geom_col(position = "dodge", alpha = 0.8, fill = "darkgreen") +
   scale_x_date(date_breaks = "1 year", date_labels = "%Y",
                date_minor_breaks = "1 year",) +
   theme_agData(legend.position = "bottom",
@@ -359,7 +370,7 @@ xx <- d2 %>%
 mp <- ggplot(xx, aes(x = Year, y = Value)) +
   geom_col(position = "dodge", color = "black",
            alpha = 0.7, fill = "darkgreen") +
-  scale_x_continuous(breaks = 1992:2022) +
+  scale_x_continuous(breaks = 1992:max(xx$Year)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Housing Units Built in Canada", subtitle = myAreas[1], 
@@ -383,7 +394,8 @@ xx <- d2 %>%
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   geom_line(alpha = 0.7, size = 1.5) +
   scale_color_manual(name = NULL, values = myColors_P) +
-  scale_x_continuous(breaks = 1992:2022, minor_breaks = 1992:2022) +
+  scale_x_continuous(breaks = 1992:max(xx$Year), 
+                     minor_breaks = 1992:max(xx$Year)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Housing Units Built in Canada", subtitle = myAreas[1], 
@@ -402,7 +414,8 @@ xx <- xx %>% filter(Year >= 2005)
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   geom_line(alpha = 0.7, size = 1.5) +
   scale_color_manual(name = NULL, values = myColors_P) +
-  scale_x_continuous(breaks = 2005:2022, minor_breaks = 2005:2022) +
+  scale_x_continuous(breaks = 2005:max(xx$Year),
+                     minor_breaks = 2005:max(xx$Year)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Housing Units Built in Canada", subtitle = myAreas[1], 
@@ -421,7 +434,7 @@ xx <- xx %>% filter(Year >= 2018)
 mp <- ggplot(xx, aes(x = Year, y = Value, fill = Measurement)) +
   geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColors_P) +
-  scale_x_continuous(breaks = 2005:2022) +
+  scale_x_continuous(breaks = 2005:max(xx$Year)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Housing Units Built in Canada", subtitle = myAreas[1], 
        y = "Units Built", x = NULL, caption = myCaption)
@@ -573,7 +586,7 @@ xx <- d3 %>%
          Occupancy == "Private dwellings unoccupied")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
-  geom_line(alpha = 0.7, size = 1.5, color = "darkred") +
+  geom_col(alpha = 0.7, size = 1.5, fill = "darkgreen") +
   facet_wrap(Type ~ ., scales = "free_y") +
   expand_limits(y = 0) +
   theme_agData() +
@@ -594,7 +607,7 @@ xx <- d3 %>%
          Occupancy == "Private dwellings unoccupied")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
-  geom_line(alpha = 0.7, size = 1.5, color = "darkred") +
+  geom_col(alpha = 0.7, size = 1.5, fill = "darkgreen") +
   facet_wrap(Area ~ ., scales = "free_y") +
   expand_limits(y = 0) +
   theme_agData() +
@@ -669,6 +682,97 @@ mp <- mp +
 anim_save("canada_housing_4_01.gif", mp, 
           nframes = 600, fps = 30, end_pause = 60, 
           width = 900, height = 600, res = 150, units = "px")
+```
+
+---
+
+# Rent prices
+
+## All Cities
+
+![](canada_housing_5_01.png)
+
+```{r}
+# Prep data
+xx <- d7 %>% 
+  filter(Structure.Type == "Row and apartment structures of three units and over")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Unit.Type)) +
+  geom_line() +
+  facet_wrap(Area ~ .) +
+  theme_agData(legend.position = "bottom") +
+  scale_color_manual(name = NULL, values = agData_Colors) +
+  labs(title = "Rent Prices in", y = "Dollars",
+       x = NULL, caption = myCaption)
+ggsave("canada_housing_5_01.png", mp, width = 40, height = 20)
+```
+
+---
+
+## Top and Bottom 15
+
+![](canada_housing_5_02.png)
+
+```{r}
+# Prep data
+xx <- d7 %>% 
+  filter(Year == 2023, Unit.Type == "Two bedroom units",
+         Structure.Type == "Row and apartment structures of three units and over") %>%
+  arrange(desc(Value)) %>%
+  mutate(Area = factor(Area, levels = .$Area))
+xx <- bind_rows(xx %>% slice_min(Value, n = 15),
+                xx %>% slice_max(Value, n = 15))
+# Plot
+mp <- ggplot(xx, aes(x = Area, y = Value)) +
+  geom_col(fill = "darkgreen", color = "black", alpha = 0.7) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 60, hjust = 1)) +
+  labs(title = "Rent Prices in", y = "Dollars",
+       x = NULL, caption = myCaption)
+ggsave("canada_housing_5_02.png", mp, width = 8, height = 4)
+```
+
+---
+
+## Vancouver - Toronto - Saskatoon
+
+![](canada_housing_5_03.png)
+
+```{r}
+# Prep data
+xx <- d7 %>% 
+  filter(Area %in% c("Toronto, Ontario", "Saskatoon, Saskatchewan", "Vancouver, British Columbia"),
+         Structure.Type == "Row and apartment structures of three units and over")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Unit.Type)) +
+  geom_line() +
+  facet_wrap(Area ~ .) +
+  scale_color_manual(name = NULL, values = agData_Colors) +
+  theme_agData() +
+  labs(title = "Rent Prices in", y = "Dollars",
+       x = NULL, caption = myCaption)
+ggsave("canada_housing_5_03.png", mp, width = 8, height = 4)
+```
+
+---
+
+![](canada_housing_5_04.png)
+
+```{r}
+# Prep data
+xx <- d7 %>% 
+  filter(Area %in% c("Toronto, Ontario", "Saskatoon, Saskatchewan", "Vancouver, British Columbia"),
+         Structure.Type == "Row and apartment structures of three units and over",
+         Unit.Type == "Two bedroom units")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
+  geom_line() +
+  facet_wrap(Unit.Type ~ .) +
+  scale_color_manual(name = NULL, values = agData_Colors) +
+  theme_agData() +
+  labs(title = "Rent Prices in", y = "Dollars",
+       x = NULL, caption = myCaption)
+ggsave("canada_housing_5_04.png", mp, width = 8, height = 4)
 ```
 
 ---

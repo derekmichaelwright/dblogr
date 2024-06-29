@@ -237,7 +237,7 @@ ggsave("usa_population_2_01.png", mp, width = 4, height = 6)
 
 ```{r}
 # Plot
-mp <- ggStatePop("NPOPCHG_2022", "Population Change", "2022")
+mp <- ggStatePop("NPOPCHG_2022", "Population Change", "2023")
 ggsave("usa_population_2_02.png", mp, width = 4, height = 6)
 ```
 
