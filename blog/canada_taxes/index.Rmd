@@ -37,7 +37,7 @@ library(agData)
 myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 #
 dd <- read.csv("1110000401_databaseLoadingData.csv") %>%
-  select(Year=1, Area=GEO, Measurement=Summary.table, Unit=UOM, Value=VALUE)
+  select(Year=REF_DATE, Area=GEO, Measurement=Summary.table, Unit=UOM, Value=VALUE)
 ```
 
 ---

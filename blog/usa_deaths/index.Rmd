@@ -86,7 +86,7 @@ p2 <- bind_rows(
   mutate(Age = factor(Age, levels = myAges2))
 #
 dd <- read.csv("data_usa_deaths.csv") %>%
-  rename(Area=1, Date=Week.Ending.Date) %>%
+  rename(Area=Jurisdiction, Date=Week.Ending.Date) %>%
   mutate(Date = as.Date(Date, format = "%m/%d/%Y"),
          Year = as.numeric(substr(Date, 1, 4)),
          Month = as.numeric(substr(Date, 6, 7)),

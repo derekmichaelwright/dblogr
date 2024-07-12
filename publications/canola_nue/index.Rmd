@@ -10,6 +10,8 @@ math: true
 knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```
 
+---
+
 ![](jlu_logo.jpg)
 
 # Introduction

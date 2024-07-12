@@ -60,7 +60,7 @@ myAreas <- c("Canada", "Quebec", "Ontario", "British Columbia",
 mySeasons <- paste(2009:2023, 2010:2024, sep = "-")
 myGroups <- c(rep("pre-2020",10), mySeasons[11:length(mySeasons)])
 d1 <- read.csv("1310078301_databaseLoadingData.csv") %>% 
-  rename(Date=1, Area=GEO, Value=VALUE) %>%
+  rename(Date=REF_DATE, Area=GEO, Value=VALUE) %>%
   mutate(Date = as.Date(Date),
          Year  = as.numeric(substr(Date, 1, 4)),
          Month = as.numeric(substr(Date, 6, 7)),
@@ -89,7 +89,7 @@ d1 <- d1 %>%
            SeasonGroup = factor(SeasonGroup, levels = unique(myGroups)))
 # d2 = Deaths per Week, by gender and age (2010-2023)
 d2 <- read.csv("1310076801_databaseLoadingData.csv") %>% 
-  rename(Date=1, Age=Age.at.time.of.death, Value=VALUE, Area=GEO) %>%
+  rename(Date=REF_DATE, Age=Age.at.time.of.death, Value=VALUE, Area=GEO) %>%
   mutate(Date = as.Date(Date),
          Age = gsub("Age at time of death, ", "", Age),
          Year  = as.numeric(substr(Date, 1, 4)),

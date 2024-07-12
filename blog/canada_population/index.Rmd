@@ -60,7 +60,7 @@ myAreasShort <- c("CA", "BC", "AB", "SK", "MB",
                   "YT", "NTNU", "NT", "NU")
 #
 d1 <- read.csv("1710000901_databaseLoadingData.csv") %>%
-  select(Year=1, Area=GEO, Unit=UOM, Value=VALUE) %>%
+  select(Year=REF_DATE, Area=GEO, Unit=UOM, Value=VALUE) %>%
   mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
          Area = factor(Area, levels = myAreas),
          AreaShort = plyr::mapvalues(Area, myAreas, myAreasShort),
@@ -71,7 +71,7 @@ d1 <- read.csv("1710000901_databaseLoadingData.csv") %>%
          Date = as.Date(paste(Year, Month, "01", sep = "-")))
 #
 d2 <- read.csv("1710000501_databaseLoadingData.csv") %>%
-  select(Year=1, Area=GEO, Sex, Age=Age.group, Unit=UOM, Value=VALUE) %>%
+  select(Year=REF_DATE, Area=GEO, Sex, Age=Age.group, Unit=UOM, Value=VALUE) %>%
   mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
          Area = factor(Area, levels = myAreas),
          Sex = factor(Sex, levels = c("Both sexes", "Males", "Females")),

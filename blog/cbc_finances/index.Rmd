@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 CBC finacial reports
 
-> - `r shiny::icon("globe")` https://cbc.radio-canada.ca/en/impact-and-accountability/finances/annual-reports
+> - `r shiny::icon("globe")` https://cbc.radio-canada.ca/en/impact-and-accountability/finance/annual-reports
 > - `r shiny::icon("save")` [data_cbc_finances_1.csv](data_cbc_finances_1.csv)
 > - `r shiny::icon("save")` [data_cbc_finances_2.csv](data_cbc_finances_2.csv)
 

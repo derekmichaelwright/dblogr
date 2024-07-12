@@ -66,7 +66,9 @@ d2 <- read.csv("per-capita-energy-use.csv") %>%
 oldnames <- c("United States", "South Korea", "Brunei")
 newnames <- c("USA", "Republic of Korea", "Brunei Darussalam")
 d3 <- read.csv("consumption-co2-per-capita-vs-gdppc.csv") %>%
-  select(Country=1, Year, CO2=4, GDP=5, Population=6) %>%
+  select(Country=Entity, Year, CO2=Annual.consumption.based.CO2.emissions..per.capita., 
+         GDP=GDP.per.capita..PPP..constant.2017.international...,
+         Population=Population..historical.estimates.) %>%
   mutate(Country = plyr::mapvalues(Country, oldnames, newnames)) %>%
   left_join(agData_FAO_Country_Table, by = "Country") %>% 
   filter(!(is.na(GDP) & is.na(CO2) & is.na(Population)))

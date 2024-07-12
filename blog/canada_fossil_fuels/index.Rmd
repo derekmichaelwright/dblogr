@@ -53,7 +53,8 @@ myMeasures <- c("Production", "Exports", "Imports",
 # Oil
 dd_oil <- read.csv("2510006301_databaseLoadingData.csv") %>%
   mutate(Item = "Crude oil") %>%
-  select(Date=1, Area=GEO, Item, Measurement=4, Unit=UOM, Value=VALUE) %>%
+  select(Date=REF_DATE, Area=GEO, Item, Measurement=Supply.and.disposition,
+         Unit=UOM, Value=VALUE) %>%
   mutate(Area = factor(Area, levels = agData_STATCAN_Region_Table$Area),
          Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"),
          Measurement = plyr::mapvalues(Measurement, 
@@ -63,7 +64,8 @@ dd_oil <- read.csv("2510006301_databaseLoadingData.csv") %>%
 # Natural gas
 dd_gas <- read.csv("2510005501_databaseLoadingData.csv") %>%
   mutate(Item = "Natural gas") %>%
-  select(Date=1, Area=GEO, Item, Measurement=4, Unit=UOM, Value=VALUE) %>%
+  select(Date=REF_DATE, Area=GEO, Item, Measurement=Supply.and.disposition,
+         Unit=UOM, Value=VALUE) %>%
   mutate(Area = factor(Area, levels = agData_STATCAN_Region_Table$Area),
          Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"),
          Measurement = plyr::mapvalues(Measurement, 
@@ -74,7 +76,8 @@ dd_gas <- read.csv("2510005501_databaseLoadingData.csv") %>%
 # Coal
 dd_coal <- read.csv("2510004601_databaseLoadingData.csv") %>%
   mutate(Item = "Coal") %>%
-  select(Date=1, Area=GEO, Item, Measurement=5, Unit=UOM, Value=VALUE) %>%
+  select(Date=REF_DATE, Area=GEO, Item, Measurement=Coal.volume, 
+         Unit=UOM, Value=VALUE) %>%
   mutate(Area = factor(Area, levels = agData_STATCAN_Region_Table$Area),
          Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"),
          Measurement = factor(Measurement, levels = myMeasures),

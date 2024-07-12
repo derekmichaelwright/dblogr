@@ -1,0 +1,54 @@
+---
+title: ""
+subtitle: "Graphs of "
+date: "Last updated: `r Sys.Date()`"
+author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+```
+
+---
+
+# Data
+
+> - `r shiny::icon("globe")` 
+> - `r shiny::icon("save")` [data_.csv](data_.csv)
+
+---
+
+# Prepare Data
+
+```{r class.source = 'fold-show'}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData)
+```
+
+```{r}
+# Prep data
+myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: "
+dd <- read.csv("data_canada_academia.csv")
+```
+
+---
+
+# 
+
+![](01.png)
+
+```{r}
+# Plot
+mp <- ggplot(dd, aes(x = , y = , fill = )) + 
+  geom_col(alpha = 0.7) +
+  #scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "",
+       y = "", x = NULL, caption = myCaption)
+ggsave("01.png", mp, width = 6, height = 4)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 6, height = 4)
+```
+

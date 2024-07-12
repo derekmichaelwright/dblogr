@@ -83,7 +83,7 @@ mySexes1 <- c("Total - gender", "Men+", "Women+")
 mySexes2 <- c("Both sexes", "Males", "Females")
 #
 d1 <- read.csv("1710000901_databaseLoadingData.csv") %>%
-  select(Year=1, Area=GEO, Unit=UOM, Value=VALUE) %>%
+  select(Year=REF_DATE, Area=GEO, Unit=UOM, Value=VALUE) %>%
   mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
          Area = factor(Area, levels = myAreas),
          Month = substr(Year, 6, 8),
@@ -103,7 +103,7 @@ d2 <- read.csv("1710000801_databaseLoadingData.csv") %>%
          Date = factor(Date))
 #
 d3 <- read.csv("1710001501_databaseLoadingData.csv") %>%
-  select(Year=1, Area=GEO, Sex=Gender, Age=Age.group, 
+  select(Year=REF_DATE, Area=GEO, Sex=Gender, Age=Age.group, 
          Measurement=Migrants, UOM, Value=VALUE) %>%
   mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
          Area = factor(Area, levels = myAreas),
@@ -112,15 +112,14 @@ d3 <- read.csv("1710001501_databaseLoadingData.csv") %>%
          Sex = plyr::mapvalues(Sex, mySexes1, mySexes2))
 #
 d4 <- read.csv("1710012101_databaseLoadingData.csv") %>%
-  select(Date=REF_DATE, Area=GEO, 
-         Type=Non.permanent.resident.types,
+  select(Date=REF_DATE, Area=GEO, Type=Non.permanent.resident.types,
          UOM, Value=VALUE) %>%
   mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
          Area = factor(Area, levels = myAreas),
          Date = factor(Date))
 #
 d5 <- read.csv("9810036101_databaseLoadingData.csv") %>%
-  select(Year=1, Area=GEO, Sex=Gender..3., Age=Age..15C., 
+  select(Year=REF_DATE, Area=GEO, Sex=Gender..3., Age=Age..15C., 
          Type=Non.permanent.resident.type..10.,
          POB=Place.of.birth..290., UOM, Value=VALUE) %>%
   mutate(Area = gsub("Northwest Territories including", "NWT &", Area),

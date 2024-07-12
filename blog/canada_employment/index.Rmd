@@ -39,7 +39,7 @@ myColors_Age <- c("darkgreen", "darkorange", "darkred")
 myColors_Sex <- c("palevioletred3","steelblue")
 #
 d1 <- read.csv("1410001701_databaseLoadingData.csv") %>%
-  select(Area=GEO, Date=1, Measurement=Labour.force.characteristics, 
+  select(Area=GEO, Date=REF_DATE, Measurement=Labour.force.characteristics, 
          Sex, Age=Age.group, Unit=UOM, Scale=SCALAR_FACTOR, Value=VALUE) %>%
   mutate(Area = factor(Area, levels = myAreas),
          Date = as.Date(paste0(Date, "-15"), format = "%Y-%m-%d"))
@@ -85,7 +85,6 @@ xx <- d1 %>%
 mp <- ggplot(xx, aes(x = Date, y = Value)) +
   geom_line(size = 0.75, alpha = 0.7, color = "darkgreen") +
   scale_y_continuous(breaks = 5:15, minor_breaks = 5:15) +
-  #scale_x_date(date_breaks = "5 years", date_labels = "%Y") +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canadian Unemployment Rate", x = NULL,
        y = "Percent", caption = myCaption)

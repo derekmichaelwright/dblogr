@@ -13,8 +13,6 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-STATCAN Table: 14-10-0288-01
-
 > - `r shiny::icon("globe")` https://www.ipsos.com/en-ca/70-percent-of-canadians-think-canada-broken-as-canadian-pride-takes-tumble
 > - `r shiny::icon("save")` [data_canada_pride.xlsx](data_canada_pride.xlsx)
 

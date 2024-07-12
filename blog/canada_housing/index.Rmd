@@ -62,7 +62,8 @@ myColors_M <- c("purple4", "darkgreen", "darkorange")
 myColors_P <- c("steelblue","darkred","darkblue")
 #
 d1 <- read.csv("1810020501_databaseLoadingData.csv") %>%
-  select(Date=1, Area=GEO, Measurement=4, Unit=UOM, Value=VALUE) %>%
+  select(Date=REF_DATE, Area=GEO, Measurement=New.housing.price.indexes,
+         Unit=UOM, Value=VALUE) %>%
   separate(Date, c("Year", "Month"), sep = "-", remove = F) %>%
   mutate(Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"))
 pp <- data.frame(Admin = factor(1:4),
@@ -73,7 +74,8 @@ pp <- data.frame(Admin = factor(1:4),
 myAreas <- c("Census metropolitan areas and census agglomerations of 50,000 and over",
              "Census metropolitan areas", "Census agglomerations 50,000 and over")
 d2 <- read.csv("3410016201_databaseLoadingData.csv") %>% 
-  select(Date=REF_DATE, Area=GEO, Measurement=4, Unit=UOM, Value=VALUE) %>%
+  select(Date=REF_DATE, Area=GEO, Measurement=Type.of.unit, 
+         Unit=UOM, Value=VALUE) %>%
   arrange(Area) %>%
   mutate(Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"),
          Year = as.numeric(substr(Date, 1, 4)),
@@ -87,7 +89,8 @@ myProvs <- c("Canada", "British Columbia", "Alberta", "Saskatchewan",
 myTypes <- c("Total dwelling type", "Single house", "Double house", 
              "Row house", "Apartment building", "Mobile house")
 d3 <- read.csv("3610068801_databaseLoadingData.csv") %>% 
-  select(Date=REF_DATE, Area=GEO, Sector=4, Private=5, Occupancy=6, Type=7, Tenure=8,
+  select(Date=REF_DATE, Area=GEO, Sector=Institutional.sector, Private=Housing.Type, 
+         Occupancy=Dwelling.Occupation, Type=Dwelling.type, Tenure=Tenure.type,
          Unit=UOM, Value=VALUE) %>%
   mutate(Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"),
          Year = substr(Date, 1, 4),
@@ -95,7 +98,7 @@ d3 <- read.csv("3610068801_databaseLoadingData.csv") %>%
          Area = factor(Area, levels = myProvs))
 #
 d4 <- read.csv("1110019001_databaseLoadingData.csv") %>%
-  select(Year=1, Area=GEO, Measurement=Income.concept,
+  select(Year=REF_DATE, Area=GEO, Measurement=Income.concept,
          Group=Economic.family.type, Unit=UOM, Value=VALUE) %>%
   filter(Group == "Economic families and persons not in an economic family",
          Measurement == "Median market income", Year >= 1986) %>%
@@ -117,7 +120,7 @@ d6 <- left_join(d5, d4, by = c("Year", "Area")) %>%
   mutate(`Median market income` = ifelse(Month != "01", NA, `Median market income`)) %>%
   gather(Measurement, Value, 5:6) %>% filter(!is.na(Value))
 d7 <- read.csv("3410013301_databaseLoadingData.csv") %>%
-  select(Year=1, Area=GEO, Structure.Type=Type.of.structure,
+  select(Year=REF_DATE, Area=GEO, Structure.Type=Type.of.structure,
          Unit.Type = Type.of.unit, Unit=UOM, Value=VALUE) %>%
   filter(!is.na(Value), Value > 0)
 ```

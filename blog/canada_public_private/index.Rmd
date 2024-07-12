@@ -30,17 +30,18 @@ library(agData)
 ```{r}
 # Prep data
 myCaption = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
-myColors_Ind <- c("darkgreen", "darkslategray", "darkred")
+myColors_Ind <- c("darkgreen", "darkslategray", "darkred", "steelblue")
 myColors_Sex <- c("palevioletred3","steelblue")
-myMeasures <- c("Self-employed", "Private sector", "Public sector")
+myMeasures <- c("Self-employed", "Private sector", "Public sector", "Total")
 myDates <- as.Date(c("2010-01-01","2015-01-01","2020-01-01"))
 #
 d1 <- read.csv("1410028801_databaseLoadingData.csv") %>%
-  select(Area=GEO, Date=1, Measurement=Class.of.worker, 
+  select(Area=GEO, Date=REF_DATE, Measurement=Class.of.worker, 
          Sex, Unit=UOM, Scale=SCALAR_FACTOR, Value=VALUE) %>%
   mutate(Value = Value * 1000,
          Area = factor(Area, levels = agData_STATCAN_Region_Table$Area),
          Date = as.Date(paste0(Date, "-15"), format = "%Y-%m-%d"),
+         Measurement = plyr::mapvalues(Measurement, "Total employed, all classes of workers", "Total"),
          Measurement = gsub(" employees", "", Measurement),
          Measurement = factor(Measurement, levels = myMeasures))
 d2 <- d1 %>% 
@@ -49,6 +50,7 @@ d2 <- d1 %>%
   summarise(Value = sum(Value)) %>% ungroup() %>%
   group_by(Area, Year, Sex) %>% mutate(Total = sum(Value)) %>% ungroup() %>%
   mutate(Percent = 100 * Value / Total)
+unique(d1$Measurement)
 ```
 
 ---
@@ -61,7 +63,8 @@ d2 <- d1 %>%
 
 ```{r}
 # Prep data
-xx <- d1 %>% filter(Area == "Canada", Sex == "Both sexes")
+xx <- d1 %>% 
+  filter(Area == "Canada", Sex == "Both sexes", Measurement != "Total")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
@@ -83,7 +86,7 @@ ggsave("canada_public_private_1_01.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area != "Canada", Sex == "Both sexes")
+  filter(Area != "Canada", Sex == "Both sexes", Measurement != "Total")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
@@ -134,7 +137,7 @@ gg_Priv_Gov <- function(myArea = "Canada") {
   # Prep data
   xx <- d1 %>% 
     filter(Sex == "Both sexes", Date > "2010-01-01",
-           Area == myArea)
+           Area == myArea, Measurement != "Total")
   # Plot
   ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
     geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
@@ -205,7 +208,7 @@ ggsave("canada_public_private_2_04.png", mp, width = 10, height = 4)
 # Prep data
 xx <- d1 %>% 
   filter(Area == "Canada", Sex == "Both sexes", 
-         Date >= "2020-02-15") %>%
+         Date >= "2020-02-15", Measurement != "Total") %>%
   select(Date, Measurement, Value) %>%
   spread(Date, Value) %>%
   mutate(Start = `2020-02-15`) %>%
@@ -238,7 +241,7 @@ ggsave("canada_public_private_3_01.png", mp, width = 7, height = 4)
 # Prep data
 xx <- d1 %>% 
   filter(Area == "Canada", Sex == "Both sexes", 
-         Date >= "2019-09-15") %>%
+         Date >= "2019-09-15", Measurement != "Total") %>%
   select(Date, Measurement, Value) %>%
   spread(Date, Value) %>%
   mutate(Start = `2019-09-15`) %>%
@@ -271,7 +274,7 @@ ggsave("canada_public_private_3_02.png", mp, width = 7, height = 4)
 
 ```{r}
 # Prep data
-xx <- d2 %>% filter(Area == "Canada", Sex == "Both sexes")
+xx <- d2 %>% filter(Area == "Canada", Sex == "Both sexes", Measurement != "Total")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Measurement)) +
   geom_col(color = "black", alpha = 0.7) +
@@ -289,7 +292,7 @@ ggsave("canada_public_private_4_01.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-xx <- d2 %>% filter(Area == "Canada", Sex != "Both sexes")
+xx <- d2 %>% filter(Area == "Canada", Sex != "Both sexes", Measurement != "Total")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Measurement)) +
   geom_col(color = "black", alpha = 0.7) +
@@ -308,7 +311,7 @@ ggsave("canada_public_private_4_02.png", mp, width = 8, height = 4)
 
 ```{r}
 # Prep data
-xx <- d2 %>% filter(Area != "Canada", Sex == "Both sexes")
+xx <- d2 %>% filter(Area != "Canada", Sex == "Both sexes", Measurement != "Total")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Measurement)) +
   geom_col(color = "black", alpha = 0.7, lwd = 0.1) +
@@ -331,7 +334,7 @@ ggsave("canada_public_private_4_03.png", mp, width = 12, height = 5)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area == "Canada", Sex != "Both sexes")
+  filter(Area == "Canada", Sex != "Both sexes", Measurement != "Total")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Sex)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
@@ -353,7 +356,8 @@ ggsave("canada_public_private_5_01.png", mp, width = 10, height = 4)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area == "Canada", Sex != "Both sexes", Date > "2010-01-01")
+  filter(Area == "Canada", Sex != "Both sexes", 
+         Date > "2010-01-01", Measurement != "Total")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Sex)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
@@ -479,7 +483,8 @@ xx <- d1 %>%
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(color = "darkgreen", size = 1.25, alpha = 0.7) +
-  scale_y_continuous(breaks = 0:3, minor_breaks = 0:3, limits = c(0,3)) +
+  expand_limits(y = 0) +
+  #scale_y_continuous(breaks = 0:3, minor_breaks = 0:3, limits = c(0,3)) +
   theme_agData() +
   labs(title = "Self-Employment in Canada", x = NULL,
        y = "Million Jobs", caption = myCaption)
@@ -500,6 +505,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(color = "darkgreen", size = 1.25, alpha = 0.7) +
   scale_x_date(breaks = myDates, minor_breaks = "1 year", date_labels = "%Y") +
+  expand_limits(y = 0) +
   theme_agData() +
   labs(title = "Self-Employment in Canada", x = NULL,
        y = "Million Jobs", caption = myCaption)
@@ -522,6 +528,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(color = "darkgreen", alpha = 0.7) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+  expand_limits(y = 0) +
   theme_agData() +
   labs(title = "Self-Employment in Canada", x = NULL,
        y = "Million Jobs", caption = myCaption)
@@ -543,6 +550,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   geom_line(color = "darkgreen", size = 1, alpha = 0.7) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
   scale_x_date(breaks = myDates, minor_breaks = "1 year", date_labels = "%Y") +
+  expand_limits(y = 0) +
   theme_agData() +
   labs(title = "Self-Employment in Canada", x = NULL,
        y = "Million Jobs", caption = myCaption)
