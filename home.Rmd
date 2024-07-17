@@ -1,5 +1,5 @@
 ---
-title: NULL
+title: www.dblogr.com/
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
@@ -247,21 +247,6 @@ Harold G. Weger, April K. Polasek, **Derek M. Wright**, Arun Damodaran, John Sta
 
 Tutorials and Vignettes based on some of my academic work.
 
-## gwaspr
-
-<div class="box"><div class = "row"><div class = "col-md-8">
-
-An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` package
-
-`devtools::install_github("derekmichaelwright/gwaspr")`
-
-- `r icon("house")` [https://derekmichaelwright.github.io/gwaspr/](https://derekmichaelwright.github.io/gwaspr/){target="_blank"}
-- `r icon("github")` [https://github.com/derekmichaelwright/gwaspr/](https://github.com/derekmichaelwright/gwaspr/){target="_blank"}
-
-- `r icon("laptop-code")` [GWAS Tutorial](academic/gwas_tutorial){target="_blank"}
-
-</div><div class = "col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
-
 ---
 
 ## Tutorials {.tabset .tabset-pills}
@@ -399,6 +384,23 @@ A vignette illustrating how to mislead with statistics and graphs
 ## {-}
 
 <br>
+
+---
+
+## gwaspr
+
+<div class="box"><div class = "row"><div class = "col-md-8">
+
+An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` package
+
+`devtools::install_github("derekmichaelwright/gwaspr")`
+
+- `r icon("house")` [https://derekmichaelwright.github.io/gwaspr/](https://derekmichaelwright.github.io/gwaspr/){target="_blank"}
+- `r icon("github")` [https://github.com/derekmichaelwright/gwaspr/](https://github.com/derekmichaelwright/gwaspr/){target="_blank"}
+
+- `r icon("laptop-code")` [GWAS Tutorial](academic/gwas_tutorial){target="_blank"}
+
+</div><div class = "col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
 
 ---
 
