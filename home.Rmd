@@ -1,5 +1,5 @@
 ---
-title: www.dblogr.com/
+title: "www.dblogr.com/"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
@@ -14,9 +14,11 @@ library(shiny)
 ```
 
 
+Welcome to the personal website for Derek Michael Wright
+
 **www.dblogr.com/** or **derekmichaelwright.github.io/dblogr**
 
-Welcome to the personal website for Derek Michael Wright
+---
 
 # `r icon("address-card")` About Me
 
@@ -63,11 +65,17 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 ---
 
-# `r icon("book")` Publications 
+# `r icon("newspaper")` Academic Work
 
-Scientific publications I have been involved in while working/studying at [***University of Regina***](https://www.uregina.ca/){target="_blank"}, [***Justus-Liebig-Universität Gießen (University of Giessen)***](https://www.uni-giessen.de/){target="_blank"} & the [***University of Saskatchewan***](https://www.usask.ca/){target="_blank"}.
+## Highlighted Publications:
+
+- (**2022**) [<u>**Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**</u>](https://doi.org/10.1002/tpg2.20269){target="_blank"}. *The Plant Genome*. e20269. doi.org/10.1002/tpg2.20269
+- (**2021**) [<u>**Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**</u>](https://doi.org/10.3390/agronomy11101933){target="_blank"}. *Agronomy*. 11(10): 1933. doi.org/10.3390/agronomy11101933
+- (**2021**) [<u>**Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**</u>](https://doi.org/10.1002/ppp3.10158){target="_blank"}. *Plants, People, Planet*. 3(2): 171-181. doi.org/10.1002/ppp3.10158
 
 ## All Publications {.tabset .tabset-pills}
+
+Scientific publications I have been involved in while working/studying at [***University of Regina***](https://www.uregina.ca/){target="_blank"}, [***Justus-Liebig-Universität Gießen (University of Giessen)***](https://www.uni-giessen.de/){target="_blank"} & the [***University of Saskatchewan***](https://www.usask.ca/){target="_blank"}.
 
 ### LDP Phenology {.active}
 
@@ -229,26 +237,6 @@ Harold G. Weger, April K. Polasek, **Derek M. Wright**, Arun Damodaran, John Sta
 
 </div>
 
-<br><br>
-
-## {-}
-
----
-
-## Highlighted Publications:
-
-- (**2022**) [<u>**Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**</u>](https://doi.org/10.1002/tpg2.20269){target="_blank"}. *The Plant Genome*. e20269. doi.org/10.1002/tpg2.20269
-- (**2021**) [<u>**Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**</u>](https://doi.org/10.3390/agronomy11101933){target="_blank"}. *Agronomy*. 11(10): 1933. doi.org/10.3390/agronomy11101933
-- (**2021**) [<u>**Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**</u>](https://doi.org/10.1002/ppp3.10158){target="_blank"}. *Plants, People, Planet*. 3(2): 171-181. doi.org/10.1002/ppp3.10158
-
----
-
-# `r icon("newspaper")` Academic
-
-Tutorials and Vignettes based on some of my academic work.
-
----
-
 ## Tutorials {.tabset .tabset-pills}
 
 Tutorials in `r icon("r-project")` on how to perform various statistical and genetic analyses.
@@ -335,8 +323,6 @@ An introduction to R
 
 </div><div class = "col-md-6">![](academic/r_tutorial/featured.png)</div></div></div>
 
----
-
 ## Vignettes {.tabset .tabset-pills}
 
 Vignettes related to my work academic work and general science communication.
@@ -383,9 +369,206 @@ A vignette illustrating how to mislead with statistics and graphs
 
 ## {-}
 
-<br>
+---
+
+# `r icon("r-project")` Packages
+
+## agData 
+
+<div class="box"><div class = "row"><div class = "col-md-8">
+
+An `r icon("r-project")` Package Containing Agricultural Data Sets
+
+Install: `devtools::install_github("derekmichaelwright/agData")`
+
+Documentation:
+
+- `r icon("house")` [https://derekmichaelwright.github.io/agData/](https://derekmichaelwright.github.io/agData/){target="_blank"}
+- `r icon("github")` [https://github.com/derekmichaelwright/agData/](https://github.com/derekmichaelwright/agData/){target="_blank"}
+
+</div><div class = "col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
+
+### FAOSTAT {.tabset .tabset-pills}
+
+#### Maps of Global Crop Production
+
+<div class="box">
+
+[<u>**Maps of Global Crop Production**</u>](agdata/crops_world_maps){target="_blank"}
+
+Maps of crop production using FAO data
+
+![](agdata/crops_world_maps/featured.png)</div>
+
+#### Global Farmland
+
+<div class="box">
+
+[<u>**Global Agricultural Land Use**</u>](agdata/farmland_world){target="_blank"}
+
+Graphs of global agricultural land use with FAO data
+
+![](agdata/farmland_world/featured.png)</div>
+
+#### Global Food Security
+
+<div class="box">
+
+[<u>**Global Food Security**</u>](agdata/global_food_security){target="_blank"}
+
+Graphs related to global food security using FAO data
+
+![](agdata/global_food_security/featured.png)</div>
+
+#### Lentil
+
+<div class="box">
+
+[<u>**Lentil Production**</u>](agdata/lentil){target="_blank"}
+
+Graphs of lentil production using FAO data
+
+![](agdata/lentil/featured.png)</div>
+
+#### Wheat
+
+<div class="box">
+
+[<u>**Wheat Production**</u>](agdata/wheat){target="_blank"}
+
+Graphs of wheat production using FAO data
+
+![](agdata/wheat/featured.png)</div>
+
+#### Honeybee
+
+<div class="box">
+
+[<u>**Honeybee Producion**</u>](agdata/honeybee){target="_blank"}
+
+Graphs of honeybee production using FAO data
+
+![](agdata/honeybee/featured.png)</div>
 
 ---
+
+### STATCAN {.tabset .tabset-pills}
+
+#### Saskatchewan Crop Production
+
+<div class="box">
+
+[<u>**Saskatchewan Crop Production**</u>](agdata/crops_saskatchewan){target="_blank"}
+
+Graphs of crop production in Saskatchewan using STATCAN data
+
+![](agdata/crops_saskatchewan/featured.png)</div>
+
+#### Lentil Saskatchewan
+
+<div class="box">
+
+[<u>**Saskatchewan Lentil Production and Exports**</u>](agdata/lentil_saskatchewan){target="_blank"}
+
+Graphs of lentil production and exports using SKAG data
+
+![](agdata/lentil_saskatchewan/featured.png)</div>
+
+#### Wheat Canada
+
+<div class="box">
+
+[<u>**Wheat Production in Canada**</u>](agdata/wheat_canada){target="_blank"}
+
+Graphs of wheat production using STATCAN data
+
+![](agdata/wheat_canada/featured.png)</div>
+
+#### Honeybee Canada
+
+<div class="box">
+
+[<u>**Canadian Honeybee Production**</u>](agdata/honeybee_canada){target="_blank"}
+
+Graphs of honeybee production in Canada using STATCAN data
+
+![](agdata/honeybee_canada/featured.png)</div>
+
+#### Canadian Farmland
+
+<div class="box">
+
+[<u>**Canadian Farmland**</u>](agdata/farmland_canada){target="_blank"}
+
+Graphs about Canadian farmland using STATCAN data
+
+![](agdata/farmland_canada/featured.png)</div>
+
+#### Canadian Farmers
+
+<div class="box">
+
+[<u>**Canadian Farm Operators**</u>](agdata/farmers_canada){target="_blank"}
+
+Graphs on Canadian farm operator demographics using STATCAN data
+
+![](agdata/farmers_canada/featured.png)</div>
+
+#### Maps of Canadian Crop Production
+
+<div class="box">
+
+[<u>**Maps of Canadian Crop Production**</u>](agdata/crops_canada_maps){target="_blank"}
+
+Maps of crop production in Canada using STATCAN data
+
+![](agdata/crops_canada_maps/featured.png)</div>
+
+---
+
+### Other Sources {.tabset .tabset-pills}
+
+USDA, ISAAA, *etc*. 
+
+#### Maize USA
+
+<div class="box">
+
+[<u>**USA Maize Production**</u>](agdata/maize_usa){target="_blank"}
+
+Graphs of maize production in the USA using USDA data
+
+![](agdata/maize_usa/featured.png)</div>
+
+#### Sugarbeet USA
+
+<div class="box">
+
+[<u>**Sugarbeet Production in USA**</u>](agdata/sugarbeet_usa){target="_blank"}
+
+Graphs of sugarbeet production using USDA data
+
+![](agdata/sugarbeet_usa/featured.png)</div>
+
+#### GE Crops
+
+<div class="box">
+
+[<u>**Genetically Engineered Crop Production**</u>](agdata/ge_crops){target="_blank"}
+
+Graphs of GE crop production using ISAAA data
+
+![](agdata/ge_crops/featured.png)</div>
+
+#### GE Crops USA
+
+<div class="box">
+
+[<u>**Genetically Engineered Crop Production in USA**</u>](agdata/ge_crops_usa){target="_blank"}
+
+Graphs of GE crop production using USDA data
+
+![](agdata/ge_crops_usa/featured.png)</div>
 
 ## gwaspr
 
@@ -402,216 +585,27 @@ An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` pack
 
 </div><div class = "col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
 
----
-
-# `r icon("r-project")` agData 
+## cypher
 
 <div class="box"><div class = "row"><div class = "col-md-8">
 
-An `r icon("r-project")` Package Containing Agricultural Data Sets
+`cypher`: an `r icon("r-project")` package for coding and decoding secret messages
 
-Install: `devtools::install_github("derekmichaelwright/agData")`
+`devtools::install_github("derekmichaelwright/cypher")`
 
-Documentation:
+- `r icon("house")` https://derekmichaelwright.github.io/cypher/
+- `r icon("github")` https://github.com/derekmichaelwright/cypher/
+- `r icon("laptop-code")` [Shiny App (R Script)](https://github.com/derekmichaelwright/cypher/blob/master/shinyapp/app.R)
 
-- `r icon("house")` [https://derekmichaelwright.github.io/agData/](https://derekmichaelwright.github.io/agData/){target="_blank"}
-- `r icon("github")` [https://github.com/derekmichaelwright/agData/](https://github.com/derekmichaelwright/agData/){target="_blank"}
-
-</div><div class = "col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
-
----
-
-## FAOSTAT {.tabset .tabset-pills}
-
-### Maps of Global Crop Production
-
-<div class="box">
-
-[<u>**Maps of Global Crop Production**</u>](agdata/crops_world_maps){target="_blank"}
-
-Maps of crop production using FAO data
-
-![](agdata/crops_world_maps/featured.png)</div>
-
-### Global Farmland
-
-<div class="box">
-
-[<u>**Global Agricultural Land Use**</u>](agdata/farmland_world){target="_blank"}
-
-Graphs of global agricultural land use with FAO data
-
-![](agdata/farmland_world/featured.png)</div>
-
-### Global Food Security
-
-<div class="box">
-
-[<u>**Global Food Security**</u>](agdata/global_food_security){target="_blank"}
-
-Graphs related to global food security using FAO data
-
-![](agdata/global_food_security/featured.png)</div>
-
-### Lentil
-
-<div class="box">
-
-[<u>**Lentil Production**</u>](agdata/lentil){target="_blank"}
-
-Graphs of lentil production using FAO data
-
-![](agdata/lentil/featured.png)</div>
-
-### Wheat
-
-<div class="box">
-
-[<u>**Wheat Production**</u>](agdata/wheat){target="_blank"}
-
-Graphs of wheat production using FAO data
-
-![](agdata/wheat/featured.png)</div>
-
-### Honeybee
-
-<div class="box">
-
-[<u>**Honeybee Producion**</u>](agdata/honeybee){target="_blank"}
-
-Graphs of honeybee production using FAO data
-
-![](agdata/honeybee/featured.png)</div>
-
----
-
-## STATCAN {.tabset .tabset-pills}
-
-### Saskatchewan Crop Production
-
-<div class="box">
-
-[<u>**Saskatchewan Crop Production**</u>](agdata/crops_saskatchewan){target="_blank"}
-
-Graphs of crop production in Saskatchewan using STATCAN data
-
-![](agdata/crops_saskatchewan/featured.png)</div>
-
-### Lentil Saskatchewan
-
-<div class="box">
-
-[<u>**Saskatchewan Lentil Production and Exports**</u>](agdata/lentil_saskatchewan){target="_blank"}
-
-Graphs of lentil production and exports using SKAG data
-
-![](agdata/lentil_saskatchewan/featured.png)</div>
-
-### Wheat Canada
-
-<div class="box">
-
-[<u>**Wheat Production in Canada**</u>](agdata/wheat_canada){target="_blank"}
-
-Graphs of wheat production using STATCAN data
-
-![](agdata/wheat_canada/featured.png)</div>
-
-### Honeybee Canada
-
-<div class="box">
-
-[<u>**Canadian Honeybee Production**</u>](agdata/honeybee_canada){target="_blank"}
-
-Graphs of honeybee production in Canada using STATCAN data
-
-![](agdata/honeybee_canada/featured.png)</div>
-
-### Canadian Farmland
-
-<div class="box">
-
-[<u>**Canadian Farmland**</u>](agdata/farmland_canada){target="_blank"}
-
-Graphs about Canadian farmland using STATCAN data
-
-![](agdata/farmland_canada/featured.png)</div>
-
-### Canadian Farmers
-
-<div class="box">
-
-[<u>**Canadian Farm Operators**</u>](agdata/farmers_canada){target="_blank"}
-
-Graphs on Canadian farm operator demographics using STATCAN data
-
-![](agdata/farmers_canada/featured.png)</div>
-
-### Maps of Canadian Crop Production
-
-<div class="box">
-
-[<u>**Maps of Canadian Crop Production**</u>](agdata/crops_canada_maps){target="_blank"}
-
-Maps of crop production in Canada using STATCAN data
-
-![](agdata/crops_canada_maps/featured.png)</div>
-
----
-
-## USDA, ISAAA, *etc*. {.tabset .tabset-pills}
-
-### Maize USA
-
-<div class="box">
-
-[<u>**USA Maize Production**</u>](agdata/maize_usa){target="_blank"}
-
-Graphs of maize production in the USA using USDA data
-
-![](agdata/maize_usa/featured.png)</div>
-
-### Sugarbeet USA
-
-<div class="box">
-
-[<u>**Sugarbeet Production in USA**</u>](agdata/sugarbeet_usa){target="_blank"}
-
-Graphs of sugarbeet production using USDA data
-
-![](agdata/sugarbeet_usa/featured.png)</div>
-
-### GE Crops
-
-<div class="box">
-
-[<u>**Genetically Engineered Crop Production**</u>](agdata/ge_crops){target="_blank"}
-
-Graphs of GE crop production using ISAAA data
-
-![](agdata/ge_crops/featured.png)</div>
-
-### GE Crops USA
-
-<div class="box">
-
-[<u>**Genetically Engineered Crop Production in USA**</u>](agdata/ge_crops_usa){target="_blank"}
-
-Graphs of GE crop production using USDA data
-
-![](agdata/ge_crops_usa/featured.png)</div>
+</div><div class = "col-md-4">![](blog/hex_stickers/logo_cypher.png)</div></div></div>
 
 ## {-}
-
-<br>
 
 ---
 
 # `r icon("chart-line")` Blog
 
 Random data visualizations and general blog posts.
-
----
 
 ## Economics {.tabset .tabset-pills}
 
@@ -674,8 +668,6 @@ Graphs of trade surplus/deficits with other countries using STATCAN data
 Graphs with gapminder data
 
 </div><div class = "col-md-6">![](blog/gapminder/featured.png)</div></div></div>
-
----
 
 ## Demographics {.tabset .tabset-pills}
 
@@ -779,23 +771,7 @@ Graphs of political views among academics in Canada
 
 ![](blog/canada_academia/featured.png)</div>
 
----
-
 ## Other `r icon("r-project")` Stuff, *etc*. {.tabset .tabset-pills}
-
-### cypher
-
-<div class="box"><div class = "row"><div class = "col-md-8">
-
-`cypher`: an `r icon("r-project")` package for coding and decoding secret messages
-
-`devtools::install_github("derekmichaelwright/cypher")`
-
-- `r icon("house")` https://derekmichaelwright.github.io/cypher/
-- `r icon("github")` https://github.com/derekmichaelwright/cypher/
-- `r icon("laptop-code")` [Shiny App (R Script)](https://github.com/derekmichaelwright/cypher/blob/master/shinyapp/app.R)
-
-</div><div class = "col-md-4">![](blog/hex_stickers/logo_cypher.png)</div></div></div>
 
 ### Hex Stickers
 
@@ -836,12 +812,6 @@ Graphs of star constellations using the starBliss R package
 Blank pages for notebook creation
 
 ![](blog/blank_pages/featured.png)</div>
-
-## {-}
-
-<br>
-
----
 
 ## Memorable Quotes
 
@@ -917,6 +887,8 @@ I want freedom, the kind that they promised me, just for livin' in this country.
 
 <div class="box">
 
+Roy's Creedo
+
 ![](cv/lefty.jpg)
 
 I do not choose to be a common man. It is my right to be uncommon... if I can.
@@ -932,6 +904,8 @@ I will never cower before any master nor bend to any threat. It is my heritage t
 -Roy R. Wright
 
 </div>
+
+## {-}
 
 ---
 
