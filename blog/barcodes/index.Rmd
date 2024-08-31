@@ -1,0 +1,92 @@
+---
+title: "Barcodes"
+subtitle: "Create 1D and 2D barcodes with R"
+date: "Last updated: `r Sys.Date()`"
+author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, eval = F)
+```
+
+
+---
+
+# 2D Barcodes (QR)
+
+## qrcode
+
+> - `r shiny::icon("globe")` https://thierryo.github.io/qrcode/
+
+```{r eval = F}
+install.packages("qrcode")
+```
+
+```{r}
+library(qrcode)
+mp <- qr_code("derekmichaelwright.github.io/dblogr", ecl = "M")
+mp <- add_logo(mp, "logo_dblogr.png", ecl = "L", hjust = "c", vjust = "c")
+generate_svg(mp, "QR_dblogr.svg")
+# Convert to png
+rsvg::rsvg_png("QR_dblogr.svg", "QR_dblogr.png", width = 512, height = 512)
+```
+
+```{r echo = F}
+file.copy(from = "QR_dblogr.png", to = "featured.png", overwrite = T)
+```
+
+![](QR_dblogr.png)
+
+---
+
+## baRcodeR
+
+> - `r shiny::icon("globe")` https://docs.ropensci.org/baRcodeR/
+
+```{r eval = F}
+install.packages("baRcodeR")
+```
+
+```{r}
+library(baRcodeR)
+```
+
+## 2D - QR Codes
+
+```{r}
+myLabels <- paste0("Plot:", 1001:1160)
+create_PDF(Labels = myLabels, name = "myLabes_QRCodes", type = "matrix")
+```
+
+`r shiny::icon("save")` [myLabels_QRCodes.pdf](myLabels_QRCodes.pdf)
+
+![](myLabels_QRCodes.png)
+
+---
+
+## 1D - Barcodes
+
+```{r}
+myLabels <- paste0("Plot:", 1001:1160)
+create_PDF(Labels = myLabels, name = "myLabels_BarCodes", type = "linear")
+```
+
+`r shiny::icon("save")` [myLabels_BarCodes.pdf](myLabels_BarCodes.pdf)
+
+---
+
+```{r eval = F, echo = F}
+example_labels <- uniqID_maker(user = FALSE, string = "Example", level = 1:80)
+head(example_labels)
+create_PDF(Labels = example_labels, name = "Example_QRCodes")
+#`r shiny::icon("save")` [Example_QRCodes.pdf](Example_QRCodes.pdf)
+```
+
+```{r eval = F, echo = F}
+# 1D Barcodes
+# install.packages("devtools")
+devtools::install_github("CannaData/zintr")
+library(zintr)
+barcode_print(8675309, "barcode1.png")
+barcode_print("Hello World", "barcode2.png")
+```

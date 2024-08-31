@@ -13,10 +13,20 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-STATCAN Table 14-10-0017-01
+STATCAN Table 14-10-0017-01 (Labour force characteristics)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410001701
 > - `r shiny::icon("save")` [1410001701_databaseLoadingData.csv](1410001701_databaseLoadingData.csv)
+
+STATCAN Table 11-10-0012-01 (Distribution of total income)
+
+> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110001201
+> - `r shiny::icon("save")` [1110001201_databaseLoadingData.csv](1110001201_databaseLoadingData.csv)
+
+STATCAN Table 18-10-0005-01 (Consumer Price Index)
+
+> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810000501
+> - `r shiny::icon("save")` [1810000501_databaseLoadingData.csv](1810000501_databaseLoadingData.csv)
 
 ---
 
@@ -50,6 +60,17 @@ d2 <- d1 %>%
   summarise(Value = sum(Value)) %>% ungroup() %>%
   group_by(Area, Year, Sex, Age) %>% mutate(Total = sum(Value)) %>% ungroup() %>%
   mutate(Percent = 100 * Value / Total)
+myColors_Fam <- c("darkgreen", "steelblue", "darkred")
+#
+d3 <- read.csv("1110001201_databaseLoadingData.csv") %>%
+  select(Area=GEO, Year=REF_DATE, FamilyType=Family.type, Age=Age.of.older.adult,
+         Measurement=Family.income, Unit=UOM, Value=VALUE) %>%
+  mutate(Area = factor(Area, levels = myAreas))
+#
+d4 <- read.csv("1810000501_databaseLoadingData.csv") %>%
+  select(Area=GEO, Year=REF_DATE, Item=Products.and.product.groups,
+         Unit=UOM, CPI=VALUE)
+
 ```
 
 ```{r echo = F, eval = F}
@@ -526,3 +547,152 @@ mp <- ggplot(xx, aes(x = Date, y = PanDiff / 1000, fill = PosNeg)) +
        y = "Million", x = NULL, caption = myCaption)
 ggsave("canada_employment_2_06.png", mp, width = 8, height = 4)
 ```
+
+---
+
+# Income
+
+## Canada
+
+![](canada_employment_3_01.png)
+
+```{r}
+# Prep data
+xx <- d3 %>% filter(Area == "Canada", Age == "Total all ages")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = FamilyType)) +
+  geom_line(size = 1, alpha = 0.7) +
+  scale_color_manual(name = NULL, values = myColors_Fam) +
+  expand_limits(y = 0) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canada - Total Median Income", x = NULL,
+       y = "Canadian Dollars (x1000)", caption = myCaption)
+ggsave("canada_employment_3_01.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Provinces
+
+![](canada_employment_3_02.png)
+
+```{r}
+# Prep data
+xx <- d3 %>% filter(Area != "Canada", Age == "Total all ages")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = FamilyType)) +
+  geom_line(size = 1, alpha = 0.7) +
+  facet_wrap(Area ~ .) +
+  scale_color_manual(name = NULL, values = myColors_Fam) +
+  expand_limits(y = 0) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canada - Total Median Income", x = NULL,
+       y = "Canadian Dollars (x1000)", caption = myCaption)
+ggsave("canada_employment_3_02.png", mp, width = 8, height = 6)
+```
+
+---
+
+## Age
+
+![](canada_employment_3_03.png)
+
+```{r}
+# Prep data
+xx <- d3 %>% filter(Area == "Canada", Age != "Total all ages")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = FamilyType)) +
+  geom_line(size = 1, alpha = 0.7) +
+  facet_grid(. ~ Age) +
+  scale_color_manual(name = NULL, values = myColors_Fam) +
+  expand_limits(y = 0) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada - Total Median Income", x = NULL,
+       y = "Canadian Dollars (x1000)", caption = myCaption)
+ggsave("canada_employment_3_03.png", mp, width = 8, height = 4)
+```
+
+---
+
+### Income Growth Rate
+
+![](canada_employment_3_04.png)
+
+```{r}
+# Prep data
+xx <- d3 %>% filter(Area == "Canada", Age != "Total all ages") %>%
+  group_by(Area, FamilyType, Age) %>%
+  mutate(PreviousYear = lag(Value),
+         Rate = 100 * (Value - PreviousYear) / PreviousYear)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Rate)) +
+  geom_hline(yintercept = 0, color = "black") +
+  geom_line(aes(color = FamilyType), size = 1, alpha = 0.7) +
+  facet_grid(FamilyType ~ Age) +
+  scale_color_manual(name = NULL, values = myColors_Fam) +
+  expand_limits(y = 0) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada - Total Median Income Growth Rate", x = NULL,
+       y = "Percent", caption = myCaption)
+ggsave("canada_employment_3_04.png", mp, width = 8, height = 6)
+```
+
+---
+
+### Inflation Adjusted Income Growth Rate
+
+![](canada_employment_3_05.png)
+
+```{r}
+# Prep data
+xx <- d3 %>% filter(Area == "Canada", Age != "Total all ages") %>%
+  left_join(d4, by = c("Area", "Year")) %>%
+  mutate(InflationValue = Value / CPI) %>%
+  group_by(Area, FamilyType, Age) %>%
+  mutate(PreviousYear = lag(InflationValue),
+         Rate = 100 * (InflationValue - PreviousYear) / PreviousYear)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Rate)) +
+  geom_hline(yintercept = 0, color = "black") +
+  geom_line(aes(color = FamilyType), size = 1, alpha = 0.7) +
+  facet_grid(FamilyType ~ Age) +
+  scale_color_manual(name = NULL, values = myColors_Fam) +
+  expand_limits(y = 0) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada - Inflation Adjusted Total Median Income Growth Rate",
+       x = NULL, y = "Percent", caption = myCaption)
+ggsave("canada_employment_3_05.png", mp, width = 8, height = 6)
+```
+
+---
+
+### Inflation Adjusted Income Growth Rate
+
+![](canada_employment_3_06.png)
+
+```{r}
+# Prep data
+xx <- d3 %>% filter(Area == "Canada", Age != "Total all ages") %>%
+  left_join(d4, by = c("Area", "Year")) %>%
+  mutate(InflationValue = Value / CPI) %>%
+  group_by(Area, FamilyType, Age) %>%
+  mutate(PreviousYear = lag(InflationValue),
+         Rate = 100 * (InflationValue - PreviousYear) / PreviousYear)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Rate)) +
+  geom_hline(yintercept = 0, color = "black") +
+  geom_line(aes(color = FamilyType), size = 1, alpha = 0.7) +
+  facet_grid(FamilyType ~ Age) +
+  scale_color_manual(name = NULL, values = myColors_Fam) +
+  expand_limits(y = 0) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada - Inflation Adjusted Total Median Income Growth Rate",
+       x = NULL, y = "Percent", caption = myCaption)
+ggsave("canada_employment_3_06.png", mp, width = 8, height = 6)
+```
+
+---

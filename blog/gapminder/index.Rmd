@@ -13,6 +13,8 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
+https://www.gapminder.org/
+
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)

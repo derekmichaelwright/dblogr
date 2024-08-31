@@ -13,27 +13,27 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-STATCAN Table: 13-10-0783-01
+STATCAN Table: 13-10-0783-01 (Weekly death counts)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301
 > - `r shiny::icon("save")` [1310078301_databaseLoadingData.csv](1310078301_databaseLoadingData.csv)
 
-STATCAN Table: 13-10-0768-01
+STATCAN Table: 13-10-0768-01 (Weekly death counts, by age group and sex)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801
 > - `r shiny::icon("save")` [1310076801_databaseLoadingData.csv](1310076801_databaseLoadingData.csv)
 
-STATCAN Table: 13-10-0708-01
+STATCAN Table: 13-10-0708-01 (Deaths, by month)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801
 > - `r shiny::icon("save")` [1310070801_databaseLoadingData.csv](1310070801_databaseLoadingData.csv)
 
-STATCAN Table: 17-10-0009-01
+STATCAN Table: 17-10-0009-01 (Population estimates, quarterly)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901
 > - `r shiny::icon("save")` [1710000901_databaseLoadingData.csv](1710000901_databaseLoadingData.csv)
 
-STATCAN Interactive Graph
+STATCAN Interactive Graph (Weekly death counts)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm
 

@@ -13,27 +13,27 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-STATCAN Table: 18-10-0205-01
+STATCAN Table: 18-10-0205-01 (New housing price index)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810020501
 > - `r shiny::icon("save")` [1810020501_databaseLoadingData.csv](1810020501_databaseLoadingData.csv)
 
-STATCAN Table: 34-10-0162-01
+STATCAN Table: 34-10-0162-01 (Newly completed and unoccupied housing)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410016201
 > - `r shiny::icon("save")` [3410016201_databaseLoadingData.csv](3410016201_databaseLoadingData.csv)
 
-STATCAN Table: 36-10-0688-01
+STATCAN Table: 36-10-0688-01 (Housing stock)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610068801
 > - `r shiny::icon("save")` [3610068801_databaseLoadingData.csv](3610068801_databaseLoadingData.csv)
 
-STATCAN Table: 11-10-0688-01
+STATCAN Table: 11-10-0688-01 (Market income, government transfers, total income, income tax and after-tax income)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110019001
 > - `r shiny::icon("save")` [3610068801_databaseLoadingData.csv](3610068801_databaseLoadingData.csv)
 
-STATCAN Table: 34-10-0133-01
+STATCAN Table: 34-10-0133-01 (Average rents)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410013301
 > - `r shiny::icon("save")` [3410013301_databaseLoadingData.csv](3410013301_databaseLoadingData.csv)

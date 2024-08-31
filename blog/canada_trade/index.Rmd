@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-STATCAN Table: 12-10-0011-01
+STATCAN Table: 12-10-0011-01 (International merchandise trade for all countries)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1210001101
 > - `r shiny::icon("save")` [1210001101_databaseLoadingData.csv](1210001101_databaseLoadingData.csv)

@@ -761,16 +761,6 @@ Graphs of weekly deaths in the USA using CDC & USCB data
 
 ![](blog/usa_deaths/featured.png)</div>
 
-### Canada Academia
-
-<div class="box">
-
-[<u>**Politics in Canadian Academia**</u>](blog/canada_academia){target="_blank"}
-
-Graphs of political views among academics in Canada
-
-![](blog/canada_academia/featured.png)</div>
-
 ## Other `r icon("r-project")` Stuff, *etc*. {.tabset .tabset-pills}
 
 ### Hex Stickers
@@ -782,6 +772,16 @@ Graphs of political views among academics in Canada
 Creation of hex stickers with R
 
 </div><div class = "col-md-7">![](blog/hex_stickers/featured.png)</div></div></div>
+
+### Barcodes
+
+<div class="box"><div class = "row"><div class = "col-md-5">
+
+[<u>**Barcodes**</u>](blog/barcodes){target="_blank"}
+
+Create 1D and 2D barcodes with R
+
+</div><div class = "col-md-7">![](blog/barcodes/featured.png)</div></div></div>
 
 ### Street Maps
 

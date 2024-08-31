@@ -13,33 +13,32 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-STATCAN Table: 17-10-0009-01
+STATCAN Table: 17-10-0009-01 (Population)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901
 > - `r shiny::icon("save")` [1710000901_databaseLoadingData.csv](1710000901_databaseLoadingData.csv)
 
-STATCAN Table: 17-10-0008-01
+STATCAN Table: 17-10-0008-01 (Demographic growth)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000801
 > - `r shiny::icon("save")` [1710000801_databaseLoadingData.csv](1710000801_databaseLoadingData.csv)
 
-STATCAN Table: 17-10-0015-01
+STATCAN Table: 17-10-0015-01 (Interprovincial migration)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710001501
 > - `r shiny::icon("save")` [1710001501_databaseLoadingData.csv](1710001501_databaseLoadingData.csv)
 
-
-STATCAN Table: 17-10-0121-01
+STATCAN Table: 17-10-0121-01 (Non-permanent residents)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710012101
 > - `r shiny::icon("save")` [1710012101_databaseLoadingData.csv](1710012101_databaseLoadingData.csv)
 
-STATCAN Table: 98-10-0361-01
+STATCAN Table: 98-10-0361-01 (Non-permanent resident type by place of birth)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=9810036101
 > - `r shiny::icon("save")` [9810036101_databaseLoadingData.csv](9810036101_databaseLoadingData.csv)
 
-STATCAN Table: 17-10-0154-01
+STATCAN Table: 17-10-0154-01 (Interprovincial and intraprovincial migrants)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710015401
 > - `r shiny::icon("save")` [1710015401_databaseLoadingData.csv](1710015401_databaseLoadingData.csv)

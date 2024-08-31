@@ -13,17 +13,17 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-STATCAN Table: 25-10-0063-01
+STATCAN Table: 25-10-0063-01 (Supply and disposition of crude oil)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2510006301
 > - `r shiny::icon("save")` [2510006301_databaseLoadingData.csv](2510006301_databaseLoadingData.csv)
 
-STATCAN Table: 25-10-0055-01
+STATCAN Table: 25-10-0055-01 (Supply and disposition of natural gas)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2510005501
 > - `r shiny::icon("save")` [2510005501_databaseLoadingData.csv](2510005501_databaseLoadingData.csv)
 
-STATCAN Table: 25-10-0046-01
+STATCAN Table: 25-10-0046-01 (Coal, monthly production and exports)
 
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2510004601
 > - `r shiny::icon("save")` [2510004601_databaseLoadingData.csv](2510004601_databaseLoadingData.csv)

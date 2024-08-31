@@ -13,6 +13,8 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
+Government of Saskatchewan Death Statistics
+
 > - `r shiny::icon("globe")` https://publications.saskatchewan.ca/#/categories/2179
 > - `r shiny::icon("save")` [data_saskatchewan_suicides.xlsx](data_saskatchewan_suicides.xlsx)
 

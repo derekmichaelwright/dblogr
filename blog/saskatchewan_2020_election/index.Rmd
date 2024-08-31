@@ -15,11 +15,13 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 The [2020 Saskatchewan provincial election](https://en.wikipedia.org/wiki/2020_Saskatchewan_general_election) was won by the [**Saskatchewan Party**](https://en.wikipedia.org/wiki/Saskatchewan_Party) who won 48 (+2) of the 61 seats. Second place went to the [**NDP**](https://en.wikipedia.org/wiki/Saskatchewan_New_Democratic_Party) who won 13 seats. Surpringly, third place went to the newly formed [**Buffalo Party**](https://en.wikipedia.org/wiki/Buffalo_Party_of_Saskatchewan) who beat out the [**Green Party**](https://en.wikipedia.org/wiki/Green_Party_of_Saskatchewan) despite only running candidates in 17 ridings and even came in second in 4 rural ridings, beating out the NDP. Hilariously, the [**Liberal Party**](https://en.wikipedia.org/wiki/Saskatchewan_Liberal_Party) only ran 3 candidates and only received a total of 355 votes throughout the province.
 
-![source: Wikipedia](SaskMap_2020)
+![source: Wikipedia](SaskMap_2020.png)
 
 ---
 
 # Data
+
+Elections SK
 
 > - `r shiny::icon("globe")` https://results.elections.sk.ca/
 > - `r shiny::icon("save")` [data_saskatchewan_2020_election.csv](data_saskatchewan_2020_election.csv)
@@ -217,7 +219,8 @@ xx <- xx %>% mutate(LabelPos = ifelse(Party %in% c("SP","NDP"), LabelPos, NA))
 mp <- ggplot(xx, aes(x = "", y = Percent)) +
   geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.2) +
   coord_polar("y", start = 0) +
-  geom_text(aes(y = LabelPos, label = paste(round(Percent),"%")), size = 5, nudge_x = 0.15) +
+  geom_label(aes(y = LabelPos, label = paste(round(Percent),"%")), 
+             size = 5, nudge_x = 0.15) +
   facet_wrap(Constituency ~ ., ncol = 13) +
   scale_fill_manual(values = myColors) +
   theme_agData_pie(legend.position = "bottom") +
@@ -265,7 +268,8 @@ xx <- xx %>% mutate(LabelPos = ifelse(Party %in% c("SP","NDP"), LabelPos, NA))
 mp <- ggplot(xx, aes(x = "", y = Percent)) +
   geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.2) +
   coord_polar("y", start = 0) +
-  geom_text(aes(y = LabelPos, label = paste(round(Percent),"%")), size = 4, nudge_x = 0.1) +
+  geom_label(aes(y = LabelPos, label = paste(round(Percent),"%")), 
+             size = 4, nudge_x = 0.1) +
   facet_wrap(Constituency ~ ., ncol = 9) +
   scale_fill_manual(values = myColors) +
   theme_agData_pie(legend.position = "bottom") +
@@ -314,7 +318,8 @@ xx <- xx %>% mutate(LabelPos = ifelse(Party %in% c("SP","NDP"), LabelPos, NA))
 mp <- ggplot(xx, aes(x = "", y = Percent)) +
   geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.2) +
   coord_polar("y", start = 0) +
-  geom_text(aes(y = LabelPos, label = paste(round(Percent),"%")), size = 4, nudge_x = 0.1) +
+  geom_label(aes(y = LabelPos, label = paste(round(Percent),"%")), 
+             size = 4, nudge_x = 0.1) +
   facet_wrap(Constituency ~ ., ncol = 7) +
   scale_fill_manual(values = myColors) +
   theme_agData_pie(legend.position = "bottom") +
