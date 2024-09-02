@@ -37,7 +37,7 @@ pixgallery(path = xL_01, caption = xC_01, layout = "masonry")
 # Prairies
 
 ```{r echo = F}
-xF_02 <- "mountains/"
+xF_02 <- "prairies/"
 xN_02 <- list.files(xF_02)
 xL_02 <- paste0(xF_02, xN_02)
 xC_02 <- paste("Image", 

@@ -12,9 +12,7 @@ knitr::opts_chunk$set(echo = T, eval = F)
 
 ---
 
-# 2D Barcodes (QR)
-
-## qrcode
+# qrcode
 
 > - `r shiny::icon("globe")` https://thierryo.github.io/qrcode/
 
@@ -24,8 +22,13 @@ install.packages("qrcode")
 
 ```{r}
 library(qrcode)
+```
+
+## dblogr
+
+```{r}
 mp <- qr_code("derekmichaelwright.github.io/dblogr", ecl = "M")
-mp <- add_logo(mp, "logo_dblogr.png", ecl = "L", hjust = "c", vjust = "c")
+mp <- add_logo(mp, "logo_dblogr.png", ecl = "L", hjust = "r", vjust = "b")
 generate_svg(mp, "QR_dblogr.svg")
 # Convert to png
 rsvg::rsvg_png("QR_dblogr.svg", "QR_dblogr.png", width = 512, height = 512)
@@ -33,13 +36,28 @@ rsvg::rsvg_png("QR_dblogr.svg", "QR_dblogr.png", width = 512, height = 512)
 
 ```{r echo = F}
 file.copy(from = "QR_dblogr.png", to = "featured.png", overwrite = T)
+file.copy(from = "QR_dblogr.svg", to = "C:/gitfolder/dblogr/cv/QR_dblogr.svg", overwrite = T)
 ```
 
 ![](QR_dblogr.png)
 
 ---
 
-## baRcodeR
+## Knowpulse
+
+```{r}
+mp <- qr_code("knowpulse.usask.ca", ecl = "M")
+mp <- add_logo(mp, "logo_knowpulse.png", ecl = "L", hjust = "r", vjust = "b")
+generate_svg(mp, "QR_knowpulse.svg")
+# Convert to png
+rsvg::rsvg_png("QR_knowpulse.svg", "QR_knowpulse.png", width = 512, height = 512)
+```
+
+![](QR_knowpulse.png)
+
+---
+
+# baRcodeR
 
 > - `r shiny::icon("globe")` https://docs.ropensci.org/baRcodeR/
 
@@ -49,13 +67,23 @@ install.packages("baRcodeR")
 
 ```{r}
 library(baRcodeR)
+# 
+myLabels <- data.frame(
+  Expt = "Sutherland 2024",
+  Entry = paste("Entry", stringr::str_pad(1:60, width = 3, pad = "0")),
+  Plot = 1001:1060)
 ```
 
 ## 2D - QR Codes
 
 ```{r}
-myLabels <- paste0("Plot:", 1001:1160)
-create_PDF(Labels = myLabels, name = "myLabes_QRCodes", type = "matrix")
+custom_create_PDF(name = "myLabes_QRCodes",
+                  Labels = myLabels$Plot,
+                  alt_text = paste0("Plot:", myLabels$Plot,
+                                    "\n", myLabels$Expt, 
+                                    "\n", myLabels$Entry),
+                  denote = c("",""), replace_label = T,
+                  type = "matrix", numrow = 10, numcol = 3)
 ```
 
 `r shiny::icon("save")` [myLabels_QRCodes.pdf](myLabels_QRCodes.pdf)
@@ -67,8 +95,11 @@ create_PDF(Labels = myLabels, name = "myLabes_QRCodes", type = "matrix")
 ## 1D - Barcodes
 
 ```{r}
-myLabels <- paste0("Plot:", 1001:1160)
-create_PDF(Labels = myLabels, name = "myLabels_BarCodes", type = "linear")
+custom_create_PDF(name = "myLabels_BarCodes", 
+                  Labels = myLabels$Plot, 
+                  alt_text = paste("Plot:", myLabels$Plot), 
+                  denote = c("",""), replace_label = T,
+                  type = "linear", numrow = 10, numcol = 3)
 ```
 
 `r shiny::icon("save")` [myLabels_BarCodes.pdf](myLabels_BarCodes.pdf)
