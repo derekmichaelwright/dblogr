@@ -6,7 +6,7 @@ author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmic
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
 ```
 
 ```{r echo = F}

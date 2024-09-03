@@ -106,6 +106,20 @@ custom_create_PDF(name = "myLabels_BarCodes",
 
 ---
 
+## Bonus - dblogr Stickers
+
+```{r}
+custom_create_PDF(name = "myLabes_dblogr",
+                  Labels = rep("derekmichaelwright.github.io/dblogr", 30),
+                  alt_text = rep("www.dblogr.com/", 30),
+                  denote = c("",""), replace_label = T,
+                  type = "matrix", numrow = 10, numcol = 3)
+```
+
+`r shiny::icon("save")` [myLabels_dblogr.pdf](myLabels_dblogr.pdf)
+
+---
+
 ```{r eval = F, echo = F}
 example_labels <- uniqID_maker(user = FALSE, string = "Example", level = 1:80)
 head(example_labels)
