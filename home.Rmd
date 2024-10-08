@@ -75,51 +75,41 @@ Under Construction...
 
 <div class="box"><div class = "row"><div class = "col-md-8">
 
-*under construction*
+[<u>**Work Photography**</u>](photography/agile){target="_blank"}
 
-</div><div class = "col-md-4">![](cv/SeedDiv.png)</div></div></div>
+</div><div class = "col-md-4">![](photography/agile/featured.png)</div></div></div>
 
-### Photography
+### General
 
 <div class="box">
 
-[<u>**My Photography**</u>](photography){target="_blank"}
+[<u>**General Photography**</u>](photography/general){target="_blank"}
 
 Some of my photography work
 
-Under Construction...
+![](photography/general/featured.png)</div>
 
-![](photography/featured.png)</div>
-
-### Ski Resorts
+### Mountains
 
 <div class="box">
 
-Under Construction...
+[<u>**Photography in the Mountains**</u>](photography/mountains){target="_blank"}
 
-</div>
+![](photography/mountains/featured.png)</div>
 
 ### Saskatchewan
 
 <div class="box">
 
-Under Construction...
+[<u>**Photography in Saskatchewan**</u>](photography/saskatchewan){target="_blank"}
 
-</div>
-
-### Katepwa
-
-<div class="box">
-
-Under Construction...
-
-</div>
+![](photography/saskatchewan/featured.png)</div>
 
 ## {-}
 
 ---
 
-# `r icon("newspaper")` Academic Work
+# `r icon("book")` Publications
 
 ## Publications:
 
@@ -294,6 +284,12 @@ Harold G. Weger, April K. Polasek, **Derek M. Wright**, Arun Damodaran, John Sta
 - `r icon("globe")` [**SeedWorld - USask Scientists Develop Model to Identify Best Lentils for Climate Change Impacts**](https://www.seedworld.com/usask-scientists-develop-model-to-identify-best-lentils-for-climate-change-impacts/){target="_blank"}
 
 </div>
+
+## {-}
+
+---
+
+# `r icon("newspaper")` Academic Work
 
 ## Tutorials {.tabset .tabset-pills}
 
