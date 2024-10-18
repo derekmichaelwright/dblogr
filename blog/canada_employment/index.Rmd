@@ -1,6 +1,6 @@
 ---
 title: "Employment in Canada"
-subtitle: "Graphs of Employment data in Canada using STATCAN data"
+subtitle: "Graphs on employment in Canada using STATCAN data"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---

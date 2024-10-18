@@ -252,10 +252,6 @@ mp <- ggarrange(mp1, mp2, ncol = 2, align = "h")
 ggsave("correlation_coefficients_02.png", mp, width = 8, height = 4)
 ```
 
-```{r echo = F}
-ggsave("featured.png", mp, width = 8, height = 4)
-```
-
 ![](correlation_coefficients_02.png)
 
 In this case:
@@ -312,7 +308,9 @@ mp <- ggarrange(mp1, mp2, ncol = 2, legend = "none", align = "h")
 ggsave("correlation_coefficients_03.png", mp, width = 8, height = 4)
 ```
 
-![Figure 3: Correlations between A) Predicted DTM and DTM and B) DTM and Predicted DTM.](correlation_coefficients_03.png)
+Correlations between A) Predicted DTM and DTM and B) DTM and Predicted DTM.
+
+![](correlation_coefficients_03.png)
 
 **Why is this important?** Improper usage can lead to inncorrect interpretations. The example above involved inncorrectly calculating *R^2^* by swapping our observed and predicted variables within the *Sum of Squares* (*SS*) formula. Another example would be using the *Sum of Squares* formula without predictions vs. observations. *E.g.,* if we calculate *R^2^* using our `SumOfSquaresR2` function with `DTF` vs `DTM`.
 
@@ -348,7 +346,9 @@ mp <- ggarrange(mp1, mp2, nrow= 1, ncol = 2, legend = "none", align = "h")
 ggsave("correlation_coefficients_04.png", mp, width = 8, height = 4)
 ```
 
-![Figure 4: Calculations of *R^2* using A) *Pearson's* formula and B) *Sum of Squares* formula.](correlation_coefficients_04.png)
+Calculations of *R^2* using A) *Pearson's* formula and B) *Sum of Squares* formula.
+
+![](correlation_coefficients_04.png)
 
 However, the more common mistake happens when the *Pearson's* formula is used for evaluating the accuracy of a model used to predict values.
 
@@ -372,10 +372,12 @@ mp <- ggplot(d2, aes(x = Predicted_DTF, y = DTF)) +
 ggsave("correlation_coefficients_05.png", mp, width = 8, height = 4)
 ```
 
-![Figure 5: Inncorrect usage of *Pearson's R^2* to calculate accuracy of a model predicting DTF accross 3 site-years.](correlation_coefficients_05.png)
+Inncorrect usage of *Pearson's R^2* to calculate accuracy of a model predicting DTF accross 3 site-years.
+
+![](correlation_coefficients_05.png)
 
 ```{r}
-my_ggplot <- function(expt, color) {
+my_ggplot_1 <- function(expt, color) {
   # Prep data
   xx <- d2 %>% filter(Expt == expt) 
   xx <- xx %>%
@@ -397,7 +399,6 @@ my_ggplot <- function(expt, color) {
     geom_segment(aes(xend = Predicted_DTF, yend = Predicted_DTF), alpha = 0.2) +
     geom_point(color = color, alpha = 0.5) + 
     geom_abline(color = "blue") +
-    stat_poly_eq(formula = y ~ x, parse = T, rr.digits = 7) +
     xlim(c(mymin, mymax)) + ylim(c(mymin, mymax)) +
     theme_agData() +
     labs(subtitle = substitute(paste(italic("Sum of Squares R")^2, " = ", r2), 
@@ -408,15 +409,32 @@ my_ggplot <- function(expt, color) {
 ```
 
 ```{r}
-mp <- my_ggplot("Saskatchewan", color = "darkgreen")
-ggsave("correlation_coefficients_06.png", mp, width = 8, height = 4)
-mp <- my_ggplot("Nepal", color = "darkorange")
-ggsave("correlation_coefficients_07.png", mp, width = 8, height = 4)
-mp <- my_ggplot("Italy", color = "darkblue")
-ggsave("correlation_coefficients_08.png", mp, width = 8, height = 4)
+#
+mp1 <- my_ggplot_1("Saskatchewan", color = "darkgreen")
+ggsave("correlation_coefficients_06.png", mp1, width = 6, height = 3.5)
+#
+mp2 <- my_ggplot_1("Nepal", color = "darkorange")
+ggsave("correlation_coefficients_07.png", mp2, width = 6, height = 3.5)
+#
+mp3 <- my_ggplot_1("Italy", color = "darkblue")
+ggsave("correlation_coefficients_08.png", mp3, width = 6, height = 3.5)
 ```
 
-![Figure 6: Inncorrect vs correct usage of *R^2* formulas to calculate accuracy of a model predicting DTF accross 3 site-years.](correlation_coefficients_06.png)
+```{r echo = F} 
+ggsave("featured.png", mp1, width = 8, height = 3.5)
+```
+
+Inncorrect vs correct usage of *R^2* formulas to calculate accuracy of a model predicting DTF accross 3 site-years.
+
+![](correlation_coefficients_06.png)
+
+Inncorrect vs correct usage of *R^2* formulas to calculate accuracy of a model predicting DTF accross 3 site-years.
+
+![](correlation_coefficients_07.png)
+
+Inncorrect vs correct usage of *R^2* formulas to calculate accuracy of a model predicting DTF accross 3 site-years.
+
+![](correlation_coefficients_08.png)
 
 ---
 
@@ -491,10 +509,12 @@ mp2 <- ggplot(xx, aes(x = Predicted_DTF, y = DTF)) +
   theme_agData() +
   labs(title = "", subtitle = t2, caption = myCaption)
 mp <- ggarrange(mp1, mp2, ncol = 2, align = "h")
-ggsave("correlation_coefficients_07.png", mp, width = 8, height = 4)
+ggsave("correlation_coefficients_09.png", mp, width = 8, height = 4)
 ```
 
-![Figure 7: Visualization of A) Total Sum of Sqaures and B) Residual Sum of Squares for the predicted DTF values for Nepal.](correlation_coefficients_07.png)
+Visualization of A) Total Sum of Sqaures and B) Residual Sum of Squares for the predicted DTF values for Nepal.
+
+![](correlation_coefficients_09.png)
 
 ---
 
@@ -516,10 +536,12 @@ mp <- ggplot(xx, aes(x = DTF, y = DTM)) +
   facet_grid(.~Range) +
   theme_agData(legend.position = "none") +
   labs(caption = myCaption)
-ggsave("correlation_coefficients_08.png", mp, width = 6, height = 4)
+ggsave("correlation_coefficients_10.png", mp, width = 6, height = 4)
 ```
 
-![Figure 8: Visualization of the effect of range on *R^2*.](correlation_coefficients_08.png)
+Visualization of the effect of range on *R^2*.
+
+![](correlation_coefficients_10.png)
 
 ---
 
@@ -555,7 +577,7 @@ modelRMSE(xx$DTF, xx$Predicted_DTF)
 Note: for easier interpretation, the `x` and `y` axis have been swapped, since *overpredictions* will be above the `geom_abline` and *underpredictions* below.
 
 ```{r}
-my_ggplot <- function(expts, colors) {
+my_ggplot_2 <- function(expts, colors) {
   # Prep data
   xx <- d2 %>% filter(Expt %in% expts)
   r2 <- round(SumOfSquaresR2(o = xx$DTF, p = xx$Predicted_DTF), 3)
@@ -575,24 +597,28 @@ my_ggplot <- function(expts, colors) {
            paste(italic("R")^2, " = ", r2, " | ", italic("RMSE"), " = ", rmse), 
            list(r2 = r2, rmse = rmse)))
 }
-mp1 <- my_ggplot("Saskatchewan", "darkgreen")  + facet_grid(. ~ Expt)
-mp2 <- my_ggplot("Nepal", "darkorange") + facet_grid(. ~ Expt)
-mp3 <- my_ggplot("Italy", "darkblue")   + facet_grid(. ~ Expt) +
+mp1 <- my_ggplot_2("Saskatchewan", "darkgreen")  + facet_grid(. ~ Expt)
+mp2 <- my_ggplot_2("Nepal", "darkorange") + facet_grid(. ~ Expt)
+mp3 <- my_ggplot_2("Italy", "darkblue")   + facet_grid(. ~ Expt) +
   labs(caption = myCaption)
 mp <- ggarrange(mp1, mp2, mp3, ncol = 3)
-ggsave("correlation_coefficients_09.png", mp, width = 10, height = 4)
+ggsave("correlation_coefficients_11.png", mp, width = 10, height = 4)
 ```
 
-![Figure 9: Correct calculations of *R^2* for predicted DTF along with RMSE across 3 site-years.](correlation_coefficients_09.png)
+Correct calculations of *R^2* for predicted DTF along with RMSE across 3 site-years.
+
+![](correlation_coefficients_11.png)
 
 ```{r}
-mp <- my_ggplot(expts = c("Saskatchewan","Nepal","Italy"), 
+mp <- my_ggplot_2(expts = c("Saskatchewan","Nepal","Italy"), 
                 colors = c("darkgreen","darkorange","darkblue")) + 
   theme(legend.position = "bottom")
-ggsave("correlation_coefficients_10.png", mp, width = 6, height = 4)
+ggsave("correlation_coefficients_12.png", mp, width = 6, height = 4)
 ```
 
-![Figure 10: Calculation of *R^2* for predicted DTF for all 3 site-years.](correlation_coefficients_10.png)
+Calculation of *R^2* for predicted DTF for all 3 site-years.
+
+![](correlation_coefficients_12.png)
 
 ---
 
@@ -654,10 +680,12 @@ mp <- ggplot(d1, aes(x = Predicted_RDTF, y = RDTF)) +
   labs(title = substitute(paste(italic("R")^2, " = ", r2), 
          list(r2 = round(SumOfSquaresR2(d1$DTF, d1$Predicted_DTF), 3))),
        caption = myCaption)
-ggsave("correlation_coefficients_11.png", mp, width = 6, height = 4)
+ggsave("correlation_coefficients_13.png", mp, width = 6, height = 4)
 ```
 
-![Figure 11: Visualizing the accuracy of a model predicting RDTF (1/DTF). Red line represents the best-fit line.](correlation_coefficients_11.png)
+Visualizing the accuracy of a model predicting RDTF (1/DTF). Red line represents the best-fit line.
+
+![](correlation_coefficients_13.png)
 
 However, we are interested in `DTF` and not `RDTF`. Let see how *R^2^* changes when we calculate it for `DTF` instead of `RDTF`.
 
@@ -693,10 +721,12 @@ mp <- ggplot(d1, aes(y = DTF, x = Predicted_DTF)) +
   labs(title = substitute(paste(italic("R")^2, " = ", r2), 
          list(r2 = round(SumOfSquaresR2(d1$DTF, d1$Predicted_DTF), 3))),
        caption = myCaption)
-ggsave("correlation_coefficients_12.png", mp, width = 6, height = 4)
+ggsave("correlation_coefficients_14.png", mp, width = 6, height = 4)
 ```
 
-![Figure 12: Visualizing the accuracy of a model predicting RDTF (1/DTF). Red line represents the best-fit line.](correlation_coefficients_12.png)
+Visualizing the accuracy of a model predicting RDTF (1/DTF). Red line represents the best-fit line.
+
+![](correlation_coefficients_14.png)
 
 Now that we've transformed the data, the `geom_abline` and `geom_smooth` lines no longer perfectly overlap, which causes the slight difference in *R^2^*. 
 
@@ -735,10 +765,12 @@ mp2 <- ggplot(xx, aes(x = 1 / x, y = 1 / y)) +
        caption = myCaption)
 # Append Plots
 mp <- ggarrange(mp1, mp2, ncol = 2, legend = "none", align = "h")
-ggsave("correlation_coefficients_13.png", mp, width = 8, height = 4)
+ggsave("correlation_coefficients_15.png", mp, width = 8, height = 4)
 ```
 
-![Figure 13: Change in *R^2* due to data transformation.](correlation_coefficients_13.png)
+Change in *R^2* due to data transformation.
+
+![](correlation_coefficients_15.png)
 
 Visualizing the Photothermal model
 
@@ -757,7 +789,7 @@ xy <- expand.grid(x = x.pred, y = y.pred)
 z.pred <- matrix(predict(fit, newdata = xy), 
                  nrow = grid.lines, ncol = grid.lines)
 # Plot with regression plane
-png("correlation_coefficients_14.png", width = 1000, height = 1000, res = 200)
+png("correlation_coefficients_16.png", width = 1000, height = 1000, res = 200)
 par(mar=c(1.5, 2.5, 1.5, 0.5))
 plot3D::scatter3D(x, y, z, pch = 18, cex = 2, zlim = c(0.005,0.03),
   col = alpha(c("darkgreen","darkorange","darkblue"),0.5), 
@@ -769,6 +801,8 @@ plot3D::scatter3D(x, y, z, pch = 18, cex = 2, zlim = c(0.005,0.03),
 dev.off()
 ```
 
-![Figure 14: Visualization of the photothermal model (1/DTF = *a* + *b*Temperature + *c*Photoperiod).](correlation_coefficients_14.png)
+Visualization of the photothermal model (1/DTF = *a* + *b*Temperature + *c*Photoperiod).
+
+![](correlation_coefficients_16.png)
 
 ---
