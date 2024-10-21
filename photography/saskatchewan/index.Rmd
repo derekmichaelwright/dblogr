@@ -1,0 +1,35 @@
+---
+title: "Photography of Saskatchewan"
+subtitle: ""
+date: "Last updated: `r Sys.Date()`"
+author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+```
+
+```{r echo = F}
+#devtools::install_github("royfrancis/pixture")
+library(pixture)
+library(stringr)
+#pixgallery(paste0("fold/", list.files("fold/")), layout = "justified") 
+# "masonry", "justified", 
+# "grid", "fixed", "mosaic", "masonry", "justified", "elastic" or "rhombus"
+```
+
+---
+
+## Katepwa
+
+```{r echo = F}
+xF_01 <- "01katepwa/"
+xN_01 <- list.files(xF_01)
+xL_01 <- paste0(xF_01, xN_01)
+xC_01 <- paste("Image", 
+                str_pad(1:(length(xN_01)), width = 3, pad = "0"),
+                "-", xN_01)
+pixgallery(path = xL_01, caption = xC_01, layout = "masonry")
+```
+
+---
