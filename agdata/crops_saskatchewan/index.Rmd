@@ -118,6 +118,10 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) +
 ggsave("crops_saskatchewan_1_01.png", mp, width = 7, height = 5)
 ```
 
+```{r echo = F}
+ggsave("featured.png", mp, width = 7, height = 5)
+```
+
 ---
 
 ## Area Seeded
@@ -141,10 +145,6 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) +
   labs(title = "Saskatchewan - Area Seeded", x = NULL,
        y = "Million Hectares", caption = myCaption)
 ggsave("crops_saskatchewan_1_02.png", mp, width = 7, height = 5)
-```
-
-```{r echo = F}
-ggsave("featured.png", mp, width = 7, height = 5)
 ```
 
 ---

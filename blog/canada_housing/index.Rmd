@@ -38,7 +38,10 @@ STATCAN Table: 34-10-0133-01 (Average rents)
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410013301
 > - `r shiny::icon("save")` [3410013301_databaseLoadingData.csv](3410013301_databaseLoadingData.csv)
 
+Bank of Canada: Interest Rates
 
+> - `r shiny::icon("globe")` https://www.bankofcanada.ca/rates/interest-rates/canadian-interest-rates/
+> - `r shiny::icon("save")` [bankofcanada_interestrates.csv](bankofcanada_interestrates.csv)
 
 ```{r eval = F, echo = F}
 #https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110024001
@@ -123,6 +126,9 @@ d7 <- read.csv("3410013301_databaseLoadingData.csv") %>%
   select(Year=REF_DATE, Area=GEO, Structure.Type=Type.of.structure,
          Unit.Type = Type.of.unit, Unit=UOM, Value=VALUE) %>%
   filter(!is.na(Value), Value > 0)
+d8 <- read.csv("bankofcanada_interestrates.csv", skip = 11) %>%
+  mutate(Date = as.Date(paste0(Date, "-01"))) %>%
+  rename(Value=2)
 ```
 
 ---
@@ -779,3 +785,15 @@ ggsave("canada_housing_5_04.png", mp, width = 8, height = 4)
 ```
 
 ---
+
+# Interest Rates
+
+```{r}
+# Plot
+mp <- ggplot(d8, aes(x = Date, y = Value)) +
+  geom_line() +
+  theme_agData() +
+  labs(title = "Interest Rates in Canada", y = "Percent", x = NULL,
+       captiopn = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: BoC")
+ggsave("canada_housing_6_01.png", mp, width = 8, height = 4)
+```

@@ -116,10 +116,6 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) +
 ggsave("crops_world_1_01.png", mp, width = 6, height = 4)
 ```
 
-```{r echo = F}
-ggsave("featured.png", mp, width = 6, height = 4)
-```
-
 ---
 
 ## Area Harvested
@@ -144,6 +140,10 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) +
   labs(title = "World - Area Harvested", 
        y = "Million Hectares", x = NULL, caption = myCaption)
 ggsave("crops_world_02.png", mp, width = 6, height = 4)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
 ---

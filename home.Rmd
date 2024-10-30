@@ -22,6 +22,8 @@ Welcome to the personal website for Derek Michael Wright
 
 ---
 
+---
+
 # `r icon("address-card")` About Me
 
 <div class="box">
@@ -62,6 +64,8 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 </div></div></div>
 
 <br>
+
+---
 
 ---
 
@@ -106,6 +110,8 @@ Some of my photography work
 ![](photography/saskatchewan/featured.png)</div>
 
 ## {-}
+
+---
 
 ---
 
@@ -289,6 +295,8 @@ Harold G. Weger, April K. Polasek, **Derek M. Wright**, Arun Damodaran, John Sta
 
 ---
 
+---
+
 # `r icon("newspaper")` Academic Work
 
 ## Tutorials {.tabset .tabset-pills}
@@ -422,6 +430,8 @@ A vignette illustrating how to mislead with statistics and graphs
 ![](academic/misleading_graphs/featured.png)</div>
 
 ## {-}
+
+---
 
 ---
 
@@ -654,6 +664,8 @@ An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` pack
 </div><div class = "col-md-4">![](blog/hex_stickers/logo_cypher.png)</div></div></div>
 
 ## {-}
+
+---
 
 ---
 
@@ -953,6 +965,10 @@ I will never cower before any master nor bend to any threat. It is my heritage t
 
 ---
 
+---
+
 ![](cv/logo_banner.png)
+
+---
 
 ---

@@ -33,6 +33,11 @@ STATCAN Table 18-10-0005-01 (Consumer Price Index)
 > - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810000501
 > - `r shiny::icon("save")` [1810000501_databaseLoadingData.csv](1810000501_databaseLoadingData.csv)
 
+STATCAN Table 14-10-0011-01 (Employment insurance beneficiaries)
+
+> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410001101
+> - `r shiny::icon("save")` [1410001101_databaseLoadingData.csv](1410001101_databaseLoadingData.csv)
+
 ---
 
 # Prepare Data
@@ -81,7 +86,14 @@ d4 <- read.csv("1110001201_databaseLoadingData.csv") %>%
 d5 <- read.csv("1810000501_databaseLoadingData.csv") %>%
   select(Area=GEO, Year=REF_DATE, Item=Products.and.product.groups,
          Unit=UOM, CPI=VALUE)
-
+#
+myAges <- c("15 years and over", "15 to 24 years", 
+            "25 to 54 years", "55 years and over")
+d6 <- read.csv("1410001101_databaseLoadingData.csv") %>%
+  select(Date=REF_DATE, Area=GEO, Measurement=Beneficiary.detail,
+         Sex, Age=Age.group, Unit=UOM, Value=VALUE) %>%
+  mutate(Age = factor(Age, levels = myAges),
+         Date = as.Date(paste0(Date, "-15"), format = "%Y-%m-%d"))
 ```
 
 ```{r echo = F, eval = F}
@@ -121,11 +133,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canadian Employment Rate", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_employment_1_01.png", mp, width = 6, height = 4)
-```
-
-```{r echo = F}
-ggsave("featured.png", mp, width = 6, height = 4)
+ggsave("canada_employment_1_01.png", mp, width = 8, height = 4)
 ```
 
 ---
@@ -148,6 +156,10 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Sex)) +
   labs(title = "Canadian Employment Rate", x = NULL,
        y = "Percent", caption = myCaption)
 ggsave("canada_employment_1_02.png", mp, width = 6, height = 4)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -556,7 +568,8 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
   scale_color_manual(name = NULL, values = c("palevioletred3","steelblue")) +
   scale_x_date(date_minor_breaks = "year") +
   theme_agData(legend.position = "bottom") +
-  labs(title = "Canada", y = "Million", x = NULL, caption = myCaption)
+  labs(title = "Canada - Participation rate", x = NULL,
+       y = "Million", caption = myCaption)
 ggsave("canada_employment_3_01.png", mp, width = 8, height = 4)
 ```
 
@@ -565,7 +578,7 @@ ggsave("canada_employment_3_01.png", mp, width = 8, height = 4)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area != "Canada", Sex != "Both sexes", Age != "15 years and over",
+  filter(Area != "Canada", Sex != "Both sexes", Age == "25 to 54 years",
          Measurement == "Participation rate")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
@@ -574,8 +587,9 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
   scale_color_manual(name = NULL, values = c("palevioletred3","steelblue")) +
   scale_x_date(date_minor_breaks = "year") +
   theme_agData(legend.position = "bottom") +
-  labs(title = "Canada", y = "Million", x = NULL, caption = myCaption)
-ggsave("canada_employment_3_02.png", mp, width = 6, height = 4)
+  labs(title = "Canada - Participation rate - 25 to 54 years", 
+       y = "Million", x = NULL, caption = myCaption)
+ggsave("canada_employment_3_02.png", mp, width = 10, height = 5)
 ```
 
 ---
@@ -659,7 +673,7 @@ xx <- d4 %>% filter(Area == "Canada", Age != "Total all ages") %>%
 mp <- ggplot(xx, aes(x = Year, y = Rate)) +
   geom_hline(yintercept = 0, color = "black") +
   geom_line(aes(color = FamilyType), size = 1, alpha = 0.7) +
-  facet_grid(FamilyType ~ Age) +
+  facet_wrap(Age ~ ., ncol = 3) +
   scale_color_manual(name = NULL, values = myColors_Fam) +
   expand_limits(y = 0) +
   theme_agData(legend.position = "bottom",
@@ -687,7 +701,7 @@ xx <- d4 %>% filter(Area == "Canada", Age != "Total all ages") %>%
 mp <- ggplot(xx, aes(x = Year, y = Rate)) +
   geom_hline(yintercept = 0, color = "black") +
   geom_line(aes(color = FamilyType), size = 1, alpha = 0.7) +
-  facet_grid(FamilyType ~ Age) +
+  facet_wrap(Age ~ ., ncol = 3) +
   scale_color_manual(name = NULL, values = myColors_Fam) +
   expand_limits(y = 0) +
   theme_agData(legend.position = "bottom",
@@ -699,30 +713,92 @@ ggsave("canada_employment_5_05.png", mp, width = 8, height = 6)
 
 ---
 
-### Inflation Adjusted Income Growth Rate
+# EI
 
-![](canada_employment_5_06.png)
+## Canada
+
+![](canada_employment_6_01.png)
 
 ```{r}
 # Prep data
-xx <- d4 %>% filter(Area == "Canada", Age != "Total all ages") %>%
-  left_join(d5, by = c("Area", "Year")) %>%
-  mutate(InflationValue = Value / CPI) %>%
-  group_by(Area, FamilyType, Age) %>%
-  mutate(PreviousYear = lag(InflationValue),
-         Rate = 100 * (InflationValue - PreviousYear) / PreviousYear)
+xx <- d6 %>% filter(Area == "Canada", Sex == "Both sexes")
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Rate)) +
-  geom_hline(yintercept = 0, color = "black") +
-  geom_line(aes(color = FamilyType), size = 1, alpha = 0.7) +
-  facet_grid(FamilyType ~ Age) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_line(aes(color = Measurement), alpha = 0.7) +
+  facet_wrap(Age ~ ., scales = "free_y") +
   scale_color_manual(name = NULL, values = myColors_Fam) +
   expand_limits(y = 0) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Canada - Inflation Adjusted Total Median Income Growth Rate",
-       x = NULL, y = "Percent", caption = myCaption)
-ggsave("canada_employment_5_06.png", mp, width = 8, height = 6)
+  labs(title = "Canada - EI", x = NULL, 
+       y = "Thousand People", caption = myCaption)
+ggsave("canada_employment_6_01.png", mp, width = 7, height = 5)
+```
+
+
+---
+
+## By Sex
+
+![](canada_employment_6_02.png)
+
+```{r}
+# Prep data
+xx <- d6 %>% filter(Area == "Canada", Sex != "Both sexes")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_line(aes(color = Sex), alpha = 0.7) +
+  facet_wrap(Age ~ ., scales = "free_y") +
+  scale_color_manual(name = NULL, values = myColors_Sex) +
+  expand_limits(y = 0) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada - EI", x = NULL, 
+       y = "Thousand People", caption = myCaption)
+ggsave("canada_employment_6_02.png", mp, width = 7, height = 5)
 ```
 
 ---
+
+## Post 2020
+
+![](canada_employment_6_03.png)
+
+```{r}
+# Prep data
+xx <- d6 %>% filter(Area == "Canada", Sex != "Both sexes",
+                    Date > "2019-01-01")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_line(aes(color = Sex), alpha = 0.7) +
+  facet_wrap(Age ~ ., scales = "free_y") +
+  scale_color_manual(name = NULL, values = myColors_Sex) +
+  expand_limits(y = 0) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada - EI", x = NULL, 
+       y = "Thousand People", caption = myCaption)
+ggsave("canada_employment_6_03.png", mp, width = 7, height = 5)
+```
+
+---
+
+## Provinces
+
+![](canada_employment_6_04.png)
+
+```{r}
+# Prep data
+xx <- d6 %>% filter(Sex != "Both sexes", Age == "25 to 54 years")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_line(aes(color = Sex), alpha = 0.7) +
+  facet_wrap(Area ~ ., scales = "free_y") +
+  scale_color_manual(name = NULL, values = myColors_Sex) +
+  expand_limits(y = 0) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada - EI - ages 25 to 54 years", x = NULL, 
+       y = "Thousand People", caption = myCaption)
+ggsave("canada_employment_6_04.png", mp, width = 12, height = 8)
+```

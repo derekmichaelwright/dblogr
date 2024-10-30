@@ -52,33 +52,6 @@ h1,h2,h3,h4,h5,h6,legend{
   color: darkgreen;
 }
 
-/* The navigation bar */
-.navbar {
-  #position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 70%; /* Full width */
-  background-color: #1E3D2A;
-  margin-top: 0px;
-  margin-left: 0px;
-}
-
-/* Links inside the navbar */
-.navbar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  font-size: 12pt;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change background on mouse-over */
-.navbar a:hover {
-  background: #ddd;
-  color: black;
-}
-
 .box{
 width: 100%;
 height: 100%;
@@ -89,6 +62,35 @@ margin-left: 10px;
 padding: 20px;
 border-radius: 10px;
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+/* Add a background color to the top navigation */
+.topnav {
+  background-color: #1E3D2A;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 12px 12px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #f2f2f2;
+  color: black;
 }
 
 </style>
