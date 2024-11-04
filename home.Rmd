@@ -26,6 +26,10 @@ Welcome to the personal website for Derek Michael Wright
 
 # `r icon("address-card")` About Me
 
+> **My Curriculum Vitae (CV)**
+> - `r icon("globe")` [HTML version](cv/){target="_blank"}
+> - `r icon("file-pdf")` [PDF Version](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf){target="_blank"}
+
 <div class="box">
 
 <div class = "row"><div class = "col-md-6">
@@ -51,11 +55,6 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 - `r icon("envelope")` derek.wright@usask.ca
 
 </div><div class = "col-md-6">
-
-**My Curriculum Vitae (CV)**
-
-- `r icon("globe")` [HTML version](cv/){target="_blank"}
-- `r icon("file-pdf")` [PDF Version](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf){target="_blank"}
 
 **Personal Email**
 

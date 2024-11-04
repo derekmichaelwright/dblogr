@@ -210,7 +210,9 @@ str(xx)
 
 ---
 
-## Plotting Function
+## All Data {.tabset .tabset-pills}
+
+### Plotting Function
 
 ```{r}
 # Create Plotting function
@@ -231,7 +233,7 @@ envPlot <- function(xx) {
 
 ---
 
-## Sutherland, Canada 2016
+### Sutherland, Canada 2016
 
 ![](envdata_2_01.png)
 
@@ -242,7 +244,7 @@ ggsave("envdata_2_01.png", mp, width = 12, height = 15)
 
 ---
 
-## Sutherland, Canada 2017
+### Sutherland, Canada 2017
 
 ![](envdata_2_02.png)
 
@@ -253,7 +255,7 @@ ggsave("envdata_2_02.png", mp, width = 12, height = 11)
 
 ---
 
-## Sutherland, Canada 2018
+### Sutherland, Canada 2018
 
 ![](envdata_2_03.png)
 
@@ -264,7 +266,7 @@ ggsave("envdata_2_03.png", mp, width = 12, height = 11)
 
 ---
 
-## Rosthern, Canada 2016
+### Rosthern, Canada 2016
 
 ![](envdata_2_04.png)
 
@@ -275,7 +277,7 @@ ggsave("envdata_2_04.png", mp, width = 12, height = 10)
 
 ---
 
-## Rosthern, Canada 2017
+### Rosthern, Canada 2017
 
 ![](envdata_2_05.png)
 
@@ -286,7 +288,7 @@ ggsave("envdata_2_05.png", mp, width = 12, height = 10)
 
 ---
 
-## Central Ferry, USA 2018
+### Central Ferry, USA 2018
 
 ![](envdata_2_06.png)
 
@@ -297,7 +299,7 @@ ggsave("envdata_2_06.png", mp, width = 12, height = 10)
 
 ---
 
-## Bhopal, India 2016
+### Bhopal, India 2016
 
 ![](envdata_2_07.png)
 
@@ -308,7 +310,7 @@ ggsave("envdata_2_07.png", mp, width = 12, height = 10)
 
 ---
 
-## Bhopal, India 2017
+### Bhopal, India 2017
 
 ![](envdata_2_08.png)
 
@@ -319,7 +321,7 @@ ggsave("envdata_2_08.png", mp, width = 12, height = 5)
 
 ---
 
-## Jessore, Bangladesh 2016
+### Jessore, Bangladesh 2016
 
 ![](envdata_2_09.png)
 
@@ -330,7 +332,7 @@ ggsave("envdata_2_09.png", mp, width = 12, height = 8)
 
 ---
 
-## Jessore, Bangladesh 2017
+### Jessore, Bangladesh 2017
 
 ![](envdata_2_10.png)
 
@@ -341,7 +343,7 @@ ggsave("envdata_2_10.png", mp, width = 12, height = 4)
 
 ---
 
-## Bardiya, Nepal 2016
+### Bardiya, Nepal 2016
 
 ![](envdata_2_11.png)
 
@@ -352,7 +354,7 @@ ggsave("envdata_2_11.png", mp, width = 12, height = 5)
 
 ---
 
-## Bardiya, Nepal 2017
+### Bardiya, Nepal 2017
 
 ![](envdata_2_12.png)
 
@@ -363,7 +365,7 @@ ggsave("envdata_2_12.png", mp, width = 12, height = 4)
 
 ---
 
-## Marchouch, Morocco 2016
+### Marchouch, Morocco 2016
 
 ![](envdata_2_13.png)
 
@@ -374,7 +376,7 @@ ggsave("envdata_2_13.png", mp, width = 12, height = 9)
 
 ---
 
-## Marchouch, Morocco 2017
+### Marchouch, Morocco 2017
 
 ![](envdata_2_14.png)
 
@@ -385,7 +387,7 @@ ggsave("envdata_2_14.png", mp, width = 12, height = 5)
 
 ---
 
-## Cordoba, Spain 2016
+### Cordoba, Spain 2016
 
 ![](envdata_2_15.png)
 
@@ -396,7 +398,7 @@ ggsave("envdata_2_15.png", mp, width = 12, height = 6)
 
 ---
 
-## Cordoba, Spain 2017
+### Cordoba, Spain 2017
 
 ![](envdata_2_16.png)
 
@@ -407,7 +409,7 @@ ggsave("envdata_2_16.png", mp, width = 12, height = 6)
 
 ---
 
-## Metaponto, Italy 2016
+### Metaponto, Italy 2016
 
 ![](envdata_2_17.png)
 
@@ -418,7 +420,7 @@ ggsave("envdata_2_17.png", mp, width = 12, height = 12)
 
 ---
 
-## Metaponto, Italy 2017
+### Metaponto, Italy 2017
 
 ![](envdata_2_18.png)
 

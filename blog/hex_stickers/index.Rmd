@@ -175,7 +175,7 @@ im3 <- image_read("logo_gwaspr.png")
 im4 <- image_read("logo_cypher.png")
 #
 im <- im1 %>% image_resize("512x512")
-image_write(im, "C:/gitfolder/dblogr/icon.png")
+image_write(im, "C:/gitfolder/dblogr/favicon.ico")
 #
 im <- image_append(c(im1,im2))
 imm <- image_append(c(im1,im2,im3))
