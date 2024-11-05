@@ -108,7 +108,9 @@ ggCropMap_bind <- function(myCrop = "Lentils, dry",
 
 ---
 
-# Wheat
+# Crops {.tabset .tabset-pills}
+
+## Wheat
 
 ![](Wheat_Production.gif)
 
@@ -128,7 +130,7 @@ file.copy(from = "Wheat_Production_2020_1970.png", to = "featured.png")
 
 ---
 
-# Maize 
+## Maize 
 
 ![](Maize (corn)_Production.gif)
 
@@ -144,7 +146,7 @@ ggCropMap_bind(myCrop = "Maize (corn)", myMeasure = "Production", myYears = c(20
 
 ---
 
-# Rapeseed
+## Rapeseed
 
 ![](Rapeseed or canola oil, crude_Production.gif)
 
@@ -160,7 +162,7 @@ ggCropMap_bind(myCrop = "Rapeseed or canola oil, crude", myMeasure = "Production
 
 ---
 
-# Lentils
+## Lentils
 
 ![](Lentils, dry_Production.gif)
 
@@ -176,7 +178,7 @@ ggCropMap_bind(myCrop = "Lentils, dry", myMeasure = "Production", myYears = c(20
 
 ---
 
-# Chickpeas
+## Chickpeas
 
 ![](Chick peas, dry_Production.gif)
 
@@ -192,7 +194,7 @@ ggCropMap_bind(myCrop = "Chick peas, dry", myMeasure = "Production", myYears = c
 
 ---
 
-# Peas
+## Peas
 
 ![](Peas, dry_Production.gif)
 
@@ -208,7 +210,7 @@ ggCropMap_bind(myCrop = "Peas, dry", myMeasure = "Production", myYears = c(2020,
 
 ---
 
-# Beans
+## Beans
 
 ![](Beans, dry_Production.gif)
 
@@ -224,7 +226,7 @@ ggCropMap_bind(myCrop = "Beans, dry", myMeasure = "Production", myYears = c(2020
 
 ---
 
-# Soybeans
+## Soybeans
 
 ![](Soya beans_Production.gif)
 
@@ -240,7 +242,7 @@ ggCropMap_bind(myCrop = "Soya beans", myMeasure = "Production", myYears = c(2020
 
 ---
 
-# Sugarbeet
+## Sugarbeet
 
 ![](Sugar beet_Production.gif)
 
@@ -256,7 +258,7 @@ ggCropMap_bind(myCrop = "Sugar beet", myMeasure = "Production", myYears = c(2020
 
 ---
 
-# Hempseed
+## Hempseed
 
 ![](Hempseed_Production.gif)
 
@@ -272,7 +274,7 @@ ggCropMap_bind(myCrop = "Hempseed", myMeasure = "Production", myYears = c(2020,1
 
 ---
 
-# Potato
+## Potato
 
 ![](Potatoes_Production.gif)
 
@@ -288,7 +290,7 @@ ggCropMap_bind(myCrop = "Potatoes", myMeasure = "Production", myYears = c(2020,1
 
 ---
 
-# Cotton
+## Cotton
 
 ![](Cotton seed_Production.gif)
 
@@ -300,6 +302,22 @@ ggCropMap_animation(myCrop = "Cotton seed", myMeasure = "Production")
 
 ```{r}
 ggCropMap_bind(myCrop = "Cotton seed", myMeasure = "Production", myYears = c(2020,1970))
+```
+
+---
+
+## Sorghum
+
+![](Sorghum_Production.gif)
+
+```{r results="hide"}
+ggCropMap_animation(myCrop = "Sorghum", myMeasure = "Production")
+``` 
+
+![](Sorghum_Production_2020_1970.png)
+
+```{r}
+ggCropMap_bind(myCrop = "Sorghum", myMeasure = "Production", myYears = c(2020,1970))
 ```
 
 ---
