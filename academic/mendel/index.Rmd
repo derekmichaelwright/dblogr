@@ -33,7 +33,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(readxl)
@@ -85,7 +85,9 @@ p6 <- read_xlsx("data_mendel.xlsx", "P6", range = "A7:E23") %>%
 
 ---
 
-# Seeds from 10 F2 plants
+# Seeds from 10 F2 plants {.tabset .tabset-pills}
+
+## Plotting Function
 
 ```{r}
 # Create plotting function

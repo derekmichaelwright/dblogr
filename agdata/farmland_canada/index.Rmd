@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(gganimate)
@@ -50,7 +50,7 @@ d4 <- agData_STATCAN_FarmLand_Prices
 
 ---
 
-# Farmland by Province
+# Farmland by Province {.tabset .tabset-pills}
 
 ## Bar Chart
 
@@ -180,7 +180,9 @@ ggsave("farmland_canada_1_04.png", mp, width = 6, height = 4)
 
 ---
 
-# Cropland vs Pasture
+# Cropland vs Pasture {.tabset .tabset-pills}
+
+## Canada
 
 ![](farmland_canada_1_05.png)
 
@@ -205,7 +207,7 @@ ggsave("farmland_canada_1_05.png", mp, width = 8, height = 3)
 
 ---
 
-## Provinces
+## Provinces {.tabset .tabset-pills}
 
 ### 2016
 
@@ -287,7 +289,7 @@ ggsave("farmland_canada_1_07.png", mp, width = 12, height = 5)
 
 ---
 
-# Average Farm Size
+# Average Farm Size {.tabset .tabset-pills}
 
 ## Canada
 
@@ -335,7 +337,7 @@ ggsave("farmland_canada_2_02.png", mp, width = 12, height = 5)
 
 ---
 
-# Number vs. Area
+# Number vs. Area {.tabset .tabset-pills}
 
 ## Canada
 
@@ -397,9 +399,9 @@ ggsave("farmland_canada_2_04.png", mp, width = 12, height = 5)
 
 ---
 
-# Farm Size
+# Farm Size {.tabset .tabset-pills}
 
-## Canada
+## Canada {.tabset .tabset-pills}
 
 ### Unscaled
 
@@ -469,7 +471,7 @@ anim_save("farmland_canada_gifs_01.gif", mp,
 
 ---
 
-## Saskatchewan
+## Saskatchewan {.tabset .tabset-pills}
 
 ### Unscaled
 
@@ -575,13 +577,13 @@ mp <- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = Area)) +
        y = "Thousand Farms", x = NULL, caption = myCaption) +
   transition_time(Year)
 anim_save("farland_canada_gif_01.gif", mp,
-          nframes = 300, fps = 30, end_pause = 60, 
+          nframes = 300, fps = 25, end_pause = 60, 
           width = 900, height = 1200, res = 150, units = "px")
 ```
 
 ---
 
-# Farmland Prices
+# Farmland Prices {.tabset .tabset-pills}
 
 ## Canada
 

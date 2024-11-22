@@ -39,7 +39,7 @@ World Bank Group - IEA
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(plotly)
@@ -101,7 +101,7 @@ d6 <- read.csv("API_EG.USE.ELEC.KH.PC_DS2_en_csv_v2_2076.csv", skip = 4) %>%
 
 ---
 
-# Global Energy by Source
+# Global Energy by Source {.tabset .tabset-pills}
 
 ## Consumption
 
@@ -129,7 +129,7 @@ ggsave("featured.png", mp, width = 8, height = 4)
 
 ---
 
-### Select Years
+## Select Years
 
 ![](world_energy_1_02.png)
 
@@ -153,7 +153,7 @@ ggsave("world_energy_1_02.png", mp, width = 6, height = 4)
 
 ---
 
-## Fossil Fuels
+## Fossil Fuels {.tabset .tabset-pills}
 
 > - `r shiny::icon("globe")` https://globalenergymonitor.org/projects/global-coal-plant-tracker/tracker/
 
@@ -231,7 +231,7 @@ ggsave("world_energy_1_05.png", mp, width = 6, height = 4)
 
 ---
 
-## Projections
+## Projections {.tabset .tabset-pills}
 
 ### Fossil Fuels
 
@@ -346,7 +346,9 @@ ggsave("world_energy_1_08.png", mp, width = 6, height = 4)
 
 ---
 
-## Percent
+## Percent {.tabset .tabset-pills}
+
+### All Data
 
 ![](world_energy_1_09.png)
 
@@ -490,7 +492,7 @@ anim_save("world_energy_gif_1_02.gif", mp,
 
 ---
 
-# Per Capita Energy Use
+# Per Capita Energy Use {.tabset .tabset-pills}
 
 ## Select Countries
 
@@ -537,7 +539,7 @@ ggsave("world_energy_2_02.png", mp, width = 6, height = 5, bg = "white")
 
 ---
 
-# CO2 vs GDP
+# CO2 vs GDP {.tabset .tabset-pills}
 
 ## 1990
 
@@ -745,7 +747,7 @@ ggsave("world_energy_3_05.png", mp, width = 8, height = 4)
 
 ---
 
-# Poverty
+# Poverty {.tabset .tabset-pills}
 
 ## Global Poverty
 
@@ -890,7 +892,7 @@ ggsave("world_energy_4_05.png", mp, width = 6, height = 4)
 
 ---
 
-# Electricity
+# Electricity {.tabset .tabset-pills}
 
 ## Countries
 
@@ -941,7 +943,7 @@ ggsave("world_energy_5_02.png", mp, width = 6, height = 4)
 
 ---
 
-### Historical Data 
+## Historical Data 
 
 ![](world_energy_5_03.png)
 
@@ -963,7 +965,7 @@ ggsave("world_energy_5_03.png", mp, width = 6, height = 4)
 
 ---
 
-## Africa 
+## Africa {.tabset .tabset-pills}
 
 ### East vs West
 

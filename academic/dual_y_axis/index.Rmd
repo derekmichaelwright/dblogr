@@ -30,7 +30,7 @@ With that said, there still are situations were dual y-axes are appropriate. Thi
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```

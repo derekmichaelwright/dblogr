@@ -175,7 +175,7 @@ dev.off()
 
 ---
 
-## Marker Plots
+## Marker Plots {.tabset .tabset-pills}
 
 ```{r}
 find_peaks(out, map, threshold = 3, drop = 1.5)
@@ -238,7 +238,7 @@ dev.off()
 
 ---
 
-## Estimated QTL effects
+## Estimated QTL effects {.tabset .tabset-pills}
 
 ### Cotyledon Color
 
@@ -903,7 +903,7 @@ dev.off()
 
 ---
 
-## Estimated QTL effects
+## Estimated QTL effects {.tabset .tabset-pills}
 
 ### LG3
 

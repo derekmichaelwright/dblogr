@@ -27,7 +27,7 @@ STATCAN Table: 32-10-0153-01
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(treemapify)
@@ -78,7 +78,9 @@ dev.off()
 
 ---
 
-# 1908 Vs. 1961 Vs. 2020
+# 1908 Vs. 1961 Vs. 2020 {.tabset .tabset-pills}
+
+## cropList Function
 
 ```{r}
 # Create function to determine top crops
@@ -174,7 +176,7 @@ ggsave("crops_saskatchewan_1_03.png", mp, width = 7, height = 5)
 
 ---
 
-# Bar Chart Racer
+# Bar Chart Racer {.tabset .tabset-pills}
 
 ## Production
 
@@ -213,7 +215,7 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
        x = "Million Tonnes", y = NULL, caption = myCaption) +
   transition_time(Year) 
 anim_save("crops_saskatchewan_gif_01.gif", mp,
-          nframes = 600, fps = 15, end_pause = 60, 
+          nframes = 600, fps = 25, end_pause = 60, 
           width = 900, height = 600, res = 150, units = "px")
 ```
 
@@ -253,13 +255,15 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
        x = "Million Hectares", y = NULL, caption = myCaption) +
   transition_time(Year) 
 anim_save("crops_saskatchewan_gif_02.gif", mp,
-          nframes = 600, fps = 15, end_pause = 60, 
+          nframes = 600, fps = 25, end_pause = 60, 
           width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
 
-# Production of Major Crops
+# Production of Major Crops {.tabset .tabset-pills}
+
+## All Data
 
 ![](crops_saskatchewan_2_01.png)
 
@@ -393,17 +397,40 @@ ggsave("crops_saskatchewan_2_04.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
+myCrops <- c("Wheat", "Barley", "Oats")
 xx <- d1 %>% 
-  filter(Item %in% c("Wheat", "Barley", "Oats"),
-         Measurement == "Yield")
+  filter(Item %in% myCrops, Measurement == "Production") %>%
+  mutate(Item = factor(Item, levels = myCrops))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value, fill = Item)) +
-  geom_col() +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) +
+  geom_col(color = "black", alpha = 0.7, lwd = 0.2) +
   scale_fill_manual(name = NULL, values = agData_Colors) +
   theme_agData(legend.position = "bottom") + 
-  labs(title = "Saskatchewan - Crop Production - 2020 vs. 2021", 
+  labs(title = "Saskatchewan - Crop Production - Wheat, Barley & Oates", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_2_05.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Wheat, Barley & Oates
+
+![](crops_saskatchewan_2_05.png)
+
+```{r}
+# Prep data
+myCrops <- c("Peas", "Beans", "Lentils", "Faba beans", "Chick peas")
+xx <- d1 %>% 
+  filter(Item %in% myCrops, Measurement == "Yield") %>%
+  mutate(Item = factor(Item, levels = myCrops))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) +
+  geom_col(color = "black", alpha = 0.7, lwd = 0.2) +
+  scale_fill_manual(name = NULL, values = agData_Colors) +
+  theme_agData(legend.position = "bottom") + 
+  labs(title = "Saskatchewan - Crop Production - Pulses", 
+       y = "Million Tonnes", x = NULL, caption = myCaption)
+ggsave("crops_saskatchewan_2_06.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -465,7 +492,7 @@ ggsave("crops_saskatchewan_3_02.png", mp, width = 6, height = 4)
 
 ---
 
-# All Crops
+# All Crops {.tabset .tabset-pills}
 
 ## Area Seeded
 
@@ -515,7 +542,9 @@ ggsave("crops_saskatchewan_4_02.png", mp, width = 6, height = 5)
 
 ---
 
-# Treemap
+# Treemap {.tabset .tabset-pills}
+
+## 2020
 
 ![](crops_saskatchewan_4_03.png)
 
@@ -557,13 +586,15 @@ mp <- ggplot(xx, aes(area = Value, fill = Item, label = Item)) +
        subtitle = "Year: {frame_time}", caption = myCaption) +
   transition_time(Year)
 anim_save("crops_saskatchewan_gif_03.gif", mp,
-          nframes = 600, fps = 20, end_pause = 60, 
+          nframes = 600, fps = 25, end_pause = 60, 
           width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
 
-# Farm Area
+# Farm Area {.tabset .tabset-pills}
+
+## Farmland
 
 ![](crops_saskatchewan_5_01.png)
 

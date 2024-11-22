@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(readxl)

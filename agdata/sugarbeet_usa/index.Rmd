@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = T, warning = F, message = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
@@ -33,7 +33,7 @@ myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: US
 
 ---
 
-# Production
+# Production 
 
 ## 2017
 
@@ -81,7 +81,7 @@ ggsave("sugarbeet_usa_02.png", mp, width = 10, height = 6)
 
 ---
 
-# Yield
+# Yield {.tabset .tabset-pills}
 
 ## Minnesota + Idaho + North Dakota
 

@@ -41,7 +41,7 @@ STATCAN Interactive Graph (Weekly death counts)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(readxl)
@@ -176,7 +176,7 @@ ggsave("canada_deaths_01_01.png", mp, width = 10, height = 4, bg = "white")
 
 ---
 
-# Total Deaths 2010-2023
+# Total Deaths 2010-2023 {.tabset .tabset-pills}
 
 ```{r}
 # Create plotting function
@@ -279,7 +279,7 @@ ggsave("canada_deaths_02_07.png", mp, width = 8, height = 4)
 
 ---
 
-# Total Deaths 2016-2023
+# Total Deaths 2016-2023 {.tabset .tabset-pills}
 
 ### Canada
 
@@ -446,9 +446,12 @@ ggradar(xx, grid.min = 0, grid.max = 10000)#, plot.title = "Canada")#, legend.po
 
 ---
 
-# Respiratory Season Graphs
+# Respiratory Season Graphs {.tabset .tabset-pills}
 
-```{r}
+
+## Plotting function
+
+```{r class.source = "fold-show"}
 # Create plotting function
 ggRespSeasons <- function(myArea) {
   # Prep data
@@ -554,7 +557,7 @@ ggsave("canada_deaths_05_07.png", mp, width = 6, height = 4)
 
 ---
 
-# Respiratory Season Graphs by Age Group
+# Respiratory Season Graphs by Age Group {.tabset .tabset-pills}
 
 ```{r}
 # Create plotting function
@@ -666,7 +669,7 @@ ggsave("canada_deaths_06_07.png", mp, width = 10, height = 4)
 
 ---
 
-# Yearly Deaths by Age Group
+# Yearly Deaths by Age Group {.tabset .tabset-pills}
 
 ```{r}
 # Create plotting function
@@ -770,7 +773,7 @@ ggsave("canada_deaths_07_07.png", mp, width = 10, height = 4)
 
 ---
 
-# Death Rate - Ages 65+
+# Death Rate - Ages 65+ {.tabset .tabset-pills}
 
 ```{r}
 # Prep data
@@ -833,7 +836,7 @@ ggsave("canada_deaths_08_02.png", mp, width = 14, height = 8)
 
 ---
 
-# Death Rate - Ages 0-44
+# Death Rate - Ages 0-44 {.tabset .tabset-pills}
 
 ```{r}
 # Prep data
@@ -987,7 +990,7 @@ sum(xx$Value[xx$Year%in%2015:2022 & xx$Measurement == "Deaths"] - xx$Value[xx$Ye
 
 ---
 
-# Weekly Deaths Ages 0-44
+# Weekly Deaths Ages 0-44 {.tabset .tabset-pills}
 
 ```{r}
 ggWeeklyDeaths044 <- function(myArea = "Canada") {
@@ -1087,7 +1090,7 @@ ggsave("canada_deaths_09_07.png", mp, width = 8, height = 4)
 
 ---
 
-# Weekly Deaths By Sex
+# Weekly Deaths By Sex {.tabset .tabset-pills}
 
 ## Canada
 
@@ -1131,7 +1134,7 @@ ggsave("canada_deaths_10_02.png", mp, width = 8, height = 4)
 
 ---
 
-# Yearly Death Rate
+# Yearly Death Rate {.tabset .tabset-pills}
 
 ## Canada
 

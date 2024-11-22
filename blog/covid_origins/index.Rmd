@@ -39,7 +39,7 @@ Deseret News
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
@@ -109,7 +109,7 @@ ggsave("covid_origin_1_01.png", mp, width = 6, height = 4)
 
 ---
 
-# YOUGOV Poll
+# YOUGOV Poll {.tabset .tabset-pills}
 
 ## 35. COVID-19 Originated in Chinese Lab
 
@@ -195,7 +195,7 @@ ggsave("featured.png", mp, width = 8, height = 6)
 
 ---
 
-## Bar Charts
+## Bar Charts {.tabset .tabset-pills}
 
 ```{r}
 # Create plotting function
@@ -280,7 +280,7 @@ ggsave("covid_origin_3_05.png", mp, width = 7.5, height = 5)
 
 ---
 
-## Pie
+## Pie {.tabset .tabset-pills}
 
 ```{r}
 # Create plotting function

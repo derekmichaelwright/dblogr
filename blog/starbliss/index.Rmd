@@ -18,7 +18,7 @@ starBliss package
 > - `r shiny::icon("github")` https://github.com/benyamindsmith/starBliss
 > - `r shiny::icon("code")` https://benyamindsmith.shinyapps.io/starBlissGUI/
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("benyamindsmith/starBliss")
 library(starBliss)
 library(ggplot2)

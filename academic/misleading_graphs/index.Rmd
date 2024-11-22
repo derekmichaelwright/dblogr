@@ -22,7 +22,7 @@ Using statistics to mislead can be a trivial thing. This vignette will go throug
 5. [Color Scales](#color-scales)
 6. [Data Statistics](#data-statistics)
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(readxl) # read_xlsx()

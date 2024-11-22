@@ -47,7 +47,7 @@ STATCAN Table: 17-10-0154-01 (Interprovincial and intraprovincial migrants)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(gganimate)
@@ -130,7 +130,7 @@ d6 <- read.csv("1710015401_databaseLoadingData.csv")
 
 ---
 
-# Births, Deaths & Migration
+# Births, Deaths & Migration {.tabset .tabset-pills}
 
 ## Canada
 
@@ -183,7 +183,7 @@ ggsave("canada_migration_1_02.png", mp, width = 14, height = 7)
 
 ---
 
-# Immigrants vs Emigrants
+# Immigrants vs Emigrants {.tabset .tabset-pills}
 
 ## Canada
 
@@ -209,7 +209,9 @@ ggsave("canada_migration_1_03.png", mp, width = 6, height = 4)
 
 ---
 
-## Provinces
+## Provinces {.tabset .tabset-pills}
+
+### All Data
 
 ![](canada_migration_1_04.png)
 
@@ -299,7 +301,7 @@ ggsave("canada_migration_1_06.png", mp, width = 8, height = 4)
 
 ---
 
-# Immigrants & Non-Permanent Residents
+# Immigrants & Non-Permanent Residents {.tabset .tabset-pills}
 
 ## Canada
 
@@ -371,7 +373,9 @@ ggsave("canada_migration_1_08.png", mp, width = 12, height = 6)
 
 ---
 
-# Net Interprovincial Migration
+# Net Interprovincial Migration {.tabset .tabset-pills}
+
+## Canada
 
 ![](canada_migration_1_09.png)
 
@@ -396,7 +400,7 @@ ggsave("canada_migration_1_09.png", mp, width = 14, height = 7)
 
 ---
 
-### Alberta vs BC
+## Alberta vs BC
 
 ![](canada_migration_1_10.png)
 
@@ -420,9 +424,11 @@ ggsave("canada_migration_1_10.png", mp, width = 6, height = 4)
 
 ---
 
-# Interprovincial Migration By Age
+# Interprovincial Migration By Age {.tabset .tabset-pills}
 
-## Gifs
+## Gifs {.tabset .tabset-pills}
+
+### Plotting Function
 
 ```{r}
 # Create plotting function
@@ -526,7 +532,9 @@ anim_save("canada_migration_gif_06.gif", mp,
 
 ---
 
-## Facetted
+## Facetted {.tabset .tabset-pills}
+
+### Plotting Function
 
 ```{r}
 # Create plotting function
@@ -672,7 +680,7 @@ ggsave("canada_migration_2_07.png", mp, width = 10, height = 4)
 
 ---
 
-#### British Columbia 2021 - 2023
+### British Columbia 2021 - 2023
 
 ![](canada_migration_2_08.png)
 
@@ -696,7 +704,7 @@ ggsave("canada_migration_2_08.png", mp, width = 8, height = 4)
 
 ---
 
-# Birth Rates
+# Birth Rates {.tabset .tabset-pills}
 
 ## Canada
 
@@ -721,7 +729,9 @@ ggsave("canada_migration_3_01.png", mp, width = 6, height = 4)
 
 ---
 
-## Birth Rates
+## Birth Rates {.tabset .tabset-pills}
+
+### Canada
 
 ![](canada_migration_3_02.png)
 
@@ -823,7 +833,7 @@ ggsave("canada_migration_3_05.png", mp, width = 6, height = 4)
 
 ---
 
-# Non-permentant Residents
+# Non-permentant Residents {.tabset .tabset-pills}
 
 ## Canada
 
@@ -874,7 +884,7 @@ ggsave("canada_migration_4_02.png", mp, width = 14, height = 7)
 
 ---
 
-## Permit Holders
+## Permit Holders {.tabset .tabset-pills}
 
 ### Canada
 
@@ -924,7 +934,7 @@ ggsave("canada_migration_4_04.png", mp, width = 14, height = 7)
 
 ---
 
-## Assylum Seekers
+## Assylum Seekers {.tabset .tabset-pills}
 
 ### Canada
 

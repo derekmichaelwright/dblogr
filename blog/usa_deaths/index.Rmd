@@ -39,7 +39,7 @@ write.csv(dd, "data_usa_deaths.csv", row.names = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(readxl)
@@ -115,9 +115,11 @@ dd <- dd %>%
 
 ---
 
-# Weekly Deaths
+# Weekly Deaths {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r class.source = "fold-show"}
 # Create plotting function
 ggWeeklyDeaths <- function(myArea = "United States") {
   # Prep data
@@ -145,7 +147,7 @@ ggWeeklyDeaths <- function(myArea = "United States") {
 
 ---
 
-## United States
+## United States {.active}
 
 ![](usa_deaths_1_01.png)
 
@@ -255,9 +257,11 @@ ggsave("usa_deaths_1_10.png", mp, width = 8, height = 4)
 
 ---
 
-# Yearly Deaths
+# Yearly Deaths {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r class.source = "fold-show"}
 # Create plotting function
 ggYearlyDeaths <- function(myArea = "United States") {
   # Prep data
@@ -279,7 +283,7 @@ ggYearlyDeaths <- function(myArea = "United States") {
 
 ---
 
-## United States
+## United States {.active}
 
 ![](usa_deaths_2_01.png)
 
@@ -389,9 +393,11 @@ ggsave("usa_deaths_2_10.png", mp, width = 6, height = 4)
 
 ---
 
-# Deaths Vs. Previous Years
+# Deaths Vs. Previous Years {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r class.source = "fold-show"}
 # Create plotting function
 ggRespSeasons <- function(myAreas = "United States") {
   # Prep data
@@ -423,7 +429,7 @@ ggRespSeasons <- function(myAreas = "United States") {
 
 ---
 
-## United States
+## United States {.active}
 
 ![](usa_deaths_3_01.png)
 
@@ -544,9 +550,11 @@ ggsave("usa_deaths_3_11.png", mp, width = 12, height = 4)
 
 ---
 
-# Weekly Deaths by Age Group
+# Weekly Deaths by Age Group {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r class.source = "fold-show"}
 # Create plotting function
 ggRespSeasonsAge <- function(myArea = "United States") {
   # Prep data
@@ -600,7 +608,7 @@ deathPlot4 <- function(myArea) {
 
 ---
 
-## United States
+## United States {.active}
 
 ![](usa_deaths_4_01.png)
 
@@ -714,9 +722,11 @@ ggsave("usa_deaths_4_10.png", mp, width = 12, height = 5)
 
 ---
 
-# Yearly Deaths by Age Group
+# Yearly Deaths by Age Group {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r class.source = "fold-show"}
 # Plotting function
 ggYearlyDeathsAge <- function(myArea) {
   # Prep data
@@ -740,7 +750,7 @@ ggYearlyDeathsAge <- function(myArea) {
 
 ---
 
-## United States
+## United States {.active}
 
 ![](usa_deaths_5_01.png)
 
@@ -850,7 +860,7 @@ ggsave("usa_deaths_5_10.png", mp, width = 12, height = 5)
 
 ---
 
-# Death Rates
+# Death Rates {.tabset .tabset-pills}
 
 ![](usa_deaths_6_01.png)
 
@@ -915,7 +925,9 @@ ggsave("usa_deaths_6_03.png", mp, width = 6, height = 4)
 
 ---
 
-## New York vs New Jersey vs Florida
+## NY vs NJ vs Fl {.tabset .tabset-pills}
+
+### >2020
 
 ![](usa_deaths_6_04.png)
 
@@ -1031,9 +1043,11 @@ ggsave("usa_deaths_7_02.png", mp, width = 8, height = 4)
 
 ---
 
-# Weekly Deaths 0 - 44
+# Weekly Deaths 0 - 44 {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r class.source = "fold-show"}
 # Create plotting function
 ggWeeklyDeaths044 <- function(myArea = "United States") {
   # Prep data
@@ -1062,7 +1076,7 @@ ggWeeklyDeaths044 <- function(myArea = "United States") {
 
 ---
 
-## United States
+## United States {.active}
 
 ![](usa_deaths_8_01.png)
 

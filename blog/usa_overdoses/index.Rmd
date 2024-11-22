@@ -32,7 +32,7 @@ dd <- read.csv("https://data.cdc.gov/api/views/v2g4-wqg2/rows.csv?accessType=DOW
 write.csv(dd, "data_usa_overdoses.csv", row.names = F)
 ```
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
@@ -58,9 +58,11 @@ myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: CD
 
 ---
 
-# Weekly Overdoses
+# Weekly Overdoses {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r class.source = "fold-show"}
 # Create plotting function
 overdosePlot1 <- function(area = "United States") {
   # Prep data
@@ -83,7 +85,7 @@ overdosePlot1 <- function(area = "United States") {
 
 ---
 
-## United States
+## United States {.active}
   
 ![](usa_overdoses_1_01.png)
   
@@ -164,9 +166,11 @@ ggsave("usa_overdoses_1_07.png", mp, width = 6, height = 4)
 
 ---
 
-# Yearly Deaths
+# Yearly Deaths {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r class.source = "fold-show"}
 # Create plotting function
 overdosePlot2 <- function(area = "United States") {
   # Prep data
@@ -192,7 +196,7 @@ overdosePlot2 <- function(area = "United States") {
 
 ---
 
-## United States
+## United States {.active}
   
 ![](usa_overdoses_2_01.png)
   
@@ -269,9 +273,11 @@ ggsave("usa_overdoses_2_07.png", mp, width = 6, height = 4)
 
 ---
 
-# Weekly Deaths
+# Weekly Deaths {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r class.source = "fold-show"}
 # Create plotting function
 overdosePlot2 <- function(area = "Alaska") {
   # Prep data
@@ -296,7 +302,7 @@ overdosePlot2 <- function(area = "Alaska") {
 
 ---
 
-## United States
+## United States {.active}
   
 ![](usa_overdoses_3_01.png)
   

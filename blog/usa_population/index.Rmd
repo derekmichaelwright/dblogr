@@ -29,7 +29,7 @@ Census Bureau Age & Sex Data
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(readxl)
@@ -93,7 +93,7 @@ d2 <- bind_rows(
 
 ---
 
-# State Populations
+# State Populations {.tabset .tabset-pills}
 
 ## 2022 Bar Chart
 
@@ -195,9 +195,11 @@ ggsave("usa_population_1_03.png", mp, width = 10, height = 6)
 
 ---
 
-## Population Change
+# Population Change {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r class.source = "fold-show"}
 # Create plotting function
 ggStatePop <- function(myTrait, myTitle, myFacet, myLims = 525) {
   xx <- d1 %>% 
@@ -219,7 +221,7 @@ ggStatePop <- function(myTrait, myTitle, myFacet, myLims = 525) {
 
 ---
 
-### 2022
+## 2022 {.active}
 
 ![](usa_population_2_01.png)
 
@@ -231,7 +233,7 @@ ggsave("usa_population_2_01.png", mp, width = 4, height = 6)
 
 ---
 
-### 2013
+## 2013
 
 ![](usa_population_2_02.png)
 
@@ -243,7 +245,9 @@ ggsave("usa_population_2_02.png", mp, width = 4, height = 6)
 
 ---
 
-# Population Pyramid 2021
+# Population Pyramid {.tabset .tabset-pills}
+
+## 2021
 
 ![](usa_population_3_01.png)
 
@@ -276,7 +280,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ---
 
-# Population Pyramid 2007 - 2021
+## 2007 - 2021
 
 ![](usa_population_3_02.png)
 
@@ -306,7 +310,7 @@ ggsave("usa_population_3_02.png", mp, width = 8, height = 4)
 
 ---
 
-# Dual Year Population Pyramid 2007 - 2021
+## Dual Year Population Pyramid 2007 - 2021
 
 ![](usa_population_3_03.png)
 
@@ -330,7 +334,63 @@ mp <- ggplot(xx, aes(y = Population / 1000000, x = Age, fill = Year)) +
        y = "Million People", caption = myCaption) +
   coord_cartesian(ylim = c(-max(xx$Population), max(xx$Population))) +
   coord_flip()
-ggsave("usa_population_3_03.png", width = 6, height = 4)
+ggsave("usa_population_3_03.png", mp, width = 6, height = 4)
+```
+
+---
+
+# Bonus - US elections {.tabset .tabset-pills}
+
+> - `r shiny::icon("globe")` https://en.wikipedia.org/wiki/2024_United_States_elections
+> - `r shiny::icon("save")` [data_usa_population_age.csv](data_usa_population_age.csv)
+
+
+## Dodged
+
+```{r}
+# Prep data
+myPartyColors <- c("darkblue","darkred","darkgreen")
+xx <- read.csv("data_us_elections.csv") %>% 
+  mutate(Party = factor(Party, levels = c("Dem","Rep","Other")),
+         Year = factor(Year))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Votes / 1000000, fill = Party)) +
+  geom_col(position = "dodge", color = "black", lwd = 0.2, alpha = 0.7) + 
+  scale_fill_manual(values = myPartyColors) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Votes in US Elections", x = NULL, y = "Million Votes")
+ggsave("usa_population_4_01.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Stacked
+
+```{r}
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Votes / 1000000, fill = Party)) +
+  geom_col(color = "black", lwd = 0.2, alpha = 0.7) + 
+  scale_fill_manual(values = myPartyColors) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Votes in US Elections", x = NULL, y = "Million Votes")
+ggsave("usa_population_4_02.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Facetted
+
+```{r}
+mp <- ggplot(xx, aes(x = Party, y = Votes / 1000000, fill = Party)) +
+  geom_col(color = "black", alpha = 0.7) + 
+  geom_text(aes(label = Candidate), angle = 90, y = 20) +
+  facet_grid(. ~ Year) +
+  scale_fill_manual(values = myPartyColors) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_blank(),
+               axis.ticks.x = element_blank()) +
+  labs(title = "US Election Results", x = NULL, y = "Million Votes")
+ggsave("usa_population_4_03.png", mp, width = 6, height = 4)
 ```
 
 ---

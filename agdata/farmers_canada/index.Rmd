@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
@@ -69,7 +69,7 @@ ggsave("farmers_canada_1_01.png", mp, width = 9, height = 5)
 
 ---
 
-# Total Number of Farm Operators
+# Total Number of Farm Operators {.tabset .tabset-pills}
 
 ## Canada
 
@@ -115,7 +115,7 @@ ggsave("farmers_canada_1_03.png", mp, width = 10, height = 5)
 
 ---
 
-## Percent of Population
+## Percent of Population {.tabset .tabset-pills}
 
 ### Provinces
 
@@ -142,7 +142,7 @@ ggsave("farmers_canada_1_04.png", mp, width = 10, height = 5)
 
 ---
 
-## Percent of Population
+## Percent of Population {.tabset .tabset-pills}
 
 ### 2021 
 
@@ -169,7 +169,7 @@ ggsave("farmers_canada_1_05.png", mp, width = 6, height = 4)
 
 ---
 
-# Farm Operators by Gender
+# Farm Operators by Gender {.tabset .tabset-pills}
 
 ## Canada
 
@@ -295,9 +295,9 @@ ggsave("farmers_canada_2_05.png", mp, width = 10, height = 5)
 
 ---
 
-# Farm Operators by Age
+# Farm Operators by Age {.tabset .tabset-pills}
 
-## Average Age
+## Average Age {.tabset .tabset-pills}
 
 ### Canada
 
@@ -369,7 +369,7 @@ ggsave("farmers_canada_3_03.png", mp, width = 10, height = 5)
 
 ---
 
-## Age Group
+## Age Group {.tabset .tabset-pills}
 
 ### Canada
 

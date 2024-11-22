@@ -27,7 +27,7 @@ STATCAN Table: 17-10-0005-01 (Population estimates on July 1, by age and gender)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(gganimate)
@@ -83,7 +83,7 @@ d2 <- read.csv("1710000501_databaseLoadingData.csv") %>%
 
 ---
 
-# Population
+# Population {.tabset .tabset-pills}
 
 ## Canada
 
@@ -125,7 +125,9 @@ ggsave("canada_population_1_02.png", mp, width = 6, height = 4)
 
 ---
 
-## All Provinces
+## All Provinces {.tabset .tabset-pills}
+
+### All Data
 
 ![](canada_population_1_03.png)
 
@@ -221,7 +223,7 @@ ggsave("canada_population_1_06.png", mp, width = 10, height = 5)
 
 ---
 
-# Median Age
+# Median Age {.tabset .tabset-pills}
 
 ## Canada
 
@@ -266,9 +268,11 @@ ggsave("canada_population_1_08.png", mp, width = 10, height = 6)
 
 ---
 
-# Population Pyramids
+# Population Pyramids {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r class.source = "fold-show"}
 gg_PopDem_plot <- function(myArea = "Saskatchewan", myYears = 2019 ) {
   # Prep data
   xx <- d2 %>% 
@@ -294,7 +298,7 @@ gg_PopDem_plot <- function(myArea = "Saskatchewan", myYears = 2019 ) {
 }
 ```
 
-## Canada
+## Canada {.active}
 
 ![](canada_population_2_01.png)
 
@@ -398,9 +402,11 @@ ggsave("canada_population_2_09.png", mp, width = 10, height = 4)
 
 ---
 
-# Animated Population Pyramids
+# Animated Population Pyramids {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r class.source = "fold-show"}
 gg_PopDem_anim <- function(myArea = "Saskatchewan") {
   # Prep data
   xx <- d2 %>% 
@@ -427,7 +433,7 @@ gg_PopDem_anim <- function(myArea = "Saskatchewan") {
 }
 ```
 
-## Canada
+## Canada {.active}
 
 ![](canada_population_gif_2_01.gif)
 
@@ -544,9 +550,11 @@ anim_save("canada_population_gif_2_09.gif", mp,
 
 ---
 
-# Dual Year Population Pyramids
+# Dual Year Population Pyramids {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r class.source = "fold-show"}
 gg_PopDem_plot2 <- function(myArea = "Saskatchewan", myYears = c(1971,2022) ) {
   # Prep data
   xx <- d2 %>% 
@@ -573,7 +581,7 @@ gg_PopDem_plot2 <- function(myArea = "Saskatchewan", myYears = c(1971,2022) ) {
 }
 ```
 
-## Canada
+## Canada {.active}
 
 ![](canada_population_3_01.png)
 
@@ -672,9 +680,11 @@ ggsave("canada_population_3_09.png", mp, width = 6, height = 4)
 
 ---
 
-# Sex Ratios
+# Sex Ratios {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r class.source = "fold-show"}
 gg_SexRatio_plot <- function(myArea = "Saskatchewan", myYears = 2019) {
   # Prep data
   xx <- d2 %>% 
@@ -697,7 +707,7 @@ gg_SexRatio_plot <- function(myArea = "Saskatchewan", myYears = 2019) {
 }
 ```
 
-## Canada
+## Canada {.active}
 
 ![](canada_population_4_01.png)
 
@@ -797,7 +807,7 @@ ggsave("canada_population_4_09.png", mp, width = 10, height = 4)
 
 ---
 
-# Age Line Graphs
+# Age Line Graphs {.tabset .tabset-pills}
 
 ## Males vs. Females
 
@@ -845,7 +855,7 @@ anim_save("canada_population_gif_4_01.gif", mp,
 
 ---
 
-# Old vs Young
+# Old vs Young {.tabset .tabset-pills}
 
 ## Canada
 

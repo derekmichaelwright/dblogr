@@ -67,7 +67,7 @@ write.csv(yy, "data_ldp.csv", row.names = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(rworldmap)   # mapBubbles()
@@ -288,7 +288,7 @@ mapBubbles2 <- function (dF = "", nameX = "longitude", nameY = "latitude",
 
 ---
 
-# Origins
+# Origins {.tabset .tabset-pills}
 
 ## Countries
 
@@ -397,7 +397,7 @@ saveWidget(as_widget(mp), "lentil_diversity_panel_1_04.html")
 
 ---
 
-# Genetic Structure Analyis
+# Genetic Structure Analyis {.tabset .tabset-pills}
 
 ## Genotype Composition
 
@@ -589,7 +589,7 @@ saveWidget(as_widget(mp), "lentil_diversity_panel_2_06.html")
 
 ---
 
-# DTF
+# DTF {.tabset .tabset-pills}
 
 ## DTF Cluster Pie Map
 
@@ -785,7 +785,7 @@ saveWidget(as_widget(mp), "lentil_diversity_panel_3_05.html")
 
 ---
 
-# Cotyledon Color
+# Cotyledon Color {.tabset .tabset-pills}
 
 ## Eurasia Map
 

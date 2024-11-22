@@ -55,7 +55,7 @@ The Data used in this tutorial are sourced from [**knowpulse.usask.ca/**](http:/
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```

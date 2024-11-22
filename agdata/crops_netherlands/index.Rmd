@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) 
 library(ggforce)
@@ -135,7 +135,7 @@ ggsave("featured.png", mp, width = 10, height = 6)
 
 ---
 
-# Bar Chart Racer
+# Bar Chart Racer {.tabset .tabset-pills}
 
 ## Production
 
@@ -179,7 +179,7 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value,
        y = NULL, caption = myCaption) +
   transition_time(Year) 
 anim_save("crops_netherlands_gif_01.gif", mp,
-          nframes = 600, fps = 30, end_pause = 150, 
+          nframes = 600, fps = 25, end_pause = 150, 
           width = 900, height = 600, res = 150, units = "px")
 ```
 
@@ -225,7 +225,7 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value,
        x = "Million Hectares", y = NULL, caption = myCaption) +
   transition_time(Year) 
 anim_save("crops_netherlands_gif_02.gif", mp,
-          nframes = 600, fps = 30, end_pause = 150, 
+          nframes = 600, fps = 25, end_pause = 150, 
           width = 900, height = 600, res = 150, units = "px")
 ```
 

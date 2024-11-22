@@ -17,12 +17,13 @@ Principal component analysis (**PCA**) is a statistical process commonly used fo
 
 For more info: https://en.wikipedia.org/wiki/Principal_component_analysis
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
-library(scales) # rescale()
-library(GGally) # ggpairs() 
-library(plotly) # plot_ly()
+library(scales)  # rescale()
+library(GGally)  # ggpairs() 
+library(plotly)  # plot_ly()
+library(ggforce) # geom_mark_hull()
 library(rworldmap)   # mapPies()
 library(FactoMineR)  # PCA() & HCPC()
 library(htmlwidgets) # saveWidget()
@@ -90,14 +91,14 @@ mp <- ggplot(xx, aes(x = Dim.1, y = Dim.2)) +
 ggsave("pca_tutorial_1_02.png", mp,  width = 6, height = 4)
 ```
 
-### ggforce::geom_mark_hull
+### Clusters
 
 ![](pca_tutorial_1_03.png)
 
 ```{r}
 # Plot
 mp <- mp +
-  ggforce::geom_mark_hull(aes(fill = Cluster), expand = unit(3, "mm")) +
+  geom_mark_hull(aes(fill = Cluster), expand = unit(3, "mm")) +
   scale_fill_manual(values = myColors)
 ggsave("pca_tutorial_1_03.png", mp,  width = 6, height = 4)
 ```

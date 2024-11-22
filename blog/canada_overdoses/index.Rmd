@@ -42,7 +42,7 @@ All Data
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(readxl)
@@ -107,7 +107,7 @@ sk4 <- read_xlsx("data_canada_overdoses.xlsx", "SK Race") %>%
 
 ---
 
-# Canada
+# Canada {.tabset .tabset-pills}
 
 ![](canada_overdoses_01.png)
 
@@ -146,9 +146,9 @@ ggsave("canada_overdoses_02.png", mp, width = 10, height = 6)
 
 ---
 
-# British Columbia
+# British Columbia {.tabset .tabset-pills}
 
-## Annual Drug Overdoses
+## Annual Drug Overdoses {.tabset .tabset-pills}
 
 ### Deaths
 
@@ -191,7 +191,9 @@ ggsave("british_columbia_overdoses_02.png", mp, width = 6, height = 4)
 
 ---
 
-## Monthly Drug Overdoses
+## Monthly Drug Overdoses {.tabset .tabset-pills}
+
+### All Data
 
 ![](british_columbia_overdoses_03.png)
 
@@ -245,7 +247,7 @@ ggsave("british_columbia_overdoses_05.png", mp, width = 6, height = 4)
 
 ---
 
-## By Age Group
+## By Age Group {.tabset .tabset-pills}
 
 ### Animation
 
@@ -259,7 +261,7 @@ mp <- ggplot(bc4, aes(x = `Age Group`, y = Deaths, fill = `Age Group`)) +
        caption = myCaptionBC) +
   transition_time(Year)
 anim_save("british_columbia_overdoses_gif_01.gif", mp, 
-          nframes = 300, fps = 30, end_pause = 30, 
+          nframes = 300, fps = 25, end_pause = 30, 
           width = 900, height = 600, res = 150, units = "px")
 ```
 
@@ -319,9 +321,9 @@ ggsave("british_columbia_overdoses_08.png", mp, width = 12, height = 4)
 
 ---
 
-# Alberta
+# Alberta {.tabset .tabset-pills}
 
-## Monthly Drug Overdoses
+## Monthly Drug Overdoses {.tabset .tabset-pills}
 
 ### Number
 
@@ -357,7 +359,7 @@ ggsave("alberta_overdoses_02.png", mp, width = 7, height = 4)
 
 ---
 
-# Saskatchewan
+# Saskatchewan {.tabset .tabset-pills}
 
 ## Annual Drug Overdoses
 
@@ -420,7 +422,9 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ---
 
-## Age Group
+## Age Group {.tabset .tabset-pills}
+
+### Unfacetted
 
 ![](saskatchewan_overdoses_04.png)
 
@@ -439,7 +443,7 @@ ggsave("saskatchewan_overdoses_04.png", mp, width = 12, height = 4)
 
 ---
 
-### By Sex
+### Facetted
 
 ![](saskatchewan_overdoses_05.png)
 
@@ -471,7 +475,7 @@ mp <- ggplot(sk3, aes(x = `Age Group`, y = Deaths, fill = Sex)) +
        x = NULL, caption = myCaptionSK) +
   transition_time(Year)
 anim_save("saskatchewan_overdoses_gif_01.gif", mp, 
-          nframes = 300, fps = 30, end_pause = 30, 
+          nframes = 300, fps = 20, end_pause = 30, 
           width = 900, height = 600, res = 150, units = "px")
 ```
 
@@ -494,7 +498,7 @@ ggsave("saskatchewan_overdoses_06.png", mp, width = 6, height = 4)
 
 ---
 
-### 2010 - 2015 - 2019 - 2020
+### 2010 - 2015 - 2019 - 2020 {.tabset .tabset-pills}
 
 #### By Year
 
@@ -538,7 +542,7 @@ ggsave("saskatchewan_overdoses_08.png", mp, width = 8, height = 4)
 
 ---
 
-## By Race
+## By Race {.tabset .tabset-pills}
 
 ![](saskatchewan_overdoses_09.png)
 
@@ -604,7 +608,7 @@ mp <- ggplot(sk4, aes(x = Race, y = Deaths, fill = Sex)) +
        caption = myCaptionSK) +
   transition_time(Year)
 anim_save("saskatchewan_overdoses_gif_02.gif", mp, 
-          nframes = 300, fps = 30, end_pause = 30, 
+          nframes = 300, fps = 25, end_pause = 30, 
           width = 900, height = 600, res = 150, units = "px")
 ```
 

@@ -9,19 +9,21 @@ author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmic
 knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```
 
-# Blank
+# Templates {.tabset .tabset-pills}
+
+## Blank
 
 `r shiny::icon("save")` [page_blank.docx](page_blank.docx)
 
 ![](img_page_blank.png)
 
-# Lined
+## Lined
 
 `r shiny::icon("save")` [page_line.docx](page_line.docx)
 
 ![](img_page_line.png)
 
-# Gridded
+## Gridded
 
 `r shiny::icon("save")` [page_grid.docx](page_grid.docx)
 

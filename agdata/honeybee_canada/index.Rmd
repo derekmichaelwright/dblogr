@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(gganimate)
@@ -54,7 +54,9 @@ ggsave("honeybee_canada_01.png", mp, width = 6, height = 8)
 
 ---
 
-# Colonies
+# Colonies {.tabset .tabset-pills}
+
+## Bar Chart
 
 ![](honeybee_canada_02.png)
 
@@ -95,7 +97,9 @@ anim_save("honeybee_canada_gif_01.gif", mp,
 
 ---
 
-# Provinces
+# Provinces {.tabset .tabset-pills}
+
+## All Provinces
 
 ![](honeybee_canada_03.png)
 
@@ -121,9 +125,7 @@ ggsave("featured.png", mp, width = 10, height = 4)
 
 ---
 
-# Canada & Ontario
-
-# Alberta vs. Ontario
+## Canada & Ontario
 
 ![](honeybee_canada_04.png)
 
@@ -144,7 +146,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Area)) +
 ggsave("honeybee_canada_04.png", mp, width = 6, height = 4)
 ```
 
-# Alberta vs. Ontario
+## Alberta vs. Ontario
 
 ![](honeybee_canada_05.png)
 
@@ -166,7 +168,7 @@ ggsave("honeybee_canada_05.png", mp, width = 6, height = 4)
 
 ---
 
-# Saskatchewan vs. Quebec
+## Saskatchewan vs. Quebec
 
 ![](honeybee_canada_06.png)
 
@@ -188,7 +190,7 @@ ggsave("honeybee_canada_06.png", mp, width = 6, height = 4)
 
 ---
 
-# Saskatchewan
+## Saskatchewan
 
 ![](honeybee_canada_07.png)
 

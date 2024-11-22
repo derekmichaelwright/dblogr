@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
@@ -40,7 +40,7 @@ d2 <- agData_STATCAN_Crops2 %>%
 
 ---
 
-# Production
+# Production {.tabset .tabset-pills}
 
 ## Regions
 
@@ -93,7 +93,7 @@ ggsave("wheat_canada_02.png", mp, width = 6, height = 4)
 
 ---
 
-# Wheat Types
+# Wheat Types {.tabset .tabset-pills}
 
 ## Regions
 
@@ -148,7 +148,7 @@ ggsave("wheat_canada_04.png", mp, width = 7, height = 5)
 
 ---
 
-# Yields
+# Yields {.tabset .tabset-pills}
 
 ## Regions
 

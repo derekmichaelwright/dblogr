@@ -42,7 +42,7 @@ STATCAN Table 14-10-0011-01 (Employment insurance beneficiaries)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
@@ -114,7 +114,7 @@ ages <- c(# Groups 1
 
 ---
 
-# Employment Rate
+# Employment Rate {.tabset .tabset-pills}
 
 ## Canada
 
@@ -235,9 +235,11 @@ ggsave("canada_employment_1_05.png", mp, width = 6, height = 4)
 
 ---
 
-## Provinces
+## Provinces {.tabset .tabset-pills}
 
-### By Age
+### By Age {.tabset .tabset-pills}
+
+#### All Data
 
 ![](canada_employment_1_06.png)
 
@@ -283,7 +285,9 @@ ggsave("canada_employment_1_07.png", mp, width = 10, height = 4)
 
 ---
 
-### By Sex
+### By Sex {.tabset .tabset-pills}
+
+#### All Data
 
 ![](canada_employment_1_08.png)
 
@@ -376,7 +380,7 @@ ggsave("canada_employment_1_11.png", mp, width = 10, height = 4)
 
 ---
 
-# Full Time vs. Part Time
+# Full Time vs. Part Time {.tabset .tabset-pills}
 
 ## Canada
 
@@ -400,7 +404,7 @@ ggsave("canada_employment_2_01.png", mp, width = 6, height = 4)
 
 ---
 
-### > 2010
+## > 2010
 
 ![](canada_employment_2_02.png)
 
@@ -594,7 +598,7 @@ ggsave("canada_employment_3_02.png", mp, width = 10, height = 5)
 
 ---
 
-# Income
+# Income {.tabset .tabset-pills}
 
 ## Canada
 
@@ -659,7 +663,7 @@ ggsave("canada_employment_5_03.png", mp, width = 8, height = 4)
 
 ---
 
-### Income Growth Rate
+## Growth Rate by Age
 
 ![](canada_employment_5_04.png)
 
@@ -685,7 +689,7 @@ ggsave("canada_employment_5_04.png", mp, width = 8, height = 6)
 
 ---
 
-### Inflation Adjusted Income Growth Rate
+## Inflation Adjusted Growth Rate
 
 ![](canada_employment_5_05.png)
 
@@ -713,7 +717,7 @@ ggsave("canada_employment_5_05.png", mp, width = 8, height = 6)
 
 ---
 
-# EI
+# EI {.tabset .tabset-pills}
 
 ## Canada
 

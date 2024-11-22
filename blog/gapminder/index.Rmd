@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 https://www.gapminder.org/
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(gapminder)
@@ -29,7 +29,7 @@ DT::datatable(gapminder %>% arrange(year))
 
 ---
 
-# Plots
+# Plots {.tabset .tabset-pills}
 
 ## By Year
 
@@ -93,7 +93,7 @@ ggsave("gapminder_03.png", mp, width = 10, height = 5)
 
 ---
 
-# Animations
+# Animations {.tabset .tabset-pills}
 
 ## GDP Per Capita x Life Expectancy
 
@@ -207,7 +207,7 @@ anim_save("gapminder_gif_04.gif", mp,
 
 ---
 
-# Regions
+# Regions {.tabset .tabset-pills}
 
 ## Africa
 
@@ -285,7 +285,7 @@ anim_save("gapminder_gif_08.gif", mp,
 
 ---
 
-# Countries
+# Countries {.tabset .tabset-pills}
 
 ```{r}
 gg_gapminder2 <- function(mycountries) {

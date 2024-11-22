@@ -20,7 +20,7 @@ knitr::opts_chunk$set(eval = F, echo = T, message = F, warning = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(rworldmap)
@@ -50,9 +50,10 @@ ggCropMap_year <- function(myCrop = "Lentils, dry",
   par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
   mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", nameZSize = "Value",
               nameZColour = "darkgreen", bg = alpha("darkgreen",0.7),
-              symbolSize = mySymbolSize, addLegend = F, lwd = 0.75,
-              oceanCol = "grey90", landCol = "white", borderCol = "black")
-  title(main = paste(myMeasure, "-", myCrop,"-", myYear), 
+              symbolSize = mySymbolSize, lwd = 0.75, addLegend = F,
+              oceanCol = "grey90", landCol = "white", borderCol = "black",
+              )
+  title(main = paste(myCrop, "-", myMeasure, "-", myYear), 
         line = 0.25, cex.main = 1)
   title(sub = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT",
         line = 0, cex.sub = 0.5, adj = 1)
@@ -87,13 +88,13 @@ ggCropMap_animation <- function(myCrop = "Lentils, dry",
   myFiles <- c(myFiles, rep(myFiles[length(myFiles)], 10))
   myFiles <- paste0(myCrop, "/", myFiles)
   myIs <- image_read(myFiles)
-  myAnim <- image_animate(myIs, fps = 2)
+  myAnim <- image_animate(myIs, fps = 4)
   myFilename <-  paste0(myCrop, "_", myMeasure, ".gif")
   image_write(myAnim, myFilename, format = "gif")
 }
 ```
 
-```{r}
+```{r echo = F}
 # Create function
 ggCropMap_bind <- function(myCrop = "Lentils, dry", 
                            myMeasure = "Production", 
@@ -114,211 +115,209 @@ ggCropMap_bind <- function(myCrop = "Lentils, dry",
 
 ![](Wheat_Production.gif)
 
-```{r results="hide"}
+```{r}
 ggCropMap_animation(myCrop = "Wheat", myMeasure = "Production")
 ```
 
-![](Wheat_Production_2020_1970.png)
+![](Wheat/Wheat_Production_2020.png)
 
-```{r}
+![](Wheat/Wheat_Production_1970.png)
+
+```{r echo = F}
 ggCropMap_bind(myCrop = "Wheat", myMeasure = "Production", myYears = c(2020,1970))
 ```
 
-```{r}
-file.copy(from = "Wheat_Production_2020_1970.png", to = "featured.png")
+```{r echo = F}
+file.copy(from = "Wheat_Production_2020_1970.png", to = "featured.png", overwrite = T)
 ```
+
+---
+
+## Barley 
+
+```{r}
+ggCropMap_animation(myCrop = "Barley", myMeasure = "Production")
+```
+
+![](Barley_Production.gif)
+
+![](Barley/Barley_Production_2020.png)
+
+![](Barley/Barley_Production_1970.png)
 
 ---
 
 ## Maize 
 
-![](Maize (corn)_Production.gif)
-
-```{r results="hide"}
+```{r}
 ggCropMap_animation(myCrop = "Maize (corn)", myMeasure = "Production")
 ```
 
-![](Maize (corn)_Production_2020_1970.png)
+![](Maize (corn)_Production.gif)
 
-```{r}
-ggCropMap_bind(myCrop = "Maize (corn)", myMeasure = "Production", myYears = c(2020,1970))
-```
+
+![](Maize (corn)/Maize (corn)_Production_2020.png)
+
+![](Maize (corn)/Maize (corn)_Production_1970.png)
 
 ---
 
 ## Rapeseed
 
-![](Rapeseed or canola oil, crude_Production.gif)
-
-```{r results="hide"}
+```{r}
 ggCropMap_animation(myCrop = "Rapeseed or canola oil, crude", myMeasure = "Production")
 ```
 
-![](Rapeseed or canola oil, crude_Production_2020_1970.png)
+![](Rapeseed or canola oil, crude_Production.gif)
 
-```{r}
-ggCropMap_bind(myCrop = "Rapeseed or canola oil, crude", myMeasure = "Production", myYears = c(2020,1970))
-```
+![](Rapeseed or canola oil, crude/Rapeseed or canola oil, crude_Production_2020_1970.png)
+
+![](Rapeseed or canola oil, crude/Rapeseed or canola oil, crude_Production_2020_1970.png)
 
 ---
 
 ## Lentils
 
-![](Lentils, dry_Production.gif)
-
-```{r results="hide"}
+```{r}
 ggCropMap_animation(myCrop = "Lentils, dry", myMeasure = "Production")
 ```
 
-![](Lentils, dry_Production_2020_1970.png)
+![](Lentils, dry_Production.gif)
 
-```{r}
-ggCropMap_bind(myCrop = "Lentils, dry", myMeasure = "Production", myYears = c(2020,1970))
-```
+
+![](Lentils, dry/Lentils, dry_Production_2020.png)
+
+![](Lentils, dry/Lentils, dry_Production_1970.png)
 
 ---
 
 ## Chickpeas
 
-![](Chick peas, dry_Production.gif)
-
-```{r results="hide"}
+```{r}
 ggCropMap_animation(myCrop = "Chick peas, dry", myMeasure = "Production")
 ```
 
-![](Chick peas, dry_Production_2020_1970.png)
+![](Chick peas, dry_Production.gif)
 
-```{r}
-ggCropMap_bind(myCrop = "Chick peas, dry", myMeasure = "Production", myYears = c(2020,1970))
-```
+
+![](Chick peas, dry/Chick peas, dry_Production_2020.png)
+
+![](Chick peas, dry/Chick peas, dry_Production_1970.png)
 
 ---
 
 ## Peas
 
-![](Peas, dry_Production.gif)
-
-```{r results="hide"}
+```{r}
 ggCropMap_animation(myCrop = "Peas, dry", myMeasure = "Production")
 ```
 
-![](Peas, dry_Production_2020_1970.png)
+![](Peas, dry_Production.gif)
 
-```{r}
-ggCropMap_bind(myCrop = "Peas, dry", myMeasure = "Production", myYears = c(2020,1970))
-```
+
+![](Peas, dry/Peas, dry_Production_2020.png)
+
+![](Peas, dry/Peas, dry_Production_1970.png)
 
 ---
 
 ## Beans
 
-![](Beans, dry_Production.gif)
-
-```{r results="hide"}
+```{r}
 ggCropMap_animation(myCrop = "Beans, dry", myMeasure = "Production")
 ```
 
-![](Beans, dry_Production_2020_1970.png)
+![](Beans, dry_Production.gif)
 
-```{r}
-ggCropMap_bind(myCrop = "Beans, dry", myMeasure = "Production", myYears = c(2020,1970))
-```
+![](Beans, dry/Beans, dry_Production_2020.png)
+
+![](Beans, dry/Beans, dry_Production_1970.png)
 
 ---
 
 ## Soybeans
 
-![](Soya beans_Production.gif)
-
-```{r results="hide"}
+```{r}
 ggCropMap_animation(myCrop = "Soya beans", myMeasure = "Production")
 ```
 
-![](Soya beans_Production_2020_1970.png)
+![](Soya beans_Production.gif)
 
-```{r}
-ggCropMap_bind(myCrop = "Soya beans", myMeasure = "Production", myYears = c(2020,1970))
-```
+![](Soya beans/Soya beans_Production_2020.png)
+
+![](Soya beans/Soya beans_Production_1970.png)
 
 ---
 
 ## Sugarbeet
 
-![](Sugar beet_Production.gif)
-
-```{r results="hide"}
+```{r}
 ggCropMap_animation(myCrop = "Sugar beet", myMeasure = "Production")
 ```
 
-![](Sugar beet_Production_2020_1970.png)
+![](Sugar beet_Production.gif)
 
-```{r}
-ggCropMap_bind(myCrop = "Sugar beet", myMeasure = "Production", myYears = c(2020,1970))
-```
+![](Sugar beet/Sugar beet_Production_2020.png)
+
+![](Sugar beet/Sugar beet_Production_1970.png)
 
 ---
 
 ## Hempseed
 
-![](Hempseed_Production.gif)
-
-```{r results="hide"}
+```{r}
 ggCropMap_animation(myCrop = "Hempseed", myMeasure = "Production")
 ```
 
-![](Hempseed_Production_2020_1970.png)
+![](Hempseed_Production.gif)
 
-```{r}
-ggCropMap_bind(myCrop = "Hempseed", myMeasure = "Production", myYears = c(2020,1970))
-```
+![](Hempseed/Hempseed_Production_2020.png)
+
+![](Hempseed/Hempseed_Production_1970.png)
 
 ---
 
 ## Potato
 
-![](Potatoes_Production.gif)
-
-```{r results="hide"}
+```{r}
 ggCropMap_animation(myCrop = "Potatoes", myMeasure = "Production")
 ```
 
-![](Potatoes_Production_2020_1970.png)
+![](Potatoes_Production.gif)
 
-```{r}
-ggCropMap_bind(myCrop = "Potatoes", myMeasure = "Production", myYears = c(2020,1970))
-```
+![](Potatoes/Potatoes_Production_2020.png)
+
+![](Potatoes/Potatoes_Production_1970.png)
 
 ---
 
 ## Cotton
 
+```{r}
+ggCropMap_animation(myCrop = "Cotton seed", myMeasure = "Production")
+```
+
 ![](Cotton seed_Production.gif)
 
-```{r results="hide"}
-ggCropMap_animation(myCrop = "Cotton seed", myMeasure = "Production")
-``` 
+![](Cotton seed/Cotton seed_Production_2020.png)
 
-![](Cotton seed_Production_2020_1970.png)
-
-```{r}
-ggCropMap_bind(myCrop = "Cotton seed", myMeasure = "Production", myYears = c(2020,1970))
-```
+![](Cotton seed/Cotton seed_Production_1970.png)
 
 ---
 
 ## Sorghum
 
-![](Sorghum_Production.gif)
-
-```{r results="hide"}
+```{r}
 ggCropMap_animation(myCrop = "Sorghum", myMeasure = "Production")
 ``` 
 
-![](Sorghum_Production_2020_1970.png)
+![](Sorghum_Production.gif)
 
-```{r}
-ggCropMap_bind(myCrop = "Sorghum", myMeasure = "Production", myYears = c(2020,1970))
-```
+![](Sorghum_Production_2020.png)
+
+![](Sorghum/Sorghum_Production_2020.png)
+
+![](Sorghum/Sorghum_Production_1970.png)
 
 ---
 

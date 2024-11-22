@@ -25,7 +25,7 @@ STATCAN Table: 36-10-0662-01 (Distributions of household economic accounts, inco
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```

@@ -52,7 +52,7 @@ Bank of Canada: Interest Rates
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(gganimate)
@@ -133,7 +133,7 @@ d8 <- read.csv("bankofcanada_interestrates.csv", skip = 11) %>%
 
 ---
 
-# House Prices
+# House Prices {.tabset .tabset-pills}
 
 ## Canada
 
@@ -154,7 +154,9 @@ ggsave("canada_housing_1_01.png", mp, width = 6, height = 4)
 
 ---
 
-## Regions
+## Regions {.tabset .tabset-pills}
+
+### All Data
 
 ![](canada_housing_1_02.png)
 
@@ -286,7 +288,7 @@ ggsave("canada_housing_1_06.png", mp, width = 8, height = 4)
 
 ---
 
-## Percent Change
+## Percent Change {.tabset .tabset-pills}
 
 ### Canada
 
@@ -339,9 +341,9 @@ ggsave("canada_housing_1_08.png", mp, width = 5, height = 4)
 
 ---
 
-# Home Builds
+# Home Builds {.tabset .tabset-pills}
 
-## Canada
+## Canada {.tabset .tabset-pills}
 
 ### Monthly
 
@@ -452,7 +454,9 @@ ggsave("canada_housing_2_05.png", mp, width = 6, height = 5)
 
 ---
 
-## Cities
+## Cities {.tabset .tabset-pills}
+
+### All Cities
 
 ![](canada_housing_2_06.png)
 
@@ -583,7 +587,7 @@ ggsave("canada_housing_2_10.png", mp, width = 6, height = 6)
 
 ---
 
-# Occupancy
+# Occupancy {.tabset .tabset-pills}
 
 ![](canada_housing_3_01.png)
 
@@ -689,13 +693,13 @@ mp <- mp +
   view_follow(fixed_y = T)
   #view_follow(fixed_x = c(as.Date("1866-01-01"), NA))
 anim_save("canada_housing_4_01.gif", mp, 
-          nframes = 600, fps = 30, end_pause = 60, 
+          nframes = 600, fps = 25, end_pause = 60, 
           width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
 
-# Rent prices
+# Rent prices {.tabset .tabset-pills}
 
 ## All Cities
 

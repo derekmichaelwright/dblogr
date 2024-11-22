@@ -25,7 +25,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
@@ -48,7 +48,7 @@ d6 <- agData_ISAAA_Value
 
 ---
 
-# Global Hectares
+# Global Hectares {.tabset .tabset-pills}
 
 ## Global Area
 
@@ -98,7 +98,7 @@ ggsave("ge_crops_02.png", mp, width = 6, height = 4)
 
 ---
 
-# Devloping vs Developed Countries
+# Devloping vs Developed Countries {.tabset .tabset-pills}
 
 ## Area
 
@@ -150,7 +150,7 @@ ggsave("ge_crops_04.png", mp, width = 6, height = 4)
 
 ---
 
-# Crops
+# Crops {.tabset .tabset-pills}
 
 ## Area
 
@@ -257,7 +257,7 @@ ggsave("ge_crops_08.png", mp, width = 6, height = 4)
 
 ---
 
-# Adoption of Genetically Engineered Crops
+# Adoption of Genetically Engineered Crops {.tabset .tabset-pills}
 
 ## Percentage
 

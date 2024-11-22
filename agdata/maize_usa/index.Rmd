@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(gganimate)
@@ -53,7 +53,9 @@ d3 <- agData_FAO_Crops %>%
 
 ---
 
-# Heterosis
+# Yields {.tabset .tabset-pills}
+
+## Heterosis
 
 ![](maize_usa_01.png)
 
@@ -109,7 +111,7 @@ anim_save("maize_usa_gif_01.gif", mp,
 
 ---
 
-# Maize Potential
+## Maize Potential
 
 ![](maize_usa_02.png)
 
@@ -140,7 +142,7 @@ ggsave("maize_usa_02.png", mp, width = 6, height = 4)
 
 ---
 
-# Area vs Production
+## Area vs Production
 
 ![](maize_usa_03.png)
 
@@ -164,7 +166,7 @@ ggsave("maize_usa_03.png", mp, width = 6, height = 4)
 
 ---
 
-# Developed vs Developing Countries
+## Developed vs Developing Countries
 
 ![](maize_usa_04.png)
 
@@ -188,7 +190,7 @@ ggsave("maize_usa_04.png", mp, width = 6, height = 4)
 
 ---
 
-# Maize Contest
+## Maize Contest
 
 ![](maize_usa_05.png)
 
@@ -213,7 +215,7 @@ ggsave("maize_usa_05.png", mp, width = 7, height = 4)
 
 ---
 
-# Average vs Max Yield
+## Average vs Max Yield
 
 ![](maize_usa_06.png)
 
@@ -240,7 +242,9 @@ ggsave("maize_usa_06.png", mp, width = 6, height = 4)
 
 ---
 
-# Hectares per tonne
+# Yield Gains
+
+## Hectares per tonne
 
 ![](maize_usa_07.png)
 
@@ -280,7 +284,7 @@ ggsave("maize_usa_08.png", mp, width = 6, height = 4)
 
 ---
 
-# Yield Gains
+## Yield Gains
 
 ![](maize_usa_09.png)
 
@@ -308,7 +312,7 @@ ggsave("maize_usa_09.png", mp, width = 6, height = 4)
 
 ---
 
-# Addition Production
+## Addition Production
 
 ![](maize_usa_10.png)
 
@@ -330,7 +334,7 @@ ggsave("maize_usa_10.png", mp, width = 7, height = 4)
 
 ---
 
-# Yield Increases
+## Yield Increases
 
 ![](maize_usa_11.png)
 

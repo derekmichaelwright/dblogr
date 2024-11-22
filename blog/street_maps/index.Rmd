@@ -29,7 +29,7 @@ My shape files
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # Load libraries
 library(tidyverse)
 library(sf)
@@ -51,7 +51,9 @@ s_roads <- st_read("railways.shp")
 
 ---
 
-# Saskatoon
+# Maps {.tabset .tabset-pills}
+
+## Saskatoon
 
 ![](roads_saskatoon.png)
 
@@ -93,7 +95,7 @@ ggsave("featured.png", mp, bg = "transparent", width = 6, height = 6)
 
 ---
 
-# Regina
+## Regina
 
 ![](roads_regina.png)
 
@@ -114,7 +116,7 @@ ggsave(filename = "roads_regina.png", mp, bg = "transparent", width = 6, height 
 
 ---
 
-# Germany Railroads
+## Germany Railroads
 
 ![](railroads_germany.png)
 
@@ -132,3 +134,33 @@ ggsave("railroads_germany.png", mp, bg = "transparent", width = 6, height = 6)
 ```
 
 ---
+
+# rcityviews
+
+https://koenderks.github.io/rcityviews/
+
+```{r}
+library(rcityviews)
+list_cities(match = "Ams")
+city <- new_city(name = "Lagos", country = "Portugal", lat = 37.10, long = -8.68)
+#
+p <- cityview(name = "Amsterdam", zoom = 1) # or cityview(name = city)
+# see ?cityview for more input parameters of this function
+ggplot2::ggsave(filename = "Amsterdam.png", plot = p, height = 500, width = 500, units = "mm", dpi = 100)
+```
+
+```{r}
+xx <- list_cities()
+xx <- list_cities(match = "Saskatoon")
+#
+p <- cityview(name = "Saskatoon", zoom = 0.5) # or cityview(name = city)
+city <- new_city(name = "Lagos", country = "Portugal", lat = 37.10, long = -8.68)
+# see ?cityview for more input parameters of this function
+ggplot2::ggsave(filename = "Saskatoon.png", plot = p, height = 500, width = 500, units = "mm", dpi = 100)
+```
+
+---
+
+# rgeedim
+
+https://github.com/brownag/rgeedim

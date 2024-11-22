@@ -27,7 +27,7 @@ Augmented designs were developed as a way of controlling error in plant breeding
 > - [Table S1 – The raw phenotypic data of a population with 243 RILs derived from a cross between ‘CDC Bethune’ and ‘Macbeth’ (BM) for the case study](https://data.nal.usda.gov/dataset/data-estimation-genetic-parameters-and-their-sampling-variances-quantitative-traits-type-2-modified-augmented-design)
 > - `r shiny::icon("save")` [data_augmented_designs_2.csv](data_augmented_designs_2.csv)
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(GGally) # ggpairs() 
@@ -689,7 +689,7 @@ M2009_MIII <- method_III(env = "M2009")
 
 ---
 
-## Adjustments
+## Adjustments {.tabset .tabset-pills}
 
 ### Yield
 
@@ -800,7 +800,9 @@ xx <- xx %>% mutate(Yield_adj_M1 = MAD2_M1(., "Yield"))
 ggplot(xx, aes(x = Yield, y = Yield_adj_M1)) + geom_point()
 ```
 
-## Correlation Plots
+---
+
+# Correlation Plots {.tabset .tabset-pills}
 
 ```{r}
 gg_Corr <- function(env = "M2009") {
@@ -826,11 +828,51 @@ gg_Corr(env = "S2011")
 gg_Corr(env = "S2012")
 ```
 
+---
+
+## M2009
+
 ![](aug_03_01_M2009.png)
+
+---
+
+## M2010
 
 ![](aug_03_01_M2010.png)
 
+---
+
+## M2011
+
 ![](aug_03_01_M2011.png)
+
+---
+
+## M2012
+
+![](aug_03_01_M2012.png)
+
+---
+
+## S2009
+
+![](aug_03_01_M2012.png)
+
+---
+
+## S2010
+
+![](aug_03_01_M2012.png)
+
+---
+
+## S2011
+
+![](aug_03_01_M2012.png)
+
+---
+
+## S2012
 
 ![](aug_03_01_M2012.png)
 

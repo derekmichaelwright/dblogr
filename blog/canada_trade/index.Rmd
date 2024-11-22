@@ -22,7 +22,7 @@ STATCAN Table: 12-10-0011-01 (International merchandise trade for all countries)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
@@ -44,7 +44,7 @@ dd <- dd %>%
 
 ---
 
-# Trade Balance
+# Trade Balance {.tabset .tabset-pills}
 
 ## Canada
 
@@ -98,7 +98,7 @@ ggsave("canada_trade_02.png", mp, width = 14, height = 8)
 
 ---
 
-# Import & Export
+# Import & Export {.tabset .tabset-pills}
 
 ## Canada
 
@@ -146,7 +146,7 @@ ggsave("canada_trade_04.png", mp, width = 14, height = 8)
 
 ---
 
-# Countries
+# Countries {.tabset .tabset-pills}
 
 Create plotting function
 

@@ -22,7 +22,7 @@ STATCAN Table: 25-10-0015-01
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
@@ -43,9 +43,11 @@ dd <- read.csv("2510001501_databaseLoadingData.csv") %>%
 
 ---
 
-# Energy Production
+# Energy Production {.tabset .tabset-pills}
 
-```{r}
+## Plotting Function
+
+```{r  class.source = "fold-show"}
 # Create plotting function
 gg_Electricity <- function(myArea = "Canada") {
   # Prep data
@@ -63,7 +65,7 @@ gg_Electricity <- function(myArea = "Canada") {
 }
 ```
 
-### Canada
+## Canada {.active}
 
 ![](canada_electricity_1_01.png)
 
@@ -79,7 +81,7 @@ ggsave("featured.png", mp, width = 8, height = 4)
 
 ---
 
-### Alberta
+## Alberta
 
 ![](canada_electricity_1_02.png)
 
@@ -91,7 +93,7 @@ ggsave("canada_electricity_1_02.png", mp, width = 8, height = 4)
 
 ---
 
-### British Columbia
+## British Columbia
 
 ![](canada_electricity_1_03.png)
 
@@ -102,7 +104,7 @@ ggsave("canada_electricity_1_03.png", mp, width = 8, height = 4)
 
 ---
 
-### Saskatchewan
+## Saskatchewan
 
 ![](canada_electricity_1_04.png)
 
@@ -113,7 +115,7 @@ ggsave("canada_electricity_1_04.png", mp, width = 8, height = 4)
 
 ---
 
-### Manitoba
+## Manitoba
 
 ![](canada_electricity_1_05.png)
 
@@ -124,7 +126,7 @@ ggsave("canada_electricity_1_05.png", mp, width = 8, height = 4)
 
 ---
 
-### Ontario
+## Ontario
 
 ![](canada_electricity_1_06.png)
 
@@ -135,7 +137,7 @@ ggsave("canada_electricity_1_06.png", mp, width = 8, height = 4)
 
 ---
 
-### Quebec
+## Quebec
 
 ![](canada_electricity_1_07.png)
 

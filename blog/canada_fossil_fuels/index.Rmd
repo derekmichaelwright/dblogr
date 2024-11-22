@@ -37,7 +37,7 @@ STATCAN Greenhouse gas emissions
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
@@ -91,9 +91,11 @@ dd <- bind_rows(dd_oil, dd_gas, dd_coal)
 
 # Fossil Fuels
 
-## Production, Export & Import
+## Production, Export & Import {.tabset .tabset-pills}
 
-```{r}
+### Plotting Function
+
+```{r class.source = "fold-show"}
 # Create plotting function
 gg_PEI <- function(myArea) {
   # Prep data
@@ -117,7 +119,7 @@ gg_PEI <- function(myArea) {
 }
 ```
 
-### Canada
+### Canada {.active}
 
 ![](canada_fossil_fuels_1_01.png)
 
@@ -200,7 +202,7 @@ ggsave("canada_fossil_fuels_1_07.png", mp, width = 8, height = 4)
 
 ---
 
-## Production
+## Production {.tabset .tabset-pills}
 
 ### Canada
 

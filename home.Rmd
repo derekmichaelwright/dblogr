@@ -26,25 +26,12 @@ Welcome to the personal website for Derek Michael Wright
 
 # `r icon("address-card")` About Me
 
-> **My Curriculum Vitae (CV)**
+**My Curriculum Vitae (CV)**
 
 > - `r icon("globe")` [HTML version](cv/){target="_blank"}
 > - `r icon("file-pdf")` [PDF Version](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf){target="_blank"}
 
-<div class="box">
-
 <div class = "row"><div class = "col-md-6">
-
-**Derek Michael Wright**
-
-I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from the [*University of Regina*](https://www.uregina.ca/){target="_blank"} in 2012, followed by a **MSc in Agrobiotechnology** from [*Justus-Liebig-Universität Gießen*](https://www.uni-giessen.de/){target="_blank"} (*University of Giessen, Germany*) in 2015. I now work in the Plant Sciences department at the [*University of Saskatchewan*](https://www.usask.ca/){target="_blank"} and have been involved in three research projects ([**AGILE**](https://knowpulse.usask.ca/study/2675314){target="_blank"}, [**EVOLVES**](https://knowpulse.usask.ca/study/2691111){target="_blank"}, [**P2IRC**](https://p2irc.usask.ca/index.php){target="_blank"} & **ACTIVATE**) with **lentil** (*Lens culinaris*). 
-
-</div><div class = "col-md-6">![](cv/about.png)</div></div>
-
-<br>
-
-<div class = "row"><div class = "col-md-6">
-
 
 **Socials**
 
@@ -62,6 +49,18 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 - `r icon("envelope")` derek.wright@usask.ca
 
 </div></div></div>
+
+<br>
+
+<div class="box">
+
+<div class = "row"><div class = "col-md-6">
+
+**Derek Michael Wright**
+
+I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from the [*University of Regina*](https://www.uregina.ca/){target="_blank"} in 2012, followed by a **MSc in Agrobiotechnology** from [*Justus-Liebig-Universität Gießen*](https://www.uni-giessen.de/){target="_blank"} (*University of Giessen, Germany*) in 2015. I now work in the Plant Sciences department at the [*University of Saskatchewan*](https://www.usask.ca/){target="_blank"} and have been involved in three research projects ([**AGILE**](https://knowpulse.usask.ca/study/2675314){target="_blank"}, [**EVOLVES**](https://knowpulse.usask.ca/study/2691111){target="_blank"}, [**P2IRC**](https://p2irc.usask.ca/index.php){target="_blank"} & **ACTIVATE**) with **lentil** (*Lens culinaris*). 
+
+</div><div class = "col-md-6">![](cv/about.png)</div></div>
 
 <br>
 
@@ -757,13 +756,13 @@ Graphs of migration demographics in Canada using STATCAN data
 
 ![](blog/canada_migration/featured.png)</div>
 
-### 2020 Saskatchewan Election
+### Saskatchewan Election
 
 <div class="box">
 
-[<u>**2020 Saskatchewan Election Results**</u>](blog/saskatchewan_2020_election){target="_blank"}
+[<u>**Saskatchewan Election Results**</u>](blog/saskatchewan_2020_election){target="_blank"}
 
-Graphs of the 2020 Saskatchewan Provincial Election Results
+Graphs of the 2020 & 2024 Saskatchewan Provincial Election Results
 
 ![](blog/saskatchewan_2020_election/featured.png)</div>
 
@@ -962,13 +961,3 @@ I will never cower before any master nor bend to any threat. It is my heritage t
 </div>
 
 ## {-}
-
----
-
----
-
-![](cv/logo_banner.png)
-
----
-
----

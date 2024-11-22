@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(gganimate)
@@ -66,7 +66,9 @@ dev.off()
 
 ---
 
-# 1908 Vs. 1961 Vs. 2020
+# 1908 Vs. 1961 Vs. 2020 {.tabset .tabset-pills}
+
+## cropList function
 
 ```{r}
 # Create function to determine top crops
@@ -148,7 +150,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ---
 
-# Bar Chart Racer
+# Bar Chart Racer {.tabset .tabset-pills}
 
 ## Production
 
@@ -185,7 +187,7 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
        caption = myCaption) +
   transition_time(Year) 
 anim_save("crops_world_gif_01.gif", mp,
-          nframes = 600, fps = 15, end_pause = 60, 
+          nframes = 600, fps = 25, end_pause = 60, 
           width = 900, height = 600, res = 150, units = "px")
 ```
 
@@ -227,7 +229,7 @@ mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000,
        caption = myCaption) +
   transition_time(Year) 
 anim_save("crops_world_gif_02.gif", mp,
-          nframes = 600, fps = 15, end_pause = 60, 
+          nframes = 600, fps = 25, end_pause = 60, 
           width = 900, height = 600, res = 150, units = "px")
 ```
 

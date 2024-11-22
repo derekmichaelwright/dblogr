@@ -22,7 +22,7 @@ Government of Saskatchewan Death Statistics
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(readxl) # read_xlsx()
@@ -46,9 +46,7 @@ d2 <- read_xlsx("data_saskatchewan_suicides.xlsx", "Race") %>%
 
 ---
 
-# Saskatchewan
-
-## Total Suicides
+# Total Suicides
 
 ![](saskatchewan_suicides_01.png)
 
@@ -68,9 +66,9 @@ ggsave("saskatchewan_suicides_01.png", mp, width = 6, height = 4)
 
 ---
 
-## By Age
+# By Age {.tabset .tabset-pills}
 
-### All Data
+## All Data
 
 ![](saskatchewan_suicides_02.png)
 
@@ -88,7 +86,7 @@ ggsave("saskatchewan_suicides_02.png", mp, width = 12, height = 4)
 
 ---
 
-### By Sex
+## By Sex
 
 ![](saskatchewan_suicides_03.png)
 
@@ -106,7 +104,7 @@ ggsave("saskatchewan_suicides_03.png", mp, width = 12, height = 6)
 
 ---
 
-### 2021
+## 2021
 
 ![](saskatchewan_suicides_04.png)
 
@@ -128,7 +126,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ---
 
-### Animation
+## Animation
 
 ![](saskatchewan_suicides_gif_01.gif)
 
@@ -142,13 +140,13 @@ mp <- ggplot(d1, aes(x = Age, y = Deaths, fill = Sex)) +
        caption = myCaption) +
   transition_time(Year)
 anim_save("saskatchewan_suicides_gif_01.gif", mp, 
-          nframes = 600, fps = 30, end_pause = 60, 
+          nframes = 600, fps = 25, end_pause = 60, 
           width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---
 
-## Race
+# Race {.tabset .tabset-pills}
 
 ![](saskatchewan_suicides_05.png)
 
@@ -166,7 +164,7 @@ ggsave("saskatchewan_suicides_05.png", mp, width = 12, height = 4)
 
 ---
 
-### By Sex
+## By Sex
 
 ![](saskatchewan_suicides_06.png)
 
@@ -184,7 +182,7 @@ ggsave("saskatchewan_suicides_06.png", mp, width = 12, height = 6)
 
 ---
 
-### 2021
+## 2021
 
 ![](saskatchewan_suicides_07.png)
 

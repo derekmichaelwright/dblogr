@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
@@ -86,7 +86,9 @@ ggsave("ge_crops_usa_02.png", mp, width = 10, height = 8)
 
 ---
 
-# Maize
+# Crops {.tabset .tabset-pills}
+
+## Maize
 
 ![](ge_crops_usa_03.png)
 
@@ -111,7 +113,7 @@ ggsave("ge_crops_usa_03.png", mp, width = 7, height = 4)
 
 ---
 
-# Cotton
+## Cotton
 
 ![](ge_crops_usa_04.png)
 
@@ -137,7 +139,7 @@ ggsave("ge_crops_usa_04.png", mp, width = 7, height = 4)
 
 ---
 
-# Soybeans
+## Soybeans
 
 ![](ge_crops_usa_05.png)
 
@@ -165,7 +167,7 @@ ggsave("ge_crops_usa_05.png", mp, width = 7, height = 4)
 
 ---
 
-# Georgia
+## Georgia
 
 ![](ge_crops_usa_06.png)
 

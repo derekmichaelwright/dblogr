@@ -22,7 +22,7 @@ STATCAN Table: 14-10-0288-01 (Employment by class of worker)
 
 # Prepare Data
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 ```
@@ -55,7 +55,7 @@ unique(d1$Measurement)
 
 ---
 
-# Private vs Government
+# Private vs Government {.tabset .tabset-pills}
 
 ## Canada
 
@@ -127,7 +127,7 @@ ggsave("featured.png", mp, width = 12, height = 5)
 
 ---
 
-# Scaled
+# Scaled {.tabset .tabset-pills}
 
 Create plotting function
 
@@ -198,9 +198,9 @@ ggsave("canada_public_private_2_04.png", mp, width = 10, height = 4)
 
 ---
 
-# Change
+# Change {.tabset .tabset-pills}
 
-## Change Since Feburary
+## Since Feburary
 
 ![](canada_public_private_3_01.png)
 
@@ -233,7 +233,7 @@ ggsave("canada_public_private_3_01.png", mp, width = 7, height = 4)
 
 ---
 
-## Change Since 2019-09-15
+## Since 2019-09-15
 
 ![](canada_public_private_3_02.png)
 
@@ -266,7 +266,7 @@ ggsave("canada_public_private_3_02.png", mp, width = 7, height = 4)
 
 ---
 
-# Percentages
+# Percentages {.tabset .tabset-pills}
 
 ## Canada
 
@@ -325,9 +325,11 @@ ggsave("canada_public_private_4_03.png", mp, width = 12, height = 5)
 
 ---
 
-# Males vs. Females
+# Males vs. Females {.tabset .tabset-pills}
 
-## Canada
+## Canada {.tabset .tabset-pills}
+
+### All Data
 
 ![](canada_public_private_5_01.png)
 
@@ -373,7 +375,9 @@ ggsave("canada_public_private_5_02.png", mp, width = 10, height = 4)
 
 ---
 
-## Change Since Februrary
+## Change {.tabset .tabset-pills}
+
+### Since Februrary
 
 ![](canada_public_private_5_03.png)
 
@@ -398,7 +402,7 @@ ggsave("canada_public_private_5_03.png", mp, width = 6, height = 4)
 
 ---
 
-## Change Since Februrary
+### Since Februrary
 
 ![](canada_public_private_5_04.png)
 
@@ -423,7 +427,7 @@ ggsave("canada_public_private_5_04.png", mp, width = 6, height = 4)
 
 ---
 
-# Public Sector
+# Public Sector {.tabset .tabset-pills}
 
 ## Provinces
 
@@ -468,9 +472,11 @@ ggsave("canada_public_private_6_02.png", mp, width = 12, height = 5)
 
 ---
 
-# Self Employed
+# Self Employed {.tabset .tabset-pills}
 
-## Canada
+## Canada {.tabset .tabset-pills}
+
+### All Data
 
 ![](canada_public_private_7_01.png)
 
@@ -514,7 +520,9 @@ ggsave("canada_public_private_7_02.png", mp, width = 6, height = 4)
 
 ---
 
-## Provinces
+## Provinces {.tabset .tabset-pills}
+
+### All Data
 
 ![](canada_public_private_7_03.png)
 

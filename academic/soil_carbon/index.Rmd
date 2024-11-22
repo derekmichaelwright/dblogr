@@ -19,7 +19,7 @@ Awada, L., Nagy, C. and Phillips, P.W. (2021) **Contribution of land use practic
 > - `r shiny::icon("save")` [journal.pone.0260946.s002.docx](journal.pone.0260946.s002.docx)
 > - `r shiny::icon("save")` [data_soil_carbon.xlsx](data_soil_carbon.xlsx)
 
-```{r}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(readxl)
@@ -95,7 +95,9 @@ ggsave("soil_carbon_01.png", mp, width = 6, height = 4)
 
 ---
 
-# Production Emissions vs Soil Capture
+# Production Emissions vs Soil Capture {.tabset .tabset-pills}
+
+## Prairies
 
 ![](soil_carbon_02.png)
 
@@ -136,7 +138,7 @@ ggsave("soil_carbon_03.png", mp, width = 6, height = 4)
 
 ---
 
-# CO2 Source
+# CO2 Source {.tabset .tabset-pills}
 
 ## Provinces
 
@@ -278,7 +280,7 @@ ggsave("soil_carbon_08.png", mp, width = 6, height = 5)
 
 ---
 
-# Soil vs. Fuel & Fertilizers
+# Soil vs. Fuel & Fertilizers {.tabset .tabset-pills}
 
 ## Alberta
 
@@ -352,7 +354,7 @@ ggsave("soil_carbon_11.png", mp, width = 6, height = 5)
 
 ---
 
-# Value
+# Value {.tabset .tabset-pills}
 
 ## Net GHG Balance
 

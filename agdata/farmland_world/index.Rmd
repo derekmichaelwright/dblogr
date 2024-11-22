@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = T, warning = F, message = F)
 > - `r shiny::icon("save")` [agData_FAO_Country_Table.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Country_Table.csv)
 > - `r shiny::icon("save")` [agData_FAO_Region_Table.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Region_Table.csv)
 
-```{r class.source = 'fold-show'}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 # devtools::install_github("hrbrmstr/waffle")
@@ -53,7 +53,7 @@ myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: FA
 
 ---
 
-# Agricultural Area
+# Agricultural Area {.tabset .tabset-pills}
 
 ## Total
 
@@ -118,7 +118,7 @@ ggsave("farmland_world_1_02.png", mp, width = 6, height = 4)
 
 ---
 
-## Regions
+## Regions {.tabset .tabset-pills}
 
 ### Bar
 
@@ -197,7 +197,7 @@ ggsave("farmland_world_1_05.png", mp, width = 8, height = 5)
 
 ---
 
-# Top 20 Countries
+# Top 20 Countries {.tabset .tabset-pills}
 
 ## Agricultural Land
 
@@ -255,7 +255,9 @@ ggsave("farmland_world_3_02.png", mp, width = 6, height = 4)
 
 ---
 
-# Organic Area
+# Organic Area {.tabset .tabset-pills}
+
+## Area
 
 ![](farmland_world_3_03png)
 
@@ -283,7 +285,7 @@ ggsave("farmland_world_3_03.png", mp, width = 6, height = 4)
 
 ---
 
-## Organic Percent
+## Percent
 
 ![](farmland_world_3_04.png)
 
