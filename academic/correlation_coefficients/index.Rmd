@@ -17,15 +17,11 @@ The correlation coefficient (***R^2^***), which indicates the proportion of vari
 
 ---
 
-# Data
+# Prepare Data {.tabset .tabset-pills}
 
 > - `r shiny::icon("save")` [data_correlation_coefficients.xlsx](data_correlation_coefficients.xlsx)
 
----
-
-# Prepare Data
-
-```{r}
+```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(readxl)  # read_xlsx()
@@ -33,6 +29,8 @@ library(ggpmisc) # stat_poly_eq()
 ```
 
 ## Dataset 1
+
+<br>
 
 - `Entry`: 1 Lentil Genotype
 - `Expt`: 18 Site-years
@@ -50,10 +48,12 @@ library(ggpmisc) # stat_poly_eq()
 d1 <- read_xlsx("data_correlation_coefficients.xlsx", "data_1") %>%
   mutate(RDTF = 1 / DTF) # Rate of progress towards flowering
 # Preview data
-as_tibble(d1)
+DT::datatable(d1)
 ```
 
 ## Dataset 2
+
+<br>
 
 - `Entry`: 324 Genotypes
 - `Expt`: 3 Site-years
@@ -66,7 +66,7 @@ as_tibble(d1)
 d2 <- read_xlsx("data_correlation_coefficients.xlsx", "data_2") %>%
   mutate(Expt = factor(Expt, levels = c("Saskatchewan", "Nepal", "Italy")))
 # Preview data
-as_tibble(d2)
+DT::datatable(d2)
 ```
 
 ---
