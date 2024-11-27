@@ -460,8 +460,8 @@ ggInterProv_ani <- function(myArea) {
 ```{r}
 mp <- ggInterProv_ani("British Columbia")
 anim_save("canada_migration_gif_01.gif", mp, 
-          nframes = 600, fps = 10, end_pause = 10, 
-          width = 900, height = 600, res = 150, units = "px")
+          nframes = 300, fps = 10, end_pause = 10, 
+          width = 600, height = 400, res = 80, units = "px")
 ```
 
 ---
@@ -473,8 +473,8 @@ anim_save("canada_migration_gif_01.gif", mp,
 ```{r}
 mp <- ggInterProv_ani("Alberta")
 anim_save("canada_migration_gif_02.gif", mp, 
-          nframes = 600, fps = 10, end_pause = 10, 
-          width = 900, height = 600, res = 150, units = "px")
+          nframes = 300, fps = 10, end_pause = 10, 
+          width = 600, height = 400, res = 80, units = "px")
 ```
 
 ---
@@ -486,8 +486,8 @@ anim_save("canada_migration_gif_02.gif", mp,
 ```{r}
 mp <- ggInterProv_ani(myArea = "Saskatchewan")
 anim_save("canada_migration_gif_03.gif", mp, 
-          nframes = 600, fps = 10, end_pause = 10, 
-          width = 900, height = 600, res = 150, units = "px")
+          nframes = 300, fps = 10, end_pause = 10, 
+          width = 600, height = 400, res = 80, units = "px")
 ```
 
 ---
@@ -500,8 +500,8 @@ anim_save("canada_migration_gif_03.gif", mp,
 ```{r}
 mp <- ggInterProv_ani("Manitoba")
 anim_save("canada_migration_gif_04.gif", mp, 
-          nframes = 600, fps = 10, end_pause = 10, 
-          width = 900, height = 600, res = 150, units = "px")
+          nframes = 300, fps = 10, end_pause = 10, 
+          width = 600, height = 400, res = 80, units = "px")
 ```
 
 ---
@@ -513,8 +513,8 @@ anim_save("canada_migration_gif_04.gif", mp,
 ```{r}
 mp <- ggInterProv_ani("Ontario")
 anim_save("canada_migration_gif_05.gif", mp, 
-          nframes = 600, fps = 10, end_pause = 10, 
-          width = 900, height = 600, res = 150, units = "px")
+          nframes = 300, fps = 10, end_pause = 10, 
+          width = 600, height = 400, res = 80, units = "px")
 ```
 
 ---
@@ -526,8 +526,8 @@ anim_save("canada_migration_gif_05.gif", mp,
 ```{r}
 mp <- ggInterProv_ani("Quebec")
 anim_save("canada_migration_gif_06.gif", mp, 
-          nframes = 600, fps = 10, end_pause = 10, 
-          width = 900, height = 600, res = 150, units = "px")
+          nframes = 300, fps = 10, end_pause = 10, 
+          width = 600, height = 400, res = 80, units = "px")
 ```
 
 ---
@@ -854,9 +854,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, fill = Type)) +
   guides(fill = guide_legend(ncol = 1)) +
   labs(title = "Canada", subtitle = "Total, non-permanent residents", 
        y = "Million People", x = NULL, caption = myCaption)
-ggsave("canada_migration_4_01.png", mp, width = 7, height = 4)
-#
-unique(d4$Type)
+ggsave("canada_migration_4_01.png", mp, width = 6, height = 4)
 ```
 
 ---
