@@ -36,8 +36,8 @@ dd <- read.csv("1210001101_databaseLoadingData.csv") %>%
          Unit=UOM, Scale=SCALAR_FACTOR, Value=VALUE) %>%
   separate(Year, c("Year","Month"), "-") %>%
   mutate(Date = as.Date(paste0(Year, "-", Month, "-15")))
-xx <- dd %>% filter(Trade == "Trade Balance", Date == "2022-11-15") %>%
-  arrange(desc(Value))
+xx <- dd %>% group_by(Trading.Partner) %>% 
+  summarise(Value = max(Value, na.rm = T)) %>% arrange(desc(Value))
 dd <- dd %>% 
   mutate(Trading.Partner = factor(Trading.Partner, levels = xx$Trading.Partner))
 ```
@@ -84,15 +84,15 @@ xx <- dd %>%
   filter(Trading.Partner != "All countries", Trade == "Trade Balance") %>%
   mutate(Balance = ifelse(Value > 0, "Net Export", "Net Import"))
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   geom_col(aes(fill = Balance), alpha = 0.9) +
   stat_smooth(geom = "line", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
-  facet_wrap(Trading.Partner ~ ., scales = "free_y", ncol = 7) +
+  facet_wrap(Trading.Partner ~ ., scales = "free_y", ncol = 6) +
   scale_x_date(date_breaks = "10 years", date_labels = "%Y") +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada's Trade Balance With Other Countries", 
-       x = NULL, y = "Million $", caption = myCaption)
+       x = NULL, y = "Billion $", caption = myCaption)
 ggsave("canada_trade_02.png", mp, width = 14, height = 8)
 ```
 
@@ -110,14 +110,14 @@ xx <- dd %>%
   filter(Trading.Partner == "All countries", Trade != "Trade Balance") %>%
   mutate(Value = ifelse(Trade == "Import", -Value, Value))
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value, fill = Trade)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Trade)) +
   geom_col(alpha = 0.9) +
   facet_wrap(Trading.Partner ~ ., scales = "free_y", ncol = 7) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   scale_x_date(date_breaks = "10 years", date_labels = "%Y") +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada's Trade Balance With Other Countries", 
-       x = NULL, y = "Million $", caption = myCaption)
+       x = NULL, y = "Billion $", caption = myCaption)
 ggsave("canada_trade_03.png", mp, width = 6, height = 4)
 ```
 
@@ -133,14 +133,14 @@ xx <- dd %>%
   filter(Trading.Partner != "All countries", Trade != "Trade Balance") %>%
   mutate(Value = ifelse(Trade == "Import", -Value, Value))
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value, fill = Trade)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Trade)) +
   geom_col(alpha = 0.9) +
-  facet_wrap(Trading.Partner ~ ., scales = "free_y", ncol = 7) +
+  facet_wrap(Trading.Partner ~ ., scales = "free_y", ncol = 6) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   scale_x_date(date_breaks = "10 years", date_labels = "%Y") +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada's Trade Balance With Other Countries", 
-       x = NULL, y = "Million $", caption = myCaption)
+       x = NULL, y = "Billion $", caption = myCaption)
 ggsave("canada_trade_04.png", mp, width = 14, height = 8)
 ```
 
@@ -158,26 +158,26 @@ gg_Trade <- function(myArea = "India") {
     filter(Trading.Partner == myArea, Trade != "Trade Balance") %>%
     mutate(Value = ifelse(Trade == "Import", -Value, Value))
   # Plot
-  mp1 <- ggplot(xx, aes(x = Date, y = Value, fill = Trade)) +
+  mp1 <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Trade)) +
     geom_col(alpha = 0.9) +
     scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
     scale_x_date(date_breaks = "10 years", date_labels = "%Y") +
     theme_agData(legend.position = "bottom") +
     labs(subtitle = paste("Canada's Trade Balance With", myArea), 
-         x = NULL, y = "Million $", caption = "")
+         x = NULL, y = "Billion $", caption = "")
   #
   xx <- dd %>% 
     filter(Trading.Partner == myArea, Trade == "Trade Balance") %>%
     mutate(Balance = ifelse(Value > 0, "Net Export", "Net Import"))
   # Plot
-  mp2 <- ggplot(xx, aes(x = Date, y = Value)) +
+  mp2 <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
     geom_col(aes(fill = Balance), alpha = 0.9) +
     stat_smooth(geom = "line", alpha = 0.7) +
     scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
     scale_x_date(date_minor_breaks = "1 year", expand = c(0,0)) +
     scale_y_continuous(minor_breaks = -6:6) +
     theme_agData(legend.position = "bottom") +
-    labs(subtitle = "", x = NULL, y = "Million CAD", caption = myCaption)
+    labs(subtitle = "", x = NULL, y = "Billion CAD", caption = myCaption)
   ggarrange(mp1, mp2)
 }
 ```
