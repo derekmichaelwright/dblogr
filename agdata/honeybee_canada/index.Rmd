@@ -91,8 +91,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value)) +
        y = "Thousand Colonies", caption = myCaption) + 
   transition_reveal(Year) 
 anim_save("honeybee_canada_gif_01.gif", mp, 
-          nframes = 300, fps = 20, end_pause = 60, 
-          width = 900, height = 600, res = 150, units = "px")
+          nframes = 300, fps = 20, end_pause = 80, 
+          width = 600, height = 400, res = 80, units = "px")
 ```
 
 ---
