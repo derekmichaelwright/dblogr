@@ -49,6 +49,7 @@ STATCAN Table: 13-10-0394-01 (Leading causes of death)
 ```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
+library(readxl)
 ```
 
 ```{r}
@@ -920,7 +921,7 @@ ggsave("canada_deaths_08_04.png", mp, width = 14, height = 8)
 
 ```{r}
 # Prep data
-d4 <- read_xlsx("data_canada_overdoses.xlsx", "BC Age") %>%
+yy <- read_xlsx("data_canada_overdoses.xlsx", "BC Age") %>%
   gather(Year, Overdoses, 2:ncol(.)) %>% 
   mutate(Overdoses = ifelse(`Age Group` == "40-49", Overdoses / 2, Overdoses)) %>%
   filter(`Age Group` %in% c("< 19","19-29","30-39","40-49")) %>%
@@ -931,7 +932,7 @@ xx <- d2 %>% filter(Area == "British Columbia", Sex == "Both sexes",
                     Age == "0 to 44 years") %>% 
   group_by(Year) %>%
   summarise(Deaths = sum(Value, na.rm = T)) %>% 
-  left_join(d4, by = "Year") %>%
+  left_join(yy, by = "Year") %>%
   filter(!is.na(Overdoses)) %>%
   mutate(Deaths = Deaths - Overdoses) %>%
   gather(Measurement, Value, 2:3) %>%
@@ -967,7 +968,7 @@ sum(xx$Value[xx$Year%in%2015:2022 & xx$Measurement == "Deaths"] - xx$Value[xx$Ye
 
 ```{r}
 # Prep data
-d4 <- read_xlsx("data_canada_overdoses.xlsx", "SK Age") %>%
+yy <- read_xlsx("data_canada_overdoses.xlsx", "SK Age") %>%
   gather(Year, Overdoses, 3:ncol(.)) %>% 
   mutate(Overdoses = ifelse(`Age Group` == "40 - 49", Overdoses / 2, Overdoses)) %>%
   filter(`Age Group` %in% c("0 - 9","10 - 19","20 - 29","30 - 39","40 - 49")) %>%
@@ -978,7 +979,7 @@ xx <- d2 %>% filter(Area == "Saskatchewan", Sex == "Both sexes",
                     Age == "0 to 44 years") %>% 
   group_by(Year) %>%
   summarise(Deaths = sum(Value, na.rm = T)) %>% 
-  left_join(d4, by = "Year") %>%
+  left_join(yy, by = "Year") %>%
   filter(!is.na(Overdoses)) %>%
   mutate(Deaths = Deaths - Overdoses) %>%
   gather(Measurement, Value, 2:3) %>%
@@ -1385,14 +1386,14 @@ ggsave("canada_deaths_12_01.png", mp, width = 20, height = 30)
 
 ```{r}
 # Prep data
-d5 <- readxl::read_xlsx("data_canada_deaths.xlsx", "Death Rate") %>%
+yy <- read_xlsx("data_canada_deaths.xlsx", "Death Rate") %>%
   gather(Trait, Value, 2:ncol(.)) %>%
   mutate(Value = gsub(",", "", Value),
          Value = as.numeric(Value))
-xx <- d5 %>% 
+xx <- yy %>% 
   filter(Year %in% 2020:max(d4$Year), Trait == "Death rate (per 1,000)") %>% 
   pull(Value) %>% max(na.rm = T)
-xx <- d5 %>% filter(Trait == "Death rate (per 1,000)") %>%
+xx <- yy %>% filter(Trait == "Death rate (per 1,000)") %>%
   mutate(Group = ifelse(Value >= xx, "higher", "Lower"),
          Group = ifelse(Year %in% c(1918, 2020, 2021), "Pandemic", Group))
 # Plot
@@ -1417,9 +1418,9 @@ https://www150.statcan.gc.ca/n1/pub/91f0015m/91f0015m2021002-eng.htm
 
 ```{r}
 # Prep data
-d6 <- read_xlsx("data_canada_deaths.xlsx", "Life Expectancy") %>%
+yy <- read_xlsx("data_canada_deaths.xlsx", "Life Expectancy") %>%
   mutate(Area = factor(Area, levels = Area))
-xx <- d6 %>% select(Area, `Life expectancy in 2019`,
+xx <- yy %>% select(Area, `Life expectancy in 2019`,
                     `Average age at death, due to COVID-19`) %>%
   gather(Trait, Value, 2:3) %>%
   mutate(Trait = factor(Trait, 
@@ -1442,7 +1443,7 @@ ggsave("canada_deaths_13_02.png", mp, width = 8, height = 4)
 ![](canada_deaths_13_03.png)
 
 ```{r}
-mp <- ggplot(d6, aes(x = Area, fill = Area,
+mp <- ggplot(yy, aes(x = Area, fill = Area,
                y = `Crude death rate, due to COVID-19 (per thousand)`)) +
   geom_col(color = "black") +
   theme_agData(legend.position = "none",
