@@ -197,6 +197,88 @@ ggsave("farmland_world_1_05.png", mp, width = 8, height = 5)
 
 ---
 
+# Maps {.tabset .tabset-pills}
+
+## Total Area
+
+![](farmland_world_2_01.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Year == 2019, Item == myItems2[1],
+         Area %in% agData_FAO_Country_Table$Country) %>%
+  left_join(agData_FAO_Country_Table, by = c("Area"="Country")) %>%
+  arrange(desc(Value)) %>%
+  mutate(Area = factor(Area, levels = unique(Area)) )
+#
+png("farmland_world_2_01.png", width = 3600, height = 2055, res = 600)
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
+mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat",
+            nameZColour = alpha("black",0.8), 
+            nameZFill = alpha(myColors[1],0.8),
+            nameZSize = "Value", addLegend = F,
+            lwd = 1, oceanCol = "grey90", landCol = "white", borderCol = "black")
+title(main = myItems2[1], line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
+dev.off()
+```
+
+---
+
+## Cropland
+
+![](farmland_world_2_02.png)
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Year == 2019, Item == myItems2[2],
+         Area %in% agData_FAO_Country_Table$Country) %>%
+  left_join(agData_FAO_Country_Table, by = c("Area"="Country")) %>%
+  arrange(desc(Value)) %>%
+  mutate(Area = factor(Area, levels = unique(Area)) )
+#
+png("farmland_world_2_02.png", width = 3600, height = 2055, res = 600)
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
+mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat",
+            nameZColour = alpha("black",0.8), 
+            nameZFill = alpha(myColors[2],0.8),
+            nameZSize = "Value", addLegend = F,
+            lwd = 1, oceanCol = "grey90", landCol = "white", borderCol = "black")
+title(main = myItems2[2], line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
+dev.off()
+```
+
+---
+
+## Pasture
+
+![](farmland_world_2_03.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Year == 2019, Item == myItems2[3],
+         Area %in% agData_FAO_Country_Table$Country) %>%
+  left_join(agData_FAO_Country_Table, by = c("Area"="Country")) %>%
+  arrange(desc(Value)) %>%
+  mutate(Area = factor(Area, levels = unique(Area)) )
+#
+png("farmland_world_2_03.png", width = 3600, height = 2055, res = 600)
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
+mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat",
+            nameZColour = alpha("black",0.8), 
+            nameZFill = alpha(myColors[3],0.8),
+            nameZSize = "Value", addLegend = F,
+            lwd = 1, oceanCol = "grey90", landCol = "white", borderCol = "black")
+title(main = myItems2[3], line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
+dev.off()
+```
+
+---
+
 # Top 20 Countries {.tabset .tabset-pills}
 
 ## Agricultural Land
@@ -259,7 +341,7 @@ ggsave("farmland_world_3_02.png", mp, width = 6, height = 4)
 
 ## Area
 
-![](farmland_world_3_03png)
+![](farmland_world_3_03.png)
 
 ```{r}
 # Prep Data

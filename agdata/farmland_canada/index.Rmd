@@ -555,7 +555,7 @@ ggsave("farmland_canada_3_07.png", mp, width = 9, height = 8)
 
 ---
 
-![](farland_canada_gifs_01.gif)
+![](farmland_canada_gifs_01.gif)
 
 ```{r}
 # Prep data
@@ -568,7 +568,7 @@ xx <- d3 %>%
   mutate(Area = factor(Area, levels = myAreas))
 #
 mp <- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = Area)) + 
-  geom_col(color = "black", lwd = 0.2) +
+  geom_col(color = "black", alpha = 0.7, lwd = 0.2) +
   facet_grid(Area ~ ., scales = "free_y") +
   scale_fill_manual(values = myColors) +
   theme_agData(legend.position = "none",
@@ -576,7 +576,7 @@ mp <- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = Area)) +
   labs(title = "Farm Size in Canada | {round(frame_time)}", 
        y = "Thousand Farms", x = NULL, caption = myCaption) +
   transition_time(Year)
-anim_save("farland_canada_gif_01.gif", mp,
+anim_save("farmland_canada_gif_01.gif", mp,
           nframes = 300, fps = 25, end_pause = 60, 
           width = 900, height = 1200, res = 150, units = "px")
 ```

@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Introduction
 
-This vignette will explore several aspects of data visualization using a lentil phenology data set from [Wright *et al*. 2020](https://dblogr.com/academic/ldp_phenology/). For further details on the lentil population and data visit: https://dblogr.com/academic/lentil_diversity_panel/lentil_diversity_panel.html
+This vignette will explore several aspects of data visualization using a lentil phenology data set from [Wright *et al*. 2020](https://derekmichaelwright.github.io/dblogr/academic/ldp_phenology/). For further details on the lentil population and data visit: https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/lentil_diversity_panel.html
 
 ---
 

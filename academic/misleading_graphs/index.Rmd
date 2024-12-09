@@ -119,11 +119,15 @@ In some cases, a graph with two y-axes is desired for visualizing two different 
 
 ![Source: https://blog.datawrapper.de/dualaxis/](examples_01.png)
 
+<br>
+
 The COVID Pandemic has produced many examples of dual-y-axis graphs. Below are two examples of dual-y-axis graphs created by the CBC and the Canadian government using deaths as the secondary y-axis which allows them to be scaled to portray the desire visual effect.
 
 ![Source: Canadian Broadcasting Corporation](examples_02.png)
 
 ![Source: Public Health Agency of Canada](examples_03.png)
+
+<br>
 
 In the above example from the Canadian government, the scaling of the secondary y-axis for deaths allows for the manipulation of the red dashed line. *E.g.*, imagine the graph if scaled from *0-200* instead of *0-900* OR *0-9000* like the primary y-axis. We can reproduce this graph with these different scales to illustrate this. 
 
@@ -218,6 +222,8 @@ In this example, the two data sets are at least related to each other. However, 
 Spurious correlation occur when two variables appear to have a cause-and-effect relationship, when in reality, there may not be. A popular example is Nicolas Cage films and the number of deaths by drowning.
 
 ![Source: https://www.tylervigen.com/spurious-correlations](examples_04.png)
+
+<br>
 
 Now lets make our own by correlating autism rates in Quebec with soybean production in Quebec and the rise of organic agriculture in Canada. Although an *R^2* of 0.906 and 0.956 is an extremely high correlation coefficient, these data sets are obviously completely unrelated to each other.
 
