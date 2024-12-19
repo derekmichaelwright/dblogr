@@ -13,8 +13,9 @@ knitr::opts_chunk$set(echo = T, warning = F, message = F)
 
 # Data
 
-> - `r shiny::icon("globe")` http://www.fao.org/faostat/en/#data/RL
+> - `r shiny::icon("globe")` [http://www.fao.org/faostat/en/#data/RL](http://www.fao.org/faostat/en/#data/RL){target="_blank"}
 > - `r shiny::icon("save")` [agData_FAO_LandUse.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_LandUse.csv.gz)
+
 > - `r shiny::icon("save")` [agData_FAO_Country_Table.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Country_Table.csv)
 > - `r shiny::icon("save")` [agData_FAO_Region_Table.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Region_Table.csv)
 

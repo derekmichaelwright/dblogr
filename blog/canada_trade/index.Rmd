@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 STATCAN Table: 12-10-0011-01 (International merchandise trade for all countries)
 
-> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1210001101
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1210001101](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1210001101){target="_blank"}
 > - `r shiny::icon("save")` [1210001101_databaseLoadingData.csv](1210001101_databaseLoadingData.csv)
 
 ---
@@ -85,7 +85,7 @@ xx <- dd %>%
   mutate(Balance = ifelse(Value > 0, "Net Export", "Net Import"))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
-  geom_col(aes(fill = Balance), alpha = 0.9) +
+  geom_col(aes(fill = Balance), alpha = 0.9, lwd = 0.01, color = "black") +
   stat_smooth(geom = "line", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   facet_wrap(Trading.Partner ~ ., scales = "free_y", ncol = 6) +
@@ -111,7 +111,7 @@ xx <- dd %>%
   mutate(Value = ifelse(Trade == "Import", -Value, Value))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Trade)) +
-  geom_col(alpha = 0.9) +
+  geom_col(alpha = 0.9, lwd = 0.1, color = "black") +
   facet_wrap(Trading.Partner ~ ., scales = "free_y", ncol = 7) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   scale_x_date(date_breaks = "10 years", date_labels = "%Y") +
@@ -134,7 +134,7 @@ xx <- dd %>%
   mutate(Value = ifelse(Trade == "Import", -Value, Value))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Trade)) +
-  geom_col(alpha = 0.9) +
+  geom_col(alpha = 0.9, lwd = 0.01, color = "black") +
   facet_wrap(Trading.Partner ~ ., scales = "free_y", ncol = 6) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   scale_x_date(date_breaks = "10 years", date_labels = "%Y") +
@@ -159,7 +159,7 @@ gg_Trade <- function(myArea = "India") {
     mutate(Value = ifelse(Trade == "Import", -Value, Value))
   # Plot
   mp1 <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Trade)) +
-    geom_col(alpha = 0.9) +
+    geom_col(alpha = 0.9, lwd = 0.05, color = "black") +
     scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
     scale_x_date(date_breaks = "10 years", date_labels = "%Y") +
     theme_agData(legend.position = "bottom") +
@@ -171,7 +171,7 @@ gg_Trade <- function(myArea = "India") {
     mutate(Balance = ifelse(Value > 0, "Net Export", "Net Import"))
   # Plot
   mp2 <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
-    geom_col(aes(fill = Balance), alpha = 0.9) +
+    geom_col(aes(fill = Balance), alpha = 0.9, lwd = 0.05, color = "black") +
     stat_smooth(geom = "line", alpha = 0.7) +
     scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
     scale_x_date(date_minor_breaks = "1 year", expand = c(0,0)) +

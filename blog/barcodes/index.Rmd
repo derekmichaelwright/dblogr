@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = T, eval = F)
 
 # qrcode
 
-> - `r shiny::icon("globe")` https://thierryo.github.io/qrcode/
+> - `r shiny::icon("globe")` [https://thierryo.github.io/qrcode/](https://thierryo.github.io/qrcode/){target="_blank"}
 
 ```{r eval = F}
 install.packages("qrcode")
@@ -59,7 +59,7 @@ rsvg::rsvg_png("QR_knowpulse.svg", "QR_knowpulse.png", width = 512, height = 512
 
 # baRcodeR
 
-> - `r shiny::icon("globe")` https://docs.ropensci.org/baRcodeR/
+> - `r shiny::icon("globe")` [https://docs.ropensci.org/baRcodeR/](https://docs.ropensci.org/baRcodeR/){target="_blank"}
 
 ```{r eval = F}
 install.packages("baRcodeR")

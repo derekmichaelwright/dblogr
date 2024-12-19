@@ -15,22 +15,22 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F, out.width = "100%")
 
 STATCAN Table: 36-10-0400-01
 
-> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040001
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040001](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040001){target="_blank"}
 > - `r shiny::icon("save")` [3610040001_databaseLoadingData.csv](3610040001_databaseLoadingData.csv)
 
 STATCAN Table: 36-10-0402-01
 
-> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040201
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040201](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610040201){target="_blank"}
 > - `r shiny::icon("save")` [3610040201_databaseLoadingData.csv](3610040201_databaseLoadingData.csv)
 
 STATCAN Table: 17-10-0009-01
 
-> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901){target="_blank"}
 > - `r shiny::icon("save")` [1710000901_databaseLoadingData.csv](1710000901_databaseLoadingData.csv)
 
 Our World in Data
 
-> - `r shiny::icon("globe")` https://ourworldindata.org/grapher/gdp-per-capita-worldbank?tab=chart&country=USA~CAN
+> - `r shiny::icon("globe")` [https://ourworldindata.org/grapher/gdp-per-capita-worldbank?tab=chart&country=USA~CAN](https://ourworldindata.org/grapher/gdp-per-capita-worldbank?tab=chart&country=USA~CAN){target="_blank"}
 > - `r shiny::icon("save")` [data_canus_gdppc.csv](data_canus_gdppc.csv)
 
 ---

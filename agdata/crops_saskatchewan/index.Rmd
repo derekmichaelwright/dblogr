@@ -15,12 +15,12 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 STATCAN Table: 32-10-0359-01
 
-> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035901
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035901](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035901){target="_blank"}
 > - `r shiny::icon("save")` [agData_STATCAN_Crops.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Crops.csv.gz)
 
 STATCAN Table: 32-10-0153-01
 
-> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015301
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015301](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015301){target="_blank"}
 > - `r shiny::icon("save")` [agData_STATCAN_FarmLand_Use.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_FarmLand_Use.csv.gz)
 
 ---

@@ -74,12 +74,12 @@ library(lme4)
 
 > - `r shiny::icon("save")` [data_johannsen1903_1.csv](data_johannsen1903_1.csv)
 > - `r shiny::icon("save")` [data_johannsen1903_2.csv](data_johannsen1903_2.csv)
-> - `r shiny::icon("globe")` https://archive.org/details/b28117335/page/n5/mode/2up
+> - `r shiny::icon("globe")` [https://archive.org/details/b28117335/page/n5/mode/2up](https://archive.org/details/b28117335/page/n5/mode/2up){target="_blank"}
 
 Extra links
 
-> - `r shiny::icon("globe")` https://www.jstor.org/stable/2427337
-> - `r shiny::icon("globe")` https://www.jstor.org/stable/2331511
+> - `r shiny::icon("globe")` [https://www.jstor.org/stable/2427337](https://www.jstor.org/stable/2427337){target="_blank"}
+> - `r shiny::icon("globe")` [https://www.jstor.org/stable/2331511](https://www.jstor.org/stable/2331511){target="_blank"}
 
 ```{r}
 # Prep data
@@ -213,8 +213,8 @@ ggsave("heritability_2_02.png", mp, width = 6, height = 4)
 # East 1916
 
 > - `r shiny::icon("save")` [data_east1916.csv](data_east1916.csv)
-> - `r shiny::icon("globe")` https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1193657/pdf/164.pdf
-> - `r shiny::icon("globe")` https://www.youtube.com/watch?v=NZ3V7V-yJbw
+> - `r shiny::icon("file-pdf")` https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1193657/pdf/164.pdf
+> - `r shiny::icon("globe")` [https://www.youtube.com/watch?v=NZ3V7V-yJbw](https://www.youtube.com/watch?v=NZ3V7V-yJbw){target="_blank"}
 
 ---
 
@@ -368,7 +368,7 @@ DT::datatable(xx)
 
 ## Calcaulte h^2 with Linear Regression
 
-> - https://www.nature.com/scitable/topicpage/estimating-trait-heritability-46889/
+> - `r shiny::icon("globe")`[https://www.nature.com/scitable/topicpage/estimating-trait-heritability-46889/](https://www.nature.com/scitable/topicpage/estimating-trait-heritability-46889/){target="_blank"}
 
 By rearranging the breeders formula, narrow sense heritability can be determined by calculating the slope of a regression line of progeny mean as a function of parental mean.
 
@@ -424,11 +424,11 @@ ggsave("heritability_3_07.png", mp, width = 6, height = 4)
 # Tomato Example
 
 > - `r shiny::icon("save")` [data_tbrtquality.csv](data_tbrtquality.csv)
-> - `r shiny::icon("globe")` https://plant-breeding-genomics.extension.org/estimating-heritability-and-blups-for-traits-using-tomato-phenotypic-data/
-> - `r shiny::icon("globe")` https://pbgworks.org/sites/pbgworks.org/files/Analyzing%20SolCAP%20Processing%20Tomato%20Phenotypic%20Datafinal_1_0.pdf
-> - `r shiny::icon("globe")` https://www.youtube.com/watch?v=YIVY-9Jk-5c
-> - `r shiny::icon("globe")` https://www.youtube.com/watch?v=LqhNkwVcH-Q
-> - `r shiny::icon("globe")` https://www.youtube.com/watch?v=6HnjTlY4hpA
+> - `r shiny::icon("globe")` [https://plant-breeding-genomics.extension.org/estimating-heritability-and-blups-for-traits-using-tomato-phenotypic-data/](https://plant-breeding-genomics.extension.org/estimating-heritability-and-blups-for-traits-using-tomato-phenotypic-data/){target="_blank"}
+> - `r shiny::icon("file-pdf")` https://pbgworks.org/sites/pbgworks.org/files/Analyzing%20SolCAP%20Processing%20Tomato%20Phenotypic%20Datafinal_1_0.pdf
+> - `r shiny::icon("youtube")` [https://www.youtube.com/watch?v=YIVY-9Jk-5c](https://www.youtube.com/watch?v=YIVY-9Jk-5c){target="_blank"}
+> - `r shiny::icon("youtube")` [https://www.youtube.com/watch?v=LqhNkwVcH-Q](https://www.youtube.com/watch?v=LqhNkwVcH-Q){target="_blank"}
+> - `r shiny::icon("youtube")` [https://www.youtube.com/watch?v=6HnjTlY4hpA](https://www.youtube.com/watch?v=6HnjTlY4hpA){target="_blank"}
 
 ```{r}
 myCaption4 <- expression(paste("www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Collins ", 
@@ -546,9 +546,9 @@ ggsave("heritability_4_04.png", mp, width = 6, height = 4)
 
 # Other Links
 
-> - https://passel2.unl.edu/view/lesson/ee62d6ebb5bd/6
-> - https://github.com/PaulSchmidtGit/Heritability/tree/master/Alternative%20Heritability%20Measures
-> - https://doi.org/10.1104/pp.106.077867
+> - [https://passel2.unl.edu/view/lesson/ee62d6ebb5bd/6](https://passel2.unl.edu/view/lesson/ee62d6ebb5bd/6){target="_blank"}
+> - [https://github.com/PaulSchmidtGit/Heritability/tree/master/Alternative%20Heritability%20Measures](https://github.com/PaulSchmidtGit/Heritability/tree/master/Alternative%20Heritability%20Measures){target="_blank"}
+> - [https://doi.org/10.1104/pp.106.077867](https://doi.org/10.1104/pp.106.077867){target="_blank"}
 
 ---
 

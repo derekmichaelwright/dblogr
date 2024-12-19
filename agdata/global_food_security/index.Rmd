@@ -13,11 +13,13 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-> - `r shiny::icon("save")` [agData_FAO_Country_Table.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Country_Table.csv.gz)
-> - `r shiny::icon("globe")` http://www.fao.org/faostat/en/#data/QC
+> - `r shiny::icon("globe")` [http://www.fao.org/faostat/en/#data/QC](http://www.fao.org/faostat/en/#data/QC){target="_blank"}
 > - `r shiny::icon("save")` [agData_FAO_Crops2.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Crops2.csv.gz)
-> - `r shiny::icon("globe")` http://www.fao.org/faostat/en/#data/TCL
+
+> - `r shiny::icon("globe")` [http://www.fao.org/faostat/en/#data/TCL](http://www.fao.org/faostat/en/#data/TCL){target="_blank"}
 > - `r shiny::icon("save")` [agData_FAO_Trade_Quantity.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Trade_Quantity.csv.gz)
+
+> - `r shiny::icon("save")` [agData_FAO_Country_Table.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Country_Table.csv.gz)
 
 ---
 

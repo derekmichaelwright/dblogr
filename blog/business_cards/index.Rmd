@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 # Data
 
-> - `r shiny::icon("globe")` https://derekmichaelwright.github.io/dblogr/blog/business_cards/business_cards.html
+> - `r shiny::icon("globe")` [https://derekmichaelwright.github.io/dblogr/blog/business_cards/business_cards.html](https://derekmichaelwright.github.io/dblogr/blog/business_cards/business_cards.html){target="_blank"}
 > - `r shiny::icon("save")` [data_canada_academia.csv](data_canada_academia.csv)
 
 ---

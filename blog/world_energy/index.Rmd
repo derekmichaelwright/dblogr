@@ -15,24 +15,24 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 Energy production and consumption
 
-> - `r shiny::icon("globe")` https://ourworldindata.org/energy-production-consumption
+> - `r shiny::icon("globe")` [https://ourworldindata.org/energy-production-consumption](https://ourworldindata.org/energy-production-consumption){target="_blank"}
 > - `r shiny::icon("save")` [global-energy-substitution.csv](global-energy-substitution.csv)
 
 CO2 emissions per capita
 
-> - `r shiny::icon("globe")` https://ourworldindata.org/worlds-energy-problem
+> - `r shiny::icon("globe")` [https://ourworldindata.org/worlds-energy-problem](https://ourworldindata.org/worlds-energy-problem){target="_blank"}
 > - `r shiny::icon("save")` [consumption-co2-per-capita-vs-gdppc.csv](consumption-co2-per-capita-vs-gdppc.csv)
 
 Extreme poverty & literacy
 
-> - `r shiny::icon("globe")` https://ourworldindata.org/a-history-of-global-living-conditions-in-5-charts
+> - `r shiny::icon("globe")` [https://ourworldindata.org/a-history-of-global-living-conditions-in-5-charts](https://ourworldindata.org/a-history-of-global-living-conditions-in-5-charts){target="_blank"}
 > - `r shiny::icon("save")` [world-population-in-extreme-poverty-absolute.csv](world-population-in-extreme-poverty-absolute.csv)
 > - `r shiny::icon("save")` [literate-and-illiterate-world-population.csv](literate-and-illiterate-world-population.csv)
 
 World Bank Group - IEA
 
-> - `r shiny::icon("globe")` https://energyforgrowth.org/article/the-fridge-goes-viral-as-an-illustration-of-global-energy-inequality/
-> - `r shiny::icon("globe")` https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC
+> - `r shiny::icon("globe")` [https://energyforgrowth.org/article/the-fridge-goes-viral-as-an-illustration-of-global-energy-inequality/](https://energyforgrowth.org/article/the-fridge-goes-viral-as-an-illustration-of-global-energy-inequality/){target="_blank"}
+> - `r shiny::icon("globe")` [https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC](https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC){target="_blank"}
 > - `r shiny::icon("save")` [API_EG.USE.ELEC.KH.PC_DS2_en_csv_v2_2076.csv](API_EG.USE.ELEC.KH.PC_DS2_en_csv_v2_2076.csv)
 
 ---

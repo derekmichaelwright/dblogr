@@ -131,7 +131,7 @@ The COVID Pandemic has produced many examples of dual-y-axis graphs. Below are t
 
 In the above example from the Canadian government, the scaling of the secondary y-axis for deaths allows for the manipulation of the red dashed line. *E.g.*, imagine the graph if scaled from *0-200* instead of *0-900* OR *0-9000* like the primary y-axis. We can reproduce this graph with these different scales to illustrate this. 
 
-> - `r shiny::icon("globe")` Canada's Covid data: https://health-infobase.canada.ca/covid-19/dashboard/about.html
+> - `r shiny::icon("globe")` Canada's Covid data: [https://health-infobase.canada.ca/covid-19/dashboard/about.html](https://health-infobase.canada.ca/covid-19/dashboard/about.html){target="_blank"}
 
 ![](misleading_graphs_03.png)
 
@@ -227,8 +227,8 @@ Spurious correlation occur when two variables appear to have a cause-and-effect 
 
 Now lets make our own by correlating autism rates in Quebec with soybean production in Quebec and the rise of organic agriculture in Canada. Although an *R^2* of 0.906 and 0.956 is an extremely high correlation coefficient, these data sets are obviously completely unrelated to each other.
 
-> - `r shiny::icon("globe")` FAO data on Organic hectares: http://www.fao.org/faostat/en/#data/RL
-> - `r shiny::icon("globe")` Data for Quebec autism rates can be found at https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-children-youth-canada-2018.html.
+> - `r shiny::icon("globe")` FAO data on Organic hectares: [http://www.fao.org/faostat/en/#data/RL](http://www.fao.org/faostat/en/#data/RL){target="_blank"}
+> - `r shiny::icon("globe")` Data for Quebec autism rates can be found at [https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-children-youth-canada-2018.html](https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-children-youth-canada-2018.html){target="_blank"}.
 
 ![](misleading_graphs_04.png)
 
@@ -334,7 +334,7 @@ By ignoring data that doesn't support the desired narrative, and only focusing o
 
 In 1994 the first genetically engineered (GE) maize variety was released in the USA. If we only focus on yield data from 1995-2010, it looks as if the introduction of GE crop varieties greatly increased maize yields. However, when we take a step back and look at all the data, we can see that not only have we avoided the poor yields of 2012, but there also has been a trend of yearly increasing yields from long before the introduction of GE varieties. From this perspective, it would be more appropriate to attribute these yield gains to many factors including the more traditional/conventional breeding along with changes in production practices since the 1930's.
 
-> - `r shiny::icon("globe")` USDA data https://www.nass.usda.gov/
+> - `r shiny::icon("globe")` USDA data [https://www.nass.usda.gov/](https://www.nass.usda.gov/){target="_blank"}
 
 ![](misleading_graphs_05.png)
 
@@ -376,8 +376,8 @@ ggsave("misleading_graphs_05.png", mp, width = 10, height = 4)
 
 The National Interagency Fire Center (NIFC) recently deleted some data from their database, which can be retrieved using internet archives. Let's take a look at the data they deleted.
 
-> - `r shiny::icon("globe")` https://www.nifc.gov/fire-information/statistics/wildfires
-> - `r shiny::icon("globe")` https://web.archive.org/web/20210129125036/https://www.nifc.gov/fireInfo/fireInfo_stats_totalFires.html
+> - `r shiny::icon("globe")` [https://www.nifc.gov/fire-information/statistics/wildfires](https://www.nifc.gov/fire-information/statistics/wildfires){target="_blank"}
+> - `r shiny::icon("globe")` [https://web.archive.org/web/20210129125036/https://www.nifc.gov/fireInfo/fireInfo_stats_totalFires.html](https://web.archive.org/web/20210129125036/https://www.nifc.gov/fireInfo/fireInfo_stats_totalFires.html){target="_blank"}
 
 ![](misleading_graphs_06.png)
 
@@ -418,7 +418,7 @@ The following is a comical example put out by US democrats. Impressively, this g
 
 ![Source: https://twitter.com/dccc/status/1466494036630544394](examples_05.jfif)
 
-> - `r shiny::icon("globe")` https://www.eia.gov/dnav/pet/pet_pri_gnd_dcus_nus_w.htm
+> - `r shiny::icon("globe")` [https://www.eia.gov/dnav/pet/pet_pri_gnd_dcus_nus_w.htm](https://www.eia.gov/dnav/pet/pet_pri_gnd_dcus_nus_w.htm){target="_blank"}
 
 ![](misleading_graphs_07.png)
 
@@ -515,7 +515,7 @@ ggsave("misleading_graphs_08.png", mp, width = 12, height = 4, bg = "white")
 
 We can also illustrate this by attempting different way to present results from the 2016 US election.
 
-> - `r shiny::icon("globe")` https://raw.githubusercontent.com/tonmcg/US_County_Level_Election_Results_08-20/
+> - `r shiny::icon("globe")` [https://raw.githubusercontent.com/tonmcg/US_County_Level_Election_Results_08-20/](https://raw.githubusercontent.com/tonmcg/US_County_Level_Election_Results_08-20/){target="_blank"}
 
 ![](misleading_graphs_09.png)
 
@@ -600,7 +600,7 @@ ggsave("misleading_graphs_10.png", mp, width = 8, height = 5, bg = "grey90")
 
 # 6. Data Statistics
 
-> - `r shiny::icon("globe")` https://en.wikipedia.org/wiki/Anscombe's_quartet
+> - `r shiny::icon("globe")` [https://en.wikipedia.org/wiki/Anscombe's_quartet](https://en.wikipedia.org/wiki/Anscombe's_quartet){target="_blank"}
 
 ![](misleading_graphs_11.png)
 

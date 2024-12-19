@@ -13,13 +13,13 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 # Data
 
-> - `r shiny::icon("globe")` https://ourworldindata.org/grapher/food-expenditure-share-gdp
+> - `r shiny::icon("globe")` [https://ourworldindata.org/grapher/food-expenditure-share-gdp](https://ourworldindata.org/grapher/food-expenditure-share-gdp){target="_blank"}
 > - `r shiny::icon("save")` [food-expenditure-share-gdp.csv](food-expenditure-share-gdp.csv)
 
-> - `r shiny::icon("globe")` https://t.co/Y6VqkxviLO
+> - `r shiny::icon("globe")` [https://t.co/Y6VqkxviLO](https://t.co/Y6VqkxviLO){target="_blank"}
 > - `r shiny::icon("save")` [data_usa_households.xlsx](data_usa_households.xlsx)
 
-> - `r shiny::icon("globe")` https://beta.bls.gov/dataQuery/search
+> - `r shiny::icon("globe")` [https://beta.bls.gov/dataQuery/search](https://beta.bls.gov/dataQuery/search){target="_blank"}
 > - `r shiny::icon("save")` [data_usa_households.xlsx](data_usa_food prices.xlsx)
 
 ---

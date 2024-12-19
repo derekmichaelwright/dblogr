@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = T, warning = F, message = F)
 
 # Data
 
-> - `r shiny::icon("globe")` https://www.nass.usda.gov/
+> - `r shiny::icon("globe")` [https://www.nass.usda.gov/](https://www.nass.usda.gov/){target="_blank"}
 > - `r shiny::icon("save")` [agData_USDA_Sugarbeet.csv](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_USDA_Sugarbeet.csv)
 
 ---

@@ -15,24 +15,23 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 Morning Consult
 
-> - `r shiny::icon("globe")` https://morningconsult.com/2023/04/11/covid-19-lab-leak-theory-survey-data/
+> - `r shiny::icon("globe")` [https://morningconsult.com/2023/04/11/covid-19-lab-leak-theory-survey-data/](https://morningconsult.com/2023/04/11/covid-19-lab-leak-theory-survey-data/){target="_blank"}
 > - `r shiny::icon("save")` [data_morning_consult.csv](data_morning_consult.csv)
 
 YouGov
 
-> - `r shiny::icon("globe")`  https://today.yougov.com/politics/articles/45389-americans-believe-covid-origin-lab
+> - `r shiny::icon("globe")`  [https://today.yougov.com/politics/articles/45389-americans-believe-covid-origin-lab](https://today.yougov.com/politics/articles/45389-americans-believe-covid-origin-lab){target="_blank"}
 > - `r shiny::icon("file-pdf")` https://docs.cdn.yougov.com/d6p3862gac/econTabReport.pdf
 > - `r shiny::icon("save")` [data_yougov.csv](data_yougov.csv)
 
 Global Catastrophic Risk Institute
 
-> - `r shiny::icon("globe")` https://gcrinstitute.org/covid-origin/
-> - `r shiny::icon("file-pdf")` https://gcrinstitute.org/covid-origin/
+> - `r shiny::icon("globe")` [https://gcrinstitute.org/covid-origin/](https://gcrinstitute.org/covid-origin/){target="_blank"}
 > - `r shiny::icon("save")` [data_yougov.csv](data_yougov.csv)
 
 Deseret News
 
-> - `r shiny::icon("globe")` https://www.deseret.com/politics/2024/04/17/what-are-the-origins-of-covid-19/
+> - `r shiny::icon("globe")` [https://www.deseret.com/politics/2024/04/17/what-are-the-origins-of-covid-19/](https://www.deseret.com/politics/2024/04/17/what-are-the-origins-of-covid-19/){target="_blank"}
 > - `r shiny::icon("save")` [data_deseret.csv](data_deseret.csv)
 
 ---

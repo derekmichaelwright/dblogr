@@ -13,8 +13,8 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/n1/pub/45-28-0001/2021001/article/00011-eng.htm
-> - `r shiny::icon("globe")` https://www.nature.com/articles/s41586-022-05607-y
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/n1/pub/45-28-0001/2021001/article/00011-eng.htm](https://www150.statcan.gc.ca/n1/pub/45-28-0001/2021001/article/00011-eng.htm){target="_blank"}
+> - `r shiny::icon("globe")` [https://www.nature.com/articles/s41586-022-05607-y](https://www.nature.com/articles/s41586-022-05607-y){target="_blank"}
 > - `r shiny::icon("save")` [data_canada_vaccines.xlsx](data_canada_vaccines.xlsx)
 
 ---

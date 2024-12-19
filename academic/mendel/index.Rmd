@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Introduction
 
-> - `r shiny::icon("globe")` https://en.wikipedia.org/wiki/Gregor_Mendel
+> - `r shiny::icon("globe")` [https://en.wikipedia.org/wiki/Gregor_Mendel](https://en.wikipedia.org/wiki/Gregor_Mendel){target="_blank"}
 
 **Gregor Johann Mendel** (1822 - 1884) was a German-Czech, Augustinian friar and abbot of St. Thomas' Abbey in Brno (Brünn). He also grew some Peas (*Pisum sativum*) in his gardens/greenhouses and studied the inheritance of 7 traits which, when crossed, had a *dominant* form which was exhibited by all of the F1 hybrids, and a *recessive* form which reappeared in the F2 offspring from selfed F1 hybrids.
 

@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 # Data
 
-> - `r shiny::icon("globe")` https://ourworldindata.org/grapher/crude-birth-rate?tab=chart
+> - `r shiny::icon("globe")` [https://ourworldindata.org/grapher/crude-birth-rate?tab=chart](https://ourworldindata.org/grapher/crude-birth-rate?tab=chart){target="_blank"}
 > - `r shiny::icon("save")` [data_world_birthrates.csv](data_world_birthrates.csv)
 
 ---

@@ -15,13 +15,13 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 Drug overdoses, suicides & transportation related deaths
 
-> - `r shiny::icon("globe")` https://data.cdc.gov/NCHS/Early-Model-based-Provisional-Estimates-of-Drug-Ov/v2g4-wqg2
+> - `r shiny::icon("globe")` [https://data.cdc.gov/NCHS/Early-Model-based-Provisional-Estimates-of-Drug-Ov/v2g4-wqg2](https://data.cdc.gov/NCHS/Early-Model-based-Provisional-Estimates-of-Drug-Ov/v2g4-wqg2){target="_blank"}
 > - `r shiny::icon("save")` [data_usa_overdoses.csv](data_usa_overdoses.csv)
 
 Extra
 
-> - `r shiny::icon("globe")` https://www.cdc.gov/nchs/nvss/vsrr/vsrr11-dashboard/index.htm
-> - `r shiny::icon("globe")` https://www.cdc.gov/nchs/nvss/vsrr/drug-overdose-data.htm
+> - `r shiny::icon("globe")` [https://www.cdc.gov/nchs/nvss/vsrr/vsrr11-dashboard/index.htm](https://www.cdc.gov/nchs/nvss/vsrr/vsrr11-dashboard/index.htm){target="_blank"}
+> - `r shiny::icon("globe")` [https://www.cdc.gov/nchs/nvss/vsrr/drug-overdose-data.htm](https://www.cdc.gov/nchs/nvss/vsrr/drug-overdose-data.htm){target="_blank"}
 
 ---
 

@@ -15,11 +15,11 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 This vignette is a tutorial on running **Genome-Wide Association Studies** (**GWAS**) in <i class="fab fa-r-project"></i> with the packages `GAPIT` and plotting the results with `gwaspr`.
 
-> - **GAPIT Website**: https://www.maizegenetics.net/gapit
+> - **GAPIT Website**: [https://www.maizegenetics.net/gapit](https://www.maizegenetics.net/gapit){target="_blank"}
 > - **GAPIT Manual**: http://www.zzlab.net/GAPIT/gapit_help_document.pdf
-> - **GAPIT Forum**: https://groups.google.com/forum/#!forum/gapit-forum
-> - **GAPIT3 github**: https://github.com/jiabowang/GAPIT3
-> - **gwaspr Website**: https://derekmichaelwright.github.io/gwaspr/
+> - **GAPIT Forum**: [https://groups.google.com/forum/#!forum/gapit-forum](https://groups.google.com/forum/#!forum/gapit-forum){target="_blank"}
+> - **GAPIT3 github**: [https://github.com/jiabowang/GAPIT](https://github.com/jiabowang/GAPIT){target="_blank"}
+> - **gwaspr Website**: [https://derekmichaelwright.github.io/gwaspr/](https://derekmichaelwright.github.io/gwaspr/){target="_blank"}
 
 ![](logo_gwaspr.png)
 
@@ -41,9 +41,9 @@ All phenotype and genotype data is derived from and available at: https://knowpu
 
 Associated papers:
 
-- [Wright D & Neupane S, *et al*. (**2020**) **Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**. *Plants, People, Planet*. 00:1-11. https://doi.org/10.1002/ppp3.10158](https://doi.org/10.1002/ppp3.10158)
+- [Wright D & Neupane S, *et al*. (**2020**) **Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**. *Plants, People, Planet*. 00:1-11. https://doi.org/10.1002/ppp3.10158](https://doi.org/10.1002/ppp3.10158){target="_blank"}
 
-- [Neupane S, Wright D, *et al* (**2022**) **Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**. *The Plant Genome*. e20269. https://doi.org/10.1002/tpg2.20269](https://doi.org/10.1002/tpg2.20269)
+- [Neupane S, Wright D, *et al* (**2022**) **Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**. *The Plant Genome*. e20269. https://doi.org/10.1002/tpg2.20269](https://doi.org/10.1002/tpg2.20269){target="_blank"}
 
 For this tutorial, we will use a Lentil Diversity Panel (**LDP**) consisting of 324 *Lens culinaris* cultivars, representative of the global genetic diversity of cultivated lentils.
 
@@ -269,26 +269,26 @@ source("http://zzlab.net/GAPIT/GAPIT.library.R")
 source("http://zzlab.net/GAPIT/gapit_functions.txt")
 ```
 
-<i class="fa-brands fa-github"></i> Github: [https://github.com/jiabowang/GAPIT3](https://github.com/jiabowang/GAPIT3)
+<i class="fa-brands fa-github"></i> Github: [https://github.com/jiabowang/GAPIT](https://github.com/jiabowang/GAPIT){target="_blank"}
 
 ```{r eval = F}
-devtools::install_github("jiabowang/GAPIT3", force=TRUE)
+devtools::install_github("jiabowang/GAPIT", force=TRUE)
 ```
 
 ## Load GAPIT
 
 ```{r eval = F}
-library(GAPIT3)
+library(GAPIT)
 ```
 
 ## GWAS Models
 
 - `GLM` General Linear Model: uses population structure (Q) as a cofactor. 
-- `MLM` [Mixed Linear Model](https://www.nature.com/articles/ng1702): adds Kinship (K) as a random effect. AKA a Q+K model. 
+- `MLM` [Mixed Linear Model](https://www.nature.com/articles/ng1702){target="_blank"}: adds Kinship (K) as a random effect. AKA a Q+K model. 
 - `CMLM` Compressed Mixed Linear Model: reduces the confounding effect between the testing markers and the individuals genetic effects by replacing them with their corresponding groups based on cluster analysis defined by the user. MLM is the equivelent of each individual being its own group, and GLM is the equivlent of having only one group for all individuals.
-- `MLMM` [Multiple Locus Mixed Linear Model](https://www.nature.com/articles/ng.2314): uses forward-backward stepwise linear mixed-model regression to include associated markers as covariates.
-- `SUPER` [Settlement of MLM Under Progressively Exclusive Relationship](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0107684):  uses a FaST-LMM algorithm to solve a computational burden for large samples. K is derived from a smaller number of associated markers.
-- `FarmCPU` [Fixed and random model Circulating Probability Unification](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1005767): uses iterations to fit associated markers selected using a maximum likelhood methodas cofactors.
+- `MLMM` [Multiple Locus Mixed Linear Model](https://www.nature.com/articles/ng.2314){target="_blank"}: uses forward-backward stepwise linear mixed-model regression to include associated markers as covariates.
+- `SUPER` [Settlement of MLM Under Progressively Exclusive Relationship](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0107684){target="_blank"}:  uses a FaST-LMM algorithm to solve a computational burden for large samples. K is derived from a smaller number of associated markers.
+- `FarmCPU` [Fixed and random model Circulating Probability Unification](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1005767){target="_blank"}: uses iterations to fit associated markers selected using a maximum likelhood methodas cofactors.
 - `BLINK` [BLINK](): similar to FarmCPU but eliminates the assumption of causal genes are evenly distributed accross the genome. Markers that are in LD with the most significant marker are excluded. Also uses a different method to determine markers for K (BIC).
 
 ![Various GWAS models](images_02_GWAS_Models.png)
@@ -356,7 +356,7 @@ ggsave("Figures_02_Eigen_Values.png", width = 6, height = 3)
 
 ## User-inputted Kinship and Covariates
 
-We will rerun GWAS on the DTF traits using the *b* coefficient from a photothermal model derived from [**Wright *et al*. (2020)**](https://github.com/derekmichaelwright/AGILE_LDP_Phenology/). This should act to remove or diminish temperature related associations, and thus emphasize photoperiod related associations.
+We will rerun GWAS on the DTF traits using the *b* coefficient from a photothermal model derived from [**Wright *et al*. (2020)**](https://github.com/derekmichaelwright/AGILE_LDP_Phenology/){target="_blank"}. This should act to remove or diminish temperature related associations, and thus emphasize photoperiod related associations.
 
 ```{r}
 myCV <- read.csv("myCV.csv")[,c("Name","b")] %>%
@@ -1101,7 +1101,7 @@ xx <- read.csv("GWAS_Results/GAPIT.Genotype.PCA.csv") %>%
 
 ## Testa Pattern
 
-https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Figures_PCA_Testa_Pattern.html
+[https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Figures_PCA_Testa_Pattern.html](https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Figures_PCA_Testa_Pattern.html){target="_blank"}
 
 ```{r}
 myColors <- c("darkgoldenrod3", "darkblue")
@@ -1117,7 +1117,7 @@ mp
 
 ## DTF Nepal 2017
 
-https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Figures_PCA_DTF_Nepal_2017.html
+[https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Figures_PCA_DTF_Nepal_2017.html](https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Figures_PCA_DTF_Nepal_2017.html){target="_blank"}
 
 ```{r}
 myColors <- c("darkred", "darkgoldenrod3", "darkblue")
@@ -1133,7 +1133,7 @@ mp
 
 ## DTF Sask 2017
 
-https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Figures_PCA_DTF_Sask_2017.html
+[https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Figures_PCA_DTF_Sask_2017.html](https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Figures_PCA_DTF_Sask_2017.html){target="_blank"}
 
 ```{r}
 mp <- plot_ly(xx, x = ~PC1, y = ~PC2, z = ~PC3, text = ~taxa,
@@ -1148,7 +1148,7 @@ mp
 
 # SNP Density Plot
 
-Package Source: https://github.com/YinLiLin/R-CMplot
+Package Source: [https://github.com/YinLiLin/R-CMplot](https://github.com/YinLiLin/R-CMplot){target="_blank"}
 
 ![](Marker_Density.LDP.jpg)
 

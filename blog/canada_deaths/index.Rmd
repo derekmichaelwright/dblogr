@@ -15,31 +15,31 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 STATCAN Table: 13-10-0783-01 (Weekly death counts)
 
-> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301){target="_blank"}
 > - `r shiny::icon("save")` [1310078301_databaseLoadingData.csv](1310078301_databaseLoadingData.csv)
 
 STATCAN Table: 13-10-0768-01 (Weekly death counts, by age group and sex)
 
-> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801){target="_blank"}
 > - `r shiny::icon("save")` [1310076801_databaseLoadingData.csv](1310076801_databaseLoadingData.csv)
 
 STATCAN Table: 13-10-0708-01 (Deaths, by month)
 
-> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801){target="_blank"}
 > - `r shiny::icon("save")` [1310070801_databaseLoadingData.csv](1310070801_databaseLoadingData.csv)
 
 STATCAN Table: 17-10-0009-01 (Population estimates, quarterly)
 
-> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901){target="_blank"}
 > - `r shiny::icon("save")` [1710000901_databaseLoadingData.csv](1710000901_databaseLoadingData.csv)
 
 STATCAN Interactive Graph (Weekly death counts)
 
-> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm](https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm){target="_blank"}
 
 STATCAN Table: 13-10-0394-01 (Leading causes of death)
 
-> - `r shiny::icon("globe")` https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310039401
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310039401](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310039401){target="_blank"}
 > - `r shiny::icon("save")` [1310039401_databaseLoadingData.csv](1310039401_databaseLoadingData.csv)
 
 ---
@@ -57,9 +57,9 @@ library(readxl)
 myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN\nNote: most recent years data may be incomplete"
 myColors <- c("darkgreen", "darkred", "darkorange", "steelblue", "darkblue", "purple4", "magenta3")
 myAreas <- c("Canada", "Quebec", "Ontario", "British Columbia", 
-           "Alberta", "Saskatchewan", "Manitoba", "Nova Scotia",
-           "Newfoundland and Labrador", "New Brunswick", "Prince Edward Island", 
-           "Northwest Territories", "Nunavut", "Yukon")
+             "Alberta", "Saskatchewan", "Manitoba", "Nova Scotia",
+             "Newfoundland and Labrador", "New Brunswick", "Prince Edward Island", 
+             "Northwest Territories", "Nunavut", "Yukon")
 #
 # d1 = Deaths per Week (2010-2023)
 mySeasons <- paste(2009:2023, 2010:2024, sep = "-")
@@ -70,7 +70,7 @@ d1 <- read.csv("1310078301_databaseLoadingData.csv") %>%
          Year  = as.numeric(substr(Date, 1, 4)),
          Month = as.numeric(substr(Date, 6, 7)),
          Group = ifelse(Year < 2020, "<2020", Year),
-         Group = factor(Group, levels = c("<2020", "2020", "2021", "2022", "2023")),
+         Group = factor(Group, levels = c("<2020", "2020", "2021", "2022", "2023", "2024")),
          JulianDay = lubridate::yday(Date),
          AdjJulianDay = ifelse(Month < 8, JulianDay + 365, JulianDay),
          Area = gsub(", place of occurrence", "", Area),
@@ -100,7 +100,7 @@ d2 <- read.csv("1310076801_databaseLoadingData.csv") %>%
          Year  = as.numeric(substr(Date, 1, 4)),
          Month = as.numeric(substr(Date, 6, 7)),
          Group = ifelse(Year < 2020, "<2020", Year),
-         Group = factor(Group, levels = c("<2020", "2020", "2021", "2022", "2023")),
+         Group = factor(Group, levels = c("<2020", "2020", "2021", "2022", "2023", "2024")),
          JulianDay = lubridate::yday(Date),
          AdjJulianDay = ifelse(Month < 8, JulianDay + 365, JulianDay),
          Area = gsub(", place of occurrence", "", Area),
@@ -124,19 +124,14 @@ p1 <- read.csv("1710000901_databaseLoadingData.csv") %>%
   mutate(Year = as.numeric(gsub("-01","",Year)))
   #filter(Month == 1) %>% select(Area, Year, Population=Value)
 p2 <- read.csv("1710000501_databaseLoadingData.csv") %>% 
-  select(Area=GEO, Year=REF_DATE, Sex, Age.group, Population=VALUE)
-yy <- d1 %>% filter(Year > 2020) %>% 
-  group_by(Area, Year) %>%
-  summarise(Value = sum(Value)) %>%
-  mutate(Month.of.death = "Total")
+  select(Area=GEO, Year=REF_DATE, Sex=Gender, Age.group, Population=VALUE)
 d3 <- read.csv("1310070801_databaseLoadingData.csv") %>%
   rename(Year=1, Area=GEO, Value=VALUE, Unit=UOM) %>%
   mutate(Month.of.death = gsub("Month of death, |, month of death", "", 
                                Month.of.death),
          Area = gsub(", place of residence", "", Area),
          Area = factor(Area, levels = myAreas)) %>%
-  filter(Unit == "Number") %>%
-  bind_rows(yy) %>%
+  filter(Unit == "Number", !is.na(Area)) %>%
   rename(Total.Deaths=Value) %>%
   left_join(p1, by = c("Area", "Year")) %>%
   mutate(Death.Rate = 1000 * Total.Deaths / Population) %>%
@@ -188,6 +183,8 @@ ggsave("canada_deaths_01_01.png", mp, width = 10, height = 4, bg = "white")
 
 # Total Deaths 2010-2023 {.tabset .tabset-pills}
 
+## Plotting Function
+
 ```{r}
 # Create plotting function
 ggWeeklyDeaths <- function(myArea = "Canada", xmin = 2010) {
@@ -212,7 +209,7 @@ ggWeeklyDeaths <- function(myArea = "Canada", xmin = 2010) {
 
 ---
 
-### Canada
+## Canada {.active}
 
 ![](canada_deaths_02_01.png)
 
@@ -223,7 +220,7 @@ ggsave("canada_deaths_02_01.png", mp, width = 8, height = 4)
 
 ---
 
-### Ontario
+## Ontario
 
 ![](canada_deaths_02_02.png)
 
@@ -234,7 +231,7 @@ ggsave("canada_deaths_02_02.png", mp, width = 8, height = 4)
 
 ---
 
-### Quebec
+## Quebec
 
 ![](canada_deaths_02_03.png)
 
@@ -245,7 +242,7 @@ ggsave("canada_deaths_02_03.png", mp, width = 8, height = 4)
 
 ---
 
-### British Columbia
+## British Columbia
 
 ![](canada_deaths_02_04.png)
 
@@ -256,7 +253,7 @@ ggsave("canada_deaths_02_04.png", mp, width = 8, height = 4)
 
 ---
 
-### Alberta
+## Alberta
 
 ![](canada_deaths_02_05.png)
 
@@ -267,7 +264,7 @@ ggsave("canada_deaths_02_05.png", mp, width = 8, height = 4)
 
 ---
 
-### Saskatchewan
+## Saskatchewan
 
 ![](canada_deaths_02_06.png)
 
@@ -278,7 +275,7 @@ ggsave("canada_deaths_02_06.png", mp, width = 8, height = 4)
 
 ---
 
-### Manitoba
+## Manitoba
 
 ![](canada_deaths_02_07.png)
 
@@ -291,7 +288,7 @@ ggsave("canada_deaths_02_07.png", mp, width = 8, height = 4)
 
 # Total Deaths 2016-2023 {.tabset .tabset-pills}
 
-### Canada
+## Canada
 
 ![](canada_deaths_03_01.png)
 
@@ -302,7 +299,7 @@ ggsave("canada_deaths_03_01.png", mp, width = 8, height = 4)
 
 ---
 
-### Ontario
+## Ontario
 
 ![](canada_deaths_03_02.png)
 
@@ -313,7 +310,7 @@ ggsave("canada_deaths_03_02.png", mp, width = 8, height = 4)
 
 ---
 
-### Quebec
+## Quebec
 
 ![](canada_deaths_03_03.png)
 
@@ -324,7 +321,7 @@ ggsave("canada_deaths_03_03.png", mp, width = 8, height = 4)
 
 ---
 
-### British Columbia
+## British Columbia
 
 ![](canada_deaths_03_04.png)
 
@@ -335,7 +332,7 @@ ggsave("canada_deaths_03_04.png", mp, width = 8, height = 4)
 
 ---
 
-### Alberta
+## Alberta
 
 ![](canada_deaths_03_05.png)
 
@@ -346,7 +343,7 @@ ggsave("canada_deaths_03_05.png", mp, width = 8, height = 4)
 
 ---
 
-### Saskatchewan
+## Saskatchewan
 
 ![](canada_deaths_03_06.png)
 
@@ -357,7 +354,7 @@ ggsave("canada_deaths_03_06.png", mp, width = 8, height = 4)
 
 ---
 
-### Manitoba
+## Manitoba
 
 ![](canada_deaths_03_07.png)
 
@@ -392,7 +389,7 @@ mp <- ggplot(xx, aes(x = JulianDay, y = Value / 1000,
   geom_line() +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
   scale_color_manual(name = NULL, values = myColors) +
-  scale_alpha_manual(name = NULL, values = c(0.5,1,1,1,1)) +
+  scale_alpha_manual(name = NULL, values = c(0.5,1,1,1,1,1)) +
   theme_agData(legend.position = "bottom") +
   labs(y = "Thousand Deaths", x = "Julian Day", caption = myCaption)
 ggsave("canada_deaths_04_01.png", mp, width = 15, height = 8)
@@ -458,8 +455,7 @@ ggradar(xx, grid.min = 0, grid.max = 10000)#, plot.title = "Canada")#, legend.po
 
 # Respiratory Season Graphs {.tabset .tabset-pills}
 
-
-## Plotting function
+## Plotting Function
 
 ```{r class.source = "fold-show"}
 # Create plotting function
@@ -490,7 +486,7 @@ ggRespSeasons <- function(myArea) {
 
 ---
 
-## Canada
+## Canada {.active}
 
 ![](canada_deaths_05_01.png)
 
@@ -569,6 +565,8 @@ ggsave("canada_deaths_05_07.png", mp, width = 6, height = 4)
 
 # Respiratory Season Graphs by Age Group {.tabset .tabset-pills}
 
+## Plotting Function
+
 ```{r}
 # Create plotting function
 ggRespSeasonsAge <- function(myArea = "Canada") {
@@ -587,8 +585,8 @@ ggRespSeasonsAge <- function(myArea = "Canada") {
     geom_point(data = zz, size = 1.5, pch = 13, color = "black", alpha = 0.7) +
     facet_grid(. ~ Age, scales = "free_y") +#labeller = label_wrap_gen(width = 10)
     scale_color_manual(name = NULL, values = myColors) +
-    scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8)) +
-    scale_size_manual(name = NULL, values = c(0.3,0.75,0.75,0.75,0.75,0.75)) +
+    scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8,0.8)) +
+    scale_size_manual(name = NULL, values = c(0.3,0.75,0.75,0.75,0.75,0.75,0.75)) +
     scale_x_continuous(breaks = myBreaks, labels = myLabels) +
     theme_agData(legend.position = "bottom",
                  axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -598,7 +596,7 @@ ggRespSeasonsAge <- function(myArea = "Canada") {
 
 ---
 
-## Canada
+## Canada {.active}
 
 ![](canada_deaths_06_01.png)
 
@@ -681,6 +679,8 @@ ggsave("canada_deaths_06_07.png", mp, width = 10, height = 4)
 
 # Yearly Deaths by Age Group {.tabset .tabset-pills}
 
+## Plotting Function
+
 ```{r}
 # Create plotting function
 ggYearlyDeaths <- function(myArea = "Canada") {
@@ -695,7 +695,7 @@ ggYearlyDeaths <- function(myArea = "Canada") {
     geom_col(color = "black") +
     facet_grid(. ~ Age) +
     scale_fill_manual(name = NULL, values = myColors) +
-    scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8)) +
+    scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8,0.8)) +
     scale_x_continuous(breaks = seq(2010, 2022, 2)) +
     theme_agData(legend.position = "none",
                  axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -706,7 +706,7 @@ ggYearlyDeaths <- function(myArea = "Canada") {
 
 ---
 
-## Canada
+## Canada {.active}
 
 ![](canada_deaths_07_01.png)
 
@@ -1010,6 +1010,8 @@ sum(xx$Value[xx$Year%in%2015:2022 & xx$Measurement == "Deaths"] - xx$Value[xx$Ye
 
 # Weekly Deaths Ages 0-44 {.tabset .tabset-pills}
 
+## Plotting Function
+
 ```{r}
 ggWeeklyDeaths044 <- function(myArea = "Canada") {
   # Prep data
@@ -1031,7 +1033,7 @@ ggWeeklyDeaths044 <- function(myArea = "Canada") {
 
 ---
 
-## Canada
+## Canada {.active}
 
 ![](canada_deaths_09_01.png)
 

@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-https://www.gapminder.org/
+> - `r shiny::icon("globe")` [https://www.gapminder.org/](https://www.gapminder.org/){target="_blank"}
 
 ```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")

@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 # Data
 
-> - `r shiny::icon("globe")` https://worldhappiness.report/ed/2024/
+> - `r shiny::icon("globe")` [https://worldhappiness.report/ed/2024/](https://worldhappiness.report/ed/2024/){target="_blank"}
 > - `r shiny::icon("save")` [Table2.1.xlsx](Table2.1.xlsx)
 > - `r shiny::icon("save")` [Table2.2.txt](Table2.2.txt)
 

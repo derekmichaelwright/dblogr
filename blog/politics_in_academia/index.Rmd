@@ -13,11 +13,11 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 # Data
 
-> - `r shiny::icon("globe")` https://macdonaldlaurier.ca/the-viewpoint-diversity-crisis-at-canadian-universities/
+> - `r shiny::icon("globe")` [https://macdonaldlaurier.ca/the-viewpoint-diversity-crisis-at-canadian-universities/](https://macdonaldlaurier.ca/the-viewpoint-diversity-crisis-at-canadian-universities/){target="_blank"}
 > - `r shiny::icon("globe")` https://www.jstor.org/stable/pdf/canajsocicahican.33.4.873.pdf
 > - `r shiny::icon("save")` [data_canada_academia.csv](data_canada_academia.csv)
 
-> - `r shiny::icon("globe")` https://www.pewresearch.org/science/2023/11/14/americans-trust-in-scientists-positive-views-of-science-continue-to-decline/
+> - `r shiny::icon("globe")` [https://www.pewresearch.org/science/2023/11/14/americans-trust-in-scientists-positive-views-of-science-continue-to-decline/](https://www.pewresearch.org/science/2023/11/14/americans-trust-in-scientists-positive-views-of-science-continue-to-decline/){target="_blank"}
 > - `r shiny::icon("save")` [data_science_trust.xlsx](data_science_trust.xlsx)
 
 ---

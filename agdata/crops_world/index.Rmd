@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-> - `r shiny::icon("globe")` http://www.fao.org/faostat/en/#data/QC
+> - `r shiny::icon("globe")` [http://www.fao.org/faostat/en/#data/QC](http://www.fao.org/faostat/en/#data/QC){target="_blank"}
 > - `r shiny::icon("save")` [agData_FAO_Crops.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Crops.csv.gz)
 
 ---

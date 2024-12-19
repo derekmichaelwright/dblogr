@@ -26,14 +26,14 @@ The data for this vignette comes from two sources:
 
 > - `r shiny::icon("save")` [AGILE_Expts.csv](AGILE_Expts.csv)
 > - `r shiny::icon("save")` [AGILE_R_EnvData.csv](AGILE_R_EnvData.csv)
-> - `r shiny::icon("r-project")` https://github.com/allogamous/EnvRtype
-> - `r shiny::icon("r-project")` https://github.com/rspatial/geosphere
+> - `r shiny::icon("r-project")` [https://github.com/allogamous/EnvRtype](https://github.com/allogamous/EnvRtype){target="_blank"}
+> - `r shiny::icon("r-project")` [https://github.com/rspatial/geosphere](https://github.com/rspatial/geosphere){target="_blank"}
 
 2. Manually collected data from various our lentil field trials in the AGILE project.
 
 > - `r shiny::icon("save")` [AGILE_My_EnvData.csv](AGILE_My_EnvData.csv)
-> - `r shiny::icon("github")` [academic/envdata/AGILE_EnvData/](https://github.com/derekmichaelwright/dblogr/tree/main/academic/envdata/AGILE_EnvData/)
-> - `r shiny::icon("globe")` [**knowpulse.usask.ca/**](http://knowpulse.usask.ca/portal/)
+> - `r shiny::icon("github")` [academic/envdata/AGILE_EnvData/](https://github.com/derekmichaelwright/dblogr/tree/main/academic/envdata/AGILE_EnvData/){target="_blank"}
+> - `r shiny::icon("globe")` [**knowpulse.usask.ca/**](http://knowpulse.usask.ca/portal/){target="_blank"}
 
 ---
 

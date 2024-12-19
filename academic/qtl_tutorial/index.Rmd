@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Introduction
 
-> - `r shiny::icon("globe")` `qtl2` Tutorial: https://kbroman.org/qtl2/assets/vignettes/user_guide.html
+> - `r shiny::icon("globe")` `qtl2` Tutorial: [https://kbroman.org/qtl2/assets/vignettes/user_guide.html](https://kbroman.org/qtl2/assets/vignettes/user_guide.html){target="_blank"}
 
 Running a QTL analysis in <i class="fab fa-r-project"></i> can be done with a few simple steps. This tutorial will go through a couple quick examples with a few lentil (*Lens culinaris*) **recombinant inbred line** (**RIL**) populations (**LR68**, **LR89** & **LR95**).
 
@@ -42,7 +42,7 @@ myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AG
 
 ## Data/Input Files
 
-> - `r shiny::icon("globe")` https://kbroman.org/qtl2/assets/vignettes/input_files.html
+> - `r shiny::icon("globe")` [https://kbroman.org/qtl2/assets/vignettes/input_files.html](https://kbroman.org/qtl2/assets/vignettes/input_files.html){target="_blank"}
 
 In order to run the analysis we first need to set up an `input` folder with properly formatted files containing our ***phenotyope*** data, ***genotype*** data, a ***genetic map*** and a ***yaml*** file with details for running the analysis. The `input` folders used in this vignette can be downloaded below:
 
@@ -374,7 +374,7 @@ ggsave("qtl_tutorial_LR68_11.png", mp, width = 8, height = 6)
 
 If you have many traits, plotting the results into a pdf can be a useful.
 
-> - `r shiny::icon("save")` [qtl_tutorial_results_LR68.pdf](qtl_tutorial_results_LR68.pdf)
+> - `r shiny::icon("file-pdf")` [qtl_tutorial_results_LR68.pdf](qtl_tutorial_results_LR68.pdf)
 
 ```{r results="hide"}
 pdf("qtl_tutorial_results_LR68.pdf", width = 12, height = 4)

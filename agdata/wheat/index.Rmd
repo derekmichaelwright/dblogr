@@ -15,8 +15,9 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 http://www.fao.org/faostat/en/#data/QC
 
-> - `r shiny::icon("globe")` http://www.fao.org/faostat/en/#data/QA
+> - `r shiny::icon("globe")` [http://www.fao.org/faostat/en/#data/QA](http://www.fao.org/faostat/en/#data/QA){target="_blank"}
 > - `r shiny::icon("save")` [agData_FAO_Livestock.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Livestock.csv.gz)
+
 > - `r shiny::icon("save")` [agData_FAO_Country_Table.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Country_Table.csv.gz)
 
 # Prepare Data
