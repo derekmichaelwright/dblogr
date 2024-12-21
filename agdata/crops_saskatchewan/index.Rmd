@@ -413,9 +413,9 @@ ggsave("crops_saskatchewan_2_05.png", mp, width = 6, height = 4)
 
 ---
 
-## Wheat, Barley & Oates
+## Pulses
 
-![](crops_saskatchewan_2_05.png)
+![](crops_saskatchewan_2_06.png)
 
 ```{r}
 # Prep data

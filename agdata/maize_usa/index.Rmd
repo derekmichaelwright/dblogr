@@ -242,7 +242,7 @@ ggsave("maize_usa_06.png", mp, width = 6, height = 4)
 
 ---
 
-# Yield Gains
+# Yield Gains {.tabset .tabset-pills}
 
 ## Hectares per tonne
 

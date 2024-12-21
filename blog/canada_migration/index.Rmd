@@ -56,8 +56,9 @@ library(gganimate)
 ```{r}
 # Prep data
 myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
-myMeasures <- c("Births", "Deaths", "Emigrants", "Immigrants", "Net non-permanent residents")
-myColors <- c("darkgreen", "black", "darkred", "steelblue", "darkblue")
+myMeasures <- c("Births", "Deaths", "Net emigration", "Immigrants", 
+                "Net non-permanent residents", "Net interprovincial migration")
+myColors <- c("darkgreen", "black", "darkred", "steelblue", "darkblue", "darkorange")
 myAreas <- c("Canada", "British Columbia", "Alberta", "Saskatchewan", "Manitoba",
              "Ontario", "Quebec", "New Brunswick", "Nova Scotia",
              "Prince Edward Island", "Newfoundland and Labrador",
@@ -98,6 +99,7 @@ d2 <- read.csv("1710000801_databaseLoadingData.csv") %>%
          Unit=UOM, Value=VALUE) %>%
   mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
          Area = factor(Area, levels = myAreas),
+         Measurement = factor(Measurement, levels = myMeasures),
          Year = as.numeric(substr(Date, 1,4)),
          Date = factor(Date))
 #
@@ -139,7 +141,7 @@ d6 <- read.csv("1710015401_databaseLoadingData.csv")
 ```{r}
 # Prep data
 xx <- d2 %>% 
-  filter(Area == "Canada", Measurement %in% myMeasures) %>%
+  filter(Area == "Canada", Measurement %in% myMeasures[1:5]) %>%
   mutate(Measurement = factor(Measurement, levels = myMeasures))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
@@ -192,8 +194,8 @@ ggsave("canada_migration_1_02.png", mp, width = 14, height = 7)
 ```{r}
 # Prep data
 xx <- d2 %>% 
-  filter(Area == "Canada", Measurement %in% c("Immigrants", "Emigrants")) %>%
-  mutate(Value = ifelse(Measurement == "Emigrants", -Value, Value))
+  filter(Area == "Canada", Measurement %in% c("Immigrants", "Net emigration")) %>%
+  mutate(Value = ifelse(Measurement == "Net emigration", -Value, Value))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Measurement)) +
   geom_hline(yintercept = 0) +
@@ -218,8 +220,8 @@ ggsave("canada_migration_1_03.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 xx <- d2 %>% 
-  filter(Measurement %in% c("Immigrants", "Emigrants")) %>%
-  mutate(Value = ifelse(Measurement == "Emigrants", -Value, Value))
+  filter(Measurement %in% c("Immigrants", "Net emigration")) %>%
+  mutate(Value = ifelse(Measurement == "Net emigration", -Value, Value))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Measurement)) +
   geom_hline(yintercept = 0) +
@@ -243,9 +245,9 @@ ggsave("canada_migration_1_04.png", mp, width = 14, height = 7)
 ```{r}
 # Prep data
 xx <- d2 %>% 
-  filter(Measurement %in% c("Immigrants", "Emigrants")) %>%
+  filter(Measurement %in% c("Immigrants", "Net emigration")) %>%
   spread(Measurement, Value) %>%
-  mutate(Net = Immigrants - Emigrants,
+  mutate(Net = Immigrants - `Net emigration`,
          Group = ifelse(Net > 0, "Positive", "Negative"))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Net / 1000, fill = Group)) +
