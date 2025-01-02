@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 # Data
 
-> - `r shiny::icon("globe")` 
+> - `r shiny::icon("globe")` [](){target="_blank"}
 > - `r shiny::icon("save")` [data_.csv](data_.csv)
 
 ---
@@ -28,7 +28,7 @@ library(agData)
 ```{r}
 # Prep data
 myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: "
-dd <- read.csv("data_canada_academia.csv")
+dd <- read.csv("data_.csv")
 ```
 
 ---
@@ -38,6 +38,8 @@ dd <- read.csv("data_canada_academia.csv")
 ![](01.png)
 
 ```{r}
+# Prep data
+xx <- dd
 # Plot
 mp <- ggplot(dd, aes(x = , y = , fill = )) + 
   geom_col(alpha = 0.7) +
@@ -52,3 +54,11 @@ ggsave("01.png", mp, width = 6, height = 4)
 ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
+```{r}
+mp <- ggInterProv_ani("British Columbia")
+anim_save("canada_migration_gif_01.gif", mp, 
+          nframes = 300, fps = 10, end_pause = 10, 
+          width = 600, height = 400, res = 80, units = "px")
+```
+
+---

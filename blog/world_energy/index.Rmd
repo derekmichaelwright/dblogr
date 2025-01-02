@@ -29,12 +29,6 @@ Extreme poverty & literacy
 > - `r shiny::icon("save")` [world-population-in-extreme-poverty-absolute.csv](world-population-in-extreme-poverty-absolute.csv)
 > - `r shiny::icon("save")` [literate-and-illiterate-world-population.csv](literate-and-illiterate-world-population.csv)
 
-World Bank Group - IEA
-
-> - `r shiny::icon("globe")` [https://energyforgrowth.org/article/the-fridge-goes-viral-as-an-illustration-of-global-energy-inequality/](https://energyforgrowth.org/article/the-fridge-goes-viral-as-an-illustration-of-global-energy-inequality/){target="_blank"}
-> - `r shiny::icon("globe")` [https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC](https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC){target="_blank"}
-> - `r shiny::icon("save")` [API_EG.USE.ELEC.KH.PC_DS2_en_csv_v2_2076.csv](API_EG.USE.ELEC.KH.PC_DS2_en_csv_v2_2076.csv)
-
 ---
 
 # Prepare Data
@@ -74,9 +68,10 @@ d2 <- read.csv("per-capita-energy-use.csv") %>%
 oldnames <- c("United States", "South Korea", "Brunei")
 newnames <- c("USA", "Republic of Korea", "Brunei Darussalam")
 d3 <- read.csv("consumption-co2-per-capita-vs-gdppc.csv") %>%
-  select(Country=Entity, Year, CO2=Annual.consumption.based.CO2.emissions..per.capita., 
+  select(Country=Entity, Year,
+         CO2=Per.capita.consumption.based.CO..emissions, 
          GDP=GDP.per.capita..PPP..constant.2017.international...,
-         Population=Population..historical.estimates.) %>%
+         Population=Population..historical.) %>%
   mutate(Country = plyr::mapvalues(Country, oldnames, newnames)) %>%
   left_join(agData_FAO_Country_Table, by = "Country") %>% 
   filter(!(is.na(GDP) & is.na(CO2) & is.na(Population)))
@@ -508,7 +503,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   geom_line(linewidth = 1.5, alpha = 0.7) +
   scale_color_manual(name = NULL, values = myColors) +
   theme_agData() +
-  labs(title = "Per Capita Emmisions", x = NULL,
+  labs(title = "Per Capita Energy Consumption", x = NULL,
        y = "Thousand kWh Per Person", caption = myCaption_OWID)
 ggsave("world_energy_2_01.png", mp, width = 6, height = 4)
 ```
@@ -830,7 +825,7 @@ mp <- ggplot(d4, aes(x = Year, y = Percent, color = Measurement)) +
                      breaks = seq(0, 100, by = 10)) +
   scale_x_continuous(breaks = seq(1800, 2020, by = 20)) +
   theme_agData(legend.position = "bottom") +
-  guides(fill = guide_legend(nrow = 2, ncol = 1)) +
+  guides(color = guide_legend(nrow = 2, ncol = 1)) +
   labs(title = "Global Literacy Rates", x = NULL,
        y = "Percent", caption = myCaption_OWID)
 ggsave("world_energy_4_03.png", mp, width = 6, height = 4)
@@ -845,7 +840,7 @@ ggsave("world_energy_4_03.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 x1 <- d4 %>% filter(Measurement == "Not in extreme poverty")
-x2 <- d5%>% filter(Measurement == "Literate")
+x2 <- d5 %>% filter(Measurement == "Literate", Entity == "World")
 xx <- bind_rows(x1, x2)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Percent, color = Measurement)) +
@@ -892,13 +887,21 @@ ggsave("world_energy_4_05.png", mp, width = 6, height = 4)
 
 ---
 
+```{r echo = F, eval = F}
+
+World Bank Group - IEA
+
+> - `r shiny::icon("globe")` [https://energyforgrowth.org/article/the-fridge-goes-viral-as-an-illustration-of-global-energy-inequality/](https://energyforgrowth.org/article/the-fridge-goes-viral-as-an-illustration-of-global-energy-inequality/){target="_blank"}
+> - `r shiny::icon("globe")` [https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC](https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC){target="_blank"}
+> - `r shiny::icon("save")` [API_EG.USE.ELEC.KH.PC_DS2_en_csv_v2_2076.csv](API_EG.USE.ELEC.KH.PC_DS2_en_csv_v2_2076.csv)
+
 # Electricity {.tabset .tabset-pills}
 
 ## Countries
 
 ![](world_energy_5_01.png)
 
-```{r}
+#```{r}
 # Prep data
 myAreas <- c("Canada", "United States", "Germany", "Africa Eastern and Southern")
 xx <- d6 %>% filter(Country.Name %in% myAreas) %>%
@@ -911,7 +914,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Country.Name)) +
   labs(title = "Electricity Use", x = NULL,
        y = "kWh per capita", caption = myCaption_IEA)
 ggsave("world_energy_5_01.png", mp, width = 6, height = 4)
-```
+#```
 
 ---
 
@@ -921,7 +924,7 @@ ggsave("world_energy_5_01.png", mp, width = 6, height = 4)
 
 ![](world_energy_5_02.png)
 
-```{r}
+#```{r}
 # Prep data
 myAreas <- c("Ethiopia", "Tanzania", "Liberia", "Nigeria", "Kenya", "Ghana", "My fridge")
 yy <- data.frame(Country.Name = "My fridge", Year = 2010, Value = 459, Group = "My fridge")
@@ -939,7 +942,7 @@ mp <- ggplot(xx, aes(x = Country.Name, y = Value)) +
   labs(title = "Electricity Use", x = NULL,
        y = "kWh per capita", caption = myCaption_IEA)
 ggsave("world_energy_5_02.png", mp, width = 6, height = 4)
-```
+#```
 
 ---
 
@@ -947,7 +950,7 @@ ggsave("world_energy_5_02.png", mp, width = 6, height = 4)
 
 ![](world_energy_5_03.png)
 
-```{r}
+#```{r}
 # Prep data
 myAreas <- c("Ethiopia", "Tanzania", "Libya", "Nigeria", "Kenya", "Ghana")
 myColors <- c("darkgreen", "steelblue", "darkblue", "darkorange", "black", "darkred")
@@ -961,7 +964,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Country.Name)) +
   labs(title = "Electricity Use", x = NULL,
        y = "kWh per capita", caption = myCaption_IEA)
 ggsave("world_energy_5_03.png", mp, width = 6, height = 4)
-```
+#```
 
 ---
 
@@ -971,7 +974,7 @@ ggsave("world_energy_5_03.png", mp, width = 6, height = 4)
 
 ![](world_energy_5_04.png)
 
-```{r}
+#```{r}
 # Prep data
 myAreas <- c("Africa Eastern and Southern", "Africa Western and Central",
              "Middle East & North Africa (excluding high income)",
@@ -986,7 +989,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Country.Name)) +
   labs(title = "Electricity Use", x = NULL,
        y = "kWh per capita", caption = myCaption_IEA)
 ggsave("world_energy_5_04.png", mp, width = 6, height = 4)
-```
+#```
 
 ---
 
@@ -994,7 +997,7 @@ ggsave("world_energy_5_04.png", mp, width = 6, height = 4)
 
 ![](world_energy_5_05.png)
 
-```{r}
+#```{r}
 # Prep data
 myAreas <- c("Ethiopia", "Rwanda", "Nigeria", "Kenya", "Ghana")
 xx <- d6 %>% filter(Country.Name %in% myAreas) %>%
@@ -1007,11 +1010,11 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Country.Name)) +
   labs(title = "Electricity Use", x = NULL,
        y = "kWh per capita", caption = myCaption_IEA)
 ggsave("world_energy_5_05.png", mp, width = 6, height = 4)
-```
+#```
 
 ---
 
-```{r eval = F, echo = F}
+#```{r eval = F, echo = F}
 #unique(d6$Country.Name)[order(unique(d6$Country.Name))]
 # Prep data
 myColors <- c("darkgreen", "darkgoldenrod2", "darkred",
@@ -1034,4 +1037,6 @@ mp <- ggplot(xx, aes(x = Area, y = Value, fill = Area)) +
                axis.text = element_text(angle = 45, hjust = 1)) +
   labs(y = NULL, x = NULL)
 ggsave("world_energy_9_01.png", mp, width = 4, height = 6)
+#```
+
 ```

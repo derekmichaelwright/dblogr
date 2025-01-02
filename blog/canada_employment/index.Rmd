@@ -597,7 +597,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
   scale_x_date(date_minor_breaks = "year") +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - Participation rate", x = NULL,
-       y = "Million", caption = myCaption)
+       y = "Percent", caption = myCaption)
 ggsave("canada_employment_3_01.png", mp, width = 8, height = 4)
 ```
 

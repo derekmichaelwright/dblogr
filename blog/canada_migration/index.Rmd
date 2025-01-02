@@ -153,7 +153,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canada - Population Dynamics", x = NULL,
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_01.png", mp, width = 6, height = 4)
+ggsave("canada_migration_1_01.png", mp, width = 7, height = 4)
 ```
 
 ```{r echo = F}
@@ -178,6 +178,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   scale_x_discrete(breaks = myDates) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
+  guides(color = guide_legend(nrow = 2)) +
   labs(title = "Population Dynamics", x = NULL,
        y = "Thousand People", caption = myCaption)
 ggsave("canada_migration_1_02.png", mp, width = 14, height = 7)
@@ -318,7 +319,7 @@ xx <- d2 %>%
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Measurement)) +
   geom_hline(yintercept = 0, line.width = 0.5) +
   geom_col(color = "black", alpha = 0.7, lwd = 0.3) +
-  scale_fill_manual(name = NULL, values = c("darkred", "steelblue")) +
+  scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   scale_x_discrete(breaks = myDates) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -342,7 +343,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Measurement)) +
   geom_hline(yintercept = 0, line.width = 0.5) +
   geom_col(color = "black", alpha = 0.7, lwd = 0.3) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
-  scale_fill_manual(name = NULL, values = c("darkred", "steelblue")) +
+  scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   scale_x_discrete(breaks = myDates) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -455,7 +456,7 @@ ggInterProv_ani <- function(myArea) {
 
 ---
 
-### British Columbia
+### British Columbia {.active}
 
 ![](canada_migration_gif_01.gif)
 
@@ -560,7 +561,7 @@ ggInterProv <- function(myArea) {
 
 ---
 
-### British Columbia
+### British Columbia {.active}
 
 ![](canada_migration_2_01.png)
 
@@ -800,7 +801,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000,
   scale_x_discrete(breaks = myDates) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Population Dynamics in The Maritimes", 
+  labs(title = "Population Dynamics in British Columbia", 
        y = "Thousand People", x = NULL, caption = myCaption)
 ggsave("canada_migration_3_04.png", mp, width = 6, height = 4)
 ```
@@ -856,7 +857,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, fill = Type)) +
   guides(fill = guide_legend(ncol = 1)) +
   labs(title = "Canada", subtitle = "Total, non-permanent residents", 
        y = "Million People", x = NULL, caption = myCaption)
-ggsave("canada_migration_4_01.png", mp, width = 6, height = 4)
+ggsave("canada_migration_4_01.png", mp, width = 6, height = 5)
 ```
 
 ---
@@ -903,7 +904,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Type)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   guides(fill = guide_legend(ncol = 2)) +
-  labs(title = "Total, permit holders and their family members", 
+  labs(title = " - Total, permit holders and their family members", 
        y = "Thousand People", x = NULL, caption = myCaption)
 ggsave("canada_migration_4_03.png", mp, width = 6, height = 5)
 ```
@@ -956,9 +957,9 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Type)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   guides(fill = guide_legend(ncol = 2)) +
-  labs(title = "Asylum claimants, protected persons and related groups", x = NULL,
-       y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_4_05.png", mp, width = 6, height = 5)
+  labs(title = "Canada - Asylum claimants, protected persons and related groups",
+       y = "Thousand People", x = NULL, caption = myCaption)
+ggsave("canada_migration_4_05.png", mp, width = 7, height = 5)
 ```
 
 ---

@@ -14,11 +14,13 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 # Data
 
 > - `r shiny::icon("globe")` [https://macdonaldlaurier.ca/the-viewpoint-diversity-crisis-at-canadian-universities/](https://macdonaldlaurier.ca/the-viewpoint-diversity-crisis-at-canadian-universities/){target="_blank"}
-> - `r shiny::icon("globe")` https://www.jstor.org/stable/pdf/canajsocicahican.33.4.873.pdf
-> - `r shiny::icon("save")` [data_canada_academia.csv](data_canada_academia.csv)
+> - `r shiny::icon("file-pdf")` https://www.jstor.org/stable/pdf/canajsocicahican.33.4.873.pdf
 
 > - `r shiny::icon("globe")` [https://www.pewresearch.org/science/2023/11/14/americans-trust-in-scientists-positive-views-of-science-continue-to-decline/](https://www.pewresearch.org/science/2023/11/14/americans-trust-in-scientists-positive-views-of-science-continue-to-decline/){target="_blank"}
-> - `r shiny::icon("save")` [data_science_trust.xlsx](data_science_trust.xlsx)
+
+> - `r shiny::icon("file-pdf")` [https://climate-science.press/wp-content/uploads/2022/02/012129_2018_Article_9700.pdf](https://climate-science.press/wp-content/uploads/2022/02/012129_2018_Article_9700.pdf){target="_blank"}
+
+> - `r shiny::icon("save")` [data_politics_in_academia.xlsx](data_politics_in_academia.xlsx)
 
 ---
 
@@ -34,15 +36,24 @@ library(readxl)
 # Prep data
 myCaption1 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: MLI"
 myCaption2 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Nakhaie & Adam (2008)"
-d1 <- read.csv("data_canada_academia.csv") %>%
+d1 <- read_xlsx("data_politics_in_academia.xlsx", "Canada") %>%
   mutate(Party = factor(Party, levels = unique(.$Party)),
          Measurement = factor(Measurement, unique(.$Measurement)))
 #
 myCaption3 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Pew Research"
 myRespones <- c("Mostly positive", "Equal positive and negative", "Mostly negative")
-d2 <- read_xlsx("data_science_trust.xlsx", "Effect on Society") %>%
-  mutate(Response = factor(Response, levels = myRespones))
-d3 <- read_xlsx("data_science_trust.xlsx", "Trust")
+d2 <- read_xlsx("data_politics_in_academia.xlsx", "Effect on Society") %>%
+  mutate(Date = paste(Month, Year),
+         Response = factor(Response, levels = myRespones))
+d3 <- read_xlsx("data_politics_in_academia.xlsx", "Trust") %>%
+  mutate(Date = paste(Month, Year),
+         Label_Pos = ifelse(Response != "A fair amount", Percent / 2, NA))
+#
+myCaption4 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Lab Langbert (2018)"
+d4 <- read_xlsx("data_politics_in_academia.xlsx", "Fields") %>%
+  mutate(Field = factor(Field, levels = .$Field),
+         Percent_Dem = 100 * (Democrats) / (Democrats + Republicans),
+         Percent_Rep = 100 * (Republicans) / (Democrats + Republicans))
 ```
 
 ---
@@ -55,7 +66,7 @@ d3 <- read_xlsx("data_science_trust.xlsx", "Trust")
 
 ```{r}
 # Plot
-mp <- ggplot(d1, aes(x = Party, y = X2021, fill = Measurement)) + 
+mp <- ggplot(d1, aes(x = Party, y = `2021`, fill = Measurement)) + 
   geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
   theme_agData(legend.position = "bottom") +
@@ -76,7 +87,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ```{r}
 # Plot
-mp <- ggplot(d1, aes(x = Party, y = X2000, fill = Measurement)) + 
+mp <- ggplot(d1, aes(x = Party, y = `2000`, fill = Measurement)) + 
   geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
   theme_agData(legend.position = "bottom") +
@@ -93,7 +104,7 @@ ggsave("politics_in_academia_1_02.png", mp, width = 6, height = 4)
 
 ```{r}
 # Plot
-mp <- ggplot(d1, aes(x = Party, y = X1997, fill = Measurement)) + 
+mp <- ggplot(d1, aes(x = Party, y = `1997`, fill = Measurement)) + 
   geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
   theme_agData(legend.position = "bottom") +
@@ -110,7 +121,7 @@ ggsave("politics_in_academia_1_03.png", mp, width = 6, height = 4)
 
 ```{r}
 # Plot
-mp <- ggplot(d1, aes(x = Party, y = X1993, fill = Measurement)) + 
+mp <- ggplot(d1, aes(x = Party, y = `1993`, fill = Measurement)) + 
   geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
   theme_agData(legend.position = "bottom") +
@@ -121,13 +132,15 @@ ggsave("politics_in_academia_1_04.png", mp, width = 6, height = 4)
 
 ---
 
-# Trust in Science
+# Public Opinion {.tabset .tabset-pills}
+
+## Trust in Science
 
 ![](politics_in_academia_2_01.png)
 
-```{r eval = F, echo = F}
+```{r}
 # Prep data
-mySubtitle <- "Percent of U.S. adults who have ___ of confidence in scientists to act in the best interest of the public"
+mySubtitle <- "Percent of U.S. adults who say science has had a(n)\n___ effect on society"
 # Plot
 mp <- ggplot(d2, aes(x = Date, y = Percent, fill = Response)) + 
   geom_col(color = "black", alpha = 0.7) +
@@ -135,5 +148,52 @@ mp <- ggplot(d2, aes(x = Date, y = Percent, fill = Response)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Trust in Science", subtitle = mySubtitle,
        y = "Percent", x = NULL, caption = myCaption3)
-ggsave("politics_in_academia_2_01.png", mp, width = 6, height = 4)
+ggsave("politics_in_academia_2_01.png", mp, width = 5, height = 4)
 ```
+
+---
+
+## Positive or Negative
+
+![](politics_in_academia_2_02.png)
+
+```{r}
+# Prep data
+mySubtitle <- "Percent of U.S. adults who have ___ of confidence in scientists to\nact in the best interest of the public"
+# Plot
+mp <- ggplot(d3, aes(x = Date)) + 
+  geom_col(aes(y = Percent, fill = Response), 
+           color = "black", alpha = 0.7) +
+  geom_label(aes(label = Percent, y = Label_Pos)) +
+  scale_fill_manual(name = NULL, values = c("darkgreen", "steelblue", "darkred")) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Trust in Science", subtitle = mySubtitle,
+       y = "Percent", x = NULL, caption = myCaption3)
+ggsave("politics_in_academia_2_02.png", mp, width = 5, height = 4)
+```
+
+---
+
+# Academic Fields
+
+![](politics_in_academia_3_01.png)
+
+```{r}
+# Prep data
+xx <- d4 %>% select(-Democrats, -Republicans) %>%
+  rename(Democrats=Percent_Dem, Republicans= Percent_Rep) %>%
+  gather(Party, Percent, 2:3) %>%
+  mutate(Party = factor(Party, levels = c("Republicans","Democrats")))
+# Plot
+mp <- ggplot(xx, aes(x = Field, y = Percent, label = round(Percent))) + 
+  geom_col(aes(fill = Party), color = "black", alpha = 0.7) +
+  geom_label(data = xx %>% filter(Party == "Democrats"), nudge_y = -5) +
+  scale_fill_manual(name = NULL, values = c("darkred","steelblue")) +
+  theme_agData(legend.position = "bottom") +
+  coord_flip() +
+  labs(title = "Party AffiliationTrust in Science", 
+       y = "Percent", x = NULL, caption = myCaption4)
+ggsave("politics_in_academia_3_01.png", mp, width = 6, height = 8)
+```
+
+---
