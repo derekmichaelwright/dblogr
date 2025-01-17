@@ -2,7 +2,7 @@
 title: "CBC Finances"
 subtitle: "A look at CBC finances - government funding, ad revenue and total profit"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include=FALSE}

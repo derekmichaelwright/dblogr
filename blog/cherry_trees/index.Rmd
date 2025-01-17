@@ -2,7 +2,7 @@
 title: "Cherry Tree Flowering Date"
 subtitle: "Historical series of phenological data for cherry tree flowering at Kyoto City"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include=FALSE}

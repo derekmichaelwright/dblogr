@@ -1,7 +1,7 @@
 ---
-title: "www.dblogr.com/"
+title: "dblogr"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include=FALSE}
@@ -16,7 +16,7 @@ library(shiny)
 
 Welcome to the personal website for Derek Michael Wright
 
-**www.dblogr.com/** or **derekmichaelwright.github.io/dblogr**
+**https://derekmichaelwright.github.io/dblogr/home**
 
 ---
 
@@ -52,7 +52,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 **Socials**
 
 - `r icon("github")`  [github.com/derekmichaelwright](https://github.com/derekmichaelwright){target="_blank"}
-- `r icon("twitter")` [twitter.com/DerekMWright](https://x.com/DerekMWright){target="_blank"} 
+- `r icon("x-twitter")` [twitter.com/DerekMWright](https://x.com/DerekMWright){target="_blank"} 
 
 </div></div>
 

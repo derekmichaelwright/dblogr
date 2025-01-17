@@ -2,7 +2,7 @@
 title: "Hex Stickers"
 subtitle: "Creation of hex stickers with R"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
 
 ```{r setup, include = FALSE}
@@ -34,7 +34,7 @@ mp <- ggplot(xx, aes(x = "", y = Value)) +
   coord_flip() +
   theme_void() +
   theme(plot.caption = element_text(size = 20, hjust = 0.5, family = "Aller_Rg")) +
-  labs(caption = "www.dblogr.com/")
+  labs(caption = "derekmichaelwright.github.io/dblogr/")
 #
 sticker(filename="logo_dblogr.png", package="dblogr", 
         p_size = 35, p_x = 1, p_y = 1.3, p_color = "black",
@@ -43,8 +43,9 @@ sticker(filename="logo_dblogr.png", package="dblogr",
         # Border
         h_fill = "grey90", h_color = "darkgreen", h_size = 1.5,
         # Url
-        url = "derekmichaelwright.github.io/dblogr/", 
-        u_color = "black", u_x = 1, u_y = 0.09, u_size = 4 )
+        #url = "derekmichaelwright.github.io/dblogr/", 
+        #u_color = "black", u_x = 1, u_y = 0.09, u_size = 4 
+        )
 ```
 
 ---
