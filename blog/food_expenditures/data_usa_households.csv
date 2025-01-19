@@ -1,51 +1,51 @@
-Year,Measurement,Unit,Value,,,,,,
-1901,Clothing allocation,Percent,14,,,,,,
-1918,Clothing allocation,Percent,16.6,,,,,,
-1934,Clothing allocation,Percent,10.6,,,,,,
-1950,Clothing allocation,Percent,11.5,,,,,,
-1960,Clothing allocation,Percent,10.4,,,,,,
-1970,Clothing allocation,Percent,7.8,,,,,,
-1984,Clothing allocation,Percent,6,,,,,,
-1996,Clothing allocation,Percent,5.1,,,,,,
-2003,Clothing allocation,Percent,4.2,,,,,,
-2020,Clothing allocation,Percent,2.3,,,,,,
-1901,Housing allocation,Percent,23.3,,,,,,
-1918,Housing allocation,Percent,23.3,,,,,,
-1934,Housing allocation,Percent,32,,,,,,
-1950,Housing allocation,Percent,27.2,,,,,,
-1960,Housing allocation,Percent,29.5,,,,,,
-1970,Housing allocation,Percent,30.8,,,,,,
-1984,Housing allocation,Percent,30.4,,,,,,
-1996,Housing allocation,Percent,32.1,,,,,,
-2003,Housing allocation,Percent,32.8,,,,,,
-2020,Housing allocation,Percent,34.9,,,,,,
-1901,Food allocation,Percent,42.5,,,,,,
-1918,Food allocation,Percent,38.2,,,,,,
-1934,Food allocation,Percent,33.6,,,,,,
-1950,Food allocation,Percent,29.7,,,,,,
-1960,Food allocation,Percent,24.3,,,,,,
-1970,Food allocation,Percent,19.3,,,,,,
-1984,Food allocation,Percent,15,,,,,,
-1996,Food allocation,Percent,13.8,,,,,,
-2003,Food allocation,Percent,13.1,,,,,,
-2020,Food allocation,Percent,11.9,,,,,,
-1901,Expenditures,Dollars,769,,,,,,
-1918,Expenditures,Dollars,1434,,,,,,
-1934,Expenditures,Dollars,1512,,,,,,
-1950,Expenditures,Dollars,3808,,,,,,
-1960,Expenditures,Dollars,5390,,,,,,
-1970,Expenditures,Dollars,8348,,,,,,
-1984,Expenditures,Dollars,21975,,,,,,
-1996,Expenditures,Dollars,34312,,,,,,
-2003,Expenditures,Dollars,40748,,,,,,
-2020,Expenditures,Dollars,61334,,,,,,
-1901,Household income,Dollars,750,,,,,,
-1918,Household income,Dollars,1518,,,,,,
-1934,Household income,Dollars,1524,,,,,,
-1950,Household income,Dollars,4237,,,,,,
-1960,Household income,Dollars,6691,,,,,,
-1970,Household income,Dollars,11419,,,,,,
-1984,Household income,Dollars,23464,,,,,,
-1996,Household income,Dollars,38983,,,,,,
-2003,Household income,Dollars,50302,,,,,,
-2020,Household income,Dollars,,,,,,,
+Year,Measurement,Unit,Value
+1901,Clothing allocation,Percent,14
+1918,Clothing allocation,Percent,16.6
+1934,Clothing allocation,Percent,10.6
+1950,Clothing allocation,Percent,11.5
+1960,Clothing allocation,Percent,10.4
+1970,Clothing allocation,Percent,7.8
+1984,Clothing allocation,Percent,6
+1996,Clothing allocation,Percent,5.1
+2003,Clothing allocation,Percent,4.2
+2020,Clothing allocation,Percent,2.3
+1901,Housing allocation,Percent,23.3
+1918,Housing allocation,Percent,23.3
+1934,Housing allocation,Percent,32
+1950,Housing allocation,Percent,27.2
+1960,Housing allocation,Percent,29.5
+1970,Housing allocation,Percent,30.8
+1984,Housing allocation,Percent,30.4
+1996,Housing allocation,Percent,32.1
+2003,Housing allocation,Percent,32.8
+2020,Housing allocation,Percent,34.9
+1901,Food allocation,Percent,42.5
+1918,Food allocation,Percent,38.2
+1934,Food allocation,Percent,33.6
+1950,Food allocation,Percent,29.7
+1960,Food allocation,Percent,24.3
+1970,Food allocation,Percent,19.3
+1984,Food allocation,Percent,15
+1996,Food allocation,Percent,13.8
+2003,Food allocation,Percent,13.1
+2020,Food allocation,Percent,11.9
+1901,Expenditures,Dollars,769
+1918,Expenditures,Dollars,1434
+1934,Expenditures,Dollars,1512
+1950,Expenditures,Dollars,3808
+1960,Expenditures,Dollars,5390
+1970,Expenditures,Dollars,8348
+1984,Expenditures,Dollars,21975
+1996,Expenditures,Dollars,34312
+2003,Expenditures,Dollars,40748
+2020,Expenditures,Dollars,61334
+1901,Household income,Dollars,750
+1918,Household income,Dollars,1518
+1934,Household income,Dollars,1524
+1950,Household income,Dollars,4237
+1960,Household income,Dollars,6691
+1970,Household income,Dollars,11419
+1984,Household income,Dollars,23464
+1996,Household income,Dollars,38983
+2003,Household income,Dollars,50302
+2020,Household income,Dollars,

@@ -28,7 +28,7 @@ library(gganimate)
 ```
 
 ```{r}
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
 ```
 
 ---

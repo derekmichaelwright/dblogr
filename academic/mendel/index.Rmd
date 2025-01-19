@@ -41,8 +41,8 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption1 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/"
-myCaption2 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Mendel (1865)"
+myCaption1 <- "derekmichaelwright.github.io/dblogr/"
+myCaption2 <- "derekmichaelwright.github.io/dblogr/ | Data: Mendel (1865)"
 #
 d1 <- read_xlsx("data_mendel.xlsx", "T1") %>% 
   mutate(Trait = factor(Trait, levels = unique(.$Trait)))

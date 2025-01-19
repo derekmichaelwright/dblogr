@@ -29,8 +29,8 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption1 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Indiana University"
-myCaption2 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Gallup"
+myCaption1 <- "derekmichaelwright.github.io/dblogr/ | Data: Indiana University"
+myCaption2 <- "derekmichaelwright.github.io/dblogr/ | Data: Gallup"
 myColors1 <- c("steelblue", "purple4", "darkslategrey", "darkred")
 myColors2 <- c("steelblue", "purple4", "darkred")
 #

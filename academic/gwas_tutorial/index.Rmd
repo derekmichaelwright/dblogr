@@ -61,7 +61,7 @@ file.copy(from = "C:/gitfolder/dblogr/content/academic/lentil_diversity_panel/le
 ```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/gwaspr")
 library(gwaspr)
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 ```
 
 ```{r eval = F, echo = F}

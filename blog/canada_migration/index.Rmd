@@ -55,7 +55,7 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 myMeasures <- c("Births", "Deaths", "Net emigration", "Immigrants", 
                 "Net non-permanent residents", "Net interprovincial migration")
 myColors <- c("darkgreen", "black", "darkred", "steelblue", "darkblue", "darkorange")

@@ -41,7 +41,7 @@ Truncating the y-axis is the most commonly used example for misleading graphs. I
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/"
+myCaption <- "derekmichaelwright.github.io/dblogr/"
 #
 xx <- data.frame(Company = c("Item A", "Item B", "Item C"),
                  Views   = c( 2555486,     2527246,     2519643))
@@ -340,7 +340,7 @@ In 1994 the first genetically engineered (GE) maize variety was released in the 
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: USDA"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: USDA"
 #
 xx <- agData_USDA_Grains %>%
   filter(Measurement == "Yield", Item == "Maize") 
@@ -383,7 +383,7 @@ The National Interagency Fire Center (NIFC) recently deleted some data from thei
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: NIFC"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: NIFC"
 #
 dd <- read.csv("data_fires_usa.csv") %>%
   mutate(Group = ifelse(Year < 1983, "Deleted", "Archived"),
@@ -424,7 +424,7 @@ The following is a comical example put out by US democrats. Impressively, this g
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: EIA"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: EIA"
 #
 xx <- read_xls("data_gas_prices_usa.xls", "Data 1", skip = 2) %>%
   rename(GasPrice=`Weekly U.S. Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)`) %>%
@@ -480,7 +480,7 @@ To help illustrate this, we can use some data from a flax field trial with a com
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: "
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: "
 #
 xx <- read.csv("data_augmented_designs_2.csv") %>%
   rename(MainCheck=Cp..plot.control., SubCheck=Csp..sub.plot.control.) %>%
@@ -523,7 +523,7 @@ We can also illustrate this by attempting different way to present results from 
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN & FAOSTAT"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN & FAOSTAT"
 #
 x1 <- read.csv("https://raw.githubusercontent.com/tonmcg/US_County_Level_Election_Results_08-20/master/US_County_Level_Presidential_Results_08-16.csv", 
                colClasses = c(rep("factor",2),rep("numeric",12))) %>%
@@ -606,7 +606,7 @@ ggsave("misleading_graphs_10.png", mp, width = 8, height = 5, bg = "grey90")
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: "
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: "
 #
 xx <- read.csv("data_anscombe.csv")
 # Plot
@@ -632,7 +632,7 @@ xx %>% group_by(DataSet) %>%
 ---
 
 ```{r eval = F, echo = F}
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN & FAOSTAT"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN & FAOSTAT"
 #
 # https://berkeley-earth-temperature.s3.us-west-1.amazonaws.com/Global/Complete_TAVG_daily.txt
 xx <- read.table("https://berkeley-earth-temperature.s3.us-west-1.amazonaws.com/Global/Complete_TAVG_daily.txt", skip = 23)

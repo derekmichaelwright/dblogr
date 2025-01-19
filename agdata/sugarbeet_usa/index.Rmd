@@ -28,7 +28,7 @@ library(agData)
 ```{r}
 # Prep data
 dd <- agData_USDA_Sugarbeet
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: USDA"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: USDA"
 ```
 
 ---

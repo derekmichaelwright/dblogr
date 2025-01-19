@@ -31,7 +31,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 #
 dd <- read.csv("3610066201_databaseLoadingData.csv") %>%
   select(Date=REF_DATE, Area=GEO, 

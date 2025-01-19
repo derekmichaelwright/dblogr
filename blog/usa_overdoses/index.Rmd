@@ -53,7 +53,7 @@ for(i in unique(dd$Area)) {
   if(sum(!is.na(xi$Rolling.4.Week.Mean)) < 1) { areas <- c(areas, i) }
 }
 dd <- dd %>% filter(!Area %in% areas)
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: CDC\nNote: most recent years data may be incomplete"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: CDC\nNote: most recent years data may be incomplete"
 ```
 
 ---

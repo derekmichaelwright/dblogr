@@ -33,7 +33,7 @@ library(gganimate)
 
 ```{r}
 # Prep Data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
 myRegions <- unique(agData_FAO_Country_Table$Region)
 mySubRegions <- unique(agData_FAO_Country_Table$SubRegion)
 myAreas <- c("World", myRegions, mySubRegions)

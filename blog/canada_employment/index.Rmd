@@ -49,7 +49,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 myAreas <- c("Canada", "British Columbia", "Alberta", "Saskatchewan", 
              "Manitoba", "Nova Scotia","Ontario", "Quebec", 
              "Newfoundland and Labrador", "New Brunswick", 

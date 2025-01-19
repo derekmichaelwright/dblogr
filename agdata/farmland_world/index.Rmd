@@ -49,7 +49,7 @@ d1 <- agData_FAO_LandUse %>%
          AreaPerPerson = Value / Population)
 d2 <- agData_FAO_LandUse
 #
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
 ```
 
 ---

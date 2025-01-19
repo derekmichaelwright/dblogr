@@ -83,7 +83,7 @@ Extra links
 
 ```{r}
 # Prep data
-myCaption1 <- paste("www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Johannsen (1903)")
+myCaption1 <- "derekmichaelwright.github.io/dblogr/ | Data: Johannsen (1903)"
 d1 <- read.csv("data_johannsen1903_1.csv") 
 d2 <- read.csv("data_johannsen1903_2.csv")
 ```

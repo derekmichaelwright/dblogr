@@ -29,7 +29,7 @@ library(readxl) # read_xlsx()
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 myColors <- c("darkgreen", "darkred", "steelblue")
 #
 d1 <- read_xlsx("data_canada_vaccines.xlsx", "Table 1") %>%

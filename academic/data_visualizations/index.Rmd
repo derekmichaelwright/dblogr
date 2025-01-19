@@ -69,7 +69,7 @@ write.csv(xx, "data_visualizations_1.csv", row.names = F)
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 myColors <- c("steelblue","darkgreen","darkorange")
 # Prep data
 d1 <- read.csv("data_visualizations_1.csv")

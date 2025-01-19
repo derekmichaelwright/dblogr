@@ -29,7 +29,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption = "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 myColors_Ind <- c("darkgreen", "darkslategray", "darkred", "steelblue")
 myColors_Sex <- c("palevioletred3","steelblue")
 myMeasures <- c("Self-employed", "Private sector", "Public sector", "Total")

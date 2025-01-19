@@ -30,7 +30,7 @@ library(gganimate)
 
 ```{r}
 myColors <- c("darkgreen", "darkgoldenrod3", "darkred", "black")
-myCaption <- "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: USDA"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: USDA"
 #
 dd <- agData_USDA_Lentil
 ```

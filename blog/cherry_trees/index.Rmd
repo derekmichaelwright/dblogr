@@ -27,7 +27,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: OPU"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: OPU"
 dd <- read.csv("KyotoFullFlower7.csv") %>%
   filter(!is.na(Full.flowering.date..DOY.))
 ```

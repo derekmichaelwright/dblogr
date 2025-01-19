@@ -29,7 +29,7 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: "
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: "
 d1 <- read_xls("Table2.1.xls")
 d2 <- read.table("Table2.2.txt", header = T)
 ```

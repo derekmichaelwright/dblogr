@@ -77,7 +77,7 @@ library(htmlwidgets) # saveWidget()
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 rColors <- c("darkred", "darkgreen", "darkorange3", "steelblue", "grey")
 cColors <- c("darkred",   "darkorange3", "darkgoldenrod2", "deeppink3", 
              "steelblue", "darkorchid4", "cornsilk4",      "darkgreen") 

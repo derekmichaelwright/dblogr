@@ -47,8 +47,8 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: US CDC\nNote: most recent years data may be incomplete"
-myCaption2 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: US CDC & USCB\nNote: most recent years data may be incomplete"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: US CDC\nNote: most recent years data may be incomplete"
+myCaption2 <- "derekmichaelwright.github.io/dblogr/ | Data: US CDC & USCB\nNote: most recent years data may be incomplete"
 myColors <- c("darkgreen", "darkred", "darkorange", "steelblue", "darkblue", "purple4", "magenta3")
 myAges1 <- c("Under 25 years", "25-44 years", "45-64 years", 
             "65-74 years", "75-84 years", "85 years and older")

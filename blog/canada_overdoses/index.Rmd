@@ -53,14 +53,14 @@ library(gganimate)
 #
 # Prep CA data
 #
-myCaptionCA <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: CA GOV\nNote: most recent years data may be incomplete"
+myCaptionCA <- "derekmichaelwright.github.io/dblogr/ | Data: CA GOV\nNote: most recent years data may be incomplete"
 myColorsMF <- c("palevioletred3", "steelblue")
 ca1 <- read_xlsx("data_canada_overdoses.xlsx", "Canada") %>%
   mutate(Area = factor(Area, levels = agData_STATCAN_Region_Table$Area))
 #
 # Prep BC data
 #
-myCaptionBC <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: BC GOV"
+myCaptionBC <- "derekmichaelwright.github.io/dblogr/ | Data: BC GOV"
 #
 bc1 <- read_xlsx("data_canada_overdoses.xlsx", "BC Annual")
 #
@@ -79,7 +79,7 @@ bc4 <- read_xlsx("data_canada_overdoses.xlsx", "BC Age") %>%
 #
 # Prep AB data
 #
-myCaptionAB <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AB GOV"
+myCaptionAB <- "derekmichaelwright.github.io/dblogr/ | Data: AB GOV"
 #
 ab1 <- read_xlsx("data_canada_overdoses.xlsx", "AB Monthly") %>%
   mutate(Date = as.Date(paste(Year, Month, "15", sep = "-"), 
@@ -87,7 +87,7 @@ ab1 <- read_xlsx("data_canada_overdoses.xlsx", "AB Monthly") %>%
 #
 # Prep SK data
 #
-myCaptionSK <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: SK GOV"
+myCaptionSK <- "derekmichaelwright.github.io/dblogr/ | Data: SK GOV"
 myRaces <- c("Unknown", "Other", "Hispanic","Black", "Asian",
              "Metis","First Nations", "Caucasian")
 #

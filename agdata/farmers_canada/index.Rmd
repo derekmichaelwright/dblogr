@@ -27,7 +27,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption = "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 myColors_Years <- alpha("darkgreen", seq(0.1, 0.7, by = 0.1))
 myColors_Sex <- c("steelblue", "palevioletred3")
 myColors_Age <- c("darkgreen","steelblue","darkred")

@@ -36,7 +36,7 @@ mp <- plot_starmap(location = "Regina, SK, Canada",
                    style = "black",
                    line1_text = "Regina, Saskatchewan",
                    line2_text = "August 10th, 1989",
-                   line3_text = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/")
+                   line3_text = "derekmichaelwright.github.io/dblogr/")
 ggsave("starbliss_regina_1989-08-10.png", mp, width = 12, height = 15)
 ```
 

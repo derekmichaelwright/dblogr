@@ -33,7 +33,7 @@ My shape files
 # Load libraries
 library(tidyverse)
 library(sf)
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/"
+myCaption <- "derekmichaelwright.github.io/dblogr/"
 ```
 
 ```{r eval = F}

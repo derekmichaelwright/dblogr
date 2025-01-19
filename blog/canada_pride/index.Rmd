@@ -34,7 +34,7 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Ipsos"
+myCaption = "derekmichaelwright.github.io/dblogr/ | Data: Ipsos"
 #myCs_Ind <- c("darkgreen", "darkslategray", "darkred")
 
 myCs_Sex <- c("palevioletred3","steelblue", "white")

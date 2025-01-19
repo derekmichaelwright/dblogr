@@ -1,5 +1,5 @@
 ---
-title: "dblogr"
+title: ""
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
@@ -16,7 +16,7 @@ library(shiny)
 
 Welcome to the personal website for Derek Michael Wright
 
-**https://derekmichaelwright.github.io/dblogr/home**
+**derekmichaelwright.github.io/dblogr**
 
 ---
 
@@ -52,7 +52,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 **Socials**
 
 - `r icon("github")`  [github.com/derekmichaelwright](https://github.com/derekmichaelwright){target="_blank"}
-- `r icon("x-twitter")` [twitter.com/DerekMWright](https://x.com/DerekMWright){target="_blank"} 
+- `r icon("x-twitter")` [twitter.com/DerekMWright](https://x.com/DerekMWright){target="_blank"}
 
 </div></div>
 
@@ -735,7 +735,7 @@ Graphs of trade surplus/deficits with other countries using STATCAN data
 
 <div class="box"><div class = "row"><div class = "col-md-6">
 
-[<u>**gapminder**</u>](blog/gapminder)
+[<u>**gapminder**</u>](blog/gapminder){target="_blank"}
 
 Graphs with gapminder data
 

@@ -28,7 +28,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 # 
 d1 <- agData_STATCAN_Crops %>% filter(Item == "Wheat")
 #

@@ -34,13 +34,13 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption1 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: MLI"
-myCaption2 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Nakhaie & Adam (2008)"
+myCaption1 <- "derekmichaelwright.github.io/dblogr/ | Data: MLI"
+myCaption2 <- "derekmichaelwright.github.io/dblogr/ | Data: Nakhaie & Adam (2008)"
 d1 <- read_xlsx("data_politics_in_academia.xlsx", "Canada") %>%
   mutate(Party = factor(Party, levels = unique(.$Party)),
          Measurement = factor(Measurement, unique(.$Measurement)))
 #
-myCaption3 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Pew Research"
+myCaption3 <- "derekmichaelwright.github.io/dblogr/ | Data: Pew Research"
 myRespones <- c("Mostly positive", "Equal positive and negative", "Mostly negative")
 d2 <- read_xlsx("data_politics_in_academia.xlsx", "Effect on Society") %>%
   mutate(Date = paste(Month, Year),
@@ -49,7 +49,7 @@ d3 <- read_xlsx("data_politics_in_academia.xlsx", "Trust") %>%
   mutate(Date = paste(Month, Year),
          Label_Pos = ifelse(Response != "A fair amount", Percent / 2, NA))
 #
-myCaption4 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Lab Langbert (2018)"
+myCaption4 <- "derekmichaelwright.github.io/dblogr/ | Data: Lab Langbert (2018)"
 d4 <- read_xlsx("data_politics_in_academia.xlsx", "Fields") %>%
   mutate(Field = factor(Field, levels = .$Field),
          Percent_Dem = 100 * (Democrats) / (Democrats + Republicans),

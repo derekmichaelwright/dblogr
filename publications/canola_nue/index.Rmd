@@ -2,7 +2,7 @@
 title: "NUE in Canola"
 subtitle: "**Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)**. *University of Giessen*. (2015) MSc. Thesis."
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 math: true
 ---
 
@@ -102,6 +102,8 @@ r5 <- r5 %>% mutate(DryContent = 100 - WaterPercent) %>%
   summarise_all(funs(mean), na.rm = T)
 colnames(r5) <- paste0(colnames(r5),"_Side")
 colnames(r5)[1] <- "Container"
+#
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: JLU"
 ```
 
 Notes:
@@ -214,8 +216,7 @@ gg_PlantMass <- function(nlevel, title) {
 mp1 <- gg_PlantMass("N2", "High Nitrogen Treatment")
 mp2 <- gg_PlantMass("N1", "Low Nitrogen Treatment")
 mp <- ggarrange(mp1, mp2, ncol = 1) %>%
-  annotate_figure(fig.lab.pos = "bottom.right",
-                  fig.lab  = "\u00A9 www.dblogr.com/  |  Data: JLU")
+  annotate_figure(fig.lab.pos = "bottom.right", fig.lab  = myCaption)
 ggsave("canola_nue_01.png", mp, width = 10, height = 10, bg = "white")
 ```
 
@@ -237,7 +238,7 @@ mp <- ggplot(xx, aes(x = Genotype, y = RootMass, fill = Nlevel)) +
   facet_grid(. ~ Type, scales = "free_x", space = "free_x") +
   scale_fill_manual(values = c("steelblue", "darkblue")) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(caption = "\u00A9 www.dblogr.com/  |  Data: JLU")
+  labs(caption = myCaption)
 ggsave("canola_nue_02.png", mp, width = 8, height = 4)
 ```
 
@@ -258,7 +259,7 @@ ggN1N2 <- function(myTrait) {
     scale_fill_manual(name = NULL, values = c("darkred","steelblue")) +
     theme_agData(legend.position = "none", strip.placement = "outside") +
     labs(y = NULL, x = NULL,
-         caption = "\u00A9 www.dblogr.com/  |  Data: JLU")
+         caption = myCaption)
 }
 ```
 
@@ -349,7 +350,7 @@ gg_Corr <- function(trait = "NUE_P", title = trait) {
     coord_cartesian(xlim = c(mymin, mymax), ylim = c(mymin, mymax)) +
     theme_agData(legend.position = "none") +
     labs(title = title, x = "Low N", y = "High N",
-         caption = "\u00A9 www.dblogr.com/  |  Data: JLU")
+         caption = myCaption)
 }
 mp01 <- gg_Corr("PlantMass",   "Plant Mass")
 mp02 <- gg_Corr("ShootMass",   "Shoot Mass")
@@ -395,7 +396,7 @@ gg_Diff <- function(trait = "ProteinMass", title = trait) {
     scale_color_manual(values = c("darkgreen", "darkred")) +
     theme_agData(legend.position = "none") +
     labs(title = title, x = NULL, y = NULL,
-         caption = "\u00A9 www.dblogr.com/  |  Data: JLU")
+         caption = myCaption)
 }
 # Plot
 mp01 <- gg_Diff("ShootMass",   "Shoot Mass")

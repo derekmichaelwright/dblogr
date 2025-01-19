@@ -28,7 +28,7 @@ library(readxl)
 
 ```{r}
 #Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: PEW RESEARCH CENTER"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: PEW RESEARCH CENTER"
 #
 d1 <- read_xlsx("data_science_trust.xlsx", "Effect on Society") %>%
   mutate(Date = paste(Month, Year)) %>%

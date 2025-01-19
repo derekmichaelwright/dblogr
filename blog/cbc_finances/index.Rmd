@@ -30,7 +30,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: CBC"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: CBC"
 myColors1 <- c("darkred", "darkblue", "darkgreen")
 myColors2 <- c("maroon4", "darkblue", "grey", "darkgoldenrod2", 
               "purple4", "black", "darkslategray4")

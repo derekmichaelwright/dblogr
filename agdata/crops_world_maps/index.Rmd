@@ -55,7 +55,7 @@ ggCropMap_year <- function(myCrop = "Lentils, dry",
               )
   title(main = paste(myCrop, "-", myMeasure, "-", myYear), 
         line = 0.25, cex.main = 1)
-  title(sub = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT",
+  title(sub = "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT",
         line = 0, cex.sub = 0.5, adj = 1)
   dev.off()
 }

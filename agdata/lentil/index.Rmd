@@ -30,7 +30,7 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
 #
 d1 <- agData_FAO_Crops %>% filter(Item == "Lentils, dry")
 d2 <- agData_FAO_Trade_Quantity %>% filter(Item == "Lentils, dry")

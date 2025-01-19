@@ -32,7 +32,7 @@ Augmented designs were developed as a way of controlling error in plant breeding
 library(agData) # Loads: tidyverse, ggpubr, ggbeeswarm, ggrepel
 library(GGally) # ggpairs() 
 library(latex2exp) # TeX()
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/"
+myCaption <- "derekmichaelwright.github.io/dblogr/"
 ```
 
 ---

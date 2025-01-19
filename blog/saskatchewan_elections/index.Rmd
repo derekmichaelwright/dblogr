@@ -111,7 +111,7 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Elections SK"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: Elections SK"
 #
 myPs2020 <- c("SP", "NDP", "BP", "GP", "PC", "LIB", "IND")
 myCs2020 <- c("darkgreen", "darkorange", "burlywood4", "green", 

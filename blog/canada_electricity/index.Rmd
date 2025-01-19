@@ -29,7 +29,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 myColors1 <- c("black", "grey50", "slategray3")
 myColors2 <- c("darkgreen", "steelblue", "darkred")
 # 
@@ -58,8 +58,7 @@ gg_Electricity <- function(myArea = "Canada") {
     geom_line(size = 1, alpha = 0.7) +
     #scale_color_manual(name = NULL, values = myColors1, breaks = myItems) +
     scale_x_date(date_breaks = "year", date_labels = "%Y") +
-    theme_agData(legend.position = "bottom",
-                 axis.text.x = element_text(angle = 45, hjust = 1)) +
+    theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
     labs(title = paste(myArea, "- Electricity Production"),
          y = "Million Megawatt Hours", x = NULL, caption = myCaption)
 }

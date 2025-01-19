@@ -36,7 +36,7 @@ library(transformr)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 myColorsMF <- c("steelblue", "palevioletred3")
 myColorsP <- c("darkgoldenrod3", "darkred", "darkgreen", "darkslategray",
                "darkblue", "steelblue", "maroon4", "purple4", "cyan4", "burlywood4")

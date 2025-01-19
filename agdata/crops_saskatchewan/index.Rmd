@@ -35,7 +35,7 @@ library(gganimate)
 ```
 
 ```{r}
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 #
 d1 <- agData_STATCAN_Crops %>% filter(Area == "Saskatchewan")
 d2 <- agData_STATCAN_FarmLand_Use %>% filter(Area == "Saskatchewan")
@@ -97,7 +97,7 @@ cropList <- function(measurement, years) {
 
 ---
 
-## Production
+## Production {.active}
 
 ![](crops_saskatchewan_1_01.png)
 

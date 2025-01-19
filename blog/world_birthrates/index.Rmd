@@ -37,7 +37,7 @@ library(rworldmap)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: OWID"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: OWID"
 dd <- read.csv("data_world_birthrates.csv") %>%
   rename(Area=Entity, Value=4)
 ```

@@ -13,14 +13,18 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 # Data
 
+Our World In Data - (Share of expenditure spent on food)
+
 > - `r shiny::icon("globe")` [https://ourworldindata.org/grapher/food-expenditure-share-gdp](https://ourworldindata.org/grapher/food-expenditure-share-gdp){target="_blank"}
 > - `r shiny::icon("save")` [food-expenditure-share-gdp.csv](food-expenditure-share-gdp.csv)
 
+U.S. Bureau of Labor Statistics
+
 > - `r shiny::icon("globe")` [https://t.co/Y6VqkxviLO](https://t.co/Y6VqkxviLO){target="_blank"}
-> - `r shiny::icon("save")` [data_usa_households.xlsx](data_usa_households.xlsx)
+> - `r shiny::icon("save")` [data_usa_households.csv](data_usa_households.csv)
 
 > - `r shiny::icon("globe")` [https://beta.bls.gov/dataQuery/search](https://beta.bls.gov/dataQuery/search){target="_blank"}
-> - `r shiny::icon("save")` [data_usa_households.xlsx](data_usa_food prices.xlsx)
+> - `r shiny::icon("save")` [data_usa_food_prices.csv](data_usa_food prices.csv)
 
 ---
 
@@ -34,8 +38,8 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption1 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: OWID"
-myCaption2 <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: US BLS"
+myCaption1 <- "derekmichaelwright.github.io/dblogr/ | Data: OWID"
+myCaption2 <- "derekmichaelwright.github.io/dblogr/ | Data: US BLS"
 #
 myCs_Regions <- c("darkred", "darkgreen", "darkorange", "darkblue", "steelblue")
 myCs_Food <- c("darkred", "darkgoldenrod2", "grey50", "steelblue", 
@@ -63,7 +67,7 @@ d3 <- read.csv("data_usa_food_prices.csv")
 
 ---
 
-# Food Share of Expenditures {.tabset .tabset-pills}
+# Global Food Expenditures {.tabset .tabset-pills}
 
 ## Country
 
@@ -84,7 +88,7 @@ mp1 <- ggplot(x1, aes(x = Country, y = FoodPercent)) +
   scale_y_continuous(limits = c(0,60), expand = c(0,0)) +
   coord_flip() +
   scale_fill_manual(values = myCs_Regions) +
-  theme_agData(legend.position = "none") +
+  theme_agData() +
   labs(y = "Percent Spent on Food", x = NULL, caption = "")
 mp2 <- ggplot(x2, aes(x = Country, y = FoodPercent)) +
   geom_col(aes(fill = Region), alpha = 0.7) +
@@ -92,10 +96,10 @@ mp2 <- ggplot(x2, aes(x = Country, y = FoodPercent)) +
   scale_y_continuous(limits = c(0,60), expand = c(0,0)) +
   coord_flip() +
   scale_fill_manual(values = myCs_Regions) +
-  theme_agData(legend.position = "none") +
+  theme_agData() +
   labs(y = "Percent Spent on Food", x = NULL, caption = myCaption1)
-mp <- ggarrange(mp1, mp2, ncol = 2) 
-ggsave("food_expenses_1_01.png", mp, width = 10, height = 8)
+mp <- ggarrange(mp1, mp2, ncol = 2, common.legend = T, legend = "bottom") 
+ggsave("food_expenses_1_01.png", mp, width = 10, height = 8, bg = "white")
 ```
 
 ---
@@ -114,7 +118,7 @@ mp <- ggplot(xx, aes(x = TotalExp, y = FoodPercent)) +
   facet_grid(. ~ Year) +
   scale_color_manual(name = NULL, values = myCs_Regions) +
   theme_agData() +
-  labs(title = "Percent Food Expenses vs. Total Income",
+  labs(title = "Percent Food Expenses vs. Total Consumer Expenditure",
        y = "Percent Spent on Food", x = "Total Consumer Expenditure", 
        caption = myCaption1)
 ggsave("food_expenses_1_02.png", mp, width = 6, height = 4)
@@ -126,7 +130,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ---
 
-# Household Expenditures {.tabset .tabset-pills}
+# US Household Expenditures {.tabset .tabset-pills}
 
 ## USA
 
@@ -147,7 +151,9 @@ ggsave("food_expenses_2_01.png", mp, width = 6, height = 4)
 
 ---
 
-## Allocations
+## Allocations {.tabset .tabset-pills}
+
+### Line Graph
 
 ![](food_expenses_2_02.png)
 
@@ -168,7 +174,7 @@ ggsave("food_expenses_2_02.png", mp, width = 6, height = 4)
 
 ---
 
-## Bar Graph
+### Bar Graph
 
 ![](food_expenses_2_03.png)
 
@@ -180,7 +186,7 @@ xx <- d2 %>%
   mutate(Other = 100 - (Clothing + Food + Housing)) %>%
   gather(Measurement, Value, 3:ncol(.)) %>%
   mutate(Measurement = factor(Measurement, levels = rev(myMs_Home)))
-# Plot
+ # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, fill = Measurement)) +
   geom_area(alpha = 0.7) +
   geom_col(color = "black", size = 0.2, width = 1) +
@@ -194,13 +200,13 @@ ggsave("food_expenses_2_03.png", mp, width = 6, height = 4)
 
 ---
 
+## Food Expenditures
+
 ![](food_expenses_2_04.png)
 
 ```{r}
-# Prep data
-xx <- d2 %>% filter(Measurement == "Food")
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value)) +
+mp <- ggplot(d2 %>% filter(Measurement == "Food"), aes(x = Year, y = Value)) +
   geom_area(fill = "darkgreen", alpha = 0.7) +
   geom_col(color = "black", fill = "darkgreen", size = 0.2, width = 1) +
   theme_agData(legend.position = "bottom") +
@@ -213,22 +219,30 @@ ggsave("food_expenses_2_04.png", mp, width = 6, height = 4)
 
 ## Animation
 
+![](food_expenses_2_01.gif)
+
 ```{r}
+# Prep data
+xx <- d2 %>% 
+  filter(!Measurement %in% c("Expenditures", "Household income")) %>%
+  spread(Measurement, Value) %>%
+  mutate(Other = 100 - (Clothing + Food + Housing)) %>%
+  gather(Measurement, Value, 3:ncol(.)) %>%
+  mutate(Measurement = factor(Measurement, levels = rev(myMs_Home)))
 # Plot
 mp <- ggplot(xx, aes(x = "", y = Value, fill = Measurement)) +
   geom_bar(stat = "identity", color = "black") +
   scale_fill_manual(name = NULL, values = myCs_Home[4:1]) +
   coord_polar("y", start = 0) +
-  theme_agData(legend.position = "bottom") +
-  #blank_theme +
-  theme_agData_pie(plot.title = element_text(hjust = 0.5),
+  theme_agData_pie(legene.positon = "bottom",
+                   plot.title = element_text(hjust = 0.5),
                    plot.subtitle = element_text(hjust = 0.5)) +
   labs(title = "{round(frame_time)}", caption = myCaption2,
        subtitle = "Percent of Household Expenditures in USA") +
   transition_time(Year)
 anim_save("food_expenses_2_01.gif", mp,
           nframes = 300, fps = 10, end_pause = 30, 
-          width = 600, height = 600, res = 150, units = "px")
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---

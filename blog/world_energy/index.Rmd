@@ -43,8 +43,8 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption_OWID <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: OurWorldInData"
-myCaption_IEA <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: IEA"
+myCaption_OWID <- "derekmichaelwright.github.io/dblogr/ | Data: OurWorldInData"
+myCaption_IEA <- "derekmichaelwright.github.io/dblogr/ | Data: IEA"
 myItems <- c("Other", "Biofuels", "Solar", "Wind",
              "Hydro", "Nuclear", "Gas", "Oil", "Coal", "Biomass")
 myColors <- c("burlywood3", "darkseagreen4","darkgoldenrod2","steelblue",

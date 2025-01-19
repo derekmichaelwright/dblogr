@@ -44,7 +44,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 myColors1 <- c("black", "grey50", "slategray3")
 myColors2 <- c("darkgreen", "steelblue", "darkred")
 myMeasures <- c("Production", "Exports", "Imports",

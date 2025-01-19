@@ -45,7 +45,7 @@ cropMapCan_Production <- function(crop, year) {
          caption = myCaption)
 }
 #
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 ```
 
 ---
@@ -73,7 +73,7 @@ for(i in unique(xx$Item)) {
                                 low = "lightgrey", high = "darkgreen") +
           theme(legend.position = "right") + 
           labs(title = paste(i, "- Production -", 2020),
-               caption = "\u00A9 derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+               caption = "derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
         ) 
 }
 dev.off()
