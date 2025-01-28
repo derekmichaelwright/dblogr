@@ -20,20 +20,6 @@ library(stringr)
 
 ---
 
-## Emergence
-
-```{r echo = F}
-xF_01 <- "01emergence/"
-xN_01 <- list.files(xF_01)
-xL_01 <- paste0(xF_01, xN_01)
-xC_01 <- paste("Image", 
-                str_pad(1:(length(xN_01)), width = 3, pad = "0"),
-                "-", xN_01)
-pixgallery(path = xL_01, caption = xC_01, layout = "masonry")
-```
-
----
-
 # Flowers
 
 ```{r echo = F}
@@ -43,7 +29,7 @@ xL_02 <- paste0(xF_02, xN_02)
 xC_02 <- paste("Image", 
                 str_pad(1:(length(xN_02)), width = 3, pad = "0"),
                 "-", xN_02)
-pixgallery(path = xL_02, caption = xC_02, layout = "masonry")
+pixgallery(path = xL_02, layout = "masonry")
 ```
 
 ---
@@ -57,5 +43,19 @@ xL_03 <- paste0(xF_03, xN_03)
 xC_03 <- paste("Image", 
                 str_pad(1:(length(xN_03)), width = 3, pad = "0"),
                 "-", xN_03)
-pixgallery(path = xL_03, caption = xC_03, layout = "masonry")
+pixgallery(path = xL_03, layout = "masonry")
+```
+
+---
+
+## Emergence
+
+```{r echo = F}
+xF_01 <- "01emergence/"
+xN_01 <- list.files(xF_01)
+xL_01 <- paste0(xF_01, xN_01)
+xC_01 <- paste("Image", 
+                str_pad(1:(length(xN_01)), width = 3, pad = "0"),
+                "-", xN_01)
+pixgallery(path = xL_01, layout = "masonry")
 ```

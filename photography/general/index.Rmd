@@ -29,7 +29,7 @@ xL_01 <- paste0(xF_01, xN_01)
 xC_01 <- paste("Image", 
                 str_pad(1:(length(xN_01)), width = 3, pad = "0"),
                 "-", xN_01)
-pixgallery(path = xL_01, caption = xC_01, layout = "masonry")
+pixgallery(path = xL_01, layout = "masonry")
 ```
 
 ---
