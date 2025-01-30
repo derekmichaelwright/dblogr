@@ -78,8 +78,9 @@ overdosePlot1 <- function(area = "United States") {
     scale_x_date(date_breaks = "1 year", date_labels = "%Y", 
                  minor_breaks = "1 year") +
     theme_agData(legend.position = "bottom") +
-    labs(y = "Weekly Deaths (Rolling 4 Week Mean)", x = NULL,
-         caption = myCaption)
+    labs(title = "Drug Overdose Deaths",
+         y = "Weekly Deaths (Rolling 4 Week Mean)", 
+         x = NULL, caption = myCaption)
 }
 ```
 
@@ -189,7 +190,7 @@ overdosePlot2 <- function(area = "United States") {
     facet_wrap(Area ~ ., scales = "free_y") +
     scale_fill_manual(name = NULL, values = myCols) +
     theme_agData(legend.position = "bottom") +
-    labs(title = "Yearly Drug Overdoses", y = "Thousand Deaths", x = NULL,
+    labs(title = "Yearly Drug Overdose Deaths", y = "Thousand Deaths", x = NULL,
          caption = myCaption)
 }
 ```

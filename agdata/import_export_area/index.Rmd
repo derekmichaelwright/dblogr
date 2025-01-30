@@ -137,6 +137,17 @@ ggsave("import_export_1_usa.png", mp, width = 6, height = 7)
 
 ---
 
+## Mexico
+
+![](import_export_1_mexico.png)
+
+```{r}
+mp <- ggIEA(myArea = "Mexico")
+ggsave("import_export_1_mexico.png", mp, width = 6, height = 7)
+```
+
+---
+
 ## Russia
 
 ![](import_export_1_russia.png)
