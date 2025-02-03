@@ -65,70 +65,6 @@ dev.off()
 
 ---
 
-# All India Crops
-
-```{r}
-# Prep data
-xx <- agData_FAO_Crops %>% 
-  filter(Area == "India", Measurement == "Production")
-# Plot
-ggcropplot <- function(x) {
-  ggplot(xx, aes(x = Year, y = Value / 100000)) + 
-  geom_line(size = 1, color = "darkgreen", alpha = 0.7) + 
-  scale_x_continuous(limits       =   c(1960, 2020),
-                     breaks       = seq(1960, 2020, 20), 
-                     minor_breaks = seq(1960, 2020, 10)) +
-  theme_agData() +
-  theme(legend.position = "none") +
-  labs(y = "Tonnes (x 100,000)", x = NULL, caption = myCaption)
-}
-```
-
-```{r}
-# Plot
-mp1 <- ggcropplot(xx) + 
-  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
-                      ncol = 4, nrow = 5, page = 1) +
-  labs(title = "Crop Production - India (1/5)")
-mp2 <- ggcropplot(xx) +
-  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
-                      ncol = 4, nrow = 5, page = 2) +
-  labs(title = "Crop Production - India (2/5)")
-mp3 <- ggcropplot(xx) + 
-  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
-                      ncol = 4, nrow = 5, page = 3) +
-  labs(title = "Crop Production - India (3/5)")
-mp4 <- ggcropplot(xx) +
-  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
-                      ncol = 4, nrow = 5, page = 4) +
-  labs(title = "Crop Production - India (4/5)")
-mp5 <- ggcropplot(xx) +
-  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
-                      ncol = 4, nrow = 5, page = 5) +
-  labs(title = "Crop Production - India (5/5)")
-ggsave("crops_india_1_01.png", mp1, width = 12, height = 8)
-ggsave("crops_india_1_02.png", mp2, width = 12, height = 8)
-ggsave("crops_india_1_03.png", mp3, width = 12, height = 8)
-ggsave("crops_india_1_04.png", mp4, width = 12, height = 8)
-ggsave("crops_india_1_05.png", mp5, width = 12, height = 8)
-```
-
-```{r echo = F}
-ggsave("featured.png", mp1, width = 12, height = 8)
-```
-
-![](crops_india_1_01.png)
-
-![](crops_india_1_02.png)
-
-![](crops_india_1_03.png)
-
-![](crops_india_1_04.png)
-
-![](crops_india_1_05.png)
-
----
-
 # Bar Chart Racer {.tabset .tabset-pills}
 
 ## Production
@@ -219,6 +155,70 @@ anim_save("crops_india_gif_02.gif", mp,
           nframes = 600, fps = 25, end_pause = 60, 
           width = 900, height = 600, res = 150, units = "px")
 ```
+
+---
+
+# All India Crops
+
+```{r}
+# Prep data
+xx <- agData_FAO_Crops %>% 
+  filter(Area == "India", Measurement == "Production")
+# Plot
+ggcropplot <- function(x) {
+  ggplot(xx, aes(x = Year, y = Value / 100000)) + 
+  geom_line(size = 1, color = "darkgreen", alpha = 0.7) + 
+  scale_x_continuous(limits       =   c(1960, 2020),
+                     breaks       = seq(1960, 2020, 20), 
+                     minor_breaks = seq(1960, 2020, 10)) +
+  theme_agData() +
+  theme(legend.position = "none") +
+  labs(y = "Tonnes (x 100,000)", x = NULL, caption = myCaption)
+}
+```
+
+```{r}
+# Plot
+mp1 <- ggcropplot(xx) + 
+  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
+                      ncol = 4, nrow = 5, page = 1) +
+  labs(title = "Crop Production - India (1/5)")
+mp2 <- ggcropplot(xx) +
+  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
+                      ncol = 4, nrow = 5, page = 2) +
+  labs(title = "Crop Production - India (2/5)")
+mp3 <- ggcropplot(xx) + 
+  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
+                      ncol = 4, nrow = 5, page = 3) +
+  labs(title = "Crop Production - India (3/5)")
+mp4 <- ggcropplot(xx) +
+  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
+                      ncol = 4, nrow = 5, page = 4) +
+  labs(title = "Crop Production - India (4/5)")
+mp5 <- ggcropplot(xx) +
+  facet_wrap_paginate(Item ~ ., scales = "free_y", labeller = label_wrap_gen(width = 45),
+                      ncol = 4, nrow = 5, page = 5) +
+  labs(title = "Crop Production - India (5/5)")
+ggsave("crops_india_1_01.png", mp1, width = 12, height = 8)
+ggsave("crops_india_1_02.png", mp2, width = 12, height = 8)
+ggsave("crops_india_1_03.png", mp3, width = 12, height = 8)
+ggsave("crops_india_1_04.png", mp4, width = 12, height = 8)
+ggsave("crops_india_1_05.png", mp5, width = 12, height = 8)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp1, width = 12, height = 8)
+```
+
+![](crops_india_1_01.png)
+
+![](crops_india_1_02.png)
+
+![](crops_india_1_03.png)
+
+![](crops_india_1_04.png)
+
+![](crops_india_1_05.png)
 
 ---
 

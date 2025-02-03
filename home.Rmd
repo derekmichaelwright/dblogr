@@ -126,12 +126,12 @@ Some of my photography work
 
 <div class="box">
 
-- (**2022**) [<u>**Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**</u>](https://doi.org/10.1002/tpg2.20269){target="_blank"}. *The Plant Genome*. e20269. doi.org/10.1002/tpg2.20269
+- `r icon("newspaper")` (**2022**) [<u>**Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**</u>](https://doi.org/10.1002/tpg2.20269){target="_blank"}. *The Plant Genome*. e20269. doi.org/10.1002/tpg2.20269
   + `r icon("podcast")` [Field Lab Earth Podcast](http://fieldlabearth.libsyn.com/latent-variable-phenotypes-in-lentil-with-sandesh-neupane-and-derek-wright)
-- (**2021**) [<u>**Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**</u>](https://doi.org/10.3390/agronomy11101933){target="_blank"}. *Agronomy*. 11(10): 1933. doi.org/10.3390/agronomy11101933
-- (**2021**) [<u>**Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**</u>](https://doi.org/10.1002/ppp3.10158){target="_blank"}. *Plants, People, Planet*. 3(2): 171-181. doi.org/10.1002/ppp3.10158
-- (**2020**) [<u>**Genomic selection for lentil breeding: Empirical evidence**</u>](https://doi.org/10.1002/tpg2.20002){target="_blank"}. *The Plant Genome*. 13(e20002): 1-15. doi.org/10.1002/tpg2.20002
-- (**2015**) <u>**Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)**</u>. *University of Giessen*. MSc. Thesis.
+- `r icon("newspaper")` (**2021**) [<u>**Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**</u>](https://doi.org/10.3390/agronomy11101933){target="_blank"}. *Agronomy*. 11(10): 1933. doi.org/10.3390/agronomy11101933
+- `r icon("newspaper")` (**2021**) [<u>**Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**</u>](https://doi.org/10.1002/ppp3.10158){target="_blank"}. *Plants, People, Planet*. 3(2): 171-181. doi.org/10.1002/ppp3.10158
+- `r icon("newspaper")` (**2020**) [<u>**Genomic selection for lentil breeding: Empirical evidence**</u>](https://doi.org/10.1002/tpg2.20002){target="_blank"}. *The Plant Genome*. 13(e20002): 1-15. doi.org/10.1002/tpg2.20002
+- `r icon("newspaper")` (**2015**) [<u>**Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)**</u>](publications/canola_nue/){target="_blank"}. *University of Giessen*. MSc. Thesis.
 
 </div>
 
@@ -156,7 +156,21 @@ Scientific publications I have been involved in while working/studying at [***Un
 - `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Phenology/README.html){target="_blank"}
 - `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_Phenology/blob/master/README.pdf){target="_blank"}
 
-</div><div class = "col-md-6">![](publications/ldp_phenology/featured.png)</div></div></div>
+</div><div class = "col-md-6">![](publications/ldp_phenology/featured.png)</div></div>
+
+<u>**News Articles**</u>
+
+- `r icon("globe")` [<u>**Genome Canada - Application of genomics to innovation in the lentil economy (AGILE)**</u>](https://www.genomecanada.ca/en/application-genomics-innovation-lentil-economy-agile){target="_blank"}
+
+- `r icon("globe")` [**Genome Prairie - AGILE Innovating the growth of lentils**](http://www.genomeprairie.ca/project/current/agile){target="_blank"}
+
+- `r icon("globe")` [**Global Plant Council Blog - Lentils under the lens: Improving genetic diversity for sustainable food security**](http://blog.globalplantcouncil.org/research/lentils-under-the-lens/){target="_blank"}
+
+- `r icon("globe")` [**The Western Producer - Genetics project provides foundation for new Canadian lentil varieties**](https://www.producer.com/2019/01/genetics-project-provides-foundation-for-new-canadian-lentil-varieties/){target="_blank"}
+
+- `r icon("globe")` [**SeedWorld - USask Scientists Develop Model to Identify Best Lentils for Climate Change Impacts**](https://www.seedworld.com/usask-scientists-develop-model-to-identify-best-lentils-for-climate-change-impacts/){target="_blank"}
+
+</div>
 
 ### LDP Nepal Phenology
 
@@ -280,24 +294,6 @@ Harold G. Weger, April K. Polasek, **Derek M. Wright**, Arun Damodaran, John Sta
 - `r icon("r-project")` [R Script (HTML)](publications/canola_nue/){target="_blank"}
 
 </div><div class = "col-md-6">![](publications/canola_nue/featured.png)</div></div></div>
-
-### News Articles
-
-<div class="box">
-
-<u>**News Articles**</u>
-
-- `r icon("globe")` [<u>**Genome Canada - Application of genomics to innovation in the lentil economy (AGILE)**</u>](https://www.genomecanada.ca/en/application-genomics-innovation-lentil-economy-agile){target="_blank"}
-
-- `r icon("globe")` [**Genome Prairie - AGILE Innovating the growth of lentils**](http://www.genomeprairie.ca/project/current/agile){target="_blank"}
-
-- `r icon("globe")` [**Global Plant Council Blog - Lentils under the lens: Improving genetic diversity for sustainable food security**](http://blog.globalplantcouncil.org/research/lentils-under-the-lens/){target="_blank"}
-
-- `r icon("globe")` [**The Western Producer - Genetics project provides foundation for new Canadian lentil varieties**](https://www.producer.com/2019/01/genetics-project-provides-foundation-for-new-canadian-lentil-varieties/){target="_blank"}
-
-- `r icon("globe")` [**SeedWorld - USask Scientists Develop Model to Identify Best Lentils for Climate Change Impacts**](https://www.seedworld.com/usask-scientists-develop-model-to-identify-best-lentils-for-climate-change-impacts/){target="_blank"}
-
-</div>
 
 ## {-}
 
@@ -521,6 +517,16 @@ Graphs of wheat production using FAO data
 Graphs of honeybee production using FAO data
 
 ![](agdata/honeybee/featured.png)</div>
+
+#### India
+
+<div class="box">
+
+[<u>**Crop Production In India**</u>](agdata/crops_india){target="_blank"}
+
+Graphs of crop production in India with FAO data
+
+![](agdata/crops_india/featured.png)</div>
 
 ---
 
