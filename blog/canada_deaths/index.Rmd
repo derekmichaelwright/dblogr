@@ -54,7 +54,7 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN\nNote: most recent years data may be incomplete"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 myColors <- c("darkgreen", "darkred", "darkorange", "steelblue", "darkblue", "purple4", "magenta3")
 myAreas <- c("Canada", "Quebec", "Ontario", "British Columbia", 
              "Alberta", "Saskatchewan", "Manitoba", "Nova Scotia",
@@ -147,7 +147,7 @@ d4 <- read.csv("1310039401_databaseLoadingData.csv") %>%
 
 ---
 
-# Total Deaths & Death Rates 1991-2022
+# Total Deaths & Death Rates
 
 ![](canada_deaths_01_01.png)
 
@@ -181,7 +181,7 @@ ggsave("canada_deaths_01_01.png", mp, width = 10, height = 4, bg = "white")
 
 ---
 
-# Total Deaths 2010-2023 {.tabset .tabset-pills}
+# Total Deaths {.tabset .tabset-pills}
 
 ## Plotting Function
 
@@ -209,7 +209,9 @@ ggWeeklyDeaths <- function(myArea = "Canada", xmin = 2010) {
 
 ---
 
-## Canada {.active}
+## 2010-2023 {.tabset .tabset-pills}
+
+### Canada {.tabset .tabset-pills} {.active}
 
 ![](canada_deaths_02_01.png)
 
@@ -220,7 +222,7 @@ ggsave("canada_deaths_02_01.png", mp, width = 8, height = 4)
 
 ---
 
-## Ontario
+### Ontario
 
 ![](canada_deaths_02_02.png)
 
@@ -231,7 +233,7 @@ ggsave("canada_deaths_02_02.png", mp, width = 8, height = 4)
 
 ---
 
-## Quebec
+### Quebec
 
 ![](canada_deaths_02_03.png)
 
@@ -242,7 +244,7 @@ ggsave("canada_deaths_02_03.png", mp, width = 8, height = 4)
 
 ---
 
-## British Columbia
+### British Columbia
 
 ![](canada_deaths_02_04.png)
 
@@ -253,7 +255,7 @@ ggsave("canada_deaths_02_04.png", mp, width = 8, height = 4)
 
 ---
 
-## Alberta
+### Alberta
 
 ![](canada_deaths_02_05.png)
 
@@ -264,7 +266,7 @@ ggsave("canada_deaths_02_05.png", mp, width = 8, height = 4)
 
 ---
 
-## Saskatchewan
+### Saskatchewan
 
 ![](canada_deaths_02_06.png)
 
@@ -275,7 +277,7 @@ ggsave("canada_deaths_02_06.png", mp, width = 8, height = 4)
 
 ---
 
-## Manitoba
+### Manitoba
 
 ![](canada_deaths_02_07.png)
 
@@ -286,9 +288,9 @@ ggsave("canada_deaths_02_07.png", mp, width = 8, height = 4)
 
 ---
 
-# Total Deaths 2016-2023 {.tabset .tabset-pills}
+## 2016-2023 {.tabset .tabset-pills}
 
-## Canada
+### Canada
 
 ![](canada_deaths_03_01.png)
 
@@ -299,7 +301,7 @@ ggsave("canada_deaths_03_01.png", mp, width = 8, height = 4)
 
 ---
 
-## Ontario
+### Ontario
 
 ![](canada_deaths_03_02.png)
 
@@ -310,7 +312,7 @@ ggsave("canada_deaths_03_02.png", mp, width = 8, height = 4)
 
 ---
 
-## Quebec
+### Quebec
 
 ![](canada_deaths_03_03.png)
 
@@ -321,7 +323,7 @@ ggsave("canada_deaths_03_03.png", mp, width = 8, height = 4)
 
 ---
 
-## British Columbia
+### British Columbia
 
 ![](canada_deaths_03_04.png)
 
@@ -332,7 +334,7 @@ ggsave("canada_deaths_03_04.png", mp, width = 8, height = 4)
 
 ---
 
-## Alberta
+### Alberta
 
 ![](canada_deaths_03_05.png)
 
@@ -343,7 +345,7 @@ ggsave("canada_deaths_03_05.png", mp, width = 8, height = 4)
 
 ---
 
-## Saskatchewan
+### Saskatchewan
 
 ![](canada_deaths_03_06.png)
 
@@ -354,7 +356,7 @@ ggsave("canada_deaths_03_06.png", mp, width = 8, height = 4)
 
 ---
 
-## Manitoba
+### Manitoba
 
 ![](canada_deaths_03_07.png)
 
@@ -1339,9 +1341,11 @@ ggsave("canada_deaths_11_07.png", mp, width = 6, height = 4)
 
 ## PDF
 
+<br>
+
 `r shiny::icon("file-pdf")` [figures_canada_deaths_causes.pdf](figures_canada_deaths_causes.pdf)
 
-```{r}
+```{r class.source = "fold-show"}
 # Prep data
 #i <- "Total, all causes of death [A00-Y89]"
 pdf("figures_canada_deaths_causes.pdf", width = 10, height = 6)
@@ -1382,7 +1386,9 @@ ggsave("canada_deaths_12_01.png", mp, width = 20, height = 30)
 
 ---
 
-# 1900 - Present
+# Bonus {.tabset .tabset-pills}
+
+## 1900 - Present
 
 ![](canada_deaths_13_01.png)
 
@@ -1412,7 +1418,7 @@ ggsave("canada_deaths_13_01.png", mp, width = 6, height = 4)
 
 ---
 
-# Life Expectancy
+## Life Expectancy
 
 https://www150.statcan.gc.ca/n1/pub/91f0015m/91f0015m2021002-eng.htm
 
@@ -1441,6 +1447,8 @@ ggsave("canada_deaths_13_02.png", mp, width = 8, height = 4)
 ```
 
 ---
+
+## Death Rate
 
 ![](canada_deaths_13_03.png)
 

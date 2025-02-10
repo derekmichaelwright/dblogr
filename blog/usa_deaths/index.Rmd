@@ -47,8 +47,8 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: US CDC\nNote: most recent years data may be incomplete"
-myCaption2 <- "derekmichaelwright.github.io/dblogr/ | Data: US CDC & USCB\nNote: most recent years data may be incomplete"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: US CDC"
+myCaption2 <- "derekmichaelwright.github.io/dblogr/ | Data: US CDC & USCB"
 myColors <- c("darkgreen", "darkred", "darkorange", "steelblue", "darkblue", "purple4", "magenta3")
 myAges1 <- c("Under 25 years", "25-44 years", "45-64 years", 
             "65-74 years", "75-84 years", "85 years and older")
@@ -1004,7 +1004,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Group)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "United States - Ages 65+", 
        x = NULL, y = NULL, caption = myCaption2)
-ggsave("usa_deaths_07_01.png", mp, width = 8, height = 4)
+ggsave("usa_deaths_7_01.png", mp, width = 8, height = 4)
 ```
 
 ---

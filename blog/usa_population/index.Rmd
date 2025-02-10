@@ -16,8 +16,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 Census Bureau State Data
 
 > - `r shiny::icon("globe")` [https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html](https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html){target="_blank"}
-> - `r shiny::icon("globe")` [https://www2.census.gov/programs-surveys/popest/datasets/2020-2021/state/totals/](https://www2.census.gov/programs-surveys/popest/datasets/2020-2021/state/totals/){target="_blank"}
-> - `r shiny::icon("globe")` [https://www2.census.gov/programs-surveys/popest/datasets/2020-2022/state/totals/](https://www2.census.gov/programs-surveys/popest/datasets/2020-2022/state/totals/){target="_blank"}
+> - `r shiny::icon("globe")` [https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/state/totals/](https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/state/totals/){target="_blank"}
 > - `r shiny::icon("save")` [data_usa_population_state.csv](data_usa_population_state.csv)
 
 Census Bureau Age & Sex Data
@@ -40,7 +39,7 @@ library(gganimate)
 ```{r echo = F, eval = F}
 x1 <- read.csv("https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/national/totals/nst-est2019-alldata.csv")
 #d2 <- read.csv("https://www2.census.gov/programs-surveys/popest/datasets/2020-2022/state/totals/NST-EST2022-alldata.csv")
-x2 <- read.csv("https://www2.census.gov/programs-surveys/popest/datasets/2020-2022/state/totals/NST-EST2022-ALLDATA.csv")
+x2 <- read.csv("https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/state/totals/NST-EST2024-ALLDATA.csv")
 xx <- left_join(x1, x2, by = c("SUMLEV","REGION","DIVISION","STATE","NAME"))
 write.csv(xx, "data_usa_population_state.csv", row.names = F)
 ```
@@ -56,7 +55,16 @@ myAges <- c("0 to 4 years", "5 to 9 years", "10 to 14 years",
             "60 to 64 years", "65 to 69 years", "70 to 74 years",
             "75 to 79 years", "80 to 84 years", "85 years and over")
 #
-d1 <- read.csv("data_usa_population_state.csv")
+# Population demographics
+#
+d1 <- read.csv("data_usa_population_state.csv") %>%
+  gather(Year, Value, 6:ncol(.)) %>%
+  mutate(Measurement = substr(Year, 1, regexpr("20", Year)-1),
+         Measurement = gsub("_", "", Measurement),
+         Year = substr(Year, regexpr("20", Year), regexpr("20", Year)+3),
+         Year = as.numeric(Year))
+#
+# by Sex
 #
 fixSheet <- function(xx, myYear) { 
   colnames(xx) <- c("Age", "Both sexes", "Both sexes - Percent",
@@ -86,7 +94,9 @@ d2 <- bind_rows(
     read_xlsx("data_usa_population_age.xlsx", "2018", range = "A7:G25") %>% fixSheet(myYear = 2018),
     read_xlsx("data_usa_population_age.xlsx", "2019", range = "A7:G25") %>% fixSheet(myYear = 2019),
     read_xlsx("data_usa_population_age.xlsx", "2020", range = "A7:G25") %>% fixSheet(myYear = 2020),
-    read_xlsx("data_usa_population_age.xlsx", "2021", range = "A7:G25") %>% fixSheet(myYear = 2021) ) %>%
+    read_xlsx("data_usa_population_age.xlsx", "2021", range = "A7:G25") %>% fixSheet(myYear = 2021),
+    read_xlsx("data_usa_population_age.xlsx", "2022", range = "A7:G25") %>% fixSheet(myYear = 2022),
+    read_xlsx("data_usa_population_age.xlsx", "2023", range = "A7:G25") %>% fixSheet(myYear = 2023)) %>%
   mutate(Age = factor(Age, levels = myAges),
          Sex = factor(Sex, levels  = c("Both sexes", "Males", "Females")))
 ```
@@ -101,13 +111,15 @@ d2 <- bind_rows(
 
 ```{r}
 # Prep data
-xx <- d1 %>% filter(STATE != 0) %>% arrange(desc(POPESTIMATE2022)) %>%
+xx <- d1 %>% 
+  filter(STATE != 0, Year == 2023, Measurement == "POPESTIMATE") %>% 
+  arrange(desc(Value)) %>%
   mutate(NAME = factor(NAME, levels = .$NAME))
 # Plot
-mp <- ggplot(xx, aes(y = POPESTIMATE2022 / 1000000, x = NAME)) +
+mp <- ggplot(xx, aes(y = Value / 1000000, x = NAME)) +
   geom_col(fill = "darkgreen", alpha = 0.7) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Population By State", y = "Million People", x = NULL)
+  labs(title = "2023 Population", y = "Million People", x = NULL)
 ggsave("usa_population_1_01.png", mp, width = 8, height = 4)
 ```
 
@@ -120,45 +132,65 @@ ggsave("usa_population_1_01.png", mp, width = 8, height = 4)
 
 ```{r}
 # Prep data
-xx <- d1 %>% rename(fips=STATE) %>% mutate(POPESTIMATE2022 = POPESTIMATE2022 / 1000000)
+xx <- d1 %>% 
+  filter(STATE != 0, Year == 2023, Measurement == "POPESTIMATE") %>%
+  rename(fips=STATE) %>% 
+  mutate(Value = Value / 1000000)
 # Plot
-mp <- plot_usmap(data = xx, values = "POPESTIMATE2022", exclude = c("AK","HI")) + 
-  scale_fill_gradient(name = "x 1,000,000", 
+mp <- plot_usmap(data = xx, values = "Value", exclude = c("AK","HI")) + 
+  scale_fill_gradient(name = "Million People", 
                        high = "darkgreen", low = "white") + 
   theme(legend.position = "right") +
-  labs(title = "Population By State")
+  labs(title = "Population")
 ggsave("usa_population_1_02.png", mp, width = 6, height = 4, bg = "white")
+```
+
+---
+
+# Population Change {.tabset .tabset-pills}
+
+## 2021
+
+![](usa_population_2_01.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(STATE != 0, Year == 2021, Measurement == "NPOPCHG") %>%
+  select(NAME, fips=STATE, Year, Value) %>%
+  mutate(Value = Value / 1000)
+# Plot 2024
+mp <- plot_usmap(data = xx, values = "Value", exclude = c("AK","HI")) + 
+  scale_fill_gradient2(name = "Thousand People", 
+                       high = "darkgreen", mid = "white", low = "darkred") + 
+  theme(legend.position = "right",
+        plot.background = ) + 
+  labs(title = "Population Change 2021")
+ggsave("usa_population_2_01.png", mp, width = 6, height = 4, bg = "white")
 ```
 
 ---
 
 ## Animation
 
-![](usa_population_state_gif_01.gif)
+![](usa_population_gif_2_01.gif)
 
 ```{r eval = F}
-# colnames(d1)
-#
-x1 <- d1 %>% select(Name=NAME, BasePop=POPESTIMATE2010)
+# Prep data
 xx <- d1 %>% 
-  select(Name=NAME, fips=STATE,
-         POPESTIMATE2010, POPESTIMATE2011, POPESTIMATE2012, POPESTIMATE2013,
-         POPESTIMATE2014, POPESTIMATE2015, POPESTIMATE2016, POPESTIMATE2017,
-         POPESTIMATE2018, POPESTIMATE2019, POPESTIMATE2020, POPESTIMATE2021,
-         POPESTIMATE2022) %>%
-  gather(Year, Population, 3:ncol(.)) %>% 
-  left_join(x1, by = "Name") %>% 
-  mutate(Year = as.integer(gsub("POPESTIMATE", "", Year)),
-         Change = 100 * (Population - BasePop) / BasePop)
-# Plot
-mp <- plot_usmap(data = xx, values = "Change", exclude = c("AK","HI")) + 
+  filter(STATE != 0, Measurement == "NPOPCHG") %>%
+  select(NAME, fips=STATE, Year, Value) %>%
+  mutate(Value = Value / 1000)
+# Plot Animation
+mp <- plot_usmap(data = xx, values = "Value", exclude = c("AK","HI")) + 
   scale_fill_gradient2(name = "%", 
                        high = "darkgreen", mid = "white", low = "darkred") + 
   theme(legend.position = "right",
         plot.background = ) + 
-  labs(title = paste("Year =", "{frame_time}"), subtitle = "Percent Change Since 2010") +
+  labs(title = "Population Change",
+       subtitle = paste("Year =", "{round(frame_time)}")) +
   transition_time(Year)
-anim_save("usa_population_state_gif_01.gif", mp,
+anim_save("usa_population_gif_2_01.gif", mp,
           nframes = 300, fps = 10, end_pause = 100, 
           width = 600, height = 400, res = 100)
 ```
@@ -167,20 +199,15 @@ anim_save("usa_population_state_gif_01.gif", mp,
 
 ## CA, NY, TX & FL
 
-![](usa_population_1_03.png)
+![](usa_population_2_02.png)
 
 ```{r}
-# Prep data
+# Prep Data
 myStates <- c("California", "New York", "Texas", "Florida")
 myColors <- c("darkgreen", "steelblue", "darkred", "darkorange")
 xx <- d1 %>% 
-  filter(NAME %in% myStates) %>%
-  select(NAME, NPOPCHG_2013, NPOPCHG_2014, NPOPCHG_2015, NPOPCHG_2016, 
-         NPOPCHG_2017, NPOPCHG_2018, NPOPCHG_2019, NPOPCHG_2020, NPOPCHG_2021,
-         NPOPCHG_2022) %>%
-  gather(Year, Value, 2:ncol(.)) %>%
-  mutate(Year = as.factor(substr(Year, 9, 12)),
-         NAME = factor(NAME, levels = myStates))
+  filter(NAME %in% myStates, Measurement == "NPOPCHG") %>%
+  mutate(NAME = factor(NAME, levels = myStates))
 # Plot
 mp <- ggplot(xx, aes(x = Year, Value / 100000, fill = NAME)) + 
   geom_bar(stat = "identity", color = "black", alpha = 0.7) +
@@ -190,71 +217,167 @@ mp <- ggplot(xx, aes(x = Year, Value / 100000, fill = NAME)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Population Change", x = NULL, 
        y = "Hundred Thousand People", caption = myCaption)
-ggsave("usa_population_1_03.png", mp, width = 10, height = 6)
+ggsave("usa_population_2_02.png", mp, width = 10, height = 6)
 ```
 
 ---
 
-# Population Change {.tabset .tabset-pills}
+## Change since 2010 {.tabset .tabset-pills}
 
-## Plotting Function
+### 2024
+
+![](usa_population_2_03.png)
+
+```{r}
+# Prep Data
+x1 <- d1 %>% 
+  filter(STATE != 0, Year == 2010, Measurement == "POPESTIMATE") %>%
+  select(NAME, BasePop=Value)
+xx <- d1 %>% 
+  filter(STATE != 0, Measurement == "POPESTIMATE") %>%
+  select(NAME, fips=STATE, Year, Value) %>%
+  left_join(x1, by = "NAME") %>% 
+  mutate(PopChange = 100 * (Value - BasePop) / BasePop)
+xx <- xx %>% filter(Year == 2024)
+# Plot 2024
+mp <- plot_usmap(data = xx, values = "PopChange", exclude = c("AK","HI")) + 
+  scale_fill_gradient2(name = "%", 
+                       high = "darkgreen", mid = "white", low = "darkred") + 
+  theme(legend.position = "right",
+        plot.background = ) + 
+  labs(title = "Percent Change Since 2010")
+ggsave("usa_population_2_03.png", mp, width = 6, height = 4, bg = "white")
+```
+
+---
+
+### Animation
+
+![](usa_population_gif_2_02.gif)
+
+```{r eval = F}
+# Prep Data
+x1 <- d1 %>% 
+  filter(STATE != 0, Year == 2010, Measurement == "POPESTIMATE") %>%
+  select(NAME, BasePop=Value)
+xx <- d1 %>% 
+  filter(STATE != 0, Measurement == "POPESTIMATE") %>%
+  select(NAME, fips=STATE, Year, Value) %>%
+  left_join(x1, by = "NAME") %>% 
+  mutate(PopChange = 100 * (Value - BasePop) / BasePop)
+# Plot Animation
+mp <- plot_usmap(data = xx, values = "PopChange", exclude = c("AK","HI")) + 
+  scale_fill_gradient2(name = "%", 
+                       high = "darkgreen", mid = "white", low = "darkred") + 
+  theme(legend.position = "right",
+        plot.background = ) + 
+  labs(title = "Percent Change Since 2010",
+       subtitle = paste("Year =", "{round(frame_time)}"),) +
+  transition_time(Year)
+anim_save("usa_population_gif_2_02.gif", mp,
+          nframes = 300, fps = 10, end_pause = 100, 
+          width = 600, height = 400, res = 100)
+```
+
+---
+
+## Bar Chart {.tabset .tabset-pills}
+
+### Plotting Function
 
 ```{r class.source = "fold-show"}
 # Create plotting function
-ggStatePop <- function(myTrait, myTitle, myFacet, myLims = 525) {
+ggPopChange <- function(myYear = 2022, myLims = NULL) {
   xx <- d1 %>% 
-    filter(SUMLEV == 40) %>%
-    arrange(get(myTrait)) %>%
+    filter(STATE != 0, Year == myYear, Measurement == "NPOPCHG") %>%
+    arrange(Value) %>%
     mutate(NAME = factor(NAME, levels = .$NAME))
   # Plot
-  mp <- ggplot(xx, aes(x = NAME, y = get(myTrait) / 1000)) +
+  mp <- ggplot(xx, aes(x = NAME, y = Value / 1000)) +
     geom_bar(stat = "identity", color = "black", lwd = 0.4,
              fill = "steelblue", alpha = 0.7) +
-    facet_grid(. ~ paste(myFacet)) +
-    ylim(c(-myLims, myLims)) +
+    facet_grid(. ~ Year) +
     coord_flip() +
     theme_agData(legend.position = "none") +
-    labs(title = myTitle, x = NULL, 
+    labs(title = "Population Change", x = NULL, 
          y = "Thousand People", caption = myCaption)
+  if(!is.null(myLims)){ mp <- mp + ylim(c(-myLims, myLims)) }
+  mp
 }
 ```
 
 ---
 
-## 2022 {.active}
+### 2010 {.active}
 
-![](usa_population_2_01.png)
+![](usa_population_3_01.png)
 
 ```{r}
 # Plot
-mp <- ggStatePop("NPOPCHG_2022", "Population Change", "2022")
-ggsave("usa_population_2_01.png", mp, width = 4, height = 6)
+mp <- ggPopChange(2021)
+ggsave("usa_population_3_01.png", mp, width = 4, height = 6)
 ```
 
 ---
 
-## 2013
+### 2021 {.active}
 
-![](usa_population_2_02.png)
+![](usa_population_3_02.png)
 
 ```{r}
 # Plot
-mp <- ggStatePop("NPOPCHG_2022", "Population Change", "2023")
-ggsave("usa_population_2_02.png", mp, width = 4, height = 6)
+mp <- ggPopChange(2021)
+ggsave("usa_population_3_02.png", mp, width = 4, height = 6)
+```
+
+---
+
+### 2022
+
+![](usa_population_3_03.png)
+
+```{r}
+# Plot
+mp <- ggPopChange(2022)
+ggsave("usa_population_3_03.png", mp, width = 4, height = 6)
+```
+
+---
+
+### 2023
+
+![](usa_population_3_04.png)
+
+```{r}
+# Plot
+mp <- ggPopChange(2023)
+ggsave("usa_population_3_04.png", mp, width = 4, height = 6)
+```
+
+---
+
+### 2024
+
+![](usa_population_3_05.png)
+
+```{r}
+# Plot
+mp <- ggPopChange(2024)
+ggsave("usa_population_3_05.png", mp, width = 4, height = 6)
 ```
 
 ---
 
 # Population Pyramid {.tabset .tabset-pills}
 
-## 2021
+## 2023
 
-![](usa_population_3_01.png)
+![](usa_population_4_01.png)
 
 ```{r}
 # Prep data
 xx <- d2 %>% 
-  filter(Year == 2021, Age != "Median age", Sex != "Both sexes") 
+  filter(Year == 2023, Age != "Median age", Sex != "Both sexes") 
 yy <- xx %>% spread(Sex, Population) %>% 
   mutate(Population = Females - Males,
          Sex = ifelse(Population < 0, "Males", "Females"))
@@ -271,7 +394,7 @@ mp <- ggplot(xx, aes(y = Population / 1000000, x = Age, fill = Sex)) +
        y = "Million People", caption = myCaption) +
   coord_cartesian(ylim = c(-max(xx$Population), max(xx$Population))) +
   coord_flip()
-ggsave("usa_population_3_01.png", mp, width = 6, height = 4)
+ggsave("usa_population_4_01.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F}
@@ -280,14 +403,14 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ---
 
-## 2007 - 2021
+## 2007 - 2023
 
-![](usa_population_3_02.png)
+![](usa_population_4_02.png)
 
 ```{r}
 # Prep data
 xx <- d2 %>% 
-  filter(Year %in% c(2007, 2021), 
+  filter(Year %in% c(2007, 2023), 
          Age != "Median age", Sex != "Both sexes") 
 yy <- xx %>% spread(Sex, Population) %>% 
   mutate(Population = Females - Males,
@@ -305,21 +428,21 @@ mp <- ggplot(xx, aes(y = Population / 1000000, x = Age, fill = Sex)) +
        y = "Million People", caption = myCaption) +
   coord_cartesian(ylim = c(-max(xx$Population), max(xx$Population))) +
   coord_flip()
-ggsave("usa_population_3_02.png", mp, width = 8, height = 4)
+ggsave("usa_population_4_02.png", mp, width = 8, height = 4)
 ```
 
 ---
 
-## Dual Year Population Pyramid 2007 - 2021
+## Dual Year Population Pyramid 2007 - 2023
 
-![](usa_population_3_03.png)
+![](usa_population_4_03.png)
 
 ```{r}
 # Prep data
-xx <- d2 %>% filter(Year %in% c(2007,2021), Sex == "Both sexes") 
+xx <- d2 %>% filter(Year %in% c(2007, 2023), Sex == "Both sexes") 
 yy <- xx %>% spread(Year, Population) %>%
-  mutate(Population = `2021` - `2007`) %>%
-  mutate(Year = ifelse(Population < 0, 2007, 2021),
+  mutate(Population = `2023` - `2007`) %>%
+  mutate(Year = ifelse(Population < 0, 2007, 2023),
          Year = factor(Year))
 xx <- xx %>% 
   mutate(Population = ifelse(Year == 2007, -Population, Population),
@@ -334,116 +457,7 @@ mp <- ggplot(xx, aes(y = Population / 1000000, x = Age, fill = Year)) +
        y = "Million People", caption = myCaption) +
   coord_cartesian(ylim = c(-max(xx$Population), max(xx$Population))) +
   coord_flip()
-ggsave("usa_population_3_03.png", mp, width = 6, height = 4)
-```
-
----
-
-# Bonus - US elections {.tabset .tabset-pills}
-
-> - `r shiny::icon("globe")` https://en.wikipedia.org/wiki/2024_United_States_elections
-> - `r shiny::icon("save")` [data_usa_population_age.csv](data_usa_population_age.csv)
-
-
-## Dodged
-
-```{r}
-# Prep data
-myPartyColors <- c("darkblue","darkred","darkgreen")
-xx <- read.csv("data_us_elections.csv") %>% 
-  mutate(Party = factor(Party, levels = c("Dem","Rep","Other")),
-         Year = factor(Year))
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = Votes / 1000000, fill = Party)) +
-  geom_col(position = "dodge", color = "black", lwd = 0.2, alpha = 0.7) + 
-  scale_fill_manual(values = myPartyColors) +
-  theme_agData(legend.position = "bottom") +
-  labs(title = "Votes in US Elections", x = NULL, y = "Million Votes")
-ggsave("usa_population_4_01.png", mp, width = 6, height = 4)
-```
-
----
-
-## Stacked
-
-```{r}
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = Votes / 1000000, fill = Party)) +
-  geom_col(color = "black", lwd = 0.2, alpha = 0.7) + 
-  scale_fill_manual(values = myPartyColors) +
-  theme_agData(legend.position = "bottom") +
-  labs(title = "Votes in US Elections", x = NULL, y = "Million Votes")
-ggsave("usa_population_4_02.png", mp, width = 6, height = 4)
-```
-
----
-
-## Facetted
-
-```{r}
-mp <- ggplot(xx, aes(x = Party, y = Votes / 1000000, fill = Party)) +
-  geom_col(color = "black", alpha = 0.7) + 
-  geom_text(aes(label = Candidate), angle = 90, y = 20) +
-  facet_grid(. ~ Year) +
-  scale_fill_manual(values = myPartyColors) +
-  theme_agData(legend.position = "bottom",
-               axis.text.x = element_blank(),
-               axis.ticks.x = element_blank()) +
-  labs(title = "US Election Results", x = NULL, y = "Million Votes")
 ggsave("usa_population_4_03.png", mp, width = 6, height = 4)
 ```
 
 ---
-
-```{r echo = F, eval = F}
-# Median Age By Race
-
-#![](usa_population_04.png)
-#
-d3 <- bind_rows(read.csv("nation-populationpyramid-2000-2010-2020.csv"),
-                read.csv("state-populationpyramid-2000-2010-2020.csv") )
-
-myRaces1 <- c("White alone, not Hispanic or Latino",
-             "Asian alone, not Hispanic or Latino", 
-             "Black or African American alone, not Hispanic or Latino",
-             "American Indian and Alaska Native alone, not Hispanic or Latino",
-             "Hispanic or Latino")
-myRaces2 <- c("White", "Asian", "Black", "Indigenous", "Hispanic")
-myColors <- c("darkgreen", "darkblue", "black", "darkred", "darkorange")
-#
-xx <- d3 %>% filter(Group %in% myRaces1, Nation == "United States") %>%
-  mutate(Group = plyr::mapvalues(Group, myRaces1, myRaces2),
-         Group = factor(Group, levels = myRaces2))
-#
-mp <- ggplot(xx, aes(y = Median.age, x = Year, color = Group)) + 
-  geom_line() + geom_point() +
-  scale_color_manual(name = NULL, values = myColors) +
-  guides(color = guide_legend(ncol = 1)) +
-  theme_agData() + 
-  labs(title = "Population Change in The United States", 
-       y = "Median Age", x = NULL, caption = myCaption)
-ggsave("usa_population_4_01.png", width = 6, height = 4)
-```
-
-```{r echo = F, eval = F}
-# Bonus - Rural Urban Voting
-
-#> - `r shiny::icon("globe")` https://www.cambridge.org/core/journals/perspectives-on-politics/article/sequential-polarization-the-development-of-the-ruralurban-political-divide-19762020/ED2077E0263BC149FED8538CD9B27109
-#> - `r shiny::icon("save")` [rural_urban.csv](rural_urban.csv)
-
-# Prep data
-xx <- read.csv("rural_urban.csv") %>%
-  gather(Type, Value, Rural, Urban) %>%
-  mutate(Value = 100 * Value)
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = Value, color = Type)) +
-  geom_line(size = 2) + 
-  geom_label(aes(label = Value), size = 2.5, label.padding = unit(0.1, "lines")) +
-  scale_color_manual(name = NULL, values = c("darkred", "darkblue")) +
-  scale_x_continuous(breaks = unique(xx$Year), minor_breaks = unique(xx$Year)) +
-  theme_agData(legend.position = "bottom") +
-  labs(x = "Year (Election)", 
-       y = "Percent of Votes Going to\nRepublicans Candidate (County-Level)",
-       caption = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Brown & Mettler (2023)")
-ggsave("usa_population_4_02.png", width = 7, height = 4)
-```

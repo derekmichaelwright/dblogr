@@ -15,14 +15,11 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 The [2020 Saskatchewan provincial election](https://en.wikipedia.org/wiki/2020_Saskatchewan_general_election){target="_blank"} was won by the [**Saskatchewan Party**](https://en.wikipedia.org/wiki/Saskatchewan_Party){target="_blank"} who won 48 (+2) of the 61 seats. Second place went to the [**NDP**](https://en.wikipedia.org/wiki/Saskatchewan_New_Democratic_Party){target="_blank"} who won 13 seats. Surpringly, third place went to the newly formed [**Buffalo Party**](https://en.wikipedia.org/wiki/Buffalo_Party_of_Saskatchewan){target="_blank"} who beat out the [**Green Party**](https://en.wikipedia.org/wiki/Green_Party_of_Saskatchewan){target="_blank"} despite only running candidates in 17 ridings and even came in second in 4 rural ridings, beating out the NDP. Hilariously, the [**Liberal Party**](https://en.wikipedia.org/wiki/Saskatchewan_Liberal_Party){target="_blank"} only ran 3 candidates and only received a total of 355 votes throughout the province.
 
-
----
-
-All images are from [Wikipedia](http://www.wikipedia.org/){target="_blank"}
-
 ---
 
 # Election Results {.tabset .tabset-pills}
+
+All images are from [Wikipedia](http://www.wikipedia.org/){target="_blank"}
 
 ## 2024
 

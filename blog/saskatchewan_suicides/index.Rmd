@@ -68,45 +68,9 @@ ggsave("saskatchewan_suicides_01.png", mp, width = 6, height = 4)
 
 # By Age {.tabset .tabset-pills}
 
-## All Data
-
-![](saskatchewan_suicides_02.png)
-
-```{r}
-mp <- ggplot(d1, aes(x = Year, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", color = "black", lwd = 0.2, alpha = 0.7) +
-  facet_grid(. ~ Age) +
-  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:2021) +
-  scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData(legend.position = "bottom") +
-  labs(title = "Suicides in Saskatchewan", 
-       x = NULL, caption = myCaption)
-ggsave("saskatchewan_suicides_02.png", mp, width = 12, height = 4)
-```
-
----
-
-## By Sex
-
-![](saskatchewan_suicides_03.png)
-
-```{r}
-mp <- ggplot(d1, aes(x = Year, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", color = "black", lwd = 0.2, alpha = 0.7) +
-  facet_grid(Sex ~ Age) +
-  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:2021) +
-  scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData(legend.position = "none") +
-  labs(title = "Suicides in Saskatchewan", 
-       x = NULL, caption = myCaption)
-ggsave("saskatchewan_suicides_03.png", mp, width = 12, height = 6)
-```
-
----
-
 ## 2021
 
-![](saskatchewan_suicides_04.png)
+![](saskatchewan_suicides_02.png)
 
 ```{r}
 mp <- ggplot(d1 %>% filter(Year == 2021), 
@@ -117,7 +81,7 @@ mp <- ggplot(d1 %>% filter(Year == 2021),
   theme_agData(legend.position = "bottom") +
   labs(title = "Suicides in Saskatchewan - 2021", 
        x = NULL, caption = myCaption)
-ggsave("saskatchewan_suicides_04.png", mp, width = 6, height = 4)
+ggsave("saskatchewan_suicides_02.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F}
@@ -126,11 +90,44 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ---
 
-## Animation
+## All Data
 
-![](saskatchewan_suicides_gif_01.gif)
+![](saskatchewan_suicides_03.png)
 
 ```{r}
+mp <- ggplot(d1, aes(x = Year, y = Deaths, fill = Sex)) +
+  geom_bar(stat = "identity", color = "black", lwd = 0.2, alpha = 0.7) +
+  facet_grid(. ~ Age) +
+  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:2021) +
+  scale_fill_manual(name = NULL, values = myColors) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Suicides in Saskatchewan", 
+       x = NULL, caption = myCaption)
+ggsave("saskatchewan_suicides_03.png", mp, width = 12, height = 4)
+```
+
+---
+
+## By Sex
+
+![](saskatchewan_suicides_04.png)
+
+```{r}
+mp <- ggplot(d1, aes(x = Year, y = Deaths, fill = Sex)) +
+  geom_bar(stat = "identity", color = "black", lwd = 0.2, alpha = 0.7) +
+  facet_grid(Sex ~ Age) +
+  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:2021) +
+  scale_fill_manual(name = NULL, values = myColors) +
+  theme_agData(legend.position = "none") +
+  labs(title = "Suicides in Saskatchewan", 
+       x = NULL, caption = myCaption)
+ggsave("saskatchewan_suicides_04.png", mp, width = 12, height = 6)
+```
+
+```{r eval = F, echo = F}
+## Animation
+
+#![](saskatchewan_suicides_gif_01.gif)
 mp <- ggplot(d1, aes(x = Age, y = Deaths, fill = Sex)) +
   geom_bar(stat = "identity", position = "dodge", 
            color = "black", alpha = 0.7) +
@@ -146,45 +143,11 @@ anim_save("saskatchewan_suicides_gif_01.gif", mp,
 
 ---
 
-# Race {.tabset .tabset-pills}
-
-![](saskatchewan_suicides_05.png)
-
-```{r}
-mp <- ggplot(d2, aes(x = Year, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", color = "black", lwd = 0.2, alpha = 0.7) +
-  facet_grid(. ~ Race) +
-  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:2021) +
-  scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData(legend.position = "bottom") +
-  labs(title = "Suicides in Saskatchewan", 
-       x = NULL, caption = myCaption)
-ggsave("saskatchewan_suicides_05.png", mp, width = 12, height = 4)
-```
-
----
-
-## By Sex
-
-![](saskatchewan_suicides_06.png)
-
-```{r}
-mp <- ggplot(d2, aes(x = Year, y = Deaths, fill = Sex)) +
-  geom_bar(stat = "identity", color = "black", lwd = 0.2, alpha = 0.7) +
-  facet_grid(Sex ~ Race) +
-  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:2021) +
-  scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData(legend.position = "none") +
-  labs(title = "Suicides in Saskatchewan", 
-       x = NULL, caption = myCaption)
-ggsave("saskatchewan_suicides_06.png", mp, width = 12, height = 6)
-```
-
----
+# By Race {.tabset .tabset-pills}
 
 ## 2021
 
-![](saskatchewan_suicides_07.png)
+![](saskatchewan_suicides_05.png)
 
 ```{r}
 mp <- ggplot(d2 %>% filter(Year == 2021), 
@@ -195,7 +158,44 @@ mp <- ggplot(d2 %>% filter(Year == 2021),
   theme_agData(legend.position = "bottom") +
   labs(title = "Suicides in Saskatchewan - 2021", 
        x = NULL, caption = myCaption)
-ggsave("saskatchewan_suicides_07.png", mp, width = 6, height = 4)
+ggsave("saskatchewan_suicides_05.png", mp, width = 6, height = 4)
+```
+
+---
+
+
+## All Data
+
+![](saskatchewan_suicides_06.png)
+
+```{r}
+mp <- ggplot(d2, aes(x = Year, y = Deaths, fill = Sex)) +
+  geom_bar(stat = "identity", color = "black", lwd = 0.2, alpha = 0.7) +
+  facet_grid(. ~ Race) +
+  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:2021) +
+  scale_fill_manual(name = NULL, values = myColors) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Suicides in Saskatchewan", 
+       x = NULL, caption = myCaption)
+ggsave("saskatchewan_suicides_06.png", mp, width = 12, height = 4)
+```
+
+---
+
+## By Sex
+
+![](saskatchewan_suicides_07.png)
+
+```{r}
+mp <- ggplot(d2, aes(x = Year, y = Deaths, fill = Sex)) +
+  geom_bar(stat = "identity", color = "black", lwd = 0.2, alpha = 0.7) +
+  facet_grid(Sex ~ Race) +
+  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:2021) +
+  scale_fill_manual(name = NULL, values = myColors) +
+  theme_agData(legend.position = "none") +
+  labs(title = "Suicides in Saskatchewan", 
+       x = NULL, caption = myCaption)
+ggsave("saskatchewan_suicides_07.png", mp, width = 12, height = 6)
 ```
 
 ---
