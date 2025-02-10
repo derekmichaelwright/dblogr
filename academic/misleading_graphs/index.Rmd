@@ -26,9 +26,6 @@ Using statistics to mislead can be a trivial thing. This vignette will go throug
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(readxl) # read_xlsx()
-library(ggpmisc) # stat_poly_eq()
-library(usmap) # plot_usmap
-library(housingData) # geoCounty()
 ```
 
 ---
@@ -37,14 +34,14 @@ library(housingData) # geoCounty()
 
 Truncating the y-axis is the most commonly used example for misleading graphs. It is a simple way to create the appearance of a larger difference between groups than what reality would suggest.
 
-![](misleading_graphs_01.png)
+![](misleading_graphs_1_01.png)
 
 ```{r}
 # Prep data
 myCaption <- "derekmichaelwright.github.io/dblogr/"
 #
 xx <- data.frame(Company = c("Item A", "Item B", "Item C"),
-                 Views   = c( 2555486,     2527246,     2519643))
+                 Views   = c( 2555486, 2527246, 2519643))
 # Plot
 mp1 <- ggplot(xx, aes(x = Company, y = Views / 1000000, fill = Company)) + 
   geom_col(color = "black", alpha = 0.8) +
@@ -58,7 +55,7 @@ mp2 <- mp1 +
        subtitle = "A) Visualization 1 - Truncated y-axis", 
        caption = NULL)
 mp <- ggarrange(mp2, mp1, ncol = 2, align = "h")
-ggsave("misleading_graphs_01.png", mp, width = 8, height = 4)
+ggsave("misleading_graphs_1_1.png", mp, width = 8, height = 4)
 ```
 
 ```{r echo = F} 
@@ -67,7 +64,7 @@ ggsave("featured.png", mp, width = 8, height = 4)
 
 ---
 
-![](misleading_graphs_02.png)
+![](misleading_graphs_1_02.png)
 
 ```{r}
 # Prep data
@@ -91,7 +88,7 @@ mp2 <- mp1 +
        subtitle = "A) Visualization 1", 
        caption = NULL)
 mp <- ggarrange(mp2, mp1, ncol = 2, align = "h")
-ggsave("misleading_graphs_02.png", mp, width = 8, height = 4)
+ggsave("misleading_graphs_1_02.png", mp, width = 8, height = 4)
 ```
 
 ```{r echo = F, eval = F}
@@ -117,15 +114,15 @@ ggplot(xx, aes(x = Year, y = Mass.balance..Gt.yr.)) +
 
 In some cases, a graph with two y-axes is desired for visualizing two different sets of data. However, this is sometimes frowned upon since the required scaling of the data can be adjusted to fit the desired narrative. *E.g.*,
 
-![Source: https://blog.datawrapper.de/dualaxis/](examples_01.png)
+![Source: https://blog.datawrapper.de/dualaxis/](example_2_01.png)
 
 <br>
 
 The COVID Pandemic has produced many examples of dual-y-axis graphs. Below are two examples of dual-y-axis graphs created by the CBC and the Canadian government using deaths as the secondary y-axis which allows them to be scaled to portray the desire visual effect.
 
-![Source: Canadian Broadcasting Corporation](examples_02.png)
+![Source: Canadian Broadcasting Corporation](example_2_02.png)
 
-![Source: Public Health Agency of Canada](examples_03.png)
+![Source: Public Health Agency of Canada](example_2_03.png)
 
 <br>
 
@@ -133,11 +130,11 @@ In the above example from the Canadian government, the scaling of the secondary 
 
 > - `r shiny::icon("globe")` Canada's Covid data: [https://health-infobase.canada.ca/covid-19/dashboard/about.html](https://health-infobase.canada.ca/covid-19/dashboard/about.html){target="_blank"}
 
-![](misleading_graphs_03.png)
+![](misleading_graphs_2_01.png)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: PHAC"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: PHAC"
 #
 xx <- read.csv("https://health-infobase.canada.ca/src/data/covidLive/covid19-download.csv") %>%
   rename(area=prname) %>%
@@ -177,8 +174,7 @@ mp2 <- mp +
                         breaks = seq(0, 900, 100)))
 # 0 - 200
 mp3 <- mp +
-  labs(subtitle = "C) Full scaling", 
-       caption = "\u00A9 www.dblogr.com/  |  Data: PHAC") +
+  labs(subtitle = "C) Full scaling") +
   geom_line(aes(y = deaths_scaled2, color = "2")) +
   scale_y_continuous(breaks = seq(0, 9000, 1000),
     sec.axis = sec_axis(~ . * y2_max / y1_max, name = "COVID Deaths"))
@@ -198,8 +194,6 @@ yy <- yy %>%
 mp4 <- ggplot(yy, aes(x = date)) +
   geom_line(aes(y = numcases_daily, color = "1")) +
   geom_line(aes(y = deaths_scaled3, color = "2")) +
-  #scale_y_continuous(breaks = seq(0, max(xx$numcases_daily, na.rm = T), 10000),
-  #  sec.axis = sec_axis(~ . * y4_max / y3_max, name = "COVID Deaths")) +
   scale_color_manual(name = NULL, labels = c("Cases","Deaths"),
                      values = c("darkorange","darkred")) +
   scale_x_datetime(date_breaks = "3 month", date_minor_breaks = "1 month", 
@@ -210,7 +204,7 @@ mp4 <- ggplot(yy, aes(x = date)) +
 # Append
 mp <- ggarrange(mp1, mp2, mp3, mp4, ncol = 1, align = "hv",
                 common.legend = T, legend = "top")
-ggsave("misleading_graphs_03.png", mp, width = 6, height = 10, bg = "white")
+ggsave("misleading_graphs_2_01.png", mp, width = 6, height = 10, bg = "white")
 ```
 
 In this example, the two data sets are at least related to each other. However, if they aren’t, dual y-axes can also lead to spurious correlations.
@@ -230,11 +224,12 @@ Now lets make our own by correlating autism rates in Quebec with soybean product
 > - `r shiny::icon("globe")` FAO data on Organic hectares: [http://www.fao.org/faostat/en/#data/RL](http://www.fao.org/faostat/en/#data/RL){target="_blank"}
 > - `r shiny::icon("globe")` Data for Quebec autism rates can be found at [https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-children-youth-canada-2018.html](https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-children-youth-canada-2018.html){target="_blank"}.
 
-![](misleading_graphs_04.png)
+![](misleading_graphs_3_01.png)
 
 ```{r}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: STATCAN & FAOSTAT"
+library(ggpmisc) # stat_poly_eq()
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN & FAOSTAT"
 #
 x1 <- read.csv("data_quebec_autism_rates.csv")
 x2 <- agData_STATCAN_Crops %>% 
@@ -321,7 +316,7 @@ mp4 <- ggplot(xx %>% filter(!is.na(Organic_Area)), aes(x = Year)) +
   theme_agData(legend.position = c(0.35,0.85)) +
   labs(x = NULL, caption = myCaption)
 mp <- ggarrange(mp1, mp2, mp3, mp4, ncol = 2, nrow = 2, align = "hv")
-ggsave("misleading_graphs_04.png", mp, width = 9, height = 9)
+ggsave("misleading_graphs_3_01.png", mp, width = 9, height = 9)
 ```
 
 ---
@@ -336,7 +331,7 @@ In 1994 the first genetically engineered (GE) maize variety was released in the 
 
 > - `r shiny::icon("globe")` USDA data [https://www.nass.usda.gov/](https://www.nass.usda.gov/){target="_blank"}
 
-![](misleading_graphs_05.png)
+![](misleading_graphs_4_01.png)
 
 ```{r}
 # Prep data
@@ -367,7 +362,7 @@ mp2 <- mp +
   scale_x_continuous(breaks = seq(1860, 2020, by = 20)) +
   labs(subtitle = "B) Full data set", caption = myCaption)
 mp <- ggarrange(mp1, mp2, ncol = 2, align = "h")
-ggsave("misleading_graphs_05.png", mp, width = 10, height = 4)
+ggsave("misleading_graphs_4_01.png", mp, width = 10, height = 4)
 ```
 
 ---
@@ -379,7 +374,7 @@ The National Interagency Fire Center (NIFC) recently deleted some data from thei
 > - `r shiny::icon("globe")` [https://www.nifc.gov/fire-information/statistics/wildfires](https://www.nifc.gov/fire-information/statistics/wildfires){target="_blank"}
 > - `r shiny::icon("globe")` [https://web.archive.org/web/20210129125036/https://www.nifc.gov/fireInfo/fireInfo_stats_totalFires.html](https://web.archive.org/web/20210129125036/https://www.nifc.gov/fireInfo/fireInfo_stats_totalFires.html){target="_blank"}
 
-![](misleading_graphs_06.png)
+![](misleading_graphs_4_02.png)
 
 ```{r}
 # Prep data
@@ -404,10 +399,11 @@ mp2 <- ggplot(dd, aes(x = Year, y = Acres / 1000000, fill = Group)) +
   scale_x_continuous(breaks = seq(1925, 2015, 10)) +
   theme_agData() +
   labs(subtitle = "B) Full data set",
-       y = "Million Acres", x = NULL, caption = myCaption)
+       y = "Million Acres", x = NULL)
 mp <- ggarrange(mp1, mp2, ncol = 2, align = "hv",
-                common.legend = T, legend = "bottom")
-ggsave("misleading_graphs_06.png", mp, width = 10, height = 4, bg = "white")
+                common.legend = T, legend = "bottom") %>%
+  annotate_figure(fig.lab = myCaption, fig.lab.pos = "bottom.right")
+ggsave("misleading_graphs_4_02.png", mp, width = 10, height = 4, bg = "white")
 ```
 
 ---
@@ -416,11 +412,11 @@ ggsave("misleading_graphs_06.png", mp, width = 10, height = 4, bg = "white")
 
 The following is a comical example put out by US democrats. Impressively, this graph uses both cherry picking and a truncated y-axis.
 
-![Source: https://twitter.com/dccc/status/1466494036630544394](examples_05.jfif)
+![Source: https://twitter.com/dccc/status/1466494036630544394](examples_4_01.jfif)
 
 > - `r shiny::icon("globe")` [https://www.eia.gov/dnav/pet/pet_pri_gnd_dcus_nus_w.htm](https://www.eia.gov/dnav/pet/pet_pri_gnd_dcus_nus_w.htm){target="_blank"}
 
-![](misleading_graphs_07.png)
+![](misleading_graphs_4_03.png)
 
 ```{r}
 # Prep data
@@ -461,7 +457,7 @@ mp4 <-  mp +
                   xlim = as.Date(c("2021-11-16", "2021-11-30"))) +
   labs(subtitle = "D) DCCC graph", caption = myCaption)
 mp <- ggarrange(mp1, mp2, mp3, mp4, ncol = 2, nrow = 2, align = "hv")
-ggsave("misleading_graphs_07.png", mp, width = 6, height = 6)
+ggsave("misleading_graphs_4_03.png", mp, width = 6, height = 6)
 ```
 
 ---
@@ -470,17 +466,22 @@ ggsave("misleading_graphs_07.png", mp, width = 6, height = 6)
 
 Color scales can be adjusted to present a desired narrative, by exaggerating differences and/or invoking emotional response, *i.e.*, red = bad. Here is an example from the news.
 
-![Source: Global News](examples_06.png)
+![Source: Global News](examples_5_01.png)
 
 ---
 
 To help illustrate this, we can use some data from a flax field trial with a common check used throughout the trial to account for environmental variation within a field. Notice how in (A) the check variety has much less variability than the treatment varieties. Displaying the variation in the check variety across the field using a scale based on its range (B), presents a much different picture that if the color scale is based on the range from the treatment varieties (C).
 
-![](misleading_graphs_08.png)
+> - [**You, F.M., Song, Q., Jia, G., Cheng, Y., Duguid, S., Booker, H. and Cloutier, S.** (2016) Estimation of genetic parameters and their sampling variances for quantitative traits in the type 2 modified augmented design. *The Crop Journal*. 4(2): 107-118.](https://www.sciencedirect.com/science/article/pii/S2214514116000179){target="_blank"}
+> - [Table S1 – The raw phenotypic data of a population with 243 RILs derived from a cross between ‘CDC Bethune’ and ‘Macbeth’ (BM) for the case study](https://data.nal.usda.gov/dataset/data-estimation-genetic-parameters-and-their-sampling-variances-quantitative-traits-type-2-modified-augmented-design){target="_blank"}
+> - `r shiny::icon("save")` [data_augmented_designs_2.csv](data_augmented_designs_2.csv)
+
+![](misleading_graphs_5_01.png)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: "
+myCaption <- expression(paste("derekmichaelwright.github.io/dblogr/ | Data: You ", 
+                               italic("et al"), ". (2016)"))
 #
 xx <- read.csv("data_augmented_designs_2.csv") %>%
   rename(MainCheck=Cp..plot.control., SubCheck=Csp..sub.plot.control.) %>%
@@ -496,33 +497,35 @@ mp1 <- ggplot(xx, aes(x = Group, y = Yield)) +
 mp2 <- ggplot(x1, aes(x = Col, y = Row)) +
   geom_tile(aes(fill = Yield), color = "black") + 
   geom_text(aes(label = Yield)) +
-  scale_fill_continuous(name = NULL, low = "grey90", high = "darkred") +
+  scale_fill_continuous(name = NULL, low = "grey90", high = "darkgreen") +
   theme_agData() +
   labs(title = "B) Check Yield Accross the Field",
        subtitle = "Color scale based on check range")
 mp3 <- ggplot(x1, aes(x = Col, y = Row)) +
   geom_tile(aes(fill = Yield), color = "black") + 
   geom_text(aes(label = Yield)) +
-  scale_fill_continuous(name = NULL, low = "grey90", high = "darkred",
+  scale_fill_continuous(name = NULL, low = "grey90", high = "darkgreen",
                         limits = range(xx$Yield)) +
   theme_agData() +
   labs(title = "C) Check Yield Accross the Field",
        subtitle = "Color scale based on treatment range",
        caption = myCaption)
-mp <- ggarrange(mp1, mp2, mp3, nrow = 1, ncol = 3)
-ggsave("misleading_graphs_08.png", mp, width = 12, height = 4, bg = "white")
+mp <- ggarrange(mp1, mp2, mp3, nrow = 1, ncol = 3, align = "v")
+ggsave("misleading_graphs_5_01.png", mp, width = 12, height = 4, bg = "white")
 ```
 
 We can also illustrate this by attempting different way to present results from the 2016 US election.
 
 > - `r shiny::icon("globe")` [https://raw.githubusercontent.com/tonmcg/US_County_Level_Election_Results_08-20/](https://raw.githubusercontent.com/tonmcg/US_County_Level_Election_Results_08-20/){target="_blank"}
 
-![](misleading_graphs_09.png)
+![](misleading_graphs_5_02.png)
 
-![](misleading_graphs_10.png)
+![](misleading_graphs_5_03.png)
 
 ```{r}
 # Prep data
+library(usmap) # plot_usmap
+library(housingData) # geoCounty()
 myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN & FAOSTAT"
 #
 x1 <- read.csv("https://raw.githubusercontent.com/tonmcg/US_County_Level_Election_Results_08-20/master/US_County_Level_Presidential_Results_08-16.csv", 
@@ -534,7 +537,7 @@ x1 <- read.csv("https://raw.githubusercontent.com/tonmcg/US_County_Level_Electio
          outcome.perc_2016 = (gop_2016 - dem_2016) / total_2016,
          victor_2016 = ifelse(outcome_2016 > 0, "GOP","DEM"))
 x2 <- geoCounty 
-
+#
 xx <- left_join(x1, x2, by = "fips") %>%
   arrange(outcome.perc.rank_2016)
 y1 <- xx %>% group_by(state) %>%
@@ -568,7 +571,7 @@ mp4 <- ggplot(yy, aes(x = lon, y = lat,
   theme_void() +
   theme(legend.position = "none")
 mp <- ggarrange(mp1, mp2, mp3, mp4, nrow = 2, ncol = 2, heights = c(1,0.8))
-ggsave("misleading_graphs_09.png", mp, width = 8, height = 5, bg = "grey90")
+ggsave("misleading_graphs_5_02.png", mp, width = 8, height = 5, bg = "grey90")
 # Plot Counties
 mp1 <- plot_usmap(regions = "counties", data = xx, lwd = 0.1,
            values = "victor_2016", color = "white", 
@@ -593,7 +596,7 @@ mp4 <- ggplot(xx, aes(x = lon, y = lat,
   theme_void() +
   theme(legend.position = "none")
 mp <- ggarrange(mp1, mp2, mp3, mp4, nrow = 2, ncol = 2, heights = c(1,0.8))
-ggsave("misleading_graphs_10.png", mp, width = 8, height = 5, bg = "grey90")
+ggsave("misleading_graphs_5_03.png", mp, width = 8, height = 5, bg = "grey90")
 ```
 
 ---
@@ -602,7 +605,7 @@ ggsave("misleading_graphs_10.png", mp, width = 8, height = 5, bg = "grey90")
 
 > - `r shiny::icon("globe")` [https://en.wikipedia.org/wiki/Anscombe's_quartet](https://en.wikipedia.org/wiki/Anscombe's_quartet){target="_blank"}
 
-![](misleading_graphs_11.png)
+![](misleading_graphs_6_01.png)
 
 ```{r}
 # Prep data
@@ -619,7 +622,7 @@ mp <- ggplot(xx, aes(x = x, y = y)) +
   facet_wrap(DataSet ~ .) +
   theme_agData() +
   labs(title = "Anscombe's quartet", caption = myCaption)
-ggsave("misleading_graphs_11.png", mp, width = 8, height = 5)
+ggsave("misleading_graphs_6_01.png", mp, width = 8, height = 5)
 #
 xx %>% group_by(DataSet) %>%
   summarise(Mean_x = mean(x), 
@@ -630,6 +633,125 @@ xx %>% group_by(DataSet) %>%
 ```
 
 ---
+
+```{r echo = F, eval = F}
+# Bonus
+
+## US elections {.tabset .tabset-pills}
+
+#> - `r shiny::icon("globe")` https://en.wikipedia.org/wiki/2024_United_States_elections
+#> - `r shiny::icon("save")` [data_usa_population_age.csv](data_usa_population_age.csv)
+
+## Dodged
+
+#![](misleading_graphs_7_01.png)
+
+#```{r}
+# Prep data
+myPartyColors <- c("darkblue","darkred","darkgreen")
+xx <- read.csv("data_us_elections.csv") %>% 
+  mutate(Party = factor(Party, levels = c("Dem","Rep","Other")),
+         Year = factor(Year))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Votes / 1000000, fill = Party)) +
+  geom_col(position = "dodge", color = "black", lwd = 0.2, alpha = 0.7) + 
+  scale_fill_manual(values = myPartyColors) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Votes in US Elections", x = NULL, y = "Million Votes")
+ggsave("misleading_graphs_7_01.png", mp, width = 6, height = 4)
+#```
+
+#---
+
+## Stacked
+
+#![](misleading_graphs_7_02.png)
+
+#```{r}
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Votes / 1000000, fill = Party)) +
+  geom_col(color = "black", lwd = 0.2, alpha = 0.7) + 
+  scale_fill_manual(values = myPartyColors) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Votes in US Elections", x = NULL, y = "Million Votes")
+ggsave("misleading_graphs_7_02.png", mp, width = 6, height = 4)
+#```
+
+#---
+
+## Facetted
+
+#![](misleading_graphs_7_03.png)
+
+#```{r}
+mp <- ggplot(xx, aes(x = Party, y = Votes / 1000000, fill = Party)) +
+  geom_col(color = "black", alpha = 0.7) + 
+  geom_text(aes(label = Candidate), angle = 90, y = 20) +
+  facet_grid(. ~ Year) +
+  scale_fill_manual(values = myPartyColors) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_blank(),
+               axis.ticks.x = element_blank()) +
+  labs(title = "US Election Results", x = NULL, y = "Million Votes")
+ggsave("misleading_graphs_7_03.png", mp, width = 6, height = 4)
+#```
+
+```
+
+---
+
+```{r echo = F, eval = F}
+# Median Age By Race
+
+#![](usa_population_04.png)
+#
+d3 <- bind_rows(read.csv("nation-populationpyramid-2000-2010-2020.csv"),
+                read.csv("state-populationpyramid-2000-2010-2020.csv") )
+
+myRaces1 <- c("White alone, not Hispanic or Latino",
+             "Asian alone, not Hispanic or Latino", 
+             "Black or African American alone, not Hispanic or Latino",
+             "American Indian and Alaska Native alone, not Hispanic or Latino",
+             "Hispanic or Latino")
+myRaces2 <- c("White", "Asian", "Black", "Indigenous", "Hispanic")
+myColors <- c("darkgreen", "darkblue", "black", "darkred", "darkorange")
+#
+xx <- d3 %>% filter(Group %in% myRaces1, Nation == "United States") %>%
+  mutate(Group = plyr::mapvalues(Group, myRaces1, myRaces2),
+         Group = factor(Group, levels = myRaces2))
+#
+mp <- ggplot(xx, aes(y = Median.age, x = Year, color = Group)) + 
+  geom_line() + geom_point() +
+  scale_color_manual(name = NULL, values = myColors) +
+  guides(color = guide_legend(ncol = 1)) +
+  theme_agData() + 
+  labs(title = "Population Change in The United States", 
+       y = "Median Age", x = NULL, caption = myCaption)
+ggsave("usa_population_4_01.png", width = 6, height = 4)
+```
+
+```{r echo = F, eval = F}
+# Bonus - Rural Urban Voting
+
+#> - `r shiny::icon("globe")` https://www.cambridge.org/core/journals/perspectives-on-politics/article/sequential-polarization-the-development-of-the-ruralurban-political-divide-19762020/ED2077E0263BC149FED8538CD9B27109
+#> - `r shiny::icon("save")` [rural_urban.csv](rural_urban.csv)
+
+# Prep data
+xx <- read.csv("rural_urban.csv") %>%
+  gather(Type, Value, Rural, Urban) %>%
+  mutate(Value = 100 * Value)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Type)) +
+  geom_line(size = 2) + 
+  geom_label(aes(label = Value), size = 2.5, label.padding = unit(0.1, "lines")) +
+  scale_color_manual(name = NULL, values = c("darkred", "darkblue")) +
+  scale_x_continuous(breaks = unique(xx$Year), minor_breaks = unique(xx$Year)) +
+  theme_agData(legend.position = "bottom") +
+  labs(x = "Year (Election)", 
+       y = "Percent of Votes Going to\nRepublicans Candidate (County-Level)",
+       caption = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Brown & Mettler (2023)")
+ggsave("usa_population_4_02.png", width = 7, height = 4)
+```
 
 ```{r eval = F, echo = F}
 myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN & FAOSTAT"
