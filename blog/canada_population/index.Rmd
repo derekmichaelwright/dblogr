@@ -50,7 +50,7 @@ myAges <- c("0 to 4 years", "5 to 9 years",
             "70 to 74 years", "75 to 79 years",
             "80 to 84 years", "85 to 89 years", 
             "90 to 94 years", "95 to 99 years",
-            "100 years and over", "Median age")
+            "100 years and over", "Median age", "All ages")
 myAreas <- c("Canada", "British Columbia", "Alberta", "Saskatchewan", "Manitoba",
              "Ontario", "Quebec", "New Brunswick", "Prince Edward Island",
              "Nova Scotia", "Newfoundland and Labrador", 
@@ -77,8 +77,9 @@ d2 <- read.csv("1710000501_databaseLoadingData.csv") %>%
          Sex = factor(Sex, levels = c("Both sexes", "Males", "Females")),
          Age = factor(Age, levels = myAges),
          Year = substr(Year, 1,4),
-         Year = as.numeric(Year)) %>%
-  filter(!is.na(Age))
+         Year = as.numeric(Year),
+         Value = ifelse(is.na(Value), 0, Value))# %>%
+  #filter(!is.na(Age))
 ```
 
 ---
@@ -95,7 +96,7 @@ xx <- d1 %>% filter(Area == "Canada")
 myBreaks <- as.Date(paste0(seq(1950, 2020, by = 10), "-01-01"))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
-  geom_col(fill = "darkgreen", alpha = 0.7) +
+  geom_col(fill = "darkgreen", alpha = 0.7, color = "black", lwd = 0.1) +
   facet_wrap(Area ~ ., ncol = 4, scales = "free_y") +
   scale_x_date(breaks = myBreaks, date_labels = "%Y") +
   theme_agData(legend.position = "none") +
@@ -115,7 +116,7 @@ xx <- d1 %>% filter(Area == "Saskatchewan")
 myBreaks <- as.Date(paste0(seq(1950, 2020, by = 10), "-01-01"))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
-  geom_col(fill = "darkgreen", alpha = 0.7) +
+  geom_col(fill = "darkgreen", alpha = 0.7, color = "black", lwd = 0.1) +
   facet_wrap(Area ~ ., ncol = 4, scales = "free_y") +
   scale_x_date(breaks = myBreaks, date_labels = "%Y") +
   theme_agData(legend.position = "none") +
@@ -136,7 +137,7 @@ ggsave("canada_population_1_02.png", mp, width = 6, height = 4)
 myBreaks <- as.Date(paste0(seq(1950, 2020, by = 10), "-01-01"))
 # Plot
 mp <- ggplot(d1, aes(x = Date, y = Value / 1000000)) +
-  geom_col(fill = "darkgreen", alpha = 0.7) +
+  geom_col(fill = "darkgreen", alpha = 0.9) +
   facet_wrap(Area ~ ., ncol = 5, scales = "free_y") +
   scale_x_date(breaks = myBreaks, date_labels = "%Y") +
   theme_agData(legend.position = "none", 
@@ -297,11 +298,11 @@ ggsave("canada_population_1_09.png", mp, width = 10, height = 6)
 ## Plotting Function
 
 ```{r class.source = "fold-show"}
-gg_PopDem_plot <- function(myArea = "Saskatchewan", myYears = 2019 ) {
+gg_PopDem_plot <- function(myArea = "Saskatchewan", myYears = 1971 ) {
   # Prep data
   xx <- d2 %>% 
-    filter(Area == myArea, Year %in% myYears, 
-           Age != "Median age", Sex != "Both sexes") 
+    filter(Area == myArea, Year %in% myYears, Sex != "Both sexes",
+           !Age %in% c("All ages", "Median age")) 
   yy <- xx %>% spread(Sex, Value) %>% 
     mutate(Value = Females - Males,
            Sex = ifelse(Value < 0, "Males", "Females"))
@@ -434,7 +435,8 @@ ggsave("canada_population_2_09.png", mp, width = 10, height = 4)
 gg_PopDem_anim <- function(myArea = "Saskatchewan") {
   # Prep data
   xx <- d2 %>% 
-    filter(Area %in% myArea, Age != "Median age", Sex != "Both sexes")
+    filter(Area %in% myArea, Sex != "Both sexes", 
+           !Age %in% c("All ages", "Median age"))
   yy <- xx %>% spread(Sex, Value) %>% 
     mutate(Value = Females - Males,
            Sex = ifelse(Value < 0, "Males", "Females"))
@@ -582,9 +584,11 @@ anim_save("canada_population_gif_2_09.gif", mp,
 gg_PopDem_plot2 <- function(myArea = "Saskatchewan", myYears = c(1971,2022) ) {
   # Prep data
   xx <- d2 %>% 
-    filter(Area == myArea, Year %in% myYears, 
-           Age != "Median age", Sex == "Both sexes") 
-  yy <- xx %>% spread(Year, Value) 
+    filter(Area == myArea, Year %in% myYears, Sex == "Both sexes", 
+           !Age %in% c("All ages", "Median age")) 
+  yy <- xx %>% spread(Year, Value)
+  yy[is.na(yy[,5]),5] <- 0
+  yy[is.na(yy[,6]),6] <- 0
   yy$Value <- yy[,6] - yy[,5] 
   yy <- yy %>%
     mutate(Year = ifelse(Value < 0, myYears[1], myYears[2]),
@@ -713,7 +717,8 @@ gg_SexRatio_plot <- function(myArea = "Saskatchewan", myYears = 2019) {
   # Prep data
   xx <- d2 %>% 
     filter(Area %in% myArea, Year %in% myYears, 
-           Age != "Median age", Sex %in% c("Males","Females")) %>%
+           !Age %in% c("All ages", "Median age"), 
+           Sex %in% c("Males", "Females")) %>%
     spread(Sex, Value) %>%
     mutate(Value = Females - Males, 
            Group = ifelse(Value < 0, "More Males", "More Females"),

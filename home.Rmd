@@ -13,20 +13,24 @@ library(shiny)
 # https://derekmichaelwright.github.io/dblogr/home
 ```
 
-
 <br>
 
-Welcome to the personal website for Derek Michael Wright
+Welcome to the personal website for **Derek Michael Wright**
 
-**derekmichaelwright.github.io/dblogr**
+> **derekmichaelwright.github.io/dblogr**
+> - `r icon("address-card")` About Me
+> - `r icon("image")` Photography
+> - `r icon("newspaper")` Academic Work
+> - `r icon("r-project")` Packages
+> - `r icon("chart-line")` Blog
 
 ---
 
 ---
 
-# `r icon("address-card")` About Me
+# `r icon("address-card")` About Me {.tabset .tabset-pills}
 
-<br>
+## Biography
 
 <div class="box">
 
@@ -38,7 +42,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 </div><div class = "col-md-6">![](cv/about.png)</div></div></div>
 
-<br>
+## CV/Contact
 
 <div class="box">
 
@@ -100,14 +104,6 @@ Some of my photography work
 
 ![](photography/general/featured.png)</div>
 
-### Mountains
-
-<div class="box">
-
-[<u>**Photography in the Mountains**</u>](photography/mountains){target="_blank"}
-
-![](photography/mountains/featured.png)</div>
-
 ### Saskatchewan
 
 <div class="box">
@@ -115,6 +111,14 @@ Some of my photography work
 [<u>**Photography in Saskatchewan**</u>](photography/saskatchewan){target="_blank"}
 
 ![](photography/saskatchewan/featured.png)</div>
+
+### Mountains
+
+<div class="box">
+
+[<u>**Photography in the Mountains**</u>](photography/mountains){target="_blank"}
+
+![](photography/mountains/featured.png)</div>
 
 ## {-}
 

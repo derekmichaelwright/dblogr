@@ -215,7 +215,7 @@ In this example, the two data sets are at least related to each other. However, 
 
 Spurious correlation occur when two variables appear to have a cause-and-effect relationship, when in reality, there may not be. A popular example is Nicolas Cage films and the number of deaths by drowning.
 
-![Source: https://www.tylervigen.com/spurious-correlations](examples_04.png)
+![Source: https://www.tylervigen.com/spurious-correlations](example_3_01.png)
 
 <br>
 
@@ -412,7 +412,7 @@ ggsave("misleading_graphs_4_02.png", mp, width = 10, height = 4, bg = "white")
 
 The following is a comical example put out by US democrats. Impressively, this graph uses both cherry picking and a truncated y-axis.
 
-![Source: https://twitter.com/dccc/status/1466494036630544394](examples_4_01.jfif)
+![Source: https://twitter.com/dccc/status/1466494036630544394](example_4_01.jfif)
 
 > - `r shiny::icon("globe")` [https://www.eia.gov/dnav/pet/pet_pri_gnd_dcus_nus_w.htm](https://www.eia.gov/dnav/pet/pet_pri_gnd_dcus_nus_w.htm){target="_blank"}
 
@@ -466,7 +466,7 @@ ggsave("misleading_graphs_4_03.png", mp, width = 6, height = 6)
 
 Color scales can be adjusted to present a desired narrative, by exaggerating differences and/or invoking emotional response, *i.e.*, red = bad. Here is an example from the news.
 
-![Source: Global News](examples_5_01.png)
+![Source: Global News](example_5_01.png)
 
 ---
 

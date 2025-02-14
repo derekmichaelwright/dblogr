@@ -93,11 +93,35 @@ d4 <- read.csv("data_canus_gdppc.csv") %>%
 
 ---
 
-# GDP by Province {.tabset .tabset-pills}
+# GDP {.tabset .tabset-pills}
+
+![](canada_gdp_1_01.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Industry == "All industries [T001]") %>% 
+  group_by(Year) %>%
+  summarise(GDP = sum(Value, na.rm = T))
+x1 <- xx %>% filter(Year < 2020)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = GDP)) + 
+  stat_smooth(data = x1, geom = "line", method = "lm", fullrange = T) +
+  geom_line(alpha = 0.7, color = "darkgreen", size = 2) + 
+  geom_point() +
+  scale_x_continuous(minor_breaks = min(xx$Year):max(xx$Year)) +
+  theme_agData(legend.position = "none",
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = paste("Canada - GDP", max(xx$Year)), 
+       y = "Chained (2017) Dollars ($1000)", x = NULL, caption = myCaption1)
+ggsave("canada_gdp_1_01.png", mp, width = 6, height = 4)
+```
+
+---
 
 ## 2017
 
-![](canada_gdp_1_01.png)
+![](canada_gdp_1_02.png)
 
 ```{r}
 # Prep data
@@ -114,14 +138,14 @@ mp <- ggplot(xx, aes(x = Area, y = Value/1000000000, fill = Area)) +
         axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = paste("GDP by Province", max(xx$Year)), 
        y = "Chained (2017) Dollars (Billion)", x = NULL, caption = myCaption1)
-ggsave("canada_gdp_1_01.png", mp, width = 6, height = 4)
+ggsave("canada_gdp_1_02.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## All Data
 
-![](canada_gdp_1_02.png)
+![](canada_gdp_1_03.png)
 
 ```{r}
 # Prep data
@@ -139,27 +163,27 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   theme_agData(legend.position = "none") +
   labs(title = "GDP by Province", x = NULL,
        y = "Chained (2017) Dollars (Billion)", caption = myCaption1)
-ggsave("canada_gdp_1_02.png", mp, width = 6, height = 4)
+ggsave("canada_gdp_1_03.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## By Province
 
-![](canada_gdp_1_03.png)
+![](canada_gdp_1_04.png)
 
 ```{r}
 # Plot
 mp <- mp + facet_wrap(Area ~ ., scale = "free_y", ncol = 5) + 
   scale_y_continuous()
-ggsave("canada_gdp_1_03.png", mp, width = 12, height = 6)
+ggsave("canada_gdp_1_04.png", mp, width = 12, height = 6)
 ```
 
 ---
 
 ## West vs. East
 
-![](canada_gdp_1_04.png)
+![](canada_gdp_1_05.png)
 
 ```{r}
 # Prep data
@@ -180,7 +204,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Region)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "GDP in Canada", x = NULL,
        y = "Chained (2017) Dollars (Billion)",  caption = myCaption1)
-ggsave("canada_gdp_1_04.png", mp, width = 6, height = 4)
+ggsave("canada_gdp_1_05.png", mp, width = 6, height = 4)
 ```
 
 ---

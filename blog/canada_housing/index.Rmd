@@ -742,7 +742,7 @@ mp <- ggplot(xx, aes(x = Area, y = Value)) +
                axis.text.x = element_text(angle = 60, hjust = 1)) +
   labs(title = "Rent Prices in", y = "Dollars",
        x = NULL, caption = myCaption)
-ggsave("canada_housing_5_02.png", mp, width = 8, height = 4)
+ggsave("canada_housing_5_02.png", mp, width = 8, height = 6)
 ```
 
 ---

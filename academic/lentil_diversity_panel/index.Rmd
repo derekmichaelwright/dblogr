@@ -281,16 +281,11 @@ dev.off()
 
 ---
 
-## Genetic Structure Map
+## Genetic Structure Map {.tabset .tabset-pills}
+
+### png
 
 ![](lentil_diversity_panel_2_04.png)
-
-`r shiny::icon("globe")` [https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/Lentil_diversity_panel_2_04.html](https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/Lentil_diversity_panel_2_04.html){target="_blank"}
-
-<iframe
-  src="lentil_diversity_panel_2_04.html"
-  style="width:100%; height:600px;"
-></iframe>
 
 ```{r results="hide"}
 # Prep data
@@ -311,11 +306,33 @@ mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat",
             xlim = c(-140,110), ylim = c(5,20), lwd = 1, lwdSymbols = 0.4,
             addColourLegend = F, addLegend = F,
             oceanCol = "grey90", landCol = "white", borderCol = "black")
-legend(-170, 20, title = "STR Group", legend = myG, col = sColors,
+legend(-138.5, 25, title = "STR Group", legend = myG, col = sColors,
        pch = 16, cex = 0.8, pt.cex = 1.5, box.lwd = 2)
 title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
 title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
 dev.off()
+```
+
+---
+
+### html
+
+`r shiny::icon("globe")` [https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/Lentil_diversity_panel_2_04.html](https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/Lentil_diversity_panel_2_04.html){target="_blank"}
+
+<iframe
+  src="lentil_diversity_panel_2_04.html"
+  style="width:100%; height:600px;"
+></iframe>
+
+```{r}
+# Prep data
+myG <- c("G1","G2","G3","G4","G5","G6","G7","G8", "Mix")
+xx <- dd %>% 
+  mutate(Lat = ifelse(is.na(Lat), Country_Lat, Lat),
+         Lon = ifelse(is.na(Lon), Country_Lon, Lon),
+         Lat = ifelse(duplicated(Lat), jitter(Lat, 1, 1), Lat),
+         Lon = ifelse(duplicated(Lon), jitter(Lon, 1, 1), Lon), 
+         Size = 1)
 # Plot html
 pal <- colorFactor(sColors, domain = myG)
 mp <- leaflet() %>% 
@@ -410,7 +427,7 @@ mapPies(dF = xx, nameX = "Country_Lon", nameY = "Country_Lat",
         zColours = cColors, nameZs = c("1","2","3","4","5","6","7","8"), 
         xlim = c(-140,110), ylim = c(5,20), addCatLegend = F, lwd = 1,
         oceanCol = "grey90", landCol = "white", borderCol = "black") 
-legend(-138.5, 13, title = "DTF Cluster", legend = 1:8, col = cColors,
+legend(-138.5, 18, title = "DTF Cluster", legend = 1:8, col = cColors,
        pch = 16, cex = 0.8, pt.cex = 1.5, box.lwd = 2)
 title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
 title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
@@ -423,16 +440,11 @@ file.copy(from = "lentil_diversity_panel_3_01.png", to = "featured.png", overwri
 
 ---
 
-## DTF Cluster Map
+## DTF Cluster Map {.tabset .tabset-pills}
+
+### png
 
 ![](lentil_diversity_panel_3_02.png)
-
-`r shiny::icon("globe")` [https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/Lentil_diversity_panel_3_02.html](https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/Lentil_diversity_panel_3_02.html){target="_blank"}
-
-<iframe
-  src="lentil_diversity_panel_3_02.html"
-  style="width:100%; height:600px;"
-></iframe>
 
 ```{r results="hide"}
 # Prep data
@@ -452,11 +464,32 @@ mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat",
             xlim = c(-140,110), ylim = c(5,20), lwd = 1, lwdSymbols = 0.4,
             addColourLegend = F, addLegend = F,
             oceanCol = "grey90", landCol = "white", borderCol = "black")
-legend(-138.5, 13, title = "DTF Cluster", legend = 1:8, col = cColors,
+legend(-138.5, 18, title = "DTF Cluster", legend = 1:8, col = cColors,
        pch = 16, cex = 0.8, pt.cex = 1.5, box.lwd = 2)
 title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
 title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
 dev.off()
+```
+
+---
+
+### html
+
+`r shiny::icon("globe")` [https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/Lentil_diversity_panel_3_02.html](https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/Lentil_diversity_panel_3_02.html){target="_blank"}
+
+<iframe
+  src="lentil_diversity_panel_3_02.html"
+  style="width:100%; height:600px;"
+></iframe>
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  mutate(Lat = ifelse(is.na(Lat), Country_Lat, Lat),
+         Lon = ifelse(is.na(Lon), Country_Lon, Lon),
+         Lat = ifelse(duplicated(Lat), jitter(Lat, 1, 1), Lat),
+         Lon = ifelse(duplicated(Lon), jitter(Lon, 1, 1), Lon), 
+         Size = 1)
 # Plot html
 pal <- colorFactor(cColors, domain = 1:8)
 mp <- leaflet() %>% 
@@ -613,7 +646,7 @@ mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat",
             addColourLegend = F, addLegend = F,
             xlim = c(-25,110), ylim = c(15,35), 
             oceanCol = "grey90", landCol = "white", borderCol = "black")
-legend(55, 3, title = "Cotyledon Color", 
+legend(55, 6, title = "Cotyledon Color", 
        legend = c("Red", "Yellow"), col = myColors,
        pch = 16, cex = 0.8, pt.cex = 1.5, box.lwd = 2)
 title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 

@@ -61,9 +61,22 @@ myAreas <- c("Canada", "Quebec", "Ontario", "British Columbia",
              "Newfoundland and Labrador", "New Brunswick", "Prince Edward Island", 
              "Northwest Territories", "Nunavut", "Yukon")
 #
-# d1 = Deaths per Week (2010-2023)
-mySeasons <- paste(2009:2023, 2010:2024, sep = "-")
+mySeasons <- paste(2009:2024, 2010:2025, sep = "-")
 myGroups <- c(rep("pre-2020",10), mySeasons[11:length(mySeasons)])
+groupSeasons <- function(xx) {
+  # Calculate Year Group
+  j <- 1
+  for(i in 1:nrow(xx)) {
+    if(xx$Month[i] < 8) { mySwitch <- T }
+    xx$Season[i] <- mySeasons[j]
+    xx$SeasonGroup[i] <- myGroups[j]
+    if(xx$Month[i] > 7 & mySwitch == T) { j <- j + 1; mySwitch <- F } 
+  }
+  xx <- xx %>% 
+    mutate(Season = factor(Season, levels = mySeasons),
+           SeasonGroup = factor(SeasonGroup, levels = unique(myGroups)))
+}
+# d1 = Deaths per Week (2010-2023)
 d1 <- read.csv("1310078301_databaseLoadingData.csv") %>% 
   rename(Date=REF_DATE, Area=GEO, Value=VALUE) %>%
   mutate(Date = as.Date(Date),
@@ -75,23 +88,13 @@ d1 <- read.csv("1310078301_databaseLoadingData.csv") %>%
          AdjJulianDay = ifelse(Month < 8, JulianDay + 365, JulianDay),
          Area = gsub(", place of occurrence", "", Area),
          Area = factor(Area, levels = myAreas)) %>%
-    arrange(Date)
+  arrange(Date) %>% 
+  groupSeasons()
 # filter incomplete new data
 for(i in unique(d1$Area)) {
   mymin <- d1 %>% filter(Area == i, Year < 2020) %>% pull(Value) %>% min()
   d1 <- d1 %>% filter(!(Area == i & Value < mymin))
 }
-# Calculate Year Group
-j <- 1
-for(i in 1:nrow(d1)) {
-  if(d1$Month[i] < 8) { mySwitch <- T }
-  d1$Season[i] <- mySeasons[j]
-  d1$SeasonGroup[i] <- myGroups[j]
-  if(d1$Month[i] > 7 & mySwitch == T) { j <- j + 1; mySwitch <- F } 
-}
-d1 <- d1 %>% 
-    mutate(Season = factor(Season, levels = mySeasons),
-           SeasonGroup = factor(SeasonGroup, levels = unique(myGroups)))
 # d2 = Deaths per Week, by gender and age (2010-2023)
 d2 <- read.csv("1310076801_databaseLoadingData.csv") %>% 
   rename(Date=REF_DATE, Age=Age.at.time.of.death, Value=VALUE, Area=GEO) %>%
@@ -105,18 +108,8 @@ d2 <- read.csv("1310076801_databaseLoadingData.csv") %>%
          AdjJulianDay = ifelse(Month < 8, JulianDay + 365, JulianDay),
          Area = gsub(", place of occurrence", "", Area),
          Area = factor(Area, levels = myAreas)) %>%
-    arrange(Date)
-# Calculate Year Group
-j <- 1
-for(i in 1:nrow(d2)) {
-  if(d2$Month[i] < 8) { mySwitch <- T }
-  d2$Season[i] <- mySeasons[j]
-  d2$SeasonGroup[i] <- myGroups[j]
-  if(d2$Month[i] > 7 & mySwitch == T) { j <- j + 1; mySwitch <- F } 
-}
-d2 <- d2 %>% 
-    mutate(Season = factor(Season, levels = mySeasons),
-           SeasonGroup = factor(SeasonGroup, levels = unique(myGroups)))
+  arrange(Date) %>% 
+  groupSeasons()
 # d3 = Yearly death rate (1991-2023)
 p1 <- read.csv("1710000901_databaseLoadingData.csv") %>% 
   select(Area=GEO, Year=REF_DATE, Population=VALUE) %>%
@@ -144,6 +137,34 @@ d4 <- read.csv("1310039401_databaseLoadingData.csv") %>%
          Cause = Leading.causes.of.death..ICD.10., 
          Measurement= Characteristics, Value=VALUE, Unit=UOM)
 ```
+
+```{r eval = F, echo = F}
+# Calculate Year Group
+j <- 1
+for(i in 1:nrow(d1)) {
+  if(d1$Month[i] < 8) { mySwitch <- T }
+  d1$Season[i] <- mySeasons[j]
+  d1$SeasonGroup[i] <- myGroups[j]
+  if(d1$Month[i] > 7 & mySwitch == T) { j <- j + 1; mySwitch <- F } 
+}
+d1 <- d1 %>% 
+    mutate(Season = factor(Season, levels = mySeasons),
+           SeasonGroup = factor(SeasonGroup, levels = unique(myGroups)))
+
+# Calculate Year Group
+j <- 1
+for(i in 1:nrow(d2)) {
+  if(d2$Month[i] < 8) { mySwitch <- T }
+  d2$Season[i] <- mySeasons[j]
+  d2$SeasonGroup[i] <- myGroups[j]
+  if(d2$Month[i] > 7 & mySwitch == T) { j <- j + 1; mySwitch <- F } 
+}
+d2 <- d2 %>% 
+    mutate(Season = factor(Season, levels = mySeasons),
+           SeasonGroup = factor(SeasonGroup, levels = unique(myGroups)))
+
+```
+
 
 ---
 
@@ -477,8 +498,8 @@ ggRespSeasons <- function(myArea) {
     geom_point(data = zz, size = 2, pch = 13, color = "black", alpha = 0.7) +
     facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
     scale_color_manual(name = NULL, values = myColors) +
-    scale_alpha_manual(name = NULL, values = c(0.2,0.8,0.8,0.8,0.8,0.8)) +
-    scale_size_manual(name = NULL, values = c(0.5,1,1,1,1,1)) +
+    scale_alpha_manual(name = NULL, values = c(0.2,0.8,0.8,0.8,0.8,0.8,0.8)) +
+    scale_size_manual(name = NULL, values = c(0.5,1,1,1,1,1,1)) +
     scale_x_continuous(breaks = myBreaks, labels = myLabels) +
     theme_agData(legend.position = "bottom",
                  axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -584,11 +605,11 @@ ggRespSeasonsAge <- function(myArea = "Canada") {
   ggplot(xx, aes(x = AdjJulianDay, y = Value, group = Season, 
                  color = SeasonGroup, alpha = SeasonGroup, size = SeasonGroup)) +
     geom_line() +
-    geom_point(data = zz, size = 1.5, pch = 13, color = "black", alpha = 0.7) +
+    geom_point(data = zz, size = 1.25, pch = 13, color = "black", alpha = 0.7) +
     facet_grid(. ~ Age, scales = "free_y") +#labeller = label_wrap_gen(width = 10)
     scale_color_manual(name = NULL, values = myColors) +
-    scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8,0.8)) +
-    scale_size_manual(name = NULL, values = c(0.3,0.75,0.75,0.75,0.75,0.75,0.75)) +
+    scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8,0.8,0.8)) +
+    scale_size_manual(name = NULL, values = c(0.3,0.75,0.75,0.75,0.75,0.75,0.75,0.75)) +
     scale_x_continuous(breaks = myBreaks, labels = myLabels) +
     theme_agData(legend.position = "bottom",
                  axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -802,7 +823,7 @@ d2.1 <- d2 %>%
   group_by(Year, Group, Area) %>%
   summarise(Deaths = sum(Value, na.rm = T))
 pi <- p2 %>% 
-  filter(Sex == "Both sexes",
+  filter(Sex == "Total - gender",
          Age.group %in% c("65 to 69 years", "70 to 74 years", 
                           "75 to 79 years", "80 to 84 years", 
                           "85 to 89 years", "90 to 94 years", 
