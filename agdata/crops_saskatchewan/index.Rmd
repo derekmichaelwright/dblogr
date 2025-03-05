@@ -66,7 +66,7 @@ for(i in myCrops) {
   xi <- xx %>% filter(Item == i)
   print(ggplot(xi, aes(x = Year, y = Value, color = Measurement)) +
     geom_line(size = 1.5, alpha = 0.7) +
-    facet_wrap(. ~ Measurement, scales = "free_y", ncol = 3) +
+    facet_wrap(. ~ Measurement, scales = "free_y", ncol = 4) +
     scale_color_manual(values = myColors) +
     scale_x_continuous(breaks = seq(1920, 2020, by = 20) ) +
     theme_agData(legend.position = "none", 
@@ -78,17 +78,16 @@ dev.off()
 
 ---
 
-# 1908 Vs. 1961 Vs. 2020 {.tabset .tabset-pills}
+# 1910 Vs. 1960 Vs. 2020 {.tabset .tabset-pills}
 
 ## cropList Function
 
-```{r}
+```{r class.source = 'fold-show'}
 # Create function to determine top crops
 cropList <- function(measurement, years) {
   # Prep data
-  xx <- agData_STATCAN_Crops %>% 
-    filter(Measurement == measurement, Year %in% years,
-           Area == "Saskatchewan") %>%
+  xx <- d1 %>% 
+    filter(Measurement == measurement, Year %in% years) %>%
     arrange(desc(Value)) %>% 
     pull(Item) %>% unique() %>% as.character()
   xx
@@ -103,10 +102,10 @@ cropList <- function(measurement, years) {
 
 ```{r}
 # Prep data
-myCrops <- cropList(measurement = "Production", years = c(2020, 1961, 1908))
+myCrops <- cropList(measurement = "Production", years = c(2020, 1960, 1910))
 xx <- d1 %>% 
   filter(Measurement == "Production", Item %in% myCrops,
-         Year %in% c(2020, 1961, 1908) ) %>%
+         Year %in% c(2020, 1960, 1910) ) %>%
   mutate(Item = factor(Item, levels = myCrops) )
 # Plot
 mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) + 
@@ -132,10 +131,10 @@ ggsave("featured.png", mp, width = 7, height = 5)
 
 ```{r}
 # Prep data
-myCrops <- cropList(measurement = "Area Seeded", years = c(2020, 1961, 1908))
+myCrops <- cropList(measurement = "Area Seeded", years = c(2020, 1960, 1910))
 xx <- d1 %>% 
   filter(Measurement == "Area Seeded", Item %in% myCrops,
-         Year %in% c(2020, 1961, 1908) ) %>%
+         Year %in% c(2020, 1960, 1910) ) %>%
   mutate(Item = factor(Item, levels = myCrops) )
 # Plot
 mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) + 
@@ -157,10 +156,10 @@ ggsave("crops_saskatchewan_1_02.png", mp, width = 7, height = 5)
 
 ```{r}
 # Prep data
-myCrops <- cropList(measurement = "Yield", years = c(2020, 1961, 1908))[-1]
+myCrops <- cropList(measurement = "Yield", years = c(2020, 1960, 1910))[-1]
 xx <- d1 %>% 
   filter(Measurement == "Yield", Item %in% myCrops,
-         Year %in% c(2020, 1961, 1908) ) %>%
+         Year %in% c(2020, 1960, 1910) ) %>%
   mutate(Item = factor(Item, levels = myCrops) )
 # Plot
 mp <- ggplot(xx, aes(x = Item, y = Value / 1000, fill = Item)) + 
@@ -290,6 +289,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) +
        y = "Million Tonnes", caption = myCaption)
 ggsave("crops_saskatchewan_2_01.png", mp, width = 8, height = 4)
 ```
+
+---
 
 ## Production By Decade
 
@@ -513,7 +514,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan Crops - Area Seeded", 
        y = "Million Hectares", x = NULL, caption = myCaption)
-ggsave("crops_saskatchewan_4_01.png", mp, width = 6, height = 5)
+ggsave("crops_saskatchewan_4_01.png", mp, width = 8, height = 6)
 ```
 
 ---
@@ -537,7 +538,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan Crops - Production", 
        y = "Million Hectares", x = NULL, caption = myCaption)
-ggsave("crops_saskatchewan_4_02.png", mp, width = 6, height = 5)
+ggsave("crops_saskatchewan_4_02.png", mp, width = 8, height = 6)
 ```
 
 ---
@@ -649,7 +650,7 @@ ggsave("crops_saskatchewan_5_02.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myYears <- c(2020, 1990, 1960)
+myYears <- c(2020, 1990, 1960, 1930)
 myCrops <- cropList(measurement = "Area Seeded", years = myYears)[1:9]
 xx <- d1 %>% filter(Year %in% myYears, Measurement == "Area Seeded")
 x1 <- xx %>% filter(Item %in% myCrops)
@@ -686,9 +687,8 @@ x1 <- d1 %>%
   group_by(Year) %>% 
   summarise(Value = sum(Value)) %>%
   mutate(Item = "Fake Meat Proteins (Legumes)")
-x2 <- agData_STATCAN_Crops %>% 
-  filter(Area == "Saskatchewan", Measurement == "Production",
-         Item %in% c("Canola", "Wheat")) %>%
+x2 <- d1 %>% 
+  filter(Measurement == "Production", Item %in% c("Canola", "Wheat")) %>%
   mutate(Item = plyr::mapvalues(Item, c("Canola", "Wheat"), 
                                       c("Evil GMO Oilseeds (Canola)", "Toxic Gluten (Wheat)")))
 xx <- bind_rows(x1, x2) %>% filter(Year < 2021) %>%

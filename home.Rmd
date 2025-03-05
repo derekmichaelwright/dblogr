@@ -18,6 +18,7 @@ library(shiny)
 Welcome to the personal website for **Derek Michael Wright**
 
 > **derekmichaelwright.github.io/dblogr**
+>
 > - `r icon("address-card")` About Me
 > - `r icon("image")` Photography
 > - `r icon("newspaper")` Academic Work
