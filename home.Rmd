@@ -19,11 +19,12 @@ Welcome to the personal website for **Derek Michael Wright**
 
 > **derekmichaelwright.github.io/dblogr**
 >
-> - `r icon("address-card")` About Me
-> - `r icon("image")` Photography
-> - `r icon("newspaper")` Academic Work
-> - `r icon("r-project")` Packages
-> - `r icon("chart-line")` Blog
+> - `r icon("address-card")` [About Me](#about-me)
+> - `r icon("image")` [Photography](#photography)
+> - `r icon("newspaper")` [Publications](#publications)
+> - `r icon("newspaper")` [Academic Work](#academic-work) - [Tutorials](#tutorials) - [Vignettes](#vignettes)
+> - `r icon("r-project")` [Packages](#packages) - [agData](#agdata) - [gwaspr](#gwaspr)
+> - `r icon("chart-line")` [Blog](#blog)
 
 ---
 
