@@ -26,6 +26,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
+library(rworldmap)
 ```
 
 ```{r}
@@ -67,7 +68,9 @@ dKr <- bind_rows(x1, x2) %>%
 
 # NPK {.tabset .tabset-pills}
 
-## Production
+## Production {.tabset .tabset-pills}
+
+### Global
 
 ![](fertilizers_1_01.png)
 
@@ -87,9 +90,84 @@ ggsave("fertilizers_1_01.png", mp, width = 6, height = 4)
 
 ---
 
-## Agricultural Use
+### N Map
 
 ![](fertilizers_1_02.png)
+
+```{r}
+# Prep data
+xx <- dN %>% 
+  filter(Measurement == "Production", Year == 2019,
+         Area %in% agData_FAO_Country_Table$Country) %>%
+  left_join(agData_FAO_Country_Table, by = c("Area"="Country"))
+# Plot
+png("fertilizers_1_02.png", width = 1350, height = 770, res = 300)
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
+mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", nameZSize = "Value",
+            nameZColour = "darkgreen", nameZFill = alpha("darkgreen",0.7),
+            symbolSize = 1, lwd = 0.75, addLegend = F,
+            oceanCol = "grey90", landCol = "white", borderCol = "black",
+            )
+title(main = "N Fertilizer production in 2019", line = 0.25, cex.main = 1)
+title(sub = myCaption, line = 0, cex.sub = 0.5, adj = 1)
+dev.off()
+```
+
+---
+
+### P Map
+
+![](fertilizers_1_03.png)
+
+```{r}
+# Prep data
+xx <- dP %>% 
+  filter(Measurement == "Production", Year == 2019,
+         Area %in% agData_FAO_Country_Table$Country) %>%
+  left_join(agData_FAO_Country_Table, by = c("Area"="Country"))
+# Plot
+png("fertilizers_1_03.png", width = 1350, height = 770, res = 300)
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
+mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", nameZSize = "Value",
+            nameZColour = "darkgreen", nameZFill = alpha("darkgreen",0.7),
+            symbolSize = 1, lwd = 0.75, addLegend = F,
+            oceanCol = "grey90", landCol = "white", borderCol = "black",
+            )
+title(main = "P Fertilizer production in 2019", line = 0.25, cex.main = 1)
+title(sub = myCaption, line = 0, cex.sub = 0.5, adj = 1)
+dev.off()
+```
+
+---
+
+### K Map
+
+![](fertilizers_1_04.png)
+
+```{r}
+# Prep data
+xx <- dK %>% 
+  filter(Measurement == "Production", Year == 2019,
+         Area %in% agData_FAO_Country_Table$Country) %>%
+  left_join(agData_FAO_Country_Table, by = c("Area"="Country"))
+# Plot
+png("fertilizers_1_04.png", width = 1350, height = 770, res = 300)
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
+mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", nameZSize = "Value",
+            nameZColour = "darkgreen", nameZFill = alpha("darkgreen",0.7),
+            symbolSize = 1, lwd = 0.75, addLegend = F,
+            oceanCol = "grey90", landCol = "white", borderCol = "black",
+            )
+title(main = "K Fertilizer production in 2019", line = 0.25, cex.main = 1)
+title(sub = myCaption, line = 0, cex.sub = 0.5, adj = 1)
+dev.off()
+```
+
+---
+
+## Agricultural Use
+
+![](fertilizers_1_05.png)
 
 ```{r}
 # Prep data
@@ -107,7 +185,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
   theme_agData() +
   labs(title = "Global NPK Fertilizer Use", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
-ggsave("fertilizers_1_02.png", mp, width = 6, height = 4)
+ggsave("fertilizers_1_05.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F}
@@ -120,7 +198,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ### Europe
 
-![](fertilizers_1_03.png)
+![](fertilizers_1_06.png)
 
 ```{r}
 # Prep data
@@ -145,14 +223,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   scale_color_manual(name = NULL, values = myCs) + 
   labs(title = "NPK Fertilizer Import/Export In Europe",
        y = "Million Tonnes", x = NULL, caption = myCaption)
-ggsave("fertilizers_1_03.png", mp, width = 6, height = 6)
+ggsave("fertilizers_1_06.png", mp, width = 6, height = 6)
 ```
 
 ---
 
 ### UK - France - Russia
 
-![](fertilizers_1_04.png)
+![](fertilizers_1_07.png)
 
 ```{r}
 # Prep data
@@ -176,14 +254,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   scale_color_manual(name = NULL, values = myCs) + 
   labs(title = "NPK Fertilizer Import/Export In Europe",
        y = "Million Tonnes", x = NULL, caption = myCaption)
-ggsave("fertilizers_1_04.png", mp, width = 6, height = 6)
+ggsave("fertilizers_1_07.png", mp, width = 6, height = 6)
 ```
 
 ---
 
-## Countries {.tabset .tabset-pills}
+### Countries {.tabset .tabset-pills}
 
-### Plotting Function
+#### Plotting Function
 
 ```{r class.source = 'fold-show'}
 # Create plotting function
@@ -213,7 +291,7 @@ ggFert <- function(area = "Canada") {
 
 ---
 
-### Canada {.active}
+#### Canada {.active}
 
 ![](fertilizers_2_canada.png)
 
@@ -225,7 +303,7 @@ ggsave("fertilizers_2_canada.png", mp, width = 6, height = 6)
 
 ---
 
-### China
+#### China
 
 ![](fertilizers_2_china.png)
 
@@ -237,7 +315,7 @@ ggsave("fertilizers_2_china.png", mp, width = 6, height = 6)
 
 ---
 
-### USA
+#### USA
 
 ![](fertilizers_2_usa.png)
 
@@ -249,7 +327,7 @@ ggsave("fertilizers_2_usa.png", mp, width = 6, height = 6)
 
 ---
 
-### India
+#### India
 
 ![](fertilizers_2_india.png)
 
@@ -261,7 +339,7 @@ ggsave("fertilizers_2_india.png", mp, width = 6, height = 6)
 
 ---
 
-### Germany
+#### Germany
 
 ![](fertilizers_2_germany.png)
 
@@ -273,7 +351,7 @@ ggsave("fertilizers_2_germany.png", mp, width = 6, height = 6)
 
 ---
 
-### Ukraine
+#### Ukraine
 
 ![](fertilizers_2_ukraine.png)
 
@@ -285,7 +363,7 @@ ggsave("fertilizers_2_ukraine.png", mp, width = 6, height = 6)
 
 ---
 
-### Russia
+#### Russia
 
 ![](fertilizers_2_russia.png)
 
@@ -299,93 +377,66 @@ ggsave("fertilizers_2_russia.png", mp, width = 6, height = 6)
 
 # Nitrogen (N) {.tabset .tabset-pills}
 
-## N / Ha {.tabset .tabset-pills}
+## Production {.tabset .tabset-pills}
 
-### World
+### Top 20 {.tabset .tabset-pills}
+
+#### Regions
 
 ![](fertilizers_n_1_01.png)
 
 ```{r}
 # Prep data
-xx <- dNr %>% filter(Area == "World")
+myAs <- c("Asia", "Europe", "Americas", "Africa", "Oceania")
+myCs <- c("darkorange", "darkblue", "darkgreen", "darkred", "steelblue")
+xx <- dN %>% 
+  filter(Measurement == "Production", Year == 2019, Area %in% myAs) %>%
+  arrange(desc(Value)) %>%
+  slice(1:20) %>%
+  mutate(Area = factor(Area, levels = Area))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = NPH)) + 
-  geom_line(size = 1.5, color = "darkgreen", alpha = 0.7) + 
-  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
-  theme_agData() +
-  labs(title = "Global Nitrogen Fertilizer Use", 
-       y = "Kg N / Ha", x = NULL, caption = myCaption)
+ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Area)) +
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(name = NULL, values = myCs) +
+  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Nitrogen Fertilizer Production", 
+       y = "Million Tonnes N", x = NULL, caption = myCaption)
 ggsave("fertilizers_n_1_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-### Regions
+#### Countries
 
 ![](fertilizers_n_1_02.png)
 
 ```{r}
 # Prep data
-myAs <- c("Europe", "Asia", "Americas", "Africa", "Oceania")
-myCs <- c("darkblue", "darkorange", "darkgreen", "darkred", "steelblue")
-xx <- dNr %>% filter(Area %in% myAs) %>%
-  mutate(Area = factor(Area, levels = myAs))
+myAs <- c("Asia", "Europe", "Americas", "Africa", "Oceania")
+myCs <- c("darkorange", "darkblue", "darkgreen", "darkred", "steelblue")
+xx <- dN %>% 
+  filter(Measurement == "Production", Year == 2019,
+         Area %in% agData_FAO_Country_Table$Country) %>%
+  left_join(agData_FAO_Country_Table, by = c("Area"="Country")) %>%
+  arrange(desc(Value)) %>%
+  slice(1:20) %>%
+  mutate(Area = factor(Area, levels = Area),
+         Region = factor(Region, levels = myAs))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = NPH, color = Area)) + 
-  geom_line(size = 1.5, alpha = 0.7) + 
-  scale_color_manual(name = NULL, values = myCs) + 
-  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
-  theme_agData(legend.position = "bottom") +
-  labs(title = "Global Nitrogen Fertilizer Use", 
-       y = "Kg N / Ha", x = NULL, caption = myCaption)
+ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) +
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(name = NULL, values = myCs) +
+  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Nitrogen Fertilizer Production", 
+       y = "Million Tonnes N", x = NULL, caption = myCaption)
 ggsave("fertilizers_n_1_02.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-### Countries
+### Unfacetted
 
 ![](fertilizers_n_1_03.png)
-
-```{r}
-# Prep data
-myAs  <- c("Germany", "China", "India", "USA", "Canada", "Poland")
-myCs <- c("black", "darkred", "darkorange", 
-              "steelblue", "darkgreen", "darkblue")
-xx <- dNr %>% filter(Area %in% myAs) %>%
-  mutate(Area = factor(Area, levels = myAs))
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = NPH, color = Area)) + 
-  geom_line(size = 1.5, alpha = 0.7) + 
-  scale_color_manual(name = NULL, values = myCs) +
-  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
-   guides(col = guide_legend(nrow = 1)) +
-  theme_agData(legend.position = "bottom") +
-  labs(title = "Global Nitrogen Fertilizer Use", 
-       y = "Kg N / Ha", x = NULL, caption = myCaption)
-ggsave("fertilizers_n_1_03.png", mp, width = 6, height = 4)
-```
-
----
-
-#### Facetted
-
-![](fertilizers_n_1_04.png)
-
-```{r}
-# Plot
-mp <- mp + 
-  facet_wrap(Area ~ ., ncol = 3, scales = "free_y") +
-  scale_x_continuous(breaks = seq(1970, 2010, by = 20)) + 
-  theme(legend.position = "none")
-ggsave("fertilizers_n_1_04.png", mp, width = 6, height = 4)
-```
-
----
-
-## Production
-
-![](fertilizers_n_2_01.png)
 
 ```{r}
 # Prep data
@@ -404,14 +455,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Nitrogen Fertilizer Production", 
        y = "Million Tonnes N", x = NULL, caption = myCaption)
-ggsave("fertilizers_n_2_01.png", mp, width = 6, height = 4)
+ggsave("fertilizers_n_1_03.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-#### Facetted
+### Facetted
 
-![](fertilizers_n_2_02.png)
+![](fertilizers_n_1_04.png)
 
 ```{r}
 # Plot
@@ -419,111 +470,16 @@ mp <- mp +
   facet_wrap(Area ~., ncol = 3, scales = "free_y") +
   scale_x_continuous(breaks = seq(1970, 2010, by = 20)) + 
   theme(legend.position = "none")
-ggsave("fertilizers_n_2_02.png", mp, width = 6, height = 4)
+ggsave("fertilizers_n_1_04.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-## Crop Yields
-
-```{r}
-# Create plotting function
-ggFertNYield <- function(area = "World") {
-  # Prep data
-  myIs <- c("Cereals, primary", "Oilcrops, Oil Equivalent", 
-            "Pulses, Total", "Roots and Tubers, Total")
-  myCs <- c("darkgreen", "darkorange", "darkred", "darkslategray")
-  x1 <- agData_FAO_Crops2 %>% 
-    filter(Area == area, Item %in% myIs, Measurement == "Yield") %>%
-    select(Year, Crop=Item, Yield=Value)
-  x2 <- dN %>% 
-    filter(Area == area, Measurement == "Agricultural Use") %>%
-    rename(Fertilizer=Value)
-  xx <- left_join(x1, x2, by = "Year")
-  # Plot
-  ggplot(xx, aes(x = Fertilizer / 1000000, y = Yield / 1000, color = Crop)) + 
-    geom_point(alpha = 0.7) +
-    stat_smooth(geom = "line", method = "loess", se = F, 
-                size = 0.75, color = "black", alpha = 0.3) +
-    facet_wrap(Crop ~ ., scales = "free_y") +
-    scale_color_manual(name = NULL, values = myCs) +
-    theme_agData(legend.position = "none") +
-    labs(title = area, x = "Million Tonnes of Nitrogen", 
-         y = "tonnes / ha", caption = myCaption)
-}
-```
-
----
+## Production, Use, Import & Export {.tabset .tabset-pills}
 
 ### World
 
-![](fertilizers_n_3_01.png)
-
-```{r}
-mp <- ggFertNYield(area = "World")
-ggsave("fertilizers_n_3_01.png", mp, width = 6, height = 4)
-```
-
----
-
-### Countries
-
-![](fertilizers_n_3_02.png)
-
-```{r}
-myIs <- c("Cereals, primary", "Oilcrops, Oil Equivalent", 
-          "Pulses, Total", "Roots and Tubers, Total")
-myAs <- c("USA",  "France", "Germany", "Netherlands","UK",
-          "Sweden", "India", "China", "Africa")
-x1 <- agData_FAO_Crops2 %>% 
-  filter(Area %in% myAs, Item %in% myIs, 
-         Measurement %in% c("Yield", "Area Harvested")) %>%
-  select(-Unit) %>% 
-  rename(Crop=Item) %>%
-  spread(Measurement, Value) %>% mutate(Yield = Yield / 1000)
-x2 <- dN %>% 
-  filter(Area %in% myAs, Measurement == "Agricultural Use") %>%
-  rename(Fertilizer=Value)
-x3 <- agData_FAO_LandUse %>%
-  filter(Item == "Cropland", Area %in% myAs) %>%
-  select(Area, Year, Cropland=Value)
-xx <- left_join(x1, x2, by = c("Year","Area")) %>% 
-  left_join(x3, by = c("Year","Area")) %>%
-  mutate(Area = factor(Area, levels = myAs),
-         NperHa = 1000 * Fertilizer / Cropland)
-# Plot
-mp1 <- ggplot(xx, aes(x = NperHa, y = Yield, color = Year)) + 
-  geom_point(size = 0.5) +
-  facet_grid(Crop ~ Area, scales = "free") +
-  scale_color_continuous(high = "darkblue", low = "steelblue") +
-  theme_agData(legend.position = "right",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "A) scaled fertilizer use",
-       y = "Yield (tonnes / ha)", x = "N Fertilizer (kg N / ha cropland)")
-mp2 <- mp1 + facet_grid(Crop ~ Area, scales = "free_y") +
-  labs(title = "B) unscaled fertilizer use", caption = myCaption)
-mp <- ggarrange(mp1, mp2, ncol = 1, heights = c(1,1.05))
-ggsave("fertilizers_n_3_02.png", mp, width = 10, height = 7)
-```
-
----
-
-### Canada
-
-![](fertilizers_n_3_canada.png)
-
-```{r}
-mp <- ggFertNYield(area = "Canada")
-ggsave("fertilizers_n_3_canada.png", mp, width = 6, height = 4)
-```
-
----
-
-## Production, Use, Import & Export
-
-### World
-
-![](fertilizers_n_4_01.png)
+![](fertilizers_n_2_01.png)
 
 ```{r}
 # Prep data
@@ -544,14 +500,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   scale_color_manual(name = NULL, values = myCs) + 
   labs(title = "Nitrogenous Fertilizer Use by Region", x = NULL,
        y = "Million Tonnes N", caption = myCaption)
-ggsave("fertilizers_n_4_01.png", mp, width = 7, height = 5)
+ggsave("fertilizers_n_2_01.png", mp, width = 7, height = 5)
 ```
 
 ---
 
 ### Europe
 
-![](fertilizers_n_4_02.png)
+![](fertilizers_n_2_02.png)
 
 ```{r}
 # Prep data
@@ -574,7 +530,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   scale_color_manual(name = NULL, values = myCs) + 
   labs(title = "Nitrogenous Fertilizer Use in Europe", x = NULL,
        y = "Million Tonnes N", caption = myCaption)
-ggsave("fertilizers_n_4_02.png", mp, width = 7, height = 5)
+ggsave("fertilizers_n_2_02.png", mp, width = 7, height = 5)
 ```
 
 ---
@@ -614,189 +570,259 @@ ggFertP <- function(area = "Canada") {
 
 #### Canada {.active}
 
-![](fertilizers_n_4_canada.png)
+![](fertilizers_n_3_canada.png)
 
 ```{r}
 # Plot
 mp <- ggFertP(area = "Canada")
-ggsave("fertilizers_n_4_canada.png", mp, width = 6, height = 4)
+ggsave("fertilizers_n_3_canada.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### China
 
-![](fertilizers_n_4_china.png)
+![](fertilizers_n_3_china.png)
 
 ```{r}
 # Plot
 mp <- ggFertP(area = "China")
-ggsave("fertilizers_n_4_china.png", mp, width = 6, height = 4)
+ggsave("fertilizers_n_3_china.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### USA
 
-![](fertilizers_n_4_usa.png)
+![](fertilizers_n_3_usa.png)
 
 ```{r}
 # Plot
 mp <- ggFertP(area = "USA")
-ggsave("fertilizers_n_4_usa.png", mp, width = 6, height = 4)
+ggsave("fertilizers_n_3_usa.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### India
 
-![](fertilizers_n_4_india.png)
+![](fertilizers_n_3_india.png)
 
 ```{r}
 # Plot
 mp <- ggFertP(area = "India")
-ggsave("fertilizers_n_4_india.png", mp, width = 6, height = 4)
+ggsave("fertilizers_n_3_india.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### Germany
 
-![](fertilizers_n_4_germany.png)
+![](fertilizers_n_3_germany.png)
 
 ```{r}
 # Plot
 mp <- ggFertP(area = "Germany")
-ggsave("fertilizers_n_4_germany.png", mp, width = 6, height = 4)
+ggsave("fertilizers_n_3_germany.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### Netherlands
 
-![](fertilizers_n_4_netherlands.png)
+![](fertilizers_n_3_netherlands.png)
 
 ```{r}
 # Plot
 mp <- ggFertP(area = "Netherlands")
-ggsave("fertilizers_n_4_netherlands.png", mp, width = 6, height = 4)
+ggsave("fertilizers_n_3_netherlands.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### Ukraine
 
-![](fertilizers_n_4_ukraine.png)
+![](fertilizers_n_3_ukraine.png)
 
 ```{r}
 # Plot
 mp <- ggFertP(area = "Ukraine")
-ggsave("fertilizers_n_4_ukraine.png", mp, width = 6, height = 4)
+ggsave("fertilizers_n_3_ukraine.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### Russia
 
-![](fertilizers_n_4_russia.png)
+![](fertilizers_n_3_russia.png)
 
 ```{r}
 # Plot
 mp <- ggFertP(area = c("USSR", "Russia"))
-ggsave("fertilizers_n_4_russia.png", mp, width = 6, height = 4)
+ggsave("fertilizers_n_3_russia.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Crop Yields {.tabset .tabset-pills}
+
+### Plotting Function
+
+```{r class.source = 'fold-show'}
+# Create plotting function
+ggFertNYield <- function(area = "World") {
+  # Prep data
+  myIs <- c("Cereals, primary", "Oilcrops, Oil Equivalent", 
+            "Pulses, Total", "Roots and Tubers, Total")
+  myCs <- c("darkgreen", "darkorange", "darkred", "darkslategray")
+  x1 <- agData_FAO_Crops2 %>% 
+    filter(Area == area, Item %in% myIs, Measurement == "Yield") %>%
+    select(Year, Crop=Item, Yield=Value)
+  x2 <- dN %>% 
+    filter(Area == area, Measurement == "Agricultural Use") %>%
+    rename(Fertilizer=Value)
+  xx <- left_join(x1, x2, by = "Year")
+  # Plot
+  ggplot(xx, aes(x = Fertilizer / 1000000, y = Yield / 1000, color = Crop)) + 
+    geom_point(alpha = 0.7) +
+    stat_smooth(geom = "line", method = "loess", se = F, 
+                size = 0.75, color = "black", alpha = 0.3) +
+    facet_wrap(Crop ~ ., scales = "free_y") +
+    scale_color_manual(name = NULL, values = myCs) +
+    theme_agData(legend.position = "none") +
+    labs(title = area, x = "Million Tonnes of Nitrogen", 
+         y = "tonnes / ha", caption = myCaption)
+}
+```
+
+---
+
+### World {.active}
+
+![](fertilizers_n_4_01.png)
+
+```{r}
+mp <- ggFertNYield(area = "World")
+ggsave("fertilizers_n_4_01.png", mp, width = 6, height = 4)
+```
+
+---
+
+### Countries
+
+![](fertilizers_n_4_02.png)
+
+```{r}
+myIs <- c("Cereals, primary", "Oilcrops, Oil Equivalent", 
+          "Pulses, Total", "Roots and Tubers, Total")
+myAs <- c("USA",  "France", "Germany", "Netherlands","UK",
+          "Sweden", "India", "China", "Africa")
+x1 <- agData_FAO_Crops2 %>% 
+  filter(Area %in% myAs, Item %in% myIs, 
+         Measurement %in% c("Yield", "Area Harvested")) %>%
+  select(-Unit) %>% 
+  rename(Crop=Item) %>%
+  spread(Measurement, Value) %>% mutate(Yield = Yield / 1000)
+x2 <- dN %>% 
+  filter(Area %in% myAs, Measurement == "Agricultural Use") %>%
+  rename(Fertilizer=Value)
+x3 <- agData_FAO_LandUse %>%
+  filter(Item == "Cropland", Area %in% myAs) %>%
+  select(Area, Year, Cropland=Value)
+xx <- left_join(x1, x2, by = c("Year","Area")) %>% 
+  left_join(x3, by = c("Year","Area")) %>%
+  mutate(Area = factor(Area, levels = myAs),
+         NperHa = 1000 * Fertilizer / Cropland)
+# Plot
+mp1 <- ggplot(xx, aes(x = NperHa, y = Yield, color = Year)) + 
+  geom_point(size = 0.5) +
+  facet_grid(Crop ~ Area, scales = "free") +
+  scale_color_continuous(high = "darkblue", low = "steelblue") +
+  theme_agData(legend.position = "right",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "A) scaled fertilizer use",
+       y = "Yield (tonnes / ha)", x = "N Fertilizer (kg N / ha cropland)")
+mp2 <- mp1 + facet_grid(Crop ~ Area, scales = "free_y") +
+  labs(title = "B) unscaled fertilizer use", caption = myCaption)
+mp <- ggarrange(mp1, mp2, ncol = 1, heights = c(1,1.05))
+ggsave("fertilizers_n_4_02.png", mp, width = 10, height = 7)
+```
+
+---
+
+### Canada
+
+![](fertilizers_n_4_canada.png)
+
+```{r}
+mp <- ggFertNYield(area = "Canada")
+ggsave("fertilizers_n_4_canada.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 # Phosphate (P) {.tabset .tabset-pills}
 
-## P / Ha {.tabset .tabset-pills}
-
-### World
-
-![](fertilizers_p_01.png)
-
-```{r}
-# Prep data
-xx <- dPr %>% filter(Area == "World")
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = PPH)) + 
-  geom_line(size = 1.5, color = "darkgreen", alpha = 0.7) + 
-  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
-  theme_agData() +
-  labs(title = "Global Phosphate Fertilizer Usage", 
-       y = "Kg P2O5 / Ha", x = NULL, caption = myCaption)
-ggsave("fertilizers_p_01.png", mp, width = 6, height = 4)
-```
-
----
-
-### Regions
-
-![](fertilizers_p_02.png)
-
-```{r}
-# Prep data
-myAs <- c("Europe", "Asia", "Americas", "Africa", "Oceania")
-myCs <- c("darkblue", "darkorange", "darkgreen", "darkred", "steelblue")
-xx <- dPr %>% filter(Area %in% myAs) %>%
-  mutate(Area = factor(Area, levels = myAs))
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = PPH, color = Area)) + 
-  geom_line(size = 1.5, alpha = 0.7) + 
-  scale_color_manual(name = NULL, values = myCs) + 
-  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
-  theme_agData(legend.position = "bottom") +
-  labs(title = "Global Phosphate Fertilizer Usage", 
-       y = "Kg P2O5 / Ha", x = NULL, caption = myCaption)
-ggsave("fertilizers_p_02.png", mp, width = 6, height = 4)
-```
-
----
-
-### Countries {.tabset .tabset-pills}
-
-![](fertilizers_p_03.png)
-
-```{r}
-# Prep data
-myAs  <- c("Germany", "China", "India", "USA", "Canada", "Australia")
-myCs <- c("black", "darkred", "darkorange",
-          "darkblue", "darkgreen", "steelblue")
-xx <- dPr %>% filter(Area %in% myAs) %>%
-  mutate(Area = factor(Area, levels = myAs))
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = PPH, color = Area)) + 
-  geom_line(size = 1.5, alpha = 0.7) + 
-  scale_color_manual(name = NULL, values = myCs) +
-  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
-   guides(col = guide_legend(nrow = 1)) +
-  theme_agData(legend.position = "bottom") +
-  labs(title = "Global Phosphate Fertilizer Usage", 
-       y = "Kg P2O5 / Ha", x = NULL, caption = myCaption)
-ggsave("fertilizers_p_03.png", mp, width = 6, height = 4)
-```
-
----
-
-#### Facetted
-
-![](fertilizers_p_04.png)
-
-```{r}
-# Plot
-mp <- mp + 
-  facet_wrap(Area ~., ncol = 3, scales = "free_y") +
-  scale_x_continuous(breaks = seq(1970, 2010, by = 20)) + 
-  theme(legend.position = "none")
-ggsave("fertilizers_p_04.png", mp, width = 6, height = 4)
-```
-
----
-
 ## Production {.tabset .tabset-pills}
 
-![](fertilizers_p_05.png)
+### Top 20 {.tabset .tabset-pills}
+
+#### Regions
+
+![](fertilizers_p_1_01.png)
+
+```{r}
+# Prep data
+myAs <- c("Asia", "Europe", "Americas", "Africa", "Oceania")
+myCs <- c("darkorange", "darkblue", "darkgreen", "darkred", "steelblue")
+xx <- dP %>% 
+  filter(Measurement == "Production", Year == 2019, Area %in% myAs) %>%
+  arrange(desc(Value)) %>%
+  slice(1:20) %>%
+  mutate(Area = factor(Area, levels = Area))
+# Plot
+ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Area)) +
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(name = NULL, values = myCs) +
+  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Phosphate Fertilizer Production", x = NULL,
+       y = "Million Tonnes P2O5", caption = myCaption)
+ggsave("fertilizers_p_1_01.png", mp, width = 6, height = 4)
+```
+
+---
+
+#### Countries
+
+![](fertilizers_p_1_02.png)
+
+```{r}
+# Prep data
+myAs <- c("Asia", "Europe", "Americas", "Africa", "Oceania")
+myCs <- c("darkorange", "darkblue", "darkgreen", "darkred", "steelblue")
+xx <- dP %>% 
+  filter(Measurement == "Production", Year == 2019,
+         Area %in% agData_FAO_Country_Table$Country) %>%
+  left_join(agData_FAO_Country_Table, by = c("Area"="Country")) %>%
+  arrange(desc(Value)) %>%
+  slice(1:20) %>%
+  mutate(Area = factor(Area, levels = Area),
+         Region = factor(Region, levels = myAs))
+# Plot
+ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) +
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(name = NULL, values = myCs) +
+  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Phosphate Fertilizer Production", x = NULL,
+       y = "Million Tonnes P2O5", caption = myCaption)
+ggsave("fertilizers_p_1_02.png", mp, width = 6, height = 4)
+```
+
+---
+
+### Unfacetted
+
+![](fertilizers_p_1_03.png)
 
 ```{r}
 # Prep data
@@ -815,14 +841,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Phosphate Fertilizer Production", x = NULL,
        y = "Million Tonnes P2O5", caption = myCaption)
-ggsave("fertilizers_p_05.png", mp, width = 6, height = 4)
+ggsave("fertilizers_p_1_03.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### Facetted
 
-![](fertilizers_p_06.png)
+![](fertilizers_p_1_04.png)
 
 ```{r}
 # Plot
@@ -830,16 +856,16 @@ mp <- mp +
   facet_wrap(Area ~ ., ncol = 3, scales = "free_y") +
   scale_x_continuous(breaks = seq(1970, 2010, by = 20)) + 
   theme(legend.position = "none")
-ggsave("fertilizers_p_06.png", mp, width = 6, height = 4)
+ggsave("fertilizers_p_1_04.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-## Production, Use, Import & Export
+## Production, Use, Import & Export {.tabset .tabset-pills}
 
 ### World
 
-![](fertilizers_p_07.png)
+![](fertilizers_p_2_01.png)
 
 ```{r}
 # Prep data
@@ -860,14 +886,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   scale_color_manual(name = NULL, values = myCs) + 
   labs(title = "Phosphate Fertilizer Use by Region", x = NULL,
        y = "Million Tonnes P2O5", caption = myCaption)
-ggsave("fertilizers_p_07.png", mp, width = 7, height = 5)
+ggsave("fertilizers_p_2_01.png", mp, width = 7, height = 5)
 ```
 
 ---
 
 ### Europe
 
-![](fertilizers_p_08.png)
+![](fertilizers_p_2_02.png)
 
 ```{r}
 # Prep data
@@ -889,7 +915,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   scale_color_manual(name = NULL, values = myCs) + 
   labs(title = "Phosphate Fertilizer Use in Europe", x = NULL,
        y = "Million Tonnes P2O5", caption = myCaption)
-ggsave("fertilizers_p_08.png", mp, width = 7, height = 5)
+ggsave("fertilizers_p_2_02.png", mp, width = 7, height = 5)
 ```
 
 ---
@@ -928,177 +954,150 @@ ggFertN <- function(area = "Canada") {
 
 #### Canada {.active}
 
-![](fertilizers_p_canada.png)
+![](fertilizers_p_3_canada.png)
 
 ```{r}
 # Plot
 mp <- ggFertN(area = "Canada")
-ggsave("fertilizers_p_canada.png", mp, width = 6, height = 4)
+ggsave("fertilizers_p_3_canada.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### China
 
-![](fertilizers_p_china.png)
+![](fertilizers_p_3_china.png)
 
 ```{r}
 # Plot
 mp <- ggFertN(area = "China")
-ggsave("fertilizers_p_china.png", mp, width = 6, height = 4)
+ggsave("fertilizers_p_3_china.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### USA
 
-![](fertilizers_p_usa.png)
+![](fertilizers_p_3_usa.png)
 
 ```{r}
 # Plot
 mp <- ggFertN(area = "USA")
-ggsave("fertilizers_p_usa.png", mp, width = 6, height = 4)
+ggsave("fertilizers_p_3_usa.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### India
 
-![](fertilizers_p_india.png)
+![](fertilizers_p_3_india.png)
 
 ```{r}
 # Plot
 mp <- ggFertN(area = "India")
-ggsave("fertilizers_p_india.png", mp, width = 6, height = 4)
+ggsave("fertilizers_p_3_india.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### Germany
 
-![](fertilizers_p_germany.png)
+![](fertilizers_p_3_germany.png)
 
 ```{r}
 # Plot
 mp <- ggFertN(area = "Germany")
-ggsave("fertilizers_p_germany.png", mp, width = 6, height = 4)
+ggsave("fertilizers_p_3_germany.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### Ukraine
 
-![](fertilizers_p_ukraine.png)
+![](fertilizers_p_3_ukraine.png)
 
 ```{r}
 # Plot
 mp <- ggFertN(area = "Ukraine")
-ggsave("fertilizers_p_ukraine.png", mp, width = 6, height = 4)
+ggsave("fertilizers_p_3_ukraine.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### Russia
 
-![](fertilizers_p_russia.png)
+![](fertilizers_p_3_russia.png)
 
 ```{r}
 # Plot
 mp <- ggFertN(area = c("USSR", "Russia"))
-ggsave("fertilizers_p_russia.png", mp, width = 6, height = 4)
+ggsave("fertilizers_p_3_russia.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 # Pottasium (K) {.tabset .tabset-pills}
 
-## K2O / Ha {.tabset .tabset-pills}
-
-### World
-
-![](fertilizers_k_01.png)
-
-```{r}
-# Prep data
-xx <- dKr %>% filter(Area == "World")
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = KPH)) + 
-  geom_line(size = 1.5, color = "darkgreen", alpha = 0.7) + 
-  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
-  theme_agData() +
-  labs(title = "Global Potash Fertilizer Usage", y = "Kg K20 / Ha", x = NULL,
-       caption = myCaption)
-ggsave("fertilizers_k_01.png", mp, width = 6, height = 4)
-```
-
----
-
-### Regions
-
-![](fertilizers_k_02.png)
-
-```{r}
-# Prep data
-myAs <- c("Europe", "Asia", "Americas", "Africa", "Oceania")
-myCs <- c("darkblue", "darkorange", "darkgreen", "darkred", "steelblue")
-xx <- dKr %>% filter(Area %in% myAs) %>%
-  mutate(Area = factor(Area, levels = myAs))
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = KPH, color = Area)) + 
-  geom_line(size = 1.5, alpha = 0.7) + 
-  scale_color_manual(name = NULL, values = myCs) + 
-  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
-  theme_agData(legend.position = "bottom") +
-  labs(title = "Global Potash Fertilizer Usage", x = NULL,
-       y = "Kg K20 / Ha", caption = myCaption)
-ggsave("fertilizers_k_02.png", mp, width = 6, height = 4)
-```
-
----
-
-### Countries {.tabset .tabset-pills}
-
-![](fertilizers_k_03.png)
-
-```{r}
-# Prep data
-myAs <- c("Germany", "China", "India", "USA", "Canada", "Poland")
-myCs <- c("black",   "darkred", "darkorange", 
-          "steelblue", "darkgreen", "darkblue")
-xx <- dKr %>% filter(Area %in% myAs) %>%
-  mutate(Area = factor(Area, levels = myAs))
-# Plot
-mp <- ggplot(xx, aes(x = Year, y = KPH, color = Area)) + 
-  geom_line(size = 1.5, alpha = 0.7) + 
-  scale_color_manual(name = NULL, values = myCs) +
-  scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
-   guides(col = guide_legend(nrow = 1)) +
-  theme_agData(legend.position = "bottom") +
-  labs(title = "Potash Fertilizer Usage", y = "Kg K20 / Ha", x = NULL,
-       caption = myCaption)
-ggsave("fertilizers_k_03.png", mp, width = 6, height = 4)
-```
-
----
-
-#### Facetted
-
-![](fertilizers_k_04.png)
-
-```{r}
-# Plot
-mp <- mp + 
-  facet_wrap(Area ~., ncol = 3, scales = "free_y") +
-  scale_x_continuous(breaks = seq(1970, 2010, by = 20)) + 
-  theme(legend.position = "none")
-ggsave("fertilizers_k_04.png", mp, width = 6, height = 4)
-```
-
----
-
 ## Production {.tabset .tabset-pills}
 
-![](fertilizers_k_05.png)
+### Top 20 {.tabset .tabset-pills}
+
+#### Regions
+
+![](fertilizers_k_1_01.png)
+
+```{r}
+# Prep data
+myAs <- c("Asia", "Europe", "Americas", "Africa", "Oceania")
+myCs <- c("darkorange", "darkblue", "darkgreen", "darkred", "steelblue")
+xx <- dK %>% 
+  filter(Measurement == "Production", Year == 2019, Area %in% myAs) %>%
+  arrange(desc(Value)) %>%
+  slice(1:20) %>%
+  mutate(Area = factor(Area, levels = Area))
+# Plot
+ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Area)) +
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(name = NULL, values = myCs) +
+  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Potash Fertilizer Production", x = NULL,
+       y = "Million Tonnes K20", caption = myCaption)
+ggsave("fertilizers_k_1_01.png", mp, width = 6, height = 4)
+```
+
+---
+
+#### Countries
+
+![](fertilizers_k_1_02.png)
+
+```{r}
+# Prep data
+myAs <- c("Asia", "Europe", "Americas", "Africa", "Oceania")
+myCs <- c("darkorange", "darkblue", "darkgreen", "darkred", "steelblue")
+xx <- dK %>% 
+  filter(Measurement == "Production", Year == 2019,
+         Area %in% agData_FAO_Country_Table$Country) %>%
+  left_join(agData_FAO_Country_Table, by = c("Area"="Country")) %>%
+  arrange(desc(Value)) %>%
+  slice(1:20) %>%
+  mutate(Area = factor(Area, levels = Area),
+         Region = factor(Region, levels = myAs))
+# Plot
+ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) +
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(name = NULL, values = myCs) +
+  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Potash Fertilizer Production", x = NULL,
+       y = "Million Tonnes K20", caption = myCaption)
+ggsave("fertilizers_k_1_02.png", mp, width = 6, height = 4)
+```
+
+---
+
+### Unfacetted
+
+![](fertilizers_k_1_03.png)
 
 ```{r}
 # Prep data
@@ -1117,14 +1116,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Potash Fertilizer Production", x = NULL,
        y = "Million Tonnes K20", caption = myCaption)
-ggsave("fertilizers_k_05.png", mp, width = 6, height = 4)
+ggsave("fertilizers_k_1_03.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### Facetted
 
-![](fertilizers_k_06.png)
+![](fertilizers_k_1_04.png)
 
 ```{r}
 # Plot
@@ -1132,7 +1131,7 @@ mp <- mp +
   facet_wrap(Area ~ ., ncol = 3, scales = "free_y") +
   scale_x_continuous(breaks = seq(1970, 2010, by = 20)) + 
   theme(legend.position = "none")
-ggsave("fertilizers_k_06.png", mp, width = 6, height = 4)
+ggsave("fertilizers_k_1_04.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -1141,7 +1140,7 @@ ggsave("fertilizers_k_06.png", mp, width = 6, height = 4)
 
 ### World
 
-![](fertilizers_k_07.png)
+![](fertilizers_k_2_01.png)
 
 ```{r}
 # Prep data
@@ -1162,14 +1161,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   scale_color_manual(name = NULL, values = colors) + 
   labs(title = "Potash Fertilizer Use by Region", x = NULL,
        y = "Million Tonnes K2O", caption = myCaption)
-ggsave("fertilizers_k_07.png", mp, width = 7, height = 5)
+ggsave("fertilizers_k_2_01.png", mp, width = 7, height = 5)
 ```
 
 ---
 
 ### Europe
 
-![](fertilizers_k_08.png)
+![](fertilizers_k_2_02.png)
 
 ```{r}
 # Prep data
@@ -1191,7 +1190,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   scale_color_manual(name = NULL, values = colors) + 
   labs(title = "Potash Fertilizer Use in Europe", x = NULL,
        y = "Million Tonnes K2O", caption = myCaption )
-ggsave("fertilizers_k_08.png", mp, width = 7, height = 5)
+ggsave("fertilizers_k_2_02.png", mp, width = 7, height = 5)
 ```
 
 ---
@@ -1230,84 +1229,84 @@ ggFertK <- function(area = "Canada") {
 
 #### Canada {.active}
 
-![](fertilizers_k_canada.png)
+![](fertilizers_k_3_canada.png)
 
 ```{r}
 # Plot
 mp <- ggFertK(area = "Canada")
-ggsave("fertilizers_k_canada.png", mp, width = 6, height = 4)
+ggsave("fertilizers_k_3_canada.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### China
 
-![](fertilizers_k_china.png)
+![](fertilizers_k_3_china.png)
 
 ```{r}
 # Plot
 mp <- ggFertK(area = "China")
-ggsave("fertilizers_k_china.png", mp, width = 6, height = 4)
+ggsave("fertilizers_k_3_china.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### USA
 
-![](fertilizers_k_usa.png)
+![](fertilizers_k_3_usa.png)
 
 ```{r}
 # Plot
 mp <- ggFertK(area = "USA")
-ggsave("fertilizers_k_usa.png", mp, width = 6, height = 4)
+ggsave("fertilizers_k_3_usa.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### India
 
-![](fertilizers_k_india.png)
+![](fertilizers_k_3_india.png)
 
 ```{r}
 # Plot
 mp <- ggFertK(area = "India")
-ggsave("fertilizers_k_india.png", mp, width = 6, height = 4)
+ggsave("fertilizers_k_3_india.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### Germany
 
-![](fertilizers_k_germany.png)
+![](fertilizers_k_3_germany.png)
 
 ```{r}
 # Plot
 mp <- ggFertK(area = "Germany")
-ggsave("fertilizers_k_germany.png", mp, width = 6, height = 4)
+ggsave("fertilizers_k_3_germany.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### Ukraine
 
-![](fertilizers_k_ukraine.png)
+![](fertilizers_k_3_ukraine.png)
 
 ```{r}
 # Plot
 mp <- ggFertK(area = "Ukraine")
-ggsave("fertilizers_k_ukraine.png", mp, width = 6, height = 4)
+ggsave("fertilizers_k_3_ukraine.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### Russia
 
-![](fertilizers_k_russia.png)
+![](fertilizers_k_3_russia.png)
 
 ```{r}
 # Plot
 mp <- ggFertK(area = c("USSR", "Russia"))
-ggsave("fertilizers_k_russia.png", mp, width = 6, height = 4)
+ggsave("fertilizers_k_3_russia.png", mp, width = 6, height = 4)
 ```
 
 ---

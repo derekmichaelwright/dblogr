@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "dblogr"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
@@ -19,11 +19,10 @@ Welcome to the personal website for **Derek Michael Wright**
 
 > **derekmichaelwright.github.io/dblogr**
 >
-> - `r icon("address-card")` [About Me](#about-me)
 > - `r icon("image")` [Photography](#photography)
-> - `r icon("newspaper")` [Publications](#publications)
-> - `r icon("newspaper")` [Academic Work](#academic-work) - [Tutorials](#tutorials) - [Vignettes](#vignettes)
-> - `r icon("r-project")` [Packages](#packages) - [agData](#agdata) - [gwaspr](#gwaspr)
+> - `r icon("book")` [Publications](#publications)
+> - `r icon("newspaper")` [Academic Work](#academic-work) | [Tutorials](#tutorials) | [Vignettes](#vignettes)
+> - `r icon("r-project")` [Packages](#packages) | [agData](#agdata) | [gwaspr](#gwaspr)
 > - `r icon("chart-line")` [Blog](#blog)
 
 ---
@@ -78,6 +77,8 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 </div></div></div>
 
+## {-}
+
 ---
 
 ---
@@ -85,8 +86,6 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 # `r icon("image")` Photography 
 
 ## Albums {.tabset .tabset-pills}
-
-Under Construction...
 
 ### AGILE
 
@@ -899,15 +898,7 @@ Graphs of star constellations using the starBliss R package
 
 ![](blog/starbliss/featured.png)</div>
 
-### Blank Pages
-
-<div class="box">
-
-[<u>**Blank Pages**</u>](blog/blank_pages){target="_blank"}
-
-Blank pages for notebook creation
-
-![](blog/blank_pages/featured.png)</div>
+## {-}
 
 ---
 

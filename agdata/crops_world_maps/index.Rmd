@@ -23,7 +23,6 @@ knitr::opts_chunk$set(eval = F, echo = T, message = F, warning = F)
 ```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
-library(rworldmap)
 library(magick)
 ```
 
@@ -49,7 +48,7 @@ ggCropMap_year <- function(myCrop = "Lentils, dry",
   png(myFilename, width = 1350, height = 770, res = 300)
   par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
   mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", nameZSize = "Value",
-              nameZColour = "darkgreen", bg = alpha("darkgreen",0.7),
+              nameZColour = "darkgreen", nameZFill = alpha("darkgreen",0.7),
               symbolSize = mySymbolSize, lwd = 0.75, addLegend = F,
               oceanCol = "grey90", landCol = "white", borderCol = "black",
               )
@@ -170,9 +169,9 @@ ggCropMap_animation(myCrop = "Rapeseed or canola oil, crude", myMeasure = "Produ
 
 ![](Rapeseed or canola oil, crude_Production.gif)
 
-![](Rapeseed or canola oil, crude/Rapeseed or canola oil, crude_Production_2020_1970.png)
+![](Rapeseed or canola oil, crude/Rapeseed or canola oil, crude_Production_2020.png)
 
-![](Rapeseed or canola oil, crude/Rapeseed or canola oil, crude_Production_2020_1970.png)
+![](Rapeseed or canola oil, crude/Rapeseed or canola oil, crude_Production_1970.png)
 
 ---
 
@@ -313,7 +312,7 @@ ggCropMap_animation(myCrop = "Sorghum", myMeasure = "Production")
 
 ![](Sorghum_Production.gif)
 
-![](Sorghum_Production_2020.png)
+![](Sorghum/Sorghum_Production_2020.png)
 
 ![](Sorghum/Sorghum_Production_2020.png)
 
