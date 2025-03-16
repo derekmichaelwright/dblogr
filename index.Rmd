@@ -621,11 +621,11 @@ Graphs on Canadian farm operator demographics using STATCAN data
 
 <div class="box">
 
-[<u>**Maps of Canadian Crop Production**</u>](agdata/crops_canada_maps){target="_blank"}
+[<u>**Canadian Crop Production**</u>](agdata/crops_canada){target="_blank"}
 
-Maps of crop production in Canada using STATCAN data
+Graphs of crop production in Canada using STATCAN data
 
-![](agdata/crops_canada_maps/featured.png)</div>
+![](agdata/crops_canada/featured.png)</div>
 
 ---
 
@@ -796,7 +796,7 @@ Graphs of migration demographics in Canada using STATCAN data
 
 ![](blog/canada_migration/featured.png)</div>
 
-### Saskatchewan Election
+### Saskatchewan Elections
 
 <div class="box">
 

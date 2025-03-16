@@ -30,13 +30,14 @@ STATCAN Table: 32-10-0153-01
 library(agData)
 library(gganimate)
 library(treemapify)
+library(mapcan)
 ```
 
 ```{r}
 # Prep data
 myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 d1 <- agData_STATCAN_Crops %>% filter(Area == "Canada")
-d2 <- agData_STATCAN_FarmLand_Use %>% filter(Area == "Saskatchewan")
+d2 <- agData_STATCAN_FarmLand_Use %>% filter(Area == "Canada")
 ```
 
 ---
@@ -673,3 +674,172 @@ ggsave("crops_canada_5_03.png", mp, width = 6, height = 4)
 ```
 
 ---
+
+# Maps
+
+```{r}
+# Plotting functions
+cropMapCan_Production <- function(crop, year) {
+  xx <- agData_STATCAN_Crops %>% 
+    filter(Item == crop, Year == year, Measurement == "Production")
+  xx <- mapcan(boundaries = province, type = standard) %>% 
+    left_join(xx, by = c("pr_english"="Area"))
+  # Plot
+  ggplot(xx, aes(x = long, y = lat, group = group, fill = Value / 1000000)) +
+    geom_polygon() + 
+    coord_fixed() + 
+    theme_mapcan() +
+    scale_fill_continuous(name = "Million Tonnes",
+                          low = "lightgrey", high = "darkgreen") +
+    theme(legend.position = "right") +
+    labs(title = paste(crop, "Production", year, sep = " - "),
+         caption = myCaption)
+}
+#
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+```
+
+---
+
+## PDF - All Crops
+
+`r shiny::icon("file-pdf")` [figures_crops_canada_maps_statcan.pdf](figures_crops_canada_maps_statcan.pdf)
+
+```{r results="hide"}
+# Prep data
+xx <- agData_STATCAN_Crops
+# Plot
+pdf("figures_crops_canada_maps_statcan.pdf", width = 6, height = 4)
+for(i in unique(xx$Item)) {
+  xi <- xx %>% 
+    filter(Item == i, Year == 2020, Measurement == "Production") 
+  xi <- mapcan(boundaries = province, type = standard) %>% 
+    left_join(xi, by = c("pr_english"="Area"))
+  print(ggplot(xi, aes(x = long, y = lat, group = group, 
+                       fill = Value / 1000000)) +
+          geom_polygon() + 
+          coord_fixed() + 
+          theme_mapcan() +
+          scale_fill_continuous(name = "Million Tonnes", 
+                                low = "lightgrey", high = "darkgreen") +
+          theme(legend.position = "right") + 
+          labs(title = paste(i, "- Production -", 2020),
+               caption = "derekmichaelwright.github.io/dblogr/ | Data: STATCAN")
+        ) 
+}
+dev.off()
+```
+
+---
+
+## Production {.tabset .tabset-pills}
+
+### Wheat
+
+![](crops_canada_06_wheat.png)
+
+```{r}
+# Plot
+mp <- cropMapCan_Production("Wheat", 2020)
+ggsave("crops_canada_06_wheat.png", mp, width = 7, height = 5, bg = "white")
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 7, height = 5, bg = "white")
+```
+
+---
+
+### Canola
+
+![](crops_canada_06_canola.png)
+
+```{r}
+# Plot
+mp <- cropMapCan_Production("Canola", 2020)
+ggsave("crops_canada_06_canola.png", mp, width = 7, height = 5, bg = "white")
+```
+
+---
+
+### Barley
+
+![](crops_canada_06_barley.png)
+
+```{r}
+# Plot
+mp <- cropMapCan_Production("Barley", 2020)
+ggsave("crops_canada_06_barley.png", mp, width = 7, height = 5, bg = "white")
+```
+
+---
+
+### Peas
+
+![](crops_canada_06_peas.png)
+
+```{r}
+# Plot
+mp <- cropMapCan_Production("Peas", 2020)
+ggsave("crops_canada_06_peas.png", mp, width = 7, height = 5, bg = "white")
+```
+
+---
+
+### Oats
+
+![](crops_canada_06_oats.png)
+
+```{r}
+# Plot
+mp <- cropMapCan_Production("Oats", 2020)
+ggsave("crops_canada_06_oats.png", mp, width = 7, height = 5, bg = "white")
+```
+
+---
+
+### Lentils
+
+![](crops_canada_06_lentils.png)
+
+```{r}
+# Plot
+mp <- cropMapCan_Production("Lentils", 2020)
+ggsave("crops_canada_06_lentils.png", mp, width = 7, height = 5, bg = "white")
+```
+
+---
+
+### Beans
+
+![](crops_canada_06_beans.png)
+
+```{r}
+# Plot
+mp <- cropMapCan_Production("Beans", 2020)
+ggsave("crops_canada_06_beans.png", mp, width = 7, height = 5, bg = "white")
+```
+
+---
+
+### Chickpeas
+
+![](crops_canada_06_chickpeas.png)
+
+```{r}
+# Plot
+mp <- cropMapCan_Production("Chick peas", 2020)
+ggsave("crops_canada_06_chickpeas.png", mp, width = 7, height = 5, bg = "white")
+```
+
+---
+
+### Soybeans
+
+![](crops_canada_06_soybeans.png)
+
+```{r}
+# Plot
+mp <- cropMapCan_Production("Soybeans", 2020)
+ggsave("crops_canada_06_soybeans.png", mp, width = 7, height = 5, bg = "white")
+```
