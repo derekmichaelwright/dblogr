@@ -153,7 +153,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canada - Population Dynamics", x = NULL,
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_01.png", mp, width = 7, height = 4)
+ggsave("canada_migration_1_01.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F}
@@ -904,7 +904,8 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Type)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   guides(fill = guide_legend(ncol = 2)) +
-  labs(title = " - Total, permit holders and their family members", 
+  labs(title = "Canada - Temperary residents", 
+       subtitle = "Total, permit holders and their family members",
        y = "Thousand People", x = NULL, caption = myCaption)
 ggsave("canada_migration_4_03.png", mp, width = 6, height = 5)
 ```
@@ -928,7 +929,8 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Type)) +
   scale_fill_manual(name = NULL, values = myColors[c(3,1,2,4)]) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Total, asylum claimants", x = NULL,
+  labs(title = "Canada - Temperary residents", 
+       subtitle = "Total, permit holders and their family members",x = NULL,
        y = "Thousand People", caption = myCaption)
 ggsave("canada_migration_4_04.png", mp, width = 14, height = 7)
 ```
@@ -984,8 +986,8 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Type)) +
   scale_fill_manual(name = NULL, values = myColors[c(1,2,4,3)]) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Total, asylum claimants", x = NULL,
-       y = "Thousand People", caption = myCaption)
+  labs(title = "Canada - Asylum claimants, protected persons and related groups",
+       y = "Thousand People", x = NULL, caption = myCaption)
 ggsave("canada_migration_4_06.png", mp, width = 14, height = 7)
 ```
 

@@ -29,28 +29,33 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption = "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 myCs_Sector <- c("darkgreen", "darkslategray", "darkred", "steelblue")
-myCs_Gender <- c("palevioletred3","steelblue")
+myCs_Sex <- c("palevioletred3","steelblue")
 myMeasures <- c("Self-employed", "Private sector", "Public sector", "Total")
 myDates <- as.Date(c("2010-01-01","2015-01-01","2020-01-01"))
+mySexes1 <- c("Total - Gender", "Men+", "Women+")
+mySexes2 <- c("Both sexes", "Males", "Females")
 #
 d1 <- read.csv("1410028801_databaseLoadingData.csv") %>%
   select(Area=GEO, Date=REF_DATE, Measurement=Class.of.worker, 
-         Gender, Unit=UOM, Scale=SCALAR_FACTOR, Value=VALUE) %>%
+         Sex=Gender, Unit=UOM, Scale=SCALAR_FACTOR, Value=VALUE) %>%
   mutate(Value = Value * 1000,
          Area = factor(Area, levels = agData_STATCAN_Region_Table$Area),
          Date = as.Date(paste0(Date, "-15"), format = "%Y-%m-%d"),
          Measurement = plyr::mapvalues(Measurement, "Total employed, all classes of workers", "Total"),
          Measurement = gsub(" employees", "", Measurement),
-         Measurement = factor(Measurement, levels = myMeasures))
+         Measurement = factor(Measurement, levels = myMeasures),
+         Sex = plyr::mapvalues(Sex, mySexes1, mySexes2))
 d2 <- d1 %>% 
   mutate(Year = as.numeric(substr(Date, 1, 4))) %>%
-  group_by(Area, Year, Measurement, Gender) %>%
-  summarise(Value = sum(Value)) %>% ungroup() %>%
-  group_by(Area, Year, Gender) %>% mutate(Total = sum(Value)) %>% ungroup() %>%
+  group_by(Area, Year, Measurement, Sex) %>%
+  summarise(Value = sum(Value)) %>% 
+  ungroup() %>%
+  group_by(Area, Year, Sex) %>% 
+  mutate(Total = sum(Value)) %>% 
+  ungroup() %>%
   mutate(Percent = 100 * Value / Total)
-unique(d1$Measurement)
 ```
 
 ---
@@ -64,7 +69,7 @@ unique(d1$Measurement)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area == "Canada", Gender == "Total - Gender", Measurement != "Total")
+  filter(Area == "Canada", Sex == "Both sexes", Measurement != "Total")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
@@ -86,7 +91,7 @@ ggsave("canada_public_private_1_01.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area != "Canada", Gender == "Total - Gender", Measurement != "Total")
+  filter(Area != "Canada", Sex == "Both sexes", Measurement != "Total")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
@@ -136,7 +141,7 @@ Create plotting function
 gg_Priv_Gov <- function(myArea = "Canada") {
   # Prep data
   xx <- d1 %>% 
-    filter(Gender == "Total - Gender", Date > "2010-01-01",
+    filter(Sex == "Both sexes", Date > "2010-01-01",
            Area == myArea, Measurement != "Total")
   # Plot
   ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
@@ -207,7 +212,7 @@ ggsave("canada_public_private_2_04.png", mp, width = 10, height = 4)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area == "Canada", Gender == "Total - Gender", 
+  filter(Area == "Canada", Sex == "Both sexes", 
          Date >= "2020-02-15", Measurement != "Total") %>%
   select(Date, Measurement, Value) %>%
   spread(Date, Value) %>%
@@ -238,7 +243,7 @@ ggsave("canada_public_private_3_01.png", mp, width = 7, height = 4)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area == "Canada", Gender == "Total - Gender", 
+  filter(Area == "Canada", Sex == "Both sexes", 
          Date >= "2019-09-15", Measurement != "Total") %>%
   select(Date, Measurement, Value) %>%
   spread(Date, Value) %>%
@@ -270,7 +275,7 @@ ggsave("canada_public_private_3_02.png", mp, width = 7, height = 4)
 
 ```{r}
 # Prep data
-xx <- d2 %>% filter(Area == "Canada", Gender == "Total - Gender", Measurement != "Total")
+xx <- d2 %>% filter(Area == "Canada", Sex == "Both sexes", Measurement != "Total")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Measurement)) +
   geom_col(color = "black", alpha = 0.7) +
@@ -282,17 +287,17 @@ ggsave("canada_public_private_4_01.png", mp, width = 6, height = 4)
 
 ---
 
-## Gender
+## Sex
 
 ![](canada_public_private_4_02.png)
 
 ```{r}
 # Prep data
-xx <- d2 %>% filter(Area == "Canada", Gender != "Total - Gender", Measurement != "Total")
+xx <- d2 %>% filter(Area == "Canada", Sex != "Both sexes", Measurement != "Total")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Measurement)) +
   geom_col(color = "black", alpha = 0.7) +
-  facet_grid(. ~ Gender) +
+  facet_grid(. ~ Sex) +
   scale_fill_manual(name = NULL, values = myCs_Sector) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Employment in Canada", x = NULL, caption = myCaption)
@@ -307,7 +312,7 @@ ggsave("canada_public_private_4_02.png", mp, width = 8, height = 4)
 
 ```{r}
 # Prep data
-xx <- d2 %>% filter(Area != "Canada", Gender == "Total - Gender", Measurement != "Total")
+xx <- d2 %>% filter(Area != "Canada", Sex == "Both sexes", Measurement != "Total")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Measurement)) +
   geom_col(color = "black", alpha = 0.7, lwd = 0.1) +
@@ -332,12 +337,12 @@ ggsave("canada_public_private_4_03.png", mp, width = 12, height = 5)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area == "Canada", Gender != "Total - Gender", Measurement != "Total")
+  filter(Area == "Canada", Sex != "Both sexes", Measurement != "Total")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Gender)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Sex)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(size = 1, alpha = 0.8) +
-  scale_color_manual(name = NULL, values = myCs_Gender) +
+  scale_color_manual(name = NULL, values = myCs_Sex) +
   facet_wrap(. ~ Measurement, ncol = 3, scales = "free_y") +
   theme_agData(legend.position = "bottom") +
   labs(title = "Employment in Canada", x = NULL,
@@ -354,13 +359,13 @@ ggsave("canada_public_private_5_01.png", mp, width = 10, height = 4)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area == "Canada", Gender != "Total - Gender", 
+  filter(Area == "Canada", Sex != "Both sexes", 
          Date > "2010-01-01", Measurement != "Total")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Gender)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Sex)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(size = 1, alpha = 0.8) +
-  scale_color_manual(name = NULL, values = myCs_Gender) +
+  scale_color_manual(name = NULL, values = myCs_Sex) +
   scale_x_date(breaks = myDates, minor_breaks = "1 year", date_labels = "%Y") +
   facet_wrap(. ~ Measurement, ncol = 3, scales = "free_y") +
   theme_agData(legend.position = "bottom") +
@@ -380,16 +385,16 @@ ggsave("canada_public_private_5_02.png", mp, width = 10, height = 4)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area == "Canada", Gender != "Total - Gender", 
+  filter(Area == "Canada", Sex != "Both sexes", 
          Date %in% as.Date(c("2020-02-15","2022-05-15"))) %>%
-  select(Date, Measurement, Gender, Value) %>%
+  select(Date, Measurement, Sex, Value) %>%
   spread(Date, Value) %>%
   mutate(Change = `2022-05-15` - `2020-02-15`)
 # Plot
-mp <- ggplot(xx, aes(x = Gender, y = Change, fill = Gender)) +
+mp <- ggplot(xx, aes(x = Sex, y = Change, fill = Sex)) +
   geom_col(position = "dodge", color = "black", alpha = 0.7) +
   facet_grid(. ~ Measurement) +
-  scale_fill_manual(values = myCs_Gender) +
+  scale_fill_manual(values = myCs_Sex) +
   theme_agData(legend.position = "none") +
   labs(title = "Change since Feburary 2020", x = NULL,
        y = "Thousand", caption = myCaption)
@@ -405,16 +410,16 @@ ggsave("canada_public_private_5_03.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area == "Canada", Gender != "Total - Gender", 
+  filter(Area == "Canada", Sex != "Both sexes", 
          Date %in% as.Date(c("2019-09-15","2022-05-15"))) %>%
-  select(Date, Measurement, Gender, Value) %>%
+  select(Date, Measurement, Sex, Value) %>%
   spread(Date, Value) %>%
   mutate(Change = `2022-05-15` - `2019-09-15`)
 # Plot
-mp <- ggplot(xx, aes(x = Gender, y = Change, fill = Gender)) +
+mp <- ggplot(xx, aes(x = Sex, y = Change, fill = Sex)) +
   geom_col(position = "dodge", color = "black", alpha = 0.7) +
   facet_grid(. ~ Measurement) +
-  scale_fill_manual(values = myCs_Gender) +
+  scale_fill_manual(values = myCs_Sex) +
   theme_agData(legend.position = "none") +
   labs(title = "Change since 2019-09-15", x = NULL,
        y = "Thousand", caption = myCaption)
@@ -432,13 +437,13 @@ ggsave("canada_public_private_5_04.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area != "Canada", Gender != "Total - Gender",
+  filter(Area != "Canada", Sex != "Both sexes",
          Measurement == "Public sector")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Gender)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Sex)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(size = 0.8, alpha = 0.8) +
-  scale_color_manual(name = NULL, values = myCs_Gender) +
+  scale_color_manual(name = NULL, values = myCs_Sex) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Public Sector Employees", x = NULL,
@@ -454,10 +459,10 @@ ggsave("canada_public_private_6_01.png", mp, width = 12, height = 5)
 # Prep data
 xx <- xx %>% filter(Date > "2010-01-01")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Gender)) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Sex)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(size = 1, alpha = 0.8) +
-  scale_color_manual(name = NULL, values = myCs_Gender) +
+  scale_color_manual(name = NULL, values = myCs_Sex) +
   scale_x_date(breaks = myDates, minor_breaks = "1 year", date_labels = "%Y") +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
   theme_agData(legend.position = "bottom") +
@@ -479,7 +484,7 @@ ggsave("canada_public_private_6_02.png", mp, width = 12, height = 5)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area == "Canada", Gender == "Total - Gender",
+  filter(Area == "Canada", Sex == "Both sexes",
          Measurement == "Self-employed")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
@@ -525,7 +530,7 @@ ggsave("canada_public_private_7_02.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Area != "Canada", Gender == "Total - Gender",
+  filter(Area != "Canada", Sex == "Both sexes",
          Measurement == "Self-employed")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
