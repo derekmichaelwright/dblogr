@@ -429,115 +429,7 @@ ggsave("canada_migration_1_10.png", mp, width = 6, height = 4)
 
 # Interprovincial Migration By Age {.tabset .tabset-pills}
 
-## Gifs {.tabset .tabset-pills}
-
-### Plotting Function
-
-```{r}
-# Create plotting function
-ggInterProv_ani <- function(myArea) {
-  #Prep data
-  xx <- d3 %>% 
-    filter(Area == myArea, Measurement == "Net-migration",
-           Sex == "Both sexes", Age != "All ages", !is.na(Value)) %>%
-    mutate(YearNum = as.numeric(substr(Year,1,4)))
-  # Plot
-  ggplot(xx, aes(x = Age, y = Value / 1000, fill = Net)) +
-    geom_col(color = "black", alpha = 0.7) +
-    scale_fill_manual(values = c("darkred", "steelblue")) +
-    theme_agData(legend.position = "none",
-                 axis.text.x = element_text(angle = 45, hjust = 1, size = 5)) +
-    labs(title = paste(myArea, "- {round(frame_time)}"), 
-         subtitle = "Net Interprovincial Migration", 
-         y = "Thousand People", x = NULL, caption = myCaption) +
-    transition_time(YearNum)
-}
-```
-
----
-
-### British Columbia {.active}
-
-![](canada_migration_gif_01.gif)
-
-```{r}
-mp <- ggInterProv_ani("British Columbia")
-anim_save("canada_migration_gif_01.gif", mp, 
-          nframes = 300, fps = 10, end_pause = 10, 
-          width = 600, height = 400, res = 80, units = "px")
-```
-
----
-
-### Alberta
-
-![](canada_migration_gif_02.gif)
-
-```{r}
-mp <- ggInterProv_ani("Alberta")
-anim_save("canada_migration_gif_02.gif", mp, 
-          nframes = 300, fps = 10, end_pause = 10, 
-          width = 600, height = 400, res = 80, units = "px")
-```
-
----
-
-### Saskatchewan
-
-![](canada_migration_gif_03.gif)
-
-```{r}
-mp <- ggInterProv_ani(myArea = "Saskatchewan")
-anim_save("canada_migration_gif_03.gif", mp, 
-          nframes = 300, fps = 10, end_pause = 10, 
-          width = 600, height = 400, res = 80, units = "px")
-```
-
----
-
-### Manitoba
-
-![](canada_migration_gif_04.gif)
-
-
-```{r}
-mp <- ggInterProv_ani("Manitoba")
-anim_save("canada_migration_gif_04.gif", mp, 
-          nframes = 300, fps = 10, end_pause = 10, 
-          width = 600, height = 400, res = 80, units = "px")
-```
-
----
-
-### Ontario
-
-![](canada_migration_gif_05.gif)
-
-```{r}
-mp <- ggInterProv_ani("Ontario")
-anim_save("canada_migration_gif_05.gif", mp, 
-          nframes = 300, fps = 10, end_pause = 10, 
-          width = 600, height = 400, res = 80, units = "px")
-```
-
----
-
-### Quebec
-
-![](canada_migration_gif_06.gif)
-
-```{r}
-mp <- ggInterProv_ani("Quebec")
-anim_save("canada_migration_gif_06.gif", mp, 
-          nframes = 300, fps = 10, end_pause = 10, 
-          width = 600, height = 400, res = 80, units = "px")
-```
-
----
-
-## Facetted {.tabset .tabset-pills}
-
-### Plotting Function
+## Plotting Function
 
 ```{r}
 # Create plotting function
@@ -561,7 +453,7 @@ ggInterProv <- function(myArea) {
 
 ---
 
-### British Columbia {.active}
+## British Columbia {.active}
 
 ![](canada_migration_2_01.png)
 
@@ -573,7 +465,7 @@ ggsave("canada_migration_2_01.png", mp, width = 20, height = 10)
 
 ---
 
-### Alberta
+## Alberta
 
 ![](canada_migration_2_02.png)
 
@@ -585,7 +477,7 @@ ggsave("canada_migration_2_02.png", mp, width = 20, height = 10)
 
 ---
 
-### Saskatchewan
+## Saskatchewan
 
 ![](canada_migration_2_03.png)
 
@@ -597,7 +489,7 @@ ggsave("canada_migration_2_03.png", mp, width = 20, height = 10)
 
 ---
 
-### Manitoba
+## Manitoba
 
 ![](canada_migration_2_04.png)
 
@@ -609,7 +501,7 @@ ggsave("canada_migration_2_04.png", mp, width = 20, height = 10)
 
 ---
 
-### Ontario
+## Ontario
 
 ![](canada_migration_2_04.png)
 
@@ -621,7 +513,7 @@ ggsave("canada_migration_2_04.png", mp, width = 20, height = 10)
 
 ---
 
-### Quebec
+## Quebec
 
 ![](canada_migration_2_05.png)
 
@@ -633,13 +525,13 @@ ggsave("canada_migration_2_05.png", mp, width = 20, height = 10)
 
 ---
 
-### Alberta 2011 - 2023
+## Alberta 2012 - 2024
 
 ![](canada_migration_2_06.png)
 
 ```{r}
 # Prep data
-myYears <- paste0(2011:2022,"/",2012:2023)
+myYears <- paste0(2012:2023,"/",2013:2024)
 xx <- d3 %>% 
   filter(Area == "Alberta", Year %in% myYears,
          Sex == "Both sexes", Age != "All ages",
@@ -658,40 +550,16 @@ ggsave("canada_migration_2_06.png", mp, width = 14, height = 6)
 
 ---
 
-### Alberta 2020 - 2023
-
+## British Columbia 2021 - 2024
 
 ![](canada_migration_2_07.png)
 
 ```{r}
 # Prep data
+myYears <- paste0(2021:2023,"/",2022:2024)
 xx <- d3 %>% 
-  filter(Area == "Alberta", Sex == "Both sexes", Age != "All ages",
-         Year %in% c("2020/2021", "2021/2022", "2022/2023"),
-         Measurement == "Net-migration")
-# Plot
-mp <- ggplot(xx, aes(x = Age, y = Value, fill = Net)) +
-  geom_col(color = "black", alpha = 0.7) +
-  facet_grid(. ~ Year) +
-  scale_fill_manual(values = myColors[3:4]) +
-  theme_agData(legend.position = "none",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Alberta Net Interprovincial Migration", 
-       y = "Thousand People", x = NULL, caption = myCaption)
-ggsave("canada_migration_2_07.png", mp, width = 10, height = 4)
-```
-
----
-
-### British Columbia 2021 - 2023
-
-![](canada_migration_2_08.png)
-
-```{r}
-# Prep data
-xx <- d3 %>% 
-  filter(Area == "Ontario", Sex == "Both sexes", Age != "All ages",
-         Year %in% c("2021/2022", "2022/2023"),
+  filter(Area == "British Columbia", Year %in% myYears,
+         Sex == "Both sexes", Age != "All ages",
          Measurement == "Net-migration")
 # Plot
 mp <- ggplot(xx, aes(x = Age, y = Value, fill = Net)) +
@@ -702,7 +570,7 @@ mp <- ggplot(xx, aes(x = Age, y = Value, fill = Net)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "British Columbia Net Interprovincial Migration", x = NULL,
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_2_08.png", mp, width = 8, height = 4)
+ggsave("canada_migration_2_07.png", mp, width = 8, height = 4)
 ```
 
 ---
