@@ -284,7 +284,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Age)) +
   facet_wrap(Area ~ ., ncol = 5) +
   scale_color_manual(name = NULL, values = myCs_Age) +
   scale_x_date(minor_breaks = "year") +
-  theme_agData(legend.position = "none",
+  theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canadian Employment Rate", x = NULL,
        y = "Percent", caption = myCaption)
@@ -454,13 +454,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
   facet_wrap(Measurement ~ ., ncol = 2, scales = "free_y") +
   scale_color_manual(name = NULL, values = c("palevioletred3","steelblue")) +
   scale_x_date(date_minor_breaks = "year") +
-  theme_agData(legend.position = "bottom",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData(legend.position = "bottom") +
   labs(title = "Canada", y = "Million", x = NULL, caption = myCaption)
 ggsave("canada_employment_2_02.png", mp, width = 6, height = 4)
 ```
 
 ---
+
+## Age Groups
 
 ![](canada_employment_2_03.png)
 
@@ -529,7 +530,7 @@ xx <- d1 %>%
          PosNeg = ifelse(MonthDiff > 0, "Pos", "Neg"))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = MonthDiff / 1000, fill = PosNeg)) + 
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_bar(stat = "identity", color = "black", alpha = 0.7, lwd = 0.2) +
   scale_fill_manual(values = c("darkred","steelblue")) +
   scale_y_continuous(breaks = c(-2,-1.5,-1,-0.5,0,0.5,1)) +
   facet_grid(. ~ Measurement) +
@@ -579,7 +580,7 @@ for(i in unique(xx$Date)) {
 xx <- xx %>% mutate(PosNeg = ifelse(PanDiff > 0, "Pos", "Neg"))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = PanDiff / 1000, fill = PosNeg)) + 
-  geom_bar(stat = "identity", color = "black", alpha = 0.7) +
+  geom_bar(stat = "identity", color = "black", alpha = 0.7, lwd = 0.2) +
   facet_wrap(Measurement ~ ., scales = "free_y") +
   scale_fill_manual(values = c("darkred","steelblue")) +
   theme_agData(legend.position = "none") +
@@ -592,7 +593,7 @@ ggsave("canada_employment_2_06.png", mp, width = 8, height = 4)
 
 # Participation Rate {.tabset .tabset-pills}
 
-# Canada
+## Canada
 
 ![](canada_employment_3_01.png)
 
@@ -733,7 +734,7 @@ ggsave("canada_employment_5_04.png", mp, width = 8, height = 6)
 ```{r}
 # Prep data
 xx <- d3 %>% filter(Area == "Canada", Age != "Total all ages") %>%
-  left_join(d4, by = c("Area", "Year")) %>%
+  left_join(d4 %>% filter(Item == "All-items"), by = c("Area", "Year")) %>%
   mutate(InflationValue = Value / CPI) %>%
   group_by(Area, FamilyType, Age) %>%
   mutate(PreviousYear = lag(InflationValue),
@@ -769,8 +770,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   facet_wrap(Age ~ ., scales = "free_y") +
   scale_color_manual(name = NULL, values = myCs_Fam) +
   expand_limits(y = 0) +
-  theme_agData(legend.position = "bottom",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData(legend.position = "bottom") +
   labs(title = "Canada - EI", x = NULL, 
        y = "Thousand People", caption = myCaption)
 ggsave("canada_employment_6_01.png", mp, width = 7, height = 5)
@@ -792,8 +792,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   facet_wrap(Age ~ ., scales = "free_y") +
   scale_color_manual(name = NULL, values = myCs_Sex) +
   expand_limits(y = 0) +
-  theme_agData(legend.position = "bottom",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData(legend.position = "bottom") +
   labs(title = "Canada - EI", x = NULL, 
        y = "Thousand People", caption = myCaption)
 ggsave("canada_employment_6_02.png", mp, width = 7, height = 5)
@@ -815,8 +814,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   facet_wrap(Age ~ ., scales = "free_y") +
   scale_color_manual(name = NULL, values = myCs_Sex) +
   expand_limits(y = 0) +
-  theme_agData(legend.position = "bottom",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData(legend.position = "bottom") +
   labs(title = "Canada - EI", x = NULL, 
        y = "Thousand People", caption = myCaption)
 ggsave("canada_employment_6_03.png", mp, width = 7, height = 5)
@@ -837,8 +835,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   facet_wrap(Area ~ ., scales = "free_y") +
   scale_color_manual(name = NULL, values = myCs_Sex) +
   expand_limits(y = 0) +
-  theme_agData(legend.position = "bottom",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData(legend.position = "bottom") +
   labs(title = "Canada - EI - ages 25 to 54 years", x = NULL, 
        y = "Thousand People", caption = myCaption)
 ggsave("canada_employment_6_04.png", mp, width = 12, height = 8)

@@ -55,7 +55,7 @@ mp2 <- mp1 +
        subtitle = "A) Visualization 1 - Truncated y-axis", 
        caption = NULL)
 mp <- ggarrange(mp2, mp1, ncol = 2, align = "h")
-ggsave("misleading_graphs_1_1.png", mp, width = 8, height = 4)
+ggsave("misleading_graphs_1_01.png", mp, width = 8, height = 4)
 ```
 
 ```{r echo = F} 
@@ -413,6 +413,8 @@ ggsave("misleading_graphs_4_02.png", mp, width = 10, height = 4, bg = "white")
 The following is a comical example put out by US democrats. Impressively, this graph uses both cherry picking and a truncated y-axis.
 
 ![Source: https://twitter.com/dccc/status/1466494036630544394](example_4_01.jfif)
+
+<br>
 
 > - `r shiny::icon("globe")` [https://www.eia.gov/dnav/pet/pet_pri_gnd_dcus_nus_w.htm](https://www.eia.gov/dnav/pet/pet_pri_gnd_dcus_nus_w.htm){target="_blank"}
 

@@ -42,6 +42,9 @@ STATCAN Table: 13-10-0394-01 (Leading causes of death)
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310039401](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310039401){target="_blank"}
 > - `r shiny::icon("save")` [1310039401_databaseLoadingData.csv](1310039401_databaseLoadingData.csv)
 
+> - `r shiny::icon("globe")` [https://derekmichaelwright.github.io/dblogr/blog/canada_overdoses/](https://derekmichaelwright.github.io/dblogr/blog/canada_overdoses/){target="_blank"}
+> - `r shiny::icon("save")` [data_canada_overdoses.xlsx](data_canada_overdoses.xlsx)
+
 ---
 
 # Prepare Data
@@ -76,14 +79,14 @@ groupSeasons <- function(xx) {
     mutate(Season = factor(Season, levels = mySeasons),
            SeasonGroup = factor(SeasonGroup, levels = unique(myGroups)))
 }
-# d1 = Deaths per Week (2010-2023)
+# d1 = Deaths per Week (2010-2025)
 d1 <- read.csv("1310078301_databaseLoadingData.csv") %>% 
   rename(Date=REF_DATE, Area=GEO, Value=VALUE) %>%
   mutate(Date = as.Date(Date),
          Year  = as.numeric(substr(Date, 1, 4)),
          Month = as.numeric(substr(Date, 6, 7)),
          Group = ifelse(Year < 2020, "<2020", Year),
-         Group = factor(Group, levels = c("<2020", "2020", "2021", "2022", "2023", "2024")),
+         Group = factor(Group, levels = c("<2020", 2020:2025)),
          JulianDay = lubridate::yday(Date),
          AdjJulianDay = ifelse(Month < 8, JulianDay + 365, JulianDay),
          Area = gsub(", place of occurrence", "", Area),
@@ -95,7 +98,7 @@ for(i in unique(d1$Area)) {
   mymin <- d1 %>% filter(Area == i, Year < 2020) %>% pull(Value) %>% min()
   d1 <- d1 %>% filter(!(Area == i & Value < mymin))
 }
-# d2 = Deaths per Week, by gender and age (2010-2023)
+# d2 = Deaths per Week, by gender and age (2010-2025)
 d2 <- read.csv("1310076801_databaseLoadingData.csv") %>% 
   rename(Date=REF_DATE, Age=Age.at.time.of.death, Value=VALUE, Area=GEO) %>%
   mutate(Date = as.Date(Date),
@@ -103,7 +106,7 @@ d2 <- read.csv("1310076801_databaseLoadingData.csv") %>%
          Year  = as.numeric(substr(Date, 1, 4)),
          Month = as.numeric(substr(Date, 6, 7)),
          Group = ifelse(Year < 2020, "<2020", Year),
-         Group = factor(Group, levels = c("<2020", "2020", "2021", "2022", "2023", "2024")),
+         Group = factor(Group, levels = c("<2020", 2020:2025)),
          JulianDay = lubridate::yday(Date),
          AdjJulianDay = ifelse(Month < 8, JulianDay + 365, JulianDay),
          Area = gsub(", place of occurrence", "", Area),
@@ -130,7 +133,7 @@ d3 <- read.csv("1310070801_databaseLoadingData.csv") %>%
   mutate(Death.Rate = 1000 * Total.Deaths / Population) %>%
   filter(Month.of.death == "Total", !is.na(Area)) %>%
   mutate(Group = ifelse(Year < 2020, "<2020", Year),
-         Group = factor(Group, levels = c("<2020", "2020", "2021", "2022", "2023")))
+         Group = factor(Group, levels = c("<2020", 2020:2025)))
 #
 d4 <- read.csv("1310039401_databaseLoadingData.csv") %>%
   select(Year=REF_DATE, Area=GEO, Sex, Age = Age.at.time.of.death,
@@ -181,7 +184,7 @@ mp1 <- ggplot(xx, aes(x = Year, y = Total.Deaths / 1000,
   geom_col(color = "black") +
   scale_fill_manual(name = NULL, values = myColors) +
   scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8,0.8)) +
-  scale_x_continuous(breaks = c(1991, seq(1995,2020, by = 5))) +
+  scale_x_continuous(breaks = c(1991, seq(1995,2025, by = 5))) +
   scale_y_continuous(minor_breaks = seq(0, 400, by = 20)) +
   theme_agData() +
   labs(subtitle = "(A) Total Number of Deaths Per Year in Canada", 
@@ -191,7 +194,7 @@ mp2 <- ggplot(xx, aes(x = Year, y = Death.Rate,
   geom_col(color = "black") +
   scale_fill_manual(name = NULL, values = myColors) +
   scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8,0.8)) +
-  scale_x_continuous(breaks = c(1991, seq(1995,2020, by = 5))) +
+  scale_x_continuous(breaks = c(1991, seq(1995,2025, by = 5))) +
   scale_y_continuous(minor_breaks = seq(0, 400, by = 20)) +
   theme_agData() +
   labs(subtitle = "(B) Death Rate Per Year in Canada", 
@@ -206,7 +209,7 @@ ggsave("canada_deaths_01_01.png", mp, width = 10, height = 4, bg = "white")
 
 ## Plotting Function
 
-```{r}
+```{r class.source = "fold-show"}
 # Create plotting function
 ggWeeklyDeaths <- function(myArea = "Canada", xmin = 2010) {
   # Prep data
@@ -230,7 +233,7 @@ ggWeeklyDeaths <- function(myArea = "Canada", xmin = 2010) {
 
 ---
 
-## 2010-2023 {.tabset .tabset-pills}
+## 2010-2025 {.tabset .tabset-pills}
 
 ### Canada {.tabset .tabset-pills} {.active}
 
@@ -309,7 +312,7 @@ ggsave("canada_deaths_02_07.png", mp, width = 8, height = 4)
 
 ---
 
-## 2016-2023 {.tabset .tabset-pills}
+## 2016-2025 {.tabset .tabset-pills}
 
 ### Canada
 
@@ -590,7 +593,7 @@ ggsave("canada_deaths_05_07.png", mp, width = 6, height = 4)
 
 ## Plotting Function
 
-```{r}
+```{r class.source = "fold-show"}
 # Create plotting function
 ggRespSeasonsAge <- function(myArea = "Canada") {
   # Prep data
@@ -704,7 +707,7 @@ ggsave("canada_deaths_06_07.png", mp, width = 10, height = 4)
 
 ## Plotting Function
 
-```{r}
+```{r class.source = "fold-show"}
 # Create plotting function
 ggYearlyDeaths <- function(myArea = "Canada") {
   # Prep data
@@ -719,7 +722,7 @@ ggYearlyDeaths <- function(myArea = "Canada") {
     facet_grid(. ~ Age) +
     scale_fill_manual(name = NULL, values = myColors) +
     scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8,0.8)) +
-    scale_x_continuous(breaks = seq(2010, 2022, 2)) +
+    scale_x_continuous(breaks = seq(2010, 2024, 2)) +
     theme_agData(legend.position = "none",
                  axis.text.x = element_text(angle = 45, hjust = 1)) +
     labs(title = myArea, caption = myCaption,
@@ -1035,12 +1038,12 @@ sum(xx$Value[xx$Year%in%2015:2022 & xx$Measurement == "Deaths"] - xx$Value[xx$Ye
 
 ## Plotting Function
 
-```{r}
+```{r class.source = "fold-show"}
 ggWeeklyDeaths044 <- function(myArea = "Canada") {
   # Prep data
   xx <- d2 %>% 
     filter(Area == myArea, Age == "0 to 44 years", Sex == "Both sexes")
-  vv <- as.Date(paste0(as.character(2010:2023),"-01-01"))
+  vv <- as.Date(paste0(as.character(2010:2025),"-01-01"))
   # Plot
   ggplot(xx, aes(x = Date, y = Value, fill = Group)) +
     geom_col(alpha = 0.7) +
