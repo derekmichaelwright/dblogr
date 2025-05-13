@@ -18,10 +18,15 @@ STATCAN Table: 17-10-0009-01 (Population)
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901){target="_blank"}
 > - `r shiny::icon("save")` [1710000901_databaseLoadingData.csv](1710000901_databaseLoadingData.csv)
 
-STATCAN Table: 17-10-0008-01 (Demographic growth)
+STATCAN Table: 17-10-0008-01 (Demographic growth - Annually)
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000801](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000801){target="_blank"}
 > - `r shiny::icon("save")` [1710000801_databaseLoadingData.csv](1710000801_databaseLoadingData.csv)
+
+STATCAN Table: 17-10-0040-01 (Demographic growth - Quarterly)
+
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710004001](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710004001){target="_blank"}
+> - `r shiny::icon("save")` [1710004001_databaseLoadingData.csv](1710004001_databaseLoadingData.csv)
 
 STATCAN Table: 17-10-0015-01 (Interprovincial migration)
 
@@ -103,7 +108,16 @@ d2 <- read.csv("1710000801_databaseLoadingData.csv") %>%
          Year = as.numeric(substr(Date, 1,4)),
          Date = factor(Date))
 #
-d3 <- read.csv("1710001501_databaseLoadingData.csv") %>%
+d3 <- read.csv("1710004001_databaseLoadingData.csv") %>%
+  select(Date=REF_DATE, Area=GEO, Measurement=Components.of.population.growth, 
+         Unit=UOM, Value=VALUE) %>%
+  mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
+         Area = factor(Area, levels = myAreas),
+         Measurement = factor(Measurement, levels = myMeasures),
+         Year = as.numeric(substr(Date, 1,4)),
+         Date = factor(Date))
+#
+d4 <- read.csv("1710001501_databaseLoadingData.csv") %>%
   select(Year=REF_DATE, Area=GEO, Sex=Gender, Age=Age.group, 
          Measurement=Migrants, UOM, Value=VALUE) %>%
   mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
@@ -112,14 +126,14 @@ d3 <- read.csv("1710001501_databaseLoadingData.csv") %>%
          Net = ifelse(Value > 0, "Positive", "Negative"),
          Sex = plyr::mapvalues(Sex, mySexes1, mySexes2))
 #
-d4 <- read.csv("1710012101_databaseLoadingData.csv") %>%
+d5 <- read.csv("1710012101_databaseLoadingData.csv") %>%
   select(Date=REF_DATE, Area=GEO, Type=Non.permanent.resident.types,
          UOM, Value=VALUE) %>%
   mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
          Area = factor(Area, levels = myAreas),
          Date = factor(Date))
 #
-d5 <- read.csv("9810036101_databaseLoadingData.csv") %>%
+d6 <- read.csv("9810036101_databaseLoadingData.csv") %>%
   select(Year=REF_DATE, Area=GEO, Sex=Gender..3., Age=Age..15C., 
          Type=Non.permanent.resident.type..10.,
          POB=Place.of.birth..290., UOM, Value=VALUE) %>%
@@ -127,7 +141,7 @@ d5 <- read.csv("9810036101_databaseLoadingData.csv") %>%
          Age = factor(Age, levels = myAges2),
          Sex = plyr::mapvalues(Sex, mySexes1, mySexes2))
 # 
-d6 <- read.csv("1710015401_databaseLoadingData.csv")
+d7 <- read.csv("1710015401_databaseLoadingData.csv")
 ```
 
 ---
@@ -135,6 +149,8 @@ d6 <- read.csv("1710015401_databaseLoadingData.csv")
 # Births, Deaths & Migration {.tabset .tabset-pills}
 
 ## Canada
+
+### Yearly
 
 ![](canada_migration_1_01.png)
 
@@ -145,6 +161,7 @@ xx <- d2 %>%
   mutate(Measurement = factor(Measurement, levels = myMeasures))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_hline(yintercept = 0, alpha = 0.5) +
   geom_line(aes(color = Measurement, group = Measurement), line.width = 1, alpha = 0.7) +
   geom_line(y = 0, lty = 2, alpha = 0.7, color = "black") +
   scale_color_manual(name = NULL, values = myColors) +
@@ -162,9 +179,34 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ---
 
-## Provinces
+### Quarterly
 
 ![](canada_migration_1_02.png)
+
+```{r}
+# Prep data
+xx <- d3 %>% 
+  filter(Area == "Canada", Measurement %in% myMeasures[1:5]) %>%
+  mutate(Measurement = factor(Measurement, levels = myMeasures))
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_hline(yintercept = 0, alpha = 0.5) +
+  geom_line(aes(color = Measurement, group = Measurement), line.width = 1, alpha = 0.7) +
+  geom_line(y = 0, lty = 2, alpha = 0.7, color = "black") +
+  scale_color_manual(name = NULL, values = myColors) +
+  scale_x_discrete(breaks = myDates) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada - Population Dynamics", x = NULL,
+       y = "Thousand People", caption = myCaption)
+ggsave("canada_migration_1_02.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Provinces
+
+![](canada_migration_1_03.png)
 
 ```{r}
 # Prep data
@@ -181,7 +223,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   guides(color = guide_legend(nrow = 2)) +
   labs(title = "Population Dynamics", x = NULL,
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_02.png", mp, width = 14, height = 7)
+ggsave("canada_migration_1_03.png", mp, width = 14, height = 7)
 ```
 
 ---
@@ -190,7 +232,7 @@ ggsave("canada_migration_1_02.png", mp, width = 14, height = 7)
 
 ## Canada
 
-![](canada_migration_1_03.png)
+![](canada_migration_1_04.png)
 
 ```{r}
 # Prep data
@@ -207,7 +249,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Measurement)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canada - Net Migration", x = NULL, 
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_03.png", mp, width = 6, height = 4)
+ggsave("canada_migration_1_04.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -216,7 +258,7 @@ ggsave("canada_migration_1_03.png", mp, width = 6, height = 4)
 
 ### All Data
 
-![](canada_migration_1_04.png)
+![](canada_migration_1_05.png)
 
 ```{r}
 # Prep data
@@ -234,14 +276,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Measurement)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Net Migration", x = NULL, 
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_04.png", mp, width = 14, height = 7)
+ggsave("canada_migration_1_05.png", mp, width = 14, height = 7)
 ```
 
 ---
 
 ### Net Migration
 
-![](canada_migration_1_05.png)
+![](canada_migration_1_06.png)
 
 ```{r}
 # Prep data
@@ -261,14 +303,14 @@ mp <- ggplot(xx, aes(x = Date, y = Net / 1000, fill = Group)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Net Migration", x = NULL, 
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_05.png", mp, width = 14, height = 7)
+ggsave("canada_migration_1_06.png", mp, width = 14, height = 7)
 ```
 
 ---
 
 ## Prairies vs. Non-Prairies
 
-![](canada_migration_1_06.png)
+![](canada_migration_1_07.png)
 
 ```{r}
 # Prep data
@@ -299,7 +341,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   theme_agData() +
   labs(title = "Immigration Rates", x = NULL,
        y = "Immigrants / Million People", caption = myCaption)
-ggsave("canada_migration_1_06.png", mp, width = 8, height = 4)
+ggsave("canada_migration_1_07.png", mp, width = 8, height = 4)
 ```
 
 ---
@@ -308,7 +350,7 @@ ggsave("canada_migration_1_06.png", mp, width = 8, height = 4)
 
 ## Canada
 
-![](canada_migration_1_07.png)
+![](canada_migration_1_08.png)
 
 ```{r}
 # Prep data
@@ -325,14 +367,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Measurement)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canada - Immigrants & Non-Permanent Residents", 
        y = "Thousand People", x = NULL, caption = myCaption)
-ggsave("canada_migration_1_07.png", mp, width = 6, height = 4)
+ggsave("canada_migration_1_08.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Provinces
 
-![](canada_migration_1_08.png)
+![](canada_migration_1_09.png)
 
 ```{r}
 # Prep data
@@ -349,7 +391,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Measurement)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Immigrants & Non-Permanent Residents",
        y = "Thousand People", x = NULL, caption = myCaption)
-ggsave("canada_migration_1_08.png", mp, width = 14, height = 7)
+ggsave("canada_migration_1_09.png", mp, width = 14, height = 7)
 ```
 
 ```{r eval = F, echo = F}
@@ -371,7 +413,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Measurement)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(y = "Thousand People", x = NULL, caption = myCaption)
-ggsave("canada_migration_1_08.png", mp, width = 12, height = 6)
+ggsave("canada_migration_1_09.png", mp, width = 12, height = 6)
 ```
 
 ---
@@ -380,7 +422,7 @@ ggsave("canada_migration_1_08.png", mp, width = 12, height = 6)
 
 ## Canada
 
-![](canada_migration_1_09.png)
+![](canada_migration_1_10.png)
 
 ```{r}
 # Prep data
@@ -398,14 +440,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Group)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Net Interprovincial Migration", x = NULL,
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_09.png", mp, width = 14, height = 7)
+ggsave("canada_migration_1_10.png", mp, width = 14, height = 7)
 ```
 
 ---
 
 ## Alberta vs BC
 
-![](canada_migration_1_10.png)
+![](canada_migration_1_11.png)
 
 ```{r}
 # Prep data
@@ -422,7 +464,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Area, group = Area)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Net Interprovincial Migration", x = NULL,
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_1_10.png", mp, width = 6, height = 4)
+ggsave("canada_migration_1_11.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -435,7 +477,7 @@ ggsave("canada_migration_1_10.png", mp, width = 6, height = 4)
 # Create plotting function
 ggInterProv <- function(myArea) {
   #Prep data
-  xx <- d3 %>% 
+  xx <- d4 %>% 
     filter(Area == myArea, !Year %in% c("1971/1972","1972/1973"),
            Sex == "Both sexes", Age != "All ages",
            Measurement == "Net-migration")
@@ -532,7 +574,7 @@ ggsave("canada_migration_2_05.png", mp, width = 20, height = 10)
 ```{r}
 # Prep data
 myYears <- paste0(2012:2023,"/",2013:2024)
-xx <- d3 %>% 
+xx <- d4 %>% 
   filter(Area == "Alberta", Year %in% myYears,
          Sex == "Both sexes", Age != "All ages",
          Measurement == "Net-migration")
@@ -557,7 +599,7 @@ ggsave("canada_migration_2_06.png", mp, width = 14, height = 6)
 ```{r}
 # Prep data
 myYears <- paste0(2021:2023,"/",2022:2024)
-xx <- d3 %>% 
+xx <- d4 %>% 
   filter(Area == "British Columbia", Year %in% myYears,
          Sex == "Both sexes", Age != "All ages",
          Measurement == "Net-migration")
@@ -714,7 +756,7 @@ ggsave("canada_migration_3_05.png", mp, width = 6, height = 4)
 # Prep Data
 myTypes <- c("Total, asylum claimants, protected persons and related groups",
              "Total, permit holders and their family members")
-xx <- d4 %>% 
+xx <- d5 %>% 
   filter(Area == "Canada", Type %in% myTypes)
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, fill = Type)) +
@@ -738,7 +780,7 @@ ggsave("canada_migration_4_01.png", mp, width = 6, height = 5)
 # Prep Data
 myTypes <- c("Total, asylum claimants, protected persons and related groups",
              "Total, permit holders and their family members")
-xx <- d4 %>% filter(Type %in% myTypes)
+xx <- d5 %>% filter(Type %in% myTypes)
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Type)) +
   geom_col(color = "black", alpha = 0.7) +
@@ -763,7 +805,7 @@ ggsave("canada_migration_4_02.png", mp, width = 14, height = 7)
 # Prep Data
 myTypes <- c("Work permit holders only", "Study permit holders only",
              "Work and study permit holders", "Other")
-xx <- d4 %>% 
+xx <- d5 %>% 
   filter(Area == "Canada", Type %in% myTypes)
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Type)) +
@@ -788,7 +830,7 @@ ggsave("canada_migration_4_03.png", mp, width = 6, height = 5)
 # Prep Data
 myTypes <- c("Work permit holders only", "Study permit holders only",
              "Work and study permit holders", "Other")
-xx <- d4 %>% 
+xx <- d5 %>% 
   filter(Area != "Canada", Type %in% myTypes)
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Type)) +
@@ -817,7 +859,7 @@ myTypes <- c("Asylum claimants, protected persons and related groups with work p
              "Asylum claimants, protected persons and related groups with study permit only",
              "Asylum claimants, protected persons and related groups with work and study permits",
              "Asylum claimants, protected persons and related groups without work or study permits")
-xx <- d4 %>% 
+xx <- d5 %>% 
   filter(Area == "Canada", Type %in% myTypes) %>%
   mutate(Type = gsub("Asylum claimants, protected persons and related groups ", "", Type))
 # Plot
@@ -844,7 +886,7 @@ myTypes <- c("Asylum claimants, protected persons and related groups with work p
              "Asylum claimants, protected persons and related groups with study permit only",
              "Asylum claimants, protected persons and related groups with work and study permits",
              "Asylum claimants, protected persons and related groups without work or study permits")
-xx <- d4 %>% 
+xx <- d5 %>% 
   filter(Area != "Canada", Type %in% myTypes) %>%
   mutate(Type = gsub("Asylum claimants, protected persons and related groups ", "", Type))
 # Plot
@@ -863,7 +905,7 @@ ggsave("canada_migration_4_06.png", mp, width = 14, height = 7)
 
 ```{r eval = F, echo = F}
 # Prep data
-xx <- d5 %>% 
+xx <- d6 %>% 
   filter(Area == "Canada", Type == "Total - Non-permanent resident type",
          POB == "Total – Place of birth", Sex != "Total - Gender")
 # Plot
@@ -877,7 +919,7 @@ mp <- ggplot(xx, aes(x = Sex, y = Value / 1000, fill = Sex)) +
 mp
 ggsave("canada_migration_5_01.png", mp, width = 6, height = 4)
 #
-xx <- d5 %>% 
+xx <- d6 %>% 
   filter(Area == "Canada", Type == "Total - Non-permanent resident type",
          POB != "Total – Place of birth", Sex != "Total - Gender", Age != "Total - Age")
 # Plot
@@ -890,5 +932,5 @@ mp <- ggplot(xx, aes(x = Age, y = Value / 1000, fill = Sex)) +
   labs(y = "Thousand People", caption = myCaption)
 mp
 ggsave("canada_migration_5_01.png", mp, width = 12, height = 4)
-unique(d5$POB)
+unique(d6$POB)
 ```

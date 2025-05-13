@@ -200,9 +200,41 @@ ggsave("canada_public_private_2_04.png", mp, width = 10, height = 4)
 
 # Change {.tabset .tabset-pills}
 
-## Since Feburary
+## Since 1976-01-15
 
 ![](canada_public_private_3_01.png)
+
+```{r}
+# Prep data
+myDates <- as.Date(paste0(seq(1975, 2025, by = 5), "-01-15"))
+xx <- d1 %>% 
+  filter(Area == "Canada", Sex == "Both sexes", Date >= "1976-01-15") %>%
+  select(Date, Measurement, Value) %>%
+  spread(Date, Value) %>%
+  mutate(Start = `1976-01-15`) %>%
+  select(Measurement, Start, everything()) %>%
+  gather(Date, Value, 3:ncol(.)) %>%
+  mutate(Date = as.Date(Date),
+         PercentChange = 100 * (Value - Start) / Start)
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = PercentChange, 
+                     color = Measurement, group = Measurement)) +
+  geom_hline(yintercept = 0, alpha = 0.7) + 
+  geom_line(size = 1.5, alpha = 0.7) +
+  scale_color_manual(name = NULL, values = myCs_Sector) +
+  scale_x_date(breaks = myDates, date_labels = "%Y") +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Percent change since 1976",
+       x = NULL, y = NULL, caption = myCaption)
+ggsave("canada_public_private_3_01.png", mp, width = 7, height = 5)
+```
+
+---
+
+## Since 2020-02-15
+
+![](canada_public_private_3_02.png)
 
 ```{r}
 # Prep data
@@ -226,14 +258,14 @@ mp <- ggplot(xx, aes(x = Date, y = PercentChange,
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Percent change since Feburary 2020",
        x = NULL, y = NULL, caption = myCaption)
-ggsave("canada_public_private_3_01.png", mp, width = 7, height = 4)
+ggsave("canada_public_private_3_02.png", mp, width = 7, height = 5)
 ```
 
 ---
 
 ## Since 2019-09-15
 
-![](canada_public_private_3_02.png)
+![](canada_public_private_3_03.png)
 
 ```{r}
 # Prep data
@@ -256,7 +288,7 @@ mp <- ggplot(xx, aes(x = Date, y = PercentChange,
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Percent change since 2019-09-15",
        x = NULL, y = NULL, caption = myCaption)
-ggsave("canada_public_private_3_02.png", mp, width = 7, height = 4)
+ggsave("canada_public_private_3_03.png", mp, width = 7, height = 5)
 ```
 
 ---
