@@ -13,6 +13,8 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Introduction
 
+## Resources
+
 This vignette is a tutorial on running **Genome-Wide Association Studies** (**GWAS**) in <i class="fab fa-r-project"></i> with the packages `GAPIT` and plotting the results with `gwaspr`.
 
 > - **GAPIT Website**: [https://www.maizegenetics.net/gapit](https://www.maizegenetics.net/gapit){target="_blank"}
@@ -157,9 +159,9 @@ myGAPIT <- GAPIT( Y = myY,
 
 ![](Images/gapit_3.png)
 
-## GWAS Models
+---
 
-![](Images/gapit_4.png)
+# GWAS Models
 
 - `GLM` General Linear Model: uses population structure (Q) as a cofactor. 
 - `MLM` [Mixed Linear Model](https://www.nature.com/articles/ng1702){target="_blank"}: adds Kinship (K) as a random effect. AKA a Q+K model. 
@@ -168,6 +170,8 @@ myGAPIT <- GAPIT( Y = myY,
 - `SUPER` [Settlement of MLM Under Progressively Exclusive Relationship](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0107684){target="_blank"}:  uses a FaST-LMM algorithm to solve a computational burden for large samples. K is derived from a smaller number of associated markers.
 - `FarmCPU` [Fixed and random model Circulating Probability Unification](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1005767){target="_blank"}: uses iterations to fit associated markers selected using a maximum likelihood method as cofactors.
 - `BLINK` [BLINK](): similar to FarmCPU but eliminates the assumption of causal genes are evenly distributed across the genome. Markers that are in LD with the most significant marker are excluded. Also uses a different method to determine markers for K (BIC).
+
+![](Images/gapit_4.png)
 
 ![](Images/gapit_5.png)
 
@@ -225,6 +229,8 @@ myY <- myY %>%
 DT::datatable(myY)
 ```
 
+Now we can visualize our data.
+
 ```{r eval = F}
 # Prep data
 xx <- myY %>%
@@ -246,7 +252,7 @@ ggsave("Fig_01_myY_Phenotypes.png", mp, width = 8, height = 3)
 
 ## Genotype Data
 
-The LDP was genotyped using an *exome caputure array* and filtered with the following criteria to yield a data set of 336,367 SNPs, stored in our object `myG`.
+Our population, the LDP, was genotyped using an *exome caputure array* and filtered with the following criteria to yield a data set of 336,367 SNPs, stored in our object `myG`.
 
 - Only Bi-allelic           =  TRUE
 - Minimum Read Depth        =  3
@@ -259,6 +265,8 @@ The LDP was genotyped using an *exome caputure array* and filtered with the foll
 myG <- read.csv("Data/myG_hmp.csv", header = F)
 ```
 
+The `gwaspr` package is built for genotype data in the **hapmap** format. Although `GAPIT` can also be run with numeric formatted genotype data, when using hapmap formatted genotype data, it is important to set `header = F`. This will make the column names the first row of your `myG` object, as demonstrated below:
+
 ```{r}
 # Map + marker Info
 myG[1:10,1:11]
@@ -270,114 +278,19 @@ myG[1:10,12:17]
 
 ### Marker Details
 
-These plots give us some detail about the markers we have.
+`gwaspr` has a funtions to output graphs and details about our marker data. 
 
-![](Fig_02_myG_Details.png)
+Note: This functions can be slow to run on large marker sets.
 
-```{r eval = F, class.source = "fold-hide"}
-# For each marker
-xGD <- read.csv("Data/myG_hmp.csv", header = T)
-xGD$M1 <- substr(xGD$alleles, 1, 1)
-xGD$M2 <- substr(xGD$alleles, 3, 3)
-#
-xY <- read.csv("Data/myY.csv") %>% 
-  mutate(Name = plyr::mapvalues(Name, 
-           c("3156-11_AGL",  "CDC Asterix AGL", "CDC_QG-1_AGL"), 
-           c("X3156.11_AGL", "CDC_Asterix_AGL", "CDC_QG.1_AGL")))
-#
-xG_MAF <- function(x) { sum(x %in% x[1], na.rm = T)-1 }
-xG_Het <- function(x) { sum(x %in% c("R","Y","S","W","K","M"), na.rm = T) }
-xG_Homo <- function(x) { sum(x %in% c("A", "C", "G", "T"), na.rm = T) }
-xG_N <- function(x) { sum(x %in% "N", na.rm = T) }
-xGD <- xGD %>%
-  mutate(numM1 = apply(xGD[,c("M1", as.character(xY$Name))], 1, xG_MAF),
-         numM2 = apply(xGD[,c("M2", as.character(xY$Name))], 1, xG_MAF),
-         numN     = apply(xGD[,as.character(xY$Name)], 1, xG_N),
-         numHet   = apply(xGD[,as.character(xY$Name)], 1, xG_Het),
-         numHomo  = apply(xGD[,as.character(xY$Name)], 1, xG_Homo),
-         #
-         Het = numHet / (numHet + numHomo),
-         MAF = ifelse(numM1 > numM2, (numM2*2 + numHet) / (numM2*2 + numM1*2 + numHet*2),
-                                     (numM1*2 + numHet) / (numM1*2 + numM2*2 + numHet*2) ),
-         MCF = numN / (numHet + numHomo + numN))
-xGD <- xGD %>% 
-  select(rs, alleles, M1, M2, chrom, pos, 
-         numM1, numM2, numHet, numN, numHomo, Het, MAF, MCF)
-write.csv(xGD, "myG_Details.csv", row.names = F)
+```{r eval = F}
 # Plot
-mp1 <- ggplot(xGD, aes(x = Het * 100)) + 
-  geom_histogram(color = "black", fill = "darkgreen", alpha = 0.7) +
-  theme_gwaspr() +
-  labs(title = "Marker Details (myG)", 
-       subtitle = "Heterozygosity", x = NULL, y = NULL)
-mp2 <- ggplot(xGD, aes(x = MAF * 100)) + 
-  geom_histogram(color = "black", fill = "darkgreen", alpha = 0.7) +
-  scale_x_continuous(breaks = seq(5,50, by = 5),
-                     minor_breaks = seq(5,50, by = 5)) +
-  theme_gwaspr() +
-  labs(subtitle = "Minor Allele Frequency", x = "Percent", y = NULL)
-mp3 <- ggplot(xGD, aes(x = MCF * 100)) + 
-  geom_histogram(color = "black", fill = "darkgreen", alpha = 0.7) +
-  theme_gwaspr() +
-  labs(subtitle = "Missing Call Frequency", x = NULL, y = NULL)
-mp <- ggarrange(mp1, mp2, mp3, ncol = 3, align = "h")
-ggsave("Fig_02_myG_Details.png", mp, width = 12, height = 4)
+gg_myG_Details(xx = myG, myPrefix = "myG_LDP_hmp")
 ```
+
+![](myG_LDP_hmp_03_myG_Details.png)
 
 ---
 
-### Population Details
-
-These plots give us some detail about our population based on the markers we have.
-
-![](Fig_03_myY_Details.png)
-
-```{r eval = F, class.source = "fold-hide"}
-# For each genotype
-xGD <- read.csv("Data/myG_hmp.csv", header = T)
-xGD$M1 <- substr(xGD$alleles, 1, 1)
-xGD$M2 <- substr(xGD$alleles, 3, 3)
-#
-xYD <- read.csv("Data/myY.csv") %>% 
-  mutate(Het = NA, MAF = NA, MCF = NA,
-         Name = plyr::mapvalues(Name, 
-           c("3156-11_AGL",  "CDC Asterix AGL", "CDC_QG-1_AGL"), 
-           c("X3156.11_AGL", "CDC_Asterix_AGL", "CDC_QG.1_AGL")) )
-#i<-12
-for(i in (12:ncol(xGD))) {
-  xx <- xGD[,i]
-  numHet <- sum(xx %in% c("R","Y","S","W","K","M"), na.rm = T)
-  numHomo <- sum(xx %in% c("A", "C", "G", "T"), na.rm = T)
-  numMiss <- sum(xx %in% "N", na.rm = T)
-  numM1 <- sum(xx == xGD$M1, na.rm = T)
-  numM2 <- sum(xx == xGD$M2, na.rm = T)
-  #
-  xYD$Het[xYD$Name == colnames(xGD)[i]] <- numHet / (numHet + numHomo)
-  xYD$MAF[xYD$Name == colnames(xGD)[i]] <- ifelse(numM1 > numM2,
-              (numM2*2 + numHet) / (numM2*2 + numM1*2 + numHet*2),
-              (numM1*2 + numHet) / (numM1*2 + numM2*2 + numHet*2) )
-  xYD$MCF[xYD$Name == colnames(xGD)[i]] <- numMiss / (numHet + numHomo + numMiss)
-}
-write.csv(xYD, "myY_Details.csv", row.names = F)
-# Plot
-mp1 <- ggplot(xYD, aes(x = Het * 100)) + 
-  geom_histogram(color = "black", fill = "darkgreen", alpha = 0.7) +
-  theme_gwaspr() +
-  labs(title = "Genotype Details (myY)", 
-       subtitle = "Heterozygosity", x = NULL, y = NULL)
-mp2 <- ggplot(xYD, aes(x = MAF * 100)) + 
-  geom_histogram(color = "black", fill = "darkgreen", alpha = 0.7) +
-  theme_gwaspr() +
-  labs(subtitle = "Minor Allele Frequency", x = "Percent", y = NULL)
-mp3 <- ggplot(xYD, aes(x = MCF * 100)) + 
-  geom_histogram(color = "black", fill = "darkgreen", alpha = 0.7) +
-  theme_gwaspr() +
-  labs(subtitle = "Missing Call Frequency", x = NULL, y = NULL)
-mp <- ggarrange(mp1, mp2, mp3, ncol = 3, align = "h")
-ggsave("Fig_03_myY_Details.png", mp, width = 12, height = 4)
-```
-
----
 
 ## Covariates + Kinship
 
@@ -743,10 +656,12 @@ mp <- gg_Manhattan_Zoom(
   # Create alt labels for the markers
   labels = "44545877",
   # Specify Color for each marker vline
-  vline.color = "red" 
+  vline.color = "red",
+  #
+  facet = T
   )
 # Save
-ggsave("Fig_DTF_Nepal_2017_01_05.png", mp, width = 6, height = 10)
+ggsave("Fig_DTF_Nepal_2017_01_05.png", mp, width = 6, height = 6)
 ```
 
 ![](Fig_DTF_Nepal_2017_01_05.png)
@@ -797,10 +712,12 @@ mp <- gg_Manhattan_Zoom(
   pos1 = 1000000, 
   pos2 = 2000000,
   # Specify Color for each marker vline
-  vline.color = "red" 
+  vline.color = "red",
+  #
+  facet = T
   )
 # Save
-ggsave("Fig_DTF_Nepal_2017_01_07.png", mp, width = 6, height = 10)
+ggsave("Fig_DTF_Nepal_2017_01_07.png", mp, width = 6, height = 6)
 ```
 
 ![](Fig_DTF_Nepal_2017_01_07.png)
@@ -1139,10 +1056,12 @@ mp <- gg_Manhattan_Zoom(
   # Plot just Chromosome 2
   chr = 6,
   pos1 = 0, 
-  pos2 = 6000000 
+  pos2 = 6000000,
+  #
+  facet = T 
   )
 # Save
-ggsave("Fig_DTF_Sask_2017_01_08.png", mp, width = 6, height = 10)
+ggsave("Fig_DTF_Sask_2017_01_08.png", mp, width = 6, height = 6)
 ```
 
 ![](Fig_DTF_Sask_2017_01_08.png)
@@ -1379,10 +1298,12 @@ mp <- gg_Manhattan_Zoom(
   # Create alt labels for the markers
   labels = c("365Mbp","361Mbp","362Mbp"),
   # Specify Color for each marker vline
-  vline.colors = rep("green",3) 
+  vline.colors = rep("green",3),
+  #
+  facet = T
   )
 # Save
-ggsave("Fig_Cotyledon_Color_01_05.png", mp, width = 6, height = 10)
+ggsave("Fig_Cotyledon_Color_01_05.png", mp, width = 8, height = 6)
 ```
 
 ![](Fig_Cotyledon_Color_01_05.png)
@@ -1670,7 +1591,6 @@ LD_Decay(x = xx, Chr = 6, Num = 1000)
 LD_Decay(x = xx, Chr = 7, Num = 1000)
 ```
 
-
 ```{r eval = F}
 # Create function
 movingAverage <- function(x, n = 5) {
@@ -1771,65 +1691,3 @@ ggsave("Fig_06_LD.png", mp , width = 12, height = 10)
 ```
 
 ---
-
-```{r eval = F, echo = F}
-# BLUPs
-
-Best linear unbiased prediction (BLUP)
-
-> - **BLUP Tutorial**: [https://rpubs.com/amputz/BLUP](https://rpubs.com/amputz/BLUP){target="_blank"}> - **Tutorial**: [](){target="_blank"}
-
-
-https://www.journalofdairyscience.org/article/S0022-0302(91)78602-5/pdf
-
-The challenge for animal breeders was that we were always interested in predicting the ‘breeding value’ (random variable) for animals. This was in contrast to many fields where the only interest is in some fixed quantity such as a treatment effect.
-```
-
-```{r eval = F, echo = F}
-# Prep data
-xx <- read.csv("GWAS_Results/GAPIT.Association.Prediction_results.MLM.DTF_Sask_2017.csv") %>%
-  rename(Name=Taxa) %>%
-  left_join(myY, by = "Name")
-# Plot
-ggplot(xx, aes(x = Prediction, y = BLUP)) +
-  geom_point() +
-  theme_gwaspr() +
-  labs(title = "")
-ggplot(xx, aes(x = DTF_Sask_2017, y = Prediction)) +
-  geom_abline() +
-  geom_point() +
-  theme_gwaspr() +
-  labs(title = "")
-ggplot(xx, aes(x = DTF_Sask_2017, y = BLUP)) +
-  geom_abline() +
-  geom_point() +
-  theme_gwaspr() +
-  labs(title = "")
-#
-xx <- read.csv("GWAS_Results/GAPIT.Association.Prediction_results.MLM.DTF_Nepal_2017.csv") %>%
-  rename(Name=Taxa) %>%
-  left_join(myY, by = "Name")
-# Plot
-ggplot(xx, aes(x = Prediction, y = BLUP)) +
-  geom_point() +
-  theme_gwaspr() +
-  labs(title = "")
-ggplot(xx, aes(x = DTF_Nepal_2017, y = Prediction)) +
-  geom_abline() +
-  geom_point() +
-  theme_gwaspr() +
-  labs(title = "")
-ggplot(xx, aes(x = DTF_Nepal_2017, y = BLUP)) +
-  geom_abline() +
-  geom_point() +
-  theme_gwaspr() +
-  labs(title = "")
-```
-
-
-```{r eval = F, echo = F}
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
-mp %>%
-  annotate_figure(fig.lab.pos = "bottom.right", fig.lab.size = 6,
-                  fig.lab = myCaption)
-```

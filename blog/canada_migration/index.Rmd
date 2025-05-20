@@ -418,6 +418,37 @@ ggsave("canada_migration_1_09.png", mp, width = 12, height = 6)
 
 ---
 
+## Components of Growth
+
+![](canada_migration_1_09.png)
+
+```{r}
+# Prep data
+x1 <- d2 %>% filter(Area == "Canada", Measurement %in% myMeasures[1:2]) %>%
+  spread(Measurement, Value) %>%
+  mutate(`Naturalized Growth` = Births - Deaths) %>%
+  gather(Measurement, Value, `Naturalized Growth`)
+x2 <- d2 %>% filter(Area == "Canada", Measurement %in% myMeasures[3:4]) %>%
+  spread(Measurement, Value) %>%
+  mutate(`Net Immigration` = Immigrants - `Net emigration`) %>%
+  gather(Measurement, Value, `Net Immigration`)
+x3 <- d2 %>% filter(Area == "Canada", Measurement %in% myMeasures[5])
+#
+myLevels <- c("Net non-permanent residents","Net Immigration","Naturalized Growth")
+xx <- bind_rows(x1, x2, x3) %>%
+  mutate(Measurement = factor(Measurement, levels = myLevels))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 100000, fill = Measurement)) +
+  geom_col(color = "black") +
+  scale_fill_manual(name = NULL, values = c("darkred","darkorange","steelblue")) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Components of Population Growth in Canada",
+       y = "x100,000", x = NULL, caption = myCaption)
+ggsave("canada_migration_1_10.png", mp, width = 12, height = 6)
+```
+
+---
+
 # Net Interprovincial Migration {.tabset .tabset-pills}
 
 ## Canada

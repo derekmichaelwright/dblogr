@@ -16,14 +16,13 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 > - `r shiny::icon("globe")` [http://www.fao.org/faostat/en/#data/TP](http://www.fao.org/faostat/en/#data/TP){target="_blank"}
 > - `r shiny::icon("save")` [agData_FAO_Trade.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Trade.csv.gz)
 
---- 
+---
 
 # Prepare Data {.tabset .tabset-pills}
 
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
-library(gganimate)
 #
 myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
 ```
@@ -37,7 +36,7 @@ xx <- agData_FAO_Trade_Quantity %>%
 # Create plotting functions
 ggIEA <- function(myArea = "Canada") {
   # Prep data
-  myItems <- c("Cereals", "Oilseeds", "Pulses", "Fruit", "Vegetables")
+  myItems <- c("Cereals", "Pulses", "Oilseeds", "Roots and Tubers", "Fruit", "Vegetables")
   myColors <- c("steelblue", "darkred")
   xx <- agData_FAO_Trade_Quantity %>%
     filter(Area == myArea, Item %in% myItems) %>%
@@ -48,7 +47,7 @@ ggIEA <- function(myArea = "Canada") {
                  group = Measurement)) +
     geom_bar(stat = "identity", position = "dodge", 
              color = "black", lwd = 0.2, alpha = 0.7) +
-    facet_grid(Item ~ ., scales = "free_y") +
+    facet_wrap(Item ~ ., scales = "free_y", ncol = 2) +
     scale_fill_manual(name = NULL, values = myColors) +
     scale_x_continuous(breaks = seq(1960, 2020, by = 10)) +
     theme_agData(legend.position = "bottom", 
@@ -64,8 +63,8 @@ ggIEA <- function(myArea = "Canada") {
 #
 ggIEAY <- function(myArea = "Canada", myYear = 2017) {
   # Prep data
-  myItems <- c("Cereals", "Oilseeds", "Pulses", "Fruit", "Vegetables")
-  myColors <- c("darkgreen", "darkgoldenrod2", "darkred", "steelblue", "purple4")
+  myItems <- c("Cereals", "Pulses", "Oilseeds", "Roots and Tubers", "Fruit", "Vegetables")
+  myColors <- c("darkgreen", "darkred", "darkgoldenrod2", "darkblue", "steelblue", "purple4")
   xx <- agData_FAO_Trade_Quantity %>%
     filter(Area == myArea, Year == myYear, Item %in% myItems) %>%
     mutate(Measurment = gsub(" Quantity", "", Measurement),
@@ -74,7 +73,7 @@ ggIEAY <- function(myArea = "Canada", myYear = 2017) {
   ggplot(xx, aes(x = Measurement, y = Value / 1000000, 
                  fill = Item, alpha = Measurement)) +
     geom_bar(stat = "identity", color = "black") +
-    facet_wrap(. ~ Item, ncol = 5, scale = "free_y") +
+    facet_wrap(. ~ Item, ncol = 3, scale = "free_y") +
     scale_fill_manual(values = myColors) +
     scale_alpha_manual(values = c(0.5,0.8)) +
     theme_agData(legend.position = "none", 
@@ -84,13 +83,288 @@ ggIEAY <- function(myArea = "Canada", myYear = 2017) {
 }
 ```
 
+---
+
+# Import/Export {.tabset .tabset-pills}
+
+## Canada
+
+![](import_export_1_canada.png)
+
+```{r}
+mp <- ggIEA(myArea = "Canada")
+ggsave("import_export_1_canada.png", mp, width = 10, height = 6)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 10, height = 6)
+```
+
+---
+
+## USA
+
+![](import_export_1_usa.png)
+
+```{r}
+mp <- ggIEA(myArea = "USA")
+ggsave("import_export_1_usa.png", mp, width = 10, height = 6)
+```
+
+---
+
+## Mexico
+
+![](import_export_1_mexico.png)
+
+```{r}
+mp <- ggIEA(myArea = "Mexico")
+ggsave("import_export_1_mexico.png", mp, width = 10, height = 6)
+```
+
+---
+
+## Russia
+
+![](import_export_1_russia.png)
+
+```{r}
+mp <- ggIEA(myArea = "Russia")
+ggsave("import_export_1_russia.png", mp, width = 10, height = 6)
+```
+
+---
+
+## Ukraine
+
+![](import_export_1_ukraine.png)
+
+```{r}
+mp <- ggIEA(myArea = "Ukraine")
+ggsave("import_export_1_ukraine.png", mp, width = 10, height = 6)
+```
+
+---
+
+## Germany
+
+![](import_export_1_germany.png)
+
+```{r}
+mp <- ggIEA(myArea = "Germany")
+ggsave("import_export_1_germany.png", mp, width = 10, height = 6)
+```
+
+---
+
+## Netherlands
+
+![](import_export_1_netherlands.png)
+
+```{r}
+mp <- ggIEA(myArea = "Netherlands")
+ggsave("import_export_1_netherlands.png", mp, width = 10, height = 6)
+```
+
+---
+
+## India
+
+![](import_export_1_india.png)
+
+```{r}
+mp <- ggIEA(myArea = "India")
+ggsave("import_export_1_india.png", mp, width = 10, height = 6)
+```
+
+---
+
+## Africa
+
+![](import_export_1_africa.png)
+
+```{r}
+mp <- ggIEA(myArea = "Africa")
+ggsave("import_export_1_africa.png", mp, width = 10, height = 6)
+```
+
+---
+
+## Europe
+
+![](import_export_1_europe.png)
+
+```{r}
+mp <- ggIEA(myArea = "Europe")
+ggsave("import_export_1_europe.png", mp, width = 10, height = 6)
+```
+
+---
+
+## Asia
+
+![](import_export_1_asia.png)
+
+```{r}
+mp <- ggIEA(myArea = "Asia")
+ggsave("import_export_1_asia.png", mp, width = 10, height = 6)
+```
+
+---
+
+## Northern America
+
+![](import_export_1_northernamerica.png)
+
+```{r}
+mp <- ggIEA(myArea = "Northern America")
+ggsave("import_export_1_northernamerica.png", mp, width = 10, height = 6)
+```
+
+---
+
+## Southern America
+
+![](import_export_1_southamerica.png)
+
+```{r}
+mp <- ggIEA(myArea = "South America")
+ggsave("import_export_1_southamerica.png", mp, width = 10, height = 6)
+```
+
+---
+
+# 2019 {.tabset .tabset-pills}
+
+## Canada
+
+![](import_export_2_canada.png)
+
+```{r}
+mp <- ggIEAY(myArea = "Canada", myYear = 2019)
+ggsave("import_export_2_canada.png", mp, width = 5, height = 5)
+```
+
+---
+
+## USA
+
+![](import_export_2_usa.png)
+
+```{r}
+mp <- ggIEAY(myArea = "USA", myYear = 2019)
+ggsave("import_export_2_usa.png", mp, width = 5, height = 5)
+```
+
+---
+
+## Russia
+
+![](import_export_2_russia.png)
+
+```{r}
+mp <- ggIEAY(myArea = "Russia", myYear = 2019)
+ggsave("import_export_2_russia.png", mp, width = 5, height = 5)
+```
+
+---
+
+## Ukraine
+
+![](import_export_2_ukraine.png)
+
+```{r}
+mp <- ggIEAY(myArea = "Ukraine", myYear = 2019)
+ggsave("import_export_2_ukraine.png", mp, width = 5, height = 5)
+```
+
+---
+
+## Germany
+
+![](import_export_2_germany.png)
+
+```{r}
+mp <- ggIEAY(myArea = "Germany", myYear = 2019)
+ggsave("import_export_2_germany.png", mp, width = 5, height = 5)
+```
+
+---
+
+## India
+
+![](import_export_2_india.png)
+
+```{r}
+mp <- ggIEAY(myArea = "India", myYear = 2019)
+ggsave("import_export_2_india.png", mp, width = 5, height = 5)
+```
+
+---
+
+## Africa
+
+![](import_export_2_africa.png)
+
+```{r}
+mp <- ggIEAY(myArea = "Africa")
+ggsave("import_export_2_africa.png", mp, width = 5, height = 5)
+```
+
+---
+
+## Europe
+
+![](import_export_2_europe.png)
+
+```{r}
+mp <- ggIEAY(myArea = "Europe")
+ggsave("import_export_2_europe.png", mp, width = 5, height = 5)
+```
+
+---
+
+## Asia
+
+![](import_export_2_asia.png)
+
+```{r}
+mp <- ggIEAY(myArea = "Asia")
+ggsave("import_export_2_asia.png", mp, width = 5, height = 5)
+```
+
+---
+
+## Northern America
+
+![](import_export_2_northernamerica.png)
+
+```{r}
+mp <- ggIEAY(myArea = "Northern America")
+ggsave("import_export_2_northernamerica.png", mp, width = 5, height = 5)
+```
+
+---
+
+## Southern America
+
+![](import_export_2_southamerica.png)
+
+```{r}
+mp <- ggIEAY(myArea = "South America")
+ggsave("import_export_2_southamerica.png", mp, width = 5, height = 5)
+```
+
+---
+
+```{r eval = F, echo = F}
 ## Animation function
 
-```{r class.source = 'fold-show'}
+#```{r class.source = 'fold-show'}
 ggIEAA <- function(myArea = "Canada") {
   # Prep data
-  myItems <- c("Cereals", "Oilseeds", "Pulses", "Fruit", "Vegetables")
-  myColors <- c("darkgreen", "darkgoldenrod2", "darkred", "steelblue", "purple4")
+  myItems <- c("Cereals", "Pulses", "Oilseeds", "Roots and Tubers", "Fruit", "Vegetables")
+  myColors <- c("darkgreen", "darkred", "darkgoldenrod2", "darkblue", "steelblue", "purple4")
   xx <- agData_FAO_Trade_Quantity %>%
     filter(Area == myArea, Item %in% myItems) %>%
     mutate(Item = factor(Item, levels = myItems))
@@ -105,196 +379,36 @@ ggIEAA <- function(myArea = "Canada") {
          x = NULL, caption = myCaption) +
     transition_time(Year)
 }
-```
+#```
 
----
 
-# Import/Export {.tabset .tabset-pills}
-
-## Canada
-
-![](import_export_1_canada.png)
-
-```{r}
-mp <- ggIEA(myArea = "Canada")
-ggsave("import_export_1_canada.png", mp, width = 6, height = 7)
-```
-
-```{r echo = F}
-ggsave("featured.png", mp, width = 6, height = 7)
-```
-
----
-
-## USA
-
-![](import_export_1_usa.png)
-
-```{r}
-mp <- ggIEA(myArea = "USA")
-ggsave("import_export_1_usa.png", mp, width = 6, height = 7)
-```
-
----
-
-## Mexico
-
-![](import_export_1_mexico.png)
-
-```{r}
-mp <- ggIEA(myArea = "Mexico")
-ggsave("import_export_1_mexico.png", mp, width = 6, height = 7)
-```
-
----
-
-## Russia
-
-![](import_export_1_russia.png)
-
-```{r}
-mp <- ggIEA(myArea = "Russia")
-ggsave("import_export_1_russia.png", mp, width = 6, height = 7)
-```
-
----
-
-## Ukraine
-
-![](import_export_1_ukraine.png)
-
-```{r}
-mp <- ggIEA(myArea = "Ukraine")
-ggsave("import_export_1_ukraine.png", mp, width = 6, height = 7)
-```
-
----
-
-## Germany
-
-![](import_export_1_germany.png)
-
-```{r}
-mp <- ggIEA(myArea = "Germany")
-ggsave("import_export_1_germany.png", mp, width = 6, height = 7)
-```
-
----
-
-## Netherlands
-
-![](import_export_1_netherlands.png)
-
-```{r}
-mp <- ggIEA(myArea = "Netherlands")
-ggsave("import_export_1_netherlands.png", mp, width = 6, height = 7)
-```
-
----
-
-## India
-
-![](import_export_1_india.png)
-
-```{r}
-mp <- ggIEA(myArea = "India")
-ggsave("import_export_1_india.png", mp, width = 6, height = 7)
-```
-
----
-
-# 2019 {.tabset .tabset-pills}
-
-## Canada
-
-![](import_export_2_canada.png)
-
-```{r}
-mp <- ggIEAY(myArea = "Canada", myYear = 2019)
-ggsave("import_export_2_canada.png", mp, width = 6, height = 4)
-```
-
----
-
-## USA
-
-![](import_export_2_usa.png)
-
-```{r}
-mp <- ggIEAY(myArea = "USA", myYear = 2019)
-ggsave("import_export_2_usa.png", mp, width = 6, height = 3.75)
-```
-
----
-
-## Russia
-
-![](import_export_2_russia.png)
-
-```{r}
-mp <- ggIEAY(myArea = "Russia", myYear = 2019)
-ggsave("import_export_2_russia.png", mp, width = 6, height = 3.75)
-```
-
----
-
-## Ukraine
-
-![](import_export_2_ukraine.png)
-
-```{r}
-mp <- ggIEAY(myArea = "Ukraine", myYear = 2019)
-ggsave("import_export_2_ukraine.png", mp, width = 6, height = 3.75)
-```
-
----
-
-## Germany
-
-![](import_export_2_germany.png)
-
-```{r}
-mp <- ggIEAY(myArea = "Germany", myYear = 2019)
-ggsave("import_export_2_germany.png", mp, width = 6, height = 3.75)
-```
-
----
-
-## India
-
-![](import_export_2_india.png)
-
-```{r}
-mp <- ggIEAY(myArea = "India", myYear = 2019)
-ggsave("import_export_2_india.png", mp, width = 6, height = 3.75)
-```
-
----
 
 # Animations {.tabset .tabset-pills}
 
 ## Canada
 
-![](import_export_gif_canada.gif)
+#![](import_export_gif_canada.gif)
 
-```{r}
+#```{r}
 mp <- ggIEAA(myArea = "Canada")
 anim_save("import_export_gif_canada.gif", mp,
           nframes = 300, fps = 20, end_pause = 80, 
           width = 600, height = 400, res = 80, units = "px")
-```
+#```
 
----
+#---
 
 ## Canada
 
-![](import_export_gif_canada.gif)
+#![](import_export_gif_canada.gif)
 
-```{r}
+#```{r}
 mp <- ggIEAA(myArea = "India")
 anim_save("import_export_gif_india.gif", mp,
           nframes = 300, fps = 20, end_pause = 80, 
           width = 600, height = 400, res = 80, units = "px")
-```
+#```
 
----
+#---
+
+```

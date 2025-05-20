@@ -1,0 +1,105 @@
+---
+title: ""
+subtitle: "Graphs of "
+date: "Last updated: `r Sys.Date()`"
+author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+```
+
+---
+
+# Data
+
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2010008501](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2010008501){target="_blank"}
+> - `r shiny::icon("save")` [2010008501_databaseLoadingData.csv](2010008501_databaseLoadingData.csv)
+
+---
+
+# Prepare Data
+
+```{r class.source = 'fold-show'}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData)
+```
+
+```{r}
+# Prep data
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+dd <- read.csv("2010008501_databaseLoadingData.csv") %>%
+  select(Date=REF_DATE, Area=GEO, Vehicle.type, Fuel.type,
+         Origin.of.manufacture, Unit=UOM, Value=VALUE) %>%
+  mutate(Date = as.Date(paste0(Date,"-01")))
+```
+
+---
+
+# 
+
+![](01.png)
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  filter(Vehicle.type == "Total, new motor vehicles",
+         Fuel.type == "All fuel types",
+         Origin.of.manufacture == "Total, country of manufacture"
+         )
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) + 
+  geom_line(alpha = 0.7) +
+  #scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "",
+       y = "Thousand Sales", x = NULL, caption = myCaption)
+ggsave("canada_auto_sales_01.png", mp, width = 6, height = 4)
+```
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  filter(Vehicle.type == "Total, new motor vehicles",
+         #Fuel.type != "All fuel types",
+         Origin.of.manufacture == "Total, country of manufacture"
+         )
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Fuel.type)) + 
+  geom_line(alpha = 0.7) +
+  #scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "",
+       y = "Thousand Sales", x = NULL, caption = myCaption)
+ggsave("canada_auto_sales_02.png", mp, width = 6, height = 4)
+```
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  filter(Vehicle.type == "Total, new motor vehicles",
+         Fuel.type == "All fuel types",
+         Origin.of.manufacture != "Total, country of manufacture"
+         )
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Origin.of.manufacture)) + 
+  geom_line(alpha = 0.7) +
+  #scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "",
+       y = "Thousand Sales", x = NULL, caption = myCaption)
+ggsave("canada_auto_sales_03.png", mp, width = 6, height = 4)
+```
+
+```{r echo = F}
+ggsave("featured.png", mp, width = 6, height = 4)
+```
+
+```{r}
+mp <- ggInterProv_ani("British Columbia")
+anim_save("canada_migration_gif_01.gif", mp, 
+          nframes = 300, fps = 10, end_pause = 10, 
+          width = 600, height = 400, res = 80, units = "px")
+```
+
+---
