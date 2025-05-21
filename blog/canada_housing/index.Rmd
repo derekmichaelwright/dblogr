@@ -38,10 +38,16 @@ STATCAN Table: 34-10-0133-01 (Average rents)
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410013301](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410013301){target="_blank"}
 > - `r shiny::icon("save")` [3410013301_databaseLoadingData.csv](3410013301_databaseLoadingData.csv)
 
+STATCAN Table: 11-10-0222-01 (Household spending)
+
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110022201](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110022201){target="_blank"}
+> - `r shiny::icon("save")` [1110022201_databaseLoadingData.csv](1110022201_databaseLoadingData.csv)
+
 Bank of Canada: Interest Rates
 
 > - `r shiny::icon("globe")` [https://www.bankofcanada.ca/rates/interest-rates/canadian-interest-rates/](https://www.bankofcanada.ca/rates/interest-rates/canadian-interest-rates/){target="_blank"}
 > - `r shiny::icon("save")` [bankofcanada_interestrates.csv](bankofcanada_interestrates.csv)
+
 
 ```{r eval = F, echo = F}
 #https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110024001
@@ -126,7 +132,11 @@ d7 <- read.csv("3410013301_databaseLoadingData.csv") %>%
   select(Year=REF_DATE, Area=GEO, Structure.Type=Type.of.structure,
          Unit.Type = Type.of.unit, Unit=UOM, Value=VALUE) %>%
   filter(!is.na(Value), Value > 0)
-d8 <- read.csv("bankofcanada_interestrates.csv", skip = 11) %>%
+d8 <- read.csv("1110022201_databaseLoadingData.csv") %>%
+  select(Year=REF_DATE, Area=GEO, Statistic, 
+         Measurement=Household.expenditures..summary.level.categories,
+         Unit=UOM, Value=VALUE)
+d9 <- read.csv("bankofcanada_interestrates.csv", skip = 11) %>%
   mutate(Date = as.Date(paste0(Date, "-01"))) %>%
   rename(Value=2)
 ```
@@ -790,14 +800,59 @@ ggsave("canada_housing_5_04.png", mp, width = 8, height = 4)
 
 ---
 
+# Household Spending
+
+## All
+
+![](canada_housing_6_01.png)
+
+```{r}
+# Prep Data
+xx <- d8
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
+  geom_line() +
+  facet_wrap(. ~ Measurement, ncol = 3, scale = "free_y") +
+  scale_color_manual(name = NULL, values = c("darkgreen","steelblue", "darkblue")) +
+  theme_agData(legend.position = "none") +
+  labs(title = "Household Spending - Canada",
+       y = "Thousand Dollars", x = NULL, caption = myCaption)
+ggsave("canada_housing_6_01.png", mp, width = 8, height = 4)
+```
+
+---
+
+# Food vs Housing
+
+![](canada_housing_6_02.png)
+
+```{r}
+# Prep Data
+xx <- d8 %>% filter(Measurement != "Total expenditure")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
+  stat_smooth(data = xx %>% filter(Year < 2020), alpha = 0.8,
+              geom = "line", method = "lm", se = F, fullrange = T) +
+  geom_line(alpha = 0.8, size = 2) +
+  scale_color_manual(name = NULL, values = c("darkgreen","steelblue")) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Household Spending - Canada",
+       y = "Thousand Dollars", x = NULL, caption = myCaption)
+ggsave("canada_housing_6_02.png", mp, width = 8, height = 4)
+```
+
+---
+
 # Interest Rates
 
 ```{r}
 # Plot
-mp <- ggplot(d8, aes(x = Date, y = Value)) +
+mp <- ggplot(d9, aes(x = Date, y = Value)) +
   geom_line() +
   theme_agData() +
   labs(title = "Interest Rates in Canada", y = "Percent", x = NULL,
        captiopn = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: BoC")
-ggsave("canada_housing_6_01.png", mp, width = 8, height = 4)
+ggsave("canada_housing_7_01.png", mp, width = 8, height = 4)
 ```
+
+---
