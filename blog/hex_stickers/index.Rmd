@@ -191,5 +191,5 @@ image_write(im4, "C:/gitfolder/cypher/man/figures/logo_cypher.png")
 #
 image_write(im1, "C:/gitfolder/dblogr/logo_dblogr.png")
 image_write(im, "C:/gitfolder/dblogr/logo_agData.png")
-image_write(im4, "C:/gitfolder/dblogr/logo_gwaspr.png")
+image_write(im3, "C:/gitfolder/dblogr/logo_gwaspr.png")
 ```
