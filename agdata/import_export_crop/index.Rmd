@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Prepare Data {.tabset .tabset-pills}
+# Prepare Data
 
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
@@ -32,7 +32,9 @@ myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
 
 ---
 
-## Plot Crop Function
+# 2019 {.tabset .tabset-pills}
+
+## Ploting function
 
 ```{r class.source = 'fold-show'}
 # Create plotting functions
@@ -108,9 +110,7 @@ ggIECA <- function(myItem = "Wheat") {
 
 ---
 
-# 2019
-
-## Wheat
+## Wheat {.active}
 
 ![](import_export_wheat.png)
 

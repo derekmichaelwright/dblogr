@@ -65,13 +65,13 @@ myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
 xx <- d1 %>% filter(Area %in% "World")
 # Plot 
 mp1 <- ggplot(xx, aes(x = Year, y = Value / 1000000000, color = Item)) +
-  geom_line(size = 1.5, alpha = 0.7) +
+  geom_line(size = 1.5, alpha = 0.8) +
   facet_wrap(Item ~ ., scales = "free_y") +
   scale_color_manual(values = myColors) +
   theme_agData(legend.position = "none") +
   labs(title = "A)", y = "Billion Hectares", x = NULL, caption = "")
 mp2 <- ggplot(xx, aes(x = Year, y = Value / 1000000000, fill = Item)) +
-  geom_col(size = 1.5, alpha = 0.7) +
+  geom_col(size = 1.5, alpha = 0.8) +
   facet_wrap(Item ~ ., scales = "free_y") +
   scale_fill_manual(values = myColors) +
   theme_agData(legend.position = "none") +
@@ -104,8 +104,8 @@ mySA <- sec_axis(~(. - y1_min) * (y2_max - y2_min) / (y1_max - y1_min) + y2_min,
                  name = "Hectares Per Person (lines)")
 # Plot Data
 mp <- ggplot(xx, aes(x = Year, y = Value, fill = Item)) + 
-  geom_col(position = "dodge", color = "black", alpha = 0.6, lwd = 0.1) +
-  geom_line(aes(y = APP_scaled, color = Item), size = 2, alpha = 0.9) +
+  geom_col(position = "dodge", color = "black", alpha = 0.8, lwd = 0.1) +
+  geom_line(aes(y = APP_scaled, color = Item), size = 2, alpha = 0.8) +
   scale_x_continuous(breaks = seq(1960, 2020, by = 10)) +
   scale_y_continuous(breaks = 0:3 * 1000000000, labels = 0:3, 
                      sec.axis = mySA) +
@@ -130,11 +130,11 @@ ggsave("farmland_world_1_02.png", mp, width = 6, height = 4)
 xx <- d1 %>% filter(Year == 2019, Area %in% agData_FAO_Region_Table$Region)
 # Plot Data
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Area)) + 
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.8) +
   facet_wrap(Item ~ ., scales = "free_y") +
   scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData(legend.position = "none",
-               axis.text.x = element_text(angle = 45, hjust = 1)) + 
+  theme_agData_col(legend.position = "none",
+                   axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Global Agricultural Area", x = NULL, 
        y = "Million Hectares", caption = myCaption)
 ggsave("farmland_world_1_03.png", mp, width = 8, height = 3.5)
@@ -155,13 +155,13 @@ x1 <- xx %>% filter(Item == myItems2[1])
 x2 <- xx %>% filter(Item != myItems2[1])
 # Plot
 mp1 <- ggplot(x1, aes(fill = Area, values = Value)) +
-  geom_waffle(color = "white", n_rows = 15, alpha = 0.7, na.rm = T) +
+  geom_waffle(color = "white", n_rows = 15, alpha = 0.8, na.rm = T) +
   scale_fill_manual(name = NULL, values = myColors) +
   facet_grid(. ~ Item, scales = "free", space = "free") +
   theme_agData_pie(legend.position = "bottom") +
   labs(title = "10,000,000 Hectares of land")
 mp2 <- ggplot(x2, aes(fill = Area, values = Value)) +
-  geom_waffle(color = "white", n_rows = 15, alpha = 0.7, na.rm = T) +
+  geom_waffle(color = "white", n_rows = 15, alpha = 0.8, na.rm = T) +
   scale_fill_manual(name = NULL, values = myColors) +
   facet_grid(. ~ Item, scales = "free", space = "free") +
   theme_agData_pie(legend.position = "none") +
@@ -186,11 +186,11 @@ xx <- d1 %>%
   mutate(Area = factor(Area, levels = unique(Area)) )
 # Plot Data
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) + 
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.8) +
   facet_grid(Item ~ Region, scales = "free", space = "free_x") +
   scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData(legend.position = "none",
-               axis.text.x = element_text(angle = 45, hjust = 1)) + 
+  theme_agData_col(legend.position = "none",
+                   axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Cropland", x = NULL,
        y = "Million Hectares", caption = myCaption)
 ggsave("farmland_world_1_05.png", mp, width = 8, height = 5)
@@ -204,7 +204,7 @@ ggsave("farmland_world_1_05.png", mp, width = 8, height = 5)
 
 ![](farmland_world_2_01.png)
 
-```{r}
+```{r results="hide"}
 # Prep data
 xx <- d1 %>% 
   filter(Year == 2019, Item == myItems2[1],
@@ -230,7 +230,7 @@ dev.off()
 ## Cropland
 
 ![](farmland_world_2_02.png)
-```{r}
+```{r results="hide"}
 # Prep data
 xx <- d1 %>% 
   filter(Year == 2019, Item == myItems2[2],
@@ -257,7 +257,7 @@ dev.off()
 
 ![](farmland_world_2_03.png)
 
-```{r}
+```{r results="hide"}
 # Prep data
 xx <- d1 %>% 
   filter(Year == 2019, Item == myItems2[3],
@@ -297,11 +297,11 @@ xx <- d1 %>%
   mutate(Area = factor(Area, levels = unique(Area)))
 # Plot Data
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) + 
-  geom_col(color = "black", alpha = 0.7, lwd = 0.3) +
+  geom_col(color = "black", alpha = 0.8, lwd = 0.3) +
   scale_fill_manual(name = NULL, values = myColors) +
   scale_x_discrete(limits = rev(levels(xx$Area))) +
   scale_y_continuous(breaks = seq(0, 500, by = 100)) +
-  theme_agData(legend.position = "bottom") + 
+  theme_agData_col(legend.position = "bottom", horizontal = T) + 
   coord_flip(ylim = c(0.02, max(xx$Value) / 1000000)) +
   labs(title = "Agricultural Area", x = NULL,
        y = "Million Hectares", caption = myCaption)
@@ -326,10 +326,10 @@ xx <- d1 %>%
 myAreas <- levels(xx$Area)
 # Plot Data
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) + 
-  geom_col(color = "black", alpha = 0.7, lwd = 0.3) +
+  geom_col(color = "black", alpha = 0.8, lwd = 0.3) +
   scale_fill_manual(name = NULL, values = myColors) +
   scale_x_discrete(limits = rev(levels(xx$Area))) +
-  theme_agData(legend.position = "bottom") + 
+  theme_agData_col(legend.position = "bottom", horizontal = T) + 
   coord_flip(ylim = c(0.02, max(xx$Value) / 1000000)) +
   labs(title = "Cropland", x = NULL,
        y = "Million Hectares", caption = myCaption)
@@ -356,10 +356,10 @@ xx <- d2 %>%
   mutate(Area = factor(Area, levels = unique(Area)))
 # Plot Data
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) + 
-  geom_col(color = "black", alpha = 0.7, lwd = 0.3) +
+  geom_col(color = "black", alpha = 0.8, lwd = 0.3) +
   scale_fill_manual(name = NULL, values = myColors) +
   scale_x_discrete(limits = rev(levels(xx$Area))) +
-  theme_agData(legend.position = "bottom") +
+  theme_agData_col(legend.position = "bottom", horizontal = T) +
   coord_flip(ylim = c(0.0009, max(xx$Value) / 1000000)) +
   labs(title = "Agricultural Area - Organic", x = NULL,
        y = "Million Hectares", caption = myCaption)
@@ -389,10 +389,10 @@ xx <- d2 %>%
   mutate(Area = factor(Area, levels = unique(Area)))
 # Plot Data
 mp <- ggplot(xx, aes(x = Area, y = Value, fill = Region)) + 
-  geom_col(color = "black", alpha = 0.7, lwd = 0.3) +
+  geom_col(color = "black", alpha = 0.8, lwd = 0.3) +
   scale_fill_manual(name = NULL, values = myColors) +
   scale_x_discrete(limits = rev(levels(xx$Area))) +
-  theme_agData(legend.position = "bottom") +
+  theme_agData_col(legend.position = "bottom", horizontal = T) +
   coord_flip(ylim = c(1.4, max(xx$Value))) +
   labs(title = "Percent of Farmland Certified as Organic",
        y = NULL, x = NULL, caption = myCaption)
@@ -401,7 +401,9 @@ ggsave("farmland_world_3_04.png", mp, width = 6, height = 4)
 
 ---
 
-# Canada
+# Countries {.tabset .tabset-pills}
+
+## Canada
 
 ![](farmland_world_3_05.png)
 
@@ -413,10 +415,9 @@ xx <- d2 %>%
   mutate(Item = factor(Item, levels = unique(Item)))
 # Plot Data
 mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) + 
-  geom_col(color = "black", alpha = 0.7, lwd = 0.3) +
+  geom_col(color = "black", alpha = 0.8, lwd = 0.3) +
   scale_fill_manual(values = agData_Colors) +
-  #scale_x_discrete(limits = rev(levels(xx$Item))) +
-  theme_agData(legend.position = "none") + 
+  theme_agData_col(legend.position = "none", horizontal = T) + 
   coord_flip() +
   labs(title = "Canada", x = NULL,
        y = "Million Hectares", caption = myCaption)
@@ -445,7 +446,7 @@ ggAgRegion <- function(myItem = "Crop Land", myRegion = "Asia") {
     mutate(Area = factor(Area, levels = unique(Area)))
   # Plot Data
   ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) + 
-    geom_col(alpha = 0.7, color = "black", lwd = 0.3) +
+    geom_col(alpha = 0.8, color = "black", lwd = 0.3) +
     facet_wrap(Region ~ ., scales = "free", ncol = 1) +
     scale_fill_manual(values = myColors) +
     theme_agData(legend.position = "none",
@@ -476,7 +477,7 @@ ggAgRegion <- function(myRegion = "Americas",
     top_n(n = 10)
   # Plot Data
   ggplot(xx, aes(x = Area, y = Value / 1000000)) + 
-    geom_col(fill = myColor, alpha = 0.7, color = "black", lwd = 0.3,) +
+    geom_col(fill = myColor, alpha = 0.8, color = "black", lwd = 0.3,) +
     facet_grid(. ~ Region, scales = "free_y") +
     theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) + 
     coord_flip(ylim = c(0.02, max(xx$Value) / 1000000)) +
@@ -508,10 +509,10 @@ ggAgRegion_pie <- function(myRegion = "Americas", myItem = "Cropland") {
            ypos = cumsum(Prop) - 0.5 * Prop)
   # Plot
   ggplot(xx, aes(x = "", y = Prop, fill = Area)) +
-    geom_col(width = 1, color = "black", alpha = 0.7, lwd = 1) +
+    geom_col(width = 1, color = "black", alpha = 0.8, lwd = 1) +
     coord_polar("y", start = 0) +
     geom_label(aes(y = ypos, label = Prop), nudge_x = 0.2,
-               fill = "white", color = "black", alpha = 0.7, size = 6) +
+               fill = "white", color = "black", alpha = 0.8, size = 6) +
     scale_fill_manual(name = NULL, values = agData_Colors) +
     theme_agData_pie() +
     labs(title = paste(myItem, "-", myRegion), caption = myCaption) 

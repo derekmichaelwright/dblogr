@@ -284,10 +284,10 @@ Note: This functions can be slow to run on large marker sets.
 
 ```{r eval = F}
 # Plot
-gg_myG_Details(xx = myG, myPrefix = "myG_LDP_hmp")
+gg_myG_Details(filename = "Data/myG_hmp.csv", myPrefix = "Fig_02")
 ```
 
-![](myG_LDP_hmp_03_myG_Details.png)
+![](Fig_02_myG_Details.png)
 
 ---
 
@@ -329,10 +329,10 @@ mp <- ggplot(myCV, aes(x = b_coef * 10000)) +
   theme_gwaspr() +
   labs(title = "Covariate Data")
 # Save
-ggsave("Fig_04_myCV_Covariates.png", mp, width = 5, height = 3)
+ggsave("Fig_03_myCV_Covariates.png", mp, width = 5, height = 3)
 ```
 
-![](Fig_04_myCV_Covariates.png)
+![](Fig_03_myCV_Covariates.png)
 
 ---
 
@@ -433,10 +433,10 @@ mp <- ggplot(xx,  aes(x = PC, y = `Percent of Variation`)) +
   theme_gwaspr(legend.position = "none") +
   labs(title = "PCA determination")
 # Save
-ggsave("Fig_05_PCA_Eigen_Values.png", width = 6, height = 4)
+ggsave("Fig_04_PCA_Eigen_Values.png", width = 6, height = 4)
 ```
 
-![](Fig_05_PCA_Eigen_Values.png)
+![](Fig_04_PCA_Eigen_Values.png)
 
 ---
 
@@ -518,6 +518,7 @@ write.csv(xx, "Supplemtnal_Table_01.csv", row.names = F)
 Calculate significance threshold
 
 ```{r}
+-log10(0.05)
 -log10(0.000005)
 -log10(0.00000005)
 -log10( 0.05 / (nrow(myG)-1) )
@@ -721,6 +722,39 @@ ggsave("Fig_DTF_Nepal_2017_01_07.png", mp, width = 6, height = 6)
 ```
 
 ![](Fig_DTF_Nepal_2017_01_07.png)
+
+---
+
+## H & B P Values
+
+```{r eval = F}
+# Plot
+mp <- gg_Manhattan(
+  # Specify a folder with GWAS results
+  folder = "GWAS_Results/", 
+  # Select a trait to plot
+  trait = "DTF_Nepal_2017",
+  # Plot only certain GWAS models
+  models = c("MLM","MLMM","FarmCPU","BLINK"),
+  # Highlight specific markers
+  markers = c("Lcu.1GRN.Chr2p44545877",
+              "Lcu.1GRN.Chr5p1658484"),
+  # Create alt labels for the markers
+  labels = c("44Mbp","16Mbp"),
+  # Specify Color for each marker vline
+  vline.colors = c("red","blue"),
+  # Specify number of legend rows
+  legend.rows = 1,
+  # Plot adjusted p values
+  plotHBPvalues = T,
+  # Select threshold for adjusted p values
+  threshold = 1.3
+  )
+# Save
+ggsave("Fig_DTF_Nepal_2017_01_08.png", mp, width = 12, height = 4, bg = "white")
+```
+
+![](Fig_DTF_Nepal_2017_01_08.png)
 
 ---
 
@@ -1068,6 +1102,70 @@ ggsave("Fig_DTF_Sask_2017_01_08.png", mp, width = 6, height = 6)
 
 ---
 
+## H & B P values
+
+```{r eval = F}
+# Plot
+mp <- gg_Manhattan(
+  # Specify a folder with GWAS results
+  folder = "GWAS_Results/", 
+  # Select a trait to plot
+  trait = "DTF_Sask_2017",
+  # Plot only certain GWAS models
+  models = c("MLM","MLMM","FarmCPU","BLINK"),
+  # Highlight specific markers
+  markers = c("Lcu.1GRN.Chr2p44545877",
+              "Lcu.1GRN.Chr5p1658484",
+              "Lcu.1GRN.Chr6p3269280"),
+  # Create alt labels for the markers
+  labels = c("44Mbp","16Mbp","32Mbp"),
+  # Specify Color for each marker vline
+  vline.colors = c("red","red","blue"),
+  # Plot adjusted p values
+  plotHBPvalues = T,
+  # Select threshold for adjusted p values
+  threshold = 1.3
+  )
+# Save
+ggsave("Fig_DTF_Sask_2017_01_09.png", mp, width = 12, height = 4, bg = "white")
+```
+
+![](Fig_DTF_Sask_2017_01_09.png)
+
+---
+
+```{r eval = F}
+# Plot
+mp <- gg_Manhattan(
+  # Specify a folder with GWAS results
+  folder = "GWAS_Results/", 
+  # Select a trait to plot
+  trait = "DTF_Sask_2017_b",
+  # Specify a title
+  title = "DTF_Sask_2017 | CV = b",
+  # Plot only certain GWAS models
+  models = c("MLM","MLMM","FarmCPU","BLINK"),
+  # Highlight specific markers
+  markers = c("Lcu.1GRN.Chr2p44545877",
+              "Lcu.1GRN.Chr5p1658484",
+              "Lcu.1GRN.Chr6p3269280"),
+  # Create alt labels for the markers
+  labels = c("44Mbp","16Mbp","32Mbp"),
+  # Specify Color for each marker vline
+  vline.colors = c("red","red","blue"),
+  # Plot adjusted p values
+  plotHBPvalues = T,
+  # Select threshold for adjusted p values
+  threshold = 1.3
+  )
+# Save
+ggsave("Fig_DTF_Sask_2017_01_10.png", mp, width = 12, height = 4, bg = "white")
+```
+
+![](Fig_DTF_Sask_2017_01_06.png)
+
+---
+
 ## Markers
 
 ```{r echo = T, eval = F}
@@ -1307,6 +1405,38 @@ ggsave("Fig_Cotyledon_Color_01_05.png", mp, width = 8, height = 6)
 ```
 
 ![](Fig_Cotyledon_Color_01_05.png)
+
+---
+
+## H & B P values
+
+```{r eval = F}
+# Plot
+mp <- gg_Manhattan(
+  # Specify a folder with GWAS results
+  folder = "GWAS_Results/", 
+  # Select a trait to plot
+  trait = "Cotyledon_Color", 
+  # Plot only certain GWAS models
+  models = c("MLMM","FarmCPU","BLINK"),
+  # Highlight specific markers
+  markers = c("Lcu.1GRN.Chr1p365986872",
+              "Lcu.1GRN.Chr1p361840399",
+              "Lcu.1GRN.Chr1p362336814"),
+  # Create alt labels for the markers
+  labels = c("365Mbp","361Mbp","362Mbp"),
+  # Specify Color for each marker vline
+  vline.colors = rep("green",3),
+  # Plot adjusted p values
+  plotHBPvalues = T,
+  # Select threshold for adjusted p values
+  threshold = 1.3
+  )
+# Save
+ggsave("Fig_Cotyledon_Color_01_06.png", mp, width = 12, height = 4, bg = "white")
+```
+
+![](Fig_Cotyledon_Color_01_06.png)
 
 ---
 

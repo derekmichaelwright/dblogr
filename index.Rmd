@@ -22,7 +22,7 @@ Welcome to the personal website for **Derek Michael Wright**
 > - `r icon("image")` [Photography](#photography)
 > - `r icon("book")` [Publications](#publications)
 > - `r icon("newspaper")` [Academic Work](#academic-work) | [Tutorials](#tutorials) | [Vignettes](#vignettes)
-> - `r icon("r-project")` [agData Package](#agdata-package)
+> - `r icon("r-project")` [agData Package](#agdata) | [FAOSTAT](#faostat) | [STATCAN](#statcan) | [Other Sources](#other-sources)
 > - `r icon("chart-line")` [Blog](#blog)
 
 ---
@@ -459,7 +459,7 @@ A vignette illustrating how to mislead with statistics and graphs
 
 ---
 
-# `r icon("r-project")` agData Package
+# `r icon("r-project")` agData
 
 <div class="box"><div class = "row"><div class = "col-md-8">
 
@@ -882,7 +882,7 @@ Graphs of star constellations using the starBliss R package
 
 ![](blog/starbliss/featured.png)</div>
 
-### cypher
+### cypher Package
 
 <div class="box"><div class = "row"><div class = "col-md-8">
 

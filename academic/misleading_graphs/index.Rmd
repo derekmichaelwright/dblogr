@@ -46,7 +46,7 @@ xx <- data.frame(Company = c("Item A", "Item B", "Item C"),
 mp1 <- ggplot(xx, aes(x = Company, y = Views / 1000000, fill = Company)) + 
   geom_col(color = "black", alpha = 0.8) +
   scale_fill_manual(values = agData_Colors) +
-  theme_agData(legend.position = "none") +
+  theme_agData_col(legend.position = "none") +
   labs(subtitle = "B) Visualization 2 - No truncation", 
        y = "Million Units", x = NULL, caption = myCaption)
 mp2 <- mp1 + 
@@ -76,8 +76,8 @@ mp1 <- ggplot(xx, aes(x = "", y = Percent, fill = Answer)) +
   geom_col(color = "black", alpha = 0.8) +
   scale_fill_manual(values = c("darkgoldenrod2", "darkgreen")) +
   coord_cartesian(ylim = c(4, 100)) +
-  theme_agData(legend.position = "none",
-               axis.ticks.x = element_blank()) +
+  theme_agData_col(legend.position = "none",
+                   axis.ticks.x = element_blank()) +
   labs(subtitle = "B) Visualization 2", 
        y = "Percent Response", x = NULL, caption = myCaption)
 mp2 <- mp1 + 

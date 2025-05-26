@@ -60,9 +60,9 @@ mp <- ggplot(dd, aes(x = "", y = Row)) +
   facet_grid(. ~ Block) +
   scale_fill_manual(values = myColors) +
   scale_y_reverse() +
-  theme_agData(legend.position = "none",
-               axis.text.y = element_blank(),
-               axis.ticks = element_blank()) +
+  theme_agData_col(legend.position = "none",
+                   axis.text.y = element_blank(),
+                   axis.ticks = element_blank()) +
   labs(y = NULL, x = NULL, caption = myCaption)
 ggsave("aug_00_01.png", mp, width = 6, height = 4)
 ```
@@ -91,9 +91,9 @@ mp <- ggplot(dd, aes(x = "", y = Row)) +
   facet_grid(. ~ Block) +
   scale_fill_manual(name = NULL, values = myColors) +
   scale_y_reverse() +
-  theme_agData(legend.position = "bottom",
-               axis.text.y = element_blank(),
-               axis.ticks = element_blank()) +
+  theme_agData_col(legend.position = "bottom",
+                   axis.text.y = element_blank(),
+                   axis.ticks = element_blank()) +
   labs(title = "", y = NULL, x = NULL, caption = myCaption)
 ggsave("aug_00_02.png", mp, width = 6, height = 4)
 ```
@@ -125,9 +125,9 @@ mp <- ggplot(dd, aes(x = "", y = Row)) +
   facet_grid(. ~ Block) +
   scale_fill_manual(name = NULL, values = myColors) +
   scale_y_reverse() +
-  theme_agData(legend.position = "bottom",
-               axis.text.y = element_blank(),
-               axis.ticks = element_blank()) +
+  theme_agData_col(legend.position = "bottom",
+                   axis.text.y = element_blank(),
+                   axis.ticks = element_blank()) +
   labs(title = "Tons of sugar cane per acre", 
        y = NULL, x = NULL, caption = myCaption)
 ggsave("aug_01_01.png", mp, width = 6, height = 4)

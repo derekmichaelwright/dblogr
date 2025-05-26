@@ -108,9 +108,8 @@ mp <- ggplot(xx, aes(x = Origin, y = Count, fill = Region)) +
   geom_col(color = "black", alpha = 0.7) + 
   facet_grid(. ~ Region, scales = "free", space = "free") + 
   scale_fill_manual(values = rColors) +
-  theme_agData(legend.position = "none",
-               panel.grid.major.x = element_blank(),
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "none",
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Lentil Diversity Panel Origins", x = NULL,
        caption = myCaption)
 ggsave("lentil_diversity_panel_1_01.png", mp, width = 8, height = 4)

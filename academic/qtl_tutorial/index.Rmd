@@ -94,7 +94,7 @@ mp <- ggplot(xx, aes(x = value, fill = trait)) +
   geom_bar(color = "black", alpha = 0.7) +
   facet_wrap(trait ~ ., scales = "free", ncol = 4) +
   scale_fill_manual(values = myColors) +
-  theme_gwaspr(legend.position = "none") +
+  theme_gwaspr_col(legend.position = "none") +
   labs(title = "LR68 - Phenotypes", x = NULL, caption = myCaption)
 ggsave("qtl_tutorial_LR68_01.png", mp, width = 8, height = 4)
 ```
@@ -473,7 +473,7 @@ mp <- ggplot(xx, aes(x = value, fill = trait)) +
   geom_bar(color = "black", alpha = 0.7) +
   facet_grid(. ~ trait) +
   scale_fill_manual(values = myColors) +
-  theme_gwaspr(legend.position = "none") +
+  theme_gwaspr_col(legend.position = "none") +
   labs(title = "LR95 Phenotypes", x = NULL, caption = myCaption)
 ggsave("qtl_tutorial_LR95_01.png", mp, width = 6, height = 4)
 ```

@@ -27,8 +27,11 @@ library(agData)
 myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
 ```
 
+---
 
-## Plot by Area Function
+# Import/Export {.tabset .tabset-pills}
+
+## Ploting function
 
 ```{r class.source = 'fold-show'}
 xx <- agData_FAO_Trade_Quantity %>%
@@ -57,37 +60,9 @@ ggIEA <- function(myArea = "Canada") {
 }
 ```
 
-## Plot by Year Function
-
-```{r class.source = 'fold-show'}
-#
-ggIEAY <- function(myArea = "Canada", myYear = 2017) {
-  # Prep data
-  myItems <- c("Cereals", "Pulses", "Oilseeds", "Roots and Tubers", "Fruit", "Vegetables")
-  myColors <- c("darkgreen", "darkred", "darkgoldenrod2", "darkblue", "steelblue", "purple4")
-  xx <- agData_FAO_Trade_Quantity %>%
-    filter(Area == myArea, Year == myYear, Item %in% myItems) %>%
-    mutate(Measurment = gsub(" Quantity", "", Measurement),
-           Item = factor(Item, levels = myItems))
-  # Plot
-  ggplot(xx, aes(x = Measurement, y = Value / 1000000, 
-                 fill = Item, alpha = Measurement)) +
-    geom_bar(stat = "identity", color = "black") +
-    facet_wrap(. ~ Item, ncol = 3, scale = "free_y") +
-    scale_fill_manual(values = myColors) +
-    scale_alpha_manual(values = c(0.5,0.8)) +
-    theme_agData(legend.position = "none", 
-                 axis.text.x = element_text(angle = 45, hjust = 1)) +
-    labs(title = paste(myArea, myYear), y = "Million Tonnes", 
-         x = NULL, caption = myCaption)
-}
-```
-
 ---
 
-# Import/Export {.tabset .tabset-pills}
-
-## Canada
+## Canada {.active}
 
 ![](import_export_1_canada.png)
 
@@ -236,7 +211,35 @@ ggsave("import_export_1_southamerica.png", mp, width = 10, height = 6)
 
 # 2019 {.tabset .tabset-pills}
 
-## Canada
+## Ploting function
+
+```{r class.source = 'fold-show'}
+#
+ggIEAY <- function(myArea = "Canada", myYear = 2017) {
+  # Prep data
+  myItems <- c("Cereals", "Pulses", "Oilseeds", "Roots and Tubers", "Fruit", "Vegetables")
+  myColors <- c("darkgreen", "darkred", "darkgoldenrod2", "darkblue", "steelblue", "purple4")
+  xx <- agData_FAO_Trade_Quantity %>%
+    filter(Area == myArea, Year == myYear, Item %in% myItems) %>%
+    mutate(Measurment = gsub(" Quantity", "", Measurement),
+           Item = factor(Item, levels = myItems))
+  # Plot
+  ggplot(xx, aes(x = Measurement, y = Value / 1000000, 
+                 fill = Item, alpha = Measurement)) +
+    geom_bar(stat = "identity", color = "black") +
+    facet_wrap(. ~ Item, ncol = 3, scale = "free_y") +
+    scale_fill_manual(values = myColors) +
+    scale_alpha_manual(values = c(0.5,0.8)) +
+    theme_agData(legend.position = "none", 
+                 axis.text.x = element_text(angle = 45, hjust = 1)) +
+    labs(title = paste(myArea, myYear), y = "Million Tonnes", 
+         x = NULL, caption = myCaption)
+}
+```
+
+---
+
+## Canada {.active}
 
 ![](import_export_2_canada.png)
 

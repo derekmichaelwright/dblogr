@@ -537,7 +537,7 @@ xx <- d2 %>%
   summarise(Mean = mean(Value))
 # Plot graph
 mp <- ggplot(xx, aes(x = DaysAfterPlanting, y = Mean, color = Location)) + 
-  stat_smooth(geom = "line", method = "loess", se = F, alpha = 0.7, size = 2) + 
+  stat_smooth(geom = "line", method = "loess", se = F, alpha = 0.7, size = 1.25) + 
   facet_grid(Year ~ .) +
   scale_color_manual(values = myColors) +
   theme_agData() +
@@ -561,7 +561,7 @@ xx <- d2 %>%
   summarise(Mean = mean(Value) )
 # Plot graph
 mp <- ggplot(xx, aes(x = DaysAfterPlanting, y = Mean, color = Location)) + 
-  geom_line(alpha = 0.7, size = 2) +
+  geom_line(alpha = 0.7, size = 1.25) +
   facet_grid(Year ~ .) +
   scale_color_manual(values = myColors) +
   theme_agData() +
@@ -706,7 +706,7 @@ xx <- d2 %>%
            c("5cm","10cm","20cm","50cm","100cm")))
 # Plot
 mp <- ggplot(xx, aes(x = DateTime, y = Value, color = Measurement)) +
-  geom_line(alpha = 0.7) +
+  geom_line(alpha = 0.7, size = 1) +
   scale_color_manual(values = myColors) +
   theme_agData() +
   labs(title = "Soil Temperatures: Sutherland, Canada 2016",

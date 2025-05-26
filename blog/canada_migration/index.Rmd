@@ -148,7 +148,7 @@ d7 <- read.csv("1710015401_databaseLoadingData.csv")
 
 # Births, Deaths & Migration {.tabset .tabset-pills}
 
-## Canada
+## Canada {.tabset .tabset-pills}
 
 ### Yearly
 

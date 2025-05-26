@@ -63,7 +63,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
   geom_line(color = "darkgreen", size = 1.5, alpha = 0.7) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
-  theme_agData() +
+  theme_agData_col() +
   labs(title = "Global Area of GE Crops", x = NULL,
        y = "Million Hectares", caption = myCaption)
 ggsave("ge_crops_01.png", mp, width = 6, height = 4)
@@ -90,7 +90,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value)) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
   coord_cartesian(xlim = c(min(xx$Year)+0.4, max(xx$Year)-0.4)) +
-  theme_agData(strip.placement = "outside") +
+  theme_agData_col(strip.placement = "outside") +
   labs(title = "Global Area of GE Crops", 
        y = NULL, x = NULL, caption = myCaption)
 ggsave("ge_crops_02.png", mp, width = 6, height = 4)
@@ -224,7 +224,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
   coord_cartesian(xlim = c(min(xx$Year)+0.4, max(xx$Year)-0.4)) +
-  theme_agData(legend.position = "none") +
+  theme_agData_col(legend.position = "none") +
   labs(title = "Year to Year Change in GE Crop Hectares", 
        y = "Million Hectares", x = NULL, caption = myCaption)
 ggsave("ge_crops_07.png", mp, width = 6, height = 4)
@@ -249,7 +249,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Item)) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
   coord_cartesian(xlim = c(min(xx$Year)+0.3, max(xx$Year)-0.3)) +
-  theme_agData(legend.position = "none") +
+  theme_agData_col(legend.position = "none") +
   labs(title = "Percent change of GE Crops Year to Year", 
        y = "Percent", x = NULL, caption = myCaption)
 ggsave("ge_crops_08.png", mp, width = 6, height = 4)
@@ -377,7 +377,7 @@ mp <- ggplot(d6, aes(x = Year, y = Value)) +
   geom_line(color = "darkgreen", size = 1.5, alpha = 0.7) +
   scale_x_continuous(breaks = c(1996, 2000, 2005, 2010, 2015),
                      minor_breaks = seq(1996, 2020, by = 1)) +
-  theme_agData() +
+  theme_agData_col() +
   labs(title = "Value of GE Seed", x = NULL,
        y = "Billion USD", caption = myCaption)
 ggsave("ge_crops_13.png", mp, width = 6, height = 4)

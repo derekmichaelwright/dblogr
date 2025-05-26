@@ -112,8 +112,8 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) +
   geom_col(color = "Black", alpha = 0.7) + 
   facet_grid(Year ~ .) + 
   scale_fill_manual(values = agData_Colors) +
-  theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 45, hjust = 1)) + 
+  theme_agData_col(legend.position = "none", 
+                   axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Crop Production", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_1_01.png", mp, width = 7, height = 5)
@@ -141,8 +141,8 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) +
   geom_col(color = "Black", alpha = 0.7) + 
   facet_grid(Year ~ .) + 
   scale_fill_manual(values = c("antiquewhite4", agData_Colors)) +
-  theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 45, hjust = 1)) + 
+  theme_agData_col(legend.position = "none", 
+                   axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Area Seeded", x = NULL,
        y = "Million Hectares", caption = myCaption)
 ggsave("crops_saskatchewan_1_02.png", mp, width = 7, height = 5)
@@ -166,8 +166,8 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000, fill = Item)) +
   geom_col(color = "Black", alpha = 0.7) + 
   facet_grid(Year ~ .) + 
   scale_fill_manual(values = agData_Colors) +
-  theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 45, hjust = 1)) + 
+  theme_agData_col(legend.position = "none", 
+                   axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Yield", x = NULL, 
        y = "Tonnes / Hectare", caption = myCaption)
 ggsave("crops_saskatchewan_1_03.png", mp, width = 7, height = 5)
@@ -323,10 +323,9 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) +
   geom_col(alpha = 0.7, color = "black", lwd = 0.2) + 
   scale_fill_manual(name = NULL, values = agData_Colors[c(9:1)]) +
   guides(fill = guide_legend(override.aes = list(lwd = 0.4))) +
-  theme_agData() + 
+  theme_agData_col() + 
   labs(title = "Saskatchewan - Crop Production", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
-mp
 ggsave("crops_saskatchewan_2_02.png", mp, width = 8, height = 4)
 ```
 
@@ -360,8 +359,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) +
   facet_wrap(Group ~ . , ncol = 6, scales = "free") +
   scale_fill_manual(name = NULL, values = agData_Colors[c(9:1)]) +
   guides(fill = guide_legend(override.aes = list(lwd = 0.4))) +
-  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1),
-               strip.text = element_blank()) + 
+  theme_agData_col(axis.text.x = element_text(angle = 45, hjust = 1),
+                   strip.text = element_blank()) + 
   labs(title = "Saskatchewan - Drought Years", x = NULL,
        y = "Million Tonnes", caption = myCaption)
 ggsave("crops_saskatchewan_2_03.png", mp, width = 8, height = 4)
@@ -384,7 +383,7 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000000,
   geom_col(position = "dodge", color = "black") + 
   scale_fill_manual(values = agData_Colors, guide = F) +
   scale_alpha_manual(name = NULL, values = c(0.7, 0.3)) +
-  theme_agData(legend.position = "bottom") + 
+  theme_agData_col(legend.position = "bottom") + 
   labs(title = "Saskatchewan - Crop Production - 2020 vs. 2021", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_2_04.png", mp, width = 6, height = 4)
@@ -451,8 +450,8 @@ mp <- ggplot(xx, aes(x = Item, y = Value / 1000, fill = Item)) +
   geom_col(color = "Black", alpha = 0.7) + 
   facet_grid(Year ~ .) + 
   scale_fill_manual(values = agData_Colors) +
-  theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 45, hjust = 1)) + 
+  theme_agData_col(legend.position = "none", 
+                   axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Crop yields", 
        y = "Tonnes / Hectare", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_3_01.png", mp, width = 6, height = 5)
@@ -484,8 +483,8 @@ mp <- ggplot(xx, aes(x = Item, y = PerPerson, fill = Item)) +
   facet_grid(Year~.) + 
   scale_y_continuous(limits = c(0,15), expand = c(0,0)) +
   scale_fill_manual(values = agData_Colors) +
-  theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 45, hjust = 1)) + 
+  theme_agData_col(legend.position = "none", 
+                   axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Saskatchewan - Crop Production Per Person", 
        y = "1000 kg", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_3_02.png", mp, width = 6, height = 4)
@@ -666,7 +665,7 @@ mp <- ggplot(xx, aes(x = "", y = Value / 1000000, fill = Item)) +
   geom_col(color = "black", alpha = 0.7) +
   facet_grid(. ~ Year) +
   scale_fill_manual(name = NULL, values = agData_Colors) +
-  theme_agData() +
+  theme_agData_col() +
   labs(title = "Saskatchewan - Area Seeded", 
        y = "Million Hectares", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_5_03.png", mp, width = 6, height = 4)

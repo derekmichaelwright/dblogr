@@ -217,8 +217,8 @@ mp <- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Area)) +
   geom_col(color = "black", alpha = 0.7) +
   facet_wrap(Item ~ ., scales = "free", ncol = 4) +
   scale_fill_manual(values = myColors3) +
-  theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "none", 
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = paste("Food Security -", max(xx$Year)), 
        y = "Tonnes Per Person", x = NULL, caption = myCaption)
 ggsave("global_food_security_05.png", mp, width = 12, height = 6)
@@ -238,8 +238,8 @@ mp <- ggplot(xx, aes(x = Area, y = TonnesPerPerson, fill = Region)) +
   geom_col(color = "black", alpha = 0.7) +
   facet_grid(Item ~ Region, scales = "free", space = "free_x") +
   scale_fill_manual(values = myColors3) +
-  theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "none", 
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = paste("Food Security -", max(xx$Year)), 
        y = "Tonnes Per Person", x = NULL, caption = myCaption)
 ggsave("global_food_security_06.png", mp, width = 6, height = 8)
@@ -353,8 +353,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000,
   geom_line(size = 1, alpha = 0.7) + 
   facet_grid(Item ~ Measurement, scales = "free_y") +
   scale_color_manual(name = NULL, values = myColors3) +
-  scale_x_continuous(breaks       = seq(1965, 2015, by = 10),
-                     minor_breaks = seq(1965, 2015, by = 5))  +
+  scale_x_continuous(breaks       = seq(1965, 2020, by = 10),
+                     minor_breaks = seq(1965, 2020, by = 5))  +
   theme_agData(legend.position = "bottom") + 
   labs(title = "Import/Export of Major Grains", x = NULL, 
        y = "Million Tonnes", caption = myCaption)
@@ -379,8 +379,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000,
   geom_line(size = 1, alpha = 0.7) + 
   facet_grid(Item ~ Measurement, scales = "free_y") +
   scale_color_manual(name = NULL, values = myColors3) +
-  scale_x_continuous(breaks       = seq(1965, 2015, by = 10),
-                     minor_breaks = seq(1965, 2015, by = 5))  +
+  scale_x_continuous(breaks       = seq(1965, 2020, by = 10),
+                     minor_breaks = seq(1965, 2020, by = 5))  +
   theme_agData(legend.position = "bottom") + 
   labs(title = "Import/Export of Major Legumes", x = NULL, 
        y = "Million Tonnes", caption = myCaption)

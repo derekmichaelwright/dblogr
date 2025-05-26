@@ -51,7 +51,7 @@ xx <- dd %>%
 mp <- ggplot(xx, aes(x = State, y = Value / 1000000)) + 
   geom_bar(stat = "identity", color = "black", 
            fill = "darkgreen", alpha = 0.7) + 
-  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Sugarbeet Production - 2017", x = NULL,
        y = "Million Tonnes", caption = myCaption)
 ggsave("sugarbeet_usa_01.png", mp, width = 6, height = 4)

@@ -13,9 +13,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 # Data
 
-http://www.fao.org/faostat/en/#data/QC
-
-> - `r shiny::icon("globe")` [http://www.fao.org/faostat/en/#data/QA](http://www.fao.org/faostat/en/#data/QA){target="_blank"}
+> - `r shiny::icon("globe")` [http://www.fao.org/faostat/en/#data/QC](http://www.fao.org/faostat/en/#data/QC){target="_blank"}
 > - `r shiny::icon("save")` [agData_FAO_Livestock.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Livestock.csv.gz)
 
 > - `r shiny::icon("save")` [agData_FAO_Country_Table.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_FAO_Country_Table.csv.gz)
@@ -124,8 +122,8 @@ mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) +
   geom_col(color = "black", alpha = 0.7) +
   facet_grid(. ~ Region, scales = "free_x", space = "free_x") +
   scale_fill_manual(values = myColors) +
-  theme_agData(legend.position = "none",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "none",
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Wheat Production 2019", x = NULL,
        y = "Million Tonnes", caption = myCaption) 
 ggsave("wheat_02.png", mp, width = 6, height = 4)

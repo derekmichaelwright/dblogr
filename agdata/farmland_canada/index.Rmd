@@ -75,8 +75,8 @@ mp <- ggplot(xx, aes(x = Area_Short, y = Value / 1000000)) +
            color = "black", alpha = 0.7) +
   geom_label(aes(label = Label), nudge_y = 1.1, size = 4) +
   scale_fill_manual(values = agData_Colors) +
-  theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "none", 
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canadian Farmland (2016)", x = NULL, 
        y = "Million Hectares", caption = myCaption)
 ggsave("farmland_canada_1_01.png", mp, width = 6, height = 4)
@@ -233,8 +233,8 @@ mp1 <- ggplot(xx, aes(x = Area_Short, y = Value / 1000000)) +
   geom_label(aes(label = Label), nudge_y = 0.7, size = 2.5) +
   facet_wrap(Item ~ .) +
   scale_fill_manual(values = agData_Colors) +
-  theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "none", 
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canadian Farmland (2016)", x = NULL, 
        y = "Million Hectares", caption = "")
 # Prep data
@@ -254,8 +254,8 @@ mp2 <- ggplot(xx, aes(x = Area_Short, y = Value / 1000000)) +
   geom_label(aes(label = Label), nudge_y = 0.09, size = 2.5) +
   facet_wrap(Item ~ .) +
   scale_fill_manual(values = agData_Colors) +
-  theme_agData(legend.position = "none", 
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "none", 
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "", x = NULL, 
        y = "Million Hectares", caption = myCaption)
 mp <- ggarrange(mp1, mp2)
@@ -451,7 +451,7 @@ myColors <- alpha("darkgreen", seq(0.1, 1, by = 0.1))
 mp <- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = as.factor(Year))) + 
   geom_col(position = "dodge", color = "black", lwd = 0.2) +
   scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Farm Size in Canada", x = NULL,
        y = "Thousand Farms", caption = myCaption)
 ggsave("farmland_canada_3_03.png", mp, width = 9, height = 4)
@@ -547,7 +547,7 @@ mp <- ggplot(xx, aes(y = Value / 1000, x = Measurement, fill = Year)) +
   geom_col(position = "dodge", color = "black", lwd = 0.2) +
   facet_grid(Area ~ .) +
   scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Farm Size in Canada", x = NULL,
        y = "Thousand Farms", caption = myCaption)
 ggsave("farmland_canada_3_07.png", mp, width = 9, height = 8)
@@ -635,8 +635,8 @@ xx <- d4 %>% filter(Year == 2022) %>% arrange(rev(Value)) %>%
 mp <- ggplot(xx, aes(x = Area, y = Value, fill = Group)) +
   geom_col(alpha = 0.7, color = "black") +
   scale_fill_manual(values = c("steelblue","darkgreen")) +
-  theme_agData(legend.position = "none",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "none",
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canadian Farm Prices", subtitle = "Farm land and buildings",
        y = "Dollars Per Acre", x = NULL, caption = myCaption)
 ggsave("farmland_canada_4_03.png", mp, width = 6, height = 4)
