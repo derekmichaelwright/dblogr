@@ -1,5 +1,6 @@
 ---
-title: "dblogr"
+title: "https://derekmichaelwright.github.io/dblogr/"
+subtitle: "Welcome to the personal website for **Derek Michael Wright**"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
@@ -14,8 +15,6 @@ library(shiny)
 ```
 
 <br>
-
-Welcome to the personal website for **Derek Michael Wright**
 
 > **derekmichaelwright.github.io/dblogr**
 >
@@ -77,7 +76,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 </div></div></div>
 
-## {-}
+# {-}
 
 ---
 
