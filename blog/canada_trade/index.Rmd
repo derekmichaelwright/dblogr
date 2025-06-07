@@ -35,9 +35,15 @@ dd <- read.csv("1210001101_databaseLoadingData.csv") %>%
          Trading.Partner=Principal.trading.partners, 
          Unit=UOM, Scale=SCALAR_FACTOR, Value=VALUE) %>%
   separate(Year, c("Year","Month"), "-") %>%
-  mutate(Date = as.Date(paste0(Year, "-", Month, "-15")))
-xx <- dd %>% group_by(Trading.Partner) %>% 
-  summarise(Value = max(Value, na.rm = T)) %>% arrange(desc(Value))
+  mutate(Date = as.Date(paste0(Year, "-", Month, "-15"))) %>% 
+  spread(Trade, Value) %>%
+  mutate(`Trade Balance` = Export - Import) %>%
+  gather(Trade, Value, `Trade Balance`, Export, Import)
+#
+xx <- dd %>% 
+  group_by(Trading.Partner) %>% 
+  summarise(Value = max(Value, na.rm = T)) %>% 
+  arrange(desc(Value))
 dd <- dd %>% 
   mutate(Trading.Partner = factor(Trading.Partner, levels = xx$Trading.Partner))
 ```
@@ -61,7 +67,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   stat_smooth(geom = "line", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   scale_x_date(date_minor_breaks = "1 year", expand = c(0,0)) +
-  scale_y_continuous(minor_breaks = -6:6) +
+  scale_y_continuous(minor_breaks = -6:12) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada's Trade Balance", 
        x = NULL, y = "Billion CAD", caption = myCaption)

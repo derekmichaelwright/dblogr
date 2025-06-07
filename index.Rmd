@@ -1,6 +1,6 @@
 ---
-title: "https://derekmichaelwright.github.io/dblogr/"
-subtitle: "Welcome to the personal website for **Derek Michael Wright**"
+title: "dblogr"
+subtitle: "https://derekmichaelwright.github.io/dblogr/"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
@@ -13,6 +13,8 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 library(shiny)
 # https://derekmichaelwright.github.io/dblogr/home
 ```
+
+Welcome to the personal website for **Derek Michael Wright**
 
 <br>
 
@@ -76,7 +78,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 </div></div></div>
 
-# {-}
+## {-}
 
 ---
 
@@ -685,7 +687,7 @@ Graphs of GE crop production using USDA data
 
 ![](agdata/ge_crops_usa/featured.png)</div>
 
-# {-}
+## {-}
 
 ---
 
@@ -901,7 +903,7 @@ Graphs of star constellations using the starBliss R package
 
 ---
 
-## Memorable Quotes
+<br>
 
 <div class = "row"><div class = "col-md-4">
 
