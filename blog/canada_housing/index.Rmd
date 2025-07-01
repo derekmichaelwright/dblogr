@@ -18,6 +18,11 @@ STATCAN Table: 18-10-0205-01 (New housing price index)
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810020501](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810020501){target="_blank"}
 > - `r shiny::icon("save")` [1810020501_databaseLoadingData.csv](1810020501_databaseLoadingData.csv)
 
+STATCAN Table: 34-10-0292-01 (Building permits)
+
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410029201](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410029201)
+> - `r shiny::icon("save")` [3410029201_databaseLoadingData.csv](3410029201_databaseLoadingData.csv)
+
 STATCAN Table: 34-10-0162-01 (Newly completed and unoccupied housing)
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410016201](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410016201){target="_blank"}
@@ -48,7 +53,6 @@ Bank of Canada: Interest Rates
 > - `r shiny::icon("globe")` [https://www.bankofcanada.ca/rates/interest-rates/canadian-interest-rates/](https://www.bankofcanada.ca/rates/interest-rates/canadian-interest-rates/){target="_blank"}
 > - `r shiny::icon("save")` [bankofcanada_interestrates.csv](bankofcanada_interestrates.csv)
 
-
 ```{r eval = F, echo = F}
 #https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110024001
 #https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110001201
@@ -69,6 +73,12 @@ library(gganimate)
 myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
 myColors_M <- c("purple4", "darkgreen", "darkorange")
 myColors_P <- c("steelblue","darkred","darkblue")
+myProvs <- c("Canada", "Atlantic Region", "Prairie Region",
+             "British Columbia", "Alberta", "Saskatchewan", 
+             "Manitoba", "Ontario", "Quebec",
+             "Prince Edward Island", "New Brunswick", 
+             "Nova Scotia", "Newfoundland and Labrador",
+             "Yukon", "Northwest Territories", "Nunavut")
 #
 d1 <- read.csv("1810020501_databaseLoadingData.csv") %>%
   select(Date=REF_DATE, Area=GEO, Measurement=New.housing.price.indexes,
@@ -80,9 +90,22 @@ pp <- data.frame(Admin = factor(1:4),
         xmin = as.Date(c("1984-09-17", "1993-11-04", "2006-02-06", "2015-11-04")),
         xmax = as.Date(c("1993-11-04", "2006-02-06", "2015-11-04", "2022-06-01")))
 # 
+myTs1 <- c("Total residential and non-residential", "Total residential", "Total non-residential")
+myTs2 <- c("Total Permits", "Residential", "Non-residential")
+d2 <- read.csv("3410029201_databaseLoadingData.csv") %>%
+  select(Date=REF_DATE, Area=GEO, Type.of.building, Type.of.work,
+         Measurement=Variables, Unit=UOM, Value=VALUE) %>%
+  mutate(Area = factor(Area, levels = myProvs),
+         Date = as.Date(paste0(Date, "-01"))) %>%
+  spread(Type.of.building, Value) %>%
+  mutate(`Total non-residential` = `Total residential and non-residential` - `Total residential`) %>%
+  gather(Type.of.building, Value, 6:8) %>%
+  mutate(Type.of.building = plyr::mapvalues(Type.of.building, myTs1, myTs2),
+         Type.of.building = factor(Type.of.building, levels = myTs2))
+#
 myAreas <- c("Census metropolitan areas and census agglomerations of 50,000 and over",
              "Census metropolitan areas", "Census agglomerations 50,000 and over")
-d2 <- read.csv("3410016201_databaseLoadingData.csv") %>% 
+d3 <- read.csv("3410016201_databaseLoadingData.csv") %>% 
   select(Date=REF_DATE, Area=GEO, Measurement=Type.of.unit, 
          Unit=UOM, Value=VALUE) %>%
   arrange(Area) %>%
@@ -90,15 +113,9 @@ d2 <- read.csv("3410016201_databaseLoadingData.csv") %>%
          Year = as.numeric(substr(Date, 1, 4)),
          Area = factor(Area, levels = unique(c(myAreas, .$Area))))
 #
-myProvs <- c("Canada", "Atlantic Region", "Prairie Region",
-             "British Columbia", "Alberta", "Saskatchewan", 
-             "Manitoba", "Ontario", "Quebec",
-             "Prince Edward Island", "New Brunswick", 
-             "Nova Scotia", "Newfoundland and Labrador",
-             "Yukon", "Northwest Territories", "Nunavut")
 myTypes <- c("Total dwelling type", "Single house", "Double house", 
              "Row house", "Apartment building", "Mobile house")
-d3 <- read.csv("3610068801_databaseLoadingData.csv") %>% 
+d4 <- read.csv("3610068801_databaseLoadingData.csv") %>% 
   select(Date=REF_DATE, Area=GEO, Sector=Institutional.sector, Private=Housing.Type, 
          Occupancy=Dwelling.Occupation, Type=Dwelling.type, Tenure=Tenure.type,
          Unit=UOM, Value=VALUE) %>%
@@ -107,38 +124,43 @@ d3 <- read.csv("3610068801_databaseLoadingData.csv") %>%
          Type = factor(Type, levels = myTypes),
          Area = factor(Area, levels = myProvs))
 #
-d4 <- read.csv("1110019001_databaseLoadingData.csv") %>%
+x1 <- read.csv("1110019001_databaseLoadingData.csv") %>%
   select(Year=REF_DATE, Area=GEO, Measurement=Income.concept,
          Group=Economic.family.type, Unit=UOM, Value=VALUE) %>%
   filter(Group == "Economic families and persons not in an economic family",
          Measurement == "Median market income", Year >= 1986) %>%
   mutate(Area = factor(Area, levels = unique(.$Area)),
          Year = as.character(Year))
-d4 <- d4 %>% 
-  left_join(d4 %>% filter(Year == 1986) %>% select(Area, V1986=Value), by = "Area") %>%
+x1 <- x1 %>% 
+  left_join(x1 %>% filter(Year == 1986) %>% select(Area, V1986=Value), by = "Area") %>%
   mutate(Rate = 100 * (Value - V1986) / V1986) %>%
   select(Year, Area, `Median market income`=Rate)
-d5 <- d1 %>% 
+#
+x2 <- d1 %>% 
   filter(Date >= "1986-01-01", Measurement == "Total (house and land)") %>%
   select(Date, Year, Month, Area, Value)
-d5 <- d5 %>% 
-  left_join(d5 %>% filter(Date == "1986-01-01") %>% select(Area, V1986=Value), by = "Area") %>%
+x2 <- x2 %>% 
+  left_join(x2 %>% filter(Date == "1986-01-01") %>% select(Area, V1986=Value), by = "Area") %>%
   mutate(Rate = 100 * (Value - V1986) / V1986) %>%
   select(Date, Year, Month, Area, `Housing price index`=Rate)
-d6 <- left_join(d5, d4, by = c("Year", "Area")) %>% 
+#
+d5 <- left_join(x2, x1, by = c("Year", "Area")) %>% 
   filter(!is.na(`Median market income`), !is.na(`Housing price index`)) %>%
   mutate(`Median market income` = ifelse(Month != "01", NA, `Median market income`)) %>%
   gather(Measurement, Value, 5:6) %>% filter(!is.na(Value))
-d7 <- read.csv("3410013301_databaseLoadingData.csv") %>%
+#
+d6 <- read.csv("3410013301_databaseLoadingData.csv") %>%
   select(Year=REF_DATE, Area=GEO, Structure.Type=Type.of.structure,
          Unit.Type = Type.of.unit, Unit=UOM, Value=VALUE) %>%
   filter(!is.na(Value), Value > 0)
-d8 <- read.csv("1110022201_databaseLoadingData.csv") %>%
+#
+d7 <- read.csv("1110022201_databaseLoadingData.csv") %>%
   select(Year=REF_DATE, Area=GEO, Statistic, 
          Measurement=Household.expenditures..summary.level.categories,
          Unit=UOM, Value=VALUE) %>%
   mutate(Area = factor(Area, levels = myProvs))
-d9 <- read.csv("bankofcanada_interestrates.csv", skip = 11) %>%
+#
+d8 <- read.csv("bankofcanada_interestrates.csv", skip = 11) %>%
   mutate(Date = as.Date(paste0(Date, "-01"))) %>%
   rename(Value=2)
 ```
@@ -353,17 +375,132 @@ ggsave("canada_housing_1_08.png", mp, width = 5, height = 4)
 
 ---
 
-# Home Builds {.tabset .tabset-pills}
+# Building Permits {.tabset .tabset-pills}
 
-## Canada {.tabset .tabset-pills}
-
-### Monthly
+## Number of Permits
 
 ![](canada_housing_2_01.png)
 
 ```{r}
 # Prep data
 xx <- d2 %>% 
+  filter(Measurement == "Number of permits", Type.of.building == "Residential")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  stat_smooth(geom = "line", method = "loess", size = 1, alpha = 0.8) +
+  geom_line(color = "darkgreen", size = 1, alpha = 0.5) +
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+  theme_agData(legend.position = "none") +
+  labs(title = "Residential Building Permits in Canada", y = "x 1000", x = NULL)
+ggsave("canada_housing_2_01.png", mp, width = 14, height = 8)
+```
+
+---
+
+## All Data{.tabset .tabset-pills}
+
+### Plotting Function
+
+```{r}
+gg_Permits <- function(myArea = "Canada") {
+  # Prep data
+  x1 <- d2 %>% filter(Area == myArea, Measurement == "Number of permits")
+  x2 <- d2 %>% filter(Area == myArea, Measurement == "Value of permits")
+  # Plot
+  mp1 <- ggplot(x1, aes(x = Date, y = Value / 1000)) +
+    stat_smooth(geom = "line", method = "loess", size = 1, alpha = 0.8) +
+    geom_line(aes(color = Type.of.building), size = 1, alpha = 0.5) +
+    facet_wrap(Type.of.building ~ ., scales = "free_y") +
+    scale_color_manual(values = myColors_P) +
+    theme_agData(legend.position = "none") +
+    labs(title = myArea, 
+         subtitle = "A) Number of Permits", y = "1000 Permits", x = NULL)
+  #
+  mp2 <- ggplot(x2, aes(x = Date, y = Value / 1000000)) +
+    stat_smooth(geom = "line", method = "loess", size = 1, alpha = 0.8) +
+    geom_line(aes(color = Type.of.building), size = 1, alpha = 0.5) +
+    facet_wrap(Type.of.building ~ ., scales = "free_y") +
+    scale_color_manual(values = myColors_P) +
+    theme_agData(legend.position = "none") +
+    labs(subtitle = "B) Value of Permits", y = "Million CAD$", x = NULL)
+  #
+  ggarrange(mp1, mp2, ncol = 1, align = "hv")
+}
+```
+
+---
+
+### Canada {.active}
+
+![](canada_housing_2_02.png)
+
+```{r}
+# Plot
+mp <- gg_Permits(myArea = "Canada")
+ggsave("canada_housing_2_02.png", mp, width = 8, height = 6)
+```
+
+---
+
+## British Columbia
+
+![](canada_housing_2_03.png)
+
+```{r}
+# Plot
+mp <- gg_Permits(myArea = "British Columbia")
+ggsave("canada_housing_2_03.png", mp, width = 8, height = 6)
+```
+
+---
+
+## Alberta
+
+![](canada_housing_2_04.png)
+
+```{r}
+# Plot
+mp <- gg_Permits(myArea = "Alberta")
+ggsave("canada_housing_2_04.png", mp, width = 8, height = 6)
+```
+
+---
+
+## Saskatchewan
+
+![](canada_housing_2_05.png)
+
+```{r}
+# Plot
+mp <- gg_Permits(myArea = "Saskatchewan")
+ggsave("canada_housing_2_05.png", mp, width = 8, height = 6)
+```
+
+---
+
+## Ontario
+
+![](canada_housing_2_06.png)
+
+```{r}
+# Plot
+mp <- gg_Permits(myArea = "Ontario")
+ggsave("canada_housing_2_06.png", mp, width = 8, height = 6)
+```
+
+---
+
+# Home Builds {.tabset .tabset-pills}
+
+## Canada {.tabset .tabset-pills}
+
+### Monthly
+
+![](canada_housing_3_01.png)
+
+```{r}
+# Prep data
+xx <- d3 %>% 
   filter(Area %in% myAreas[1], Measurement == "Total units")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value)) +
@@ -374,18 +511,18 @@ mp <- ggplot(xx, aes(x = Date, y = Value)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Housing Units Built in Canada", subtitle = myAreas[1], 
        y = "Units Built", x = NULL, caption = myCaption)
-ggsave("canada_housing_2_01.png", mp, width = 7, height = 5)
+ggsave("canada_housing_3_01.png", mp, width = 7, height = 5)
 ```
 
 ---
 
 ### Yearly
 
-![](canada_housing_2_02.png)
+![](canada_housing_3_02.png)
 
 ```{r}
 # Prep data
-xx <- d2 %>% 
+xx <- d3 %>% 
   filter(Area %in% myAreas[1], Measurement == "Total units") %>%
   group_by(Year, Area) %>%
   summarise(Value = sum(Value))
@@ -398,18 +535,18 @@ mp <- ggplot(xx, aes(x = Year, y = Value)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Housing Units Built in Canada", subtitle = myAreas[1], 
        y = "Units Built", x = NULL, caption = myCaption)
-ggsave("canada_housing_2_02.png", mp, width = 7, height = 5)
+ggsave("canada_housing_3_02.png", mp, width = 7, height = 5)
 ```
 
 ---
 
 ### Houses vs Appartments
 
-![](canada_housing_2_03.png)
+![](canada_housing_3_03.png)
 
 ```{r}
 # Prep data
-xx <- d2 %>% 
+xx <- d3 %>% 
   filter(Area %in% myAreas[1], Measurement != "Total units") %>%
   group_by(Year, Area, Measurement) %>%
   summarise(Value = sum(Value))
@@ -423,12 +560,12 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Housing Units Built in Canada", subtitle = myAreas[1], 
        y = "Units Built", x = NULL, caption = myCaption)
-ggsave("canada_housing_2_03.png", mp, width = 6, height = 4)
+ggsave("canada_housing_3_03.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-![](canada_housing_2_04.png)
+![](canada_housing_3_04.png)
 
 ```{r}
 # Prep data
@@ -443,12 +580,12 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Housing Units Built in Canada", subtitle = myAreas[1], 
        y = "Units Built", x = NULL, caption = myCaption)
-ggsave("canada_housing_2_04.png", mp, width = 6, height = 4)
+ggsave("canada_housing_3_04.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-![](canada_housing_2_05.png)
+![](canada_housing_3_05.png)
 
 ```{r}
 # Prep data
@@ -461,7 +598,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Housing Units Built in Canada", subtitle = myAreas[1], 
        y = "Units Built", x = NULL, caption = myCaption)
-ggsave("canada_housing_2_05.png", mp, width = 6, height = 5)
+ggsave("canada_housing_3_05.png", mp, width = 6, height = 5)
 ```
 
 ---
@@ -470,11 +607,11 @@ ggsave("canada_housing_2_05.png", mp, width = 6, height = 5)
 
 ### All Cities
 
-![](canada_housing_2_06.png)
+![](canada_housing_3_06.png)
 
 ```{r}
 # Prep data
-xx <- d2 %>% 
+xx <- d3 %>% 
   filter(Area != myAreas[1], Measurement != "Total units")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value, color = Measurement)) +
@@ -484,20 +621,20 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Housing Units Built Per Month in Canada", 
        y = "Units Built", x = NULL, caption = myCaption)
-ggsave("canada_housing_2_06.png", mp, width = 20, height = 15)
+ggsave("canada_housing_3_06.png", mp, width = 20, height = 15)
 ```
 
 ---
 
 ### Van + Tor + Cal + Reg
 
-![](canada_housing_2_07.png)
+![](canada_housing_3_07.png)
 
 ```{r}
 # Prep data
 myCities <- c("Vancouver, British Columbia", "Toronto, Ontario", 
               "Calgary, Alberta", "Regina, Saskatchewan")
-xx <- d2 %>% 
+xx <- d3 %>% 
   filter(Area %in% myCities, Measurement != "Total units") %>%
   mutate(Area = factor(Area, levels = myCities)) %>%
   group_by(Year, Area, Measurement) %>%
@@ -511,20 +648,20 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(subtitle = "Housing Units Built Per Year", 
        y = "Thousand Units Built", x = NULL, caption = myCaption)
-ggsave("canada_housing_2_07.png", mp, width = 6, height = 4)
+ggsave("canada_housing_3_07.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### British Columbia
 
-![](canada_housing_2_08.png)
+![](canada_housing_3_08.png)
 
 ```{r}
 # Prep data
 myCities <- c("Vancouver, British Columbia", "Victoria, British Columbia", 
               "Kelowna, British Columbia", "Abbotsford-Mission, British Columbia")
-xx <- d2 %>% 
+xx <- d3 %>% 
   filter(Area %in% myCities, Measurement != "Total units") %>%
   mutate(Area = factor(Area, levels = myCities)) %>%
   group_by(Year, Area, Measurement) %>%
@@ -538,21 +675,21 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(subtitle = "Housing Units Built Per Year", 
        y = "Thousand Units Built", x = NULL, caption = myCaption)
-ggsave("canada_housing_2_08.png", mp, width = 6, height = 4)
+ggsave("canada_housing_3_08.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### Prairie
 
-![](canada_housing_2_09.png)
+![](canada_housing_3_09.png)
 
 ```{r}
 # Prep data
 myCities <- c("Calgary, Alberta", "Edmonton, Alberta", "Medicine Hat, Alberta",
               "Regina, Saskatchewan", "Saskatoon, Saskatchewan",
               "Winnipeg, Manitoba")
-xx <- d2 %>% 
+xx <- d3 %>% 
   filter(Area %in% myCities, Measurement != "Total units") %>%
   mutate(Area = factor(Area, levels = myCities)) %>%
   group_by(Year, Area, Measurement) %>%
@@ -566,21 +703,21 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(subtitle = "Housing Units Built Per Year", 
        y = "Thousand Units Built", x = NULL, caption = myCaption)
-ggsave("canada_housing_2_09.png", mp, width = 6, height = 6)
+ggsave("canada_housing_3_09.png", mp, width = 6, height = 6)
 ```
 
 ---
 
 ### Eastern Canada
 
-![](canada_housing_2_10.png)
+![](canada_housing_3_10.png)
 
 ```{r}
 # Prep data
 myCities <- c("Toronto, Ontario", "Ottawa-Gatineau, Ontario/Quebec",
               "Windsor, Ontario", "London, Ontario",
               "Montréal, Quebec", "Québec, Quebec")
-xx <- d2 %>% 
+xx <- d3 %>% 
   filter(Area %in% myCities, Measurement != "Total units") %>%
   mutate(Area = factor(Area, levels = myCities)) %>%
   group_by(Year, Area, Measurement) %>%
@@ -594,18 +731,18 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(subtitle = "Housing Units Built Per Year", 
        y = "Thousand Units Built", x = NULL, caption = myCaption)
-ggsave("canada_housing_2_10.png", mp, width = 6, height = 6)
+ggsave("canada_housing_3_10.png", mp, width = 6, height = 6)
 ```
 
 ---
 
 # Occupancy {.tabset .tabset-pills}
 
-![](canada_housing_3_01.png)
+![](canada_housing_4_01.png)
 
 ```{r}
 # Prep data
-xx <- d3 %>% 
+xx <- d4 %>% 
   filter(Area == "Canada", Sector == "Total economy",
          Private == "Total housing type", Tenure == "Total tenure type",
          Occupancy == "Private dwellings unoccupied")
@@ -617,16 +754,16 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   theme_agData() +
   labs(title = "Unoccupied Housing Units in Canada", 
        y = "Thousand Units", x = NULL, caption = myCaption)
-ggsave("canada_housing_3_01.png", mp, width = 8, height = 6)
+ggsave("canada_housing_4_01.png", mp, width = 8, height = 6)
 ```
 
 ---
 
-![](canada_housing_3_02.png)
+![](canada_housing_4_02.png)
 
 ```{r}
 # Prep data
-xx <- d3 %>% 
+xx <- d4 %>% 
   filter(Sector == "Total economy", Type == "Total dwelling type",
          Private == "Total housing type", Tenure == "Total tenure type",
          Occupancy == "Private dwellings unoccupied")
@@ -638,18 +775,18 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   theme_agData() +
   labs(title = "Unoccupied Housing Units in Canada", 
        y = "Thousand Units", x = NULL, caption = myCaption)
-ggsave("canada_housing_3_02.png", mp, width = 12, height = 8)
+ggsave("canada_housing_4_02.png", mp, width = 12, height = 8)
 ```
 
 ---
 
 ## Tenure
 
-![](canada_housing_3_03.png)
+![](canada_housing_4_03.png)
 
 ```{r}
 # Prep data
-xx <- d3 %>% 
+xx <- d4 %>% 
   filter(Area == "Canada", Sector == "Total economy", Type == "Total dwelling type",
          Private == "Total housing type", Tenure %in% c("Owner", "Renter"),
          Occupancy == "Total private dwellings") %>%
@@ -661,27 +798,27 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, fill = Tenure)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Housing Units in Canada", 
        y = "Million Units", x = NULL, caption = myCaption)
-ggsave("canada_housing_3_03.png", mp, width = 6, height = 4)
+ggsave("canada_housing_4_03.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F, eval = F}
-unique(d3$Sector)
-unique(d3$Private)
-unique(d3$Occupancy)
-unique(d3$Tenure)
-unique(d3$Occupancy)
-unique(d3$Type)
+unique(d4$Sector)
+unique(d4$Private)
+unique(d4$Occupancy)
+unique(d4$Tenure)
+unique(d4$Occupancy)
+unique(d4$Type)
 ```
 
 ---
 
 # Housing vs Income
 
-![](canada_housing_4_01.png)
+![](canada_housing_5_01.png)
 
 ```{r}
 # Prep data
-xx <- d6 %>% filter(Area == "Canada") 
+xx <- d5 %>% filter(Area == "Canada") 
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value, color = Measurement)) +
   geom_line(size = 1.5, alpha = 0.7) +
@@ -691,12 +828,12 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Measurement)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canada", subtitle = "Housing Price vs. Income",
        y = "Percent Change", x = NULL, caption = myCaption)
-ggsave("canada_housing_4_01.png", mp, width = 6, height = 4)
+ggsave("canada_housing_5_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-![](canada_housing_4_01.gif)
+![](canada_housing_5_01.gif)
 
 ```{r}
 # Animate
@@ -704,7 +841,7 @@ mp <- mp +
   transition_reveal(Date) + 
   view_follow(fixed_y = T)
   #view_follow(fixed_x = c(as.Date("1866-01-01"), NA))
-anim_save("canada_housing_4_01.gif", mp, 
+anim_save("canada_housing_5_01.gif", mp, 
           nframes = 600, fps = 25, end_pause = 60, 
           width = 900, height = 600, res = 150, units = "px")
 ```
@@ -715,11 +852,11 @@ anim_save("canada_housing_4_01.gif", mp,
 
 ## All Cities
 
-![](canada_housing_5_01.png)
+![](canada_housing_6_01.png)
 
 ```{r}
 # Prep data
-xx <- d7 %>% 
+xx <- d6 %>% 
   filter(Structure.Type == "Row and apartment structures of three units and over")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Unit.Type)) +
@@ -729,18 +866,18 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Unit.Type)) +
   scale_color_manual(name = NULL, values = agData_Colors) +
   labs(title = "Rent Prices in", y = "Dollars",
        x = NULL, caption = myCaption)
-ggsave("canada_housing_5_01.png", mp, width = 40, height = 20)
+ggsave("canada_housing_6_01.png", mp, width = 40, height = 20)
 ```
 
 ---
 
 ## Top and Bottom 15
 
-![](canada_housing_5_02.png)
+![](canada_housing_6_02.png)
 
 ```{r}
 # Prep data
-xx <- d7 %>% 
+xx <- d6 %>% 
   filter(Year == 2023, Unit.Type == "Two bedroom units",
          Structure.Type == "Row and apartment structures of three units and over") %>%
   arrange(desc(Value)) %>%
@@ -754,18 +891,18 @@ mp <- ggplot(xx, aes(x = Area, y = Value)) +
                axis.text.x = element_text(angle = 60, hjust = 1)) +
   labs(title = "Rent Prices in", y = "Dollars",
        x = NULL, caption = myCaption)
-ggsave("canada_housing_5_02.png", mp, width = 8, height = 6)
+ggsave("canada_housing_6_02.png", mp, width = 8, height = 6)
 ```
 
 ---
 
 ## Vancouver - Toronto - Saskatoon
 
-![](canada_housing_5_03.png)
+![](canada_housing_6_03.png)
 
 ```{r}
 # Prep data
-xx <- d7 %>% 
+xx <- d6 %>% 
   filter(Area %in% c("Toronto, Ontario", "Saskatoon, Saskatchewan", "Vancouver, British Columbia"),
          Structure.Type == "Row and apartment structures of three units and over")
 # Plot
@@ -776,16 +913,16 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Unit.Type)) +
   theme_agData() +
   labs(title = "Rent Prices in", y = "Dollars",
        x = NULL, caption = myCaption)
-ggsave("canada_housing_5_03.png", mp, width = 8, height = 4)
+ggsave("canada_housing_6_03.png", mp, width = 8, height = 4)
 ```
 
 ---
 
-![](canada_housing_5_04.png)
+![](canada_housing_6_04.png)
 
 ```{r}
 # Prep data
-xx <- d7 %>% 
+xx <- d6 %>% 
   filter(Area %in% c("Toronto, Ontario", "Saskatoon, Saskatchewan", "Vancouver, British Columbia"),
          Structure.Type == "Row and apartment structures of three units and over",
          Unit.Type == "Two bedroom units")
@@ -797,7 +934,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   theme_agData() +
   labs(title = "Rent Prices in", y = "Dollars",
        x = NULL, caption = myCaption)
-ggsave("canada_housing_5_04.png", mp, width = 8, height = 4)
+ggsave("canada_housing_6_04.png", mp, width = 8, height = 4)
 ```
 
 ---
@@ -808,11 +945,11 @@ ggsave("canada_housing_5_04.png", mp, width = 8, height = 4)
 
 ### Canada
 
-![](canada_housing_6_01.png)
+![](canada_housing_7_01.png)
 
 ```{r}
 # Prep Data
-xx <- d8 %>% filter(Area %in% myProvs[1:3], Measurement != "Total expenditure")
+xx <- d7 %>% filter(Area %in% myProvs[1:3], Measurement != "Total expenditure")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   stat_smooth(data = xx %>% filter(Year < 2018), 
@@ -825,18 +962,18 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Household Spending - Canada",
        y = "Thousand Dollars", x = NULL, caption = myCaption)
-ggsave("canada_housing_6_01.png", mp, width = 8, height = 4)
+ggsave("canada_housing_7_01.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ### Provinces
 
-![](canada_housing_6_02.png)
+![](canada_housing_7_02.png)
 
 ```{r}
 # Prep Data
-xx <- d8 %>% filter(!Area %in% myProvs[1:3], Measurement != "Total expenditure")
+xx <- d7 %>% filter(!Area %in% myProvs[1:3], Measurement != "Total expenditure")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   stat_smooth(data = xx %>% filter(Year < 2018),
@@ -849,7 +986,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Household Spending - Canada",
        y = "Thousand Dollars", x = NULL, caption = myCaption)
-ggsave("canada_housing_6_02.png", mp, width = 10, height = 6)
+ggsave("canada_housing_7_02.png", mp, width = 10, height = 6)
 ```
 
 ---
@@ -858,11 +995,11 @@ ggsave("canada_housing_6_02.png", mp, width = 10, height = 6)
 
 ## Canada
 
-![](canada_housing_6_03.png)
+![](canada_housing_7_03.png)
 
 ```{r}
 # Prep Data
-xx <- d8 %>% filter(Area %in% myProvs[1:3]) %>%
+xx <- d7 %>% filter(Area %in% myProvs[1:3]) %>%
   spread(Measurement, Value) %>%
   mutate(Percent_Food = 100 * `Food expenditures` / `Total expenditure`,
          Percent_Shelter = 100 * Shelter / `Total expenditure`) %>%
@@ -881,7 +1018,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   theme_agData(legend.position = "none") +
   labs(title = "Household Spending - Canada",
        y = "Thousand Dollars", x = NULL, caption = myCaption)
-ggsave("canada_housing_6_03.png", mp, width = 6, height = 4)
+ggsave("canada_housing_7_03.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -890,12 +1027,12 @@ ggsave("canada_housing_6_03.png", mp, width = 6, height = 4)
 
 ```{r}
 # Plot
-mp <- ggplot(d9, aes(x = Date, y = Value)) +
+mp <- ggplot(d8, aes(x = Date, y = Value)) +
   geom_line() +
   theme_agData() +
   labs(title = "Interest Rates in Canada", y = "Percent", x = NULL,
        captiopn = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: BoC")
-ggsave("canada_housing_7_01.png", mp, width = 8, height = 4)
+ggsave("canada_housing_8_01.png", mp, width = 8, height = 4)
 ```
 
 ---
