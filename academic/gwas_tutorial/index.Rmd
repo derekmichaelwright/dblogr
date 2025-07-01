@@ -146,10 +146,10 @@ myGAPIT <- GAPIT( Y = myY, G = myG )
 # Custom GWAS
 myGAPIT <- GAPIT( Y = myY,
                   G = myG, 
-                  CV = myCV,
-                  KI = myKI,
+                  CV = myCV, # Optional Covariate File
+                  KI = myKI, # Optional Kinship file
                   PCA.total = 4,
-                  model = c("MLM", "BLINK")
+                  model = c("GLM","MLM","MLMM","FarmCPU","BLINK")
                 )
 ```
 
@@ -401,11 +401,65 @@ setwd("GWAS_Results/")
 GAPIT( Y = myY, 
        G = myG, 
        PCA.total = 4,
-       model = c("GLM", "MLM", "MLMM", "FarmCPU", "BLINK"),
+       model = c("FarmCPU", "BLINK"),#"GLM", "MLM", "MLMM", 
        Random.model = F,  # Optional: use if GAPIT returns an error
        Phenotype.View = F # Optional: use if GAPIT returns an error
       )
 ```
+
+
+
+```{r eval = F}
+GAPIT( Y = myY, 
+       G = myG, 
+       PCA.total = 4,
+       model = "BLINK", 
+       Random.model = F,  # Optional: use if GAPIT returns an error
+       Phenotype.View = F # Optional: use if GAPIT returns an error
+      )
+```
+
+```{r eval = F}
+GAPIT( Y = myY[,1:2], 
+       G = myG, 
+       PCA.total = 4,
+       model = "FarmCPU",  
+       Random.model = F,  # Optional: use if GAPIT returns an error
+       Phenotype.View = F # Optional: use if GAPIT returns an error
+      )
+```
+
+```{r eval = F}
+GAPIT( Y = myY[,-2], 
+       G = myG, 
+       PCA.total = 4,
+       model = "MLMM", 
+       Random.model = F,  # Optional: use if GAPIT returns an error
+       Phenotype.View = F # Optional: use if GAPIT returns an error
+      )
+```
+
+```{r eval = F}
+GAPIT( Y = myY, 
+       G = myG, 
+       PCA.total = 4,
+       model = "MLM", 
+       Random.model = F,  # Optional: use if GAPIT returns an error
+       Phenotype.View = F # Optional: use if GAPIT returns an error
+      )
+```
+
+```{r eval = F}
+GAPIT( Y = myY, 
+       G = myG, 
+       PCA.total = 4,
+       model = "GLM", 
+       Random.model = F,  # Optional: use if GAPIT returns an error
+       Phenotype.View = F # Optional: use if GAPIT returns an error
+      )
+```
+
+
 
 ---
 
@@ -507,6 +561,10 @@ xx <- table_GWAS_Results(folder = "GWAS_Results/", threshold = 6.8, sug.threshol
 write.csv(xx, "Supplemtnal_Table_01.csv", row.names = F)
 ```
 
+```{r echo = F}
+DT::datatable(read.csv("Supplemtnal_Table_01.csv"))
+```
+
 ---
 
 ## Significance threshold
@@ -564,7 +622,7 @@ mp <- gg_Manhattan(
   facet = T 
   )
 # Save
-ggsave("Fig_DTF_Nepal_2017_01_02.png", mp, width = 12, height = 12, bg = "white")
+ggsave("Fig_DTF_Nepal_2017_01_02.png", mp, width = 12, height = 8, bg = "white")
 ```
 
 ![](Fig_DTF_Nepal_2017_01_02.png)
@@ -825,13 +883,34 @@ mp <- gg_Marker_Box(
   markers = c("Lcu.1GRN.Chr2p44545877",
               "Lcu.1GRN.Chr5p1658484"),
   # Specify colors for alleles
-  marker.colors = c("darkred","darkgoldenrod3","darkgoldenrod2","darkgreen") 
+  marker.colors = c("darkred","darkgoldenrod3","steelblue","darkgreen") 
   )
 # Save
 ggsave("Fig_DTF_Nepal_2017_02_03.png", mp, width = 6, height = 4)
 ```
 
 ![](Fig_DTF_Nepal_2017_02_03.png)
+
+```{r eval = F}
+# Plot
+mp <- gg_Marker_Bar(
+  # Genotype data
+  xG = myG,
+  # Phenotype data
+  xY = myY,
+  # Select a trait to plot
+  trait = "DTF_Nepal_2017",
+  # Select markers to plot
+  markers = c("Lcu.1GRN.Chr2p44545877",
+              "Lcu.1GRN.Chr5p1658484"),
+  # Specify colors for alleles
+  marker.colors = c("darkred","darkgoldenrod3","steelblue","darkgreen") 
+  )
+# Save
+ggsave("Fig_DTF_Nepal_2017_02_04.png", mp, width = 6, height = 4)
+```
+
+![](Fig_DTF_Nepal_2017_02_04.png)
 
 ---
 
@@ -864,9 +943,9 @@ ggsave("Fig_DTF_Nepal_2017_03_01.png", mp, width = 12, height = 4)
 
 ```{r eval = F}
 # Prep data
-x1 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.MLM.DTF_Nepal_2017.csv") %>%
+x1 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.MLM.DTF_Nepal_2017(NYC).csv") %>%
   mutate(Model = "MLM")
-x2 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.BLINK.DTF_Nepal_2017.csv") %>%
+x2 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.BLINK.DTF_Nepal_2017(NYC).csv") %>%
   mutate(Model = "BLINK")
 xx <- bind_rows(x1, x2) %>% mutate(Model = factor(Model, levels = c("MLM","BLINK")))
 # Plot
@@ -940,7 +1019,7 @@ mp <- gg_Manhattan(
   facet = T 
   )
 # Save
-ggsave("Fig_DTF_Sask_2017_01_03.png", mp, width = 12, height = 14, bg = "white")
+ggsave("Fig_DTF_Sask_2017_01_03.png", mp, width = 12, height = 8, bg = "white")
 ```
 
 ![](Fig_DTF_Sask_2017_01_03.png)
@@ -1162,7 +1241,7 @@ mp <- gg_Manhattan(
 ggsave("Fig_DTF_Sask_2017_01_10.png", mp, width = 12, height = 4, bg = "white")
 ```
 
-![](Fig_DTF_Sask_2017_01_06.png)
+![](Fig_DTF_Sask_2017_01_10.png)
 
 ---
 
@@ -1236,9 +1315,9 @@ ggsave("Fig_DTF_Sask_2017_03_01.png", mp, width = 12, height = 4)
 
 ```{r}
 # Prep data
-x1 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.MLM.DTF_Sask_2017.csv") %>%
+x1 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.MLM.DTF_Sask_2017(NYC).csv") %>%
   mutate(Model = "MLM")
-x2 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.BLINK.DTF_Sask_2017.csv") %>%
+x2 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.BLINK.DTF_Sask_2017(NYC).csv") %>%
   mutate(Model = "BLINK")
 xx <- bind_rows(x1, x2) %>% mutate(Model = factor(Model, levels = c("MLM","BLINK")))
 # Plot
@@ -1296,7 +1375,7 @@ mp <- gg_Manhattan(
   facet = T 
   )
 # Save
-ggsave("Fig_Cotyledon_Color_01_02.png", mp, width = 12, height = 12, bg = "white")
+ggsave("Fig_Cotyledon_Color_01_02.png", mp, width = 12, height = 8, bg = "white")
 ```
 
 ![](Fig_Cotyledon_Color_01_02.png)
@@ -1568,9 +1647,9 @@ ggsave("Fig_Cotyledon_Color_03_01.png", mp, width = 12, height = 4)
 
 ```{r eval = F}
 # Prep data
-x1 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.MLM.Cotyledon_Color.csv") %>%
+x1 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.MLM.Cotyledon_Color(NYC).csv") %>%
   mutate(Model = "MLM")
-x2 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.BLINK.Cotyledon_Color.csv") %>%
+x2 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.BLINK.Cotyledon_Color(NYC).csv") %>%
   mutate(Model = "BLINK")
 xx <- bind_rows(x1, x2) %>% mutate(Model = factor(Model, levels = c("MLM","BLINK")))
 # Plot
