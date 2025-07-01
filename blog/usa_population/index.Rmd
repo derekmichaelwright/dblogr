@@ -461,3 +461,20 @@ ggsave("usa_population_4_03.png", mp, width = 6, height = 4)
 ```
 
 ---
+
+# Bonus
+
+## Comption
+
+```{r}
+# Prep data
+xx <- read.csv("data_compton.csv") %>%
+  gather(Race, Percent, 3:ncol(.))
+# Plot
+mp <- ggplot(xx, aes(x = Decade, y = Percent, color = Race)) + 
+  geom_line() +geom_point() +
+  theme_agData(legend.position = "bottom")
+ggsave("usa_population_5_01.png", mp, width = 6, height = 4)
+```
+
+---
