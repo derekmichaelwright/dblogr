@@ -58,7 +58,7 @@ xx <- d1 %>% group_by(Year) %>%
 mp <- ggplot(xx, aes(x = Year, y = Deaths)) +
   geom_bar(stat = "identity", fill = "darkred", color = "black", alpha = 0.7) +
   scale_x_continuous(breaks = 2005:max(xx$Year)) + 
-  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Suicides in Saskatchewan", 
        x = NULL, caption = myCaption)
 ggsave("saskatchewan_suicides_01.png", mp, width = 6, height = 4)
@@ -78,7 +78,7 @@ mp <- ggplot(d1 %>% filter(Year == 2021),
   geom_bar(stat = "identity", position = "dodge",
            color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData(legend.position = "bottom") +
+  theme_agData_col(legend.position = "bottom") +
   labs(title = "Suicides in Saskatchewan - 2021", 
        x = NULL, caption = myCaption)
 ggsave("saskatchewan_suicides_02.png", mp, width = 6, height = 4)
@@ -155,7 +155,7 @@ mp <- ggplot(d2 %>% filter(Year == 2021),
   geom_bar(stat = "identity", position = "dodge",
            color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData(legend.position = "bottom") +
+  theme_agData_col(legend.position = "bottom") +
   labs(title = "Suicides in Saskatchewan - 2021", 
        x = NULL, caption = myCaption)
 ggsave("saskatchewan_suicides_05.png", mp, width = 6, height = 4)

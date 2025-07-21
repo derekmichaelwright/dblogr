@@ -221,7 +221,7 @@ ggWeeklyDeaths <- function(myArea = "Canada", xmin = 2010) {
   # Plot
   ggplot(xx, aes(x = Date, y = Value, fill = Group)) +
     geom_col(alpha = 0.7) +
-    geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
+    #geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
     geom_hline(yintercept = myMax, alpha = 0.2) +
     scale_fill_manual(values = myColors) +
     scale_x_date(date_breaks = "1 year", date_labels = "%Y", 
@@ -613,7 +613,7 @@ ggRespSeasonsAge <- function(myArea = "Canada") {
     scale_color_manual(name = NULL, values = myColors) +
     scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8,0.8,0.8)) +
     scale_size_manual(name = NULL, values = c(0.3,0.75,0.75,0.75,0.75,0.75,0.75,0.75)) +
-    scale_x_continuous(breaks = myBreaks, labels = myLabels) +
+    scale_x_continuous(breaks = myBreaks, minor_breaks = myBreaks, labels = myLabels) +
     theme_agData(legend.position = "bottom",
                  axis.text.x = element_text(angle = 45, hjust = 1)) +
     labs(title = myArea, y = "Deaths Per Week", x = NULL, caption = myCaption)
@@ -723,8 +723,8 @@ ggYearlyDeaths <- function(myArea = "Canada") {
     scale_fill_manual(name = NULL, values = myColors) +
     scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8,0.8)) +
     scale_x_continuous(breaks = seq(2010, 2024, 2)) +
-    theme_agData(legend.position = "none",
-                 axis.text.x = element_text(angle = 45, hjust = 1)) +
+    theme_agData_col(legend.position = "none",
+                     axis.text.x = element_text(angle = 45, hjust = 1)) +
     labs(title = myArea, caption = myCaption,
          y = "Thousand Deaths", x = NULL)
 }
@@ -854,8 +854,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Group)) +
   facet_wrap(Trait ~ ., scales= "free_y") +
   scale_fill_manual(values = myColors) +
   scale_x_continuous(breaks = min(xx$Year):max(xx$Year)) +
-  theme_agData(legend.position = "none",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "none",
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canada - Ages 65+", 
        x = NULL, y = NULL, caption = myCaption)
 ggsave("canada_deaths_08_01.png", mp, width = 10, height = 4)
@@ -914,8 +914,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Group)) +
   facet_wrap(Trait ~ ., scales= "free_y") +
   scale_fill_manual(values = myColors) +
   scale_x_continuous(breaks = min(xx$Year):max(xx$Year)) +
-  theme_agData(legend.position = "none",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "none",
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canada - Ages 0 - 44", 
        x = NULL, y = NULL, caption = myCaption)
 ggsave("canada_deaths_08_03.png", mp, width = 10, height = 4)
@@ -1047,7 +1047,7 @@ ggWeeklyDeaths044 <- function(myArea = "Canada") {
   # Plot
   ggplot(xx, aes(x = Date, y = Value, fill = Group)) +
     geom_col(alpha = 0.7) +
-    geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
+    #geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
     scale_fill_manual(values = myColors) +
     scale_x_date(date_breaks = "1 year", date_labels = "%Y", 
                  minor_breaks = "1 year") +
@@ -1201,7 +1201,7 @@ mp <- ggplot(d3 %>% filter(Area == "Canada"),
   scale_fill_manual(values = myColors) +
   scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8)) +
   scale_x_continuous(breaks = seq(1990, 2020, 5)) +
-  theme_agData(legend.position = "none") +
+  theme_agData_col(legend.position = "none") +
   labs(title = "Death Rate - Canada", 
        y = "Deaths Per Thousand People", x = NULL, caption = myCaption)
 ggsave("canada_deaths_11_01.png", mp, width = 6, height = 4)
@@ -1242,9 +1242,9 @@ mp <- ggplot(xx, aes(x = Year, y = Death.Rate, fill = factor(Year))) +
   geom_col(position = "dodge", color = "black", alpha = 0.7) +
   facet_grid(. ~ Area, labeller = label_wrap_gen(width = 10)) +
   scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData(legend.position = "bottom",
-               axis.text.x = element_blank(),
-               axis.ticks.x = element_blank()) +
+  theme_agData_col(legend.position = "bottom",
+                   axis.text.x = element_blank(),
+                   axis.ticks.x = element_blank()) +
   labs(title = "Death Rate Change in Canada",  subtitle = "2019 and 2020",
        y = "Deaths Per Thousand People", x = NULL, caption = myCaption)
 ggsave("canada_deaths_11_03.png", mp, width = 13, height = 4)
@@ -1266,7 +1266,7 @@ xx <- d3 %>% filter(Year %in% c(1991, 2019)) %>%
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Change)) +
   geom_col(color = "black", fill = "darkred", alpha = 0.7) +
-  theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Death Rate Change (1991 to 2019)", 
        subtitle = "Deaths per thousand people",
        y = "Change", x = NULL, caption = myCaption)
@@ -1463,9 +1463,9 @@ mp <- ggplot(xx, aes(x = Trait, y = Value, fill = Trait)) +
   facet_wrap(. ~ Area, ncol = 4) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   coord_cartesian(ylim = c(70, 90)) +
-  theme_agData(legend.position = "bottom",
-               axis.text.x = element_blank(),
-               axis.ticks.x = element_blank()) +
+  theme_agData_col(legend.position = "bottom",
+                   axis.text.x = element_blank(),
+                   axis.ticks.x = element_blank()) +
   labs(title = "", x = NULL, y = NULL, caption = myCaption)
 ggsave("canada_deaths_13_02.png", mp, width = 8, height = 4)
 ```
@@ -1480,8 +1480,8 @@ ggsave("canada_deaths_13_02.png", mp, width = 8, height = 4)
 mp <- ggplot(yy, aes(x = Area, fill = Area,
                y = `Crude death rate, due to COVID-19 (per thousand)`)) +
   geom_col(color = "black") +
-  theme_agData(legend.position = "none",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "none",
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "COVID-19 Death Rate In Canada", 
        y = "Deaths per 1000 People", x = NULL, caption = myCaption)
 ggsave("canada_deaths_13_03.png", mp, width = 6, height = 4)

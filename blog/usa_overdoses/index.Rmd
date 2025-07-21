@@ -189,7 +189,7 @@ overdosePlot2 <- function(area = "United States") {
     geom_label(aes(label = round(Value / 1000, 1)), vjust = 1) +
     facet_wrap(Area ~ ., scales = "free_y") +
     scale_fill_manual(name = NULL, values = myCols) +
-    theme_agData(legend.position = "bottom") +
+    theme_agData_col(legend.position = "bottom") +
     labs(title = "Yearly Drug Overdose Deaths", y = "Thousand Deaths", x = NULL,
          caption = myCaption)
 }

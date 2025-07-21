@@ -520,7 +520,8 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   geom_line(alpha = 0.7, size = 1) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
   scale_color_manual(name = NULL, values = myColors2) +
-  scale_x_date(date_breaks = "year", date_labels = "%Y") +
+  scale_x_date(date_breaks = "year", date_minor_breaks = "year", 
+               date_labels = "%Y") +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Coal Production, Export & Import", 
@@ -546,7 +547,8 @@ xx <- dd_coal %>%
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, fill = Area)) +
   geom_col(color = "black", lwd = 0.1, alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColors2[3:1], breaks = rev(myAreas)) +
-  scale_x_date(date_breaks = "year", date_labels = "%Y") +
+  scale_x_date(date_breaks = "year", date_minor_breaks = "year",
+               date_labels = "%Y") +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canadian Coal Production",
@@ -574,7 +576,8 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
   stat_smooth(geom = "line", method = "lm", lwd = 1.5,
               color = "darkred", alpha = 0.7) +
   geom_line(data = x2, lwd = 1.5, lty = 2, alpha = 0.7) +
-  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+  scale_x_date(date_breaks = "1 year", date_minor_breaks = "year", 
+               date_labels = "%Y") +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Simple Predictions of Coal Production in Canada", 
        y = "Million Tonnes", x = NULL, caption = myCaption)

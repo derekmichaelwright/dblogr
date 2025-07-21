@@ -234,9 +234,9 @@ Sandesh Neupane, **Derek M. Wright**, Raul O. Martinez, Jakob Butler, Jim L. Wel
 
 [<u>**Breeding potential of cultivated lentil for increased protein and amino acid concentrations in the Northern Great Plains**</u>](http://dx.doi.org/10.1002/csc2.70085){target="_blank"}. *Crop Science*. (**2025**) 65(3): e70085. doi.org/10.1002/csc2.70085
 
-**Derek M. Wright**, Jiayi Hang, Kirstin E. Bett & James D. House
+**Derek M. Wright**, Jiayi Hang, James D. House & Kirstin E. Bett
 
-- `r icon("newspaper")` *unpublished*
+- `r icon("newspaper")` [*Crop Science*. (**2025**) 65(3): e70085.](doi.org/10.1002/csc2.70085){target="_blank"}
 - `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_Protein){target="_blank"}
 - `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Protein/LDP_Protein_Vignette.html){target="_blank"}
 - `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Protein/README.html){target="_blank"}

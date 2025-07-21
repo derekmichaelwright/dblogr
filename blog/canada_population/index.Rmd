@@ -163,8 +163,8 @@ mp <- ggplot(xx, aes(x = AreaShort, y = Value / 1000000, fill = Area, alpha = Ye
   scale_fill_manual(name = NULL, values = myColorsP, guide = F) +
   scale_alpha_manual(name = NULL, values = c(0.4, 0.8)) +
   scale_y_continuous(minor_breaks = 1:16) +
-  theme_agData(legend.position = "bottom",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "bottom",
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Population Growth In Canada", x = NULL,
        y = "Million People", caption = myCaption)
 ggsave("canada_population_1_04.png", mp, width = 6, height = 4)
@@ -209,6 +209,7 @@ for(i in 1:nrow(xx)) {
 mp <- ggplot(xx, aes(x = Year, y = Rate)) +
   geom_col(fill = "darkgreen", alpha = 0.8, color = "black", lwd = 0.3) +
   scale_x_continuous(breaks = seq(1950, 2020, by = 10)) +
+  theme_agData() +
   labs(title = "Population Growth Rate In Canada", x = NULL,
        y = "People Per 1000", caption = myCaption)
 ggsave("canada_population_1_06.png", mp, width = 6, height = 4)

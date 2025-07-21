@@ -276,7 +276,7 @@ ggYearlyDeaths <- function(myArea = "United States") {
     scale_fill_manual(values = myColors) +
     scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8)) +
     scale_x_continuous(breaks = min(xx$Year):max(xx$Year)) +
-    theme_agData(legend.position = "none") +
+    theme_agData_col(legend.position = "none") +
     labs(title = myArea, y = "Million Deaths", x = NULL, caption = myCaption)
 }
 ```
@@ -742,8 +742,8 @@ ggYearlyDeathsAge <- function(myArea) {
     scale_fill_manual(values = myColors) +
     scale_alpha_manual(values = c(0.4,0.8,0.8,0.8,0.8)) +
     scale_x_continuous(breaks = min(xx$Year):max(xx$Year)) +
-    theme_agData(legend.position = "none",
-                 axis.text.x = element_text(angle = 45, hjust = 1)) +
+    theme_agData_col(legend.position = "none",
+                     axis.text.x = element_text(angle = 45, hjust = 1)) +
     labs(title = myArea, x = NULL, y = "Thousand Deaths", caption = myCaption)
 }
 ```
@@ -1000,8 +1000,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Group)) +
   facet_wrap(Trait ~ ., scales = "free") +
   scale_fill_manual(values = myColors) +
   scale_x_continuous(breaks = min(xx$Year):max(xx$Year)) +
-  theme_agData(legend.position = "none",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "none",
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "United States - Ages 65+", 
        x = NULL, y = NULL, caption = myCaption2)
 ggsave("usa_deaths_7_01.png", mp, width = 8, height = 4)
@@ -1034,8 +1034,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Group)) +
   facet_wrap(Trait ~ ., scales = "free") +
   scale_fill_manual(values = myColors) +
   scale_x_continuous(breaks = min(xx$Year):max(xx$Year)) +
-  theme_agData(legend.position = "none",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "none",
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "United States - Ages 0 - 44", x = NULL,
        y = "Deaths Per 10,000 People", caption = myCaption2)
 ggsave("usa_deaths_7_02.png", mp, width = 8, height = 4)

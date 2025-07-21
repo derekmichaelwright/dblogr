@@ -341,7 +341,7 @@ mp <- ggplot(pp, aes(x = Admin, y = PercentChange, fill = Party)) +
   geom_col(color = "black", alpha = 0.7) +
   scale_x_discrete(labels = paste(pp$xmin, pp$xmax, sep = "\n")) +
   scale_fill_manual(name = NULL, values = myColors_P) +
-  theme_agData(legend.position = "bottom") +
+  theme_agData_col(legend.position = "bottom") +
   labs(title = "Canada - Change in House Prices", x = NULL,
        y = "Percent Change", caption = myCaption)
 ggsave("canada_housing_1_07.png", mp, width = 5, height = 4)
@@ -367,7 +367,7 @@ mp <- ggplot(pp, aes(x = Admin, y = PercentChange, fill = Party)) +
   geom_col(color = "black", alpha = 0.7) +
   scale_x_discrete(labels = paste(pp$xmin, pp$xmax, sep = "\n")) +
   scale_fill_manual(name = NULL, values = myColors_P) +
-  theme_agData(legend.position = "bottom") +
+  theme_agData_col(legend.position = "bottom") +
   labs(title = "Regina, Saskatchewan - Change in House Prices",
        y = "Percent Change", x = NULL, caption = myCaption)
 ggsave("canada_housing_1_08.png", mp, width = 5, height = 4)
@@ -505,7 +505,7 @@ xx <- d3 %>%
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value)) +
   geom_col(position = "dodge", alpha = 0.8, fill = "darkgreen") +
-  scale_x_date(date_breaks = "1 year", date_labels = "%Y",
+  scale_x_date(date_breaks = "5 year", date_labels = "%Y",
                date_minor_breaks = "1 year",) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -531,8 +531,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value)) +
   geom_col(position = "dodge", color = "black",
            alpha = 0.7, fill = "darkgreen") +
   scale_x_continuous(breaks = 1992:max(xx$Year)) +
-  theme_agData(legend.position = "bottom",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_agData_col(legend.position = "bottom",
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Housing Units Built in Canada", subtitle = myAreas[1], 
        y = "Units Built", x = NULL, caption = myCaption)
 ggsave("canada_housing_3_02.png", mp, width = 7, height = 5)
@@ -595,7 +595,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Measurement)) +
   geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColors_P) +
   scale_x_continuous(breaks = 2005:max(xx$Year)) +
-  theme_agData(legend.position = "bottom") +
+  theme_agData_col(legend.position = "bottom") +
   labs(title = "Housing Units Built in Canada", subtitle = myAreas[1], 
        y = "Units Built", x = NULL, caption = myCaption)
 ggsave("canada_housing_3_05.png", mp, width = 6, height = 5)
@@ -887,8 +887,8 @@ xx <- bind_rows(xx %>% slice_min(Value, n = 15),
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value)) +
   geom_col(fill = "darkgreen", color = "black", alpha = 0.7) +
-  theme_agData(legend.position = "bottom",
-               axis.text.x = element_text(angle = 60, hjust = 1)) +
+  theme_agData_col(legend.position = "bottom",
+                   axis.text.x = element_text(angle = 60, hjust = 1)) +
   labs(title = "Rent Prices in", y = "Dollars",
        x = NULL, caption = myCaption)
 ggsave("canada_housing_6_02.png", mp, width = 8, height = 6)
