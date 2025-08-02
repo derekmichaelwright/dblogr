@@ -1,6 +1,6 @@
 ---
-title: "personal website for **Derek Michael Wright**"
-subtitle: "https://derekmichaelwright.github.io/dblogr/"
+title: "Derek Michael Wright"
+subtitle: "Welcome to my personal website"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
 ---
@@ -14,7 +14,7 @@ library(shiny)
 # https://derekmichaelwright.github.io/dblogr/home
 ```
 
-> Contents:
+> https://derekmichaelwright.github.io/dblogr/
 >
 > - `r icon("image")` [Photography](#photography)
 > - `r icon("book")` [Publications](#publications)
@@ -36,7 +36,7 @@ library(shiny)
 
 **Derek Michael Wright**
 
-I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from the [*University of Regina*](https://www.uregina.ca/){target="_blank"} in 2012, followed by a **MSc in Agrobiotechnology** from [*Justus-Liebig-Universität Gießen*](https://www.uni-giessen.de/){target="_blank"} (*University of Giessen, Germany*) in 2015. I now work in the Plant Sciences department at the [*University of Saskatchewan*](https://www.usask.ca/){target="_blank"} and have been involved in four research projects ([**AGILE**](https://knowpulse.usask.ca/study/2675314){target="_blank"}, [**EVOLVES**](https://knowpulse.usask.ca/study/2691111){target="_blank"}, [**P2IRC**](https://p2irc.usask.ca/index.php){target="_blank"} & **ACTIVATE**) with **lentil** (*Lens culinaris*). 
+I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from the [*University of Regina*](https://www.uregina.ca/){target="_blank"} in 2012, followed by a **MSc in Agrobiotechnology** from [*Justus-Liebig-Universität Gießen*](https://www.uni-giessen.de/){target="_blank"} (*University of Giessen, Germany*) in 2015. I now work in the Plant Sciences department at the [*University of Saskatchewan*](https://www.usask.ca/){target="_blank"} and have been involved in four research projects ([**AGILE**](https://knowpulse.usask.ca/study/2675314){target="_blank"}, [**EVOLVES**](https://knowpulse.usask.ca/study/2691111){target="_blank"}, [**P2IRC**](https://p2irc.usask.ca/index.php){target="_blank"} & [**ACTIVATE**](https://activating-crops.usask.ca/){target="_blank"}) with **lentil** (*Lens culinaris*). 
 
 </div><div class="col-md-6">![](cv/about.png)</div></div></div>
 
@@ -211,11 +211,11 @@ Sandesh Neupane, **Derek M. Wright**, Raul O. Martinez, Jakob Butler, Jim L. Wel
 
 <div class="box"><div class="row"><div class="col-md-6">
 
-<u>**Disecting lentil crop growth across multi-environment trials using unoccupied aerial vehicles and genome-wide association studies**</u>. *unpublished*.
+<u>**Disecting lentil crop growth across multi-environment trials using unoccupied aerial vehicles and genome-wide association studies**</u>. *The Plant Phenome Journal*.
 
 **Derek M Wright**, Sandesh Neupane, Tania Gioia, Steve Shirtlife & Kirstin E Bett
 
-- `r icon("newspaper")` *unpublished*
+- `r icon("newspaper")` [*The Plant Phenome Journal*. (**2025**) in review.](https://doi.org/){target="_blank"}
 - `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_UAV){target="_blank"}
 - `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_UAV/LDP_UAV_Vignette.html){target="_blank"}
 - `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_UAV/README.html){target="_blank"}

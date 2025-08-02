@@ -96,9 +96,11 @@ d6 <- read.csv("API_EG.USE.ELEC.KH.PC_DS2_en_csv_v2_2076.csv", skip = 4) %>%
 
 ---
 
-# Global Energy by Source {.tabset .tabset-pills}
+# Global Energy by Source
 
-## Consumption
+## Consumption {.tabset .tabset-pills}
+
+### All Data
 
 ![](world_energy_1_01.png)
 
@@ -107,10 +109,10 @@ d6 <- read.csv("API_EG.USE.ELEC.KH.PC_DS2_en_csv_v2_2076.csv", skip = 4) %>%
 mp <- ggplot(d1, aes(x = Year, y = Value / 1000, fill = Source)) +
   geom_area(alpha = 0.7, color = alpha("black",0.7), lwd = 0.3) +
   scale_fill_manual(name = NULL, values = myColors) +
-  scale_y_continuous(expand = c(0,0), limits = c(0,180),
+  scale_y_continuous(expand = c(0,0), limits = c(0,190),
                      minor_breaks = seq(0,200,10)) +
-  scale_x_continuous(breaks = seq(1800, 2020, by = 50), expand = c(0.005,0),
-                     minor_breaks = seq(1800, 2020, by = 10)) +
+  scale_x_continuous(breaks = seq(1800, 2030, by = 50), expand = c(0.005,0),
+                     minor_breaks = seq(1800, 2030, by = 10)) +
   guides(fill = guide_legend(override.aes = list(lwd = 0.4))) +
   theme_agData() +
   labs(title = "Global Energy Consumption",
@@ -124,11 +126,59 @@ ggsave("featured.png", mp, width = 8, height = 4)
 
 ---
 
-## Select Years
+### > 1950
 
 ![](world_energy_1_02.png)
 
 ```{r}
+# Prep data
+xx <- d1 %>% filter(Year > 1949)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Source)) +
+  geom_area(alpha = 0.7, color = alpha("black",0.7), lwd = 0.3) +
+  scale_fill_manual(name = NULL, values = myColors) +
+  scale_y_continuous(expand = c(0,0), limits = c(0,190),
+                     minor_breaks = seq(0, 200, by = 10)) +
+  scale_x_continuous(breaks = seq(1950, 2030, by = 10), expand = c(0.005,0),
+                     minor_breaks = seq(1950, 2030, by = 5)) +
+  guides(fill = guide_legend(override.aes = list(lwd = 0.4))) +
+  theme_agData() +
+  labs(title = "Global Energy Consumption",
+       y = "Thousand TWH", x = NULL, caption = myCaption_OWID)
+ggsave("world_energy_1_02.png", mp, width = 8, height = 4)
+```
+
+---
+
+### Line
+
+![](world_energy_1_03.png)
+
+```{r}
+# Prep data
+myOrder <- c(8,9,7,10,6,5,4,3,1,2)
+xx <- d1 %>% filter(Year > 1949) %>%
+  mutate(Source = factor(Source, levels = myItems[myOrder]))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Source)) +
+  geom_line(size = 1.5, alpha = 0.7) +
+  scale_color_manual(name = NULL, values = myColors[myOrder]) +
+  scale_y_continuous(minor_breaks = seq(0, 60, by = 10)) +
+  scale_x_continuous(breaks = seq(1950, 2030, by = 10), expand = c(0.005,0)) +
+  theme_agData() +
+  labs(title = "Global Energy Consumption",
+       y = "Thousand TWH", x = NULL, caption = myCaption_OWID)
+ggsave("world_energy_1_03.png", mp, width = 8, height = 4)
+```
+
+---
+
+### Select Years
+
+![](world_energy_1_04.png)
+
+```{r}
+# Prep data
 xx <- d1 %>% filter(Year %in% c(1800, 1850, 1900, 1950, 1975, 2000, 2021))
 # Plot
 mp <- ggplot(xx, aes(x = 1, y = Value / 1000, fill = Source)) +
@@ -141,18 +191,18 @@ mp <- ggplot(xx, aes(x = 1, y = Value / 1000, fill = Source)) +
                    axis.ticks.x = element_blank()) +
   labs(title = "Global Energy Consumption",
        y = "Thousand TWH", x = NULL, caption = myCaption_OWID)
-ggsave("world_energy_1_02.png", mp, width = 6, height = 4)
+ggsave("world_energy_1_04.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-## Fossil Fuels {.tabset .tabset-pills}
+### Fossil Fuels {.tabset .tabset-pills}
 
 > - `r shiny::icon("globe")` https://globalenergymonitor.org/projects/global-coal-plant-tracker/tracker/
 
-### Stacked
+#### Stacked
 
-![](world_energy_1_03.png)
+![](world_energy_1_05.png)
 
 ```{r}
 # Prep data
@@ -169,14 +219,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Source)) +
   guides(fill = guide_legend(reverse=T)) +
   labs(title = "Global Consumption of Fossil Fuels",
        y = "Thousand TWH", x = NULL, caption = myCaption_OWID)
-ggsave("world_energy_1_03.png", mp, width = 6, height = 4)
+ggsave("world_energy_1_05.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-### Facetted
+#### Facetted
 
-![](world_energy_1_04.png)
+![](world_energy_1_06.png)
 
 ```{r}
 # Prep data
@@ -194,14 +244,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Source)) +
   theme_agData(legend.position = "none") +
   labs(title = "Global Consumption of Fossil Fuels",
        y = "Thousand TWH", x = NULL, caption = myCaption_OWID)
-ggsave("world_energy_1_04.png", mp, width = 6, height = 3)
+ggsave("world_energy_1_06.png", mp, width = 6, height = 3)
 ```
 
 ---
 
-## Renewables
+### Renewables
 
-![](world_energy_1_05.png)
+![](world_energy_1_07.png)
 
 ```{r}
 # Prep data
@@ -219,7 +269,35 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, fill = Source)) +
   theme_agData(legend.position = "none") +
   labs(title = "Global Consumption of \"Green\" Energy",
        y = "Thousand TWH", x = NULL, caption = myCaption_OWID)
-ggsave("world_energy_1_05.png", mp, width = 6, height = 4)
+ggsave("world_energy_1_07.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Bar Animation
+
+![](world_energy_gif_1_01.gif)
+
+```{r}
+# Prep data
+xx <- d1 %>% filter(Year > 1870)
+# Plot
+mp <- ggplot(xx, aes(x = 1, y = Value / 1000, fill = Source)) +
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(name = NULL, 
+                    values = rev(myColors), breaks = rev(myItems)) +
+  scale_x_continuous(expand = c(0,0)) +
+  theme_agData(legend.position = "bottom",
+               axis.text.y = element_blank(),
+               axis.ticks.y = element_blank()) +
+  coord_flip() +
+  guides(fill = guide_legend(nrow = 1)) +
+  labs(title = "Global Energy Consumption - {round(frame_time)}",
+       y = "Thousand TWH", x = NULL, caption = myCaption_OWID) +
+  transition_time(Year)
+anim_save("world_energy_gif_1_01.gif", mp,
+          nframes = 300, fps = 10, end_pause = 30, 
+          width = 1200, height = 300, res = 150, units = "px")
 ```
 
 ---
@@ -228,7 +306,7 @@ ggsave("world_energy_1_05.png", mp, width = 6, height = 4)
 
 ### Fossil Fuels
 
-![](world_energy_1_06.png)
+![](world_energy_2_01.png)
 
 ```{r}
 # Prep data
@@ -251,18 +329,17 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Source)) +
   scale_color_manual(name = NULL, values = myColors[9:7]) +
   scale_x_continuous(breaks = seq(1950, 2050, by = 10),
                      minor_breaks = seq(1950, 2050, by = 10)) +
-  
   theme_agData(legend.position = "bottom") +
   labs(title = "Global Consumption of Fossil Fuels",
        y = "Thousand TWH", x = NULL, caption = myCaption_OWID)
-ggsave("world_energy_1_06.png", mp, width = 6, height = 4)
+ggsave("world_energy_2_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### Renewables
 
-![](world_energy_1_07.png)
+![](world_energy_2_02.png)
 
 ```{r}
 # Prep data
@@ -306,12 +383,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Source)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Global Consumption of \"Green\" Energy",
        y = "Thousand TWH", x = NULL, caption = myCaption_OWID)
-ggsave("world_energy_1_07.png", mp, width = 6, height = 4)
+ggsave("world_energy_2_02.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### Nuclear Energy
+
+![](world_energy_2_03.png)
 
 ```{r}
 # Prep data
@@ -334,7 +413,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Source)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Global Consumption of Nuclear Energy",
        y = "Thousand TWH", x = NULL, caption = myCaption_OWID)
-ggsave("world_energy_1_08.png", mp, width = 6, height = 4)
+ggsave("world_energy_2_03.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -343,7 +422,7 @@ ggsave("world_energy_1_08.png", mp, width = 6, height = 4)
 
 ### All Data
 
-![](world_energy_1_09.png)
+![](world_energy_3_01.png)
 
 ```{r}
 # Plot
@@ -357,14 +436,14 @@ mp <- ggplot(d1, aes(x = Year, y = Percent, fill = Source)) +
   theme_agData() +
   labs(title = "Global Energy Consumption",
        y = "Percent of Total Energy Use", x = NULL, caption = myCaption_OWID)
-ggsave("world_energy_1_09.png", mp, width = 8, height = 4)
+ggsave("world_energy_3_01.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ### > 2005
 
-![](world_energy_1_10.png)
+![](world_energy_3_02.png)
 
 ```{r}
 # Prep data
@@ -380,14 +459,14 @@ mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Source)) +
   theme_agData() +
   labs(title = "Global Energy Consumption",
        y = "Percent of Total Energy Use", x = NULL, caption = myCaption_OWID)
-ggsave("world_energy_1_10.png", mp, width = 8, height = 4)
+ggsave("world_energy_3_02.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ### Fossil Fuels
 
-![](world_energy_1_11.png)
+![](world_energy_3_03.png)
 
 ```{r}
 # Prep data
@@ -405,14 +484,14 @@ mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Source)) +
   theme_agData(legend.position = "none") +
   labs(title = "Global Consumption of Fossil Fuels", x = NULL,
        y = "Percent of Total Energy Use", caption = myCaption_OWID)
-ggsave("world_energy_1_11.png", mp, width = 6, height = 3)
+ggsave("world_energy_3_03.png", mp, width = 6, height = 3)
 ```
 
 ---
 
 ### Renewables
 
-![](world_energy_1_12.png)
+![](world_energy_3_04.png)
 
 ```{r}
 # Prep data
@@ -428,14 +507,14 @@ mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Source)) +
   theme_agData(legend.position = "none") +
   labs(title = "Global Consumption of \"Green\" Energy",
        y = "Percent of Total Energy Use", x = NULL, caption = myCaption_OWID)
-ggsave("world_energy_1_12.png", mp, width = 6, height = 4)
+ggsave("world_energy_3_04.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### 2021 
 
-![](world_energy_1_13.png)
+![](world_energy_3_05.png)
 
 ```{r}
 # Prep data
@@ -451,14 +530,14 @@ mp <- ggplot(xx, aes(x = 1, y = -Percent, fill = Source)) +
   theme_agData_pie() +
   xlim(0.545, 1.45) +
   labs(title = "Global Energy Consumption - 2021", caption = myCaption_OWID)
-ggsave("world_energy_1_13.png", mp, width = 7, height = 5)
+ggsave("world_energy_3_05.png", mp, width = 7, height = 5)
 ```
 
 ---
 
 ## Pie Animation
 
-![](world_energy_gif_1_01.gif)
+![](world_energy_gif_3_01.gif)
 
 ```{r}
 # Prep data
@@ -473,37 +552,9 @@ mp <- ggplot(xx, aes(x = "", y = -Percent, fill = Source)) +
   labs(title = "Percent of Global Energy Consumption - {round(frame_time)}",
        caption = myCaption_OWID) +
   transition_time(Year)
-anim_save("world_energy_gif_1_01.gif", mp,
+anim_save("world_energy_gif_3_01.gif", mp,
           nframes = 300, fps = 10, end_pause = 30, 
           width = 900, height = 700, res = 150, units = "px")
-```
-
----
-
-## Bar Animation
-
-![](world_energy_gif_1_02.gif)
-
-```{r}
-# Prep data
-xx <- d1 %>% filter(Year > 1870)
-# Plot
-mp <- ggplot(xx, aes(x = 1, y = Value / 1000, fill = Source)) +
-  geom_col(color = "black", alpha = 0.7) +
-  scale_fill_manual(name = NULL, 
-                    values = rev(myColors), breaks = rev(myItems)) +
-  scale_x_continuous(expand = c(0,0)) +
-  theme_agData(legend.position = "bottom",
-               axis.text.y = element_blank(),
-               axis.ticks.y = element_blank()) +
-  coord_flip() +
-  guides(fill = guide_legend(nrow = 1)) +
-  labs(title = "Global Energy Consumption - {round(frame_time)}",
-       y = "Thousand TWH", x = NULL, caption = myCaption_OWID) +
-  transition_time(Year)
-anim_save("world_energy_gif_1_02.gif", mp,
-          nframes = 300, fps = 10, end_pause = 30, 
-          width = 1200, height = 300, res = 150, units = "px")
 ```
 
 ---
@@ -512,7 +563,7 @@ anim_save("world_energy_gif_1_02.gif", mp,
 
 ## Select Countries
 
-![](world_energy_2_01.png)
+![](world_energy_4_01.png)
 
 ```{r}
 # Prep data
@@ -526,14 +577,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   theme_agData() +
   labs(title = "Per Capita Energy Consumption", x = NULL,
        y = "Thousand kWh Per Person", caption = myCaption_OWID)
-ggsave("world_energy_2_01.png", mp, width = 6, height = 4)
+ggsave("world_energy_4_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 # Canada vs China
 
-![](world_energy_2_02.png)
+![](world_energy_4_02.png)
 
 ```{r}
 # Prep data
@@ -550,7 +601,7 @@ mp2 <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
 mp1 <- mp2 + facet_wrap(Area ~ ., scales = "free_y") +
   labs(title = "A) Propaganda For Canada", caption = NULL)
 mp <- ggarrange(mp1, mp2, ncol = 1, common.legend = T, legend = "bottom")
-ggsave("world_energy_2_02.png", mp, width = 6, height = 5, bg = "white")
+ggsave("world_energy_4_02.png", mp, width = 6, height = 5, bg = "white")
 ```
 
 ---
@@ -559,7 +610,7 @@ ggsave("world_energy_2_02.png", mp, width = 6, height = 5, bg = "white")
 
 ## 1990
 
-![](world_energy_3_01.png)
+![](world_energy_5_01.png)
 
 ```{r}
 # Prep data
@@ -582,14 +633,14 @@ mp <- ggplot(xx, aes(x = CO2, y = GDP / 1000)) +
        y = "GDP Per Capita (int.-$ x1000)", 
        x = "Per Capita Consumption-Based CO2 emissions",
        caption = myCaption_OWID)
-ggsave("world_energy_3_01.png", mp, width = 6, height = 4)
+ggsave("world_energy_5_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## 2018
 
-![](world_energy_3_02.png)
+![](world_energy_5_02.png)
 
 ```{r}
 # Prep data
@@ -612,31 +663,31 @@ mp <- ggplot(xx, aes(x = CO2, y = GDP / 1000)) +
        y = "GDP Per Capita (int.-$ x1000)", 
        x = "Per Capita Consumption-Based CO2 Emissions",
        caption = myCaption_OWID)
-ggsave("world_energy_3_02.png", mp, width = 6, height = 4)
+ggsave("world_energy_5_02.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Interactive
 
-https://dblogr.com/blog/world_energy/world_energy_3_02.html
+https://dblogr.com/blog/world_energy/world_energy_5_02.html
 
 <iframe
-  src="world_energy_3_02.html"
+  src="world_energy_5_02.html"
   style="width:100%; height:600px;"
   data-external="1"
 ></iframe>
 
 ```{r}
 mp <- ggplotly(mp)
-saveWidget(as_widget(mp), "world_energy_3_02.html")
+saveWidget(as_widget(mp), "world_energy_5_02.html")
 ```
 
 ---
 
 ## 1990 vs 2018
 
-![](world_energy_3_03.png)
+![](world_energy_5_03.png)
 
 ```{r}
 # Prep data
@@ -656,7 +707,7 @@ mp <- ggplot(xx, aes(x = CO2, y = GDP / 1000)) +
        y = "GDP Per Capita (int.-$ x1000)", 
        x = "Per Capita Consumption-Based CO2 Emissions",
        caption = myCaption_OWID)
-ggsave("world_energy_3_03.png", mp, width = 8, height = 4)
+ggsave("world_energy_5_03.png", mp, width = 8, height = 4)
 ```
 
 ---
@@ -691,7 +742,7 @@ anim_save("world_energy_gif_2_01.gif", mp,
 
 ## Change
 
-![](world_energy_3_04.png)
+![](world_energy_5_04.png)
 
 ```{r}
 # Prep data
@@ -732,14 +783,14 @@ mp <- ggplot(xx, aes(x = CO2, y = GDP / 1000)) +
        y = "GDP Per Capita (int.-$ x1000)", 
        x = "Per Capita Consumption-Based CO2 Emissions",
        caption = myCaption_OWID)
-ggsave("world_energy_3_04.png", mp, width = 10, height = 3.5)
+ggsave("world_energy_5_04.png", mp, width = 10, height = 3.5)
 ```
 
 ---
 
 ## Canada
 
-![](world_energy_3_05.png)
+![](world_energy_5_05.png)
 
 ```{r}
 # Prep data
@@ -758,7 +809,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   theme_agData(legend.position = "none") +
   labs(title = "Canadian Carbon Emmissions and GDP", 
        y = NULL, x = NULL, caption = myCaption_OWID)
-ggsave("world_energy_3_05.png", mp, width = 8, height = 4)
+ggsave("world_energy_5_05.png", mp, width = 8, height = 4)
 ```
 
 ---
@@ -767,7 +818,7 @@ ggsave("world_energy_3_05.png", mp, width = 8, height = 4)
 
 ## Global Poverty
 
-![](world_energy_4_01.png)
+![](world_energy_6_01.png)
 
 ```{r}
 # Plot
@@ -780,14 +831,14 @@ mp <- ggplot(d4, aes(x = Year, y = Value / 1000000000, color = Measurement)) +
   guides(color = guide_legend(nrow = 2, ncol = 1)) +
   labs(title = "Global Poverty", x = NULL, 
        y = "Billion People", caption = myCaption_OWID)
-ggsave("world_energy_4_01.png", mp, width = 6, height = 4)
+ggsave("world_energy_6_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Percent Poverty
 
-![](world_energy_4_02.png)
+![](world_energy_6_02.png)
 
 ```{r}
 # Prep data
@@ -804,14 +855,14 @@ mp <- ggplot(xx, aes(x = Year, y = Percent)) +
   guides(color = guide_legend(nrow = 2, ncol = 1)) +
   labs(title = "Percent of People Living in Extreme Poverty", 
        y = NULL, x = NULL, caption = myCaption_OWID)
-ggsave("world_energy_4_02.png", mp, width = 6, height = 4)
+ggsave("world_energy_6_02.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Poverty Pie
 
-![](world_energy_gif_3_01.gif)
+![](world_energy_gif_6_01.gif)
 
 ```{r}
 # Plot
@@ -824,7 +875,7 @@ mp <- ggplot(d4, aes(x = "", y = Percent, fill = Measurement)) +
   labs(title = "Percent of People Living in Poverty - {round(frame_time)}",
        caption = myCaption_OWID) +
   transition_time(Year)
-anim_save("world_energy_gif_3_01.gif", mp,
+anim_save("world_energy_gif_6_01.gif", mp,
           nframes = 300, fps = 10, end_pause = 30, 
           width = 900, height = 700, res = 150, units = "px")
 ```
@@ -833,7 +884,7 @@ anim_save("world_energy_gif_3_01.gif", mp,
 
 ## Literacy
 
-![](world_energy_4_03.png)
+![](world_energy_6_03.png)
 
 ```{r}
 # Plot
@@ -849,14 +900,14 @@ mp <- ggplot(d4, aes(x = Year, y = Percent, color = Measurement)) +
   guides(color = guide_legend(nrow = 2, ncol = 1)) +
   labs(title = "Global Literacy Rates", x = NULL,
        y = "Percent", caption = myCaption_OWID)
-ggsave("world_energy_4_03.png", mp, width = 6, height = 4)
+ggsave("world_energy_6_03.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Poverty + Illiteracy
 
-![](world_energy_4_04.png)
+![](world_energy_6_04.png)
 
 ```{r}
 # Prep data
@@ -874,14 +925,14 @@ mp <- ggplot(xx, aes(x = Year, y = Percent, color = Measurement)) +
   guides(fill = guide_legend(nrow = 2, ncol = 1)) +
   labs(title = "Global Reduction in Poverty and Illiteracy", 
        y = "Percent", x = NULL, caption = myCaption_OWID)
-ggsave("world_energy_4_04.png", mp, width = 6, height = 4)
+ggsave("world_energy_6_04.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Energy and Poverty
 
-![](world_energy_4_05.png)
+![](world_energy_6_05.png)
 
 ```{r}
 # Prep data
@@ -903,7 +954,7 @@ mp <- ggplot(xx, aes(x = `Fossil Fuels` / 1000, y = Percent)) +
        y = "Percent Not in Extreme Poverty", 
        x = "Thousand TWH From Fossil Fuels",
        caption = myCaption_OWID)
-ggsave("world_energy_4_05.png", mp, width = 6, height = 4)
+ggsave("world_energy_6_05.png", mp, width = 6, height = 4)
 ```
 
 ---
