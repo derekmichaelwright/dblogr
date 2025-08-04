@@ -31,6 +31,11 @@ Extreme poverty & literacy
 
 ---
 
+```{r echo = F}
+# https://ourworldindata.org/energy-mix
+#df <- read.csv("https://ourworldindata.org/grapher/energy-consumption-by-source-and-country.csv?v=1&csvType=full&useColumnShortNames=true")
+```
+
 # Prepare Data
 
 ```{r class.source = "fold-show"}

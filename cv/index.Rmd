@@ -7,36 +7,35 @@ output:
 Aside
 ====================================
 
-![](about.png){width=100%}
+![](images/about.png){width=100%}
 
 View CV as:  <i class="fas fa-file-pdf"></i> [PDF](https://derekmichaelwright.github.io/dblogr/cv.wright.derek.pdf){target="_blank"} <i class="fa fa-globe"></i> [HTML](https://derekmichaelwright.github.io/dblogr/cv){target="_blank"}
 
-<i class="fa fa-flask"></i> Skills {#skills}
---------------------------------------------------------------------------------
+### <i class="fa fa-flask"></i> Skills {#skills}
 
 - <i class="fa fa-camera"></i> &nbsp; Photography
-- <i class="fab fa-pagelines"></i> &nbsp; Biology
-- <i class="fas fa-dna"></i> &nbsp; Genomics
-- <i class="fa fa-table"></i> &nbsp; Data Analytics
-- <i class="fa fa-line-chart"></i> &nbsp; Data Visualization
+- <i class="fas fa-dna"></i> &nbsp; Biology &Genomics
+- <i class="fa fa-line-chart"></i> &nbsp; Data Analytics & Visualization
 - <i class="fab fa-r-project"></i> &nbsp; The R Project
 
-### <i class="fa fa-address-card"></i> Contact Info {#contact}
+### <i class="fa fa-address-card"></i> Contact {#contact}
 
+- <i class="fa fa-phone"></i> &nbsp; +1 306-220-0645
 - <i class="fa fa-envelope"></i> &nbsp; wrightmderek@gmail.com
 - <i class="fa fa-envelope-o"></i> &nbsp; derek.wright@usask.ca
-- <i class="fa fa-phone"></i> &nbsp; +1 306-220-0645
-
-### <i class="fa fa-cloud"></i> Social Media
-
 - <i class="fa fa-twitter-square"></i> &nbsp; [@DerekMWright](https://twitter.com/DerekMWright){target="_blank"}
+- <i class="fa fa-square-instagram"></i> &nbsp; [@derekmichaelwright](https://www.instagram.com/derekmichaelwright/){target="_blank"}
 - <i class="fa fa-github"></i> &nbsp; [github.com/derekmichaelwright](https://github.com/derekmichaelwright){target="_blank"}
 
-### <i class="fa fa-globe"></i> Personal Website
+### <i class="fa fa-globe"></i> Website
 
 [derekmichaelwright.github.io/dblogr/](https://derekmichaelwright.github.io/dblogr/){target="_blank"}
 
-![](logo_banner.png)
+![](images/logo_banner.png)
+
+<center>
+![](images/QR_dblogr.png){width=80%}
+</center>
 
 Main
 ================================================================================
@@ -96,10 +95,7 @@ Giessen, Hesse, Germany
   * Plant Protection and Bioengeneering
   * Microbial-Food-Biotechnology
   * Applied Statistics and Bioinformatics
-  * Risk Assessment, Bio-safety and Patent Law
   * Molecular Plant Breeding
-  * Microbial Diagnostics
-  * Plant Pathogens and Symbionts
   * Molecular Entomology
   * Tissue Culturing and Genetic Transformation
 :::
@@ -123,10 +119,10 @@ Regina, Saskatchewan, Canada
   * Bacterial Genetics
 :::
 
-R Packages {data-icon=code}
+<i class="fab fa-r-project"></i> Packages {data-icon=code}
 --------------------------------------------------------------------------------
 
-### agData: an R package containing agricultural data sets
+### agData: an <i class="fab fa-r-project"></i> package containing agricultural data sets
 
 [https://derekmichaelwright.github.io/agData/](https://derekmichaelwright.github.io/agData/){target="_blank"}
 devtools::install_github("derekmichaelwright/agData")
@@ -135,7 +131,7 @@ N/A
 
 N/A
 
-### gwaspr: an R package for plotting GWAS results
+### gwaspr: an <i class="fab fa-r-project"></i> package for plotting GWAS results
 
 [https://derekmichaelwright.github.io/gwaspr/](https://derekmichaelwright.github.io/gwaspr/){target="_blank"}
 devtools::install_github("derekmichaelwright/gwaspr")
@@ -149,49 +145,48 @@ Publications {data-icon=file}
 
 ### Disecting lentil crop growth across multi-environment trials using unoccupied aerial vehicles and genome-wide association studies
 
-[*The Plant Phenome Journal*. (**2025**) in review.](https://acsess.onlinelibrary.wiley.com/journal/25782703){target="_blank"}
+[*The Plant Phenome Journal*. In review.](https://acsess.onlinelibrary.wiley.com/journal/25782703){target="_blank"}
 
 N/A
 
 2025
 
-**Derek M Wright**, Sandesh Neupane, Tania Gioia, Steve Shirtlife & Kirstin E Bett
+<i class="fa fa-github"></i> [github](https://github.com/derekmichaelwright/AGILE_LDP_UAV){target="_blank"} <i class="fab fa-r-project"></i> [Script](https://derekmichaelwright.github.io/AGILE_LDP_UAV/LDP_UAV_Vignette.html)
 
 ::: aside
-* data analysis
-* data visualization
-* manuscript writing
+![](figures/uav.png)
 :::
 
 ### Breeding potential of cultivated lentil for increased protein and amino acid concentrations in the Northern Great Plains
 
-[*Crop Science*. (**2025**) 65(3): e70085.](doi.org/10.1002/csc2.70085){target="_blank"}
+[*Crop Science*. 65(3): e70085.](doi.org/10.1002/csc2.70085){target="_blank"}
 
 N/A
 
 2025
 
-**Derek M. Wright**, Jiayi Hang, James D. House & Kirstin E. Bett
+<i class="fa fa-github"></i> [github](https://github.com/derekmichaelwright/AGILE_LDP_Protein){target="_blank"} <i class="fab fa-r-project"></i> [Script](https://derekmichaelwright.github.io/AGILE_LDP_Protein/LDP_Protein_Vignette.html)
 
 ::: aside
-* data analysis
-* data visualization
-* manuscript writing
+<br>
+![](figures/nir.png)
 :::
+
+### Grazing preferences of three species of amoebae on cyanobacteria and green algae
+
+[*The Journal of Eukaryotic Microbiology*. e13018: 1-14.](https://doi.org/10.1111/jeu.13018){target="_blank"}
+
+N/A
+
+2024
 
 ### Mass Spectrometry-Based Untargeted Metabolomics Reveals the Importance of Glycosylated Flavones in Patterned Lentil Seed Coats
 
-[*Journal of Agricultural and Food Chemistry*. 71(7): 3541–3549](https://pubs.acs.org/doi/full/10.1021/acs.jafc.2c07844){target="_blank"}
+[*Journal of Agricultural and Food Chemistry*. 71(7): 3541–3549.](https://pubs.acs.org/doi/full/10.1021/acs.jafc.2c07844){target="_blank"}
 
 N/A
 
 2023
-
-Elessawy F, **Wright D**, *et al*.
-
-::: aside
-* data collection
-:::
 
 ### Focusing the GWAS *Lens* on days to flower using latent variable phenotypes derived from global multi-environment trials
 
@@ -199,15 +194,12 @@ Elessawy F, **Wright D**, *et al*.
 
 N/A
 
-2022 
+2022
 
-Neupane S, **Wright D**, *et al*.
+<i class="fa fa-github"></i> [github](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology){target="_blank"} <i class="fab fa-r-project"></i> [Script](https://derekmichaelwright.github.io/AGILE_LDP_GWAS_Phenology/GWAS_Phenology_Vignette.html)
 
 ::: aside
-* data collection
-* data analysis
-* data visualization
-* manuscript writing
+![](figures/gwas.jpg)
 :::
 
 ### Strategic Identification of New Genetic Diversity to Expand Lentil (Lens culinaris Medik.) Production (Using Nepal as an Example)
@@ -216,14 +208,10 @@ Neupane S, **Wright D**, *et al*.
 
 N/A
 
-2021 
+2021
 
-Neupane S, Dhakal R, **Wright D**, *et al*.
+<i class="fa fa-github"></i> [github](https://github.com/derekmichaelwright/AGILE_LDP_Nepal){target="_blank"} <i class="fab fa-r-project"></i> [Script](https://derekmichaelwright.github.io/AGILE_LDP_Nepal/Phenology_Vignette.html)
 
-::: aside
-* data analysis
-* data visualization
-:::
 
 ### Genomic selection for lentil breeding: Empirical evidence
 
@@ -231,12 +219,10 @@ Neupane S, Dhakal R, **Wright D**, *et al*.
 
 N/A
 
-2020 
-
-Haile TA, Heidecker T, **Wright D**, *et al*.
+2020
 
 ::: aside
-* data visualization
+![](figures/dtf.png)
 :::
 
 ### Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)
@@ -245,72 +231,29 @@ Haile TA, Heidecker T, **Wright D**, *et al*.
 
 N/A
 
-2020 
+2020
 
-**Wright D**, *et al*.
-
-::: aside
-* data collection
-* data analysis
-* data visualization
-* manuscript writing
-:::
+<i class="fa fa-github"></i> [github](https://github.com/derekmichaelwright/AGILE_LDP_Phenology){target="_blank"} <i class="fab fa-r-project"></i> [Script](https://derekmichaelwright.github.io/AGILE_LDP_Phenology/Phenology_Vignette.html)
 
 ### Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)
 
-*MSc Thesis*
+*University of Giessen MSc Thesis*
 
 N/A
 
-2015 
+2015
 
-**Wright D**
-
-Unpublished Work {data-icon=file}
---------------------------------------------------------------------------------
-
-### Investigating seed size, shape, color, and patterning in a lentil diversity panel and inter-specific RIL populations 
-
-N/A
-
-N/A
-
-N/A
+<i class="fab fa-r-project"></i> [Script](https://derekmichaelwright.github.io/dblogr/publications/canola_nue/){target="_blank"}
 
 ::: aside
-* data analysis
-* data visualization
+![](figures/canola.png)
 :::
 
-Photography {data-icon=camera}
---------------------------------------------------------------------------------
+### Investigating seed size, shape, color, and patterning in a lentil using high throughput imaging 
 
-### Saskatchewan Field Trials
-
-N/A
+*unpublished*
 
 N/A
 
 N/A
 
-![](DW-P-16-07-07-04-1.jpg)
-
-### Bangladesh Field Trials
-
-N/A
-
-N/A
-
-N/A
-
-![](DW-P-18-02-02-06-2.jpg)
-
-### Lentil Seed Diversity
-
-N/A
-
-N/A
-
-N/A
-
-![](SeedDiv.png)

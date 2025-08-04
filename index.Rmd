@@ -1,5 +1,5 @@
 ---
-title: "Derek Michael Wright"
+title: "derekmichaelwright.github.io/dblogr/"
 subtitle: "Welcome to my personal website"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
@@ -14,11 +14,11 @@ library(shiny)
 # https://derekmichaelwright.github.io/dblogr/home
 ```
 
-> https://derekmichaelwright.github.io/dblogr/
+> Contents:
 >
 > - `r icon("image")` [Photography](#photography)
 > - `r icon("book")` [Publications](#publications)
-> - `r icon("newspaper")` [Academic Work](#academic-work) | [Tutorials](#tutorials) | [Vignettes](#vignettes)
+> - `r icon("newspaper")` [Academic Work](#academic-work) | [gwaspr](#gwaspr) | [Tutorials](#tutorials) & [Vignettes](#vignettes) 
 > - `r icon("r-project")` [agData](#agdata)
 > - `r icon("chart-line")` [Blog](#blog)
 
@@ -26,9 +26,7 @@ library(shiny)
 
 ---
 
-# `r icon("address-card")` About Me {.tabset .tabset-pills}
-
-## Biography
+# `r icon("address-card")` About Me
 
 <div class="box">
 
@@ -38,11 +36,7 @@ library(shiny)
 
 I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from the [*University of Regina*](https://www.uregina.ca/){target="_blank"} in 2012, followed by a **MSc in Agrobiotechnology** from [*Justus-Liebig-Universität Gießen*](https://www.uni-giessen.de/){target="_blank"} (*University of Giessen, Germany*) in 2015. I now work in the Plant Sciences department at the [*University of Saskatchewan*](https://www.usask.ca/){target="_blank"} and have been involved in four research projects ([**AGILE**](https://knowpulse.usask.ca/study/2675314){target="_blank"}, [**EVOLVES**](https://knowpulse.usask.ca/study/2691111){target="_blank"}, [**P2IRC**](https://p2irc.usask.ca/index.php){target="_blank"} & [**ACTIVATE**](https://activating-crops.usask.ca/){target="_blank"}) with **lentil** (*Lens culinaris*). 
 
-</div><div class="col-md-6">![](cv/about.png)</div></div></div>
-
-## CV/Contact
-
-<div class="box">
+</div><div class="col-md-6">![](cv/about.png)</div></div>
 
 <div class="row"><div class="col-md-6">
 
@@ -124,10 +118,18 @@ Some of my photography work
 
 ---
 
-# `r icon("book")` Publications
+# `r icon("book")` Publications {.tabset .tabset-pills}
+
+## All Publications
+
+Scientific publications I have been involved in while working/studying at [***University of Regina***](https://www.uregina.ca/){target="_blank"}, [***Justus-Liebig-Universität Gießen (University of Giessen)***](https://www.uni-giessen.de/){target="_blank"} & the [***University of Saskatchewan***](https://www.usask.ca/){target="_blank"}.
 
 <div class="box">
 
+- `r icon("newspaper")` (**2025**) <u>**Disecting lentil crop growth across multi-environment trials using unoccupied aerial vehicles and genome-wide association studies**</u>. *The Plant Phenome Journal*. In review.
+- `r icon("newspaper")` (**2025**) [<u>**Breeding potential of cultivated lentil for increased protein and amino acid concentrations in the Northern Great Plains**</u>](http://dx.doi.org/10.1002/csc2.70085){target="_blank"}. *Crop Science*. 65(3): e70085. doi.org/10.1002/csc2.70085
+- `r icon("newspaper")` (**2024**) [<u>**Grazing preferences of three species of amoebae on cyanobacteria and green algae**</u>](https://doi.org/10.1111/jeu.13018){target="_blank"}. *The Journal of Eukaryotic Microbiology*. (**2024**) e13018: 1-14. doi.org/10.1111/jeu.13018
+- `r icon("newspaper")` (**2023**) [<u>**Mass Spectrometry-Based Untargeted Metabolomics Reveals the Importance of Glycosylated Flavones in Patterned Lentil Seed Coats**</u>](https://doi/10.1021/acs.jafc.2c07844){target="_blank"}. *Journal of Agricultural and Food Chemistry*. 71(7): 3541–3549. doi.org/10.1021/acs.jafc.2c07844
 - `r icon("newspaper")` (**2022**) [<u>**Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**</u>](https://doi.org/10.1002/tpg2.20269){target="_blank"}. *The Plant Genome*. e20269. doi.org/10.1002/tpg2.20269
   + `r icon("podcast")` [Field Lab Earth Podcast](http://fieldlabearth.libsyn.com/latent-variable-phenotypes-in-lentil-with-sandesh-neupane-and-derek-wright)
 - `r icon("newspaper")` (**2021**) [<u>**Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**</u>](https://doi.org/10.3390/agronomy11101933){target="_blank"}. *Agronomy*. 11(10): 1933. doi.org/10.3390/agronomy11101933
@@ -137,11 +139,7 @@ Some of my photography work
 
 </div>
 
-## All Publications {.tabset .tabset-pills}
-
-Scientific publications I have been involved in while working/studying at [***University of Regina***](https://www.uregina.ca/){target="_blank"}, [***Justus-Liebig-Universität Gießen (University of Giessen)***](https://www.uni-giessen.de/){target="_blank"} & the [***University of Saskatchewan***](https://www.usask.ca/){target="_blank"}.
-
-### LDP Phenology {.active}
+## LDP Phenology
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -174,23 +172,7 @@ Scientific publications I have been involved in while working/studying at [***Un
 
 </div>
 
-### LDP Nepal Phenology
-
-<div class="box"><div class="row"><div class="col-md-6">
-
-[<u>**Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**</u>](https://doi.org/10.3390/agronomy11101933){target="_blank"}. *Agronomy*. (**2021**) 11(10): 1933. doi.org/10.3390/agronomy11101933
-
-Sandesh Neupane, Rajeev Dhakal, **Derek M. Wright**, Deny K. Shrestha, Bishnu Dhakal & Kirstin E. Bett
-
-- `r icon("newspaper")` [*Agronomy*. (**2021**) 11(10): 1933.](https://doi.org/10.3390/agronomy11101933){target="_blank"}
-- `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_Nepal){target="_blank"}
-- `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Nepal/Phenology_Vignette.html){target="_blank"}
-- `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Nepal/README.html){target="_blank"}
-- `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_Nepal/blob/master/README.pdf){target="_blank"}
-
-</div><div class="col-md-6">![](publications/ldp_nepal/featured.png)</div></div></div>
-
-### LDP GWAS Phenology
+## LDP GWAS Phenology
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -207,7 +189,7 @@ Sandesh Neupane, **Derek M. Wright**, Raul O. Martinez, Jakob Butler, Jim L. Wel
 
 </div><div class="col-md-6">![](publications/ldp_gwas_phenology/featured.png)</div></div></div>
 
-### LDP GWAS UAV
+## LDP GWAS UAV
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -224,7 +206,7 @@ Sandesh Neupane, **Derek M. Wright**, Raul O. Martinez, Jakob Butler, Jim L. Wel
 
 </div><div class="col-md-6">![](publications/ldp_uav/featured.png)</div></div></div>
 
-### LDP GWAS Protein
+## LDP GWAS Protein
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -248,7 +230,23 @@ Jiayi Hang, Da Shi, Jason Neufeld, Kirstin E. Bett & James D. House
 
 </div><div class="col-md-6">![](publications/ldp_protein/featured.png)</div></div></div>
 
-### Genomic Selection in Lentil
+## LDP Nepal Phenology
+
+<div class="box"><div class="row"><div class="col-md-6">
+
+[<u>**Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**</u>](https://doi.org/10.3390/agronomy11101933){target="_blank"}. *Agronomy*. (**2021**) 11(10): 1933. doi.org/10.3390/agronomy11101933
+
+Sandesh Neupane, Rajeev Dhakal, **Derek M. Wright**, Deny K. Shrestha, Bishnu Dhakal & Kirstin E. Bett
+
+- `r icon("newspaper")` [*Agronomy*. (**2021**) 11(10): 1933.](https://doi.org/10.3390/agronomy11101933){target="_blank"}
+- `r icon("github")` [Github Repository](https://github.com/derekmichaelwright/AGILE_LDP_Nepal){target="_blank"}
+- `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Nepal/Phenology_Vignette.html){target="_blank"}
+- `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_Nepal/README.html){target="_blank"}
+- `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_Nepal/blob/master/README.pdf){target="_blank"}
+
+</div><div class="col-md-6">![](publications/ldp_nepal/featured.png)</div></div></div>
+
+## Genomic Selection in Lentil
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -260,7 +258,7 @@ Teketel A. Haile,  Taryn Heidecker,  **Derek M. Wright**,  Sandesh Neupane,  Lar
 
 </div><div class="col-md-6">![](publications/ldp_genomic_selection/featured.png)</div></div></div>
 
-### Lentil Flavones
+## Lentil Flavones
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -272,7 +270,7 @@ Fatma M. Elessawy, **Derek M. Wright**, Albert Vandenberg, Anas El-Aneed & Randy
 
 </div><div class="col-md-6">![](publications/lentil_flavones/featured.png)</div></div></div>
 
-### Algae Grazers
+## Algae Grazers
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -284,7 +282,7 @@ Harold G. Weger, April K. Polasek, **Derek M. Wright**, Arun Damodaran, John Sta
 
 </div><div class="col-md-6">![](publications/algae_grazing/featured.png)</div></div></div>
 
-### NEU in Canola
+## NEU in Canola
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -303,7 +301,7 @@ Harold G. Weger, April K. Polasek, **Derek M. Wright**, Arun Damodaran, John Sta
 
 ---
 
-# `r icon("newspaper")` Academic Work
+# `r icon("newspaper")` Academic Work {.tabset .tabset-pills}
 
 ## gwaspr
 
@@ -456,7 +454,9 @@ A vignette illustrating how to mislead with statistics and graphs
 
 ---
 
-# `r icon("r-project")` agData
+# `r icon("r-project")` agData {.tabset .tabset-pills}
+
+## agData
 
 <div class="box"><div class="row"><div class="col-md-8">
 
@@ -689,7 +689,7 @@ Graphs of GE crop production using USDA data
 
 ---
 
-# `r icon("chart-line")` Blog
+# `r icon("chart-line")` Blog {.tabset .tabset-pills}
 
 Random data visualizations and general blog posts.
 
