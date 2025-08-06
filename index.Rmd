@@ -1,5 +1,5 @@
 ---
-title: "derekmichaelwright.github.io/dblogr/"
+title: "dblogr"
 subtitle: "Welcome to my personal website"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
@@ -14,7 +14,7 @@ library(shiny)
 # https://derekmichaelwright.github.io/dblogr/home
 ```
 
-> Contents:
+> derekmichaelwright.github.io/dblogr/
 >
 > - `r icon("image")` [Photography](#photography)
 > - `r icon("book")` [Publications](#publications)
@@ -36,7 +36,7 @@ library(shiny)
 
 I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from the [*University of Regina*](https://www.uregina.ca/){target="_blank"} in 2012, followed by a **MSc in Agrobiotechnology** from [*Justus-Liebig-Universität Gießen*](https://www.uni-giessen.de/){target="_blank"} (*University of Giessen, Germany*) in 2015. I now work in the Plant Sciences department at the [*University of Saskatchewan*](https://www.usask.ca/){target="_blank"} and have been involved in four research projects ([**AGILE**](https://knowpulse.usask.ca/study/2675314){target="_blank"}, [**EVOLVES**](https://knowpulse.usask.ca/study/2691111){target="_blank"}, [**P2IRC**](https://p2irc.usask.ca/index.php){target="_blank"} & [**ACTIVATE**](https://activating-crops.usask.ca/){target="_blank"}) with **lentil** (*Lens culinaris*). 
 
-</div><div class="col-md-6">![](cv/about.png)</div></div>
+</div><div class="col-md-6">![](cv/images/about.png)</div></div>
 
 <div class="row"><div class="col-md-6">
 
@@ -74,55 +74,11 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 ---
 
-# `r icon("image")` Photography 
-
-## Albums {.tabset .tabset-pills}
-
-### AGILE
-
-<div class="box">
-
-[<u>**Work Photography**</u>](photography/agile){target="_blank"}
-
-![](photography/agile/featured.png)</div>
-
-### General
-
-<div class="box">
-
-[<u>**General Photography**</u>](photography/general){target="_blank"}
-
-Some of my photography work
-
-![](photography/general/featured.png)</div>
-
-### Saskatchewan
-
-<div class="box">
-
-[<u>**Photography in Saskatchewan**</u>](photography/saskatchewan){target="_blank"}
-
-![](photography/saskatchewan/featured.png)</div>
-
-### Mountains
-
-<div class="box">
-
-[<u>**Photography in the Mountains**</u>](photography/mountains){target="_blank"}
-
-![](photography/mountains/featured.png)</div>
-
-## {-}
-
----
-
----
-
 # `r icon("book")` Publications {.tabset .tabset-pills}
 
-## All Publications
-
 Scientific publications I have been involved in while working/studying at [***University of Regina***](https://www.uregina.ca/){target="_blank"}, [***Justus-Liebig-Universität Gießen (University of Giessen)***](https://www.uni-giessen.de/){target="_blank"} & the [***University of Saskatchewan***](https://www.usask.ca/){target="_blank"}.
+
+## All
 
 <div class="box">
 
@@ -295,7 +251,7 @@ Harold G. Weger, April K. Polasek, **Derek M. Wright**, Arun Damodaran, John Sta
 
 </div><div class="col-md-6">![](publications/canola_nue/featured.png)</div></div></div>
 
-## {-}
+# {-}
 
 ---
 
@@ -448,7 +404,7 @@ A vignette illustrating how to mislead with statistics and graphs
 
 ![](academic/misleading_graphs/featured.png)</div>
 
-## {-}
+# {-}
 
 ---
 
@@ -683,7 +639,7 @@ Graphs of GE crop production using USDA data
 
 ![](agdata/ge_crops_usa/featured.png)</div>
 
-## {-}
+# {-}
 
 ---
 
@@ -883,7 +839,49 @@ Graphs of star constellations using the starBliss R package
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_cypher.png)</div></div></div>
 
-## {-}
+# {-}
+
+---
+
+---
+
+# `r icon("image")` Photography {.tabset .tabset-pills}
+
+## AGILE
+
+<div class="box">
+
+[<u>**Work Photography**</u>](photography/agile){target="_blank"}
+
+![](photography/agile/featured.png)</div>
+
+## General
+
+<div class="box">
+
+[<u>**General Photography**</u>](photography/general){target="_blank"}
+
+Some of my photography work
+
+![](photography/general/featured.png)</div>
+
+## Saskatchewan
+
+<div class="box">
+
+[<u>**Photography in Saskatchewan**</u>](photography/saskatchewan){target="_blank"}
+
+![](photography/saskatchewan/featured.png)</div>
+
+## Mountains
+
+<div class="box">
+
+[<u>**Photography in the Mountains**</u>](photography/mountains){target="_blank"}
+
+![](photography/mountains/featured.png)</div>
+
+# {-}
 
 ---
 
@@ -967,4 +965,4 @@ I want freedom, the kind that they promised me, just for livin' in this country.
 
 </div>
 
-## {-}
+# {-}

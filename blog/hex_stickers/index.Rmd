@@ -181,7 +181,7 @@ image_write(im, "C:/gitfolder/dblogr/favicon.ico")
 im <- image_append(c(im1,im2))
 imm <- image_append(c(im1,im2,im3))
 image_write(imm, "C:/gitfolder/dblogr/logo_banner.png")
-image_write(imm, "C:/gitfolder/dblogr/cv/logo_banner.png")
+image_write(imm, "C:/gitfolder/dblogr/cv/images/logo_banner.png")
 image_write(imm, "featured.png")
 #
 image_write(im2, "C:/gitfolder/agData/man/figures/logo_agData.png")
