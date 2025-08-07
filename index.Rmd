@@ -16,11 +16,11 @@ library(shiny)
 
 > derekmichaelwright.github.io/dblogr/
 >
-> - `r icon("image")` [Photography](#photography)
 > - `r icon("book")` [Publications](#publications)
-> - `r icon("newspaper")` [Academic Work](#academic-work) | [gwaspr](#gwaspr) | [Tutorials](#tutorials) & [Vignettes](#vignettes) 
+> - `r icon("newspaper")` [Academic Work](#academic-work)
 > - `r icon("r-project")` [agData](#agdata)
 > - `r icon("chart-line")` [Blog](#blog)
+> - `r icon("image")` [Photography](#photography)
 
 ---
 
@@ -961,7 +961,7 @@ I want freedom, the kind that they promised me, just for livin' in this country.
 
 <div class="box">
 
-![](cv/lefty.jpg)
+![](cv/images/lefty.jpg)
 
 </div>
 

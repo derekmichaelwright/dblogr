@@ -209,6 +209,8 @@ ggsave("misleading_graphs_2_01.png", mp, width = 6, height = 10, bg = "white")
 
 In this example, the two data sets are at least related to each other. However, if they aren’t, dual y-axes can also lead to spurious correlations.
 
+https://x.com/BernieSanders/status/1953127666153820382
+
 ---
 
 # 3. Spurious Correlations

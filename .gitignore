@@ -9,16 +9,13 @@ blank_index.Rmd
 
 academic/gwas_tutorial/Data/myG_hmp.csv
 academic/gwas_tutorial/GWAS_Results/
-academic/gwas_tutorial/GWAS_Results_CV/
-academic/gwas_tutorial/GWAS_Results_extra/
-academic/gwas_tutorial/New_GWAS_Results/
 
 academic/qtl_tutorial/rawdata/
-
-cv/qtl_tutorial/rawdata/cover_letter_aafc.Rmd
 
 academic/envdata/extra
 
 agdata/fertilizers/extra/
+
+cv/jobs/
 
 blog_new/
