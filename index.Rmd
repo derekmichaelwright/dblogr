@@ -258,9 +258,11 @@ Harold G. Weger, April K. Polasek, **Derek M. Wright**, Arun Damodaran, John Sta
 
 ---
 
-# `r icon("newspaper")` Academic Work {.tabset .tabset-pills}
+# `r icon("newspaper")` Academic Work
 
-## gwaspr
+## Tutorials & Vignettes {.tabset .tabset-pills}
+
+### gwaspr
 
 <div class="box"><div class="row"><div class="col-md-8">
 
@@ -275,11 +277,11 @@ An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` pack
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
 
-## Tutorials {.tabset .tabset-pills}
+### Tutorials {.tabset .tabset-pills}
 
 Tutorials in `r icon("r-project")` on how to perform various statistical and genetic analyses.
 
-### GWAS Tutorial
+#### GWAS Tutorial
 
 <div class="box">
 
@@ -289,7 +291,7 @@ An R tutorial on running genome-wide association studies (GWAS) with GAPIT and g
 
 ![](academic/gwas_tutorial/featured.png)</div>
 
-### QTL Tutorial
+#### QTL Tutorial
 
 <div class="box">
 
@@ -299,7 +301,7 @@ A tutorial on how to run QTL analyses in R with qtl2
 
 ![](academic/qtl_tutorial/featured.png)</div>
 
-### PCA Tutorial
+#### PCA Tutorial
 
 <div class="box">
 
@@ -309,7 +311,7 @@ A tutorial on how to run principal component analyses and heirarchical clusterin
 
 ![](academic/pca_tutorial/featured.png)</div>
 
-### Augmented Designs
+#### Augmented Designs
 
 <div class="box">
 
@@ -321,7 +323,7 @@ An R tutorial on augmented field trial designs and how to adjust their values
 
 ![](academic/augmented_designs/featured.png)</div>
 
-### Dual Y-axis
+#### Dual Y-axis
 
 <div class="box">
 
@@ -331,7 +333,7 @@ An R tutorial on how to create a plots with dual y-axes
 
 ![](academic/dual_y_axis/featured.png)</div>
 
-### Thermal Time
+#### Thermal Time
 
 <div class="box">
 
@@ -341,7 +343,7 @@ An R tutorial on how to calculate thermal time and incorporate environmental dat
 
 ![](academic/thermal_time/featured.png)</div>
 
-### Environmental Data
+#### Environmental Data
 
 <div class="box">
 
@@ -351,7 +353,7 @@ An R tutorial on how to manipulate and plot environmental data
 
 ![](academic/envdata/featured.png)</div>
 
-### R Tutorial
+#### R Tutorial
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -361,11 +363,13 @@ An introduction to R
 
 </div><div class="col-md-6">![](academic/r_tutorial/featured.png)</div></div></div>
 
-## Vignettes {.tabset .tabset-pills}
+### {-}
+
+### Vignettes {.tabset .tabset-pills}
 
 Vignettes related to my work academic work and general science communication.
 
-### Lentil Diversity Panel
+#### Lentil Diversity Panel
 
 <div class="box">
 
@@ -375,7 +379,7 @@ A population representing global genetic diversity in cultivated lentil varietie
 
 ![](academic/lentil_diversity_panel/featured.png)</div>
 
-### Correlation Coefficients and Predictive Models
+#### Correlation Coefficients and Predictive Models
 
 <div class="box">
 
@@ -385,7 +389,7 @@ A vignette on how to properly use correlation coefficients when evaluating predi
 
 ![](academic/correlation_coefficients/featured.png)</div>
 
-### Data Visualizations
+#### Data Visualizations
 
 <div class="box">
 
@@ -395,7 +399,7 @@ A vignette illustrating different ways to visualize data
 
 ![](academic/data_visualizations/featured.png)</div>
 
-### Misleading Graphs
+#### Misleading Graphs
 
 <div class="box">
 
@@ -405,15 +409,19 @@ A vignette illustrating how to mislead with statistics and graphs
 
 ![](academic/misleading_graphs/featured.png)</div>
 
-# {-}
+### {-}
+
+## {-}
 
 ---
 
 ---
 
-# `r icon("r-project")` agData {.tabset .tabset-pills}
+# `r icon("r-project")` agData 
 
-## agData
+## Data SOurces {.tabset .tabset-pills}
+
+### agData
 
 <div class="box"><div class="row"><div class="col-md-8">
 
@@ -428,9 +436,9 @@ Documentation:
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
 
-## FAOSTAT {.tabset .tabset-pills}
+### FAOSTAT {.tabset .tabset-pills}
 
-### Maps of Global Crop Production
+#### Maps of Global Crop Production
 
 <div class="box">
 
@@ -440,7 +448,7 @@ Maps of crop production using FAO data
 
 ![](agdata/crops_world_maps/featured.png)</div>
 
-### Global Farmland
+#### Global Farmland
 
 <div class="box">
 
@@ -450,7 +458,7 @@ Graphs of global agricultural land use with FAO data
 
 ![](agdata/farmland_world/featured.png)</div>
 
-### Global Food Security
+#### Global Food Security
 
 <div class="box">
 
@@ -460,7 +468,7 @@ Graphs related to global food security using FAO data
 
 ![](agdata/global_food_security/featured.png)</div>
 
-### Import/Export by Area
+#### Import/Export by Area
 
 <div class="box">
 
@@ -470,7 +478,7 @@ Graphs of of import/export by area using FAO data
 
 ![](agdata/import_export_area/featured.png)</div>
 
-### Crop Import/Export
+#### Crop Import/Export
 
 <div class="box">
 
@@ -480,7 +488,7 @@ Graphs of of crop import/export using FAO data
 
 ![](agdata/import_export_crop/featured.png)</div>
 
-### Lentil
+#### Lentil
 
 <div class="box">
 
@@ -490,7 +498,7 @@ Graphs of lentil production using FAO data
 
 ![](agdata/lentil/featured.png)</div>
 
-### Wheat
+#### Wheat
 
 <div class="box">
 
@@ -500,7 +508,7 @@ Graphs of wheat production using FAO data
 
 ![](agdata/wheat/featured.png)</div>
 
-### Honeybee
+#### Honeybee
 
 <div class="box">
 
@@ -510,7 +518,7 @@ Graphs of honeybee production using FAO data
 
 ![](agdata/honeybee/featured.png)</div>
 
-### India
+#### India
 
 <div class="box">
 
@@ -522,9 +530,9 @@ Graphs of crop production in India with FAO data
 
 ---
 
-## STATCAN {.tabset .tabset-pills}
+### STATCAN {.tabset .tabset-pills}
 
-### Saskatchewan Crop Production
+#### Saskatchewan Crop Production
 
 <div class="box">
 
@@ -534,7 +542,7 @@ Graphs of crop production in Saskatchewan using STATCAN data
 
 ![](agdata/crops_saskatchewan/featured.png)</div>
 
-### Lentil Saskatchewan
+#### Lentil Saskatchewan
 
 <div class="box">
 
@@ -544,7 +552,7 @@ Graphs of lentil production and exports using SKAG data
 
 ![](agdata/lentil_saskatchewan/featured.png)</div>
 
-### Wheat Canada
+#### Wheat Canada
 
 <div class="box">
 
@@ -554,7 +562,7 @@ Graphs of wheat production using STATCAN data
 
 ![](agdata/wheat_canada/featured.png)</div>
 
-### Honeybee Canada
+#### Honeybee Canada
 
 <div class="box">
 
@@ -564,7 +572,7 @@ Graphs of honeybee production in Canada using STATCAN data
 
 ![](agdata/honeybee_canada/featured.png)</div>
 
-### Canadian Farmland
+#### Canadian Farmland
 
 <div class="box">
 
@@ -574,7 +582,7 @@ Graphs about Canadian farmland using STATCAN data
 
 ![](agdata/farmland_canada/featured.png)</div>
 
-### Canadian Farmers
+#### Canadian Farmers
 
 <div class="box">
 
@@ -584,7 +592,7 @@ Graphs on Canadian farm operator demographics using STATCAN data
 
 ![](agdata/farmers_canada/featured.png)</div>
 
-### Maps of Canadian Crop Production
+#### Maps of Canadian Crop Production
 
 <div class="box">
 
@@ -596,11 +604,11 @@ Graphs of crop production in Canada using STATCAN data
 
 ---
 
-## Other Sources {.tabset .tabset-pills}
+### Other Sources {.tabset .tabset-pills}
 
 USDA, ISAAA, *etc*. 
 
-### Maize USA
+#### Maize USA
 
 <div class="box">
 
@@ -610,7 +618,7 @@ Graphs of maize production in the USA using USDA data
 
 ![](agdata/maize_usa/featured.png)</div>
 
-### Sugarbeet USA
+#### Sugarbeet USA
 
 <div class="box">
 
@@ -620,7 +628,7 @@ Graphs of sugarbeet production using USDA data
 
 ![](agdata/sugarbeet_usa/featured.png)</div>
 
-### GE Crops
+#### GE Crops
 
 <div class="box">
 
@@ -630,7 +638,7 @@ Graphs of GE crop production using ISAAA data
 
 ![](agdata/ge_crops/featured.png)</div>
 
-### GE Crops USA
+#### GE Crops USA
 
 <div class="box">
 
@@ -640,19 +648,21 @@ Graphs of GE crop production using USDA data
 
 ![](agdata/ge_crops_usa/featured.png)</div>
 
-# {-}
+## {-}
 
 ---
 
 ---
 
-# `r icon("chart-line")` Blog {.tabset .tabset-pills}
+# `r icon("chart-line")` Blog 
+
+## Econoomics & Demographics {.tabset .tabset-pills}
 
 Random data visualizations and general blog posts.
 
-## Economics {.tabset .tabset-pills}
+### Economics {.tabset .tabset-pills}
 
-### Global Energy Use and Poverty
+#### Global Energy Use and Poverty
 
 <div class="box">
 
@@ -662,7 +672,7 @@ Graphs of global energy use, electricity use, CO2 emissions, GDP, and poverty us
 
 ![](blog/world_energy/featured.png)</div>
 
-### Canada Fossil Fuels
+#### Canada Fossil Fuels
 
 <div class="box">
 
@@ -672,7 +682,7 @@ Graphs of crude oil, natural gas, and coal production, import and export using S
 
 ![](blog/canada_fossil_fuels/featured.png)</div>
 
-### Canada Housing
+#### Canada Housing
 
 <div class="box">
 
@@ -682,7 +692,7 @@ Graphs of housing data in Canada using STATCAN data
 
 ![](blog/canada_housing/featured.png)</div>
 
-### Canada Public Private
+#### Canada Public Private
 
 <div class="box">
 
@@ -692,7 +702,7 @@ Graphs of public vs private sector employment in Canada using STATCAN data
 
 ![](blog/canada_public_private/featured.png)</div>
 
-### Canada Trade
+#### Canada Trade
 
 <div class="box">
 
@@ -702,7 +712,7 @@ Graphs of trade surplus/deficits with other countries using STATCAN data
 
 ![](blog/canada_trade/featured.png)</div>
 
-### gapminder
+#### gapminder
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -712,9 +722,9 @@ Graphs with gapminder data
 
 </div><div class="col-md-6">![](blog/gapminder/featured.png)</div></div></div>
 
-## Demographics {.tabset .tabset-pills}
+### Demographics {.tabset .tabset-pills}
 
-### Canada Population
+#### Canada Population
 
 <div class="box">
 
@@ -724,7 +734,7 @@ Graphs of population demographics in Canada using STATCAN data
 
 ![](blog/canada_population/featured.png)</div>
 
-### Saskatchewan Elections
+#### Saskatchewan Elections
 
 <div class="box">
 
@@ -734,7 +744,7 @@ Graphs of the 2020 & 2024 Saskatchewan Provincial Election Results
 
 ![](blog/saskatchewan_elections/featured.png)</div>
 
-### USA Population
+#### USA Population
 
 <div class="box">
 
@@ -744,7 +754,7 @@ Graphs of population demographics in USA using Census Bureau data
 
 ![](blog/usa_population/featured.png)</div>
 
-### Canada Overdoses
+#### Canada Overdoses
 
 <div class="box">
 
@@ -754,7 +764,7 @@ Graphs of yearly overdose deaths in Canada using GOV CA, SK & BC data
 
 ![](blog/canada_overdoses/featured.png)</div>
 
-### USA Overdoses
+#### USA Overdoses
 
 <div class="box">
 
@@ -764,7 +774,7 @@ Graphs of weekly overdose deaths in the USA using CDC data
 
 ![](blog/usa_overdoses/featured.png)</div>
 
-### Saskatchewan Suicides
+#### Saskatchewan Suicides
 
 <div class="box">
 
@@ -774,7 +784,7 @@ Graphs of yearly suicides in Saskatchewan using SK GOV data
 
 ![](blog/saskatchewan_suicides/featured.png)</div>
 
-### Canada Deaths
+#### Canada Deaths
 
 <div class="box">
 
@@ -784,7 +794,7 @@ Graphs of weekly deaths in Canada using STATCAN data
 
 ![](blog/canada_deaths/featured.png)</div>
 
-### USA Deaths
+#### USA Deaths
 
 <div class="box">
 
@@ -794,9 +804,9 @@ Graphs of weekly deaths in the USA using CDC & USCB data
 
 ![](blog/usa_deaths/featured.png)</div>
 
-## Other `r icon("r-project")` Stuff, *etc*. {.tabset .tabset-pills}
+### Other `r icon("r-project")` Stuff, *etc*. {.tabset .tabset-pills}
 
-### Hex Stickers
+#### Hex Stickers
 
 <div class="box"><div class="row"><div class="col-md-5">
 
@@ -806,7 +816,7 @@ Creation of hex stickers with R
 
 </div><div class="col-md-7">![](blog/hex_stickers/featured.png)</div></div></div>
 
-### Street Maps
+#### Street Maps
 
 <div class="box">
 
@@ -816,7 +826,7 @@ Create street map art with R and road network files
 
 ![](blog/street_maps/featured.png)</div>
 
-### starBliss
+#### starBliss
 
 <div class="box">
 
@@ -826,7 +836,7 @@ Graphs of star constellations using the starBliss R package
 
 ![](blog/starbliss/featured.png)</div>
 
-### cypher Package
+#### cypher Package
 
 <div class="box"><div class="row"><div class="col-md-8">
 
@@ -846,9 +856,11 @@ Graphs of star constellations using the starBliss R package
 
 ---
 
-# `r icon("image")` Photography {.tabset .tabset-pills}
+# `r icon("image")` Photography 
 
-## AGILE
+## Albums {.tabset .tabset-pills}
+
+### AGILE
 
 <div class="box">
 
@@ -856,7 +868,7 @@ Graphs of star constellations using the starBliss R package
 
 ![](photography/agile/featured.png)</div>
 
-## General
+### General
 
 <div class="box">
 
@@ -866,7 +878,7 @@ Some of my photography work
 
 ![](photography/general/featured.png)</div>
 
-## Saskatchewan
+### Saskatchewan
 
 <div class="box">
 
@@ -874,7 +886,7 @@ Some of my photography work
 
 ![](photography/saskatchewan/featured.png)</div>
 
-## Mountains
+### Mountains
 
 <div class="box">
 
@@ -882,7 +894,7 @@ Some of my photography work
 
 ![](photography/mountains/featured.png)</div>
 
-# {-}
+## {-}
 
 ---
 
