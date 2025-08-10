@@ -73,11 +73,13 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 ---
 
-# `r icon("book")` Publications {.tabset .tabset-pills}
+# `r icon("book")` Publications
+
+## Scientific Research {.tabset .tabset-pills}
 
 Scientific publications I have been involved in while working/studying at [***University of Regina***](https://www.uregina.ca/){target="_blank"}, [***Justus-Liebig-Universität Gießen (University of Giessen)***](https://www.uni-giessen.de/){target="_blank"} & the [***University of Saskatchewan***](https://www.usask.ca/){target="_blank"}.
 
-## All
+### All
 
 <div class="box">
 
@@ -94,7 +96,7 @@ Scientific publications I have been involved in while working/studying at [***Un
 
 </div>
 
-## LDP Phenology
+### LDP Phenology
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -127,7 +129,7 @@ Scientific publications I have been involved in while working/studying at [***Un
 
 </div>
 
-## LDP GWAS Phenology
+### LDP GWAS Phenology
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -144,7 +146,7 @@ Sandesh Neupane, **Derek M. Wright**, Raul O. Martinez, Jakob Butler, Jim L. Wel
 
 </div><div class="col-md-6">![](publications/ldp_gwas_phenology/featured.png)</div></div></div>
 
-## LDP GWAS UAV
+### LDP GWAS UAV
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -161,7 +163,7 @@ Sandesh Neupane, **Derek M. Wright**, Raul O. Martinez, Jakob Butler, Jim L. Wel
 
 </div><div class="col-md-6">![](publications/ldp_uav/featured.png)</div></div></div>
 
-## LDP GWAS Protein
+### LDP GWAS Protein
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -185,7 +187,7 @@ Jiayi Hang, Da Shi, Jason Neufeld, Kirstin E. Bett & James D. House
 
 </div><div class="col-md-6">![](publications/ldp_protein/featured.png)</div></div></div>
 
-## LDP Nepal Phenology
+### LDP Nepal Phenology
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -201,7 +203,7 @@ Sandesh Neupane, Rajeev Dhakal, **Derek M. Wright**, Deny K. Shrestha, Bishnu Dh
 
 </div><div class="col-md-6">![](publications/ldp_nepal/featured.png)</div></div></div>
 
-## Genomic Selection in Lentil
+### Genomic Selection in Lentil
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -213,7 +215,7 @@ Teketel A. Haile,  Taryn Heidecker,  **Derek M. Wright**,  Sandesh Neupane,  Lar
 
 </div><div class="col-md-6">![](publications/ldp_genomic_selection/featured.png)</div></div></div>
 
-## Lentil Flavones
+### Lentil Flavones
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -225,7 +227,7 @@ Fatma M. Elessawy, **Derek M. Wright**, Albert Vandenberg, Anas El-Aneed & Randy
 
 </div><div class="col-md-6">![](publications/lentil_flavones/featured.png)</div></div></div>
 
-## Algae Grazers
+### Algae Grazers
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -237,7 +239,7 @@ Harold G. Weger, April K. Polasek, **Derek M. Wright**, Arun Damodaran, John Sta
 
 </div><div class="col-md-6">![](publications/algae_grazing/featured.png)</div></div></div>
 
-## NEU in Canola
+### NEU in Canola
 
 <div class="box"><div class="row"><div class="col-md-6">
 
@@ -838,7 +840,7 @@ Graphs of star constellations using the starBliss R package
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_cypher.png)</div></div></div>
 
-# {-}
+## {-}
 
 ---
 
