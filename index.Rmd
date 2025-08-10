@@ -363,8 +363,6 @@ An introduction to R
 
 </div><div class="col-md-6">![](academic/r_tutorial/featured.png)</div></div></div>
 
-### {-}
-
 ### Vignettes {.tabset .tabset-pills}
 
 Vignettes related to my work academic work and general science communication.
@@ -409,8 +407,6 @@ A vignette illustrating how to mislead with statistics and graphs
 
 ![](academic/misleading_graphs/featured.png)</div>
 
-### {-}
-
 ## {-}
 
 ---
@@ -419,7 +415,7 @@ A vignette illustrating how to mislead with statistics and graphs
 
 # `r icon("r-project")` agData 
 
-## Data SOurces {.tabset .tabset-pills}
+## Data Sources {.tabset .tabset-pills}
 
 ### agData
 
@@ -604,9 +600,7 @@ Graphs of crop production in Canada using STATCAN data
 
 ---
 
-### Other Sources {.tabset .tabset-pills}
-
-USDA, ISAAA, *etc*. 
+### USDA, ISAAA, *etc* {.tabset .tabset-pills}
 
 #### Maize USA
 

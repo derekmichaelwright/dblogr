@@ -1,9 +1,8 @@
 ---
-title: "Mixed Models and GxE"
+title: "GxE with Mixed Models"
 subtitle: "A tutorial on how to run asses genotype by environment interactions in R"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
-url: "https://github.com/derekmichaelwright/dblogr/tree/main/academic/gxe"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> https://github.com/derekmichaelwright/dblogr/tree/main/academic/gxe"
 ---
 
 ```{r setup, include=FALSE}
@@ -12,17 +11,17 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Introduction
+# Introduction {.tabset .tabset-pills}
 
-- GxE: [https://en.wikipedia.org/wiki/Gene%E2%80%93environment_interaction](https://en.wikipedia.org/wiki/Gene%E2%80%93environment_interaction){target="_blank"}
--Mixed Models [https://en.wikipedia.org/wiki/Mixed_model](https://en.wikipedia.org/wiki/Mixed_model){target="_blank"}
+## Links
 
-https://www.azandisresearch.com/2022/12/31/visualize-mixed-effect-regressions-in-r-with-ggplot2/
+> - GxE: [https://en.wikipedia.org/wiki/Gene%E2%80%93environment_interaction](https://en.wikipedia.org/wiki/Gene%E2%80%93environment_interaction){target="_blank"}
+> - Mixed Models [https://en.wikipedia.org/wiki/Mixed_model](https://en.wikipedia.org/wiki/Mixed_model){target="_blank"}
+> - https://www.azandisresearch.com/2022/12/31/visualize-mixed-effect-regressions-in-r-with-ggplot2/
+> - https://nariyoo.com/stata-introduction-to-multilevel-modeling-xtmixed/
+> - https://bookdown.org/steve_midway/DAR/random-effects.html
 
-
-https://nariyoo.com/stata-introduction-to-multilevel-modeling-xtmixed/
-
-https://bookdown.org/steve_midway/DAR/random-effects.html
+## Visual
 
 ![](Mixedandfixedeffects.jpg)
 
@@ -137,15 +136,17 @@ gg_GxE <- function(xx) {
 
 ## All Environments
 
-> - `r shiny::icon("save")` [var_All.csv](var_All.csv)
+> - `r shiny::icon("save")` [gxe_All.csv](gxe_All.csv)
+
+![](gxe_All.png)
 
 ```{r}
 # Save variance table 
 var_table <- myGxE(dd)
-write.csv(var_table, "var_All.csv", row.names = F)
+write.csv(var_table, "gxe_All.csv", row.names = F)
 # Plot
 mp <- gg_GxE(var_table)
-ggsave("variance_All.png", mp, width = 6, height = 4)
+ggsave("gxe_All.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F}
@@ -156,45 +157,51 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ## Temperate
 
-> - `r shiny::icon("save")` [var_Temperate.csv](var_Temperate.csv)
+> - `r shiny::icon("save")` [gxe_Temperate.csv](gxe_Temperate.csv)
+
+![](gxe_Temperate.png)
 
 ```{r}
 # Save variance table 
 var_table <- myGxE(dd %>% filter(MacroEnv == "Temperate"))
-write.csv(var_table, "var_Temperate.csv", row.names = F)
+write.csv(var_table, "gxe_Temperate.csv", row.names = F)
 # Plot
 mp <- gg_GxE(var_table)
-ggsave("variance_Temperate.png", mp, width = 6, height = 4)
+ggsave("gxe_Temperate.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Mediterranean
 
-> - `r shiny::icon("save")` [var_Mediterranean.csv](var_Mediterranean.csv)
+> - `r shiny::icon("save")` [gxe_Mediterranean.csv](gxe_Mediterranean.csv)
+
+![](gxe_Mediterranean.png)
 
 ```{r}
 # Save variance table 
 var_table <- myGxE(dd %>% filter(MacroEnv == "Mediterranean"))
-write.csv(var_table, "var_Mediterranean.csv", row.names = F)
+write.csv(var_table, "gxe_Mediterranean.csv", row.names = F)
 # Plot
 mp <- gg_GxE(var_table)
-ggsave("variance_Mediterranean.png", mp, width = 6, height = 4)
+ggsave("gxe_Mediterranean.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## South Asia
 
-> - `r shiny::icon("save")` [var_SouthAsia.csv](var_SouthAsia.csv)
+> - `r shiny::icon("save")` [gxe_SouthAsia.csv](gxe_SouthAsia.csv)
+
+![](gxe_SouthAsia.png)
 
 ```{r}
 # Save variance table 
 var_table <- myGxE(dd %>% filter(MacroEnv == "South Asia"))
-write.csv(var_table, "var_SouthAsia.csv", row.names = F)
+write.csv(var_table, "gxe_SouthAsia.csv", row.names = F)
 # Plot
 mp <- gg_GxE(var_table)
-ggsave("variance_SouthAsia.png", mp, width = 6, height = 4)
+ggsave("gxe_SouthAsia.png", mp, width = 6, height = 4)
 ```
 
 
