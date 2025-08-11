@@ -2,7 +2,7 @@
 title: "GWAS Tutorial with gwaspr"
 subtitle: "An R tutorial on running genome-wide association studies (GWAS) with GAPIT and gwaspr"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/tree/main/academic/gwas_tutorial)"
 ---
 
 ```{r setup, include=FALSE}
