@@ -2,7 +2,7 @@
 title: "Honeybee Production"
 subtitle: "Graphs of honeybee production using FAO data"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/tree/main/agdata/honeybee)"
 ---
 
 ```{r setup, include = FALSE}

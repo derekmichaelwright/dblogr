@@ -2,7 +2,7 @@
 title: "Global Agricultural Land Use"
 subtitle: "Graphs of global agricultural land use with FAO data"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/tree/main/agdata/farmland_world)"
 ---
 
 ```{r setup, include = FALSE}
