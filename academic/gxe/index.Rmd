@@ -2,7 +2,7 @@
 title: "GxE with Mixed Models"
 subtitle: "A tutorial on how to run asses genotype by environment interactions in R"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/tree/main/academic/gxe)"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>\n[github](https://github.com/derekmichaelwright/dblogr/tree/main/academic/gxe)"
 ---
 
 ```{r setup, include=FALSE}
@@ -68,12 +68,12 @@ xx %>% filter(!is.na(DTF)) %>% group_by(Expt) %>% summarise(Val = n())
 
 # Data
 
-> - `r shiny::icon("save")` [global-energy-substitution.csv](global-energy-substitution.csv)
+> - `r shiny::icon("save")` [data_gxe.csv](data_gxe.csv)
 > - `r shiny::icon("newspaper")` Wright, *et al.* **Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (Lens culinaris Medik.)**. *Plants, People, Planet*. (**2020**) 00: 1-11. [doi.org/10.1002/ppp3.10158](https://doi.org/10.1002/ppp3.10158){target="_blank"}
 
 ```{r}
 # Prep data
-dd <- read.csv("data_mixed_models.csv") %>%
+dd <- read.csv("data_gxe.csv") %>%
   mutate(REP = DTM - DTF,
          VEG = DTF - DTE)
 DT::datatable(dd)
