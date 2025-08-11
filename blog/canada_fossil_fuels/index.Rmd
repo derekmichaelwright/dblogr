@@ -2,7 +2,7 @@
 title: "Canadian Fossil Fuel Production and Import"
 subtitle: "Graphs of crude oil, natural gas, and coal production, import and export using STATCAN data"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/tree/main/blog/canada_fossil_fuels)"
 ---
 
 ```{r setup, include=FALSE}

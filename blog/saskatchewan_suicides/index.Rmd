@@ -2,7 +2,7 @@
 title: "Suicides In Saskatchewan"
 subtitle: "Graphs of yearly suicides in Saskatchewan using SK GOV data"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/tree/main/blog/saskatchewan_suicides)"
 ---
 
 ```{r setup, include=FALSE}

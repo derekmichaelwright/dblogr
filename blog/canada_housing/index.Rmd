@@ -2,7 +2,7 @@
 title: "Housing In Canada"
 subtitle: "Graphs of housing data in Canada using STATCAN data"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/tree/main/blog/canada_housing)"
 ---
 
 ```{r setup, include=FALSE}
