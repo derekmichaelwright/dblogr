@@ -571,13 +571,26 @@ Create a summary table of all significant associations
 
 ```{r eval = F}
 # Create summary of GWAS results
-xx <- table_GWAS_Results(folder = "GWAS_Results/", threshold = 6.8, sug.threshold = 5.3)
+xx <- table_GWAS_Results(folder = "GWAS_Results/", 
+                         threshold = 6.8, 
+                         sug.threshold = 5.3)
 # Save
 write.csv(xx, "Supplemtnal_Table_01.csv", row.names = F)
 ```
 
 ```{r echo = F}
 DT::datatable(read.csv("Supplemtnal_Table_01.csv"))
+```
+
+```{r eval = F}
+# Create summary of GWAS results
+xx <- table_GWAS_Results_Summary(xx)
+# Save
+write.csv(xx, "Supplemtnal_Table_02.csv", row.names = F)
+```
+
+```{r echo = F}
+DT::datatable(read.csv("Supplemtnal_Table_02.csv"))
 ```
 
 ---

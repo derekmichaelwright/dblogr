@@ -235,7 +235,7 @@ ggWeeklyDeaths <- function(myArea = "Canada", xmin = 2010) {
 
 ## 2010-2025 {.tabset .tabset-pills}
 
-### Canada {.tabset .tabset-pills} {.active}
+### Canada {.active}
 
 ![](canada_deaths_02_01.png)
 
@@ -864,6 +864,8 @@ ggsave("canada_deaths_08_01.png", mp, width = 10, height = 4)
 ---
 
 ## Provinces
+
+![](canada_deaths_08_02.png)
 
 ```{r}
 # Plot

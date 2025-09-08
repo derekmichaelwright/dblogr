@@ -76,13 +76,14 @@ fixSheet <- function(xx, myYear) {
   xx
 }
 p2 <- bind_rows(
-    read_xlsx("data_usa_population.xlsx", "2015", range = "A7:G25") %>% fixSheet(myYear = 2015),
-    read_xlsx("data_usa_population.xlsx", "2016", range = "A7:G25") %>% fixSheet(myYear = 2016),
-    read_xlsx("data_usa_population.xlsx", "2017", range = "A7:G25") %>% fixSheet(myYear = 2017),
-    read_xlsx("data_usa_population.xlsx", "2018", range = "A7:G25") %>% fixSheet(myYear = 2018),
-    read_xlsx("data_usa_population.xlsx", "2019", range = "A7:G25") %>% fixSheet(myYear = 2019),
-    read_xlsx("data_usa_population.xlsx", "2020", range = "A7:G25") %>% fixSheet(myYear = 2020),
-    read_xlsx("data_usa_population.xlsx", "2021", range = "A7:G25") %>% fixSheet(myYear = 2021) ) %>%
+    read_xlsx("data_usa_population_age.xlsx", "2015", range = "A7:G25") %>% fixSheet(myYear = 2015),
+    read_xlsx("data_usa_population_age.xlsx", "2016", range = "A7:G25") %>% fixSheet(myYear = 2016),
+    read_xlsx("data_usa_population_age.xlsx", "2017", range = "A7:G25") %>% fixSheet(myYear = 2017),
+    read_xlsx("data_usa_population_age.xlsx", "2018", range = "A7:G25") %>% fixSheet(myYear = 2018),
+    read_xlsx("data_usa_population_age.xlsx", "2019", range = "A7:G25") %>% fixSheet(myYear = 2019),
+    read_xlsx("data_usa_population_age.xlsx", "2020", range = "A7:G25") %>% fixSheet(myYear = 2020),
+    read_xlsx("data_usa_population_age.xlsx", "2021", range = "A7:G25") %>% fixSheet(myYear = 2021),
+    read_xlsx("data_usa_population_age.xlsx", "2022", range = "A7:G25") %>% fixSheet(myYear = 2022) ) %>%
   mutate(Age = factor(Age, levels = myAges2))
 #
 dd <- read.csv("data_usa_deaths.csv") %>%
@@ -614,11 +615,11 @@ deathPlot4 <- function(myArea) {
 
 ```{r}
 mp <- ggRespSeasonsAge(myArea = "United States")
-ggsave("usa_deaths_4_01.png", mp, width = 12, height = 5)
+ggsave("usa_deaths_4_01.png", mp, width = 14, height = 4)
 ```
 
 ```{r}
-ggsave("featured.png", mp, width = 12, height = 5)
+ggsave("featured.png", mp, width = 14, height = 4)
 ```
 
 ---
@@ -629,7 +630,7 @@ ggsave("featured.png", mp, width = 12, height = 5)
 
 ```{r}
 mp <- ggRespSeasonsAge(myArea = "New York")
-ggsave("usa_deaths_4_02.png", mp, width = 12, height = 5)
+ggsave("usa_deaths_4_02.png", mp, width = 14, height = 4)
 ```
 
 ---
@@ -640,7 +641,7 @@ ggsave("usa_deaths_4_02.png", mp, width = 12, height = 5)
 
 ```{r}
 mp <- ggRespSeasonsAge(myArea = "New Jersey")
-ggsave("usa_deaths_4_03.png", mp, width = 12, height = 5)
+ggsave("usa_deaths_4_03.png", mp, width = 14, height = 4)
 ```
 
 ---
@@ -651,7 +652,7 @@ ggsave("usa_deaths_4_03.png", mp, width = 12, height = 5)
 
 ```{r}
 mp <- ggRespSeasonsAge(myArea = "California")
-ggsave("usa_deaths_4_04.png", mp, width = 12, height = 5)
+ggsave("usa_deaths_4_04.png", mp, width = 14, height = 4)
 ```
 
 ---
@@ -662,7 +663,7 @@ ggsave("usa_deaths_4_04.png", mp, width = 12, height = 5)
 
 ```{r}
 mp <- ggRespSeasonsAge(myArea = "Texas")
-ggsave("usa_deaths_4_05.png", mp, width = 12, height = 5)
+ggsave("usa_deaths_4_05.png", mp, width = 14, height = 4)
 ```
 
 ---
@@ -673,7 +674,7 @@ ggsave("usa_deaths_4_05.png", mp, width = 12, height = 5)
 
 ```{r}
 mp <- ggRespSeasonsAge(myArea = "Florida")
-ggsave("usa_deaths_4_06.png", mp, width = 12, height = 5)
+ggsave("usa_deaths_4_06.png", mp, width = 14, height = 4)
 ```
 
 ---
@@ -684,7 +685,7 @@ ggsave("usa_deaths_4_06.png", mp, width = 12, height = 5)
 
 ```{r}
 mp <- ggRespSeasonsAge(myArea = "Washington")
-ggsave("usa_deaths_4_07.png", mp, width = 12, height = 5)
+ggsave("usa_deaths_4_07.png", mp, width = 14, height = 4)
 ```
 
 ---
@@ -695,7 +696,7 @@ ggsave("usa_deaths_4_07.png", mp, width = 12, height = 5)
 
 ```{r}
 mp <- ggRespSeasonsAge(myArea = "Montana")
-ggsave("usa_deaths_4_08.png", mp, width = 12, height = 5)
+ggsave("usa_deaths_4_08.png", mp, width = 14, height = 4)
 ```
 
 ---
@@ -706,7 +707,7 @@ ggsave("usa_deaths_4_08.png", mp, width = 12, height = 5)
 
 ```{r}
 mp <- ggRespSeasonsAge(myArea = "North Dakota")
-ggsave("usa_deaths_4_09.png", mp, width = 12, height = 5)
+ggsave("usa_deaths_4_09.png", mp, width = 14, height = 4)
 ```
 
 ---
@@ -717,7 +718,7 @@ ggsave("usa_deaths_4_09.png", mp, width = 12, height = 5)
 
 ```{r}
 mp <- ggRespSeasonsAge(myArea = "South Dakota")
-ggsave("usa_deaths_4_10.png", mp, width = 12, height = 5)
+ggsave("usa_deaths_4_10.png", mp, width = 14, height = 4)
 ```
 
 ---

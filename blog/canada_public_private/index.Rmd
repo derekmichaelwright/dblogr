@@ -475,7 +475,7 @@ ggsave("canada_public_private_6_01.png", mp, width = 12, height = 5)
 
 ---
 
-# >2010
+## >2010
 
 ![](canada_public_private_6_02.png)
 

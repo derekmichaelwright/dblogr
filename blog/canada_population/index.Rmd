@@ -71,10 +71,10 @@ d1 <- read.csv("1710000901_databaseLoadingData.csv") %>%
          Date = as.Date(paste(Year, Month, "01", sep = "-")))
 #
 d2 <- read.csv("1710000501_databaseLoadingData.csv") %>%
-  select(Year=REF_DATE, Area=GEO, Sex, Age=Age.group, Unit=UOM, Value=VALUE) %>%
+  select(Year=REF_DATE, Area=GEO, Gender, Age=Age.group, Unit=UOM, Value=VALUE) %>%
   mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
          Area = factor(Area, levels = myAreas),
-         Sex = factor(Sex, levels = c("Both sexes", "Males", "Females")),
+         Gender = factor(Gender, levels = c("Total - gender", "Men+", "Women+")),
          Age = factor(Age, levels = myAges),
          Year = substr(Year, 1,4),
          Year = as.numeric(Year),
@@ -258,9 +258,9 @@ ggsave("canada_population_1_07.png", mp, width = 10, height = 5)
 ```{r}
 # Prep data
 xx <- d2 %>% 
-  filter(Area == "Canada", Sex != "Both sexes", Age == "Median age")
+  filter(Area == "Canada", Gender != "Total - gender", Age == "Median age")
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value, color = Sex)) +
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Gender)) +
   geom_line(size = 1.5, alpha = 0.7) +
   scale_color_manual(name = NULL, values = myColorsMF) +
   scale_x_continuous(minor_breaks = 1970:2025) +
@@ -280,9 +280,9 @@ ggsave("canada_population_1_08.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 xx <- d2 %>% 
-  filter(Sex != "Both sexes", Age == "Median age")
+  filter(Gender != "Total - gender", Age == "Median age")
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value, color = Sex)) +
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Gender)) +
   geom_line() +
   facet_wrap(Area ~ ., ncol = 5) +
   scale_color_manual(name = NULL, values = myColorsMF) +
@@ -302,15 +302,15 @@ ggsave("canada_population_1_09.png", mp, width = 10, height = 6)
 gg_PopDem_plot <- function(myArea = "Saskatchewan", myYears = 1971 ) {
   # Prep data
   xx <- d2 %>% 
-    filter(Area == myArea, Year %in% myYears, Sex != "Both sexes",
+    filter(Area == myArea, Year %in% myYears, Gender != "Total - gender",
            !Age %in% c("All ages", "Median age")) 
-  yy <- xx %>% spread(Sex, Value) %>% 
-    mutate(Value = Females - Males,
-           Sex = ifelse(Value < 0, "Males", "Females"))
+  yy <- xx %>% spread(Gender, Value) %>% 
+    mutate(Value = `Women+` - `Men+`,
+           Gender = ifelse(Value < 0, "Men+", "Women+"))
   xx <- xx %>% 
-    mutate(Value = ifelse(Sex == "Males", -Value, Value))
+    mutate(Value = ifelse(Gender == "Men+", -Value, Value))
   # Plot
-  ggplot(xx, aes(y = Value / 1000, x = Age, fill = Sex)) + 
+  ggplot(xx, aes(y = Value / 1000, x = Age, fill = Gender)) + 
     geom_col(color = "black", alpha = 0.7) +
     geom_col(data = yy, color = "black", alpha = 0.7) +
     scale_fill_manual(name = NULL, values = myColorsMF) +
@@ -436,15 +436,15 @@ ggsave("canada_population_2_09.png", mp, width = 10, height = 4)
 gg_PopDem_anim <- function(myArea = "Saskatchewan") {
   # Prep data
   xx <- d2 %>% 
-    filter(Area %in% myArea, Sex != "Both sexes", 
+    filter(Area %in% myArea, Gender != "Total - gender", 
            !Age %in% c("All ages", "Median age"))
-  yy <- xx %>% spread(Sex, Value) %>% 
-    mutate(Value = Females - Males,
-           Sex = ifelse(Value < 0, "Males", "Females"))
+  yy <- xx %>% spread(Gender, Value) %>% 
+    mutate(Value = `Women+` - `Men+`,
+           Gender = ifelse(Value < 0, "Men+", "Women+"))
   xx <- xx %>% 
-    mutate(Value = ifelse(Sex == "Males", -Value, Value))
+    mutate(Value = ifelse(Gender == "Men+", -Value, Value))
   # Plot
-  ggplot(xx, aes(y = Value / 1000, x = Age, fill = Sex)) + 
+  ggplot(xx, aes(y = Value / 1000, x = Age, fill = Gender)) + 
     geom_col(color = "black", alpha = 0.7) +
     geom_col(data = yy, color = "black", alpha = 0.7) +
     scale_fill_manual(name = NULL, values = myColorsMF) +
@@ -585,7 +585,7 @@ anim_save("canada_population_gif_2_09.gif", mp,
 gg_PopDem_plot2 <- function(myArea = "Saskatchewan", myYears = c(1971,2022) ) {
   # Prep data
   xx <- d2 %>% 
-    filter(Area == myArea, Year %in% myYears, Sex == "Both sexes", 
+    filter(Area == myArea, Year %in% myYears, Gender == "Total - gender", 
            !Age %in% c("All ages", "Median age")) 
   yy <- xx %>% spread(Year, Value)
   yy[is.na(yy[,5]),5] <- 0
@@ -709,28 +709,28 @@ ggsave("canada_population_3_09.png", mp, width = 6, height = 4)
 
 ---
 
-# Sex Ratios {.tabset .tabset-pills}
+# Gender Ratios {.tabset .tabset-pills}
 
 ## Plotting Function
 
 ```{r class.source = "fold-show"}
-gg_SexRatio_plot <- function(myArea = "Saskatchewan", myYears = 2019) {
+gg_GenderRatio_plot <- function(myArea = "Saskatchewan", myYears = 2019) {
   # Prep data
   xx <- d2 %>% 
     filter(Area %in% myArea, Year %in% myYears, 
            !Age %in% c("All ages", "Median age"), 
-           Sex %in% c("Males", "Females")) %>%
-    spread(Sex, Value) %>%
-    mutate(Value = Females - Males, 
-           Group = ifelse(Value < 0, "More Males", "More Females"),
-           Group = factor(Group, levels = c("More Males", "More Females")))
+           Gender %in% c("Men+", "Women+")) %>%
+    spread(Gender, Value) %>%
+    mutate(Value = `Women+` - `Men+`, 
+           Group = ifelse(Value < 0, "More Men+", "More Women+"),
+           Group = factor(Group, levels = c("More Men+", "More Women+")))
   # Plot
   ggplot(xx, aes(y = Value / 1000, x = Age, fill = Group)) + 
     geom_col(color = "black", alpha = 0.7) +
     scale_fill_manual(name = NULL, values = myColorsMF) +
     facet_grid(. ~ Year) +
     theme_agData(legend.position = "bottom") +
-    labs(title = paste("Sex Ratio in", myArea), subtitle = "Females - Males", 
+    labs(title = paste("Gender Ratio in", myArea), subtitle = "Women+ - Men+", 
          y = "Thousand People", x = NULL, caption = myCaption) +
     coord_cartesian(ylim = c(-max(xx$Value), max(xx$Value))) +
     coord_flip()
@@ -742,7 +742,7 @@ gg_SexRatio_plot <- function(myArea = "Saskatchewan", myYears = 2019) {
 ![](canada_population_4_01.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(myArea = "Canada", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "Canada", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_4_01.png", mp, width = 10, height = 4)
 ```
 
@@ -753,7 +753,7 @@ ggsave("canada_population_4_01.png", mp, width = 10, height = 4)
 ![](canada_population_4_02.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(myArea = "British Columbia", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "British Columbia", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_4_02.png", mp, width = 10, height = 4)
 ```
 
@@ -764,7 +764,7 @@ ggsave("canada_population_4_02.png", mp, width = 10, height = 4)
 ![](canada_population_4_03.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(myArea = "Alberta", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "Alberta", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_4_03.png", mp, width = 10, height = 4)
 ```
 
@@ -775,7 +775,7 @@ ggsave("canada_population_4_03.png", mp, width = 10, height = 4)
 ![](canada_population_4_04.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(myArea = "Saskatchewan", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "Saskatchewan", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_4_04.png", mp, width = 10, height = 4)
 ```
 
@@ -786,7 +786,7 @@ ggsave("canada_population_4_04.png", mp, width = 10, height = 4)
 ![](canada_population_4_05.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(myArea = "Manitoba", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "Manitoba", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_4_05.png", mp, width = 10, height = 4)
 ```
 
@@ -797,7 +797,7 @@ ggsave("canada_population_4_05.png", mp, width = 10, height = 4)
 ![](canada_population_4_06.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(myArea = "Ontario", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "Ontario", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_4_06.png", mp, width = 10, height = 4)
 ```
 
@@ -808,7 +808,7 @@ ggsave("canada_population_4_06.png", mp, width = 10, height = 4)
 ![](canada_population_4_07.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(myArea = "Quebec", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "Quebec", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_4_07.png", mp, width = 10, height = 4)
 ```
 
@@ -819,7 +819,7 @@ ggsave("canada_population_4_07.png", mp, width = 10, height = 4)
 ![](canada_population_4_08.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(myArea = "Newfoundland and Labrador", 
+mp <- gg_GenderRatio_plot(myArea = "Newfoundland and Labrador", 
                      myYears = c(1971, 1995, 2021))
 ggsave("canada_population_4_08.png", mp, width = 10, height = 4)
 ```
@@ -831,7 +831,7 @@ ggsave("canada_population_4_08.png", mp, width = 10, height = 4)
 ![](canada_population_4_09.png)
 
 ```{r}
-mp <- gg_SexRatio_plot(myArea = "Yukon", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "Yukon", myYears = c(1971, 1995, 2021))
 ggsave("canada_population_4_09.png", mp, width = 10, height = 4)
 ```
 
@@ -839,16 +839,16 @@ ggsave("canada_population_4_09.png", mp, width = 10, height = 4)
 
 # Age Line Graphs {.tabset .tabset-pills}
 
-## Males vs. Females
+## Men+ vs. Women+
 
 ![](canada_population_5_01.png)
 
 ```{r}
 # Prep data
 xx <- d2 %>%
-  filter(Area == "Canada", Sex %in% c("Males","Females"), Age != "Median age")
+  filter(Area == "Canada", Gender %in% c("Men+","Women+"), Age != "Median age")
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Sex)) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Gender)) +
   geom_line(size = 1, alpha = 0.7) +
   facet_wrap(Age ~ ., scales = "free_y", ncol = 7) +
   scale_color_manual(name = NULL, values = myColorsMF) +
@@ -867,10 +867,10 @@ ggsave("canada_population_5_01.png", mp, width = 12, height = 6)
 
 ```{r}
 xx <- d2 %>%
-  filter(Area == "Canada", Sex %in% c("Males","Females"), 
+  filter(Area == "Canada", Gender %in% c("Men+","Women+"), 
          Age != "Median age", !is.na(Value))
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Sex, group = Sex)) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Gender, group = Gender)) +
   geom_line(size = 1, alpha = 0.7) +
   scale_color_manual(name = NULL, values = myColorsMF) +
   theme_agData(legend.position = "bottom") +
@@ -894,18 +894,18 @@ anim_save("canada_population_gif_4_01.gif", mp,
 ```{r}
 # Prep data
 xx <- d2 %>% 
-  filter(Sex %in% c("Males", "Females")) %>%
+  filter(Gender %in% c("Men+", "Women+")) %>%
   mutate(Group = ifelse(Age %in% myAges[14:21], "old", "Young")) %>%
-  group_by(Year, Area, Sex, Group) %>%
+  group_by(Year, Area, Gender, Group) %>%
   summarise(Value = sum(Value, na.rm = T)) %>% 
   ungroup() %>%
-  group_by(Year, Area, Sex) %>%
+  group_by(Year, Area, Gender) %>%
   mutate(Total = sum(Value, na.rm = T)) %>% 
   ungroup() %>%
   mutate(Percent = 100 * Value / Total)
 # Plot
 mp <- ggplot(xx %>% filter(Area == "Canada", Group == "Young"), 
-       aes(x = Year, y = Percent, color = Sex)) +
+       aes(x = Year, y = Percent, color = Gender)) +
   geom_line(alpha = 0.7, size = 1) +
   scale_color_manual(name = NULL, values = myColorsMF) +
   scale_y_continuous(minor_breaks = 70:100, limits = c(70,100)) +
@@ -923,7 +923,7 @@ ggsave("canada_population_6_01.png", mp, width = 6, height = 4)
 ```{r}
 # Plot
 mp <-ggplot(xx %>% filter(Area != "Canada", Group == "Young"), 
-       aes(x = Year, y = Percent, color = Sex)) +
+       aes(x = Year, y = Percent, color = Gender)) +
   geom_line(alpha = 0.7, size = 1) +
   scale_color_manual(name = NULL, values = myColorsMF) +
   facet_wrap(Area ~ ., ncol = 5) +
@@ -943,7 +943,7 @@ ggsave("canada_population_6_02.png", mp, width = 12, height = 6)
 # Prep data
 xx <- xx %>% filter(Year == 2021, Group == "Young")
 # Plot
-mp <- ggplot(xx, aes(x = Area, y = Percent, fill = Sex)) +
+mp <- ggplot(xx, aes(x = Area, y = Percent, fill = Gender)) +
   geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myColorsMF) +
   theme_agData(legend.position = "bottom",

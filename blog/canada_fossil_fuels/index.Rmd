@@ -253,7 +253,7 @@ ggsave("canada_fossil_fuels_1_09.png", mp, width = 12, height = 6)
 
 ---
 
-# Crude Oil
+# Crude Oil {.tabset .tabset-pills}
 
 ## Canada
 
@@ -354,7 +354,7 @@ ggsave("canada_fossil_fuels_2_04.png", mp, width = 6, height = 4)
 
 ---
 
-# Natural Gas
+# Natural Gas {.tabset .tabset-pills}
 
 ## Canada
 
@@ -481,7 +481,7 @@ ggsave("canada_fossil_fuels_3_05.png", mp, width = 6, height = 4)
 
 ---
 
-# Coal
+# Coal {.tabset .tabset-pills}
 
 ## Canada
 

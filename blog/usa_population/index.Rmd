@@ -308,7 +308,7 @@ ggPopChange <- function(myYear = 2022, myLims = NULL) {
 
 ---
 
-### 2010 {.active}
+### 2010
 
 ![](usa_population_3_01.png)
 
@@ -462,11 +462,10 @@ ggsave("usa_population_4_03.png", mp, width = 6, height = 4)
 
 ---
 
+```{r eval = F, echo = F}
 # Bonus
 
 ## Comption
-
-```{r}
 # Prep data
 xx <- read.csv("data_compton.csv") %>%
   gather(Race, Percent, 3:ncol(.))

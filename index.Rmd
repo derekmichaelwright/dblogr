@@ -142,7 +142,7 @@ Sandesh Neupane, **Derek M. Wright**, Raul O. Martinez, Jakob Butler, Jim L. Wel
 - `r icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_GWAS_Phenology/GWAS_Phenology_Vignette.html){target="_blank"}
 - `r icon("chart-line")` [All Figures (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_GWAS_Phenology/README.html){target="_blank"}
 - `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_GWAS_Phenology/blob/master/README.pdf){target="_blank"}
-- `r icon("podcast")` [Field Lab Earth Podcast](http://fieldlabearth.libsyn.com/latent-variable-phenotypes-in-lentil-with-sandesh-neupane-and-derek-wright)
+- `r icon("podcast")` [Field Lab Earth Podcast](http://fieldlabearth.libsyn.com/latent-variable-phenotypes-in-lentil-with-sandesh-neupane-and-derek-wright){target="_blank"}
 
 </div><div class="col-md-6">![](publications/ldp_gwas_phenology/featured.png)</div></div></div>
 
@@ -262,7 +262,7 @@ Harold G. Weger, April K. Polasek, **Derek M. Wright**, Arun Damodaran, John Sta
 
 ## Tutorials & Vignettes {.tabset .tabset-pills}
 
-### gwaspr
+### gwaspr Package
 
 <div class="box"><div class="row"><div class="col-md-8">
 
@@ -413,7 +413,7 @@ A vignette illustrating how to mislead with statistics and graphs
 
 ---
 
-# `r icon("r-project")` agData 
+# `r icon("r-project")` agData Package
 
 ## Agricultural Data Sources {.tabset .tabset-pills}
 
@@ -716,6 +716,16 @@ Graphs with gapminder data
 
 </div><div class="col-md-6">![](blog/gapminder/featured.png)</div></div></div>
 
+#### canada Auto Sales
+
+<div class="box"><div class="row"><div class="col-md-6">
+
+[<u>**Automobile Sales in Canada**</u>](blog/canada_auto_sales){target="_blank"}
+
+Graphs of new motor vehicle sales using STATCAN data
+
+</div><div class="col-md-6">![](blog/canada_auto_sales/featured.png)</div></div></div>
+
 ### Demographics {.tabset .tabset-pills}
 
 #### Canada Population
@@ -728,15 +738,15 @@ Graphs of population demographics in Canada using STATCAN data
 
 ![](blog/canada_population/featured.png)</div>
 
-#### Saskatchewan Elections
+#### Canada Migration
 
 <div class="box">
 
-[<u>**Saskatchewan Election Results**</u>](blog/saskatchewan_elections){target="_blank"}
+[<u>**Migration Demographics In Canada**</u>](blog/canada_migration){target="_blank"}
 
-Graphs of the 2020 & 2024 Saskatchewan Provincial Election Results
+Graphs of migration demographics in Canada using STATCAN data
 
-![](blog/saskatchewan_elections/featured.png)</div>
+![](blog/canada_migration/featured.png)</div>
 
 #### USA Population
 
@@ -797,6 +807,48 @@ Graphs of weekly deaths in Canada using STATCAN data
 Graphs of weekly deaths in the USA using CDC & USCB data
 
 ![](blog/usa_deaths/featured.png)</div>
+
+#### Canada Crime
+
+<div class="box">
+
+[<u>**Crime in Canada**</u>](blog/canada_crime){target="_blank"}
+
+Graphs of crime statistics using STATCAN data
+
+![](blog/canada_crime/featured.png)</div>
+
+### Politics {.tabset .tabset-pills}
+
+#### Politics in Academia
+
+<div class="box">
+
+[<u>**Politics in Academia**</u>](blog/politics_in_academia){target="_blank"}
+
+Graphs of about politics in academia
+
+![](blog/politics_in_academia/featured.png)</div>
+
+#### Covid Origin Polls
+
+<div class="box">
+
+[<u>**Covid Origin Polls**</u>](blog/covid_origins){target="_blank"}
+
+Polling results from various polls on the origins of covid
+
+![](blog/covid_origins/featured.png)</div>
+
+#### Saskatchewan Elections
+
+<div class="box">
+
+[<u>**Saskatchewan Election Results**</u>](blog/saskatchewan_elections){target="_blank"}
+
+Graphs of the 2020 & 2024 Saskatchewan Provincial Election Results
+
+![](blog/saskatchewan_elections/featured.png)</div>
 
 ### Other `r icon("r-project")` Stuff, *etc*. {.tabset .tabset-pills}
 

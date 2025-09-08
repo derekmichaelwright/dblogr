@@ -222,51 +222,6 @@ ggsave("saskatchewan_2020_election_03.png", mp, width = 6, height = 4)
 
 ## All Ridings {.tabset .tabset-pills}
 
-### PDF
-
-> - `r shiny::icon("file-pdf")` [saskatchewan_2020_election_districts.pdf](saskatchewan_2020_election_districts.pdf)
-
-```{r}
-pdf("saskatchewan_2020_election_districts.pdf", width = 8, height = 4)
-districts <- unique(d2020$Constituency)
-#i<-"THE BATTLEFORDS"
-for(i in districts) {
-  xi <- d2020 %>% filter(Constituency == i) %>%
-    mutate(Percent = 100 * Votes / sum(Votes, na.rm = T)) %>%
-    arrange(desc(Party)) %>%
-    mutate(LabelPos = cumsum(Percent) - (Percent / 2),
-           #LabelPos = ifelse(Votes == 0, NA, LabelPos)
-           )
-  # Bar Chart
-  mp1 <- ggplot(xi, aes(x = Party, y = Percent, fill = Party)) +
-    geom_col(color = "black", alpha = 0.7) +
-    geom_label(aes(label = Votes), vjust = -0.15, 
-               color = "white", alpha = 0.7) + 
-    facet_wrap(Constituency ~ .) +
-    scale_fill_manual(values = myCs2020, drop = F) +
-    scale_x_discrete(drop = F) +
-    ylim(c(0,88)) +
-    theme_agData(legend.position = "none") +
-    labs(title = "2020 Saskatchewan Election", 
-         x = NULL, caption = "")
-  # Plot Pie
-  mp2 <- ggplot(xi, aes(x = "", y = Percent)) +
-    geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.3) +
-    coord_polar("y", start = 0) +
-    geom_label(aes(y = LabelPos, label = round(Percent)), nudge_x = 0.3) +
-    facet_wrap(Constituency ~ .) +
-    scale_fill_manual(values = myCs2020, breaks = myPs2020) +
-    theme_agData_pie(legend.position = "none") +
-    labs(title = "", x = NULL, caption = myCaption)
-  #
-  mp <- ggarrange(mp1, mp2, ncol = 2, align = "h")
-  print(mp)
-}
-dev.off()
-```
-
----
-
 ### Facetted
 
 ![](saskatchewan_2020_election_04.png)
@@ -308,6 +263,51 @@ mp <- ggplot(xx, aes(x = "", y = Percent)) +
   labs(title = "2020 Saskatchewan Election", 
        x = NULL, caption = myCaption)
 ggsave("saskatchewan_2020_election_05.png", mp, width = 36, height = 16)
+```
+
+---
+
+### PDF
+
+> - `r shiny::icon("file-pdf")` [saskatchewan_2020_election_districts.pdf](saskatchewan_2020_election_districts.pdf)
+
+```{r}
+pdf("saskatchewan_2020_election_districts.pdf", width = 8, height = 4)
+districts <- unique(d2020$Constituency)
+#i<-"THE BATTLEFORDS"
+for(i in districts) {
+  xi <- d2020 %>% filter(Constituency == i) %>%
+    mutate(Percent = 100 * Votes / sum(Votes, na.rm = T)) %>%
+    arrange(desc(Party)) %>%
+    mutate(LabelPos = cumsum(Percent) - (Percent / 2),
+           #LabelPos = ifelse(Votes == 0, NA, LabelPos)
+           )
+  # Bar Chart
+  mp1 <- ggplot(xi, aes(x = Party, y = Percent, fill = Party)) +
+    geom_col(color = "black", alpha = 0.7) +
+    geom_label(aes(label = Votes), vjust = -0.15, 
+               color = "white", alpha = 0.7) + 
+    facet_wrap(Constituency ~ .) +
+    scale_fill_manual(values = myCs2020, drop = F) +
+    scale_x_discrete(drop = F) +
+    ylim(c(0,88)) +
+    theme_agData(legend.position = "none") +
+    labs(title = "2020 Saskatchewan Election", 
+         x = NULL, caption = "")
+  # Plot Pie
+  mp2 <- ggplot(xi, aes(x = "", y = Percent)) +
+    geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.3) +
+    coord_polar("y", start = 0) +
+    geom_label(aes(y = LabelPos, label = round(Percent)), nudge_x = 0.3) +
+    facet_wrap(Constituency ~ .) +
+    scale_fill_manual(values = myCs2020, breaks = myPs2020) +
+    theme_agData_pie(legend.position = "none") +
+    labs(title = "", x = NULL, caption = myCaption)
+  #
+  mp <- ggarrange(mp1, mp2, ncol = 2, align = "h")
+  print(mp)
+}
+dev.off()
 ```
 
 ---
@@ -613,51 +613,6 @@ ggsave("saskatchewan_2024_election_03.png", mp, width = 6, height = 4)
 
 ## All Ridings {.tabset .tabset-pills}
 
-### PDF
-
-> - `r shiny::icon("file-pdf")` [saskatchewan_2024_election_districts.pdf](saskatchewan_2024_election_districts.pdf)
-
-```{r}
-pdf("saskatchewan_2024_election_districts.pdf", width = 8, height = 4)
-districts <- unique(d2024$Constituency)
-#i<-"THE BATTLEFORDS"
-for(i in districts) {
-  xi <- d2024 %>% filter(Constituency == i) %>%
-    mutate(Percent = 100 * Votes / sum(Votes, na.rm = T)) %>%
-    arrange(desc(Party)) %>%
-    mutate(LabelPos = cumsum(Percent) - (Percent / 2),
-           #LabelPos = ifelse(Votes == 0, NA, LabelPos)
-           )
-  # Bar Chart
-  mp1 <- ggplot(xi, aes(x = Party, y = Percent, fill = Party)) +
-    geom_col(color = "black", alpha = 0.7) +
-    geom_label(aes(label = Votes), vjust = -0.15, 
-               color = "white", alpha = 0.7) + 
-    facet_wrap(Constituency ~ .) +
-    scale_fill_manual(values = myCs2024, drop = F) +
-    scale_x_discrete(drop = F) +
-    ylim(c(0,88)) +
-    theme_agData_col(legend.position = "none") +
-    labs(title = "2024 Saskatchewan Election", 
-         x = NULL, caption = "")
-  # Plot Pie
-  mp2 <- ggplot(xi, aes(x = "", y = Percent)) +
-    geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.3) +
-    coord_polar("y", start = 0) +
-    geom_label(aes(y = LabelPos, label = round(Percent)), nudge_x = 0.3) +
-    facet_wrap(Constituency ~ .) +
-    scale_fill_manual(values = myCs2024, breaks = myPs2024) +
-    theme_agData_pie(legend.position = "none") +
-    labs(title = "", x = NULL, caption = myCaption)
-  #
-  mp <- ggarrange(mp1, mp2, ncol = 2, align = "h")
-  print(mp)
-}
-dev.off()
-```
-
----
-
 ### Facetted
 
 ![](saskatchewan_2024_election_04.png)
@@ -699,6 +654,51 @@ mp <- ggplot(xx, aes(x = "", y = Percent)) +
   labs(title = "2024 Saskatchewan Election", 
        x = NULL, caption = myCaption)
 ggsave("saskatchewan_2024_election_05.png", mp, width = 36, height = 16)
+```
+
+---
+
+### PDF
+
+> - `r shiny::icon("file-pdf")` [saskatchewan_2024_election_districts.pdf](saskatchewan_2024_election_districts.pdf)
+
+```{r}
+pdf("saskatchewan_2024_election_districts.pdf", width = 8, height = 4)
+districts <- unique(d2024$Constituency)
+#i<-"THE BATTLEFORDS"
+for(i in districts) {
+  xi <- d2024 %>% filter(Constituency == i) %>%
+    mutate(Percent = 100 * Votes / sum(Votes, na.rm = T)) %>%
+    arrange(desc(Party)) %>%
+    mutate(LabelPos = cumsum(Percent) - (Percent / 2),
+           #LabelPos = ifelse(Votes == 0, NA, LabelPos)
+           )
+  # Bar Chart
+  mp1 <- ggplot(xi, aes(x = Party, y = Percent, fill = Party)) +
+    geom_col(color = "black", alpha = 0.7) +
+    geom_label(aes(label = Votes), vjust = -0.15, 
+               color = "white", alpha = 0.7) + 
+    facet_wrap(Constituency ~ .) +
+    scale_fill_manual(values = myCs2024, drop = F) +
+    scale_x_discrete(drop = F) +
+    ylim(c(0,88)) +
+    theme_agData_col(legend.position = "none") +
+    labs(title = "2024 Saskatchewan Election", 
+         x = NULL, caption = "")
+  # Plot Pie
+  mp2 <- ggplot(xi, aes(x = "", y = Percent)) +
+    geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.3) +
+    coord_polar("y", start = 0) +
+    geom_label(aes(y = LabelPos, label = round(Percent)), nudge_x = 0.3) +
+    facet_wrap(Constituency ~ .) +
+    scale_fill_manual(values = myCs2024, breaks = myPs2024) +
+    theme_agData_pie(legend.position = "none") +
+    labs(title = "", x = NULL, caption = myCaption)
+  #
+  mp <- ggarrange(mp1, mp2, ncol = 2, align = "h")
+  print(mp)
+}
+dev.off()
 ```
 
 ---

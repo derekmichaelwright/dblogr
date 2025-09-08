@@ -48,16 +48,6 @@ STATCAN Table: 34-10-0133-01 (Average rents)
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410013301](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410013301){target="_blank"}
 > - `r shiny::icon("save")` [3410013301_databaseLoadingData.csv](3410013301_databaseLoadingData.csv)
 
-STATCAN Table: 11-10-0222-01 (Household spending)
-
-> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110022201](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110022201){target="_blank"}
-> - `r shiny::icon("save")` [1110022201_databaseLoadingData.csv](1110022201_databaseLoadingData.csv)
-
-Bank of Canada: Interest Rates
-
-> - `r shiny::icon("globe")` [https://www.bankofcanada.ca/rates/interest-rates/canadian-interest-rates/](https://www.bankofcanada.ca/rates/interest-rates/canadian-interest-rates/){target="_blank"}
-> - `r shiny::icon("save")` [bankofcanada_interestrates.csv](bankofcanada_interestrates.csv)
-
 ```{r eval = F, echo = F}
 #https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110024001
 #https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110001201
@@ -133,47 +123,16 @@ d5 <- read.csv("3610068801_databaseLoadingData.csv") %>%
          Type = factor(Type, levels = myTypes),
          Area = factor(Area, levels = myProvs))
 #
-x1 <- read.csv("1110019001_databaseLoadingData.csv") %>%
-  select(Year=REF_DATE, Area=GEO, Measurement=Income.concept,
-         Group=Economic.family.type, Unit=UOM, Value=VALUE) %>%
-  filter(Group == "Economic families and persons not in an economic family",
-         Measurement == "Median total income", Year >= 1986) %>%
-  mutate(Area = factor(Area, levels = unique(.$Area)),
-         Year = as.character(Year))
-x1 <- x1 %>% 
-  left_join(x1 %>% filter(Year == 1986) %>% select(Area, V1986=Value), by = "Area") %>%
-  mutate(Rate = 100 * (Value - V1986) / V1986) %>%
-  select(Year, Area, `Median market income`=Rate)
-#
-x2 <- d1 %>% 
-  filter(Date >= "1986-01-01", Measurement == "Total (house and land)") %>%
-  select(Date, Year, Month, Area, Value)
-x2 <- x2 %>% 
-  left_join(x2 %>% filter(Date == "1986-01-01") %>% select(Area, V1986=Value), by = "Area") %>%
-  mutate(Rate = 100 * (Value - V1986) / V1986) %>%
-  select(Date, Year, Month, Area, `Housing price index`=Rate)
-#
-d6 <- left_join(x2, x1, by = c("Year", "Area")) %>% 
-  filter(!is.na(`Median market income`), !is.na(`Housing price index`)) %>%
-  mutate(`Median market income` = ifelse(Month != "01", NA, `Median market income`)) %>%
-  gather(Measurement, Value, 5:6) %>% filter(!is.na(Value))
-#
-d7 <- read.csv("3410013301_databaseLoadingData.csv") %>%
+d6 <- read.csv("3410013301_databaseLoadingData.csv") %>%
   select(Year=REF_DATE, Area=GEO, Structure.Type=Type.of.structure,
          Unit.Type = Type.of.unit, Unit=UOM, Value=VALUE) %>%
   filter(!is.na(Value), Value > 0)
 #
-d8 <- read.csv("1110022201_databaseLoadingData.csv") %>%
+d7 <- read.csv("1110022201_databaseLoadingData.csv") %>%
   select(Year=REF_DATE, Area=GEO, Statistic, 
          Measurement=Household.expenditures..summary.level.categories,
          Unit=UOM, Value=VALUE) %>%
   mutate(Area = factor(Area, levels = myProvs))
-#
-d9 <- read.csv("bankofcanada_interestrates.csv", skip = 11) %>%
-  rename(Value=2) %>%
-  mutate(Date = as.Date(Date),
-         Value = as.numeric(Value)) %>%
-  filter(!is.na(Value))
 ```
 
 ---
@@ -867,55 +826,15 @@ unique(d5$Type)
 
 ---
 
-# Housing vs Income {.tabset .tabset-pills}
+# Rent prices {.tabset .tabset-pills}
 
-## Line Graph
+## All Cities
 
 ![](canada_housing_6_01.png)
 
 ```{r}
 # Prep data
-xx <- d6 %>% filter(Area == "Canada") 
-# Plot
-mp <- ggplot(xx, aes(x = Date, y = Value, color = Measurement)) +
-  geom_line(size = 1.5, alpha = 0.7) +
-  scale_color_manual(name = NULL, values = c("darkred", "darkgreen")) +
-  scale_x_date(date_breaks = "1 year", date_minor_breaks = "1 year", date_labels = "%Y") +
-  theme_agData(legend.position = "bottom",
-               axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Canada", subtitle = "Housing Price vs. Income",
-       y = "Percent Change", x = NULL, caption = myCaption)
-ggsave("canada_housing_6_01.png", mp, width = 6, height = 4)
-```
-
----
-
-## Animation
-
-![](canada_housing_6_01.gif)
-
-```{r}
-# Animate
-mp <- mp + 
-  transition_reveal(Date) + 
-  view_follow(fixed_y = T)
-  #view_follow(fixed_x = c(as.Date("1866-01-01"), NA))
-anim_save("canada_housing_6_01.gif", mp, 
-          nframes = 600, fps = 25, end_pause = 60, 
-          width = 900, height = 600, res = 150, units = "px")
-```
-
----
-
-# Rent prices {.tabset .tabset-pills}
-
-## All Cities
-
-![](canada_housing_7_01.png)
-
-```{r}
-# Prep data
-xx <- d7 %>% 
+xx <- d6 %>% 
   filter(Structure.Type == "Row and apartment structures of three units and over")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Unit.Type)) +
@@ -925,18 +844,18 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Unit.Type)) +
   scale_color_manual(name = NULL, values = agData_Colors) +
   labs(title = "Rent Prices", y = "Dollars",
        x = NULL, caption = myCaption)
-ggsave("canada_housing_7_01.png", mp, width = 40, height = 25)
+ggsave("canada_housing_6_01.png", mp, width = 40, height = 25)
 ```
 
 ---
 
 ## Top and Bottom 15
 
-![](canada_housing_7_02.png)
+![](canada_housing_6_02.png)
 
 ```{r}
 # Prep data
-xx <- d7 %>% 
+xx <- d6 %>% 
   filter(Year == 2024, Unit.Type == "Two bedroom units",
          Structure.Type == "Row and apartment structures of three units and over") %>%
   arrange(desc(Value)) %>%
@@ -951,7 +870,7 @@ mp <- ggplot(xx, aes(x = Area, y = Value)) +
                    axis.text.x = element_text(angle = 60, hjust = 1)) +
   labs(title = "Rent Prices", y = "Dollars",
        x = NULL, caption = myCaption)
-ggsave("canada_housing_7_02.png", mp, width = 8, height = 6)
+ggsave("canada_housing_6_02.png", mp, width = 8, height = 6)
 ```
 
 ---
@@ -960,11 +879,11 @@ ggsave("canada_housing_7_02.png", mp, width = 8, height = 6)
 
 ### Type
 
-![](canada_housing_7_03.png)
+![](canada_housing_6_03.png)
 
 ```{r}
 # Prep data
-xx <- d7 %>% 
+xx <- d6 %>% 
   filter(Area %in% c("Toronto, Ontario", "Saskatoon, Saskatchewan", "Vancouver, British Columbia"),
          Structure.Type == "Row and apartment structures of three units and over")
 # Plot
@@ -975,18 +894,18 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Unit.Type)) +
   theme_agData() +
   labs(title = "Rent Prices", y = "Dollars",
        x = NULL, caption = myCaption)
-ggsave("canada_housing_7_03.png", mp, width = 8, height = 4)
+ggsave("canada_housing_6_03.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ### Two bedroom
 
-![](canada_housing_7_04.png)
+![](canada_housing_6_04.png)
 
 ```{r}
 # Prep data
-xx <- d7 %>% 
+xx <- d6 %>% 
   filter(Area %in% c("Toronto, Ontario", "Saskatoon, Saskatchewan", "Vancouver, British Columbia"),
          Structure.Type == "Row and apartment structures of three units and over",
          Unit.Type == "Two bedroom units")
@@ -998,7 +917,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   theme_agData() +
   labs(title = "Rent Prices", y = "Dollars",
        x = NULL, caption = myCaption)
-ggsave("canada_housing_7_04.png", mp, width = 8, height = 4)
+ggsave("canada_housing_6_04.png", mp, width = 8, height = 4)
 ```
 
 ---
@@ -1009,11 +928,11 @@ ggsave("canada_housing_7_04.png", mp, width = 8, height = 4)
 
 ### Canada
 
-![](canada_housing_8_01.png)
+![](canada_housing_7_01.png)
 
 ```{r}
 # Prep Data
-xx <- d8 %>% filter(Area %in% myProvs[1:3], Measurement != "Total expenditure")
+xx <- d7 %>% filter(Area == "Canada", Measurement != "Total expenditure")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   stat_smooth(data = xx %>% filter(Year < 2018), 
@@ -1021,23 +940,24 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
               geom = "line", method = "lm", se = F, fullrange = T) +
   geom_line(alpha = 0.5, size = 2) +
   geom_point() +
+  geom_point(data = xx%>% filter(Year < 2018), pch = 1, color = "black") +
   facet_wrap(. ~ Area, ncol = 3, scales = "free_y") +
   scale_color_manual(name = NULL, values = c("darkgreen","steelblue","black")) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Household Spending - Canada",
        y = "Thousand Dollars", x = NULL, caption = myCaption)
-ggsave("canada_housing_8_01.png", mp, width = 8, height = 4)
+ggsave("canada_housing_7_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### Provinces
 
-![](canada_housing_8_02.png)
+![](canada_housing_7_02.png)
 
 ```{r}
 # Prep Data
-xx <- d8 %>% filter(!Area %in% myProvs[1:3], Measurement != "Total expenditure")
+xx <- d7 %>% filter(Area != "Canada", Measurement != "Total expenditure")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
   stat_smooth(data = xx %>% filter(Year < 2018),
@@ -1045,25 +965,26 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
               geom = "line", method = "lm", se = F, fullrange = T) +
   geom_line(alpha = 0.5, size = 2) +
   geom_point() +
-  facet_wrap(. ~ Area, ncol = 5, scales = "free_y") +
+  geom_point(data = xx%>% filter(Year < 2018), pch = 1, color = "black") +
+  facet_wrap(. ~ Area, ncol = 6, scales = "free_y") +
   scale_color_manual(name = NULL, values = c("darkgreen","steelblue","black")) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Household Spending - Canada",
        y = "Thousand Dollars", x = NULL, caption = myCaption)
-ggsave("canada_housing_8_02.png", mp, width = 10, height = 6)
+ggsave("canada_housing_7_02.png", mp, width = 14, height = 6)
 ```
 
 ---
 
 ## Percent or Total expenditures {.tabset .tabset-pills}
 
-## Canada
+### Canada
 
-![](canada_housing_8_03.png)
+![](canada_housing_7_03.png)
 
 ```{r}
 # Prep Data
-xx <- d8 %>% filter(Area %in% myProvs[1:3]) %>%
+xx <- d7 %>% filter(Area %in% myProvs[1:3]) %>%
   spread(Measurement, Value) %>%
   mutate(Percent_Food = 100 * `Food expenditures` / `Total expenditure`,
          Percent_Shelter = 100 * Shelter / `Total expenditure`) %>%
@@ -1071,34 +992,113 @@ xx <- d8 %>% filter(Area %in% myProvs[1:3]) %>%
   gather(Measurement, Value, Percent_Food, Percent_Shelter)
   
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Measurement)) +
+mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   stat_smooth(data = xx %>% filter(Year < 2018),
               aes(color = "Trend (< 2018)", group = Measurement),
               geom = "line", method = "lm", se = F, fullrange = T) +
   geom_line(alpha = 0.5, size = 2) +
   geom_point() +
+  
   facet_wrap(. ~ Area, ncol = 3, scale = "free_y") +
   scale_color_manual(name = NULL, values = c("darkgreen","steelblue","black")) +
-  theme_agData(legend.position = "none") +
+  theme_agData(legend.position = "bottom") +
   labs(title = "Household Spending - Canada",
        y = "Thousand Dollars", x = NULL, caption = myCaption)
-ggsave("canada_housing_8_03.png", mp, width = 6, height = 4)
+ggsave("canada_housing_7_03.png", mp, width = 8, height = 4)
 ```
 
 ---
 
-# Interest Rates
+# Bonus {.tabset .tabset-pills}
 
-![](canada_housing_9_01.png)
+## Interest Rates
+
+Bank of Canada: Interest Rates
+
+> - `r shiny::icon("globe")` [https://www.bankofcanada.ca/rates/interest-rates/canadian-interest-rates/](https://www.bankofcanada.ca/rates/interest-rates/canadian-interest-rates/){target="_blank"}
+> - `r shiny::icon("save")` [bankofcanada_interestrates.csv](bankofcanada_interestrates.csv)
+
+![](canada_housing_8_01.png)
 
 ```{r}
+d8 <- read.csv("bankofcanada_interestrates.csv", skip = 11) %>%
+  rename(Value=2) %>%
+  mutate(Date = as.Date(Date),
+         Value = as.numeric(Value)) %>%
+  filter(!is.na(Value))
 # Plot
-mp <- ggplot(d9, aes(x = Date, y = Value)) +
+mp <- ggplot(d8, aes(x = Date, y = Value)) +
   geom_line() +
   theme_agData() +
   labs(title = "Interest Rates in Canada", y = "Percent", x = NULL,
-       captiopn = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: BoC")
-ggsave("canada_housing_9_01.png", mp, width = 8, height = 4)
+       captiopn = "derekmichaelwright.github.io/dblogr/ | Data: BoC")
+ggsave("canada_housing_8_01.png", mp, width = 8, height = 4)
+```
+
+---
+
+## Housing vs Income
+
+STATCAN Table: 11-10-0222-01 (Household spending)
+
+> - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110022201](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110022201){target="_blank"}
+> - `r shiny::icon("save")` [1110022201_databaseLoadingData.csv](1110022201_databaseLoadingData.csv)
+
+> Note: one of these is adjusted for inflation and the other isnt.
+
+![](canada_housing_8_02.png)
+
+```{r}
+# Prep data
+x1 <- read.csv("1110019001_databaseLoadingData.csv") %>%
+  select(Year=REF_DATE, Area=GEO, Measurement=Income.concept,
+         Group=Economic.family.type, Unit=UOM, Value=VALUE) %>%
+  filter(Group == "Economic families and persons not in an economic family",
+         Measurement == "Median total income", Year >= 1986) %>%
+  mutate(Area = factor(Area, levels = unique(.$Area)),
+         Year = as.character(Year))
+x1 <- x1 %>% 
+  left_join(x1 %>% filter(Year == 1986) %>% select(Area, V1986=Value), by = "Area") %>%
+  mutate(Rate = 100 * (Value - V1986) / V1986) %>%
+  select(Year, Area, `Median market income`=Rate)
+#
+x2 <- d1 %>% 
+  filter(Date >= "1986-01-01", Measurement == "Total (house and land)") %>%
+  select(Date, Year, Month, Area, Value)
+x2 <- x2 %>% 
+  left_join(x2 %>% filter(Date == "1986-01-01") %>% select(Area, V1986=Value), by = "Area") %>%
+  mutate(Rate = 100 * (Value - V1986) / V1986) %>%
+  select(Date, Year, Month, Area, `Housing price index`=Rate)
+#
+d9 <- left_join(x2, x1, by = c("Year", "Area")) %>% 
+  filter(!is.na(`Median market income`), !is.na(`Housing price index`)) %>%
+  mutate(`Median market income` = ifelse(Month != "01", NA, `Median market income`)) %>%
+  gather(Measurement, Value, 5:6) %>% filter(!is.na(Value))
+# Prep data
+xx <- d9 %>% filter(Area == "Canada") 
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value, color = Measurement)) +
+  geom_line(size = 1.5, alpha = 0.7) +
+  scale_color_manual(name = NULL, values = c("darkred", "darkgreen")) +
+  scale_x_date(date_breaks = "1 year", date_minor_breaks = "1 year", date_labels = "%Y") +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada", subtitle = "Housing Price vs. Income",
+       y = "Percent Change", x = NULL, caption = myCaption)
+ggsave("canada_housing_8_02.png", mp, width = 6, height = 4)
+```
+
+![](canada_housing_8_02.gif)
+
+```{r}
+# Animate
+mp <- mp + 
+  transition_reveal(Date) + 
+  view_follow(fixed_y = T)
+  #view_follow(fixed_x = c(as.Date("1866-01-01"), NA))
+anim_save("canada_housing_8_02.gif", mp, 
+          nframes = 600, fps = 25, end_pause = 60, 
+          width = 900, height = 600, res = 150, units = "px")
 ```
 
 ---

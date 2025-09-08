@@ -168,7 +168,7 @@ xx <- d1 %>%
   mutate(Value = ifelse(Trade == "Import", -Value, Value))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Trade)) +
-  geom_col(alpha = 0.9, lwd = 0.1, color = "black") +
+  geom_col(alpha = 0.9) +
   facet_wrap(Trading.Partner ~ ., scales = "free_y", ncol = 7) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   scale_x_date(date_minor_breaks = "1 year", expand = c(0,0)) +

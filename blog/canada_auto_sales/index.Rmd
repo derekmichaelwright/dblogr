@@ -1,6 +1,6 @@
 ---
-title: ""
-subtitle: "Graphs of "
+title: "Automobile Sales in Canada"
+subtitle: "Graphs of new motor vehicle sales using STATCAN data"
 date: "Last updated: `r Sys.Date()`"
 author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/tree/main/blog/)"
 ---
@@ -13,8 +13,12 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 # Data
 
+STATCAN Table: 20-10-0085-01 - New motor vehicle sales, monthly
+
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2010008501](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2010008501){target="_blank"}
 > - `r shiny::icon("save")` [2010008501_databaseLoadingData.csv](2010008501_databaseLoadingData.csv)
+
+Trucks = minivans, sport-utility vehicles, light and heavy trucks, vans and buses
 
 ---
 
@@ -28,6 +32,10 @@ library(agData)
 ```{r}
 # Prep data
 myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myColors_Type <- c("maroon4", "darkslategray")
+myColors_Fuel <- c("darkgreen", "darkred")
+
+#
 dd <- read.csv("2010008501_databaseLoadingData.csv") %>%
   select(Date=REF_DATE, Area=GEO, Vehicle.type, Fuel.type,
          Origin.of.manufacture, Unit=UOM, Value=VALUE) %>%
@@ -36,57 +44,72 @@ dd <- read.csv("2010008501_databaseLoadingData.csv") %>%
 
 ---
 
-# 
+# Total Auto Sales {.tabset .tabset-pills}
 
-![](01.png)
+## All Vehicles {.tabset .tabset-pills}
+
+### Canada
+
+![](canada_auto_sales_01.png)
 
 ```{r}
 # Prep data
 xx <- dd %>% 
-  filter(Vehicle.type == "Total, new motor vehicles",
-         Fuel.type == "All fuel types",
-         Origin.of.manufacture == "Total, country of manufacture"
-         )
+  filter(Area == "Canada", Vehicle.type == "Total, new motor vehicles",
+         Fuel.type == "All fuel types", Unit == "Units",
+         Origin.of.manufacture == "Total, country of manufacture")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) + 
-  geom_line(alpha = 0.7) +
-  #scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
+  geom_line(color = "steelblue4", alpha = 0.7) +
+  stat_smooth(geom = "line", alpha = 0.8) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "",
+  labs(title = "Canada - New Motor Vehicle Sales",
        y = "Thousand Sales", x = NULL, caption = myCaption)
 ggsave("canada_auto_sales_01.png", mp, width = 6, height = 4)
 ```
 
-```{r}
-# Prep data
-xx <- dd %>% 
-  filter(Vehicle.type == "Total, new motor vehicles",
-         #Fuel.type != "All fuel types",
-         Origin.of.manufacture == "Total, country of manufacture"
-         )
-# Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Fuel.type)) + 
-  geom_line(alpha = 0.7) +
-  #scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
-  theme_agData(legend.position = "bottom") +
-  labs(title = "",
-       y = "Thousand Sales", x = NULL, caption = myCaption)
-ggsave("canada_auto_sales_02.png", mp, width = 6, height = 4)
-```
+---
+
+### Provinces
+
+![](canada_auto_sales_02.png)
 
 ```{r}
 # Prep data
 xx <- dd %>% 
-  filter(Vehicle.type == "Total, new motor vehicles",
-         Fuel.type == "All fuel types",
-         Origin.of.manufacture != "Total, country of manufacture"
-         )
+  filter(Area != "Canada", Vehicle.type == "Total, new motor vehicles",
+         Fuel.type == "All fuel types", Unit == "Units",
+         Origin.of.manufacture == "Total, country of manufacture")
 # Plot
-mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Origin.of.manufacture)) + 
-  geom_line(alpha = 0.7) +
-  #scale_fill_manual(name = NULL, values = c("darkblue", "steelblue")) +
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) + 
+  geom_line(color = "steelblue4", alpha = 0.7) +
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "",
+  labs(title = "Canada - New Motor Vehicle Sales",
+       y = "Thousand Sales", x = NULL, caption = myCaption)
+ggsave("canada_auto_sales_02.png", mp, width = 14, height = 6)
+```
+
+---
+
+## Vehicle Types {.tabset .tabset-pills}
+
+### Canada
+
+![](canada_auto_sales_03.png)
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  filter(Area == "Canada", Vehicle.type != "Total, new motor vehicles",
+         Fuel.type == "All fuel types", Unit == "Units",
+         Origin.of.manufacture == "Total, country of manufacture")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Vehicle.type)) + 
+  geom_line(alpha = 0.7) +
+  scale_color_manual(name = NULL, values = myColors_Type) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canada - New Motor Vehicle Sales",
        y = "Thousand Sales", x = NULL, caption = myCaption)
 ggsave("canada_auto_sales_03.png", mp, width = 6, height = 4)
 ```
@@ -95,11 +118,163 @@ ggsave("canada_auto_sales_03.png", mp, width = 6, height = 4)
 ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
+---
+
+### Provinces
+
+![](canada_auto_sales_04.png)
+
 ```{r}
-mp <- ggInterProv_ani("British Columbia")
-anim_save("canada_migration_gif_01.gif", mp, 
-          nframes = 300, fps = 10, end_pause = 10, 
-          width = 600, height = 400, res = 80, units = "px")
+# Prep data
+xx <- dd %>% 
+  filter(Area != "Canada", Vehicle.type != "Total, new motor vehicles",
+         Fuel.type == "All fuel types", Unit == "Units",
+         Origin.of.manufacture == "Total, country of manufacture")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Vehicle.type)) + 
+  geom_line(alpha = 0.7) +
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+  scale_color_manual(name = NULL, values = myColors_Type) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canada - New Motor Vehicle Sales",
+       y = "Thousand Sales", x = NULL, caption = myCaption)
+ggsave("canada_auto_sales_04.png", mp, width = 14, height = 6)
+```
+
+---
+
+### Percent
+
+![](canada_auto_sales_05.png)
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  filter(Area == "Canada", Vehicle.type != "Total, new motor vehicles",
+         Fuel.type == "All fuel types", Unit == "Units",
+         Origin.of.manufacture == "Total, country of manufacture") %>%
+  spread(Vehicle.type, Value) %>%
+  rename(Total_cars=`Passenger cars`, Total_trucks=Trucks) %>%
+  mutate(Total = Total_cars + Total_trucks,
+         `Passenger cars` = 100 * Total_cars / Total,
+         Trucks = 100 * Total_trucks / Total) %>%
+  select(Date, Area, `Passenger cars`, Trucks) %>%
+  gather(Vehicle.type, Value, 3:4)
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value, fill = Vehicle.type)) + 
+  geom_area(alpha = 0.7) +
+  facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
+  scale_fill_manual(name = NULL, values = myColors_Type) +
+  scale_y_continuous(breaks = seq(0,100,by=10)) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canada - New Motor Vehicle Sales",
+       y = "Percent", x = NULL, caption = myCaption)
+ggsave("canada_auto_sales_05.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Fuel Types {.tabset .tabset-pills}
+
+### Canada
+
+![](canada_auto_sales_06.png)
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  filter(Area == "Canada",
+         Vehicle.type == "Total, new motor vehicles",
+         Fuel.type %in% c("All other fuel types", "Zero-emission"), Unit == "Units")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Fuel.type)) + 
+  geom_line(alpha = 0.7) +
+  facet_wrap(Fuel.type ~ ., scales = "free_y") +
+  scale_color_manual(name = NULL, values = myColors_Fuel) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canada - New Motor Vehicle Sales",
+       y = "Thousand Sales", x = NULL, caption = myCaption)
+ggsave("canada_auto_sales_06.png", mp, width = 6, height = 4)
+```
+
+---
+
+### Provinces
+
+![](canada_auto_sales_07.png)
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  filter(Area == "Canada", Vehicle.type != "Total, new motor vehicles",
+         Fuel.type %in% c("All other fuel types", "Zero-emission"), Unit == "Units")
+x1 <- xx %>% filter(Vehicle.type == "Passenger cars")
+x2 <- xx %>% filter(Vehicle.type == "Trucks")
+# Plot
+mp1 <- ggplot(x1, aes(x = Date, y = Value / 1000, color = Fuel.type)) + 
+  geom_line(alpha = 0.7) +
+  facet_grid(Fuel.type ~ Vehicle.type, scales = "free_y") +
+  scale_color_manual(name = NULL, values = myColors_Fuel) +
+  theme_agData(legend.position = "none") +
+  labs(title = "Canada - New Motor Vehicle Sales",
+       y = "Thousand Sales", x = NULL)
+#
+mp2 <- ggplot(x2, aes(x = Date, y = Value / 1000, color = Fuel.type)) + 
+  geom_line(alpha = 0.7) +
+  facet_grid(Fuel.type ~ Vehicle.type, scales = "free_y") +
+  scale_color_manual(name = NULL, values = myColors_Fuel) +
+  theme_agData(legend.position = "none") +
+  labs(y = "Thousand Sales", x = NULL, caption = myCaption)
+#
+mp <- ggarrange(mp1, mp2, ncol = 2, align = "h")
+ggsave("canada_auto_sales_07.png", mp, width = 7, height = 5, bg = "white")
+```
+
+---
+
+## Percent EV
+
+![](canada_auto_sales_08.png)
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  filter(Area == "Canada", Unit == "Units",
+         Vehicle.type %in% c("Passenger cars", "Trucks")) %>%
+  spread(Fuel.type, Value) %>%
+  filter(!is.na(`Zero-emission`)) %>%
+  mutate(Percent = 100 * `Zero-emission` / `All fuel types`)
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Percent, color = Vehicle.type)) + 
+  geom_line(alpha = 0.7) +
+  scale_color_manual(name = NULL, values = myColors_Type) +
+  expand_limits(y = 0) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canada - EV Sales",
+       y = "Percent Sales", x = NULL, caption = myCaption)
+ggsave("canada_auto_sales_08.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Origin
+
+![](canada_auto_sales_09.png)
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  filter(Area == "Canada", Vehicle.type == "Total, new motor vehicles",
+         Fuel.type == "All fuel types",  Unit == "Units",
+         Origin.of.manufacture != "Total, country of manufacture")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Origin.of.manufacture)) + 
+  geom_line(alpha = 0.7) +
+  scale_color_manual(name = NULL, values = c("steelblue4", "darkred")) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canada - New Motor Vehicle Sales",
+       y = "Thousand Sales", x = NULL, caption = myCaption)
+ggsave("canada_auto_sales_09.png", mp, width = 6, height = 4)
 ```
 
 ---

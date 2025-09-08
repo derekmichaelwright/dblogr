@@ -173,6 +173,10 @@ anim_save("gapminder_gif_03.gif", mp,
 
 ---
 
+# GDP x Life Expectancy {.tabset .tabset-pills}
+
+## Plotting function
+
 ```{r}
 gg_gapminder1 <- function(x, myTitle = NULL) {
   ggplot(x, aes(x = gdpPercap / 1000, y = lifeExp, 
@@ -191,6 +195,8 @@ gg_gapminder1 <- function(x, myTitle = NULL) {
 
 ---
 
+## World {.active}
+
 ![](gapminder_gif_04.gif)
 
 ```{r}
@@ -207,9 +213,9 @@ anim_save("gapminder_gif_04.gif", mp,
 
 ---
 
-# Regions {.tabset .tabset-pills}
+## Regions {.tabset .tabset-pills}
 
-## Africa
+### Africa
 
 ![](gapminder_gif_05.gif)
 
@@ -228,7 +234,7 @@ anim_save("gapminder_gif_05.gif", mp,
 
 ---
 
-## Americas
+### Americas
 
 ![](gapminder_gif_06.gif)
 
@@ -247,7 +253,7 @@ anim_save("gapminder_gif_06.gif", mp,
 
 ---
 
-## Asia
+### Asia
 
 ![](gapminder_gif_07.gif)
 
@@ -266,7 +272,7 @@ anim_save("gapminder_gif_07.gif", mp,
 
 ---
 
-## Europe
+### Europe
 
 ![](gapminder_gif_08.gif)
 
@@ -285,7 +291,7 @@ anim_save("gapminder_gif_08.gif", mp,
 
 ---
 
-# Countries {.tabset .tabset-pills}
+## Countries {.tabset .tabset-pills}
 
 ```{r}
 gg_gapminder2 <- function(mycountries) {
@@ -304,7 +310,7 @@ gg_gapminder2 <- function(mycountries) {
 
 ---
 
-## Canada
+### Canada
 
 ![](gapminder_gif_09.gif)
 
@@ -317,7 +323,7 @@ anim_save("gapminder_gif_09.gif", mp,
 
 ---
 
-## China
+### China
 
 ![](gapminder_gif_10.gif)
 
@@ -330,7 +336,7 @@ anim_save("gapminder_gif_10.gif", mp,
 
 ---
 
-## Rwanda, South Africa, Nigeria
+### Rwanda, South Africa, Nigeria
 
 ![](gapminder_gif_11.gif)
 
@@ -343,7 +349,9 @@ anim_save("gapminder_gif_11.gif", mp,
 
 ---
 
-# Heatmaps
+# Life Expectancy
+
+## Heatmaps
 
 ![](gapminder_04.png)
 

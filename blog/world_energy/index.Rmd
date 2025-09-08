@@ -279,7 +279,7 @@ ggsave("world_energy_1_07.png", mp, width = 6, height = 4)
 
 ---
 
-## Bar Animation
+### Bar Animation
 
 ![](world_energy_gif_1_01.gif)
 
@@ -291,7 +291,7 @@ mp <- ggplot(xx, aes(x = 1, y = Value / 1000, fill = Source)) +
   geom_col(color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, 
                     values = rev(myColors), breaks = rev(myItems)) +
-  scale_x_continuous(expand = c(0,0)) +
+  scale_y_continuous(expand = c(0,0)) +
   theme_agData(legend.position = "bottom",
                axis.text.y = element_blank(),
                axis.ticks.y = element_blank()) +
@@ -540,7 +540,7 @@ ggsave("world_energy_3_05.png", mp, width = 7, height = 5)
 
 ---
 
-## Pie Animation
+### Pie Animation
 
 ![](world_energy_gif_3_01.gif)
 
@@ -587,7 +587,7 @@ ggsave("world_energy_4_01.png", mp, width = 6, height = 4)
 
 ---
 
-# Canada vs China
+## Canada vs China
 
 ![](world_energy_4_02.png)
 
@@ -597,6 +597,7 @@ myAreas <- c("Canada", "China")
 myColors <- c("steelblue", "darkred")
 xx <- d2 %>% filter(Area %in% myAreas) %>% 
   mutate(Area = factor(Area, levels = myAreas))
+# Plot
 mp2 <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   geom_line(alpha = 0.7, lwd = 1.5) +
   scale_color_manual(name = NULL, values = myColors) +
