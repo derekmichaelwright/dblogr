@@ -16,6 +16,7 @@ library(shiny)
 
 > derekmichaelwright.github.io/dblogr/
 >
+> - `r icon("r-project")` [Packages](#packages)
 > - `r icon("book")` [Publications](#publications)
 > - `r icon("newspaper")` [Academic Work](#academic-work)
 > - `r icon("r-project")` [agData](#agdata)
@@ -68,6 +69,60 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 </div></div></div>
 
+
+---
+
+---
+
+# `r icon("r-project")` Packages
+
+## Data Visualization {.tabset .tabset-pills}
+
+### agData
+
+<div class="box"><div class="row"><div class="col-md-8">
+
+An `r icon("r-project")` Package Containing Agricultural Data Sets
+
+Install: `devtools::install_github("derekmichaelwright/agData")`
+
+Documentation:
+
+- `r icon("house")` [https://derekmichaelwright.github.io/agData/](https://derekmichaelwright.github.io/agData/){target="_blank"}
+- `r icon("github")` [https://github.com/derekmichaelwright/agData/](https://github.com/derekmichaelwright/agData/){target="_blank"}
+
+</div><div class="col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
+
+### gwaspr Package
+
+<div class="box"><div class="row"><div class="col-md-8">
+
+An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` package
+
+`devtools::install_github("derekmichaelwright/gwaspr")`
+
+- `r icon("house")` [https://derekmichaelwright.github.io/gwaspr/](https://derekmichaelwright.github.io/gwaspr/){target="_blank"}
+- `r icon("github")` [https://github.com/derekmichaelwright/gwaspr/](https://github.com/derekmichaelwright/gwaspr/){target="_blank"}
+
+- `r icon("laptop-code")` [GWAS Tutorial](academic/gwas_tutorial){target="_blank"}
+
+</div><div class="col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
+
+### cypher Package
+
+<div class="box"><div class="row"><div class="col-md-8">
+
+`cypher`: an `r icon("r-project")` package for coding and decoding secret messages
+
+`devtools::install_github("derekmichaelwright/cypher")`
+
+- `r icon("house")` https://derekmichaelwright.github.io/cypher/
+- `r icon("github")` https://github.com/derekmichaelwright/cypher/
+- `r icon("laptop-code")` [Shiny App (R Script)](https://github.com/derekmichaelwright/cypher/blob/master/shinyapp/app.R)
+
+</div><div class="col-md-4">![](blog/hex_stickers/logo_cypher.png)</div></div></div>
+
+## {-}
 
 ---
 
@@ -262,21 +317,6 @@ Harold G. Weger, April K. Polasek, **Derek M. Wright**, Arun Damodaran, John Sta
 
 ## Tutorials & Vignettes {.tabset .tabset-pills}
 
-### gwaspr Package
-
-<div class="box"><div class="row"><div class="col-md-8">
-
-An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` package
-
-`devtools::install_github("derekmichaelwright/gwaspr")`
-
-- `r icon("house")` [https://derekmichaelwright.github.io/gwaspr/](https://derekmichaelwright.github.io/gwaspr/){target="_blank"}
-- `r icon("github")` [https://github.com/derekmichaelwright/gwaspr/](https://github.com/derekmichaelwright/gwaspr/){target="_blank"}
-
-- `r icon("laptop-code")` [GWAS Tutorial](academic/gwas_tutorial){target="_blank"}
-
-</div><div class="col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
-
 ### Tutorials {.tabset .tabset-pills}
 
 Tutorials in `r icon("r-project")` on how to perform various statistical and genetic analyses.
@@ -413,24 +453,9 @@ A vignette illustrating how to mislead with statistics and graphs
 
 ---
 
-# `r icon("r-project")` agData Package
+# `r icon("chart-line")` agData
 
 ## Agricultural Data Sources {.tabset .tabset-pills}
-
-### agData
-
-<div class="box"><div class="row"><div class="col-md-8">
-
-An `r icon("r-project")` Package Containing Agricultural Data Sets
-
-Install: `devtools::install_github("derekmichaelwright/agData")`
-
-Documentation:
-
-- `r icon("house")` [https://derekmichaelwright.github.io/agData/](https://derekmichaelwright.github.io/agData/){target="_blank"}
-- `r icon("github")` [https://github.com/derekmichaelwright/agData/](https://github.com/derekmichaelwright/agData/){target="_blank"}
-
-</div><div class="col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
 
 ### FAOSTAT {.tabset .tabset-pills}
 
@@ -648,7 +673,7 @@ Graphs of GE crop production using USDA data
 
 ---
 
-# `r icon("chart-line")` Blog 
+# `r icon("chart-bar")` Blog 
 
 ## Econoomics & Demographics {.tabset .tabset-pills}
 
@@ -881,20 +906,6 @@ Create street map art with R and road network files
 Graphs of star constellations using the starBliss R package
 
 ![](blog/starbliss/featured.png)</div>
-
-#### cypher Package
-
-<div class="box"><div class="row"><div class="col-md-8">
-
-`cypher`: an `r icon("r-project")` package for coding and decoding secret messages
-
-`devtools::install_github("derekmichaelwright/cypher")`
-
-- `r icon("house")` https://derekmichaelwright.github.io/cypher/
-- `r icon("github")` https://github.com/derekmichaelwright/cypher/
-- `r icon("laptop-code")` [Shiny App (R Script)](https://github.com/derekmichaelwright/cypher/blob/master/shinyapp/app.R)
-
-</div><div class="col-md-4">![](blog/hex_stickers/logo_cypher.png)</div></div></div>
 
 ## {-}
 
