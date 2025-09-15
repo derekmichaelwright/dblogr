@@ -135,28 +135,54 @@ ggsave("railroads_germany.png", mp, bg = "transparent", width = 6, height = 6)
 
 ---
 
-# rcityviews
+# rcityviews {.tabset .tabset-pills}
 
 https://koenderks.github.io/rcityviews/
 
 ```{r}
 library(rcityviews)
-list_cities(match = "Ams")
-city <- new_city(name = "Lagos", country = "Portugal", lat = 37.10, long = -8.68)
-#
-p <- cityview(name = "Amsterdam", zoom = 1) # or cityview(name = city)
-# see ?cityview for more input parameters of this function
-ggplot2::ggsave(filename = "Amsterdam.png", plot = p, height = 500, width = 500, units = "mm", dpi = 100)
 ```
 
-```{r}
+## Saskatoon
+
+![](Saskatoon.png)
+
+```{r eval = F}
+#
 xx <- list_cities()
 xx <- list_cities(match = "Saskatoon")
 #
-p <- cityview(name = "Saskatoon", zoom = 0.5) # or cityview(name = city)
-city <- new_city(name = "Lagos", country = "Portugal", lat = 37.10, long = -8.68)
-# see ?cityview for more input parameters of this function
-ggplot2::ggsave(filename = "Saskatoon.png", plot = p, height = 500, width = 500, units = "mm", dpi = 100)
+mp <- cityview(name = "Saskatoon", zoom = 0.5)
+#
+ggsave("Saskatoon.png", mp, height = 5, width = 5, dpi = 100)
+```
+
+---
+
+## Fort Qu'Appelle
+
+![](FortQuAppelle.png)
+
+```{r}
+#
+mp <- cityview(name = "Fort Qu'Appelle", zoom = 0.5)
+#
+ggsave("FortQuAppelle.png", mp, height = 5, width = 5, dpi = 100)
+```
+
+---
+
+## Lebret
+
+![](FortQuAppelle.png)
+
+```{r}
+#
+city <- new_city(name = "Lebret", country = "Canada", lat = 50.7, long = 103.7)
+#
+mp <- cityview(name = city, zoom = 0.5)
+#
+ggsave("Lebret.png", mp, height = 5, width = 5, dpi = 100)
 ```
 
 ---
@@ -164,3 +190,5 @@ ggplot2::ggsave(filename = "Saskatoon.png", plot = p, height = 500, width = 500,
 # rgeedim
 
 https://github.com/brownag/rgeedim
+
+---

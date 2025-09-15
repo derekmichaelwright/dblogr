@@ -19,8 +19,8 @@ library(shiny)
 > - `r icon("r-project")` [Packages](#packages)
 > - `r icon("book")` [Publications](#publications)
 > - `r icon("newspaper")` [Academic Work](#academic-work)
-> - `r icon("r-project")` [agData](#agdata)
-> - `r icon("chart-line")` [Blog](#blog)
+> - `r icon("chart-line")` [agData](#agdata)
+> - `r icon("chart-bar")` [Blog](#blog)
 > - `r icon("image")` [Photography](#photography)
 
 ---
@@ -82,6 +82,8 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 <div class="box"><div class="row"><div class="col-md-8">
 
+**agData**
+
 An `r icon("r-project")` Package Containing Agricultural Data Sets
 
 Install: `devtools::install_github("derekmichaelwright/agData")`
@@ -96,6 +98,8 @@ Documentation:
 ### gwaspr Package
 
 <div class="box"><div class="row"><div class="col-md-8">
+
+**gwaspr**
 
 An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` package
 
@@ -112,7 +116,9 @@ An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` pack
 
 <div class="box"><div class="row"><div class="col-md-8">
 
-`cypher`: an `r icon("r-project")` package for coding and decoding secret messages
+**cypher**
+
+An `r icon("r-project")` package for coding and decoding secret messages
 
 `devtools::install_github("derekmichaelwright/cypher")`
 
