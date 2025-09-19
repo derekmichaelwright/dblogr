@@ -76,7 +76,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 # `r icon("r-project")` Packages
 
-## devtools::install_github("derekmichaelwright/______") {.tabset .tabset-pills}
+## My Custom `r icon("r-project")` Packages {.tabset .tabset-pills}
 
 ### agData
 
@@ -95,7 +95,7 @@ Documentation:
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
 
-### gwaspr Package
+### gwaspr
 
 <div class="box"><div class="row"><div class="col-md-8">
 
@@ -112,7 +112,7 @@ An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` pack
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
 
-### cypher Package
+### cypher
 
 <div class="box"><div class="row"><div class="col-md-8">
 
@@ -401,13 +401,13 @@ An R tutorial on how to manipulate and plot environmental data
 
 #### R Tutorial
 
-<div class="box"><div class="row"><div class="col-md-6">
+<div class="box">
 
 [<u>**R Tutorial**</u>](academic/r_tutorial){target="_blank"}
 
-An introduction to R
+An introduction to `r icon("r-project")`
 
-</div><div class="col-md-6">![](academic/r_tutorial/featured.png)</div></div></div>
+![](academic/r_tutorial/featured.png)</div>
 
 ### Vignettes {.tabset .tabset-pills}
 
@@ -737,23 +737,23 @@ Graphs of trade surplus/deficits with other countries using STATCAN data
 
 #### gapminder
 
-<div class="box"><div class="row"><div class="col-md-6">
+<div class="box">
 
 [<u>**gapminder**</u>](blog/gapminder){target="_blank"}
 
 Graphs with gapminder data
 
-</div><div class="col-md-6">![](blog/gapminder/featured.png)</div></div></div>
+![](blog/gapminder/featured.png)</div>
 
-#### canada Auto Sales
+#### Canada Auto Sales
 
-<div class="box"><div class="row"><div class="col-md-6">
+<div class="box">
 
 [<u>**Automobile Sales in Canada**</u>](blog/canada_auto_sales){target="_blank"}
 
 Graphs of new motor vehicle sales using STATCAN data
 
-</div><div class="col-md-6">![](blog/canada_auto_sales/featured.png)</div></div></div>
+![](blog/canada_auto_sales/featured.png)</div>
 
 ### Demographics {.tabset .tabset-pills}
 
@@ -883,13 +883,13 @@ Graphs of the 2020 & 2024 Saskatchewan Provincial Election Results
 
 #### Hex Stickers
 
-<div class="box"><div class="row"><div class="col-md-5">
+<div class="box">
 
 [<u>**Hex Stickers**</u>](blog/hex_stickers){target="_blank"}
 
 Creation of hex stickers with R
 
-</div><div class="col-md-7">![](blog/hex_stickers/featured.png)</div></div></div>
+![](blog/hex_stickers/featured.png)</div>
 
 #### Street Maps
 

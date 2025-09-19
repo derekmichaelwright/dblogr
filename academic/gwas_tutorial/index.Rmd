@@ -492,6 +492,16 @@ GAPIT( Y = myY2, G = myG,
 
 ---
 
+```{r}
+magick::image_append(
+  magick::image_read(""),
+  magick::image_read(""),
+  magick::image_read(""),
+  magick::image_read("") )
+```
+
+---
+
 # PCA
 
 Why set `PCA.total = 4`? 

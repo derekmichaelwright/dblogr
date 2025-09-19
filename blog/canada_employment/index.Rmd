@@ -376,11 +376,11 @@ ggsave("canada_employment_1_10.png", mp, width = 6, height = 4)
 xx <- d1 %>% 
   filter(Area == c("Newfoundland and Labrador","Alberta"), 
          Measurement == "Employment rate", 
-         Age == "15 years and over", Sex != "Both sexes")
+         Age != "15 years and over", Sex != "Both sexes")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value, color = Area)) +
   geom_line(size = 1, alpha = 0.7) +
-  facet_grid(. ~ Sex) +
+  facet_grid(. ~ Age) +
   scale_color_manual(name = NULL, values = c("darkred","purple4")) +
   scale_x_date(date_minor_breaks = "year") +
   theme_agData(legend.position = "bottom") +

@@ -227,7 +227,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   geom_line(size = 1.5, alpha = 0.7) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 7) +
   scale_color_manual(name = NULL, values = myColors) +
-  scale_x_continuous(minor_breaks = 1998:2020) +
+  scale_x_continuous(minor_breaks = 1998:2025) +
   theme_agData(legend.position = "bottom") +
   labs(y = "Crime Severity Index", x = NULL, caption = myCaption)
 ggsave("canada_crime_1_02.png", mp, width = 16, height = 6)
@@ -247,7 +247,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   geom_line(size = 1.5, alpha = 0.7) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 6) +
   scale_color_manual(name = NULL, values = myColors) +
-  scale_x_continuous(minor_breaks = 1998:2020) +
+  scale_x_continuous(minor_breaks = 1998:2025) +
   theme_agData(legend.position = "bottom") +
   labs(y = "Crime Severity Index", x = NULL, caption = myCaption)
 ggsave("canada_crime_1_03.png", mp, width = 16, height = 10)
@@ -289,7 +289,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   geom_line(size = 1.5, alpha = 0.7) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 7) +
   scale_color_manual(name = NULL, values = myColors) +
-  scale_x_continuous(minor_breaks = 1998:2020) +
+  scale_x_continuous(minor_breaks = 1998:2025) +
   theme_agData(legend.position = "bottom") +
   labs(y = "Crime Severity Index", x = NULL, caption = myCaption)
 ggsave("canada_crime_1_05.png", mp, width = 16, height = 6)
@@ -331,7 +331,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   geom_line(size = 1.5, alpha = 0.7) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 7) +
   scale_color_manual(name = NULL, values = c("darkred", "steelblue")) +
-  scale_x_continuous(minor_breaks = 1998:2020) +
+  scale_x_continuous(minor_breaks = 1998:2025) +
   theme_agData(legend.position = "bottom") +
   labs(y = "Crime Severity Index", x = NULL, caption = myCaption)
 ggsave("canada_crime_07.png", mp, width = 16, height = 6)
