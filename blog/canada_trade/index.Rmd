@@ -173,7 +173,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Trade)) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   scale_x_date(date_minor_breaks = "1 year", expand = c(0,0)) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "Canada's Trade Balance With Other Countries", 
+  labs(title = "Canada's Trade With Other Countries", 
        x = NULL, y = "Billion CAD", caption = myCaption)
 ggsave("canada_trade_05.png", mp, width = 6, height = 4)
 ```
@@ -196,9 +196,34 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Trade)) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   scale_x_date(date_breaks = "10 years", date_labels = "%Y") +
   theme_agData(legend.position = "bottom") +
-  labs(title = "Canada's Trade Balance With Other Countries", 
+  labs(title = "Canada's Trade With Other Countries", 
        x = NULL, y = "Billion CAD", caption = myCaption)
 ggsave("canada_trade_06.png", mp, width = 14, height = 8)
+```
+
+---
+
+# Top
+
+![](canada_trade_07.png)
+
+```{r}
+# Prep data
+xx <- d2 %>% 
+  filter(Year == 2024, Trade == "Trade Balance",
+         !Trading.Partner %in%c("All countries","European Union")) %>%
+  arrange(desc(Value)) %>% 
+  mutate(Trading.Partner = factor(Trading.Partner, levels = .$Trading.Partner),
+         Balance = ifelse(Value > 0, "Net Exporter", "Net Importer"))
+# Plot
+mp <- ggplot(xx, aes(x = Trading.Partner, y = Value / 1000, fill = Balance)) +
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada's 2023 Trade Balance", x = NULL,
+       y = "Billion CAD", caption = myCaption)
+ggsave("canada_trade_07.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -219,7 +244,7 @@ gg_Trade <- function(myArea = "China") {
     geom_col(alpha = 0.9, lwd = 0.05, color = "black") +
     scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
     theme_agData() +
-    labs(title = paste("Canada's Trade Balance With", myArea),
+    labs(title = paste("Canada's Trade With", myArea),
          subtitle =  "A) Gross Monthly", x = NULL, y = "Billion CAD")
   #
   xx <- d1 %>% 
@@ -272,7 +297,7 @@ gg_Trade <- function(myArea = "China") {
 
 ```{r}
 mp <- gg_Trade(myArea = "United States")
-ggsave("canada_trade_us.png", mp, width = 10, height = 8, bg = "white")
+ggsave("canada_trade_us.png", mp, width = 8, height = 6, bg = "white")
 ```
 
 ---
@@ -283,7 +308,7 @@ ggsave("canada_trade_us.png", mp, width = 10, height = 8, bg = "white")
 
 ```{r}
 mp <- gg_Trade(myArea = "United Kingdom")
-ggsave("canada_trade_uk.png", mp, width = 10, height = 8, bg = "white")
+ggsave("canada_trade_uk.png", mp, width = 8, height = 6, bg = "white")
 ```
 
 ---
@@ -294,7 +319,7 @@ ggsave("canada_trade_uk.png", mp, width = 10, height = 8, bg = "white")
 
 ```{r}
 mp <- gg_Trade(myArea = "Japan")
-ggsave("canada_trade_japan.png", mp, width = 10, height = 8, bg = "white")
+ggsave("canada_trade_japan.png", mp, width = 8, height = 6, bg = "white")
 ```
 
 ---
@@ -305,7 +330,7 @@ ggsave("canada_trade_japan.png", mp, width = 10, height = 8, bg = "white")
 
 ```{r}
 mp <- gg_Trade(myArea = "Algeria")
-ggsave("canada_trade_algeria.png", mp, width = 10, height = 8, bg = "white")
+ggsave("canada_trade_algeria.png", mp, width = 8, height = 6, bg = "white")
 ```
 
 ---
@@ -316,7 +341,7 @@ ggsave("canada_trade_algeria.png", mp, width = 10, height = 8, bg = "white")
 
 ```{r}
 mp <- gg_Trade(myArea = "Norway")
-ggsave("canada_trade_norway.png", mp, width = 10, height = 8, bg = "white")
+ggsave("canada_trade_norway.png", mp, width = 8, height = 6, bg = "white")
 ```
 
 ---
@@ -327,7 +352,7 @@ ggsave("canada_trade_norway.png", mp, width = 10, height = 8, bg = "white")
 
 ```{r}
 mp <- gg_Trade(myArea = "India")
-ggsave("canada_trade_india.png", mp, width = 10, height = 8, bg = "white")
+ggsave("canada_trade_india.png", mp, width = 8, height = 6, bg = "white")
 ```
 
 ---
@@ -338,7 +363,7 @@ ggsave("canada_trade_india.png", mp, width = 10, height = 8, bg = "white")
 
 ```{r}
 mp <- gg_Trade(myArea = "Iraq")
-ggsave("canada_trade_iraq.png", mp, width = 10, height = 8, bg = "white")
+ggsave("canada_trade_iraq.png", mp, width = 8, height = 6, bg = "white")
 ```
 
 ---
@@ -349,7 +374,7 @@ ggsave("canada_trade_iraq.png", mp, width = 10, height = 8, bg = "white")
 
 ```{r}
 mp <- gg_Trade(myArea = "Russian Federation")
-ggsave("canada_trade_russia.png", mp, width = 10, height = 8, bg = "white")
+ggsave("canada_trade_russia.png", mp, width = 8, height = 6, bg = "white")
 ```
 
 ---
@@ -360,7 +385,7 @@ ggsave("canada_trade_russia.png", mp, width = 10, height = 8, bg = "white")
 
 ```{r}
 mp <- gg_Trade(myArea = "Saudi Arabia")
-ggsave("canada_trade_saudi_arabia.png", mp, width = 10, height = 8, bg = "white")
+ggsave("canada_trade_saudi_arabia.png", mp, width = 8, height = 6, bg = "white")
 ```
 
 ---
@@ -371,7 +396,7 @@ ggsave("canada_trade_saudi_arabia.png", mp, width = 10, height = 8, bg = "white"
 
 ```{r}
 mp <- gg_Trade(myArea = "China")
-ggsave("canada_trade_china.png", mp, width = 10, height = 8, bg = "white")
+ggsave("canada_trade_china.png", mp, width = 8, height = 6, bg = "white")
 ```
 
 ---
@@ -382,7 +407,7 @@ ggsave("canada_trade_china.png", mp, width = 10, height = 8, bg = "white")
 
 ```{r}
 mp <- gg_Trade(myArea = "Germany")
-ggsave("canada_trade_germany.png", mp, width = 10, height = 8, bg = "white")
+ggsave("canada_trade_germany.png", mp, width = 8, height = 6, bg = "white")
 ```
 
 ---
@@ -393,7 +418,7 @@ ggsave("canada_trade_germany.png", mp, width = 10, height = 8, bg = "white")
 
 ```{r}
 mp <- gg_Trade(myArea = "Mexico")
-ggsave("canada_trade_mexico.png", mp, width = 10, height = 8, bg = "white")
+ggsave("canada_trade_mexico.png", mp, width = 8, height = 6, bg = "white")
 ```
 
 ---
@@ -404,5 +429,5 @@ ggsave("canada_trade_mexico.png", mp, width = 10, height = 8, bg = "white")
 
 ```{r}
 mp <- gg_Trade(myArea = "All countries")
-ggsave("canada_trade_all.png", mp, width = 10, height = 8, bg = "white")
+ggsave("canada_trade_all.png", mp, width = 8, height = 6, bg = "white")
 ```

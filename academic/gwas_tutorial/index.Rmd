@@ -492,12 +492,16 @@ GAPIT( Y = myY2, G = myG,
 
 ---
 
+![](featured2.png)
+
 ```{r}
-magick::image_append(
-  magick::image_read(""),
-  magick::image_read(""),
-  magick::image_read(""),
-  magick::image_read("") )
+im <- magick::image_append(c(
+  magick::image_read("Fig_DTF_Nepal_2017_01_03.png"),
+  magick::image_read("Fig_DTF_Sask_2017_01_05.png"),
+  magick::image_read("Fig_DTF_Sask_2017_01_06.png"),
+  magick::image_read("Fig_Cotyledon_Color_01_03.png")), 
+  stack = T )
+magick::image_write(im, "featured2.png")
 ```
 
 ---
@@ -581,11 +585,11 @@ Create a summary table of all significant associations
 
 ```{r eval = F}
 # Create summary of GWAS results
-xx <- table_GWAS_Results(folder = "GWAS_Results/", 
+x1 <- table_GWAS_Results(folder = "GWAS_Results/", 
                          threshold = 6.8, 
                          sug.threshold = 5.3)
 # Save
-write.csv(xx, "Supplemtnal_Table_01.csv", row.names = F)
+write.csv(x1, "Supplemtnal_Table_01.csv", row.names = F)
 ```
 
 ```{r echo = F}
@@ -594,9 +598,9 @@ DT::datatable(read.csv("Supplemtnal_Table_01.csv"))
 
 ```{r eval = F}
 # Create summary of GWAS results
-xx <- table_GWAS_Results_Summary(xx)
+x2 <- table_GWAS_Results_Summary(x1)
 # Save
-write.csv(xx, "Supplemtnal_Table_02.csv", row.names = F)
+write.csv(x2, "Supplemtnal_Table_02.csv", row.names = F)
 ```
 
 ```{r echo = F}
@@ -1931,7 +1935,6 @@ myGeno <-   cross_join(x1, x2)
 # Plot first 1 Mbp
 mp1 <- ggplot(yy, aes(x = Distance/1000, y = Loess_Geno)) +
   geom_point(aes(y = LD), size = 0.2, pch = 15, alpha = 0.3) +
-  #geom_line(aes(y = Moving_Avg), color = "red", lwd = 1) +
   geom_line(aes(y = Moving_Avg), alpha = 0.7) +
   geom_line() +
   geom_hline(yintercept = 0.2, color = "blue", lty = 2) +

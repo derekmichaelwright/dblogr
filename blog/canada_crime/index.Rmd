@@ -78,7 +78,9 @@ myCities <- c("Vancouver, British Columbia", "Victoria, British Columbia",
 d2 <- read.csv("3510019101_databaseLoadingData.csv") %>%
   select(Year=1, Area=GEO, Measurement=Statistics, Unit=UOM, Value=VALUE) %>% 
   arrange(desc(Value)) %>%
-  mutate(Area = factor(Area, levels = unique(.$Area)),
+  mutate(Area = ifelse(!Area %in% c("Total police-reported hate crime", "Canadian Forces Military Police"), 
+                       Area, substr(.$Area, 1, regexpr("\\[", .$Area)-2)),
+         Area = factor(Area, levels = unique(.$Area)),
          Group = ifelse(Area %in% myCities, "West", "East"),
          Group = factor(Group, levels = c("West", "East")))
 #
@@ -413,12 +415,12 @@ mp <- ggplot(d2, aes(x = Year, y = Value, fill = Group)) +
   geom_col(color = "black", alpha = 0.7) +
   facet_wrap(Area ~ ., ncol = 6) +
   scale_fill_manual(values = c("steelblue", "darkred")) +
-  scale_x_continuous(breaks = 2014:2021) +
+  scale_x_continuous(breaks = 2014:2025) +
   theme_agData(legend.position = "none",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Hate Crime Rate Per 100,000 People", 
        y = NULL, x = NULL, caption = myCaption)
-ggsave("canada_crime_2_01.png", mp, width = 16, height = 10)
+ggsave("canada_crime_2_01.png", mp, width = 16, height = 16)
 ```
 
 ---
@@ -429,7 +431,7 @@ ggsave("canada_crime_2_01.png", mp, width = 16, height = 10)
 
 ```{r}
 # Prep data
-xx <- d2 %>% filter(Year == 2021) %>%
+xx <- d2 %>% filter(Year == 2023) %>%
   arrange(desc(Value)) %>%
   mutate(Area = factor(Area, levels = .$Area))
 # Plot
@@ -437,8 +439,8 @@ mp <- ggplot(xx, aes(x = Area, y = Value, fill = Group)) +
   geom_col(color = "black", alpha = 0.7) +
   scale_fill_manual(values = c("steelblue", "darkred")) +
   theme_agData(legend.position = "none",
-               axis.text.x = element_text(angle = 55, hjust = 1)) +
-  labs(title = "Hate Crime By City", x = NULL,
+               axis.text.x = element_text(angle = 65, hjust = 1)) +
+  labs(title = "2023 Hate Crimes By City", x = NULL,
        y = "Rate Per 100,000 People", caption = myCaption)
 ggsave("canada_crime_2_02.png", mp, width = 8, height = 5)
 ```
@@ -481,7 +483,7 @@ mp <- ggplot(d3, aes(x = Year, y = Value, fill = Motive)) +
   theme_agData(legend.position = "none") +
   labs(title = "Canada", x = NULL,
        y = "Crime Severity Index", caption = myCaption)
-ggsave("canada_crime_3_01.png", mp, width = 14, height = 4)
+ggsave("canada_crime_3_01.png", mp, width = 14, height = 8)
 ```
 
 ---
@@ -531,7 +533,7 @@ ggsave("canada_crime_5_01.png", mp, width = 6, height = 4)
 ```{r}
 # Plot
 mp <- ggplot(d6, aes(x = Year, y = Value, color = Trait)) + 
-  geom_line(alpha = 0.7) +
+  geom_line(alpha = 0.7, size = 1.5) +
   facet_wrap(Trait ~ ., ncol = 4, scales = "free_y") +
   scale_color_manual(name = NULL, values = agData_Colors) +
   scale_x_continuous(breaks = seq(1985, 2025, by = 5), 
