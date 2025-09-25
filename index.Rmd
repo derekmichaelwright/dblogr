@@ -103,7 +103,7 @@ Documentation:
 
 An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` package
 
-`devtools::install_github("derekmichaelwright/gwaspr")`
+Install: `devtools::install_github("derekmichaelwright/gwaspr")`
 
 - `r icon("house")` [https://derekmichaelwright.github.io/gwaspr/](https://derekmichaelwright.github.io/gwaspr/){target="_blank"}
 - `r icon("github")` [https://github.com/derekmichaelwright/gwaspr/](https://github.com/derekmichaelwright/gwaspr/){target="_blank"}
@@ -120,7 +120,7 @@ An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` pack
 
 An `r icon("r-project")` package for coding and decoding secret messages
 
-`devtools::install_github("derekmichaelwright/cypher")`
+Install: `devtools::install_github("derekmichaelwright/cypher")`
 
 - `r icon("house")` https://derekmichaelwright.github.io/cypher/
 - `r icon("github")` https://github.com/derekmichaelwright/cypher/
