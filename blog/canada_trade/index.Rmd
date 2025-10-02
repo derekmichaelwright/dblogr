@@ -204,15 +204,17 @@ ggsave("canada_trade_06.png", mp, width = 14, height = 8)
 
 ---
 
-# Top
+# Comparisons {.tabset .tabset-pills}
+
+## Net
 
 ![](canada_trade_07.png)
 
 ```{r}
 # Prep data
 xx <- d2 %>% 
-  filter(Year == 2024, Trade == "Trade Balance",
-         !Trading.Partner %in%c("All countries","European Union")) %>%
+  filter(Year == 2023, Trade == "Trade Balance",
+         !Trading.Partner %in% c("All countries","European Union")) %>%
   arrange(desc(Value)) %>% 
   mutate(Trading.Partner = factor(Trading.Partner, levels = .$Trading.Partner),
          Balance = ifelse(Value > 0, "Net Export", "Net Import"))
@@ -229,18 +231,53 @@ ggsave("canada_trade_07.png", mp, width = 6, height = 4)
 
 ---
 
-## Animation
+## Gross
+
+![](canada_trade_08.png)
 
 ```{r}
 # Prep data
+yy <- d2 %>% 
+  filter(Year == 2023, Trade == "Trade Balance",
+         !Trading.Partner %in% c("All countries","European Union")) %>%
+  arrange(desc(Value))
 xx <- d2 %>% 
-  filter(Trade == "Trade Balance",
-         !Trading.Partner %in%c("All countries","European Union")) %>%
+  filter(Year == 2023, Trade != "Trade Balance",
+         !Trading.Partner %in% c("All countries","European Union")) %>%
   arrange(desc(Value)) %>% 
-  mutate(Trading.Partner = factor(Trading.Partner, levels = xx$Trading.Partner),
-         Balance = ifelse(Value > 0, "Net Export", "Net Import"))
+  mutate(Trading.Partner = factor(Trading.Partner, levels = yy$Trading.Partner),
+         Value = ifelse(Trade == "Import", -Value, Value))
 # Plot
-mp <- ggplot(xx, aes(x = Trading.Partner, y = Value / 1000, fill = Balance)) +
+mp <- ggplot(xx, aes(x = Trading.Partner, y = Value / 1000, fill = Trade)) +
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada's 2023 Trade Balance", x = NULL,
+       y = "Billion CAD", caption = myCaption)
+ggsave("canada_trade_08.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Animation
+
+![](canada_trade_gif_01.gif)
+
+```{r}
+# Prep data
+yy <- d2 %>% 
+  filter(Year == 2023, Trade == "Trade Balance",
+         !Trading.Partner %in% c("All countries","European Union")) %>%
+  arrange(desc(Value))
+xx <- d2 %>% 
+  filter(Trade != "Trade Balance",
+         !Trading.Partner %in% c("All countries","European Union")) %>%
+  arrange(desc(Value)) %>% 
+  mutate(Trading.Partner = factor(Trading.Partner, levels = yy$Trading.Partner),
+         Value = ifelse(Trade == "Import", -Value, Value))
+# Plot
+mp <- ggplot(xx, aes(x = Trading.Partner, y = Value / 1000, fill = Trade)) +
   geom_col(color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   theme_agData(legend.position = "bottom",
@@ -251,6 +288,59 @@ mp <- ggplot(xx, aes(x = Trading.Partner, y = Value / 1000, fill = Balance)) +
 anim_save("canada_trade_gif_01.gif", mp, 
           nframes = 300, fps = 20, end_pause = 30, 
           width = 900, height = 600, res = 150, units = "px")
+```
+
+---
+
+## Cummulative Trade
+
+![](canada_trade_09.png)
+
+```{r}
+# Prep data
+xx <- d2 %>% 
+  filter(Trade != "Trade Balance",
+         !Trading.Partner %in% c("All countries","European Union")) %>%
+  arrange(desc(Value)) %>% 
+  mutate(Value = ifelse(Trade == "Import", -Value, Value)) %>% 
+  group_by(Trading.Partner, Trade) %>%
+  summarise(Value = sum(Value, na.rm = T))
+# Plot
+mp <- ggplot(xx, aes(x = Trading.Partner, y = Value / 1000, fill = Trade)) +
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada's Cummulative Trade Balance 1997 - 2025", x = NULL,
+       y = "Billion CAD", caption = myCaption)
+ggsave("canada_trade_09.png", mp, width = 6, height = 4)
+```
+
+---
+
+## USA vs All Others
+
+![](canada_trade_10.png)
+
+```{r}
+# Prep data
+xx <- d2 %>% 
+  filter(Trade != "Trade Balance",
+         Trading.Partner %in% c("All countries","United States")) %>%
+  spread(Trading.Partner, Value) %>%
+  mutate(`All Other Countries` = `All countries` - `United States`) %>%
+  select(-`All countries`) %>%
+  gather(Trading.Partner, Value, 3:4) %>%
+  group_by(Trading.Partner, Trade) %>%
+  summarise(Value = sum(Value, na.rm = T))
+# Plot
+mp <- ggplot(xx, aes(x = Trading.Partner, y = Value / 1000000, fill = Trade)) +
+  geom_col(color = "black", alpha = 0.7, position = "dodge") +
+  scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canada's Cummulative Trade Balance 1997 - 2025", x = NULL,
+       y = "Trillion CAD", caption = myCaption)
+ggsave("canada_trade_10.png", mp, width = 6, height = 4)
 ```
 
 ---
