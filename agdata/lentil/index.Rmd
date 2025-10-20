@@ -30,7 +30,7 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
+myCaption <- "derekmichaelwright.github.io/dblogr/agdata/lentil | Data: FAOSTAT"
 #
 d1 <- agData_FAO_Crops %>% filter(Item == "Lentils, dry")
 d2 <- agData_FAO_Trade_Quantity %>% filter(Item == "Lentils, dry")
@@ -615,9 +615,33 @@ ggsave("lentil_13.png", mp, width = 6, height = 4)
 
 ---
 
-# Heatmap
+## Production vs Export
 
 ![](lentil_14.png)
+
+```{r}
+# Prep data
+x1 <- d1 %>% filter(Area == "Canada", Measurement == "Production") %>%
+  select(Year, Production=Value)
+x2 <- d2 %>% filter(Area == "Canada", Measurement == "Export Quantity") %>%
+  select(Year, Export=Value)
+xx <- left_join(x1, x2, by = "Year") %>% filter(!is.na(Export)) %>%
+  gather(Measurement, Value, 2:3) %>%
+  mutate(Measurement = factor(Measurement, levels = c("Production", "Export")))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Measurement)) +
+  geom_col(position = "dodge", alpha = 0.7) +
+  scale_fill_manual(name = NULL, values = c("darkgreen","darkred")) +
+  theme_agData() +
+  labs(title = "", x = NULL, y = "Million Tonnes", caption = myCaption)
+ggsave("lentil_14.png", mp, width = 6, height = 4)
+```
+
+---
+
+# Heatmap
+
+![](lentil_15.png)
 
 ```{r}
 # Prep data
@@ -635,7 +659,7 @@ mp <- ggplot(xx, aes(x = Year, y = Area, fill = Value / 1000000)) +
   scale_fill_gradientn(name = "Million Tonnes", colors = myColors, na.value = 'white') +
   theme_agData(legend.position = "bottom", bgFill = "white") +
   labs(title = "Lentil Production", x = NULL, y = NULL, caption = myCaption)
-ggsave("lentil_14.png", mp, width = 6, height = 4)
+ggsave("lentil_15.png", mp, width = 6, height = 4)
 ```
 
 ---

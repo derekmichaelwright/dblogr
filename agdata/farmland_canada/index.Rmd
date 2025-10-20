@@ -39,7 +39,7 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/agdata/farmland_canada | Data: STATCAN"
 #
 d0 <- agData_STATCAN_Region_Table
 d1 <- agData_STATCAN_FarmLand_Use 

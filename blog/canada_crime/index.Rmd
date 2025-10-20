@@ -38,7 +38,7 @@ library(readxl) # read_xlsx()
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/blog/canada_crime | Data: STATCAN"
 myColors <- c("darkorange", "darkgreen", "darkred")
 myAreas <- c("Canada", 
     "British Columbia", "Alberta", "Saskatchewan", "Manitoba",

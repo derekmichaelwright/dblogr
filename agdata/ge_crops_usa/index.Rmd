@@ -26,7 +26,7 @@ library(agData)
 ```
 
 ```{r}
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: USDA"
+myCaption <- "derekmichaelwright.github.io/dblogr/agdata/ge_crops_usa | Data: USDA"
 #
 dd <- agData_USDA_GE_Crops
 ```

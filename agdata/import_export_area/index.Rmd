@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 #
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
+myCaption <- "derekmichaelwright.github.io/dblogr/agdata/import_export_area | Data: FAOSTAT"
 ```
 
 ---

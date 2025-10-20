@@ -35,7 +35,7 @@ library(mapcan)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/agdata/crops_canada | Data: STATCAN"
 d1 <- agData_STATCAN_Crops %>% filter(Area == "Canada")
 d2 <- agData_STATCAN_FarmLand_Use %>% filter(Area == "Canada")
 ```

@@ -42,7 +42,7 @@ write.csv(x2, "data_radar_plots.csv", row.names = F)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myCaption <- "derekmichaelwright.github.io/dblogr/academic/radar_plots"
 myColors <- c("darkred",   "darkorange3", "darkgoldenrod2", "deeppink3", 
               "steelblue", "darkorchid4", "cornsilk4",      "darkgreen")
 myLocs <- c("Rosthern, Canada", "Sutherland, Canada",  

@@ -31,7 +31,7 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption <- expression(paste("derekmichaelwright.github.io/dblogr/ | Data: Awada ", 
+myCaption <- expression(paste("derekmichaelwright.github.io/dblogr/academic/soil_carbon | Data: Awada ", 
                                italic("et al"), ". (2021)"))
 myMeasures <- c("Net GHG Balance", "Transport Fuel", "Farm Fuel", 
                 "Fertilizers", "Crop Residue", "Summerfallow", "Soil")

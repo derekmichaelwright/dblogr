@@ -62,7 +62,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myCaption <- "derekmichaelwright.github.io/dblogr/academic/thermal_time"
 myColors <- c("darkgreen", "steelblue", "darkblue", "darkorange", "darkred", "purple4")
 # Prep phenotype data
 x1 <- read.csv("https://raw.githubusercontent.com/derekmichaelwright/AGILE_LDP_Phenology/master/data/data_raw.csv") %>%

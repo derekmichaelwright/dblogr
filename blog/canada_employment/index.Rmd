@@ -44,7 +44,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/blog/canada_employment | Data: STATCAN"
 myAreas <- c("Canada", "British Columbia", "Alberta", "Saskatchewan", 
              "Manitoba", "Nova Scotia","Ontario", "Quebec", 
              "Newfoundland and Labrador", "New Brunswick", 
@@ -526,7 +526,7 @@ xx <- d1 %>%
          Measurement %in% myMeasures) %>%
   mutate(MonthDiff = ifelse(Measurement == myMeasures[1], 
             Value - yy$Value[yy$Measurement == myMeasures[1]],
-            Value - yy$Value[yy$Measurement != myMeasures[1]]),
+            Value - yy$Value[yy$Measurement != myMeasures[2]]),
          PosNeg = ifelse(MonthDiff > 0, "Pos", "Neg"))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = MonthDiff / 1000, fill = PosNeg)) + 
@@ -588,6 +588,43 @@ mp <- ggplot(xx, aes(x = Date, y = PanDiff / 1000, fill = PosNeg)) +
        y = "Million", x = NULL, caption = myCaption)
 ggsave("canada_employment_2_06.png", mp, width = 8, height = 4)
 ```
+
+---
+
+### Ontario
+
+![](canada_employment_2_07.png)
+
+```{r}
+# Prep data
+x1 <- d1 %>% 
+  filter(Area == "Ontario", Age == "15 years and over", Sex == "Both sexes", 
+         Measurement %in% myMeasures[1], Date > "2023-12-01") %>%
+  mutate(Change = NA)
+x2 <- d1 %>% 
+  filter(Area == "Ontario", Age == "15 years and over", Sex == "Both sexes", 
+         Measurement %in% myMeasures[2], Date > "2023-12-01") %>%
+  mutate(Change = NA)
+#i<-"2020-03-15"
+i<-2
+for(i in 2:nrow(x1)) {
+  # Full-time
+  x1$Change[i] <- x1$Value[i] - x1$Value[i-1]
+  x2$Change[i] <- x2$Value[i] - x2$Value[i-1]
+}
+xx <- bind_rows(x1, x2)
+xx <- xx %>% mutate(PosNeg = ifelse(Change > 0, "Pos", "Neg"))
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Change, fill = PosNeg)) + 
+  geom_bar(stat = "identity", color = "black", alpha = 0.7, lwd = 0.2) +
+  facet_wrap(Measurement ~ ., scales = "free_y") +
+  scale_fill_manual(values = c("darkred","steelblue")) +
+  theme_agData(legend.position = "none") +
+  labs(title = "Change each month since the start of the pandemic", 
+       y = "Million", x = NULL, caption = myCaption)
+ggsave("canada_employment_2_07.png", mp, width = 8, height = 4)
+```
+
 
 ---
 

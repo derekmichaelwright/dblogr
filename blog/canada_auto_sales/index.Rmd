@@ -2,7 +2,7 @@
 title: "Automobile Sales in Canada"
 subtitle: "Graphs of new motor vehicle sales using STATCAN data"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/tree/main/blog/)"
+author: "Derek Michael Wright [www.dblogr.com/](http://dblogr.com/) or [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/tree/main/blog/canada_auto_sales)"
 ---
 
 ```{r setup, include=FALSE}
@@ -31,7 +31,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/blog/canada_auto_sales | Data: STATCAN"
 myColors_Type <- c("maroon4", "darkslategray")
 myColors_Fuel <- c("darkgreen", "darkred")
 
@@ -61,7 +61,7 @@ xx <- dd %>%
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) + 
   geom_line(color = "steelblue4", alpha = 0.7) +
-  stat_smooth(geom = "line", alpha = 0.8) +
+  stat_smooth(geom = "line", method = "loess", alpha = 0.8) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - New Motor Vehicle Sales",
        y = "Thousand Sales", x = NULL, caption = myCaption)
@@ -83,6 +83,7 @@ xx <- dd %>%
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) + 
   geom_line(color = "steelblue4", alpha = 0.7) +
+  stat_smooth(geom = "line", method = "loess", alpha = 0.8) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - New Motor Vehicle Sales",
@@ -107,6 +108,7 @@ xx <- dd %>%
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Vehicle.type)) + 
   geom_line(alpha = 0.7) +
+  stat_smooth(geom = "line", method = "loess", alpha = 0.8) +
   scale_color_manual(name = NULL, values = myColors_Type) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - New Motor Vehicle Sales",
@@ -133,6 +135,7 @@ xx <- dd %>%
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Vehicle.type)) + 
   geom_line(alpha = 0.7) +
+  stat_smooth(geom = "line", method = "loess", alpha = 0.8) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
   scale_color_manual(name = NULL, values = myColors_Type) +
   theme_agData(legend.position = "bottom") +
@@ -162,7 +165,7 @@ xx <- dd %>%
   gather(Vehicle.type, Value, 3:4)
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value, fill = Vehicle.type)) + 
-  geom_area(alpha = 0.7) +
+  geom_area(alpha = 0.8) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
   scale_fill_manual(name = NULL, values = myColors_Type) +
   scale_y_continuous(breaks = seq(0,100,by=10)) +

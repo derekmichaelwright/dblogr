@@ -27,7 +27,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 library(agData)
 library(gganimate)
 #
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: FAOSTAT"
+myCaption <- "derekmichaelwright.github.io/dblogr/agdata/import_export_crop | Data: FAOSTAT"
 ```
 
 ---
