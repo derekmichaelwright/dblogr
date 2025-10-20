@@ -27,7 +27,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: "
+myCaption <- "derekmichaelwright.github.io/dblogr/academic/ | Data: "
 dd <- read.csv("data_.csv")
 ```
 

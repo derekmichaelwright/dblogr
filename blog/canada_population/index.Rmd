@@ -36,7 +36,7 @@ library(transformr)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/blog/canada_population | Data: STATCAN"
 myColorsMF <- c("steelblue", "palevioletred3")
 myColorsP <- c("darkgoldenrod3", "darkred", "darkgreen", "darkslategray",
                "darkblue", "steelblue", "maroon4", "purple4", "cyan4", "burlywood4")
@@ -742,7 +742,7 @@ gg_GenderRatio_plot <- function(myArea = "Saskatchewan", myYears = 2019) {
 ![](canada_population_4_01.png)
 
 ```{r}
-mp <- gg_GenderRatio_plot(myArea = "Canada", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "Canada", myYears = c(1971, 1995, 2024))
 ggsave("canada_population_4_01.png", mp, width = 10, height = 4)
 ```
 
@@ -753,7 +753,7 @@ ggsave("canada_population_4_01.png", mp, width = 10, height = 4)
 ![](canada_population_4_02.png)
 
 ```{r}
-mp <- gg_GenderRatio_plot(myArea = "British Columbia", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "British Columbia", myYears = c(1971, 1995, 2024))
 ggsave("canada_population_4_02.png", mp, width = 10, height = 4)
 ```
 
@@ -764,7 +764,7 @@ ggsave("canada_population_4_02.png", mp, width = 10, height = 4)
 ![](canada_population_4_03.png)
 
 ```{r}
-mp <- gg_GenderRatio_plot(myArea = "Alberta", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "Alberta", myYears = c(1971, 1995, 2024))
 ggsave("canada_population_4_03.png", mp, width = 10, height = 4)
 ```
 
@@ -775,7 +775,7 @@ ggsave("canada_population_4_03.png", mp, width = 10, height = 4)
 ![](canada_population_4_04.png)
 
 ```{r}
-mp <- gg_GenderRatio_plot(myArea = "Saskatchewan", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "Saskatchewan", myYears = c(1971, 1995, 2024))
 ggsave("canada_population_4_04.png", mp, width = 10, height = 4)
 ```
 
@@ -786,7 +786,7 @@ ggsave("canada_population_4_04.png", mp, width = 10, height = 4)
 ![](canada_population_4_05.png)
 
 ```{r}
-mp <- gg_GenderRatio_plot(myArea = "Manitoba", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "Manitoba", myYears = c(1971, 1995, 2024))
 ggsave("canada_population_4_05.png", mp, width = 10, height = 4)
 ```
 
@@ -797,7 +797,7 @@ ggsave("canada_population_4_05.png", mp, width = 10, height = 4)
 ![](canada_population_4_06.png)
 
 ```{r}
-mp <- gg_GenderRatio_plot(myArea = "Ontario", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "Ontario", myYears = c(1971, 1995, 2024))
 ggsave("canada_population_4_06.png", mp, width = 10, height = 4)
 ```
 
@@ -808,7 +808,7 @@ ggsave("canada_population_4_06.png", mp, width = 10, height = 4)
 ![](canada_population_4_07.png)
 
 ```{r}
-mp <- gg_GenderRatio_plot(myArea = "Quebec", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "Quebec", myYears = c(1971, 1995, 2024))
 ggsave("canada_population_4_07.png", mp, width = 10, height = 4)
 ```
 
@@ -820,7 +820,7 @@ ggsave("canada_population_4_07.png", mp, width = 10, height = 4)
 
 ```{r}
 mp <- gg_GenderRatio_plot(myArea = "Newfoundland and Labrador", 
-                     myYears = c(1971, 1995, 2021))
+                     myYears = c(1971, 1995, 2024))
 ggsave("canada_population_4_08.png", mp, width = 10, height = 4)
 ```
 
@@ -831,8 +831,132 @@ ggsave("canada_population_4_08.png", mp, width = 10, height = 4)
 ![](canada_population_4_09.png)
 
 ```{r}
-mp <- gg_GenderRatio_plot(myArea = "Yukon", myYears = c(1971, 1995, 2021))
+mp <- gg_GenderRatio_plot(myArea = "Yukon", myYears = c(1971, 1995, 2024))
 ggsave("canada_population_4_09.png", mp, width = 10, height = 4)
+```
+
+---
+
+# Excess Young Males {.tabset .tabset-pills}
+
+## Plotting Function
+
+```{r class.source = "fold-show"}
+gg_ExcessMales_plot <- function(myArea = "Saskatchewan") {
+  # Prep data
+  xx <- d2 %>% 
+    filter(Area %in% myArea, 
+           Age %in% myAges[1:8], 
+           Gender %in% c("Men+", "Women+")) %>%
+    group_by(Year, Gender) %>%
+    summarise(Value = sum(Value)) %>%
+    ungroup() %>%
+    spread(Gender, Value) %>%
+    mutate(Value = `Men+` - `Women+`)
+  # Plot
+  ggplot(xx, aes(y = Value / 1000, x = Year)) + 
+    geom_col(color = "black", fill = "steelblue", alpha = 0.7) +
+    theme_agData(legend.position = "bottom") +
+    labs(title = paste("Excess Males Under Age 40 in", myArea), 
+         y = "Thousand People", x = NULL, caption = myCaption) 
+}
+```
+
+## Canada {.active}
+
+![](canada_population_5_01.png)
+
+```{r}
+mp <- gg_ExcessMales_plot(myArea = "Canada")
+ggsave("canada_population_5_01.png", mp, width = 10, height = 4)
+```
+
+---
+
+## British Columbia
+
+![](canada_population_5_02.png)
+
+```{r}
+mp <- gg_ExcessMales_plot(myArea = "British Columbia")
+ggsave("canada_population_5_02.png", mp, width = 10, height = 4)
+```
+
+---
+
+## Alberta
+
+![](canada_population_5_03.png)
+
+```{r}
+mp <- gg_ExcessMales_plot(myArea = "Alberta")
+ggsave("canada_population_5_03.png", mp, width = 10, height = 4)
+```
+
+---
+
+## Saskatchewan
+
+![](canada_population_5_04.png)
+
+```{r}
+mp <- gg_ExcessMales_plot(myArea = "Saskatchewan")
+ggsave("canada_population_5_04.png", mp, width = 10, height = 4)
+```
+
+---
+
+## Manitoba
+
+![](canada_population_5_05.png)
+
+```{r}
+mp <- gg_ExcessMales_plot(myArea = "Manitoba")
+ggsave("canada_population_5_05.png", mp, width = 10, height = 4)
+```
+
+---
+
+## Ontario
+
+![](canada_population_5_06.png)
+
+```{r}
+mp <- gg_ExcessMales_plot(myArea = "Ontario")
+ggsave("canada_population_5_06.png", mp, width = 10, height = 4)
+```
+
+---
+
+## Quebec
+
+![](canada_population_5_07.png)
+
+```{r}
+mp <- gg_ExcessMales_plot(myArea = "Quebec")
+ggsave("canada_population_5_07.png", mp, width = 10, height = 4)
+```
+
+---
+
+## Newfoundland and Labrador
+
+![](canada_population_5_08.png)
+
+```{r}
+mp <- gg_ExcessMales_plot(myArea = "Newfoundland and Labrador")
+ggsave("canada_population_5_08.png", mp, width = 10, height = 4)
+```
+
+---
+
+## Yukon
+
+![](canada_population_5_09.png)
+
+```{r}
+mp <- gg_ExcessMales_plot(myArea = "Yukon")
+ggsave("canada_population_5_09.png", mp, width = 10, height = 4)
 ```
 
 ---
@@ -841,7 +965,7 @@ ggsave("canada_population_4_09.png", mp, width = 10, height = 4)
 
 ## Men+ vs. Women+
 
-![](canada_population_5_01.png)
+![](canada_population_6_01.png)
 
 ```{r}
 # Prep data
@@ -856,14 +980,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Gender)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canadian Population Dynamics", 
        y = "Million People", x = NULL, caption = myCaption)
-ggsave("canada_population_5_01.png", mp, width = 12, height = 6)
+ggsave("canada_population_6_01.png", mp, width = 12, height = 6)
 ```
 
 ---
 
 ## Animation
 
-![](canada_population_gif_4_01.gif)
+![](canada_population_gif_6_01.gif)
 
 ```{r}
 xx <- d2 %>%
@@ -878,7 +1002,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Gender, group = Gend
   labs(title = paste("Canadian Population Dynamics -", '{closest_state}')) +
   transition_states(Age, transition_length = 1, state_length = 1) +
   ease_aes('linear')
-anim_save("canada_population_gif_4_01.gif", mp, 
+anim_save("canada_population_gif_6_01.gif", mp, 
           nframes = 300, fps = 20, end_pause = 80, 
           width = 600, height = 400, res = 80, units = "px")
 ```
@@ -889,7 +1013,7 @@ anim_save("canada_population_gif_4_01.gif", mp,
 
 ## Canada
 
-![](canada_population_6_01.png)
+![](canada_population_7_01.png)
 
 ```{r}
 # Prep data
@@ -911,14 +1035,14 @@ mp <- ggplot(xx %>% filter(Area == "Canada", Group == "Young"),
   scale_y_continuous(minor_breaks = 70:100, limits = c(70,100)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - Percent Of Population Under 65", x = NULL)
-ggsave("canada_population_6_01.png", mp, width = 6, height = 4)
+ggsave("canada_population_7_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Provinces 
 
-![](canada_population_6_02.png)
+![](canada_population_7_02.png)
 
 ```{r}
 # Plot
@@ -930,14 +1054,14 @@ mp <-ggplot(xx %>% filter(Area != "Canada", Group == "Young"),
   scale_y_continuous(minor_breaks = 70:100, limits = c(70,100)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - Percent Of Population Under 65", x = NULL)
-ggsave("canada_population_6_02.png", mp, width = 12, height = 6)
+ggsave("canada_population_7_02.png", mp, width = 12, height = 6)
 ```
 
 ---
 
 ## 2021
 
-![](canada_population_6_03.png)
+![](canada_population_7_03.png)
 
 ```{r}
 # Prep data
@@ -949,7 +1073,7 @@ mp <- ggplot(xx, aes(x = Area, y = Percent, fill = Gender)) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canada - Percent Of Population Under 65", x = NULL)
-ggsave("canada_population_6_03.png", mp, width = 6, height = 4)
+ggsave("canada_population_7_03.png", mp, width = 6, height = 4)
 ```
 
 ---

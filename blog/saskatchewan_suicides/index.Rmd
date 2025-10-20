@@ -31,7 +31,7 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: SK GOV"
+myCaption <- "derekmichaelwright.github.io/dblogr/blog/saskatchewan_suicides | Data: SK GOV"
 myColors <- c("palevioletred3", "steelblue")
 d1 <- read_xlsx("data_saskatchewan_suicides.xlsx", "Age") %>%
   gather(Year, Deaths, 3:ncol(.)) %>% 

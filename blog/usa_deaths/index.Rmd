@@ -47,8 +47,8 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: US CDC"
-myCaption2 <- "derekmichaelwright.github.io/dblogr/ | Data: US CDC & USCB"
+myCaption1 <- "derekmichaelwright.github.io/dblogr/blog/usa_deaths | Data: US CDC"
+myCaption2 <- "derekmichaelwright.github.io/dblogr/blog/usa_deaths | Data: US CDC & USCB"
 myColors <- c("darkgreen", "darkred", "darkorange", "steelblue", "darkblue", "purple4", "magenta3")
 myAges1 <- c("Under 25 years", "25-44 years", "45-64 years", 
             "65-74 years", "75-84 years", "85 years and older")
@@ -142,7 +142,7 @@ ggWeeklyDeaths <- function(myArea = "United States") {
                  minor_breaks = "1 year") +
     theme_agData(legend.position = "none") +
     labs(title = myArea, y = "Weekly Deaths (thousand)",
-         x = NULL, caption = myCaption)
+         x = NULL, caption = myCaption1)
 }
 ```
 
@@ -278,7 +278,7 @@ ggYearlyDeaths <- function(myArea = "United States") {
     scale_alpha_manual(name = NULL, values = c(0.4,0.8,0.8,0.8,0.8)) +
     scale_x_continuous(breaks = min(xx$Year):max(xx$Year)) +
     theme_agData_col(legend.position = "none") +
-    labs(title = myArea, y = "Million Deaths", x = NULL, caption = myCaption)
+    labs(title = myArea, y = "Million Deaths", x = NULL, caption = myCaption1)
 }
 ```
 

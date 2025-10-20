@@ -23,7 +23,7 @@ library(gganimate)
 ```
 
 ```{r}
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: gapminder"
+myCaption <- "derekmichaelwright.github.io/dblogr/blog/gapminder | Data: gapminder"
 DT::datatable(gapminder %>% arrange(year))
 ```
 

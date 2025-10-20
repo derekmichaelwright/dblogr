@@ -1,0 +1,747 @@
+---
+title: "Lentil Research Populations"
+subtitle: "Graphs of different lentil populations representing their global genetic diversity"
+date: "Last updated: `r Sys.Date()`"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/tree/main/academic/lentil_populations)"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+```
+
+---
+
+# Data
+
+> - `r shiny::icon("save")` [data_ldp.csv](data_ldp.csv)
+
+```{r echo = F}
+DT::datatable(read.csv("data_ldp.csv"))
+```
+
+```{r eval = F, echo = F}
+############################
+# Preparing phenotype data #
+############################
+library(agiler); library(agData)
+#
+y1 <- read.csv("C:/Google Drive/gitfolder/AGILE_LDP_Phenology/data/data_ldp.csv") %>% 
+  select(-Synonyms)
+y2 <- read.csv("C:/Google Drive/gitfolder/AGILE_LDP_Phenology/data/data_PCA_Results.csv") %>%
+   select(Name, DTF_Cluster=Cluster, DTF_PC1=PC1, DTF_PC2=PC2, DTF_PC3=PC3)
+y3 <- read.csv("C:/Google Drive/gitfolder/AGILE_LDP_Phenology/data/model_t+p_coefs.csv") %>%
+  select(Name, a, b, c)
+y4 <- read.csv("C:/gitfolder/dblogr/content/academic/gwas_tutorial/GWAS_Results/GAPIT.PCA.csv") %>%
+  select(Name=taxa, myG_PC1=PC1, myG_PC2=PC2, myG_PC3=PC3) %>%
+  mutate(Name = plyr::mapvalues(Name, "X3156.11_AGL", "3156.11_AGL"),
+         Name = gsub("_", " ", Name),
+         Name = gsub("\\.", "-", Name))
+y5 <- AGILE_Q %>% 
+  select(Name, G1=P1,G2=P2,G3=P3,G4=P4,G5=P5,G6=P6,G7=P7,G8=P8) %>%
+  mutate(STR_Group = structureGroup(select(., G1,G2,G3,G4,G5,G6,G7,G8), limit = 0.8)) %>%
+  select(Name, STR_Group, everything())
+y6 <- agData_FAO_Country_Table %>% 
+  filter(!duplicated(Country)) %>%
+  select(Origin = Country, Region, SubRegion, ISO3, Country_Lat=Lat, Country_Lon=Lon)
+y7 <- AGILE_Seed %>% select(Name, Size, SeedMass1000=SeedMass1000.2018, diameter,
+                            CotyledonColor, TestaColor, TestaPattern, BlackTesta)
+y8 <- AGILE_LDP %>% select(Name, CollDate, CollDate_Group, Urls)
+
+yy <- y1 %>% 
+  left_join(y2, by = "Name") %>% 
+  left_join(y3, by = "Name") %>%
+  left_join(y4, by = "Name") %>%
+  left_join(y5, by = "Name") %>%
+  left_join(y6, by = "Origin") %>% 
+  left_join(y7, by = "Name") %>%
+  left_join(y8, by = "Name") %>%
+  mutate(Region = ifelse(is.na(Region), "Other", as.character(Region)),
+         SubRegion = ifelse(is.na(SubRegion), "Other", as.character(SubRegion))) %>%
+  select(Entry, Name, Origin, Source, Lat, Lon, 
+         CollDate, CollDate_Group, a, b, c, everything())
+write.csv(yy, "data_ldp.csv", row.names = F)
+#write.csv(AGILE_GeneList, "Data_GeneList.csv", row.names = F)
+```
+
+---
+
+# Prepare Data
+
+```{r class.source = "fold-show"}
+# devtools::install_github("derekmichaelwright/agData")
+library(agData)
+library(plotly)      # plot_ly()
+library(leaflet)     # leaflet()
+library(htmlwidgets) # saveWidget()
+```
+
+```{r}
+# Prep data
+myCaption <- "derekmichaelwright.github.io/dblogr/academic/lentil_populations"
+rColors <- c("darkred", "darkgreen", "darkorange3", "steelblue", "grey")
+cColors <- c("darkred",   "darkorange3", "darkgoldenrod2", "deeppink3", 
+             "steelblue", "darkorchid4", "cornsilk4",      "darkgreen") 
+sColors <- c("deeppink3", "darkblue", "darkorchid4", "darkorange3", "steelblue",
+             "darkgoldenrod2", "darkred", "darkgreen", "cornsilk4")
+#
+dd <- read.csv("data_ldp.csv") %>%
+  mutate(DTF_Cluster = factor(DTF_Cluster))
+```
+
+---
+
+# Origins {.tabset .tabset-pills}
+
+## Countries
+
+![](ldp_1_01.png)
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  group_by(Origin, Region) %>% 
+  summarise(Count = n()) %>%
+  arrange(Count) %>%
+  mutate(Origin = factor(Origin, levels = .$Origin))
+# Plot
+mp <- ggplot(xx, aes(x = Origin, y = Count, fill = Region)) + 
+  geom_col(color = "black", alpha = 0.7) + 
+  facet_grid(. ~ Region, scales = "free", space = "free") + 
+  scale_fill_manual(values = rColors) +
+  theme_agData_col(legend.position = "none",
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Lentil Diversity Panel Origins", x = NULL,
+       caption = myCaption)
+ggsave("ldp_1_01.png", mp, width = 8, height = 4)
+```
+
+---
+
+## Map
+
+![](ldp_1_02.png)
+
+```{r results="hide"}
+# Prep data
+xx <- dd %>% 
+  mutate(Lat = ifelse(is.na(Lat), Country_Lat, Lat),
+         Lon = ifelse(is.na(Lon), Country_Lon, Lon),
+         Lat = ifelse(duplicated(Lat), jitter(Lat, 1, 1), Lat),
+         Lon = ifelse(duplicated(Lon), jitter(Lon, 1, 1), Lon), 
+         Size = 1)
+# Plot png
+png("ldp_1_02.png", width = 3600, height = 2055, res = 600)
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
+mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat",
+            nameZColour = alpha("darkred",0.8), 
+            nameZFill = alpha("darkgoldenrod2",0.8), 
+            nameZSize = "Size", symbolSize = 0.2, addLegend = F,
+            #xlim = c(-140,110), ylim = c(5,20), 
+            lwd = 1, oceanCol = "grey90", landCol = "white", borderCol = "black")
+title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
+dev.off()
+```
+
+---
+
+## Country Map
+
+![](ldp_1_03.png)
+
+```{r results="hide"}
+# Prep data
+xx <- dd %>% 
+  filter(Origin != "Unknown") %>%
+  mutate(Origin = recode(Origin, "ICARDA"="Syria", "USDA"="USA")) %>% 
+  group_by(Origin, Country_Lat, Country_Lon) %>% 
+  summarise(Count = n()) %>% 
+  as.data.frame()
+# Plot
+png("ldp_1_03.png", width = 3600, height = 2055, res = 600)
+par(mai = c(0.2,0,0.25,0), xaxs = "i",yaxs = "i")
+mapBubbles2(dF = xx, nameX = "Country_Lon", nameY = "Country_Lat", 
+            nameZColour = alpha("darkgoldenrod2",0.8), 
+            nameZFill = alpha("darkgreen",0.8),
+            nameZSize = "Count", legendPos = "bottomleft",
+            lwd = 1, oceanCol = "grey90", landCol = "white", borderCol = "black")
+title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
+dev.off()
+```
+
+---
+
+## Genotype PCA By Region
+
+`r shiny::icon("globe")` [https://derekmichaelwright.github.io/dblogr/academic/lentil_populations/ldp_1_04.html](https://derekmichaelwright.github.io/dblogr/academic/lentil_populations/ldp_1_04.html){target="_blank"}
+
+<iframe
+  src="ldp_1_04.html"
+  style="width:100%; height:600px;"
+  data-external="1"
+></iframe>
+
+```{r}
+mp <- plot_ly(dd, x = ~myG_PC1, y = ~myG_PC3, z = ~myG_PC2, 
+              color = ~Region, colors = rColors, hoverinfo = "text",
+              text = ~paste(Name, 
+                            "\nOrigin:", Origin, 
+                            "\nSource:", Source,
+                            "\nCollDate:", CollDate,
+                            "\nSTR_Group:", STR_Group, 
+                            "\nDTF_Cluster:", DTF_Cluster)) %>%
+  add_markers()
+saveWidget(as_widget(mp), "ldp_1_04.html")
+```
+
+---
+
+# Genetic Structure Analyis {.tabset .tabset-pills}
+
+## Genotype Composition
+
+![](ldp_2_01.png)
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  select(Name, Origin, Region, G1, G2, G3, G4, G5, G6, G7, G8) %>%
+  arrange(G1, G2, G3, G4, G5, G6, G7, G8) %>%
+  gather(Group, Value, G1, G2, G3, G4, G5, G6, G7, G8) %>%
+  mutate(Name = factor(Name, unique(Name)))
+# Plot
+mp <- ggplot(xx, aes(x = Name, y = Value, fill = Group)) +
+  geom_col(position = "stack") +
+  scale_fill_manual(name = NULL, values = sColors) +
+  guides(fill = guide_legend(nrow = 1)) +
+  theme_agData(legend.position = "bottom",
+               axis.ticks.x = element_blank(),
+               axis.text.x = element_blank()) +
+  labs(title = "Lentil Diversity Panel", y = NULL, x = NULL,
+       caption = myCaption)
+ggsave("ldp_2_01.png", mp, width = 10, height = 4)
+```
+
+---
+
+## Genotype Composition By Region
+
+![](ldp_2_02.png)
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  select(Name, Origin, Region, G1, G2, G3, G4, G5, G6, G7, G8) %>%
+  arrange(G1, G2, G3, G4, G5, G6, G7, G8) %>%
+  gather(Group, Value, G1, G2, G3, G4, G5, G6, G7, G8) %>%
+  mutate(Name = factor(Name, unique(Name)))
+# Plot
+mp <- ggplot(xx, aes(x = Name, y = Value, fill = Group)) +
+  geom_col(position = "stack") +
+  facet_grid(. ~ Region, scales = "free_x", space = "free_x") +
+  scale_fill_manual(name = NULL, values = sColors) +
+  guides(fill = guide_legend(nrow = 1)) +
+  theme_agData(legend.position = "bottom",
+               axis.ticks.x = element_blank(),
+               axis.text.x = element_blank()) +
+  labs(title = "Lentil Diversity Panel", y = NULL, x = NULL,
+       caption = myCaption)
+ggsave("ldp_2_02.png", mp, width = 10, height = 4)
+```
+
+---
+
+## Genetic Structure Pie Map
+
+![](ldp_2_03.png)
+
+```{r results="hide"}
+# Prep data
+myG <- c("G1","G2","G3","G4","G5","G6","G7","G8", "Mix")
+xx <- dd %>% 
+  filter(!Origin %in% c("ICARDA","USDA","Unknown")) %>% 
+  group_by(Origin, STR_Group, Country_Lat, Country_Lon) %>% 
+  summarise(Count = n()) %>% 
+  spread(STR_Group, Count) %>%
+  as.data.frame()
+# Plot
+png("ldp_2_03.png", width = 3600, height = 2055, res = 600)
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
+mapPies(dF = xx, nameX = "Country_Lon", nameY = "Country_Lat", 
+        zColours = sColors, nameZs = myG, addCatLegend = F, lwd = 1,
+        oceanCol = "grey90", landCol = "white", borderCol = "black") 
+legend(-170, 20, title = "STR Group", legend = myG, col = sColors,
+       pch = 16, cex = 0.8, pt.cex = 1.25, box.lwd = 2)
+title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
+dev.off()
+```
+
+---
+
+## Genetic Structure Map {.tabset .tabset-pills}
+
+### png
+
+![](ldp_2_04.png)
+
+```{r results="hide"}
+# Prep data
+myG <- c("G1","G2","G3","G4","G5","G6","G7","G8", "Mix")
+xx <- dd %>% 
+  mutate(Lat = ifelse(is.na(Lat), Country_Lat, Lat),
+         Lon = ifelse(is.na(Lon), Country_Lon, Lon),
+         Lat = ifelse(duplicated(Lat), jitter(Lat, 1, 1), Lat),
+         Lon = ifelse(duplicated(Lon), jitter(Lon, 1, 1), Lon), 
+         Size = 1)
+# Plot png
+png("ldp_2_04.png", width = 3600, height = 2055, res = 600)
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
+mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", 
+            nameZFill = "STR_Group", 
+            fillPalette = alpha(sColors,0.8), 
+            nameZSize = "Size", symbolSize = 0.2, 
+            xlim = c(-140,110), ylim = c(5,20), lwd = 1, lwdSymbols = 0.4,
+            addColourLegend = F, addLegend = F,
+            oceanCol = "grey90", landCol = "white", borderCol = "black")
+legend(-138.5, 25, title = "STR Group", legend = myG, col = sColors,
+       pch = 16, cex = 0.8, pt.cex = 1.5, box.lwd = 2)
+title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
+dev.off()
+```
+
+---
+
+### html
+
+`r shiny::icon("globe")` [https://derekmichaelwright.github.io/dblogr/academic/lentil_populations/ldp_2_04.html](https://derekmichaelwright.github.io/dblogr/academic/ldp/Lentil_populations_2_04.html){target="_blank"}
+
+<iframe
+  src="ldp_2_04.html"
+  style="width:100%; height:600px;"
+></iframe>
+
+```{r}
+# Prep data
+myG <- c("G1","G2","G3","G4","G5","G6","G7","G8", "Mix")
+xx <- dd %>% 
+  mutate(Lat = ifelse(is.na(Lat), Country_Lat, Lat),
+         Lon = ifelse(is.na(Lon), Country_Lon, Lon),
+         Lat = ifelse(duplicated(Lat), jitter(Lat, 1, 1), Lat),
+         Lon = ifelse(duplicated(Lon), jitter(Lon, 1, 1), Lon), 
+         Size = 1)
+# Plot html
+pal <- colorFactor(sColors, domain = myG)
+mp <- leaflet() %>% 
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  addCircles(lng = xx$Lon, lat = xx$Lat, weight = 10,
+             color = pal(xx$STR_Group), opacity = 1, fillOpacity = 1,
+             popup = paste(xx$Entry,"|",xx$Name)) %>%
+  addLegend("bottomleft", pal = pal, values = xx$STR_Group,
+            title = "STR Group", opacity = 1)
+saveWidget(mp, file="ldp_2_04.html")
+```
+
+---
+
+## Genetic Structure Origin Pies
+
+![](ldp_2_05.png)
+
+```{r}
+# Prep data
+myLevels <- c("South America", "Central America", "Northern America", 
+              "Western Europe", "Eastern Europe", "Southern Europe",
+              "Western Asia", "Central Asia", 
+              "Northern Africa", "Eastern Africa", "Southern Asia", "Other")
+x1 <- dd %>% 
+  group_by(STR_Group, SubRegion) %>% 
+  summarise(Count = n()) 
+x2 <- dd %>% 
+  group_by(SubRegion) %>% 
+  summarise(Total = n()) 
+xx <- left_join(x1, x2, by = "SubRegion") %>%
+  mutate(Percent = 100 * Count / Total) %>%
+  mutate(SubRegion = factor(SubRegion, levels = myLevels))
+# Plot
+mp <- ggplot(xx, aes(x = "", y = Percent, fill = STR_Group)) + 
+  geom_col(color = "black", alpha = 0.7) + 
+   coord_polar("y", start = 0) +
+  facet_wrap(. ~ SubRegion + paste("n =", Total), ncol = 6) +
+  scale_fill_manual(values = sColors) +
+  theme_agData_pie(legend.position = "bottom") +
+  guides(fill = guide_legend(nrow = 1)) +
+  labs(title = "Lentil Diversity Panel Origins", x = NULL,
+       caption = myCaption)
+ggsave("ldp_2_05.png", mp, width = 12, height = 6)
+```
+
+---
+
+## Genotype PCA By Structure Group
+
+`r shiny::icon("globe")` [https://derekmichaelwright.github.io/dblogr/academic/lentil_populations/ldp_2_06.html](https://derekmichaelwright.github.io/dblogr/academic/lentil_populations/ldp_2_06.html){target="_blank"}
+
+<iframe
+  src="ldp_2_06.html"
+  style="width:100%; height:600px;"
+  data-external="1"
+></iframe>
+
+```{r}
+mp <- plot_ly(dd, x = ~myG_PC1, y = ~myG_PC2, z = ~myG_PC3, hoverinfo = "text",
+              color = ~STR_Group, colors = sColors[c(9,1:8)], 
+              text = ~paste(Name, 
+                            "\nOrigin:", Origin, 
+                            "\nSource:", Source,
+                            "\nCollDate:", CollDate,
+                            "\nSTR_Group:", STR_Group, 
+                            "\nDTF_Cluster:", DTF_Cluster)) %>%
+  add_markers()
+saveWidget(as_widget(mp), "ldp_2_06.html")
+```
+
+---
+
+# DTF {.tabset .tabset-pills}
+
+## DTF Cluster Pie Map
+
+![](ldp_3_01.png)
+
+```{r results="hide"}
+# Prep data
+xx <- dd %>% 
+  filter(!Origin %in% c("ICARDA","USDA","Unknown")) %>% 
+  group_by(Origin, DTF_Cluster, Country_Lat, Country_Lon) %>% 
+  summarise(Count = n()) %>% 
+  spread(DTF_Cluster, Count) %>%
+  as.data.frame()
+# Plot
+png("ldp_3_01.png", width = 3600, height = 2055, res = 600)
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
+mapPies(dF = xx, nameX = "Country_Lon", nameY = "Country_Lat", 
+        zColours = cColors, nameZs = c("1","2","3","4","5","6","7","8"), 
+        xlim = c(-140,110), ylim = c(5,20), addCatLegend = F, lwd = 1,
+        oceanCol = "grey90", landCol = "white", borderCol = "black") 
+legend(-138.5, 18, title = "DTF Cluster", legend = 1:8, col = cColors,
+       pch = 16, cex = 0.8, pt.cex = 1.5, box.lwd = 2)
+title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
+dev.off()
+```
+
+```{r echo = F, results="hide"}
+file.copy(from = "ldp_3_01.png", to = "featured.png", overwrite = T)
+```
+
+---
+
+## DTF Cluster Map {.tabset .tabset-pills}
+
+### png
+
+![](ldp_3_02.png)
+
+```{r results="hide"}
+# Prep data
+xx <- dd %>% 
+  mutate(Lat = ifelse(is.na(Lat), Country_Lat, Lat),
+         Lon = ifelse(is.na(Lon), Country_Lon, Lon),
+         Lat = ifelse(duplicated(Lat), jitter(Lat, 1, 1), Lat),
+         Lon = ifelse(duplicated(Lon), jitter(Lon, 1, 1), Lon), 
+         Size = 1)
+# Plot png
+png("ldp_3_02.png", width = 3600, height = 2055, res = 600)
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
+mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", 
+            nameZFill = "DTF_Cluster",
+            fillPalette = alpha(cColors,0.8), 
+            nameZSize = "Size", symbolSize = 0.2, 
+            xlim = c(-140,110), ylim = c(5,20), lwd = 1, lwdSymbols = 0.4,
+            addColourLegend = F, addLegend = F,
+            oceanCol = "grey90", landCol = "white", borderCol = "black")
+legend(-138.5, 18, title = "DTF Cluster", legend = 1:8, col = cColors,
+       pch = 16, cex = 0.8, pt.cex = 1.5, box.lwd = 2)
+title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
+dev.off()
+```
+
+---
+
+### html
+
+`r shiny::icon("globe")` [https://derekmichaelwright.github.io/dblogr/academic/lentil_populations/ldp_3_02.html](https://derekmichaelwright.github.io/dblogr/academic/lentil_populations/ldp_3_02.html){target="_blank"}
+
+<iframe
+  src="ldp_3_02.html"
+  style="width:100%; height:600px;"
+></iframe>
+
+```{r}
+# Prep data
+xx <- dd %>% 
+  mutate(Lat = ifelse(is.na(Lat), Country_Lat, Lat),
+         Lon = ifelse(is.na(Lon), Country_Lon, Lon),
+         Lat = ifelse(duplicated(Lat), jitter(Lat, 1, 1), Lat),
+         Lon = ifelse(duplicated(Lon), jitter(Lon, 1, 1), Lon), 
+         Size = 1)
+# Plot html
+pal <- colorFactor(cColors, domain = 1:8)
+mp <- leaflet() %>% 
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  addCircles(lng = xx$Lon, lat = xx$Lat, weight = 10,
+             color = pal(xx$DTF_Cluster), opacity = 1, fillOpacity = 1,
+             popup = paste(xx$Entry,"|",xx$Name)) %>%
+  addLegend("bottomleft", pal = pal, values = xx$DTF_Cluster,
+            title = "DTF Cluster", opacity = 1)
+saveWidget(mp, file="ldp_3_02.html")
+```
+
+
+## DTF PCA Clusters
+
+From phenology paper
+
+`r shiny::icon("globe")` [https://derekmichaelwright.github.io/dblogr/academic/lentil_populations/ldp_3_03.html](https://derekmichaelwright.github.io/dblogr/academic/lentil_populations/ldp_3_03.html){target="_blank"}
+
+<iframe
+  src="ldp_3_03.html"
+  style="width:100%; height:600px;"
+  data-external="1"
+></iframe>
+
+```{r}
+mp <- plot_ly(dd, x = ~DTF_PC1, y = ~DTF_PC2*2.5, z = ~DTF_PC3*2.5,
+              color = ~DTF_Cluster, colors = cColors, hoverinfo = "text",
+              text = ~paste(Name, 
+                            "\nOrigin:", Origin, 
+                            "\nSource:", Source,
+                            "\nCollDate:", CollDate,
+                            "\nSTR_Group:", STR_Group, 
+                            "\nDTF_Cluster:", DTF_Cluster)) %>%
+  add_markers()
+saveWidget(as_widget(mp), "ldp_3_03.html")
+```
+
+---
+
+`r shiny::icon("globe")` [https://derekmichaelwright.github.io/dblogr/academic/lentil_populations/ldp_3_04.html](https://derekmichaelwright.github.io/dblogr/academic/lentil_populations/ldp_3_04.html){target="_blank"}
+
+<iframe
+  src="ldp_3_04.html"
+  style="width:100%; height:600px;"
+  data-external="1"
+></iframe>
+
+```{r}
+xx <- dd %>% 
+  mutate(DTF_PC1 = scales::rescale(DTF_PC1),
+         DTF_PC2 = scales::rescale(DTF_PC2),
+         DTF_PC3 = scales::rescale(DTF_PC3))
+mp <- plot_ly(dd, x = ~DTF_PC1, y = ~DTF_PC2, z = ~DTF_PC3,
+              color = ~STR_Group, colors = sColors, hoverinfo = "text",
+              text = ~paste(Name, 
+                            "\nOrigin:", Origin, 
+                            "\nSource:", Source,
+                            "\nCollDate:", CollDate,
+                            "\nSTR_Group:", STR_Group, 
+                            "\nDTF_Cluster:", DTF_Cluster)) %>%
+  add_markers()
+saveWidget(as_widget(mp), "ldp_3_04.html")
+```
+
+---
+
+## DTF Cluster Origin Pies
+
+![](ldp_3_04.png)
+
+```{r}
+# Prep data
+myLevels <- c("South America", "Central America", "Northern America", 
+              "Western Europe", "Eastern Europe", "Southern Europe",
+              "Western Asia", "Central Asia", 
+              "Northern Africa", "Eastern Africa", "Southern Asia", "Other")
+x1 <- dd %>% 
+  group_by(DTF_Cluster, SubRegion) %>% 
+  summarise(Count = n()) 
+x2 <- dd %>% 
+  group_by(SubRegion) %>% 
+  summarise(Total = n()) 
+xx <- left_join(x1, x2, by = "SubRegion") %>%
+  mutate(Percent = 100 * Count / Total) %>%
+  mutate(SubRegion = factor(SubRegion, levels = myLevels))
+# Plot
+mp <- ggplot(xx, aes(x = "", y = Percent, fill = DTF_Cluster)) + 
+  geom_col(color = "black", alpha = 0.7) + 
+  coord_polar("y", start = 0) +
+  facet_wrap(. ~ SubRegion + paste("n =", Total), ncol = 6) +
+  scale_fill_manual(values = cColors) +
+  theme_agData_pie(legend.position = "bottom") +
+  guides(fill = guide_legend(nrow = 1)) +
+  labs(title = "Lentil Diversity Panel Origins", x = NULL,
+       caption = myCaption)
+ggsave("ldp_3_04.png", width = 12, height = 6)
+```
+
+---
+
+## Genotype PCA By DTF Clusters
+
+From phenology paper
+
+`r shiny::icon("globe")` [https://derekmichaelwright.github.io/dblogr/academic/lentil_populations/ldp_3_05.html](https://derekmichaelwright.github.io/dblogr/academic/lentil_populations/ldp_3_05.html){target="_blank"}
+
+<iframe
+  src="ldp_3_05.html"
+  style="width:100%; height:600px;"
+  data-external="1"
+></iframe>
+
+```{r}
+mp <- plot_ly(dd, x = ~myG_PC1, y = ~myG_PC2, z = ~myG_PC3, 
+              color = ~DTF_Cluster, colors = cColors, hoverinfo = "text",
+              text = ~paste(Name, 
+                            "\nOrigin:", Origin, 
+                            "\nSource:", Source,
+                            "\nCollDate:", CollDate,
+                            "\nSTR_Group:", STR_Group, 
+                            "\nDTF_Cluster:", DTF_Cluster)) %>%
+  add_markers()
+saveWidget(as_widget(mp), "ldp_3_05.html")
+```
+
+---
+
+# Cotyledon Color {.tabset .tabset-pills}
+
+## Eurasia Map
+
+![](ldp_4_01.png)
+
+```{r results="hide"}
+# Prep data
+myColors <- alpha(c("darkred", "darkgoldenrod2"), 0.7)
+xx <- dd %>% 
+  filter(CotyledonColor %in% c("Red", "Yellow"),
+         Region %in% c("Asia","Europe","Africa")) %>%
+  mutate(Lat = ifelse(is.na(Lat), Country_Lat, Lat),
+         Lon = ifelse(is.na(Lon), Country_Lon, Lon),
+         Lat = ifelse(duplicated(Lat), jitter(Lat, 1, 1), Lat),
+         Lon = ifelse(duplicated(Lon), jitter(Lon, 1, 1), Lon), 
+         Size = 1)
+# Plot png
+png("ldp_4_01.png", width = 3600, height = 2055, res = 600)
+par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
+mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", 
+            nameZFill = "CotyledonColor", 
+            fillPalette = myColors, 
+            nameZSize = "SeedMass1000", 
+            symbolSize = 0.5, lwd = 1, lwdSymbols = 0.5,
+            addColourLegend = F, addLegend = F,
+            xlim = c(-25,110), ylim = c(15,35), 
+            oceanCol = "grey90", landCol = "white", borderCol = "black")
+legend(55, 6, title = "Cotyledon Color", 
+       legend = c("Red", "Yellow"), col = myColors,
+       pch = 16, cex = 0.8, pt.cex = 1.5, box.lwd = 2)
+title(main = "Lentil Diversity Panel Origins", line = 0.25, cex = 3) 
+title(sub = myCaption, line = 0, cex.sub = 0.75, adj = 1)
+dev.off()
+```
+
+---
+
+## Mass of 1000 Seeds
+
+![](ldp_4_02.png)
+
+```{r}
+# Prep data
+myColors <- c("darkred", "darkgoldenrod2")
+xx <- dd %>% filter(CotyledonColor %in% c("Red", "Yellow"))
+# Plot
+mp <- ggplot(xx, aes(x = CotyledonColor, y = SeedMass1000, 
+                     fill = CotyledonColor, size = SeedMass1000)) +
+  geom_quasirandom(alpha = 0.7, pch = 21, color = "black") +
+  scale_fill_manual(values = myColors) +
+  theme_agData(legend.position = "none") +
+  labs(title = "Lentil Diversity Panel",
+       y = "Mass of 1000 Seeds (g)",
+       x = "Cotyledon Color",
+       caption = myCaption)
+ggsave("ldp_4_02.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Str Group
+
+![](ldp_4_03.png)
+
+```{r}
+# Plot
+mp <- ggplot(xx, aes(x = CotyledonColor, y = SeedMass1000, 
+                     fill = STR_Group, size = SeedMass1000)) +
+  geom_quasirandom(alpha = 0.7, pch = 21, color = "black") +
+  facet_grid(. ~ Region) +
+  scale_fill_manual(values = sColors) +
+  guides(size = "none") +
+  theme_agData() +
+  labs(caption = myCaption)
+ggsave("ldp_4_03.png", mp, width = 10, height = 4)
+```
+
+---
+
+## DTF Cluster
+
+![](ldp_4_04.png)
+
+```{r}
+# Plot
+mp <- ggplot(xx, aes(x = CotyledonColor, y = SeedMass1000, 
+                     fill = DTF_Cluster, size = SeedMass1000)) +
+  geom_quasirandom(alpha = 0.7, pch = 21, color = "black") +
+  facet_grid(. ~ Region) +
+  scale_fill_manual(values = cColors) +
+  guides(size = "none") +
+  theme_agData() +
+  labs(caption = myCaption)
+ggsave("ldp_4_04.png", mp, width = 10, height = 4)
+```
+
+---
+
+```{r echo = F, eval = F}
+# Plot
+mp <- ggplot(xx, aes(x = "", y = CotyledonColor, color = CotyledonColor)) +
+  geom_bar(stat = "density") +
+  coord_polar("y", start = 0) +
+  facet_grid(. ~ TestaPattern) +
+  scale_color_manual(values = sColors) +
+  theme_agData() +
+  labs(caption = myCaption)
+ggsave("ldp_18.png", mp, width = 10, height = 4)
+```
+
+```{r echo = F, eval = F}
+# Prep data
+myColors <- c("darkred", "darkgoldenrod2")
+xx <- dd %>% 
+  filter(CotyledonColor %in% c("Red", "Yellow"),
+         Region %in% c("Asia","Europe","Africa"))
+# Plot
+ggplot(xx, aes(x = Lon, y = 1, fill = CotyledonColor, size = SeedMass1000)) +
+  geom_beeswarm(groupOnX = F, alpha = 0.7, pch = 21, color = "black") +
+  scale_fill_manual(name = "Cotyledon Color", values = myColors) +
+  theme_agData(legend.position = "bottom",
+               axis.text.y = element_blank(),
+               axis.ticks.y = element_blank()) +
+  labs(title = "Lentil Cotyledon Color & Size", y = NULL, x = "Longitude",
+       caption = myCaption)
+ggsave("ldp_19.png", mp, width = 10, height = 4)
+```

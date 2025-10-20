@@ -47,7 +47,7 @@ library(EnvRtype)
 # install.packages("geosphere")
 library(geosphere)
 #
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myCaption <- "derekmichaelwright.github.io/dblogr/academic/envdata"
 myEs <- c("Ro16", "Ro17", "Su16", "Su17", "Su18", "Us18",
           "In16", "In17", "Ba16", "Ba17", "Ne16", "Ne17",
           "Mo16", "Mo17", "Sp16", "Sp17", "It16", "It17")

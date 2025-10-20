@@ -60,7 +60,7 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN"
+myCaption <- "derekmichaelwright.github.io/dblogr/blog/canada_migration | Data: STATCAN"
 myMeasures <- c("Births", "Deaths", "Net emigration", "Immigrants", 
                 "Net non-permanent residents", "Net interprovincial migration")
 myColors <- c("darkgreen", "black", "darkred", "steelblue", "darkblue", "darkorange")

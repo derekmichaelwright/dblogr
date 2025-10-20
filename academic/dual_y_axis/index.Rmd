@@ -37,7 +37,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- c("derekmichaelwright.github.io/dblogr/ | Data: AGILE")
+myCaption <- c("derekmichaelwright.github.io/dblogr/academic/dual_y_axis")
 xx <- read.csv("data_dual_y_axis.csv") %>% 
   mutate(Date = as.Date(Date))
 as_tibble(xx)

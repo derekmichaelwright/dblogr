@@ -67,7 +67,7 @@ library(gganimate)
 #
 # Prep CA data
 #
-myCaptionCA <- "derekmichaelwright.github.io/dblogr/ | Data: CA GOV"
+myCaptionCA <- "derekmichaelwright.github.io/dblogr/blog/canada_overdoses | Data: CA GOV"
 myColorsMF <- c("palevioletred3", "steelblue")
 ca1 <- read.csv("SubstanceHarmsData.csv") %>%
   filter(Source == "Deaths") %>% 
@@ -76,7 +76,7 @@ ca1 <- read.csv("SubstanceHarmsData.csv") %>%
 #
 # Prep BC data
 #
-myCaptionBC <- "derekmichaelwright.github.io/dblogr/ | Data: BC GOV"
+myCaptionBC <- "derekmichaelwright.github.io/dblogr/blog/canada_overdoses | Data: BC GOV"
 #
 bc1 <- read_xlsx("data_canada_overdoses.xlsx", "BC Annual")
 #
@@ -95,7 +95,7 @@ bc4 <- read_xlsx("data_canada_overdoses.xlsx", "BC Age") %>%
 #
 # Prep AB data
 #
-myCaptionAB <- "derekmichaelwright.github.io/dblogr/ | Data: AB GOV"
+myCaptionAB <- "derekmichaelwright.github.io/dblogr/blog/canada_overdoses | Data: AB GOV"
 #
 ab1 <- read_xlsx("data_canada_overdoses.xlsx", "AB Monthly") %>%
   mutate(Date = as.Date(paste(Year, Month, "15", sep = "-"), 
@@ -103,7 +103,7 @@ ab1 <- read_xlsx("data_canada_overdoses.xlsx", "AB Monthly") %>%
 #
 # Prep SK data
 #
-myCaptionSK <- "derekmichaelwright.github.io/dblogr/ | Data: SK GOV"
+myCaptionSK <- "derekmichaelwright.github.io/dblogr/blog/canada_overdoses | Data: SK GOV"
 myRaces <- c("Unknown", "Other", "Hispanic","Black", "Asian",
              "Metis","First Nations", "Caucasian")
 #
