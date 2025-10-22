@@ -38,7 +38,7 @@ Truncating the y-axis is the most commonly used example for misleading graphs. I
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/"
+myCaption <- "derekmichaelwright.github.io/dblogr/academic/misleading_graphs"
 #
 xx <- data.frame(Company = c("Item A", "Item B", "Item C"),
                  Views   = c( 2555486, 2527246, 2519643))
