@@ -51,7 +51,7 @@ xx <- d1 %>%
 d1 <- d1 %>% 
   mutate(Trading.Partner = factor(Trading.Partner, levels = xx$Trading.Partner))
 d2 <- d1 %>% group_by(Year, Trading.Partner, Trade) %>%
-  summarise(Value = sum(Value))
+  summarise(Value = sum(Value)) %>% ungroup()
 ```
 
 ---
@@ -347,9 +347,48 @@ ggsave("canada_trade_10.png", mp, width = 6, height = 4)
 
 ---
 
+# Map
+
+![](maps/canada_trade_map_2024.png)
+
+```{r}
+# Prep data
+yy <- agData_FAO_Country_Table
+xx <- d2 %>% 
+  filter(Trade == "Trade Balance") %>%
+  mutate(Trading.Partner = plyr::mapvalues(Trading.Partner,
+           c("Türkiye","Russian Federation", "United States", "South Korea"), 
+           c("Turkey", "Russia", "USA", "Republic of Korea"))) %>%
+  left_join(agData_FAO_Country_Table, by = c("Trading.Partner"="Country")) %>%
+  filter(!is.na(Lat)) %>%
+  mutate(Balance = ifelse(Value > 0, "Net Export", "Net Import"),
+         Value = ifelse(Value < 0, Value * (-1), Value)) %>% 
+  as.data.frame()
+# Plot
+for(i in 1997:max(xx$Year)) {
+  # Prep data
+  xi <- xx %>% filter(Year == i)
+  #Plot
+  png(paste0("maps/canada_trade_map_",i,".png"), width = 1350, height = 770, res = 300)
+  par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
+  mapBubbles2(dF = xi, nameX = "Lon", nameY = "Lat", nameZSize = "Value",
+              nameZColour = "black", nameZFill = "Balance",
+              fillPalette = c("darkgreen", "darkred"),
+              #symbolSize = 2, 
+              lwd = 0.75, addLegend = F,
+              oceanCol = "grey90", landCol = "white", borderCol = "black",
+              )
+  title(main = paste("Canada's Trade Balance -", i), line = 0.25, cex.main = 1)
+  title(sub = myCaption, line = 0, cex.sub = 0.5, adj = 1)
+  dev.off()
+}
+```
+
+---
+
 # Countries {.tabset .tabset-pills}
 
-Create plotting function
+## plotting function
 
 ```{r}
 # Create plotting function
@@ -410,7 +449,7 @@ gg_Trade <- function(myArea = "China") {
 
 ---
 
-## United States
+## United States {.active}
 
 ![](canada_trade_us.png)
 
@@ -550,3 +589,5 @@ ggsave("canada_trade_mexico.png", mp, width = 8, height = 6, bg = "white")
 mp <- gg_Trade(myArea = "All countries")
 ggsave("canada_trade_all.png", mp, width = 8, height = 6, bg = "white")
 ```
+
+---
