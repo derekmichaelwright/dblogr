@@ -383,7 +383,9 @@ ggsave("covid_origin_5_01.png", mp, width = 6, height = 4)
 
 ---
 
-# Deseret
+# Deseret {.tabset .tabset-pills}
+
+## 1
 
 ![](covid_origin_6_01.png)
 
@@ -403,6 +405,8 @@ ggsave("covid_origin_6_01.png", mp, width = 6, height = 4)
 ```
 
 ---
+
+## 2
 
 ![](covid_origin_6_02.png)
 

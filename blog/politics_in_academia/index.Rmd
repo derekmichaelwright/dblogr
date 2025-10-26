@@ -11,12 +11,18 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 ---
 
-# Data
+# Data {.tabset .tabset-pills}
+
+## Macdonald Laurier
 
 > - `r shiny::icon("globe")` [https://macdonaldlaurier.ca/the-viewpoint-diversity-crisis-at-canadian-universities/](https://macdonaldlaurier.ca/the-viewpoint-diversity-crisis-at-canadian-universities/){target="_blank"}
 > - `r shiny::icon("file-pdf")` https://www.jstor.org/stable/pdf/canajsocicahican.33.4.873.pdf
 
+## Pew Research
+
 > - `r shiny::icon("globe")` [https://www.pewresearch.org/science/2023/11/14/americans-trust-in-scientists-positive-views-of-science-continue-to-decline/](https://www.pewresearch.org/science/2023/11/14/americans-trust-in-scientists-positive-views-of-science-continue-to-decline/){target="_blank"}
+
+## Other
 
 > - `r shiny::icon("file-pdf")` [https://climate-science.press/wp-content/uploads/2022/02/012129_2018_Article_9700.pdf](https://climate-science.press/wp-content/uploads/2022/02/012129_2018_Article_9700.pdf){target="_blank"}
 

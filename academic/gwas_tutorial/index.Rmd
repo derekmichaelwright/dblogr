@@ -1016,14 +1016,16 @@ ggsave("Fig_DTF_Nepal_2017_02_04.png", mp, width = 6, height = 4)
 
 ### Chr2
 
+> Note: this function can take a while to run if you choose too big of a segment for analysis.
+ 
 ```{r}
-mp <- gg_LDheatmap(xg = myG, chr = 2, pos1 = 43000000, pos2 = 46000000,
+mp <- gg_LDheatmap(xg = myG, chr = 2, pos1 = 44000000, pos2 = 45000000,
                    myMs = "Lcu.1GRN.Chr2p44545877", 
-                   #axisTextSize = 6, 
+                   axisTextSize = 3, 
                    nameTrim = "Lcu.1GRN.Chr2",
                    myTitle = "Lentil Diversity Panel"
                    )
-ggsave("Fig_DTF_Nepal_2017_03_01.png", mp, width = 8, height = 8, dpi = 600)
+ggsave("Fig_DTF_Nepal_2017_03_01.png", mp, width = 12, height = 12, dpi = 600)
 ```
 
 ![](Fig_DTF_Nepal_2017_03_01.png)
@@ -1032,14 +1034,16 @@ ggsave("Fig_DTF_Nepal_2017_03_01.png", mp, width = 8, height = 8, dpi = 600)
 
 ### Chr 5
 
+> Note: this function can take a while to run if you choose too big of a segment for analysis.
+
 ```{r}
-mp <- gg_LDheatmap(xg = myG, chr = 5, pos1 = 0, pos2 = 3000000,
+mp <- gg_LDheatmap(xg = myG, chr = 5, pos1 = 1200000, pos2 = 2000000,
                    myMs = "Lcu.1GRN.Chr5p1658484", 
-                   #axisTextSize = 6, 
-                   nameTrim = "Lcu.1GRN.Chr2",
+                   axisTextSize = 1, 
+                   nameTrim = "Lcu.1GRN.Chr5",
                    myTitle = "Lentil Diversity Panel"
                    )
-ggsave("Fig_DTF_Nepal_2017_03_02.png", mp, width = 8, height = 8, dpi = 600)
+ggsave("Fig_DTF_Nepal_2017_03_02.png", mp, width = 12, height = 12, dpi = 600)
 ```
 
 ![](Fig_DTF_Nepal_2017_03_02.png)
@@ -1519,14 +1523,16 @@ ggsave("Fig_DTF_Sask_2017_02_03.png", mp, width = 6, height = 4)
 
 ### Chr6
 
+> Note: this function can take a while to run if you choose too big of a segment for analysis.
+
 ```{r}
-mp <- gg_LDheatmap(xg = myG, chr = 6, pos1 = 2000000, pos2 = 5000000,
+mp <- gg_LDheatmap(xg = myG, chr = 6, pos1 = 2500000, pos2 = 4000000,
                    myMs = "Lcu.1GRN.Chr6p3269280", 
-                   #axisTextSize = 6, 
+                   axisTextSize = 3, 
                    nameTrim = "Lcu.1GRN.Chr6",
                    myTitle = "Lentil Diversity Panel"
                    )
-ggsave("Fig_DTF_Sask_2017_03_01.png", mp, width = 8, height = 8, dpi = 600)
+ggsave("Fig_DTF_Sask_2017_03_01.png", mp, width = 12, height = 12, dpi = 600)
 ```
 
 ![](Fig_DTF_Nepal_2017_03_01.png)
@@ -1857,16 +1863,18 @@ ggsave("Fig_Cotyledon_Color_02_03.png", mp, width = 6, height = 4)
 
 ## LD Heatmap {.tabset .tabset-pills}
 
-### Chr6
+### Chr1
+
+> Note: this function can take a while to run if you choose too big of a segment for analysis.
 
 ```{r}
-mp <- gg_LDheatmap(xg = myG, chr = 1, pos1 = 364000000, pos2 = 367000000,
+mp <- gg_LDheatmap(xg = myG, chr = 1, pos1 = 363000000, pos2 = 370000000,
                    myMs = "Lcu.1GRN.Chr1p365986872", 
-                   #axisTextSize = 6, 
+                   axisTextSize = 1, 
                    nameTrim = "Lcu.1GRN.Chr1",
                    myTitle = "Lentil Diversity Panel"
                    )
-ggsave("Fig_Cotyledon_Color_03_01.png", mp, width = 8, height = 8, dpi = 600)
+ggsave("Fig_Cotyledon_Color_03_01.png", mp, width = 12, height = 12, dpi = 600)
 ```
 
 ![](Fig_Cotyledon_Color_03_01.png)

@@ -11,9 +11,9 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Data {.tabset .tabset-pills}
 
-Government of Saskatchewan Death Statistics
+## Government of Saskatchewan
 
 > - `r shiny::icon("globe")` [https://publications.saskatchewan.ca/#/categories/2179](https://publications.saskatchewan.ca/#/categories/2179){target="_blank"}
 > - `r shiny::icon("save")` [data_saskatchewan_suicides.xlsx](data_saskatchewan_suicides.xlsx)
@@ -98,7 +98,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 mp <- ggplot(d1, aes(x = Year, y = Deaths, fill = Sex)) +
   geom_bar(stat = "identity", color = "black", lwd = 0.2, alpha = 0.7) +
   facet_grid(. ~ Age) +
-  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:2021) +
+  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:max(d1$Year)) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Suicides in Saskatchewan", 
@@ -116,7 +116,7 @@ ggsave("saskatchewan_suicides_03.png", mp, width = 12, height = 4)
 mp <- ggplot(d1, aes(x = Year, y = Deaths, fill = Sex)) +
   geom_bar(stat = "identity", color = "black", lwd = 0.2, alpha = 0.7) +
   facet_grid(Sex ~ Age) +
-  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:2021) +
+  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:max(d1$Year)) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "none") +
   labs(title = "Suicides in Saskatchewan", 
@@ -172,7 +172,7 @@ ggsave("saskatchewan_suicides_05.png", mp, width = 6, height = 4)
 mp <- ggplot(d2, aes(x = Year, y = Deaths, fill = Sex)) +
   geom_bar(stat = "identity", color = "black", lwd = 0.2, alpha = 0.7) +
   facet_grid(. ~ Race) +
-  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:2021) +
+  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:max(d2$Year)) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Suicides in Saskatchewan", 
@@ -190,7 +190,7 @@ ggsave("saskatchewan_suicides_06.png", mp, width = 12, height = 4)
 mp <- ggplot(d2, aes(x = Year, y = Deaths, fill = Sex)) +
   geom_bar(stat = "identity", color = "black", lwd = 0.2, alpha = 0.7) +
   facet_grid(Sex ~ Race) +
-  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:2021) +
+  scale_x_continuous(breaks = c(2010, 2020), minor_breaks = 2005:max(d2$Year)) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "none") +
   labs(title = "Suicides in Saskatchewan", 

@@ -11,39 +11,53 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Data {.tabset .tabset-pills}
 
-STATCAN Table: 17-10-0009-01 (Population)
+## STATCAN Table: 17-10-0009-01
+
+Population
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901){target="_blank"}
 > - `r shiny::icon("save")` [1710000901_databaseLoadingData.csv](1710000901_databaseLoadingData.csv)
 
-STATCAN Table: 17-10-0008-01 (Demographic growth - Annually)
+## STATCAN Table: 17-10-0008-01
+
+Demographic growth - Annually
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000801](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000801){target="_blank"}
 > - `r shiny::icon("save")` [1710000801_databaseLoadingData.csv](1710000801_databaseLoadingData.csv)
 
-STATCAN Table: 17-10-0040-01 (Demographic growth - Quarterly)
+## STATCAN Table: 17-10-0040-01
+
+Demographic growth - Quarterly
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710004001](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710004001){target="_blank"}
 > - `r shiny::icon("save")` [1710004001_databaseLoadingData.csv](1710004001_databaseLoadingData.csv)
 
-STATCAN Table: 17-10-0015-01 (Interprovincial migration)
+## STATCAN Table: 17-10-0015-01
+
+Interprovincial migration
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710001501](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710001501){target="_blank"}
 > - `r shiny::icon("save")` [1710001501_databaseLoadingData.csv](1710001501_databaseLoadingData.csv)
 
-STATCAN Table: 17-10-0121-01 (Non-permanent residents)
+## STATCAN Table: 17-10-0121-01
+
+Non-permanent residents
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710012101](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710012101){target="_blank"}
 > - `r shiny::icon("save")` [1710012101_databaseLoadingData.csv](1710012101_databaseLoadingData.csv)
 
-STATCAN Table: 98-10-0361-01 (Non-permanent resident type by place of birth)
+## STATCAN Table: 98-10-0361-01
+
+Non-permanent resident type by place of birth
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=9810036101](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=9810036101){target="_blank"}
 > - `r shiny::icon("save")` [9810036101_databaseLoadingData.csv](9810036101_databaseLoadingData.csv)
 
-STATCAN Table: 17-10-0154-01 (Interprovincial and intraprovincial migrants)
+## STATCAN Table: 17-10-0154-01
+
+Interprovincial and intraprovincial migrants
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710015401](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710015401){target="_blank"}
 > - `r shiny::icon("save")` [1710015401_databaseLoadingData.csv](1710015401_databaseLoadingData.csv)
@@ -148,9 +162,7 @@ d7 <- read.csv("1710015401_databaseLoadingData.csv")
 
 # Births, Deaths & Migration {.tabset .tabset-pills}
 
-## Canada {.tabset .tabset-pills}
-
-### Yearly
+## Canada
 
 ![](canada_migration_1_01.png)
 
@@ -391,7 +403,9 @@ ggsave("canada_migration_1_09.png", mp, width = 12, height = 6)
 
 ---
 
-## Components of Growth
+## Components of Growth {.tabset .tabset-pills}
+
+### By Year
 
 ![](canada_migration_1_09.png)
 
@@ -419,6 +433,10 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 100000, fill = Measurement)) +
        y = "x100,000", x = NULL, caption = myCaption)
 ggsave("canada_migration_1_09.png", mp, width = 7, height = 4)
 ```
+
+---
+
+### Since 2015
 
 ![](canada_migration_1_10.png)
 

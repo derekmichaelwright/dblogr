@@ -96,15 +96,15 @@ Elections SK
 > - `r shiny::icon("globe")` [https://results.elections.sk.ca/](https://results.elections.sk.ca/){target="_blank"}
 > - `r shiny::icon("save")` [data_saskatchewan_2020_election.csv](data_saskatchewan_2020_election.csv)
 
+---
+
+# Prepare Data
+
 ```{r class.source = "fold-show"}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(readxl)
 ```
-
----
-
-# Prepare Data
 
 ```{r}
 # Prep data
@@ -271,17 +271,15 @@ ggsave("saskatchewan_2020_election_05.png", mp, width = 36, height = 16)
 
 > - `r shiny::icon("file-pdf")` [saskatchewan_2020_election_districts.pdf](saskatchewan_2020_election_districts.pdf)
 
-```{r}
+```{r eval = F}
 pdf("saskatchewan_2020_election_districts.pdf", width = 8, height = 4)
 districts <- unique(d2020$Constituency)
-#i<-"THE BATTLEFORDS"
+#
 for(i in districts) {
   xi <- d2020 %>% filter(Constituency == i) %>%
     mutate(Percent = 100 * Votes / sum(Votes, na.rm = T)) %>%
     arrange(desc(Party)) %>%
-    mutate(LabelPos = cumsum(Percent) - (Percent / 2),
-           #LabelPos = ifelse(Votes == 0, NA, LabelPos)
-           )
+    mutate(LabelPos = cumsum(Percent) - (Percent / 2))
   # Bar Chart
   mp1 <- ggplot(xi, aes(x = Party, y = Percent, fill = Party)) +
     geom_col(color = "black", alpha = 0.7) +
@@ -665,14 +663,12 @@ ggsave("saskatchewan_2024_election_05.png", mp, width = 36, height = 16)
 ```{r}
 pdf("saskatchewan_2024_election_districts.pdf", width = 8, height = 4)
 districts <- unique(d2024$Constituency)
-#i<-"THE BATTLEFORDS"
+#
 for(i in districts) {
   xi <- d2024 %>% filter(Constituency == i) %>%
     mutate(Percent = 100 * Votes / sum(Votes, na.rm = T)) %>%
     arrange(desc(Party)) %>%
-    mutate(LabelPos = cumsum(Percent) - (Percent / 2),
-           #LabelPos = ifelse(Votes == 0, NA, LabelPos)
-           )
+    mutate(LabelPos = cumsum(Percent) - (Percent / 2))
   # Bar Chart
   mp1 <- ggplot(xi, aes(x = Party, y = Percent, fill = Party)) +
     geom_col(color = "black", alpha = 0.7) +

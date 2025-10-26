@@ -11,39 +11,53 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Data {.tabset .tabset-pills}
 
-STATCAN Table: 18-10-0205-01 (New housing price index)
+## STATCAN Table: 18-10-0205-01
+
+New housing price index
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810020501](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810020501){target="_blank"}
 > - `r shiny::icon("save")` [1810020501_databaseLoadingData.csv](1810020501_databaseLoadingData.csv)
 
-STATCAN Table: 34-10-0292-01 (Building permits)
+## STATCAN Table: 34-10-0292-01
+
+Building permits
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410029201](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410029201)
 > - `r shiny::icon("save")` [3410029201_databaseLoadingData.csv](3410029201_databaseLoadingData.csv)
 
-STATCAN Table: 34-10-0162-01 (Newly completed and unoccupied housing)
+## STATCAN Table: 34-10-0162-01
+
+Newly completed and unoccupied housing
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410016201](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410016201){target="_blank"}
 > - `r shiny::icon("save")` [3410016201_databaseLoadingData.csv](3410016201_databaseLoadingData.csv)
 
-STATCAN Table: 34-10-0126-01 (Housing starts, under construction and completions)
+## STATCAN Table: 34-10-0126-01
+
+Housing starts, under construction and completions
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410012601](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410012601){target="_blank"}
 > - `r shiny::icon("save")` [3410012601_databaseLoadingData.csv](3410012601_databaseLoadingData.csv)
 
-STATCAN Table: 36-10-0688-01 (Housing stock)
+## STATCAN Table: 36-10-0688-01
+
+Housing stock
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610068801](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3610068801){target="_blank"}
 > - `r shiny::icon("save")` [3610068801_databaseLoadingData.csv](3610068801_databaseLoadingData.csv)
 
-STATCAN Table: 11-10-0688-01 (Market income, government transfers, total income, income tax and after-tax income)
+## STATCAN Table: 11-10-0688-01
+
+Market income, government transfers, total income, income tax and after-tax income
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110019001](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110019001){target="_blank"}
 > - `r shiny::icon("save")` [1110019001_databaseLoadingData.csv](1110019001_databaseLoadingData.csv)
 
-STATCAN Table: 34-10-0133-01 (Average rents)
+## STATCAN Table: 34-10-0133-01
+
+Average rents
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410013301](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410013301){target="_blank"}
 > - `r shiny::icon("save")` [3410013301_databaseLoadingData.csv](3410013301_databaseLoadingData.csv)

@@ -11,30 +11,44 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 ---
 
-# Data
+# Data {.tabset .tabset-pills}
+
+## STATCAN Table: 35-10-0026-01
+
+Crime severity index and weighted clearance rates, Canada, provinces, territories and Census Metropolitan Areas
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3510002601](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3510002601){target="_blank"}
 > - `r shiny::icon("save")` [3510002601_databaseLoadingData.csv](3510002601_databaseLoadingData.csv)
 
+## STATCAN Table: 35-10-0191-01
+
+Police-reported hate crime, number of incidents and rate per 100,000 population, Provinces, Territories, Census Metropolitan Areas and Canadian Forces Military Police
+
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3510019101](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3510019101){target="_blank"}
 > - `r shiny::icon("save")` [3510019101_databaseLoadingData.csv](3510019101_databaseLoadingData.csv)
+
+## STATCAN Table: 35-10-0066-01
+
+Police-reported hate crime, by type of motivation, selected regions and Canada (selected police services)
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3510006601](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3510006601){target="_blank"}
 > - `r shiny::icon("save")` [3510006601_databaseLoadingData.csv](3510006601_databaseLoadingData.csv)
 
+## Police-reported crime statistics
+
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/n1/daily-quotidien/210329/dq210329a-eng.htm](https://www150.statcan.gc.ca/n1/daily-quotidien/210329/dq210329a-eng.htm){target="_blank"}
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/n1/pub/85-002-x/2022001/article/00013-eng.htm](https://www150.statcan.gc.ca/n1/pub/85-002-x/2022001/article/00013-eng.htm){target="_blank"}
 > - `r shiny::icon("save")` [data_canada_crime.xlsx](data_canada_crime.xlsx)
+
+---
+
+# Prepare Data
 
 ```{r class.source = 'fold-show'}
 # devtools::install_github("derekmichaelwright/agData")
 library(agData)
 library(readxl) # read_xlsx()
 ```
-
----
-
-# Prepare Data
 
 ```{r}
 # Prep data
@@ -70,25 +84,30 @@ d1.2 <- d1 %>% filter(grepl("Youth",Measurement))
 d1.3 <- d1 %>% filter(Measurement %in% c("Violent crime severity index",
                                        "Youth violent crime severity index"))
 #
-myCities <- c("Vancouver, British Columbia", "Victoria, British Columbia",
+myWCities <- c("Vancouver, British Columbia", "Victoria, British Columbia",
               "Kelowna, British Columbia", "Calgary, Alberta", 
               "Edmonton, Alberta", "Lethbridge, Alberta", 
               "Regina, Saskatchewan", "Saskatoon, Saskatchewan",
               "Winnipeg, Manitoba")
+myNonCities <- c("Total Census metropolitan area", "Total Non-Census metropolitan area",
+                 "Total police-reported hate crime", "Canadian Forces Military Police")
 d2 <- read.csv("3510019101_databaseLoadingData.csv") %>%
   select(Year=1, Area=GEO, Measurement=Statistics, Unit=UOM, Value=VALUE) %>% 
   arrange(desc(Value)) %>%
-  mutate(Area = ifelse(!Area %in% c("Total police-reported hate crime", "Canadian Forces Military Police"), 
-                       Area, substr(.$Area, 1, regexpr("\\[", .$Area)-2)),
-         Area = factor(Area, levels = unique(.$Area)),
-         Group = ifelse(Area %in% myCities, "West", "East"),
+  mutate(Area = ifelse(Area %in% myNonCities, Area,
+                       substr(Area, 1, regexpr("\\[", Area)-2))) %>%
+  mutate(Area = factor(Area, levels = unique(Area)),
+         Group = ifelse(Area %in% myWCities, "West", "East"),
          Group = factor(Group, levels = c("West", "East")))
 #
 d3 <- read.csv("3510006601_databaseLoadingData.csv") %>%
   select(Year=1, Area=GEO, Motive=Type.of.motivation, Unit=UOM, Value=VALUE) %>%
   arrange(desc(Value)) %>%
-  mutate(Motive = factor(Motive, levels = unique(.$Motive)))
-# 
+  mutate(Motive = factor(Motive, levels = unique(.$Motive)),
+         Area = gsub(", selected police services", "", Area),
+         Area = ifelse(Area == "Canada", Area,
+                       substr(Area, 1, regexpr("\\[", Area)-2)) )
+#
 d4 <- read_xlsx("data_canada_crime.xlsx", "Sexual Assault")
 #
 myTraits <- c("Total", "Property crimes", "Violent crimes", "Other crimes")
@@ -433,13 +452,13 @@ ggsave("canada_crime_2_01.png", mp, width = 16, height = 16)
 # Prep data
 xx <- d2 %>% filter(Year == 2023) %>%
   arrange(desc(Value)) %>%
-  mutate(Area = factor(Area, levels = .$Area))
+  mutate(Area = factor(Area, levels = unique(.$Area)))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value, fill = Group)) + 
   geom_col(color = "black", alpha = 0.7) +
   scale_fill_manual(values = c("steelblue", "darkred")) +
   theme_agData(legend.position = "none",
-               axis.text.x = element_text(angle = 65, hjust = 1)) +
+               axis.text.x = element_text(angle = 80, hjust = 1)) +
   labs(title = "2023 Hate Crimes By City", x = NULL,
        y = "Rate Per 100,000 People", caption = myCaption)
 ggsave("canada_crime_2_02.png", mp, width = 8, height = 5)
@@ -460,7 +479,7 @@ xx <- d2 %>% filter(Area %in% myCities) %>%
 mp <- ggplot(xx, aes(x = Year, y = Value, fill = Area)) + 
   geom_col(position = "dodge", color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
-  scale_x_continuous(breaks = 2014:2021) +
+  scale_x_continuous(breaks = min(xx$Year):max(xx$Year)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Hate Crime Rate Per 100,000 People", 
        y = NULL, x = NULL, caption = myCaption)
@@ -474,16 +493,18 @@ ggsave("canada_crime_2_03.png", mp, width = 6, height = 4)
 ![](canada_crime_3_01.png)
 
 ```{r}
+# Prep data
+xx <- d3 %>% filter(Area == "Canada")
 # Plot
-mp <- ggplot(d3, aes(x = Year, y = Value, fill = Motive)) + 
+mp <- ggplot(xx, aes(x = Year, y = Value, fill = Motive)) + 
   geom_col(color = "black", alpha = 0.7) +
-  facet_wrap(Motive ~ ., scales = "free_y", ncol = 5) +
+  facet_wrap(Motive ~ ., scales = "free_y", ncol = 4) +
   scale_fill_manual(name = NULL, values = agData_Colors) +
   scale_x_continuous(minor_breaks = 2012:2021) +
   theme_agData(legend.position = "none") +
   labs(title = "Canada", x = NULL,
        y = "Crime Severity Index", caption = myCaption)
-ggsave("canada_crime_3_01.png", mp, width = 14, height = 8)
+ggsave("canada_crime_3_01.png", mp, width = 12, height = 8)
 ```
 
 ---

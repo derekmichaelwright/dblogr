@@ -11,9 +11,11 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Data {.tabset .tabset-pills}
 
-STATCAN Table: 14-10-0288-01 (Employment by class of worker)
+## STATCAN Table: 14-10-0288-01
+
+Employment by class of worker
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410028801](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410028801){target="_blank"}
 > - `r shiny::icon("save")` [1410028801_databaseLoadingData.csv](1410028801_databaseLoadingData.csv)

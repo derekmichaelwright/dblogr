@@ -11,14 +11,18 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Data {.tabset .tabset-pills}
 
-STATCAN Table: 17-10-0009-01 (Population estimates, quarterly)
+## STATCAN Table: 17-10-0009-01
+
+Population estimates, quarterly
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901){target="_blank"}
 > - `r shiny::icon("save")` [1710000901_databaseLoadingData.csv](1710000901_databaseLoadingData.csv)
 
-STATCAN Table: 17-10-0005-01 (Population estimates on July 1, by age and gender)
+## STATCAN Table: 17-10-0005-01
+
+Population estimates on July 1, by age and gender
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000501](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000501){target="_blank"}
 > - `r shiny::icon("save")` [1710000501_databaseLoadingData.csv](1710000501_databaseLoadingData.csv)

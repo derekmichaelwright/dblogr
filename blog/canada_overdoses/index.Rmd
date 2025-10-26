@@ -11,28 +11,28 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Data {.tabset .tabset-pills}
 
-Health Canada Data
-
-> - `r shiny::icon("globe")` [https://health-infobase.canada.ca/](https://health-infobase.canada.ca/substance-related-harms/opioids-stimulants/){target="_blank"}
-
-BC Coroners Service
-
-> - `r shiny::icon("globe")` [https://www2.gov.bc.ca/gov/](https://www2.gov.bc.ca/gov/content/life-events/death/coroners-service/statistical-reports){target="_blank"}
-
-Alberta Health Services
-
-> - `r shiny::icon("globe")` [https://healthanalytics.alberta.ca/](https://healthanalytics.alberta.ca/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F1bbb695d-14b1-4346-b66e-d401a40f53e6&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false){target="_blank"}
-
-SK Coroners Service
-
-> - `r shiny::icon("globe")` [https://publications.saskatchewan.ca/](https://publications.saskatchewan.ca/#/categories/2179){target="_blank"}
-
-All Data
+## All Data
 
 > - `r shiny::icon("save")` [data_canada_overdoses.xlsx](data_canada_overdoses.xlsx){target="_blank"}
 > - `r shiny::icon("save")` [SubstanceHarmsData.csv](SubstanceHarmsData.csv){target="_blank"}
+
+## Health Canada
+
+> - `r shiny::icon("globe")` [https://health-infobase.canada.ca/](https://health-infobase.canada.ca/substance-related-harms/opioids-stimulants/){target="_blank"}
+
+## BC Coroners Service
+
+> - `r shiny::icon("globe")` [https://www2.gov.bc.ca/gov/](https://www2.gov.bc.ca/gov/content/life-events/death/coroners-service/statistical-reports){target="_blank"}
+
+## Alberta Health Services
+
+> - `r shiny::icon("globe")` [https://healthanalytics.alberta.ca/](https://healthanalytics.alberta.ca/SASVisualAnalytics/?reportUri=%2Freports%2Freports%2F1bbb695d-14b1-4346-b66e-d401a40f53e6&sectionIndex=0&sso_guest=true&reportViewOnly=true&reportContextBar=false&sas-welcome=false){target="_blank"}
+
+## SK Coroners Service
+
+> - `r shiny::icon("globe")` [https://publications.saskatchewan.ca/](https://publications.saskatchewan.ca/#/categories/2179){target="_blank"}
 
 ```{r echo = F, eval = F}
 # https://health-infobase.canada.ca/src/doc/SRHD/Update_Deaths_2023-06.pdf

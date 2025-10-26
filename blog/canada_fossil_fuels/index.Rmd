@@ -11,24 +11,30 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Data {.tabset .tabset-pills}
 
-STATCAN Table: 25-10-0063-01 (Supply and disposition of crude oil)
+## STATCAN Table: 25-10-0063-01
+
+Supply and disposition of crude oil
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2510006301](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2510006301){target="_blank"}
 > - `r shiny::icon("save")` [2510006301_databaseLoadingData.csv](2510006301_databaseLoadingData.csv)
 
-STATCAN Table: 25-10-0055-01 (Supply and disposition of natural gas)
+## STATCAN Table: 25-10-0055-01
+
+Supply and disposition of natural gas
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2510005501](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2510005501){target="_blank"}
 > - `r shiny::icon("save")` [2510005501_databaseLoadingData.csv](2510005501_databaseLoadingData.csv)
 
-STATCAN Table: 25-10-0046-01 (Coal, monthly production and exports)
+## STATCAN Table: 25-10-0046-01
+
+Coal, monthly production and exports
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2510004601](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2510004601){target="_blank"}
 > - `r shiny::icon("save")` [2510004601_databaseLoadingData.csv](2510004601_databaseLoadingData.csv)
 
-STATCAN Greenhouse gas emissions
+## STATCAN Greenhouse gas emissions
 
 > - `r shiny::icon("globe")` [https://www.cer-rec.gc.ca/en/data-analysis/canada-energy-future/2023/results/](https://www.cer-rec.gc.ca/en/data-analysis/canada-energy-future/2023/results/){target="_blank"}
 > - `r shiny::icon("globe")` [https://www.canada.ca/en/environment-climate-change/services/environmental-indicators/greenhouse-gas-emissions.html](https://www.canada.ca/en/environment-climate-change/services/environmental-indicators/greenhouse-gas-emissions.html){target="_blank"}

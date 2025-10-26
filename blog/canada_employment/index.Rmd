@@ -11,24 +11,32 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data
+# Data {.tabset .tabset-pills}
 
-STATCAN Table 14-10-0017-01 (Labour force characteristics)
+## STATCAN Table 14-10-0017-01
+
+Labour force characteristics
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410001701](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410001701){target="_blank"}
 > - `r shiny::icon("save")` [1410001701_databaseLoadingData.csv](1410001701_databaseLoadingData.csv)
 
-STATCAN Table 11-10-0012-01 (Distribution of total income)
+## STATCAN Table 11-10-0012-01
+
+Distribution of total income
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110001201](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110001201){target="_blank"}
 > - `r shiny::icon("save")` [1110001201_databaseLoadingData.csv](1110001201_databaseLoadingData.csv)
 
-STATCAN Table 18-10-0005-01 (Consumer Price Index)
+## STATCAN Table 18-10-0005-01
+
+Consumer Price Index
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810000501](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810000501){target="_blank"}
 > - `r shiny::icon("save")` [1810000501_databaseLoadingData.csv](1810000501_databaseLoadingData.csv)
 
-STATCAN Table 14-10-0011-01 (Employment insurance beneficiaries)
+## STATCAN Table 14-10-0011-01
+
+Employment insurance beneficiaries
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410001101](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410001101){target="_blank"}
 > - `r shiny::icon("save")` [1410001101_databaseLoadingData.csv](1410001101_databaseLoadingData.csv)
