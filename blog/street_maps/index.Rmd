@@ -11,17 +11,17 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data {.tabset .tabset-pills}
+# Data
 
-## STATCAN road network files
+STATCAN road network files
 
 > - `r shiny::icon("globe")` [https://www12.statcan.gc.ca/census-recensement/2011/geo/RNF-FRR/index-2011-eng.cfm?year=16](https://www12.statcan.gc.ca/census-recensement/2011/geo/RNF-FRR/index-2011-eng.cfm?year=16){target="_blank"}
 
-## Germany rail roads
+Germany rail roads
 
 > - `r shiny::icon("globe")` [https://mapcruzin.com/free-germany-arcgis-maps-shapefiles.htm](https://mapcruzin.com/free-germany-arcgis-maps-shapefiles.htm){target="_blank"}
 
-## My shape files
+My shape files
 
 > - `r shiny::icon("github")` [https://github.com/derekmichaelwright/dblogr/tree/master/content/dblogr/street_maps](https://github.com/derekmichaelwright/dblogr/tree/master/content/dblogr/street_maps){target="_blank"}
 

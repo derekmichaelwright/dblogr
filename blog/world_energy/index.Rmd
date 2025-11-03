@@ -11,25 +11,19 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data {.tabset .tabset-pills}
+# Data
 
-## OWID - Energy
-
-Energy production and consumption
+OWID - Energy production and consumption
 
 > - `r shiny::icon("globe")` [https://ourworldindata.org/energy-production-consumption](https://ourworldindata.org/energy-production-consumption){target="_blank"}
 > - `r shiny::icon("save")` [global-energy-substitution.csv](global-energy-substitution.csv)
 
-## OWID - CO2
-
-CO2 emissions per capita
+OWID - CO2 emissions per capita
 
 > - `r shiny::icon("globe")` [https://ourworldindata.org/worlds-energy-problem](https://ourworldindata.org/worlds-energy-problem){target="_blank"}
 > - `r shiny::icon("save")` [consumption-co2-per-capita-vs-gdppc.csv](consumption-co2-per-capita-vs-gdppc.csv)
 
-## OWID - Poverty
-
-Extreme poverty & literacy
+OWID - Extreme poverty & literacy
 
 > - `r shiny::icon("globe")` [https://ourworldindata.org/a-history-of-global-living-conditions-in-5-charts](https://ourworldindata.org/a-history-of-global-living-conditions-in-5-charts){target="_blank"}
 > - `r shiny::icon("save")` [world-population-in-extreme-poverty-absolute.csv](world-population-in-extreme-poverty-absolute.csv)

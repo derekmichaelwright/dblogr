@@ -11,9 +11,9 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data {.tabset .tabset-pills}
+# Data
 
-## Government of Saskatchewan
+Government of Saskatchewan
 
 > - `r shiny::icon("globe")` [https://publications.saskatchewan.ca/#/categories/2179](https://publications.saskatchewan.ca/#/categories/2179){target="_blank"}
 > - `r shiny::icon("save")` [data_saskatchewan_suicides.xlsx](data_saskatchewan_suicides.xlsx)

@@ -33,7 +33,7 @@ dd <- read.csv("data_.csv")
 
 ---
 
-# 
+# Figures {.tabset .tabset-pills}
 
 ![](01.png)
 

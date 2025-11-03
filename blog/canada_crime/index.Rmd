@@ -11,30 +11,30 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 ---
 
-# Data {.tabset .tabset-pills}
+# Data
 
-## STATCAN Table: 35-10-0026-01
+STATCAN Table: 35-10-0026-01
 
 Crime severity index and weighted clearance rates, Canada, provinces, territories and Census Metropolitan Areas
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3510002601](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3510002601){target="_blank"}
 > - `r shiny::icon("save")` [3510002601_databaseLoadingData.csv](3510002601_databaseLoadingData.csv)
 
-## STATCAN Table: 35-10-0191-01
+STATCAN Table: 35-10-0191-01
 
 Police-reported hate crime, number of incidents and rate per 100,000 population, Provinces, Territories, Census Metropolitan Areas and Canadian Forces Military Police
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3510019101](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3510019101){target="_blank"}
 > - `r shiny::icon("save")` [3510019101_databaseLoadingData.csv](3510019101_databaseLoadingData.csv)
 
-## STATCAN Table: 35-10-0066-01
+STATCAN Table: 35-10-0066-01
 
 Police-reported hate crime, by type of motivation, selected regions and Canada (selected police services)
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3510006601](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3510006601){target="_blank"}
 > - `r shiny::icon("save")` [3510006601_databaseLoadingData.csv](3510006601_databaseLoadingData.csv)
 
-## Police-reported crime statistics
+Police-reported crime statistics
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/n1/daily-quotidien/210329/dq210329a-eng.htm](https://www150.statcan.gc.ca/n1/daily-quotidien/210329/dq210329a-eng.htm){target="_blank"}
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/n1/pub/85-002-x/2022001/article/00013-eng.htm](https://www150.statcan.gc.ca/n1/pub/85-002-x/2022001/article/00013-eng.htm){target="_blank"}

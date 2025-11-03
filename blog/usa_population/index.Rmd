@@ -11,15 +11,15 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data {.tabset .tabset-pills}
+# Data
 
-## Census Bureau State Data
+Census Bureau State Data
 
 > - `r shiny::icon("globe")` [https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html](https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html){target="_blank"}
 > - `r shiny::icon("globe")` [https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/state/totals/](https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/state/totals/){target="_blank"}
 > - `r shiny::icon("save")` [data_usa_population_state.csv](data_usa_population_state.csv)
 
-## Census Bureau Age & Sex Data
+Census Bureau Age & Sex Data
 
 > - `r shiny::icon("globe")` [https://www.census.gov/topics/population/age-and-sex/data/tables.html](https://www.census.gov/topics/population/age-and-sex/data/tables.html){target="_blank"}
 > - `r shiny::icon("save")` [data_usa_population_age.csv](data_usa_population_age.csv)

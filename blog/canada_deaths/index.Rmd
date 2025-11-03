@@ -11,50 +11,38 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data {.tabset .tabset-pills}
+# Data
 
-## STATCAN Table: 13-10-0783-01 
-
-Weekly death counts
+STATCAN Table: 13-10-0783-01 - Weekly death counts
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310078301){target="_blank"}
 > - `r shiny::icon("save")` [1310078301_databaseLoadingData.csv](1310078301_databaseLoadingData.csv)
 
-## STATCAN Table: 13-10-0768-01
-
-Weekly death counts, by age group and sex
+STATCAN Table: 13-10-0768-01 - Weekly death counts, by age group and sex
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310076801){target="_blank"}
 > - `r shiny::icon("save")` [1310076801_databaseLoadingData.csv](1310076801_databaseLoadingData.csv)
 
-## STATCAN Table: 13-10-0708-01
-
-Deaths, by month
+STATCAN Table: 13-10-0708-01 - Deaths, by month
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310070801){target="_blank"}
 > - `r shiny::icon("save")` [1310070801_databaseLoadingData.csv](1310070801_databaseLoadingData.csv)
 
-## STATCAN Table: 17-10-0009-01
-
-Population estimates, quarterly
+STATCAN Table: 17-10-0009-01 - Population estimates, quarterly
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710000901){target="_blank"}
 > - `r shiny::icon("save")` [1710000901_databaseLoadingData.csv](1710000901_databaseLoadingData.csv)
 
-## STATCAN Interactive Graph
-
-Weekly death counts
+STATCAN Interactive Graph - Weekly death counts
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm](https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020017-eng.htm){target="_blank"}
 
-## STATCAN Table: 13-10-0394-01
-
-Leading causes of death
+STATCAN Table: 13-10-0394-01 - Leading causes of death
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310039401](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1310039401){target="_blank"}
 > - `r shiny::icon("save")` [1310039401_databaseLoadingData.csv](1310039401_databaseLoadingData.csv)
 
-## Canada Overdoses
+Canada Overdoses
 
 > - `r shiny::icon("globe")` [https://derekmichaelwright.github.io/dblogr/blog/canada_overdoses/](https://derekmichaelwright.github.io/dblogr/blog/canada_overdoses/){target="_blank"}
 > - `r shiny::icon("save")` [data_canada_overdoses.xlsx](data_canada_overdoses.xlsx)
