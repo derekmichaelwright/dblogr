@@ -100,7 +100,7 @@ xx <- d1 %>% filter(Area == "Canada")
 myBreaks <- as.Date(paste0(seq(1950, 2020, by = 10), "-01-01"))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
-  geom_col(fill = "darkgreen", alpha = 0.7, color = "black", lwd = 0.1) +
+  geom_area(fill = "darkgreen", alpha = 0.7, color = "black") +
   facet_wrap(Area ~ ., ncol = 4, scales = "free_y") +
   scale_x_date(breaks = myBreaks, date_labels = "%Y") +
   theme_agData(legend.position = "none") +
@@ -120,7 +120,7 @@ xx <- d1 %>% filter(Area == "Saskatchewan")
 myBreaks <- as.Date(paste0(seq(1950, 2020, by = 10), "-01-01"))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000000)) +
-  geom_col(fill = "darkgreen", alpha = 0.7, color = "black", lwd = 0.1) +
+  geom_area(fill = "darkgreen", alpha = 0.7, color = "black") +
   facet_wrap(Area ~ ., ncol = 4, scales = "free_y") +
   scale_x_date(breaks = myBreaks, date_labels = "%Y") +
   theme_agData(legend.position = "none") +
@@ -141,7 +141,7 @@ ggsave("canada_population_1_02.png", mp, width = 6, height = 4)
 myBreaks <- as.Date(paste0(seq(1950, 2020, by = 10), "-01-01"))
 # Plot
 mp <- ggplot(d1, aes(x = Date, y = Value / 1000000)) +
-  geom_col(fill = "darkgreen", alpha = 0.9) +
+  geom_area(fill = "darkgreen", alpha = 0.9) +
   facet_wrap(Area ~ ., ncol = 5, scales = "free_y") +
   scale_x_date(breaks = myBreaks, date_labels = "%Y") +
   theme_agData(legend.position = "none", 

@@ -76,10 +76,6 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 # `r icon("r-project")` Packages
 
-## My Custom `r icon("r-project")` Packages 
-
-### github.com/derekmichaelwright/agData
-
 <div class="box"><div class="row"><div class="col-md-8">
 
 **agData**
@@ -95,8 +91,6 @@ Documentation:
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
 
-### github.com/derekmichaelwright/gwaspr
-
 <div class="box"><div class="row"><div class="col-md-8">
 
 **gwaspr**
@@ -111,8 +105,6 @@ Install: `devtools::install_github("derekmichaelwright/gwaspr")`
 - `r icon("laptop-code")` [GWAS Tutorial](academic/gwas_tutorial){target="_blank"}
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
-
-### github.com/derekmichaelwright/cypher
 
 <div class="box"><div class="row"><div class="col-md-8">
 

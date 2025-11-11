@@ -171,7 +171,7 @@ xx <- d1 %>%
   mutate(Value = ifelse(Trade == "Import", -Value, Value))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Trade)) +
-  geom_col(alpha = 0.9) +
+  geom_area(alpha = 0.9) +
   facet_wrap(Trading.Partner ~ ., scales = "free_y", ncol = 7) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   scale_x_date(date_minor_breaks = "1 year", expand = c(0,0)) +
@@ -194,7 +194,7 @@ xx <- d1 %>%
   mutate(Value = ifelse(Trade == "Import", -Value, Value))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Trade)) +
-  geom_col(alpha = 0.9, lwd = 0.01, color = "black") +
+  geom_area(alpha = 0.9, lwd = 0.1, color = "black") +
   facet_wrap(Trading.Partner ~ ., scales = "free_y", ncol = 6) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   scale_x_date(date_breaks = "10 years", date_labels = "%Y") +
@@ -399,7 +399,7 @@ gg_Trade <- function(myArea = "China") {
     mutate(Value = ifelse(Trade == "Import", -Value, Value))
   # Plot
   mp1 <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Trade)) +
-    geom_col(alpha = 0.9, lwd = 0.05, color = "black") +
+    geom_area(alpha = 0.9, lwd = 0.1, color = "black") +
     scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
     theme_agData() +
     labs(title = paste("Canada's Trade With", myArea),

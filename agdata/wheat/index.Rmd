@@ -153,7 +153,7 @@ xx <- bind_rows(x1, x2) %>%
   mutate(Area = factor(Area, levels = myAreas))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Area)) +
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7, lwd = 0.2) +
   scale_fill_manual(name = NULL, values = myColors) +
   theme_agData() +
   labs(title = "Global Wheat Production", x = NULL, 
