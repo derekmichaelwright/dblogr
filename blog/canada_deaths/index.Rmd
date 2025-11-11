@@ -222,7 +222,7 @@ ggWeeklyDeaths <- function(myArea = "Canada", xmin = 2010) {
   myMax <- max(xx %>% filter(Year < 2020) %>% pull(Value), na.rm = T)
   # Plot
   ggplot(xx, aes(x = Date, y = Value, fill = Group)) +
-    geom_col(alpha = 0.7) +
+    geom_area(alpha = 0.7) +
     #geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
     geom_hline(yintercept = myMax, alpha = 0.2) +
     scale_fill_manual(values = myColors) +
@@ -1050,7 +1050,7 @@ ggWeeklyDeaths044 <- function(myArea = "Canada") {
   vv <- as.Date(paste0(as.character(2010:2025),"-01-01"))
   # Plot
   ggplot(xx, aes(x = Date, y = Value, fill = Group)) +
-    geom_col(alpha = 0.7) +
+    geom_area(alpha = 0.7) +
     #geom_vline(xintercept = vv, lty = 2, alpha = 0.5) +
     scale_fill_manual(values = myColors) +
     scale_x_date(date_breaks = "1 year", date_labels = "%Y", 

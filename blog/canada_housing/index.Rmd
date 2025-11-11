@@ -474,7 +474,7 @@ xx <- d3 %>%
   filter(Area %in% myAreas[1], Measurement == "Total units")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value)) +
-  geom_col(fill = "darkgreen", alpha = 0.8) +
+  geom_area(fill = "darkgreen", alpha = 0.8) +
   scale_x_date(date_breaks = "5 year", date_labels = "%Y",
                date_minor_breaks = "1 year",) +
   theme_agData(legend.position = "bottom",
