@@ -71,7 +71,7 @@ xx <- d1 %>%
   mutate(Balance = ifelse(Value > 0, "Net Export", "Net Import"))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
-  geom_col(aes(fill = Balance), color = "black", lwd = 0.1, alpha = 0.8) +
+  geom_col(aes(fill = Balance), color = "black", lwd = 0.05, alpha = 0.8) +
   stat_smooth(geom = "line", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   scale_x_date(date_minor_breaks = "1 year", expand = c(0,0)) +
@@ -222,7 +222,7 @@ xx <- d2 %>%
          Balance = ifelse(Value > 0, "Net Export", "Net Import"))
 # Plot
 mp <- ggplot(xx, aes(x = Trading.Partner, y = Value / 1000, fill = Balance)) +
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7, lwd = 0.3) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -251,7 +251,7 @@ xx <- d2 %>%
          Value = ifelse(Trade == "Import", -Value, Value))
 # Plot
 mp <- ggplot(xx, aes(x = Trading.Partner, y = Value / 1000, fill = Trade)) +
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7, lwd = 0.3) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -280,7 +280,7 @@ xx <- d2 %>%
          Value = ifelse(Trade == "Import", -Value, Value))
 # Plot
 mp <- ggplot(xx, aes(x = Trading.Partner, y = Value / 1000, fill = Trade)) +
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7, lwd = 0.3) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -309,7 +309,7 @@ xx <- d2 %>%
   summarise(Value = sum(Value, na.rm = T))
 # Plot
 mp <- ggplot(xx, aes(x = Trading.Partner, y = Value / 1000, fill = Trade)) +
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7, lwd = 0.3) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   theme_agData(legend.position = "bottom",
                axis.text.x = element_text(angle = 45, hjust = 1)) +

@@ -32,7 +32,7 @@ USCB
 
 > - `r shiny::icon("globe")` [https://www.census.gov/library/visualizations/interactive/how-has-our-nations-population-changed.html](https://www.census.gov/library/visualizations/interactive/how-has-our-nations-population-changed.html){target="_blank"}
 
-```{r echo = F}
+```{r, echo = F}
 dd <- read.csv("https://data.cdc.gov/api/views/y5bj-9g5w/rows.csv?accessType=DOWNLOAD&bom=true&format=true%20target=")
 write.csv(dd, "data_usa_deaths.csv", row.names = F)
 ```
@@ -129,7 +129,9 @@ ggWeeklyDeaths <- function(myArea = "United States") {
   xmin <-  2015
   xmax <- max(dd$Year)
   vv <- as.Date(paste0(as.character(xmin:xmax),"-01-01"))
-  xx <- dd %>% filter(Area == myArea, Year >= xmin, Type == "Unweighted")
+  xx <- dd %>% filter(Area == myArea, Year >= xmin, Type == "Unweighted") %>% 
+    group_by(Year, Date, Group) %>% 
+    summarise(Number.of.Deaths = sum(Number.of.Deaths, na.rm = T))
   #
   myMax <- xx %>% filter(Year < 2020) %>% group_by(Date) %>% 
     summarise(Number.of.Deaths = sum(Number.of.Deaths, na.rm = T)) %>%
@@ -1058,7 +1060,9 @@ ggWeeklyDeaths044 <- function(myArea = "United States") {
   xmax <- max(dd$Year)
   vv <- as.Date(paste0(as.character(xmin:xmax),"-01-01"))
   xx <- dd %>% filter(Area == myArea, Year >= xmin, Type == "Unweighted",
-                      Age.Group %in% c("Under 25 years", "25-44 years"))
+                      Age.Group %in% c("Under 25 years", "25-44 years")) %>%
+    group_by(Year, Date, Group) %>% 
+    summarise(Number.of.Deaths = sum(Number.of.Deaths, na.rm = T))
   #
   myMax <- xx %>% filter(Year < 2020) %>% group_by(Date) %>% 
     summarise(Number.of.Deaths = sum(Number.of.Deaths, na.rm = T)) %>%
