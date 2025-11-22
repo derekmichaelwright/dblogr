@@ -856,13 +856,13 @@ gg_ExcessMales_plot <- function(myArea = "Saskatchewan") {
     summarise(Value = sum(Value)) %>%
     ungroup() %>%
     spread(Gender, Value) %>%
-    mutate(Value = `Men+` - `Women+`)
+    mutate(Percent = 100 * (`Men+` - `Women+`) / (`Men+` + `Women+`))
   # Plot
-  ggplot(xx, aes(y = Value / 1000, x = Year)) + 
+  ggplot(xx, aes(y = Percent, x = Year)) + 
     geom_col(color = "black", fill = "steelblue", alpha = 0.7) +
     theme_agData(legend.position = "bottom") +
     labs(title = paste("Excess Males Under Age 40 in", myArea), 
-         y = "Thousand People", x = NULL, caption = myCaption) 
+         x = NULL, caption = myCaption) 
 }
 ```
 
