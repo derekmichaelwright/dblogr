@@ -4067,7 +4067,7 @@ function asArray(value) {
 
 },{}]},{},[13]);
 </script>
-<script>(function (root, factory) {
+<script>(function(root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
 		define(['leaflet'], factory);
@@ -4078,11 +4078,11 @@ function asArray(value) {
 		// Assume Leaflet is loaded into global object L already
 		factory(L);
 	}
-}(this, function (L) {
+}(this, function(L) {
 	'use strict';
 
 	L.TileLayer.Provider = L.TileLayer.extend({
-		initialize: function (arg, options) {
+		initialize: function(arg, options) {
 			var providers = L.TileLayer.Provider.providers;
 
 			var parts = arg.split('.');
@@ -4121,12 +4121,13 @@ function asArray(value) {
 
 			// replace attribution placeholders with their values from toplevel provider attribution,
 			// recursively
-			var attributionReplacer = function (attr) {
+			var attributionReplacer = function(attr) {
 				if (attr.indexOf('{attribution.') === -1) {
 					return attr;
 				}
-				return attr.replace(/\{attribution.(\w*)\}/g,
-					function (match, attributionName) {
+				return attr.replace(
+					/\{attribution.(\w*)\}/g,
+					function(match, attributionName) {
 						return attributionReplacer(providers[attributionName].options.attribution);
 					}
 				);
@@ -4188,6 +4189,12 @@ function asArray(value) {
 					options: {
 						attribution: '{attribution.OpenStreetMap}, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>',
 						bounds: [[46.2, -5.5], [50, 0.7]]
+					}
+				},
+				CAT: {
+					url: 'https://tile.openstreetmap.bzh/ca/{z}/{x}/{y}.png',
+					options: {
+						attribution: '{attribution.OpenStreetMap}, Tiles courtesy of <a href="https://www.openstreetmap.cat" target="_blank">Breton OpenStreetMap Team</a>',
 					}
 				}
 			}
@@ -4277,6 +4284,17 @@ function asArray(value) {
 			variants: {
 				AlidadeSmooth: 'alidade_smooth',
 				AlidadeSmoothDark: 'alidade_smooth_dark',
+				AlidadeSatellite: {
+					options: {
+						attribution:
+						  '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | ' +
+							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
+							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
+							'{attribution.OpenStreetMap}',
+						variant: 'alidade_satellite',
+						ext: 'jpg',
+					}
+				},
 				OSMBright: 'osm_bright',
 				Outdoors: 'outdoors',
 				StamenToner: {
@@ -4394,7 +4412,7 @@ function asArray(value) {
 			}
 		},
 		Thunderforest: {
-			url: 'https://{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}.png?apikey={apikey}',
+			url: 'https://{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}{r}.png?apikey={apikey}',
 			options: {
 				attribution:
 					'&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, {attribution.OpenStreetMap}',
@@ -4426,6 +4444,17 @@ function asArray(value) {
 				Neighbourhood: 'neighbourhood'
 			}
 		},
+		BaseMapDE: {
+			url: 'https://sgx.geodatenzentrum.de/wmts_basemapde/tile/1.0.0/{variant}/default/GLOBAL_WEBMERCATOR/{z}/{y}/{x}.png',
+			options: {
+				attribution: 'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>',
+				variant: 'de_basemapde_web_raster_farbe',
+			},
+			variants: {
+				Color: 'de_basemapde_web_raster_farbe',
+				Grey: 'de_basemapde_web_raster_grau'
+			}
+		},
 		CyclOSM: {
 			url: 'https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png',
 			options: {
@@ -4434,15 +4463,14 @@ function asArray(value) {
 			}
 		},
 		Jawg: {
-			url: 'https://{s}.tile.jawg.io/{variant}/{z}/{x}/{y}{r}.png?access-token={accessToken}',
+			url: 'https://tile.jawg.io/{variant}/{z}/{x}/{y}{r}.png?access-token={accessToken}',
 			options: {
 				attribution:
-					'<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> ' +
+					'<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> ' +
 					'{attribution.OpenStreetMap}',
 				minZoom: 0,
 				maxZoom: 22,
-				subdomains: 'abcd',
-				variant: 'jawg-terrain',
+				variant: 'jawg-streets',
 				// Get your own Jawg access token here : https://www.jawg.io/lab/
 				// NB : this is a demonstration key that comes with no guarantee
 				accessToken: '<insert your access token here>',
@@ -4450,6 +4478,7 @@ function asArray(value) {
 			variants: {
 				Streets: 'jawg-streets',
 				Terrain: 'jawg-terrain',
+				Lagoon: 'jawg-lagoon',
 				Sunny: 'jawg-sunny',
 				Dark: 'jawg-dark',
 				Light: 'jawg-light',
@@ -4484,9 +4513,9 @@ function asArray(value) {
 				maxZoom: 21
 			},
 			variants: {
-				Streets: 'streets',
-				Basic: 'basic',
-				Bright: 'bright',
+				Streets: 'streets-v2',
+				Basic: 'basic-v2',
+				Bright: 'bright-v2',
 				Pastel: 'pastel',
 				Positron: 'positron',
 				Hybrid: {
@@ -4495,9 +4524,35 @@ function asArray(value) {
 						ext: 'jpg'
 					}
 				},
-				Toner: 'toner',
-				Topo: 'topo',
-				Voyager: 'voyager'
+				Toner: 'toner-v2',
+				Topo: 'topo-v2',
+				Voyager: 'voyager-v2',
+				Ocean: 'ocean',
+				Backdrop: 'backdrop',
+				Dataviz: 'dataviz',
+				DatavizLight: 'dataviz-light',
+				DatavizDark: 'dataviz-dark',
+				Aquarelle: {
+					options: {
+						variant: 'aquarelle',
+						ext: 'webp'
+					}
+				},
+				Landscape: 'landscape',
+				Openstreetmap: {
+					options: {
+						variant: 'openstreetmap',
+						ext: 'jpg'
+					}
+				},
+				Outdoor: 'outdoor-v2',
+				Satellite: {
+					options: {
+						variant: 'satellite',
+						ext: 'jpg'
+					}
+				},
+				Winter: 'winter-v2',
 			}
 		},
 		TomTom: {
@@ -4530,14 +4585,6 @@ function asArray(value) {
 						attribution:
 							'{attribution.Esri} &mdash; ' +
 							'Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
-					}
-				},
-				DeLorme: {
-					options: {
-						variant: 'Specialty/DeLorme_World_Base_Map',
-						minZoom: 1,
-						maxZoom: 11,
-						attribution: '{attribution.Esri} &mdash; Copyright: &copy;2012 DeLorme'
 					}
 				},
 				WorldTopoMap: {
@@ -4624,147 +4671,29 @@ function asArray(value) {
 				Snow: 'snow'
 			}
 		},
+
 		HERE: {
-			/*
-			 * HERE maps, formerly Nokia maps.
-			 * These basemaps are free, but you need an api id and app key. Please sign up at
-			 * https://developer.here.com/plans
-			 */
-			url:
-				'https://{s}.{base}.maps.api.here.com/maptile/2.1/' +
-				'{type}/{mapID}/{variant}/{z}/{x}/{y}/{size}/{format}?' +
-				'app_id={app_id}&app_code={app_code}&lg={language}',
-			options: {
-				attribution:
-					'Map &copy; 1987-' + new Date().getFullYear() + ' <a href="http://developer.here.com">HERE</a>',
-				subdomains: '1234',
-				mapID: 'newest',
-				'app_id': '<insert your app_id here>',
-				'app_code': '<insert your app_code here>',
-				base: 'base',
-				variant: 'normal.day',
-				maxZoom: 20,
-				type: 'maptile',
-				language: 'eng',
-				format: 'png8',
-				size: '256'
-			},
-			variants: {
-				normalDay: 'normal.day',
-				normalDayCustom: 'normal.day.custom',
-				normalDayGrey: 'normal.day.grey',
-				normalDayMobile: 'normal.day.mobile',
-				normalDayGreyMobile: 'normal.day.grey.mobile',
-				normalDayTransit: 'normal.day.transit',
-				normalDayTransitMobile: 'normal.day.transit.mobile',
-				normalDayTraffic: {
-					options: {
-						variant: 'normal.traffic.day',
-						base: 'traffic',
-						type: 'traffictile'
-					}
-				},
-				normalNight: 'normal.night',
-				normalNightMobile: 'normal.night.mobile',
-				normalNightGrey: 'normal.night.grey',
-				normalNightGreyMobile: 'normal.night.grey.mobile',
-				normalNightTransit: 'normal.night.transit',
-				normalNightTransitMobile: 'normal.night.transit.mobile',
-				reducedDay: 'reduced.day',
-				reducedNight: 'reduced.night',
-				basicMap: {
-					options: {
-						type: 'basetile'
-					}
-				},
-				mapLabels: {
-					options: {
-						type: 'labeltile',
-						format: 'png'
-					}
-				},
-				trafficFlow: {
-					options: {
-						base: 'traffic',
-						type: 'flowtile'
-					}
-				},
-				carnavDayGrey: 'carnav.day.grey',
-				hybridDay: {
-					options: {
-						base: 'aerial',
-						variant: 'hybrid.day'
-					}
-				},
-				hybridDayMobile: {
-					options: {
-						base: 'aerial',
-						variant: 'hybrid.day.mobile'
-					}
-				},
-				hybridDayTransit: {
-					options: {
-						base: 'aerial',
-						variant: 'hybrid.day.transit'
-					}
-				},
-				hybridDayGrey: {
-					options: {
-						base: 'aerial',
-						variant: 'hybrid.grey.day'
-					}
-				},
-				hybridDayTraffic: {
-					options: {
-						variant: 'hybrid.traffic.day',
-						base: 'traffic',
-						type: 'traffictile'
-					}
-				},
-				pedestrianDay: 'pedestrian.day',
-				pedestrianNight: 'pedestrian.night',
-				satelliteDay: {
-					options: {
-						base: 'aerial',
-						variant: 'satellite.day'
-					}
-				},
-				terrainDay: {
-					options: {
-						base: 'aerial',
-						variant: 'terrain.day'
-					}
-				},
-				terrainDayMobile: {
-					options: {
-						base: 'aerial',
-						variant: 'terrain.day.mobile'
-					}
-				}
-			}
-		},
-		HEREv3: {
+
 			/*
 			 * HERE maps API Version 3.
+			 * documentation at: https://www.here.com/docs/bundle/raster-tile-api-developer-guide/page/README.html
 			 * These basemaps are free, but you need an API key. Please sign up at
-			 * https://developer.here.com/plans
+			 * https://platform.here.com/portal/
+			 * Subscription remains for free, pricing details can be found here: https://www.here.com/get-started/pricing
 			 * Version 3 deprecates the app_id and app_code access in favor of apiKey
-			 *
-			 * Supported access methods as of 2019/12/21:
-			 * @see https://developer.here.com/faqs#access-control-1--how-do-you-control-access-to-here-location-services
 			 */
 			url:
-				'https://{s}.{base}.maps.ls.hereapi.com/maptile/2.1/' +
-				'{type}/{mapID}/{variant}/{z}/{x}/{y}/{size}/{format}?' +
-				'apiKey={apiKey}&lg={language}',
+				'https://maps.hereapi.com/v3/base/mc/' + // new base url for HERE maptile v3 api
+				'{z}/{x}/{y}/{format}?style={variant}&size={size}' + // slightly modified parameters
+				'&apiKey={app_id}&lg={language}', // replacing app-id with apikey
 			options: {
 				attribution:
-					'Map &copy; 1987-' + new Date().getFullYear() + ' <a href="http://developer.here.com">HERE</a>',
+					'Map &copy; 1987-' + new Date().getFullYear() + ' <a href="http://platform.here.com">HERE</a>',
 				subdomains: '1234',
 				mapID: 'newest',
-				apiKey: '<insert your apiKey here>',
+				apiKey: '<insert your apiKey here>', // switching from appid and appcode to apikey
 				base: 'base',
-				variant: 'normal.day',
+				variant: 'explore.day',
 				maxZoom: 20,
 				type: 'maptile',
 				language: 'eng',
@@ -4772,21 +4701,17 @@ function asArray(value) {
 				size: '256'
 			},
 			variants: {
-				normalDay: 'normal.day',
-				normalDayCustom: 'normal.day.custom',
-				normalDayGrey: 'normal.day.grey',
-				normalDayMobile: 'normal.day.mobile',
-				normalDayGreyMobile: 'normal.day.grey.mobile',
-				normalDayTransit: 'normal.day.transit',
-				normalDayTransitMobile: 'normal.day.transit.mobile',
-				normalNight: 'normal.night',
-				normalNightMobile: 'normal.night.mobile',
-				normalNightGrey: 'normal.night.grey',
-				normalNightGreyMobile: 'normal.night.grey.mobile',
-				normalNightTransit: 'normal.night.transit',
-				normalNightTransitMobile: 'normal.night.transit.mobile',
-				reducedDay: 'reduced.day',
-				reducedNight: 'reduced.night',
+				exploreDay: 'explore.day',
+				liteDay: 'lite.day',
+				logisticsDay: 'logistics.day',
+				topoDay: 'topo.day',
+				logisticsNight: 'logistics.night',
+				exploreNight: 'explore.night',
+				topoNight: 'topo.night',
+				liteNight: 'lite.night',
+				exploreSatelliteDay: 'explore.satellite.day',
+				liteSatelliteDay: 'lite.satellite.day',
+				logisticsSatelliteDay: 'logistics.satellite.day',
 				basicMap: {
 					options: {
 						type: 'basetile'
@@ -4964,12 +4889,12 @@ function asArray(value) {
 				attribution: 'Kaartgegevens &copy; <a href="https://www.kadaster.nl">Kadaster</a>'
 			},
 			variants: {
-				'standaard': 'standaard',
-				'pastel': 'pastel',
-				'grijs': 'grijs',
-				'water': 'water',
-				'luchtfoto': {
-					'url': 'https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/Actueel_ortho25/EPSG:3857/{z}/{x}/{y}.jpeg',
+				standaard: 'standaard',
+				pastel: 'pastel',
+				grijs: 'grijs',
+				water: 'water',
+				luchtfoto: {
+					url: 'https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/Actueel_ortho25/EPSG:3857/{z}/{x}/{y}.jpeg',
 				}
 			}
 		},
@@ -5021,7 +4946,7 @@ function asArray(value) {
 				},
 				ModisTerraChlorophyll: {
 					options: {
-						variant: 'MODIS_Terra_Chlorophyll_A',
+						variant: 'MODIS_Terra_L2_Chlorophyll_A',
 						format: 'png',
 						maxZoom: 7,
 						opacity: 0.75
@@ -5031,20 +4956,29 @@ function asArray(value) {
 		},
 		NLS: {
 			// NLS maps are copyright National library of Scotland.
-			// http://maps.nls.uk/projects/api/index.html
+			// http://maps.nls.uk/projects/subscription-api
 			// Please contact NLS for anything other than non-commercial low volume usage
 			//
-			// Map sources: Ordnance Survey 1:1m to 1:63K, 1920s-1940s
+			// Map sources: Ordnance Survey 1:1m to 1:63K, 1880s-1961
 			//   z0-9  - 1:1m
 			//  z10-11 - quarter inch (1:253440)
 			//  z12-18 - one inch (1:63360)
-			url: 'https://nls-{s}.tileserver.com/nls/{z}/{x}/{y}.jpg',
+			url: 'https://api.maptiler.com/tiles/{variant}/{z}/{x}/{y}.jpg?key={apikey}',
 			options: {
-				attribution: '<a href="http://geo.nls.uk/maps/">National Library of Scotland Historic Maps</a>',
+				attribution: '<a href="http://maps.nls.uk/projects/subscription-api">National Library of Scotland Historic Maps</a>',
 				bounds: [[49.6, -12], [61.7, 3]],
 				minZoom: 1,
 				maxZoom: 18,
-				subdomains: '0123',
+				apikey: '<insert your api key here>'
+			},
+			variants: {
+				osgb63k1885: 'uk-osgb63k1885',
+				osgb1888: 'uk-osgb1888',
+				osgb10k1888: 'uk-osgb10k1888',
+				osgb1919: 'uk-osgb1919',
+				osgb25k1937: 'uk-osgb25k1937',
+				osgb63k1955: 'uk-osgb63k1955',
+				oslondon1k1893: 'uk-oslondon1k1893'
 			}
 		},
 		JusticeMap: {
@@ -5072,15 +5006,12 @@ function asArray(value) {
 			}
 		},
 		GeoportailFrance: {
-			url: 'https://wxs.ign.fr/{apikey}/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER={variant}&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
+			url: 'https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER={variant}&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
 			options: {
 				attribution: '<a target="_blank" href="https://www.geoportail.gouv.fr/">Geoportail France</a>',
 				bounds: [[-75, -180], [81, 180]],
 				minZoom: 2,
 				maxZoom: 18,
-				// Get your own geoportail apikey here : http://professionnels.ign.fr/ign/contrats/
-				// NB : 'choisirgeoportail' is a demonstration key that comes with no guarantee
-				apikey: 'choisirgeoportail',
 				format: 'image/png',
 				style: 'normal',
 				variant: 'GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2'
@@ -5175,9 +5106,9 @@ function asArray(value) {
 			}
 		},
 		AzureMaps: {
-			url: 
-				'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
-				'&tilesetId={variant}&x={x}&y={y}&zoom={z}&language={language}'+
+			url:
+				'https://atlas.microsoft.com/map/tile?api-version={apiVersion}' +
+				'&tilesetId={variant}&x={x}&y={y}&zoom={z}&language={language}' +
 				'&subscription-key={subscriptionKey}',
 			options: {
 				attribution: 'See https://docs.microsoft.com/en-us/rest/api/maps/render-v2/get-map-tile for details.',
@@ -5193,9 +5124,9 @@ function asArray(value) {
 				MicrosoftBaseHybridRoad: 'microsoft.base.hybrid.road',
 				MicrosoftTerraMain: 'microsoft.terra.main',
 				MicrosoftWeatherInfraredMain: {
-					url: 
-					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
-					'&tilesetId={variant}&x={x}&y={y}&zoom={z}'+
+					url:
+					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}' +
+					'&tilesetId={variant}&x={x}&y={y}&zoom={z}' +
 					'&timeStamp={timeStamp}&language={language}' +
 					'&subscription-key={subscriptionKey}',
 					options: {
@@ -5205,9 +5136,9 @@ function asArray(value) {
 					},
 				},
 				MicrosoftWeatherRadarMain: {
-					url: 
-					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
-					'&tilesetId={variant}&x={x}&y={y}&zoom={z}'+
+					url:
+					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}' +
+					'&tilesetId={variant}&x={x}&y={y}&zoom={z}' +
 					'&timeStamp={timeStamp}&language={language}' +
 					'&subscription-key={subscriptionKey}',
 					options: {
@@ -5236,10 +5167,22 @@ function asArray(value) {
 					}
 				}
 			}
+		},
+		TopPlusOpen: {
+			url: 'http://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/{variant}/default/WEBMERCATOR/{z}/{y}/{x}.png',
+			options: {
+				maxZoom: 18,
+				attribution: 'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>',
+				variant: 'web',
+			},
+			variants: {
+				Color: 'web',
+				Grey: 'web_grau'
+			}
 		}
 	};
 
-	L.tileLayer.provider = function (provider, options) {
+	L.tileLayer.provider = function(provider, options) {
 		return new L.TileLayer.Provider(provider, options);
 	};
 
@@ -5254,9 +5197,9 @@ function asArray(value) {
 </head>
 <body style="background-color: white;">
 <div id="htmlwidget_container">
-  <div class="leaflet html-widget html-fill-item" id="htmlwidget-d9eef554c0e112042941" style="width:100%;height:400px;"></div>
+  <div class="leaflet html-widget html-fill-item" id="htmlwidget-c9ca67ba19838d7d1fb3" style="width:100%;height:400px;"></div>
 </div>
-<script type="application/json" data-for="htmlwidget-d9eef554c0e112042941">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircles","args":[[52.137,51.53512683546916,51.47331860418245,52.19139455062151,51.88240309561417,52.3491821497567,52.62347111933678,53.12871359790489,52.01671336161718,53.06499042025581,52.71594646842033,52.76381124685332,52.67223069899529,52.87570103387162,52.16503814737126,51.75824035554007,52.65642452415824,51.44309524948522,52.30146690680459,51.60047972238436,52.18038927473873,52.82782425627857,52.33538538952172,52.0258778523542,51.72123293801025,8.622784169999999,15.36186881,8.595461776157958,7.760868285460514,27.03094247,26.49593108,8.703183682313306,26.8817990509956,34.11956663,34.99687485572485,34.64700960171012,33.82636503818048,27.40088302215327,25.83818781088804,26.55824787651828,27.93233055311894,46.73,22.88578035,52.12692568580434,9.055880107129109,26.00991243349154,7.21667,7.65485114711721,22.74873037419502,28.15893844,36.3667,39.06160342,null,8.51503676469822,7.636109664248419,22.09718018925969,21.91782990952242,23.72886027830873,23.54203985414687,32.41,32.91152810383588,33.83523216,9.477643322343123,33.43180079100826,29.94975221,32.82038727294653,23.04269657113809,23.57592871708084,35.24,23.36383798361976,31.4611019,22.06029069067199,9.476781390750897,22.82285024474595,23.11706854372505,34.47927354672924,-35.38135347,52.10080804,47.16277712,47.62013451430946,15.90927655,null,49.69,27.94545237596786,41.75554081,39.59550247,40.24448626,22.33685704429854,31.24579389,49.40708829049021,7.643476090537501,38.44755657627753,30.41003046909036,23.86730412,8.835309691870702,null,38.53045125,33.59158645187107,null,43.56,8.278246192405117,36.11033323058859,58.9,23.52221258326653,null,null,23.66128290181268,34.5050289493613,35.07671045349911,8.914156227981788,null,24.7617827446866,24.44442373539462,24.30719391468122,22.03744442078505,null,-1.42381949,32.11236207212941,-37.73069754,null,null,null,31.81763700235324,null,34.4369423792325,52.88855082019046,22.71356805849109,52.2173990685381,22.2540410735387,15.69404158,41.66666667,39.74194444,39.24105707328341,39.039047174673,39.73085325868375,38.62642494454555,40.0234704744587,38.64190931949339,33.92306993,36.11578538479284,39.03146032994188,7.911255540469778,8.851309697287274,8.509316500419867,8.379085295977188,34.2547345924581,-10.78777567,39.07466973,33.0283954343217,33.96823522629389,33.89955945167863,30.11880269489571,50.63981435,16.87601102825015,30.46964129508792,29.57742896938085,26.80264667786424,9.58333333,27.12242662247036,39.77470858286536,48.86096952768042,47.88836442840683,26.26945269798626,null,-36.05014156733316,-36.01661036905509,39.63333333,38.64191619082148,38.93495001745204,9.218418923815829,59.57065943405032,40.7,46.18700581,48.33333333,25.96199391541769,-12.25,40.88274755678637,40.77541908273039,42.79663568,42.90864416594308,42.87813828103867,23.94753932,23.399464017496,23.48241437810335,23.36803344149936,-36.6,-36.04649413181469,-35.82565610194579,-35.9653438850306,-36.43701907424256,-35.67323117274791,-33.93333333,-35.05,-37.88333333,-33.45,-33.17185874218121,36.39,32.55555556,35.8666158525832,14.56666667,17.46666667,33.0252381808497,42,51.10697903,33.182427632516,8.293943488648278,42.76889988,30.531792253401,49.76047759229317,52.07458646344202,47.4343004955298,38.24944444,35.23333333,38.73620976652525,37.21666667,37.98983892746811,39.96666667,40.91666667,37.76666667,39.45611726699218,48.99656784,11.5,41.54361111,42.69550493633375,42.99333333,31.75,31.03275632485747,31.42186225531623,32.51682318281382,32.0930531299673,41.85,38.36540725506417,39.58857623635585,32.1,31.06555556,31.13333333,36.7,30.19765758171066,30.06666667,32.33333333,34.6175,32.59572499696165,31.84909944500774,31.84166869087144,31.97331555265933,33.27736504267901,33.13493672790005,33.18186317462474,32.33756924405694,26.70816810095449,32.91753732724115,31.99494583889842,32.18902611764148,33.11751953404396,31.46052807275206,32.61761329680681,33.22191016919911,32.91013715773821,33.08553337058052,32.4620964609459,33.37644797828048,32.30031323138624,33.16244051311165,32.10180881790816,32.3392290774174,32.676888062004,31.70768423689529,31.56586494747549,33.04761979760602,32.85988683098927,32.33071177670732,32.79404869288206,32.68517145965248,31.41268399948254,31.64808215884491,32.35130855798721,31.69535344311967,32.53403307203203,32.08532520275563,32.7262487684749,33.14347170790657,31.89291667271405,32.05451066870242,31.71390857858583,31.4180696027136,34.10573420936032,39.43092030804179,26.26614207580452,46.48608915742486,19.51666667,-9.95258247461973,-11.16403915761842,-28.63333333,25.18333333,23.25510133725811,22.85734401985291,28.05,28.98333333,23.30499265498701,21.93987705900554,22.63408353149179,23.0642122530121,26.59034519867738,25.73672985324402,34.13629003457515,30.84962557980479,35.18333333,46.3686261745356,47.08547660664469,46.32319296712801,45.90297330638393,-10.83608681085391,-10.57513390789611,37.58333333,42.33333333,34.5878871351108,9.28944403040607,35.49568030029535,47.38733097726479,null,null,null,null,null],[-106.622,-105.6656545335688,-105.8240223331638,-106.8714727219455,-106.1431431318894,-106.1397198988385,-106.8758295760751,-107.5286614913754,-105.7090042168535,-105.670057584092,-106.0788921551108,-106.7575939833447,-107.2265039435849,-107.2469938919209,-106.4785015937202,-106.6562033114284,-107.5257045775913,-105.6286190292127,-105.9889027425349,-106.9459255244844,-107.4489641217776,-105.6254357085824,-105.8053217884414,-105.8450385025032,-107.3970556031242,39.6008014,38.84615444,39.83266547377944,38.90953157944396,18.00865782,29.8618993,39.29531166944444,29.48901431913145,9.552882869999999,9.458299985893214,8.842189090132857,8.748749574452782,29.58471520756029,30.22703245234333,18.41889517376075,17.20527861121917,-117.16,79.61197355,-107.078493946258,39.14913569399878,30.10567589428865,38.55,38.7918314180316,78.66283613985102,2.61732102,6.76667,35.16895529,null,39.91319757755637,40.11886511891871,79.16238779091906,79.82149862061884,79.84362115321379,79.50030937494408,54.41,54.07582716070115,66.00473115,38.9457500354366,65.70689347445091,69.33958027,53.85431023765355,78.70271777065169,78.62426002259996,38.59,79.91214041860472,35.00444995,79.24353332753923,39.58719167308673,80.2476507707655,79.5648583367623,38.51973713390529,-65.17980881,5.2814735,19.39559381,-117.8207713908888,47.58676005,null,15.6,18.77828023623551,63.14001799,-8.501055060000001,-3.64754874,79.74779796350445,36.77137251,14.89532066034153,40.11374049689412,35.92742682039649,36.58030212658537,90.23812793,39.01698431893974,null,71.01363311999999,10.01060140299811,null,21.71,40.59181594112679,37.85660333573819,51.31,80.48917583265971,null,null,78.67691505916115,38.95731486953795,39.00795349633322,38.66485849823594,null,90.75166470920998,89.72972486811089,89.50824819356534,80.02250648738514,null,-78.75203573,37.20177899195892,-71.38255879,null,null,null,37.29552626877172,null,39.48178875321523,-106.2970088566914,80.03157276550006,-107.4754702206962,80.45967329043593,-90.36482288000001,26.56666667,39.4925,34.90552991419942,34.75193631905974,35.18772357074455,35.74922302622259,35.74911139044822,34.88955224562348,35.88016327,39.18079753933475,34.55972908228547,38.64338808283001,38.65071830721363,39.57635522875726,40.09376689195424,66.4768265426444,-53.09783199,22.95556207,66.54648078291734,66.26317041239759,66.82519880740961,70.05245619314184,4.64064572,47.25235206572091,69.88494439237212,69.3209428326266,29.48995157376521,41.86666667,30.81717469495379,-9.345014471140532,15.9890028744936,18.72382518240484,29.14804264249869,null,-65.02631826477187,-65.44140624359312,22.41666667,23.23203770163191,22.9260967518082,39.04796354388609,50.96987462271005,36.61666667,2.53618475,-1.16666667,29.50098041350611,-74.75,-3.763171809461435,-4.523764480106999,12.07000946,12.69229573735749,12.84479541403954,-102.52345042,-103.1817766006518,-102.307149417926,-102.8606520250853,-72.11666667,-71.98683071280439,-72.79495841082726,-72.40147082977538,-72.53347010495682,-72.99096882533823,-71.8,-71.55,-71.18333333,-70.66666667,-71.37024950538371,37.18,35.85,37.60261838898063,-90.73333332999999,-97.23333332999999,55.26746444389224,47,10.38577693,9.370046688981498,40.4805525253506,25.21552327,34.0593703341947,14.62849446423352,9.564149475167804,20.26738500791836,48.30138889,58.41666667,35.4424393216698,30.3,31.00156316179782,41.01666667,32.08333333,38.6,70.04098457529732,31.38325794,39.6,22.54444444,21.75041698714718,20.52111111,-8.25,-8.52523241750896,-9.159200652968138,-7.333810864016414,-8.941493469290435,21.8167,36.06766973460005,23.09851446700004,35.73,35.69611111,35.64083333,67.09999999999999,68.52713035652806,73.06666667,74.34999999999999,71.97138889,55.17490066433325,55.3835031183809,54.46359109444543,53.90327809875831,54.07949349269271,55.28192387925461,55.06845122374594,54.41270046899095,30.22699237287634,53.73381846150383,54.77290437402203,53.4119522132352,54.24210899727419,54.45142755363136,53.69447921527549,55.20548404878005,53.74184119360521,54.08222275352105,53.84932006880641,54.9178234327957,54.27918651172891,53.61933484798297,54.84343920400366,54.54231335347518,54.18561232261359,54.69708597365766,54.14694039741531,54.31687690442428,54.2076388996467,55.31860093524679,54.67156886667013,53.75013881767168,54.41208890438079,54.90192391010001,53.6674277697131,53.82206682659685,54.98049803854897,55.1600723991543,54.77943614995107,53.73620535651222,54.84064001807943,54.33526007071137,54.9318705125153,35.91783016069872,35.90975648299568,35.8456783529921,30.73688292129554,-116.7744659533165,-98.86666667,-53.38634449745356,-53.44587909373283,-53.1,85.51666667000001,80.26831220632117,78.63892372447695,79.11666667,77.7,79.16013290809165,80.60120342282276,79.91756086453493,80.00574567664113,29.04121903468512,30.65853640994646,36.68482473906838,37.71987190271808,59.38333333,-117.6584617382288,3.423745795587063,3.359216450681895,-117.9981663961336,-52.85593441723674,-52.87737774000331,-4.63333333,-5.36666667,37.63092284897343,39.8579145484583,38.52338520871476,-116.4865289808623,null,null,null,null,null],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["#006400","#006400","#006400","#8B8878","#8B8878","#006400","#8B8878","#8B8878","#8B8878","#8B8878","#006400","#8B8878","#006400","#8B8878","#8B8878","#8B8878","#006400","#006400","#006400","#8B8878","#006400","#006400","#8B8878","#8B8878","#8B8878","#CD6600","#8B8878","#8B8878","#8B8878","#006400","#8B8878","#4682B4","#8B8878","#8B0000","#8B8878","#8B8878","#8B0000","#4682B4","#006400","#8B8878","#006400","#8B8878","#8B8878","#006400","#8B8878","#CD1076","#8B8878","#68228B","#8B8878","#68228B","#CD6600","#8B0000","#006400","#8B8878","#8B8878","#006400","#8B8878","#CD6600","#CD6600","#CD1076","#CD1076","#EEAD0E","#CD6600","#EEAD0E","#8B8878","#8B8878","#CD6600","#8B8878","#8B0000","#CD6600","#8B8878","#CD6600","#8B8878","#CD6600","#00008B","#8B8878","#8B8878","#CD6600","#8B8878","#8B0000","#4682B4","#CD1076","#8B8878","#8B8878","#EEAD0E","#006400","#8B8878","#4682B4","#4682B4","#8B8878","#8B8878","#8B8878","#4682B4","#8B8878","#4682B4","#8B8878","#EEAD0E","#8B8878","#8B8878","#006400","#4682B4","#8B0000","#CD1076","#8B8878","#8B8878","#8B8878","#8B8878","#8B8878","#4682B4","#8B8878","#8B8878","#8B8878","#CD6600","#8B8878","#8B0000","#8B8878","#8B8878","#8B8878","#4682B4","#8B8878","#8B8878","#8B8878","#8B8878","#CD6600","#CD6600","#006400","#CD6600","#006400","#8B8878","#8B0000","#006400","#8B8878","#8B8878","#006400","#CD1076","#EEAD0E","#00008B","#CD1076","#EEAD0E","#8B0000","#CD1076","#00008B","#EEAD0E","#4682B4","#4682B4","#EEAD0E","#006400","#4682B4","#EEAD0E","#EEAD0E","#EEAD0E","#CD6600","#8B8878","#4682B4","#CD6600","#CD6600","#4682B4","#CD6600","#8B8878","#8B0000","#4682B4","#006400","#006400","#EEAD0E","#8B8878","#8B8878","#006400","#8B0000","#00008B","#4682B4","#EEAD0E","#CD1076","#8B8878","#006400","#CD1076","#8B0000","#8B0000","#8B8878","#8B8878","#8B8878","#CD1076","#006400","#8B8878","#8B8878","#8B8878","#8B0000","#8B8878","#8B0000","#8B8878","#8B8878","#8B8878","#8B0000","#8B0000","#68228B","#8B0000","#8B0000","#00008B","#8B8878","#00008B","#8B0000","#006400","#CD1076","#006400","#006400","#8B0000","#EEAD0E","#8B8878","#8B8878","#006400","#006400","#006400","#CD1076","#8B8878","#8B8878","#8B8878","#8B8878","#CD1076","#CD1076","#CD1076","#EEAD0E","#006400","#006400","#006400","#006400","#8B0000","#006400","#006400","#4682B4","#8B8878","#8B8878","#8B8878","#CD1076","#8B8878","#8B0000","#4682B4","#4682B4","#EEAD0E","#8B8878","#CD6600","#CD6600","#CD6600","#CD1076","#68228B","#EEAD0E","#8B8878","#8B8878","#CD1076","#68228B","#68228B","#68228B","#EEAD0E","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#8B8878","#CD1076","#8B8878","#EEAD0E","#CD1076","#EEAD0E","#EEAD0E","#CD1076","#EEAD0E","#8B8878","#8B8878","#8B8878","#68228B","#68228B","#CD1076","#8B8878","#68228B","#68228B","#68228B","#CD1076","#CD1076","#006400","#006400","#68228B","#68228B","#CD1076","#006400","#00008B","#8B8878","#8B8878","#8B8878","#006400","#006400","#CD6600","#CD6600","#8B8878","#CD6600","#CD6600","#CD6600","#CD6600","#CD6600","#CD6600","#CD6600","#8B8878","#8B8878","#8B8878","#CD1076","#8B8878","#006400","#8B8878","#8B8878","#006400","#006400","#8B8878","#006400","#8B8878","#8B8878","#8B8878","#8B8878","#006400","#8B8878","#4682B4","#8B8878","#00008B"],"weight":10,"opacity":1,"fill":true,"fillColor":["#006400","#006400","#006400","#8B8878","#8B8878","#006400","#8B8878","#8B8878","#8B8878","#8B8878","#006400","#8B8878","#006400","#8B8878","#8B8878","#8B8878","#006400","#006400","#006400","#8B8878","#006400","#006400","#8B8878","#8B8878","#8B8878","#CD6600","#8B8878","#8B8878","#8B8878","#006400","#8B8878","#4682B4","#8B8878","#8B0000","#8B8878","#8B8878","#8B0000","#4682B4","#006400","#8B8878","#006400","#8B8878","#8B8878","#006400","#8B8878","#CD1076","#8B8878","#68228B","#8B8878","#68228B","#CD6600","#8B0000","#006400","#8B8878","#8B8878","#006400","#8B8878","#CD6600","#CD6600","#CD1076","#CD1076","#EEAD0E","#CD6600","#EEAD0E","#8B8878","#8B8878","#CD6600","#8B8878","#8B0000","#CD6600","#8B8878","#CD6600","#8B8878","#CD6600","#00008B","#8B8878","#8B8878","#CD6600","#8B8878","#8B0000","#4682B4","#CD1076","#8B8878","#8B8878","#EEAD0E","#006400","#8B8878","#4682B4","#4682B4","#8B8878","#8B8878","#8B8878","#4682B4","#8B8878","#4682B4","#8B8878","#EEAD0E","#8B8878","#8B8878","#006400","#4682B4","#8B0000","#CD1076","#8B8878","#8B8878","#8B8878","#8B8878","#8B8878","#4682B4","#8B8878","#8B8878","#8B8878","#CD6600","#8B8878","#8B0000","#8B8878","#8B8878","#8B8878","#4682B4","#8B8878","#8B8878","#8B8878","#8B8878","#CD6600","#CD6600","#006400","#CD6600","#006400","#8B8878","#8B0000","#006400","#8B8878","#8B8878","#006400","#CD1076","#EEAD0E","#00008B","#CD1076","#EEAD0E","#8B0000","#CD1076","#00008B","#EEAD0E","#4682B4","#4682B4","#EEAD0E","#006400","#4682B4","#EEAD0E","#EEAD0E","#EEAD0E","#CD6600","#8B8878","#4682B4","#CD6600","#CD6600","#4682B4","#CD6600","#8B8878","#8B0000","#4682B4","#006400","#006400","#EEAD0E","#8B8878","#8B8878","#006400","#8B0000","#00008B","#4682B4","#EEAD0E","#CD1076","#8B8878","#006400","#CD1076","#8B0000","#8B0000","#8B8878","#8B8878","#8B8878","#CD1076","#006400","#8B8878","#8B8878","#8B8878","#8B0000","#8B8878","#8B0000","#8B8878","#8B8878","#8B8878","#8B0000","#8B0000","#68228B","#8B0000","#8B0000","#00008B","#8B8878","#00008B","#8B0000","#006400","#CD1076","#006400","#006400","#8B0000","#EEAD0E","#8B8878","#8B8878","#006400","#006400","#006400","#CD1076","#8B8878","#8B8878","#8B8878","#8B8878","#CD1076","#CD1076","#CD1076","#EEAD0E","#006400","#006400","#006400","#006400","#8B0000","#006400","#006400","#4682B4","#8B8878","#8B8878","#8B8878","#CD1076","#8B8878","#8B0000","#4682B4","#4682B4","#EEAD0E","#8B8878","#CD6600","#CD6600","#CD6600","#CD1076","#68228B","#EEAD0E","#8B8878","#8B8878","#CD1076","#68228B","#68228B","#68228B","#EEAD0E","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#8B8878","#CD1076","#8B8878","#EEAD0E","#CD1076","#EEAD0E","#EEAD0E","#CD1076","#EEAD0E","#8B8878","#8B8878","#8B8878","#68228B","#68228B","#CD1076","#8B8878","#68228B","#68228B","#68228B","#CD1076","#CD1076","#006400","#006400","#68228B","#68228B","#CD1076","#006400","#00008B","#8B8878","#8B8878","#8B8878","#006400","#006400","#CD6600","#CD6600","#8B8878","#CD6600","#CD6600","#CD6600","#CD6600","#CD6600","#CD6600","#CD6600","#8B8878","#8B8878","#8B8878","#CD1076","#8B8878","#006400","#8B8878","#8B8878","#006400","#006400","#8B8878","#006400","#8B8878","#8B8878","#8B8878","#8B8878","#006400","#8B8878","#4682B4","#8B8878","#00008B"],"fillOpacity":1},["1 | CDC Asterix AGL","2 | CDC Rosie AGL","3 | 3156-11 AGL","4 | CDC Greenstar AGL","5 | CDC Cherie AGL","6 | CDC Glamis AGL","7 | CDC Gold AGL","8 | CDC Imax AGL","9 | CDC Impower AGL","10 | CDC KR-1 AGL","11 | CDC LeMay AGL","12 | CDC Maxim AGL","13 | CDC QG-1 AGL","14 | CDC Red Rider AGL","15 | CDC Redcoat AGL","16 | CDC Redwing AGL","17 | CDC Robin AGL","18 | CDC Rosebud AGL","19 | CDC Rosetown AGL","20 | CDC Rouleau AGL","21 | CDC Royale AGL","22 | CDC Ruby AGL","23 | CDC SB-1 AGL","24 | CDC Sedley AGL","25 | CDC Vantage AGL","26 | CN 105604 AGL","27 | CN 105605 AGL","28 | CN 105715 AGL","29 | CN 105732 AGL","30 | CN 105767 AGL","31 | CN 105777 AGL","32 | CN 105789 AGL","33 | CN 105791 AGL","34 | CN 105862 AGL","35 | CN 105863 AGL","36 | CN 105864 AGL","37 | CN 105865 AGL","38 | CN 105895 AGL","39 | CN 106265 AGL","40 | CN 108369 AGL","41 | CN 108370 AGL","42 | Crimson AGL","43 | DPL 62 AGL","44 | Eston AGL","45 | Gudo AGL","46 | IG 1046 AGL","47 | IG 1706 AGL","48 | IG 1959 AGL","49 | IG 4258 AGL","50 | IG 4781 AGL","51 | IG 858 AGL","52 | ILL 10657 AGL","53 | ILL 10748 AGL","54 | ILL 11547 AGL","55 | ILL 11548 AGL","56 | ILL 11553 AGL","57 | ILL 11555 AGL","58 | ILL 11557 AGL","59 | ILL 11558 AGL","60 | ILL 1220 AGL","61 | ILL 1553 AGL","62 | ILL 1762 AGL","63 | ILL 1983 AGL","64 | ILL 213 AGL","65 | ILL 2194 AGL","66 | PI 431893 LSP AGL","67 | ILL 2507 AGL","68 | ILL 2580 AGL","69 | ILL 28 AGL","70 | ILL 3025 AGL","71 | ILL 313 AGL","72 | ILL 3347 AGL","73 | ILL 358 AGL","74 | ILL 3597 AGL","75 | ILL 4164 AGL","76 | ILL 4400 AGL","77 | ILL 4605 AGL","78 | ILL 4609 AGL","79 | ILL 4665 AGL","80 | ILL 4671 AGL","81 | ILL 4768 AGL","82 | ILL 4782 AGL","83 | ILL 4783 AGL","84 | ILL 4804 AGL","85 | ILL 4875 AGL","86 | ILL 4956 AGL","87 | ILL 5058 AGL","88 | ILL 5151 AGL","89 | ILL 5209 AGL","90 | ILL 5480 AGL","91 | ILL 5639 AGL","92 | ILL 5722 AGL","93 | ILL 5883 AGL","94 | ILL 5888 AGL","95 | ILL 5945 AGL","96 | ILL 6002 AGL","97 | ILL 618 AGL","98 | ILL 6182 AGL","99 | ILL 6211 AGL","100 | ILL 624 AGL","101 | ILL 6821 AGL","102 | ILL 6853 AGL","103 | ILL 7089 AGL","104 | ILL 7558 AGL","105 | ILL 7663 AGL","106 | ILL 7668 AGL","107 | ILL 7716 AGL","108 | ILL 7747 AGL","109 | ILL 7946 AGL","110 | ILL 7978 AGL","111 | ILL 7979 AGL","112 | ILL 8007 AGL","113 | ILL 8009 AGL","114 | ILL 8010 AGL","115 | ILL 8072 AGL","116 | ILL 8174 AGL","117 | ILL 8595 AGL","118 | ILL 9 AGL","119 | ILL 975 AGL","120 | ILL 9888 AGL","121 | ILL 9932 AGL","122 | ILL 9945 AGL","123 | ILL 9977 AGL","124 | ILL 9997 AGL","125 | ILWL 118 AGL","126 | Indianhead AGL","127 | IPL 220 AGL","128 | Laird AGL","129 | LIRL-22-46 AGL","130 | PI 163589 AGL","131 | PI 169534 LSP AGL","132 | PI 175754 LSP AGL","133 | PI 177430 LSP AGL","134 | PI 178939 LSP AGL","135 | PI 178952 AGL","136 | PI 178971 LSP AGL","137 | PI 179324 LSP AGL","138 | PI 179330 AGL","139 | PI 181771 LSP AGL","140 | PI 181886 LSP AGL","141 | PI 182217 LSP AGL","142 | PI 193546 AGL","143 | PI 193547 LSP AGL","144 | PI 193548 LSP AGL","145 | PI 193550 AGL","146 | PI 207492 LSP AGL","147 | PI 518731 LSP AGL","148 | PI 209858 LSP AGL","149 | PI 211052 LSP AGL","150 | PI 212100 LSP AGL","151 | PI 212610 LSP AGL","152 | PI 217949 LSP AGL","153 | PI 238758 LSP AGL","154 | PI 244046 AGL","155 | PI 250156 LSP AGL","156 | PI 250158 LSP AGL","157 | PI 251248 LSP AGL","158 | PI 273664 LSP AGL","159 | PI 280686 AGL","160 | PI 283604 LSP AGL","161 | PI 289066 AGL","162 | PI 289073 LSP AGL","163 | PI 289079 LSP AGL","164 | PI 290716 LSP AGL","165 | PI 297285 LSP AGL","166 | PI 297287 AGL","167 | PI 297754 LSP AGL","168 | PI 297767 AGL","169 | PI 297772 LSP AGL","170 | PI 297783 AGL","171 | PI 297787 LSP AGL","172 | PI 298023 LSP AGL","173 | PI 298121 LSP AGL","174 | PI 298122 LSP AGL","175 | PI 298357 LSP AGL","176 | PI 298631 LSP AGL","177 | PI 298644 LSP AGL","178 | PI 298645 AGL","179 | PI 298921 AGL","180 | PI 298922 LSP AGL","181 | PI 298923 LSP AGL","182 | PI 299116 LSP AGL","183 | PI 299120 LSP AGL","184 | PI 299121 LSP AGL","185 | PI 299126 LSP AGL","186 | PI 299163 LSP AGL","187 | PI 299164 LSP AGL","188 | PI 299165 AGL","189 | PI 299177 LSP AGL","190 | PI 299237 LSP AGL","191 | PI 299289 AGL","192 | PI 299312 AGL","193 | PI 299345 AGL","194 | PI 299351 LSP AGL","195 | PI 299366 LSP AGL","196 | PI 299375 LSP AGL","197 | PI 300250 LSP AGL","198 | PI 302398 LSP AGL","199 | PI 308614 LSP AGL","200 | PI 311107 LSP AGL","201 | PI 312175 LSP AGL","202 | PI 320935 LSP AGL","203 | PI 320936 LSP AGL","204 | PI 320937 LSP AGL","205 | CN 105866 AGL","206 | PI 320941 LSP AGL","207 | PI 320945 LSP AGL","208 | PI 320946 LSP AGL","209 | PI 320952 LSP AGL","210 | PI 320953 LSP AGL","211 | PI 320954 LSP AGL","212 | PI 329157 LSP AGL","213 | PI 329167 LSP AGL","214 | PI 339266 LSP AGL","215 | PI 339283 LSP AGL","216 | PI 339285 AGL","217 | PI 339289 LSP AGL","218 | PI 339292 LSP AGL","219 | PI 339296 AGL","220 | PI 343026 LSP AGL","221 | PI 345627 LSP AGL","222 | PI 358602 LSP AGL","223 | PI 368647 LSP AGL","224 | PI 368651 LSP AGL","225 | PI 370481 LSP AGL","226 | PI 374116 LSP AGL","227 | PI 374117 LSP AGL","228 | PI 374118 AGL","229 | PI 374120 LSP AGL","230 | PI 374121 AGL","231 | PI 379368 LSP AGL","232 | PI 383682 LSP AGL","233 | PI 420818 AGL","234 | PI 420924 LSP AGL","235 | PI 420925 LSP AGL","236 | PI 420929 LSP AGL","237 | PI 426202 LSP AGL","238 | PI 426778 LSP AGL","239 | PI 426784 LSP AGL","240 | PI 426797 LSP AGL","241 | PI 426807 LSP AGL","242 | PI 431618 LSP AGL","243 | PI 431622 LSP AGL","244 | PI 431630 LSP AGL","245 | PI 431633 LSP AGL","246 | PI 431636 LSP AGL","247 | PI 431643 LSP AGL","248 | PI 431662 LSP AGL","249 | PI 431663 LSP AGL","250 | PI 431679 LSP AGL","251 | PI 431684 LSP AGL","252 | PI 431705 LSP AGL","253 | PI 431710 LSP AGL","254 | PI 431714 LSP AGL","255 | PI 431717 LSP AGL","256 | PI 431728 LSP AGL","257 | PI 431731 LSP AGL","258 | PI 431739 LSP AGL","259 | PI 431753 LSP AGL","260 | PI 431756 LSP AGL","261 | PI 431809 LSP AGL","262 | PI 431824 LSP AGL","263 | PI 431863 LSP AGL","264 | PI 431873 LSP AGL","265 | PI 431884 LSP AGL","266 | PI 431888 LSP AGL","267 | PI 431923 LSP AGL","268 | PI 431980 LSP AGL","269 | PI 432000 LSP AGL","270 | PI 432001 LSP AGL","271 | PI 432002 LSP AGL","272 | PI 432005 LSP AGL","273 | PI 432028 LSP AGL","274 | PI 432033 LSP AGL","275 | PI 432085 LSP AGL","276 | PI 432106 LSP AGL","277 | PI 432124 LSP AGL","278 | PI 432145 LSP AGL","279 | PI 432147 LSP AGL","280 | PI 432184 LSP AGL","281 | PI 432188 LSP AGL","282 | PI 432190 LSP AGL","283 | PI 432201 LSP AGL","284 | PI 432212 LSP AGL","285 | PI 432236 LSP AGL","286 | PI 432245 LSP AGL","287 | PI 432271 LSP AGL","288 | PI 432286 LSP AGL","289 | PI 451763 LSP AGL","290 | PI 458503 LSP AGL","291 | PI 468900 LSP AGL","292 | PI 468901 AGL","293 | PI 468902 LSP AGL","294 | PI 472136 LSP AGL","295 | PI 472205 LSP AGL","296 | PI 472213 LSP AGL","297 | PI 472327 LSP AGL","298 | PI 472380 LSP AGL","299 | PI 472416 LSP AGL","300 | PI 472488 LSP AGL","301 | PI 472559 LSP AGL","302 | PI 472561 LSP AGL","303 | PI 472569 LSP AGL","304 | PI 472588 LSP AGL","305 | PI 472590 LSP AGL","306 | PI 472615 LSP AGL","307 | PI 472629 LSP AGL","308 | PI 477921 LSP AGL","309 | PI 490288 LSP AGL","310 | PI 490289 LSP AGL","311 | PI 508090 AGL","312 | PI 518733 LSP AGL","313 | PI 518734 LSP AGL","314 | PI 533688 LSP AGL","315 | PI 533693 LSP AGL","316 | PI 612875 AGL","317 | PI 643451 AGL","318 | PI 643452 AGL","319 | Shasta AGL","320 | W6 27754 LSP AGL","321 | W6 27760 LSP AGL","322 | W6 27763 LSP AGL","323 | W6 27766 LSP AGL","324 | W6 27767 LSP AGL"],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addLegend","args":[{"colors":["#CD1076","#00008B","#68228B","#CD6600","#4682B4","#EEAD0E","#8B0000","#006400","#8B8878"],"labels":["G1","G2","G3","G4","G5","G6","G7","G8","Mix"],"na_color":null,"na_label":"NA","opacity":1,"position":"bottomleft","type":"factor","title":"STR Group","extra":null,"layerId":null,"className":"info legend","group":null}]}],"limits":{"lat":[-37.88333333,59.57065943405032],"lng":[-117.9981663961336,90.75166470920998]}},"evals":[],"jsHooks":[]}</script>
-<script type="application/htmlwidget-sizing" data-for="htmlwidget-d9eef554c0e112042941">{"viewer":{"width":"100%","height":400,"padding":0,"fill":true},"browser":{"width":"100%","height":400,"padding":0,"fill":true}}</script>
+<script type="application/json" data-for="htmlwidget-c9ca67ba19838d7d1fb3">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircles","args":[[52.137,51.47491734883562,52.42097022513673,51.8552857147418,51.56117558562011,52.41742236855254,51.19834160934016,53.09389196046442,52.09483232944086,51.42752238399163,53.07445347717777,52.6807758048065,52.09855891288072,52.13261588698998,52.334033834178,51.24801443786174,51.39725690836832,51.16696351756156,51.44710864907876,51.40614446568117,52.09824485135078,51.34410820192471,51.57110202115774,51.21695345583186,53.01210752957314,8.622784169999999,15.36186881,8.037490775486571,8.198512407628936,27.03094247,26.49593108,8.773792795980466,25.54739893546094,34.11956663,35.07442964602796,33.81854339305846,33.18205638917697,26.95682770238955,25.66800525916506,27.10681798884353,26.29439150605059,46.73,22.88578035,53.11111074768752,9.251793292494607,25.55452008677413,7.21667,7.725646190954489,22.46587397313897,28.15893844,36.3667,39.06160342,null,8.955036020515603,7.950599862406147,22.71511624443565,23.20714729109067,22.82548330926556,22.92441297524828,32.41,31.98330742292106,33.83523216,8.636827891370398,34.52106314426461,29.94975221,32.76479935491457,22.46603642140735,22.49112121404368,35.24,22.41014677581597,31.4611019,23.86611529409174,9.355876506915433,22.5998955850232,22.92617294301499,36.02307096194476,-35.38135347,52.10080804,47.16277712,47.30763118389994,15.90927655,null,49.69,27.09933184103748,41.75554081,39.59550247,40.24448626,22.77049162161756,31.24579389,50.1338923955895,7.851659892270458,39.8623487717057,31.61577527856143,23.86730412,8.689828183645499,null,38.53045125,34.65660798259614,null,43.56,7.892189800882829,35.14804837923497,58.9,23.49583240567926,null,null,22.46005250948701,35.33372340794653,35.7693158851564,9.263578187352163,null,23.43875166100591,23.1200101974155,24.42885226129695,22.26978191144053,null,-1.42381949,31.9043171333863,-37.73069754,null,null,null,31.09776723829718,null,35.13610188035295,52.20672056999803,22.74111448570374,51.44484727539867,22.21538292958621,15.69404158,41.66666667,39.74194444,39.5485811881306,39.76545581180177,38.73897632961668,38.80555126821197,39.25377818854101,38.68690364254213,33.92306993,35.45027298085392,38.53172441390849,7.856832767514629,8.883354295188678,8.227912578409654,8.775730265447987,33.98721376940781,-10.78777567,39.07466973,33.23641463037753,33.03038382524797,34.7847703871707,29.94525352242722,50.63981435,16.27753054799273,30.94201572361722,29.54355414753168,26.1065206401213,9.58333333,26.01941592145477,40.02390939820027,49.81181512732059,46.36049169090974,26.17099826402728,null,-35.69059795370934,-34.53049980054286,39.63333333,38.26765192168558,38.80772024354691,8.107656808247906,58.07810048395768,40.7,46.18700581,48.33333333,26.60468536980216,-12.25,41.05464328988953,41.09968946432261,42.79663568,42.98225041768205,43.57182969628524,23.94753932,23.03686780088443,23.74097869989324,24.09643498414058,-36.6,-36.97622966431081,-36.81828566817567,-37.58829846270383,-37.1428027221933,-37.31317251725122,-33.93333333,-35.05,-37.88333333,-33.45,-34.36702855704353,36.39,32.55555556,35.05323433667422,14.56666667,17.46666667,31.6591597966291,42,51.10697903,33.14958141081569,8.245452798580867,42.76889988,31.50797059261786,49.67148414120078,51.16668644994679,47.22330796600717,38.24944444,35.23333333,38.5790726929488,37.21666667,36.42236959789489,39.96666667,40.91666667,37.76666667,38.47372103130266,48.99656784,11.5,41.54361111,43.89359746821225,42.99333333,31.75,32.4306922936812,31.72582738054916,31.8252393626608,31.38980340771377,41.85,39.3989456650386,38.31975640457848,32.1,31.06555556,31.13333333,36.7,30.80299775005638,30.06666667,32.33333333,34.6175,32.09610756285488,32.9334918105416,32.09722104560583,33.31381866926327,31.82895529767498,31.47789931608364,32.42494586281478,32.35848791137337,27.15187228183959,31.7718671237491,33.21946337338537,31.5369239182584,31.55494299562648,32.88707346035167,31.4312663677521,31.42110633835196,31.69661279659718,31.68756366552785,32.68394461911171,32.16621355185285,31.66647589145228,31.79816519547254,32.18714199991896,32.15881663080305,31.47106632342562,31.5789265165478,31.85976445520296,32.19875779639929,32.43374315215274,31.63864799527451,33.18403981471434,32.58146156681701,33.39899588454514,31.50493471868336,31.8724644704163,33.17617936184629,32.38218691417947,31.44938706684857,32.33186525510624,31.65365009460598,31.4710483479686,32.01656371200457,32.86881932089105,30.72230646645339,34.40276712674438,39.51599234953098,25.59138631719862,47.25446829760447,19.51666667,-10.81553681502922,-11.54554885887413,-28.63333333,25.18333333,22.78237095351551,23.78558152185041,28.05,28.98333333,22.41945390978116,23.41271109056879,22.67250561171431,23.28314858458225,25.53259688840945,26.84282254606251,33.68424851476937,31.20531700018482,35.18333333,47.52348955256864,46.02612161964923,47.10150866166502,46.01531094221398,-11.14443582837342,-11.414125786916,37.58333333,42.33333333,35.72881466360763,9.255624273004127,34.91404576856643,45.92126882310956,null,null,null,null,null],[-106.622,-105.9196889810525,-106.6017023078427,-106.0699274535552,-106.06708769596,-105.7949239467531,-106.9947265805937,-106.1658444884494,-105.9168212651536,-106.7006227597855,-106.8214047621265,-106.0825307178572,-106.4031419814825,-105.8809504392818,-106.2534138341695,-105.8284820900559,-106.1268782606609,-107.1544887605384,-106.4933208111003,-106.1777932108641,-106.9310573735535,-106.8036691705026,-105.9119021306075,-106.4920624695048,-106.7553382590674,39.6008014,38.84615444,40.16653922674968,40.05832474361896,18.00865782,29.8618993,40.05869766194164,29.71620342553251,9.552882869999999,9.447365470968331,9.132955461081261,10.05292293130621,30.57440074112855,29.30611878306263,17.65759740671018,18.61946942139292,-117.16,79.61197355,-106.9699992528446,40.47372060511052,30.78286881790154,38.55,38.72435119710654,79.36015153705772,2.61732102,6.76667,35.16895529,null,39.43916681324854,38.91564164319798,79.73173742212053,80.22094515507739,79.99970490561496,79.28869864234399,54.41,53.55010883355513,66.00473115,40.33113858997613,66.15372075385471,69.33958027,54.58343833297491,80.09166228474747,78.66151613399084,38.59,78.93139132048633,35.00444995,80.24140208197456,40.10793359260797,79.44290875859257,79.51115019928362,39.49759656997398,-65.17980881,5.2814735,19.39559381,-118.0671388584562,47.58676005,null,15.6,17.16069522820289,63.14001799,-8.501055060000001,-3.64754874,79.95579549140926,36.77137251,14.94275850607082,39.59174291798636,34.75318890042514,36.0102326482263,90.23812793,40.47640579296067,null,71.01363311999999,10.41523398905262,null,21.71,40.09927128637,37.77361169053242,51.31,79.73098054930266,null,null,78.92850117461454,38.49437221108005,37.74209654904902,38.99059171099007,null,89.76303463001135,91.20840261308807,91.00061779367137,80.34781535464968,null,-78.75203573,36.89960464916272,-71.38255879,null,null,null,36.56162768730042,null,38.22300235848874,-106.639730913125,79.91944630846079,-107.2239752305001,80.50196327438276,-90.36482288000001,26.56666667,39.4925,35.58073235606686,34.23211521632881,36.00431320561007,34.62805338041768,34.56948006363497,35.66426367383362,35.88016327,37.78368030782789,34.77577605960802,40.55278738271236,40.53091021077498,39.75554404370278,39.07862915852829,66.41206383484473,-53.09783199,22.95556207,65.22454825148975,65.46788990370055,65.65221325599646,69.891617714897,4.64064572,47.9612490286467,68.99199466640522,69.60530725634118,30.67448071435683,41.86666667,29.65363523316227,-7.804330577653674,15.47292670505121,19.15923826313811,30.06452506453388,null,-64.92342296440216,-64.75035238184097,22.41666667,23.29662116056961,22.9622139595328,39.4311670517528,51.56000266870484,36.61666667,2.53618475,-1.16666667,29.06561762931414,-74.75,-2.966027471904179,-4.459587955117692,12.07000946,12.4208462585487,12.71608652759125,-102.52345042,-103.4323000411916,-102.2972540866997,-101.6018761859689,-72.11666667,-71.95735134793986,-72.72092494698782,-73.10154406358097,-71.24766400041599,-71.53736603031476,-71.8,-71.55,-71.18333333,-70.66666667,-70.45632520201225,37.18,35.85,37.69770317725838,-90.73333332999999,-97.23333332999999,55.35693358009681,47,10.38577693,9.087465611558551,39.87438791347459,25.21552327,35.03980491117547,15.35081655336544,9.542380634672307,19.56420118465322,48.30138889,58.41666667,36.0671359158671,30.3,29.82693228842691,41.01666667,32.08333333,38.6,71.39316474845224,31.38325794,39.6,22.54444444,20.72974788494408,20.52111111,-8.25,-8.944954622071236,-7.830676400568336,-7.347477160394192,-8.237883959431201,21.8167,35.91684770142571,23.90872431824637,35.73,35.69611111,35.64083333,67.09999999999999,68.65558786876892,73.06666667,74.34999999999999,71.97138889,55.03021308625117,53.78491759657859,54.02935071321204,54.12413697721436,54.488965742141,53.62717335982248,54.1448864772357,53.51245216824114,29.88035679095082,53.74180884318426,55.27814154079184,53.90036344047635,55.09314524041488,54.37368595492094,54.51160474386066,54.21864067748189,54.28323899660259,53.80031972596421,54.58847345490008,54.61566369779408,53.73931866962462,53.56673980722204,53.76290415771305,54.99948377845809,55.00774236893281,53.77733785690739,53.58640347126871,54.86531523274257,54.37723433258012,53.8689752620086,54.01806369967758,53.83093556793406,53.94356107976287,53.59387539824471,53.58982348660007,55.00318060288205,55.26093341395259,55.02667819274589,54.59064109701663,53.69640636475756,53.77331597529351,54.09752612033859,55.11930284354835,37.26049291935829,35.19165553333946,35.47154679266647,29.17802023281001,-117.7500499518029,-98.86666667,-53.79875395390033,-53.10606580124065,-53.1,85.51666667000001,80.51089608046856,79.73827867844771,79.11666667,77.7,80.12104700861197,79.75767266081344,79.48634757363867,79.2219263076007,29.225273462931,30.18464387393214,35.04155037035011,37.74397051415486,59.38333333,-118.0280241447873,3.415704979995251,3.2209254242163,-116.7700359349512,-53.24558040768667,-52.42749844993293,-4.63333333,-5.36666667,39.45507682874799,40.00849638189911,38.84970188342035,-116.4095441180654,null,null,null,null,null],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["#006400","#006400","#006400","#8B8878","#8B8878","#006400","#8B8878","#8B8878","#8B8878","#8B8878","#006400","#8B8878","#006400","#8B8878","#8B8878","#8B8878","#006400","#006400","#006400","#8B8878","#006400","#006400","#8B8878","#8B8878","#8B8878","#CD6600","#8B8878","#8B8878","#8B8878","#006400","#8B8878","#4682B4","#8B8878","#8B0000","#8B8878","#8B8878","#8B0000","#4682B4","#006400","#8B8878","#006400","#8B8878","#8B8878","#006400","#8B8878","#CD1076","#8B8878","#68228B","#8B8878","#68228B","#CD6600","#8B0000","#006400","#8B8878","#8B8878","#006400","#8B8878","#CD6600","#CD6600","#CD1076","#CD1076","#EEAD0E","#CD6600","#EEAD0E","#8B8878","#8B8878","#CD6600","#8B8878","#8B0000","#CD6600","#8B8878","#CD6600","#8B8878","#CD6600","#00008B","#8B8878","#8B8878","#CD6600","#8B8878","#8B0000","#4682B4","#CD1076","#8B8878","#8B8878","#EEAD0E","#006400","#8B8878","#4682B4","#4682B4","#8B8878","#8B8878","#8B8878","#4682B4","#8B8878","#4682B4","#8B8878","#EEAD0E","#8B8878","#8B8878","#006400","#4682B4","#8B0000","#CD1076","#8B8878","#8B8878","#8B8878","#8B8878","#8B8878","#4682B4","#8B8878","#8B8878","#8B8878","#CD6600","#8B8878","#8B0000","#8B8878","#8B8878","#8B8878","#4682B4","#8B8878","#8B8878","#8B8878","#8B8878","#CD6600","#CD6600","#006400","#CD6600","#006400","#8B8878","#8B0000","#006400","#8B8878","#8B8878","#006400","#CD1076","#EEAD0E","#00008B","#CD1076","#EEAD0E","#8B0000","#CD1076","#00008B","#EEAD0E","#4682B4","#4682B4","#EEAD0E","#006400","#4682B4","#EEAD0E","#EEAD0E","#EEAD0E","#CD6600","#8B8878","#4682B4","#CD6600","#CD6600","#4682B4","#CD6600","#8B8878","#8B0000","#4682B4","#006400","#006400","#EEAD0E","#8B8878","#8B8878","#006400","#8B0000","#00008B","#4682B4","#EEAD0E","#CD1076","#8B8878","#006400","#CD1076","#8B0000","#8B0000","#8B8878","#8B8878","#8B8878","#CD1076","#006400","#8B8878","#8B8878","#8B8878","#8B0000","#8B8878","#8B0000","#8B8878","#8B8878","#8B8878","#8B0000","#8B0000","#68228B","#8B0000","#8B0000","#00008B","#8B8878","#00008B","#8B0000","#006400","#CD1076","#006400","#006400","#8B0000","#EEAD0E","#8B8878","#8B8878","#006400","#006400","#006400","#CD1076","#8B8878","#8B8878","#8B8878","#8B8878","#CD1076","#CD1076","#CD1076","#EEAD0E","#006400","#006400","#006400","#006400","#8B0000","#006400","#006400","#4682B4","#8B8878","#8B8878","#8B8878","#CD1076","#8B8878","#8B0000","#4682B4","#4682B4","#EEAD0E","#8B8878","#CD6600","#CD6600","#CD6600","#CD1076","#68228B","#EEAD0E","#8B8878","#8B8878","#CD1076","#68228B","#68228B","#68228B","#EEAD0E","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#8B8878","#CD1076","#8B8878","#EEAD0E","#CD1076","#EEAD0E","#EEAD0E","#CD1076","#EEAD0E","#8B8878","#8B8878","#8B8878","#68228B","#68228B","#CD1076","#8B8878","#68228B","#68228B","#68228B","#CD1076","#CD1076","#006400","#006400","#68228B","#68228B","#CD1076","#006400","#00008B","#8B8878","#8B8878","#8B8878","#006400","#006400","#CD6600","#CD6600","#8B8878","#CD6600","#CD6600","#CD6600","#CD6600","#CD6600","#CD6600","#CD6600","#8B8878","#8B8878","#8B8878","#CD1076","#8B8878","#006400","#8B8878","#8B8878","#006400","#006400","#8B8878","#006400","#8B8878","#8B8878","#8B8878","#8B8878","#006400","#8B8878","#4682B4","#8B8878","#00008B"],"weight":10,"opacity":1,"fill":true,"fillColor":["#006400","#006400","#006400","#8B8878","#8B8878","#006400","#8B8878","#8B8878","#8B8878","#8B8878","#006400","#8B8878","#006400","#8B8878","#8B8878","#8B8878","#006400","#006400","#006400","#8B8878","#006400","#006400","#8B8878","#8B8878","#8B8878","#CD6600","#8B8878","#8B8878","#8B8878","#006400","#8B8878","#4682B4","#8B8878","#8B0000","#8B8878","#8B8878","#8B0000","#4682B4","#006400","#8B8878","#006400","#8B8878","#8B8878","#006400","#8B8878","#CD1076","#8B8878","#68228B","#8B8878","#68228B","#CD6600","#8B0000","#006400","#8B8878","#8B8878","#006400","#8B8878","#CD6600","#CD6600","#CD1076","#CD1076","#EEAD0E","#CD6600","#EEAD0E","#8B8878","#8B8878","#CD6600","#8B8878","#8B0000","#CD6600","#8B8878","#CD6600","#8B8878","#CD6600","#00008B","#8B8878","#8B8878","#CD6600","#8B8878","#8B0000","#4682B4","#CD1076","#8B8878","#8B8878","#EEAD0E","#006400","#8B8878","#4682B4","#4682B4","#8B8878","#8B8878","#8B8878","#4682B4","#8B8878","#4682B4","#8B8878","#EEAD0E","#8B8878","#8B8878","#006400","#4682B4","#8B0000","#CD1076","#8B8878","#8B8878","#8B8878","#8B8878","#8B8878","#4682B4","#8B8878","#8B8878","#8B8878","#CD6600","#8B8878","#8B0000","#8B8878","#8B8878","#8B8878","#4682B4","#8B8878","#8B8878","#8B8878","#8B8878","#CD6600","#CD6600","#006400","#CD6600","#006400","#8B8878","#8B0000","#006400","#8B8878","#8B8878","#006400","#CD1076","#EEAD0E","#00008B","#CD1076","#EEAD0E","#8B0000","#CD1076","#00008B","#EEAD0E","#4682B4","#4682B4","#EEAD0E","#006400","#4682B4","#EEAD0E","#EEAD0E","#EEAD0E","#CD6600","#8B8878","#4682B4","#CD6600","#CD6600","#4682B4","#CD6600","#8B8878","#8B0000","#4682B4","#006400","#006400","#EEAD0E","#8B8878","#8B8878","#006400","#8B0000","#00008B","#4682B4","#EEAD0E","#CD1076","#8B8878","#006400","#CD1076","#8B0000","#8B0000","#8B8878","#8B8878","#8B8878","#CD1076","#006400","#8B8878","#8B8878","#8B8878","#8B0000","#8B8878","#8B0000","#8B8878","#8B8878","#8B8878","#8B0000","#8B0000","#68228B","#8B0000","#8B0000","#00008B","#8B8878","#00008B","#8B0000","#006400","#CD1076","#006400","#006400","#8B0000","#EEAD0E","#8B8878","#8B8878","#006400","#006400","#006400","#CD1076","#8B8878","#8B8878","#8B8878","#8B8878","#CD1076","#CD1076","#CD1076","#EEAD0E","#006400","#006400","#006400","#006400","#8B0000","#006400","#006400","#4682B4","#8B8878","#8B8878","#8B8878","#CD1076","#8B8878","#8B0000","#4682B4","#4682B4","#EEAD0E","#8B8878","#CD6600","#CD6600","#CD6600","#CD1076","#68228B","#EEAD0E","#8B8878","#8B8878","#CD1076","#68228B","#68228B","#68228B","#EEAD0E","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#68228B","#8B8878","#CD1076","#8B8878","#EEAD0E","#CD1076","#EEAD0E","#EEAD0E","#CD1076","#EEAD0E","#8B8878","#8B8878","#8B8878","#68228B","#68228B","#CD1076","#8B8878","#68228B","#68228B","#68228B","#CD1076","#CD1076","#006400","#006400","#68228B","#68228B","#CD1076","#006400","#00008B","#8B8878","#8B8878","#8B8878","#006400","#006400","#CD6600","#CD6600","#8B8878","#CD6600","#CD6600","#CD6600","#CD6600","#CD6600","#CD6600","#CD6600","#8B8878","#8B8878","#8B8878","#CD1076","#8B8878","#006400","#8B8878","#8B8878","#006400","#006400","#8B8878","#006400","#8B8878","#8B8878","#8B8878","#8B8878","#006400","#8B8878","#4682B4","#8B8878","#00008B"],"fillOpacity":1},["1 | CDC Asterix AGL","2 | CDC Rosie AGL","3 | 3156-11 AGL","4 | CDC Greenstar AGL","5 | CDC Cherie AGL","6 | CDC Glamis AGL","7 | CDC Gold AGL","8 | CDC Imax AGL","9 | CDC Impower AGL","10 | CDC KR-1 AGL","11 | CDC LeMay AGL","12 | CDC Maxim AGL","13 | CDC QG-1 AGL","14 | CDC Red Rider AGL","15 | CDC Redcoat AGL","16 | CDC Redwing AGL","17 | CDC Robin AGL","18 | CDC Rosebud AGL","19 | CDC Rosetown AGL","20 | CDC Rouleau AGL","21 | CDC Royale AGL","22 | CDC Ruby AGL","23 | CDC SB-1 AGL","24 | CDC Sedley AGL","25 | CDC Vantage AGL","26 | CN 105604 AGL","27 | CN 105605 AGL","28 | CN 105715 AGL","29 | CN 105732 AGL","30 | CN 105767 AGL","31 | CN 105777 AGL","32 | CN 105789 AGL","33 | CN 105791 AGL","34 | CN 105862 AGL","35 | CN 105863 AGL","36 | CN 105864 AGL","37 | CN 105865 AGL","38 | CN 105895 AGL","39 | CN 106265 AGL","40 | CN 108369 AGL","41 | CN 108370 AGL","42 | Crimson AGL","43 | DPL 62 AGL","44 | Eston AGL","45 | Gudo AGL","46 | IG 1046 AGL","47 | IG 1706 AGL","48 | IG 1959 AGL","49 | IG 4258 AGL","50 | IG 4781 AGL","51 | IG 858 AGL","52 | ILL 10657 AGL","53 | ILL 10748 AGL","54 | ILL 11547 AGL","55 | ILL 11548 AGL","56 | ILL 11553 AGL","57 | ILL 11555 AGL","58 | ILL 11557 AGL","59 | ILL 11558 AGL","60 | ILL 1220 AGL","61 | ILL 1553 AGL","62 | ILL 1762 AGL","63 | ILL 1983 AGL","64 | ILL 213 AGL","65 | ILL 2194 AGL","66 | PI 431893 LSP AGL","67 | ILL 2507 AGL","68 | ILL 2580 AGL","69 | ILL 28 AGL","70 | ILL 3025 AGL","71 | ILL 313 AGL","72 | ILL 3347 AGL","73 | ILL 358 AGL","74 | ILL 3597 AGL","75 | ILL 4164 AGL","76 | ILL 4400 AGL","77 | ILL 4605 AGL","78 | ILL 4609 AGL","79 | ILL 4665 AGL","80 | ILL 4671 AGL","81 | ILL 4768 AGL","82 | ILL 4782 AGL","83 | ILL 4783 AGL","84 | ILL 4804 AGL","85 | ILL 4875 AGL","86 | ILL 4956 AGL","87 | ILL 5058 AGL","88 | ILL 5151 AGL","89 | ILL 5209 AGL","90 | ILL 5480 AGL","91 | ILL 5639 AGL","92 | ILL 5722 AGL","93 | ILL 5883 AGL","94 | ILL 5888 AGL","95 | ILL 5945 AGL","96 | ILL 6002 AGL","97 | ILL 618 AGL","98 | ILL 6182 AGL","99 | ILL 6211 AGL","100 | ILL 624 AGL","101 | ILL 6821 AGL","102 | ILL 6853 AGL","103 | ILL 7089 AGL","104 | ILL 7558 AGL","105 | ILL 7663 AGL","106 | ILL 7668 AGL","107 | ILL 7716 AGL","108 | ILL 7747 AGL","109 | ILL 7946 AGL","110 | ILL 7978 AGL","111 | ILL 7979 AGL","112 | ILL 8007 AGL","113 | ILL 8009 AGL","114 | ILL 8010 AGL","115 | ILL 8072 AGL","116 | ILL 8174 AGL","117 | ILL 8595 AGL","118 | ILL 9 AGL","119 | ILL 975 AGL","120 | ILL 9888 AGL","121 | ILL 9932 AGL","122 | ILL 9945 AGL","123 | ILL 9977 AGL","124 | ILL 9997 AGL","125 | ILWL 118 AGL","126 | Indianhead AGL","127 | IPL 220 AGL","128 | Laird AGL","129 | LIRL-22-46 AGL","130 | PI 163589 AGL","131 | PI 169534 LSP AGL","132 | PI 175754 LSP AGL","133 | PI 177430 LSP AGL","134 | PI 178939 LSP AGL","135 | PI 178952 AGL","136 | PI 178971 LSP AGL","137 | PI 179324 LSP AGL","138 | PI 179330 AGL","139 | PI 181771 LSP AGL","140 | PI 181886 LSP AGL","141 | PI 182217 LSP AGL","142 | PI 193546 AGL","143 | PI 193547 LSP AGL","144 | PI 193548 LSP AGL","145 | PI 193550 AGL","146 | PI 207492 LSP AGL","147 | PI 518731 LSP AGL","148 | PI 209858 LSP AGL","149 | PI 211052 LSP AGL","150 | PI 212100 LSP AGL","151 | PI 212610 LSP AGL","152 | PI 217949 LSP AGL","153 | PI 238758 LSP AGL","154 | PI 244046 AGL","155 | PI 250156 LSP AGL","156 | PI 250158 LSP AGL","157 | PI 251248 LSP AGL","158 | PI 273664 LSP AGL","159 | PI 280686 AGL","160 | PI 283604 LSP AGL","161 | PI 289066 AGL","162 | PI 289073 LSP AGL","163 | PI 289079 LSP AGL","164 | PI 290716 LSP AGL","165 | PI 297285 LSP AGL","166 | PI 297287 AGL","167 | PI 297754 LSP AGL","168 | PI 297767 AGL","169 | PI 297772 LSP AGL","170 | PI 297783 AGL","171 | PI 297787 LSP AGL","172 | PI 298023 LSP AGL","173 | PI 298121 LSP AGL","174 | PI 298122 LSP AGL","175 | PI 298357 LSP AGL","176 | PI 298631 LSP AGL","177 | PI 298644 LSP AGL","178 | PI 298645 AGL","179 | PI 298921 AGL","180 | PI 298922 LSP AGL","181 | PI 298923 LSP AGL","182 | PI 299116 LSP AGL","183 | PI 299120 LSP AGL","184 | PI 299121 LSP AGL","185 | PI 299126 LSP AGL","186 | PI 299163 LSP AGL","187 | PI 299164 LSP AGL","188 | PI 299165 AGL","189 | PI 299177 LSP AGL","190 | PI 299237 LSP AGL","191 | PI 299289 AGL","192 | PI 299312 AGL","193 | PI 299345 AGL","194 | PI 299351 LSP AGL","195 | PI 299366 LSP AGL","196 | PI 299375 LSP AGL","197 | PI 300250 LSP AGL","198 | PI 302398 LSP AGL","199 | PI 308614 LSP AGL","200 | PI 311107 LSP AGL","201 | PI 312175 LSP AGL","202 | PI 320935 LSP AGL","203 | PI 320936 LSP AGL","204 | PI 320937 LSP AGL","205 | CN 105866 AGL","206 | PI 320941 LSP AGL","207 | PI 320945 LSP AGL","208 | PI 320946 LSP AGL","209 | PI 320952 LSP AGL","210 | PI 320953 LSP AGL","211 | PI 320954 LSP AGL","212 | PI 329157 LSP AGL","213 | PI 329167 LSP AGL","214 | PI 339266 LSP AGL","215 | PI 339283 LSP AGL","216 | PI 339285 AGL","217 | PI 339289 LSP AGL","218 | PI 339292 LSP AGL","219 | PI 339296 AGL","220 | PI 343026 LSP AGL","221 | PI 345627 LSP AGL","222 | PI 358602 LSP AGL","223 | PI 368647 LSP AGL","224 | PI 368651 LSP AGL","225 | PI 370481 LSP AGL","226 | PI 374116 LSP AGL","227 | PI 374117 LSP AGL","228 | PI 374118 AGL","229 | PI 374120 LSP AGL","230 | PI 374121 AGL","231 | PI 379368 LSP AGL","232 | PI 383682 LSP AGL","233 | PI 420818 AGL","234 | PI 420924 LSP AGL","235 | PI 420925 LSP AGL","236 | PI 420929 LSP AGL","237 | PI 426202 LSP AGL","238 | PI 426778 LSP AGL","239 | PI 426784 LSP AGL","240 | PI 426797 LSP AGL","241 | PI 426807 LSP AGL","242 | PI 431618 LSP AGL","243 | PI 431622 LSP AGL","244 | PI 431630 LSP AGL","245 | PI 431633 LSP AGL","246 | PI 431636 LSP AGL","247 | PI 431643 LSP AGL","248 | PI 431662 LSP AGL","249 | PI 431663 LSP AGL","250 | PI 431679 LSP AGL","251 | PI 431684 LSP AGL","252 | PI 431705 LSP AGL","253 | PI 431710 LSP AGL","254 | PI 431714 LSP AGL","255 | PI 431717 LSP AGL","256 | PI 431728 LSP AGL","257 | PI 431731 LSP AGL","258 | PI 431739 LSP AGL","259 | PI 431753 LSP AGL","260 | PI 431756 LSP AGL","261 | PI 431809 LSP AGL","262 | PI 431824 LSP AGL","263 | PI 431863 LSP AGL","264 | PI 431873 LSP AGL","265 | PI 431884 LSP AGL","266 | PI 431888 LSP AGL","267 | PI 431923 LSP AGL","268 | PI 431980 LSP AGL","269 | PI 432000 LSP AGL","270 | PI 432001 LSP AGL","271 | PI 432002 LSP AGL","272 | PI 432005 LSP AGL","273 | PI 432028 LSP AGL","274 | PI 432033 LSP AGL","275 | PI 432085 LSP AGL","276 | PI 432106 LSP AGL","277 | PI 432124 LSP AGL","278 | PI 432145 LSP AGL","279 | PI 432147 LSP AGL","280 | PI 432184 LSP AGL","281 | PI 432188 LSP AGL","282 | PI 432190 LSP AGL","283 | PI 432201 LSP AGL","284 | PI 432212 LSP AGL","285 | PI 432236 LSP AGL","286 | PI 432245 LSP AGL","287 | PI 432271 LSP AGL","288 | PI 432286 LSP AGL","289 | PI 451763 LSP AGL","290 | PI 458503 LSP AGL","291 | PI 468900 LSP AGL","292 | PI 468901 AGL","293 | PI 468902 LSP AGL","294 | PI 472136 LSP AGL","295 | PI 472205 LSP AGL","296 | PI 472213 LSP AGL","297 | PI 472327 LSP AGL","298 | PI 472380 LSP AGL","299 | PI 472416 LSP AGL","300 | PI 472488 LSP AGL","301 | PI 472559 LSP AGL","302 | PI 472561 LSP AGL","303 | PI 472569 LSP AGL","304 | PI 472588 LSP AGL","305 | PI 472590 LSP AGL","306 | PI 472615 LSP AGL","307 | PI 472629 LSP AGL","308 | PI 477921 LSP AGL","309 | PI 490288 LSP AGL","310 | PI 490289 LSP AGL","311 | PI 508090 AGL","312 | PI 518733 LSP AGL","313 | PI 518734 LSP AGL","314 | PI 533688 LSP AGL","315 | PI 533693 LSP AGL","316 | PI 612875 AGL","317 | PI 643451 AGL","318 | PI 643452 AGL","319 | Shasta AGL","320 | W6 27754 LSP AGL","321 | W6 27760 LSP AGL","322 | W6 27763 LSP AGL","323 | W6 27766 LSP AGL","324 | W6 27767 LSP AGL"],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addLegend","args":[{"colors":["#CD1076","#00008B","#68228B","#CD6600","#4682B4","#EEAD0E","#8B0000","#006400","#8B8878"],"labels":["G1","G2","G3","G4","G5","G6","G7","G8","Mix"],"na_color":null,"na_label":"NA","opacity":1,"position":"bottomleft","type":"factor","title":"STR Group","extra":null,"layerId":null,"className":"info legend","group":null}]}],"limits":{"lat":[-37.88333333,58.9],"lng":[-118.0671388584562,91.20840261308807]}},"evals":[],"jsHooks":[]}</script>
+<script type="application/htmlwidget-sizing" data-for="htmlwidget-c9ca67ba19838d7d1fb3">{"viewer":{"width":"100%","height":400,"padding":0,"fill":true},"browser":{"width":"100%","height":400,"padding":0,"fill":true}}</script>
 </body>
 </html>

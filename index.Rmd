@@ -1,8 +1,8 @@
 ---
 title: "dblogr"
 subtitle: "Welcome to my personal website"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/)"
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr)"
 ---
 
 ```{r setup, include=FALSE}
@@ -14,7 +14,7 @@ library(shiny)
 # https://derekmichaelwright.github.io/dblogr/home
 ```
 
-> derekmichaelwright.github.io/dblogr/
+> `r icon("home")` derekmichaelwright.github.io/dblogr/
 >
 > - `r icon("r-project")` [Packages](#packages)
 > - `r icon("book")` [Publications](#publications)
@@ -46,29 +46,22 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 - `r icon("globe")` [HTML version](cv/){target="_blank"}
 - `r icon("file-pdf")` [PDF Version](https://github.com/derekmichaelwright/dblogr/raw/main/cv/cv.derek.m.wright.pdf){target="_blank"}
 
+**Emails**
+
+- `r icon("envelope")` wrightmderek@gmail.com
+- `r icon("envelope")` derek.wright@usask.ca
+
 </div><div class="col-md-6">
+
+</br>
 
 **Socials**
 
 - `r icon("github")`  [github.com/derekmichaelwright](https://github.com/derekmichaelwright){target="_blank"}
 - `r icon("x-twitter")` [twitter.com/DerekMWright](https://x.com/DerekMWright){target="_blank"}
-
-</div></div>
-
-<div class="row"><div class="col-md-6">
-
-**Professional Email**
-
-- `r icon("envelope")` derek.wright@usask.ca
-
-</div><div class="col-md-6">
-
-**Personal Email**
-
-- `r icon("envelope")` derek.wright@usask.ca
+- `r icon("instagram")` [instagram.com/derekmichaelwright/](https://www.instagram.com/derekmichaelwright/){target="_blank"}
 
 </div></div></div>
-
 
 ---
 
@@ -77,21 +70,6 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 # `r icon("r-project")` Packages {.tabset .tabset-pills}
 
 ## Data Analysis
-
-<div class="box"><div class="row"><div class="col-md-8">
-
-**agData**
-
-An `r icon("r-project")` Package Containing Agricultural Data Sets
-
-Install: `devtools::install_github("derekmichaelwright/agData")`
-
-Documentation:
-
-- `r icon("house")` [https://derekmichaelwright.github.io/agData/](https://derekmichaelwright.github.io/agData/){target="_blank"}
-- `r icon("github")` [https://github.com/derekmichaelwright/agData/](https://github.com/derekmichaelwright/agData/){target="_blank"}
-
-</div><div class="col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
 
 <div class="box"><div class="row"><div class="col-md-8">
 
@@ -110,7 +88,22 @@ Install: `devtools::install_github("derekmichaelwright/gwaspr")`
 
 <div class="box"><div class="row"><div class="col-md-8">
 
+**agData**
+
+An `r icon("r-project")` Package Containing Agricultural Data Sets
+
+Install: `devtools::install_github("derekmichaelwright/agData")`
+
+Documentation:
+
+- `r icon("house")` [https://derekmichaelwright.github.io/agData/](https://derekmichaelwright.github.io/agData/){target="_blank"}
+- `r icon("github")` [https://github.com/derekmichaelwright/agData/](https://github.com/derekmichaelwright/agData/){target="_blank"}
+
+</div><div class="col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
+
 ## Other
+
+<div class="box"><div class="row"><div class="col-md-8">
 
 **cypher**
 
@@ -124,7 +117,7 @@ Install: `devtools::install_github("derekmichaelwright/cypher")`
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_cypher.png)</div></div></div>
 
-## {-}
+# {-}
 
 ---
 
@@ -136,7 +129,7 @@ Install: `devtools::install_github("derekmichaelwright/cypher")`
 
 Scientific publications I have been involved in while working/studying at [***University of Regina***](https://www.uregina.ca/){target="_blank"}, [***Justus-Liebig-Universität Gießen (University of Giessen)***](https://www.uni-giessen.de/){target="_blank"} & the [***University of Saskatchewan***](https://www.usask.ca/){target="_blank"}.
 
-### All
+### All Publications
 
 <div class="box">
 
