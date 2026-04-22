@@ -1,6 +1,6 @@
 ---
 title: "dblogr"
-subtitle: "Welcome to my personal website"
+subtitle: "Welcome to Derek Michael Wright's personal website"
 author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/)"
 date: "Last updated: `r Sys.Date()`"
 ---
@@ -69,7 +69,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 # `r icon("r-project")` Packages {.tabset .tabset-pills}
 
-## Data Analysis
+## gwaspr
 
 <div class="box"><div class="row"><div class="col-md-8">
 
@@ -86,11 +86,13 @@ Install: `devtools::install_github("derekmichaelwright/gwaspr")`
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
 
+## agData
+
 <div class="box"><div class="row"><div class="col-md-8">
 
 **agData**
 
-An `r icon("r-project")` Package Containing Agricultural Data Sets
+An `r icon("r-project")` package containing agricultural Data sets
 
 Install: `devtools::install_github("derekmichaelwright/agData")`
 
@@ -101,7 +103,7 @@ Documentation:
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
 
-## Other
+## cypher
 
 <div class="box"><div class="row"><div class="col-md-8">
 
