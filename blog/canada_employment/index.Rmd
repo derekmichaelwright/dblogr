@@ -122,7 +122,7 @@ ages <- c(# Groups 1
 
 ---
 
-# Employment Rate {.tabset .tabset-pills}
+# Unemployment Rate {.tabset .tabset-pills}
 
 ## Canada {.tabset .tabset-pills}
 
@@ -132,7 +132,7 @@ ages <- c(# Groups 1
 # Prep data
 xx <- d1 %>% 
   filter(Area == "Canada", Sex == "Both sexes", Age == "15 years and over",
-         Measurement == "Employment rate")
+         Measurement == "Unemployment rate")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value)) +
   geom_line(size = 0.75, alpha = 0.7, color = "darkgreen") +
@@ -148,7 +148,7 @@ ggsave("canada_employment_1_01.png", mp, width = 8, height = 4)
 
 ### Sex
 
-![](canada_employment_1_02.png)
+![](canada_employment_2_02.png)
 
 ```{r}
 # Prep data
@@ -163,7 +163,53 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Sex)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canadian Employment Rate", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_employment_1_02.png", mp, width = 6, height = 4)
+ggsave("canada_employment_2_02.png", mp, width = 6, height = 4)
+```
+
+---
+
+# Employment Rate {.tabset .tabset-pills}
+
+## Canada {.tabset .tabset-pills}
+
+![](canada_employment_2_01.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Area == "Canada", Sex == "Both sexes", Age == "15 years and over",
+         Measurement == "Employment rate")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value)) +
+  geom_line(size = 0.75, alpha = 0.7, color = "darkgreen") +
+  scale_y_continuous(breaks = seq(52, 64, by = 2), minor_breaks = 50:65) +
+  scale_x_date(date_minor_breaks = "year") +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canadian Employment Rate", x = NULL,
+       y = "Percent", caption = myCaption)
+ggsave("canada_employment_2_01.png", mp, width = 8, height = 4)
+```
+
+---
+
+### Sex
+
+![](canada_employment_2_02.png)
+
+```{r}
+# Prep data
+xx <- d1 %>%
+  filter(Area == "Canada", Sex != "Both sexes", Age == "15 years and over",
+         Measurement == "Employment rate")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value, color = Sex)) +
+  geom_line(size = 0.75, alpha = 0.8) +
+  scale_color_manual(name = NULL, values = myCs_Sex) +
+  scale_x_date(date_minor_breaks = "year") +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canadian Employment Rate", x = NULL,
+       y = "Percent", caption = myCaption)
+ggsave("canada_employment_2_02.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F}
@@ -174,7 +220,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ### Yearly Average
 
-![](canada_employment_1_03.png)
+![](canada_employment_2_03.png)
 
 ```{r}
 # Prep data
@@ -191,14 +237,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Sex)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canadian Employment Rate", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_employment_1_03.png", mp, width = 6, height = 4)
+ggsave("canada_employment_2_03.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### > 2010
 
-![](canada_employment_1_04.png)
+![](canada_employment_2_04.png)
 
 ```{r}
 # Prep data
@@ -216,14 +262,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Sex)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canadian Employment Rate", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_employment_1_04.png", mp, width = 6, height = 4)
+ggsave("canada_employment_2_04.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### Age
 
-![](canada_employment_1_05.png)
+![](canada_employment_2_05.png)
 
 ```{r}
 # Prep data
@@ -238,7 +284,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Age)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canadian Employment Rate", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_employment_1_05.png", mp, width = 6, height = 4)
+ggsave("canada_employment_2_05.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -249,7 +295,7 @@ ggsave("canada_employment_1_05.png", mp, width = 6, height = 4)
 
 #### All Data
 
-![](canada_employment_1_06.png)
+![](canada_employment_2_06.png)
 
 ```{r}
 # Prep data
@@ -264,14 +310,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Age)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canadian Employment Rate", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_employment_1_06.png", mp, width = 10, height = 4)
+ggsave("canada_employment_2_06.png", mp, width = 10, height = 4)
 ```
 
 ---
 
 #### > 2010
 
-![](canada_employment_1_07.png)
+![](canada_employment_2_07.png)
 
 ```{r}
 # Prep data
@@ -288,7 +334,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Age)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canadian Employment Rate", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_employment_1_07.png", mp, width = 10, height = 4)
+ggsave("canada_employment_2_07.png", mp, width = 10, height = 4)
 ```
 
 ---
@@ -297,7 +343,7 @@ ggsave("canada_employment_1_07.png", mp, width = 10, height = 4)
 
 #### All Data
 
-![](canada_employment_1_08.png)
+![](canada_employment_2_08.png)
 
 ```{r}
 # Prep data
@@ -312,14 +358,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Sex)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canadian Employment Rate", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_employment_1_08.png", mp, width = 10, height = 4)
+ggsave("canada_employment_2_08.png", mp, width = 10, height = 4)
 ```
 
 ---
 
 #### > 2010
 
-![](canada_employment_1_09.png)
+![](canada_employment_2_09.png)
 
 ```{r}
 # Prep data
@@ -336,7 +382,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Sex)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canadian Employment Rate", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_employment_1_09.png", mp, width = 10, height = 4)
+ggsave("canada_employment_2_09.png", mp, width = 10, height = 4)
 ```
 
 ---
@@ -345,7 +391,7 @@ ggsave("canada_employment_1_09.png", mp, width = 10, height = 4)
 
 #### Sex
 
-![](canada_employment_1_10.png)
+![](canada_employment_2_10.png)
 
 ```{r}
 # Prep data
@@ -362,14 +408,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Area)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Newfoundland & Alberta Employment Rates", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_employment_1_10.png", mp, width = 6, height = 4)
+ggsave("canada_employment_2_10.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 #### Age
 
-![](canada_employment_1_11.png)
+![](canada_employment_2_11.png)
 
 ```{r}
 # Prep data
@@ -386,14 +432,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Area)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Newfoundland & Alberta Employment Rates", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_employment_1_11.png", mp, width = 6, height = 4)
+ggsave("canada_employment_2_11.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ### Ontario
 
-![](canada_employment_1_12.png)
+![](canada_employment_2_12.png)
 
 ```{r}
 # Prep data
@@ -409,7 +455,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Sex)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Ontario Employment Rate", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_employment_1_12.png", mp, width = 10, height = 4)
+ggsave("canada_employment_2_12.png", mp, width = 10, height = 4)
 ```
 
 ---
@@ -418,7 +464,7 @@ ggsave("canada_employment_1_12.png", mp, width = 10, height = 4)
 
 ## Canada 
 
-![](canada_employment_2_01.png)
+![](canada_employment_3_01.png)
 
 ```{r}
 # Prep data
@@ -433,14 +479,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
   scale_x_date(date_minor_breaks = "year") +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada", y = "Million", x = NULL, caption = myCaption)
-ggsave("canada_employment_2_01.png", mp, width = 6, height = 4)
+ggsave("canada_employment_3_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## > 2010
 
-![](canada_employment_2_02.png)
+![](canada_employment_3_02.png)
 
 ```{r}
 # Prep data
@@ -456,14 +502,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
   scale_x_date(date_minor_breaks = "year") +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada", y = "Million", x = NULL, caption = myCaption)
-ggsave("canada_employment_2_02.png", mp, width = 6, height = 4)
+ggsave("canada_employment_3_02.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Age Groups
 
-![](canada_employment_2_03.png)
+![](canada_employment_3_03.png)
 
 ```{r}
 # Prep data
@@ -479,14 +525,14 @@ mp <- ggplot(xx, aes(x = Year, y = Percent, fill = Measurement)) +
   scale_fill_manual(name = NULL, values = c("darkred","steelblue")) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Employment in Canada", x = NULL, caption = myCaption)
-ggsave("canada_employment_2_03.png", mp, width = 8, height = 4)
+ggsave("canada_employment_3_03.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ## Provinces
 
-![](canada_employment_2_04.png)
+![](canada_employment_3_04.png)
 
 ```{r}
 # Prep data
@@ -502,14 +548,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Measurement)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Compared to 2019 Average", 
        y = "Million", x = NULL, caption = myCaption)
-ggsave("canada_employment_2_04.png", mp, width = 10, height = 4)
+ggsave("canada_employment_3_04.png", mp, width = 10, height = 4)
 ```
 
 ---
 
 ## 2019 vs > 2019
 
-![](canada_employment_2_05.png)
+![](canada_employment_3_05.png)
 
 ```{r}
 # Prep data
@@ -537,7 +583,7 @@ mp <- ggplot(xx, aes(x = Date, y = MonthDiff / 1000, fill = PosNeg)) +
   theme_agData(legend.position = "none") +
   labs(title = "Compared to 2019 Average", 
        y = "Million", x = NULL, caption = myCaption)
-ggsave("canada_employment_2_05.png", mp, width = 8, height = 4)
+ggsave("canada_employment_3_05.png", mp, width = 8, height = 4)
 ```
 
 ```{r echo = F, eval = F}
@@ -553,7 +599,7 @@ DT::datatable(xx %>%
 
 ## Monthly Change
 
-![](canada_employment_2_06.png)
+![](canada_employment_3_06.png)
 
 ```{r}
 # Prep data
@@ -586,14 +632,14 @@ mp <- ggplot(xx, aes(x = Date, y = PanDiff / 1000, fill = PosNeg)) +
   theme_agData(legend.position = "none") +
   labs(title = "Change each month since the start of the pandemic", 
        y = "Million", x = NULL, caption = myCaption)
-ggsave("canada_employment_2_06.png", mp, width = 8, height = 4)
+ggsave("canada_employment_3_06.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ### Ontario
 
-![](canada_employment_2_07.png)
+![](canada_employment_3_07.png)
 
 ```{r}
 # Prep data
@@ -622,7 +668,7 @@ mp <- ggplot(xx, aes(x = Date, y = Change, fill = PosNeg)) +
   theme_agData(legend.position = "none") +
   labs(title = "Change each month since the start of the pandemic", 
        y = "Million", x = NULL, caption = myCaption)
-ggsave("canada_employment_2_07.png", mp, width = 8, height = 4)
+ggsave("canada_employment_3_07.png", mp, width = 8, height = 4)
 ```
 
 
@@ -632,7 +678,7 @@ ggsave("canada_employment_2_07.png", mp, width = 8, height = 4)
 
 ## Canada
 
-![](canada_employment_3_01.png)
+![](canada_employment_4_01.png)
 
 ```{r}
 # Prep data
@@ -648,12 +694,12 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - Participation rate", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_employment_3_01.png", mp, width = 8, height = 4)
+ggsave("canada_employment_4_01.png", mp, width = 8, height = 4)
 ```
 
 ## Provinces
 
-![](canada_employment_3_02.png)
+![](canada_employment_4_02.png)
 ```{r}
 # Prep data
 xx <- d1 %>% 
@@ -668,7 +714,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Sex)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - Participation rate - 25 to 54 years", 
        y = "Million", x = NULL, caption = myCaption)
-ggsave("canada_employment_3_02.png", mp, width = 10, height = 5)
+ggsave("canada_employment_4_02.png", mp, width = 10, height = 5)
 ```
 
 ---
@@ -677,7 +723,7 @@ ggsave("canada_employment_3_02.png", mp, width = 10, height = 5)
 
 ## Canada
 
-![](canada_employment_5_01.png)
+![](canada_employment_6_01.png)
 
 ```{r}
 # Prep data
@@ -690,14 +736,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = FamilyType)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - Total Median Income", x = NULL,
        y = "Canadian Dollars (x1000)", caption = myCaption)
-ggsave("canada_employment_5_01.png", mp, width = 6, height = 4)
+ggsave("canada_employment_6_01.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Provinces
 
-![](canada_employment_5_02.png)
+![](canada_employment_6_02.png)
 
 ```{r}
 # Prep data
@@ -711,14 +757,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = FamilyType)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - Total Median Income", x = NULL,
        y = "Canadian Dollars (x1000)", caption = myCaption)
-ggsave("canada_employment_5_02.png", mp, width = 8, height = 6)
+ggsave("canada_employment_6_02.png", mp, width = 8, height = 6)
 ```
 
 ---
 
 ## Age
 
-![](canada_employment_5_03.png)
+![](canada_employment_6_03.png)
 
 ```{r}
 # Prep data
@@ -733,14 +779,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = FamilyType)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canada - Total Median Income", x = NULL,
        y = "Canadian Dollars (x1000)", caption = myCaption)
-ggsave("canada_employment_5_03.png", mp, width = 8, height = 4)
+ggsave("canada_employment_6_03.png", mp, width = 8, height = 4)
 ```
 
 ---
 
 ## Growth Rate by Age
 
-![](canada_employment_5_04.png)
+![](canada_employment_6_04.png)
 
 ```{r}
 # Prep data
@@ -759,14 +805,14 @@ mp <- ggplot(xx, aes(x = Year, y = Rate)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canada - Total Median Income Growth Rate", x = NULL,
        y = "Percent", caption = myCaption)
-ggsave("canada_employment_5_04.png", mp, width = 8, height = 6)
+ggsave("canada_employment_6_04.png", mp, width = 8, height = 6)
 ```
 
 ---
 
 ## Inflation Adjusted Growth Rate
 
-![](canada_employment_5_05.png)
+![](canada_employment_6_05.png)
 
 ```{r}
 # Prep data
@@ -787,7 +833,7 @@ mp <- ggplot(xx, aes(x = Year, y = Rate)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Canada - Inflation Adjusted Total Median Income Growth Rate",
        x = NULL, y = "Percent", caption = myCaption)
-ggsave("canada_employment_5_05.png", mp, width = 8, height = 6)
+ggsave("canada_employment_6_05.png", mp, width = 8, height = 6)
 ```
 
 ---
@@ -796,7 +842,7 @@ ggsave("canada_employment_5_05.png", mp, width = 8, height = 6)
 
 ## Canada
 
-![](canada_employment_6_01.png)
+![](canada_employment_7_01.png)
 
 ```{r}
 # Prep data
@@ -810,7 +856,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - EI", x = NULL, 
        y = "Thousand People", caption = myCaption)
-ggsave("canada_employment_6_01.png", mp, width = 7, height = 5)
+ggsave("canada_employment_7_01.png", mp, width = 7, height = 5)
 ```
 
 
@@ -818,7 +864,7 @@ ggsave("canada_employment_6_01.png", mp, width = 7, height = 5)
 
 ## Sex
 
-![](canada_employment_6_02.png)
+![](canada_employment_7_02.png)
 
 ```{r}
 # Prep data
@@ -832,14 +878,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - EI", x = NULL, 
        y = "Thousand People", caption = myCaption)
-ggsave("canada_employment_6_02.png", mp, width = 7, height = 5)
+ggsave("canada_employment_7_02.png", mp, width = 7, height = 5)
 ```
 
 ---
 
 ## Post 2020
 
-![](canada_employment_6_03.png)
+![](canada_employment_7_03.png)
 
 ```{r}
 # Prep data
@@ -854,14 +900,14 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - EI", x = NULL, 
        y = "Thousand People", caption = myCaption)
-ggsave("canada_employment_6_03.png", mp, width = 7, height = 5)
+ggsave("canada_employment_7_03.png", mp, width = 7, height = 5)
 ```
 
 ---
 
 ## Provinces
 
-![](canada_employment_6_04.png)
+![](canada_employment_7_04.png)
 
 ```{r}
 # Prep data
@@ -875,5 +921,5 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - EI - ages 25 to 54 years", x = NULL, 
        y = "Thousand People", caption = myCaption)
-ggsave("canada_employment_6_04.png", mp, width = 12, height = 8)
+ggsave("canada_employment_7_04.png", mp, width = 12, height = 8)
 ```
