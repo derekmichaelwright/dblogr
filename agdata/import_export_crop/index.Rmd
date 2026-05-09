@@ -44,7 +44,7 @@ ggIEC <- function(myItem = "Wheat", myYear = 2019) {
     filter(!duplicated(Area))
   myColors <- c("darkgreen", "darkblue", "darkred", 
               "darkgoldenrod2", "darkslategrey")
-  xx <- agData_FAO_Trade_Quantity %>% 
+  xx <- bind_rows(agData_FAO_Trade_Import_Quantity, agData_FAO_Trade_Export_Quantity) %>% 
     filter(Area %in% unique(agData_FAO_Country_Table$Country),
            Item == myItem, Year == myYear) %>%
     left_join(myAreas, by = "Area") %>%
@@ -75,7 +75,7 @@ ggIECA <- function(myItem = "Wheat") {
   # Prep data
   myColors <- c("darkgreen", "darkblue", "darkred", 
               "darkgoldenrod2", "darkslategrey")
-  xx <- agData_FAO_Trade_Quantity %>% 
+  xx <- bind_rows(agData_FAO_Trade_Import_Quantity, agData_FAO_Trade_Export_Quantity) %>% 
     region_Info() %>%
     filter(Area %in% unique(agData_FAO_Country_Table$Country),
            Item == myItem) %>%

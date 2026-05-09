@@ -33,7 +33,9 @@ library(gganimate)
 myCaption <- "derekmichaelwright.github.io/dblogr/agdata/lentil | Data: FAOSTAT"
 #
 d1 <- agData_FAO_Crops %>% filter(Item == "Lentils, dry")
-d2 <- agData_FAO_Trade_Quantity %>% filter(Item == "Lentils, dry")
+d2 <- bind_rows(agData_FAO_Trade_Import_Quantity,
+                agData_FAO_Trade_Export_Quantity) %>% 
+  filter(Item == "Lentils, dry")
 ```
 
 ---
@@ -80,7 +82,7 @@ dev.off()
 ```{r}
 # Prep data
 xx <- d1 %>% 
-  filter(Measurement == "Production", Area != "Slovenia",
+  filter(Measurement == "Production", #Area != "Slovenia",
          Area %in% agData_FAO_Country_Table$Country) %>% 
   group_by(Area) %>%
   mutate(Value = movingAverage(Value, n = 3)) %>%

@@ -147,7 +147,7 @@ fnames <- paste(", fresh n.e.c.", " \\(excluding dehydrated)",
                " \\(Capsicum spp. and Pimenta spp.)", ", crude", sep = "|")
 xx <- agData_FAO_Crops %>% 
     filter(Area == "Netherlands", Measurement == "Production",
-           !Item %in% c("Watermelons")) %>% 
+           !Item %in% c("Watermelons", "Green tea (not fermented), black tea (fermented) and partly fermented tea, in immediate packings of a content not exceeding 3 kg")) %>% 
   group_by(Item) %>%
   mutate(Value = movingAverage(Value, n = 3)) %>%
   group_by(Year) %>%

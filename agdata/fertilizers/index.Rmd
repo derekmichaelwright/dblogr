@@ -42,7 +42,7 @@ dP <- agData_FAO_Fertilizers %>% filter(Item == "Nutrient phosphate P2O5 (total)
 dK <- agData_FAO_Fertilizers %>% filter(Item == "Nutrient potash K2O (total)")
 # N rate
 x1 <- dN %>% filter(Measurement == "Agricultural Use")
-x2 <- agData_FAO_LandUse %>% filter(Item == "Cropland")
+x2 <- agData_FAO_LandUse %>% filter(Item == "Cropland", Measurement == "Area")
 dNr <- bind_rows(x1, x2) %>% 
   select(-Measurement, -Unit) %>% 
   spread(Item, Value) %>%
@@ -50,14 +50,14 @@ dNr <- bind_rows(x1, x2) %>%
   filter(!is.na(NPH))
 # P rate
 x1 <- dP %>% filter(Measurement == "Agricultural Use")
-x2 <- agData_FAO_LandUse %>% filter(Item == "Cropland")
+x2 <- agData_FAO_LandUse %>% filter(Item == "Cropland", Measurement == "Area")
 dPr <- bind_rows(x1, x2) %>% 
   select(-Measurement, -Unit) %>% 
   spread(Item, Value) %>%
   mutate(PPH = 1000 * `Nutrient phosphate P2O5 (total)` / Cropland)
 # K rate
 x1 <- dK %>% filter(Measurement == "Agricultural Use")
-x2 <- agData_FAO_LandUse %>% filter(Item == "Cropland")
+x2 <- agData_FAO_LandUse %>% filter(Item == "Cropland", Measurement == "Area")
 dKr <- bind_rows(x1, x2) %>% 
   select(-Measurement, -Unit) %>% 
   spread(Item, Value) %>%
@@ -76,12 +76,14 @@ dKr <- bind_rows(x1, x2) %>%
 
 ```{r}
 # Prep data
+
 xx <- dd %>%
   filter(Area == "World", Measurement == "Production",
-         Item == "Total Fertilizers")
+         Item %in% myItems
+         )
 # Plot
-mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
-  geom_line(color = "darkgreen", alpha = 0.7, size = 1.5) +
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
+  geom_line(alpha = 0.7, size = 1.5) +
   theme_agData() +
   labs(title = "Global Fertilizer Production", x = NULL,
        y = "Million Tonnes", caption = myCaption)
@@ -202,7 +204,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myMs <- c("Import Quantity", "Export Quantity")
+myMs <- c("Import qantity", "Export quantity")
 myAs <- c("Southern Europe", "Western Europe", 
           "Northern Europe", "Eastern Europe")
 myCs <- c("darkorange", "darkgreen", "darkblue", "darkred")
@@ -234,7 +236,7 @@ ggsave("fertilizers_1_06.png", mp, width = 6, height = 6)
 
 ```{r}
 # Prep data
-myMs <- c("Import Quantity", "Export Quantity")
+myMs <- c("Import quantity", "Export quantity")
 myAs <- c("UK", "France", "Russia")
 myCs <- c("black", "darkblue", "darkred")
 xx <- dd %>% 
@@ -267,7 +269,7 @@ ggsave("fertilizers_1_07.png", mp, width = 6, height = 6)
 # Create plotting function
 ggFert <- function(area = "Canada") {
   # Prep data
-  myMs <- c("Import Quantity", "Export Quantity")
+  myMs <- c("Import quantity", "Export quantity")
   myCs <- c("darkred", "steelblue", "darkblue")
   #
   xx <- dd %>% 
@@ -484,7 +486,7 @@ ggsave("fertilizers_n_1_04.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 myMs <- c("Agricultural Use", "Production", 
-          "Import Quantity", "Export Quantity")
+          "Import quantity", "Export quantity")
 myAs <- c("Asia", "Europe", "Americas", "Africa", "Oceania")
 myCs <- c("darkorange", "darkblue", "darkgreen", "darkred", "steelblue")
 xx <- dN %>% 
@@ -512,7 +514,7 @@ ggsave("fertilizers_n_2_01.png", mp, width = 7, height = 5)
 ```{r}
 # Prep data
 myMs <- c("Agricultural Use", "Production", 
-          "Import Quantity", "Export Quantity")
+          "Import quantity", "Export quantity")
 myAs <- c("Southern Europe", "Western Europe", "Northern Europe",
           "Eastern Europe", "Central Asia")
 myCs <- c("darkorange", "darkgreen", "darkblue", "darkred", "steelblue")
@@ -545,7 +547,7 @@ ggFertP <- function(area = "Canada") {
   # Prep data
   myGs <- c("Production / Use", "Import / Export")
   myMs <- c("Agricultural Use", "Production", 
-                  "Import Quantity", "Export Quantity")
+                  "Import quantity", "Export quantity")
   myCs <- c("darkgreen", "darkred", "steelblue", "darkblue")
   xx <- dN %>% 
     filter(Area %in% area, Measurement != "Other Uses") %>%
@@ -870,7 +872,7 @@ ggsave("fertilizers_p_1_04.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 myMs <- c("Agricultural Use", "Production", 
-          "Import Quantity", "Export Quantity")
+          "Import quantity", "Export quantity")
 myAs <- c("Asia", "Europe", "Americas", "Africa", "Oceania")
 myCs <- c("darkorange", "darkblue", "darkgreen", "darkred", "steelblue")
 xx <- dP %>% 
@@ -898,7 +900,7 @@ ggsave("fertilizers_p_2_01.png", mp, width = 7, height = 5)
 ```{r}
 # Prep data
 myMs <- c("Agricultural Use", "Production", 
-          "Import Quantity", "Export Quantity")
+          "Import quantity", "Export quantity")
 myAs <- c("Southern Europe", "Western Europe", "Northern Europe",
           "Eastern Europe", "Central Asia")
 myCs <- c("darkorange", "darkgreen", "darkblue", "darkred", "steelblue")
@@ -930,7 +932,7 @@ ggFertN <- function(area = "Canada") {
   # Prep data
   myGs <- c("Production / Use", "Import / Export")
   myMs <- c("Agricultural Use", "Production", 
-            "Import Quantity", "Export Quantity")
+            "Import quantity", "Export quantity")
   myCs <- c("darkgreen", "darkred", "steelblue", "darkblue")
   xx <- dP %>% 
     filter(Area %in% area, Measurement != "Other Uses") %>%
@@ -1145,7 +1147,7 @@ ggsave("fertilizers_k_1_04.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 myMs <- c("Agricultural Use", "Production", 
-          "Import Quantity", "Export Quantity")
+          "Import quantity", "Export quantity")
 myAs <- c("Asia", "Europe", "Americas", "Africa")
 colors <- c("darkorange", "darkblue", "darkgreen", "darkred")
 xx <- dK %>% 
@@ -1173,7 +1175,7 @@ ggsave("fertilizers_k_2_01.png", mp, width = 7, height = 5)
 ```{r}
 # Prep data
 myMs <- c("Agricultural Use", "Production", 
-          "Import Quantity", "Export Quantity")
+          "Import quantity", "Export quantity")
 myAs <- c("Southern Europe", "Western Europe", "Northern Europe",
           "Eastern Europe", "Central Asia")
 colors <- c("darkorange", "darkgreen", "darkblue", "darkred", "steelblue")
@@ -1205,7 +1207,7 @@ ggFertK <- function(area = "Canada") {
   # Prep data
   myGs <- c("Production / Use", "Import / Export")
   myMs <- c("Agricultural Use", "Production", 
-            "Import Quantity", "Export Quantity")
+            "Import quantity", "Export quantity")
   myCs <- c("darkgreen", "darkred", "steelblue", "darkblue")
   xx <- dK %>% 
     filter(Area %in% area, Measurement != "Other Uses") %>%

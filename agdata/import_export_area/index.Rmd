@@ -34,14 +34,14 @@ myCaption <- "derekmichaelwright.github.io/dblogr/agdata/import_export_area | Da
 ## Ploting function
 
 ```{r class.source = 'fold-show'}
-xx <- agData_FAO_Trade_Quantity %>%
+xx <- bind_rows(agData_FAO_Trade_Import_Quantity, agData_FAO_Trade_Export_Quantity) %>%
   filter(Area == "Canada")
 # Create plotting functions
 ggIEA <- function(myArea = "Canada") {
   # Prep data
   myItems <- c("Cereals", "Pulses", "Oilseeds", "Roots and Tubers", "Fruit", "Vegetables")
   myColors <- c("steelblue", "darkred")
-  xx <- agData_FAO_Trade_Quantity %>%
+  xx <- bind_rows(agData_FAO_Trade_Import_Quantity, agData_FAO_Trade_Export_Quantity) %>%
     filter(Area == myArea, Item %in% myItems) %>%
     mutate(Measurment = gsub(" Quantity", "", Measurement),
            Item = factor(Item, levels = myItems))
@@ -219,7 +219,7 @@ ggIEAY <- function(myArea = "Canada", myYear = 2017) {
   # Prep data
   myItems <- c("Cereals", "Pulses", "Oilseeds", "Roots and Tubers", "Fruit", "Vegetables")
   myColors <- c("darkgreen", "darkred", "darkgoldenrod2", "darkblue", "steelblue", "purple4")
-  xx <- agData_FAO_Trade_Quantity %>%
+  xx <- bind_rows(agData_FAO_Trade_Import_Quantity, agData_FAO_Trade_Export_Quantity) %>%
     filter(Area == myArea, Year == myYear, Item %in% myItems) %>%
     mutate(Measurment = gsub(" Quantity", "", Measurement),
            Item = factor(Item, levels = myItems))
@@ -368,7 +368,7 @@ ggIEAA <- function(myArea = "Canada") {
   # Prep data
   myItems <- c("Cereals", "Pulses", "Oilseeds", "Roots and Tubers", "Fruit", "Vegetables")
   myColors <- c("darkgreen", "darkred", "darkgoldenrod2", "darkblue", "steelblue", "purple4")
-  xx <- agData_FAO_Trade_Quantity %>%
+  xx <- bind_rows(agData_FAO_Trade_Import_Quantity, agData_FAO_Trade_Export_Quantity) %>%
     filter(Area == myArea, Item %in% myItems) %>%
     mutate(Item = factor(Item, levels = myItems))
   # Plot
