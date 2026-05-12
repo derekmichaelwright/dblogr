@@ -110,15 +110,21 @@ ggCropMap_bind <- function(myCrop = "Lentils, dry",
 
 # Crops {.tabset .tabset-pills}
 
-## Wheat
-
-![](Wheat_Production.gif)
+## Wheat {.tabset .tabset-pills}
 
 ```{r}
 ggCropMap_animation(myCrop = "Wheat", myMeasure = "Production")
 ```
 
+### Animation
+
+![](Wheat_Production.gif)
+
+### 2020
+
 ![](Wheat/Wheat_Production_2020.png)
+
+### 1970
 
 ![](Wheat/Wheat_Production_1970.png)
 
@@ -132,189 +138,261 @@ file.copy(from = "Wheat_Production_2020_1970.png", to = "featured.png", overwrit
 
 ---
 
-## Barley 
+## Barley {.tabset .tabset-pills}
 
 ```{r}
 ggCropMap_animation(myCrop = "Barley", myMeasure = "Production")
 ```
 
+### Animation
+
 ![](Barley_Production.gif)
 
+### 2020
+
 ![](Barley/Barley_Production_2020.png)
+
+### 1970
 
 ![](Barley/Barley_Production_1970.png)
 
 ---
 
-## Maize 
+## Maize {.tabset .tabset-pills}
 
 ```{r}
 ggCropMap_animation(myCrop = "Maize (corn)", myMeasure = "Production")
 ```
 
+### Animation
+
 ![](Maize (corn)_Production.gif)
 
+### 2020
 
 ![](Maize (corn)/Maize (corn)_Production_2020.png)
+
+### 1970
 
 ![](Maize (corn)/Maize (corn)_Production_1970.png)
 
 ---
 
-## Rapeseed
+## Rapeseed {.tabset .tabset-pills}
 
 ```{r}
 ggCropMap_animation(myCrop = "Rapeseed or canola oil, crude", myMeasure = "Production")
 ```
 
+### Animation
+
 ![](Rapeseed or canola oil, crude_Production.gif)
 
+### 2020
+
 ![](Rapeseed or canola oil, crude/Rapeseed or canola oil, crude_Production_2020.png)
+
+### 1970
 
 ![](Rapeseed or canola oil, crude/Rapeseed or canola oil, crude_Production_1970.png)
 
 ---
 
-## Lentils
+## Lentils {.tabset .tabset-pills}
 
 ```{r}
 ggCropMap_animation(myCrop = "Lentils, dry", myMeasure = "Production")
 ```
 
+### Animation
+
 ![](Lentils, dry_Production.gif)
 
+### 2020
 
 ![](Lentils, dry/Lentils, dry_Production_2020.png)
+
+### 1970
 
 ![](Lentils, dry/Lentils, dry_Production_1970.png)
 
 ---
 
-## Chickpeas
+## Chickpeas {.tabset .tabset-pills}
 
 ```{r}
 ggCropMap_animation(myCrop = "Chick peas, dry", myMeasure = "Production")
 ```
 
+### Animation
+
 ![](Chick peas, dry_Production.gif)
 
+### 2020
 
 ![](Chick peas, dry/Chick peas, dry_Production_2020.png)
+
+### 1970
 
 ![](Chick peas, dry/Chick peas, dry_Production_1970.png)
 
 ---
 
-## Peas
+## Peas {.tabset .tabset-pills}
 
 ```{r}
 ggCropMap_animation(myCrop = "Peas, dry", myMeasure = "Production")
 ```
 
+### Animation
+
 ![](Peas, dry_Production.gif)
 
+### 2020
 
 ![](Peas, dry/Peas, dry_Production_2020.png)
+
+### 1970
 
 ![](Peas, dry/Peas, dry_Production_1970.png)
 
 ---
 
-## Beans
+## Beans {.tabset .tabset-pills}
 
 ```{r}
 ggCropMap_animation(myCrop = "Beans, dry", myMeasure = "Production")
 ```
 
+### Animation
+
 ![](Beans, dry_Production.gif)
 
+### 2020
+
 ![](Beans, dry/Beans, dry_Production_2020.png)
+
+### 1970
 
 ![](Beans, dry/Beans, dry_Production_1970.png)
 
 ---
 
-## Soybeans
+## Soybeans {.tabset .tabset-pills}
 
 ```{r}
 ggCropMap_animation(myCrop = "Soya beans", myMeasure = "Production")
 ```
 
+### Animation
+
 ![](Soya beans_Production.gif)
 
+### 2020
+
 ![](Soya beans/Soya beans_Production_2020.png)
+
+### 1970
 
 ![](Soya beans/Soya beans_Production_1970.png)
 
 ---
 
-## Sugarbeet
+## Sugarbeet {.tabset .tabset-pills}
 
 ```{r}
 ggCropMap_animation(myCrop = "Sugar beet", myMeasure = "Production")
 ```
 
+### Animation
+
 ![](Sugar beet_Production.gif)
 
+### 2020
+
 ![](Sugar beet/Sugar beet_Production_2020.png)
+
+### 1970
 
 ![](Sugar beet/Sugar beet_Production_1970.png)
 
 ---
 
-## Hempseed
+## Hempseed {.tabset .tabset-pills}
 
 ```{r}
 ggCropMap_animation(myCrop = "Hempseed", myMeasure = "Production")
 ```
 
+### Animation
+
 ![](Hempseed_Production.gif)
 
+### 2020
+
 ![](Hempseed/Hempseed_Production_2020.png)
+
+### 1970
 
 ![](Hempseed/Hempseed_Production_1970.png)
 
 ---
 
-## Potato
+## Potato {.tabset .tabset-pills}
 
 ```{r}
 ggCropMap_animation(myCrop = "Potatoes", myMeasure = "Production")
 ```
 
+### Animation
+
 ![](Potatoes_Production.gif)
 
+### 2020
+
 ![](Potatoes/Potatoes_Production_2020.png)
+
+### 1970
 
 ![](Potatoes/Potatoes_Production_1970.png)
 
 ---
 
-## Cotton
+## Cotton {.tabset .tabset-pills}
 
 ```{r}
 ggCropMap_animation(myCrop = "Cotton seed", myMeasure = "Production")
 ```
 
+### Animation
+
 ![](Cotton seed_Production.gif)
 
+### 2020
+
 ![](Cotton seed/Cotton seed_Production_2020.png)
+
+### 1970
 
 ![](Cotton seed/Cotton seed_Production_1970.png)
 
 ---
 
-## Sorghum
+## Sorghum {.tabset .tabset-pills}
 
 ```{r}
 ggCropMap_animation(myCrop = "Sorghum", myMeasure = "Production")
 ``` 
 
+### Animation
+
 ![](Sorghum_Production.gif)
 
-![](Sorghum/Sorghum_Production_2020.png)
+### 2020
 
 ![](Sorghum/Sorghum_Production_2020.png)
+
+### 1970
 
 ![](Sorghum/Sorghum_Production_1970.png)
 

@@ -281,7 +281,7 @@ xx <- dd %>% filter(Area %in% mySubRegions, Year == max(Year)) %>%
 # Plot
 mp <- ggplot(xx, aes(x = Cereals, y = Pulses)) + 
   geom_point(aes(size = Tubers, color = Region), alpha = 0.8) + 
-  geom_text_repel(aes(label = Area), size = 2, alpha = 0.3) +
+  geom_text_repel(aes(label = Area), size = 2, alpha = 0.8) +
   scale_color_manual(values = myColors3) +
   theme_agData() +
   labs(title = paste("Tonnes Per Person -", max(dd$Year)),
