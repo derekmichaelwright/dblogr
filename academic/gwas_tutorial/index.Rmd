@@ -583,16 +583,17 @@ myG <- read.csv("Data/myG_hmp.csv", header = T)
 
 ## Check Results
 
-Check which traits and models have ran with `is.ran()`
+Check which traits and models have ran with `is_Ran()` and `run_Summary`
 
 ```{r}
-is_ran(folder = "GWAS_Results/")
+is_Ran(myY = myY, folder = "GWAS_Results/")
+run_Summary(folder = "GWAS_Results/")
 ```
 
-Check if the results files are ordered by p.value with `is_ordered()`. If not this could cause problems
+Check if the results files are ordered by p.value with `is_Ordered()`. If not this could cause problems
 
 ```{r}
-is_ordered(folder = "GWAS_Results/")
+is_Ordered(folder = "GWAS_Results/")
 ```
 
 If they are not ordered, they can be with the `order_GWAS_Results()` function
