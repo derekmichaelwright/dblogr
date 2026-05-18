@@ -11,11 +11,9 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data {.tabset .tabset-pills}
+# Data
 
-## STATCAN Table: 14-10-0288-01
-
-Employment by class of worker
+## STATCAN Table: 14-10-0288-01 - Employment by class of worker
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410028801](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1410028801){target="_blank"}
 > - `r shiny::icon("save")` [1410028801_databaseLoadingData.csv](1410028801_databaseLoadingData.csv)
@@ -411,17 +409,17 @@ ggsave("canada_public_private_5_02.png", mp, width = 10, height = 4)
 # Prep data
 xx <- d1 %>% 
   filter(Area == "Canada", Sex != "Both sexes", 
-         Date %in% as.Date(c("2020-02-15","2022-05-15"))) %>%
+         Date %in% as.Date(c("2020-02-15","2025-05-15"))) %>%
   select(Date, Measurement, Sex, Value) %>%
   spread(Date, Value) %>%
-  mutate(Change = `2022-05-15` - `2020-02-15`)
+  mutate(Change = `2025-05-15` - `2020-02-15`)
 # Plot
 mp <- ggplot(xx, aes(x = Sex, y = Change, fill = Sex)) +
   geom_col(position = "dodge", color = "black", alpha = 0.7) +
   facet_grid(. ~ Measurement) +
   scale_fill_manual(values = myCs_Sex) +
   theme_agData_col(legend.position = "none") +
-  labs(title = "Change since Feburary 2020", x = NULL,
+  labs(title = "Change 2020-02-15 to 2025-05-15", x = NULL,
        y = "Thousand", caption = myCaption)
 ggsave("canada_public_private_5_03.png", mp, width = 6, height = 4)
 ```
@@ -436,17 +434,17 @@ ggsave("canada_public_private_5_03.png", mp, width = 6, height = 4)
 # Prep data
 xx <- d1 %>% 
   filter(Area == "Canada", Sex != "Both sexes", 
-         Date %in% as.Date(c("2019-09-15","2022-05-15"))) %>%
+         Date %in% as.Date(c("2019-09-15","2025-05-15"))) %>%
   select(Date, Measurement, Sex, Value) %>%
   spread(Date, Value) %>%
-  mutate(Change = `2022-05-15` - `2019-09-15`)
+  mutate(Change = `2025-05-15` - `2019-09-15`)
 # Plot
 mp <- ggplot(xx, aes(x = Sex, y = Change, fill = Sex)) +
   geom_col(position = "dodge", color = "black", alpha = 0.7) +
   facet_grid(. ~ Measurement) +
   scale_fill_manual(values = myCs_Sex) +
   theme_agData_col(legend.position = "none") +
-  labs(title = "Change since 2019-09-15", x = NULL,
+  labs(title = "Change 2019-09-15 to 2025-05-15", x = NULL,
        y = "Thousand", caption = myCaption)
 ggsave("canada_public_private_5_04.png", mp, width = 6, height = 4)
 ```

@@ -180,7 +180,7 @@ ggsave("canada_auto_sales_05.png", mp, width = 6, height = 4)
 
 ## Fuel Types {.tabset .tabset-pills}
 
-### Canada
+### All Vehicles
 
 ![](canada_auto_sales_06.png)
 
@@ -203,7 +203,7 @@ ggsave("canada_auto_sales_06.png", mp, width = 6, height = 4)
 
 ---
 
-### Provinces
+### Trucks vs Cars
 
 ![](canada_auto_sales_07.png)
 

@@ -56,7 +56,7 @@ d2 <- d1 %>% group_by(Year, Trading.Partner, Trade) %>%
 
 # Trade Balance {.tabset .tabset-pills}
 
-## Canada {.tabset .tabset-pills}
+## Total {.tabset .tabset-pills}
 
 ### Monthly
 
@@ -107,7 +107,7 @@ ggsave("canada_trade_02.png", mp, width = 6, height = 4)
 
 ---
 
-## Provinces & Cities {.tabset .tabset-pills}
+## Countries {.tabset .tabset-pills}
 
 ### Monthly
 
@@ -158,7 +158,7 @@ ggsave("canada_trade_04.png", mp, width = 14, height = 8)
 
 # Import & Export {.tabset .tabset-pills}
 
-## Canada
+## Total
 
 ![](canada_trade_05.png)
 
@@ -169,7 +169,7 @@ xx <- d1 %>%
   mutate(Value = ifelse(Trade == "Import", -Value, Value))
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Trade)) +
-  geom_area(alpha = 0.9) +
+  geom_area(alpha = 0.9, color = "black") +
   facet_wrap(Trading.Partner ~ ., scales = "free_y", ncol = 7) +
   scale_fill_manual(name = NULL, values = c("steelblue", "darkred")) +
   scale_x_date(date_minor_breaks = "1 year", expand = c(0,0)) +
@@ -181,7 +181,7 @@ ggsave("canada_trade_05.png", mp, width = 6, height = 4)
 
 ---
 
-## Provinces & Cities
+## Countries
 
 ![](canada_trade_06.png)
 
@@ -206,7 +206,7 @@ ggsave("canada_trade_06.png", mp, width = 14, height = 8)
 
 # Comparisons {.tabset .tabset-pills}
 
-## Net
+## 2023 Net
 
 ![](canada_trade_07.png)
 
@@ -231,7 +231,7 @@ ggsave("canada_trade_07.png", mp, width = 6, height = 4)
 
 ---
 
-## Gross
+## 2023 Gross
 
 ![](canada_trade_08.png)
 
@@ -271,7 +271,7 @@ yy <- d2 %>%
          !Trading.Partner %in% c("All countries","European Union")) %>%
   arrange(desc(Value))
 xx <- d2 %>% 
-  filter(Trade != "Trade Balance",
+  filter(Trade != "Trade Balance", Year < 2026,
          !Trading.Partner %in% c("All countries","European Union")) %>%
   arrange(desc(Value)) %>% 
   mutate(Trading.Partner = factor(Trading.Partner, levels = yy$Trading.Partner),

@@ -293,6 +293,8 @@ anim_save("gapminder_gif_08.gif", mp,
 
 ## Countries {.tabset .tabset-pills}
 
+### Plotting function
+
 ```{r}
 gg_gapminder2 <- function(mycountries) {
   x <- gapminder %>% filter(country %in% mycountries)
@@ -310,7 +312,7 @@ gg_gapminder2 <- function(mycountries) {
 
 ---
 
-### Canada
+### Canada {.active}
 
 ![](gapminder_gif_09.gif)
 

@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 ---
 
-# Data {.tabset .tabset-pills}
+# Data
 
 ## Macdonald Laurier
 
@@ -27,6 +27,9 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 > - `r shiny::icon("file-pdf")` [https://climate-science.press/wp-content/uploads/2022/02/012129_2018_Article_9700.pdf](https://climate-science.press/wp-content/uploads/2022/02/012129_2018_Article_9700.pdf){target="_blank"}
 
 > - `r shiny::icon("save")` [data_politics_in_academia.xlsx](data_politics_in_academia.xlsx)
+
+
+> - `r shiny::icon("globe")` [https://www.stevestewartwilliams.com/p/academias-leftward-march](https://www.stevestewartwilliams.com/p/academias-leftward-march)
 
 ---
 
