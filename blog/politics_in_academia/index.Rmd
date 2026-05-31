@@ -13,6 +13,8 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 # Data
 
+> - `r shiny::icon("save")` [data_politics_in_academia.xlsx](data_politics_in_academia.xlsx)
+
 ## Macdonald Laurier
 
 > - `r shiny::icon("globe")` [https://macdonaldlaurier.ca/the-viewpoint-diversity-crisis-at-canadian-universities/](https://macdonaldlaurier.ca/the-viewpoint-diversity-crisis-at-canadian-universities/){target="_blank"}
@@ -22,14 +24,13 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 > - `r shiny::icon("globe")` [https://www.pewresearch.org/science/2023/11/14/americans-trust-in-scientists-positive-views-of-science-continue-to-decline/](https://www.pewresearch.org/science/2023/11/14/americans-trust-in-scientists-positive-views-of-science-continue-to-decline/){target="_blank"}
 
-## Other
+https://www.pewresearch.org/science/2024/11/14/public-trust-in-scientists-and-views-on-their-role-in-policymaking/
 
-> - `r shiny::icon("file-pdf")` [https://climate-science.press/wp-content/uploads/2022/02/012129_2018_Article_9700.pdf](https://climate-science.press/wp-content/uploads/2022/02/012129_2018_Article_9700.pdf){target="_blank"}
+## U of Arkansas
 
-> - `r shiny::icon("save")` [data_politics_in_academia.xlsx](data_politics_in_academia.xlsx)
+> - `r shiny::icon("globe")` [https://osf.io/preprints/psyarxiv/dnxqh_v1](https://osf.io/preprints/psyarxiv/dnxqh_v1)
 
-
-> - `r shiny::icon("globe")` [https://www.stevestewartwilliams.com/p/academias-leftward-march](https://www.stevestewartwilliams.com/p/academias-leftward-march)
+https://www.pnas.org/doi/10.1073/pnas.2319488121
 
 ---
 
@@ -45,24 +46,27 @@ library(readxl)
 # Prep data
 myCaption1 <- "derekmichaelwright.github.io/dblogr/blog/politics_in_academia | Data: MLI"
 myCaption2 <- "derekmichaelwright.github.io/dblogr/blog/politics_in_academia | Data: Nakhaie & Adam (2008)"
-d1 <- read_xlsx("data_politics_in_academia.xlsx", "Canada") %>%
+d1 <- read_xlsx("data_politics_in_academia.xlsx", "Macdonald Laurier") %>%
   mutate(Party = factor(Party, levels = unique(.$Party)),
          Measurement = factor(Measurement, unique(.$Measurement)))
 #
 myCaption3 <- "derekmichaelwright.github.io/dblogr/blog/politics_in_academia | Data: Pew Research"
 myRespones <- c("Mostly positive", "Equal positive and negative", "Mostly negative")
-d2 <- read_xlsx("data_politics_in_academia.xlsx", "Effect on Society") %>%
+d2 <- read_xlsx("data_politics_in_academia.xlsx", "Pew - Effect") %>%
   mutate(Date = paste(Month, Year),
          Response = factor(Response, levels = myRespones))
-d3 <- read_xlsx("data_politics_in_academia.xlsx", "Trust") %>%
+d3 <- read_xlsx("data_politics_in_academia.xlsx", "Pew - Trust") %>%
   mutate(Date = paste(Month, Year),
          Label_Pos = ifelse(Response != "A fair amount", Percent / 2, NA))
 #
 myCaption4 <- "derekmichaelwright.github.io/dblogr/blog/politics_in_academia | Data: Lab Langbert (2018)"
-d4 <- read_xlsx("data_politics_in_academia.xlsx", "Fields") %>%
+d4 <- read_xlsx("data_politics_in_academia.xlsx", "Pew - Fields") %>%
   mutate(Field = factor(Field, levels = .$Field),
          Percent_Dem = 100 * (Democrats) / (Democrats + Republicans),
          Percent_Rep = 100 * (Republicans) / (Democrats + Republicans))
+#
+myCaption5 <- "derekmichaelwright.github.io/dblogr/blog/politics_in_academia | Data: Honeycutt (2025)"
+d5 <- read_xlsx("data_politics_in_academia.xlsx", "UofA - Ideology")
 ```
 
 ---

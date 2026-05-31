@@ -707,9 +707,33 @@ ggsave("canada_migration_3_05.png", mp, width = 20, height = 10)
 
 ---
 
-## Alberta 2012 - 2024
+## New Brunswick
 
 ![](canada_migration_3_06.png)
+
+```{r}
+# Plot
+mp <- ggInterProv(myArea = "Ontario")
+ggsave("canada_migration_3_06.png", mp, width = 20, height = 10)
+```
+
+---
+
+## Nova Scotia
+
+![](canada_migration_3_07.png)
+
+```{r}
+# Plot
+mp <- ggInterProv(myArea = "Ontario")
+ggsave("canada_migration_3_07.png", mp, width = 20, height = 10)
+```
+
+---
+
+## Alberta 2012 - 2024
+
+![](canada_migration_3_08.png)
 
 ```{r}
 # Prep data
@@ -727,14 +751,14 @@ mp <- ggplot(xx, aes(x = Age, y = Value, fill = Net)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Alberta Net Interprovincial Migration", 
        y = "Thousand People", x = NULL, caption = myCaption)
-ggsave("canada_migration_3_06.png", mp, width = 14, height = 6)
+ggsave("canada_migration_3_08.png", mp, width = 14, height = 6)
 ```
 
 ---
 
 ## British Columbia 2021 - 2024
 
-![](canada_migration_3_07.png)
+![](canada_migration_3_09.png)
 
 ```{r}
 # Prep data
@@ -752,7 +776,7 @@ mp <- ggplot(xx, aes(x = Age, y = Value, fill = Net)) +
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "British Columbia Net Interprovincial Migration", x = NULL,
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_3_07.png", mp, width = 8, height = 4)
+ggsave("canada_migration_3_09.png", mp, width = 8, height = 4)
 ```
 
 ---
