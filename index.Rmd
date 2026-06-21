@@ -1,6 +1,6 @@
 ---
 title: "dblogr"
-subtitle: "Welcome to Derek Michael Wright's personal website"
+subtitle: "The Personal website for Derek Michael Wright"
 author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/)"
 date: "Last updated: `r Sys.Date()`"
 ---
@@ -69,7 +69,7 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 # `r icon("r-project")` Packages {.tabset .tabset-pills}
 
-## gwaspr
+## Package "gwaspr"
 
 <div class="box"><div class="row"><div class="col-md-8">
 
@@ -82,11 +82,12 @@ Install: `devtools::install_github("derekmichaelwright/gwaspr")`
 - `r icon("house")` [https://derekmichaelwright.github.io/gwaspr/](https://derekmichaelwright.github.io/gwaspr/){target="_blank"}
 - `r icon("github")` [https://github.com/derekmichaelwright/gwaspr/](https://github.com/derekmichaelwright/gwaspr/){target="_blank"}
 
+Vignettes
 - `r icon("laptop-code")` [GWAS Tutorial](academic/gwas_tutorial){target="_blank"}
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
 
-## agData
+## Package "agData"
 
 <div class="box"><div class="row"><div class="col-md-8">
 
@@ -101,9 +102,12 @@ Documentation:
 - `r icon("house")` [https://derekmichaelwright.github.io/agData/](https://derekmichaelwright.github.io/agData/){target="_blank"}
 - `r icon("github")` [https://github.com/derekmichaelwright/agData/](https://github.com/derekmichaelwright/agData/){target="_blank"}
 
+Vignettes
+- [https://derekmichaelwright.github.io/dblogr/#agdata](https://derekmichaelwright.github.io/dblogr/#agdata)
+
 </div><div class="col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
 
-## cypher
+## Package "cypher"
 
 <div class="box"><div class="row"><div class="col-md-8">
 

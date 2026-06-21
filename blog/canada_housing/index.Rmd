@@ -48,6 +48,7 @@ STATCAN Table: 34-10-0133-01 - Average rents
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410013301](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3410013301){target="_blank"}
 > - `r shiny::icon("save")` [3410013301_databaseLoadingData.csv](3410013301_databaseLoadingData.csv)
 
+
 ```{r eval = F, echo = F}
 #https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110024001
 #https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110001201
@@ -1129,6 +1130,25 @@ mp <- mp +
 anim_save("canada_housing_8_02.gif", mp, 
           nframes = 600, fps = 25, end_pause = 60, 
           width = 900, height = 600, res = 150, units = "px")
+```
+
+---
+
+## Home Ownership vs Income
+
+https://www150.statcan.gc.ca/n1/pub/46-28-0001/2026001/article/00002-eng.htm
+
+```{r}
+# Prep data
+xx <- read.csv("data_housing_immigrants.csv") %>% 
+  filter(Measurement != "Median PFIR")
+# Plot
+mp <- ggplot(xx, aes(x = Persons, y = Value/1000, fill = Persons)) +
+  geom_col(position = "dodge") +
+  facet_grid(Measurement ~ Province, scales = "free_y") +
+  theme_agData(axis.text.x = element_blank())+
+  labs(y = "Thousand Dollars")
+ggsave("canada_housing_8_03.png", mp, width = 6, height = 4)
 ```
 
 ---

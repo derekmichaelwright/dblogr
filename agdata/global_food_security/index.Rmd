@@ -46,7 +46,7 @@ myColors1 <- c("purple4",  "darkgoldenrod2", "red", "steelblue", "darkblue",
               "grey20", "darkgreen", "darkred", "darkslategray")
 myColors2 <- c("purple4",  "darkgreen", "darkred", "steelblue")
 myColors3 <- c("darkred", "darkgreen", "darkorange", "darkblue", "steelblue")
-dd <- agData_FAO_Crops2 %>% #select(-Unit) %>%
+dd <- agData_FAO_Crops2 %>% select(-Unit) %>%
   filter(Area %in% myAreas, Item %in% myItems1) %>%
   spread(Measurement, Value)
 pp <- agData_FAO_Population %>%

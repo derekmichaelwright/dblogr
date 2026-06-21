@@ -208,7 +208,7 @@ The code above will produce errors and not run properly. This is due to the inpu
 
 Our population (The **LDP**) has been phenotyped for three traits:
 
-- **Cotyledon_Color**: a *qualitative* trait describing cotyledon color (Red = 0, Yellow = 1).
+- **Cotyledon_Color**: a *qualitative* trait describing cotyledon color (Yellow = 0) (Red = 1) (green = NA).
 - **DTF_Nepal_2017**: a *quantitative* trait describing days from sowing to flowering in a 2017 Nepal field trial. 
 - **DTF_Sask_2017**: a *quantitative* trait describing days from sowing to flowering in a 2017 Saskatchewan field trial.
 
@@ -223,9 +223,9 @@ DT::datatable(myY)
 
 First we must convert our *qualitative trait* **Cotyledon_Color** from `character` to `numeric` format.
 
-`Red` = 0
+`Red` = 1
 
-`Yellow` = 1
+`Yellow` = 0
 
 `Green` = NA
 
@@ -234,12 +234,18 @@ First we must convert our *qualitative trait* **Cotyledon_Color** from `characte
 ```{r}
 # Convert qualitative trait to numeric
 myY <- myY %>% 
-  mutate(Cotyledon_Color = plyr::mapvalues(Cotyledon_Color, c("Red", "Yellow"), 0:1),
-         Cotyledon_Color = as.numeric(Cotyledon_Color))
+  mutate(Cotyledon_Color_RvsY = plyr::mapvalues(Cotyledon_Color, c("Yellow","Red"), 0:1),
+         Cotyledon_Color_RvsY = as.numeric(Cotyledon_Color_RvsY))
 ```
 
 ```{r echo = F}
 DT::datatable(myY)
+```
+
+Now lets remove this non-numeric column from our `myY` object
+
+```{r}
+myY <- myY %>% select(-Cotyledon_Color)
 ```
 
 Now we can visualize our data.
@@ -384,8 +390,10 @@ Notice how the first row of our genotype data is actually the column names.
 
 For our qualitative trait **Cotyledon_Color**, we needed to convert
 
-- `Red` to `0` 
-- `Yellow` to `1`
+- `Yellow` to `0`
+- `Red` to `1`
+- `Green` to `NA`
+
 
 ## Genotype Names
 
@@ -521,7 +529,7 @@ im <- magick::image_append(c(
   magick::image_read("Fig_DTF_Nepal_2017_01_03.png"),
   magick::image_read("Fig_DTF_Sask_2017_01_05.png"),
   magick::image_read("Fig_DTF_Sask_2017_01_06.png"),
-  magick::image_read("Fig_Cotyledon_Color_01_03.png")), 
+  magick::image_read("Fig_Cotyledon_Color_RvsY_01_03.png")), 
   stack = T )
 magick::image_write(im, "featured2.png")
 ```
@@ -567,11 +575,11 @@ After running a genome-wide association study, there are some quality control an
 
 ## Prepare Data
 
-Convert our `Cotyledon_Color` back to its character values.
+Convert our `Cotyledon_Color_RvsY` back to its character values.
 
 ```{r}
 myY <- myY %>% 
-  mutate(Cotyledon_Color = plyr::mapvalues(Cotyledon_Color, c(0,1), c("Red","Yellow")))
+  mutate(Cotyledon_Color = plyr::mapvalues(Cotyledon_Color_RvsY, c(0,1), c("Red","Yellow")))
 ```
 
 Reread in our `myG` file but with `header = T`. 
@@ -1288,7 +1296,7 @@ ggsave("Fig_DTF_Sask_2017_01_06.png", mp, width = 12, height = 4, bg = "white")
 
 ```{r eval = F}
 # Plot
-mp <- gg_Manhattan_Traits(
+mp <- gg_Manhattan_xTraits(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/",
   # Select traits to plot
@@ -1606,15 +1614,15 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  trait = "Cotyledon_Color",
+  trait = "Cotyledon_Color_RvsY",
   # Facet each model
   facet = T 
   )
 # Save
-ggsave("Fig_Cotyledon_Color_01_01.png", mp, width = 12, height = 8, bg = "white")
+ggsave("Fig_Cotyledon_Color_RvsY_01_01.png", mp, width = 12, height = 8, bg = "white")
 ```
 
-![](Fig_Cotyledon_Color_01_01.png)
+![](Fig_Cotyledon_Color_RvsY_01_01.png)
 
 ---
 
@@ -1628,15 +1636,15 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  trait = "Cotyledon_Color",
+  trait = "Cotyledon_Color_RvsY",
   # Facet each model
   facet = F # default setting
   )
 # Save
-ggsave("Fig_Cotyledon_Color_01_02.png", mp, width = 12, height = 4, bg = "white")
+ggsave("Fig_Cotyledon_Color_RvsY_01_02.png", mp, width = 12, height = 4, bg = "white")
 ```
 
-![](Fig_Cotyledon_Color_01_02.png)
+![](Fig_Cotyledon_Color_RvsY_01_02.png)
 
 ---
 
@@ -1649,7 +1657,7 @@ list_Top_Markers(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  traits = "Cotyledon_Color" 
+  traits = "Cotyledon_Color_RvsY" 
   )
 ```
 
@@ -1659,7 +1667,7 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  trait = "Cotyledon_Color", 
+  trait = "Cotyledon_Color_RvsY", 
   # Plot only certain GWAS models
   models = c("MLMM","FarmCPU","BLINK"),
   # Highlight specific markers
@@ -1672,10 +1680,10 @@ mp <- gg_Manhattan(
   vline.colors = rep("green",3) 
   )
 # Save
-ggsave("Fig_Cotyledon_Color_01_03.png", mp, width = 12, height = 4, bg = "white")
+ggsave("Fig_Cotyledon_Color_RvsY_01_03.png", mp, width = 12, height = 4, bg = "white")
 ```
 
-![](Fig_Cotyledon_Color_01_03.png)
+![](Fig_Cotyledon_Color_RvsY_01_03.png)
 
 ---
 
@@ -1691,7 +1699,7 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/",
   # Select a trait to plot
-  trait = "Cotyledon_Color", 
+  trait = "Cotyledon_Color_RvsY", 
   # Plot just Chromosome 1
   chrom = 1,
   # Plot only certain GWAS models
@@ -1708,10 +1716,10 @@ mp <- gg_Manhattan(
   pmax = 50
   )
 # Save
-ggsave("Fig_Cotyledon_Color_01_04.png", mp, width = 12, height = 4, bg = "white")
+ggsave("Fig_Cotyledon_Color_RvsY_01_04.png", mp, width = 12, height = 4, bg = "white")
 ```
 
-![](Fig_Cotyledon_Color_01_04.png)
+![](Fig_Cotyledon_Color_RvsY_01_04.png)
 
 ---
 
@@ -1725,7 +1733,7 @@ mp <- gg_Manhattan_Zoom(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  trait = "Cotyledon_Color", 
+  trait = "Cotyledon_Color_RvsY", 
   # Plot just Chromosome 1
   chr = 1,
   pos1 = 360000000,
@@ -1744,10 +1752,10 @@ mp <- gg_Manhattan_Zoom(
   facet = T
   )
 # Save
-ggsave("Fig_Cotyledon_Color_01_05.png", mp, width = 8, height = 6)
+ggsave("Fig_Cotyledon_Color_RvsY_01_05.png", mp, width = 8, height = 6)
 ```
 
-![](Fig_Cotyledon_Color_01_05.png)
+![](Fig_Cotyledon_Color_RvsY_01_05.png)
 
 ---
 
@@ -1759,7 +1767,7 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  trait = "Cotyledon_Color", 
+  trait = "Cotyledon_Color_RvsY", 
   # Plot only certain GWAS models
   models = c("MLMM","FarmCPU","BLINK"),
   # Highlight specific markers
@@ -1776,10 +1784,10 @@ mp <- gg_Manhattan(
   threshold = 1.3
   )
 # Save
-ggsave("Fig_Cotyledon_Color_01_06.png", mp, width = 12, height = 4, bg = "white")
+ggsave("Fig_Cotyledon_Color_RvsY_01_06.png", mp, width = 12, height = 4, bg = "white")
 ```
 
-![](Fig_Cotyledon_Color_01_06.png)
+![](Fig_Cotyledon_Color_RvsY_01_06.png)
 
 ---
 
@@ -1795,17 +1803,17 @@ mp <- gg_Marker_Pie(
   # Phenotype data
   xY = myY, 
   # Select a trait to plot
-  trait = "Cotyledon_Color",
+  trait = "Cotyledon_Color_RvsY",
   # Select markers to plot
   markers = "Lcu.1GRN.Chr1p365986872",
   # Specify colors for alleles
   marker.colors = c("darkred","darkgoldenrod3") 
   )
 # Save
-ggsave("Fig_Cotyledon_Color_02_01.png", mp, width = 6, height = 4)
+ggsave("Fig_Cotyledon_Color_RvsY_02_01.png", mp, width = 6, height = 4)
 ```
 
-![](Fig_Cotyledon_Color_02_01.png)
+![](Fig_Cotyledon_Color_RvsY_02_01.png)
 
 The marker `Lcu.1GRN.Chr1p365986872` is convincing.
 
@@ -1821,17 +1829,17 @@ mp <- gg_Marker_Pie(
   # Phenotype data
   xY = myY,
   # Select a trait to plot
-  trait = "Cotyledon_Color",
+  trait = "Cotyledon_Color_RvsY",
   # Select markers to plot
   markers = "Lcu.1GRN.Chr1p361840399",
   # Specify colors for alleles
   marker.colors = c("darkred","darkgoldenrod3") 
   )
 # Save
-ggsave("Fig_Cotyledon_Color_02_02.png", mp, width = 6, height = 4)
+ggsave("Fig_Cotyledon_Color_RvsY_02_02.png", mp, width = 6, height = 4)
 ```
 
-![](Fig_Cotyledon_Color_02_02.png)
+![](Fig_Cotyledon_Color_RvsY_02_02.png)
 
 The marker `Lcu.1GRN.Chr1p361840399` is likely a false positive.
 
@@ -1847,7 +1855,7 @@ mp <- gg_Marker_Pie(
   # Phenotype data
   xY = myY,
   # Select a trait to plot
-  trait = "Cotyledon_Color",
+  trait = "Cotyledon_Color_RvsY",
   # Select markers to plot
   markers = c("Lcu.1GRN.Chr1p365986872",
               "Lcu.1GRN.Chr1p361840399"),
@@ -1855,10 +1863,10 @@ mp <- gg_Marker_Pie(
   marker.colors = c("darkred","darkgoldenrod3") 
   )
 # Save
-ggsave("Fig_Cotyledon_Color_02_03.png", mp, width = 6, height = 4)
+ggsave("Fig_Cotyledon_Color_RvsY_02_03.png", mp, width = 6, height = 4)
 ```
 
-![](Fig_Cotyledon_Color_02_03.png)
+![](Fig_Cotyledon_Color_RvsY_02_03.png)
 
 ---
 
@@ -1875,10 +1883,10 @@ mp <- gg_LDheatmap(xg = myG, chr = 1, pos1 = 363000000, pos2 = 370000000,
                    nameTrim = "Lcu.1GRN.Chr1",
                    myTitle = "Lentil Diversity Panel"
                    )
-ggsave("Fig_Cotyledon_Color_03_01.png", mp, width = 12, height = 12, dpi = 600)
+ggsave("Fig_Cotyledon_Color_RvsY_03_01.png", mp, width = 12, height = 12, dpi = 600)
 ```
 
-![](Fig_Cotyledon_Color_03_01.png)
+![](Fig_Cotyledon_Color_RvsY_03_01.png)
 
 ---
 
@@ -1890,7 +1898,7 @@ mp <- gg_Volcano(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/",
   # Select a trait to plot
-  trait = "Cotyledon_Color",
+  trait = "Cotyledon_Color_RvsY",
   # Plot only certain GWAS models
   models = c("MLM","MLMM","FarmCPU","BLINK"),
   # Highlight specific markers
@@ -1901,10 +1909,10 @@ mp <- gg_Volcano(
   labels = c("365Mbp","351Mbp","362Mbp") 
   )
 # Save
-ggsave("Fig_Cotyledon_Color_04_01.png", mp, width = 12, height = 4)
+ggsave("Fig_Cotyledon_Color_RvsY_04_01.png", mp, width = 12, height = 4)
 ```
 
-![](Fig_Cotyledon_Color_04_01.png)
+![](Fig_Cotyledon_Color_RvsY_04_01.png)
 
 ---
 
@@ -1912,9 +1920,9 @@ ggsave("Fig_Cotyledon_Color_04_01.png", mp, width = 12, height = 4)
 
 ```{r eval = F}
 # Prep data
-x1 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.MLM.Cotyledon_Color(NYC).csv") %>%
+x1 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.MLM.Cotyledon_Color_RvsY(NYC).csv") %>%
   mutate(Model = "MLM")
-x2 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.BLINK.Cotyledon_Color(NYC).csv") %>%
+x2 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.BLINK.Cotyledon_Color_RvsY(NYC).csv") %>%
   mutate(Model = "BLINK")
 xx <- bind_rows(x1, x2) %>% mutate(Model = factor(Model, levels = c("MLM","BLINK")))
 # Plot
@@ -1925,12 +1933,12 @@ mp <- ggplot(xx, aes(x = MAF, y = -log10(P.value), pch = as.factor(Chr))) +
   facet_grid(. ~ Model) +
   scale_shape_manual(values = 1:7) +
   theme_gwaspr() +
-  labs(title = "Cotyledon_Color", y = "-log10(p)")
+  labs(title = "Cotyledon_Color_RvsY", y = "-log10(p)")
 # Save
-ggsave("Fig_Cotyledon_Color_04_02.png", mp, width = 10, height = 4)
+ggsave("Fig_Cotyledon_Color_RvsY_04_02.png", mp, width = 10, height = 4)
 ```
 
-![](Fig_Cotyledon_Color_04_02.png)
+![](Fig_Cotyledon_Color_RvsY_04_02.png)
 
 ---
 
@@ -2149,18 +2157,18 @@ mp
 
 ### Cotyledon Color
 
-[https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Fig_PCA_Cotyledon_Color.html](https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Fig_PCA_Cotyledon_Color.html){target="_blank"}
+[https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Fig_PCA_Cotyledon_Color_RvsY.html](https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Fig_PCA_Cotyledon_Color_RvsY.html){target="_blank"}
 
 ```{r}
 # Prep data
 myColors <- c("darkgoldenrod3", "darkblue")
 # Plot
 mp <- plot_ly(xx, x = ~PC1, y = ~PC2, z = ~PC3, text = ~taxa,
-              color = ~Cotyledon_Color, colors = myColors) %>%
+              color = ~Cotyledon_Color_RvsY, colors = myColors) %>%
   add_markers() %>%
-  layout(scene = list(title = "Cotyledon_Color"))
+  layout(scene = list(title = "Cotyledon_Color_RvsY"))
 # Save
-saveWidget(as_widget(mp), "Fig_PCA_Cotyledon_Color.html")
+saveWidget(as_widget(mp), "Fig_PCA_Cotyledon_Color_RvsY.html")
 mp
 ```
 
