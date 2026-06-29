@@ -17,6 +17,8 @@ This vignette is a tutorial on running **Genome-Wide Association Studies** (**GW
 
 ## Resources
 
+<br>
+
 > - `r shiny::icon("globe")` **GAPIT Website**: [https://www.maizegenetics.net/gapit](https://www.maizegenetics.net/gapit){target="_blank"}
 > - `r shiny::icon("file-pdf")` **GAPIT Manual**: [http://www.zzlab.net/GAPIT/gapit_help_document.pdf](http://www.zzlab.net/GAPIT/gapit_help_document.pdf){target="_blank"}
 
@@ -52,6 +54,8 @@ setdiff(t(myG[1,]), myM$Name) # should show just the first 11 columns of myG
 ---
 
 ## Install `GAPIT`
+
+<br>
 
 > - `r shiny::icon("github")` **GAPIT github**: [https://github.com/jiabowang/GAPIT](https://github.com/jiabowang/GAPIT){target="_blank"}
 
@@ -95,6 +99,8 @@ devtools::install_github("jiabowang/GAPIT")
 
 ## Install `gwaspr`
 
+<br>
+
 `gwaspr` package which contains `tidyverse` and `ggplot` packages for plotting the GAPIT results later.
 
 ```{r eval = F}
@@ -137,6 +143,8 @@ Associated papers:
 - `r shiny::icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_GWAS_Phenology/GWAS_Phenology_Vignette.html){target="_blank"}
 
 ## LDP
+
+<br>
 
 > - `r shiny::icon("globe")` **Lentil Diversity Panel**: [https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/](https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/){target="_blank"}
 
@@ -223,13 +231,13 @@ DT::datatable(myY)
 
 First we must convert our *qualitative trait* **Cotyledon_Color** from `character` to `numeric` format.
 
-`Red` = 1
+`Red` = `1`
 
-`Yellow` = 0
+`Yellow` = `0`
 
-`Green` = NA
+`Green` = `NA`
 
-`missing data` = NA
+`missing data` = `NA`
 
 ```{r}
 # Convert qualitative trait to numeric
@@ -513,7 +521,7 @@ myY2 <- myY %>% select(Name, DTF_Sask_2017_b=DTF_Sask_2017)
 # Run GWAS with covariate
 GAPIT( Y = myY2, G = myG, 
        CV = myCV,
-       model = c("MLM", "FarmCPU", "BLINK", "MLMM", "GLM"),
+       model = c("GLM", "MLM", "MLMM", "FarmCPU", "BLINK"),
        PCA.total = 0, 
        Random.model = F,  # Optional: use if GAPIT returns an error
        Phenotype.View = F # Optional: use if GAPIT returns an error

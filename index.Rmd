@@ -82,7 +82,8 @@ Install: `devtools::install_github("derekmichaelwright/gwaspr")`
 - `r icon("house")` [https://derekmichaelwright.github.io/gwaspr/](https://derekmichaelwright.github.io/gwaspr/){target="_blank"}
 - `r icon("github")` [https://github.com/derekmichaelwright/gwaspr/](https://github.com/derekmichaelwright/gwaspr/){target="_blank"}
 
-Vignettes
+Tutorial
+
 - `r icon("laptop-code")` [GWAS Tutorial](academic/gwas_tutorial){target="_blank"}
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
