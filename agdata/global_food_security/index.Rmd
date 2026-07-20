@@ -391,6 +391,62 @@ ggsave("global_food_security_11.png", mp, width = 6, height = 6)
 
 ---
 
+# Pulses
+
+![](global_food_security_12.png)
+
+```{r}
+# Prep data
+myPulses <- c("Lentils, dry", "Chick peas, dry", 
+              "Peas, dry", "Peas, green", "Pigeon peas, dry", "Cow peas, dry",
+              "Beans, dry", "Other beans, green", "Broad beans and horse beans, dry", 
+              "Broad beans and horse beans, green")
+xx <- agData_FAO_Crops %>%
+  filter(Area == "World", Measurement == "Production",
+         Item %in% myPulses) %>%
+  mutate(Item = factor(Item, levels = myPulses))
+#
+mp <- ggplot(xx, aes(x = Year, y = Value/1000000)) +
+  geom_line(color = "darkgreen", linewidth = 1) +
+  facet_wrap(Item ~ ., ncol = 5) +
+  theme_agData() +
+  labs(title = "Pulses", y = "Million Tonnes", caption = myCaption)
+ggsave("global_food_security_12.png", mp, width = 8, height = 5)
+```
+
+---
+
+![](global_food_security_13.png)
+
+```{r}
+mp <- ggplot(xx, aes(x = Year, y = Value/1000000)) +
+  geom_line(color = "darkgreen", linewidth = 1) +
+  facet_wrap(Item ~ ., ncol = 5, scales = "free_y") +
+  theme_agData() +
+  labs(title = "Pulses", y = "Million Tonnes", caption = myCaption)
+ggsave("global_food_security_13.png", mp, width = 8, height = 5)
+```
+
+---
+
+![](global_food_security_14.png)
+
+```{r}
+# Prep data
+xx <- xx %>% arrange(Area, Year) %>%
+  group_by(Area) %>%
+  mutate(GrowthRate = 100 * (Value - lag(Value)) / lag(Value))
+#
+mp <- ggplot(xx, aes(x = Year, y = GrowthRate)) +
+  geom_line(color = "darkgreen", linewidth = 1) +
+  facet_wrap(Item ~ ., ncol = 5, scales = "free_y") +
+  theme_agData() +
+  labs(title = "Pulses", y = "Growth Rate (%)", caption = myCaption)
+ggsave("global_food_security_14.png", mp, width = 8, height = 5)
+```
+
+---
+
 ```{r echo = F, eval = F}
 xx <- agData_FAO_Crops %>% 
   filter(Area == "Sri Lanka", Year %in% 2019:2022,

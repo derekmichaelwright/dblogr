@@ -27,7 +27,7 @@ library(agData)
 # Prep data
 myCaption <- "derekmichaelwright.github.io/dblogr/agdata/bean | Data: FAOSTAT"
 #
-d1 <- agData_FAO_Crops %>% filter(Item == "Beans, dry")
+d1 <- agData_FAO_Crops %>% filter(Item %in% c("Beans, dry", "Other beans, green", "String beans")
 ```
 
 ---
