@@ -45,7 +45,7 @@ myEntries <- c("Laird AGL", "Indianhead AGL", "CDC Robin AGL",
 xx <- read.csv("data_raw.csv") %>%
   filter(Name %in% myEntries, 
          Expt %in% expts) %>%
-  mutate(Location = plyr::mapvalues(Location, locs, labels)) %>% 
+  mutate(Location = mv(Location, locs, labels)) %>% 
   select(Entry, Name, Location, Rep, DTF) #%>% 
   #group_by(Entry, Name, Location) %>%
   #summarise(DTF = mean(DTF, na.rm = T))
@@ -53,7 +53,7 @@ write.csv(xx, "data_visualizations_2.csv", row.names = F)
 #
 x1 <- read.csv("data_raw.csv") %>%
   filter(Expt %in% expts) %>%
-  mutate(Location = plyr::mapvalues(Location, locs, labels)) %>% 
+  mutate(Location = mv(Location, locs, labels)) %>% 
   select(Entry, Name, Location, Rep, DTF) %>% 
   #filter(Location %in%  c("Italy", "Morocco")) %>%
   spread(Location, DTF)
@@ -96,8 +96,8 @@ For this first example, we will illustrate the different ways to visualize histo
 xx <- d1 %>%
   gather(Trait, Value, DTF, DTS, DTM) %>%
   mutate(Trait = factor(Trait, levels = c("DTF","DTS","DTM")),
-         Trait = plyr::mapvalues(Trait, c("DTF","DTS","DTM"),
-           c("Days to Flower","Days to Swollen Pod","Days to Maturity")))
+         Trait = mv(Trait, c("DTF","DTS","DTM"),
+                    c("Days to Flower","Days to Swollen Pod","Days to Maturity")))
 # Plot
 mp <- ggplot(xx, aes(fill = Trait, x = Value)) +
   theme_agData(legend.position = "none",

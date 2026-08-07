@@ -96,7 +96,7 @@ d2 <- read.csv("3410029201_databaseLoadingData.csv") %>%
   #spread(Type.of.building, Value) %>%
   #mutate(`Total non-residential` = `Total residential and non-residential` - `Total residential`) %>%
   #gather(Type.of.building, Value, 6:8) %>%
-  #mutate(Type.of.building = plyr::mapvalues(Type.of.building, myTs1, myTs2),
+  #mutate(Type.of.building = mv(Type.of.building, myTs1, myTs2),
   #       Type.of.building = factor(Type.of.building, levels = myTs2))
 #
 myAreas <- c("Census metropolitan areas and census agglomerations of 50,000 and over",

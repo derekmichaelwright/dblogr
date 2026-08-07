@@ -177,7 +177,7 @@ myCs <- c("darkgreen", "darkorange", "darkred")
 xx <- dd %>% 
   filter(Area == "World", Measurement == "Agricultural Use",
          Item %in% myItems) %>%
-  mutate(Item = plyr::mapvalues(Item, myItems, c("N","P","K")),
+  mutate(Item = mv(Item, myItems, c("N","P","K")),
          Item = factor(Item, levels = c("N","P","K")))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) + 
@@ -213,7 +213,7 @@ xx <- dd %>%
          Item %in% myItems) %>%
   mutate(Measurement = factor(Measurement, levels = myMs),
          Area = factor(Area, levels = myAs),
-         Item = plyr::mapvalues(Item, myItems, c("N","P","K")),
+         Item = mv(Item, myItems, c("N","P","K")),
          Item = factor(Item, levels = c("N","P","K")))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) + 
@@ -244,7 +244,7 @@ xx <- dd %>%
          Item %in% myItems, Year > 1989) %>%
   mutate(Measurement = factor(Measurement, levels = myMs),
          Area = factor(Area, levels = myAs),
-         Item = plyr::mapvalues(Item, myItems, c("N","P","K")),
+         Item = mv(Item, myItems, c("N","P","K")),
          Item = factor(Item, levels = c("N","P","K")))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) + 
@@ -276,7 +276,7 @@ ggFert <- function(area = "Canada") {
     filter(Area == area, Item %in% myItems,
            Measurement %in% myMs) %>%
     mutate(Measurement = factor(Measurement, levels = myMs),
-           Item = plyr::mapvalues(Item, myItems, c("N","P","K")),
+           Item = mv(Item, myItems, c("N","P","K")),
            Item = factor(Item, levels = c("N","P","K")))
   # Plot
   ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement, 

@@ -44,7 +44,7 @@ pp <- agData_FAO_Population %>%
 d1 <- agData_FAO_LandUse %>% 
   filter(Item %in% myItems1, Measurement == "Area") %>%
   left_join(pp, by = c("Area","Year")) %>%
-  mutate(Item = plyr::mapvalues(Item, myItems1, myItems2),
+  mutate(Item = mv(Item, myItems1, myItems2),
          Item = factor(Item, levels = myItems2),
          AreaPerPerson = Value / Population)
 d2 <- agData_FAO_LandUse %>% filter(Measurement == "Area")

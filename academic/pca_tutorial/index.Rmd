@@ -377,7 +377,7 @@ dev.off()
 # Prep data
 xx <- read.csv("data/data_pca_tutorial_results.csv") %>% 
   mutate(Cluster = factor(Cluster), PC2 = PC2*3, PC3 = PC3*3,
-         myColors = plyr::mapvalues(Cluster, 1:8, colors))
+         myColors = mv(Cluster, 1:8, colors))
 # Create plotting function
 ggPCA <- function(x = xx, i = 1) {
   # Plot

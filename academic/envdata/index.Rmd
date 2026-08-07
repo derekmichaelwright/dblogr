@@ -653,8 +653,9 @@ xx <- d2 %>%
   summarise_at(vars(Value), funs(min, mean, max)) %>%
   ungroup() %>%
   gather(Calc, Value, min, mean, max) %>%
-  mutate(Measurement = plyr::mapvalues(Measurement, 
-           c("Temperature", "Day Length"), c("Temp", "DayLen")),
+  mutate(Measurement = mv(Measurement, 
+                          c("Temperature", "Day Length"), 
+                          c("Temp", "DayLen")),
          Measurement = paste(Measurement, Calc, sep="_")) %>%
   select(-Calc) %>%
   filter(!Measurement %in% c("DayLen_min", "DayLen_max")) %>%
@@ -702,8 +703,8 @@ xx <- d2 %>%
   filter(Location == "Sutherland, Canada", Year == 2016, 
          Measurement %in% mm) %>%
   mutate(Measurement = factor(Measurement, levels = mm),
-         Measurement = plyr::mapvalues(Measurement, mm, 
-           c("5cm","10cm","20cm","50cm","100cm")))
+         Measurement = mv(Measurement, mm, 
+                          c("5cm","10cm","20cm","50cm","100cm")))
 # Plot
 mp <- ggplot(xx, aes(x = DateTime, y = Value, color = Measurement)) +
   geom_line(alpha = 0.7, size = 1) +

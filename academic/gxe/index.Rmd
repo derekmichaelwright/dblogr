@@ -55,9 +55,11 @@ names_MacroEnvs <- c("Temperate", "South Asia", "Mediterranean")
 
 #
 xx <- read.csv("https://raw.githubusercontent.com/derekmichaelwright/AGILE_LDP_Phenology/refs/heads/master/data/data_raw.csv") %>%
-  mutate(ExptShort = plyr::mapvalues(Expt, names_Expt, names_ExptShort),
-         MacroEnv = plyr::mapvalues(Expt, names_Expt, 
-                      c(rep(names_MacroEnvs[1], 6), rep(names_MacroEnvs[2], 6), rep(names_MacroEnvs[3], 6)))) %>%
+  mutate(ExptShort = mv(Expt, names_Expt, names_ExptShort),
+         MacroEnv = mv(Expt, names_Expt, 
+                      c(rep(names_MacroEnvs[1], 6), 
+                        rep(names_MacroEnvs[2], 6), 
+                        rep(names_MacroEnvs[3], 6)))) %>%
   select(MacroEnv, ExptShort, everything()) %>%
   select(-DTF2)
 write.csv(xx, "data_mixed_models.csv", row.names = F)

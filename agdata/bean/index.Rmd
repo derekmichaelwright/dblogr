@@ -27,7 +27,7 @@ library(agData)
 # Prep data
 myCaption <- "derekmichaelwright.github.io/dblogr/agdata/bean | Data: FAOSTAT"
 #
-d1 <- agData_FAO_Crops %>% filter(Item %in% c("Beans, dry", "Other beans, green", "String beans")
+d1 <- agData_FAO_Crops %>% filter(Item %in% c("Beans, dry", "Other beans, green", "String beans"))
 ```
 
 ---
@@ -38,7 +38,7 @@ d1 <- agData_FAO_Crops %>% filter(Item %in% c("Beans, dry", "Other beans, green"
 
 ```{r results="hide"}
 # Prep data
-myColors <- c("darkgoldenrod2", "darkgreen")
+myColors <- c("darkgoldenrod2", "darkgreen", "steelblue")
 myAreas <- c("World",
   unique(agData_FAO_Country_Table$Region),
   unique(agData_FAO_Country_Table$SubRegion),
@@ -46,8 +46,8 @@ myAreas <- c("World",
 xx <- d1 %>%
   mutate(Value = ifelse(Measurement %in% c("Area Harvested","Production"),
                         Value / 1000000, Value / 1000),
-         Unit = plyr::mapvalues(Unit, c("ha", "t", "kg/ha"), 
-                  c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
+         Unit = mv(Unit, c("ha", "t", "kg/ha"), 
+                   c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
 myAreas <- myAreas[myAreas %in% xx$Area]
 # Plot
 pdf("figures_bean_fao.pdf", width = 12, height = 8)

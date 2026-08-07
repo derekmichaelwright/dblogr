@@ -60,6 +60,7 @@ setdiff(t(myG[1,]), myM$Name) # should show just the first 11 columns of myG
 > - `r shiny::icon("github")` **GAPIT github**: [https://github.com/jiabowang/GAPIT](https://github.com/jiabowang/GAPIT){target="_blank"}
 
 ```{r eval = F, echo = F}
+# old installation
 install.packages("BiocManager")
 BiocManager::install("multtest")
 install.packages("gplots")
@@ -223,10 +224,6 @@ Our population (The **LDP**) has been phenotyped for three traits:
 ```{r}
 # Read in phenotype data
 myY <- read.csv("Data/myY.csv")
-```
-
-```{r echo = F}
-DT::datatable(myY)
 ```
 
 First we must convert our *qualitative trait* **Cotyledon_RedvsYellow** from `character` to `numeric` format.
@@ -412,6 +409,12 @@ setdiff(myY$Name, t(myG[1,])) # should be character(0)
 setdiff(t(myG[1,]), myY$Name) # should show just the first 11 columns of myG
 ```
 
+Alternativly, `gwaspr` has a custom function that can also check this
+
+```{r}
+checkTaxaNames(xG = myG, xY = myY)
+```
+
 ```{r}
 # Change names of select individuals
 myY <- myY %>% 
@@ -423,6 +426,10 @@ myY <- myY %>%
 ```{r}
 setdiff(myY$Name, t(myG[1,])) # should be character(0)
 setdiff(t(myG[1,]), myY$Name) # should show just the first 11 columns of myG
+```
+
+```{r}
+checkTaxaNames(xG = myG, xY = myY)
 ```
 
 ---
@@ -1003,13 +1010,13 @@ ggsave("Fig_DTF_Nepal_2017_02_04.png", mp, width = 6, height = 4)
 > Note: this function can take a while to run if you choose too big of a segment for analysis.
  
 ```{r eval = F}
-mp <- gg_LDheatmap(xg = myG, chr = 2, pos1 = 44000000, pos2 = 45000000,
+mp <- gg_LD_Heatmap(xG = myG, chr = 2, pos1 = 44000000, pos2 = 45000000,
                    myMs = "Lcu.1GRN.Chr2p44545877", 
                    axisTextSize = 3, 
                    nameTrim = "Lcu.1GRN.Chr2",
                    myTitle = "Lentil Diversity Panel"
                    )
-ggsave("Fig_DTF_Nepal_2017_03_01.png", mp, width = 12, height = 12, dpi = 600)
+ggsave("Fig_DTF_Nepal_2017_03_01.png", mp[[1]], width = 12, height = 12, dpi = 600)
 ```
 
 ![](Fig_DTF_Nepal_2017_03_01.png)
@@ -1021,16 +1028,41 @@ ggsave("Fig_DTF_Nepal_2017_03_01.png", mp, width = 12, height = 12, dpi = 600)
 > Note: this function can take a while to run if you choose too big of a segment for analysis.
 
 ```{r eval = F}
-mp <- gg_LDheatmap(xg = myG, chr = 5, pos1 = 1200000, pos2 = 2000000,
+mp <- gg_LD_Heatmap(xG = myG, chr = 5, pos1 = 1200000, pos2 = 2000000,
                    myMs = "Lcu.1GRN.Chr5p1658484", 
                    axisTextSize = 1, 
                    nameTrim = "Lcu.1GRN.Chr5",
                    myTitle = "Lentil Diversity Panel"
                    )
-ggsave("Fig_DTF_Nepal_2017_03_02.png", mp, width = 12, height = 12, dpi = 600)
+ggsave("Fig_DTF_Nepal_2017_03_02.png", mp[[1]], width = 12, height = 12, dpi = 600)
 ```
 
 ![](Fig_DTF_Nepal_2017_03_02.png)
+
+---
+
+## Volcano Plot
+
+```{r eval = F}
+# Plot
+mp <- gg_Volcano(
+  # Specify a folder with GWAS results
+  folder = "GWAS_Results/", 
+  # Select a trait to plot
+  trait = "DTF_Nepal_2017",
+  # Plot only certain GWAS models
+  models = c("MLM","MLMM","FarmCPU","BLINK"),
+  # Highlight specific markers
+  markers = c("Lcu.1GRN.Chr2p44545877", 
+              "Lcu.1GRN.Chr5p1658484"), 
+  # Create alt labels for the markers
+  labels = c("44545877","1658484") 
+  )
+# Save
+ggsave("Fig_DTF_Nepal_2017_04_01.png", mp, width = 12, height = 4)
+```
+
+![](Fig_DTF_Nepal_2017_04_01.png)
 
 ---
 
@@ -1417,20 +1449,42 @@ ggsave("Fig_DTF_Sask_2017_02_03.png", mp, width = 6, height = 4)
 > Note: this function can take a while to run if you choose too big of a segment for analysis.
 
 ```{r eval = F}
-mp <- gg_LDheatmap(xg = myG, chr = 6, pos1 = 2500000, pos2 = 4000000,
+mp <- gg_LD_Heatmap(xG = myG, chr = 6, pos1 = 2500000, pos2 = 4000000,
                    myMs = "Lcu.1GRN.Chr6p3269280", 
                    axisTextSize = 3, 
                    nameTrim = "Lcu.1GRN.Chr6",
                    myTitle = "Lentil Diversity Panel"
                    )
-ggsave("Fig_DTF_Sask_2017_03_01.png", mp, width = 12, height = 12, dpi = 600)
+ggsave("Fig_DTF_Sask_2017_03_01.png", mp[[1]], width = 12, height = 12, dpi = 600)
 ```
 
 ![](Fig_DTF_Nepal_2017_03_01.png)
 
 ---
 
-## Minor Allele Frequency {.tabset .tabset-pills}
+## Volcano Plot
+
+```{r echo = T, eval = F}
+# Plot
+mp <- gg_Volcano(
+  # Specify a folder with GWAS results
+  folder = "GWAS_Results/",
+  # Select a trait to plot
+  trait = "DTF_Sask_2017",
+  # Highlight specific markers
+  markers = "Lcu.2RBY.Chr6p2528817", 
+  # Create alt labels for the markers
+  labels = "Chr6p2528817"
+  )
+# Save
+ggsave("Fig_DTF_Sask_2017_04_01.png", mp, width = 12, height = 4)
+```
+
+![](Fig_DTF_Sask_2017_04_01.png)
+
+---
+
+## Minor Allele Frequency
 
 ```{r eval = F}
 # Prep data
@@ -1737,16 +1791,42 @@ ggsave("Fig_Cotyledon_RedvsYellow_02_03.png", mp, width = 6, height = 4)
 > Note: this function can take a while to run if you choose too big of a segment for analysis.
 
 ```{r eval = F}
-mp <- gg_LDheatmap(xg = myG, chr = 1, pos1 = 363000000, pos2 = 370000000,
+mp <- gg_LD_Heatmap(xG = myG, chr = 1, pos1 = 363000000, pos2 = 370000000,
                    myMs = "Lcu.1GRN.Chr1p365986872", 
                    axisTextSize = 1, 
                    nameTrim = "Lcu.1GRN.Chr1",
                    myTitle = "Lentil Diversity Panel"
                    )
-ggsave("Fig_Cotyledon_RedvsYellow_03_01.png", mp, width = 12, height = 12, dpi = 600)
+ggsave("Fig_Cotyledon_RedvsYellow_03_01.png", mp[[1]], width = 12, height = 12, dpi = 600)
 ```
 
 ![](Fig_Cotyledon_RedvsYellow_03_01.png)
+
+---
+
+## Volcano Plot
+
+```{r eval = F}
+# Plot
+mp <- gg_Volcano(
+  # Specify a folder with GWAS results
+  folder = "GWAS_Results/",
+  # Select a trait to plot
+  trait = "Cotyledon_RedvsYellow",
+  # Plot only certain GWAS models
+  models = c("MLM","MLMM","FarmCPU","BLINK"),
+  # Highlight specific markers
+  markers = c("Lcu.1GRN.Chr1p365986872",
+              "Lcu.1GRN.Chr1p361840399",
+              "Lcu.1GRN.Chr1p362336814"), 
+  # Create alt labels for the markers
+  labels = c("365Mbp","351Mbp","362Mbp") 
+  )
+# Save
+ggsave("Fig_Cotyledon_RedvsYellow_04_01.png", mp, width = 12, height = 4)
+```
+
+![](Fig_Cotyledon_RedvsYellow_04_01.png)
 
 ---
 
@@ -1783,142 +1863,26 @@ ggsave("Fig_Cotyledon_RedvsYellow_04_02.png", mp, width = 10, height = 4)
 ![](Fig_06_LD.png)
 
 ```{r eval = F}
-library(genetics)
-xG <- read.csv("Data/myG_hmp.csv", header = T)
-dna <- data.frame(stringsAsFactors = F,
-                  Symbol = c("A", "C", "G", "T", "U", 
-                             "R", "Y", "S", "W", "K", "M", "N"),
-                  Value  = c("A/A","C/C","G/G","T/T","U/U",
-                             "A/G","C/T","G/C","A/T","G/T","A/C","N/N") )
-xx <- xG[,c(-2,-5,-6,-7,-8,-9,-10,-11)]
-for(i in 4:ncol(xx)) {
-  xx[xx[,i]=="N", i] <- NA 
-  xx[,i] <- plyr::mapvalues(xx[,i], dna$Symbol, dna$Value)
-}
-#
-LD_Decay <- function(x, folder = "LD/", Chr = 1, Num = 200) {
-  xc <- x %>% filter(chrom == Chr) 
-  xr <- xc %>% column_to_rownames("rs")
-  xr <- xr[,c(-1,-2)]
-  rr <- round(runif(Num, 1, nrow(xr)))
-  while(sum(duplicated(rr))>0) {
-    ra <- round(runif(sum(duplicated(rr)), 1, nrow(xr)))
-    rr <- rr[!duplicated(rr)]
-    rr <- c(rr, ra)
-  }
-  rr <- rr[order(rr)]
-  xr <- xr[rr,]
-  #
-  xi <- xr %>% t() %>% as.data.frame()
-  myLD <- genetics::LD(genetics::makeGenotypes(xi))
-  save(myLD, file = paste0(folder, "LD_Chrom_", Chr, "_", Num, ".Rdata"))
-}
-# Calculate LD per chromosome
-LD_Decay(x = xx, Chr = 1, Num = 1000)
-LD_Decay(x = xx, Chr = 2, Num = 1000)
-LD_Decay(x = xx, Chr = 3, Num = 1000)
-LD_Decay(x = xx, Chr = 4, Num = 1000)
-LD_Decay(x = xx, Chr = 5, Num = 1000)
-LD_Decay(x = xx, Chr = 6, Num = 1000)
-LD_Decay(x = xx, Chr = 7, Num = 1000)
+calc_LD_Decay(
+  # Load genotype data
+  xG = myG,
+  # Specify a folder with GWAS results
+  outputFolder = "LD_Decay/",
+  # Select the number of markers per chromosome to analyse
+  markerNum = 1000 )
 ```
 
 ```{r eval = F}
-# Create function
-movingAverage <- function(x, n = 5) {
-  stats::filter(x, rep(1 / n, n), sides = 2)
-}
-# Prep data
-xG <- read.csv("Data/myG_hmp.csv", header = T)
-xx <- NULL
-for(i in 1:7) {
-  xc <- xG %>% filter(chrom == i) 
-  load(paste0("LD/LD_Chrom_",i,"_1000.Rdata"))
-  xi <- myLD$`R^2` %>% as.data.frame() %>% 
-    rownames_to_column("SNP1") %>% 
-    gather(SNP2, LD, 2:ncol(.)) %>% 
-    filter(!is.na(LD)) %>%
-    mutate(Chr = i,
-           SNP1_d = plyr::mapvalues(SNP1, xc$rs, xc$pos, warn_missing = F),
-           SNP2_d = plyr::mapvalues(SNP2, xc$rs, xc$pos, warn_missing = F),
-           Distance = as.numeric(SNP2_d) - as.numeric(SNP1_d)) %>%
-    arrange(Distance, rev(LD))
-  #
-  xii <- xi %>% filter(Distance < 1000000)
-  myloess <- stats::loess(LD ~ Distance, data = xii, span=0.50)
-  #
-  xi <- xi %>% 
-    mutate(Moving_Avg = movingAverage(LD, n = 100),
-           Loess_Chr = ifelse(Distance < 1000000, predict(myloess), NA))
-  #
-  xx <- bind_rows(xx, xi)
-}
-#
-x1 <- xx %>% group_by(Chr) %>%
-  summarise(Mean_LD = mean(Moving_Avg, na.rm = T))
-x2 <- xx %>% filter(Loess_Chr < 0.2) %>% group_by(Chr) %>% 
-  summarise(Threshold_0.2 = min(Distance, na.rm = T))
-#x3 <- xx %>% left_join(x1, by = "Chr") %>%
-#  group_by(Chr) %>% filter(Moving_Avg < Mean_LD) %>%
-#  summarise(Threshold_0.1 = min(Distance, na.rm = T))
-myChr <-  x1 %>% left_join(x2, by = "Chr") #%>%
-  #left_join(x3, by = "Chr")
-#
-xx <- left_join(xx, myChr, by = "Chr") %>%
-  mutate(Chr = as.factor(Chr))
-yy <- xx %>% filter(Distance < 1000000) %>%
-  arrange(Distance, rev(LD))
-myloess <- stats::loess(LD ~ Distance, data = yy, span=0.50)
-yy <- yy %>% 
-  mutate(Moving_Avg = movingAverage(LD, n = 100),
-         Loess_Geno = ifelse(Distance < 1000000, predict(myloess), NA))
-#
-x1 <- yy %>% summarise(Mean_LD = mean(Moving_Avg, na.rm = T))
-x2 <- yy %>% filter(Loess_Chr < 0.2) %>%  
-  summarise(Threshold_0.2 = min(Distance, na.rm = T))
-myGeno <-   cross_join(x1, x2)
-# Plot first 1 Mbp
-mp1 <- ggplot(yy, aes(x = Distance/1000, y = Loess_Geno)) +
-  geom_point(aes(y = LD), size = 0.2, pch = 15, alpha = 0.3) +
-  geom_line(aes(y = Moving_Avg), alpha = 0.7) +
-  geom_line() +
-  geom_hline(yintercept = 0.2, color = "blue", lty = 2) +
-  geom_hline(data = myGeno, aes(yintercept = Mean_LD), color = "red", lty = 2) +
-  geom_vline(data = myGeno, lty = 2, size = 0.3, alpha = 0.8,
-             aes(xintercept = Threshold_0.2/1000)) +
-  scale_x_continuous(seq(0, 1000, by = 100), expand = c(0,10)) +
-  theme_gwaspr(legend.position = "none",
-               axis.title.y = ggtext::element_markdown()) +
-  labs(title = "LD of all markers within 1 Mbp", y = "r^2", x = "Kbp")
-# Plot first 1 Mbp
-mp2 <- ggplot(yy, aes(x = Distance/1000, y = Loess_Chr)) +
-  geom_line(aes(y = Moving_Avg), alpha = 0.5) +
-  geom_line() +
-  geom_hline(data = myChr, aes(yintercept = Mean_LD), color = "red", lty = 2) +
-  geom_hline(yintercept = 0.2, color = "blue", lty = 2) +
-  scale_y_continuous(breaks = seq(0, 0.5, by = 0.1), limits = c(0,0.5)) +
-  facet_wrap(paste("Chr =", Chr) + paste("Threshold =", Threshold_0.2) ~ ., 
-             ncol = 7, scales = "free_x") +
-  geom_vline(data = myChr, lty = 2, size = 0.3, alpha = 0.8,
-             aes(xintercept = Threshold_0.2/1000)) +
-  theme_gwaspr(legend.position = "none",
-               axis.title.y = ggtext::element_markdown()) +
-  labs(title = "By Chromosome", y = "r^2", x = "Kbp")
-# Plot full chromsomes
-mp3 <- ggplot(xx, aes(x = Distance/1000000, y = Moving_Avg)) +
-  geom_line(size = 0.5, alpha = 0.5) +
-  geom_hline(data = myChr, aes(yintercept = Mean_LD), color = "red", lty = 2) +
-  geom_hline(yintercept = 0.2, color = "blue", lty = 2) +
-  scale_y_continuous(breaks = seq(0, 0.5, by = 0.1), limits = c(0,0.5)) +
-  facet_wrap(paste("Chr =", Chr) ~ ., ncol = 7, scales = "free_x") +
-  theme_gwaspr(legend.position = "none",
-               axis.title.y = ggtext::element_markdown()) +
-  labs(title = "All Markers", y = "r^2", x = "Mbp")
-#yy <- yy %>% filter(Distance < 10000)
-# Append
-mp <- ggarrange(mp1, mp2, mp3, ncol = 1, nrow = 3)
+# Plot
+mp <- gg_LD_Decay(
+  # Load genotype data
+  xG = myG,
+  # Specify a folder with GWAS results
+  outputFolder = "LD_Decay/",
+  # Select the number of markers per chromosome to analyse
+  markerNum = 1000 )
 # Save
-ggsave("Fig_06_LD.png", mp , width = 12, height = 10)
+ggsave("Fig_06_LD.png", mp, width = 12, height = 10 )
 ```
 
 ---

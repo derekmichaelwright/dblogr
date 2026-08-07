@@ -125,7 +125,7 @@ Install: `devtools::install_github("derekmichaelwright/cypher")`
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_cypher.png)</div></div></div>
 
-# {-}
+## {-}
 
 ---
 
@@ -316,7 +316,7 @@ Harold G. Weger, April K. Polasek, **Derek M. Wright**, Arun Damodaran, John Sta
 
 ---
 
-# `r icon("newspaper")` Academic Work
+# `r icon("newspaper")` Academic
 
 ## Tutorials & Vignettes {.tabset .tabset-pills}
 
@@ -353,6 +353,26 @@ A tutorial on how to run QTL analyses in R with qtl2
 A tutorial on how to run principal component analyses and heirarchical clustering in R
 
 ![](academic/pca_tutorial/featured.png)</div>
+
+#### GxE Tutorial
+
+<div class="box">
+
+[<u>**GxE with Mixed Models**</u>](academic/gxe){target="_blank"}
+
+A tutorial on how to run asses genotype by environment interactions in R
+
+![](academic/gxe/featured.png)</div>
+
+#### Heritability
+
+<div class="box">
+
+[<u>**Calculating Heritability**</u>](academic/heritability){target="_blank"}
+
+An R tutorial on how to calculate heritability
+
+![](academic/heritability/featured.png)</div>
 
 #### Augmented Designs
 

@@ -130,7 +130,7 @@ d4 <- read.csv("1710001501_databaseLoadingData.csv") %>%
          Area = factor(Area, levels = myAreas),
          Age = factor(Age, levels = myAges1),
          Net = ifelse(Value > 0, "Positive", "Negative"),
-         Sex = plyr::mapvalues(Sex, mySexes1, mySexes2))
+         Sex = mv(Sex, mySexes1, mySexes2))
 #
 d5 <- read.csv("1710012101_databaseLoadingData.csv") %>%
   select(Date=REF_DATE, Area=GEO, Type=Non.permanent.resident.types,
@@ -145,7 +145,7 @@ d6 <- read.csv("9810036101_databaseLoadingData.csv") %>%
          POB=Place.of.birth..290., UOM, Value=VALUE) %>%
   mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
          Age = factor(Age, levels = myAges2),
-         Sex = plyr::mapvalues(Sex, mySexes1, mySexes2))
+         Sex = mv(Sex, mySexes1, mySexes2))
 # 
 d7 <- read.csv("1710015401_databaseLoadingData.csv")
 #
@@ -159,7 +159,7 @@ d8 <- d8 %>%
   separate(Month, c("Month","Year"), sep = " ") %>%
   mutate(Value = as.numeric(Value))
 d9 <- d8 %>% filter(Month != "Total") %>%
-  mutate(MonthNum = plyr::mapvalues(Month, myMonths, str_pad(1:12, width = 2, pad = "0")),
+  mutate(MonthNum = mv(Month, myMonths, str_pad(1:12, width = 2, pad = "0")),
          Date = as.Date(paste(Year, MonthNum,"01", sep ="-"), format = "%Y-%m-%d"))
 d8 <- d8 %>% filter(Month == "Total") %>% select(-Month)
 ```
@@ -321,7 +321,7 @@ xx <- left_join(x1, x2, by = c("Area", "Year")) %>%
   filter(Area %in% myA, !is.na(Immigrants)) %>%
   mutate(Value = 1000000 * Immigrants / Population,
          Area = factor(Area, levels = myA),
-         Wing = plyr::mapvalues(Area, myA, myW))
+         Wing = mv(Area, myA, myW) )
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Area)) +
   geom_line(alpha = 0.2) + 

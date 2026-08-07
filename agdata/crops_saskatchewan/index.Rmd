@@ -57,8 +57,8 @@ xx <- d1 %>%
   mutate(Measurement = factor(Measurement, levels = myMeasures),
          Value = ifelse(Measurement != "Yield",
                         Value / 1000000, Value / 1000),
-         Unit = plyr::mapvalues(Unit, c("Hectares", "Tonnes", "kg/ha"), 
-                  c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
+         Unit = mv(Unit, c("Hectares", "Tonnes", "kg/ha"), 
+                   c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
 myCrops <- unique(xx$Item)
 # Plot
 pdf("figures_crops_saskatchewan_statcan.pdf", width = 10, height = 6)
@@ -352,7 +352,7 @@ x2 <- d1 %>% filter(Measurement == "Production", !Item %in% myCrops) %>%
 xx <- bind_rows(x1, x2) %>%
   filter(Year %in% myYears) %>%
   mutate(Item = factor(Item, levels = rev(myCrops)),
-         Group = plyr::mapvalues(Year, myYears, myGroups))
+         Group = mv(Year, myYears, myGroups))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) + 
   geom_col(alpha = 0.7, color = "black", lwd = 0.3) + 
@@ -688,10 +688,11 @@ x1 <- d1 %>%
   mutate(Item = "Fake Meat Proteins (Legumes)")
 x2 <- d1 %>% 
   filter(Measurement == "Production", Item %in% c("Canola", "Wheat")) %>%
-  mutate(Item = plyr::mapvalues(Item, c("Canola", "Wheat"), 
-                                      c("Evil GMO Oilseeds (Canola)", "Toxic Gluten (Wheat)")))
+  mutate(Item = mv(Item, c("Canola", "Wheat"), 
+                   c("Evil GMO Oilseeds (Canola)", "Toxic Gluten (Wheat)")))
 xx <- bind_rows(x1, x2) %>% filter(Year < 2021) %>%
-  mutate(Item = factor(Item, levels = c("Toxic Gluten (Wheat)", "Fake Meat Proteins (Legumes)", 
+  mutate(Item = factor(Item, levels = c("Toxic Gluten (Wheat)", 
+                                        "Fake Meat Proteins (Legumes)", 
                                         "Evil GMO Oilseeds (Canola)")))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +

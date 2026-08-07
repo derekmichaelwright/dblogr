@@ -77,7 +77,7 @@ d3 <- read.csv("consumption-co2-per-capita-vs-gdppc.csv") %>%
          CO2=Per.capita.consumption.based.CO..emissions, 
          GDP=GDP.per.capita..PPP..constant.2017.international...,
          Population=Population..historical.) %>%
-  mutate(Country = plyr::mapvalues(Country, oldnames, newnames)) %>%
+  mutate(Country = mv(Country, oldnames, newnames)) %>%
   left_join(agData_FAO_Country_Table, by = "Country") %>% 
   filter(!(is.na(GDP) & is.na(CO2) & is.na(Population)))
 #
@@ -772,7 +772,7 @@ xx <- xx %>%
   left_join(y1, by = "Country") %>%
   left_join(y2, by = "Country") %>%
   mutate(Group = paste(CO2diff, GDPdiff),
-         Group = plyr::mapvalues(Group, myGroups1, myGroups2),
+         Group = mv(Group, myGroups1, myGroups2),
          Group = factor(Group, levels = myGroups2)) %>%
   filter(!is.na(CO2diff), !is.na(GDPdiff))
 # Plot
@@ -804,7 +804,7 @@ xx <- d3 %>% select(Country, Year, GDP, CO2) %>%
     filter(Country == "Canada") %>%
     mutate(GDP = GDP / 1000) %>%
     gather(Measurement, Value, CO2, GDP) %>%
-    mutate(Measurement = plyr::mapvalues(Measurement, c("CO2","GDP"),
+    mutate(Measurement = mv(Measurement, c("CO2","GDP"),
               c("CO2 emissions per capita", "GDP (int.-$ x1000)")))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +

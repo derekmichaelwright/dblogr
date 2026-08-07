@@ -471,6 +471,8 @@ chisq.test(x = xx$Plants, p = xx$Predicted)
 
 # Two Genes
 
+![](mendel_05.png)
+
 ```{r}
 # Prep data
 myPal <- colorRampPalette(c("darkorange", "darkgreen"))

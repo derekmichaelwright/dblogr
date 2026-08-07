@@ -43,9 +43,9 @@ myColors <- c("darkgreen", "darkred", "darkgoldenrod2")
 xx <- agData_FAO_Crops %>% 
   filter(Area == "Netherlands") %>%
    mutate(Value = ifelse(Measurement %in% c("Area Harvested", "Production"),
-                        Value / 1000000, Value / 1000),
-         Unit = plyr::mapvalues(Unit, c("hectares", "tonnes", "kg/ha"), 
-                  c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
+                         Value / 1000000, Value / 1000),
+          Unit = mv(Unit, c("hectares", "tonnes", "kg/ha"),
+                    c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
 myCrops <- unique(xx$Item)
 # Plot
 pdf("figures_crops_netherlands_fao.pdf", width = 12, height = 4)
@@ -116,7 +116,7 @@ xx <- agData_FAO_Crops %>%
   filter(Area %in% c("Netherlands", "Europe"), Item %in% myCrops,
          Measurement == "Yield") %>%
   mutate(Area = factor(Area, levels = c("Netherlands", "Europe")),
-         Item = plyr::mapvalues(Item, myCrops[6], "Onions"))
+         Item = mv(Item, myCrops[6], "Onions"))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   geom_line(alpha = 0.7, size = 1.5) +

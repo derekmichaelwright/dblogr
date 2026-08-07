@@ -79,7 +79,7 @@ genotypes <- c("A", "B", "C", "D",
 myColors <- c("darkgreen", "darkorange", "darkred", "steelblue", "white")
 dd <- read.csv("data_augmented_designs_1.csv") %>%
   mutate(Color = ifelse(Genotype %in% genotypes[1:4], Genotype, "Treatment"),
-         Color = plyr::mapvalues(Color, genotypes[1:4], checks),
+         Color = mv(Color, genotypes[1:4], checks),
          Color = factor(Color, levels = c(checks, "Treatment")),
          Type = ifelse(Color %in% checks, "Check", "Treatment"),
          Block = factor(paste("Block", Block)),
@@ -118,7 +118,7 @@ genotypes <- c("A", "B", "C", "D",
 myColors <- c("darkgreen", "darkorange", "darkred", "steelblue", "white")
 dd <- read.csv("data_augmented_designs_1.csv") %>%
   mutate(Type = ifelse(Genotype %in% genotypes[1:4], Genotype, "Treatment"),
-         Type = plyr::mapvalues(Type, genotypes[1:4], checks),
+         Type = mv(Type, genotypes[1:4], checks),
          Type = factor(Type, levels = c(checks, "Treatment")),
          Block = factor(paste("Block", Block)),
          Genotype = factor(Genotype, levels = genotypes))
@@ -243,7 +243,7 @@ $SS{t}$ = 69.5 + 214.75 = 284.25
 myColors <- c("aquamarine4", "burlywood4", "darkslategrey")
 blocks <- c("Block 1","Block 2","Block 3")
 dd <- dd %>% 
-  mutate(BlockEffect = plyr::mapvalues(Block, blocks, blockeffects),
+  mutate(BlockEffect = mv(Block, blocks, blockeffects),
          BlockEffect = as.numeric(as.character(BlockEffect)),
          Adj_Yield = Yield - as.numeric(BlockEffect))
 xt <- dd %>% filter(Type == "Treatment") %>% arrange(Yield) %>% 
@@ -439,7 +439,7 @@ dd <- read.csv("data_augmented_designs_2.csv") %>%
          Type = ifelse(SubCheck == 2, "Check3", Type),
          Type = factor(Type, levels = c("Treatment","Check1","Check2","Check3")),
          Block = paste0(Row, Col),
-         Block = plyr::mapvalues(Block, unique(Block), 1:49))
+         Block = mv(Block, unique(Block), 1:49))
 ```
 
 ## Field Plans

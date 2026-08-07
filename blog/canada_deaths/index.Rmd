@@ -1537,7 +1537,7 @@ traits2 <- c("Percent of Releif", "Average Value Per Household", "Percent of Inc
 xx <- read.csv("data_covid_releif.csv") %>%
   gather(Trait, Value, 2:4) %>%
   mutate(Quantile = factor(Quantile, levels = quantiles),
-         Trait = plyr::mapvalues(Trait, traits1, traits2),
+         Trait = mv(Trait, traits1, traits2),
          Trait = factor(Trait, levels = traits2))
 # Plot
 mp <- ggplot(xx, aes(x = Quantile, y = Value, fill = Quantile)) +

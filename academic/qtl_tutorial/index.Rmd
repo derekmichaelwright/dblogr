@@ -680,9 +680,10 @@ The original data was not properly formatted for running the QTL analysis. The f
 # Prep phenotype data
 xx <- readxl::read_xlsx("rawdata/CombinedphenotypingLR93,LR-95.xlsx", "LR-95", skip = 1) %>%
   filter(!is.na(Cotyledon...6))
-xx <- xx %>% select(Id = name, 
-                    Cotyledon_Color = Cotyledon...6,
-                    Testa_Color = `Seed Coat...9`) %>%
+xx <- xx %>% 
+  select(Id = name, 
+         Cotyledon_Color = Cotyledon...6,
+         Testa_Color = `Seed Coat...9`) %>%
   mutate(Cotyledon_Color = plyr::mapvalues(Cotyledon_Color, c("orange","yellow"), c(0,1)),
          Cotyledon_Color = as.numeric(Cotyledon_Color),
          Testa_Color = plyr::mapvalues(Testa_Color, c("green", "grey", "white"), c(0,1,0)),
@@ -710,7 +711,7 @@ xx <- xx %>% select(Id=name, Cotyledon.Color=Cotyledon...6,
                       Testa.Color.1=`Seed Coat...9`, 
                       Testa.Color.2=`Seed Coat...10`) %>%
   mutate(Cotyledon.Color = plyr::mapvalues(Cotyledon.Color, c("orange","yellow"), c(0,1)),
-         Cotyledon.Color = as.numeric(Cotyledon.Color),
+         Cotyledon.Color = plyr::mapvalues(Cotyledon.Color),
          Testa.Color.3 = plyr::mapvalues(Testa.Color.1, c("green", "grey", "white"), c(0,1,0)),
          Testa.Color.3 = as.numeric(Testa.Color.3),
          Testa.Color.4 = plyr::mapvalues(Testa.Color.2, c("green", "grey", "white"), c(0,1,0)),

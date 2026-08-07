@@ -55,9 +55,9 @@ myMeasures <- c("Area Seeded", "Area Harvested", "Production",
 xx <- d1 %>%
    mutate(Measurement = factor(Measurement, levels = myMeasures),
           Value = ifelse(Measurement != "Yield",
-                        Value / 1000000, Value / 1000),
-          Unit = plyr::mapvalues(Unit, c("Hectares", "Tonnes", "kg/ha"), 
-                   c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
+                         Value / 1000000, Value / 1000),
+          Unit = mv(Unit, c("Hectares", "Tonnes", "kg/ha"), 
+                    c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
 myCrops <- unique(xx$Item)
 # Plot
 pdf("figures_crops_canada_statcan.pdf", width = 12, height = 4)
@@ -352,7 +352,7 @@ x2 <- d1 %>% filter(Measurement == "Production", !Item %in% myCrops) %>%
 xx <- bind_rows(x1, x2) %>%
   filter(Year %in% myYears) %>%
   mutate(Item = factor(Item, levels = rev(myCrops)),
-         Group = plyr::mapvalues(Year, myYears, myGroups))
+         Group = mv(Year, myYears, myGroups))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Item)) + 
   geom_col(alpha = 0.7, color = "black", lwd = 0.3) + 

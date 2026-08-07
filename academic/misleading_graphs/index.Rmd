@@ -721,7 +721,7 @@ myRaces2 <- c("White", "Asian", "Black", "Indigenous", "Hispanic")
 myColors <- c("darkgreen", "darkblue", "black", "darkred", "darkorange")
 #
 xx <- d3 %>% filter(Group %in% myRaces1, Nation == "United States") %>%
-  mutate(Group = plyr::mapvalues(Group, myRaces1, myRaces2),
+  mutate(Group = mv(Group, myRaces1, myRaces2),
          Group = factor(Group, levels = myRaces2))
 #
 mp <- ggplot(xx, aes(y = Median.age, x = Year, color = Group)) + 

@@ -55,8 +55,8 @@ pp <- agData_FAO_Population %>%
 dd <- left_join(dd, pp, by = c("Area", "Year")) %>%
   left_join(agData_FAO_Region_Table, by = c("Area"="SubRegion")) %>%
   mutate(TonnesPerPerson = Production / Population,
-         Item = plyr::mapvalues(Item, myItems1, myItems2[-1]),
-         Area = plyr::mapvalues(Area, "Australia and New Zealand", "Au and NZ"),
+         Item = mv(Item, myItems1, myItems2[-1]),
+         Area = mv(Area, "Australia and New Zealand", "Au and NZ"),
          Population_R1961 = NA, Production_R1961 = NA,
          Area_R1961 = NA, Yield_R1961 = NA)
 for(i in unique(dd$Item)) {

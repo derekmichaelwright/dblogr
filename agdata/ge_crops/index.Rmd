@@ -296,7 +296,7 @@ ggsave("ge_crops_09.png", mp, width = 6, height = 4)
 # Prep Data
 xx <- d4 %>% 
   filter(Item != "Others", Measurement != "Percent") %>%
-  mutate(Measurement = plyr::mapvalues(Measurement, "Area", "Total Area"))
+  mutate(Measurement = mv(Measurement, "Area", "Total Area"))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement)) +
   geom_line(size = 1.5, alpha = 0.7) +

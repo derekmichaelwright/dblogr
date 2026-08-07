@@ -61,7 +61,7 @@ d1 <- read.csv("1410001701_databaseLoadingData.csv") %>%
          Sex=Gender, Age=Age.group, Unit=UOM, Scale=SCALAR_FACTOR, Value=VALUE) %>%
   mutate(Area = factor(Area, levels = myAreas),
          Date = as.Date(paste0(Date, "-15"), format = "%Y-%m-%d"),
-         Sex = plyr::mapvalues(Sex, mySexes1, mySexes2))
+         Sex = mv(Sex, mySexes1, mySexes2))
 d2 <- d1 %>% 
   filter(Measurement %in% c("Full-time employment", "Part-time employment")) %>%
   mutate(Year = as.numeric(substr(Date, 1, 4))) %>%

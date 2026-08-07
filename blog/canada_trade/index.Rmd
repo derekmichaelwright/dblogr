@@ -354,7 +354,7 @@ ggsave("canada_trade_10.png", mp, width = 6, height = 4)
 yy <- agData_FAO_Country_Table
 xx <- d2 %>% 
   filter(Trade == "Trade Balance") %>%
-  mutate(Trading.Partner = plyr::mapvalues(Trading.Partner,
+  mutate(Trading.Partner = mv(Trading.Partner,
            c("Türkiye","Russian Federation", "United States", "South Korea"), 
            c("Turkey", "Russia", "USA", "Republic of Korea"))) %>%
   left_join(agData_FAO_Country_Table, by = c("Trading.Partner"="Country")) %>%

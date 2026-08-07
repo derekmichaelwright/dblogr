@@ -191,7 +191,7 @@ xx <- d2 %>%
   filter(Area == "Saskatchewan", 
          Item %in% c("Wheat, durum", "Wheat, spring"),
          Measurement %in% myMeasures) %>%
-  mutate(Measurement = plyr::mapvalues(Measurement, myMeasures,
+  mutate(Measurement = mv(Measurement, myMeasures,
                           c("Production (Tonnes)", "Area Seeded (Hectares)")))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement)) +
@@ -221,8 +221,8 @@ xx <- agData_STATCAN_Crops2 %>%
   filter(Area == "Ontario", Item %in% myCrops,
          Measurement %in% myMeasures) %>%
   filter(!(Item == "Wheat, winter remaining" & Measurement == "Area Seeded")) %>%
-  mutate(Item = plyr::mapvalues(Item, myCrops[3:4], rep(myCrops[2],2)),
-         Measurement = plyr::mapvalues(Measurement, myMeasures,
+  mutate(Item = mv(Item, myCrops[3:4], rep(myCrops[2],2)),
+         Measurement = mv(Measurement, myMeasures,
                           c("Production (Tonnes)", "Area Seeded (Hectares)")))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement)) +

@@ -54,8 +54,8 @@ myAreas <- c("World",
 xx <- d1 %>%
   mutate(Value = ifelse(Measurement %in% c("Area Harvested", "Production"),
                         Value / 1000000, Value / 1000),
-         Unit = plyr::mapvalues(Unit, c("ha", "t", "kg/ha"), 
-                  c("Million Hectares", "Million Tonnes", "Tonnes / Hectare")))
+         Unit = mv(Unit, c("ha", "t", "kg/ha"), 
+                   c("Million Hectares", "Million Tonnes", "Tonnes / Hectare")))
 myAreas <- myAreas[myAreas %in% xx$Area]
 # Plot
 pdf("figures_lentil_fao.pdf", width = 12, height = 4)

@@ -67,7 +67,7 @@ xx <- xx %>% filter(Area != "Canada") %>%
   mutate(Percent = round(100 * Value / x1$Value)) %>% 
   arrange(Percent) %>%
   mutate(Area = factor(Area, levels = rev(Area)),
-         Area_Short = plyr::mapvalues(Area, d0$Area, d0$Area_Short),
+         Area_Short = mv(Area, d0$Area, d0$Area_Short),
          Label = ifelse(Area %in% myAreas, paste(Percent, "%"), NA))
 # Plot
 mp <- ggplot(xx, aes(x = Area_Short, y = Value / 1000000)) +
@@ -105,7 +105,7 @@ xx <- xx %>% filter(Area != "Canada") %>%
          Label = ifelse(Percent > 6, paste(Percent, "%"), NA)) %>%
   arrange(desc(Percent)) %>%
   mutate(Area = factor(Area, levels = Area),
-         Area_Short = plyr::mapvalues(Area, d0$Area, d0$Area_Short))
+         Area_Short = mv(Area, d0$Area, d0$Area_Short))
 # Plot
 mp <- ggplot(xx, aes(x = 1)) +
   geom_bar(aes(y = -Percent, fill = Area), stat = "identity", 
@@ -224,7 +224,7 @@ xx <- xx %>% filter(Area != "Canada") %>%
   mutate(Percent = round(100 * Value / x1$Value)) %>% 
   arrange(Percent) %>%
   mutate(Area = factor(Area, levels = rev(Area)),
-         Area_Short = plyr::mapvalues(Area, d0$Area, d0$Area_Short),
+         Area_Short = mv(Area, d0$Area, d0$Area_Short),
          Label = ifelse(Area %in% myAreas, paste(Percent, "%"), NA))
 # Plot
 mp1 <- ggplot(xx, aes(x = Area_Short, y = Value / 1000000)) +
@@ -245,7 +245,7 @@ xx <- xx %>% filter(Area != "Canada") %>%
   mutate(Percent = round(100 * Value / x1$Value)) %>% 
   arrange(Percent) %>%
   mutate(Area = factor(Area, levels = rev(Area)),
-         Area_Short = plyr::mapvalues(Area, d0$Area, d0$Area_Short),
+         Area_Short = mv(Area, d0$Area, d0$Area_Short),
          Label = ifelse(Area %in% myAreas, paste(Percent, "%"), NA))
 # Plot
 mp2 <- ggplot(xx, aes(x = Area_Short, y = Value / 1000000)) +
@@ -349,10 +349,9 @@ xx <- d2 %>%
   filter(Area == "Canada", Unit != "Acres",
          Item %in% c("Total area of farms", "Total number of farms")) %>%
   mutate(Value = ifelse(Unit == "Hectares", Value / 100000, Value / 1000),
-         Unit = plyr::mapvalues(Unit, 
-            c("Hectares", "Number of farms reporting"), 
-            c("Total area of farms (100,000 hectares)",
-              "Number of farms (x1000)")))
+         Unit = mv(Unit, c("Hectares", "Number of farms reporting"), 
+                   c("Total area of farms (100,000 hectares)",
+                     "Number of farms (x1000)")))
 # Plot
 mp <- ggplot(xx, aes(y = Value, x = Year)) + 
   geom_col(position = "dodge", alpha = 0) +
@@ -378,10 +377,9 @@ xx <- d2 %>%
   filter(Area != "Canada", Unit != "Acres",
          Item %in% c("Total area of farms", "Total number of farms")) %>%
   mutate(Value = ifelse(Unit == "Hectares", Value / 100000, Value / 1000),
-         Unit = plyr::mapvalues(Unit, 
-            c("Hectares", "Number of farms reporting"), 
-            c("Total area of farms (100,000 hectares)",
-              "Number of farms (x1000)")))
+         Unit = mv(Unit, c("Hectares", "Number of farms reporting"), 
+                   c("Total area of farms (100,000 hectares)",
+                     "Number of farms (x1000)")))
 # Plot
 mp <- ggplot(xx, aes(y = Value, x = Year)) + 
   geom_col(position = "dodge", alpha = 0) +

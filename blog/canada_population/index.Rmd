@@ -67,7 +67,7 @@ d1 <- read.csv("1710000901_databaseLoadingData.csv") %>%
   select(Year=REF_DATE, Area=GEO, Unit=UOM, Value=VALUE) %>%
   mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
          Area = factor(Area, levels = myAreas),
-         AreaShort = plyr::mapvalues(Area, myAreas, myAreasShort),
+         AreaShort = mv(Area, myAreas, myAreasShort),
          Month = substr(Year, 6, 8),
          Year = substr(Year, 1,4),
          Year = as.numeric(Year),

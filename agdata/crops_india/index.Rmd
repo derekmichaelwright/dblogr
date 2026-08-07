@@ -43,9 +43,9 @@ myColors <- c("darkgreen", "darkred", "darkgoldenrod2")
 xx <- agData_FAO_Crops %>% 
   filter(Area == "India") %>%
    mutate(Value = ifelse(Measurement %in% c("Area Harvested", "Production"),
-                        Value / 1000000, Value / 1000),
-         Unit = plyr::mapvalues(Unit, c("hectares", "tonnes", "kg/ha"), 
-                  c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
+                         Value / 1000000, Value / 1000),
+         Unit = mv(Unit, c("hectares", "tonnes", "kg/ha"), 
+                   c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
 myCrops <- unique(xx$Item)
 # Plot
 pdf("figures_crops_india_fao.pdf", width = 12, height = 4)

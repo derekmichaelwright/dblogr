@@ -33,7 +33,7 @@ y3 <- read.csv("C:/Google Drive/gitfolder/AGILE_LDP_Phenology/data/model_t+p_coe
   select(Name, a, b, c)
 y4 <- read.csv("C:/gitfolder/dblogr/content/academic/gwas_tutorial/GWAS_Results/GAPIT.PCA.csv") %>%
   select(Name=taxa, myG_PC1=PC1, myG_PC2=PC2, myG_PC3=PC3) %>%
-  mutate(Name = plyr::mapvalues(Name, "X3156.11_AGL", "3156.11_AGL"),
+  mutate(Name = mv(Name, "X3156.11_AGL", "3156.11_AGL"),
          Name = gsub("_", " ", Name),
          Name = gsub("\\.", "-", Name))
 y5 <- AGILE_Q %>% 

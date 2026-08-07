@@ -45,7 +45,7 @@ d1 <- read.csv("1410028801_databaseLoadingData.csv") %>%
          Date = as.Date(paste0(Date, "-15"), format = "%Y-%m-%d"),
          Measurement = gsub(" employees", "", Measurement),
          Measurement = factor(Measurement, levels = myMeasures),
-         Sex = plyr::mapvalues(Sex, mySexes1, mySexes2))
+         Sex = mv(Sex, mySexes1, mySexes2))
 d2 <- d1 %>% 
   mutate(Year = as.numeric(substr(Date, 1, 4))) %>%
   group_by(Area, Year, Measurement, Sex) %>%

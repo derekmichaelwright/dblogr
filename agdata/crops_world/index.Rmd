@@ -44,8 +44,8 @@ myColors <- c("darkgreen", "darkred", "darkgoldenrod2")
 xx <- dd %>%
   mutate(Value = ifelse(Measurement %in% c("Area Harvested","Production"),
                         Value / 1000000, Value / 1000),
-         Unit = plyr::mapvalues(Unit, c("hectares", "tonnes", "kg/ha"), 
-                  c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
+         Unit = mv(Unit, c("hectares", "tonnes", "kg/ha"), 
+                   c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
 myCrops <- unique(xx$Crop)
 # Plot
 pdf("figures_crops_world_fao.pdf", width = 12, height = 4)
@@ -131,7 +131,7 @@ xx <- dd %>%
     filter(Year %in% c(2019, 1961),
            Measurement == "Area Harvested", Item %in% myCrops) %>% 
   mutate(Item = factor(Item, levels = myCrops),
-         Item = plyr::mapvalues(Item, "Groundnuts, with shell", "Groundnuts"))
+         Item = mv(Item, "Groundnuts, with shell", "Groundnuts"))
 # Plot
 mp <- ggplot(xx, aes(x = Item, y = Value / 1000000, fill = Item)) + 
   geom_col(color = "Black", alpha = 0.7) + 

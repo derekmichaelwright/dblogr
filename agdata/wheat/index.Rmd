@@ -48,8 +48,8 @@ myAreas <- c("World",
 xx <- dd %>%
   mutate(Value = ifelse(Measurement %in% c("Area Harvested", "Production"),
                         Value / 1000000, Value / 1000),
-         Unit = plyr::mapvalues(Unit, c("Hectares", "Tonnes", "kg/ha"), 
-                  c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
+         Unit = mv(Unit, c("Hectares", "Tonnes", "kg/ha"), 
+                   c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
 myAreas <- myAreas[myAreas %in% xx$Area]
 # Plot
 pdf("figures_wheat_fao.pdf", width = 12, height = 4)
