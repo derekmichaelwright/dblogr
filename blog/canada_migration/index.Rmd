@@ -157,7 +157,8 @@ colnames(d8) <- c("Area", paste(colnames(d8)[2:ncol(d8)], rep(2022:2025, each = 
 d8 <- d8 %>%
   gather(Month, Value, 2:ncol(.)) %>%
   separate(Month, c("Month","Year"), sep = " ") %>%
-  mutate(Value = as.numeric(Value))
+  mutate(Value = as.numeric(Value),
+         Area = mv(Area, "People's Republic of China", "China"))
 d9 <- d8 %>% filter(Month != "Total") %>%
   mutate(MonthNum = mv(Month, myMonths, str_pad(1:12, width = 2, pad = "0")),
          Date = as.Date(paste(Year, MonthNum,"01", sep ="-"), format = "%Y-%m-%d"))
@@ -1167,45 +1168,64 @@ ggsave("canada_migration_7_02.png", mp, width = 6, height = 4)
 
 ---
 
-## India
+## Top 3
 
 ![](canada_migration_7_03.png)
 
 ```{r}
 # Prep data
-xx <- d9 %>% filter(Area == "India") 
+xx <- d9 %>% filter(Area %in% c("India","China","Ukraine")) 
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
-  geom_col(fill = "steelblue", color = "black", alpha = 0.7) +
+  geom_line(aes(color = Area), lwd = 1.5) +
   theme_agData() +
-  labs(title = "Temperary Residents From India", x = NULL, 
+  scale_color_manual(values = c("darkred","goldenrod2","steelblue")) +
+  labs(title = "Temperary Residents", x = NULL, 
        y = "Thousand people", caption = myCaption)
 ggsave("canada_migration_7_03.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-## China
+## India
 
 ![](canada_migration_7_04.png)
 
 ```{r}
 # Prep data
-xx <- d9 %>% filter(Area == "People's Republic of China") 
+xx <- d9 %>% filter(Area == "India") 
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
-  geom_col(fill = "steelblue", color = "black", alpha = 0.7) +
+  geom_col(fill = "goldenrod2", color = "black", alpha = 0.7) +
   theme_agData() +
-  labs(title = "Temperary Residents From China", x = NULL, 
+  labs(title = "Temperary Residents From India", x = NULL, 
        y = "Thousand people", caption = myCaption)
 ggsave("canada_migration_7_04.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-## Ukraine
+## China
 
 ![](canada_migration_7_05.png)
+
+```{r}
+# Prep data
+xx <- d9 %>% filter(Area == "China") 
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_col(fill = "darkred", color = "black", alpha = 0.7) +
+  theme_agData() +
+  labs(title = "Temperary Residents From China", x = NULL, 
+       y = "Thousand people", caption = myCaption)
+ggsave("canada_migration_7_05.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Ukraine
+
+![](canada_migration_7_06.png)
 
 ```{r}
 # Prep data
@@ -1214,9 +1234,9 @@ xx <- d9 %>% filter(Area == "Ukraine")
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   geom_col(fill = "steelblue", color = "black", alpha = 0.7) +
   theme_agData() +
-  labs(title = "Temperary Residents From India", x = NULL, 
+  labs(title = "Temperary Residents From Ukraine", x = NULL, 
        y = "Thousand people", caption = myCaption)
-ggsave("canada_migration_7_05.png", mp, width = 6, height = 4)
+ggsave("canada_migration_7_06.png", mp, width = 6, height = 4)
 ```
 
 ---

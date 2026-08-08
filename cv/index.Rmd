@@ -1,6 +1,6 @@
 ---
 output:
-  pagedown::html_resume: 
+  pagedown::html_resume:
     self_contained: yes
 ---
 

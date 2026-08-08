@@ -72,7 +72,8 @@ myAs <- c("USA", "Germany", "Switzerland", "Hong Kong",
           "Bangladesh", "India", "Nigeria", "Kenya")
 #
 d1 <- read.csv("food-expenditure-share-gdp.csv") %>%
-  rename(ISO3=Code, TotalExp=Total.consumer.expenditure,
+  rename(ISO3=Code, 
+         TotalExp=Total.consumer.expenditure,
          FoodPercent=Food.expenditure) %>% 
   filter(!is.na(TotalExp)) %>%
   left_join(agData_FAO_Country_Table, by = "ISO3") %>%
@@ -158,9 +159,44 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ---
 
-## Country Bars 2023
+## 2017 - 2023
 
 ![](food_expenditures_1_03.png)
+
+```{r}
+# Prep data
+x1 <- d1 %>% filter(Year == 2017)
+x2 <- d1 %>% filter(Year == 2023)
+x3 <- d1 %>% filter(Year %in% c(2017,2023)) %>% 
+  select(Country, Region, Year, FoodPercent, TotalExp) %>%
+  gather(Measurement, Value, FoodPercent, TotalExp) %>%
+  mutate(Measurement = paste(Measurement, Year)) %>%
+  select(-Year) %>%
+  spread(Measurement, Value)
+# Plot
+mp <- ggplot(x1, aes(x = TotalExp, y = FoodPercent, color = Region)) +
+  geom_segment(data = x3, alpha = 0.5,
+               aes(x = `TotalExp 2017`, xend = `TotalExp 2023`, 
+                   y = `FoodPercent 2017`, yend = `FoodPercent 2023`)) +
+  geom_point(alpha = 0.2) +
+  geom_point(data = x2) +
+  geom_text(aes(label = Label), size = 2.5) +
+  scale_color_manual(name = NULL, values = myCs_Regions) +
+  theme_agData() +
+  labs(title = "Food Expenses vs. Total Expenditure",
+       subtitle = "2017 - 2023",
+       y = "Percent of Income Spent on Food", 
+       x = "Total Consumer Expenditure", 
+       caption = myCaption1)
+ggsave("food_expenditures_1_03.png", mp, width = 6, height = 4)
+#
+```
+
+---
+
+## Country Bars 2023
+
+![](food_expenditures_1_04.png)
 
 ```{r}
 # Prep data
@@ -188,14 +224,14 @@ mp2 <- ggplot(x2, aes(x = Country, y = FoodPercent)) +
   theme_agData() +
   labs(y = "Percent Spent on Food", x = NULL, caption = myCaption1)
 mp <- ggarrange(mp1, mp2, ncol = 2, common.legend = T, legend = "bottom") 
-ggsave("food_expenditures_1_03.png", mp, width = 10, height = 8, bg = "white")
+ggsave("food_expenditures_1_04.png", mp, width = 10, height = 8, bg = "white")
 ```
 
 ---
 
 ## Total Food
 
-![](food_expenditures_1_04.png)
+![](food_expenditures_1_05.png)
 
 ```{r}
 # Prep data
@@ -211,14 +247,14 @@ mp <- ggplot(xx, aes(x = FoodExp, y = FoodPercent)) +
        y = "Percent of Income Spent on Food", 
        x = "Total Food Expenditure", 
        caption = myCaption1)
-ggsave("food_expenditures_1_04.png", mp, width = 6, height = 4)
+ggsave("food_expenditures_1_05.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Regions
 
-![](food_expenditures_1_05.png)
+![](food_expenditures_1_06.png)
 
 ```{r}
 # Prep data
@@ -234,7 +270,7 @@ mp <- ggplot(xx, aes(x = Region, y = FoodPercent)) +
        y = "Percent of Income Spent on Food", 
        x = "Total Food Expenditure", 
        caption = myCaption1)
-ggsave("food_expenditures_1_05.png", mp, width = 6, height = 4)
+ggsave("food_expenditures_1_06.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -423,7 +459,7 @@ mp <- ggplot(d4, aes(x = Date, y = Value)) +
   theme_agData() +
   labs(title = "Consumer Price Index for All Urban Consumers",
        subtitle = "Food at Home in U.S. City Average", 
-       y = "Index 1982-1984=100", x = NULL, caption = myCaption2)
+       y = "1982-1984=100", x = NULL, caption = myCaption2)
 ggsave("food_expenditures_4_01.png", mp, width = 6, height = 4)
 ```
 
@@ -442,7 +478,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value)) +
   theme_agData() +
   labs(title = "Consumer Price Index for All Urban Consumers",
        subtitle = "Food at Home in U.S. City Average", 
-       y = "Index 1982-1984=100", x = NULL, caption = myCaption2)
+       y = "1982-1984=100", x = NULL, caption = myCaption2)
 ggsave("food_expenditures_4_02.png", mp, width = 6, height = 4)
 ```
 
@@ -458,10 +494,11 @@ xx <- d4 %>% filter(Year > 2014)
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value)) +
   geom_line(color = "darkgreen", linewidth = 1.5) +
+  scale_x_date(minor_breaks = "1 year") +
   theme_agData() +
   labs(title = "Consumer Price Index for All Urban Consumers",
        subtitle = "Food at Home in U.S. City Average", 
-       y = "Index 1982-1984=100", x = NULL, caption = myCaption2)
+       y = "1982-1984=100", x = NULL, caption = myCaption2)
 ggsave("food_expenditures_4_03.png", mp, width = 6, height = 4)
 ```
 
@@ -475,18 +512,51 @@ ggsave("food_expenditures_4_03.png", mp, width = 6, height = 4)
 # Prep data
 x1 <- d4 %>% filter(Year > 1970, Year < 2015)
 fit <- lm(Value ~ Date, data = x1)
-x2 <- data.frame(Date = as.Date(c("2015-01-01", "2035-01-01"), format = "%Y-%m-%d"))
+x2 <- data.frame(Date = as.Date(c("2015-01-01", "2027-01-01"), format = "%Y-%m-%d"))
 x2$Value <- predict(fit, newdata = x2)
 # Plot
 mp <- ggplot(d4, aes(x = Date, y = Value)) +
-  geom_smooth(data = x1, geom = "line", method = "lm") +
-  geom_line(data = x2, lwd = 1.5, alpha = 0.7) +
-  geom_line(color = "darkgreen", lwd = 1.5, alpha = 0.5) +
+  geom_smooth(data = x1, geom = "line", method = "lm", lwd = 1, color = "black") +
+  geom_line(data = x2, lwd = 1, alpha = 0.7) +
+  geom_line(color = "darkgreen", lwd = 1, alpha = 0.5) +
   theme_agData() +
   labs(title = "Consumer Price Index for All Urban Consumers",
        subtitle = "Food at Home in U.S. City Average", 
-       y = "Index 1982-1984=100", x = NULL, caption = myCaption2)
+       y = "1982-1984=100", x = NULL, caption = myCaption2)
 ggsave("food_expenditures_4_04.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Modeling
+
+![](food_expenditures_4_05.png)
+
+```{r}
+# Prep data
+xx <- d4 %>% filter(Year > 2014)
+#
+x1 <- d4 %>% filter(Year > 1970, Year < 2015)
+fit <- lm(Value ~ Date, data = x1)
+x2 <- data.frame(Date = as.Date(c("2015-01-01", "2027-01-01"), format = "%Y-%m-%d"))
+x2$Value <- predict(fit, newdata = x2)
+#
+y1 <- d4 %>% filter(Year >= 2016, Year <= 2020) %>% mutate(Term = "Trump 1")
+y2 <- d4 %>% filter(Year >= 2021, Year <= 2024) %>% mutate(Term = "Biden")
+y3 <- d4 %>% filter(Year >= 2025, Year <= 2030) %>% mutate(Term = "Trump 2")
+yy <- bind_rows(y1, y2, y3) %>% 
+  mutate(Term = factor(Term, levels = c("Trump 1", "Biden", "Trump 2")))
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value)) +
+  geom_line(data = x2, lwd = 1, alpha = 0.7, aes(color = "Pre-2015 trend")) +
+  geom_smooth(data = yy, geom = "line", method = "lm", aes(color = Term), lwd = 1.5) +
+  geom_line(color = "darkgreen", lwd = 1, alpha = 0.5) +
+  scale_color_manual(values = c("darkred","darkblue","darkred", "black")) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Consumer Price Index for All Urban Consumers",
+       subtitle = "Food at Home in U.S. City Average", 
+       y = "1982-1984=100", x = NULL, caption = myCaption2)
+ggsave("food_expenditures_4_05.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -554,13 +624,14 @@ ggsave("food_expenditures_5_03.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
+myColors <- c("steelblue4", "darkgoldenrod3", "darkred", "darkgreen", "maroon4")
 xx <- d6 %>% filter(Area == "Canada")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value, color = Measurement)) + 
   geom_line(lwd = 1, alpha = 0.7) +
-  scale_color_manual(name = NULL, values = agData_Colors) +
+  scale_color_manual(name = NULL, values = myColors) +
   theme_agData(legend.position = "bottom") +
-  labs(title = "CANADA - CPI", y = "CPI", x = NULL, caption = myCaption4)
+  labs(title = "CANADA - CPI", y = "2002=100", x = NULL, caption = myCaption4)
 ggsave("food_expenditures_6_01.png", mp, width = 6, height = 4)
 ```
 
@@ -573,12 +644,18 @@ ggsave("food_expenditures_6_01.png", mp, width = 6, height = 4)
 ```{r}
 # Prep data
 xx <- d6 %>% filter(Area == "Canada", Measurement == "Food")
+x1 <- xx %>% filter(Year > 1970, Year < 2015)
+fit <- lm(Value ~ Date, data = x1)
+x2 <- data.frame(Date = as.Date(c("2015-01-01", "2027-01-01"), format = "%Y-%m-%d"))
+x2$Value <- predict(fit, newdata = x2)
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value)) + 
   geom_line(color = "darkgreen", lwd = 1.5, alpha = 0.7) +
+  geom_smooth(data = x1, geom = "line", method = "lm", color = "black") +
+  geom_line(data = x2, color = "black", lwd = 1) +
   scale_color_manual(name = NULL, values = agData_Colors) +
   theme_agData() +
-  labs(title = "CANADA - CPI", y = "CPI", x = NULL, caption = myCaption4)
+  labs(title = "CANADA - CPI", y = "2002=100", x = NULL, caption = myCaption4)
 ggsave("food_expenditures_6_02.png", mp, width = 6, height = 4)
 ```
 
@@ -595,8 +672,9 @@ xx <- d6 %>% filter(Area == "Canada", Measurement == "Food", Year > 2014)
 mp <- ggplot(xx, aes(x = Date, y = Value)) + 
   geom_line(color = "darkgreen", lwd = 1.5, alpha = 0.7) +
   scale_color_manual(name = NULL, values = agData_Colors) +
+  scale_x_date(minor_breaks = "1 year") +
   theme_agData() +
-  labs(title = "CANADA - CPI", y = "CPI", x = NULL, caption = myCaption4)
+  labs(title = "CANADA - CPI", y = "2002=100", x = NULL, caption = myCaption4)
 ggsave("food_expenditures_6_03.png", mp, width = 6, height = 4)
 ```
 
@@ -608,16 +686,27 @@ ggsave("food_expenditures_6_03.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-x1 <- d6 %>% filter(Year > 1970, Year < 2015)
+xx <- d6 %>% filter(Area == "Canada", Measurement == "Food", Year > 2014)
+#
+x1 <- d6 %>% filter(Area == "Canada", Measurement == "Food", Year > 1970, Year < 2015)
 fit <- lm(Value ~ Date, data = x1)
-x2 <- data.frame(Date = as.Date(c("2015-01-01", "2035-01-01"), format = "%Y-%m-%d"))
+x2 <- data.frame(Date = as.Date(c("2015-01-01", "2027-01-01"), format = "%Y-%m-%d"))
 x2$Value <- predict(fit, newdata = x2)
+#
+y1 <- xx %>% filter(Year >= 2016, Year <= 2020) %>% mutate(Term = "Trudaue Pre-COVID")
+y2 <- xx %>% filter(Year >= 2021, Year <= 2025) %>% mutate(Term = "Trudaue Post-COVID")
+y3 <- xx %>% filter(Year >= 2026, Year <= 2030) %>% mutate(Term = "Carney")
+yy <- bind_rows(y1, y2, y3) %>% 
+  mutate(Term = factor(Term, levels = c("Trudaue Pre-COVID", "Trudaue Post-COVID", "Carney")))
 # Plot
-mp <- ggplot(d6, aes(x = Date, y = Value)) +
-  geom_smooth(data = x1, geom = "line", method = "lm") +
-  geom_line(data = x2, lwd = 1.5, alpha = 0.7) +
-  geom_line(color = "darkgreen", lwd = 1.5, alpha = 0.5) +
+mp <- ggplot(xx, aes(x = Date, y = Value)) +
+  geom_line(data = x2, lwd = 1, alpha = 0.7, aes(color = "Pre-2015 Trend")) +
+  geom_smooth(data = yy, geom = "line", method = "lm", aes(color = Term), lwd = 1) +
+  geom_line(color = "darkgreen", lwd = 1, alpha = 0.5) +
+  scale_color_manual(values = c("darkorange","darkred","steelblue", "black")) +
   theme_agData() +
-  labs(title = "CANADA - CPI", y = "CPI", x = NULL, caption = myCaption4)
+  labs(title = "CANADA - CPI", y = "2002=100", x = NULL, caption = myCaption4)
 ggsave("food_expenditures_6_04.png", mp, width = 6, height = 4)
 ```
+
+---
