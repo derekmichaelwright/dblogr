@@ -371,7 +371,7 @@ for(i in 1997:max(xx$Year)) {
   par(mai = c(0.2,0,0.25,0), xaxs = "i", yaxs = "i")
   mapBubbles2(dF = xi, nameX = "Lon", nameY = "Lat", nameZSize = "Value",
               nameZColour = "black", nameZFill = "Balance",
-              fillPalette = c("darkgreen", "darkred"),
+              fillPalette = c("steelblue", "darkred"),
               #symbolSize = 2, 
               lwd = 0.75, addLegend = F,
               oceanCol = "grey90", landCol = "white", borderCol = "black",
@@ -380,6 +380,30 @@ for(i in 1997:max(xx$Year)) {
   title(sub = myCaption, line = 0, cex.sub = 0.5, adj = 1)
   dev.off()
 }
+```
+
+---
+
+# US Export Percent
+
+![](canada_trade_11.png)
+
+```{r}
+# Prep data
+xx <- d2 %>% 
+  filter(Trade != "Trade Balance",
+         Trading.Partner %in% c("All countries", "United States")) %>%
+  spread(Trading.Partner, Value) %>%
+  mutate(Percent = 100 * `United States` / `All countries`)
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Percent, color = Trade)) +
+  geom_line(lwd = 1.5) +
+  scale_color_manual(name = NULL, values = c("steelblue", "darkred")) +
+  scale_y_continuous(limits = c(0,100)) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canada", subtitle = "US trade as a percent of total import/exports ", 
+       y = "Percent", x = NULL, caption = myCaption)
+ggsave("canada_trade_11.png", mp, width = 6, height = 4)
 ```
 
 ---

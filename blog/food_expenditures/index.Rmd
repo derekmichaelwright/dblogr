@@ -409,9 +409,9 @@ anim_save("food_expenditures_2_01.gif", mp,
 
 ---
 
-# Food Prices {.tabset .tabset-pills}
+## Food Prices {.tabset .tabset-pills}
 
-## unfacetted
+### unfacetted
 
 ![](food_expenditures_3_01.png)
 
@@ -428,7 +428,7 @@ ggsave("food_expenditures_3_01.png", mp, width = 6, height = 4)
 
 ---
 
-## Facetted
+### Facetted
 
 ![](food_expenditures_3_02.png)
 
