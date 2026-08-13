@@ -46,6 +46,7 @@ d1 <- agData_STATCAN_FarmLand_Use
 d2 <- agData_STATCAN_FarmLand_Farms
 d3 <- agData_STATCAN_FarmLand_Size
 d4 <- agData_STATCAN_FarmLand_Prices
+d5 <- agData_STATCAN_FarmLand_Crops
 ```
 
 ---
@@ -638,6 +639,62 @@ mp <- ggplot(xx, aes(x = Area, y = Value, fill = Group)) +
   labs(title = "Canadian Farm Prices", subtitle = "Farm land and buildings",
        y = "Dollars Per Acre", x = NULL, caption = myCaption)
 ggsave("farmland_canada_4_03.png", mp, width = 6, height = 4)
+```
+
+---
+
+# Crops {.tabset .tabset-pills}
+
+## Number of Farms
+
+![](farmland_canada_5_01.png)
+
+```{r}
+# Prep data
+xx <- d5 %>% filter(Area == "Canada", Measurement == "Number of farms reporting")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000)) +
+  geom_line() +
+  facet_wrap(Item ~ ., scales = "free_y") +
+  theme_agData() +
+  labs(title = "Numnber of Farms", caption = myCaption)
+ggsave("farmland_canada_5_01.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Average Area
+
+![](farmland_canada_5_02.png)
+
+```{r}
+# Prep data
+xx <- d5 %>% filter(Area == "Canada", Measurement == "Average area in acres")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value)) +
+  geom_line() +
+  facet_wrap(Item ~ ., scales = "free_y") +
+  theme_agData() +
+  labs(title = "Average area in acres", caption = myCaption)
+ggsave("farmland_canada_5_02.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Wheat
+
+![](farmland_canada_5_03.png)
+
+```{r}
+# Prep data
+xx <- d5 %>% filter(Area == "Canada", Item == "Total wheat")
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value)) +
+  geom_line() +
+  facet_wrap(Measurement ~ ., scales = "free_y") +
+  theme_agData() +
+  labs(title = "Average area in acres", caption = myCaption)
+ggsave("farmland_canada_5_03.png", mp, width = 6, height = 4)
 ```
 
 ---

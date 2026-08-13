@@ -67,34 +67,34 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 ---
 
-# `r icon("r-project")` Packages {.tabset .tabset-pills}
+# `r icon("r-project")` Packages 
 
-## Package "gwaspr"
+## Data Analysis & Visualization {.tabset .tabset-pills}
+
+### Package "gwaspr"
 
 <div class="box"><div class="row"><div class="col-md-8">
 
-**gwaspr**
-
-An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` package
+**gwaspr**: An `r icon("r-project")` package for plotting GWAS results from the `GAPIT` package
 
 Install: `devtools::install_github("derekmichaelwright/gwaspr")`
+
+Documentation:
 
 - `r icon("house")` [https://derekmichaelwright.github.io/gwaspr/](https://derekmichaelwright.github.io/gwaspr/){target="_blank"}
 - `r icon("github")` [https://github.com/derekmichaelwright/gwaspr/](https://github.com/derekmichaelwright/gwaspr/){target="_blank"}
 
-Tutorial
+Tutorials & Vignettes:
 
 - `r icon("laptop-code")` [GWAS Tutorial](academic/gwas_tutorial){target="_blank"}
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_gwaspr.png)</div></div></div>
 
-## Package "agData"
+### Package "agData"
 
 <div class="box"><div class="row"><div class="col-md-8">
 
-**agData**
-
-An `r icon("r-project")` package containing agricultural Data sets
+**agData**: An `r icon("r-project")` package containing agricultural Data sets
 
 Install: `devtools::install_github("derekmichaelwright/agData")`
 
@@ -103,24 +103,27 @@ Documentation:
 - `r icon("house")` [https://derekmichaelwright.github.io/agData/](https://derekmichaelwright.github.io/agData/){target="_blank"}
 - `r icon("github")` [https://github.com/derekmichaelwright/agData/](https://github.com/derekmichaelwright/agData/){target="_blank"}
 
-Vignettes
+Tutorials & Vignettes:
 
 - `r icon("laptop-code")` [https://derekmichaelwright.github.io/dblogr/#agdata](https://derekmichaelwright.github.io/dblogr/#agdata)
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_agdata.png)</div></div></div>
 
-## Package "cypher"
+### Package "cypher"
 
 <div class="box"><div class="row"><div class="col-md-8">
 
-**cypher**
-
-An `r icon("r-project")` package for coding and decoding secret messages
+**cypher**: An `r icon("r-project")` package for coding and decoding secret messages
 
 Install: `devtools::install_github("derekmichaelwright/cypher")`
 
+Documentation:
+
 - `r icon("house")` https://derekmichaelwright.github.io/cypher/
 - `r icon("github")` https://github.com/derekmichaelwright/cypher/
+
+Tutorials & Vignettes:
+
 - `r icon("laptop-code")` [Shiny App (R Script)](https://github.com/derekmichaelwright/cypher/blob/master/shinyapp/app.R)
 
 </div><div class="col-md-4">![](blog/hex_stickers/logo_cypher.png)</div></div></div>
@@ -142,6 +145,8 @@ Scientific publications I have been involved in while working/studying at [***Un
 <div class="box">
 
 - `r icon("newspaper")` (**2025**) [<u>**Disecting lentil crop growth across multi-environment trials using unoccupied aerial vehicles and genome-wide association studies**</u>](https://doi.org/10.1002/ppj2.70040){target="_blank"}. *The Plant Phenome Journal*. 8(1): e70040. doi.org/10.1002/ppj2.70040
+
+
 - `r icon("newspaper")` (**2025**) [<u>**Breeding potential of cultivated lentil for increased protein and amino acid concentrations in the Northern Great Plains**</u>](http://dx.doi.org/10.1002/csc2.70085){target="_blank"}. *Crop Science*. 65(3): e70085. doi.org/10.1002/csc2.70085
 - `r icon("newspaper")` (**2024**) [<u>**Grazing preferences of three species of amoebae on cyanobacteria and green algae**</u>](https://doi.org/10.1111/jeu.13018){target="_blank"}. *The Journal of Eukaryotic Microbiology*. e13018: 1-14. doi.org/10.1111/jeu.13018
 - `r icon("newspaper")` (**2023**) [<u>**Mass Spectrometry-Based Untargeted Metabolomics Reveals the Importance of Glycosylated Flavones in Patterned Lentil Seed Coats**</u>](https://doi/10.1021/acs.jafc.2c07844){target="_blank"}. *Journal of Agricultural and Food Chemistry*. 71(7): 3541–3549. doi.org/10.1021/acs.jafc.2c07844
