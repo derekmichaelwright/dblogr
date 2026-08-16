@@ -31,7 +31,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/blog/canada_auto_sales | Data: STATCAN"
+myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/blog/canada_auto_sales"
 myColors_Type <- c("maroon4", "darkslategray")
 myColors_Fuel <- c("darkgreen", "darkred")
 

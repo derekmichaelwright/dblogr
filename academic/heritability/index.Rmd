@@ -83,7 +83,7 @@ Extra links
 
 ```{r}
 # Prep data
-myCaption1 <- "derekmichaelwright.github.io/dblogr/ | Data: Johannsen (1903)"
+myCaption1 <- "Data: Johannsen (1903)\nderekmichaelwright.github.io/dblogr/academic/heritability"
 d1 <- read.csv("data_johannsen1903_1.csv") 
 d2 <- read.csv("data_johannsen1903_2.csv")
 ```
@@ -224,7 +224,7 @@ ggsave("heritability_2_02.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myCaption3 <- paste("www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: East (1916)")
+myCaption3 <- paste("Data: East (1916)\nderekmichaelwright.github.io/dblogr/academic/heritability")
 d3 <- read.csv("data_east1916.csv")
 DT::datatable(d3)
 d3.1 <- d3 %>%
@@ -431,8 +431,8 @@ ggsave("heritability_3_07.png", mp, width = 6, height = 4)
 > - `r shiny::icon("youtube")` [https://www.youtube.com/watch?v=6HnjTlY4hpA](https://www.youtube.com/watch?v=6HnjTlY4hpA){target="_blank"}
 
 ```{r}
-myCaption4 <- expression(paste("www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Collins ", 
-                               italic("et al"), ". (1930)"))
+myCaption4 <- expression(paste("Data: Collins ", italic("et al"), 
+    ". (1930)\nderekmichaelwright.github.io/dblogr/academic/heritability"))
 d4 <- read.csv("data_tbrtquality.csv") %>% 
   mutate(Rep = factor(Rep),
          Expt = paste(Loc, Year),
@@ -562,7 +562,7 @@ Johannsen, Wilhelm (**1903**) Ueber Erblichkeit in Populationen und in reinen Li
 ![](heritability_1_01.png)
 
 # Prep data
-myCaption <- paste("www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Johannsen (1903)")
+myCaption <- paste("Data: Johannsen (1903)\nderekmichaelwright.github.io/dblogr/academic/heritability")
 dd <- read_xlsx("data_heritability.xlsx", "Johannsen1903") %>% 
   gather(Parents, Count, 2:7)
 xx <- dd %>% uncount(Count)

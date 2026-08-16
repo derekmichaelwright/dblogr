@@ -27,7 +27,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/agdata/wheat | Data: FAO"
+myCaption <- "Data: FAO\nderekmichaelwright.github.io/dblogr/agdata/wheat"
 #
 dd <- agData_FAO_Crops %>% filter(Item == "Wheat")
 ```
@@ -40,8 +40,8 @@ dd <- agData_FAO_Crops %>% filter(Item == "Wheat")
 
 ```{r results="hide"}
 # Prep data
-myColors <- c("darkgreen", "darkred", "darkgoldenrod2")
-myAreas <- c("World",
+myCs <- c("darkgreen", "darkred", "darkgoldenrod2")
+myAs <- c("World",
   unique(agData_FAO_Region_Table$Region),
   unique(agData_FAO_Region_Table$SubRegion),
   unique(agData_FAO_Country_Table$Country))
@@ -50,17 +50,17 @@ xx <- dd %>%
                         Value / 1000000, Value / 1000),
          Unit = mv(Unit, c("Hectares", "Tonnes", "kg/ha"), 
                    c("Million Hectares", "Million Tonnes", "Tonnes/ Hectare")))
-myAreas <- myAreas[myAreas %in% xx$Area]
+myAs <- myAs[myAs %in% xx$Area]
 # Plot
 pdf("figures_wheat_fao.pdf", width = 12, height = 4)
-for(i in myAreas) {
+for(i in myAs) {
   print(ggplot(xx %>% filter(Area == i)) +
     geom_line(aes(x = Year, y = Value, color = Measurement),
               size = 1.5, alpha = 0.7) +
     facet_wrap(. ~ Measurement + Unit, ncol = 3, scales = "free_y") +
     theme_agData(legend.position = "none", 
                  axis.text.x = element_text(angle = 45, hjust = 1)) +
-    scale_color_manual(values = myColors) +
+    scale_color_manual(values = myCs) +
     scale_x_continuous(breaks = seq(1960, 2020, by = 5) ) +
     labs(title = i, y = NULL, x = NULL, caption = myCaption) )
 }
@@ -77,30 +77,31 @@ dev.off()
 
 ```{r}
 # Prep data
-myColors <- c("darkred", "steelblue", "darkgreen", "darkblue", "darkorange")
-myAreas <- c("Africa", "Oceania", "Americas", "Europe", "Asia" )
+myCs <- c("darkred", "steelblue", "darkgreen", "darkblue", "darkorange")
+myAs <- c("Africa", "Oceania", "Americas", "Europe", "Asia" )
 xx <- dd %>% 
-  filter(Area %in% myAreas, 
+  filter(Area %in% myAs, 
          Measurement == "Production", Year == 2019) %>%
-  mutate(Area = factor(Area, levels = myAreas)) %>%
+  mutate(Area = factor(Area, levels = myAs)) %>%
   arrange(desc(Area)) %>%
   mutate(Prop = round(100 * Value / sum(Value)),
-         Label = ifelse(Prop > 5, Prop, NA),
+         Label = ifelse(Prop > 5, paste0(Prop, "%"), NA),
          ypos = cumsum(Prop) - 0.5 * Prop )
 # Plot
 mp <- ggplot(xx, aes(x = "", y = Prop, fill = Area)) +
-  geom_col(width = 1, color = "black", alpha = 0.7, lwd = 1) +
+  geom_col(alpha = 0.7) +
   coord_polar("y", start = 0) +
   geom_label(aes(y = ypos, label = Label), nudge_x = 0.1,
-             fill = "white", color = "black", alpha = 0.8, size = 6) +
-  scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData_pie() +
-  labs(title = "Wheat Production 2019", caption = myCaption) 
-ggsave("wheat_01.png", mp, width = 6, height = 4)
+             fill = "white", alpha = 0.8, lwd = 0, size = 3) +
+  scale_fill_manual(name = NULL, values = myCs) +
+  guides(fill = guide_legend(reverse = T)) +
+  theme_agData_pie(caption.adj = -0.4) +
+  labs(title = "Global Wheat Production 2019", caption = myCaption) 
+ggsave("wheat_01.png", mp, width = 4, height = 3)
 ```
 
 ```{r echo = F}
-ggsave("featured.png", mp, width = 6, height = 4)
+ggsave("featured.png", mp, width = 4, height = 3)
 ```
 
 ---
@@ -111,7 +112,7 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myColors <- c("darkgreen", "darkblue", "darkred", "darkorange", "steelblue")
+myCs <- c("darkgreen", "darkblue", "darkred", "darkorange", "steelblue")
 xx <- dd %>% 
   filter(Measurement == "Production", Year == 2019,
          Area %in% agData_FAO_Region_Table$SubRegion) %>%
@@ -121,10 +122,10 @@ xx <- dd %>%
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) +
   geom_col(color = "black", alpha = 0.7) +
   facet_grid(. ~ Region, scales = "free_x", space = "free_x") +
-  scale_fill_manual(values = myColors) +
+  scale_fill_manual(values = myCs) +
   theme_agData_col(legend.position = "none",
                    axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Wheat Production 2019", x = NULL,
+  labs(title = "Global Wheat Production - 2019", x = NULL,
        y = "Million Tonnes", caption = myCaption) 
 ggsave("wheat_02.png", mp, width = 6, height = 4)
 ```
@@ -139,23 +140,23 @@ ggsave("wheat_02.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myColors <- c("darkgreen", "darkred", "steelblue", "darkorange")
-myAreas <- c(c("Rest of World", "Russia", "Ukraine", "USSR"))
+myCs <- c("darkgreen", "darkred", "steelblue", "darkorange")
+myAs <- c(c("Rest of World", "Russia", "Ukraine", "USSR"))
 xx <- dd %>% 
   filter(Measurement == "Production",
          Area %in% agData_FAO_Country_Table$Country)
-x1 <- xx %>% filter(Area %in% myAreas)
-x2 <- xx %>% filter(!Area %in% myAreas) %>%
+x1 <- xx %>% filter(Area %in% myAs)
+x2 <- xx %>% filter(!Area %in% myAs) %>%
   group_by(Year) %>%
   summarise(Value = sum(Value)) %>%
   mutate(Area = "Rest of World")
 xx <- bind_rows(x1, x2) %>%
-  mutate(Area = factor(Area, levels = myAreas))
+  mutate(Area = factor(Area, levels = myAs))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Area)) +
   geom_col(color = "black", alpha = 0.7, lwd = 0.2) +
-  scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData() +
+  scale_fill_manual(name = NULL, values = myCs) +
+  theme_agData(caption.adj = 3) +
   labs(title = "Global Wheat Production", x = NULL, 
        y = "Million Tonnes", caption = myCaption) 
 ggsave("wheat_03.png", mp, width = 6, height = 4)
@@ -176,15 +177,15 @@ x1 <- xx %>%
          ypos = cumsum(Prop) - 0.5 * Prop )
 # Plot
 mp <- ggplot(x1, aes(x = "", y = Prop, fill = Area)) +
-  geom_bar(stat = "identity", width = 1,
-           color = "black", alpha = 0.7, lwd = 1) +
+  geom_col(alpha = 0.7) +
   coord_polar("y", start = 0) +
-  geom_label(aes(y = ypos, label = Prop), nudge_x = 0.3,
-             fill = "white", color = "black", alpha = 0.8, size = 6) +
-  scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData_pie() +
-  labs(title = "Wheat Production 2019", caption = myCaption) 
-ggsave("wheat_04.png", mp, width = 6, height = 4)
+  geom_label(aes(y = ypos, label = paste0(Prop,"%")), nudge_x = 0.1,
+             fill = "white", alpha = 0.8, lwd = 0, size = 3) +
+  scale_fill_manual(name = NULL, values = myCs) +
+  guides(fill = guide_legend(reverse = T)) +
+  theme_agData_pie(caption.adj = -0.5) +
+  labs(title = "Global Wheat Production - 2019", caption = myCaption) 
+ggsave("wheat_04.png", mp, width = 4, height = 3)
 ```
 
 ---
@@ -195,7 +196,7 @@ ggsave("wheat_04.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myColors <- c("darkgreen", "darkorange")
+myCs <- c("darkgreen", "darkred")
 x1 <- xx %>% 
   filter(Year == 1965) %>%
   arrange(desc(Area)) %>%
@@ -203,14 +204,15 @@ x1 <- xx %>%
          ypos = cumsum(Prop) - 0.5 * Prop )
 # Plot
 mp <- ggplot(x1, aes(x = "", y = Prop, fill = Area)) +
-  geom_col(width = 1, color = "black", alpha = 0.7, lwd = 1) +
+  geom_col(alpha = 0.7) +
   coord_polar("y", start = 0) +
-  geom_label(aes(y = ypos, label = Prop), nudge_x = 0.3,
-             fill = "white", color = "black", alpha = 0.8, size = 6) +
-  scale_fill_manual(name = NULL, values = myColors) +
-  theme_agData_pie() +
-  labs(title = "Wheat Production 1965", caption = myCaption) 
-ggsave("wheat_05.png", mp, width = 6, height = 4)
+  geom_label(aes(y = ypos, label = paste0(Prop,"%")), nudge_x = 0.1,
+             fill = "white", alpha = 0.8, lwd = 0, size = 3) +
+  scale_fill_manual(name = NULL, values = myCs) +
+  guides(fill = guide_legend(reverse = T)) +
+  theme_agData_pie(caption.adj = -0.5) +
+  labs(title = "Global Wheat Production - 1965", caption = myCaption) 
+ggsave("wheat_05.png", mp, width = 4, height = 3)
 ```
 
 ---

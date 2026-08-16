@@ -56,10 +56,10 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption1 <- "derekmichaelwright.github.io/dblogr/ | Data: OWID"
-myCaption2 <- "derekmichaelwright.github.io/dblogr/ | Data: US BLS"
-myCaption3 <- "derekmichaelwright.github.io/dblogr/blog/ | Data: USDA"
-myCaption4 <- "derekmichaelwright.github.io/dblogr/blog/ | Data: STATCAN"
+myCaption1 <- "Data: OWID\nderekmichaelwright.github.io/dblogr/food_expenditures"
+myCaption2 <- "Data: US BLS\nderekmichaelwright.github.io/dblogr/food_expenditures"
+myCaption3 <- "Data: USDA\nderekmichaelwright.github.io/dblogr/blog/food_expenditures"
+myCaption4 <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/blog/food_expenditures"
 #
 myCs_Regions <- c("darkred", "darkgreen", "darkorange", "darkblue", "steelblue")
 myCs_Food <- c("darkred", "darkgoldenrod2", "grey50", "steelblue", 
@@ -393,7 +393,7 @@ xx <- d2 %>%
   mutate(Measurement = factor(Measurement, levels = rev(myMs_Home)))
 # Plot
 mp <- ggplot(xx, aes(x = "", y = Value, fill = Measurement)) +
-  geom_bar(stat = "identity", color = "black") +
+  geom_col(alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myCs_Home[4:1]) +
   coord_polar("y", start = 0) +
   theme_agData_pie(legene.positon = "bottom",

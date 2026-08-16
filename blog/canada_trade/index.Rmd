@@ -30,7 +30,7 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/blog/canada_trade | Data: STATCAN"
+myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/blog/canada_trade"
 d1 <- read.csv("1210001101_databaseLoadingData.csv") %>%
   select(Year=REF_DATE, Area=GEO, Trade, Basis, Seasonal.adjustment,
          Trading.Partner=Principal.trading.partners, 
@@ -399,7 +399,7 @@ xx <- d2 %>%
 mp <- ggplot(xx, aes(x = Year, y = Percent, color = Trade)) +
   geom_line(lwd = 1.5) +
   scale_color_manual(name = NULL, values = c("steelblue", "darkred")) +
-  scale_y_continuous(limits = c(0,100)) +
+  scale_y_continuous(limits = c(0,100), minor_breaks = seq(0, 100, by = 10)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada", subtitle = "US trade as a percent of total import/exports ", 
        y = "Percent", x = NULL, caption = myCaption)

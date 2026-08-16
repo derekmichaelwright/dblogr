@@ -31,7 +31,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/blog/canada_religion | Data: STATCAN"
+myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/blog/canada_religion"
 myColors <- c("darkorange", "darkgreen", "darkred")
 myColorsMF <- c("steelblue", "palevioletred3")
 myAges <- c("Total - Age", "15 years and over", "0 to 14 years", 

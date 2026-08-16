@@ -31,37 +31,39 @@ library(rworldmap)
 
 ```{r}
 # Prepare data
-myCaption <- "derekmichaelwright.github.io/dblogr/agdata/fertilizers | Data: FAOSTAT"
-myItems <- c("Nutrient nitrogen N (total)",
-             "Nutrient phosphate P2O5 (total)",
-             "Nutrient potash K2O (total)")
+myCaption <- "Data: FAOSTAT\nderekmichaelwright.github.io/dblogr/agdata/fertilizers"
+myItems <- c("Nutrient nitrogen N",
+             "Nutrient phosphate P2O5",
+             "Nutrient potash K2O")
 #
-dd <- agData_FAO_Fertilizers
-dN <- agData_FAO_Fertilizers %>% filter(Item == "Nutrient nitrogen N (total)")
-dP <- agData_FAO_Fertilizers %>% filter(Item == "Nutrient phosphate P2O5 (total)")
-dK <- agData_FAO_Fertilizers %>% filter(Item == "Nutrient potash K2O (total)")
+d1 <- agData_FAO_Fertilizers %>% 
+  mutate(Item = gsub(" \\(total\\)", "", Item))
+#
+d2 <- agData_FAO_LandUse %>% 
+  filter(Item == "Cropland", Measurement == "Area")
+#
+dN <- d1 %>% filter(Item == "Nutrient nitrogen N")
+dP <- d1 %>% filter(Item == "Nutrient phosphate P2O5")
+dK <- d1 %>% filter(Item == "Nutrient potash K2O")
 # N rate
 x1 <- dN %>% filter(Measurement == "Agricultural Use")
-x2 <- agData_FAO_LandUse %>% filter(Item == "Cropland", Measurement == "Area")
-dNr <- bind_rows(x1, x2) %>% 
+dNr <- bind_rows(x1, d2) %>% 
   select(-Measurement, -Unit) %>% 
   spread(Item, Value) %>%
-  mutate(NPH = 1000 * `Nutrient nitrogen N (total)` / Cropland) %>%
+  mutate(NPH = 1000 * `Nutrient nitrogen N` / Cropland) %>%
   filter(!is.na(NPH))
 # P rate
 x1 <- dP %>% filter(Measurement == "Agricultural Use")
-x2 <- agData_FAO_LandUse %>% filter(Item == "Cropland", Measurement == "Area")
-dPr <- bind_rows(x1, x2) %>% 
+dPr <- bind_rows(x1, d2) %>% 
   select(-Measurement, -Unit) %>% 
   spread(Item, Value) %>%
-  mutate(PPH = 1000 * `Nutrient phosphate P2O5 (total)` / Cropland)
+  mutate(PPH = 1000 * `Nutrient phosphate P2O5` / Cropland)
 # K rate
 x1 <- dK %>% filter(Measurement == "Agricultural Use")
-x2 <- agData_FAO_LandUse %>% filter(Item == "Cropland", Measurement == "Area")
-dKr <- bind_rows(x1, x2) %>% 
+dKr <- bind_rows(x1, d2) %>% 
   select(-Measurement, -Unit) %>% 
   spread(Item, Value) %>%
-  mutate(KPH = 1000 * `Nutrient potash K2O (total)` / Cropland)
+  mutate(KPH = 1000 * `Nutrient potash K2O` / Cropland)
 ```
 
 ---
@@ -76,15 +78,15 @@ dKr <- bind_rows(x1, x2) %>%
 
 ```{r}
 # Prep data
-
-xx <- dd %>%
+myCs <- c("darkgreen", "darkorange", "darkred")
+xx <- d1 %>%
   filter(Area == "World", Measurement == "Production",
-         Item %in% myItems
-         )
+         Item %in% myItems)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
   geom_line(alpha = 0.7, size = 1.5) +
-  theme_agData() +
+  scale_color_manual(name = NULL, values = myCs) +
+  theme_agData(legend.position = "bottom") +
   labs(title = "Global Fertilizer Production", x = NULL,
        y = "Million Tonnes", caption = myCaption)
 ggsave("fertilizers_1_01.png", mp, width = 6, height = 4)
@@ -110,7 +112,7 @@ mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", nameZSize = "Value",
             symbolSize = 1, lwd = 0.75, addLegend = F,
             oceanCol = "grey90", landCol = "white", borderCol = "black",
             )
-title(main = "N Fertilizer production in 2019", line = 0.25, cex.main = 1)
+title(main = "Nutrient nitrogen N production in 2019", line = 0.25, cex.main = 1)
 title(sub = myCaption, line = 0, cex.sub = 0.5, adj = 1)
 dev.off()
 ```
@@ -135,7 +137,7 @@ mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", nameZSize = "Value",
             symbolSize = 1, lwd = 0.75, addLegend = F,
             oceanCol = "grey90", landCol = "white", borderCol = "black",
             )
-title(main = "P Fertilizer production in 2019", line = 0.25, cex.main = 1)
+title(main = "Nutrient phosphate P2O5 production in 2019", line = 0.25, cex.main = 1)
 title(sub = myCaption, line = 0, cex.sub = 0.5, adj = 1)
 dev.off()
 ```
@@ -160,7 +162,7 @@ mapBubbles2(dF = xx, nameX = "Lon", nameY = "Lat", nameZSize = "Value",
             symbolSize = 1, lwd = 0.75, addLegend = F,
             oceanCol = "grey90", landCol = "white", borderCol = "black",
             )
-title(main = "K Fertilizer production in 2019", line = 0.25, cex.main = 1)
+title(main = "Nutrient potash K2O production in 2019", line = 0.25, cex.main = 1)
 title(sub = myCaption, line = 0, cex.sub = 0.5, adj = 1)
 dev.off()
 ```
@@ -174,18 +176,16 @@ dev.off()
 ```{r}
 # Prep data
 myCs <- c("darkgreen", "darkorange", "darkred")
-xx <- dd %>% 
+xx <- d1 %>% 
   filter(Area == "World", Measurement == "Agricultural Use",
-         Item %in% myItems) %>%
-  mutate(Item = mv(Item, myItems, c("N","P","K")),
-         Item = factor(Item, levels = c("N","P","K")))
+         Item %in% myItems)
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) + 
   geom_line(size = 1.5, alpha = 0.7) + 
   scale_color_manual(name = NULL, values = myCs) +
   scale_x_continuous(breaks = seq(1960, 2020, by = 10)) + 
-  theme_agData() +
-  labs(title = "Global NPK Fertilizer Use", 
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Global NPK Agricultural Fertilizer Use", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
 ggsave("fertilizers_1_05.png", mp, width = 6, height = 4)
 ```
@@ -208,13 +208,11 @@ myMs <- c("Import qantity", "Export quantity")
 myAs <- c("Southern Europe", "Western Europe", 
           "Northern Europe", "Eastern Europe")
 myCs <- c("darkorange", "darkgreen", "darkblue", "darkred")
-xx <- dd %>% 
+xx <- d1 %>% 
   filter(Area %in% myAs, Measurement %in% myMs,
          Item %in% myItems) %>%
   mutate(Measurement = factor(Measurement, levels = myMs),
-         Area = factor(Area, levels = myAs),
-         Item = mv(Item, myItems, c("N","P","K")),
-         Item = factor(Item, levels = c("N","P","K")))
+         Area = factor(Area, levels = myAs))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) + 
   geom_line(size = 1.25, alpha = 0.7) + 
@@ -225,7 +223,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   scale_color_manual(name = NULL, values = myCs) + 
   labs(title = "NPK Fertilizer Import/Export In Europe",
        y = "Million Tonnes", x = NULL, caption = myCaption)
-ggsave("fertilizers_1_06.png", mp, width = 6, height = 6)
+ggsave("fertilizers_1_06.png", mp, width = 6, height = 7)
 ```
 
 ---
@@ -239,13 +237,11 @@ ggsave("fertilizers_1_06.png", mp, width = 6, height = 6)
 myMs <- c("Import quantity", "Export quantity")
 myAs <- c("UK", "France", "Russia")
 myCs <- c("black", "darkblue", "darkred")
-xx <- dd %>% 
+xx <- d1 %>% 
   filter(Area %in% myAs, Measurement %in% myMs,
          Item %in% myItems, Year > 1989) %>%
   mutate(Measurement = factor(Measurement, levels = myMs),
-         Area = factor(Area, levels = myAs),
-         Item = mv(Item, myItems, c("N","P","K")),
-         Item = factor(Item, levels = c("N","P","K")))
+         Area = factor(Area, levels = myAs))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) + 
   geom_line(size = 1.25, alpha = 0.7) + 
@@ -256,7 +252,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   scale_color_manual(name = NULL, values = myCs) + 
   labs(title = "NPK Fertilizer Import/Export In Europe",
        y = "Million Tonnes", x = NULL, caption = myCaption)
-ggsave("fertilizers_1_07.png", mp, width = 6, height = 6)
+ggsave("fertilizers_1_07.png", mp, width = 6, height = 7)
 ```
 
 ---
@@ -272,12 +268,10 @@ ggFert <- function(area = "Canada") {
   myMs <- c("Import quantity", "Export quantity")
   myCs <- c("darkred", "steelblue", "darkblue")
   #
-  xx <- dd %>% 
+  xx <- d1 %>% 
     filter(Area == area, Item %in% myItems,
            Measurement %in% myMs) %>%
-    mutate(Measurement = factor(Measurement, levels = myMs),
-           Item = mv(Item, myItems, c("N","P","K")),
-           Item = factor(Item, levels = c("N","P","K")))
+    mutate(Measurement = factor(Measurement, levels = myMs))
   # Plot
   ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement, 
                  group = paste(Area, Measurement))) + 
@@ -300,7 +294,7 @@ ggFert <- function(area = "Canada") {
 ```{r}
 # Plot
 mp <- ggFert(area = "Canada")
-ggsave("fertilizers_2_canada.png", mp, width = 6, height = 6)
+ggsave("fertilizers_2_canada.png", mp, width = 6, height = 7)
 ```
 
 ---
@@ -312,7 +306,7 @@ ggsave("fertilizers_2_canada.png", mp, width = 6, height = 6)
 ```{r}
 # Plot
 mp <- ggFert(area = "China")
-ggsave("fertilizers_2_china.png", mp, width = 6, height = 6)
+ggsave("fertilizers_2_china.png", mp, width = 6, height = 7)
 ```
 
 ---
@@ -324,7 +318,7 @@ ggsave("fertilizers_2_china.png", mp, width = 6, height = 6)
 ```{r}
 # Plot
 mp <- ggFert(area = "USA")
-ggsave("fertilizers_2_usa.png", mp, width = 6, height = 6)
+ggsave("fertilizers_2_usa.png", mp, width = 6, height = 7)
 ```
 
 ---
@@ -336,7 +330,7 @@ ggsave("fertilizers_2_usa.png", mp, width = 6, height = 6)
 ```{r}
 # Plot
 mp <- ggFert(area = "India")
-ggsave("fertilizers_2_india.png", mp, width = 6, height = 6)
+ggsave("fertilizers_2_india.png", mp, width = 6, height = 7)
 ```
 
 ---
@@ -348,7 +342,7 @@ ggsave("fertilizers_2_india.png", mp, width = 6, height = 6)
 ```{r}
 # Plot
 mp <- ggFert(area = "Germany")
-ggsave("fertilizers_2_germany.png", mp, width = 6, height = 6)
+ggsave("fertilizers_2_germany.png", mp, width = 6, height = 7)
 ```
 
 ---
@@ -360,7 +354,7 @@ ggsave("fertilizers_2_germany.png", mp, width = 6, height = 6)
 ```{r}
 # Plot
 mp <- ggFert(area = "Ukraine")
-ggsave("fertilizers_2_ukraine.png", mp, width = 6, height = 6)
+ggsave("fertilizers_2_ukraine.png", mp, width = 6, height = 7)
 ```
 
 ---
@@ -372,7 +366,7 @@ ggsave("fertilizers_2_ukraine.png", mp, width = 6, height = 6)
 ```{r}
 # Plot
 mp <- ggFert(area = "Russia")
-ggsave("fertilizers_2_russia.png", mp, width = 6, height = 6)
+ggsave("fertilizers_2_russia.png", mp, width = 6, height = 7)
 ```
 
 ---
@@ -397,7 +391,7 @@ xx <- dN %>%
   slice(1:20) %>%
   mutate(Area = factor(Area, levels = Area))
 # Plot
-ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Area)) +
+mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Area)) +
   geom_col(color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myCs) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -425,7 +419,7 @@ xx <- dN %>%
   mutate(Area = factor(Area, levels = Area),
          Region = factor(Region, levels = myAs))
 # Plot
-ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) +
+mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) +
   geom_col(color = "black", alpha = 0.7) +
   scale_fill_manual(name = NULL, values = myCs) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -490,7 +484,7 @@ myMs <- c("Agricultural Use", "Production",
 myAs <- c("Asia", "Europe", "Americas", "Africa", "Oceania")
 myCs <- c("darkorange", "darkblue", "darkgreen", "darkred", "steelblue")
 xx <- dN %>% 
-  filter(Area %in% myAs, Measurement != "Other Uses") %>%
+  filter(Area %in% myAs, Measurement %in% myMs) %>%
   mutate(Measurement = factor(Measurement, levels = myMs),
          Area = factor(Area, levels = myAs))
 # Plot
@@ -518,9 +512,9 @@ myMs <- c("Agricultural Use", "Production",
 myAs <- c("Southern Europe", "Western Europe", "Northern Europe",
           "Eastern Europe", "Central Asia")
 myCs <- c("darkorange", "darkgreen", "darkblue", "darkred", "steelblue")
-xx <- dd %>% 
-  filter(Area %in% myAs, Measurement != "Other Uses",
-         Item == "Nutrient nitrogen N (total)") %>%
+xx <- d1 %>% 
+  filter(Area %in% myAs, Measurement %in% myMs,
+         Item == "Nutrient nitrogen N") %>%
   mutate(Measurement = factor(Measurement, levels = myMs),
          Area = factor(Area, levels = myAs))
 # Plot
@@ -547,10 +541,10 @@ ggFertP <- function(area = "Canada") {
   # Prep data
   myGs <- c("Production / Use", "Import / Export")
   myMs <- c("Agricultural Use", "Production", 
-                  "Import quantity", "Export quantity")
+            "Import quantity", "Export quantity")
   myCs <- c("darkgreen", "darkred", "steelblue", "darkblue")
   xx <- dN %>% 
-    filter(Area %in% area, Measurement != "Other Uses") %>%
+    filter(Area %in% area, Measurement %in% myMs) %>%
     mutate(Measurement = factor(Measurement, levels = myMs),
            Group = ifelse(Measurement %in% myMs[1:2],
                           myGs[1], myGs[2]),
@@ -724,30 +718,36 @@ x1 <- agData_FAO_Crops2 %>%
          Measurement %in% c("Yield", "Area Harvested")) %>%
   select(-Unit) %>% 
   rename(Crop=Item) %>%
-  spread(Measurement, Value) %>% mutate(Yield = Yield / 1000)
+  spread(Measurement, Value) %>% 
+  mutate(Yield = Yield / 1000) #t/ha
 x2 <- dN %>% 
   filter(Area %in% myAs, Measurement == "Agricultural Use") %>%
   rename(Fertilizer=Value)
 x3 <- agData_FAO_LandUse %>%
-  filter(Item == "Cropland", Area %in% myAs) %>%
-  select(Area, Year, Cropland=Value)
+  filter(Item == "Cropland", Area %in% myAs, Measurement == "Area") %>%
+  select(Area, Year, Cropland=Value) %>%
+  mutate(Cropland = 1000 * Cropland)
 xx <- left_join(x1, x2, by = c("Year","Area")) %>% 
   left_join(x3, by = c("Year","Area")) %>%
   mutate(Area = factor(Area, levels = myAs),
          NperHa = 1000 * Fertilizer / Cropland)
 # Plot
-mp1 <- ggplot(xx, aes(x = NperHa, y = Yield, color = Year)) + 
+mp1 <- ggplot(xx, 
+              aes(x = NperHa, y = Yield, color = Year, group = Year)) + 
   geom_point(size = 0.5) +
-  facet_grid(Crop ~ Area, scales = "free") +
-  scale_color_continuous(high = "darkblue", low = "steelblue") +
+  facet_grid(Crop ~ Area, scales = "free",
+             labeller = label_wrap_gen(width = 15) ) +
+  scale_color_gradient(low = "darkorange", high = "darkgreen") +
   theme_agData(legend.position = "right",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "A) scaled fertilizer use",
        y = "Yield (tonnes / ha)", x = "N Fertilizer (kg N / ha cropland)")
-mp2 <- mp1 + facet_grid(Crop ~ Area, scales = "free_y") +
+mp2 <- mp1 + 
+  facet_grid(Crop ~ Area, scales = "free_y",
+             labeller = label_wrap_gen(width = 15)) +
   labs(title = "B) unscaled fertilizer use", caption = myCaption)
 mp <- ggarrange(mp1, mp2, ncol = 1, heights = c(1,1.05))
-ggsave("fertilizers_n_4_02.png", mp, width = 10, height = 7)
+ggsave("fertilizers_n_4_02.png", mp, width = 10, height = 12)
 ```
 
 ---
@@ -876,7 +876,7 @@ myMs <- c("Agricultural Use", "Production",
 myAs <- c("Asia", "Europe", "Americas", "Africa", "Oceania")
 myCs <- c("darkorange", "darkblue", "darkgreen", "darkred", "steelblue")
 xx <- dP %>% 
-  filter(Area %in% myAs, Measurement != "Other Uses") %>%
+  filter(Area %in% myAs, Measurement %in% myMs) %>%
   mutate(Measurement = factor(Measurement, levels = myMs),
          Area = factor(Area, levels = myAs))
 # Plot
@@ -905,7 +905,7 @@ myAs <- c("Southern Europe", "Western Europe", "Northern Europe",
           "Eastern Europe", "Central Asia")
 myCs <- c("darkorange", "darkgreen", "darkblue", "darkred", "steelblue")
 xx <- dP %>% 
-  filter(Area %in% myAs, Measurement != "Other Uses") %>%
+  filter(Area %in% myAs, Measurement %in% myMs) %>%
   mutate(Measurement = factor(Measurement, levels = myMs),
          Area = factor(Area, levels = myAs))
 # Plot
@@ -935,7 +935,7 @@ ggFertN <- function(area = "Canada") {
             "Import quantity", "Export quantity")
   myCs <- c("darkgreen", "darkred", "steelblue", "darkblue")
   xx <- dP %>% 
-    filter(Area %in% area, Measurement != "Other Uses") %>%
+    filter(Area %in% area, Measurement %in% myMs) %>%
     mutate(Measurement = factor(Measurement, levels = myMs),
            Group = ifelse(Measurement %in% myMs[1:2], myGs[1], myGs[2]),
            Group = factor(Group, levels = myGs))
@@ -1151,7 +1151,7 @@ myMs <- c("Agricultural Use", "Production",
 myAs <- c("Asia", "Europe", "Americas", "Africa")
 colors <- c("darkorange", "darkblue", "darkgreen", "darkred")
 xx <- dK %>% 
-  filter(Area %in% myAs, Measurement != "Other Uses") %>%
+  filter(Area %in% myAs, Measurement %in% myMs) %>%
   mutate(Measurement = factor(Measurement, levels = myMs),
          Area = factor(Area, levels = myAs))
 # Plot
@@ -1180,7 +1180,7 @@ myAs <- c("Southern Europe", "Western Europe", "Northern Europe",
           "Eastern Europe", "Central Asia")
 colors <- c("darkorange", "darkgreen", "darkblue", "darkred", "steelblue")
 xx <- dK %>% 
-  filter(Area %in% myAs, Measurement != "Other Uses") %>%
+  filter(Area %in% myAs, Measurement %in% myMs) %>%
   mutate(Measurement = factor(Measurement, levels = myMs),
          Area = factor(Area, levels = myAs))
 # Plot
@@ -1210,7 +1210,7 @@ ggFertK <- function(area = "Canada") {
             "Import quantity", "Export quantity")
   myCs <- c("darkgreen", "darkred", "steelblue", "darkblue")
   xx <- dK %>% 
-    filter(Area %in% area, Measurement != "Other Uses") %>%
+    filter(Area %in% area, Measurement %in% myMs) %>%
     mutate(Measurement = factor(Measurement, levels = myMs),
            Group = ifelse(Measurement %in% myMs[1:2], myGs[1], myGs[2]),
            Group = factor(Group, levels = myGs))

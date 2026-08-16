@@ -30,7 +30,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 library(agData)
 library(lme4)      # For mixed-effects models
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myCaption <- "derekmichaelwright.github.io/dblogr/academic/gxe"
 ```
 
 ```{r echo = F, eval = F}

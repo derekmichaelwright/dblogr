@@ -28,11 +28,13 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/agdata/wheat_canada | Data: STATCAN"
+myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/agdata/wheat_canada"
 # 
 d1 <- agData_STATCAN_Crops %>% filter(Item == "Wheat")
 #
-myCrops <- c("Wheat, durum", "Wheat, spring", "Wheat, winter seeded in fall")
+myCrops <- c("Wheat, durum", "Wheat, spring", 
+             "Wheat, winter seeded in fall",
+             "Wheat, winter remaining")
 d2 <- agData_STATCAN_Crops2 %>% 
   filter(Item %in% myCrops) %>%
   mutate(Item = factor(Item, levels = myCrops))
@@ -101,7 +103,7 @@ ggsave("wheat_canada_02.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myColors <- c("darkorange", "darkgreen", "steelblue")
+myColors <- c("darkorange", "darkgreen", "steelblue", "darkred")
 myAreas <- c("Prairie Provinces", "Ontario", "Quebec", "Maritime Provinces")
 xx <- d2 %>% 
   filter(Measurement == "Area Seeded", Area %in% myAreas) %>%
@@ -126,7 +128,7 @@ ggsave("wheat_canada_03.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myColors <- c("darkorange", "darkgreen", "steelblue")
+myColors <- c("darkorange", "darkgreen", "steelblue", "darkred")
 myAreas <- c("Saskatchewan", "Alberta", "Manitoba", 
              "Ontario", "Quebec", "British Columbia",
              "New Brunswick", "Prince Edward Island", "Nova Scotia")
@@ -230,6 +232,37 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Measurement)) +
   facet_grid(Item ~ ., scales = "free_y") +
   scale_color_manual(name = NULL, values = c("darkgoldenrod2", "darkgreen")) +
   scale_x_continuous(breaks = seq(1910, 2020, 10), expand = c(0.02,0)) +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Ontario Wheat Production", x = NULL,
+       y = "Million", caption = myCaption) 
+ggsave("wheat_canada_07.png", mp, width = 6, height = 4)
+```
+
+---
+
+## spring vs winter 1920s 
+
+![](wheat_canada_07.png)
+
+```{r}
+# Prep data
+myMeasures <- c("Area Seeded")
+myCrops <- c("Wheat, spring", "Wheat, winter",
+             "Wheat, winter seeded in fall", "Wheat, winter remaining")
+xx <- agData_STATCAN_Crops2 %>% 
+  filter(Area == "Ontario", 
+         Year %in% 1915:1925,
+         Item %in% myCrops,
+         Measurement %in% myMeasures) #%>%
+  #filter(!(Item == "Wheat, winter remaining" & Measurement == "Area Seeded")) %>%
+  #mutate(#Item = mv(Item, myCrops[3:4], rep(myCrops[2],2)),
+  #       Measurement = mv(Measurement, myMeasures,
+  #                        c("Production (Tonnes)", "Area Seeded (Hectares)")))
+# Plot
+mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Item)) +
+  geom_line(size = 1, alpha = 0.7) +
+  scale_color_manual(name = NULL, values = c("darkgoldenrod2", "steelblue")) +
+  #scale_x_continuous(breaks = seq(1910, 2020, 10), expand = c(0.02,0)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Ontario Wheat Production", x = NULL,
        y = "Million", caption = myCaption) 

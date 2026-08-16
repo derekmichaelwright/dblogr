@@ -39,7 +39,7 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/agdata/farmland_canada | Data: STATCAN"
+myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/agdata/farmland_canada"
 #
 d0 <- agData_STATCAN_Region_Table
 d1 <- agData_STATCAN_FarmLand_Use 
@@ -108,15 +108,13 @@ xx <- xx %>% filter(Area != "Canada") %>%
   mutate(Area = factor(Area, levels = Area),
          Area_Short = mv(Area, d0$Area, d0$Area_Short))
 # Plot
-mp <- ggplot(xx, aes(x = 1)) +
-  geom_bar(aes(y = -Percent, fill = Area), stat = "identity", 
-           color = "black", alpha = 0.7) +
+mp <- ggplot(xx, aes(x = "")) +
+  geom_col(aes(y = -Percent, fill = Area), alpha = 0.7) +
   coord_polar("y", start = 0) +
   geom_label(aes(y = -Label_y, label = Label), 
              nudge_x = 0.275, size = 3, alpha = 0.9) +
   
-  theme_agData_pie(plot.caption = element_text(size = 7)) +
-  xlim(0.542, 1.45) +
+  theme_agData_pie(caption.adj = -0.4) +
   scale_fill_manual(name = NULL, values = agData_Colors) +
   labs(title = "Canadian Farmland (2016)", x = NULL, 
        y = "Million Hectares", caption = myCaption)

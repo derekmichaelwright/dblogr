@@ -134,7 +134,7 @@ In the above example from the Canadian government, the scaling of the secondary 
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: PHAC"
+myCaption <- "Data: PHAC\nderekmichaelwright.github.io/dblogr/academic/misleading_graphs"
 #
 xx <- read.csv("https://health-infobase.canada.ca/src/data/covidLive/covid19-download.csv") %>%
   rename(area=prname) %>%
@@ -231,7 +231,7 @@ Now lets make our own by correlating autism rates in Quebec with soybean product
 ```{r}
 # Prep data
 library(ggpmisc) # stat_poly_eq()
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN & FAOSTAT"
+myCaption <- "Data: STATCAN & FAOSTAT\nderekmichaelwright.github.io/dblogr/academic/misleading_graphs"
 #
 x1 <- read.csv("data_quebec_autism_rates.csv")
 x2 <- agData_STATCAN_Crops %>% 
@@ -337,7 +337,7 @@ In 1994 the first genetically engineered (GE) maize variety was released in the 
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: USDA"
+myCaption <- "Data: USDA\nderekmichaelwright.github.io/dblogr/academic/misleading_graphs"
 #
 xx <- agData_USDA_Grains %>%
   filter(Measurement == "Yield", Item == "Maize") 
@@ -380,7 +380,7 @@ The National Interagency Fire Center (NIFC) recently deleted some data from thei
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: NIFC"
+myCaption <- "Data: NIFC\nderekmichaelwright.github.io/dblogr/academic/misleading_graphs"
 #
 dd <- read.csv("data_fires_usa.csv") %>%
   mutate(Group = ifelse(Year < 1983, "Deleted", "Archived"),
@@ -424,7 +424,7 @@ The following is a comical example put out by US democrats. Impressively, this g
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: EIA"
+myCaption <- "Data: EIA\nderekmichaelwright.github.io/dblogr/academic/misleading_graphs"
 #
 xx <- read_xls("data_gas_prices_usa.xls", "Data 1", skip = 2) %>%
   rename(GasPrice=`Weekly U.S. Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)`) %>%
@@ -484,8 +484,8 @@ To help illustrate this, we can use some data from a flax field trial with a com
 
 ```{r}
 # Prep data
-myCaption <- expression(paste("derekmichaelwright.github.io/dblogr/ | Data: You ", 
-                               italic("et al"), ". (2016)"))
+myCaption <- expression(paste("Data: You ", italic("et al"), 
+  ". (2016)\nderekmichaelwright.github.io/dblogr/academic/misleading_graphs"))
 #
 xx <- read.csv("data_augmented_designs_2.csv") %>%
   rename(MainCheck=Cp..plot.control., SubCheck=Csp..sub.plot.control.) %>%
@@ -530,7 +530,7 @@ We can also illustrate this by attempting different way to present results from 
 # Prep data
 library(usmap) # plot_usmap
 library(housingData) # geoCounty()
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: STATCAN & FAOSTAT"
+myCaption <- "Data: STATCAN & FAOSTAT\nderekmichaelwright.github.io/dblogr/academic/misleading_graphs"
 #
 x1 <- read.csv("https://raw.githubusercontent.com/tonmcg/US_County_Level_Election_Results_08-20/master/US_County_Level_Presidential_Results_08-16.csv", 
                colClasses = c(rep("factor",2),rep("numeric",12))) %>%
@@ -613,7 +613,7 @@ ggsave("misleading_graphs_5_03.png", mp, width = 8, height = 5, bg = "grey90")
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: "
+myCaption <- "derekmichaelwright.github.io/dblogr/academic/misleading_graphs"
 #
 xx <- read.csv("data_anscombe.csv")
 # Plot

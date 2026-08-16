@@ -26,7 +26,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/agdata/wheat | Data: STATCAN"
+myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/agdata/wheat"
 #
 myColors <- c("darkgreen", "darkred", "steelblue", 
               "darkgoldenrod2", "Purple4")

@@ -115,11 +115,12 @@ mp3 <- ggplot(d1, aes(x = DTF, y = DTM)) +
   stat_poly_eq(aes(label = ..rr.label..), rr.digits = 3, size = 4,
                formula = y ~ x, parse = T, geom = "label_npc") +
   theme_agData() +
-  labs(title = "C) DTF x DTM", x = "Days to Flower", y = "Days to Maturity",
-       caption = myCaption)
+  labs(title = "C) DTF x DTM", x = "Days to Flower", y = "Days to Maturity")
 # Append and Save
 mp <- ggarrange(mp1, mp2, mp3, nrow = 1, align = "h",
-                common.legend = T, legend = "bottom")
+                common.legend = T, legend = "bottom") %>%
+  annotate_figure(bottom = text_grob(myCaption, size = 7))
+
 ggsave("correlation_coefficients_01.png", mp, width = 10, height = 4, bg = "white")
 ```
 
@@ -421,7 +422,7 @@ ggsave("correlation_coefficients_08.png", mp3, width = 6, height = 3.5)
 ```
 
 ```{r echo = F} 
-ggsave("featured.png", mp1, width = 8, height = 3.5)
+ggsave("featured.png", mp1, width = 6, height = 3.5)
 ```
 
 Inncorrect vs correct usage of *R^2* formulas to calculate accuracy of a model predicting DTF accross 3 site-years.
@@ -599,9 +600,9 @@ my_ggplot_2 <- function(expts, colors) {
 }
 mp1 <- my_ggplot_2("Saskatchewan", "darkgreen")  + facet_grid(. ~ Expt)
 mp2 <- my_ggplot_2("Nepal", "darkorange") + facet_grid(. ~ Expt)
-mp3 <- my_ggplot_2("Italy", "darkblue")   + facet_grid(. ~ Expt) +
-  labs(caption = myCaption)
-mp <- ggarrange(mp1, mp2, mp3, ncol = 3)
+mp3 <- my_ggplot_2("Italy", "darkblue")   + facet_grid(. ~ Expt) 
+mp <- ggarrange(mp1, mp2, mp3, ncol = 3) %>%
+  annotate_figure(bottom = text_grob(myCaption, size = 7))
 ggsave("correlation_coefficients_11.png", mp, width = 10, height = 4)
 ```
 
@@ -612,7 +613,8 @@ Correct calculations of *R^2* for predicted DTF along with RMSE across 3 site-ye
 ```{r}
 mp <- my_ggplot_2(expts = c("Saskatchewan","Nepal","Italy"), 
                 colors = c("darkgreen","darkorange","darkblue")) + 
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  labs(caption = myCaption)
 ggsave("correlation_coefficients_12.png", mp, width = 6, height = 4)
 ```
 
@@ -797,7 +799,8 @@ plot3D::scatter3D(x, y, z, pch = 18, cex = 2, zlim = c(0.005,0.03),
   theta = 40, phi = 25, ticktype = "detailed", cex.lab = 1, cex.axis = 0.5,
   xlab = "Temperature", ylab = "Photoperiod", zlab = "1 / DTF",
   surf = list(x = x.pred, y = y.pred, z = z.pred, col = "black", 
-  facets = NA, fit = fitpoints), main = "PhotoThermal Model")
+  facets = NA, fit = fitpoints), main = "PhotoThermal Model",
+  caption = myCaption)
 dev.off()
 ```
 

@@ -102,7 +102,7 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/blog/saskatchewan_elections | Data: Elections SK"
+myCaption <- "Data: Elections SK\nderekmichaelwright.github.io/dblogr/blog/saskatchewan_elections"
 #
 myPs2020 <- c("SP", "NDP", "BP", "GP", "PC", "LIB", "IND")
 myCs2020 <- c("darkgreen", "darkorange", "burlywood4", "green", 
@@ -235,7 +235,7 @@ xx <- bind_rows(xv, xs) %>%
   mutate(Measurement = factor(Measurement, levels = c("Votes", "Seats")))
 # Plot Pies
 mp <- ggplot(xx, aes(x = "", y = Percent)) +
-  geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.3) +
+  geom_col(aes(fill = Party), alpha = 0.7) +
   coord_polar("y", start = 0) +
   geom_label(aes(y = LabelPos, label = Value)) +
   facet_wrap(Measurement ~ .) +
@@ -292,7 +292,7 @@ xw <- xx %>% top_n(1, Percent)
 xx <- xx %>% mutate(LabelPos = ifelse(Party %in% c("SP","NDP"), LabelPos, NA))
 # Plot Pies
 mp <- ggplot(xx, aes(x = "", y = Percent)) +
-  geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.4) +
+  geom_col(aes(fill = Party), alpha = 0.7) +
   coord_polar("y", start = 0) +
   geom_label(aes(y = LabelPos, label = paste(round(Percent),"%")), 
              size = 5, nudge_x = 0.15) +
@@ -334,7 +334,7 @@ for(i in districts) {
          x = NULL, caption = "")
   # Plot Pies
   mp2 <- ggplot(xi, aes(x = "", y = Percent)) +
-    geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.3) +
+    geom_col(aes(fill = Party), alpha = 0.7) +
     coord_polar("y", start = 0) +
     geom_label(aes(y = LabelPos, label = round(Percent)), nudge_x = 0.3) +
     facet_wrap(Constituency ~ .) +
@@ -384,7 +384,7 @@ ggsave("saskatchewan_2024_election_06.png", mp, width = 18, height = 8)
 # Plot Pie
 xx <- xx %>% mutate(LabelPos = ifelse(Party %in% c("SP","NDP"), LabelPos, NA))
 mp <- ggplot(xx, aes(x = "", y = Percent)) +
-  geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.2) +
+  geom_col(aes(fill = Party), alpha = 0.7) +
   coord_polar("y", start = 0) +
   geom_label(aes(y = LabelPos, label = paste(round(Percent),"%")), 
              size = 4, nudge_x = 0.1) +
@@ -433,7 +433,7 @@ ggsave("saskatchewan_2024_election_08.png", mp, width = 20, height = 10)
 # Plot Pie
 xx <- xx %>% mutate(LabelPos = ifelse(Party %in% c("SP","NDP"), LabelPos, NA))
 mp <- ggplot(xx, aes(x = "", y = Percent)) +
-  geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.4) +
+  geom_col(aes(fill = Party), alpha = 0.7) +
   coord_polar("y", start = 0) +
   geom_label(aes(y = LabelPos, label = paste(round(Percent),"%")), 
              size = 4, nudge_x = 0.1) +
@@ -664,7 +664,7 @@ xx <- bind_rows(xv, xs) %>%
   mutate(Measurement = factor(Measurement, levels = c("Votes", "Seats")))
 # Plot Pies
 mp <- ggplot(xx, aes(x = "", y = Percent)) +
-  geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.3) +
+  geom_col(aes(fill = Party), alpha = 0.7) +
   coord_polar("y", start = 0) +
   geom_label(aes(y = LabelPos, label = Value)) +
   facet_wrap(Measurement ~ .) +
@@ -709,7 +709,7 @@ ggsave("saskatchewan_2020_election_04.png", mp, width = 24, height = 18)
 # Plot Pie
 xx <- xx %>% mutate(LabelPos = ifelse(Party %in% c("SP","NDP"), LabelPos, NA))
 mp <- ggplot(xx, aes(x = "", y = Percent)) +
-  geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.4) +
+  geom_col(aes(fill = Party), alpha = 0.7) +
   coord_polar("y", start = 0) +
   geom_label(aes(y = LabelPos, label = paste(round(Percent),"%")), 
              size = 5, nudge_x = 0.15) +
@@ -751,7 +751,7 @@ for(i in districts) {
          x = NULL, caption = "")
   # Plot Pie
   mp2 <- ggplot(xi, aes(x = "", y = Percent)) +
-    geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.3) +
+    geom_col(aes(fill = Party), alpha = 0.7) +
     coord_polar("y", start = 0) +
     geom_label(aes(y = LabelPos, label = round(Percent)), nudge_x = 0.3) +
     facet_wrap(Constituency ~ .) +
@@ -801,7 +801,7 @@ ggsave("saskatchewan_2020_election_06.png", mp, width = 18, height = 8)
 # Plot Pie
 xx <- xx %>% mutate(LabelPos = ifelse(Party %in% c("SP","NDP"), LabelPos, NA))
 mp <- ggplot(xx, aes(x = "", y = Percent)) +
-  geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.2) +
+  geom_col(aes(fill = Party), alpha = 0.7) +
   coord_polar("y", start = 0) +
   geom_label(aes(y = LabelPos, label = paste(round(Percent),"%")), 
              size = 4, nudge_x = 0.1) +
@@ -851,7 +851,7 @@ ggsave("saskatchewan_2020_election_08.png", mp, width = 20, height = 10)
 # Plot Pie
 xx <- xx %>% mutate(LabelPos = ifelse(Party %in% c("SP","NDP"), LabelPos, NA))
 mp <- ggplot(xx, aes(x = "", y = Percent)) +
-  geom_col(aes(fill = Party), color = "black", alpha = 0.7, lwd = 0.4) +
+  geom_col(aes(fill = Party), alpha = 0.7) +
   coord_polar("y", start = 0) +
   geom_label(aes(y = LabelPos, label = paste(round(Percent),"%")), 
              size = 4, nudge_x = 0.1) +

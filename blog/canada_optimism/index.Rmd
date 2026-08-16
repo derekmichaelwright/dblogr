@@ -27,7 +27,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/blog/canada_optimism | Data: Nanos"
+myCaption <- "Data: Nanos\nderekmichaelwright.github.io/dblogr/blog/canada_optimism"
 myTitle <- "Q - Do you think the next generation of Canadians will have a\nstandard of living that is higher, same or lower than Canadians have today?"
 myChoices <- c("Higher", "Same", "Unsure", "Lower")
 myColors <- c("darkgreen", "steelblue", "grey", "darkred")

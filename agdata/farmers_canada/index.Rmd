@@ -27,7 +27,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption = "derekmichaelwright.github.io/dblogr/agdata/farmers_canada | Data: STATCAN"
+myCaption = "Data: STATCAN\nderekmichaelwright.github.io/dblogr/agdata/farmers_canada"
 myColors_Years <- alpha("darkgreen", seq(0.1, 0.7, by = 0.1))
 myColors_Sex <- c("steelblue", "palevioletred3")
 myColors_Age <- c("darkgreen","steelblue","darkred")
@@ -283,7 +283,7 @@ xx <- dd %>%
   mutate(Percent = 100 * Value / sum(Value))
 # Plot
 mp <- ggplot(xx, aes(x = "", y = Percent, fill = Measurement)) + 
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(alpha = 0.7) +
   coord_polar("y", start = 0) +
   facet_wrap(Area ~ ., ncol = 5) +
   scale_fill_manual(name = NULL, values = myColors_Sex) +
@@ -457,7 +457,7 @@ xx <- dd %>%
   mutate(Percent = 100 * Value / sum(Value))
 # Plot
 mp <- ggplot(xx, aes(x = "", y = Percent, fill = Measurement)) + 
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(alpha = 0.7) +
   coord_polar("y", start = 0) +
   facet_wrap(Area ~ ., ncol = 5) +
   scale_fill_manual(name = NULL, values = myColors_Age) +

@@ -2,7 +2,7 @@
 title: "NUE in Canola"
 subtitle: "**Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)**. *University of Giessen*. (2015) MSc. Thesis."
 date: "Last updated: `r Sys.Date()`"
-author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca>"
+author: "Derek Michael Wright [derekmichaelwright.github.io/dblogr](https://derekmichaelwright.github.io/dblogr/) <derek.wright@usask.ca> [github](https://github.com/derekmichaelwright/dblogr/tree/main/publications/canola_nue)"
 math: true
 ---
 
@@ -103,7 +103,7 @@ r5 <- r5 %>% mutate(DryContent = 100 - WaterPercent) %>%
 colnames(r5) <- paste0(colnames(r5),"_Side")
 colnames(r5)[1] <- "Container"
 #
-myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: JLU"
+myCaption <- "derekmichaelwright.github.io/dblogr/publications/canola_nue"
 ```
 
 Notes:

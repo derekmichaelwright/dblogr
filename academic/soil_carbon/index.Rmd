@@ -31,8 +31,8 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption <- expression(paste("derekmichaelwright.github.io/dblogr/academic/soil_carbon | Data: Awada ", 
-                               italic("et al"), ". (2021)"))
+myCaption <- expression(paste("Data: Awada ", italic("et al"), 
+    ". (2021)\nderekmichaelwright.github.io/dblogr/academic/soil_carbon"))
 myMeasures <- c("Net GHG Balance", "Transport Fuel", "Farm Fuel", 
                 "Fertilizers", "Crop Residue", "Summerfallow", "Soil")
 myAreas <- c("Alberta", "Saskatchewan", "Manitoba")
@@ -86,8 +86,7 @@ mp <- ggplot(xx, aes(x = Year, y = All, color = Area)) +
   scale_color_manual(name = NULL, values = myColors2) +
   scale_x_continuous(breaks = seq(1985, 2015, by = 5),
                      minor_breaks = 1980:2020) +
-  theme_agData(legend.position = "bottom",
-               plot.caption = ) +
+  theme_agData(legend.position = "bottom") +
   labs(title = "GHG balance in the Canadian Prairies crop sector", 
        y = "Mt CO2eq", x = NULL, caption = myCaption)
 ggsave("soil_carbon_01.png", mp, width = 6, height = 4)

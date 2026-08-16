@@ -48,8 +48,8 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption_OWID <- "derekmichaelwright.github.io/dblogr/blog/world_energy | Data: OurWorldInData"
-myCaption_IEA <- "derekmichaelwright.github.io/dblogr/blog/world_energy | Data: IEA"
+myCaption_OWID <- "Data: OurWorldInData\nderekmichaelwright.github.io/dblogr/blog/world_energy"
+myCaption_IEA <- "Data: IEA\nderekmichaelwright.github.io/dblogr/blog/world_energy"
 myItems <- c("Other", "Biofuels", "Solar", "Wind",
              "Hydro", "Nuclear", "Gas", "Oil", "Coal", "Biomass")
 myColors <- c("burlywood3", "darkseagreen4","darkgoldenrod2","steelblue",
@@ -549,7 +549,7 @@ ggsave("world_energy_3_05.png", mp, width = 7, height = 5)
 xx <- d1 %>% filter(Percent > 0)
 # Plot
 mp <- ggplot(xx, aes(x = "", y = -Percent, fill = Source)) +
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(alpha = 0.7) +
   scale_fill_manual(name = NULL, breaks = myItems[c(9:1,10)],
                     values = myColors[c(9:1,10)]) +
   coord_polar("y", start = 0) +
@@ -873,7 +873,7 @@ ggsave("world_energy_6_02.png", mp, width = 6, height = 4)
 ```{r}
 # Plot
 mp <- ggplot(d4, aes(x = "", y = Percent, fill = Measurement)) +
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(alpha = 0.7) +
   scale_fill_manual(name = NULL, values = c("darkred", "steelblue")) +
   coord_polar("y", start = 0) +
   theme_agData(legend.position = "bottom") +

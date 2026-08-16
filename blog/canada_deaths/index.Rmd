@@ -59,7 +59,7 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/blog/canada_deaths | Data: STATCAN"
+myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/blog/canada_deaths"
 myColors <- c("darkgreen", "darkred", "darkorange", "steelblue", "darkblue", "purple4", "magenta3")
 myAreas <- c("Canada", "Quebec", "Ontario", "British Columbia", 
              "Alberta", "Saskatchewan", "Manitoba", "Nova Scotia",

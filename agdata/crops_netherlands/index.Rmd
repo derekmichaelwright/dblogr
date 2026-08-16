@@ -28,7 +28,7 @@ library(gganimate)
 ```
 
 ```{r}
-myCaption <- "derekmichaelwright.github.io/dblogr/agdata/crops_netherlands | Data: FAOSTAT"
+myCaption <- "Data: FAOSTAT\nderekmichaelwright.github.io/dblogr/agdata/crops_netherlands"
 ```
 
 ---

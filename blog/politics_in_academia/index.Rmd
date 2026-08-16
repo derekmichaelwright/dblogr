@@ -44,13 +44,13 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption1 <- "derekmichaelwright.github.io/dblogr/blog/politics_in_academia | Data: MLI"
-myCaption2 <- "derekmichaelwright.github.io/dblogr/blog/politics_in_academia | Data: Nakhaie & Adam (2008)"
+myCaption1 <- "Data: MLI\nderekmichaelwright.github.io/dblogr/blog/politics_in_academia"
+myCaption2 <- "Data: Nakhaie & Adam (2008)\nderekmichaelwright.github.io/dblogr/blog/politics_in_academia"
 d1 <- read_xlsx("data_politics_in_academia.xlsx", "Macdonald Laurier") %>%
   mutate(Party = factor(Party, levels = unique(.$Party)),
          Measurement = factor(Measurement, unique(.$Measurement)))
 #
-myCaption3 <- "derekmichaelwright.github.io/dblogr/blog/politics_in_academia | Data: Pew Research"
+myCaption3 <- "Data: Pew Research\nderekmichaelwright.github.io/dblogr/blog/politics_in_academia"
 myRespones <- c("Mostly positive", "Equal positive and negative", "Mostly negative")
 d2 <- read_xlsx("data_politics_in_academia.xlsx", "Pew - Effect") %>%
   mutate(Date = paste(Month, Year),
@@ -59,13 +59,13 @@ d3 <- read_xlsx("data_politics_in_academia.xlsx", "Pew - Trust") %>%
   mutate(Date = paste(Month, Year),
          Label_Pos = ifelse(Response != "A fair amount", Percent / 2, NA))
 #
-myCaption4 <- "derekmichaelwright.github.io/dblogr/blog/politics_in_academia | Data: Lab Langbert (2018)"
+myCaption4 <- "Data: Lab Langbert (2018)\nderekmichaelwright.github.io/dblogr/blog/politics_in_academia"
 d4 <- read_xlsx("data_politics_in_academia.xlsx", "Pew - Fields") %>%
   mutate(Field = factor(Field, levels = .$Field),
          Percent_Dem = 100 * (Democrats) / (Democrats + Republicans),
          Percent_Rep = 100 * (Republicans) / (Democrats + Republicans))
 #
-myCaption5 <- "derekmichaelwright.github.io/dblogr/blog/politics_in_academia | Data: Honeycutt (2025)"
+myCaption5 <- "Data: Honeycutt (2025)\nderekmichaelwright.github.io/dblogr/blog/politics_in_academia"
 d5 <- read_xlsx("data_politics_in_academia.xlsx", "UofA - Ideology")
 ```
 

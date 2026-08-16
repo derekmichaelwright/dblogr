@@ -28,7 +28,7 @@ library(rworldmap)   # mapPies()
 library(FactoMineR)  # PCA() & HCPC()
 library(htmlwidgets) # saveWidget()
 # Prep data
-myCaption1 <- "derekmichaelwright.github.io/dblogr/academic/pca | Data: Anderson (1935) & Fisher (1936)"
+myCaption1 <- "Data: Anderson (1935) & Fisher (1936)\nderekmichaelwright.github.io/dblogr/academic/pca"
 myCaption2 <- "derekmichaelwright.github.io/dblogr/academic/pca"
 ```
 

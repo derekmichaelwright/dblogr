@@ -30,7 +30,7 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/agdata/lentil | Data: FAOSTAT"
+myCaption <- "Data: FAOSTAT\nderekmichaelwright.github.io/dblogr/agdata/lentil"
 #
 d1 <- agData_FAO_Crops %>% filter(Item == "Lentils, dry")
 d2 <- bind_rows(agData_FAO_Trade_Import_Quantity,
@@ -46,8 +46,8 @@ d2 <- bind_rows(agData_FAO_Trade_Import_Quantity,
 
 ```{r results="hide"}
 # Prep data
-myColors <- c("darkgreen", "darkred", "darkgoldenrod2")
-myAreas <- c("World",
+myCs <- c("darkgreen", "darkred", "darkgoldenrod2")
+myAs <- c("World",
   unique(agData_FAO_Region_Table$Region),
   unique(agData_FAO_Region_Table$SubRegion),
   unique(agData_FAO_Country_Table$Country))
@@ -56,17 +56,17 @@ xx <- d1 %>%
                         Value / 1000000, Value / 1000),
          Unit = mv(Unit, c("ha", "t", "kg/ha"), 
                    c("Million Hectares", "Million Tonnes", "Tonnes / Hectare")))
-myAreas <- myAreas[myAreas %in% xx$Area]
+myAs <- myAs[myAs %in% xx$Area]
 # Plot
 pdf("figures_lentil_fao.pdf", width = 12, height = 4)
-for(i in myAreas) {
+for(i in myAs) {
   print(ggplot(xx %>% filter(Area == i)) +
     geom_line(aes(x = Year, y = Value, color = Measurement),
               size = 1.5, alpha = 0.7) +
     facet_wrap(. ~ Measurement + Unit, ncol = 3, scales = "free_y") +
     theme_agData(legend.position = "none", 
                  axis.text.x = element_text(angle = 45, hjust = 1)) +
-    scale_color_manual(values = myColors) +
+    scale_color_manual(values = myCs) +
     scale_x_continuous(breaks = seq(1960, 2020, by = 5) ) +
     labs(title = i, y = NULL, x = NULL, caption = myCaption) )
 }
@@ -124,17 +124,17 @@ anim_save("lentil_gif_01.gif", mp,
 
 ```{r}
 # Prep data
-myAreas <- c("Canada", "Southern Asia", "USA", "Turkey", 
-             "Europe", "Africa", "Oceania")
-myColors <- c("darkgreen", "darkgoldenrod2", "darkblue", "darkslategrey", 
-              "steelblue", "darkred", "antiquewhite4")
+myAs <- c("Canada", "Southern Asia", "USA", "Turkey", 
+          "Europe", "Africa", "Oceania" )
+myCs <- c("darkgreen", "darkgoldenrod2", "darkblue", "darkslategrey", 
+          "steelblue", "darkred", "antiquewhite4" )
 xx <- d1 %>% 
-  filter(Area %in% myAreas, Measurement == "Production") %>%
-  mutate(Area = factor(Area, levels = myAreas) ) 
+  filter(Area %in% myAs, Measurement == "Production") %>%
+  mutate(Area = factor(Area, levels = myAs) ) 
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) + 
   geom_line(size = 1.5, alpha = 0.7) + 
-  scale_color_manual(name = NULL, values = myColors) +
+  scale_color_manual(name = NULL, values = myCs) +
   scale_x_continuous(breaks = seq(1960, 2020, 5), minor_breaks = NULL) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-2)) +
   theme_agData(legend.position = "bottom") +
@@ -152,10 +152,10 @@ ggsave("lentil_01.png", width = 6, height = 4)
 
 ```{r}
 # Prep data
-myColors <- c("darkgreen", "darkgoldenrod2", "steelblue", "antiquewhite4",
-              "darkslategrey",  "darkred", "darkblue" )
-myRegions <- c("Americas", "Southern Asia", "Oceania", 
-               "Western Asia", "Eastern Asia", "Africa", "Europe")
+myCs <- c("darkgreen", "darkgoldenrod2", "steelblue", "antiquewhite4",
+          "darkslategrey",  "darkred", "darkblue" )
+myRs <- c("Americas", "Southern Asia", "Oceania", 
+          "Western Asia", "Eastern Asia", "Africa", "Europe")
 xx <- d1 %>% region_Info() %>%
   filter(Area %in% agData_FAO_Country_Table$Country,
          Year == 2019, Measurement == "Production") %>%
@@ -163,11 +163,11 @@ xx <- d1 %>% region_Info() %>%
   slice(1:10) %>%
   mutate(Area = factor(Area, levels = Area),
          Region = ifelse(Region == "Asia", SubRegion, Region),
-         Region = factor(Region, levels = myRegions))
+         Region = factor(Region, levels = myRs))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) + 
   geom_col(color = "black", alpha = 0.7) +
-  scale_fill_manual(values = myColors) +
+  scale_fill_manual(values = myCs) +
   theme_agData_col(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Lentil - Production - 2019", x = NULL,
        y = "Million Tonnes", caption = myCaption)
@@ -184,17 +184,17 @@ ggsave("lentil_02.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myAreas <- c("Canada", "Southern Asia", "USA", "Turkey", 
-             "Europe", "Africa", "Oceania")
-myColors <- c("darkgreen", "darkgoldenrod2", "darkblue", "darkslategrey", 
-              "steelblue", "darkred", "antiquewhite4")
+myAs <- c("Canada", "Southern Asia", "USA", "Turkey", 
+          "Europe", "Africa", "Oceania")
+myCs <- c("darkgreen", "darkgoldenrod2", "darkblue", "darkslategrey", 
+          "steelblue", "darkred", "antiquewhite4")
 xx <- d1 %>% 
-  filter(Area %in% myAreas, Measurement == "Area Harvested") %>%
-  mutate(Area = factor(Area, levels = myAreas) ) 
+  filter(Area %in% myAs, Measurement == "Area Harvested") %>%
+  mutate(Area = factor(Area, levels = myAs) ) 
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) + 
   geom_line(size = 1.5, alpha = 0.7) + 
-  scale_color_manual(name = NULL, values = myColors) +
+  scale_color_manual(name = NULL, values = myCs) +
   scale_x_continuous(breaks = seq(1960, 2020, 5), minor_breaks = NULL) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-2)) +
   theme_agData(legend.position = "bottom") +
@@ -212,10 +212,10 @@ ggsave("lentil_03.png", width = 6, height = 4)
 
 ```{r}
 # Prep data
-myColors <- c("darkgreen", "darkgoldenrod2", "steelblue", "darkblue", 
-              "darkslategrey", "darkred")
-myRegions <- c("Americas", "Southern Asia", "Oceania", "Western Asia", 
-               "Europe", "Central Asia", "Africa")
+myCs <- c("darkgreen", "darkgoldenrod2", "steelblue", "darkblue", 
+          "darkslategrey", "darkred")
+myRs <- c("Americas", "Southern Asia", "Oceania", "Western Asia", 
+          "Europe", "Central Asia", "Africa")
 xx <- d1 %>% region_Info() %>%
   filter(Area %in% agData_FAO_Country_Table$Country,
          Year == 2019, Measurement == "Area Harvested") %>%
@@ -223,11 +223,11 @@ xx <- d1 %>% region_Info() %>%
   slice(1:10) %>%
   mutate(Area = factor(Area, levels = Area),
          Region = ifelse(Region == "Asia", SubRegion, Region),
-         Region = factor(Region, levels = myRegions))
+         Region = factor(Region, levels = myRs))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) + 
   geom_col(color = "black", alpha = 0.7) +
-  scale_fill_manual(values = myColors) +
+  scale_fill_manual(values = myCs) +
   theme_agData_col(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Lentil - Area Harvested - 2019", 
        y = "Million Hectares", x = NULL, caption = myCaption)
@@ -261,7 +261,7 @@ xx <- d1 %>%
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000, fill = Region)) + 
   geom_col(color = "black", alpha = 0.7) + 
-  scale_fill_manual(values = myColors) +
+  scale_fill_manual(values = myCs) +
   theme_agData_col(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Lentil Yields - 5 year average",
        y = "Tonnes / Hectare", x = NULL, caption = myCaption)
@@ -276,11 +276,11 @@ ggsave("lentil_05.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myAreas <- c("Canada", "India", "Ethiopia", "Turkey")
-myColors <- c("darkgreen", "darkgoldenrod2", "darkred", "darkslategrey")
+myAs <- c("Canada", "India", "Ethiopia", "Turkey")
+myCs <- c("darkgreen", "darkgoldenrod2", "darkred", "darkslategrey")
 xx <- d1 %>%
-  filter(Area %in% myAreas, Measurement == "Yield") %>%
-  mutate(Area = factor(Area, levels = myAreas))
+  filter(Area %in% myAs, Measurement == "Yield") %>%
+  mutate(Area = factor(Area, levels = myAs))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   geom_line(alpha = 0.2) +
@@ -288,7 +288,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
               size = 1.5, alpha = 0.7, se = F) +
   scale_x_continuous(breaks = seq(1960, 2020, by = 5), minor_breaks = NULL) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-2)) +
-  scale_color_manual(name = NULL, values = myColors) +
+  scale_color_manual(name = NULL, values = myCs) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Lentil Yields", x = NULL,
        y = "Tonnes / Hectare", caption = myCaption)
@@ -303,11 +303,11 @@ ggsave("lentil_06.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myAreas <- c("World", "Canada", "India", "Nepal", "Bangladesh")
-myColors <- c("black", "darkgreen", "darkgoldenrod2", "darkred", "darkslategrey")
+myAs <- c("World", "Canada", "India", "Nepal", "Bangladesh")
+myCs <- c("black", "darkgreen", "darkgoldenrod2", "darkred", "darkslategrey")
 xx <- d1 %>%
-  filter(Area %in% myAreas, Measurement == "Yield") %>%
-  mutate(Area = factor(Area, levels = myAreas))
+  filter(Area %in% myAs, Measurement == "Yield") %>%
+  mutate(Area = factor(Area, levels = myAs))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   geom_line(alpha = 0.2) +
@@ -315,7 +315,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
               size = 1.5, alpha = 0.7, se = F) +
   scale_x_continuous(breaks = seq(1960, 2020, by = 5), minor_breaks = NULL) +
   coord_cartesian(xlim = c(min(xx$Year)+1, max(xx$Year)-2)) +
-  scale_color_manual(name = NULL, values = myColors) +
+  scale_color_manual(name = NULL, values = myCs) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Lentil Yields", x = NULL,
        y = "Tonnes / Hectare", caption = myCaption)
@@ -392,7 +392,7 @@ ggsave("lentil_09.png", mp, width = 6, height = 4)
 # Plot function
 ggPie_single <- function(crop = "Lentils, dry", measurement = "Production", 
                          year = 2019, cutoff = 8,
-                         myColors = agData_Colors[c(1:10,41:50)]) {
+                         myCs = agData_Colors[c(1:10,41:50)]) {
   # Prep data
   world <- agData_FAO_Crops %>% 
     filter(Area == "World", Year %in% year, Item == crop, 
@@ -416,15 +416,14 @@ ggPie_single <- function(crop = "Lentils, dry", measurement = "Production",
            Cummulative_P = cumsum(Percentage),
            Label_y = Cummulative_P - (Percentage / 2))
   # Plot
-  ggplot(yy, aes(x = 1)) +
-    geom_col(aes(y = Percentage, fill = Area), color = "black", alpha = 0.7) +
+  ggplot(yy, aes(x = "")) +
+    geom_col(aes(y = Percentage, fill = Area), alpha = 0.7) +
     coord_polar("y", start = 0) +
     geom_label(aes(label = paste(Percentage, "%"), y = Label_y), 
-               size = 2.5, alpha = 0.9, nudge_x = 0.29) + 
+               size = 2.5, alpha = 0.9, nudge_x = 0.3, lwd = 0) + 
     facet_grid(. ~ Year) +
-    theme_agData_pie(plot.caption = element_text(size = 7)) +
-    xlim(0.542, 1.45) +
-    scale_fill_manual(name = NULL, values = myColors,
+    theme_agData_pie(caption.adj = -0.5) +
+    scale_fill_manual(name = NULL, values = myCs,
                       breaks = yy$Area) +
     labs(title = paste(crop, measurement), caption = myCaption)
 }
@@ -437,23 +436,23 @@ ggPie_anim <- function(crop = "Lentils, dry", measurement = "Production",
            Area %in% agData_FAO_Country_Table$Country) %>%
     group_by(Year) %>%
     mutate(Percent = round(100 * Value / sum(Value, na.rm = T),1))
-  myAreas <- c(xx %>% arrange(desc(Percent)) %>%
+  myAs <- c(xx %>% arrange(desc(Percent)) %>%
     filter(Year == max(xx$Year), Percent > cutoff) %>% 
     pull(Area) %>% as.character(), "Other")
-  x1 <- xx %>% filter(Area %in% myAreas) %>% arrange(desc(Percent))
-  x2 <- xx %>% filter(!Area %in% myAreas) %>% 
+  x1 <- xx %>% filter(Area %in% myAs) %>% arrange(desc(Percent))
+  x2 <- xx %>% filter(!Area %in% myAs) %>% 
     group_by(Item, Measurement, Unit, Year) %>%
     summarise(Percent = sum(Percent, na.rm = T)) %>% ungroup() %>%
     mutate(Area = "Other")
   xx <- bind_rows(x1, x2) %>%
     arrange(Value) %>%
-    mutate(Area = factor(Area, levels = myAreas),
+    mutate(Area = factor(Area, levels = myAs),
            ISO2 = ifelse(Area == "Other", "", ISO2))
   # Plot
   ggplot(xx, aes(x = 1, fill = Area)) +
-    geom_col(aes(y = -Percent), position = "fill", color = "black", alpha = 0.7) +
+    geom_col(aes(y = -Percent), position = "fill", alpha = 0.7) +
     coord_polar("y", start = 0) +
-    theme_agData_pie() +
+    theme_agData_pie(caption.adj = -0.5) +
     scale_fill_manual(values = agData_Colors) +
     xlim(0.545, 1.5) +
     labs(title = paste(crop, "|", measurement, "| {round(frame_time)}"),
@@ -483,9 +482,9 @@ ggPie_multi <- function(crop = "Lentils, dry", measurement = "Production",
     mutate(Percentage = ifelse(Area == "Rest of World", 0, Percentage),
            Percentage = ifelse(Area == "Rest of World", 100 - sum(Percentage), Percentage)) %>% 
     arrange(Percentage)
-  myAreas <- unique(c("Rest of World", xx$Area))
+  myAs <- unique(c("Rest of World", xx$Area))
   xx <- xx %>%
-    mutate(Area = factor(Area, levels = rev(myAreas))) %>%
+    mutate(Area = factor(Area, levels = rev(myAs))) %>%
     arrange(Year, Area) %>%
     group_by(Year) %>%
     mutate(Cummulative_P = cumsum(Percentage)) %>%
@@ -493,10 +492,10 @@ ggPie_multi <- function(crop = "Lentils, dry", measurement = "Production",
     mutate(Label_y = Cummulative_P - (Percentage / 2))
   # Plot
   ggplot(xx, aes(x = 1, fill = Area)) +
-    geom_col(aes(y = -Percentage), color = "black", alpha = 0.7) +
+    geom_col(aes(y = -Percentage), alpha = 0.7) +
     coord_polar("y", start = 0) +
     facet_grid(. ~ Year) +
-    theme_agData_pie() +
+    theme_agData_pie(caption.adj = -0.5) +
     scale_y_continuous(breaks = xx$Label_y, labels = xx$ISO2) +
     xlim(0.545, 1.45) +
     scale_fill_manual(name = NULL, values = agData_Colors[c(1:10,41:50)]) +
@@ -595,12 +594,12 @@ ggsave("lentil_12.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myAreas <- c("Americas","Asia","Europe","Africa","Oceania")
-myColors <- c("darkgreen","darkorange","darkblue","darkred","steelblue")
+myAs <- c("Americas","Asia","Europe","Africa","Oceania")
+myCs <- c("darkgreen","darkorange","darkblue","darkred","steelblue")
 xx <- d2 %>%
   region_Info() %>%
   filter(Area %in% agData_FAO_Country_Table$Region) %>%
-  mutate(Area = factor(Area, levels = myAreas))
+  mutate(Area = factor(Area, levels = myAs))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, 
                      group = Area, color = Area)) + 
@@ -608,7 +607,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000,
   facet_grid(. ~ Measurement) +
   scale_x_continuous(breaks       = seq(1965, 2015, by = 10),
                      minor_breaks = seq(1965, 2015, by = 5))  +
-  scale_color_manual(name = NULL, values = myColors) +
+  scale_color_manual(name = NULL, values = myCs) +
   theme_agData(legend.position = "bottom") + 
   labs(title = "Lentil Import/Export", x = NULL,
        y = "Million Tonnes", caption = myCaption)
@@ -653,12 +652,12 @@ x1 <- d1 %>%
     top_n(10, Value)
 xx <- d1 %>% 
   filter(Measurement == "Production", Area %in% x1$Area)
-myColors <- c("lightgrey", "darkgreen")
+myCs <- c("lightgrey", "darkgreen")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Area, fill = Value / 1000000)) +
   geom_tile(color = "white", size = 0.35) +
   scale_x_continuous(expand = c(0,0)) +
-  scale_fill_gradientn(name = "Million Tonnes", colors = myColors, na.value = 'white') +
+  scale_fill_gradientn(name = "Million Tonnes", colors = myCs, na.value = 'white') +
   theme_agData(legend.position = "bottom", bgFill = "white") +
   labs(title = "Lentil Production", x = NULL, y = NULL, caption = myCaption)
 ggsave("lentil_15.png", mp, width = 6, height = 4)

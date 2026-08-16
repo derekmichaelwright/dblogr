@@ -67,7 +67,7 @@ library(gganimate)
 #
 # Prep CA data
 #
-myCaptionCA <- "derekmichaelwright.github.io/dblogr/blog/canada_overdoses | Data: CA GOV"
+myCaptionCA <- "Data: CA GOV\nderekmichaelwright.github.io/dblogr/blog/canada_overdoses"
 myColorsMF <- c("palevioletred3", "steelblue")
 ca1 <- read.csv("SubstanceHarmsData.csv") %>%
   filter(Source == "Deaths") %>% 
@@ -76,7 +76,7 @@ ca1 <- read.csv("SubstanceHarmsData.csv") %>%
 #
 # Prep BC data
 #
-myCaptionBC <- "derekmichaelwright.github.io/dblogr/blog/canada_overdoses | Data: BC GOV"
+myCaptionBC <- "Data: BC GOV\nderekmichaelwright.github.io/dblogr/blog/canada_overdoses"
 #
 bc1 <- read_xlsx("data_canada_overdoses.xlsx", "BC Annual")
 #
@@ -95,7 +95,7 @@ bc4 <- read_xlsx("data_canada_overdoses.xlsx", "BC Age") %>%
 #
 # Prep AB data
 #
-myCaptionAB <- "derekmichaelwright.github.io/dblogr/blog/canada_overdoses | Data: AB GOV"
+myCaptionAB <- "Data: AB GOV\nderekmichaelwright.github.io/dblogr/blog/canada_overdoses"
 #
 ab1 <- read_xlsx("data_canada_overdoses.xlsx", "AB Monthly") %>%
   mutate(Date = as.Date(paste(Year, Month, "15", sep = "-"), 
@@ -103,7 +103,7 @@ ab1 <- read_xlsx("data_canada_overdoses.xlsx", "AB Monthly") %>%
 #
 # Prep SK data
 #
-myCaptionSK <- "derekmichaelwright.github.io/dblogr/blog/canada_overdoses | Data: SK GOV"
+myCaptionSK <- "Data: SK GOV\nderekmichaelwright.github.io/dblogr/blog/canada_overdoses"
 myRaces <- c("Unknown", "Other", "Hispanic","Black", "Asian",
              "Metis","First Nations", "Caucasian")
 #
@@ -131,12 +131,11 @@ sk4 <- read_xlsx("data_canada_overdoses.xlsx", "SK Race") %>%
 
 ```{r}
 # Prep data
-myEvents <- c("Total apparent opioid toxicity deaths", "Total apparent stimulant toxicity deaths")
 xx <- ca1 %>% 
   filter(Region == "Canada", 
-         Year_Quarter %in% as.character(2016:2023),
+         Year_Quarter %in% as.character(2016:2026),
          Specific_Measure == "Overall numbers",
-         Type_Event %in% myEvents, Unit == "Number")
+         Unit == "Number")
 # Plot
 mp <- ggplot(xx, aes(x = Year_Quarter, y = Value / 1000)) +
   geom_col(aes(fill = Substance), color = "black", alpha = 0.7) +
@@ -156,12 +155,10 @@ ggsave("canada_overdoses_01.png", mp, width = 6, height = 4.5)
 
 ```{r}
 # Prep data
-myEvents <- c("Total apparent opioid toxicity deaths", "Total apparent stimulant toxicity deaths")
 xx <- ca1 %>% 
   filter(Region == "Canada", 
          Time_Period == "By quarter",
-         Specific_Measure == "Overall numbers",
-         Type_Event %in% myEvents)
+         Specific_Measure == "Overall numbers")
 # Plot
 mp <- ggplot(xx, aes(x = Year_Quarter, y = Value)) +
   geom_col(aes(fill = Substance), color = "black", alpha = 0.7) +
@@ -181,12 +178,11 @@ ggsave("canada_overdoses_02.png", mp, width = 6, height = 4.5)
 
 ```{r}
 # Prep data
-myEvents <- c("Total apparent opioid toxicity deaths", "Total apparent stimulant toxicity deaths")
 xx <- ca1 %>% 
   filter(Region == "Canada", 
-         Year_Quarter %in% as.character(2016:2023),
+         Year_Quarter %in% as.character(2016:2026),
          Specific_Measure == "Overall numbers",
-         Type_Event %in% myEvents, Unit == "Crude rate")
+         Unit == "Crude rate")
 # Plot
 mp <- ggplot(xx, aes(x = Year_Quarter, y = Value)) +
   geom_col(aes(fill = Substance), color = "black", alpha = 0.7) +
@@ -207,12 +203,11 @@ ggsave("canada_overdoses_03.png", mp, width = 6, height = 4.5)
 
 ```{r}
 # Prep data
-myEvents <- c("Total apparent opioid toxicity deaths", "Total apparent stimulant toxicity deaths")
 xx <- ca1 %>% 
   filter(!Region %in% c("Canada", "Nunavut"),
-         Year_Quarter %in% as.character(2016:2023),
+         Year_Quarter %in% as.character(2016:2026),
          Specific_Measure == "Overall numbers",
-         Type_Event %in% myEvents, Unit == "Number")
+         Unit == "Number")
 # Plot
 mp <- ggplot(xx, aes(x = Year_Quarter, y = Value)) +
   geom_col(aes(fill = Substance), color = "black", alpha = 0.7) +
@@ -233,12 +228,10 @@ ggsave("canada_overdoses_04.png", mp, width = 10, height = 6)
 
 ```{r}
 # Prep data
-myEvents <- c("Total apparent opioid toxicity deaths", "Total apparent stimulant toxicity deaths")
 xx <- ca1 %>% 
   filter(!Region %in% c("Canada", "Nunavut"),
          Time_Period == "By quarter",
-         Specific_Measure == "Overall numbers",
-         Type_Event %in% myEvents)
+         Specific_Measure == "Overall numbers")
 # Plot
 mp <- ggplot(xx, aes(x = Year_Quarter, y = Value)) +
   geom_col(aes(fill = Substance), color = "black", alpha = 0.7, lwd = 0.2) +
@@ -260,12 +253,11 @@ ggsave("canada_overdoses_05.png", mp, width = 10, height = 6)
 
 ```{r}
 # Prep data
-myEvents <- c("Total apparent opioid toxicity deaths", "Total apparent stimulant toxicity deaths")
 xx <- ca1 %>% 
   filter(!Region %in% c("Canada", "Nunavut"),
          Year_Quarter %in% as.character(2016:2023),
          Specific_Measure == "Overall numbers",
-         Type_Event %in% myEvents, Unit == "Crude rate")
+         Unit == "Crude rate")
 # Plot
 mp <- ggplot(xx, aes(x = Year_Quarter, y = Value / 1000)) +
   geom_col(aes(fill = Substance), color = "black", alpha = 0.7) +

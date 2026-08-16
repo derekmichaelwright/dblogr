@@ -42,7 +42,7 @@ library(readxl)
 ```{r}
 # Prep data
 myCaption1 <- "derekmichaelwright.github.io/dblogr/"
-myCaption2 <- "derekmichaelwright.github.io/dblogr/ | Data: Mendel (1865)"
+myCaption2 <- "Data: Mendel (1865)\nderekmichaelwright.github.io/dblogr/"
 #
 d1 <- read_xlsx("data_mendel.xlsx", "T1") %>% 
   mutate(Trait = factor(Trait, levels = unique(.$Trait)))
@@ -113,8 +113,7 @@ ggMendel1 <- function(xx = d1 %>% filter(Expt == 1),
     facet_wrap(Plant ~ ., ncol = 6) +
     geom_label(aes(label = paste(round(Percentage), "%"), y = Label_y), 
                size = 2, label.padding = unit(0.1, "lines")) + 
-    theme_agData_pie(legend.position = "bottom",
-                     plot.caption = element_text(size = 7)) +
+    theme_agData_pie(legend.position = "bottom") +
     xlim(0.542, 1.45) +
     scale_fill_manual(name = NULL, values = myColors) +
     labs(title = myTitle, caption = myCaption2)
@@ -171,8 +170,7 @@ ggMendel2 <- function(xx = d2 %>% filter(Expt == 1),
     coord_polar("y", start = 1.57) +
     geom_label(aes(label = paste(round(Percentage), "%"), y = Label_y)) + 
     facet_grid(. ~ paste(sum(Seeds), "Seed from", unique(`F2 Plants`), "F1 Plants")) +
-    theme_agData_pie(legend.position = "bottom",
-                     plot.caption = element_text(size = 7)) +
+    theme_agData_pie(legend.position = "bottom") +
     xlim(0.542, 1.45) +
     scale_fill_manual(name = NULL, values = myColors)
 }
@@ -378,8 +376,7 @@ ggMendel3 <- function(xx = d3 %>% filter(Expt == 1),
     coord_polar("y", start = 0) +
     geom_label(aes(label = paste(round(Percentage), "%"), y = Label_y)) + 
     facet_grid(. ~ paste(sum(Plants), "Plants")) +
-    theme_agData_pie(legend.position = "bottom",
-                     plot.caption = element_text(size = 7)) +
+    theme_agData_pie(legend.position = "bottom") +
     xlim(0.542, 1.45) +
     guides(fill = guide_legend(ncol = 1)) +
     scale_fill_manual(name = NULL, values = myColors)
