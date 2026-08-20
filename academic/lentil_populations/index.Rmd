@@ -367,7 +367,7 @@ xx <- left_join(x1, x2, by = "SubRegion") %>%
   mutate(SubRegion = factor(SubRegion, levels = myLevels))
 # Plot
 mp <- ggplot(xx, aes(x = "", y = Percent, fill = STR_Group)) + 
-  geom_col(color = "black", alpha = 0.7) + 
+  geom_col(alpha = 0.7) + 
    coord_polar("y", start = 0) +
   facet_wrap(. ~ SubRegion + paste("n =", Total), ncol = 6) +
   scale_fill_manual(values = sColors) +
@@ -577,7 +577,7 @@ xx <- left_join(x1, x2, by = "SubRegion") %>%
   mutate(SubRegion = factor(SubRegion, levels = myLevels))
 # Plot
 mp <- ggplot(xx, aes(x = "", y = Percent, fill = DTF_Cluster)) + 
-  geom_col(color = "black", alpha = 0.7) + 
+  geom_col(alpha = 0.7) + 
   coord_polar("y", start = 0) +
   facet_wrap(. ~ SubRegion + paste("n =", Total), ncol = 6) +
   scale_fill_manual(values = cColors) +

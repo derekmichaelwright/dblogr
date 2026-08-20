@@ -119,9 +119,8 @@ myGxE <- function(xx, myTraits = c("DTE","DTF","DTS","DTM","VEG","REP")) {
 }
 ```
 
-
 ```{r}
-gg_GxE <- function(xx) {
+gg_GxE_bar <- function(xx) {
   myColors <- c("darkred", "purple4", "steelblue", "darkgreen")
   # Create the stacked bar plot
   mp <- ggplot(xx, aes(x = Trait, y = Proportion, fill = Component)) +
@@ -134,21 +133,42 @@ gg_GxE <- function(xx) {
 }
 ```
 
+```{r}
+gg_GxE_pie <- function(xx, ncol = 3) {
+  myColors <- c("darkred", "purple4", "steelblue", "darkgreen")
+  # Create the stacked bar plot
+  mp <- ggplot(xx, aes(x = "", y = Proportion, fill = Component)) +
+    geom_col(position = "stack", alpha = 0.7) +
+    coord_polar("y", start = 0) +
+    facet_wrap(. ~ Trait, ncol = ncol) +
+    scale_fill_manual(values = myColors) +
+    theme_agData_pie() +
+    guides(fill = guide_legend(reverse = T)) +
+    labs(title = "Proportion of Phenotypic Variance by Trait",
+         y = "Proportion of Total Variance (%)",
+         caption = myCaption)
+}
+```
+
 ---
 
 ## All Environments
 
 > - `r shiny::icon("save")` [gxe_All.csv](gxe_All.csv)
 
-![](gxe_All.png)
+![](gxe_All_01.png)
+
+![](gxe_All_02.png)
 
 ```{r}
 # Save variance table 
 var_table <- myGxE(dd)
 write.csv(var_table, "gxe_All.csv", row.names = F)
 # Plot
-mp <- gg_GxE(var_table)
-ggsave("gxe_All.png", mp, width = 6, height = 4)
+mp <- gg_GxE_bar(var_table)
+ggsave("gxe_All_01.png", mp, width = 6, height = 4)
+mp <- gg_GxE_pie(var_table)
+ggsave("gxe_All_02.png", mp, width = 6, height = 4)
 ```
 
 ```{r echo = F}
@@ -161,15 +181,19 @@ ggsave("featured.png", mp, width = 6, height = 4)
 
 > - `r shiny::icon("save")` [gxe_Temperate.csv](gxe_Temperate.csv)
 
-![](gxe_Temperate.png)
+![](gxe_Temperate_01.png)
+
+![](gxe_Temperate_02.png)
 
 ```{r}
 # Save variance table 
 var_table <- myGxE(dd %>% filter(MacroEnv == "Temperate"))
 write.csv(var_table, "gxe_Temperate.csv", row.names = F)
 # Plot
-mp <- gg_GxE(var_table)
-ggsave("gxe_Temperate.png", mp, width = 6, height = 4)
+mp <- gg_GxE_bar(var_table)
+ggsave("gxe_Temperate_01.png", mp, width = 6, height = 4)
+mp <- gg_GxE_pie(var_table)
+ggsave("gxe_Temperate_02.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -178,15 +202,19 @@ ggsave("gxe_Temperate.png", mp, width = 6, height = 4)
 
 > - `r shiny::icon("save")` [gxe_Mediterranean.csv](gxe_Mediterranean.csv)
 
-![](gxe_Mediterranean.png)
+![](gxe_Mediterranean_01.png)
+
+![](gxe_Mediterranean_02.png)
 
 ```{r}
 # Save variance table 
 var_table <- myGxE(dd %>% filter(MacroEnv == "Mediterranean"))
 write.csv(var_table, "gxe_Mediterranean.csv", row.names = F)
 # Plot
-mp <- gg_GxE(var_table)
-ggsave("gxe_Mediterranean.png", mp, width = 6, height = 4)
+mp <- gg_GxE_bar(var_table)
+ggsave("gxe_Mediterranean_01.png", mp, width = 6, height = 4)
+mp <- gg_GxE_pie(var_table)
+ggsave("gxe_Mediterranean_02.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -195,17 +223,20 @@ ggsave("gxe_Mediterranean.png", mp, width = 6, height = 4)
 
 > - `r shiny::icon("save")` [gxe_SouthAsia.csv](gxe_SouthAsia.csv)
 
-![](gxe_SouthAsia.png)
+![](gxe_SouthAsia_01.png)
+
+![](gxe_SouthAsia_02.png)
 
 ```{r}
 # Save variance table 
 var_table <- myGxE(dd %>% filter(MacroEnv == "South Asia"))
 write.csv(var_table, "gxe_SouthAsia.csv", row.names = F)
 # Plot
-mp <- gg_GxE(var_table)
-ggsave("gxe_SouthAsia.png", mp, width = 6, height = 4)
+mp <- gg_GxE_bar(var_table)
+ggsave("gxe_SouthAsia_01.png", mp, width = 6, height = 4)
+mp <- gg_GxE_pie(var_table)
+ggsave("gxe_SouthAsia_02.png", mp, width = 6, height = 4)
 ```
-
 
 ---
 

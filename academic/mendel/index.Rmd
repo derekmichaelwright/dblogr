@@ -107,8 +107,7 @@ ggMendel1 <- function(xx = d1 %>% filter(Expt == 1),
          `Total Seeds` = factor(`Total Seeds`, levels = unique(.$`Total Seeds`)))
   # Plot
   ggplot(xx, aes(x = 1)) +
-    geom_col(aes(y = Percentage, fill = Trait), 
-             color = "black", alpha = 0.7) +
+    geom_col(aes(y = Percentage, fill = Trait), alpha = 0.7) +
     coord_polar("y", start = 0) +
     facet_wrap(Plant ~ ., ncol = 6) +
     geom_label(aes(label = paste(round(Percentage), "%"), y = Label_y), 

@@ -267,6 +267,30 @@ ggsave("canada_employment_1_2_5.png", mp, width = 6, height = 4)
 
 ---
 
+### Age x Sex
+
+![](canada_employment_1_2_6.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Area == "Canada", Sex != "Both sexes", Age != "15 years and over",
+         Measurement == "Employment rate")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value, color = Age)) +
+  geom_line(size = 0.75, alpha = 0.3) +
+  stat_smooth(geom = "line", method = "loess", se = F) +
+  facet_grid(. ~ Sex) +
+  scale_color_manual(name = NULL, values = myCs_Age) +
+  scale_x_date(date_minor_breaks = "year") +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canadian Employment Rate", x = NULL,
+       y = "Percent", caption = myCaption)
+ggsave("canada_employment_1_2_6.png", mp, width = 9, height = 4)
+```
+
+---
+
 ## Participation Rate {.tabset .tabset-pills}
 
 ### No Group
@@ -314,9 +338,33 @@ ggsave("canada_employment_1_3_2.png", mp, width = 6, height = 4)
 
 ---
 
-### Lines
+### Age x Sex
 
 ![](canada_employment_1_3_3.png)
+
+```{r}
+# Prep data
+xx <- d1 %>% 
+  filter(Area == "Canada", Sex != "Both sexes", Age != "15 years and over",
+         Measurement == "Participation rate")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Age)) +
+  geom_line(size = 0.5, alpha = 0.3) +
+  stat_smooth(geom = "line", method = "loess", se = F) +
+  facet_grid(. ~ Sex) +
+  scale_color_manual(name = NULL, values = myCs_Age) +
+  scale_x_date(date_minor_breaks = "year") +
+  theme_agData(legend.position = "bottom") +
+  labs(title = "Canada - Participation rate", x = NULL,
+       y = "Percent", caption = myCaption)
+ggsave("canada_employment_1_3_3.png", mp, width = 6, height = 4)
+```
+
+---
+
+### Lines
+
+![](canada_employment_1_3_4.png)
 
 ```{r}
 # Prep data
@@ -330,7 +378,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value, color = Area)) +
   theme_agData() +
   labs(title = "Canadian Participation Rate - Ages 15 to 24 years",
        y = "Percent", x = NULL, caption = myCaption)
-ggsave("canada_employment_1_3_3.png", mp, width = 6, height = 4)
+ggsave("canada_employment_1_3_4.png", mp, width = 6, height = 4)
 ```
 
 ---
