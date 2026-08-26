@@ -46,7 +46,7 @@ write.csv(xx, "data_usa_population_state.csv", row.names = F)
 
 ```{r}
 # Prep data
-myCaption <- "Data: USCB\nderekmichaelwright.github.io/dblogr/blog/usa_population"
+myCaption <- "Data: USCB<br>derekmichaelwright.github.io/dblogr/blog/usa_population"
 myColorsMF <- c("steelblue", "palevioletred3")
 myAges <- c("0 to 4 years", "5 to 9 years", "10 to 14 years", 
             "15 to 19 years", "20 to 24 years", "25 to 29 years",
