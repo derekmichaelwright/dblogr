@@ -160,7 +160,7 @@ mp <- ggplot(d1, aes(x = DTF, y = DTM)) +
 mp <- ggMarginal(mp, type = "densigram",
            xparams = list(fill = alpha("steelblue",0.7)),
            yparams = list(fill = alpha("darkorange",0.7)))
-ggsave("data_visualizations_02.png", mp, width = 6, height = 4)
+ggsave("data_visualizations_02.png", mp, width = 6, height = 4, bg = "white")
 ```
 
 ---

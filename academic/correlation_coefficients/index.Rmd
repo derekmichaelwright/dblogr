@@ -45,7 +45,11 @@ library(ggpmisc) # stat_poly_eq()
 
 ```{r}
 # Prep data
+myCaption <- "derekmichaelwright.github.io/dblogr/academic/correlation_coefficients"
+myColors <- c("darkgreen","darkorange","darkblue")
+# Remove any rows with missing data
 d1 <- read_xlsx("data_correlation_coefficients.xlsx", "data_1") %>%
+  filter(!is.na(DTF), !is.na(DTS), !is.na(DTM)) %>%
   mutate(RDTF = 1 / DTF) # Rate of progress towards flowering
 # Preview data
 DT::datatable(d1)
@@ -84,11 +88,6 @@ The most obvious correlation is that of two traits. For example, since `DTF`, `D
 - 88.7% of variation in `DTM` is explained by `DTF`.
 
 ```{r}
-# Prep data
-myCaption <- "derekmichaelwright.github.io/dblogr/academic/correlation_coefficients"
-myColors <- c("darkgreen","darkorange","darkblue")
-# Remove any rows with missing data
-d1 <- d1 %>% filter(!is.na(DTF), !is.na(DTS), !is.na(DTM))
 # DTF - DTS
 mp1 <- ggplot(d1, aes(x = DTF, y = DTS)) + 
   geom_smooth(method = "lm", se = F, color = "red") + 
@@ -119,8 +118,7 @@ mp3 <- ggplot(d1, aes(x = DTF, y = DTM)) +
 # Append and Save
 mp <- ggarrange(mp1, mp2, mp3, nrow = 1, align = "h",
                 common.legend = T, legend = "bottom") %>%
-  annotate_figure(bottom = text_grob(myCaption, size = 7))
-
+  annotate_figure(bottom = text_grob(myCaption, size = 7, hjust = -0.65))
 ggsave("correlation_coefficients_01.png", mp, width = 10, height = 4, bg = "white")
 ```
 
@@ -602,7 +600,7 @@ mp1 <- my_ggplot_2("Saskatchewan", "darkgreen")  + facet_grid(. ~ Expt)
 mp2 <- my_ggplot_2("Nepal", "darkorange") + facet_grid(. ~ Expt)
 mp3 <- my_ggplot_2("Italy", "darkblue")   + facet_grid(. ~ Expt) 
 mp <- ggarrange(mp1, mp2, mp3, ncol = 3) %>%
-  annotate_figure(bottom = text_grob(myCaption, size = 7))
+  annotate_figure(bottom = text_grob(myCaption, size = 7, hjust = -0.65))
 ggsave("correlation_coefficients_11.png", mp, width = 10, height = 4)
 ```
 
