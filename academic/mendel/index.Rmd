@@ -42,7 +42,7 @@ library(readxl)
 ```{r}
 # Prep data
 myCaption1 <- "derekmichaelwright.github.io/dblogr/"
-myCaption2 <- "Data: Mendel (1865)\nderekmichaelwright.github.io/dblogr/"
+myCaption2 <- "Data: Mendel (1865)<br>derekmichaelwright.github.io/dblogr/"
 #
 d1 <- read_xlsx("data_mendel.xlsx", "T1") %>% 
   mutate(Trait = factor(Trait, levels = unique(.$Trait)))
