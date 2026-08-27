@@ -49,8 +49,8 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption1 <- "Data: US CDC\nderekmichaelwright.github.io/dblogr/blog/usa_deaths"
-myCaption2 <- "Data: US CDC & USCB\nderekmichaelwright.github.io/dblogr/blog/usa_deaths"
+myCaption1 <- "Data: US CDC (Note: most recent years data may be incomplete)<br>derekmichaelwright.github.io/dblogr/blog/usa_deaths"
+myCaption2 <- "Data: US CDC & USCB (Note: most recent years data may be incomplete)<br>derekmichaelwright.github.io/dblogr/blog/usa_deaths"
 myColors <- c("darkgreen", "darkred", "darkorange", "steelblue", "darkblue", "purple4", "magenta3")
 myAges1 <- c("Under 25 years", "25-44 years", "45-64 years", 
             "65-74 years", "75-84 years", "85 years and older")
