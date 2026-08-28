@@ -31,7 +31,8 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/blog/canada_religion"
+myCaption <- "Data: STATCAN<br>derekmichaelwright.github.io/dblogr/blog/canada_religion"
+myCaption2 <- "Data: STATCAN | derekmichaelwright.github.io/dblogr/blog/canada_religion"
 myColors <- c("darkorange", "darkgreen", "darkred")
 myColorsMF <- c("steelblue", "palevioletred3")
 myAges <- c("Total - Age", "15 years and over", "0 to 14 years", 
@@ -129,7 +130,8 @@ mp3 <- ggplot(yy, aes(x = 1, y = Value, fill = Religion)) +
   labs(title = "Minor Religions")
 mp <- ggarrange(mp1, ggarrange(mp2, mp3, nrow = 2, legend = "none"), 
                 ncol = 2, align = "h", widths = c(1, 0.5), 
-                common.legend = T, legend = "right")
+                common.legend = T, legend = "right") %>%
+  annotate_figure(bottom = text_grob(myCaption2, size = 7, hjust = -0.2))
 ggsave("canada_religion_1_01.png", mp, width = 6, height = 4, bg = "white")
 ```
 
@@ -184,7 +186,7 @@ mp <- ggplot(xx, aes(x = 1, y = Percent, fill = Group)) +
   labs(title = "Religious Beleif in Canada - 15 years and over", 
        caption = myCaption,
        y = "Million People (2021)", x = NULL)
-ggsave("canada_religion_2_02.png", mp, width = 6, height = 6)
+ggsave("canada_religion_2_02.png", mp, width = 6, height = 5.5)
 ```
 
 ---

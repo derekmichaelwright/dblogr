@@ -45,13 +45,13 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption1 <- "Data: Morning Consult\nderekmichaelwright.github.io/dblogr/blog/covid_origins"
+myCaption1 <- "Data: Morning Consult<br>derekmichaelwright.github.io/dblogr/blog/covid_origins"
 myTitle1 <- "Morning Consult Poll"
 mySubtitle1 <- "The share of adults who said the following comes closest to their opinion\nabout the origins of the COVID-19 pandemic"
 d1 <- read.csv("data_morning_consult.csv") %>%
   mutate(Area = factor(Area, levels = rev(.$Area))) 
 #
-myCaption2 <- "Data: YouGov\nderekmichaelwright.github.io/dblogr/blog/covid_origins"
+myCaption2 <- "Data: YouGov<br>derekmichaelwright.github.io/dblogr/blog/covid_origins"
 myTitle2 <- "35. COVID-19 Originated in Chinese Lab"
 mySubtitle2 <- "Regardless of whether or not the virus responsible for COVID-19 was created or naturally mutated,\ndo you believe it is true or false that a laboratory in China was the origin of the virus?"
 myAnswers <- c("Definatly false", "Propably false", "Not sure",
@@ -60,13 +60,13 @@ d2 <- read.csv("data_yougov.csv", skip = 1, check.names = FALSE) %>%
   gather(Group, Percent, 2:ncol(.)) %>%
   mutate(Answer = factor(Answer, levels = myAnswers))
 #
-myCaption3 <- "Data: GCRI\nderekmichaelwright.github.io/dblogr/blog/covid_origins"
+myCaption3 <- "Data: GCRI<br>derekmichaelwright.github.io/dblogr/blog/covid_origins"
 myTitle3 <- "Degree of belief in COVID-19 origin from natural zoonosis"
 d3 <- read.csv("data_gcri.csv") %>%
   mutate(Interpretation = factor(Interpretation, levels = unique(.$Interpretation)),
          `Natural.Belief` = factor(`Natural.Belief`, levels = unique(.$`Natural.Belief`)))
 #
-myCaption4 <- "Data: Deseret News/HarrisX\nderekmichaelwright.github.io/dblogr/blog/covid_origins"
+myCaption4 <- "Data: Deseret News/HarrisX<br>derekmichaelwright.github.io/dblogr/blog/covid_origins"
 myTitle4 <- "Which theory about the origin of COVID-19 is most believable?"
 myTitle5 <- "Are you satisfied or unsatisfied with the government's investigation into the origins of COVID-19?"
 d4 <- read.csv("data_deseret.csv")
@@ -284,20 +284,17 @@ ggsave("covid_origin_3_05.png", mp, width = 7.5, height = 5)
 ```{r}
 # Create plotting function
 plotPoll_2 <- function(xx = d2, myGroups, 
-                       myColors = c("darkred", "palevioletred3","black", "steelblue", "darkblue")) {
+                       myColors = c("darkred", "palevioletred3", "black", 
+                                    "steelblue", "darkblue")) {
   # Prep data
   xx <- xx %>% filter(Group %in% myGroups) %>%
-    mutate(Group = factor(Group, levels = myGroups)) %>%
-    group_by(Group) %>%
-    summarise(Answer = Answer,
-              Percent = 100 * Percent / sum(Percent))
+    mutate(Group = factor(Group, levels = myGroups)) 
   # Plot
-  ggplot(xx, aes(x = 1, y = Percent, fill = Answer)) +
-    geom_col(lwd = 0.2, color = "black", alpha = 0.7) +
+  ggplot(xx, aes(x = "", y = Percent, fill = Answer)) +
+    geom_col(lwd = 0.2, alpha = 0.7) +
     coord_polar("y", start = 0) +
-    facet_grid(. ~ Group) +
+    facet_wrap(. ~ Group, scales = "free", ncol = 4) +
     scale_fill_manual(name = NULL, values = myColors) +
-    xlim(0.548, 1.45) +
     theme_agData_pie(legend.position = "bottom") +
     labs(title = myTitle2, subtitle = mySubtitle2, 
          x = NULL, caption = myCaption2)

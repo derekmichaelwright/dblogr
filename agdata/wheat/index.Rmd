@@ -27,7 +27,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "Data: FAO\nderekmichaelwright.github.io/dblogr/agdata/wheat"
+myCaption <- "Data: FAO<br>derekmichaelwright.github.io/dblogr/agdata/wheat"
 #
 dd <- agData_FAO_Crops %>% filter(Item == "Wheat")
 ```

@@ -28,7 +28,7 @@ library(gganimate)
 
 ```{r}
 ## Prep data
-myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/agdata/honeybee_canada"
+myCaption <- "Data: STATCAN<br>derekmichaelwright.github.io/dblogr/agdata/honeybee_canada"
 #
 dd <- agData_STATCAN_Beehives
 ```

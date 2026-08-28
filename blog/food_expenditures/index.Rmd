@@ -56,10 +56,10 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption1 <- "Data: OWID\nderekmichaelwright.github.io/dblogr/food_expenditures"
-myCaption2 <- "Data: US BLS\nderekmichaelwright.github.io/dblogr/food_expenditures"
-myCaption3 <- "Data: USDA\nderekmichaelwright.github.io/dblogr/blog/food_expenditures"
-myCaption4 <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/blog/food_expenditures"
+myCaption1 <- "Data: OWID<br>derekmichaelwright.github.io/dblogr/food_expenditures"
+myCaption2 <- "Data: US BLS<br>derekmichaelwright.github.io/dblogr/food_expenditures"
+myCaption3 <- "Data: USDA<br>derekmichaelwright.github.io/dblogr/blog/food_expenditures"
+myCaption4 <- "Data: STATCAN<br>derekmichaelwright.github.io/dblogr/blog/food_expenditures"
 #
 myCs_Regions <- c("darkred", "darkgreen", "darkorange", "darkblue", "steelblue")
 myCs_Food <- c("darkred", "darkgoldenrod2", "grey50", "steelblue", 

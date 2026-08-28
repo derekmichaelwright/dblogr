@@ -102,7 +102,7 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption <- "Data: Elections SK\nderekmichaelwright.github.io/dblogr/blog/saskatchewan_elections"
+myCaption <- "Data: Elections SK<br>derekmichaelwright.github.io/dblogr/blog/saskatchewan_elections"
 #
 myPs2020 <- c("SP", "NDP", "BP", "GP", "PC", "LIB", "IND")
 myCs2020 <- c("darkgreen", "darkorange", "burlywood4", "green", 

@@ -32,7 +32,7 @@ myCs_Regions <- c("darkred","darkgreen","darkorange","darkblue","grey")
 myCs_Lens <- c("darkgreen", "darkgoldenrod3", "darkred", "black")
 myCrops <- c("Large Green Lentils","Small Green Lentils",
              "Red Lentils","Other Lentils")
-myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/agdata/lentil_saskatchewan"
+myCaption <- "Data: STATCAN<br>derekmichaelwright.github.io/dblogr/agdata/lentil_saskatchewan"
 #
 x1 <- agData_STATCAN_Crops %>%
   filter(Item == "Lentils", Measurement == "Production",

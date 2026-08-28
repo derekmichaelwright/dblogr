@@ -31,7 +31,7 @@ library(rworldmap)
 
 ```{r}
 # Prepare data
-myCaption <- "Data: FAOSTAT\nderekmichaelwright.github.io/dblogr/agdata/fertilizers"
+myCaption <- "Data: FAOSTAT<br>derekmichaelwright.github.io/dblogr/agdata/fertilizers"
 myItems <- c("Nutrient nitrogen N",
              "Nutrient phosphate P2O5",
              "Nutrient potash K2O")

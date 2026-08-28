@@ -30,7 +30,7 @@ library(gganimate)
 
 ```{r}
 # Prep data
-myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/blog/canada_trade"
+myCaption <- "Data: STATCAN<br>derekmichaelwright.github.io/dblogr/blog/canada_trade"
 d1 <- read.csv("1210001101_databaseLoadingData.csv") %>%
   select(Year=REF_DATE, Area=GEO, Trade, Basis, Seasonal.adjustment,
          Trading.Partner=Principal.trading.partners, 

@@ -25,7 +25,7 @@ library(agData)
 
 ```{r}
 # Prep data
-myCaption <- "Data: FAOSTAT\nderekmichaelwright.github.io/dblogr/agdata/lentil"
+myCaption <- "Data: FAOSTAT<br>derekmichaelwright.github.io/dblogr/agdata/lentil"
 #
 d1 <- agData_FAO_Crops %>% filter(Item %in% c("Peas, dry", "Peas, green"))
 ```

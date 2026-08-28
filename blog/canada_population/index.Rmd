@@ -40,7 +40,7 @@ library(transformr)
 
 ```{r}
 # Prep data
-myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/blog/canada_population"
+myCaption <- "Data: STATCAN<br>derekmichaelwright.github.io/dblogr/blog/canada_population"
 myColorsMF <- c("steelblue", "palevioletred3")
 myColorsP <- c("darkgoldenrod3", "darkred", "darkgreen", "darkslategray",
                "darkblue", "steelblue", "maroon4", "purple4", "cyan4", "burlywood4")
