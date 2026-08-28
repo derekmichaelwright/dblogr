@@ -28,7 +28,7 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption <- "Data: Fraser Institute\nderekmichaelwright.github.io/dblogr/blog/canada_expenses"
+myCaption <- "Data: Fraser Institute<br>derekmichaelwright.github.io/dblogr/blog/canada_expenses"
 
 d1 <- read_xlsx("data_canada_expenses.xlsx", "Expenses") %>%
   mutate(Other = Income - Tax - Shelter - Food - Clothing)

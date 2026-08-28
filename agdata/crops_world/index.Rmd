@@ -27,7 +27,7 @@ library(gganimate)
 ```
 
 ```{r}
-myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/agdata/crops_world"
+myCaption <- "Data: STATCAN<br>derekmichaelwright.github.io/dblogr/agdata/crops_world"
 #
 dd <- agData_FAO_Crops %>% filter(Area == "World")
 ```

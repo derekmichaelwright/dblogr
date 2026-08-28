@@ -54,7 +54,7 @@ ggCropMap_year <- function(myCrop = "Lentils, dry",
               )
   title(main = paste(myCrop, "-", myMeasure, "-", myYear), 
         line = 0.25, cex.main = 1)
-  title(sub = "Data: FAOSTAT\nderekmichaelwright.github.io/dblogr/agdata/crops_world_maps",
+  title(sub = "Data: FAOSTAT<br>derekmichaelwright.github.io/dblogr/agdata/crops_world_maps",
         line = 0, cex.sub = 0.5, adj = 1)
   legend(-185,10, title = "Yearly Statistics:",
        legend = c(paste("Max  =", round(max(xx$Value)), unique(xx$Unit)),

@@ -59,7 +59,7 @@ library(readxl)
 
 ```{r}
 # Prep data
-myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/blog/canada_deaths"
+myCaption <- "Data: STATCAN (Note: most recent years data may be incomplete)<br>derekmichaelwright.github.io/dblogr/blog/canada_deaths"
 myColors <- c("darkgreen", "darkred", "darkorange", "steelblue", "darkblue", "purple4", "magenta3")
 myAreas <- c("Canada", "Quebec", "Ontario", "British Columbia", 
              "Alberta", "Saskatchewan", "Manitoba", "Nova Scotia",
@@ -201,7 +201,7 @@ mp2 <- ggplot(xx, aes(x = Year, y = Death.Rate,
   theme_agData() +
   labs(subtitle = "(B) Death Rate Per Year in Canada", 
        y = "Deaths / Thousand", x = NULL, caption = myCaption)
-mp <- ggarrange(mp1, mp2, ncol = 2, legend = "none", common.legend = T)
+mp <- ggarrange(mp1, mp2, ncol = 2, legend = "none", align = "h")
 ggsave("canada_deaths_01_01.png", mp, width = 10, height = 4, bg = "white")
 ```
 
@@ -1353,12 +1353,10 @@ xx <- d1 %>%
 mp <- ggplot(xx, aes(x = Date, y = Area, fill = Death.Rate)) +
   geom_tile(color = "white", size = 0.35) +
   scale_fill_gradientn(colors = myColors, na.value = 'white') +
-  theme_minimal() + 
-  theme(plot.background = element_rect(fill = "white"),
-        panel.grid = element_blank()) +
-        coord_cartesian(clip = 'off') +
-        theme(legend.position = "bottom", 
-              text = element_text(size = 8)) +
+  theme_agData(lineColor = "white",
+               legend.position = "bottom", 
+               text = element_text(size = 8)) +
+  coord_cartesian(expand = c(0,0)) +
   labs(x = NULL, y = NULL, caption = myCaption)
 ggsave("canada_deaths_11_07.png", mp, width = 6, height = 4)
 ```
@@ -1434,13 +1432,13 @@ xx <- yy %>% filter(Trait == "Death rate (per 1,000)") %>%
          Group = ifelse(Year %in% c(1918, 2020, 2021), "Pandemic", Group))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value, alpha = Group)) +
-  geom_col(color = "black", fill = "darkred", size = 0.3) +
+  geom_col(color = "black", fill = "darkred", lwd = 0.2) +
   scale_x_continuous(breaks = seq(1900, 2020, 20)) +
   scale_fill_manual(values = c("darkred", "darkgreen", "darkred")) +
   scale_alpha_manual(values = c(0.6, 0.3, 0.8)) +
   theme_agData(legend.position = "none") +
   labs(title = "Death Rate in Canada", y = "Deaths per 1000 people", x = NULL,
-       caption = "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: Wikipedia")
+       caption = "Data: Wikipedia<br>derekmichaelwright.github.io/dblogr/blog/canada_deaths")
 ggsave("canada_deaths_13_01.png", mp, width = 6, height = 4)
 ```
 
@@ -1483,7 +1481,8 @@ ggsave("canada_deaths_13_02.png", mp, width = 8, height = 4)
 ```{r}
 mp <- ggplot(yy, aes(x = Area, fill = Area,
                y = `Crude death rate, due to COVID-19 (per thousand)`)) +
-  geom_col(color = "black") +
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(values  = agData_Colors) +
   theme_agData_col(legend.position = "none",
                    axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "COVID-19 Death Rate In Canada", 

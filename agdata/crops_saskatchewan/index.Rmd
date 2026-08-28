@@ -35,7 +35,7 @@ library(gganimate)
 ```
 
 ```{r}
-myCaption <- "Data: STATCAN\nderekmichaelwright.github.io/dblogr/agdata/crops_saskatchewan"
+myCaption <- "Data: STATCAN<br>derekmichaelwright.github.io/dblogr/agdata/crops_saskatchewan"
 #
 d1 <- agData_STATCAN_Crops %>% filter(Area == "Saskatchewan")
 d2 <- agData_STATCAN_FarmLand_Use %>% filter(Area == "Saskatchewan")
