@@ -598,7 +598,8 @@ my_ggplot_2 <- function(expts, colors) {
 }
 mp1 <- my_ggplot_2("Saskatchewan", "darkgreen")  + facet_grid(. ~ Expt)
 mp2 <- my_ggplot_2("Nepal", "darkorange") + facet_grid(. ~ Expt)
-mp3 <- my_ggplot_2("Italy", "darkblue")   + facet_grid(. ~ Expt) 
+mp3 <- my_ggplot_2("Italy", "darkblue")   + facet_grid(. ~ Expt) +
+  labs(caption = myCaption)
 mp <- ggarrange(mp1, mp2, mp3, ncol = 3) %>%
   annotate_figure(bottom = text_grob(myCaption, size = 7, hjust = -0.65))
 ggsave("correlation_coefficients_11.png", mp, width = 10, height = 4)

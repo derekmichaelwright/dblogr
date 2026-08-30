@@ -120,7 +120,7 @@ mp <- ggplot(xx, aes(y = Value / 1000000, x = NAME)) +
   geom_col(fill = "darkgreen", alpha = 0.7) +
   theme_agData(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "2023 Population", x = NULL, 
-       y = "Million People", captiopn = myCaption)
+       y = "Million People", caption = myCaption)
 ggsave("usa_population_1_01.png", mp, width = 8, height = 4)
 ```
 
@@ -142,7 +142,7 @@ mp <- plot_usmap(data = xx, values = "Value", exclude = c("AK","HI")) +
   scale_fill_gradient(name = "Million People", 
                        high = "darkgreen", low = "white") + 
   theme(legend.position = "right") +
-  labs(title = "Population", captiopn = myCaption)
+  labs(title = "Population", caption = myCaption)
 ggsave("usa_population_1_02.png", mp, width = 6, height = 4, bg = "white")
 ```
 
@@ -164,7 +164,7 @@ mp <- ggplot(xx, aes(y = Value / 1000000, x = Year)) +
   facet_wrap(NAME ~ ., scales = "free_y") +
   theme_agData() +
   labs(title = "California Population", x = NULL,
-       y = "Million People", captiopn = myCaption)
+       y = "Million People", caption = myCaption)
 ggsave("usa_population_1_03.png", mp, width = 14, height = 10)
 ```
 
@@ -185,7 +185,7 @@ mp <- ggplot(xx, aes(y = Value / 1000000, x = Year)) +
   facet_wrap(NAME ~ ., scales = "free_y") +
   theme_agData() +
   labs(title = "California Population", x = NULL,
-       y = "Million People", captiopn = myCaption)
+       y = "Million People", caption = myCaption)
 ggsave("usa_population_1_04.png", mp, width = 6, height = 4)
 ```
 
@@ -209,7 +209,7 @@ mp <- plot_usmap(data = xx, values = "Value", exclude = c("AK","HI")) +
                        high = "darkgreen", mid = "white", low = "darkred") + 
   theme(legend.position = "right",
         plot.background = ) + 
-  labs(title = "Population Change 2021", captiopn = myCaption)
+  labs(title = "Population Change 2021", caption = myCaption)
 ggsave("usa_population_2_01.png", mp, width = 6, height = 4, bg = "white")
 ```
 
@@ -231,7 +231,7 @@ mp <- plot_usmap(data = xx, values = "Value", exclude = c("AK","HI")) +
                        high = "darkgreen", mid = "white", low = "darkred") + 
   theme(legend.position = "right",
         plot.background = ) + 
-  labs(title = "Population Change", captiopn = myCaption,
+  labs(title = "Population Change", caption = myCaption,
        subtitle = paste("Year =", "{round(frame_time)}")) +
   transition_time(Year)
 anim_save("usa_population_gif_2_01.gif", mp,
@@ -289,7 +289,7 @@ mp <- plot_usmap(data = xx, values = "PopChange", exclude = c("AK","HI")) +
                        high = "darkgreen", mid = "white", low = "darkred") + 
   theme(legend.position = "right",
         plot.background = ) + 
-  labs(title = "Percent Change Since 2010", captiopn = myCaption)
+  labs(title = "Percent Change Since 2010", caption = myCaption)
 ggsave("usa_population_2_03.png", mp, width = 6, height = 4, bg = "white")
 ```
 
@@ -315,7 +315,7 @@ mp <- plot_usmap(data = xx, values = "PopChange", exclude = c("AK","HI")) +
                        high = "darkgreen", mid = "white", low = "darkred") + 
   theme(legend.position = "right",
         plot.background = ) + 
-  labs(title = "Percent Change Since 2010", captiopn = myCaption,
+  labs(title = "Percent Change Since 2010", caption = myCaption,
        subtitle = paste("Year =", "{round(frame_time)}")) +
   transition_time(Year)
 anim_save("usa_population_gif_2_02.gif", mp,
@@ -515,7 +515,7 @@ xx <- read.csv("data_compton.csv") %>%
   gather(Race, Percent, 3:ncol(.))
 # Plot
 mp <- ggplot(xx, aes(x = Decade, y = Percent, color = Race)) + 
-  geom_line() +geom_point() +
+  geom_line() + geom_point() +
   theme_agData(legend.position = "bottom")
 ggsave("usa_population_5_01.png", mp, width = 6, height = 4)
 ```

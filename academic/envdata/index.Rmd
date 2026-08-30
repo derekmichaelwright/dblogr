@@ -743,7 +743,8 @@ mp <- ggplot(ee, aes(x = YYYYMMDD)) +
   geom_col(aes(y = PRECTOT), fill = "steelblue") +
   scale_x_date(date_breaks = "month", date_labels = "%b") +
   facet_grid(. ~ env, scales = "free_x", space = "free_x") +
-  theme_agData()
+  theme_agData() +
+  labs(caption = myCaption)
 ggsave("envdata_4_01.png", mp, width = 15, height = 4)
 write.csv(ee, "envdata_myExpts_1.csv", row.names = F)
 ```
@@ -773,7 +774,8 @@ mp <- ggplot(ee, aes(x = YYYYMMDD)) +
   geom_col(aes(y = PRECTOT), fill = "steelblue") +
   scale_x_date(date_breaks = "month", date_labels = "%b") +
   facet_grid(. ~ env, scales = "free_x", space = "free_x") +
-  theme_agData()
+  theme_agData() +
+  labs(caption = myCaption)
 ggsave("envdata_4_02.png", mp, width = 15, height = 4)
 write.csv(ee, "envdata_myExpts_2.csv", row.names = F)
 ```
@@ -797,7 +799,7 @@ untar(KP_file) # Extract files
 
 ```{r eval = F, echo = F}
 # Prep data
-myCaption <- "www.dblogr.com/ or derekmichaelwright.github.io/dblogr/ | Data: AGILE"
+myCaption <- "derekmichaelwright.github.io/dblogr/ | Data: AGILE"
 locs <- c("Rosthern, Canada", "Sutherland, Canada", "Central Ferry, USA",
           "Bhopal, India", "Jessore, Bangladesh", "Bardiya, Nepal",
           "Marchouch, Morocco", "Cordoba, Spain", "Metaponto, Italy")

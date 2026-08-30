@@ -362,7 +362,8 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   geom_line(color = "darkgreen", size = 1, alpha = 0.5) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
   theme_agData(legend.position = "none") +
-  labs(title = "Residential Building Permits in Canada", y = "x 1000", x = NULL)
+  labs(title = "Residential Building Permits in Canada", 
+       y = "x 1000", x = NULL, caption = myCaption)
 ggsave("canada_housing_2_01.png", mp, width = 14, height = 8)
 ```
 
@@ -397,9 +398,10 @@ gg_Permits <- function(myArea = "Canada") {
     facet_wrap(Type.of.building ~ ., scales = "free_y") +
     scale_color_manual(values = myColors_P) +
     theme_agData(legend.position = "none") +
-    labs(subtitle = "B) Value of Permits", y = "Million CAD$", x = NULL)
+    labs(subtitle = "B) Value of Permits", y = "Million CAD$", x = NULL,
+         caption = myCaption)
   #
-  ggarrange(mp1, mp2, ncol = 1, align = "hv")
+  ggarrange(mp1, mp2, ncol = 1, align = "hv", heights = c(1,1.2))
 }
 ```
 
