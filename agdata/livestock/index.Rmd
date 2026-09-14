@@ -67,7 +67,7 @@ ggsave("livestock_01.png", mp, width = 14, height = 7)
 ```{r}
 # Prep Data
 xx <- dd %>% 
-  filter(Area == "USA", Measurement == "Stocks")
+  filter(Area == "United States of America", Measurement == "Stocks")
 # Plot Data
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) + 
   geom_line(size = 1.5, alpha = 0.7, color = "darkgreen") +
@@ -87,7 +87,7 @@ ggsave("livestock_02.png", mp, width = 14, height = 6)
 ```{r}
 # Prep Data
 xx <- dd %>% 
-  filter(Area == "USA", Item == "Cattle",
+  filter(Area == "United States of America", Item == "Cattle",
          Measurement == "Stocks")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000)) + 

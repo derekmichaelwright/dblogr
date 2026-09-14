@@ -345,7 +345,7 @@ Harold G. Weger, April K. Polasek, **Derek M. Wright**, Arun Damodaran, John Sta
 
 Tutorials in `r icon("r-project")` on how to perform various statistical and genetic analyses.
 
-#### GWAS Tutorial
+#### GWAS
 
 <div class="box">
 
@@ -355,7 +355,7 @@ An R tutorial on running genome-wide association studies (GWAS) with GAPIT and g
 
 ![](academic/gwas_tutorial/featured.png)</div>
 
-#### QTL Tutorial
+#### QTL
 
 <div class="box">
 
@@ -365,7 +365,7 @@ A tutorial on how to run QTL analyses in R with qtl2
 
 ![](academic/qtl_tutorial/featured.png)</div>
 
-#### PCA Tutorial
+#### PCA
 
 <div class="box">
 
@@ -375,13 +375,13 @@ A tutorial on how to run principal component analyses and heirarchical clusterin
 
 ![](academic/pca_tutorial/featured.png)</div>
 
-#### GxE Tutorial
+#### G x E
 
 <div class="box">
 
-[<u>**GxE with Mixed Models**</u>](academic/gxe){target="_blank"}
+[<u>**G x E with Mixed Models**</u>](academic/gxe){target="_blank"}
 
-A tutorial on how to run asses genotype by environment interactions in R
+A tutorial on how to run and assess genotype by environment interactions in R
 
 ![](academic/gxe/featured.png)</div>
 
@@ -406,6 +406,16 @@ An R tutorial on augmented field trial designs and how to adjust their values
 **Note: Under Construction**
 
 ![](academic/augmented_designs/featured.png)</div>
+
+#### Correlation Coefficients and Predictive Models
+
+<div class="box">
+
+[<u>**Correlation Coefficients and Predictive Models**</u>](academic/correlation_coefficients){target="_blank"}
+
+A vignette on how to properly use correlation coefficients when evaluating predictive models
+
+![](academic/correlation_coefficients/featured.png)</div>
 
 #### Dual Y-axis
 
@@ -451,26 +461,6 @@ An introduction to `r icon("r-project")`
 
 Vignettes related to my work academic work and general science communication.
 
-#### Lentil Research Populations
-
-<div class="box">
-
-[<u>**Lentil Research Populations**</u>](academic/lentil_populations){target="_blank"}
-
-Graphs of different lentil populations representing their global genetic diversity
-
-![](academic/lentil_populations/featured.png)</div>
-
-#### Correlation Coefficients and Predictive Models
-
-<div class="box">
-
-[<u>**Correlation Coefficients and Predictive Models**</u>](academic/correlation_coefficients){target="_blank"}
-
-A vignette on how to properly use correlation coefficients when evaluating predictive models
-
-![](academic/correlation_coefficients/featured.png)</div>
-
 #### Data Visualizations
 
 <div class="box">
@@ -490,6 +480,16 @@ A vignette illustrating different ways to visualize data
 A vignette illustrating how to mislead with statistics and graphs
 
 ![](academic/misleading_graphs/featured.png)</div>
+
+#### Lentil Research Populations
+
+<div class="box">
+
+[<u>**Lentil Research Populations**</u>](academic/lentil_populations){target="_blank"}
+
+Graphs of different lentil populations representing their global genetic diversity
+
+![](academic/lentil_populations/featured.png)</div>
 
 ## {-}
 

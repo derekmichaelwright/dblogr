@@ -125,7 +125,7 @@ anim_save("lentil_gif_01.gif", mp,
 
 ```{r}
 # Prep data
-myAs <- c("Canada", "Southern Asia", "USA", "Turkey", 
+myAs <- c("Canada", "Southern Asia", "United States of America", "Turkey", 
           "Europe", "Africa", "Oceania" )
 myCs <- c("darkgreen", "darkgoldenrod2", "steelblue", 
           "darkblue", "darkred", "darkslategrey" )
@@ -185,7 +185,7 @@ ggsave("lentil_02.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myAs <- c("Canada", "Southern Asia", "USA", "Turkey", 
+myAs <- c("Canada", "Southern Asia", "United States of America", "Turkey", 
           "Europe", "Africa", "Oceania")
 myCs <- c("darkgreen", "darkgoldenrod2", "darkblue", "darkslategrey", 
           "steelblue", "darkred", "antiquewhite4")
@@ -258,7 +258,7 @@ xx <- d1 %>%
   arrange(desc(Value)) %>%
   mutate(Area = factor(Area, levels = Area),
          Region = ifelse(Region == "Asia", SubRegion, Region),
-         Region = factor(Region, levels = myRegions))
+         Region = factor(Region, levels = myRs))
 # Plot
 mp <- ggplot(xx, aes(x = Area, y = Value / 1000, fill = Region)) + 
   geom_col(color = "black", alpha = 0.7) + 
@@ -271,7 +271,7 @@ ggsave("lentil_05.png", mp, width = 6, height = 4)
 
 ---
 
-## CA - In - Et
+## Ca - In - Et
 
 ![](lentil_06.png)
 

@@ -82,7 +82,7 @@ ggsave("featured.png", mp, width = 10, height = 6)
 ![](import_export_1_usa.png)
 
 ```{r}
-mp <- ggIEA(myArea = "USA")
+mp <- ggIEA(myArea = "United States of America")
 ggsave("import_export_1_usa.png", mp, width = 10, height = 6)
 ```
 
@@ -255,7 +255,7 @@ ggsave("import_export_2_canada.png", mp, width = 5, height = 5)
 ![](import_export_2_usa.png)
 
 ```{r}
-mp <- ggIEAY(myArea = "USA", myYear = 2019)
+mp <- ggIEAY(myArea = "United States of America", myYear = 2019)
 ggsave("import_export_2_usa.png", mp, width = 5, height = 5)
 ```
 

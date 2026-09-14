@@ -317,7 +317,7 @@ ggsave("fertilizers_2_china.png", mp, width = 6, height = 7)
 
 ```{r}
 # Plot
-mp <- ggFert(area = "USA")
+mp <- ggFert(area = "United States of America")
 ggsave("fertilizers_2_usa.png", mp, width = 6, height = 7)
 ```
 
@@ -594,7 +594,7 @@ ggsave("fertilizers_n_3_china.png", mp, width = 6, height = 4)
 
 ```{r}
 # Plot
-mp <- ggFertP(area = "USA")
+mp <- ggFertP(area = "United States of America")
 ggsave("fertilizers_n_3_usa.png", mp, width = 6, height = 4)
 ```
 
@@ -984,7 +984,7 @@ ggsave("fertilizers_p_3_china.png", mp, width = 6, height = 4)
 
 ```{r}
 # Plot
-mp <- ggFertN(area = "USA")
+mp <- ggFertN(area = "United States of America")
 ggsave("fertilizers_p_3_usa.png", mp, width = 6, height = 4)
 ```
 
@@ -1259,7 +1259,7 @@ ggsave("fertilizers_k_3_china.png", mp, width = 6, height = 4)
 
 ```{r}
 # Plot
-mp <- ggFertK(area = "USA")
+mp <- ggFertK(area = "United States of America")
 ggsave("fertilizers_k_3_usa.png", mp, width = 6, height = 4)
 ```
 
