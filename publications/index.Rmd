@@ -18,8 +18,6 @@ library(shiny)
 
 Scientific publications I have been involved in while working/studying at [***University of Regina***](https://www.uregina.ca/){target="_blank"}, [***Justus-Liebig-Universität Gießen (University of Giessen)***](https://www.uni-giessen.de/){target="_blank"} & the [***University of Saskatchewan***](https://www.usask.ca/){target="_blank"}.
 
-# All Publications
-
 <div class="box">
 
 - `r icon("newspaper")` (**2025**) [<u>**Disecting lentil crop growth across multi-environment trials using unoccupied aerial vehicles and genome-wide association studies**</u>](https://doi.org/10.1002/ppj2.70040){target="_blank"}. *The Plant Phenome Journal*. 8(1): e70040. doi.org/10.1002/ppj2.70040

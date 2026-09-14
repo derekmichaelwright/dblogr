@@ -11,14 +11,14 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data {.tabset .tabset-pills}
+# Data
 
-## STATCAN Table: 32-10-0359-01
+STATCAN Table: 32-10-0359-01
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035901](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035901){target="_blank"}
 > - `r shiny::icon("save")` [agData_STATCAN_Crops.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Crops.csv.gz)
 
-## STATCAN Table: 32-10-0153-01
+STATCAN Table: 32-10-0153-01
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015301](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015301){target="_blank"}
 > - `r shiny::icon("save")` [agData_STATCAN_FarmLand_Use.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_FarmLand_Use.csv.gz)
@@ -665,7 +665,7 @@ mp <- ggplot(xx, aes(x = "", y = Value / 1000000, fill = Item)) +
   geom_col(color = "black", alpha = 0.7) +
   facet_grid(. ~ Year) +
   scale_fill_manual(name = NULL, values = agData_Colors) +
-  theme_agData_col() +
+  theme_agData_col(axis.ticks.x = element_blank()) +
   labs(title = "Saskatchewan - Area Seeded", 
        y = "Million Hectares", x = NULL, caption = myCaption)
 ggsave("crops_saskatchewan_5_03.png", mp, width = 6, height = 4)

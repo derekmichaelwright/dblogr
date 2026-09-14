@@ -55,6 +55,12 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 </br>
 
+**Academic Work**
+
+- `r icon("newspaper")` [All Publications](https://derekmichaelwright.github.io/dblogr/publications/)
+- `r icon("r-project")` [Packages](#packages)
+
+
 **Socials**
 
 - `r icon("github")`  [github.com/derekmichaelwright](https://github.com/derekmichaelwright){target="_blank"}
@@ -138,6 +144,8 @@ Tutorials & Vignettes:
 
 ## Scientific Research {.tabset .tabset-pills}
 
+> - `r icon("newspaper")` [All Publications](https://derekmichaelwright.github.io/dblogr/publications/)
+
 Scientific publications I have been involved in while working/studying at [***University of Regina***](https://www.uregina.ca/){target="_blank"}, [***Justus-Liebig-Universität Gießen (University of Giessen)***](https://www.uni-giessen.de/){target="_blank"} & the [***University of Saskatchewan***](https://www.usask.ca/){target="_blank"}.
 
 ### All Publications
@@ -177,6 +185,14 @@ Scientific publications I have been involved in while working/studying at [***Un
 - `r icon("file-pdf")` [All Figures (pdf)](https://github.com/derekmichaelwright/AGILE_LDP_Phenology/blob/master/README.pdf){target="_blank"}
 
 </div><div class="col-md-6">![](publications/ldp_phenology/featured.png)</div></div>
+
+<u>**Tutorials & Vignettes**</u>
+
+- `r icon("chart-bar")` [Lentil Populations](https://derekmichaelwright.github.io/dblogr/academic/lentil_populations/){target="_blank"}
+- `r icon("chart-bar")` [EnvData](https://derekmichaelwright.github.io/dblogr/academic/envdata){target="_blank"}
+- `r icon("chart-bar")` [Thermal Time](https://derekmichaelwright.github.io/dblogr/academic/thermal_time/){target="_blank"}
+- `r icon("chart-bar")` [PCA Tutorial](https://derekmichaelwright.github.io/dblogr/academic/pca_tutorial/){target="_blank"}
+- `r icon("chart-bar")` [Correlation Coefficients](https://derekmichaelwright.github.io/dblogr/academic/correlation_coefficients/){target="_blank"}
 
 <u>**News Articles**</u>
 

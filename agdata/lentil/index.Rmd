@@ -91,7 +91,8 @@ xx <- d1 %>%
   mutate(Rank = 1:n()) %>%
   filter(Rank < 15) %>% 
   arrange(desc(Year)) %>%
-  mutate(Item = factor(Item, levels = unique(.$Item)))
+  mutate(Item = factor(Item, levels = unique(.$Item)),
+         Area = factor(Area, levels = unique(.$Area)))
 # Plot
 mp <- ggplot(xx, aes(xmin = 0, xmax = Value / 1000000, 
                      ymin = Rank - 0.45, ymax = Rank + 0.45, y = Rank, 
@@ -126,8 +127,8 @@ anim_save("lentil_gif_01.gif", mp,
 # Prep data
 myAs <- c("Canada", "Southern Asia", "USA", "Turkey", 
           "Europe", "Africa", "Oceania" )
-myCs <- c("darkgreen", "darkgoldenrod2", "darkblue", "darkslategrey", 
-          "steelblue", "darkred", "antiquewhite4" )
+myCs <- c("darkgreen", "darkgoldenrod2", "steelblue", 
+          "darkblue", "darkred", "darkslategrey" )
 xx <- d1 %>% 
   filter(Area %in% myAs, Measurement == "Production") %>%
   mutate(Area = factor(Area, levels = myAs) ) 
@@ -152,10 +153,10 @@ ggsave("lentil_01.png", width = 6, height = 4)
 
 ```{r}
 # Prep data
-myCs <- c("darkgreen", "darkgoldenrod2", "steelblue", "antiquewhite4",
-          "darkslategrey",  "darkred", "darkblue" )
 myRs <- c("Americas", "Southern Asia", "Oceania", 
-          "Western Asia", "Eastern Asia", "Africa", "Europe")
+          "Eastern Asia", "Africa", "Europe")
+myCs <- c("darkgreen", "darkgoldenrod2", "steelblue", 
+          "brown3", "darkred", "darkblue" )
 xx <- d1 %>% region_Info() %>%
   filter(Area %in% agData_FAO_Country_Table$Country,
          Year == 2019, Measurement == "Production") %>%

@@ -527,7 +527,7 @@ xx <- d1 %>% filter(Year == 2021) %>%
   mutate(Source = factor(Source, levels = myItems[c(9:1,10)]))
 # Plot
 mp <- ggplot(xx, aes(x = 1, y = -Percent, fill = Source)) +
-  geom_col(color = "black", lwd = 0.3, alpha = 0.7) +
+  geom_col(alpha = 0.7) +
   scale_fill_manual(name = NULL, breaks = myItems[c(9:1,10)],
                     values = myColors[c(9:1,10)] ) +
   guides(fill = guide_legend(override.aes = list(lwd = 0.4))) +

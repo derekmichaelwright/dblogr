@@ -11,14 +11,14 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ---
 
-# Data {.tabset .tabset-pills}
+# Data
 
-## STATCAN Table: 32-10-0359-01
+STATCAN Table: 32-10-0359-01
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035901](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210035901){target="_blank"}
 > - `r shiny::icon("save")` [agData_STATCAN_Crops.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_Crops.csv.gz)
 
-## STATCAN Table: 32-10-0153-01
+STATCAN Table: 32-10-0153-01
 
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015301](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3210015301){target="_blank"}
 > - `r shiny::icon("save")` [agData_STATCAN_FarmLand_Use.csv.gz](https://github.com/derekmichaelwright/agData/raw/master/Data/agData_STATCAN_FarmLand_Use.csv.gz)
@@ -442,20 +442,23 @@ ggsave("crops_canada_2_06.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myCrops <- cropList(measurement = "Yield", years = 2020)[-1]
+myCrops <- cropList(measurement = "Yield", years = 2020)
+myIs <- c("Sugar beets", "Corn for silage", "Corn for grain")
 xx <- d1 %>% 
   filter(Year == 2020, Measurement == "Yield", Item %in% myCrops) %>%
-  mutate(Item = factor(Item, levels = myCrops) )
+  mutate(Item = factor(Item, levels = myCrops),
+         Group = ifelse(Item %in% myIs, "> 5", "< 5"),
+         Group = factor(Group, levels = c("> 5", "< 5")) )
 # Plot
 mp <- ggplot(xx, aes(x = Item, y = Value / 1000, fill = Item)) + 
   geom_col(color = "Black", alpha = 0.7) + 
-  facet_grid(Year ~ .) + 
+  facet_wrap(Group ~ ., scales = "free", space = "free_x") + 
   scale_fill_manual(values = agData_Colors) +
   theme_agData(legend.position = "none", 
                axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Canada - Crop yields", 
        y = "Tonnes / Hectare", x = NULL, caption = myCaption)
-ggsave("crops_canada_3_01.png", mp, width = 6, height = 5)
+ggsave("crops_canada_3_01.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -474,20 +477,20 @@ xx <- d1 %>%
   filter(Year == 2020, Item %in% myCrops,
          Measurement == "Production") %>%
   mutate(Item = factor(Item, levels = myCrops),
-         PerPerson = Value / pp) %>%
-  filter(PerPerson > 0.1)
+         PerPerson = 1000 * Value / pp) %>%
+  filter(PerPerson > 50)
 # Plot
 mp <- ggplot(xx, aes(x = Item, y = PerPerson, fill = Item)) + 
   geom_col(color = "Black", alpha = 0.7) + 
-  geom_label(aes(label = round(PerPerson,1)), vjust = -0.15, fill = "White",
+  geom_label(aes(label = round(PerPerson)), vjust = -0.15, fill = "White",
              size = 3, label.padding = unit(0.15, "lines")) +
   facet_grid(Year~.) + 
-  scale_y_continuous(limits = c(0,2), expand = c(0,0)) +
+  scale_y_continuous(limits = c(0,1100)) +#, expand = c(0,0)
   scale_fill_manual(values = agData_Colors) +
   theme_agData_col(legend.position = "none", 
                    axis.text.x = element_text(angle = 45, hjust = 1)) + 
   labs(title = "Canada - Crop Production Per Person", 
-       y = "1000 kg", x = NULL, caption = myCaption)
+       y = "kg", x = NULL, caption = myCaption)
 ggsave("crops_canada_3_02.png", mp, width = 6, height = 4)
 ```
 
@@ -666,7 +669,7 @@ mp <- ggplot(xx, aes(x = "", y = Value / 1000000, fill = Item)) +
   geom_col(color = "black", alpha = 0.7) +
   facet_grid(. ~ Year) +
   scale_fill_manual(name = NULL, values = agData_Colors) +
-  theme_agData_col() +
+  theme_agData_col(axis.ticks.x = element_blank()) +
   labs(title = "Canada - Area Seeded", 
        y = "Million Hectares", x = NULL, caption = myCaption)
 ggsave("crops_canada_5_03.png", mp, width = 6, height = 4)

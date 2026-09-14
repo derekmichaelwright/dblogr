@@ -104,8 +104,8 @@ mp <- ggplot(xx, aes(x = "x", y = Percent, fill = Choice)) +
   geom_col(color = "white", alpha = 0.7) +
   geom_text(aes(label = Percent), position = position_stack(vjust = 0.5)) +
   coord_polar("y", start = 0) +
-  facet_wrap(. ~ Date, scales = "free_y") +
-  scale_fill_manual(name = NULL, values = myColors) +
+  facet_wrap(. ~ Date, scales = "free") +
+  scale_fill_manual(values = myColors) +
   scale_x_discrete(limits = c("x_empty", "x")) +
   theme_agData_pie(legend.position = "bottom") +
   labs(subtitle = myTitle, x = NULL, caption = myCaption)

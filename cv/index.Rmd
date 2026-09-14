@@ -23,9 +23,9 @@ View CV as:  <i class="fas fa-file-pdf"></i> [PDF](https://derekmichaelwright.gi
 - <i class="fa fa-phone"></i> &nbsp; +1 306-220-0645
 - <i class="fa fa-envelope"></i> &nbsp; wrightmderek@gmail.com
 - <i class="fa fa-envelope-o"></i> &nbsp; derek.wright@usask.ca
-- <i class="fa fa-twitter-square"></i> &nbsp; [twitter/DerekMWright](https://twitter.com/DerekMWright){target="_blank"}
-- <i class="fa fa-instagram"></i> &nbsp; [instagram/DerekMichaelWright](https://www.instagram.com/derekmichaelwright){target="_blank"}
-- <i class="fa fa-github"></i> &nbsp; [github.com/derekmichaelwright](https://github.com/derekmichaelwright){target="_blank"}
+- <i class="fa fa-twitter-square"></i> &nbsp; [/DerekMWright](https://twitter.com/DerekMWright){target="_blank"}
+- <i class="fa fa-instagram"></i> &nbsp; [/DerekMichaelWright](https://www.instagram.com/derekmichaelwright){target="_blank"}
+- <i class="fa fa-github"></i> &nbsp; [.com/derekmichaelwright](https://github.com/derekmichaelwright){target="_blank"}
 
 ### <i class="fa fa-globe"></i> Website
 
@@ -122,19 +122,19 @@ Regina, Saskatchewan, Canada
 <i class="fab fa-r-project"></i> Packages {data-icon=code}
 --------------------------------------------------------------------------------
 
-### agData: an <i class="fab fa-r-project"></i> package containing agricultural data sets
-
-[https://derekmichaelwright.github.io/agData/](https://derekmichaelwright.github.io/agData/){target="_blank"}
-devtools::install_github("derekmichaelwright/agData")
-
-N/A
-
-N/A
-
 ### gwaspr: an <i class="fab fa-r-project"></i> package for plotting GWAS results
 
 [https://derekmichaelwright.github.io/gwaspr/](https://derekmichaelwright.github.io/gwaspr/){target="_blank"}
 devtools::install_github("derekmichaelwright/gwaspr")
+
+N/A
+
+N/A
+
+### agData: an <i class="fab fa-r-project"></i> package containing agricultural data sets
+
+[https://derekmichaelwright.github.io/agData/](https://derekmichaelwright.github.io/agData/){target="_blank"}
+devtools::install_github("derekmichaelwright/agData")
 
 N/A
 

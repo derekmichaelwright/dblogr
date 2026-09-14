@@ -235,7 +235,7 @@ xx <- bind_rows(xv, xs) %>%
   mutate(Measurement = factor(Measurement, levels = c("Votes", "Seats")))
 # Plot Pies
 mp <- ggplot(xx, aes(x = "", y = Percent)) +
-  geom_col(aes(fill = Party), alpha = 0.7) +
+  geom_col(aes(fill = Party), alpha = 0.7, nudge_x = 0.1) +
   coord_polar("y", start = 0) +
   geom_label(aes(y = LabelPos, label = Value)) +
   facet_wrap(Measurement ~ .) +
@@ -664,7 +664,7 @@ xx <- bind_rows(xv, xs) %>%
   mutate(Measurement = factor(Measurement, levels = c("Votes", "Seats")))
 # Plot Pies
 mp <- ggplot(xx, aes(x = "", y = Percent)) +
-  geom_col(aes(fill = Party), alpha = 0.7) +
+  geom_col(aes(fill = Party), alpha = 0.7, nudge_x = 0.1) +
   coord_polar("y", start = 0) +
   geom_label(aes(y = LabelPos, label = Value)) +
   facet_wrap(Measurement ~ .) +
