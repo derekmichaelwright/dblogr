@@ -94,14 +94,14 @@ mySexes1 <- c("Total - gender", "Men+", "Women+")
 mySexes2 <- c("Both sexes", "Males", "Females")
 #
 d1 <- read.csv("1710000901_databaseLoadingData.csv") %>%
-  select(Year=REF_DATE, Area=GEO, Unit=UOM, Value=VALUE) %>%
+  select(Date=REF_DATE, Area=GEO, Unit=UOM, Value=VALUE) %>%
   mutate(Area = gsub("Northwest Territories including", "NWT &", Area),
          Area = factor(Area, levels = myAreas),
-         Month = substr(Year, 6, 8),
-         Year = substr(Year, 1,4),
+         Month = substr(Date, 6, 7),
+         Year = substr(Date, 1,4),
          Year = as.numeric(Year),
          Month = as.numeric(Month),
-         Date = as.Date(paste(Year, Month, "01", sep = "-")))
+         Date = as.Date(Date)) #paste(Year, Month, "01", sep = "-")))
 pp <- d1 %>% group_by(Area, Year) %>%
   summarise(Population = mean(Value, na.rm = T))
 #
@@ -433,7 +433,7 @@ xx <- bind_rows(x1, x2, x3) %>%
   mutate(Measurement = factor(Measurement, levels = myLevels))
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 100000, fill = Measurement)) +
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(color = "black", alpha = 0.7, lwd = 0.3) +
   scale_fill_manual(name = NULL, values = myColors[c(5:4,1)]) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Components of Population Growth in Canada",
@@ -538,7 +538,8 @@ ggsave("canada_migration_1_12.png", mp, width = 6, height = 4)
 # Prep data
 xx <- d3 %>% 
   filter(Area == "Canada", Measurement %in% myMeasures[1:5]) %>%
-  mutate(Measurement = factor(Measurement, levels = myMeasures))
+  mutate(Measurement = factor(Measurement, levels = myMeasures),
+         Value = ifelse(Measurement == "Net emigration", -Value, Value))
 myLabels <- paste0(seq(1950,2025,5),"-01")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
@@ -606,6 +607,62 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
   labs(title = "Canada - Population Dynamics", x = NULL,
        y = "Thousand People", caption = myCaption)
 ggsave("canada_migration_2_03.png", mp, width = 6, height = 4)
+```
+
+---
+
+## Both
+
+![](canada_migration_2_04.png)
+
+```{r}
+# Prep data
+xx <- d3 %>% 
+  filter(Area == "Canada", 
+         Measurement %in% myMeasures[4:5]) %>%
+  mutate(Measurement = factor(Measurement, levels = myMeasures))
+myLabels <- paste0(seq(1950,2025,5),"-01")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_hline(yintercept = 0, lty = 2, alpha = 0.5) +
+  geom_col(aes(fill = Measurement, group = Measurement), 
+            size = 1.25, alpha = 0.7) +
+  geom_line(y = 0,  alpha = 0.7, color = "black") +
+  scale_fill_manual(name = NULL, values = myColors[4:5]) +
+  scale_x_discrete(breaks = myLabels) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada - Population Dynamics", x = NULL,
+       y = "Thousand People", caption = myCaption)
+ggsave("canada_migration_2_04.png", mp, width = 6, height = 4)
+```
+
+---
+
+## > 2015
+
+![](canada_migration_2_05.png)
+
+```{r}
+# Prep data
+xx <- d3 %>% 
+  filter(Area == "Canada", Year > 2014,
+         Measurement %in% myMeasures[4:5]) %>%
+  mutate(Measurement = factor(Measurement, levels = myMeasures))
+myLabels <- paste0(seq(1950,2026,1),"-01")
+# Plot
+mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) +
+  geom_hline(yintercept = 0, lty = 2, alpha = 0.5) +
+  geom_col(aes(fill = Measurement, group = Measurement), 
+            size = 1.25, alpha = 0.7) +
+  geom_line(y = 0,  alpha = 0.7, color = "black") +
+  scale_fill_manual(name = NULL, values = myColors[4:5]) +
+  scale_x_discrete(breaks = myLabels) +
+  theme_agData(legend.position = "bottom",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Canada - Population Dynamics", x = NULL,
+       y = "Thousand People", caption = myCaption)
+ggsave("canada_migration_2_05.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -738,7 +795,7 @@ ggsave("canada_migration_3_07.png", mp, width = 20, height = 10)
 
 ```{r}
 # Prep data
-myYears <- paste0(2012:2023,"/",2013:2024)
+myYears <- paste0(2011:2025,"/",2012:2026)
 xx <- d4 %>% 
   filter(Area == "Alberta", Year %in% myYears,
          Sex == "Both sexes", Age != "All ages",
@@ -746,13 +803,13 @@ xx <- d4 %>%
 # Plot
 mp <- ggplot(xx, aes(x = Age, y = Value, fill = Net)) +
   geom_col(color = "black", alpha = 0.7) +
-  facet_wrap(. ~ Year, ncol = 6) +
+  facet_wrap(. ~ Year, ncol = 5) +
   scale_fill_manual(values = c("darkred", "steelblue")) +
   theme_agData(legend.position = "none",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Alberta Net Interprovincial Migration", 
        y = "Thousand People", x = NULL, caption = myCaption)
-ggsave("canada_migration_3_08.png", mp, width = 14, height = 6)
+ggsave("canada_migration_3_08.png", mp, width = 14, height = 8)
 ```
 
 ---
@@ -763,7 +820,7 @@ ggsave("canada_migration_3_08.png", mp, width = 14, height = 6)
 
 ```{r}
 # Prep data
-myYears <- paste0(2021:2023,"/",2022:2024)
+myYears <- paste0(2011:2025,"/",2012:2026)
 xx <- d4 %>% 
   filter(Area == "British Columbia", Year %in% myYears,
          Sex == "Both sexes", Age != "All ages",
@@ -771,13 +828,118 @@ xx <- d4 %>%
 # Plot
 mp <- ggplot(xx, aes(x = Age, y = Value, fill = Net)) +
   geom_col(color = "black", alpha = 0.7) +
-  facet_grid(. ~ Year) +
+  facet_wrap(. ~ Year, ncol = 5) +
   scale_fill_manual(values = myColors[3:4]) +
   theme_agData(legend.position = "none",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "British Columbia Net Interprovincial Migration", x = NULL,
        y = "Thousand People", caption = myCaption)
-ggsave("canada_migration_3_09.png", mp, width = 8, height = 4)
+ggsave("canada_migration_3_09.png", mp, width = 14, height = 8)
+```
+
+---
+
+## Saskatchewan 2021 - 2024
+
+![](canada_migration_3_10.png)
+
+```{r}
+# Prep data
+myYears <- paste0(2011:2025,"/",2012:2026)
+xx <- d4 %>% 
+  filter(Area == "Saskatchewan", Year %in% myYears,
+         Sex == "Both sexes", Age != "All ages",
+         Measurement == "Net-migration")
+# Plot
+mp <- ggplot(xx, aes(x = Age, y = Value, fill = Net)) +
+  geom_col(color = "black", alpha = 0.7) +
+  facet_wrap(. ~ Year, ncol = 5) +
+  scale_fill_manual(values = myColors[3:4]) +
+  theme_agData(legend.position = "none",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Saskatchewan Net Interprovincial Migration", x = NULL,
+       y = "Thousand People", caption = myCaption)
+ggsave("canada_migration_3_10.png", mp, width = 14, height = 8)
+```
+
+---
+
+## Ontario 2021 - 2024
+
+![](canada_migration_3_10.png)
+
+```{r}
+# Prep data
+myYears <- paste0(2011:2025,"/",2012:2026)
+xx <- d4 %>% 
+  filter(Area == "Ontario", Year %in% myYears,
+         Sex == "Both sexes", Age != "All ages",
+         Measurement == "Net-migration")
+# Plot
+mp <- ggplot(xx, aes(x = Age, y = Value, fill = Net)) +
+  geom_col(color = "black", alpha = 0.7) +
+  facet_wrap(. ~ Year, ncol = 5) +
+  scale_fill_manual(values = myColors[3:4]) +
+  theme_agData(legend.position = "none",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Ontario Net Interprovincial Migration", x = NULL,
+       y = "Thousand People", caption = myCaption)
+ggsave("canada_migration_3_11.png", mp, width = 14, height = 8)
+```
+
+---
+
+## Ages 20 - 30
+
+![](canada_migration_3_12.png)
+
+```{r}
+# Prep data
+myYears <- paste0(2023:2025,"/",2024:2026)
+myAges <- c("20 to 24 years", "25 to 29 years")
+xx <- d4 %>% 
+  filter(Year %in% myYears, Area %in% myAreas[2:9],
+         Sex == "Both sexes", 
+         Age %in% myAges,
+         Measurement == "Net-migration")
+# Plot
+mp <- ggplot(xx, aes(x = Age, y = Value, fill = Net)) +
+  geom_col(color = "black", alpha = 0.7) +
+  facet_grid(Year ~ Area) +
+  scale_fill_manual(values = myColors[3:4]) +
+  theme_agData(legend.position = "none",
+               axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Net Interprovincial Migration of Ages 20 - 30", 
+       y = "Thousand People", x = NULL, caption = myCaption)
+ggsave("canada_migration_3_12.png", mp, width = 10, height = 6)
+```
+
+---
+
+## Ages 20 - 30 By Sex
+
+![](canada_migration_3_13.png)
+
+```{r}
+# Prep data
+myYears <- paste0(2023:2025,"/",2024:2026)
+myAges <- c("20 to 24 years", "25 to 29 years")
+xx <- d4 %>% 
+  filter(Year %in% myYears, Area %in% myAreas[2:9],
+         Sex != "Both sexes", Age %in% myAges,
+         Measurement == "Net-migration") %>%
+  group_by(Area, Sex) %>%
+  summarise(Value = sum(Value))
+# Plot
+mp <- ggplot(xx, aes(x = Area, y = Value, fill = Sex)) +
+  geom_col(color = "black", alpha = 0.7, position = "dodge") +
+  scale_fill_manual(values = c("palevioletred3","steelblue")) +
+  theme_agData_col(legend.position = "bottom",
+                   axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Net Interprovincial Migration",
+       subtitle = "Ages 20 - 30 For 2023/2024 - 2025/2026",
+       y = "Thousand People", x = NULL, caption = myCaption)
+ggsave("canada_migration_3_13.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -925,10 +1087,10 @@ for(i in 1:nrow(xx)) {
   }
 }
 xx <- xx %>% mutate(GrowthRate = 100 * Change / (Population-Change))
-xx %>% filter(Area == "Canada")
+xx <- xx %>% filter(Area =="Canada")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = GrowthRate))  +
-  geom_col() +
+  geom_col(fill = "darkgreen", alpha = 0.8) +
   facet_wrap(Area ~ .) +
   theme_agData()
 ggsave("canada_migration_5_01.png", mp, width = 6, height = 4)

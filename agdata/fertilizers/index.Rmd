@@ -371,6 +371,18 @@ ggsave("fertilizers_2_russia.png", mp, width = 6, height = 7)
 
 ---
 
+#### Belaus
+
+![](fertilizers_2_belarus.png)
+
+```{r}
+# Plot
+mp <- ggFert(area = "Belarus")
+ggsave("fertilizers_2_belarus.png", mp, width = 6, height = 7)
+```
+
+---
+
 # Nitrogen (N) {.tabset .tabset-pills}
 
 ## Production {.tabset .tabset-pills}
@@ -656,6 +668,18 @@ ggsave("fertilizers_n_3_ukraine.png", mp, width = 6, height = 4)
 # Plot
 mp <- ggFertP(area = c("USSR", "Russia"))
 ggsave("fertilizers_n_3_russia.png", mp, width = 6, height = 4)
+```
+
+---
+
+#### Belarus
+
+![](fertilizers_n_3_belarus.png)
+
+```{r}
+# Plot
+mp <- ggFertP(area = "Belarus")
+ggsave("fertilizers_n_3_belarus.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -1038,6 +1062,18 @@ ggsave("fertilizers_p_3_russia.png", mp, width = 6, height = 4)
 
 ---
 
+#### Belarus
+
+![](fertilizers_p_3_belarus.png)
+
+```{r}
+# Plot
+mp <- ggFertN(area = "Belarus")
+ggsave("fertilizers_p_3_belarus.png", mp, width = 6, height = 4)
+```
+
+---
+
 # Pottasium (K) {.tabset .tabset-pills}
 
 ## Production {.tabset .tabset-pills}
@@ -1309,6 +1345,18 @@ ggsave("fertilizers_k_3_ukraine.png", mp, width = 6, height = 4)
 # Plot
 mp <- ggFertK(area = c("USSR", "Russia"))
 ggsave("fertilizers_k_3_russia.png", mp, width = 6, height = 4)
+```
+
+---
+
+#### Belarus
+
+![](fertilizers_k_3_belarus.png)
+
+```{r}
+# Plot
+mp <- ggFertK(area = "Belarus")
+ggsave("fertilizers_k_3_belarus.png", mp, width = 6, height = 4)
 ```
 
 ---

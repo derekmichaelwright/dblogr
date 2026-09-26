@@ -16,12 +16,12 @@ library(shiny)
 
 > `r icon("home")` derekmichaelwright.github.io/dblogr/
 >
-> - `r icon("r-project")` [Packages](#packages)
-> - `r icon("book")` [Publications](#publications)
-> - `r icon("newspaper")` [Academic Work](#academic-work)
-> - `r icon("chart-line")` [agData](#agdata)
-> - `r icon("chart-bar")` [Blog](#blog)
-> - `r icon("image")` [Photography](#photography)
+> - `r icon("r-project")` [ Packages](#packages)
+> - `r icon("book")` [ Publications](#publications)
+> - `r icon("newspaper")` [ Academic](#academic)
+> - `r icon("chart-line")` [ agData](#agdata)
+> - `r icon("chart-bar")` [ Blog](#blog)
+> - `r icon("image")` [ Photography](#photography)
 
 ---
 
