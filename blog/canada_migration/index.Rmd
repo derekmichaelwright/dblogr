@@ -671,7 +671,7 @@ ggsave("canada_migration_2_05.png", mp, width = 6, height = 4)
 
 ## Plotting Function
 
-```{r}
+```{r class.source = "fold-show"}
 # Create plotting function
 ggInterProv <- function(myArea) {
   #Prep data
