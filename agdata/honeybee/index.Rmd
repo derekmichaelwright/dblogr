@@ -89,7 +89,7 @@ ggsave("featured.png", mp, width = 8, height = 4)
 
 ```{r}
 # Prep data
-xx <- dd %>% filter(Area == "USA")
+xx <- dd %>% filter(Area == "United States")
 # Plot
 mp <- ggplot(xx, aes(x = Year, y = Value / 1000000)) +
   geom_col(fill = "darkgreen", alpha = 0.7) +

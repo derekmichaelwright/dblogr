@@ -121,7 +121,7 @@ anim_save("lentil_gif_01.gif", mp,
 
 ## Regions
 
-![](lentil_01.png)
+![](lentil_01_1.png)
 
 ```{r}
 # Prep data
@@ -142,14 +142,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   guides(color = guide_legend(nrow = 1)) +
   labs(title = "Lentil - Production", x = NULL,
        y = "Million Tonnes", caption = myCaption)
-ggsave("lentil_01.png", width = 6, height = 4)
+ggsave("lentil_01_1.png", width = 6, height = 4)
 ```
 
 ---
 
-## 2019
+## 2016
 
-![](lentil_02.png)
+![](lentil_01_2.png)
 
 ```{r}
 # Prep data
@@ -159,7 +159,7 @@ myCs <- c("darkgreen", "darkgoldenrod2", "steelblue",
           "brown3", "darkred", "darkblue" )
 xx <- d1 %>% region_Info() %>%
   filter(Area %in% agData_FAO_Country_Table$Country,
-         Year == 2019, Measurement == "Production") %>%
+         Year == 2016, Measurement == "Production") %>%
   arrange(desc(Value)) %>% 
   slice(1:10) %>%
   mutate(Area = factor(Area, levels = Area),
@@ -170,9 +170,39 @@ mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) +
   geom_col(color = "black", alpha = 0.7) +
   scale_fill_manual(values = myCs) +
   theme_agData_col(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Lentil - Production - 2019", x = NULL,
+  labs(title = "Lentil - Production - 2016", x = NULL,
        y = "Million Tonnes", caption = myCaption)
-ggsave("lentil_02.png", mp, width = 6, height = 4)
+ggsave("lentil_01_2.png", mp, width = 6, height = 4)
+```
+
+---
+
+## 2024
+
+![](lentil_01_3.png)
+
+```{r}
+# Prep data
+myRs <- c("Americas", "Southern Asia", "Oceania", 
+          "Eastern Asia", "Africa", "Europe")
+myCs <- c("darkgreen", "darkgoldenrod2", "steelblue", 
+          "brown3", "darkred", "darkblue" )
+xx <- d1 %>% region_Info() %>%
+  filter(Area %in% agData_FAO_Country_Table$Country,
+         Year == 2024, Measurement == "Production") %>%
+  arrange(desc(Value)) %>% 
+  slice(1:10) %>%
+  mutate(Area = factor(Area, levels = Area),
+         Region = ifelse(Region == "Asia", SubRegion, Region),
+         Region = factor(Region, levels = myRs))
+# Plot
+mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) + 
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(values = myCs) +
+  theme_agData_col(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Lentil - Production - 2024", x = NULL,
+       y = "Million Tonnes", caption = myCaption)
+ggsave("lentil_01_3.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -181,7 +211,7 @@ ggsave("lentil_02.png", mp, width = 6, height = 4)
 
 ## Regions
 
-![](lentil_03.png)
+![](lentil_02_1.png)
 
 ```{r}
 # Prep data
@@ -202,14 +232,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   guides(color = guide_legend(nrow = 1)) +
   labs(title = "Lentil - Area Harvested", x = NULL, 
        y = "Million Hectares", caption = myCaption)
-ggsave("lentil_03.png", width = 6, height = 4)
+ggsave("lentil_02_1.png", width = 6, height = 4)
 ```
 
 ---
 
-## 2019
+## 2016
 
-![](lentil_04.png)
+![](lentil_02_2.png)
 
 ```{r}
 # Prep data
@@ -219,7 +249,7 @@ myRs <- c("Americas", "Southern Asia", "Oceania", "Western Asia",
           "Europe", "Central Asia", "Africa")
 xx <- d1 %>% region_Info() %>%
   filter(Area %in% agData_FAO_Country_Table$Country,
-         Year == 2019, Measurement == "Area Harvested") %>%
+         Year == 2016, Measurement == "Area Harvested") %>%
   arrange(desc(Value)) %>% 
   slice(1:10) %>%
   mutate(Area = factor(Area, levels = Area),
@@ -230,9 +260,39 @@ mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) +
   geom_col(color = "black", alpha = 0.7) +
   scale_fill_manual(values = myCs) +
   theme_agData_col(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(title = "Lentil - Area Harvested - 2019", 
+  labs(title = "Lentil - Area Harvested - 2016", 
        y = "Million Hectares", x = NULL, caption = myCaption)
-ggsave("lentil_04.png", mp, width = 6, height = 4)
+ggsave("lentil_02_2.png", mp, width = 6, height = 4)
+```
+
+---
+
+## 2024
+
+![](lentil_02_3.png)
+
+```{r}
+# Prep data
+myCs <- c("darkgreen", "darkgoldenrod2", "steelblue", "darkblue", 
+          "darkslategrey", "darkred")
+myRs <- c("Americas", "Southern Asia", "Oceania", "Western Asia", 
+          "Europe", "Central Asia", "Africa")
+xx <- d1 %>% region_Info() %>%
+  filter(Area %in% agData_FAO_Country_Table$Country,
+         Year == 2024, Measurement == "Area Harvested") %>%
+  arrange(desc(Value)) %>% 
+  slice(1:10) %>%
+  mutate(Area = factor(Area, levels = Area),
+         Region = ifelse(Region == "Asia", SubRegion, Region),
+         Region = factor(Region, levels = myRs))
+# Plot
+mp <- ggplot(xx, aes(x = Area, y = Value / 1000000, fill = Region)) + 
+  geom_col(color = "black", alpha = 0.7) +
+  scale_fill_manual(values = myCs) +
+  theme_agData_col(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Lentil - Area Harvested - 2024", 
+       y = "Million Hectares", x = NULL, caption = myCaption)
+ggsave("lentil_02_2.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -241,7 +301,7 @@ ggsave("lentil_04.png", mp, width = 6, height = 4)
 
 ## Top 10
 
-![](lentil_05.png)
+![](lentil_03_1.png)
 
 ```{r}
 # Prep data
@@ -266,14 +326,14 @@ mp <- ggplot(xx, aes(x = Area, y = Value / 1000, fill = Region)) +
   theme_agData_col(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Lentil Yields - 5 year average",
        y = "Tonnes / Hectare", x = NULL, caption = myCaption)
-ggsave("lentil_05.png", mp, width = 6, height = 4)
+ggsave("lentil_03_1.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Ca - In - Et
 
-![](lentil_06.png)
+![](lentil_03_2.png)
 
 ```{r}
 # Prep data
@@ -293,14 +353,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Lentil Yields", x = NULL,
        y = "Tonnes / Hectare", caption = myCaption)
-ggsave("lentil_06.png", mp, width = 6, height = 4)
+ggsave("lentil_03_2.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Ca - In - Ne - Ba
 
-![](lentil_07.png)
+![](lentil_03_3.png)
 
 ```{r}
 # Prep data
@@ -320,7 +380,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000, color = Area)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Lentil Yields", x = NULL,
        y = "Tonnes / Hectare", caption = myCaption)
-ggsave("lentil_07.png", mp, width = 6, height = 4)
+ggsave("lentil_03_3.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -329,7 +389,7 @@ ggsave("lentil_07.png", mp, width = 6, height = 4)
 
 ## Area
 
-![](lentil_08.png)
+![](lentil_04_1.png)
 
 ```{r}
 # Prep data
@@ -349,14 +409,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000,
   theme_agData() +
   labs(title   = "Canada's Contribution to Global Lentil Production", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
-ggsave("lentil_08.png", mp, width = 6, height = 4)
+ggsave("lentil_04_1.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Line
 
-![](lentil_09.png)
+![](lentil_04_2.png)
 
 ```{r}
 # Prep data
@@ -380,7 +440,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, color = Area)) +
   theme_agData() +
   labs(title   = "Canada vs. Rest of the World", 
        y = "Million Tonnes", x = NULL, caption = myCaption)
-ggsave("lentil_09.png", mp, width = 6, height = 4)
+ggsave("lentil_04_2.png", mp, width = 6, height = 4)
 ```
 
 ---
@@ -511,20 +571,20 @@ ggPie_multi <- function(crop = "Lentils, dry", measurement = "Production",
 # Plot
 mp <- ggPie_multi(crop = "Lentils, dry", measurement = "Production", 
                   years = c(1965, 2019), limit = 3)
-ggsave("lentil_10.png", mp, width = 8, height = 4)
+ggsave("lentil_05_1.png", mp, width = 8, height = 4)
 ```
 
 ---
 
-## 2019 {.active}
+## 2024 {.active}
 
-![](lentil_11.png)
+![](lentil_05_1.png)
 
 ```{r}
 # Plot
 mp <- ggPie_single(crop = "Lentils, dry", measurement = "Production", 
-                   year = 2019, cutoff = 8)
-ggsave("lentil_11.png", mp, width = 5, height = 4)
+                   year = 2024, cutoff = 8)
+ggsave("lentil_05_1.png", mp, width = 5, height = 4)
 ```
 
 ```{r echo = F}
@@ -567,7 +627,7 @@ anim_save("lentil_gif_03.gif", mp,
 
 ## Canada vs India
 
-![](lentil_12.png)
+![](lentil_06_1.png)
 
 ```{r}
 # Prep data
@@ -579,19 +639,19 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, group = Measurement,
   facet_grid(. ~ Area) +
   theme(legend.position = "bottom") +
   scale_color_manual(name = NULL, values = c("darkgreen", "darkorange")) +
-  scale_x_continuous(breaks       = seq(1965, 2015, by = 10),
-                     minor_breaks = seq(1965, 2015, by = 5))  +
+  scale_x_continuous(breaks       = seq(1965, 2025, by = 10),
+                     minor_breaks = seq(1965, 2025, by = 5))  +
   theme_agData() +
   labs(title = "Lentil Import/Export", x = NULL,
        y = "Million Tonnes", caption = myCaption)
-ggsave("lentil_12.png", mp, width = 6, height = 4)
+ggsave("lentil_06_1.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Regions
 
-![](lentil_13.png)
+![](lentil_06_2.png)
 
 ```{r}
 # Prep data
@@ -606,20 +666,20 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000,
                      group = Area, color = Area)) + 
   geom_line(size = 1, alpha = 0.7) + 
   facet_grid(. ~ Measurement) +
-  scale_x_continuous(breaks       = seq(1965, 2015, by = 10),
-                     minor_breaks = seq(1965, 2015, by = 5))  +
+  scale_x_continuous(breaks       = seq(1965, 2025, by = 10),
+                     minor_breaks = seq(1965, 2025, by = 5))  +
   scale_color_manual(name = NULL, values = myCs) +
   theme_agData(legend.position = "bottom") + 
   labs(title = "Lentil Import/Export", x = NULL,
        y = "Million Tonnes", caption = myCaption)
-ggsave("lentil_13.png", mp, width = 6, height = 4)
+ggsave("lentil_06_2.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 ## Production vs Export
 
-![](lentil_14.png)
+![](lentil_06_3.png)
 
 ```{r}
 # Prep data
@@ -636,14 +696,14 @@ mp <- ggplot(xx, aes(x = Year, y = Value / 1000000, fill = Measurement)) +
   scale_fill_manual(name = NULL, values = c("darkgreen","darkred")) +
   theme_agData() +
   labs(title = "", x = NULL, y = "Million Tonnes", caption = myCaption)
-ggsave("lentil_14.png", mp, width = 6, height = 4)
+ggsave("lentil_06_3.png", mp, width = 6, height = 4)
 ```
 
 ---
 
 # Heatmap
 
-![](lentil_15.png)
+![](lentil_07_1.png)
 
 ```{r}
 # Prep data
@@ -661,7 +721,7 @@ mp <- ggplot(xx, aes(x = Year, y = Area, fill = Value / 1000000)) +
   scale_fill_gradientn(name = "Million Tonnes", colors = myCs, na.value = 'white') +
   theme_agData(legend.position = "bottom", bgFill = "white") +
   labs(title = "Lentil Production", x = NULL, y = NULL, caption = myCaption)
-ggsave("lentil_15.png", mp, width = 6, height = 4)
+ggsave("lentil_07_1.png", mp, width = 6, height = 4)
 ```
 
 ---

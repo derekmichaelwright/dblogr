@@ -167,8 +167,8 @@ ggsave("canada_housing_1_01.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myAs <- c("Canada", "Ontario", "Quebec", "Prairie Region")
-myCs <- c("darkred", "darkblue", "steelblue", "darkgreen")
+myAs <- c("British Columbia", "Ontario", "Quebec", "Prairie Region")
+myCs <- c("darkblue", "darkred", "steelblue", "darkgreen")
 xx <- d1 %>% 
   filter(Measurement == "Total (house and land)",
          Area %in% myAs) %>%
@@ -194,8 +194,8 @@ ggsave("canada_housing_1_02.png", mp, width = 6, height = 4)
 
 ```{r}
 # Prep data
-myAs <- c("Canada", "Ontario", "Quebec", "Prairie Region")
-myCs <- c("darkred", "darkblue", "steelblue", "darkgreen")
+myAs <- c("British Columbia", "Ontario", "Quebec", "Prairie Region")
+myCs <- c("darkblue", "darkred", "steelblue", "darkgreen")
 xx <- d1 %>% 
   filter(Measurement == "Total (house and land)",
          Area %in% myAs, Year > 2016) %>%
