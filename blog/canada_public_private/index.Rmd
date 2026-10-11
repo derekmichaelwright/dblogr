@@ -73,7 +73,7 @@ mp <- ggplot(xx, aes(x = Date, y = Value / 1000000, color = Measurement)) +
   geom_vline(xintercept = as.Date("2020-03-01"), lty = 2, alpha = 0.5) +
   geom_line(size = 1, alpha = 0.7) +
   scale_color_manual(name = NULL, values = myCs_Sector) +
-  scale_y_continuous(breaks = 0:13, minor_breaks = 0:13, limits = c(0,15)) +
+  scale_y_continuous(breaks = 0:15, minor_breaks = 0:15, limits = c(0,15)) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Employment in Canada", x = NULL,
        y = "Million Jobs", caption = myCaption)

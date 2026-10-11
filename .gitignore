@@ -7,7 +7,7 @@ extra.Rmd
 Rendering_Script.R
 blank_index.Rmd
 
-academic/gwas_tutorial/Data/myG_hmp.csv
+academic/gwas_tutorial/Data/gwaspr_myG_hmp.csv
 academic/gwas_tutorial/GWAS_Results/
 
 academic/qtl_tutorial/rawdata/
