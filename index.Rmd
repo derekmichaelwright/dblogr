@@ -59,11 +59,10 @@ I was born in Regina, Saskatchewan and graduated with a **BSc in Biology** from 
 
 - `r icon("newspaper")` [All Publications](https://derekmichaelwright.github.io/dblogr/publications/)
 - `r icon("r-project")` [Packages](#packages)
-
+- `r icon("github")`  [github.com/derekmichaelwright](https://github.com/derekmichaelwright){target="_blank"}
 
 **Socials**
 
-- `r icon("github")`  [github.com/derekmichaelwright](https://github.com/derekmichaelwright){target="_blank"}
 - `r icon("x-twitter")` [twitter.com/DerekMWright](https://x.com/DerekMWright){target="_blank"}
 - `r icon("instagram")` [instagram.com/derekmichaelwright/](https://www.instagram.com/derekmichaelwright/){target="_blank"}
 
@@ -147,25 +146,6 @@ Tutorials & Vignettes:
 > - `r icon("newspaper")` [All Publications](https://derekmichaelwright.github.io/dblogr/publications/)
 
 Scientific publications I have been involved in while working/studying at [***University of Regina***](https://www.uregina.ca/){target="_blank"}, [***Justus-Liebig-Universität Gießen (University of Giessen)***](https://www.uni-giessen.de/){target="_blank"} & the [***University of Saskatchewan***](https://www.usask.ca/){target="_blank"}.
-
-### All Publications
-
-<div class="box">
-
-- `r icon("newspaper")` (**2025**) [<u>**Disecting lentil crop growth across multi-environment trials using unoccupied aerial vehicles and genome-wide association studies**</u>](https://doi.org/10.1002/ppj2.70040){target="_blank"}. *The Plant Phenome Journal*. 8(1): e70040. doi.org/10.1002/ppj2.70040
-
-
-- `r icon("newspaper")` (**2025**) [<u>**Breeding potential of cultivated lentil for increased protein and amino acid concentrations in the Northern Great Plains**</u>](http://dx.doi.org/10.1002/csc2.70085){target="_blank"}. *Crop Science*. 65(3): e70085. doi.org/10.1002/csc2.70085
-- `r icon("newspaper")` (**2024**) [<u>**Grazing preferences of three species of amoebae on cyanobacteria and green algae**</u>](https://doi.org/10.1111/jeu.13018){target="_blank"}. *The Journal of Eukaryotic Microbiology*. e13018: 1-14. doi.org/10.1111/jeu.13018
-- `r icon("newspaper")` (**2023**) [<u>**Mass Spectrometry-Based Untargeted Metabolomics Reveals the Importance of Glycosylated Flavones in Patterned Lentil Seed Coats**</u>](https://doi/10.1021/acs.jafc.2c07844){target="_blank"}. *Journal of Agricultural and Food Chemistry*. 71(7): 3541–3549. doi.org/10.1021/acs.jafc.2c07844
-- `r icon("newspaper")` (**2022**) [<u>**Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**</u>](https://doi.org/10.1002/tpg2.20269){target="_blank"}. *The Plant Genome*. e20269. doi.org/10.1002/tpg2.20269
-  + `r icon("podcast")` [Field Lab Earth Podcast](http://fieldlabearth.libsyn.com/latent-variable-phenotypes-in-lentil-with-sandesh-neupane-and-derek-wright)
-- `r icon("newspaper")` (**2021**) [<u>**Strategic Identification of New Genetic Diversity to Expand Lentil (*Lens culinaris* Medik.) Production (Using Nepal as an Example)**</u>](https://doi.org/10.3390/agronomy11101933){target="_blank"}. *Agronomy*. 11(10): 1933. doi.org/10.3390/agronomy11101933
-- `r icon("newspaper")` (**2021**) [<u>**Understanding photothermal interactions can help expand production range and increase genetic diversity of lentil (*Lens culinaris* Medik.)**</u>](https://doi.org/10.1002/ppp3.10158){target="_blank"}. *Plants, People, Planet*. 3(2): 171-181. doi.org/10.1002/ppp3.10158
-- `r icon("newspaper")` (**2020**) [<u>**Genomic selection for lentil breeding: Empirical evidence**</u>](https://doi.org/10.1002/tpg2.20002){target="_blank"}. *The Plant Genome*. 13(e20002): 1-15. doi.org/10.1002/tpg2.20002
-- `r icon("newspaper")` (**2015**) [<u>**Influence of heterozygosity on nitrogen use efficiency in hybrid and purebred lines of *Brassica napus* (L.)**</u>](publications/canola_nue/){target="_blank"}. *University of Giessen*. MSc. Thesis.
-
-</div>
 
 ### LDP Phenology
 
@@ -938,6 +918,8 @@ Graphs of star constellations using the starBliss R package
 # `r icon("image")` Photography 
 
 ## Photo Albums {.tabset .tabset-pills}
+
+> Note: Under construction
 
 ### AGILE
 

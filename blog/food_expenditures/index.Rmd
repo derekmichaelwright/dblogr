@@ -43,6 +43,9 @@ STATCAN Table 18-10-0004-01 - Consumer Price Index
 > - `r shiny::icon("globe")` [https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810000401](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1810000401){target="_blank"}
 > - `r shiny::icon("save")` [1810000401_databaseLoadingData.csv](1810000401_databaseLoadingData.csv)
 
+
+https://www.dailybread.ca/research-and-advocacy/
+
 ---
 
 # Prepare Data

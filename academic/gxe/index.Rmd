@@ -21,6 +21,9 @@ knitr::opts_chunk$set(message = F, warning = F)
 > - https://nariyoo.com/stata-introduction-to-multilevel-modeling-xtmixed/
 > - https://bookdown.org/steve_midway/DAR/random-effects.html
 
+> - https://casrai.org/guides/mixed-effects-models-random-vs-fixed-effects
+> - https://www.geeksforgeeks.org/r-language/how-linear-mixed-model-works-in-r/
+
 ## Visual
 
 ![](Mixedandfixedeffects.jpg)
@@ -54,16 +57,24 @@ names_ExptShort <- c("Ro16", "Ro17", "Su16", "Su17", "Su18", "Us18",
 names_MacroEnvs <- c("Temperate", "South Asia", "Mediterranean")
 
 #
+yy <- read.csv("https://raw.githubusercontent.com/derekmichaelwright/AGILE_LDP_Phenology/refs/heads/master/data/data_pca_results.csv") %>%
+  select(Name, Origin, Region, DTF_Cluster=Cluster)
 xx <- read.csv("https://raw.githubusercontent.com/derekmichaelwright/AGILE_LDP_Phenology/refs/heads/master/data/data_raw.csv") %>%
   mutate(ExptShort = mv(Expt, names_Expt, names_ExptShort),
-         MacroEnv = mv(Expt, names_Expt, 
-                      c(rep(names_MacroEnvs[1], 6), 
-                        rep(names_MacroEnvs[2], 6), 
-                        rep(names_MacroEnvs[3], 6)))) %>%
+         MacroEnv = mv(Expt, names_Expt, rep(names_MacroEnvs, each = 6))) %>%
   select(MacroEnv, ExptShort, everything()) %>%
   select(-DTF2)
-write.csv(xx, "data_mixed_models.csv", row.names = F)
+write.csv(xx, "data_gxe_ldp_phenodata.csv", row.names = F)
+write.csv(yy, "data_gxe_ldp_metadata.csv", row.names = F)
 xx %>% filter(!is.na(DTF)) %>% group_by(Expt) %>% summarise(Val = n())
+#
+xx <- read.csv("data_gxe_act_phenodata.csv") %>%
+  mutate(Rep = ifelse(Plot %in% c(1001:2080, 3201:4280, 5001:6080, 7201:8280), 1, 2),
+         ExptShort = paste(Location, Year),
+         ExptShort = plyr::mapvalues(ExptShort, c("Clavet 2024","Clavet 2025","Hunter 2024","Hunter 2025"),
+                                     c("Cl24","Cl25","Hu24","Hu25"))) %>%
+  select(Crop, ExptShort, Location, Year, Rep, Rep_gen, Rep_combo, everything())
+write.csv(xx, "data_gxe_act_phenodata.csv", row.names = F)
 ```
 
 ---
@@ -75,20 +86,32 @@ xx %>% filter(!is.na(DTF)) %>% group_by(Expt) %>% summarise(Val = n())
 
 ```{r}
 # Prep data
+colors_Expt <- c("lightgreen",      "palegreen4",       "darkgreen",   "darkolivegreen3",
+                 "darkolivegreen4", "springgreen4",     "orangered2",  "orangered4",
+                 "palevioletred",    "mediumvioletred", "orange2",     "orange4", 
+                 "slateblue1",       "slateblue4",      "aquamarine3", "aquamarine4", 
+                 "deepskyblue3",     "deepskyblue4" )
 myExpts <- c("Ro16","Ro17","Su16","Su17","Su18","Us18",
              "In16","In17","Ba16","Ba17","Ne16","Ne17",
              "Mo16","Mo17","Sp16","Sp17","It16","It17")
+names_MacroEnvs <- c("Temperate", "South Asia", "Mediterranean")
 #
-dd <- read.csv("data_gxe.csv") %>%
-  mutate(ExptShort = factor(ExptShort, levels = myExpts),
-         REP = DTM - DTF, # calculate Reproductive period
-         VEG = DTF - DTE) # calculate vegetative period
+d1 <- read.csv("data_gxe_ldp_phenodata.csv") %>%
+  mutate(MacroEnv = factor(MacroEnv, levels = names_MacroEnvs),
+         ExptShort = factor(ExptShort, levels = myExpts),
+         Name = factor(Name), 
+         Rep = factor(Rep) )
+#
+mm <- read.csv("data_gxe_ldp_metadata.csv") %>%
+  mutate(DTF_Cluster = factor(DTF_Cluster))
+# 
+d2 <- read.csv("data_gxe_act_phenodata.csv")
 ```
 
 ## Table
 
 ```{r}
-DT::datatable(dd)
+DT::datatable(d1)
 ```
 
 ---
@@ -99,7 +122,7 @@ DT::datatable(dd)
 
 ```{r}
 # Prep data
-xx <- dd %>% select(-VEG, -REP) %>%
+xx <- d1 %>% 
   gather(Trait, Value, DTE, DTF, DTS, DTM) %>%
   mutate(Trait = factor(Trait, levels = c("DTE","DTF","DTS","DTM")))
 # plot
@@ -118,18 +141,24 @@ ggsave("gxe_1_01.png", mp, width = 10, height = 8)
 
 ## VEG + REP
 
+With these phenology traits we can also calculate vegetative and reproductive period.
+
 ![](gxe_1_02.png)
 
 ```{r}
 # Prep data
-xx <- dd %>% select(-DTE, -DTF, -DTS, -DTM) %>%
-  gather(Trait, Value, VEG, REP) %>%
-  mutate(Trait = factor(Trait, levels = c("VEG","REP")))
+d1 <- d1 %>%
+  mutate(REP.P = DTM - DTF, # calculate Reproductive period
+         VEG.P = DTF - DTE) # calculate vegetative period
+#
+xx <- d1 %>% select(-DTE, -DTF, -DTS, -DTM) %>%
+  gather(Trait, Value, VEG.P, REP.P) %>%
+  mutate(Trait = factor(Trait, levels = c("VEG.P","REP.P")))
 # plot
-mp <- ggplot(xx, aes(x = ExptShort, y = Value, fill = Expt)) +
+mp <- ggplot(xx, aes(x = ExptShort, y = Value, fill = ExptShort)) +
   geom_boxplot(outlier.shape = NA, alpha = 0.8) +
-  facet_grid(Trait ~ ., scale = "free_y") +
-  scale_fill_manual(values = agData_Colors) +
+  facet_grid(Trait ~ MacroEnv, scale = "free") +
+  scale_fill_manual(values = colors_Expt) +
   theme_agData(legend.position = "none",
                axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(title = "Lentil Diversity Panel Phenology Data",
@@ -145,16 +174,18 @@ ggsave("gxe_1_02.png", mp, width = 8, height = 6)
 
 ```{r}
 # Prep data
-xx <- dd %>% gather(Trait, Value, DTE, DTF, DTS, DTM, VEG, REP) %>%
+xx <- d1 %>% gather(Trait, Value, DTE, DTF, DTS, DTM, VEG.P, REP.P) %>%
   filter(ExptShort == "Su16") %>%
   mutate(Rep = factor(Rep),
-         Trait = factor(Trait, levels = c("DTE","DTF","DTS","DTM","VEG","REP")))
+         Trait = factor(Trait, levels = c("DTE","DTF","DTS","DTM","VEG.P","REP.P")))
 # plot
-mp <- ggplot(xx, aes(x = as.factor(Rep), y = Value, fill = Rep)) +
+mp <- ggplot(xx, aes(x = Rep, y = Value, fill = Rep)) +
   geom_violin(alpha = 0.8) +
+  geom_quasirandom(alpha = 0.2, size = 0.1) +
   facet_grid(. ~ Trait) +
   theme_agData(legend.position = "none") +
-  labs(title = "Lentil Diversity Panel PHenology Data",
+  labs(title = "Lentil Diversity Panel Phenology Data",
+       subtitle = unique(xx$Expt),
        y = NULL, caption = myCaption)
 ggsave("gxe_1_03.png", mp, width = 8, height = 4)
 ```
@@ -165,8 +196,10 @@ ggsave("gxe_1_03.png", mp, width = 8, height = 4)
 
 ## GxE and Plotting Functions
 
+
+
 ```{r}
-myGxE <- function(xx, myTraits = c("DTE","DTF","DTS","DTM","VEG","REP")) {
+myGxE <- function(xx, myTraits = c("DTE","DTF","DTS","DTM","VEG.P","REP.P")) {
   # Initialize an empty list to store variance component data
   var_list <- list()
   blup_list <- list() #store blups values
@@ -192,7 +225,7 @@ myGxE <- function(xx, myTraits = c("DTE","DTF","DTS","DTM","VEG","REP")) {
   var_table <- do.call(rbind, var_list) %>%
     mutate(Trait = factor(Trait, levels = myTraits),
            Component = factor(Component, 
-              levels = c("Residual", "Expt:Rep", "Name:Expt", "Name"),
+              levels = c("Residual", "Expt:Rep", "Name:Expt",  "Name"),
               labels = c("Residual + Env", "Rep:Env", "G x E", "Genetic")))
   # Output
   var_table
@@ -200,57 +233,75 @@ myGxE <- function(xx, myTraits = c("DTE","DTF","DTS","DTM","VEG","REP")) {
 ```
 
 ```{r}
-gg_GxE_bar <- function(xx) {
+gg_GxE_bar <- function(xx, title) {
+  # Prep data
   myColors <- c("darkred", "purple4", "steelblue", "darkgreen")
+  xx <- xx %>% mutate(Label = ifelse(Proportion < 5, NA, round(Proportion)))
   # Create the stacked bar plot
   mp <- ggplot(xx, aes(x = Trait, y = Proportion, fill = Component)) +
     geom_col(position = "stack", color = "black", alpha = 0.7) +
-    geom_text(aes(label = round(Proportion)), position = position_stack(vjust = 0.5)) +
+    geom_text(aes(label = Label), position = position_stack(vjust = 0.5)) +
     scale_fill_manual(values = myColors) +
     theme_agData_col() +
-    labs(title = "Proportion of Phenotypic Variance by Trait",
+    labs(subtitle = "Proportion of Phenotypic Variance by Trait",
          y = "Proportion of Total Variance (%)",
-         caption = myCaption)
+         title = title, caption = myCaption)
 }
 ```
 
 ```{r}
-gg_GxE_pie <- function(xx, ncol = 3) {
+gg_GxE_pie <- function(xx, title, ncol = 3) {
+  # Prep data
   myColors <- c("darkred", "purple4", "steelblue", "darkgreen")
+  xx <- xx %>% mutate(Label = ifelse(Proportion < 5, NA, round(Proportion)))
   # Create the stacked bar plot
   mp <- ggplot(xx, aes(x = "x", y = Proportion, fill = Component)) +
     geom_col(position = "stack", alpha = 0.7) +
-    geom_text(aes(label = round(Proportion)), position = position_stack(vjust = 0.5)) +
+    geom_text(aes(label = Label), position = position_stack(vjust = 0.5)) +
     coord_polar("y", start = 0) +
     facet_wrap(. ~ Trait, ncol = ncol) +
     scale_fill_manual(values = myColors) +
     scale_x_discrete(limits = c("x_empty", "x")) +
     theme_agData_pie() +
     guides(fill = guide_legend(reverse = T)) +
-    labs(title = "Proportion of Phenotypic Variance by Trait",
+    labs(subtitle = "Proportion of Phenotypic Variance by Trait",
          y = "Proportion of Total Variance (%)",
-         caption = myCaption)
+         title = title, caption = myCaption)
 }
 ```
 
 ---
 
-## All Environments
+## All Environments {.tabset .tabset-pills}
 
-> - `r shiny::icon("save")` [gxe_All.csv](gxe_All.csv)
-
-![](gxe_All_01.png)
-
-![](gxe_All_02.png)
+### Table
 
 ```{r}
 # Save variance table 
-var_table <- myGxE(dd)
+var_table <- myGxE(d1)
 write.csv(var_table, "gxe_All.csv", row.names = F)
+```
+
+> - `r shiny::icon("save")` [gxe_All.csv](gxe_All.csv)
+
+---
+
+### Bar
+
+```{r}
 # Plot
-mp <- gg_GxE_bar(var_table)
+mp <- gg_GxE_bar(var_table, title = "LDP - All 18 Environments")
 ggsave("gxe_All_01.png", mp, width = 6, height = 4)
-mp <- gg_GxE_pie(var_table)
+```
+
+![](gxe_All_01.png)
+
+---
+
+### Pie
+
+```{r}
+mp <- gg_GxE_pie(var_table, title = "LDP - All 18 Environments")
 ggsave("gxe_All_02.png", mp, width = 6, height = 4)
 ```
 
@@ -258,194 +309,118 @@ ggsave("gxe_All_02.png", mp, width = 6, height = 4)
 ggsave("featured.png", mp, width = 6, height = 4)
 ```
 
+![](gxe_All_02.png)
+
 ---
 
-## Temperate
+## Temperate {.tabset .tabset-pills}
+
+### Table
+
+```{r}
+# Save variance table 
+var_table <- myGxE(d1 %>% filter(MacroEnv == "Temperate"))
+write.csv(var_table, "gxe_Temperate.csv", row.names = F)
+```
 
 > - `r shiny::icon("save")` [gxe_Temperate.csv](gxe_Temperate.csv)
 
-![](gxe_Temperate_01.png)
+---
 
-![](gxe_Temperate_02.png)
+### Bar
 
 ```{r}
-# Save variance table 
-var_table <- myGxE(dd %>% filter(MacroEnv == "Temperate"))
-write.csv(var_table, "gxe_Temperate.csv", row.names = F)
 # Plot
-mp <- gg_GxE_bar(var_table)
+mp <- gg_GxE_bar(var_table, title = "LDP - Temperate Environments")
 ggsave("gxe_Temperate_01.png", mp, width = 6, height = 4)
-mp <- gg_GxE_pie(var_table)
+```
+
+![](gxe_Temperate_01.png)
+
+---
+
+### Pie
+
+```{r}
+mp <- gg_GxE_pie(var_table, title = "LDP - Temperate Environments")
 ggsave("gxe_Temperate_02.png", mp, width = 6, height = 4)
 ```
 
+![](gxe_Temperate_02.png)
+
 ---
 
-## Mediterranean
+## Mediterranean {.tabset .tabset-pills}
 
-> - `r shiny::icon("save")` [gxe_Mediterranean.csv](gxe_Mediterranean.csv)
-
-![](gxe_Mediterranean_01.png)
-
-![](gxe_Mediterranean_02.png)
+### Table
 
 ```{r}
 # Save variance table 
-var_table <- myGxE(dd %>% filter(MacroEnv == "Mediterranean"))
+var_table <- myGxE(d1 %>% filter(MacroEnv == "Mediterranean"))
 write.csv(var_table, "gxe_Mediterranean.csv", row.names = F)
-# Plot
-mp <- gg_GxE_bar(var_table)
-ggsave("gxe_Mediterranean_01.png", mp, width = 6, height = 4)
-mp <- gg_GxE_pie(var_table)
-ggsave("gxe_Mediterranean_02.png", mp, width = 6, height = 4)
 ```
+
+> - `r shiny::icon("save")` [gxe_Mediterranean.csv](gxe_Mediterranean.csv)
 
 ---
 
-## South Asia
+### Bar
+
+```{r}
+# Plot
+mp <- gg_GxE_bar(var_table, title = "LDP - Mediterranean Environments")
+ggsave("gxe_Mediterranean_01.png", mp, width = 6, height = 4)
+```
+
+![](gxe_Mediterranean_01.png)
+
+---
+
+### Pie
+
+```{r}
+mp <- gg_GxE_pie(var_table, title = "LDP - Mediterranean Environments")
+ggsave("gxe_Mediterranean_02.png", mp, width = 6, height = 4)
+```
+
+![](gxe_Mediterranean_02.png)
+
+---
+
+## South Asia {.tabset .tabset-pills}
+
+### Table
+
+```{r}
+# Save variance table 
+var_table <- myGxE(d1 %>% filter(MacroEnv == "South Asia"))
+write.csv(var_table, "gxe_SouthAsia.csv", row.names = F)
+```
 
 > - `r shiny::icon("save")` [gxe_SouthAsia.csv](gxe_SouthAsia.csv)
 
+---
+
+### Bar
+
+```{r}
+mp <- gg_GxE_pie(var_table, title = "LDP - South Asia Environments")
+ggsave("gxe_SouthAsia_02.png", mp, width = 6, height = 4)
+```
+
 ![](gxe_SouthAsia_01.png)
+
+---
+
+### Pie
 
 ![](gxe_SouthAsia_02.png)
 
 ```{r}
-# Save variance table 
-var_table <- myGxE(dd %>% filter(MacroEnv == "South Asia"))
-write.csv(var_table, "gxe_SouthAsia.csv", row.names = F)
 # Plot
-mp <- gg_GxE_bar(var_table)
+mp <- gg_GxE_bar(var_table, title = "LDP - South Asia Environments")
 ggsave("gxe_SouthAsia_01.png", mp, width = 6, height = 4)
-mp <- gg_GxE_pie(var_table)
-ggsave("gxe_SouthAsia_02.png", mp, width = 6, height = 4)
 ```
 
 ---
 
-```{r eval = F, echo = F}
-
-# BLUPs vs BLUEs
-
-https://www.linkedin.com/pulse/blues-vs-blups-plant-breeding-simple-guide-andrey-alonso-vega-czehe/
-
-Both BLUEs and BLUPs are derived from the mixed linear model:
-
-y = Xβ + Zu + e
-
-Where:
-
-y = vector of observations
-β = vector of fixed effects (estimated as BLUEs)
-u = vector of random effects (predicted as BLUPs)
-X, Z = design matrices
-e = residual error
-
-The key insight: BLUEs estimate fixed effects, while BLUPs predict random effects. Both can come from the same model.
-
-BLUEs: Best Linear Unbiased Estimators
-
-What they are: BLUEs estimate the expected value of fixed effects, representing the true mean performance of specific, repeatable treatments or conditions.
-
-When to use BLUEs:
-
-Reporting variety trial results for registration
-Comparing specific treatments (fertilizer rates, planting dates)
-Publishing final variety recommendations
-I used them to summarize multi-environment trial data before performing GWAS
-Any situation where you want to estimate what happened in your specific conditions
-
-Key characteristics:
-
-No shrinkage toward population mean
-Treat each genotype/treatment as having a unique, fixed value
-Optimal when treatments are repeatable and you care about their specific performance
-
-BLUPs: Best Linear Unbiased Predictors
-
-What they are: BLUPs predict the breeding value or genetic potential of genotypes, treating them as random samples from a population with known variance structure.
-
-When to use BLUPs:
-
-Making selection decisions in breeding programs
-Genomic selection and calculating GEBVs (Genomic Estimated Breeding Values)
-Any situation where you want to predict future genetic potential
-
-Key characteristics:
-
-Shrinkage toward population mean (amount depends on heritability)
-Borrow information from relatives through relationship matrices
-Account for genetic correlations across environments
-Optimal for prediction when genotypes are samples from a breeding population
-
-The Role of Heritability
-
-The effectiveness of BLUPs depends critically on heritability (h²):
-
-High heritability (h² > 0.6): Minimal shrinkage, BLUPs ≈ individual means
-Low heritability (h² < 0.3): Substantial shrinkage, BLUPs heavily influenced by population mean and relatives
-Very low heritability (h² < 0.1): BLUPs may approach population mean for poorly connected genotypes
-
-Decision framework
-
-I think about it like this: BLUEs for current performance, BLUPs for genetic potential
-
-Borrowing Information: It's All About the Model
-
-A common misconception is that "BLUEs don't borrow information." This isn't quite right:
-
-BLUEs borrow information through the model structure (e.g., accounting for environmental effects, spatial trends)
-BLUPs additionally borrow information through genetic relationships and variance components
-Both benefit from well-designed experiments and appropriate model specification
-
-Implementation Considerations
-
-Sample Size Effects:
-
-Small trials: BLUPs often more reliable due to shrinkage
-Large trials: BLUEs and BLUPs converge as individual estimates become more precise
-
-Computational Requirements:
-
-BLUEs: Generally faster, especially for large datasets
-BLUPs: More intensive, especially with genomic relationship matrices
-
-Data Structure:
-
-Balanced data: Both perform well
-Unbalanced/missing data: Mixed models handle naturally, BLUPs often preferred
-
-A Simple Example
-
-Consider evaluating 100 sugar beet lines across 5 environments:
-
-For variety registration (BLUEs): "Variety SugarBeet1 averaged 65 bu/acre across locations, significantly higher than the check variety with 59 bu/acre."
-
-For breeding decisions (BLUPs): "Line SugarBeet1 has a predicted breeding value of 10 + bu/acre, above the population mean accounting for its genetic relationships and trial connectivity."
-
-The BLUE tells you what happened; the BLUP tells you what to expect.
-
-Key Takeaways
-
-BLUEs and BLUPs answer different questions | observed performance vs. genetic potential
-Both come from mixed models | the distinction is fixed vs. random effects, not different methodologies
-Context determines choice | reporting requires BLUEs, selection benefits from BLUPs
-Heritability matters | low heritability makes BLUPs especially valuable
-Consider your audience | stakeholders often want BLUEs, breeders often need BLUPs
-```
-
----
-
-```{r eval = F, echo = F}
-theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1),
-          plot.title = element_text(size = 12),
-          axis.text = element_text(size = 9),
-          axis.title = element_text(size = 11),
-          strip.text = element_text(size = 11),
-          legend.position = "bottom",
-          legend.title = element_blank(),
-          panel.grid = element_blank()  # Remove grid lines for clarity
-          ) +
-    #scale_fill_brewer(palette = "Set3")  # Use a color palette for better visualization
-```
