@@ -14,6 +14,8 @@ library(shiny)
 # https://derekmichaelwright.github.io/dblogr/home
 ```
 
+Website Contents:
+
 > `r icon("home")` derekmichaelwright.github.io/dblogr/
 >
 > - `r icon("r-project")` [ Packages](#packages)

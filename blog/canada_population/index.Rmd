@@ -54,7 +54,9 @@ myAges <- c("0 to 4 years", "5 to 9 years",
             "70 to 74 years", "75 to 79 years",
             "80 to 84 years", "85 to 89 years", 
             "90 to 94 years", "95 to 99 years",
-            "100 years and over", "Median age", "All ages")
+            "100 years and older", 
+            "18 to 64 years", "65 years and older",
+            "Median age", "All ages")
 myAreas <- c("Canada", "British Columbia", "Alberta", "Saskatchewan", "Manitoba",
              "Ontario", "Quebec", "New Brunswick", "Prince Edward Island",
              "Nova Scotia", "Newfoundland and Labrador", 
@@ -82,8 +84,7 @@ d2 <- read.csv("1710000501_databaseLoadingData.csv") %>%
          Age = factor(Age, levels = myAges),
          Year = substr(Year, 1,4),
          Year = as.numeric(Year),
-         Value = ifelse(is.na(Value), 0, Value))# %>%
-  #filter(!is.na(Age))
+         Value = ifelse(is.na(Value), 0, Value))
 ```
 
 ---
@@ -307,7 +308,7 @@ gg_PopDem_plot <- function(myArea = "Saskatchewan", myYears = 1971 ) {
   # Prep data
   xx <- d2 %>% 
     filter(Area == myArea, Year %in% myYears, Gender != "Total - gender",
-           !Age %in% c("All ages", "Median age")) 
+           !Age %in% c("18 to 64 years", "65 years and older", "Median age", "All ages")) 
   yy <- xx %>% spread(Gender, Value) %>% 
     mutate(Value = `Women+` - `Men+`,
            Gender = ifelse(Value < 0, "Men+", "Women+"))
@@ -441,7 +442,8 @@ gg_PopDem_anim <- function(myArea = "Saskatchewan") {
   # Prep data
   xx <- d2 %>% 
     filter(Area %in% myArea, Gender != "Total - gender", 
-           !Age %in% c("All ages", "Median age"))
+           !Age %in% c("18 to 64 years", "65 years and older", 
+                       "Median age", "All ages") )
   yy <- xx %>% spread(Gender, Value) %>% 
     mutate(Value = `Women+` - `Men+`,
            Gender = ifelse(Value < 0, "Men+", "Women+"))
@@ -590,7 +592,8 @@ gg_PopDem_plot2 <- function(myArea = "Saskatchewan", myYears = c(1971,2022) ) {
   # Prep data
   xx <- d2 %>% 
     filter(Area == myArea, Year %in% myYears, Gender == "Total - gender", 
-           !Age %in% c("All ages", "Median age")) 
+           !Age %in% c("18 to 64 years", "65 years and older", 
+                       "Median age", "All ages") ) 
   yy <- xx %>% spread(Year, Value)
   yy[is.na(yy[,5]),5] <- 0
   yy[is.na(yy[,6]),6] <- 0
@@ -722,8 +725,9 @@ gg_GenderRatio_plot <- function(myArea = "Saskatchewan", myYears = 2019) {
   # Prep data
   xx <- d2 %>% 
     filter(Area %in% myArea, Year %in% myYears, 
-           !Age %in% c("All ages", "Median age"), 
-           Gender %in% c("Men+", "Women+")) %>%
+           !Age %in% c("18 to 64 years", "65 years and older", 
+                       "Median age", "All ages"), 
+           Gender %in% c("Men+", "Women+") ) %>%
     spread(Gender, Value) %>%
     mutate(Value = `Women+` - `Men+`, 
            Group = ifelse(Value < 0, "More Men+", "More Women+"),
@@ -837,6 +841,58 @@ ggsave("canada_population_4_08.png", mp, width = 10, height = 4)
 ```{r}
 mp <- gg_GenderRatio_plot(myArea = "Yukon", myYears = c(1971, 1995, 2024))
 ggsave("canada_population_4_09.png", mp, width = 10, height = 4)
+```
+
+---
+
+# Gender Lines {.tabset .tabset-pills}
+
+## Plotting Function
+
+```{r class.source = "fold-show"}
+gg_GenderRatio_line <- function(myArea = "Saskatchewan") {
+  # Prep data
+  xx <- d2 %>% 
+    filter(Area %in% myArea, 
+           !Age %in% c("18 to 64 years", "65 years and older",
+                       "Median age", "All ages"), 
+           Gender %in% c("Men+", "Women+")) %>%
+    spread(Gender, Value) %>%
+    mutate(Value = `Women+` - `Men+`, 
+           Group = ifelse(Value < 0, "More Men+", "More Women+"),
+           Group = factor(Group, levels = c("More Men+", "More Women+")))
+  # Plot
+  ggplot(xx, aes(y = Value / 1000, x = Year, fill = Group)) + 
+    geom_col(alpha = 0.7) +
+    facet_wrap(Age ~ .) +
+    scale_fill_manual(name = NULL, values = myColorsMF) +
+    theme_agData(legend.position = "bottom") +
+    labs(title = paste("Gender Ratio in", myArea), subtitle = "Women+ - Men+", 
+         y = "Thousand People", x = NULL, caption = myCaption) +
+    coord_flip()
+}
+```
+
+---
+
+## Canada
+
+![](canada_population_5_01.png)
+
+```{r}
+mp <- gg_GenderRatio_line(myArea = "Canada")
+ggsave("canada_population_5_01.png", mp, width = 10, height = 8)
+```
+
+---
+
+## Saskatchewan
+
+![](canada_population_5_02.png)
+
+```{r}
+mp <- gg_GenderRatio_line(myArea = "Saskatchewan")
+ggsave("canada_population_5_02.png", mp, width = 10, height = 8)
 ```
 
 ---

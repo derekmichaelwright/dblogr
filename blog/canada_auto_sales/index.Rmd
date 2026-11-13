@@ -60,7 +60,7 @@ xx <- dd %>%
          Origin.of.manufacture == "Total, country of manufacture")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) + 
-  geom_line(color = "steelblue4", alpha = 0.7) +
+  geom_line(color = "steelblue4", alpha = 0.6) +
   stat_smooth(geom = "line", method = "loess", alpha = 0.8) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - New Motor Vehicle Sales",
@@ -82,7 +82,7 @@ xx <- dd %>%
          Origin.of.manufacture == "Total, country of manufacture")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000)) + 
-  geom_line(color = "steelblue4", alpha = 0.7) +
+  geom_line(color = "steelblue4", alpha = 0.6) +
   stat_smooth(geom = "line", method = "loess", alpha = 0.8) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
   theme_agData(legend.position = "bottom") +
@@ -107,8 +107,8 @@ xx <- dd %>%
          Origin.of.manufacture == "Total, country of manufacture")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Vehicle.type)) + 
-  geom_line(alpha = 0.7) +
-  stat_smooth(geom = "line", method = "loess", alpha = 0.8) +
+  geom_line(alpha = 0.6) +
+  stat_smooth(geom = "line", method = "loess", alpha = 0.9) +
   scale_color_manual(name = NULL, values = myColors_Type) +
   theme_agData(legend.position = "bottom") +
   labs(title = "Canada - New Motor Vehicle Sales",
@@ -134,8 +134,8 @@ xx <- dd %>%
          Origin.of.manufacture == "Total, country of manufacture")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, color = Vehicle.type)) + 
-  geom_line(alpha = 0.7) +
-  stat_smooth(geom = "line", method = "loess", alpha = 0.8) +
+  geom_line(alpha = 0.6) +
+  stat_smooth(geom = "line", method = "loess", alpha = 0.9) +
   facet_wrap(Area ~ ., scales = "free_y", ncol = 5) +
   scale_color_manual(name = NULL, values = myColors_Type) +
   theme_agData(legend.position = "bottom") +
@@ -192,7 +192,7 @@ xx <- dd %>%
          Fuel.type %in% c("All other fuel types", "Zero-emission"), Unit == "Units")
 # Plot
 mp <- ggplot(xx, aes(x = Date, y = Value / 1000, fill = Fuel.type)) + 
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(alpha = 0.7) +
   facet_wrap(Fuel.type ~ ., scales = "free_y") +
   scale_fill_manual(name = NULL, values = myColors_Fuel) +
   theme_agData(legend.position = "bottom") +
@@ -216,7 +216,7 @@ x1 <- xx %>% filter(Vehicle.type == "Passenger cars")
 x2 <- xx %>% filter(Vehicle.type == "Trucks")
 # Plot
 mp1 <- ggplot(x1, aes(x = Date, y = Value / 1000, fill = Fuel.type)) + 
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(alpha = 0.7) +
   facet_grid(Fuel.type ~ Vehicle.type, scales = "free_y") +
   scale_fill_manual(name = NULL, values = myColors_Fuel) +
   theme_agData(legend.position = "none") +
@@ -224,7 +224,7 @@ mp1 <- ggplot(x1, aes(x = Date, y = Value / 1000, fill = Fuel.type)) +
        y = "Thousand Sales", x = NULL)
 #
 mp2 <- ggplot(x2, aes(x = Date, y = Value / 1000, fill = Fuel.type)) + 
-  geom_col(color = "black", alpha = 0.7) +
+  geom_col(alpha = 0.7) +
   facet_grid(Fuel.type ~ Vehicle.type, scales = "free_y") +
   scale_fill_manual(name = NULL, values = myColors_Fuel) +
   theme_agData(legend.position = "none") +

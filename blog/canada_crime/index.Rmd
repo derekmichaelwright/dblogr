@@ -196,8 +196,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   scale_color_manual(name = NULL, values = myColors) +
   scale_x_continuous(minor_breaks = 1995:2025) +
   theme_agData(legend.position = "bottom") +
-  labs(y = "Crime Severity Index", x = NULL,
-       caption = myCaption)
+  labs(title = "Crime in Canada", x = NULL,
+       y = "Crime Severity Index", caption = myCaption)
 ggsave("canada_crime_1_01.png", mp, width = 7, height = 4)
 ```
 
@@ -250,7 +250,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   scale_color_manual(name = NULL, values = myColors) +
   scale_x_continuous(minor_breaks = 1998:2025) +
   theme_agData(legend.position = "bottom") +
-  labs(y = "Crime Severity Index", x = NULL, caption = myCaption)
+  labs(title = "Crime in Canada", y = "Crime Severity Index",
+       x = NULL, caption = myCaption)
 ggsave("canada_crime_1_02.png", mp, width = 16, height = 6)
 ```
 
@@ -270,7 +271,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   scale_color_manual(name = NULL, values = myColors) +
   scale_x_continuous(minor_breaks = 1998:2025) +
   theme_agData(legend.position = "bottom") +
-  labs(y = "Crime Severity Index", x = NULL, caption = myCaption)
+  labs(title = "Crime in Canada", x = NULL, 
+       y = "Crime Severity Index", caption = myCaption)
 ggsave("canada_crime_1_03.png", mp, width = 16, height = 10)
 ```
 
@@ -292,7 +294,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   scale_color_manual(name = NULL, values = myColors) +
   scale_x_continuous(minor_breaks = 1995:2025) +
   theme_agData(legend.position = "bottom") +
-  labs(y = "Crime Severity Index", x = NULL, caption = myCaption)
+  labs(title = "Crime in Canada", x = NULL, 
+       y = "Crime Severity Index", caption = myCaption)
 ggsave("canada_crime_1_04.png", mp, width = 7, height = 4)
 ```
 
@@ -312,7 +315,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   scale_color_manual(name = NULL, values = myColors) +
   scale_x_continuous(minor_breaks = 1998:2025) +
   theme_agData(legend.position = "bottom") +
-  labs(y = "Crime Severity Index", x = NULL, caption = myCaption)
+  labs(title = "Crime in Canada", x = NULL, 
+       y = "Crime Severity Index", caption = myCaption)
 ggsave("canada_crime_1_05.png", mp, width = 16, height = 6)
 ```
 
@@ -334,7 +338,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   scale_color_manual(name = NULL, values = c("darkred", "steelblue")) +
   scale_x_continuous(minor_breaks = 1995:2025) +
   theme_agData(legend.position = "bottom") +
-  labs(y = "Crime Severity Index", x = NULL, caption = myCaption)
+  labs(title = "Crime in Canada", x = NULL, 
+       y = "Crime Severity Index", caption = myCaption)
 ggsave("canada_crime_1_06.png", mp, width = 7, height = 4)
 ```
 
@@ -354,7 +359,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   scale_color_manual(name = NULL, values = c("darkred", "steelblue")) +
   scale_x_continuous(minor_breaks = 1998:2025) +
   theme_agData(legend.position = "bottom") +
-  labs(y = "Crime Severity Index", x = NULL, caption = myCaption)
+  labs(title = "Crime in Canada", x = NULL, 
+       y = "Crime Severity Index", caption = myCaption)
 ggsave("canada_crime_07.png", mp, width = 16, height = 6)
 ```
 
@@ -376,7 +382,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   scale_color_manual(name = NULL, values = myColors) +
   scale_x_continuous(minor_breaks = 1995:2025) +
   theme_agData(legend.position = "bottom") +
-  labs(y = "Crime Severity Index", x = NULL, caption = myCaption)
+  labs(title = "Crime in Canada", x = NULL, 
+       y = "Crime Severity Index", caption = myCaption)
 ggsave("canada_crime_1_08.png", mp, width = 8, height = 4)
 ```
 
@@ -396,7 +403,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   scale_color_manual(name = NULL, values = myColors) +
   scale_x_continuous(minor_breaks = 1995:2025) +
   theme_agData(legend.position = "bottom") +
-  labs(y = "Crime Severity Index", x = NULL, caption = myCaption)
+  labs(title = "Crime in Canada", x = NULL, 
+       y = "Crime Severity Index", caption = myCaption)
 ggsave("canada_crime_1_09.png", mp, width = 8, height = 4)
 ```
 
@@ -416,7 +424,8 @@ mp <- ggplot(xx, aes(x = Year, y = Value, color = Measurement)) +
   scale_color_manual(name = NULL, values = c("darkred", "steelblue")) +
   scale_x_continuous(minor_breaks = 1995:2025) +
   theme_agData(legend.position = "bottom") +
-  labs(y = "Crime Severity Index", x = NULL, caption = myCaption)
+  labs(title = "Crime in Canada", x = NULL, 
+       y = "Crime Severity Index", caption = myCaption)
 ggsave("canada_crime_1_10.png", mp, width = 8, height = 4)
 ```
 
@@ -502,7 +511,7 @@ mp <- ggplot(xx, aes(x = Year, y = Value, fill = Motive)) +
   scale_fill_manual(name = NULL, values = agData_Colors) +
   scale_x_continuous(minor_breaks = 2012:2021) +
   theme_agData(legend.position = "none") +
-  labs(title = "Canada", x = NULL,
+  labs(title = "Crime in Canada", , x = NULL,
        y = "Crime Severity Index", caption = myCaption)
 ggsave("canada_crime_3_01.png", mp, width = 12, height = 8)
 ```
@@ -522,8 +531,8 @@ mp <- ggplot(d4, aes(x = Year, y = Value)) +
   scale_x_continuous(breaks = seq(1985, 2025, by = 5), 
                      minor_breaks = 1985:2025) +
   theme_agData() +
-  labs(title = "Sexual Assualts in Canada", y = "Rate per 100,000", x = NULL,
-       caption = myCaption)
+  labs(title = "Sexual Assualts in Canada", x = NULL,
+       y = "Rate per 100,000", caption = myCaption)
 ggsave("canada_crime_4_01.png", mp, width = 6, height = 4)
 ```
 

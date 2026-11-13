@@ -30,32 +30,6 @@ This vignette is a tutorial on running **Genome-Wide Association Studies** (**GW
 
 > - `r shiny::icon("globe")` **Lentil Diversity Panel**: [https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/](https://derekmichaelwright.github.io/dblogr/academic/lentil_diversity_panel/){target="_blank"}
 
-```{r echo = F, eval = F}
-# > - **GAPIT Forum**: [https://groups.google.com/forum/#!forum/gapit-forum](https://groups.google.com/forum/#!forum/gapit-forum){target="_blank"}
-fixNames <- function(xx) {
-  xx %>% mutate(Name = gsub(" ", "_", Name),
-         Name = gsub("-", "\\.", Name),
-         Name = plyr::mapvalues(Name, "3156.11_AGL", "X3156.11_AGL"))
-}
-library(agiler)
-x1 <- AGILE_abc %>% filter(!is.na(d)) %>% select(Entry, a,b,c)
-x2 <- AGILE_LDP %>% select(Entry, Name, Origin, Region)
-x3 <- AGILE_Seed %>% select(Entry, Testa.Color=TestaColor)
-x4 <- AGILE_DTF_PCA %>% select(Entry, DTF.Culter=Cluster)
-x5 <- AGILE_Q %>% select(-Name) %>%
-  mutate(STR_Group = structureGroup(x = .[,c("P1","P2","P3","P4","P5","P6","P7","P8")]))
-myM <- left_join(x1, x2, by = "Entry") %>%
-  left_join(x3, by = "Entry") %>%
-  left_join(x4, by = "Entry") %>%
-  left_join(x5, by = "Entry") %>%
-  fixNames() %>% select(Entry, Name, everything())
-write.csv(myM, "Data/myM.csv", row.names = F)
-write.csv(myM, "Data/gwaspr_myCV.csv", row.names = F)
-#
-setdiff(myM$Name, t(myG[1,])) # should be character(0)
-setdiff(t(myG[1,]), myM$Name) # should show just the first 11 columns of myG
-```
-
 ---
 
 ## Install `GAPIT`
@@ -74,16 +48,12 @@ install.packages("genetics")
 install.packages("ape")
 install.packages("EMMREML")
 install.packages("scatterplot3d")
-```
-
-```{r eval = F, echo = F}
+# 
 #source("http://www.bioconductor.org/biocLite.R")
 devtools::install_github("YaoZhou89/BLINK")
 devtools::install_github("SFUStatgen/LDheatmap")
 BiocManager::install("snpStats")
-```
-
-```{r eval = F, echo = F}
+#
 library(multtest)
 library(gplots)
 library(LDheatmap)
@@ -103,6 +73,8 @@ devtools::install_github("jiabowang/GAPIT")
 
 ![](Images/logo_gapit.png)
 
+---
+
 ## Install `gwaspr`
 
 <br>
@@ -117,27 +89,17 @@ devtools::install_github("derekmichaelwright/gwaspr")
 library(gwaspr)
 ```
 
-![](logo_gwaspr.png)
-
 ---
 
 ## Data
 
 Mandatory
 
-> - `r shiny::icon("save")` [raw_myY.csv](Data/myY.csv)
 > - `r shiny::icon("save")` [gwaspr_myY.csv](Data/gwaspr_myY.csv)
 > - `r shiny::icon("save")` [gwaspr_myG_hmp.zip](Data/myG_hmp.zip)
 
-Optional
-
-> - `r shiny::icon("save")` [gwaspr_myCV.csv](Data/myCV.csv)
-> - `r shiny::icon("save")` [gwaspr_myM.csv](Data/myM.csv)
-
 - `gwaspr_myY.csv`: Phenotype file
 - `gwaspr_myG_hmp.csv`: Genotype file in hapmap format
-- `gwaspr_myCV.csv`: (Optional) Covariate file
-- `myM.csv`: (Optional) Metadata file for the genotypes.
 
 All phenotype and genotype data is derived from and available at: https://knowpulse.usask.ca/
 
@@ -149,7 +111,7 @@ Associated papers:
 - `r shiny::icon("newspaper")` [Neupane S, Wright D, *et al* (**2022**) **Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**. *The Plant Genome*. e20269. https://doi.org/10.1002/tpg2.20269](https://doi.org/10.1002/tpg2.20269){target="_blank"}
 - `r shiny::icon("r-project")` [R Script (HTML)](https://derekmichaelwright.github.io/AGILE_LDP_GWAS_Phenology/GWAS_Phenology_Vignette.html){target="_blank"}
 
-## LDP
+## Lentil Diversity Panel
 
 <br>
 
@@ -167,7 +129,7 @@ Load your Data
 
 ```{r eval = F}
 # Read in phenotype data
-myY <- read.csv("Data/raw_myY.csv")
+myY <- read.csv("Data/gwaspr_myY_raw.csv")
 # Read in genotype data (note: header = F)
 myG <- read.csv("Data/gwaspr_myG_hmp.csv", header = F)
 ```
@@ -217,24 +179,16 @@ myGAPIT <- GAPIT( Y = myY,
 
 # Data Preparation
 
-The code above will produce errors and not run properly. This is due to the input data not being properly formatted and will be a common occurance. Lets explore why and try to fix these errors.
+The code above will produce errors and not run properly. This is due to the input data not being properly formatted and will likely be a common occurance. The first step for any GWAS is to ensure both the *genotype* (`myG`) and *phenotype* (`myY`) data are properly formatted for `GAPIT`.
 
 ## Genotype Data
-
-Our population, the LDP, was genotyped using an *exome caputure array* and filtered with the following criteria to yield a data set of 336,367 SNPs, stored in our object `myG`.
-
-- Only Bi-allelic           =  TRUE
-- Minimum Read Depth        =  3
-- Minor Allele Frequency    = >5%
-- Maximum Missing Frequency =  25%
-- Heterozygous              = <25%
 
 ```{r}
 # Read in genotype data (note: header = F)
 myG <- read.csv("Data/gwaspr_myG_hmp.csv", header = F)
 ```
 
-The `gwaspr` package is built for genotype data in the **hapmap** format. Although `GAPIT` can also be run with numeric formatted genotype data, when using hapmap formatted genotype data, it is important to set `header = F`. This will make the column names the first row of your `myG` object, as demonstrated below:
+Although `GAPIT` can be run with **numeric** or **hapmap** formatted genotype data, the `gwaspr` package is built for genotype data in the **hapmap** format. When using hapmap formatted genotype data, it is important to set `header = F`. This will make the column names the first row of your `myG` object, as demonstrated below:
 
 ```{r}
 # Map + marker Info
@@ -245,108 +199,114 @@ myG[1:10,12:17]
 
 Notice how the first row of our genotype data is actually the column names.
 
+Our population, the LDP, was genotyped using an *exome caputure array* and filtered with the following criteria to yield a data set of 336,367 SNPs, stored in our `myG` object.
+
+> - Only Bi-allelic           =  TRUE
+> - Minimum Read Depth        =  3
+> - Minor Allele Frequency    = >5%
+> - Maximum Missing Frequency =  25%
+
 ---
 
 ### Marker Details {.tabset .tabset-pills}
 
-`gwaspr` has a function to output graphs and details about our marker data. 
+`gwaspr` has a function to output graphs and details about our marker data. This can be helpful in checking the quality of your genotype `myG` data.
 
-> Note: This functions can be slow to run on large marker sets.
+> Note: This functions can be slow to run on large marker sets and can take > 30 minutes. 
 
 ```{r eval = F}
 # Plot
-gg_myG_Details(filename = "Data/myG_hmp.csv", myPrefix = "Fig_02")
+gg_myG_Details(filename = "Data/gwaspr_myG_hmp.csv", myPrefix = "Fig_01")
 ```
 
 #### Both
 
-![](Fig_02_03_myG_Details.png)
+![](Fig_01_03_myG_Details.png)
+
+![](Fig_01_03_myG_Details.png)
 
 ---
 
 #### By Marker
 
-![](Fig_02_04_myG_Markers.png)
+![](Fig_01_04_myG_Markers.png)
 
 ```{r}
-read.csv("Fig_02_01_myG_Markers.csv")[1:10,]
+read.csv("Fig_01_01_myG_Markers.csv")[1:10,]
 ```
 
 ---
 
 #### By Genotype
 
-![](Fig_02_05_myG_Genotypes.png)
+![](Fig_01_05_myG_Genotypes.png)
 
 ```{r}
-read.csv("Fig_02_02_myG_Genotypes.csv")[1:10,]
+read.csv("Fig_01_02_myG_Genotypes.csv")[1:10,]
 ```
 
 ---
 
 ## Phenotype Data
 
-Our population (The **LDP**) has been phenotyped for three traits:
+```{r}
+# Read in phenotype data
+myY <- read.csv("Data/gwaspr_myY_raw.csv")
+```
 
-- **Cotyledon_RedvsYellow**: a *qualitative* trait describing cotyledon color (Yellow = 0) (Red = 1) (green = NA).
+```{r}
+str(myY)
+```
+
+```{r}
+myY <- myY %>% select(myG_Name, everything())
+```
+
+Our `myY` object with out phenotype data contains both quantitative and qualitative traits along with additional metadata for our populationation (The **LDP**). For this tutorial, we will focus on three specific traits:
+
+- **Cotyledon_Color**: a *qualitative* trait describing cotyledon color (Yellow = 0) (Red = 1) (other = NA).
 - **DTF_Nepal_2017**: a *quantitative* trait describing days from sowing to flowering in a 2017 Nepal field trial. 
 - **DTF_Sask_2017**: a *quantitative* trait describing days from sowing to flowering in a 2017 Saskatchewan field trial.
 
-```{r}
-# Read in phenotype data
-myY <- read.csv("Data/raw_myY.csv")
-```
-
 ---
 
-### Common Errors
-
-There are a number of common errors one might encounter when attempting to do GWAS with GAPIT. We will go through a few of these:
-
-#### Numeric Phenotype Data
+### Numeric Phenotype Data
 
 For our qualitative trait **Cotyledon_Color**, we needed to convert
 
-- `Yellow` to `0`
-- `Red` to `1`
-- `Green` to `NA`
-
-First we must convert our *qualitative trait* **Cotyledon_RedvsYellow** from `character` to `numeric` format.
-
-`Red` = `1`
-
-`Yellow` = `0`
-
-`Green` = `NA`
-
-`missing data` = `NA`
+- `Yellow` = `0`
+- `Red` = `1`
+- `Green` = `NA`
+- `Red/Yellow` = `NA`
+- `missing data` = `NA`
 
 ```{r}
 # Convert qualitative trait to numeric
 myY <- myY %>% 
-  mutate(Cotyledon_RedvsYellow = mv(Cotyledon_Color, c("Red","Yellow","Green"), c(1,0,NA)),
-         Cotyledon_RedvsYellow = as.numeric(Cotyledon_RedvsYellow) )
+  mutate(Cot_RvY = mv(Cotyledon_Color, 
+                      c("Red","Yellow","Green","Red/Yellow"), 
+                      c(1, 0, NA, NA)),
+         Cot_RvY = as.numeric(Cot_RvY) )
 ```
 
 ```{r echo = F}
-DT::datatable(myY)
+DT::datatable(myY[,c("myG_Name", "Cotyledon_Color", "Cot_RvY", "DTF_Nepal_2017", "DTF_Sask_2017")])
 ```
 
 Now we can visualize our data.
 
 ```{r eval = F}
 # Prep data
-xx <- myY %>% select(-Cotyledon_Color) %>%
-  gather(Trait, Value, 2:ncol(.)) %>%
-  mutate(Trait = factor(Trait, levels = unique(Trait)))
+xx <- myY %>% select(myG_Name, Cot_RvY, DTF_Nepal_2017, DTF_Sask_2017) %>%
+  gather(Trait, Value, 2:ncol(.))
 # Plot
 mp <- ggplot(xx, aes(x = Value)) + 
-  geom_histogram(color = "black", fill = "darkgreen", alpha = 0.7) + 
+  geom_histogram(fill = "darkgreen", alpha = 0.8) + 
   facet_wrap(. ~ Trait, ncol = 3, scales = "free") +
   theme_gwaspr() +
   labs(title = "Phenotype Data")
 # Save
-ggsave("Fig_01_myY_Phenotypes.png", mp, width = 8, height = 3)
+ggsave("Fig_02_myY_Phenotypes.png", mp, width = 8, height = 3)
 ```
 
 ![](Fig_01_myY_Phenotypes.png)
@@ -358,8 +318,8 @@ ggsave("Fig_01_myY_Phenotypes.png", mp, width = 8, height = 3)
 Genotype names not matching between the phenotype file and genotype file is an easy error to miss. `R` does not like column names that begin with a number. *E.g.*, the genotype `3156-11_AGL` should have its named changed to `X3156-11_AGL`. Another common problem can come from dashses (`-`) and periods (`.`), *E.g.*. `CDC_QG.1_AGL` or `CDC_QG-1_AGL`, or spaces (` `) and underscores (`_`), *E.g.*, `CDC Asterix AGL` or `CDC_Asterix_AGL`.
 
 ```{r}
-setdiff(myY$Name, t(myG[1,])) # should be character(0)
-setdiff(t(myG[1,]), myY$Name) # should show just the first 11 columns of myG
+setdiff(myY$myG_Name, t(myG[1,])) # should be character(0)
+setdiff(t(myG[1,]), myY$myG_Name) # should show just the first 11 columns of myG
 ```
 
 Alternativly, `gwaspr` has a custom function that can also check this
@@ -371,14 +331,9 @@ checkTaxaNames(xG = myG, xY = myY)
 ```{r}
 # Change names of select individuals
 myY <- myY %>% 
-  mutate(Name = plyr::mapvalues(Name, 
-           c("3156-11_AGL",  "CDC Asterix AGL", "CDC_QG-1_AGL"), 
+  mutate(myG_Name = plyr::mapvalues(myG_Name, 
+           c("3156.11_AGL",  "CDC Asterix AGL", "CDC_QG-1_AGL"), 
            c("X3156.11_AGL", "CDC_Asterix_AGL", "CDC_QG.1_AGL")))
-```
-
-```{r}
-setdiff(myY$Name, t(myG[1,])) # should be character(0)
-setdiff(t(myG[1,]), myY$Name) # should show just the first 11 columns of myG
 ```
 
 ```{r}
@@ -389,12 +344,6 @@ Now lets save this file
 
 ```{r}
 write.csv(myY, "Data/gwaspr_myY.csv", row.names = F)
-```
-
-Remove the `Cotyledon_Color` column which is not in numeric format
-
-```{r}
-myY <- myY %>% select(-Cotyledon_Color)
 ```
 
 ---
@@ -421,18 +370,9 @@ For more information on my CV see the following papers:
 - [Neupane S, Wright D, *et al* (**2022**) **Focusing the GWAS Lens on days to flower using latent variable phenotypes derived from global multi-environment trials**. *The Plant Genome*. e20269. https://doi.org/10.1002/tpg2.20269](https://doi.org/10.1002/tpg2.20269){target="_blank"}
 
 ```{r}
-# Read in my custom covariate data
-myCV <- read.csv("Data/gwaspr_myCV.csv")
-```
-
-```{r echo = F}
-DT::datatable(myCV)
-```
-
-```{r}
 # Plot
-mp <- ggplot(myCV, aes(x = b * 10000)) + 
-  geom_histogram(color = "black", fill = "darkgreen", alpha = 0.7) + 
+mp <- ggplot(myY, aes(x = b_coef * 10000)) + 
+  geom_histogram(fill = "darkgreen", alpha = 0.7) + 
   theme_gwaspr() +
   labs(title = "Covariate Data")
 # Save
@@ -465,10 +405,15 @@ For our purposes we will run GWAS with the following models: `GLM`, `MLM`, `MLMM
 ```{r eval = F}
 setwd("GWAS_Results/")
 # Custom GWAS
-GAPIT( Y = myY, # Phenotype data
-       G = myG, # Genotype data
+GAPIT( # Phenotype data
+       Y = myY[,c("myG_Name", "Cot_RvY", "DTF_Nepal_2017", "DTF_Sask_2017")], 
+       # Genotype data
+       G = myG, 
+       # Principal Components
        PCA.total = 4,
+       # GWAS Models
        model = c("GLM", "MLM", "MLMM", "FarmCPU", "BLINK"), 
+       # Extra
        Random.model = F,  # Optional: use if GAPIT returns an error
        Phenotype.View = F # Optional: use if GAPIT returns an error
       )
@@ -494,12 +439,19 @@ We will rerun GWAS on the DTF traits using the *b* coefficient from a phototherm
 ```{r eval = F}
 setwd("GWAS_Results/")
 # Prep data
-myY2 <- myY %>% select(Name, DTF_Sask_2017_b=DTF_Sask_2017)
+myY2 <- myY %>% select(myG_Name, DTF_Sask_2017_CV_b=DTF_Sask_2017)
 # Run GWAS with covariate
-GAPIT( Y = myY2, G = myG, 
-       CV = myCV[,c("Name","b")],
+GAPIT( # Phenotype data
+       Y = myY2, 
+       # Genotype data
+       G = myG, 
+       # Covariate data
+       CV = myY[,c("myG_Name","b_coef")],
+       # GWAS models
        model = c("GLM", "MLM", "MLMM", "FarmCPU", "BLINK"),
+       # Principal components
        PCA.total = 0, 
+       # Extra
        Random.model = F,  # Optional: use if GAPIT returns an error
        Phenotype.View = F # Optional: use if GAPIT returns an error
       )
@@ -546,11 +498,8 @@ After running a genome-wide association study, there are some quality control an
 
 ## Prepare Data
 
-Convert our `Cotyledon_RedvsYellow` back to its character values.
-
 ```{r}
-myY <- myY %>% 
-  mutate(Cotyledon_Color = plyr::mapvalues(Cotyledon_RedvsYellow, c(1,0,NA), c("Red","Yellow","Green")))
+myY <- read.csv("Data/gwaspr_myY.csv")
 ```
 
 Reread in our `myG` file but with `header = T`. 
@@ -1093,9 +1042,9 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/",
   # Select a trait to plot
-  traits = "DTF_Sask_2017_b",
+  traits = "DTF_Sask_2017_CV_b",
   # Specify a title
-  title = "DTF_Sask_2017 | CV = b",
+  title = "DTF_Sask_2017 | CV = b_coef",
   # Facet each model
   facet.model = T
   )
@@ -1138,9 +1087,9 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  traits = "DTF_Sask_2017_b",
+  traits = "DTF_Sask_2017_CV_b",
   # Specify a title
-  title = "DTF_Sask_2017 | CV = b",
+  title = "DTF_Sask_2017 | CV = b_coef",
   # Facet each model
   facet.model = F # default setting
   )
@@ -1200,7 +1149,7 @@ list_Top_Markers(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  traits = "DTF_Sask_2017_b",
+  traits = "DTF_Sask_2017_CV_b",
   # Select only certain GWAS models
   models = c("MLM","MLMM","FarmCPU","BLINK")
   )
@@ -1212,9 +1161,9 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  traits = "DTF_Sask_2017_b",
+  traits = "DTF_Sask_2017_CV_b",
   # Specify a title
-  title = "DTF_Sask_2017 | CV = b",
+  title = "DTF_Sask_2017 | CV = b_coef",
   # Plot only certain GWAS models
   models = c("MLM","MLMM","FarmCPU","BLINK"),
   # Highlight specific markers
@@ -1242,7 +1191,7 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/",
   # Select traits to plot
-  traits = c("DTF_Nepal_2017", "DTF_Sask_2017", "DTF_Sask_2017_b"),
+  traits = c("DTF_Nepal_2017", "DTF_Sask_2017", "DTF_Sask_2017_CV_b"),
   # Specify a title
   title = "Days to Flower",
   # Highlight specific markers
@@ -1272,9 +1221,9 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  traits = "DTF_Sask_2017_b",
+  traits = "DTF_Sask_2017_CV_b",
   # Specify a title
-  title = "DTF_Sask_2017 | CV = b",
+  title = "DTF_Sask_2017 | CV = b_coef",
   # Plot just Chromosome 6
   chr = 6,
   # Plot only certain GWAS models
@@ -1304,9 +1253,9 @@ mp <- gg_Manhattan_Zoom(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  traits = "DTF_Sask_2017_b", 
+  traits = "DTF_Sask_2017_CV_b", 
   # Specify a title
-  title = "DTF_Sask_2017 | CV = b", 
+  title = "DTF_Sask_2017 | CV = b_coef", 
   # Highlight specific markers
   markers = "Lcu.1GRN.Chr6p3269280", 
   # Create alt labels for the markers
@@ -1488,15 +1437,15 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  traits = "Cotyledon_RedvsYellow",
+  traits = "Cot_RvY",
   # Facet each model
   facet.model = T 
   )
 # Save
-ggsave("Fig_Cotyledon_RedvsYellow_01_01.png", mp, width = 12, height = 8, bg = "white")
+ggsave("Fig_Cot_RvY_01_01.png", mp, width = 12, height = 8, bg = "white")
 ```
 
-![](Fig_Cotyledon_RedvsYellow_01_01.png)
+![](Fig_Cot_RvY_01_01.png)
 
 ---
 
@@ -1510,15 +1459,15 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  traits = "Cotyledon_RedvsYellow",
+  traits = "Cot_RvY",
   # Facet each model
   facet.model = F # default setting
   )
 # Save
-ggsave("Fig_Cotyledon_RedvsYellow_01_02.png", mp, width = 12, height = 4, bg = "white")
+ggsave("Fig_Cot_RvY_01_02.png", mp, width = 12, height = 4, bg = "white")
 ```
 
-![](Fig_Cotyledon_RedvsYellow_01_02.png)
+![](Fig_Cot_RvY_01_02.png)
 
 ---
 
@@ -1531,7 +1480,7 @@ list_Top_Markers(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  traits = "Cotyledon_RedvsYellow" 
+  traits = "Cot_RvY" 
   )
 ```
 
@@ -1541,7 +1490,7 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  traits = "Cotyledon_RedvsYellow", 
+  traits = "Cot_RvY", 
   # Plot only certain GWAS models
   models = c("MLMM","FarmCPU","BLINK"),
   # Highlight specific markers
@@ -1554,10 +1503,10 @@ mp <- gg_Manhattan(
   vline.colors = rep("green",3) 
   )
 # Save
-ggsave("Fig_Cotyledon_RedvsYellow_01_03.png", mp, width = 12, height = 4, bg = "white")
+ggsave("Fig_Cot_RvY_01_03.png", mp, width = 12, height = 4, bg = "white")
 ```
 
-![](Fig_Cotyledon_RedvsYellow_01_03.png)
+![](Fig_Cot_RvY_01_03.png)
 
 ---
 
@@ -1573,7 +1522,7 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/",
   # Select a trait to plot
-  traits = "Cotyledon_RedvsYellow", 
+  traits = "Cot_RvY", 
   # Plot just Chromosome 1
   chr = 1,
   # Plot only certain GWAS models
@@ -1588,10 +1537,10 @@ mp <- gg_Manhattan(
   vline.colors = rep("green",3)
   )
 # Save
-ggsave("Fig_Cotyledon_RedvsYellow_01_04.png", mp, width = 12, height = 4, bg = "white")
+ggsave("Fig_Cot_RvY_01_04.png", mp, width = 12, height = 4, bg = "white")
 ```
 
-![](Fig_Cotyledon_RedvsYellow_01_04.png)
+![](Fig_Cot_RvY_01_04.png)
 
 ---
 
@@ -1605,7 +1554,7 @@ mp <- gg_Manhattan_Zoom(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  traits = "Cotyledon_RedvsYellow", 
+  traits = "Cot_RvY", 
   # Plot just Chromosome 1
   chr = 1,
   pos1 = 360000000,
@@ -1624,10 +1573,10 @@ mp <- gg_Manhattan_Zoom(
   facet.model = T
   )
 # Save
-ggsave("Fig_Cotyledon_RedvsYellow_01_05.png", mp, width = 8, height = 6)
+ggsave("Fig_Cot_RvY_01_05.png", mp, width = 8, height = 6)
 ```
 
-![](Fig_Cotyledon_RedvsYellow_01_05.png)
+![](Fig_Cot_RvY_01_05.png)
 
 ---
 
@@ -1639,7 +1588,7 @@ mp <- gg_Manhattan(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/", 
   # Select a trait to plot
-  traits = "Cotyledon_RedvsYellow", 
+  traits = "Cot_RvY", 
   # Plot only certain GWAS models
   models = c("MLMM","FarmCPU","BLINK"),
   # Highlight specific markers
@@ -1656,10 +1605,10 @@ mp <- gg_Manhattan(
   threshold = 1.3
   )
 # Save
-ggsave("Fig_Cotyledon_RedvsYellow_01_06.png", mp, width = 12, height = 4, bg = "white")
+ggsave("Fig_Cot_RvY_01_06.png", mp, width = 12, height = 4, bg = "white")
 ```
 
-![](Fig_Cotyledon_RedvsYellow_01_06.png)
+![](Fig_Cot_RvY_01_06.png)
 
 ---
 
@@ -1675,17 +1624,17 @@ mp <- gg_Marker_Pie(
   # Phenotype data
   xY = myY, 
   # Select a trait to plot
-  trait = "Cotyledon_RedvsYellow",
+  trait = "Cot_RvY",
   # Select markers to plot
   markers = "Lcu.1GRN.Chr1p365986872",
   # Specify colors for alleles
   marker.colors = c("darkred","darkgoldenrod3") 
   )
 # Save
-ggsave("Fig_Cotyledon_RedvsYellow_02_01.png", mp, width = 6, height = 4)
+ggsave("Fig_Cot_RvY_02_01.png", mp, width = 6, height = 4)
 ```
 
-![](Fig_Cotyledon_RedvsYellow_02_01.png)
+![](Fig_Cot_RvY_02_01.png)
 
 The marker `Lcu.1GRN.Chr1p365986872` is convincing.
 
@@ -1701,17 +1650,17 @@ mp <- gg_Marker_Pie(
   # Phenotype data
   xY = myY,
   # Select a trait to plot
-  trait = "Cotyledon_RedvsYellow",
+  trait = "Cot_RvY",
   # Select markers to plot
   markers = "Lcu.1GRN.Chr1p361840399",
   # Specify colors for alleles
   marker.colors = c("darkred","darkgoldenrod3") 
   )
 # Save
-ggsave("Fig_Cotyledon_RedvsYellow_02_02.png", mp, width = 6, height = 4)
+ggsave("Fig_Cot_RvY_02_02.png", mp, width = 6, height = 4)
 ```
 
-![](Fig_Cotyledon_RedvsYellow_02_02.png)
+![](Fig_Cot_RvY_02_02.png)
 
 The marker `Lcu.1GRN.Chr1p361840399` is likely a false positive.
 
@@ -1727,7 +1676,7 @@ mp <- gg_Marker_Pie(
   # Phenotype data
   xY = myY,
   # Select a trait to plot
-  trait = "Cotyledon_RedvsYellow",
+  trait = "Cot_RvY",
   # Select markers to plot
   markers = c("Lcu.1GRN.Chr1p365986872",
               "Lcu.1GRN.Chr1p361840399"),
@@ -1735,10 +1684,10 @@ mp <- gg_Marker_Pie(
   marker.colors = c("darkred","darkgoldenrod3") 
   )
 # Save
-ggsave("Fig_Cotyledon_RedvsYellow_02_03.png", mp, width = 6, height = 4)
+ggsave("Fig_Cot_RvY_02_03.png", mp, width = 6, height = 4)
 ```
 
-![](Fig_Cotyledon_RedvsYellow_02_03.png)
+![](Fig_Cot_RvY_02_03.png)
 
 ---
 
@@ -1755,10 +1704,10 @@ mp <- gg_LD_Heatmap(xG = myG, chr = 1, pos1 = 363000000, pos2 = 370000000,
                    nameTrim = "Lcu.1GRN.Chr1",
                    myTitle = "Lentil Diversity Panel"
                    )
-ggsave("Fig_Cotyledon_RedvsYellow_03_01.png", mp[[1]], width = 12, height = 12, dpi = 600)
+ggsave("Fig_Cot_RvY_03_01.png", mp[[1]], width = 12, height = 12, dpi = 600)
 ```
 
-![](Fig_Cotyledon_RedvsYellow_03_01.png)
+![](Fig_Cot_RvY_03_01.png)
 
 ---
 
@@ -1770,7 +1719,7 @@ mp <- gg_Volcano(
   # Specify a folder with GWAS results
   folder = "GWAS_Results/",
   # Select a trait to plot
-  trait = "Cotyledon_RedvsYellow",
+  trait = "Cot_RvY",
   # Plot only certain GWAS models
   models = c("MLM","MLMM","FarmCPU","BLINK"),
   # Highlight specific markers
@@ -1781,10 +1730,10 @@ mp <- gg_Volcano(
   labels = c("365Mbp","351Mbp","362Mbp") 
   )
 # Save
-ggsave("Fig_Cotyledon_RedvsYellow_04_01.png", mp, width = 12, height = 4)
+ggsave("Fig_Cot_RvY_04_01.png", mp, width = 12, height = 4)
 ```
 
-![](Fig_Cotyledon_RedvsYellow_04_01.png)
+![](Fig_Cot_RvY_04_01.png)
 
 ---
 
@@ -1792,9 +1741,9 @@ ggsave("Fig_Cotyledon_RedvsYellow_04_01.png", mp, width = 12, height = 4)
 
 ```{r eval = F}
 # Prep data
-x1 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.MLM.Cotyledon_RedvsYellow(NYC).csv") %>%
+x1 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.MLM.Cot_RvY(NYC).csv") %>%
   mutate(Model = "MLM")
-x2 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.BLINK.Cotyledon_RedvsYellow(NYC).csv") %>%
+x2 <- read.csv("GWAS_Results/GAPIT.Association.GWAS_Results.BLINK.Cot_RvY(NYC).csv") %>%
   mutate(Model = "BLINK")
 xx <- bind_rows(x1, x2) %>% mutate(Model = factor(Model, levels = c("MLM","BLINK")))
 # Plot
@@ -1805,12 +1754,12 @@ mp <- ggplot(xx, aes(x = MAF, y = -log10(P.value), pch = as.factor(Chr))) +
   facet_grid(. ~ Model) +
   scale_shape_manual(values = 1:7) +
   theme_gwaspr() +
-  labs(title = "Cotyledon_RedvsYellow", y = "-log10(p)")
+  labs(title = "Cot_RvY", y = "-log10(p)")
 # Save
-ggsave("Fig_Cotyledon_RedvsYellow_04_02.png", mp, width = 10, height = 4)
+ggsave("Fig_Cot_RvY_04_02.png", mp, width = 10, height = 4)
 ```
 
-![](Fig_Cotyledon_RedvsYellow_04_02.png)
+![](Fig_Cot_RvY_04_02.png)
 
 ---
 
@@ -1870,7 +1819,7 @@ CMplot(xx, plot.type="d", bin.size=1e7,
 library(plotly)
 library(htmlwidgets)
 xx <- read.csv("GWAS_Results/GAPIT.Genotype.PCA.csv") %>%
-  left_join(myY, by = c("taxa"="Name"))
+  left_join(myY, by = c("taxa"="myG_Name"))
 ```
 
 ---
@@ -1913,18 +1862,18 @@ mp
 
 ### Cotyledon Color
 
-[https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Fig_PCA_Cotyledon_RedvsYellow.html](https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Fig_PCA_Cotyledon_RedvsYellow.html){target="_blank"}
+[https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Fig_PCA_Cot_RvY.html](https://derekmichaelwright.github.io/dblogr/academic/gwas_tutorial/Fig_PCA_Cot_RvY.html){target="_blank"}
 
 ```{r}
 # Prep data
 myColors <- c("darkgoldenrod3", "darkblue")
 # Plot
 mp <- plot_ly(xx, x = ~PC1, y = ~PC2, z = ~PC3, text = ~taxa,
-              color = ~Cotyledon_RedvsYellow, colors = myColors) %>%
+              color = ~Cot_RvY, colors = myColors) %>%
   add_markers() %>%
-  layout(scene = list(title = "Cotyledon_RedvsYellow"))
+  layout(scene = list(title = "Cot_RvY"))
 # Save
-saveWidget(as_widget(mp), "Fig_PCA_Cotyledon_RedvsYellow.html")
+saveWidget(as_widget(mp), "Fig_PCA_Cot_RvY.html")
 mp
 ```
 

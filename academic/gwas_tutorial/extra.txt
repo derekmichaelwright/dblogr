@@ -1,3 +1,43 @@
+```{r echo = F, eval = F}
+# > - **GAPIT Forum**: [https://groups.google.com/forum/#!forum/gapit-forum](https://groups.google.com/forum/#!forum/gapit-forum){target="_blank"}
+fixNames <- function(xx) {
+  xx %>% mutate(Name = gsub(" ", "_", Name),
+         Name = gsub("-", "\\.", Name),
+         Name = plyr::mapvalues(Name, "3156.11_AGL", "X3156.11_AGL"))
+}
+library(agiler)
+#x0 <- read.csv("Data/gwaspr_myY.csv") %>% select(Name, DTF_Sask)
+x1 <- AGILE_LDP %>% select(Entry, Name, Origin, Region)
+x2 <- AGILE_Seed %>% select(Entry, Testa_Color=TestaColor, Cotyledon_Color=CotyledonColor)
+x3 <- AGILE_Data_324 %>% select(Entry, DTF_Sask_2017=DTF_Sutherland.2017, DTF_Nepal_2017=DTF_Bardiya.2017)
+x4 <- AGILE_abc %>% filter(!is.na(d)) %>% select(Entry, a_coef=a,b_coef=b,c_coef=c)
+x5 <- AGILE_DTF_PCA %>% select(Entry, DTF_PCA_Cluster=Cluster)
+#x5 <- AGILE_Q %>% select(-Name) %>% mutate(STR_Group = structureGroup(x = .[,c("P1","P2","P3","P4","P5","P6","P7","P8")]))
+myM <- left_join(x1, x2, by = "Entry") %>%
+  left_join(x3, by = "Entry") %>%
+  left_join(x4, by = "Entry") %>%
+  left_join(x5, by = "Entry") %>%
+  mutate(Cot_RvY = plyr::mapvalues(Cotyledon_Color, c("Red", "Yellow","Red/Yellow","Green"),c(1,0,NA,NA)),
+         DTF_Sask_2017 = round(DTF_Sask_2017,1),
+         DTF_Nepal_2017 = round(DTF_Nepal_2017,1),
+         a_coef = round(a_coef,5),
+         b_coef = round(b_coef,6),
+         c_coef = round(c_coef,6),
+         #
+         myG_Name = gsub(" ", "_", Name),
+         myG_Name = gsub("-", "\\.", myG_Name),
+         myG_Name = plyr::mapvalues(myG_Name, "3156.11_AGL", "X3156.11_AGL")) %>%
+  select(Entry, Name, myG_Name, Origin, Region, Testa_Color, Cotyledon_Color, Cot_RvY,
+         DTF_Nepal_2017, DTF_Sask_2017, a_coef,b_coef,c_coef, DTF_PCA_Cluster )
+write.csv(myM, "Data/myM.csv", row.names = F)
+write.csv(myM, "Data/gwaspr_myCV.csv", row.names = F)
+write.csv(myM, "Data/gwaspr_myY_raw.csv", row.names = F)
+#
+setdiff(myM$Name, t(myG[1,])) # should be character(0)
+setdiff(t(myG[1,]), myM$Name) # should show just the first 11 columns of myG
+```
+
+
 
 
 
@@ -5,7 +45,7 @@
 
 ### Marker Details
 
-`gwaspr` has a funtions to output graphs and details about our marker data. 
+`gwaspr` has a funtions to output graphs and details about our marker data.
 
 Note: This functions can be slow to run on large marker sets.
 
@@ -34,9 +74,9 @@ xGD <- read.csv("Data/myG_hmp.csv", header = T)
 xGD$M1 <- substr(xGD$alleles, 1, 1)
 xGD$M2 <- substr(xGD$alleles, 3, 3)
 #
-xY <- read.csv("Data/myY.csv") %>% 
-  mutate(Name = plyr::mapvalues(Name, 
-           c("3156-11_AGL",  "CDC Asterix AGL", "CDC_QG-1_AGL"), 
+xY <- read.csv("Data/myY.csv") %>%
+  mutate(Name = plyr::mapvalues(Name,
+           c("3156-11_AGL",  "CDC Asterix AGL", "CDC_QG-1_AGL"),
            c("X3156.11_AGL", "CDC_Asterix_AGL", "CDC_QG.1_AGL")))
 #
 xG_MAF <- function(x) { sum(x %in% x[1], na.rm = T)-1 }
@@ -54,23 +94,23 @@ xGD <- xGD %>%
          MAF = ifelse(numM1 > numM2, (numM2*2 + numHet) / (numM2*2 + numM1*2 + numHet*2),
                                      (numM1*2 + numHet) / (numM1*2 + numM2*2 + numHet*2) ),
          MCF = numN / (numHet + numHomo + numN))
-xGD <- xGD %>% 
-  select(rs, alleles, M1, M2, chrom, pos, 
+xGD <- xGD %>%
+  select(rs, alleles, M1, M2, chrom, pos,
          numM1, numM2, numHet, numN, numHomo, Het, MAF, MCF)
 write.csv(xGD, "myG_Details.csv", row.names = F)
 # Plot
-mp1 <- ggplot(xGD, aes(x = Het * 100)) + 
+mp1 <- ggplot(xGD, aes(x = Het * 100)) +
   geom_histogram(color = "black", fill = "darkgreen", alpha = 0.7) +
   theme_gwaspr() +
-  labs(title = "Marker Details (myG)", 
+  labs(title = "Marker Details (myG)",
        subtitle = "Heterozygosity", x = NULL, y = NULL)
-mp2 <- ggplot(xGD, aes(x = MAF * 100)) + 
+mp2 <- ggplot(xGD, aes(x = MAF * 100)) +
   geom_histogram(color = "black", fill = "darkgreen", alpha = 0.7) +
   scale_x_continuous(breaks = seq(5,50, by = 5),
                      minor_breaks = seq(5,50, by = 5)) +
   theme_gwaspr() +
   labs(subtitle = "Minor Allele Frequency", x = "Percent", y = NULL)
-mp3 <- ggplot(xGD, aes(x = MCF * 100)) + 
+mp3 <- ggplot(xGD, aes(x = MCF * 100)) +
   geom_histogram(color = "black", fill = "darkgreen", alpha = 0.7) +
   theme_gwaspr() +
   labs(subtitle = "Missing Call Frequency", x = NULL, y = NULL)
@@ -85,10 +125,10 @@ xGD <- read.csv("Data/myG_hmp.csv", header = T)
 xGD$M1 <- substr(xGD$alleles, 1, 1)
 xGD$M2 <- substr(xGD$alleles, 3, 3)
 #
-xYD <- read.csv("Data/myY.csv") %>% 
+xYD <- read.csv("Data/myY.csv") %>%
   mutate(Het = NA, MAF = NA, MCF = NA,
-         Name = plyr::mapvalues(Name, 
-           c("3156-11_AGL",  "CDC Asterix AGL", "CDC_QG-1_AGL"), 
+         Name = plyr::mapvalues(Name,
+           c("3156-11_AGL",  "CDC Asterix AGL", "CDC_QG-1_AGL"),
            c("X3156.11_AGL", "CDC_Asterix_AGL", "CDC_QG.1_AGL")) )
 #i<-12
 for(i in (12:ncol(xGD))) {
@@ -107,16 +147,16 @@ for(i in (12:ncol(xGD))) {
 }
 write.csv(xYD, "myY_Details.csv", row.names = F)
 # Plot
-mp1 <- ggplot(xYD, aes(x = Het * 100)) + 
+mp1 <- ggplot(xYD, aes(x = Het * 100)) +
   geom_histogram(color = "black", fill = "darkgreen", alpha = 0.7) +
   theme_gwaspr() +
-  labs(title = "Genotype Details (myY)", 
+  labs(title = "Genotype Details (myY)",
        subtitle = "Heterozygosity", x = NULL, y = NULL)
-mp2 <- ggplot(xYD, aes(x = MAF * 100)) + 
+mp2 <- ggplot(xYD, aes(x = MAF * 100)) +
   geom_histogram(color = "black", fill = "darkgreen", alpha = 0.7) +
   theme_gwaspr() +
   labs(subtitle = "Minor Allele Frequency", x = "Percent", y = NULL)
-mp3 <- ggplot(xYD, aes(x = MCF * 100)) + 
+mp3 <- ggplot(xYD, aes(x = MCF * 100)) +
   geom_histogram(color = "black", fill = "darkgreen", alpha = 0.7) +
   theme_gwaspr() +
   labs(subtitle = "Missing Call Frequency", x = NULL, y = NULL)

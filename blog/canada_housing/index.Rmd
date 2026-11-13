@@ -81,7 +81,7 @@ d1 <- read.csv("1810020501_databaseLoadingData.csv") %>%
          Unit=UOM, Value=VALUE) %>%
   separate(Date, c("Year", "Month"), sep = "-", remove = F) %>%
   mutate(Date = as.Date(paste0(Date,"-01"), format = "%Y-%m-%d"))
-pp <- data.frame(Admin = factor(1:4),
+pol <- data.frame(Admin = factor(1:4),
         Party = factor(c("PC", "LIB", "CPC", "LIB"), levels = c("PC", "LIB", "CPC")),
         xmin = as.Date(c("1984-09-17", "1993-11-04", "2006-02-06", "2015-11-04")),
         xmax = as.Date(c("1993-11-04", "2006-02-06", "2015-11-04", "2022-06-01")))
@@ -229,7 +229,7 @@ myxmin <- min(xx$Value)
 myxmax <- max(xx$Value)
 # Plot
 mp <- ggplot(xx) +
-  geom_rect(data = pp, alpha = 0.3, ymin = -Inf, ymax = Inf,
+  geom_rect(data = pol, alpha = 0.3, ymin = -Inf, ymax = Inf,
             aes(xmin = xmin, xmax = xmax, fill = Party)) +
   geom_line(aes(x = Date, y = Value, color = Measurement), alpha = 0.7, size = 1.5) +
   scale_color_manual(name = NULL, values = myColors_M) +
@@ -252,7 +252,7 @@ ggsave("canada_housing_1_04.png", mp, width = 6, height = 4)
 xx <- d1 %>% filter(Measurement == "Total (house and land)")
 # Plot
 mp <- ggplot(xx) +
-  geom_rect(data = pp, alpha = 0.3, ymin = -Inf, ymax = Inf,
+  geom_rect(data = pol, alpha = 0.3, ymin = -Inf, ymax = Inf,
             aes(xmin = xmin, xmax = xmax, fill = Party)) +
   geom_line(aes(x = Date, y = Value), size = 1.5, alpha = 0.7) +
   facet_wrap(Area ~ ., ncol = 5) +
@@ -277,7 +277,7 @@ xx <- d1 %>%
          Measurement %in% c("House only", "Land only"))
 # Plot
 mp <- ggplot(xx) +
-  geom_rect(data = pp, alpha = 0.3, ymin = -Inf, ymax = Inf,
+  geom_rect(data = pol, alpha = 0.3, ymin = -Inf, ymax = Inf,
             aes(xmin = xmin, xmax = xmax, fill = Party)) +
   geom_line(aes(x = Date, y = Value, color = Measurement), 
             alpha = 0.7, size = 1.5) +
@@ -302,15 +302,15 @@ ggsave("canada_housing_1_06.png", mp, width = 8, height = 4)
 ```{r}
 # Prep data
 xx <- d1 %>% filter(Area == "Canada", Measurement == "Total (house and land)")
-for(i in 1:nrow(pp)) {
-  pp$price1[i] <- xx$Value[xx$Date == paste0(substr(pp$xmin[i],1,7),"-01")]
-  pp$price2[i] <- xx$Value[xx$Date == paste0(substr(pp$xmax[i],1,7),"-01")]
-  pp$PercentChange[i] <- (100 * pp$price2[i] / pp$price1[i]) - 100
+for(i in 1:nrow(pol)) {
+  pol$price1[i] <- xx$Value[xx$Date == paste0(substr(pol$xmin[i],1,7),"-01")]
+  pol$price2[i] <- xx$Value[xx$Date == paste0(substr(pol$xmax[i],1,7),"-01")]
+  pol$PercentChange[i] <- (100 * pol$price2[i] / pol$price1[i]) - 100
 }
 # Plot
-mp <- ggplot(pp, aes(x = Admin, y = PercentChange, fill = Party)) +
+mp <- ggplot(pol, aes(x = Admin, y = PercentChange, fill = Party)) +
   geom_col(color = "black", alpha = 0.7) +
-  scale_x_discrete(labels = paste(pp$xmin, pp$xmax, sep = "\n")) +
+  scale_x_discrete(labels = paste(pol$xmin, pol$xmax, sep = "\n")) +
   scale_fill_manual(name = NULL, values = myColors_P) +
   theme_agData_col(legend.position = "bottom") +
   labs(title = "Canada - Change in House Prices", x = NULL,
@@ -328,15 +328,15 @@ ggsave("canada_housing_1_07.png", mp, width = 5, height = 4)
 # Prep data
 xx <- d1 %>% filter(Area == "Regina, Saskatchewan", 
                     Measurement == "Total (house and land)")
-for(i in 1:nrow(pp)) {
-  pp$price1[i] <- xx$Value[xx$Date == paste0(substr(pp$xmin[i],1,7),"-01")]
-  pp$price2[i] <- xx$Value[xx$Date == paste0(substr(pp$xmax[i],1,7),"-01")]
-  pp$PercentChange[i] <- (100 * pp$price2[i] / pp$price1[i]) - 100
+for(i in 1:nrow(pol)) {
+  pol$price1[i] <- xx$Value[xx$Date == paste0(substr(pol$xmin[i],1,7),"-01")]
+  pol$price2[i] <- xx$Value[xx$Date == paste0(substr(pol$xmax[i],1,7),"-01")]
+  pol$PercentChange[i] <- (100 * pol$price2[i] / pol$price1[i]) - 100
 }
 # Plot
-mp <- ggplot(pp, aes(x = Admin, y = PercentChange, fill = Party)) +
+mp <- ggplot(pol, aes(x = Admin, y = PercentChange, fill = Party)) +
   geom_col(color = "black", alpha = 0.7) +
-  scale_x_discrete(labels = paste(pp$xmin, pp$xmax, sep = "\n")) +
+  scale_x_discrete(labels = paste(pol$xmin, pol$xmax, sep = "\n")) +
   scale_fill_manual(name = NULL, values = myColors_P) +
   theme_agData_col(legend.position = "bottom") +
   labs(title = "Regina, Saskatchewan - Change in House Prices",
@@ -1154,3 +1154,26 @@ ggsave("canada_housing_8_03.png", mp, width = 6, height = 4)
 ```
 
 ---
+
+```{r eval = F, echo = F}
+# Prep data
+pp <- read.csv("../canada_population/1710000501_databaseLoadingData.csv") %>%
+  filter(GEO == "Canada", Gender == "Total - gender", Age.group == "All ages") %>%
+  select(Area=GEO, Year = REF_DATE, Population=VALUE) %>%
+  mutate(Population_GR = 100 * (Population -lag(Population)) / lag(Population))
+xx <- d1 %>% filter(Area == "Canada", Measurement == "Total (house and land)") %>%
+  mutate(Year = as.numeric(Year)) %>%
+  group_by(Year) %>%
+  summarise(Value = mean(Value)) %>%
+  mutate(Housing_GR = 100 * (Value -lag(Value)) / lag(Value)) %>%
+  left_join(pp, by = "Year") %>%
+  select(Year, Housing_GR, Population_GR) %>%
+  gather(Trait, Value, 2:3)
+# 
+mp1 <- ggplot(xx, aes(x = Year, y = Value, color = Trait)) +
+  geom_line() +
+  facet_grid(Trait ~ ., scale = "free_y")
+mp2 <- ggplot(xx, aes(x = Population_GR, y = Housing_GR)) +
+  #geom_point() +
+  geom_text(aes(label = Year))
+```
